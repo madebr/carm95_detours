@@ -18,182 +18,182 @@ extern int * hookvar_gFizzle_height ; // addr: 005321E4
 extern int * hookvar_gNumber_of_icons ; // addr: 005321E0
 extern tPowerup ** hookvar_gPowerup_array ; // addr: 005321E8
 
-void LosePowerupX(tPowerup *pThe_powerup, int pTell_net_players);
+void __cdecl LosePowerupX(tPowerup *pThe_powerup, int pTell_net_players);
 
-void LosePowerup(tPowerup *pThe_powerup);
+void __cdecl LosePowerup(tPowerup *pThe_powerup);
 
-void LoseAllSimilarPowerups(tPowerup *pThe_powerup);
+void __cdecl LoseAllSimilarPowerups(tPowerup *pThe_powerup);
 
-int GotPowerupX(tCar_spec *pCar, int pIndex, int pTell_net_players, int pDisplay_headup, tU32 pTime_left);
+int __cdecl GotPowerupX(tCar_spec *pCar, int pIndex, int pTell_net_players, int pDisplay_headup, tU32 pTime_left);
 
-int GotPowerup(tCar_spec *pCar, int pIndex);
+int __cdecl GotPowerup(tCar_spec *pCar, int pIndex);
 
-void LoadPowerups();
+void __cdecl LoadPowerups();
 
-void InitPowerups();
+void __cdecl InitPowerups();
 
-void CloseDownPowerUps();
+void __cdecl CloseDownPowerUps();
 
-void DrawPowerups(tU32 pTime);
+void __cdecl DrawPowerups(tU32 pTime);
 
-void DoPowerupPeriodics(tU32 pFrame_period);
+void __cdecl DoPowerupPeriodics(tU32 pFrame_period);
 
-void GotPowerupN(int pN);
+void __cdecl GotPowerupN(int pN);
 
-void GotPowerup0();
+void __cdecl GotPowerup0();
 
-void GotPowerup1();
+void __cdecl GotPowerup1();
 
-void GotPowerup2();
+void __cdecl GotPowerup2();
 
-void GotPowerup3();
+void __cdecl GotPowerup3();
 
-void GotPowerup4();
+void __cdecl GotPowerup4();
 
-void GotPowerup5();
+void __cdecl GotPowerup5();
 
-void GotPowerup6();
+void __cdecl GotPowerup6();
 
-void GotPowerup7();
+void __cdecl GotPowerup7();
 
-void GotPowerup8();
+void __cdecl GotPowerup8();
 
-void GotPowerup9();
+void __cdecl GotPowerup9();
 
-int GotCredits(tPowerup *pPowerup, tCar_spec *pCar);
+int __cdecl GotCredits(tPowerup *pPowerup, tCar_spec *pCar);
 
-void ImprovePSPowerup(tCar_spec *pCar, int pIndex);
+void __cdecl ImprovePSPowerup(tCar_spec *pCar, int pIndex);
 
-int GotTimeOrPower(tPowerup *pPowerup, tCar_spec *pCar);
+int __cdecl GotTimeOrPower(tPowerup *pPowerup, tCar_spec *pCar);
 
-int SetPedSpeed(tPowerup *pPowerup, tCar_spec *pCar);
+int __cdecl SetPedSpeed(tPowerup *pPowerup, tCar_spec *pCar);
 
-int SetHades(tPowerup *pPowerup, tCar_spec *pCar);
+int __cdecl SetHades(tPowerup *pPowerup, tCar_spec *pCar);
 
-void ResetHades(tPowerup *pPowerup, tCar_spec *pCar);
+void __cdecl ResetHades(tPowerup *pPowerup, tCar_spec *pCar);
 
-int SetPedSize(tPowerup *pPowerup, tCar_spec *pCar);
+int __cdecl SetPedSize(tPowerup *pPowerup, tCar_spec *pCar);
 
-int SetPedExplode(tPowerup *pPowerup, tCar_spec *pCar);
+int __cdecl SetPedExplode(tPowerup *pPowerup, tCar_spec *pCar);
 
-int SetInvulnerability(tPowerup *pPowerup, tCar_spec *pCar);
+int __cdecl SetInvulnerability(tPowerup *pPowerup, tCar_spec *pCar);
 
-void ResetInvulnerability(tPowerup *pPowerup, tCar_spec *pCar);
+void __cdecl ResetInvulnerability(tPowerup *pPowerup, tCar_spec *pCar);
 
-int SetFreeRepairs(tPowerup *pPowerup, tCar_spec *pCar);
+int __cdecl SetFreeRepairs(tPowerup *pPowerup, tCar_spec *pCar);
 
-void ResetFreeRepairs(tPowerup *pPowerup, tCar_spec *pCar);
+void __cdecl ResetFreeRepairs(tPowerup *pPowerup, tCar_spec *pCar);
 
-int SetBlindPedestrians(tPowerup *pPowerup, tCar_spec *pCar);
+int __cdecl SetBlindPedestrians(tPowerup *pPowerup, tCar_spec *pCar);
 
-void ResetBlindPedestrians(tPowerup *pPowerup, tCar_spec *pCar);
+void __cdecl ResetBlindPedestrians(tPowerup *pPowerup, tCar_spec *pCar);
 
-int FreezeTimer(tPowerup *pPowerup, tCar_spec *pCar);
+int __cdecl FreezeTimer(tPowerup *pPowerup, tCar_spec *pCar);
 
-void UnfreezeTimer(tPowerup *pPowerup, tCar_spec *pCar);
+void __cdecl UnfreezeTimer(tPowerup *pPowerup, tCar_spec *pCar);
 
-int DoInstantRepair(tPowerup *pPowerup, tCar_spec *pCar);
+int __cdecl DoInstantRepair(tPowerup *pPowerup, tCar_spec *pCar);
 
-void ResetPedSpeed(tPowerup *pPowerup, tCar_spec *pCar);
+void __cdecl ResetPedSpeed(tPowerup *pPowerup, tCar_spec *pCar);
 
-void ResetPedSize(tPowerup *pPowerup, tCar_spec *pCar);
+void __cdecl ResetPedSize(tPowerup *pPowerup, tCar_spec *pCar);
 
-void ResetPedExplode(tPowerup *pPowerup, tCar_spec *pCar);
+void __cdecl ResetPedExplode(tPowerup *pPowerup, tCar_spec *pCar);
 
-int SetEngineFactor(tPowerup *pPowerup, tCar_spec *pCar);
+int __cdecl SetEngineFactor(tPowerup *pPowerup, tCar_spec *pCar);
 
-int SetUnderwater(tPowerup *pPowerup, tCar_spec *pCar);
+int __cdecl SetUnderwater(tPowerup *pPowerup, tCar_spec *pCar);
 
-int TrashBodywork(tPowerup *pPowerup, tCar_spec *pCar);
+int __cdecl TrashBodywork(tPowerup *pPowerup, tCar_spec *pCar);
 
-int TakeDrugs(tPowerup *pPowerup, tCar_spec *pCar);
+int __cdecl TakeDrugs(tPowerup *pPowerup, tCar_spec *pCar);
 
-void PaletteFuckedUpByDrugs(br_pixelmap *pPixelmap, int pOffset);
+void __cdecl PaletteFuckedUpByDrugs(br_pixelmap *pPixelmap, int pOffset);
 
-void TheEffectsOfDrugs(tPowerup *pPowerup, tU32 pPeriod);
+void __cdecl TheEffectsOfDrugs(tPowerup *pPowerup, tU32 pPeriod);
 
-int SetOpponentsSpeed(tPowerup *pPowerup, tCar_spec *pCar);
+int __cdecl SetOpponentsSpeed(tPowerup *pPowerup, tCar_spec *pCar);
 
-int SetCopsSpeed(tPowerup *pPowerup, tCar_spec *pCar);
+int __cdecl SetCopsSpeed(tPowerup *pPowerup, tCar_spec *pCar);
 
-int SetGravity(tPowerup *pPowerup, tCar_spec *pCar);
+int __cdecl SetGravity(tPowerup *pPowerup, tCar_spec *pCar);
 
-int SetPinball(tPowerup *pPowerup, tCar_spec *pCar);
+int __cdecl SetPinball(tPowerup *pPowerup, tCar_spec *pCar);
 
-int SetWallclimb(tPowerup *pPowerup, tCar_spec *pCar);
+int __cdecl SetWallclimb(tPowerup *pPowerup, tCar_spec *pCar);
 
-int SetBouncey(tPowerup *pPowerup, tCar_spec *pCar);
+int __cdecl SetBouncey(tPowerup *pPowerup, tCar_spec *pCar);
 
-int SetSuspension(tPowerup *pPowerup, tCar_spec *pCar);
+int __cdecl SetSuspension(tPowerup *pPowerup, tCar_spec *pCar);
 
-int SetTyreGrip(tPowerup *pPowerup, tCar_spec *pCar);
+int __cdecl SetTyreGrip(tPowerup *pPowerup, tCar_spec *pCar);
 
-int SetDamageMultiplier(tPowerup *pPowerup, tCar_spec *pCar);
+int __cdecl SetDamageMultiplier(tPowerup *pPowerup, tCar_spec *pCar);
 
-void ResetEngineFactor(tPowerup *pPowerup, tCar_spec *pCar);
+void __cdecl ResetEngineFactor(tPowerup *pPowerup, tCar_spec *pCar);
 
-void ResetUnderwater(tPowerup *pPowerup, tCar_spec *pCar);
+void __cdecl ResetUnderwater(tPowerup *pPowerup, tCar_spec *pCar);
 
-void PukeDrugsBackUp(tPowerup *pPowerup, tCar_spec *pCar);
+void __cdecl PukeDrugsBackUp(tPowerup *pPowerup, tCar_spec *pCar);
 
-void ResetOpponentsSpeed(tPowerup *pPowerup, tCar_spec *pCar);
+void __fastcall ResetOpponentsSpeed(tPowerup *pPowerup, tCar_spec *pCar);
 
-void ResetCopsSpeed(tPowerup *pPowerup, tCar_spec *pCar);
+void __cdecl ResetCopsSpeed(tPowerup *pPowerup, tCar_spec *pCar);
 
-void ResetGravity(tPowerup *pPowerup, tCar_spec *pCar);
+void __cdecl ResetGravity(tPowerup *pPowerup, tCar_spec *pCar);
 
-void ResetPinball(tPowerup *pPowerup, tCar_spec *pCar);
+void __cdecl ResetPinball(tPowerup *pPowerup, tCar_spec *pCar);
 
-void ResetWallclimb(tPowerup *pPowerup, tCar_spec *pCar);
+void __cdecl ResetWallclimb(tPowerup *pPowerup, tCar_spec *pCar);
 
-void ResetBouncey(tPowerup *pPowerup, tCar_spec *pCar);
+void __cdecl ResetBouncey(tPowerup *pPowerup, tCar_spec *pCar);
 
-void ResetSuspension(tPowerup *pPowerup, tCar_spec *pCar);
+void __cdecl ResetSuspension(tPowerup *pPowerup, tCar_spec *pCar);
 
-void ResetDamageMultiplier(tPowerup *pPowerup, tCar_spec *pCar);
+void __cdecl ResetDamageMultiplier(tPowerup *pPowerup, tCar_spec *pCar);
 
-void ResetTyreGrip(tPowerup *pPowerup, tCar_spec *pCar);
+void __cdecl ResetTyreGrip(tPowerup *pPowerup, tCar_spec *pCar);
 
-int PickAtRandom(tPowerup *pPowerup, tCar_spec *pCar);
+int __cdecl PickAtRandom(tPowerup *pPowerup, tCar_spec *pCar);
 
-int PedestrianRespawn(tPowerup *pPowerup, tCar_spec *pCar);
+int __cdecl PedestrianRespawn(tPowerup *pPowerup, tCar_spec *pCar);
 
-int GotVouchers(tPowerup *pPowerup, tCar_spec *pCar);
+int __cdecl GotVouchers(tPowerup *pPowerup, tCar_spec *pCar);
 
-void MungeVouchers(tPowerup *pPowerup, tU32 pPeriod);
+void __cdecl MungeVouchers(tPowerup *pPowerup, tU32 pPeriod);
 
-int SetInstantHandbrake(tPowerup *pPowerup, tCar_spec *pCar);
+int __cdecl SetInstantHandbrake(tPowerup *pPowerup, tCar_spec *pCar);
 
-void ResetInstantHandbrake(tPowerup *pPowerup, tCar_spec *pCar);
+void __cdecl ResetInstantHandbrake(tPowerup *pPowerup, tCar_spec *pCar);
 
-void DoBouncey(tPowerup *pPowerup, tU32 pPeriod);
+void __cdecl DoBouncey(tPowerup *pPowerup, tU32 pPeriod);
 
-int HitMine(tPowerup *pPowerup, tCar_spec *pCar);
+int __cdecl HitMine(tPowerup *pPowerup, tCar_spec *pCar);
 
-int SetMassMultiplier(tPowerup *pPowerup, tCar_spec *pCar);
+int __cdecl SetMassMultiplier(tPowerup *pPowerup, tCar_spec *pCar);
 
-void ResetMassMultiplier(tPowerup *pPowerup, tCar_spec *pCar);
+void __cdecl ResetMassMultiplier(tPowerup *pPowerup, tCar_spec *pCar);
 
-int ShowPedestrians(tPowerup *pPowerup, tCar_spec *pCar);
+int __cdecl ShowPedestrians(tPowerup *pPowerup, tCar_spec *pCar);
 
-void HidePedestrians(tPowerup *pPowerup, tCar_spec *pCar);
+void __cdecl HidePedestrians(tPowerup *pPowerup, tCar_spec *pCar);
 
-int SetProximity(tPowerup *pPowerup, tCar_spec *pCar);
+int __cdecl SetProximity(tPowerup *pPowerup, tCar_spec *pCar);
 
-void ResetProximity(tPowerup *pPowerup, tCar_spec *pCar);
+void __cdecl ResetProximity(tPowerup *pPowerup, tCar_spec *pCar);
 
-int SetPedHarvest(tPowerup *pPowerup, tCar_spec *pCar);
+int __cdecl SetPedHarvest(tPowerup *pPowerup, tCar_spec *pCar);
 
-void ResetPedHarvest(tPowerup *pPowerup, tCar_spec *pCar);
+void __cdecl ResetPedHarvest(tPowerup *pPowerup, tCar_spec *pCar);
 
-int SetVesuvianCorpses(tPowerup *pPowerup, tCar_spec *pCar);
+int __cdecl SetVesuvianCorpses(tPowerup *pPowerup, tCar_spec *pCar);
 
-void ResetVesuvianCorpses(tPowerup *pPowerup, tCar_spec *pCar);
+void __cdecl ResetVesuvianCorpses(tPowerup *pPowerup, tCar_spec *pCar);
 
-void ReceivedPowerup(tNet_contents *pContents);
+void __cdecl ReceivedPowerup(tNet_contents *pContents);
 
-void SendCurrentPowerups();
+void __cdecl SendCurrentPowerups();
 
-void LoseAllLocalPowerups(tCar_spec *pCar);
+void __cdecl LoseAllLocalPowerups(tCar_spec *pCar);
 
 #endif

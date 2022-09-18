@@ -4,30 +4,36 @@
 #include "br_types.h"
 
 
-void* BrRegistryNew(br_registry *reg);
+void* __stdcall BrRegistryNew(br_registry *reg);
 
-void* BrRegistryClear(br_registry *reg);
+void* __stdcall BrRegistryClear(br_registry *reg);
 
-void* BrRegistryAdd(br_registry *reg, void *item);
+void* __stdcall BrRegistryAdd(br_registry *reg, void *item);
 
-int BrRegistryAddMany(br_registry *reg, void **items, int n);
+int __stdcall BrRegistryAddMany(br_registry *reg, void **items, int n);
 
-void* BrRegistryRemove(br_registry *reg, void *item);
+void* __stdcall BrRegistryRemove(br_registry *reg, void *item);
 
-int BrRegistryRemoveMany(br_registry *reg, void **items, int n);
+int __stdcall BrRegistryRemoveMany(br_registry *reg, void **items, int n);
 
-void* BrRegistryFind(br_registry *reg, char *pattern);
+void* __stdcall BrRegistryFind(br_registry *reg, char *pattern);
 
-int BrRegistryFindMany(br_registry *reg, char *pattern, void **items, int max);
+int __stdcall BrRegistryFindMany(br_registry *reg, char *pattern, void **items, int max);
 
-int BrRegistryCount(br_registry *reg, char *pattern);
+int __stdcall BrRegistryCount(br_registry *reg, char *pattern);
 
-int BrRegistryEnum(br_registry *reg, char *pattern, br_enum_cbfn *callback, void *arg);
+int __stdcall BrRegistryEnum(br_registry *reg, char *pattern, br_enum_cbfn *callback, void *arg);
 
-void* BrRegistryNewStatic(br_registry *reg, br_registry_entry *base, int limit);
+#if 0
+void* BrRegistryNewStatic_do_not_use(br_registry *reg, br_registry_entry *base, int limit);
+#endif
 
-void* BrRegistryAddStatic(br_registry *reg, br_registry_entry *base, void *item);
+#if 0
+void* BrRegistryAddStatic_do_not_use(br_registry *reg, br_registry_entry *base, void *item);
+#endif
 
-void* BrRegistryRemoveStatic(br_registry *reg, void *item);
+#if 0
+void* BrRegistryRemoveStatic_do_not_use(br_registry *reg, void *item);
+#endif
 
 #endif

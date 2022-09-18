@@ -4,11 +4,10 @@
 
 #include "carm95_hooks.h"
 
-#include <stdio.h>
 
-static void(*original_QuitGame)() = (void(*)())0x004a9ea0;
+static void(__cdecl*original_QuitGame)() = (void(__cdecl*)())0x004a9ea0;
 CARM95_HOOK_FUNCTION(original_QuitGame, QuitGame)
-void QuitGame() {
+void __cdecl QuitGame() {
     LOG_TRACE("()");
 
 
@@ -41,9 +40,9 @@ void CheckNumberOfTracks() {
     NOT_IMPLEMENTED();
 }
 
-static void(*original_ServiceTheGame)(int, ...) = (void(*)(int, ...))0x004a9f29;
+static void(__cdecl*original_ServiceTheGame)(int) = (void(__cdecl*)(int))0x004a9f29;
 CARM95_HOOK_FUNCTION(original_ServiceTheGame, ServiceTheGame)
-void ServiceTheGame(int pRacing) {
+void __cdecl ServiceTheGame(int pRacing) {
     LOG_TRACE("(%d)", pRacing);
 
     (void)pRacing;
@@ -51,27 +50,27 @@ void ServiceTheGame(int pRacing) {
     original_ServiceTheGame(pRacing);
 }
 
-static void(*original_ServiceGame)() = (void(*)())0x004a9fe4;
+static void(__cdecl*original_ServiceGame)() = (void(__cdecl*)())0x004a9fe4;
 CARM95_HOOK_FUNCTION(original_ServiceGame, ServiceGame)
-void ServiceGame() {
+void __cdecl ServiceGame() {
     LOG_TRACE("()");
 
 
     original_ServiceGame();
 }
 
-static void(*original_ServiceGameInRace)() = (void(*)())0x004a9ff9;
+static void(__cdecl*original_ServiceGameInRace)() = (void(__cdecl*)())0x004a9ff9;
 CARM95_HOOK_FUNCTION(original_ServiceGameInRace, ServiceGameInRace)
-void ServiceGameInRace() {
+void __cdecl ServiceGameInRace() {
     LOG_TRACE("()");
 
 
     original_ServiceGameInRace();
 }
 
-static void(*original_GameMain)(int, char **, ...) = (void(*)(int, char **, ...))0x004aa013;
+static void(__cdecl*original_GameMain)(int, char **) = (void(__cdecl*)(int, char **))0x004aa013;
 CARM95_HOOK_FUNCTION(original_GameMain, GameMain)
-void GameMain(int pArgc, char **pArgv) {
+void __cdecl GameMain(int pArgc, char **pArgv) {
     tPath_name CD_dir;
     LOG_TRACE("(%d, %p)", pArgc, pArgv);
 

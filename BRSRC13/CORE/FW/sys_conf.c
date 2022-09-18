@@ -4,7 +4,6 @@
 
 #include "carm95_hooks.h"
 
-#include <stdio.h>
 br_token(* hookvar_valid_system_config_tokens )[5] = (void*)0x0052ce20;
 
 br_boolean Is_Valid_Sys_Config_Token(br_token t) {
@@ -19,9 +18,9 @@ br_boolean Is_Valid_Sys_Config_Token(br_token t) {
     NOT_IMPLEMENTED();
 }
 
-static br_boolean(*original_LoadIniEntry)(char *, char *, br_token, char *, ...) = (br_boolean(*)(char *, char *, br_token, char *, ...))0x004e85d0;
+static br_boolean(__stdcall*original_LoadIniEntry)(char *, char *, br_token, char *) = (br_boolean(__stdcall*)(char *, char *, br_token, char *))0x004e85d0;
 CARM95_HOOK_FUNCTION(original_LoadIniEntry, LoadIniEntry)
-br_boolean LoadIniEntry(char *ini_file, char *section_name, br_token t, char *Entry) {
+br_boolean __stdcall LoadIniEntry(char *ini_file, char *section_name, br_token t, char *Entry) {
     char Temp[255];
     br_uint_16 size;
     br_value v;
@@ -49,9 +48,9 @@ br_error LoadIniConfig(char *ini_file, char *section_name) {
     NOT_IMPLEMENTED();
 }
 
-static br_boolean(*original_LoadRegistryEntry)(char *, void *, br_token, char *, ...) = (br_boolean(*)(char *, void *, br_token, char *, ...))0x004e8640;
+static br_boolean(__stdcall*original_LoadRegistryEntry)(char *, void *, br_token, char *) = (br_boolean(__stdcall*)(char *, void *, br_token, char *))0x004e8640;
 CARM95_HOOK_FUNCTION(original_LoadRegistryEntry, LoadRegistryEntry)
-br_boolean LoadRegistryEntry(char *Reg_Path, void *hKey, br_token t, char *Entry) {
+br_boolean __stdcall LoadRegistryEntry(char *Reg_Path, void *hKey, br_token t, char *Entry) {
     char Temp[255];
     br_uint_16 size;
     br_value v;
@@ -79,9 +78,9 @@ br_error LoadRegistryConfig(char *Reg_Path, void *hKey) {
     NOT_IMPLEMENTED();
 }
 
-static br_error(*original_BrSetDefaultConfig)(br_token, char *, ...) = (br_error(*)(br_token, char *, ...))0x004e86b0;
+static br_error(__stdcall*original_BrSetDefaultConfig)(br_token, char *) = (br_error(__stdcall*)(br_token, char *))0x004e86b0;
 CARM95_HOOK_FUNCTION(original_BrSetDefaultConfig, BrSetDefaultConfig)
-br_error BrSetDefaultConfig(br_token t, char *Entry) {
+br_error __stdcall BrSetDefaultConfig(br_token t, char *Entry) {
     char Reg_Path[255];
     int v0;
     int v1;
@@ -97,13 +96,14 @@ br_error BrSetDefaultConfig(br_token t, char *Entry) {
     (void)v1;
     (void)v2;
     (void)v;
+    (void)__block0__Buffer;
 
     return original_BrSetDefaultConfig(t, Entry);
 }
 
-static br_error(*original_BrSystemConfigBegin)() = (br_error(*)())0x004e8180;
+static br_error(__stdcall*original_BrSystemConfigBegin)() = (br_error(__stdcall*)())0x004e8180;
 CARM95_HOOK_FUNCTION(original_BrSystemConfigBegin, BrSystemConfigBegin)
-br_error BrSystemConfigBegin() {
+br_error __stdcall BrSystemConfigBegin() {
     char temp[255];
     br_value v;
     LOG_TRACE("()");
@@ -114,9 +114,9 @@ br_error BrSystemConfigBegin() {
     return original_BrSystemConfigBegin();
 }
 
-static br_error(*original_BrSystemConfigLoad)(br_token, char *, void *, ...) = (br_error(*)(br_token, char *, void *, ...))0x004e8770;
+static br_error(__cdecl*original_BrSystemConfigLoad)(br_token, char *, void *) = (br_error(__cdecl*)(br_token, char *, void *))0x004e8770;
 CARM95_HOOK_FUNCTION(original_BrSystemConfigLoad, BrSystemConfigLoad)
-br_error BrSystemConfigLoad(br_token t, char *Param1, void *Param2) {
+br_error __cdecl BrSystemConfigLoad(br_token t, char *Param1, void *Param2) {
     br_error r;
     LOG_TRACE("(%d, \"%s\", %p)", t, Param1, Param2);
 
@@ -128,9 +128,9 @@ br_error BrSystemConfigLoad(br_token t, char *Param1, void *Param2) {
     return original_BrSystemConfigLoad(t, Param1, Param2);
 }
 
-static br_error(*original_BrSystemConfigSetString)(br_token, char *, ...) = (br_error(*)(br_token, char *, ...))0x004e8a8c;
+static br_error(__cdecl*original_BrSystemConfigSetString)(br_token, char *) = (br_error(__cdecl*)(br_token, char *))0x004e8a8c;
 CARM95_HOOK_FUNCTION(original_BrSystemConfigSetString, BrSystemConfigSetString)
-br_error BrSystemConfigSetString(br_token t, char *string) {
+br_error __cdecl BrSystemConfigSetString(br_token t, char *string) {
     br_value v;
     LOG_TRACE("(%d, \"%s\")", t, string);
 
@@ -141,9 +141,9 @@ br_error BrSystemConfigSetString(br_token t, char *string) {
     return original_BrSystemConfigSetString(t, string);
 }
 
-static br_error(*original_BrSystemConfigQueryString)(br_token, char *, int, ...) = (br_error(*)(br_token, char *, int, ...))0x004e8b00;
+static br_error(__cdecl*original_BrSystemConfigQueryString)(br_token, char *, int) = (br_error(__cdecl*)(br_token, char *, int))0x004e8b00;
 CARM95_HOOK_FUNCTION(original_BrSystemConfigQueryString, BrSystemConfigQueryString)
-br_error BrSystemConfigQueryString(br_token t, char *string, int max_size) {
+br_error __cdecl BrSystemConfigQueryString(br_token t, char *string, int max_size) {
     br_error r;
     br_value v;
     LOG_TRACE("(%d, \"%s\", %d)", t, string, max_size);

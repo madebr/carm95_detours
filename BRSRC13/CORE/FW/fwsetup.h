@@ -10,14 +10,14 @@ extern void *(* hookvar_functionPointers_BRCORE1 )[185]; // addr: 00526618
 extern br_image * hookvar_Image_BRCORE1 ; // addr: 00526900
 extern br_framework_state * hookvar_fw ; // addr: 00552610
 
-br_error BrFwBegin();
+br_error __stdcall BrFwBegin();
 
-br_error BrFwEnd();
+br_error __stdcall BrFwEnd();
 
-br_diaghandler* BrDiagHandlerSet(br_diaghandler *newdh);
+br_diaghandler* __cdecl BrDiagHandlerSet(br_diaghandler *newdh);
 
-br_filesystem* BrFilesystemSet(br_filesystem *newfs);
+br_filesystem* __cdecl BrFilesystemSet(br_filesystem *newfs);
 
-br_allocator* BrAllocatorSet(br_allocator *newal);
+br_allocator* __cdecl BrAllocatorSet(br_allocator *newal);
 
 #endif

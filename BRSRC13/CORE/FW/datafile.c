@@ -4,7 +4,6 @@
 
 #include "carm95_hooks.h"
 
-#include <stdio.h>
 int * hookvar_DatafileStackTop  = (void*)0x00527c80;
 char *(* hookvar_member_type_names )[32] = (void*)0x00527c88;
 char *(* hookvar_ChunkNames )[61] = (void*)0x00527d08;
@@ -21,9 +20,9 @@ struct {		// size: 0xc
 }(* hookvar_DatafileStack )[1024];
 #endif
 
-static void(*original_DfPush)(int, void *, int, ...) = (void(*)(int, void *, int, ...))0x004e0aa0;
+static void(__stdcall*original_DfPush)(int, void *, int) = (void(__stdcall*)(int, void *, int))0x004e0aa0;
 CARM95_HOOK_FUNCTION(original_DfPush, DfPush)
-void DfPush(int type, void *value, int count) {
+void __stdcall DfPush(int type, void *value, int count) {
     LOG_TRACE("(%d, %p, %d)", type, value, count);
 
     (void)type;
@@ -33,9 +32,9 @@ void DfPush(int type, void *value, int count) {
     original_DfPush(type, value, count);
 }
 
-static void *(*original_DfPop)(int, int *, ...) = (void *(*)(int, int *, ...))0x004e0b00;
+static void *(__stdcall*original_DfPop)(int, int *) = (void *(__stdcall*)(int, int *))0x004e0b00;
 CARM95_HOOK_FUNCTION(original_DfPop, DfPop)
-void* DfPop(int type, int *countp) {
+void* __stdcall DfPop(int type, int *countp) {
     LOG_TRACE("(%d, %p)", type, countp);
 
     (void)type;
@@ -44,9 +43,9 @@ void* DfPop(int type, int *countp) {
     return original_DfPop(type, countp);
 }
 
-static void *(*original_DfTop)(int, int *, ...) = (void *(*)(int, int *, ...))0x004e0b70;
+static void *(__stdcall*original_DfTop)(int, int *) = (void *(__stdcall*)(int, int *))0x004e0b70;
 CARM95_HOOK_FUNCTION(original_DfTop, DfTop)
-void* DfTop(int type, int *countp) {
+void* __stdcall DfTop(int type, int *countp) {
     LOG_TRACE("(%d, %p)", type, countp);
 
     (void)type;
@@ -55,18 +54,18 @@ void* DfTop(int type, int *countp) {
     return original_DfTop(type, countp);
 }
 
-static int(*original_DfTopType)() = (int(*)())0x004e0be0;
+static int(__stdcall*original_DfTopType)() = (int(__stdcall*)())0x004e0be0;
 CARM95_HOOK_FUNCTION(original_DfTopType, DfTopType)
-int DfTopType() {
+int __stdcall DfTopType() {
     LOG_TRACE("()");
 
 
     return original_DfTopType();
 }
 
-static int(*original_TextReadLine)(br_datafile *, char **, char **, ...) = (int(*)(br_datafile *, char **, char **, ...))0x004e1f80;
+static int(__stdcall*original_TextReadLine)(br_datafile *, char **, char **) = (int(__stdcall*)(br_datafile *, char **, char **))0x004e1f80;
 CARM95_HOOK_FUNCTION(original_TextReadLine, TextReadLine)
-int TextReadLine(br_datafile *df, char **ident, char **data) {
+int __stdcall TextReadLine(br_datafile *df, char **ident, char **data) {
     char *cp;
     LOG_TRACE("(%p, %p, %p)", df, ident, data);
 
@@ -87,9 +86,9 @@ br_uint_16 scalarTypeConvert(br_datafile *df, br_uint_16 t) {
     NOT_IMPLEMENTED();
 }
 
-static br_uint_32(*original_DfStructWriteBinary)(br_datafile *, br_file_struct *, void *, ...) = (br_uint_32(*)(br_datafile *, br_file_struct *, void *, ...))0x004e0c00;
+static br_uint_32(__stdcall*original_DfStructWriteBinary)(br_datafile *, br_file_struct *, void *) = (br_uint_32(__stdcall*)(br_datafile *, br_file_struct *, void *))0x004e0c00;
 CARM95_HOOK_FUNCTION(original_DfStructWriteBinary, DfStructWriteBinary)
-br_uint_32 DfStructWriteBinary(br_datafile *df, br_file_struct *str, void *base) {
+br_uint_32 __stdcall DfStructWriteBinary(br_datafile *df, br_file_struct *str, void *base) {
     unsigned int m;
     int i;
     int n;
@@ -114,9 +113,9 @@ br_uint_32 DfStructWriteBinary(br_datafile *df, br_file_struct *str, void *base)
     return original_DfStructWriteBinary(df, str, base);
 }
 
-static br_uint_32(*original_DfStructReadBinary)(br_datafile *, br_file_struct *, void *, ...) = (br_uint_32(*)(br_datafile *, br_file_struct *, void *, ...))0x004e1050;
+static br_uint_32(__stdcall*original_DfStructReadBinary)(br_datafile *, br_file_struct *, void *) = (br_uint_32(__stdcall*)(br_datafile *, br_file_struct *, void *))0x004e1050;
 CARM95_HOOK_FUNCTION(original_DfStructReadBinary, DfStructReadBinary)
-br_uint_32 DfStructReadBinary(br_datafile *df, br_file_struct *str, void *base) {
+br_uint_32 __stdcall DfStructReadBinary(br_datafile *df, br_file_struct *str, void *base) {
     char tmp_string[256];
     unsigned int m;
     int i;
@@ -145,9 +144,9 @@ br_uint_32 DfStructReadBinary(br_datafile *df, br_file_struct *str, void *base) 
     return original_DfStructReadBinary(df, str, base);
 }
 
-static int(*original_DfStructSizeBinary)(br_datafile *, br_file_struct *, void *, ...) = (int(*)(br_datafile *, br_file_struct *, void *, ...))0x004e1500;
+static int(__stdcall*original_DfStructSizeBinary)(br_datafile *, br_file_struct *, void *) = (int(__stdcall*)(br_datafile *, br_file_struct *, void *))0x004e1500;
 CARM95_HOOK_FUNCTION(original_DfStructSizeBinary, DfStructSizeBinary)
-int DfStructSizeBinary(br_datafile *df, br_file_struct *str, void *base) {
+int __stdcall DfStructSizeBinary(br_datafile *df, br_file_struct *str, void *base) {
     unsigned char *mp;
     unsigned int m;
     br_file_struct_member *sm;
@@ -197,9 +196,9 @@ br_uint_32 DfStructWriteText(br_datafile *df, br_file_struct *str, void *base) {
     NOT_IMPLEMENTED();
 }
 
-static br_uint_32(*original_StructWriteTextSub)(br_datafile *, br_file_struct *, void *, int, ...) = (br_uint_32(*)(br_datafile *, br_file_struct *, void *, int, ...))0x004e1790;
+static br_uint_32(__stdcall*original_StructWriteTextSub)(br_datafile *, br_file_struct *, void *, int) = (br_uint_32(__stdcall*)(br_datafile *, br_file_struct *, void *, int))0x004e1790;
 CARM95_HOOK_FUNCTION(original_StructWriteTextSub, StructWriteTextSub)
-br_uint_32 StructWriteTextSub(br_datafile *df, br_file_struct *str, void *base, int indent) {
+br_uint_32 __stdcall StructWriteTextSub(br_datafile *df, br_file_struct *str, void *base, int indent) {
     unsigned int m;
     int i;
     int w;
@@ -236,9 +235,9 @@ br_uint_32 DfStructReadText(br_datafile *df, br_file_struct *str, void *base) {
     NOT_IMPLEMENTED();
 }
 
-static br_uint_32(*original_StructReadTextSub)(br_datafile *, br_file_struct *, void *, ...) = (br_uint_32(*)(br_datafile *, br_file_struct *, void *, ...))0x004e2050;
+static br_uint_32(__stdcall*original_StructReadTextSub)(br_datafile *, br_file_struct *, void *) = (br_uint_32(__stdcall*)(br_datafile *, br_file_struct *, void *))0x004e2050;
 CARM95_HOOK_FUNCTION(original_StructReadTextSub, StructReadTextSub)
-br_uint_32 StructReadTextSub(br_datafile *df, br_file_struct *str, void *base) {
+br_uint_32 __stdcall StructReadTextSub(br_datafile *df, br_file_struct *str, void *base) {
     unsigned int m;
     unsigned int r;
     unsigned int g;
@@ -270,9 +269,9 @@ br_uint_32 StructReadTextSub(br_datafile *df, br_file_struct *str, void *base) {
     return original_StructReadTextSub(df, str, base);
 }
 
-static int(*original_DfStructSizeText)(br_datafile *, br_file_struct *, void *, ...) = (int(*)(br_datafile *, br_file_struct *, void *, ...))0x004e27a0;
+static int(__stdcall*original_DfStructSizeText)(br_datafile *, br_file_struct *, void *) = (int(__stdcall*)(br_datafile *, br_file_struct *, void *))0x004e27a0;
 CARM95_HOOK_FUNCTION(original_DfStructSizeText, DfStructSizeText)
-int DfStructSizeText(br_datafile *df, br_file_struct *str, void *base) {
+int __stdcall DfStructSizeText(br_datafile *df, br_file_struct *str, void *base) {
     unsigned int m;
     br_file_struct_member *sm;
     int lines;
@@ -288,9 +287,9 @@ int DfStructSizeText(br_datafile *df, br_file_struct *str, void *base) {
     return original_DfStructSizeText(df, str, base);
 }
 
-static br_uint_32(*original_DfStructWriteArray)(br_datafile *, br_file_struct *, void *, int, ...) = (br_uint_32(*)(br_datafile *, br_file_struct *, void *, int, ...))0x004e27f0;
+static br_uint_32(__stdcall*original_DfStructWriteArray)(br_datafile *, br_file_struct *, void *, int) = (br_uint_32(__stdcall*)(br_datafile *, br_file_struct *, void *, int))0x004e27f0;
 CARM95_HOOK_FUNCTION(original_DfStructWriteArray, DfStructWriteArray)
-br_uint_32 DfStructWriteArray(br_datafile *df, br_file_struct *str, void *base, int n) {
+br_uint_32 __stdcall DfStructWriteArray(br_datafile *df, br_file_struct *str, void *base, int n) {
     char *cp;
     int i;
     LOG_TRACE("(%p, %p, %p, %d)", df, str, base, n);
@@ -305,9 +304,9 @@ br_uint_32 DfStructWriteArray(br_datafile *df, br_file_struct *str, void *base, 
     return original_DfStructWriteArray(df, str, base, n);
 }
 
-static br_uint_32(*original_DfStructReadArray)(br_datafile *, br_file_struct *, void *, int, ...) = (br_uint_32(*)(br_datafile *, br_file_struct *, void *, int, ...))0x004e2840;
+static br_uint_32(__stdcall*original_DfStructReadArray)(br_datafile *, br_file_struct *, void *, int) = (br_uint_32(__stdcall*)(br_datafile *, br_file_struct *, void *, int))0x004e2840;
 CARM95_HOOK_FUNCTION(original_DfStructReadArray, DfStructReadArray)
-br_uint_32 DfStructReadArray(br_datafile *df, br_file_struct *str, void *base, int n) {
+br_uint_32 __stdcall DfStructReadArray(br_datafile *df, br_file_struct *str, void *base, int n) {
     char *cp;
     int i;
     LOG_TRACE("(%p, %p, %p, %d)", df, str, base, n);
@@ -322,9 +321,9 @@ br_uint_32 DfStructReadArray(br_datafile *df, br_file_struct *str, void *base, i
     return original_DfStructReadArray(df, str, base, n);
 }
 
-static int(*original_DfChunkWriteText)(br_datafile *, br_uint_32, br_uint_32, ...) = (int(*)(br_datafile *, br_uint_32, br_uint_32, ...))0x004e2890;
+static int(__stdcall*original_DfChunkWriteText)(br_datafile *, br_uint_32, br_uint_32) = (int(__stdcall*)(br_datafile *, br_uint_32, br_uint_32))0x004e2890;
 CARM95_HOOK_FUNCTION(original_DfChunkWriteText, DfChunkWriteText)
-int DfChunkWriteText(br_datafile *df, br_uint_32 id, br_uint_32 length) {
+int __stdcall DfChunkWriteText(br_datafile *df, br_uint_32 id, br_uint_32 length) {
     LOG_TRACE("(%p, %u, %u)", df, id, length);
 
     (void)df;
@@ -334,9 +333,9 @@ int DfChunkWriteText(br_datafile *df, br_uint_32 id, br_uint_32 length) {
     return original_DfChunkWriteText(df, id, length);
 }
 
-static int(*original_DfChunkReadText)(br_datafile *, br_uint_32 *, ...) = (int(*)(br_datafile *, br_uint_32 *, ...))0x004e28e0;
+static int(__stdcall*original_DfChunkReadText)(br_datafile *, br_uint_32 *) = (int(__stdcall*)(br_datafile *, br_uint_32 *))0x004e28e0;
 CARM95_HOOK_FUNCTION(original_DfChunkReadText, DfChunkReadText)
-int DfChunkReadText(br_datafile *df, br_uint_32 *plength) {
+int __stdcall DfChunkReadText(br_datafile *df, br_uint_32 *plength) {
     int i;
     char *id;
     char *data;
@@ -351,9 +350,9 @@ int DfChunkReadText(br_datafile *df, br_uint_32 *plength) {
     return original_DfChunkReadText(df, plength);
 }
 
-static int(*original_DfChunkWriteBinary)(br_datafile *, br_uint_32, br_uint_32, ...) = (int(*)(br_datafile *, br_uint_32, br_uint_32, ...))0x004e29b0;
+static int(__stdcall*original_DfChunkWriteBinary)(br_datafile *, br_uint_32, br_uint_32) = (int(__stdcall*)(br_datafile *, br_uint_32, br_uint_32))0x004e29b0;
 CARM95_HOOK_FUNCTION(original_DfChunkWriteBinary, DfChunkWriteBinary)
-int DfChunkWriteBinary(br_datafile *df, br_uint_32 id, br_uint_32 length) {
+int __stdcall DfChunkWriteBinary(br_datafile *df, br_uint_32 id, br_uint_32 length) {
     br_uint_32 l;
     LOG_TRACE("(%p, %u, %u)", df, id, length);
 
@@ -365,9 +364,9 @@ int DfChunkWriteBinary(br_datafile *df, br_uint_32 id, br_uint_32 length) {
     return original_DfChunkWriteBinary(df, id, length);
 }
 
-static int(*original_DfChunkReadBinary)(br_datafile *, br_uint_32 *, ...) = (int(*)(br_datafile *, br_uint_32 *, ...))0x004e2a10;
+static int(__stdcall*original_DfChunkReadBinary)(br_datafile *, br_uint_32 *) = (int(__stdcall*)(br_datafile *, br_uint_32 *))0x004e2a10;
 CARM95_HOOK_FUNCTION(original_DfChunkReadBinary, DfChunkReadBinary)
-int DfChunkReadBinary(br_datafile *df, br_uint_32 *plength) {
+int __stdcall DfChunkReadBinary(br_datafile *df, br_uint_32 *plength) {
     br_uint_32 id;
     br_uint_32 l;
     LOG_TRACE("(%p, %p)", df, plength);
@@ -380,9 +379,9 @@ int DfChunkReadBinary(br_datafile *df, br_uint_32 *plength) {
     return original_DfChunkReadBinary(df, plength);
 }
 
-static void(*original_DfCountWriteText)(br_datafile *, br_uint_32, ...) = (void(*)(br_datafile *, br_uint_32, ...))0x004e2ad0;
+static void(__stdcall*original_DfCountWriteText)(br_datafile *, br_uint_32) = (void(__stdcall*)(br_datafile *, br_uint_32))0x004e2ad0;
 CARM95_HOOK_FUNCTION(original_DfCountWriteText, DfCountWriteText)
-void DfCountWriteText(br_datafile *df, br_uint_32 count) {
+void __stdcall DfCountWriteText(br_datafile *df, br_uint_32 count) {
     LOG_TRACE("(%p, %u)", df, count);
 
     (void)df;
@@ -391,9 +390,9 @@ void DfCountWriteText(br_datafile *df, br_uint_32 count) {
     original_DfCountWriteText(df, count);
 }
 
-static br_uint_32(*original_DfCountReadText)(br_datafile *, ...) = (br_uint_32(*)(br_datafile *, ...))0x004e2af0;
+static br_uint_32(__stdcall*original_DfCountReadText)(br_datafile *) = (br_uint_32(__stdcall*)(br_datafile *))0x004e2af0;
 CARM95_HOOK_FUNCTION(original_DfCountReadText, DfCountReadText)
-br_uint_32 DfCountReadText(br_datafile *df) {
+br_uint_32 __stdcall DfCountReadText(br_datafile *df) {
     char *id;
     char *data;
     LOG_TRACE("(%p)", df);
@@ -405,9 +404,9 @@ br_uint_32 DfCountReadText(br_datafile *df) {
     return original_DfCountReadText(df);
 }
 
-static void(*original_DfCountWriteBinary)(br_datafile *, br_uint_32, ...) = (void(*)(br_datafile *, br_uint_32, ...))0x004e2b40;
+static void(__stdcall*original_DfCountWriteBinary)(br_datafile *, br_uint_32) = (void(__stdcall*)(br_datafile *, br_uint_32))0x004e2b40;
 CARM95_HOOK_FUNCTION(original_DfCountWriteBinary, DfCountWriteBinary)
-void DfCountWriteBinary(br_datafile *df, br_uint_32 count) {
+void __stdcall DfCountWriteBinary(br_datafile *df, br_uint_32 count) {
     br_uint_32 l;
     LOG_TRACE("(%p, %u)", df, count);
 
@@ -418,9 +417,9 @@ void DfCountWriteBinary(br_datafile *df, br_uint_32 count) {
     original_DfCountWriteBinary(df, count);
 }
 
-static br_uint_32(*original_DfCountReadBinary)(br_datafile *, ...) = (br_uint_32(*)(br_datafile *, ...))0x004e2b70;
+static br_uint_32(__stdcall*original_DfCountReadBinary)(br_datafile *) = (br_uint_32(__stdcall*)(br_datafile *))0x004e2b70;
 CARM95_HOOK_FUNCTION(original_DfCountReadBinary, DfCountReadBinary)
-br_uint_32 DfCountReadBinary(br_datafile *df) {
+br_uint_32 __stdcall DfCountReadBinary(br_datafile *df) {
     br_uint_32 l;
     LOG_TRACE("(%p)", df);
 
@@ -430,9 +429,9 @@ br_uint_32 DfCountReadBinary(br_datafile *df) {
     return original_DfCountReadBinary(df);
 }
 
-static int(*original_DfCountSizeText)(br_datafile *, ...) = (int(*)(br_datafile *, ...))0x004e2ba0;
+static int(__stdcall*original_DfCountSizeText)(br_datafile *) = (int(__stdcall*)(br_datafile *))0x004e2ba0;
 CARM95_HOOK_FUNCTION(original_DfCountSizeText, DfCountSizeText)
-int DfCountSizeText(br_datafile *df) {
+int __stdcall DfCountSizeText(br_datafile *df) {
     LOG_TRACE("(%p)", df);
 
     (void)df;
@@ -440,9 +439,9 @@ int DfCountSizeText(br_datafile *df) {
     return original_DfCountSizeText(df);
 }
 
-static int(*original_DfCountSizeBinary)(br_datafile *, ...) = (int(*)(br_datafile *, ...))0x004e2bb0;
+static int(__stdcall*original_DfCountSizeBinary)(br_datafile *) = (int(__stdcall*)(br_datafile *))0x004e2bb0;
 CARM95_HOOK_FUNCTION(original_DfCountSizeBinary, DfCountSizeBinary)
-int DfCountSizeBinary(br_datafile *df) {
+int __stdcall DfCountSizeBinary(br_datafile *df) {
     LOG_TRACE("(%p)", df);
 
     (void)df;
@@ -470,9 +469,9 @@ br_uint_8* BlockWriteSetup(void *base, int block_size, int block_stride, int blo
     NOT_IMPLEMENTED();
 }
 
-static int(*original_DfBlockWriteText)(br_datafile *, void *, int, int, int, int, ...) = (int(*)(br_datafile *, void *, int, int, int, int, ...))0x004e2bc0;
+static int(__stdcall*original_DfBlockWriteText)(br_datafile *, void *, int, int, int, int) = (int(__stdcall*)(br_datafile *, void *, int, int, int, int))0x004e2bc0;
 CARM95_HOOK_FUNCTION(original_DfBlockWriteText, DfBlockWriteText)
-int DfBlockWriteText(br_datafile *df, void *base, int block_size, int block_stride, int block_count, int size) {
+int __stdcall DfBlockWriteText(br_datafile *df, void *base, int block_size, int block_stride, int block_count, int size) {
     int i;
     br_uint_8 *cp;
     br_uint_8 *block;
@@ -493,9 +492,9 @@ int DfBlockWriteText(br_datafile *df, void *base, int block_size, int block_stri
     return original_DfBlockWriteText(df, base, block_size, block_stride, block_count, size);
 }
 
-static void *(*original_DfBlockReadText)(br_datafile *, void *, int *, int, int, ...) = (void *(*)(br_datafile *, void *, int *, int, int, ...))0x004e2d50;
+static void *(__stdcall*original_DfBlockReadText)(br_datafile *, void *, int *, int, int) = (void *(__stdcall*)(br_datafile *, void *, int *, int, int))0x004e2d50;
 CARM95_HOOK_FUNCTION(original_DfBlockReadText, DfBlockReadText)
-void* DfBlockReadText(br_datafile *df, void *base, int *count, int size, int mtype) {
+void* __stdcall DfBlockReadText(br_datafile *df, void *base, int *count, int size, int mtype) {
     char *id;
     char *data;
     int l;
@@ -519,9 +518,9 @@ void* DfBlockReadText(br_datafile *df, void *base, int *count, int size, int mty
     return original_DfBlockReadText(df, base, count, size, mtype);
 }
 
-static int(*original_DfBlockWriteBinary)(br_datafile *, void *, int, int, int, int, ...) = (int(*)(br_datafile *, void *, int, int, int, int, ...))0x004e2f10;
+static int(__stdcall*original_DfBlockWriteBinary)(br_datafile *, void *, int, int, int, int) = (int(__stdcall*)(br_datafile *, void *, int, int, int, int))0x004e2f10;
 CARM95_HOOK_FUNCTION(original_DfBlockWriteBinary, DfBlockWriteBinary)
-int DfBlockWriteBinary(br_datafile *df, void *base, int block_size, int block_stride, int block_count, int size) {
+int __stdcall DfBlockWriteBinary(br_datafile *df, void *base, int block_size, int block_stride, int block_count, int size) {
     int count;
     br_uint_32 l;
     br_uint_32 s;
@@ -542,9 +541,9 @@ int DfBlockWriteBinary(br_datafile *df, void *base, int block_size, int block_st
     return original_DfBlockWriteBinary(df, base, block_size, block_stride, block_count, size);
 }
 
-static void *(*original_DfBlockReadBinary)(br_datafile *, void *, int *, int, int, ...) = (void *(*)(br_datafile *, void *, int *, int, int, ...))0x004e3040;
+static void *(__stdcall*original_DfBlockReadBinary)(br_datafile *, void *, int *, int, int) = (void *(__stdcall*)(br_datafile *, void *, int *, int, int))0x004e3040;
 CARM95_HOOK_FUNCTION(original_DfBlockReadBinary, DfBlockReadBinary)
-void* DfBlockReadBinary(br_datafile *df, void *base, int *count, int size, int mtype) {
+void* __stdcall DfBlockReadBinary(br_datafile *df, void *base, int *count, int size, int mtype) {
     int l;
     int s;
     LOG_TRACE("(%p, %p, %p, %d, %d)", df, base, count, size, mtype);
@@ -560,9 +559,9 @@ void* DfBlockReadBinary(br_datafile *df, void *base, int *count, int size, int m
     return original_DfBlockReadBinary(df, base, count, size, mtype);
 }
 
-static int(*original_DfBlockSizeText)(br_datafile *, void *, int, int, int, int, ...) = (int(*)(br_datafile *, void *, int, int, int, int, ...))0x004e3130;
+static int(__stdcall*original_DfBlockSizeText)(br_datafile *, void *, int, int, int, int) = (int(__stdcall*)(br_datafile *, void *, int, int, int, int))0x004e3130;
 CARM95_HOOK_FUNCTION(original_DfBlockSizeText, DfBlockSizeText)
-int DfBlockSizeText(br_datafile *df, void *base, int block_size, int block_stride, int block_count, int size) {
+int __stdcall DfBlockSizeText(br_datafile *df, void *base, int block_size, int block_stride, int block_count, int size) {
     LOG_TRACE("(%p, %p, %d, %d, %d, %d)", df, base, block_size, block_stride, block_count, size);
 
     (void)df;
@@ -588,9 +587,9 @@ int DfBlockSizeBinary(br_datafile *df, void *base, int block_size, int block_str
     NOT_IMPLEMENTED();
 }
 
-static char *(*original_DfNameReadText)(br_datafile *, char *, ...) = (char *(*)(br_datafile *, char *, ...))0x004e3170;
+static char *(__stdcall*original_DfNameReadText)(br_datafile *, char *) = (char *(__stdcall*)(br_datafile *, char *))0x004e3170;
 CARM95_HOOK_FUNCTION(original_DfNameReadText, DfNameReadText)
-char* DfNameReadText(br_datafile *df, char *name) {
+char* __stdcall DfNameReadText(br_datafile *df, char *name) {
     char *id;
     char *data;
     LOG_TRACE("(%p, \"%s\")", df, name);
@@ -603,9 +602,9 @@ char* DfNameReadText(br_datafile *df, char *name) {
     return original_DfNameReadText(df, name);
 }
 
-static int(*original_DfNameWriteText)(br_datafile *, char *, ...) = (int(*)(br_datafile *, char *, ...))0x004e31f0;
+static int(__stdcall*original_DfNameWriteText)(br_datafile *, char *) = (int(__stdcall*)(br_datafile *, char *))0x004e31f0;
 CARM95_HOOK_FUNCTION(original_DfNameWriteText, DfNameWriteText)
-int DfNameWriteText(br_datafile *df, char *name) {
+int __stdcall DfNameWriteText(br_datafile *df, char *name) {
     LOG_TRACE("(%p, \"%s\")", df, name);
 
     (void)df;
@@ -614,9 +613,9 @@ int DfNameWriteText(br_datafile *df, char *name) {
     return original_DfNameWriteText(df, name);
 }
 
-static int(*original_DfNameSizeText)(br_datafile *, char *, ...) = (int(*)(br_datafile *, char *, ...))0x004e3220;
+static int(__stdcall*original_DfNameSizeText)(br_datafile *, char *) = (int(__stdcall*)(br_datafile *, char *))0x004e3220;
 CARM95_HOOK_FUNCTION(original_DfNameSizeText, DfNameSizeText)
-int DfNameSizeText(br_datafile *df, char *name) {
+int __stdcall DfNameSizeText(br_datafile *df, char *name) {
     LOG_TRACE("(%p, \"%s\")", df, name);
 
     (void)df;
@@ -625,9 +624,9 @@ int DfNameSizeText(br_datafile *df, char *name) {
     return original_DfNameSizeText(df, name);
 }
 
-static char *(*original_DfNameReadBinary)(br_datafile *, char *, ...) = (char *(*)(br_datafile *, char *, ...))0x004e3230;
+static char *(__stdcall*original_DfNameReadBinary)(br_datafile *, char *) = (char *(__stdcall*)(br_datafile *, char *))0x004e3230;
 CARM95_HOOK_FUNCTION(original_DfNameReadBinary, DfNameReadBinary)
-char* DfNameReadBinary(br_datafile *df, char *name) {
+char* __stdcall DfNameReadBinary(br_datafile *df, char *name) {
     int c;
     int i;
     LOG_TRACE("(%p, \"%s\")", df, name);
@@ -640,9 +639,9 @@ char* DfNameReadBinary(br_datafile *df, char *name) {
     return original_DfNameReadBinary(df, name);
 }
 
-static int(*original_DfNameWriteBinary)(br_datafile *, char *, ...) = (int(*)(br_datafile *, char *, ...))0x004e3270;
+static int(__stdcall*original_DfNameWriteBinary)(br_datafile *, char *) = (int(__stdcall*)(br_datafile *, char *))0x004e3270;
 CARM95_HOOK_FUNCTION(original_DfNameWriteBinary, DfNameWriteBinary)
-int DfNameWriteBinary(br_datafile *df, char *name) {
+int __stdcall DfNameWriteBinary(br_datafile *df, char *name) {
     LOG_TRACE("(%p, \"%s\")", df, name);
 
     (void)df;
@@ -651,9 +650,9 @@ int DfNameWriteBinary(br_datafile *df, char *name) {
     return original_DfNameWriteBinary(df, name);
 }
 
-static int(*original_DfNameSizeBinary)(br_datafile *, char *, ...) = (int(*)(br_datafile *, char *, ...))0x004e32b0;
+static int(__stdcall*original_DfNameSizeBinary)(br_datafile *, char *) = (int(__stdcall*)(br_datafile *, char *))0x004e32b0;
 CARM95_HOOK_FUNCTION(original_DfNameSizeBinary, DfNameSizeBinary)
-int DfNameSizeBinary(br_datafile *df, char *name) {
+int __stdcall DfNameSizeBinary(br_datafile *df, char *name) {
     LOG_TRACE("(%p, \"%s\")", df, name);
 
     (void)df;
@@ -662,9 +661,9 @@ int DfNameSizeBinary(br_datafile *df, char *name) {
     return original_DfNameSizeBinary(df, name);
 }
 
-static int(*original_DfSkipText)(br_datafile *, br_uint_32, ...) = (int(*)(br_datafile *, br_uint_32, ...))0x004e32d0;
+static int(__stdcall*original_DfSkipText)(br_datafile *, br_uint_32) = (int(__stdcall*)(br_datafile *, br_uint_32))0x004e32d0;
 CARM95_HOOK_FUNCTION(original_DfSkipText, DfSkipText)
-int DfSkipText(br_datafile *df, br_uint_32 length) {
+int __stdcall DfSkipText(br_datafile *df, br_uint_32 length) {
     char *id;
     char *data;
     LOG_TRACE("(%p, %u)", df, length);
@@ -677,9 +676,9 @@ int DfSkipText(br_datafile *df, br_uint_32 length) {
     return original_DfSkipText(df, length);
 }
 
-static int(*original_DfSkipBinary)(br_datafile *, br_uint_32, ...) = (int(*)(br_datafile *, br_uint_32, ...))0x004e3320;
+static int(__stdcall*original_DfSkipBinary)(br_datafile *, br_uint_32) = (int(__stdcall*)(br_datafile *, br_uint_32))0x004e3320;
 CARM95_HOOK_FUNCTION(original_DfSkipBinary, DfSkipBinary)
-int DfSkipBinary(br_datafile *df, br_uint_32 length) {
+int __stdcall DfSkipBinary(br_datafile *df, br_uint_32 length) {
     LOG_TRACE("(%p, %u)", df, length);
 
     (void)df;
@@ -688,9 +687,9 @@ int DfSkipBinary(br_datafile *df, br_uint_32 length) {
     return original_DfSkipBinary(df, length);
 }
 
-static int(*original_DfChunksInterpret)(br_datafile *, br_chunks_table *, ...) = (int(*)(br_datafile *, br_chunks_table *, ...))0x004e3340;
+static int(__stdcall*original_DfChunksInterpret)(br_datafile *, br_chunks_table *) = (int(__stdcall*)(br_datafile *, br_chunks_table *))0x004e3340;
 CARM95_HOOK_FUNCTION(original_DfChunksInterpret, DfChunksInterpret)
-int DfChunksInterpret(br_datafile *df, br_chunks_table *table) {
+int __stdcall DfChunksInterpret(br_datafile *df, br_chunks_table *table) {
     br_uint_32 length;
     br_uint_32 count;
     br_uint_32 id;
@@ -709,18 +708,18 @@ int DfChunksInterpret(br_datafile *df, br_chunks_table *table) {
     return original_DfChunksInterpret(df, table);
 }
 
-static void(*original_BrNullOther)() = (void(*)())0x004e33e0;
+static void(__stdcall*original_BrNullOther)() = (void(__stdcall*)())0x004e33e0;
 CARM95_HOOK_FUNCTION(original_BrNullOther, BrNullOther)
-void BrNullOther() {
+void __stdcall BrNullOther() {
     LOG_TRACE("()");
 
 
     original_BrNullOther();
 }
 
-static int(*original_DfFileIdentify)(br_uint_8 *, br_size_t, ...) = (int(*)(br_uint_8 *, br_size_t, ...))0x004e3500;
+static int(__cdecl*original_DfFileIdentify)(br_uint_8 *, br_size_t) = (int(__cdecl*)(br_uint_8 *, br_size_t))0x004e3500;
 CARM95_HOOK_FUNCTION(original_DfFileIdentify, DfFileIdentify)
-int DfFileIdentify(br_uint_8 *magics, br_size_t n_magics) {
+int __cdecl DfFileIdentify(br_uint_8 *magics, br_size_t n_magics) {
     static char text_magics[8];
     static char binary_magics[8];
     LOG_TRACE("(%p, %u)", magics, n_magics);
@@ -733,9 +732,9 @@ int DfFileIdentify(br_uint_8 *magics, br_size_t n_magics) {
     return original_DfFileIdentify(magics, n_magics);
 }
 
-static br_datafile *(*original_DfOpen)(char *, int, br_token, ...) = (br_datafile *(*)(char *, int, br_token, ...))0x004e3400;
+static br_datafile *(__stdcall*original_DfOpen)(char *, int, br_token) = (br_datafile *(__stdcall*)(char *, int, br_token))0x004e3400;
 CARM95_HOOK_FUNCTION(original_DfOpen, DfOpen)
-br_datafile* DfOpen(char *name, int write, br_token scalar_type) {
+br_datafile* __stdcall DfOpen(char *name, int write, br_token scalar_type) {
     int mode;
     br_datafile *df;
     void *h;
@@ -751,9 +750,9 @@ br_datafile* DfOpen(char *name, int write, br_token scalar_type) {
     return original_DfOpen(name, write, scalar_type);
 }
 
-static void(*original_DfClose)(br_datafile *, ...) = (void(*)(br_datafile *, ...))0x004e3540;
+static void(__stdcall*original_DfClose)(br_datafile *) = (void(__stdcall*)(br_datafile *))0x004e3540;
 CARM95_HOOK_FUNCTION(original_DfClose, DfClose)
-void DfClose(br_datafile *df) {
+void __stdcall DfClose(br_datafile *df) {
     br_datafile *dfp;
     LOG_TRACE("(%p)", df);
 

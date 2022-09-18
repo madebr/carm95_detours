@@ -5,16 +5,16 @@
 
 // extern char(* hookvar_scratchString )[512];
 
-void* BrScratchAllocate(br_size_t size);
+void* __cdecl BrScratchAllocate(br_size_t size);
 
-void BrScratchFree(void *scratch);
+void __cdecl BrScratchFree(void *scratch);
 
-void BrScratchFlush();
+void __cdecl BrScratchFlush();
 
-br_size_t BrScratchInquire();
+br_size_t __cdecl BrScratchInquire();
 
-char* BrScratchString();
+char* __cdecl BrScratchString();
 
-br_size_t BrScratchStringSize();
+br_size_t __cdecl BrScratchStringSize();
 
 #endif

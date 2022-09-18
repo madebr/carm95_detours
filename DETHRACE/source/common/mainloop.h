@@ -24,26 +24,26 @@ extern int(* hookvar_gQueued_wasted_massages )[5]; // addr: 0053A0F0
 extern tU32 * hookvar_gTime_bonus_start ; // addr: 0053A124
 extern int * hookvar_gLast_credit_headup__mainloop ; // addr: 0053A108 // suffix added to avoid duplicate symbol
 
-void ToggleInfo();
+void __cdecl ToggleInfo();
 
-void CalculateFrameRate();
+void __cdecl CalculateFrameRate();
 
-void LoseOldestWastedMassage();
+void __cdecl LoseOldestWastedMassage();
 
-void QueueWastedMassage(int pIndex);
+void __cdecl QueueWastedMassage(int pIndex);
 
-void MungeHeadups();
+void __cdecl MungeHeadups();
 
-void UpdateFramePeriod(tU32 *pCamera_period);
+void __cdecl UpdateFramePeriod(tU32 *pCamera_period);
 
-tU32 GetLastTickCount();
+tU32 __cdecl GetLastTickCount();
 
-void CheckTimer();
+void __cdecl CheckTimer();
 
-int MungeRaceFinished();
+int __cdecl MungeRaceFinished();
 
-tRace_result MainGameLoop();
+tRace_result __cdecl MainGameLoop();
 
-tRace_result DoRace();
+tRace_result __cdecl DoRace();
 
 #endif

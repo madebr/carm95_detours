@@ -4,11 +4,10 @@
 
 #include "carm95_hooks.h"
 
-#include <stdio.h>
 
-static br_boolean(*original_BrNamePatternMatch)(char *, char *, ...) = (br_boolean(*)(char *, char *, ...))0x004e5cf0;
+static br_boolean(__cdecl*original_BrNamePatternMatch)(char *, char *) = (br_boolean(__cdecl*)(char *, char *))0x004e5cf0;
 CARM95_HOOK_FUNCTION(original_BrNamePatternMatch, BrNamePatternMatch)
-br_boolean BrNamePatternMatch(char *p, char *s) {
+br_boolean __cdecl BrNamePatternMatch(char *p, char *s) {
     char *cp;
     LOG_TRACE("(\"%s\", \"%s\")", p, s);
 

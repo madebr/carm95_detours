@@ -23,246 +23,246 @@ extern int * hookvar_gRecovery_voucher_count ; // addr: 0053D63C
 extern int * hookvar_gInstant_handbrake ; // addr: 00550550
 extern int * hookvar_gAuto_repair ; // addr: 00550554
 
-void AbortRace();
+void __cdecl AbortRace();
 
-void F4Key();
+void __cdecl F4Key();
 
-void SetFlag(int i);
+void __cdecl SetFlag(int i);
 
-void FinishLap(int i);
+void __cdecl FinishLap(int i);
 
-void EnsureSpecialVolumesHidden();
+void __cdecl EnsureSpecialVolumesHidden();
 
-void ShowSpecialVolumesIfRequ();
+void __cdecl ShowSpecialVolumesIfRequ();
 
-void DoEditModeKey(int pIndex);
+void __cdecl DoEditModeKey(int pIndex);
 
-void F5Key();
+void __cdecl F5Key();
 
-void F6Key();
+void __cdecl F6Key();
 
-void F7Key();
+void __cdecl F7Key();
 
-void F8Key();
+void __cdecl F8Key();
 
-void F10Key();
+void __cdecl F10Key();
 
-void F11Key();
+void __cdecl F11Key();
 
-void F12Key();
+void __cdecl F12Key();
 
-void NumberKey0();
+void __cdecl NumberKey0();
 
-void NumberKey1();
+void __cdecl NumberKey1();
 
-void NumberKey2();
+void __cdecl NumberKey2();
 
-void NumberKey3();
+void __cdecl NumberKey3();
 
-void NumberKey4();
+void __cdecl NumberKey4();
 
-void NumberKey5();
+void __cdecl NumberKey5();
 
-void NumberKey6();
+void __cdecl NumberKey6();
 
-void NumberKey7();
+void __cdecl NumberKey7();
 
-void NumberKey8();
+void __cdecl NumberKey8();
 
-void NumberKey9();
+void __cdecl NumberKey9();
 
-void LookLeft();
+void __cdecl LookLeft();
 
-void LookForward();
+void __cdecl LookForward();
 
-void LookRight();
+void __cdecl LookRight();
 
-void DamageTest();
+void __cdecl DamageTest();
 
-void TDamageEngine();
+void __cdecl TDamageEngine();
 
-void TDamageDriver();
+void __cdecl TDamageDriver();
 
-void TDamageTrans();
+void __cdecl TDamageTrans();
 
-void TDamageSteering();
+void __cdecl TDamageSteering();
 
-void TDamageLFWheel();
+void __cdecl TDamageLFWheel();
 
-void TDamageLFBrake();
+void __cdecl TDamageLFBrake();
 
-void TDamageLRBrake();
+void __cdecl TDamageLRBrake();
 
-void TDamageLRWheel();
+void __cdecl TDamageLRWheel();
 
-void TDamageRFWheel();
+void __cdecl TDamageRFWheel();
 
-void TDamageRFBrake();
+void __cdecl TDamageRFBrake();
 
-void TDamageRRBrake();
+void __cdecl TDamageRRBrake();
 
-void TDamageRRWheel();
+void __cdecl TDamageRRWheel();
 
-void MoveBonnetForward();
+void __cdecl MoveBonnetForward();
 
-void SaveBonnet();
+void __cdecl SaveBonnet();
 
-void MoveBonnetBackward();
+void __cdecl MoveBonnetBackward();
 
-void MoveBonnetLeft();
+void __cdecl MoveBonnetLeft();
 
-void ShrinkBonnetX();
+void __cdecl ShrinkBonnetX();
 
-void SwellBonnetX();
+void __cdecl SwellBonnetX();
 
-void ShrinkBonnetY();
+void __cdecl ShrinkBonnetY();
 
-void SwellBonnetY();
+void __cdecl SwellBonnetY();
 
-void ShrinkBonnetZ();
+void __cdecl ShrinkBonnetZ();
 
-void SwellBonnetZ();
+void __cdecl SwellBonnetZ();
 
-void MoveBonnetDown();
+void __cdecl MoveBonnetDown();
 
-void MoveBonnetRight();
+void __cdecl MoveBonnetRight();
 
-void MoveBonnetUp();
+void __cdecl MoveBonnetUp();
 
-void TiltBonnetDownX();
+void __cdecl TiltBonnetDownX();
 
-void TiltBonnetUpX();
+void __cdecl TiltBonnetUpX();
 
-void TiltBonnetDownY();
+void __cdecl TiltBonnetDownY();
 
-void TiltBonnetUpY();
+void __cdecl TiltBonnetUpY();
 
-void TiltBonnetDownZ();
+void __cdecl TiltBonnetDownZ();
 
-void TiltBonnetUpZ();
+void __cdecl TiltBonnetUpZ();
 
-void ToggleCockpit();
+void __cdecl ToggleCockpit();
 
-void ToggleMirror();
+void __cdecl ToggleMirror();
 
-void ConcussMe();
+void __cdecl ConcussMe();
 
-void CheckHelp();
+void __cdecl CheckHelp();
 
-void CheckLoadSave();
+void __cdecl CheckLoadSave();
 
-void CheckToggles(int pRacing);
+void __cdecl CheckToggles(int pRacing);
 
-int CarWorldOffFallenCheckThingy(tCar_spec *pCar, int pCheck_around);
+int __cdecl CarWorldOffFallenCheckThingy(tCar_spec *pCar, int pCheck_around);
 
-int HasCarFallenOffWorld(tCar_spec *pCar);
+int __cdecl HasCarFallenOffWorld(tCar_spec *pCar);
 
-void CheckForBeingOutOfThisWorld();
+void __cdecl CheckForBeingOutOfThisWorld();
 
-void CheckHornLocal(tCar_spec *pCar);
+void __cdecl CheckHornLocal(tCar_spec *pCar);
 
-void CheckHorn3D(tCar_spec *pCar);
+void __cdecl CheckHorn3D(tCar_spec *pCar);
 
-void CheckHorns();
+void __cdecl CheckHorns();
 
-void SetRecovery();
+void __cdecl SetRecovery();
 
-void RecoverCar();
+void __cdecl RecoverCar();
 
-void CheckMapRenderMove();
+void __cdecl CheckMapRenderMove();
 
-void ExplodeCar(tCar_spec *pCar);
+void __cdecl ExplodeCar(tCar_spec *pCar);
 
-void CheckRecoveryOfCars(tU32 pEndFrameTime);
+void __cdecl CheckRecoveryOfCars(tU32 pEndFrameTime);
 
-void LoseSomePSPowerups(int pNumber);
+void __cdecl LoseSomePSPowerups(int pNumber);
 
-void CheckOtherRacingKeys();
+void __cdecl CheckOtherRacingKeys();
 
-int CheckRecoverCost();
+int __cdecl CheckRecoverCost();
 
-void SortOutRecover(tCar_spec *pCar);
+void __cdecl SortOutRecover(tCar_spec *pCar);
 
-void SetFlipUpCar(tCar_spec *pCar);
+void __cdecl SetFlipUpCar(tCar_spec *pCar);
 
-void FlipUpCar(tCar_spec *car);
+void __cdecl FlipUpCar(tCar_spec *car);
 
-void GetPowerup(int pNum);
+void __cdecl GetPowerup(int pNum);
 
-void CheckSystemKeys(int pRacing);
+void __cdecl CheckSystemKeys(int pRacing);
 
-void CheckKevKeys();
+void __cdecl CheckKevKeys();
 
-void BrakeInstantly();
+void __cdecl BrakeInstantly();
 
-void PollCarControls(tU32 pTime_difference);
+void __cdecl PollCarControls(tU32 pTime_difference);
 
-void PollCameraControls(tU32 pTime_difference);
+void __cdecl PollCameraControls(tU32 pTime_difference);
 
-void SetFlag2(int i);
+void __cdecl SetFlag2(int i);
 
-void ToggleFlying();
+void __cdecl ToggleFlying();
 
-void ToggleInvulnerability();
+void __cdecl ToggleInvulnerability();
 
-void MoreTime();
+void __cdecl MoreTime();
 
-void MuchMoreTime();
+void __cdecl MuchMoreTime();
 
-void ToggleTimerFreeze();
+void __cdecl ToggleTimerFreeze();
 
-void EarnDosh();
+void __cdecl EarnDosh();
 
-void LoseDosh();
+void __cdecl LoseDosh();
 
-void ToggleMap();
+void __cdecl ToggleMap();
 
-int HornBlowing();
+int __cdecl HornBlowing();
 
-void ToggleArrow();
+void __cdecl ToggleArrow();
 
-int GetRecoverVoucherCount();
+int __cdecl GetRecoverVoucherCount();
 
-void AddVouchers(int pCount);
+void __cdecl AddVouchers(int pCount);
 
-void ResetRecoveryVouchers();
+void __cdecl ResetRecoveryVouchers();
 
-void CycleCarTexturingLevel();
+void __cdecl CycleCarTexturingLevel();
 
-void CycleWallTexturingLevel();
+void __cdecl CycleWallTexturingLevel();
 
-void CycleRoadTexturingLevel();
+void __cdecl CycleRoadTexturingLevel();
 
-void CycleYonFactor();
+void __cdecl CycleYonFactor();
 
-void SetSoundDetailLevel(int pLevel);
+void __cdecl SetSoundDetailLevel(int pLevel);
 
-void ReallySetSoundDetailLevel(int pLevel);
+void __cdecl ReallySetSoundDetailLevel(int pLevel);
 
-int GetSoundDetailLevel();
+int __cdecl GetSoundDetailLevel();
 
-void CycleSoundDetailLevel();
+void __cdecl CycleSoundDetailLevel();
 
-void CycleCarSimplificationLevel();
+void __cdecl CycleCarSimplificationLevel();
 
-void ToggleAccessoryRendering();
+void __cdecl ToggleAccessoryRendering();
 
-void ToggleSmoke();
+void __cdecl ToggleSmoke();
 
 void DrawSomeText2(tDR_font *pFont);
 
-void DrawSomeText();
+void __cdecl DrawSomeText();
 
 void SaySorryYouLittleBastard();
 
-void UserSendMessage();
+void __cdecl UserSendMessage();
 
-void EnterUserMessage();
+void __cdecl EnterUserMessage();
 
-void DisplayUserMessage();
+void __cdecl DisplayUserMessage();
 
-void InitAbuseomatic();
+void __cdecl InitAbuseomatic();
 
-void DisposeAbuseomatic();
+void __cdecl DisposeAbuseomatic();
 
 #endif

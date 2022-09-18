@@ -4,10 +4,10 @@
 #include "br_types.h"
 
 
-void BrMapUpdate(br_pixelmap *map, br_uint_16 flags);
+void __cdecl BrMapUpdate(br_pixelmap *map, br_uint_16 flags);
 
-void BrBufferUpdate(br_pixelmap *pm, br_token use, br_uint_16 flags);
+void __stdcall BrBufferUpdate(br_pixelmap *pm, br_token use, br_uint_16 flags);
 
-void BrBufferClear(br_pixelmap *pm);
+void __stdcall BrBufferClear(br_pixelmap *pm);
 
 #endif

@@ -4,7 +4,6 @@
 
 #include "carm95_hooks.h"
 
-#include <stdio.h>
 br_actor ** hookvar_gOppo_path_actor  = (void*)0x005070d0;
 br_model ** hookvar_gOppo_path_model  = (void*)0x005070d4;
 br_material ** hookvar_gMat_dk_yel  = (void*)0x005070d8;
@@ -81,9 +80,9 @@ tU32 * hookvar_gFrame_period_for_this_munging  = (void*)0x005520e0;
 tU32 * hookvar_gTime_stamp_for_this_munging  = (void*)0x005520e4;
 tS16 * hookvar_gMobile_section  = (void*)0x00530c90;
 
-static void(*original_PointActorAlongThisBloodyVector)(br_actor *, br_vector3 *, ...) = (void(*)(br_actor *, br_vector3 *, ...))0x00402390;
+static void(__cdecl*original_PointActorAlongThisBloodyVector)(br_actor *, br_vector3 *) = (void(__cdecl*)(br_actor *, br_vector3 *))0x00402390;
 CARM95_HOOK_FUNCTION(original_PointActorAlongThisBloodyVector, PointActorAlongThisBloodyVector)
-void PointActorAlongThisBloodyVector(br_actor *pThe_actor, br_vector3 *pThe_vector) {
+void __cdecl PointActorAlongThisBloodyVector(br_actor *pThe_actor, br_vector3 *pThe_vector) {
     br_transform trans;
     LOG_TRACE("(%p, %p)", pThe_actor, pThe_vector);
 
@@ -94,9 +93,9 @@ void PointActorAlongThisBloodyVector(br_actor *pThe_actor, br_vector3 *pThe_vect
     original_PointActorAlongThisBloodyVector(pThe_actor, pThe_vector);
 }
 
-static void(*original_ProcessCurrentObjective)(tOpponent_spec *, tProcess_objective_command, ...) = (void(*)(tOpponent_spec *, tProcess_objective_command, ...))0x004065e0;
+static void(__cdecl*original_ProcessCurrentObjective)(tOpponent_spec *, tProcess_objective_command) = (void(__cdecl*)(tOpponent_spec *, tProcess_objective_command))0x004065e0;
 CARM95_HOOK_FUNCTION(original_ProcessCurrentObjective, ProcessCurrentObjective)
-void ProcessCurrentObjective(tOpponent_spec *pOpponent_spec, tProcess_objective_command pCommand) {
+void __cdecl ProcessCurrentObjective(tOpponent_spec *pOpponent_spec, tProcess_objective_command pCommand) {
     LOG_TRACE("(%p, %d)", pOpponent_spec, pCommand);
 
     (void)pOpponent_spec;
@@ -105,9 +104,9 @@ void ProcessCurrentObjective(tOpponent_spec *pOpponent_spec, tProcess_objective_
     original_ProcessCurrentObjective(pOpponent_spec, pCommand);
 }
 
-static tS16(*original_ReallocExtraPathNodes)(int, ...) = (tS16(*)(int, ...))0x004057a1;
+static tS16(__cdecl*original_ReallocExtraPathNodes)(int) = (tS16(__cdecl*)(int))0x004057a1;
 CARM95_HOOK_FUNCTION(original_ReallocExtraPathNodes, ReallocExtraPathNodes)
-tS16 ReallocExtraPathNodes(int pHow_many_then) {
+tS16 __cdecl ReallocExtraPathNodes(int pHow_many_then) {
     tPath_node *new_nodes;
     tS16 first_new_node;
     LOG_TRACE("(%d)", pHow_many_then);
@@ -119,9 +118,9 @@ tS16 ReallocExtraPathNodes(int pHow_many_then) {
     return original_ReallocExtraPathNodes(pHow_many_then);
 }
 
-static tS16(*original_ReallocExtraPathSections)(int, ...) = (tS16(*)(int, ...))0x00405855;
+static tS16(__cdecl*original_ReallocExtraPathSections)(int) = (tS16(__cdecl*)(int))0x00405855;
 CARM95_HOOK_FUNCTION(original_ReallocExtraPathSections, ReallocExtraPathSections)
-tS16 ReallocExtraPathSections(int pHow_many_then) {
+tS16 __cdecl ReallocExtraPathSections(int pHow_many_then) {
     tPath_section *new_sections;
     tS16 first_new_section;
     LOG_TRACE("(%d)", pHow_many_then);
@@ -133,9 +132,9 @@ tS16 ReallocExtraPathSections(int pHow_many_then) {
     return original_ReallocExtraPathSections(pHow_many_then);
 }
 
-static int(*original_PointVisibleFromHere)(br_vector3 *, br_vector3 *, ...) = (int(*)(br_vector3 *, br_vector3 *, ...))0x004063ac;
+static int(__cdecl*original_PointVisibleFromHere)(br_vector3 *, br_vector3 *) = (int(__cdecl*)(br_vector3 *, br_vector3 *))0x004063ac;
 CARM95_HOOK_FUNCTION(original_PointVisibleFromHere, PointVisibleFromHere)
-int PointVisibleFromHere(br_vector3 *pFrom, br_vector3 *pTo) {
+int __cdecl PointVisibleFromHere(br_vector3 *pFrom, br_vector3 *pTo) {
     br_vector3 from;
     br_vector3 dir;
     br_vector3 norm;
@@ -154,9 +153,9 @@ int PointVisibleFromHere(br_vector3 *pFrom, br_vector3 *pTo) {
     return original_PointVisibleFromHere(pFrom, pTo);
 }
 
-static tS16(*original_FindNearestPathNode)(br_vector3 *, br_scalar *, ...) = (tS16(*)(br_vector3 *, br_scalar *, ...))0x0040f331;
+static tS16(__cdecl*original_FindNearestPathNode)(br_vector3 *, br_scalar *) = (tS16(__cdecl*)(br_vector3 *, br_scalar *))0x0040f331;
 CARM95_HOOK_FUNCTION(original_FindNearestPathNode, FindNearestPathNode)
-tS16 FindNearestPathNode(br_vector3 *pActor_coords, br_scalar *pDistance) {
+tS16 __cdecl FindNearestPathNode(br_vector3 *pActor_coords, br_scalar *pDistance) {
     int i;
     tS16 nearest_node;
     br_scalar distance;
@@ -173,9 +172,9 @@ tS16 FindNearestPathNode(br_vector3 *pActor_coords, br_scalar *pDistance) {
     return original_FindNearestPathNode(pActor_coords, pDistance);
 }
 
-static tS16(*original_FindNearestPathSection)(br_vector3 *, br_vector3 *, br_vector3 *, br_scalar *, ...) = (tS16(*)(br_vector3 *, br_vector3 *, br_vector3 *, br_scalar *, ...))0x0040294b;
+static tS16(__cdecl*original_FindNearestPathSection)(br_vector3 *, br_vector3 *, br_vector3 *, br_scalar *) = (tS16(__cdecl*)(br_vector3 *, br_vector3 *, br_vector3 *, br_scalar *))0x0040294b;
 CARM95_HOOK_FUNCTION(original_FindNearestPathSection, FindNearestPathSection)
-tS16 FindNearestPathSection(br_vector3 *pActor_coords, br_vector3 *pPath_direction, br_vector3 *pIntersect, br_scalar *pDistance) {
+tS16 __cdecl FindNearestPathSection(br_vector3 *pActor_coords, br_vector3 *pPath_direction, br_vector3 *pIntersect, br_scalar *pDistance) {
     LOG_TRACE("(%p, %p, %p, %p)", pActor_coords, pPath_direction, pIntersect, pDistance);
 
     (void)pActor_coords;
@@ -186,9 +185,9 @@ tS16 FindNearestPathSection(br_vector3 *pActor_coords, br_vector3 *pPath_directi
     return original_FindNearestPathSection(pActor_coords, pPath_direction, pIntersect, pDistance);
 }
 
-static tS16(*original_FindNearestGeneralSection)(tCar_spec *, br_vector3 *, br_vector3 *, br_vector3 *, br_scalar *, ...) = (tS16(*)(tCar_spec *, br_vector3 *, br_vector3 *, br_vector3 *, br_scalar *, ...))0x00402975;
+static tS16(__cdecl*original_FindNearestGeneralSection)(tCar_spec *, br_vector3 *, br_vector3 *, br_vector3 *, br_scalar *) = (tS16(__cdecl*)(tCar_spec *, br_vector3 *, br_vector3 *, br_vector3 *, br_scalar *))0x00402975;
 CARM95_HOOK_FUNCTION(original_FindNearestGeneralSection, FindNearestGeneralSection)
-tS16 FindNearestGeneralSection(tCar_spec *pPursuee, br_vector3 *pActor_coords, br_vector3 *pPath_direction, br_vector3 *pIntersect, br_scalar *pDistance) {
+tS16 __cdecl FindNearestGeneralSection(tCar_spec *pPursuee, br_vector3 *pActor_coords, br_vector3 *pPath_direction, br_vector3 *pIntersect, br_scalar *pDistance) {
     int section_no;
     int no_sections;
     tS16 nearest_node_section_no;
@@ -230,13 +229,15 @@ tS16 FindNearestGeneralSection(tCar_spec *pPursuee, br_vector3 *pActor_coords, b
     (void)start;
     (void)finish;
     (void)nearest_node_v;
+    (void)__block0___scale;
+    (void)__block1___scale;
 
     return original_FindNearestGeneralSection(pPursuee, pActor_coords, pPath_direction, pIntersect, pDistance);
 }
 
-static void(*original_DeadStopCar)(tCar_spec *, ...) = (void(*)(tCar_spec *, ...))0x00402481;
+static void(__cdecl*original_DeadStopCar)(tCar_spec *) = (void(__cdecl*)(tCar_spec *))0x00402481;
 CARM95_HOOK_FUNCTION(original_DeadStopCar, DeadStopCar)
-void DeadStopCar(tCar_spec *pCar_spec) {
+void __cdecl DeadStopCar(tCar_spec *pCar_spec) {
     LOG_TRACE("(%p)", pCar_spec);
 
     (void)pCar_spec;
@@ -244,9 +245,9 @@ void DeadStopCar(tCar_spec *pCar_spec) {
     original_DeadStopCar(pCar_spec);
 }
 
-static void(*original_TurnOpponentPhysicsOn)(tOpponent_spec *, ...) = (void(*)(tOpponent_spec *, ...))0x00402401;
+static void(__cdecl*original_TurnOpponentPhysicsOn)(tOpponent_spec *) = (void(__cdecl*)(tOpponent_spec *))0x00402401;
 CARM95_HOOK_FUNCTION(original_TurnOpponentPhysicsOn, TurnOpponentPhysicsOn)
-void TurnOpponentPhysicsOn(tOpponent_spec *pOpponent_spec) {
+void __cdecl TurnOpponentPhysicsOn(tOpponent_spec *pOpponent_spec) {
     LOG_TRACE("(%p)", pOpponent_spec);
 
     (void)pOpponent_spec;
@@ -254,9 +255,9 @@ void TurnOpponentPhysicsOn(tOpponent_spec *pOpponent_spec) {
     original_TurnOpponentPhysicsOn(pOpponent_spec);
 }
 
-static void(*original_TurnOpponentPhysicsOff)(tOpponent_spec *, ...) = (void(*)(tOpponent_spec *, ...))0x0040243f;
+static void(__cdecl*original_TurnOpponentPhysicsOff)(tOpponent_spec *) = (void(__cdecl*)(tOpponent_spec *))0x0040243f;
 CARM95_HOOK_FUNCTION(original_TurnOpponentPhysicsOff, TurnOpponentPhysicsOff)
-void TurnOpponentPhysicsOff(tOpponent_spec *pOpponent_spec) {
+void __cdecl TurnOpponentPhysicsOff(tOpponent_spec *pOpponent_spec) {
     LOG_TRACE("(%p)", pOpponent_spec);
 
     (void)pOpponent_spec;
@@ -264,6 +265,7 @@ void TurnOpponentPhysicsOff(tOpponent_spec *pOpponent_spec) {
     original_TurnOpponentPhysicsOff(pOpponent_spec);
 }
 
+void(__cdecl*NewObjective)(tOpponent_spec *, tOpponent_objective_type) = (void(__cdecl*)(tOpponent_spec *, tOpponent_objective_type))0x0040694d;
 void NewObjective_do_not_use(tOpponent_spec *pOpponent_spec, tOpponent_objective_type pObjective_type) {
     va_list marker;
     LOG_TRACE("(%p, %d)", pOpponent_spec, pObjective_type);
@@ -275,9 +277,9 @@ void NewObjective_do_not_use(tOpponent_spec *pOpponent_spec, tOpponent_objective
     NOT_IMPLEMENTED();
 }
 
-static void(*original_CalcRaceRoute)(tOpponent_spec *, ...) = (void(*)(tOpponent_spec *, ...))0x00402512;
+static void(__cdecl*original_CalcRaceRoute)(tOpponent_spec *) = (void(__cdecl*)(tOpponent_spec *))0x00402512;
 CARM95_HOOK_FUNCTION(original_CalcRaceRoute, CalcRaceRoute)
-void CalcRaceRoute(tOpponent_spec *pOpponent_spec) {
+void __cdecl CalcRaceRoute(tOpponent_spec *pOpponent_spec) {
     tS16 section_no;
     tS16 section_no_index;
     tS16 node_no;
@@ -311,9 +313,9 @@ void CalcRaceRoute(tOpponent_spec *pOpponent_spec) {
     original_CalcRaceRoute(pOpponent_spec);
 }
 
-static void(*original_TopUpRandomRoute)(tOpponent_spec *, int, ...) = (void(*)(tOpponent_spec *, int, ...))0x00402e11;
+static void(__cdecl*original_TopUpRandomRoute)(tOpponent_spec *, int) = (void(__cdecl*)(tOpponent_spec *, int))0x00402e11;
 CARM95_HOOK_FUNCTION(original_TopUpRandomRoute, TopUpRandomRoute)
-void TopUpRandomRoute(tOpponent_spec *pOpponent_spec, int pSections_to_add) {
+void __cdecl TopUpRandomRoute(tOpponent_spec *pOpponent_spec, int pSections_to_add) {
     tS16 section_no;
     tS16 node_no;
     tS16 temp_section_array[8];
@@ -336,9 +338,9 @@ void TopUpRandomRoute(tOpponent_spec *pOpponent_spec, int pSections_to_add) {
     original_TopUpRandomRoute(pOpponent_spec, pSections_to_add);
 }
 
-static int(*original_SearchForSection)(tRoute_section *, tRoute_section *, int *, tS16, int, br_scalar, tOpponent_spec *, ...) = (int(*)(tRoute_section *, tRoute_section *, int *, tS16, int, br_scalar, tOpponent_spec *, ...))0x00407f5d;
+static int(__cdecl*original_SearchForSection)(tRoute_section *, tRoute_section *, int *, tS16, int, br_scalar, tOpponent_spec *) = (int(__cdecl*)(tRoute_section *, tRoute_section *, int *, tS16, int, br_scalar, tOpponent_spec *))0x00407f5d;
 CARM95_HOOK_FUNCTION(original_SearchForSection, SearchForSection)
-int SearchForSection(tRoute_section *pTemp_store, tRoute_section *pPerm_store, int *pNum_of_perm_store_sections, tS16 pTarget_section, int pDepth, br_scalar pDistance_so_far, tOpponent_spec *pOpponent_spec) {
+int __cdecl SearchForSection(tRoute_section *pTemp_store, tRoute_section *pPerm_store, int *pNum_of_perm_store_sections, tS16 pTarget_section, int pDepth, br_scalar pDistance_so_far, tOpponent_spec *pOpponent_spec) {
     static br_scalar shortest_dist;
     static int routes_found;
     char depth_indent[32];
@@ -370,9 +372,9 @@ int SearchForSection(tRoute_section *pTemp_store, tRoute_section *pPerm_store, i
     return original_SearchForSection(pTemp_store, pPerm_store, pNum_of_perm_store_sections, pTarget_section, pDepth, pDistance_so_far, pOpponent_spec);
 }
 
-static void(*original_CalcGetNearPlayerRoute)(tOpponent_spec *, tCar_spec *, ...) = (void(*)(tOpponent_spec *, tCar_spec *, ...))0x004089bf;
+static void(__cdecl*original_CalcGetNearPlayerRoute)(tOpponent_spec *, tCar_spec *) = (void(__cdecl*)(tOpponent_spec *, tCar_spec *))0x004089bf;
 CARM95_HOOK_FUNCTION(original_CalcGetNearPlayerRoute, CalcGetNearPlayerRoute)
-void CalcGetNearPlayerRoute(tOpponent_spec *pOpponent_spec, tCar_spec *pPlayer) {
+void __cdecl CalcGetNearPlayerRoute(tOpponent_spec *pOpponent_spec, tCar_spec *pPlayer) {
     int i;
     int pass_2_depth;
     int sections_away;
@@ -411,9 +413,9 @@ void CalcGetNearPlayerRoute(tOpponent_spec *pOpponent_spec, tCar_spec *pPlayer) 
     original_CalcGetNearPlayerRoute(pOpponent_spec, pPlayer);
 }
 
-static void(*original_CalcReturnToStartPointRoute)(tOpponent_spec *, ...) = (void(*)(tOpponent_spec *, ...))0x00407d1e;
+static void(__cdecl*original_CalcReturnToStartPointRoute)(tOpponent_spec *) = (void(__cdecl*)(tOpponent_spec *))0x00407d1e;
 CARM95_HOOK_FUNCTION(original_CalcReturnToStartPointRoute, CalcReturnToStartPointRoute)
-void CalcReturnToStartPointRoute(tOpponent_spec *pOpponent_spec) {
+void __cdecl CalcReturnToStartPointRoute(tOpponent_spec *pOpponent_spec) {
     int i;
     int pass_2_depth;
     int sections_away;
@@ -440,13 +442,14 @@ void CalcReturnToStartPointRoute(tOpponent_spec *pOpponent_spec) {
     (void)distance;
     (void)temp_store;
     (void)perm_store;
+    (void)__block0___scale;
 
     original_CalcReturnToStartPointRoute(pOpponent_spec);
 }
 
-static void(*original_ClearOpponentsProjectedRoute)(tOpponent_spec *, ...) = (void(*)(tOpponent_spec *, ...))0x00404684;
+static void(__cdecl*original_ClearOpponentsProjectedRoute)(tOpponent_spec *) = (void(__cdecl*)(tOpponent_spec *))0x00404684;
 CARM95_HOOK_FUNCTION(original_ClearOpponentsProjectedRoute, ClearOpponentsProjectedRoute)
-void ClearOpponentsProjectedRoute(tOpponent_spec *pOpponent_spec) {
+void __cdecl ClearOpponentsProjectedRoute(tOpponent_spec *pOpponent_spec) {
     LOG_TRACE("(%p)", pOpponent_spec);
 
     (void)pOpponent_spec;
@@ -454,9 +457,9 @@ void ClearOpponentsProjectedRoute(tOpponent_spec *pOpponent_spec) {
     original_ClearOpponentsProjectedRoute(pOpponent_spec);
 }
 
-static int(*original_AddToOpponentsProjectedRoute)(tOpponent_spec *, tS16, int, ...) = (int(*)(tOpponent_spec *, tS16, int, ...))0x004030ef;
+static int(__cdecl*original_AddToOpponentsProjectedRoute)(tOpponent_spec *, tS16, int) = (int(__cdecl*)(tOpponent_spec *, tS16, int))0x004030ef;
 CARM95_HOOK_FUNCTION(original_AddToOpponentsProjectedRoute, AddToOpponentsProjectedRoute)
-int AddToOpponentsProjectedRoute(tOpponent_spec *pOpponent_spec, tS16 pSection_no, int pDirection) {
+int __cdecl AddToOpponentsProjectedRoute(tOpponent_spec *pOpponent_spec, tS16 pSection_no, int pDirection) {
     LOG_TRACE("(%p, %d, %d)", pOpponent_spec, pSection_no, pDirection);
 
     (void)pOpponent_spec;
@@ -466,9 +469,9 @@ int AddToOpponentsProjectedRoute(tOpponent_spec *pOpponent_spec, tS16 pSection_n
     return original_AddToOpponentsProjectedRoute(pOpponent_spec, pSection_no, pDirection);
 }
 
-static int(*original_ShiftOpponentsProjectedRoute)(tOpponent_spec *, int, ...) = (int(*)(tOpponent_spec *, int, ...))0x00404699;
+static int(__cdecl*original_ShiftOpponentsProjectedRoute)(tOpponent_spec *, int) = (int(__cdecl*)(tOpponent_spec *, int))0x00404699;
 CARM95_HOOK_FUNCTION(original_ShiftOpponentsProjectedRoute, ShiftOpponentsProjectedRoute)
-int ShiftOpponentsProjectedRoute(tOpponent_spec *pOpponent_spec, int pPlaces) {
+int __cdecl ShiftOpponentsProjectedRoute(tOpponent_spec *pOpponent_spec, int pPlaces) {
     int i;
     LOG_TRACE("(%p, %d)", pOpponent_spec, pPlaces);
 
@@ -479,9 +482,9 @@ int ShiftOpponentsProjectedRoute(tOpponent_spec *pOpponent_spec, int pPlaces) {
     return original_ShiftOpponentsProjectedRoute(pOpponent_spec, pPlaces);
 }
 
-static void(*original_StunTheBugger)(tOpponent_spec *, int, ...) = (void(*)(tOpponent_spec *, int, ...))0x0040b12d;
+static void(__cdecl*original_StunTheBugger)(tOpponent_spec *, int) = (void(__cdecl*)(tOpponent_spec *, int))0x0040b12d;
 CARM95_HOOK_FUNCTION(original_StunTheBugger, StunTheBugger)
-void StunTheBugger(tOpponent_spec *pOpponent_spec, int pMilliseconds) {
+void __cdecl StunTheBugger(tOpponent_spec *pOpponent_spec, int pMilliseconds) {
     LOG_TRACE("(%p, %d)", pOpponent_spec, pMilliseconds);
 
     (void)pOpponent_spec;
@@ -490,9 +493,9 @@ void StunTheBugger(tOpponent_spec *pOpponent_spec, int pMilliseconds) {
     original_StunTheBugger(pOpponent_spec, pMilliseconds);
 }
 
-static void(*original_UnStunTheBugger)(tOpponent_spec *, ...) = (void(*)(tOpponent_spec *, ...))0x00405e44;
+static void(__cdecl*original_UnStunTheBugger)(tOpponent_spec *) = (void(__cdecl*)(tOpponent_spec *))0x00405e44;
 CARM95_HOOK_FUNCTION(original_UnStunTheBugger, UnStunTheBugger)
-void UnStunTheBugger(tOpponent_spec *pOpponent_spec) {
+void __cdecl UnStunTheBugger(tOpponent_spec *pOpponent_spec) {
     LOG_TRACE("(%p)", pOpponent_spec);
 
     (void)pOpponent_spec;
@@ -500,9 +503,9 @@ void UnStunTheBugger(tOpponent_spec *pOpponent_spec) {
     original_UnStunTheBugger(pOpponent_spec);
 }
 
-static void(*original_ProcessCompleteRace)(tOpponent_spec *, tProcess_objective_command, ...) = (void(*)(tOpponent_spec *, tProcess_objective_command, ...))0x00406732;
+static void(__cdecl*original_ProcessCompleteRace)(tOpponent_spec *, tProcess_objective_command) = (void(__cdecl*)(tOpponent_spec *, tProcess_objective_command))0x00406732;
 CARM95_HOOK_FUNCTION(original_ProcessCompleteRace, ProcessCompleteRace)
-void ProcessCompleteRace(tOpponent_spec *pOpponent_spec, tProcess_objective_command pCommand) {
+void __cdecl ProcessCompleteRace(tOpponent_spec *pOpponent_spec, tProcess_objective_command pCommand) {
     br_vector3 *initial_pos;
     br_actor *car_actor;
     tComplete_race_data *data;
@@ -521,9 +524,9 @@ void ProcessCompleteRace(tOpponent_spec *pOpponent_spec, tProcess_objective_comm
     original_ProcessCompleteRace(pOpponent_spec, pCommand);
 }
 
-static void(*original_StartRecordingTrail)(tCar_spec *, ...) = (void(*)(tCar_spec *, ...))0x00405e59;
+static void(__cdecl*original_StartRecordingTrail)(tCar_spec *) = (void(__cdecl*)(tCar_spec *))0x00405e59;
 CARM95_HOOK_FUNCTION(original_StartRecordingTrail, StartRecordingTrail)
-void StartRecordingTrail(tCar_spec *pPursuee) {
+void __cdecl StartRecordingTrail(tCar_spec *pPursuee) {
     int i;
     LOG_TRACE("(%p)", pPursuee);
 
@@ -533,9 +536,9 @@ void StartRecordingTrail(tCar_spec *pPursuee) {
     original_StartRecordingTrail(pPursuee);
 }
 
-static void(*original_RecordNextTrailNode)(tCar_spec *, ...) = (void(*)(tCar_spec *, ...))0x00405f97;
+static void(__cdecl*original_RecordNextTrailNode)(tCar_spec *) = (void(__cdecl*)(tCar_spec *))0x00405f97;
 CARM95_HOOK_FUNCTION(original_RecordNextTrailNode, RecordNextTrailNode)
-void RecordNextTrailNode(tCar_spec *pPursuee) {
+void __cdecl RecordNextTrailNode(tCar_spec *pPursuee) {
     tPursuee_trail *trail;
     br_vector3 start1;
     br_vector3 finish1;
@@ -561,9 +564,9 @@ void RecordNextTrailNode(tCar_spec *pPursuee) {
     original_RecordNextTrailNode(pPursuee);
 }
 
-static tS16(*original_FindNearestTrailSection)(tOpponent_spec *, tCar_spec *, br_vector3 *, br_vector3 *, br_scalar *, ...) = (tS16(*)(tOpponent_spec *, tCar_spec *, br_vector3 *, br_vector3 *, br_scalar *, ...))0x0040769d;
+static tS16(__cdecl*original_FindNearestTrailSection)(tOpponent_spec *, tCar_spec *, br_vector3 *, br_vector3 *, br_scalar *) = (tS16(__cdecl*)(tOpponent_spec *, tCar_spec *, br_vector3 *, br_vector3 *, br_scalar *))0x0040769d;
 CARM95_HOOK_FUNCTION(original_FindNearestTrailSection, FindNearestTrailSection)
-tS16 FindNearestTrailSection(tOpponent_spec *pOpponent_spec, tCar_spec *pPursuee, br_vector3 *pSection_v, br_vector3 *pIntersect, br_scalar *pDistance) {
+tS16 __cdecl FindNearestTrailSection(tOpponent_spec *pOpponent_spec, tCar_spec *pPursuee, br_vector3 *pSection_v, br_vector3 *pIntersect, br_scalar *pDistance) {
     LOG_TRACE("(%p, %p, %p, %p, %p)", pOpponent_spec, pPursuee, pSection_v, pIntersect, pDistance);
 
     (void)pOpponent_spec;
@@ -575,9 +578,9 @@ tS16 FindNearestTrailSection(tOpponent_spec *pOpponent_spec, tCar_spec *pPursuee
     return original_FindNearestTrailSection(pOpponent_spec, pPursuee, pSection_v, pIntersect, pDistance);
 }
 
-static tS16(*original_CalcNextTrailSection)(tOpponent_spec *, int, ...) = (tS16(*)(tOpponent_spec *, int, ...))0x00403145;
+static tS16(__cdecl*original_CalcNextTrailSection)(tOpponent_spec *, int) = (tS16(__cdecl*)(tOpponent_spec *, int))0x00403145;
 CARM95_HOOK_FUNCTION(original_CalcNextTrailSection, CalcNextTrailSection)
-tS16 CalcNextTrailSection(tOpponent_spec *pOpponent_spec, int pSection) {
+tS16 __cdecl CalcNextTrailSection(tOpponent_spec *pOpponent_spec, int pSection) {
     int section_no;
     tPursuee_trail *trail;
     LOG_TRACE("(%p, %d)", pOpponent_spec, pSection);
@@ -590,9 +593,9 @@ tS16 CalcNextTrailSection(tOpponent_spec *pOpponent_spec, int pSection) {
     return original_CalcNextTrailSection(pOpponent_spec, pSection);
 }
 
-static void(*original_ProcessPursueAndTwat)(tOpponent_spec *, tProcess_objective_command, ...) = (void(*)(tOpponent_spec *, tProcess_objective_command, ...))0x00406a69;
+static void(__cdecl*original_ProcessPursueAndTwat)(tOpponent_spec *, tProcess_objective_command) = (void(__cdecl*)(tOpponent_spec *, tProcess_objective_command))0x00406a69;
 CARM95_HOOK_FUNCTION(original_ProcessPursueAndTwat, ProcessPursueAndTwat)
-void ProcessPursueAndTwat(tOpponent_spec *pOpponent_spec, tProcess_objective_command pCommand) {
+void __cdecl ProcessPursueAndTwat(tOpponent_spec *pOpponent_spec, tProcess_objective_command pCommand) {
     tPursue_car_data *data;
     br_vector3 wank;
     br_vector3 section_v;
@@ -623,9 +626,9 @@ void ProcessPursueAndTwat(tOpponent_spec *pOpponent_spec, tProcess_objective_com
     original_ProcessPursueAndTwat(pOpponent_spec, pCommand);
 }
 
-static void(*original_ProcessRunAway)(tOpponent_spec *, tProcess_objective_command, ...) = (void(*)(tOpponent_spec *, tProcess_objective_command, ...))0x004076d2;
+static void(__cdecl*original_ProcessRunAway)(tOpponent_spec *, tProcess_objective_command) = (void(__cdecl*)(tOpponent_spec *, tProcess_objective_command))0x004076d2;
 CARM95_HOOK_FUNCTION(original_ProcessRunAway, ProcessRunAway)
-void ProcessRunAway(tOpponent_spec *pOpponent_spec, tProcess_objective_command pCommand) {
+void __cdecl ProcessRunAway(tOpponent_spec *pOpponent_spec, tProcess_objective_command pCommand) {
     int res;
     tS16 section_no;
     br_scalar distance;
@@ -646,9 +649,9 @@ void ProcessRunAway(tOpponent_spec *pOpponent_spec, tProcess_objective_command p
     original_ProcessRunAway(pOpponent_spec, pCommand);
 }
 
-static void(*original_ProcessWaitForSomeHaplessSod)(tOpponent_spec *, tProcess_objective_command, ...) = (void(*)(tOpponent_spec *, tProcess_objective_command, ...))0x004079da;
+static void(__cdecl*original_ProcessWaitForSomeHaplessSod)(tOpponent_spec *, tProcess_objective_command) = (void(__cdecl*)(tOpponent_spec *, tProcess_objective_command))0x004079da;
 CARM95_HOOK_FUNCTION(original_ProcessWaitForSomeHaplessSod, ProcessWaitForSomeHaplessSod)
-void ProcessWaitForSomeHaplessSod(tOpponent_spec *pOpponent_spec, tProcess_objective_command pCommand) {
+void __cdecl ProcessWaitForSomeHaplessSod(tOpponent_spec *pOpponent_spec, tProcess_objective_command pCommand) {
     LOG_TRACE("(%p, %d)", pOpponent_spec, pCommand);
 
     (void)pOpponent_spec;
@@ -657,9 +660,9 @@ void ProcessWaitForSomeHaplessSod(tOpponent_spec *pOpponent_spec, tProcess_objec
     original_ProcessWaitForSomeHaplessSod(pOpponent_spec, pCommand);
 }
 
-static void(*original_ProcessReturnToStart)(tOpponent_spec *, tProcess_objective_command, ...) = (void(*)(tOpponent_spec *, tProcess_objective_command, ...))0x00407a66;
+static void(__cdecl*original_ProcessReturnToStart)(tOpponent_spec *, tProcess_objective_command) = (void(__cdecl*)(tOpponent_spec *, tProcess_objective_command))0x00407a66;
 CARM95_HOOK_FUNCTION(original_ProcessReturnToStart, ProcessReturnToStart)
-void ProcessReturnToStart(tOpponent_spec *pOpponent_spec, tProcess_objective_command pCommand) {
+void __cdecl ProcessReturnToStart(tOpponent_spec *pOpponent_spec, tProcess_objective_command pCommand) {
     br_vector3 section_v;
     br_vector3 our_pos_xz;
     br_vector3 cop_to_start;
@@ -678,9 +681,9 @@ void ProcessReturnToStart(tOpponent_spec *pOpponent_spec, tProcess_objective_com
     original_ProcessReturnToStart(pOpponent_spec, pCommand);
 }
 
-static void(*original_ProcessLevitate)(tOpponent_spec *, tProcess_objective_command, ...) = (void(*)(tOpponent_spec *, tProcess_objective_command, ...))0x00408349;
+static void(__cdecl*original_ProcessLevitate)(tOpponent_spec *, tProcess_objective_command) = (void(__cdecl*)(tOpponent_spec *, tProcess_objective_command))0x00408349;
 CARM95_HOOK_FUNCTION(original_ProcessLevitate, ProcessLevitate)
-void ProcessLevitate(tOpponent_spec *pOpponent_spec, tProcess_objective_command pCommand) {
+void __cdecl ProcessLevitate(tOpponent_spec *pOpponent_spec, tProcess_objective_command pCommand) {
     float t;
     float terminal_time;
     float y;
@@ -695,9 +698,9 @@ void ProcessLevitate(tOpponent_spec *pOpponent_spec, tProcess_objective_command 
     original_ProcessLevitate(pOpponent_spec, pCommand);
 }
 
-static void(*original_ProcessGetNearPlayer)(tOpponent_spec *, tProcess_objective_command, ...) = (void(*)(tOpponent_spec *, tProcess_objective_command, ...))0x004086fe;
+static void(__cdecl*original_ProcessGetNearPlayer)(tOpponent_spec *, tProcess_objective_command) = (void(__cdecl*)(tOpponent_spec *, tProcess_objective_command))0x004086fe;
 CARM95_HOOK_FUNCTION(original_ProcessGetNearPlayer, ProcessGetNearPlayer)
-void ProcessGetNearPlayer(tOpponent_spec *pOpponent_spec, tProcess_objective_command pCommand) {
+void __cdecl ProcessGetNearPlayer(tOpponent_spec *pOpponent_spec, tProcess_objective_command pCommand) {
     br_vector3 *initial_pos;
     br_actor *car_actor;
     int res;
@@ -714,9 +717,9 @@ void ProcessGetNearPlayer(tOpponent_spec *pOpponent_spec, tProcess_objective_com
     original_ProcessGetNearPlayer(pOpponent_spec, pCommand);
 }
 
-static void(*original_ProcessFrozen)(tOpponent_spec *, tProcess_objective_command, ...) = (void(*)(tOpponent_spec *, tProcess_objective_command, ...))0x00408d47;
+static void(__cdecl*original_ProcessFrozen)(tOpponent_spec *, tProcess_objective_command) = (void(__cdecl*)(tOpponent_spec *, tProcess_objective_command))0x00408d47;
 CARM95_HOOK_FUNCTION(original_ProcessFrozen, ProcessFrozen)
-void ProcessFrozen(tOpponent_spec *pOpponent_spec, tProcess_objective_command pCommand) {
+void __cdecl ProcessFrozen(tOpponent_spec *pOpponent_spec, tProcess_objective_command pCommand) {
     LOG_TRACE("(%p, %d)", pOpponent_spec, pCommand);
 
     (void)pOpponent_spec;
@@ -725,22 +728,23 @@ void ProcessFrozen(tOpponent_spec *pOpponent_spec, tProcess_objective_command pC
     original_ProcessFrozen(pOpponent_spec, pCommand);
 }
 
-static int(*original_HeadOnWithPlayerPossible)(tOpponent_spec *, ...) = (int(*)(tOpponent_spec *, ...))0x00409cd5;
+static int(__cdecl*original_HeadOnWithPlayerPossible)(tOpponent_spec *) = (int(__cdecl*)(tOpponent_spec *))0x00409cd5;
 CARM95_HOOK_FUNCTION(original_HeadOnWithPlayerPossible, HeadOnWithPlayerPossible)
-int HeadOnWithPlayerPossible(tOpponent_spec *pOpponent_spec) {
+int __cdecl HeadOnWithPlayerPossible(tOpponent_spec *pOpponent_spec) {
     br_vector3 oppo_to_player_norm;
     br_scalar __block0___scale;
     LOG_TRACE("(%p)", pOpponent_spec);
 
     (void)pOpponent_spec;
     (void)oppo_to_player_norm;
+    (void)__block0___scale;
 
     return original_HeadOnWithPlayerPossible(pOpponent_spec);
 }
 
-static int(*original_AlreadyPursuingCar)(tOpponent_spec *, tCar_spec *, ...) = (int(*)(tOpponent_spec *, tCar_spec *, ...))0x00409e29;
+static int(__cdecl*original_AlreadyPursuingCar)(tOpponent_spec *, tCar_spec *) = (int(__cdecl*)(tOpponent_spec *, tCar_spec *))0x00409e29;
 CARM95_HOOK_FUNCTION(original_AlreadyPursuingCar, AlreadyPursuingCar)
-int AlreadyPursuingCar(tOpponent_spec *pOpponent_spec, tCar_spec *pPursuee) {
+int __cdecl AlreadyPursuingCar(tOpponent_spec *pOpponent_spec, tCar_spec *pPursuee) {
     LOG_TRACE("(%p, %p)", pOpponent_spec, pPursuee);
 
     (void)pOpponent_spec;
@@ -749,9 +753,9 @@ int AlreadyPursuingCar(tOpponent_spec *pOpponent_spec, tCar_spec *pPursuee) {
     return original_AlreadyPursuingCar(pOpponent_spec, pPursuee);
 }
 
-static int(*original_LastTwatteeAPlayer)(tOpponent_spec *, ...) = (int(*)(tOpponent_spec *, ...))0x00409e64;
+static int(__cdecl*original_LastTwatteeAPlayer)(tOpponent_spec *) = (int(__cdecl*)(tOpponent_spec *))0x00409e64;
 CARM95_HOOK_FUNCTION(original_LastTwatteeAPlayer, LastTwatteeAPlayer)
-int LastTwatteeAPlayer(tOpponent_spec *pOpponent_spec) {
+int __cdecl LastTwatteeAPlayer(tOpponent_spec *pOpponent_spec) {
     LOG_TRACE("(%p)", pOpponent_spec);
 
     (void)pOpponent_spec;
@@ -759,9 +763,9 @@ int LastTwatteeAPlayer(tOpponent_spec *pOpponent_spec) {
     return original_LastTwatteeAPlayer(pOpponent_spec);
 }
 
-static int(*original_LastTwatterAPlayer)(tOpponent_spec *, ...) = (int(*)(tOpponent_spec *, ...))0x00409ea9;
+static int(__cdecl*original_LastTwatterAPlayer)(tOpponent_spec *) = (int(__cdecl*)(tOpponent_spec *))0x00409ea9;
 CARM95_HOOK_FUNCTION(original_LastTwatterAPlayer, LastTwatterAPlayer)
-int LastTwatterAPlayer(tOpponent_spec *pOpponent_spec) {
+int __cdecl LastTwatterAPlayer(tOpponent_spec *pOpponent_spec) {
     LOG_TRACE("(%p)", pOpponent_spec);
 
     (void)pOpponent_spec;
@@ -769,9 +773,9 @@ int LastTwatterAPlayer(tOpponent_spec *pOpponent_spec) {
     return original_LastTwatterAPlayer(pOpponent_spec);
 }
 
-static void(*original_ObjectiveComplete)(tOpponent_spec *, ...) = (void(*)(tOpponent_spec *, ...))0x00408e2d;
+static void(__cdecl*original_ObjectiveComplete)(tOpponent_spec *) = (void(__cdecl*)(tOpponent_spec *))0x00408e2d;
 CARM95_HOOK_FUNCTION(original_ObjectiveComplete, ObjectiveComplete)
-void ObjectiveComplete(tOpponent_spec *pOpponent_spec) {
+void __cdecl ObjectiveComplete(tOpponent_spec *pOpponent_spec) {
     LOG_TRACE("(%p)", pOpponent_spec);
 
     (void)pOpponent_spec;
@@ -779,9 +783,9 @@ void ObjectiveComplete(tOpponent_spec *pOpponent_spec) {
     original_ObjectiveComplete(pOpponent_spec);
 }
 
-static void(*original_TeleportOpponentToNearestSafeLocation)(tOpponent_spec *, ...) = (void(*)(tOpponent_spec *, ...))0x00404464;
+static void(__cdecl*original_TeleportOpponentToNearestSafeLocation)(tOpponent_spec *) = (void(__cdecl*)(tOpponent_spec *))0x00404464;
 CARM95_HOOK_FUNCTION(original_TeleportOpponentToNearestSafeLocation, TeleportOpponentToNearestSafeLocation)
-void TeleportOpponentToNearestSafeLocation(tOpponent_spec *pOpponent_spec) {
+void __cdecl TeleportOpponentToNearestSafeLocation(tOpponent_spec *pOpponent_spec) {
     tS16 section_no;
     tU8 section_direction;
     br_scalar distance;
@@ -803,9 +807,9 @@ void TeleportOpponentToNearestSafeLocation(tOpponent_spec *pOpponent_spec) {
     original_TeleportOpponentToNearestSafeLocation(pOpponent_spec);
 }
 
-static void(*original_ChooseNewObjective)(tOpponent_spec *, int, ...) = (void(*)(tOpponent_spec *, int, ...))0x00408ec5;
+static void(__cdecl*original_ChooseNewObjective)(tOpponent_spec *, int) = (void(__cdecl*)(tOpponent_spec *, int))0x00408ec5;
 CARM95_HOOK_FUNCTION(original_ChooseNewObjective, ChooseNewObjective)
-void ChooseNewObjective(tOpponent_spec *pOpponent_spec, int pMust_choose_one) {
+void __cdecl ChooseNewObjective(tOpponent_spec *pOpponent_spec, int pMust_choose_one) {
     char str[255];
     tS16 players_section;
     br_vector3 wank;
@@ -852,9 +856,9 @@ void ProcessThisOpponent(tOpponent_spec *pOpponent_spec) {
     NOT_IMPLEMENTED();
 }
 
-static int(*original_IsNetCarActive)(br_vector3 *, ...) = (int(*)(br_vector3 *, ...))0x004034b7;
+static int(__cdecl*original_IsNetCarActive)(br_vector3 *) = (int(__cdecl*)(br_vector3 *))0x004034b7;
 CARM95_HOOK_FUNCTION(original_IsNetCarActive, IsNetCarActive)
-int IsNetCarActive(br_vector3 *pPoint) {
+int __cdecl IsNetCarActive(br_vector3 *pPoint) {
     br_vector3 tv;
     LOG_TRACE("(%p)", pPoint);
 
@@ -864,9 +868,9 @@ int IsNetCarActive(br_vector3 *pPoint) {
     return original_IsNetCarActive(pPoint);
 }
 
-static void(*original_RebuildActiveCarList)() = (void(*)())0x004031c3;
+static void(__cdecl*original_RebuildActiveCarList)() = (void(__cdecl*)())0x004031c3;
 CARM95_HOOK_FUNCTION(original_RebuildActiveCarList, RebuildActiveCarList)
-void RebuildActiveCarList() {
+void __cdecl RebuildActiveCarList() {
     int i;
     tCar_spec *car_spec;
     LOG_TRACE("()");
@@ -877,18 +881,18 @@ void RebuildActiveCarList() {
     original_RebuildActiveCarList();
 }
 
-static void(*original_ForceRebuildActiveCarList)() = (void(*)())0x0040319c;
+static void(__cdecl*original_ForceRebuildActiveCarList)() = (void(__cdecl*)())0x0040319c;
 CARM95_HOOK_FUNCTION(original_ForceRebuildActiveCarList, ForceRebuildActiveCarList)
-void ForceRebuildActiveCarList() {
+void __cdecl ForceRebuildActiveCarList() {
     LOG_TRACE("()");
 
 
     original_ForceRebuildActiveCarList();
 }
 
-static void(*original_StartToCheat)(tOpponent_spec *, ...) = (void(*)(tOpponent_spec *, ...))0x00409eee;
+static void(__cdecl*original_StartToCheat)(tOpponent_spec *) = (void(__cdecl*)(tOpponent_spec *))0x00409eee;
 CARM95_HOOK_FUNCTION(original_StartToCheat, StartToCheat)
-void StartToCheat(tOpponent_spec *pOpponent_spec) {
+void __cdecl StartToCheat(tOpponent_spec *pOpponent_spec) {
     LOG_TRACE("(%p)", pOpponent_spec);
 
     (void)pOpponent_spec;
@@ -896,9 +900,9 @@ void StartToCheat(tOpponent_spec *pOpponent_spec) {
     original_StartToCheat(pOpponent_spec);
 }
 
-static void(*original_OiStopCheating)(tOpponent_spec *, ...) = (void(*)(tOpponent_spec *, ...))0x00409f78;
+static void(__cdecl*original_OiStopCheating)(tOpponent_spec *) = (void(__cdecl*)(tOpponent_spec *))0x00409f78;
 CARM95_HOOK_FUNCTION(original_OiStopCheating, OiStopCheating)
-void OiStopCheating(tOpponent_spec *pOpponent_spec) {
+void __cdecl OiStopCheating(tOpponent_spec *pOpponent_spec) {
     LOG_TRACE("(%p)", pOpponent_spec);
 
     (void)pOpponent_spec;
@@ -906,9 +910,9 @@ void OiStopCheating(tOpponent_spec *pOpponent_spec) {
     original_OiStopCheating(pOpponent_spec);
 }
 
-static int(*original_TeleportCopToStart)(tOpponent_spec *, ...) = (int(*)(tOpponent_spec *, ...))0x00409ff7;
+static int(__cdecl*original_TeleportCopToStart)(tOpponent_spec *) = (int(__cdecl*)(tOpponent_spec *))0x00409ff7;
 CARM95_HOOK_FUNCTION(original_TeleportCopToStart, TeleportCopToStart)
-int TeleportCopToStart(tOpponent_spec *pOpponent_spec) {
+int __cdecl TeleportCopToStart(tOpponent_spec *pOpponent_spec) {
     br_vector3 wank;
     LOG_TRACE("(%p)", pOpponent_spec);
 
@@ -918,9 +922,9 @@ int TeleportCopToStart(tOpponent_spec *pOpponent_spec) {
     return original_TeleportCopToStart(pOpponent_spec);
 }
 
-static void(*original_CalcDistanceFromHome)(tOpponent_spec *, ...) = (void(*)(tOpponent_spec *, ...))0x0040a13d;
+static void(__cdecl*original_CalcDistanceFromHome)(tOpponent_spec *) = (void(__cdecl*)(tOpponent_spec *))0x0040a13d;
 CARM95_HOOK_FUNCTION(original_CalcDistanceFromHome, CalcDistanceFromHome)
-void CalcDistanceFromHome(tOpponent_spec *pOpponent_spec) {
+void __cdecl CalcDistanceFromHome(tOpponent_spec *pOpponent_spec) {
     br_vector3 wank;
     LOG_TRACE("(%p)", pOpponent_spec);
 
@@ -930,9 +934,9 @@ void CalcDistanceFromHome(tOpponent_spec *pOpponent_spec) {
     original_CalcDistanceFromHome(pOpponent_spec);
 }
 
-static int(*original_MassageOpponentPosition)(tOpponent_spec *, int, ...) = (int(*)(tOpponent_spec *, int, ...))0x0040472e;
+static int(__cdecl*original_MassageOpponentPosition)(tOpponent_spec *, int) = (int(__cdecl*)(tOpponent_spec *, int))0x0040472e;
 CARM95_HOOK_FUNCTION(original_MassageOpponentPosition, MassageOpponentPosition)
-int MassageOpponentPosition(tOpponent_spec *pOpponent_spec, int pMassage_count) {
+int __cdecl MassageOpponentPosition(tOpponent_spec *pOpponent_spec, int pMassage_count) {
     br_matrix34 *mat;
     br_vector3 *car_trans;
     br_vector3 displacement;
@@ -949,13 +953,15 @@ int MassageOpponentPosition(tOpponent_spec *pOpponent_spec, int pMassage_count) 
     (void)displacement;
     (void)positive_y_vector;
     (void)direction_v;
+    (void)__block0___scale;
+    (void)__block1___scale;
 
     return original_MassageOpponentPosition(pOpponent_spec, pMassage_count);
 }
 
-static int(*original_RematerialiseOpponentOnThisSection)(tOpponent_spec *, br_scalar, tS16, ...) = (int(*)(tOpponent_spec *, br_scalar, tS16, ...))0x004035b1;
+static int(__cdecl*original_RematerialiseOpponentOnThisSection)(tOpponent_spec *, br_scalar, tS16) = (int(__cdecl*)(tOpponent_spec *, br_scalar, tS16))0x004035b1;
 CARM95_HOOK_FUNCTION(original_RematerialiseOpponentOnThisSection, RematerialiseOpponentOnThisSection)
-int RematerialiseOpponentOnThisSection(tOpponent_spec *pOpponent_spec, br_scalar pSpeed, tS16 pSection_no) {
+int __cdecl RematerialiseOpponentOnThisSection(tOpponent_spec *pOpponent_spec, br_scalar pSpeed, tS16 pSection_no) {
     br_vector3 *start;
     br_vector3 *finish;
     br_vector3 a;
@@ -985,9 +991,9 @@ int RematerialiseOpponentOnThisSection(tOpponent_spec *pOpponent_spec, br_scalar
     return original_RematerialiseOpponentOnThisSection(pOpponent_spec, pSpeed, pSection_no);
 }
 
-static int(*original_RematerialiseOpponentOnNearestSection)(tOpponent_spec *, br_scalar, ...) = (int(*)(tOpponent_spec *, br_scalar, ...))0x004038fe;
+static int(__cdecl*original_RematerialiseOpponentOnNearestSection)(tOpponent_spec *, br_scalar) = (int(__cdecl*)(tOpponent_spec *, br_scalar))0x004038fe;
 CARM95_HOOK_FUNCTION(original_RematerialiseOpponentOnNearestSection, RematerialiseOpponentOnNearestSection)
-int RematerialiseOpponentOnNearestSection(tOpponent_spec *pOpponent_spec, br_scalar pSpeed) {
+int __cdecl RematerialiseOpponentOnNearestSection(tOpponent_spec *pOpponent_spec, br_scalar pSpeed) {
     br_vector3 intersect;
     br_vector3 direction_v;
     br_vector3 car_to_end;
@@ -1012,9 +1018,9 @@ int RematerialiseOpponentOnNearestSection(tOpponent_spec *pOpponent_spec, br_sca
     return original_RematerialiseOpponentOnNearestSection(pOpponent_spec, pSpeed);
 }
 
-static int(*original_RematerialiseOpponent)(tOpponent_spec *, br_scalar, ...) = (int(*)(tOpponent_spec *, br_scalar, ...))0x00403ad9;
+static int(__cdecl*original_RematerialiseOpponent)(tOpponent_spec *, br_scalar) = (int(__cdecl*)(tOpponent_spec *, br_scalar))0x00403ad9;
 CARM95_HOOK_FUNCTION(original_RematerialiseOpponent, RematerialiseOpponent)
-int RematerialiseOpponent(tOpponent_spec *pOpponent_spec, br_scalar pSpeed) {
+int __cdecl RematerialiseOpponent(tOpponent_spec *pOpponent_spec, br_scalar pSpeed) {
     static int count;
     static int total;
     static int highest;
@@ -1058,13 +1064,14 @@ int RematerialiseOpponent(tOpponent_spec *pOpponent_spec, br_scalar pSpeed) {
     (void)massage_count;
     (void)theta;
     (void)sensible_place;
+    (void)__block0___scale;
 
     return original_RematerialiseOpponent(pOpponent_spec, pSpeed);
 }
 
-static void(*original_CalcPlayerConspicuousness)(tOpponent_spec *, ...) = (void(*)(tOpponent_spec *, ...))0x0040a1ab;
+static void(__cdecl*original_CalcPlayerConspicuousness)(tOpponent_spec *) = (void(__cdecl*)(tOpponent_spec *))0x0040a1ab;
 CARM95_HOOK_FUNCTION(original_CalcPlayerConspicuousness, CalcPlayerConspicuousness)
-void CalcPlayerConspicuousness(tOpponent_spec *pOpponent_spec) {
+void __cdecl CalcPlayerConspicuousness(tOpponent_spec *pOpponent_spec) {
     br_vector3 pos_in_cop_space;
     br_matrix34 inverse_transform;
     LOG_TRACE("(%p)", pOpponent_spec);
@@ -1076,9 +1083,9 @@ void CalcPlayerConspicuousness(tOpponent_spec *pOpponent_spec) {
     original_CalcPlayerConspicuousness(pOpponent_spec);
 }
 
-static void(*original_CalcOpponentConspicuousnessWithAViewToCheatingLikeFuck)(tOpponent_spec *, ...) = (void(*)(tOpponent_spec *, ...))0x00406458;
+static void(__cdecl*original_CalcOpponentConspicuousnessWithAViewToCheatingLikeFuck)(tOpponent_spec *) = (void(__cdecl*)(tOpponent_spec *))0x00404a0e;
 CARM95_HOOK_FUNCTION(original_CalcOpponentConspicuousnessWithAViewToCheatingLikeFuck, CalcOpponentConspicuousnessWithAViewToCheatingLikeFuck)
-void CalcOpponentConspicuousnessWithAViewToCheatingLikeFuck(tOpponent_spec *pOpponent_spec) {
+void __cdecl CalcOpponentConspicuousnessWithAViewToCheatingLikeFuck(tOpponent_spec *pOpponent_spec) {
     LOG_TRACE("(%p)", pOpponent_spec);
 
     (void)pOpponent_spec;
@@ -1086,9 +1093,9 @@ void CalcOpponentConspicuousnessWithAViewToCheatingLikeFuck(tOpponent_spec *pOpp
     original_CalcOpponentConspicuousnessWithAViewToCheatingLikeFuck(pOpponent_spec);
 }
 
-static void(*original_ChallengeOccurred)(int, int, ...) = (void(*)(int, int, ...))0x00404abc;
+static void(__cdecl*original_ChallengeOccurred)(int, int) = (void(__cdecl*)(int, int))0x00404abc;
 CARM95_HOOK_FUNCTION(original_ChallengeOccurred, ChallengeOccurred)
-void ChallengeOccurred(int pChallenger_index, int pAccepted) {
+void __cdecl ChallengeOccurred(int pChallenger_index, int pAccepted) {
     LOG_TRACE("(%d, %d)", pChallenger_index, pAccepted);
 
     (void)pChallenger_index;
@@ -1097,9 +1104,9 @@ void ChallengeOccurred(int pChallenger_index, int pAccepted) {
     original_ChallengeOccurred(pChallenger_index, pAccepted);
 }
 
-static void(*original_LoadCopCars)() = (void(*)())0x00404ad9;
+static void(__cdecl*original_LoadCopCars)() = (void(__cdecl*)())0x00404ad9;
 CARM95_HOOK_FUNCTION(original_LoadCopCars, LoadCopCars)
-void LoadCopCars() {
+void __cdecl LoadCopCars() {
     int i;
     LOG_TRACE("()");
 
@@ -1108,9 +1115,9 @@ void LoadCopCars() {
     original_LoadCopCars();
 }
 
-static void(*original_LoadInOppoPaths)(FILE *, ...) = (void(*)(FILE *, ...))0x00404b9b;
+static void(__cdecl*original_LoadInOppoPaths)(FILE *) = (void(__cdecl*)(FILE *))0x00404b9b;
 CARM95_HOOK_FUNCTION(original_LoadInOppoPaths, LoadInOppoPaths)
-void LoadInOppoPaths(FILE *pF) {
+void __cdecl LoadInOppoPaths(FILE *pF) {
     char s[256];
     char *res;
     int data_errors;
@@ -1155,22 +1162,25 @@ void LoadInOppoPaths(FILE *pF) {
     (void)j;
     (void)sections_to_delete;
     (void)delete_these;
+    (void)__block0__x_0;
+    (void)__block0__x_1;
+    (void)__block0__x_2;
 
     original_LoadInOppoPaths(pF);
 }
 
-static void(*original_DisposeOpponentPaths)() = (void(*)())0x00405912;
+static void(__cdecl*original_DisposeOpponentPaths)() = (void(__cdecl*)())0x00405912;
 CARM95_HOOK_FUNCTION(original_DisposeOpponentPaths, DisposeOpponentPaths)
-void DisposeOpponentPaths() {
+void __cdecl DisposeOpponentPaths() {
     LOG_TRACE("()");
 
 
     original_DisposeOpponentPaths();
 }
 
-static void(*original_MungeOpponents)(tU32, ...) = (void(*)(tU32, ...))0x004059a0;
+static void(__cdecl*original_MungeOpponents)(tU32) = (void(__cdecl*)(tU32))0x004059a0;
 CARM95_HOOK_FUNCTION(original_MungeOpponents, MungeOpponents)
-void MungeOpponents(tU32 pFrame_period) {
+void __cdecl MungeOpponents(tU32 pFrame_period) {
     int i;
     int un_stun_flag;
     LOG_TRACE("(%u)", pFrame_period);
@@ -1182,9 +1192,9 @@ void MungeOpponents(tU32 pFrame_period) {
     original_MungeOpponents(pFrame_period);
 }
 
-static void(*original_SetInitialCopPositions)() = (void(*)())0x0040a3a5;
+static void(__cdecl*original_SetInitialCopPositions)() = (void(__cdecl*)())0x0040a3a5;
 CARM95_HOOK_FUNCTION(original_SetInitialCopPositions, SetInitialCopPositions)
-void SetInitialCopPositions() {
+void __cdecl SetInitialCopPositions() {
     int i;
     LOG_TRACE("()");
 
@@ -1193,9 +1203,9 @@ void SetInitialCopPositions() {
     original_SetInitialCopPositions();
 }
 
-static void(*original_InitOpponents)(tRace_info *, ...) = (void(*)(tRace_info *, ...))0x0040a4ce;
+static void(__cdecl*original_InitOpponents)(tRace_info *) = (void(__cdecl*)(tRace_info *))0x0040a4ce;
 CARM95_HOOK_FUNCTION(original_InitOpponents, InitOpponents)
-void InitOpponents(tRace_info *pRace_info) {
+void __cdecl InitOpponents(tRace_info *pRace_info) {
     int i;
     int opponent_number;
     int rank_dependent_difficulty;
@@ -1211,13 +1221,15 @@ void InitOpponents(tRace_info *pRace_info) {
     (void)rank_dependent_difficulty;
     (void)skill_dependent_difficulty;
     (void)bounds;
+    (void)__block0__car_spec;
+    (void)__block0__opponent_spec;
 
     original_InitOpponents(pRace_info);
 }
 
-static void(*original_DisposeOpponents)() = (void(*)())0x0040b186;
+static void(__cdecl*original_DisposeOpponents)() = (void(__cdecl*)())0x0040b186;
 CARM95_HOOK_FUNCTION(original_DisposeOpponents, DisposeOpponents)
-void DisposeOpponents() {
+void __cdecl DisposeOpponents() {
     int i;
     LOG_TRACE("()");
 
@@ -1226,9 +1238,9 @@ void DisposeOpponents() {
     original_DisposeOpponents();
 }
 
-static void(*original_WakeUpOpponentsToTheFactThatTheStartHasBeenJumped)(int, ...) = (void(*)(int, ...))0x0040b20f;
+static void(__cdecl*original_WakeUpOpponentsToTheFactThatTheStartHasBeenJumped)(int) = (void(__cdecl*)(int))0x0040b20f;
 CARM95_HOOK_FUNCTION(original_WakeUpOpponentsToTheFactThatTheStartHasBeenJumped, WakeUpOpponentsToTheFactThatTheStartHasBeenJumped)
-void WakeUpOpponentsToTheFactThatTheStartHasBeenJumped(int pWhat_the_countdown_was) {
+void __cdecl WakeUpOpponentsToTheFactThatTheStartHasBeenJumped(int pWhat_the_countdown_was) {
     int i;
     LOG_TRACE("(%d)", pWhat_the_countdown_was);
 
@@ -1238,9 +1250,9 @@ void WakeUpOpponentsToTheFactThatTheStartHasBeenJumped(int pWhat_the_countdown_w
     original_WakeUpOpponentsToTheFactThatTheStartHasBeenJumped(pWhat_the_countdown_was);
 }
 
-static void(*original_ReportMurderToPoliceDepartment)(tCar_spec *, ...) = (void(*)(tCar_spec *, ...))0x0040b3a5;
+static void(__cdecl*original_ReportMurderToPoliceDepartment)(tCar_spec *) = (void(__cdecl*)(tCar_spec *))0x0040b3a5;
 CARM95_HOOK_FUNCTION(original_ReportMurderToPoliceDepartment, ReportMurderToPoliceDepartment)
-void ReportMurderToPoliceDepartment(tCar_spec *pCar_spec) {
+void __cdecl ReportMurderToPoliceDepartment(tCar_spec *pCar_spec) {
     int i;
     LOG_TRACE("(%p)", pCar_spec);
 
@@ -1250,9 +1262,9 @@ void ReportMurderToPoliceDepartment(tCar_spec *pCar_spec) {
     original_ReportMurderToPoliceDepartment(pCar_spec);
 }
 
-static int(*original_GetCarCount)(tVehicle_type, ...) = (int(*)(tVehicle_type, ...))0x0040b412;
+static int(__cdecl*original_GetCarCount)(tVehicle_type) = (int(__cdecl*)(tVehicle_type))0x0040b412;
 CARM95_HOOK_FUNCTION(original_GetCarCount, GetCarCount)
-int GetCarCount(tVehicle_type pCategory) {
+int __cdecl GetCarCount(tVehicle_type pCategory) {
     LOG_TRACE("(%d)", pCategory);
 
     (void)pCategory;
@@ -1260,9 +1272,9 @@ int GetCarCount(tVehicle_type pCategory) {
     return original_GetCarCount(pCategory);
 }
 
-static tCar_spec *(*original_GetCarSpec)(tVehicle_type, int, ...) = (tCar_spec *(*)(tVehicle_type, int, ...))0x0040b4b1;
+static tCar_spec *(__cdecl*original_GetCarSpec)(tVehicle_type, int) = (tCar_spec *(__cdecl*)(tVehicle_type, int))0x0040b4b1;
 CARM95_HOOK_FUNCTION(original_GetCarSpec, GetCarSpec)
-tCar_spec* GetCarSpec(tVehicle_type pCategory, int pIndex) {
+tCar_spec* __cdecl GetCarSpec(tVehicle_type pCategory, int pIndex) {
     LOG_TRACE("(%d, %d)", pCategory, pIndex);
 
     (void)pCategory;
@@ -1271,9 +1283,9 @@ tCar_spec* GetCarSpec(tVehicle_type pCategory, int pIndex) {
     return original_GetCarSpec(pCategory, pIndex);
 }
 
-static char *(*original_GetDriverName)(tVehicle_type, int, ...) = (char *(*)(tVehicle_type, int, ...))0x0040b592;
+static char *(__cdecl*original_GetDriverName)(tVehicle_type, int) = (char *(__cdecl*)(tVehicle_type, int))0x0040b592;
 CARM95_HOOK_FUNCTION(original_GetDriverName, GetDriverName)
-char* GetDriverName(tVehicle_type pCategory, int pIndex) {
+char* __cdecl GetDriverName(tVehicle_type pCategory, int pIndex) {
     LOG_TRACE("(%d, %d)", pCategory, pIndex);
 
     (void)pCategory;
@@ -1282,9 +1294,9 @@ char* GetDriverName(tVehicle_type pCategory, int pIndex) {
     return original_GetDriverName(pCategory, pIndex);
 }
 
-static tOpponent_spec *(*original_GetOpponentSpecFromCarSpec)(tCar_spec *, ...) = (tOpponent_spec *(*)(tCar_spec *, ...))0x0040b639;
+static tOpponent_spec *(__cdecl*original_GetOpponentSpecFromCarSpec)(tCar_spec *) = (tOpponent_spec *(__cdecl*)(tCar_spec *))0x0040b639;
 CARM95_HOOK_FUNCTION(original_GetOpponentSpecFromCarSpec, GetOpponentSpecFromCarSpec)
-tOpponent_spec* GetOpponentSpecFromCarSpec(tCar_spec *pCar_spec) {
+tOpponent_spec* __cdecl GetOpponentSpecFromCarSpec(tCar_spec *pCar_spec) {
     int i;
     LOG_TRACE("(%p)", pCar_spec);
 
@@ -1294,9 +1306,9 @@ tOpponent_spec* GetOpponentSpecFromCarSpec(tCar_spec *pCar_spec) {
     return original_GetOpponentSpecFromCarSpec(pCar_spec);
 }
 
-static tCar_spec *(*original_GetCarSpecFromGlobalOppoIndex)(int, ...) = (tCar_spec *(*)(int, ...))0x0040b74d;
+static tCar_spec *(__cdecl*original_GetCarSpecFromGlobalOppoIndex)(int) = (tCar_spec *(__cdecl*)(int))0x0040b74d;
 CARM95_HOOK_FUNCTION(original_GetCarSpecFromGlobalOppoIndex, GetCarSpecFromGlobalOppoIndex)
-tCar_spec* GetCarSpecFromGlobalOppoIndex(int pIndex) {
+tCar_spec* __cdecl GetCarSpecFromGlobalOppoIndex(int pIndex) {
     int i;
     LOG_TRACE("(%d)", pIndex);
 
@@ -1306,9 +1318,9 @@ tCar_spec* GetCarSpecFromGlobalOppoIndex(int pIndex) {
     return original_GetCarSpecFromGlobalOppoIndex(pIndex);
 }
 
-static int(*original_GetOpponentsRealSection)(tOpponent_spec *, int, ...) = (int(*)(tOpponent_spec *, int, ...))0x0040b7b7;
+static int(__cdecl*original_GetOpponentsRealSection)(tOpponent_spec *, int) = (int(__cdecl*)(tOpponent_spec *, int))0x0040b7b7;
 CARM95_HOOK_FUNCTION(original_GetOpponentsRealSection, GetOpponentsRealSection)
-int GetOpponentsRealSection(tOpponent_spec *pOpponent_spec, int pSection_no) {
+int __cdecl GetOpponentsRealSection(tOpponent_spec *pOpponent_spec, int pSection_no) {
     LOG_TRACE("(%p, %d)", pOpponent_spec, pSection_no);
 
     (void)pOpponent_spec;
@@ -1317,9 +1329,9 @@ int GetOpponentsRealSection(tOpponent_spec *pOpponent_spec, int pSection_no) {
     return original_GetOpponentsRealSection(pOpponent_spec, pSection_no);
 }
 
-static int(*original_GetOpponentsFirstSection)(tOpponent_spec *, ...) = (int(*)(tOpponent_spec *, ...))0x0040b806;
+static int(__cdecl*original_GetOpponentsFirstSection)(tOpponent_spec *) = (int(__cdecl*)(tOpponent_spec *))0x0040b806;
 CARM95_HOOK_FUNCTION(original_GetOpponentsFirstSection, GetOpponentsFirstSection)
-int GetOpponentsFirstSection(tOpponent_spec *pOpponent_spec) {
+int __cdecl GetOpponentsFirstSection(tOpponent_spec *pOpponent_spec) {
     LOG_TRACE("(%p)", pOpponent_spec);
 
     (void)pOpponent_spec;
@@ -1327,9 +1339,9 @@ int GetOpponentsFirstSection(tOpponent_spec *pOpponent_spec) {
     return original_GetOpponentsFirstSection(pOpponent_spec);
 }
 
-static int(*original_GetOpponentsNextSection)(tOpponent_spec *, tS16, ...) = (int(*)(tOpponent_spec *, tS16, ...))0x0040b86e;
+static int(__cdecl*original_GetOpponentsNextSection)(tOpponent_spec *, tS16) = (int(__cdecl*)(tOpponent_spec *, tS16))0x0040b86e;
 CARM95_HOOK_FUNCTION(original_GetOpponentsNextSection, GetOpponentsNextSection)
-int GetOpponentsNextSection(tOpponent_spec *pOpponent_spec, tS16 pCurrent_section) {
+int __cdecl GetOpponentsNextSection(tOpponent_spec *pOpponent_spec, tS16 pCurrent_section) {
     LOG_TRACE("(%p, %d)", pOpponent_spec, pCurrent_section);
 
     (void)pOpponent_spec;
@@ -1338,9 +1350,9 @@ int GetOpponentsNextSection(tOpponent_spec *pOpponent_spec, tS16 pCurrent_sectio
     return original_GetOpponentsNextSection(pOpponent_spec, pCurrent_section);
 }
 
-static tS16(*original_GetOpponentsSectionStartNode)(tOpponent_spec *, tS16, ...) = (tS16(*)(tOpponent_spec *, tS16, ...))0x0040b91f;
+static tS16(__cdecl*original_GetOpponentsSectionStartNode)(tOpponent_spec *, tS16) = (tS16(__cdecl*)(tOpponent_spec *, tS16))0x0040b91f;
 CARM95_HOOK_FUNCTION(original_GetOpponentsSectionStartNode, GetOpponentsSectionStartNode)
-tS16 GetOpponentsSectionStartNode(tOpponent_spec *pOpponent_spec, tS16 pSection) {
+tS16 __cdecl GetOpponentsSectionStartNode(tOpponent_spec *pOpponent_spec, tS16 pSection) {
     tS16 section_no;
     int node_index_index;
     LOG_TRACE("(%p, %d)", pOpponent_spec, pSection);
@@ -1353,9 +1365,9 @@ tS16 GetOpponentsSectionStartNode(tOpponent_spec *pOpponent_spec, tS16 pSection)
     return original_GetOpponentsSectionStartNode(pOpponent_spec, pSection);
 }
 
-static tS16(*original_GetOpponentsSectionFinishNode)(tOpponent_spec *, tS16, ...) = (tS16(*)(tOpponent_spec *, tS16, ...))0x0040b9fb;
+static tS16(__cdecl*original_GetOpponentsSectionFinishNode)(tOpponent_spec *, tS16) = (tS16(__cdecl*)(tOpponent_spec *, tS16))0x0040b9fb;
 CARM95_HOOK_FUNCTION(original_GetOpponentsSectionFinishNode, GetOpponentsSectionFinishNode)
-tS16 GetOpponentsSectionFinishNode(tOpponent_spec *pOpponent_spec, tS16 pSection) {
+tS16 __cdecl GetOpponentsSectionFinishNode(tOpponent_spec *pOpponent_spec, tS16 pSection) {
     tS16 section_no;
     int node_index_index;
     LOG_TRACE("(%p, %d)", pOpponent_spec, pSection);
@@ -1368,9 +1380,9 @@ tS16 GetOpponentsSectionFinishNode(tOpponent_spec *pOpponent_spec, tS16 pSection
     return original_GetOpponentsSectionFinishNode(pOpponent_spec, pSection);
 }
 
-static br_vector3 *(*original_GetOpponentsSectionStartNodePoint)(tOpponent_spec *, tS16, ...) = (br_vector3 *(*)(tOpponent_spec *, tS16, ...))0x0040baa1;
+static br_vector3 *(__cdecl*original_GetOpponentsSectionStartNodePoint)(tOpponent_spec *, tS16) = (br_vector3 *(__cdecl*)(tOpponent_spec *, tS16))0x0040baa1;
 CARM95_HOOK_FUNCTION(original_GetOpponentsSectionStartNodePoint, GetOpponentsSectionStartNodePoint)
-br_vector3* GetOpponentsSectionStartNodePoint(tOpponent_spec *pOpponent_spec, tS16 pSection) {
+br_vector3* __cdecl GetOpponentsSectionStartNodePoint(tOpponent_spec *pOpponent_spec, tS16 pSection) {
     tS16 section_no;
     tS16 node_no;
     int node_index_index;
@@ -1385,9 +1397,9 @@ br_vector3* GetOpponentsSectionStartNodePoint(tOpponent_spec *pOpponent_spec, tS
     return original_GetOpponentsSectionStartNodePoint(pOpponent_spec, pSection);
 }
 
-static br_vector3 *(*original_GetOpponentsSectionFinishNodePoint)(tOpponent_spec *, tS16, ...) = (br_vector3 *(*)(tOpponent_spec *, tS16, ...))0x0040bbc3;
+static br_vector3 *(__cdecl*original_GetOpponentsSectionFinishNodePoint)(tOpponent_spec *, tS16) = (br_vector3 *(__cdecl*)(tOpponent_spec *, tS16))0x0040bbc3;
 CARM95_HOOK_FUNCTION(original_GetOpponentsSectionFinishNodePoint, GetOpponentsSectionFinishNodePoint)
-br_vector3* GetOpponentsSectionFinishNodePoint(tOpponent_spec *pOpponent_spec, tS16 pSection) {
+br_vector3* __cdecl GetOpponentsSectionFinishNodePoint(tOpponent_spec *pOpponent_spec, tS16 pSection) {
     tS16 section_no;
     tS16 node_no;
     int node_index_index;
@@ -1402,9 +1414,9 @@ br_vector3* GetOpponentsSectionFinishNodePoint(tOpponent_spec *pOpponent_spec, t
     return original_GetOpponentsSectionFinishNodePoint(pOpponent_spec, pSection);
 }
 
-static br_scalar(*original_GetOpponentsSectionWidth)(tOpponent_spec *, tS16, ...) = (br_scalar(*)(tOpponent_spec *, tS16, ...))0x0040bccd;
+static br_scalar(__cdecl*original_GetOpponentsSectionWidth)(tOpponent_spec *, tS16) = (br_scalar(__cdecl*)(tOpponent_spec *, tS16))0x0040bccd;
 CARM95_HOOK_FUNCTION(original_GetOpponentsSectionWidth, GetOpponentsSectionWidth)
-br_scalar GetOpponentsSectionWidth(tOpponent_spec *pOpponent_spec, tS16 pSection) {
+br_scalar __cdecl GetOpponentsSectionWidth(tOpponent_spec *pOpponent_spec, tS16 pSection) {
     LOG_TRACE("(%p, %d)", pOpponent_spec, pSection);
 
     (void)pOpponent_spec;
@@ -1413,9 +1425,9 @@ br_scalar GetOpponentsSectionWidth(tOpponent_spec *pOpponent_spec, tS16 pSection
     return original_GetOpponentsSectionWidth(pOpponent_spec, pSection);
 }
 
-static int(*original_GetOpponentsSectionMinSpeed)(tOpponent_spec *, tS16, int, ...) = (int(*)(tOpponent_spec *, tS16, int, ...))0x0040bd7a;
+static int(__cdecl*original_GetOpponentsSectionMinSpeed)(tOpponent_spec *, tS16, int) = (int(__cdecl*)(tOpponent_spec *, tS16, int))0x0040bd7a;
 CARM95_HOOK_FUNCTION(original_GetOpponentsSectionMinSpeed, GetOpponentsSectionMinSpeed)
-int GetOpponentsSectionMinSpeed(tOpponent_spec *pOpponent_spec, tS16 pSection, int pTowards_finish) {
+int __cdecl GetOpponentsSectionMinSpeed(tOpponent_spec *pOpponent_spec, tS16 pSection, int pTowards_finish) {
     tS16 section_no;
     int direction;
     LOG_TRACE("(%p, %d, %d)", pOpponent_spec, pSection, pTowards_finish);
@@ -1429,9 +1441,9 @@ int GetOpponentsSectionMinSpeed(tOpponent_spec *pOpponent_spec, tS16 pSection, i
     return original_GetOpponentsSectionMinSpeed(pOpponent_spec, pSection, pTowards_finish);
 }
 
-static int(*original_GetOpponentsSectionMaxSpeed)(tOpponent_spec *, tS16, int, ...) = (int(*)(tOpponent_spec *, tS16, int, ...))0x0040be6e;
+static int(__cdecl*original_GetOpponentsSectionMaxSpeed)(tOpponent_spec *, tS16, int) = (int(__cdecl*)(tOpponent_spec *, tS16, int))0x0040be6e;
 CARM95_HOOK_FUNCTION(original_GetOpponentsSectionMaxSpeed, GetOpponentsSectionMaxSpeed)
-int GetOpponentsSectionMaxSpeed(tOpponent_spec *pOpponent_spec, tS16 pSection, int pTowards_finish) {
+int __cdecl GetOpponentsSectionMaxSpeed(tOpponent_spec *pOpponent_spec, tS16 pSection, int pTowards_finish) {
     tS16 section_no;
     int direction;
     LOG_TRACE("(%p, %d, %d)", pOpponent_spec, pSection, pTowards_finish);
@@ -1445,9 +1457,9 @@ int GetOpponentsSectionMaxSpeed(tOpponent_spec *pOpponent_spec, tS16 pSection, i
     return original_GetOpponentsSectionMaxSpeed(pOpponent_spec, pSection, pTowards_finish);
 }
 
-static void(*original_InitOpponentPsyche)(int, ...) = (void(*)(int, ...))0x0040bf68;
+static void(__cdecl*original_InitOpponentPsyche)(int) = (void(__cdecl*)(int))0x0040bf68;
 CARM95_HOOK_FUNCTION(original_InitOpponentPsyche, InitOpponentPsyche)
-void InitOpponentPsyche(int pOpponent_index) {
+void __cdecl InitOpponentPsyche(int pOpponent_index) {
     int i;
     LOG_TRACE("(%d)", pOpponent_index);
 
@@ -1457,9 +1469,9 @@ void InitOpponentPsyche(int pOpponent_index) {
     original_InitOpponentPsyche(pOpponent_index);
 }
 
-static void(*original_ClearTwattageOccurrenceVariables)(tOpponent_spec *, ...) = (void(*)(tOpponent_spec *, ...))0x0040bf8d;
+static void(__cdecl*original_ClearTwattageOccurrenceVariables)(tOpponent_spec *) = (void(__cdecl*)(tOpponent_spec *))0x0040bf8d;
 CARM95_HOOK_FUNCTION(original_ClearTwattageOccurrenceVariables, ClearTwattageOccurrenceVariables)
-void ClearTwattageOccurrenceVariables(tOpponent_spec *pOpponent_spec) {
+void __cdecl ClearTwattageOccurrenceVariables(tOpponent_spec *pOpponent_spec) {
     LOG_TRACE("(%p)", pOpponent_spec);
 
     (void)pOpponent_spec;
@@ -1467,9 +1479,9 @@ void ClearTwattageOccurrenceVariables(tOpponent_spec *pOpponent_spec) {
     original_ClearTwattageOccurrenceVariables(pOpponent_spec);
 }
 
-static void(*original_TwoCarsHitEachOther)(tCar_spec *, tCar_spec *, ...) = (void(*)(tCar_spec *, tCar_spec *, ...))0x0040bfdf;
+static void(__cdecl*original_TwoCarsHitEachOther)(tCar_spec *, tCar_spec *) = (void(__cdecl*)(tCar_spec *, tCar_spec *))0x0040bfdf;
 CARM95_HOOK_FUNCTION(original_TwoCarsHitEachOther, TwoCarsHitEachOther)
-void TwoCarsHitEachOther(tCar_spec *pA_car, tCar_spec *pAnother_car) {
+void __cdecl TwoCarsHitEachOther(tCar_spec *pA_car, tCar_spec *pAnother_car) {
     LOG_TRACE("(%p, %p)", pA_car, pAnother_car);
 
     (void)pA_car;
@@ -1478,9 +1490,9 @@ void TwoCarsHitEachOther(tCar_spec *pA_car, tCar_spec *pAnother_car) {
     original_TwoCarsHitEachOther(pA_car, pAnother_car);
 }
 
-static void(*original_RecordOpponentTwattageOccurrence)(tCar_spec *, tCar_spec *, ...) = (void(*)(tCar_spec *, tCar_spec *, ...))0x0040c020;
+static void(__cdecl*original_RecordOpponentTwattageOccurrence)(tCar_spec *, tCar_spec *) = (void(__cdecl*)(tCar_spec *, tCar_spec *))0x0040c020;
 CARM95_HOOK_FUNCTION(original_RecordOpponentTwattageOccurrence, RecordOpponentTwattageOccurrence)
-void RecordOpponentTwattageOccurrence(tCar_spec *pTwatter, tCar_spec *pTwattee) {
+void __cdecl RecordOpponentTwattageOccurrence(tCar_spec *pTwatter, tCar_spec *pTwattee) {
     int bangness;
     int twatter_index;
     int twattee_index;
@@ -1507,18 +1519,18 @@ void RecordOpponentTwattageOccurrence(tCar_spec *pTwatter, tCar_spec *pTwattee) 
     original_RecordOpponentTwattageOccurrence(pTwatter, pTwattee);
 }
 
-static void(*original_ToggleOpponentTest)() = (void(*)())0x0040c537;
+static void(__cdecl*original_ToggleOpponentTest)() = (void(__cdecl*)())0x0040c537;
 CARM95_HOOK_FUNCTION(original_ToggleOpponentTest, ToggleOpponentTest)
-void ToggleOpponentTest() {
+void __cdecl ToggleOpponentTest() {
     LOG_TRACE("()");
 
 
     original_ToggleOpponentTest();
 }
 
-static void(*original_ToggleOpponentProcessing)() = (void(*)())0x0040c568;
+static void(__cdecl*original_ToggleOpponentProcessing)() = (void(__cdecl*)())0x0040c568;
 CARM95_HOOK_FUNCTION(original_ToggleOpponentProcessing, ToggleOpponentProcessing)
-void ToggleOpponentProcessing() {
+void __cdecl ToggleOpponentProcessing() {
     int i;
     LOG_TRACE("()");
 
@@ -1527,9 +1539,9 @@ void ToggleOpponentProcessing() {
     original_ToggleOpponentProcessing();
 }
 
-static void(*original_ToggleMellowOpponents)() = (void(*)())0x0040c6dd;
+static void(__cdecl*original_ToggleMellowOpponents)() = (void(__cdecl*)())0x0040c6dd;
 CARM95_HOOK_FUNCTION(original_ToggleMellowOpponents, ToggleMellowOpponents)
-void ToggleMellowOpponents() {
+void __cdecl ToggleMellowOpponents() {
     int i;
     LOG_TRACE("()");
 
@@ -1538,9 +1550,9 @@ void ToggleMellowOpponents() {
     original_ToggleMellowOpponents();
 }
 
-static void(*original_RepairOpponentsSystems)() = (void(*)())0x0040c795;
+static void(__cdecl*original_RepairOpponentsSystems)() = (void(__cdecl*)())0x0040c795;
 CARM95_HOOK_FUNCTION(original_RepairOpponentsSystems, RepairOpponentsSystems)
-void RepairOpponentsSystems() {
+void __cdecl RepairOpponentsSystems() {
     int i;
     LOG_TRACE("()");
 
@@ -1549,9 +1561,9 @@ void RepairOpponentsSystems() {
     original_RepairOpponentsSystems();
 }
 
-static void(*original_CopyVertex__opponent)(br_vertex *, br_vertex *, ...) = (void(*)(br_vertex *, br_vertex *, ...))0x0040e205;
+static void(__cdecl*original_CopyVertex__opponent)(br_vertex *, br_vertex *) = (void(__cdecl*)(br_vertex *, br_vertex *))0x0040e205;
 CARM95_HOOK_FUNCTION(original_CopyVertex__opponent, CopyVertex__opponent)
-void CopyVertex__opponent(br_vertex *pDest_vertex, br_vertex *pSrc_vertex) {
+void __cdecl CopyVertex__opponent(br_vertex *pDest_vertex, br_vertex *pSrc_vertex) {
     LOG_TRACE("(%p, %p)", pDest_vertex, pSrc_vertex);
 
     (void)pDest_vertex;
@@ -1560,9 +1572,9 @@ void CopyVertex__opponent(br_vertex *pDest_vertex, br_vertex *pSrc_vertex) {
     original_CopyVertex__opponent(pDest_vertex, pSrc_vertex);
 }
 
-static void(*original_CopyFace__opponent)(br_face *, br_face *, ...) = (void(*)(br_face *, br_face *, ...))0x0040e27a;
+static void(__cdecl*original_CopyFace__opponent)(br_face *, br_face *) = (void(__cdecl*)(br_face *, br_face *))0x0040e27a;
 CARM95_HOOK_FUNCTION(original_CopyFace__opponent, CopyFace__opponent)
-void CopyFace__opponent(br_face *pDest_face, br_face *pSrc_face) {
+void __cdecl CopyFace__opponent(br_face *pDest_face, br_face *pSrc_face) {
     LOG_TRACE("(%p, %p)", pDest_face, pSrc_face);
 
     (void)pDest_face;
@@ -1571,9 +1583,9 @@ void CopyFace__opponent(br_face *pDest_face, br_face *pSrc_face) {
     original_CopyFace__opponent(pDest_face, pSrc_face);
 }
 
-static void(*original_DeleteSection)(tS16, ...) = (void(*)(tS16, ...))0x0040c868;
+static void(__cdecl*original_DeleteSection)(tS16) = (void(__cdecl*)(tS16))0x0040c868;
 CARM95_HOOK_FUNCTION(original_DeleteSection, DeleteSection)
-void DeleteSection(tS16 pSection_to_delete) {
+void __cdecl DeleteSection(tS16 pSection_to_delete) {
     tS16 section_no;
     tS16 section_no_index;
     tS16 node_no;
@@ -1591,9 +1603,9 @@ void DeleteSection(tS16 pSection_to_delete) {
     original_DeleteSection(pSection_to_delete);
 }
 
-static void(*original_DeleteNode)(tS16, int, ...) = (void(*)(tS16, int, ...))0x0040caf4;
+static void(__cdecl*original_DeleteNode)(tS16, int) = (void(__cdecl*)(tS16, int))0x0040caf4;
 CARM95_HOOK_FUNCTION(original_DeleteNode, DeleteNode)
-void DeleteNode(tS16 pNode_to_delete, int pAnd_sections) {
+void __cdecl DeleteNode(tS16 pNode_to_delete, int pAnd_sections) {
     tS16 node_no;
     tS16 section_no;
     tS16 section1;
@@ -1610,9 +1622,9 @@ void DeleteNode(tS16 pNode_to_delete, int pAnd_sections) {
     original_DeleteNode(pNode_to_delete, pAnd_sections);
 }
 
-static void(*original_DeleteOrphanNodes)() = (void(*)())0x0040ca84;
+static void(__cdecl*original_DeleteOrphanNodes)() = (void(__cdecl*)())0x0040ca84;
 CARM95_HOOK_FUNCTION(original_DeleteOrphanNodes, DeleteOrphanNodes)
-void DeleteOrphanNodes() {
+void __cdecl DeleteOrphanNodes() {
     tS16 node_no;
     LOG_TRACE("()");
 
@@ -1621,9 +1633,9 @@ void DeleteOrphanNodes() {
     original_DeleteOrphanNodes();
 }
 
-static void(*original_InsertThisNodeInThisSectionHere)(tS16, tS16, br_vector3 *, ...) = (void(*)(tS16, tS16, br_vector3 *, ...))0x0040fb06;
+static void(__cdecl*original_InsertThisNodeInThisSectionHere)(tS16, tS16, br_vector3 *) = (void(__cdecl*)(tS16, tS16, br_vector3 *))0x0040fb06;
 CARM95_HOOK_FUNCTION(original_InsertThisNodeInThisSectionHere, InsertThisNodeInThisSectionHere)
-void InsertThisNodeInThisSectionHere(tS16 pInserted_node, tS16 pSection_no, br_vector3 *pWhere) {
+void __cdecl InsertThisNodeInThisSectionHere(tS16 pInserted_node, tS16 pSection_no, br_vector3 *pWhere) {
     tS16 new_section;
     tS16 section_no_index;
     tS16 node1;
@@ -1643,18 +1655,18 @@ void InsertThisNodeInThisSectionHere(tS16 pInserted_node, tS16 pSection_no, br_v
     original_InsertThisNodeInThisSectionHere(pInserted_node, pSection_no, pWhere);
 }
 
-static void(*original_TrackElasticateyPath)() = (void(*)())0x0040ce66;
+static void(__cdecl*original_TrackElasticateyPath)() = (void(__cdecl*)())0x0040ce66;
 CARM95_HOOK_FUNCTION(original_TrackElasticateyPath, TrackElasticateyPath)
-void TrackElasticateyPath() {
+void __cdecl TrackElasticateyPath() {
     LOG_TRACE("()");
 
 
     original_TrackElasticateyPath();
 }
 
-static void(*original_RecalcNearestPathSectionSpeed)(int, int, ...) = (void(*)(int, int, ...))0x004105c6;
+static void(__cdecl*original_RecalcNearestPathSectionSpeed)(int, int) = (void(__cdecl*)(int, int))0x004105c6;
 CARM95_HOOK_FUNCTION(original_RecalcNearestPathSectionSpeed, RecalcNearestPathSectionSpeed)
-void RecalcNearestPathSectionSpeed(int pMax_not_min, int pAdjustment) {
+void __cdecl RecalcNearestPathSectionSpeed(int pMax_not_min, int pAdjustment) {
     tS16 section_no;
     br_vector3 direction_v;
     br_vector3 intersect;
@@ -1683,9 +1695,9 @@ void RecalcNearestPathSectionSpeed(int pMax_not_min, int pAdjustment) {
     original_RecalcNearestPathSectionSpeed(pMax_not_min, pAdjustment);
 }
 
-static void(*original_RecalcNearestPathSectionWidth)(br_scalar, ...) = (void(*)(br_scalar, ...))0x004103ef;
+static void(__cdecl*original_RecalcNearestPathSectionWidth)(br_scalar) = (void(__cdecl*)(br_scalar))0x004103ef;
 CARM95_HOOK_FUNCTION(original_RecalcNearestPathSectionWidth, RecalcNearestPathSectionWidth)
-void RecalcNearestPathSectionWidth(br_scalar pAdjustment) {
+void __cdecl RecalcNearestPathSectionWidth(br_scalar pAdjustment) {
     tS16 section_no;
     br_vector3 direction_v;
     br_vector3 intersect;
@@ -1703,9 +1715,9 @@ void RecalcNearestPathSectionWidth(br_scalar pAdjustment) {
     original_RecalcNearestPathSectionWidth(pAdjustment);
 }
 
-static void(*original_CalcNegativeXVector)(br_vector3 *, br_vector3 *, br_vector3 *, br_scalar, ...) = (void(*)(br_vector3 *, br_vector3 *, br_vector3 *, br_scalar, ...))0x0040cf4e;
+static void(__cdecl*original_CalcNegativeXVector)(br_vector3 *, br_vector3 *, br_vector3 *, br_scalar) = (void(__cdecl*)(br_vector3 *, br_vector3 *, br_vector3 *, br_scalar))0x0040cf4e;
 CARM95_HOOK_FUNCTION(original_CalcNegativeXVector, CalcNegativeXVector)
-void CalcNegativeXVector(br_vector3 *pNegative_x_vector, br_vector3 *pStart, br_vector3 *pFinish, br_scalar pLength) {
+void __cdecl CalcNegativeXVector(br_vector3 *pNegative_x_vector, br_vector3 *pStart, br_vector3 *pFinish, br_scalar pLength) {
     br_vector3 positive_y_vector;
     br_vector3 path_vector;
     br_scalar __block0___scale;
@@ -1717,13 +1729,14 @@ void CalcNegativeXVector(br_vector3 *pNegative_x_vector, br_vector3 *pStart, br_
     (void)pLength;
     (void)positive_y_vector;
     (void)path_vector;
+    (void)__block0___scale;
 
     original_CalcNegativeXVector(pNegative_x_vector, pStart, pFinish, pLength);
 }
 
-static void(*original_MakeVertexAndOffsetIt)(br_model *, int, br_scalar, br_scalar, br_scalar, br_vector3 *, ...) = (void(*)(br_model *, int, br_scalar, br_scalar, br_scalar, br_vector3 *, ...))0x0040d9d3;
+static void(__cdecl*original_MakeVertexAndOffsetIt)(br_model *, int, br_scalar, br_scalar, br_scalar, br_vector3 *) = (void(__cdecl*)(br_model *, int, br_scalar, br_scalar, br_scalar, br_vector3 *))0x0040d9d3;
 CARM95_HOOK_FUNCTION(original_MakeVertexAndOffsetIt, MakeVertexAndOffsetIt)
-void MakeVertexAndOffsetIt(br_model *pModel, int pVertex_num, br_scalar pX, br_scalar pY, br_scalar pZ, br_vector3 *pOffset) {
+void __cdecl MakeVertexAndOffsetIt(br_model *pModel, int pVertex_num, br_scalar pX, br_scalar pY, br_scalar pZ, br_vector3 *pOffset) {
     LOG_TRACE("(%p, %d, %f, %f, %f, %p)", pModel, pVertex_num, pX, pY, pZ, pOffset);
 
     (void)pModel;
@@ -1736,9 +1749,9 @@ void MakeVertexAndOffsetIt(br_model *pModel, int pVertex_num, br_scalar pX, br_s
     original_MakeVertexAndOffsetIt(pModel, pVertex_num, pX, pY, pZ, pOffset);
 }
 
-static void(*original_MakeFaceAndTextureIt)(br_model *, int, int, int, int, br_material *, ...) = (void(*)(br_model *, int, int, int, int, br_material *, ...))0x0040da85;
+static void(__cdecl*original_MakeFaceAndTextureIt)(br_model *, int, int, int, int, br_material *) = (void(__cdecl*)(br_model *, int, int, int, int, br_material *))0x0040da85;
 CARM95_HOOK_FUNCTION(original_MakeFaceAndTextureIt, MakeFaceAndTextureIt)
-void MakeFaceAndTextureIt(br_model *pModel, int pFace_num, int pV0, int pV1, int pV2, br_material *pMaterial) {
+void __cdecl MakeFaceAndTextureIt(br_model *pModel, int pFace_num, int pV0, int pV1, int pV2, br_material *pMaterial) {
     LOG_TRACE("(%p, %d, %d, %d, %d, %p)", pModel, pFace_num, pV0, pV1, pV2, pMaterial);
 
     (void)pModel;
@@ -1751,9 +1764,9 @@ void MakeFaceAndTextureIt(br_model *pModel, int pFace_num, int pV0, int pV1, int
     original_MakeFaceAndTextureIt(pModel, pFace_num, pV0, pV1, pV2, pMaterial);
 }
 
-static void(*original_MakeSection)(br_uint_16, br_uint_16, br_vector3 *, br_vector3 *, br_scalar, br_material *, br_material *, br_material *, br_material *, br_material *, br_material *, ...) = (void(*)(br_uint_16, br_uint_16, br_vector3 *, br_vector3 *, br_scalar, br_material *, br_material *, br_material *, br_material *, br_material *, br_material *, ...))0x0040d59f;
+static void(__cdecl*original_MakeSection)(br_uint_16, br_uint_16, br_vector3 *, br_vector3 *, br_scalar, br_material *, br_material *, br_material *, br_material *, br_material *, br_material *) = (void(__cdecl*)(br_uint_16, br_uint_16, br_vector3 *, br_vector3 *, br_scalar, br_material *, br_material *, br_material *, br_material *, br_material *, br_material *))0x0040d59f;
 CARM95_HOOK_FUNCTION(original_MakeSection, MakeSection)
-void MakeSection(br_uint_16 pFirst_vertex, br_uint_16 pFirst_face, br_vector3 *pStart, br_vector3 *pFinish, br_scalar pWidth, br_material *pMaterial_centre_lt, br_material *pMaterial_centre_dk, br_material *pMaterial_edges_start_lt, br_material *pMaterial_edges_start_dk, br_material *pMaterial_edges_finish_lt, br_material *pMaterial_edges_finish_dk) {
+void __cdecl MakeSection(br_uint_16 pFirst_vertex, br_uint_16 pFirst_face, br_vector3 *pStart, br_vector3 *pFinish, br_scalar pWidth, br_material *pMaterial_centre_lt, br_material *pMaterial_centre_dk, br_material *pMaterial_edges_start_lt, br_material *pMaterial_edges_start_dk, br_material *pMaterial_edges_finish_lt, br_material *pMaterial_edges_finish_dk) {
     int i;
     br_vector3 offset_v;
     br_vector3 centre_length_v;
@@ -1787,9 +1800,9 @@ void MakeSection(br_uint_16 pFirst_vertex, br_uint_16 pFirst_face, br_vector3 *p
     original_MakeSection(pFirst_vertex, pFirst_face, pStart, pFinish, pWidth, pMaterial_centre_lt, pMaterial_centre_dk, pMaterial_edges_start_lt, pMaterial_edges_start_dk, pMaterial_edges_finish_lt, pMaterial_edges_finish_dk);
 }
 
-static void(*original_MakeCube)(br_uint_16, br_uint_16, br_vector3 *, br_material *, br_material *, br_material *, ...) = (void(*)(br_uint_16, br_uint_16, br_vector3 *, br_material *, br_material *, br_material *, ...))0x0040daf1;
+static void(__cdecl*original_MakeCube)(br_uint_16, br_uint_16, br_vector3 *, br_material *, br_material *, br_material *) = (void(__cdecl*)(br_uint_16, br_uint_16, br_vector3 *, br_material *, br_material *, br_material *))0x0040daf1;
 CARM95_HOOK_FUNCTION(original_MakeCube, MakeCube)
-void MakeCube(br_uint_16 pFirst_vertex, br_uint_16 pFirst_face, br_vector3 *pPoint, br_material *pMaterial_1, br_material *pMaterial_2, br_material *pMaterial_3) {
+void __cdecl MakeCube(br_uint_16 pFirst_vertex, br_uint_16 pFirst_face, br_vector3 *pPoint, br_material *pMaterial_1, br_material *pMaterial_2, br_material *pMaterial_3) {
     br_vector3 offset_v;
     br_vector3 point;
     LOG_TRACE("(%u, %u, %p, %p, %p, %p)", pFirst_vertex, pFirst_face, pPoint, pMaterial_1, pMaterial_2, pMaterial_3);
@@ -1806,9 +1819,9 @@ void MakeCube(br_uint_16 pFirst_vertex, br_uint_16 pFirst_face, br_vector3 *pPoi
     original_MakeCube(pFirst_vertex, pFirst_face, pPoint, pMaterial_1, pMaterial_2, pMaterial_3);
 }
 
-static void(*original_CalcNumberOfFacesAndVerticesForOppoPathModel)(br_uint_16 *, br_uint_16 *, ...) = (void(*)(br_uint_16 *, br_uint_16 *, ...))0x0040e016;
+static void(__cdecl*original_CalcNumberOfFacesAndVerticesForOppoPathModel)(br_uint_16 *, br_uint_16 *) = (void(__cdecl*)(br_uint_16 *, br_uint_16 *))0x0040e016;
 CARM95_HOOK_FUNCTION(original_CalcNumberOfFacesAndVerticesForOppoPathModel, CalcNumberOfFacesAndVerticesForOppoPathModel)
-void CalcNumberOfFacesAndVerticesForOppoPathModel(br_uint_16 *pFace_index_ptr, br_uint_16 *pVertex_index_ptr) {
+void __cdecl CalcNumberOfFacesAndVerticesForOppoPathModel(br_uint_16 *pFace_index_ptr, br_uint_16 *pVertex_index_ptr) {
     LOG_TRACE("(%p, %p)", pFace_index_ptr, pVertex_index_ptr);
 
     (void)pFace_index_ptr;
@@ -1817,9 +1830,9 @@ void CalcNumberOfFacesAndVerticesForOppoPathModel(br_uint_16 *pFace_index_ptr, b
     original_CalcNumberOfFacesAndVerticesForOppoPathModel(pFace_index_ptr, pVertex_index_ptr);
 }
 
-static void(*original_ReallocModelFacesAndVertices)(br_model *, int, int, ...) = (void(*)(br_model *, int, int, ...))0x0040e057;
+static void(__cdecl*original_ReallocModelFacesAndVertices)(br_model *, int, int) = (void(__cdecl*)(br_model *, int, int))0x0040e057;
 CARM95_HOOK_FUNCTION(original_ReallocModelFacesAndVertices, ReallocModelFacesAndVertices)
-void ReallocModelFacesAndVertices(br_model *pModel, int pNum_faces, int pNum_vertices) {
+void __cdecl ReallocModelFacesAndVertices(br_model *pModel, int pNum_faces, int pNum_vertices) {
     br_vertex *new_vertices;
     br_face *new_faces;
     int i;
@@ -1835,9 +1848,9 @@ void ReallocModelFacesAndVertices(br_model *pModel, int pNum_faces, int pNum_ver
     original_ReallocModelFacesAndVertices(pModel, pNum_faces, pNum_vertices);
 }
 
-static br_material *(*original_CreateSimpleMaterial)(int, ...) = (br_material *(*)(int, ...))0x0040e3cf;
+static br_material *(__cdecl*original_CreateSimpleMaterial)(int) = (br_material *(__cdecl*)(int))0x0040e3cf;
 CARM95_HOOK_FUNCTION(original_CreateSimpleMaterial, CreateSimpleMaterial)
-br_material* CreateSimpleMaterial(int pColour_index) {
+br_material* __cdecl CreateSimpleMaterial(int pColour_index) {
     br_material *return_me;
     LOG_TRACE("(%d)", pColour_index);
 
@@ -1847,18 +1860,18 @@ br_material* CreateSimpleMaterial(int pColour_index) {
     return original_CreateSimpleMaterial(pColour_index);
 }
 
-static void(*original_AllocateMatsForOppoPathModel)() = (void(*)())0x0040e2d3;
+static void(__cdecl*original_AllocateMatsForOppoPathModel)() = (void(__cdecl*)())0x0040e2d3;
 CARM95_HOOK_FUNCTION(original_AllocateMatsForOppoPathModel, AllocateMatsForOppoPathModel)
-void AllocateMatsForOppoPathModel() {
+void __cdecl AllocateMatsForOppoPathModel() {
     LOG_TRACE("()");
 
 
     original_AllocateMatsForOppoPathModel();
 }
 
-static void(*original_RebuildOppoPathModel)() = (void(*)())0x0040d097;
+static void(__cdecl*original_RebuildOppoPathModel)() = (void(__cdecl*)())0x0040d097;
 CARM95_HOOK_FUNCTION(original_RebuildOppoPathModel, RebuildOppoPathModel)
-void RebuildOppoPathModel() {
+void __cdecl RebuildOppoPathModel() {
     static int nvertices_last_time;
     static int nfaces_last_time;
     int i;
@@ -1893,9 +1906,9 @@ void RebuildOppoPathModel() {
     original_RebuildOppoPathModel();
 }
 
-static int(*original_ConsistencyCheck)() = (int(*)())0x0040e436;
+static int(__cdecl*original_ConsistencyCheck)() = (int(__cdecl*)())0x0040e436;
 CARM95_HOOK_FUNCTION(original_ConsistencyCheck, ConsistencyCheck)
-int ConsistencyCheck() {
+int __cdecl ConsistencyCheck() {
     tS16 node_no;
     tS16 section_no;
     tS16 start_node;
@@ -1922,9 +1935,9 @@ int ConsistencyCheck() {
     return original_ConsistencyCheck();
 }
 
-static void(*original_ShowOppoPaths)() = (void(*)())0x0040ed8e;
+static void(__cdecl*original_ShowOppoPaths)() = (void(__cdecl*)())0x0040ed8e;
 CARM95_HOOK_FUNCTION(original_ShowOppoPaths, ShowOppoPaths)
-void ShowOppoPaths() {
+void __cdecl ShowOppoPaths() {
     char str[256];
     LOG_TRACE("()");
 
@@ -1933,9 +1946,9 @@ void ShowOppoPaths() {
     original_ShowOppoPaths();
 }
 
-static void(*original_WriteOutOppoPaths)() = (void(*)())0x0040e9d4;
+static void(__cdecl*original_WriteOutOppoPaths)() = (void(__cdecl*)())0x0040e9d4;
 CARM95_HOOK_FUNCTION(original_WriteOutOppoPaths, WriteOutOppoPaths)
-void WriteOutOppoPaths() {
+void __cdecl WriteOutOppoPaths() {
     char the_path[256];
     char str[13];
     FILE *f;
@@ -1950,9 +1963,9 @@ void WriteOutOppoPaths() {
     original_WriteOutOppoPaths();
 }
 
-static int(*original_NewNodeOKHere)() = (int(*)())0x0040f42b;
+static int(__cdecl*original_NewNodeOKHere)() = (int(__cdecl*)())0x0040f42b;
 CARM95_HOOK_FUNCTION(original_NewNodeOKHere, NewNodeOKHere)
-int NewNodeOKHere() {
+int __cdecl NewNodeOKHere() {
     br_vector3 last_node_to_this;
     LOG_TRACE("()");
 
@@ -1961,9 +1974,9 @@ int NewNodeOKHere() {
     return original_NewNodeOKHere();
 }
 
-static void(*original_ShowHideOppoPaths)() = (void(*)())0x0040ed4b;
+static void(__cdecl*original_ShowHideOppoPaths)() = (void(__cdecl*)())0x0040ed4b;
 CARM95_HOOK_FUNCTION(original_ShowHideOppoPaths, ShowHideOppoPaths)
-void ShowHideOppoPaths() {
+void __cdecl ShowHideOppoPaths() {
     LOG_TRACE("()");
 
 
@@ -2071,63 +2084,63 @@ void DropNodeOnNodeAndStopElasticating() {
     NOT_IMPLEMENTED();
 }
 
-static void(*original_WidenOppoPathSection)() = (void(*)())0x004103c5;
+static void(__cdecl*original_WidenOppoPathSection)() = (void(__cdecl*)())0x004103c5;
 CARM95_HOOK_FUNCTION(original_WidenOppoPathSection, WidenOppoPathSection)
-void WidenOppoPathSection() {
+void __cdecl WidenOppoPathSection() {
     LOG_TRACE("()");
 
 
     original_WidenOppoPathSection();
 }
 
-static void(*original_NarrowOppoPathSection)() = (void(*)())0x00410573;
+static void(__cdecl*original_NarrowOppoPathSection)() = (void(__cdecl*)())0x00410573;
 CARM95_HOOK_FUNCTION(original_NarrowOppoPathSection, NarrowOppoPathSection)
-void NarrowOppoPathSection() {
+void __cdecl NarrowOppoPathSection() {
     LOG_TRACE("()");
 
 
     original_NarrowOppoPathSection();
 }
 
-static void(*original_IncreaseSectionMinSpeed)() = (void(*)())0x0041059d;
+static void(__cdecl*original_IncreaseSectionMinSpeed)() = (void(__cdecl*)())0x0041059d;
 CARM95_HOOK_FUNCTION(original_IncreaseSectionMinSpeed, IncreaseSectionMinSpeed)
-void IncreaseSectionMinSpeed() {
+void __cdecl IncreaseSectionMinSpeed() {
     LOG_TRACE("()");
 
 
     original_IncreaseSectionMinSpeed();
 }
 
-static void(*original_DecreaseSectionMinSpeed)() = (void(*)())0x00410a7f;
+static void(__cdecl*original_DecreaseSectionMinSpeed)() = (void(__cdecl*)())0x00410a7f;
 CARM95_HOOK_FUNCTION(original_DecreaseSectionMinSpeed, DecreaseSectionMinSpeed)
-void DecreaseSectionMinSpeed() {
+void __cdecl DecreaseSectionMinSpeed() {
     LOG_TRACE("()");
 
 
     original_DecreaseSectionMinSpeed();
 }
 
-static void(*original_IncreaseSectionMaxSpeed)() = (void(*)())0x00410aa8;
+static void(__fastcall*original_IncreaseSectionMaxSpeed)() = (void(__fastcall*)())0x00410aa8;
 CARM95_HOOK_FUNCTION(original_IncreaseSectionMaxSpeed, IncreaseSectionMaxSpeed)
-void IncreaseSectionMaxSpeed() {
+void __fastcall IncreaseSectionMaxSpeed() {
     LOG_TRACE("()");
 
 
     original_IncreaseSectionMaxSpeed();
 }
 
-static void(*original_DecreaseSectionMaxSpeed)() = (void(*)())0x00410ad1;
+static void(__fastcall*original_DecreaseSectionMaxSpeed)() = (void(__fastcall*)())0x00410ad1;
 CARM95_HOOK_FUNCTION(original_DecreaseSectionMaxSpeed, DecreaseSectionMaxSpeed)
-void DecreaseSectionMaxSpeed() {
+void __fastcall DecreaseSectionMaxSpeed() {
     LOG_TRACE("()");
 
 
     original_DecreaseSectionMaxSpeed();
 }
 
-static void(*original_PullOppoPoint)() = (void(*)())0x00410afa;
+static void(__cdecl*original_PullOppoPoint)() = (void(__cdecl*)())0x00410afa;
 CARM95_HOOK_FUNCTION(original_PullOppoPoint, PullOppoPoint)
-void PullOppoPoint() {
+void __cdecl PullOppoPoint() {
     tS16 node_no;
     br_scalar distance;
     LOG_TRACE("()");
@@ -2138,9 +2151,9 @@ void PullOppoPoint() {
     original_PullOppoPoint();
 }
 
-static void(*original_ShowNodeInfo)() = (void(*)())0x00410bfa;
+static void(__cdecl*original_ShowNodeInfo)() = (void(__cdecl*)())0x00410bfa;
 CARM95_HOOK_FUNCTION(original_ShowNodeInfo, ShowNodeInfo)
-void ShowNodeInfo() {
+void __cdecl ShowNodeInfo() {
     tS16 node_no;
     char str[256];
     br_scalar distance;
@@ -2153,9 +2166,9 @@ void ShowNodeInfo() {
     original_ShowNodeInfo();
 }
 
-static void(*original_ShowSectionInfo1)() = (void(*)())0x00410d28;
+static void(__fastcall*original_ShowSectionInfo1)() = (void(__fastcall*)())0x00410d28;
 CARM95_HOOK_FUNCTION(original_ShowSectionInfo1, ShowSectionInfo1)
-void ShowSectionInfo1() {
+void __fastcall ShowSectionInfo1() {
     tS16 section_no;
     char str[256];
     br_scalar distance;
@@ -2172,9 +2185,9 @@ void ShowSectionInfo1() {
     original_ShowSectionInfo1();
 }
 
-static void(*original_ShowSectionInfo2)() = (void(*)())0x00410e9b;
+static void(__fastcall*original_ShowSectionInfo2)() = (void(__fastcall*)())0x00410e9b;
 CARM95_HOOK_FUNCTION(original_ShowSectionInfo2, ShowSectionInfo2)
-void ShowSectionInfo2() {
+void __fastcall ShowSectionInfo2() {
     tS16 section_no;
     char str[256];
     br_scalar distance;
@@ -2206,9 +2219,9 @@ void DeleteOppoPathSection() {
     NOT_IMPLEMENTED();
 }
 
-static void(*original_DeleteOppoPathNodeAndSections)() = (void(*)())0x00411124;
+static void(__fastcall*original_DeleteOppoPathNodeAndSections)() = (void(__fastcall*)())0x00411124;
 CARM95_HOOK_FUNCTION(original_DeleteOppoPathNodeAndSections, DeleteOppoPathNodeAndSections)
-void DeleteOppoPathNodeAndSections() {
+void __fastcall DeleteOppoPathNodeAndSections() {
     br_scalar distance;
     tS16 node_no;
     LOG_TRACE("()");
@@ -2219,9 +2232,9 @@ void DeleteOppoPathNodeAndSections() {
     original_DeleteOppoPathNodeAndSections();
 }
 
-static void(*original_DeleteOppoPathNodeAndJoin)() = (void(*)())0x004112e2;
+static void(__cdecl*original_DeleteOppoPathNodeAndJoin)() = (void(__cdecl*)())0x004112e2;
 CARM95_HOOK_FUNCTION(original_DeleteOppoPathNodeAndJoin, DeleteOppoPathNodeAndJoin)
-void DeleteOppoPathNodeAndJoin() {
+void __cdecl DeleteOppoPathNodeAndJoin() {
     br_scalar distance;
     tS16 node_no;
     LOG_TRACE("()");
@@ -2232,9 +2245,9 @@ void DeleteOppoPathNodeAndJoin() {
     original_DeleteOppoPathNodeAndJoin();
 }
 
-static void(*original_ReverseSectionDirection)() = (void(*)())0x004114dd;
+static void(__fastcall*original_ReverseSectionDirection)() = (void(__fastcall*)())0x004114dd;
 CARM95_HOOK_FUNCTION(original_ReverseSectionDirection, ReverseSectionDirection)
-void ReverseSectionDirection() {
+void __fastcall ReverseSectionDirection() {
     tS16 temp;
     tU8 speed_temp;
     br_scalar distance;
@@ -2253,9 +2266,9 @@ void ReverseSectionDirection() {
     original_ReverseSectionDirection();
 }
 
-static void(*original_CycleSectionType)() = (void(*)())0x0041169c;
+static void(__fastcall*original_CycleSectionType)() = (void(__fastcall*)())0x0041169c;
 CARM95_HOOK_FUNCTION(original_CycleSectionType, CycleSectionType)
-void CycleSectionType() {
+void __fastcall CycleSectionType() {
     br_scalar distance;
     br_vector3 intersect;
     br_vector3 direction_v;
@@ -2272,9 +2285,9 @@ void CycleSectionType() {
     original_CycleSectionType();
 }
 
-static void(*original_ToggleOneWayNess)() = (void(*)())0x004117ee;
+static void(__fastcall*original_ToggleOneWayNess)() = (void(__fastcall*)())0x004117ee;
 CARM95_HOOK_FUNCTION(original_ToggleOneWayNess, ToggleOneWayNess)
-void ToggleOneWayNess() {
+void __fastcall ToggleOneWayNess() {
     br_scalar distance;
     br_vector3 intersect;
     br_vector3 direction_v;
@@ -2289,9 +2302,9 @@ void ToggleOneWayNess() {
     original_ToggleOneWayNess();
 }
 
-static void(*original_CopStartPointInfo)() = (void(*)())0x00411947;
+static void(__fastcall*original_CopStartPointInfo)() = (void(__fastcall*)())0x00411947;
 CARM95_HOOK_FUNCTION(original_CopStartPointInfo, CopStartPointInfo)
-void CopStartPointInfo() {
+void __fastcall CopStartPointInfo() {
     char str[256];
     int i;
     int closest;
@@ -2310,9 +2323,9 @@ void CopStartPointInfo() {
     original_CopStartPointInfo();
 }
 
-static void(*original_DropCopStartPoint)() = (void(*)())0x00411ae8;
+static void(__cdecl*original_DropCopStartPoint)() = (void(__cdecl*)())0x00411ae8;
 CARM95_HOOK_FUNCTION(original_DropCopStartPoint, DropCopStartPoint)
-void DropCopStartPoint() {
+void __cdecl DropCopStartPoint() {
     char str[256];
     LOG_TRACE("()");
 
@@ -2321,9 +2334,9 @@ void DropCopStartPoint() {
     original_DropCopStartPoint();
 }
 
-static void(*original_DeleteCopStartPoint)() = (void(*)())0x00411c18;
+static void(__fastcall*original_DeleteCopStartPoint)() = (void(__fastcall*)())0x00411c18;
 CARM95_HOOK_FUNCTION(original_DeleteCopStartPoint, DeleteCopStartPoint)
-void DeleteCopStartPoint() {
+void __fastcall DeleteCopStartPoint() {
     char str[256];
     int i;
     int closest;
@@ -2342,9 +2355,9 @@ void DeleteCopStartPoint() {
     original_DeleteCopStartPoint();
 }
 
-static void(*original_CycleCopStartPointType)() = (void(*)())0x00411e7f;
+static void(__cdecl*original_CycleCopStartPointType)() = (void(__cdecl*)())0x00411e7f;
 CARM95_HOOK_FUNCTION(original_CycleCopStartPointType, CycleCopStartPointType)
-void CycleCopStartPointType() {
+void __cdecl CycleCopStartPointType() {
     LOG_TRACE("()");
 
 

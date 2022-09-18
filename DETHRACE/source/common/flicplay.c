@@ -4,7 +4,6 @@
 
 #include "carm95_hooks.h"
 
-#include <stdio.h>
 int * hookvar_gPalette_allocate_count  = (void*)0x00514fa0;
 int * hookvar_gPalette_fuck_prevention  = (void*)0x00514fa4;
 int * hookvar_gDark_mode  = (void*)0x00514fa8;
@@ -44,27 +43,27 @@ br_pixelmap ** hookvar_gPalette  = (void*)0x0053d0c8;
 void ** hookvar_gPalette_pixels  = (void*)0x0053d068;
 tFlic_descriptor ** hookvar_gFirst_flic  = (void*)0x0053d0ac;
 
-static void(*original_EnableTranslationText)() = (void(*)())0x00495990;
+static void(__cdecl*original_EnableTranslationText)() = (void(__cdecl*)())0x00495990;
 CARM95_HOOK_FUNCTION(original_EnableTranslationText, EnableTranslationText)
-void EnableTranslationText() {
+void __cdecl EnableTranslationText() {
     LOG_TRACE("()");
 
 
     original_EnableTranslationText();
 }
 
-static void(*original_DisableTranslationText)() = (void(*)())0x004959a5;
+static void(__cdecl*original_DisableTranslationText)() = (void(__cdecl*)())0x004959a5;
 CARM95_HOOK_FUNCTION(original_DisableTranslationText, DisableTranslationText)
-void DisableTranslationText() {
+void __cdecl DisableTranslationText() {
     LOG_TRACE("()");
 
 
     original_DisableTranslationText();
 }
 
-static void(*original_SetFlicSound)(int, tU32, ...) = (void(*)(int, tU32, ...))0x004959ba;
+static void(__cdecl*original_SetFlicSound)(int, tU32) = (void(__cdecl*)(int, tU32))0x004959ba;
 CARM95_HOOK_FUNCTION(original_SetFlicSound, SetFlicSound)
-void SetFlicSound(int pSound_ID, tU32 pSound_time) {
+void __cdecl SetFlicSound(int pSound_ID, tU32 pSound_time) {
     LOG_TRACE("(%d, %u)", pSound_ID, pSound_time);
 
     (void)pSound_ID;
@@ -73,117 +72,117 @@ void SetFlicSound(int pSound_ID, tU32 pSound_time) {
     original_SetFlicSound(pSound_ID, pSound_time);
 }
 
-static int(*original_TranslationMode)() = (int(*)())0x004959d5;
+static int(__cdecl*original_TranslationMode)() = (int(__cdecl*)())0x004959d5;
 CARM95_HOOK_FUNCTION(original_TranslationMode, TranslationMode)
-int TranslationMode() {
+int __cdecl TranslationMode() {
     LOG_TRACE("()");
 
 
     return original_TranslationMode();
 }
 
-static void(*original_DontLetFlicFuckWithPalettes)() = (void(*)())0x004959ea;
+static void(__cdecl*original_DontLetFlicFuckWithPalettes)() = (void(__cdecl*)())0x004959ea;
 CARM95_HOOK_FUNCTION(original_DontLetFlicFuckWithPalettes, DontLetFlicFuckWithPalettes)
-void DontLetFlicFuckWithPalettes() {
+void __cdecl DontLetFlicFuckWithPalettes() {
     LOG_TRACE("()");
 
 
     original_DontLetFlicFuckWithPalettes();
 }
 
-static void(*original_LetFlicFuckWithPalettes)() = (void(*)())0x004959ff;
+static void(__cdecl*original_LetFlicFuckWithPalettes)() = (void(__cdecl*)())0x004959ff;
 CARM95_HOOK_FUNCTION(original_LetFlicFuckWithPalettes, LetFlicFuckWithPalettes)
-void LetFlicFuckWithPalettes() {
+void __cdecl LetFlicFuckWithPalettes() {
     LOG_TRACE("()");
 
 
     original_LetFlicFuckWithPalettes();
 }
 
-static void(*original_PlayFlicsInDarkness)() = (void(*)())0x00495a14;
+static void(__cdecl*original_PlayFlicsInDarkness)() = (void(__cdecl*)())0x00495a14;
 CARM95_HOOK_FUNCTION(original_PlayFlicsInDarkness, PlayFlicsInDarkness)
-void PlayFlicsInDarkness() {
+void __cdecl PlayFlicsInDarkness() {
     LOG_TRACE("()");
 
 
     original_PlayFlicsInDarkness();
 }
 
-static void(*original_ReilluminateFlics)() = (void(*)())0x00495a29;
+static void(__cdecl*original_ReilluminateFlics)() = (void(__cdecl*)())0x00495a29;
 CARM95_HOOK_FUNCTION(original_ReilluminateFlics, ReilluminateFlics)
-void ReilluminateFlics() {
+void __cdecl ReilluminateFlics() {
     LOG_TRACE("()");
 
 
     original_ReilluminateFlics();
 }
 
-static void(*original_TurnFlicTransparencyOn)() = (void(*)())0x00495a43;
+static void(__cdecl*original_TurnFlicTransparencyOn)() = (void(__cdecl*)())0x00495a43;
 CARM95_HOOK_FUNCTION(original_TurnFlicTransparencyOn, TurnFlicTransparencyOn)
-void TurnFlicTransparencyOn() {
+void __cdecl TurnFlicTransparencyOn() {
     LOG_TRACE("()");
 
 
     original_TurnFlicTransparencyOn();
 }
 
-static void(*original_TurnFlicTransparencyOff)() = (void(*)())0x00495a58;
+static void(__cdecl*original_TurnFlicTransparencyOff)() = (void(__cdecl*)())0x00495a58;
 CARM95_HOOK_FUNCTION(original_TurnFlicTransparencyOff, TurnFlicTransparencyOff)
-void TurnFlicTransparencyOff() {
+void __cdecl TurnFlicTransparencyOff() {
     LOG_TRACE("()");
 
 
     original_TurnFlicTransparencyOff();
 }
 
-static void(*original_PlayFlicsFromDisk)() = (void(*)())0x00495a6d;
+static void(__cdecl*original_PlayFlicsFromDisk)() = (void(__cdecl*)())0x00495a6d;
 CARM95_HOOK_FUNCTION(original_PlayFlicsFromDisk, PlayFlicsFromDisk)
-void PlayFlicsFromDisk() {
+void __cdecl PlayFlicsFromDisk() {
     LOG_TRACE("()");
 
 
     original_PlayFlicsFromDisk();
 }
 
-static void(*original_PlayFlicsFromMemory)() = (void(*)())0x00495a82;
+static void(__cdecl*original_PlayFlicsFromMemory)() = (void(__cdecl*)())0x00495a82;
 CARM95_HOOK_FUNCTION(original_PlayFlicsFromMemory, PlayFlicsFromMemory)
-void PlayFlicsFromMemory() {
+void __cdecl PlayFlicsFromMemory() {
     LOG_TRACE("()");
 
 
     original_PlayFlicsFromMemory();
 }
 
-static int(*original_FlicsPlayedFromDisk)() = (int(*)())0x00495a97;
+static int(__cdecl*original_FlicsPlayedFromDisk)() = (int(__cdecl*)())0x00495a97;
 CARM95_HOOK_FUNCTION(original_FlicsPlayedFromDisk, FlicsPlayedFromDisk)
-int FlicsPlayedFromDisk() {
+int __cdecl FlicsPlayedFromDisk() {
     LOG_TRACE("()");
 
 
     return original_FlicsPlayedFromDisk();
 }
 
-static void(*original_TurnOffPanelFlics)() = (void(*)())0x00495aac;
+static void(__cdecl*original_TurnOffPanelFlics)() = (void(__cdecl*)())0x00495aac;
 CARM95_HOOK_FUNCTION(original_TurnOffPanelFlics, TurnOffPanelFlics)
-void TurnOffPanelFlics() {
+void __cdecl TurnOffPanelFlics() {
     LOG_TRACE("()");
 
 
     original_TurnOffPanelFlics();
 }
 
-static void(*original_TurnOnPanelFlics)() = (void(*)())0x00495ac1;
+static void(__cdecl*original_TurnOnPanelFlics)() = (void(__cdecl*)())0x00495ac1;
 CARM95_HOOK_FUNCTION(original_TurnOnPanelFlics, TurnOnPanelFlics)
-void TurnOnPanelFlics() {
+void __cdecl TurnOnPanelFlics() {
     LOG_TRACE("()");
 
 
     original_TurnOnPanelFlics();
 }
 
-static int(*original_GetPanelFlicFrameIndex)(int, ...) = (int(*)(int, ...))0x00495ad6;
+static int(__cdecl*original_GetPanelFlicFrameIndex)(int) = (int(__cdecl*)(int))0x00495ad6;
 CARM95_HOOK_FUNCTION(original_GetPanelFlicFrameIndex, GetPanelFlicFrameIndex)
-int GetPanelFlicFrameIndex(int pIndex) {
+int __cdecl GetPanelFlicFrameIndex(int pIndex) {
     LOG_TRACE("(%d)", pIndex);
 
     (void)pIndex;
@@ -191,18 +190,18 @@ int GetPanelFlicFrameIndex(int pIndex) {
     return original_GetPanelFlicFrameIndex(pIndex);
 }
 
-static void(*original_FlicPaletteAllocate)() = (void(*)())0x00495af9;
+static void(__cdecl*original_FlicPaletteAllocate)() = (void(__cdecl*)())0x00495af9;
 CARM95_HOOK_FUNCTION(original_FlicPaletteAllocate, FlicPaletteAllocate)
-void FlicPaletteAllocate() {
+void __cdecl FlicPaletteAllocate() {
     LOG_TRACE("()");
 
 
     original_FlicPaletteAllocate();
 }
 
-static void(*original_AssertFlicPixelmap)(tFlic_descriptor_ptr, br_pixelmap *, ...) = (void(*)(tFlic_descriptor_ptr, br_pixelmap *, ...))0x00495b39;
+static void(__cdecl*original_AssertFlicPixelmap)(tFlic_descriptor_ptr, br_pixelmap *) = (void(__cdecl*)(tFlic_descriptor_ptr, br_pixelmap *))0x00495b39;
 CARM95_HOOK_FUNCTION(original_AssertFlicPixelmap, AssertFlicPixelmap)
-void AssertFlicPixelmap(tFlic_descriptor_ptr pFlic_info, br_pixelmap *pDest_pixelmap) {
+void __cdecl AssertFlicPixelmap(tFlic_descriptor_ptr pFlic_info, br_pixelmap *pDest_pixelmap) {
     LOG_TRACE("(%p, %p)", pFlic_info, pDest_pixelmap);
 
     (void)pFlic_info;
@@ -211,9 +210,9 @@ void AssertFlicPixelmap(tFlic_descriptor_ptr pFlic_info, br_pixelmap *pDest_pixe
     original_AssertFlicPixelmap(pFlic_info, pDest_pixelmap);
 }
 
-static int(*original_StartFlic)(char *, int, tFlic_descriptor_ptr, tU32, tS8 *, br_pixelmap *, int, int, int, ...) = (int(*)(char *, int, tFlic_descriptor_ptr, tU32, tS8 *, br_pixelmap *, int, int, int, ...))0x00495b77;
+static int(__cdecl*original_StartFlic)(char *, int, tFlic_descriptor_ptr, tU32, tS8 *, br_pixelmap *, int, int, int) = (int(__cdecl*)(char *, int, tFlic_descriptor_ptr, tU32, tS8 *, br_pixelmap *, int, int, int))0x00495b77;
 CARM95_HOOK_FUNCTION(original_StartFlic, StartFlic)
-int StartFlic(char *pFile_name, int pIndex, tFlic_descriptor_ptr pFlic_info, tU32 pSize, tS8 *pData_ptr, br_pixelmap *pDest_pixelmap, int pX_offset, int pY_offset, int pFrame_rate) {
+int __cdecl StartFlic(char *pFile_name, int pIndex, tFlic_descriptor_ptr pFlic_info, tU32 pSize, tS8 *pData_ptr, br_pixelmap *pDest_pixelmap, int pX_offset, int pY_offset, int pFrame_rate) {
     tU16 claimed_speed;
     tU16 magic_number;
     tPath_name the_path;
@@ -237,18 +236,18 @@ int StartFlic(char *pFile_name, int pIndex, tFlic_descriptor_ptr pFlic_info, tU3
     return original_StartFlic(pFile_name, pIndex, pFlic_info, pSize, pData_ptr, pDest_pixelmap, pX_offset, pY_offset, pFrame_rate);
 }
 
-static void(*original_FreeFlicPaletteAllocate)() = (void(*)())0x00495f27;
+static void(__cdecl*original_FreeFlicPaletteAllocate)() = (void(__cdecl*)())0x00495f27;
 CARM95_HOOK_FUNCTION(original_FreeFlicPaletteAllocate, FreeFlicPaletteAllocate)
-void FreeFlicPaletteAllocate() {
+void __cdecl FreeFlicPaletteAllocate() {
     LOG_TRACE("()");
 
 
     original_FreeFlicPaletteAllocate();
 }
 
-static int(*original_EndFlic)(tFlic_descriptor_ptr, ...) = (int(*)(tFlic_descriptor_ptr, ...))0x00495f71;
+static int(__cdecl*original_EndFlic)(tFlic_descriptor_ptr) = (int(__cdecl*)(tFlic_descriptor_ptr))0x00495f71;
 CARM95_HOOK_FUNCTION(original_EndFlic, EndFlic)
-int EndFlic(tFlic_descriptor_ptr pFlic_info) {
+int __cdecl EndFlic(tFlic_descriptor_ptr pFlic_info) {
     LOG_TRACE("(%p)", pFlic_info);
 
     (void)pFlic_info;
@@ -256,9 +255,9 @@ int EndFlic(tFlic_descriptor_ptr pFlic_info) {
     return original_EndFlic(pFlic_info);
 }
 
-static void(*original_DoColourMap)(tFlic_descriptor_ptr, tU32, ...) = (void(*)(tFlic_descriptor_ptr, tU32, ...))0x0049639a;
+static void(__cdecl*original_DoColourMap)(tFlic_descriptor_ptr, tU32) = (void(__cdecl*)(tFlic_descriptor_ptr, tU32))0x0049639a;
 CARM95_HOOK_FUNCTION(original_DoColourMap, DoColourMap)
-void DoColourMap(tFlic_descriptor_ptr pFlic_info, tU32 chunk_length) {
+void __cdecl DoColourMap(tFlic_descriptor_ptr pFlic_info, tU32 chunk_length) {
     int i;
     int j;
     int packet_count;
@@ -287,9 +286,9 @@ void DoColourMap(tFlic_descriptor_ptr pFlic_info, tU32 chunk_length) {
     original_DoColourMap(pFlic_info, chunk_length);
 }
 
-static void(*original_DoDifferenceX)(tFlic_descriptor *, tU32, ...) = (void(*)(tFlic_descriptor *, tU32, ...))0x004964e3;
+static void(__cdecl*original_DoDifferenceX)(tFlic_descriptor *, tU32) = (void(__cdecl*)(tFlic_descriptor *, tU32))0x004964e3;
 CARM95_HOOK_FUNCTION(original_DoDifferenceX, DoDifferenceX)
-void DoDifferenceX(tFlic_descriptor *pFlic_info, tU32 chunk_length) {
+void __cdecl DoDifferenceX(tFlic_descriptor *pFlic_info, tU32 chunk_length) {
     int i;
     int j;
     int k;
@@ -322,9 +321,9 @@ void DoDifferenceX(tFlic_descriptor *pFlic_info, tU32 chunk_length) {
     original_DoDifferenceX(pFlic_info, chunk_length);
 }
 
-static void(*original_DoDifferenceTrans)(tFlic_descriptor *, tU32, ...) = (void(*)(tFlic_descriptor *, tU32, ...))0x0049663f;
+static void(__cdecl*original_DoDifferenceTrans)(tFlic_descriptor *, tU32) = (void(__cdecl*)(tFlic_descriptor *, tU32))0x0049663f;
 CARM95_HOOK_FUNCTION(original_DoDifferenceTrans, DoDifferenceTrans)
-void DoDifferenceTrans(tFlic_descriptor *pFlic_info, tU32 chunk_length) {
+void __cdecl DoDifferenceTrans(tFlic_descriptor *pFlic_info, tU32 chunk_length) {
     int i;
     int j;
     int k;
@@ -357,9 +356,9 @@ void DoDifferenceTrans(tFlic_descriptor *pFlic_info, tU32 chunk_length) {
     original_DoDifferenceTrans(pFlic_info, chunk_length);
 }
 
-static void(*original_DoColour256)(tFlic_descriptor *, tU32, ...) = (void(*)(tFlic_descriptor *, tU32, ...))0x004967ce;
+static void(__cdecl*original_DoColour256)(tFlic_descriptor *, tU32) = (void(__cdecl*)(tFlic_descriptor *, tU32))0x004967ce;
 CARM95_HOOK_FUNCTION(original_DoColour256, DoColour256)
-void DoColour256(tFlic_descriptor *pFlic_info, tU32 chunk_length) {
+void __cdecl DoColour256(tFlic_descriptor *pFlic_info, tU32 chunk_length) {
     int i;
     int j;
     int packet_count;
@@ -388,9 +387,9 @@ void DoColour256(tFlic_descriptor *pFlic_info, tU32 chunk_length) {
     original_DoColour256(pFlic_info, chunk_length);
 }
 
-static void(*original_DoDeltaTrans)(tFlic_descriptor *, tU32, ...) = (void(*)(tFlic_descriptor *, tU32, ...))0x00496902;
+static void(__cdecl*original_DoDeltaTrans)(tFlic_descriptor *, tU32) = (void(__cdecl*)(tFlic_descriptor *, tU32))0x00496902;
 CARM95_HOOK_FUNCTION(original_DoDeltaTrans, DoDeltaTrans)
-void DoDeltaTrans(tFlic_descriptor *pFlic_info, tU32 chunk_length) {
+void __cdecl DoDeltaTrans(tFlic_descriptor *pFlic_info, tU32 chunk_length) {
     int i;
     int j;
     int k;
@@ -425,9 +424,9 @@ void DoDeltaTrans(tFlic_descriptor *pFlic_info, tU32 chunk_length) {
     original_DoDeltaTrans(pFlic_info, chunk_length);
 }
 
-static void(*original_DoDeltaX)(tFlic_descriptor *, tU32, ...) = (void(*)(tFlic_descriptor *, tU32, ...))0x00496b49;
+static void(__cdecl*original_DoDeltaX)(tFlic_descriptor *, tU32) = (void(__cdecl*)(tFlic_descriptor *, tU32))0x00496b49;
 CARM95_HOOK_FUNCTION(original_DoDeltaX, DoDeltaX)
-void DoDeltaX(tFlic_descriptor *pFlic_info, tU32 chunk_length) {
+void __cdecl DoDeltaX(tFlic_descriptor *pFlic_info, tU32 chunk_length) {
     int i;
     int j;
     int k;
@@ -458,9 +457,9 @@ void DoDeltaX(tFlic_descriptor *pFlic_info, tU32 chunk_length) {
     original_DoDeltaX(pFlic_info, chunk_length);
 }
 
-static void(*original_DoBlack)(tFlic_descriptor *, tU32, ...) = (void(*)(tFlic_descriptor *, tU32, ...))0x00496cb0;
+static void(__cdecl*original_DoBlack)(tFlic_descriptor *, tU32) = (void(__cdecl*)(tFlic_descriptor *, tU32))0x00496cb0;
 CARM95_HOOK_FUNCTION(original_DoBlack, DoBlack)
-void DoBlack(tFlic_descriptor *pFlic_info, tU32 chunk_length) {
+void __cdecl DoBlack(tFlic_descriptor *pFlic_info, tU32 chunk_length) {
     int i;
     int j;
     int the_width;
@@ -481,9 +480,9 @@ void DoBlack(tFlic_descriptor *pFlic_info, tU32 chunk_length) {
     original_DoBlack(pFlic_info, chunk_length);
 }
 
-static void(*original_DoRunLengthX)(tFlic_descriptor *, tU32, ...) = (void(*)(tFlic_descriptor *, tU32, ...))0x00496d3c;
+static void(__cdecl*original_DoRunLengthX)(tFlic_descriptor *, tU32) = (void(__cdecl*)(tFlic_descriptor *, tU32))0x00496d3c;
 CARM95_HOOK_FUNCTION(original_DoRunLengthX, DoRunLengthX)
-void DoRunLengthX(tFlic_descriptor *pFlic_info, tU32 chunk_length) {
+void __cdecl DoRunLengthX(tFlic_descriptor *pFlic_info, tU32 chunk_length) {
     int i;
     int j;
     int k;
@@ -510,9 +509,9 @@ void DoRunLengthX(tFlic_descriptor *pFlic_info, tU32 chunk_length) {
     original_DoRunLengthX(pFlic_info, chunk_length);
 }
 
-static void(*original_DoRunLengthTrans)(tFlic_descriptor *, tU32, ...) = (void(*)(tFlic_descriptor *, tU32, ...))0x00496e53;
+static void(__cdecl*original_DoRunLengthTrans)(tFlic_descriptor *, tU32) = (void(__cdecl*)(tFlic_descriptor *, tU32))0x00496e53;
 CARM95_HOOK_FUNCTION(original_DoRunLengthTrans, DoRunLengthTrans)
-void DoRunLengthTrans(tFlic_descriptor *pFlic_info, tU32 chunk_length) {
+void __cdecl DoRunLengthTrans(tFlic_descriptor *pFlic_info, tU32 chunk_length) {
     int i;
     int j;
     int k;
@@ -539,9 +538,9 @@ void DoRunLengthTrans(tFlic_descriptor *pFlic_info, tU32 chunk_length) {
     original_DoRunLengthTrans(pFlic_info, chunk_length);
 }
 
-static void(*original_DoUncompressed)(tFlic_descriptor *, tU32, ...) = (void(*)(tFlic_descriptor *, tU32, ...))0x00496f9d;
+static void(__cdecl*original_DoUncompressed)(tFlic_descriptor *, tU32) = (void(__cdecl*)(tFlic_descriptor *, tU32))0x00496f9d;
 CARM95_HOOK_FUNCTION(original_DoUncompressed, DoUncompressed)
-void DoUncompressed(tFlic_descriptor *pFlic_info, tU32 chunk_length) {
+void __cdecl DoUncompressed(tFlic_descriptor *pFlic_info, tU32 chunk_length) {
     int i;
     int j;
     int the_width;
@@ -562,9 +561,9 @@ void DoUncompressed(tFlic_descriptor *pFlic_info, tU32 chunk_length) {
     original_DoUncompressed(pFlic_info, chunk_length);
 }
 
-static void(*original_DoUncompressedTrans)(tFlic_descriptor *, tU32, ...) = (void(*)(tFlic_descriptor *, tU32, ...))0x00497031;
+static void(__cdecl*original_DoUncompressedTrans)(tFlic_descriptor *, tU32) = (void(__cdecl*)(tFlic_descriptor *, tU32))0x00497031;
 CARM95_HOOK_FUNCTION(original_DoUncompressedTrans, DoUncompressedTrans)
-void DoUncompressedTrans(tFlic_descriptor *pFlic_info, tU32 chunk_length) {
+void __cdecl DoUncompressedTrans(tFlic_descriptor *pFlic_info, tU32 chunk_length) {
     int i;
     int j;
     int the_width;
@@ -587,9 +586,9 @@ void DoUncompressedTrans(tFlic_descriptor *pFlic_info, tU32 chunk_length) {
     original_DoUncompressedTrans(pFlic_info, chunk_length);
 }
 
-static void(*original_DoMini)(tFlic_descriptor *, tU32, ...) = (void(*)(tFlic_descriptor *, tU32, ...))0x004970dc;
+static void(__cdecl*original_DoMini)(tFlic_descriptor *, tU32) = (void(__cdecl*)(tFlic_descriptor *, tU32))0x004970dc;
 CARM95_HOOK_FUNCTION(original_DoMini, DoMini)
-void DoMini(tFlic_descriptor *pFlic_info, tU32 chunk_length) {
+void __cdecl DoMini(tFlic_descriptor *pFlic_info, tU32 chunk_length) {
     LOG_TRACE("(%p, %u)", pFlic_info, chunk_length);
 
     (void)pFlic_info;
@@ -598,9 +597,9 @@ void DoMini(tFlic_descriptor *pFlic_info, tU32 chunk_length) {
     original_DoMini(pFlic_info, chunk_length);
 }
 
-static void(*original_DrawTranslations)(tFlic_descriptor *, int, ...) = (void(*)(tFlic_descriptor *, int, ...))0x004970fa;
+static void(__cdecl*original_DrawTranslations)(tFlic_descriptor *, int) = (void(__cdecl*)(tFlic_descriptor *, int))0x004970fa;
 CARM95_HOOK_FUNCTION(original_DrawTranslations, DrawTranslations)
-void DrawTranslations(tFlic_descriptor *pFlic_info, int pLast_frame) {
+void __cdecl DrawTranslations(tFlic_descriptor *pFlic_info, int pLast_frame) {
     tTranslation_record *trans;
     int i;
     int x;
@@ -619,9 +618,9 @@ void DrawTranslations(tFlic_descriptor *pFlic_info, int pLast_frame) {
     original_DrawTranslations(pFlic_info, pLast_frame);
 }
 
-static int(*original_PlayNextFlicFrame2)(tFlic_descriptor *, int, ...) = (int(*)(tFlic_descriptor *, int, ...))0x00495ff5;
+static int(__cdecl*original_PlayNextFlicFrame2)(tFlic_descriptor *, int) = (int(__cdecl*)(tFlic_descriptor *, int))0x00495ff5;
 CARM95_HOOK_FUNCTION(original_PlayNextFlicFrame2, PlayNextFlicFrame2)
-int PlayNextFlicFrame2(tFlic_descriptor *pFlic_info, int pPanel_flic) {
+int __cdecl PlayNextFlicFrame2(tFlic_descriptor *pFlic_info, int pPanel_flic) {
     tU32 frame_length;
     tU32 chunk_length;
     int chunk_count;
@@ -648,9 +647,9 @@ int PlayNextFlicFrame2(tFlic_descriptor *pFlic_info, int pPanel_flic) {
     return original_PlayNextFlicFrame2(pFlic_info, pPanel_flic);
 }
 
-static int(*original_PlayNextFlicFrame)(tFlic_descriptor *, ...) = (int(*)(tFlic_descriptor *, ...))0x00495fd7;
+static int(__cdecl*original_PlayNextFlicFrame)(tFlic_descriptor *) = (int(__cdecl*)(tFlic_descriptor *))0x00495fd7;
 CARM95_HOOK_FUNCTION(original_PlayNextFlicFrame, PlayNextFlicFrame)
-int PlayNextFlicFrame(tFlic_descriptor *pFlic_info) {
+int __cdecl PlayNextFlicFrame(tFlic_descriptor *pFlic_info) {
     LOG_TRACE("(%p)", pFlic_info);
 
     (void)pFlic_info;
@@ -658,9 +657,9 @@ int PlayNextFlicFrame(tFlic_descriptor *pFlic_info) {
     return original_PlayNextFlicFrame(pFlic_info);
 }
 
-static int(*original_PlayFlic)(int, tU32, tS8 *, br_pixelmap *, int, int, void(**)(), int, int, ...) = (int(*)(int, tU32, tS8 *, br_pixelmap *, int, int, void(**)(), int, int, ...))0x00497278;
+static int(__cdecl*original_PlayFlic)(int, tU32, tS8 *, br_pixelmap *, int, int, void(**)(), int, int) = (int(__cdecl*)(int, tU32, tS8 *, br_pixelmap *, int, int, void(**)(), int, int))0x00497278;
 CARM95_HOOK_FUNCTION(original_PlayFlic, PlayFlic)
-int PlayFlic(int pIndex, tU32 pSize, tS8 *pData_ptr, br_pixelmap *pDest_pixelmap, int pX_offset, int pY_offset, void(**DoPerFrame)(), int pInterruptable, int pFrame_rate) {
+int __cdecl PlayFlic(int pIndex, tU32 pSize, tS8 *pData_ptr, br_pixelmap *pDest_pixelmap, int pX_offset, int pY_offset, void(**DoPerFrame)(), int pInterruptable, int pFrame_rate) {
     int finished_playing;
     tFlic_descriptor the_flic;
     tU32 last_frame;
@@ -686,18 +685,18 @@ int PlayFlic(int pIndex, tU32 pSize, tS8 *pData_ptr, br_pixelmap *pDest_pixelmap
     return original_PlayFlic(pIndex, pSize, pData_ptr, pDest_pixelmap, pX_offset, pY_offset, DoPerFrame, pInterruptable, pFrame_rate);
 }
 
-static void(*original_SwapScreen)() = (void(*)())0x00497444;
+static void(__cdecl*original_SwapScreen)() = (void(__cdecl*)())0x00497444;
 CARM95_HOOK_FUNCTION(original_SwapScreen, SwapScreen)
-void SwapScreen() {
+void __cdecl SwapScreen() {
     LOG_TRACE("()");
 
 
     original_SwapScreen();
 }
 
-static void(*original_ShowFlic)(int, ...) = (void(*)(int, ...))0x004973a3;
+static void(__cdecl*original_ShowFlic)(int) = (void(__cdecl*)(int))0x004973a3;
 CARM95_HOOK_FUNCTION(original_ShowFlic, ShowFlic)
-void ShowFlic(int pIndex) {
+void __cdecl ShowFlic(int pIndex) {
     LOG_TRACE("(%d)", pIndex);
 
     (void)pIndex;
@@ -705,9 +704,9 @@ void ShowFlic(int pIndex) {
     original_ShowFlic(pIndex);
 }
 
-static void(*original_InitFlics)() = (void(*)())0x00497459;
+static void(__cdecl*original_InitFlics)() = (void(__cdecl*)())0x00497459;
 CARM95_HOOK_FUNCTION(original_InitFlics, InitFlics)
-void InitFlics() {
+void __cdecl InitFlics() {
     int i;
     LOG_TRACE("()");
 
@@ -716,9 +715,9 @@ void InitFlics() {
     original_InitFlics();
 }
 
-static int(*original_LoadFlic)(int, ...) = (int(*)(int, ...))0x00497499;
+static int(__cdecl*original_LoadFlic)(int) = (int(__cdecl*)(int))0x00497499;
 CARM95_HOOK_FUNCTION(original_LoadFlic, LoadFlic)
-int LoadFlic(int pIndex) {
+int __cdecl LoadFlic(int pIndex) {
     tPath_name the_path;
     FILE *f;
     char *the_buffer;
@@ -732,9 +731,9 @@ int LoadFlic(int pIndex) {
     return original_LoadFlic(pIndex);
 }
 
-static void(*original_UnlockFlic)(int, ...) = (void(*)(int, ...))0x00497683;
+static void(__cdecl*original_UnlockFlic)(int) = (void(__cdecl*)(int))0x00497683;
 CARM95_HOOK_FUNCTION(original_UnlockFlic, UnlockFlic)
-void UnlockFlic(int pIndex) {
+void __cdecl UnlockFlic(int pIndex) {
     LOG_TRACE("(%d)", pIndex);
 
     (void)pIndex;
@@ -742,9 +741,9 @@ void UnlockFlic(int pIndex) {
     original_UnlockFlic(pIndex);
 }
 
-static int(*original_LoadFlicData)(char *, tU8 **, tU32 *, ...) = (int(*)(char *, tU8 **, tU32 *, ...))0x004976cb;
+static int(__cdecl*original_LoadFlicData)(char *, tU8 **, tU32 *) = (int(__cdecl*)(char *, tU8 **, tU32 *))0x004976cb;
 CARM95_HOOK_FUNCTION(original_LoadFlicData, LoadFlicData)
-int LoadFlicData(char *pName, tU8 **pData, tU32 *pData_length) {
+int __cdecl LoadFlicData(char *pName, tU8 **pData, tU32 *pData_length) {
     FILE *f;
     tPath_name the_path;
     LOG_TRACE("(\"%s\", %p, %p)", pName, pData, pData_length);
@@ -758,9 +757,9 @@ int LoadFlicData(char *pName, tU8 **pData, tU32 *pData_length) {
     return original_LoadFlicData(pName, pData, pData_length);
 }
 
-static void(*original_FreeFlic)(int, ...) = (void(*)(int, ...))0x004977de;
+static void(__cdecl*original_FreeFlic)(int) = (void(__cdecl*)(int))0x004977de;
 CARM95_HOOK_FUNCTION(original_FreeFlic, FreeFlic)
-void FreeFlic(int pIndex) {
+void __cdecl FreeFlic(int pIndex) {
     LOG_TRACE("(%d)", pIndex);
 
     (void)pIndex;
@@ -768,9 +767,9 @@ void FreeFlic(int pIndex) {
     original_FreeFlic(pIndex);
 }
 
-static void(*original_ForceRunFlic)(int, ...) = (void(*)(int, ...))0x00497908;
+static void(__cdecl*original_ForceRunFlic)(int) = (void(__cdecl*)(int))0x00497908;
 CARM95_HOOK_FUNCTION(original_ForceRunFlic, ForceRunFlic)
-void ForceRunFlic(int pIndex) {
+void __cdecl ForceRunFlic(int pIndex) {
     LOG_TRACE("(%d)", pIndex);
 
     (void)pIndex;
@@ -778,9 +777,9 @@ void ForceRunFlic(int pIndex) {
     original_ForceRunFlic(pIndex);
 }
 
-static void(*original_RunFlicAt)(int, int, int, ...) = (void(*)(int, int, int, ...))0x00497829;
+static void(__cdecl*original_RunFlicAt)(int, int, int) = (void(__cdecl*)(int, int, int))0x00497829;
 CARM95_HOOK_FUNCTION(original_RunFlicAt, RunFlicAt)
-void RunFlicAt(int pIndex, int pX, int pY) {
+void __cdecl RunFlicAt(int pIndex, int pX, int pY) {
     LOG_TRACE("(%d, %d, %d)", pIndex, pX, pY);
 
     (void)pIndex;
@@ -790,9 +789,9 @@ void RunFlicAt(int pIndex, int pX, int pY) {
     original_RunFlicAt(pIndex, pX, pY);
 }
 
-static void(*original_RunFlic)(int, ...) = (void(*)(int, ...))0x0049788b;
+static void(__cdecl*original_RunFlic)(int) = (void(__cdecl*)(int))0x0049788b;
 CARM95_HOOK_FUNCTION(original_RunFlic, RunFlic)
-void RunFlic(int pIndex) {
+void __cdecl RunFlic(int pIndex) {
     LOG_TRACE("(%d)", pIndex);
 
     (void)pIndex;
@@ -800,9 +799,9 @@ void RunFlic(int pIndex) {
     original_RunFlic(pIndex);
 }
 
-static void(*original_PreloadBunchOfFlics)(int, ...) = (void(*)(int, ...))0x00497937;
+static void(__cdecl*original_PreloadBunchOfFlics)(int) = (void(__cdecl*)(int))0x00497937;
 CARM95_HOOK_FUNCTION(original_PreloadBunchOfFlics, PreloadBunchOfFlics)
-void PreloadBunchOfFlics(int pBunch_index) {
+void __cdecl PreloadBunchOfFlics(int pBunch_index) {
     int i;
     LOG_TRACE("(%d)", pBunch_index);
 
@@ -812,9 +811,9 @@ void PreloadBunchOfFlics(int pBunch_index) {
     original_PreloadBunchOfFlics(pBunch_index);
 }
 
-static void(*original_UnlockBunchOfFlics)(int, ...) = (void(*)(int, ...))0x00497986;
+static void(__cdecl*original_UnlockBunchOfFlics)(int) = (void(__cdecl*)(int))0x00497986;
 CARM95_HOOK_FUNCTION(original_UnlockBunchOfFlics, UnlockBunchOfFlics)
-void UnlockBunchOfFlics(int pBunch_index) {
+void __cdecl UnlockBunchOfFlics(int pBunch_index) {
     int i;
     LOG_TRACE("(%d)", pBunch_index);
 
@@ -824,9 +823,9 @@ void UnlockBunchOfFlics(int pBunch_index) {
     original_UnlockBunchOfFlics(pBunch_index);
 }
 
-static void(*original_FlushAllFlics)(int, ...) = (void(*)(int, ...))0x004979d5;
+static void(__cdecl*original_FlushAllFlics)(int) = (void(__cdecl*)(int))0x004979d5;
 CARM95_HOOK_FUNCTION(original_FlushAllFlics, FlushAllFlics)
-void FlushAllFlics(int pBunch_index) {
+void __cdecl FlushAllFlics(int pBunch_index) {
     int i;
     LOG_TRACE("(%d)", pBunch_index);
 
@@ -836,18 +835,18 @@ void FlushAllFlics(int pBunch_index) {
     original_FlushAllFlics(pBunch_index);
 }
 
-static void(*original_InitFlicQueue)() = (void(*)())0x00497a10;
+static void(__cdecl*original_InitFlicQueue)() = (void(__cdecl*)())0x00497a10;
 CARM95_HOOK_FUNCTION(original_InitFlicQueue, InitFlicQueue)
-void InitFlicQueue() {
+void __cdecl InitFlicQueue() {
     LOG_TRACE("()");
 
 
     original_InitFlicQueue();
 }
 
-static int(*original_FlicQueueFinished)() = (int(*)())0x00497a25;
+static int(__cdecl*original_FlicQueueFinished)() = (int(__cdecl*)())0x00497a25;
 CARM95_HOOK_FUNCTION(original_FlicQueueFinished, FlicQueueFinished)
-int FlicQueueFinished() {
+int __cdecl FlicQueueFinished() {
     tFlic_descriptor *the_flic;
     LOG_TRACE("()");
 
@@ -856,9 +855,9 @@ int FlicQueueFinished() {
     return original_FlicQueueFinished();
 }
 
-static void(*original_ProcessFlicQueue)(tU32, ...) = (void(*)(tU32, ...))0x00497a71;
+static void(__cdecl*original_ProcessFlicQueue)(tU32) = (void(__cdecl*)(tU32))0x00497a71;
 CARM95_HOOK_FUNCTION(original_ProcessFlicQueue, ProcessFlicQueue)
-void ProcessFlicQueue(tU32 pInterval) {
+void __cdecl ProcessFlicQueue(tU32 pInterval) {
     tFlic_descriptor *the_flic;
     tFlic_descriptor *last_flic;
     tFlic_descriptor *doomed_flic;
@@ -876,9 +875,9 @@ void ProcessFlicQueue(tU32 pInterval) {
     original_ProcessFlicQueue(pInterval);
 }
 
-static void(*original_FlushFlicQueue)() = (void(*)())0x00497b5d;
+static void(__cdecl*original_FlushFlicQueue)() = (void(__cdecl*)())0x00497b5d;
 CARM95_HOOK_FUNCTION(original_FlushFlicQueue, FlushFlicQueue)
-void FlushFlicQueue() {
+void __cdecl FlushFlicQueue() {
     tFlic_descriptor *the_flic;
     tFlic_descriptor *old_flic;
     LOG_TRACE("()");
@@ -889,9 +888,9 @@ void FlushFlicQueue() {
     original_FlushFlicQueue();
 }
 
-static void(*original_AddToFlicQueue)(int, int, int, int, ...) = (void(*)(int, int, int, int, ...))0x00497bec;
+static void(__cdecl*original_AddToFlicQueue)(int, int, int, int) = (void(__cdecl*)(int, int, int, int))0x00497bec;
 CARM95_HOOK_FUNCTION(original_AddToFlicQueue, AddToFlicQueue)
-void AddToFlicQueue(int pIndex, int pX, int pY, int pMust_finish) {
+void __cdecl AddToFlicQueue(int pIndex, int pX, int pY, int pMust_finish) {
     tFlic_descriptor *the_flic;
     tFlic_descriptor *new_flic;
     tFlic_descriptor *last_flic;
@@ -910,9 +909,9 @@ void AddToFlicQueue(int pIndex, int pX, int pY, int pMust_finish) {
     original_AddToFlicQueue(pIndex, pX, pY, pMust_finish);
 }
 
-static void(*original_InitialiseFlicPanel)(int, int, int, int, int, ...) = (void(*)(int, int, int, int, int, ...))0x00497dcd;
+static void(__cdecl*original_InitialiseFlicPanel)(int, int, int, int, int) = (void(__cdecl*)(int, int, int, int, int))0x00497dcd;
 CARM95_HOOK_FUNCTION(original_InitialiseFlicPanel, InitialiseFlicPanel)
-void InitialiseFlicPanel(int pIndex, int pLeft, int pTop, int pWidth, int pHeight) {
+void __cdecl InitialiseFlicPanel(int pIndex, int pLeft, int pTop, int pWidth, int pHeight) {
     void *the_pixels;
     LOG_TRACE("(%d, %d, %d, %d, %d)", pIndex, pLeft, pTop, pWidth, pHeight);
 
@@ -926,9 +925,9 @@ void InitialiseFlicPanel(int pIndex, int pLeft, int pTop, int pWidth, int pHeigh
     original_InitialiseFlicPanel(pIndex, pLeft, pTop, pWidth, pHeight);
 }
 
-static void(*original_DisposeFlicPanel)(int, ...) = (void(*)(int, ...))0x00497e80;
+static void(__cdecl*original_DisposeFlicPanel)(int) = (void(__cdecl*)(int))0x00497e80;
 CARM95_HOOK_FUNCTION(original_DisposeFlicPanel, DisposeFlicPanel)
-void DisposeFlicPanel(int pIndex) {
+void __cdecl DisposeFlicPanel(int pIndex) {
     LOG_TRACE("(%d)", pIndex);
 
     (void)pIndex;
@@ -936,9 +935,9 @@ void DisposeFlicPanel(int pIndex) {
     original_DisposeFlicPanel(pIndex);
 }
 
-static void(*original_ServicePanelFlics)(int, ...) = (void(*)(int, ...))0x00497edd;
+static void(__cdecl*original_ServicePanelFlics)(int) = (void(__cdecl*)(int))0x00497edd;
 CARM95_HOOK_FUNCTION(original_ServicePanelFlics, ServicePanelFlics)
-void ServicePanelFlics(int pCopy_to_buffer) {
+void __cdecl ServicePanelFlics(int pCopy_to_buffer) {
     tU32 time_diff;
     tU32 the_time;
     tU32 old_last_time[2];
@@ -960,9 +959,9 @@ void ServicePanelFlics(int pCopy_to_buffer) {
     original_ServicePanelFlics(pCopy_to_buffer);
 }
 
-static void(*original_ChangePanelFlic)(int, tU8 *, tU32, ...) = (void(*)(int, tU8 *, tU32, ...))0x004980ec;
+static void(__cdecl*original_ChangePanelFlic)(int, tU8 *, tU32) = (void(__cdecl*)(int, tU8 *, tU32))0x004980ec;
 CARM95_HOOK_FUNCTION(original_ChangePanelFlic, ChangePanelFlic)
-void ChangePanelFlic(int pIndex, tU8 *pData, tU32 pData_length) {
+void __cdecl ChangePanelFlic(int pIndex, tU8 *pData, tU32 pData_length) {
     LOG_TRACE("(%d, %p, %u)", pIndex, pData, pData_length);
 
     (void)pIndex;
@@ -972,9 +971,9 @@ void ChangePanelFlic(int pIndex, tU8 *pData, tU32 pData_length) {
     original_ChangePanelFlic(pIndex, pData, pData_length);
 }
 
-static br_pixelmap *(*original_GetPanelPixelmap)(int, ...) = (br_pixelmap *(*)(int, ...))0x004981b5;
+static br_pixelmap *(__cdecl*original_GetPanelPixelmap)(int) = (br_pixelmap *(__cdecl*)(int))0x004981b5;
 CARM95_HOOK_FUNCTION(original_GetPanelPixelmap, GetPanelPixelmap)
-br_pixelmap* GetPanelPixelmap(int pIndex) {
+br_pixelmap* __cdecl GetPanelPixelmap(int pIndex) {
     LOG_TRACE("(%d)", pIndex);
 
     (void)pIndex;
@@ -982,9 +981,9 @@ br_pixelmap* GetPanelPixelmap(int pIndex) {
     return original_GetPanelPixelmap(pIndex);
 }
 
-static void(*original_LoadInterfaceStrings)() = (void(*)())0x004981cf;
+static void(__cdecl*original_LoadInterfaceStrings)() = (void(__cdecl*)())0x004981cf;
 CARM95_HOOK_FUNCTION(original_LoadInterfaceStrings, LoadInterfaceStrings)
-void LoadInterfaceStrings() {
+void __cdecl LoadInterfaceStrings() {
     FILE *f;
     char s[256];
     char s2[256];
@@ -1011,27 +1010,27 @@ void LoadInterfaceStrings() {
     original_LoadInterfaceStrings();
 }
 
-static void(*original_FlushInterfaceFonts)() = (void(*)())0x00498961;
+static void(__cdecl*original_FlushInterfaceFonts)() = (void(__cdecl*)())0x00498961;
 CARM95_HOOK_FUNCTION(original_FlushInterfaceFonts, FlushInterfaceFonts)
-void FlushInterfaceFonts() {
+void __cdecl FlushInterfaceFonts() {
     LOG_TRACE("()");
 
 
     original_FlushInterfaceFonts();
 }
 
-static void(*original_SuspendPendingFlic)() = (void(*)())0x004989bc;
+static void(__cdecl*original_SuspendPendingFlic)() = (void(__cdecl*)())0x004989bc;
 CARM95_HOOK_FUNCTION(original_SuspendPendingFlic, SuspendPendingFlic)
-void SuspendPendingFlic() {
+void __cdecl SuspendPendingFlic() {
     LOG_TRACE("()");
 
 
     original_SuspendPendingFlic();
 }
 
-static void(*original_ResumePendingFlic)() = (void(*)())0x004989db;
+static void(__cdecl*original_ResumePendingFlic)() = (void(__cdecl*)())0x004989db;
 CARM95_HOOK_FUNCTION(original_ResumePendingFlic, ResumePendingFlic)
-void ResumePendingFlic() {
+void __cdecl ResumePendingFlic() {
     LOG_TRACE("()");
 
 

@@ -65,206 +65,206 @@ extern tPedestrian_data ** hookvar_gPedestrian_array ; // addr: 0053791C
 extern tU32 * hookvar_gLast_ped_splat_time ; // addr: 00536B34
 extern int * hookvar_gCurrent_ped_multiplier ; // addr: 00537918
 
-void PedModelUpdate(br_model *pModel, br_scalar x0, br_scalar y0, br_scalar x1, br_scalar y1, br_scalar x2, br_scalar y2, br_scalar x3, br_scalar y3);
+void __cdecl PedModelUpdate(br_model *pModel, br_scalar x0, br_scalar y0, br_scalar x1, br_scalar y1, br_scalar x2, br_scalar y2, br_scalar x3, br_scalar y3);
 
-int ActorIsPedestrian(br_actor *pActor);
+int __cdecl ActorIsPedestrian(br_actor *pActor);
 
-br_scalar PedHeightFromActor(br_actor *pActor);
+br_scalar __cdecl PedHeightFromActor(br_actor *pActor);
 
-int GetPedestrianValue(br_actor *pActor);
+int __cdecl GetPedestrianValue(br_actor *pActor);
 
-int PedestrianActorIsPerson(br_actor *pActor);
+int __cdecl PedestrianActorIsPerson(br_actor *pActor);
 
-br_actor* GetPedestrianActor(int pIndex);
+br_actor* __cdecl GetPedestrianActor(int pIndex);
 
-br_pixelmap* GetPedestrianTexture(br_actor *pActor, int *pFlipped);
+br_pixelmap* __cdecl GetPedestrianTexture(br_actor *pActor, int *pFlipped);
 
-void TogglePedestrians();
+void __cdecl TogglePedestrians();
 
-void InitPedGibs();
+void __cdecl InitPedGibs();
 
-void SetPedMaterialForRender(br_actor *pActor);
+void __cdecl SetPedMaterialForRender(br_actor *pActor);
 
-void PedCallBack(br_actor *pActor, struct br_model *pModel, struct br_material *pMaterial, void *pRender_data, br_uint_8 pStyle, int pOn_screen);
+void __cdecl PedCallBack(br_actor *pActor, struct br_model *pModel, struct br_material *pMaterial, void *pRender_data, br_uint_8 pStyle, int pOn_screen);
 
-void InitPeds();
+void __cdecl InitPeds();
 
-void MungeModelSize(br_actor *pActor, br_scalar pScaling_factor);
+void __cdecl MungeModelSize(br_actor *pActor, br_scalar pScaling_factor);
 
-int BurstPedestrian(tPedestrian_data *pPedestrian, float pSplattitudinalitude, int pAllow_explosion);
+int __cdecl BurstPedestrian(tPedestrian_data *pPedestrian, float pSplattitudinalitude, int pAllow_explosion);
 
-void ResetAllPedGibs();
+void __cdecl ResetAllPedGibs();
 
-void AdjustPedGib(int pIndex, int pSize, int pGib_index, int pPed_index, br_matrix34 *pTrans);
+void __cdecl AdjustPedGib(int pIndex, int pSize, int pGib_index, int pPed_index, br_matrix34 *pTrans);
 
-void MungePedGibs(tU32 pFrame_period);
+void __cdecl MungePedGibs(tU32 pFrame_period);
 
-void KillPedestrian(tPedestrian_data *pPedestrian);
+void __cdecl KillPedestrian(tPedestrian_data *pPedestrian);
 
-void CalcPedWidthNHeight(tPedestrian_data *pPedestrian, br_pixelmap *pPixelmap, br_scalar *pHeight, br_scalar *pWidth);
+void __cdecl CalcPedWidthNHeight(tPedestrian_data *pPedestrian, br_pixelmap *pPixelmap, br_scalar *pHeight, br_scalar *pWidth);
 
-int PedestrianNextInstruction(tPedestrian_data *pPedestrian, float pDanger_level, int pPosition_explicitly, int pMove_pc);
+int __cdecl PedestrianNextInstruction(tPedestrian_data *pPedestrian, float pDanger_level, int pPosition_explicitly, int pMove_pc);
 
-void MungePedestrianSequence(tPedestrian_data *pPedestrian, int pAction_changed);
+void __cdecl MungePedestrianSequence(tPedestrian_data *pPedestrian, int pAction_changed);
 
-void DetachPedFromCar(tPedestrian_data *pPedestrian);
+void __cdecl DetachPedFromCar(tPedestrian_data *pPedestrian);
 
-void SetPedPos(tPedestrian_data *pPedestrian);
+void __cdecl SetPedPos(tPedestrian_data *pPedestrian);
 
-void DetachPedActorFromCar(br_actor *pActor);
+void __cdecl DetachPedActorFromCar(br_actor *pActor);
 
-void MungePedestrianFrames(tPedestrian_data *pPedestrian);
+void __cdecl MungePedestrianFrames(tPedestrian_data *pPedestrian);
 
-void MungePedModel(tPedestrian_data *pPedestrian);
+void __cdecl MungePedModel(tPedestrian_data *pPedestrian);
 
-void ChangeActionTo(tPedestrian_data *pPedestrian, int pAction_index, int pRedo_frames_etc);
+void __cdecl ChangeActionTo(tPedestrian_data *pPedestrian, int pAction_index, int pRedo_frames_etc);
 
-int MungePedestrianAction(tPedestrian_data *pPedestrian, float pDanger_level);
+int __cdecl MungePedestrianAction(tPedestrian_data *pPedestrian, float pDanger_level);
 
-void MakeFlagWavingBastardWaveHisFlagWhichIsTheProbablyTheLastThingHeWillEverDo();
+void __cdecl MakeFlagWavingBastardWaveHisFlagWhichIsTheProbablyTheLastThingHeWillEverDo();
 
-void MungePedestrianPath(tPedestrian_data *pPedestrian, float pDanger_level, br_vector3 *pDanger_direction);
+void __cdecl MungePedestrianPath(tPedestrian_data *pPedestrian, float pDanger_level, br_vector3 *pDanger_direction);
 
-float CalcPedestrianDangerLevel(tPedestrian_data *pPedestrian, br_vector3 *pDanger_direction);
+float __cdecl CalcPedestrianDangerLevel(tPedestrian_data *pPedestrian, br_vector3 *pDanger_direction);
 
-tPed_hit_position MoveToEdgeOfCar(tPedestrian_data *pPedestrian, tCollision_info *pCar, br_actor *pCar_actor, br_scalar pPed_x, br_scalar pPed_z, br_scalar pCar_bounds_min_x, br_scalar pCar_bounds_max_x, br_scalar pCar_bounds_min_z, br_scalar pCar_bounds_max_z, br_vector3 *pMin_ped_bounds_car, br_vector3 *pMax_ped_bounds_car);
+tPed_hit_position __cdecl MoveToEdgeOfCar(tPedestrian_data *pPedestrian, tCollision_info *pCar, br_actor *pCar_actor, br_scalar pPed_x, br_scalar pPed_z, br_scalar pCar_bounds_min_x, br_scalar pCar_bounds_max_x, br_scalar pCar_bounds_min_z, br_scalar pCar_bounds_max_z, br_vector3 *pMin_ped_bounds_car, br_vector3 *pMax_ped_bounds_car);
 
-void CheckLastPed();
+void __cdecl CheckLastPed();
 
-int BloodyWheels(tCar_spec *pCar, br_vector3 *pPed_car, br_scalar pSize, br_vector3 *pPed_glob);
+int __cdecl BloodyWheels(tCar_spec *pCar, br_vector3 *pPed_car, br_scalar pSize, br_vector3 *pPed_glob);
 
-int FancyATossOffMate(tPedestrian_data *pPedestrian, tCollision_info *pCar, float pImpact_speed);
+int __cdecl FancyATossOffMate(tPedestrian_data *pPedestrian, tCollision_info *pCar, float pImpact_speed);
 
-void CheckPedestrianDeathScenario(tPedestrian_data *pPedestrian);
+void __cdecl CheckPedestrianDeathScenario(tPedestrian_data *pPedestrian);
 
-void SendPedestrian(tPedestrian_data *pPedestrian, int pIndex);
+void __cdecl SendPedestrian(tPedestrian_data *pPedestrian, int pIndex);
 
-void DoPedestrian(tPedestrian_data *pPedestrian, int pIndex);
+void __cdecl DoPedestrian(tPedestrian_data *pPedestrian, int pIndex);
 
-void AdjustPedestrian(int pIndex, int pAction_index, int pFrame_index, int pHit_points, int pDone_initial, tU16 pParent, br_actor *pParent_actor, float pSpin_period, br_scalar pJump_magnitude, br_vector3 *pOffset, br_vector3 *pTrans);
+void __cdecl AdjustPedestrian(int pIndex, int pAction_index, int pFrame_index, int pHit_points, int pDone_initial, tU16 pParent, br_actor *pParent_actor, float pSpin_period, br_scalar pJump_magnitude, br_vector3 *pOffset, br_vector3 *pTrans);
 
-void SquirtPathVertex(br_vertex *pFirst_vertex, br_vector3 *pPoint);
+void __cdecl SquirtPathVertex(br_vertex *pFirst_vertex, br_vector3 *pPoint);
 
-void ResetAllPedestrians();
+void __cdecl ResetAllPedestrians();
 
-void GroundPedestrian(tPedestrian_data *pPedestrian);
+void __cdecl GroundPedestrian(tPedestrian_data *pPedestrian);
 
-void RevivePedestrian(tPedestrian_data *pPedestrian, int pAnimate);
+void __cdecl RevivePedestrian(tPedestrian_data *pPedestrian, int pAnimate);
 
-void MungePedestrians(tU32 pFrame_period);
+void __cdecl MungePedestrians(tU32 pFrame_period);
 
-void RespawnPedestrians();
+void __cdecl RespawnPedestrians();
 
-int GetPedCount();
+int __cdecl GetPedCount();
 
-int GetPedPosition(int pIndex, br_vector3 *pPos);
+int __cdecl GetPedPosition(int pIndex, br_vector3 *pPos);
 
-void CreatePedestrian(FILE *pG, tPedestrian_instruction *pInstructions, int pInstruc_count, int pInit_instruc, int pRef_num, int pForce_read);
+void __cdecl CreatePedestrian(FILE *pG, tPedestrian_instruction *pInstructions, int pInstruc_count, int pInit_instruc, int pRef_num, int pForce_read);
 
-void ResetProxRay();
+void __cdecl ResetProxRay();
 
-void PedMaterialFromHell();
+void __cdecl PedMaterialFromHell();
 
-void ResetPedMaterial();
+void __cdecl ResetPedMaterial();
 
-void LoadInPedestrians(FILE *pF, int pSubs_count, tPed_subs *pSubs_array);
+void __cdecl LoadInPedestrians(FILE *pF, int pSubs_count, tPed_subs *pSubs_array);
 
-br_actor* BuildPedPaths(tPedestrian_instruction *pInstructions, int pInstruc_count, int pInit_instruc);
+br_actor* __cdecl BuildPedPaths(tPedestrian_instruction *pInstructions, int pInstruc_count, int pInit_instruc);
 
-void WriteOutPeds();
+void __cdecl WriteOutPeds();
 
-void AddPed();
+void __cdecl AddPed();
 
-void NewPed(int pRef_num);
+void __cdecl NewPed(int pRef_num);
 
-void RemoveCurrentPedPath();
+void __cdecl RemoveCurrentPedPath();
 
-void ScrubPedestrian();
+void __cdecl ScrubPedestrian();
 
-void TogglePedDetect();
+void __cdecl TogglePedDetect();
 
-void NewPed0();
+void __cdecl NewPed0();
 
-void NewPed1();
+void __cdecl NewPed1();
 
-void NewPed2();
+void __cdecl NewPed2();
 
-void NewPed3();
+void __cdecl NewPed3();
 
-void NewPed4();
+void __cdecl NewPed4();
 
-void NewPed5();
+void __cdecl NewPed5();
 
-void NewPed6();
+void __cdecl NewPed6();
 
-void NewPed7();
+void __cdecl NewPed7();
 
-void NewPed8();
+void __cdecl NewPed8();
 
-void NewPed9();
+void __cdecl NewPed9();
 
-void NewPed0B();
+void __cdecl NewPed0B();
 
-void NewPed1B();
+void __cdecl NewPed1B();
 
-void NewPed2B();
+void __cdecl NewPed2B();
 
-void NewPed3B();
+void __cdecl NewPed3B();
 
-void NewPed4B();
+void __cdecl NewPed4B();
 
-void NewPed5B();
+void __cdecl NewPed5B();
 
-void NewPed6B();
+void __cdecl NewPed6B();
 
-void NewPed7B();
+void __cdecl NewPed7B();
 
-void NewPed8B();
+void __cdecl NewPed8B();
 
-void NewPed9B();
+void __cdecl NewPed9B();
 
-void MungeShowPedPath();
+void __cdecl MungeShowPedPath();
 
-void DropPedPoint2();
+void __cdecl DropPedPoint2();
 
-void DropPedPoint();
+void __cdecl DropPedPoint();
 
-void DropInitPedPoint();
+void __cdecl DropInitPedPoint();
 
-void DropPedPointAir2();
+void __cdecl DropPedPointAir2();
 
-void DropPedPointAir();
+void __cdecl DropPedPointAir();
 
-void DropInitPedPointAir();
+void __cdecl DropInitPedPointAir();
 
-br_uint_32 KillActorsModel(br_actor *pActor, void *pArg);
+br_uint_32 __cdecl KillActorsModel(br_actor *pActor, void *pArg);
 
-void DisposePedPaths();
+void __cdecl DisposePedPaths();
 
-void GetPedPos(int *pPed_index, int *pPoint_index);
+void __cdecl GetPedPos(int *pPed_index, int *pPoint_index);
 
-void ShowPedPos();
+void __cdecl ShowPedPos();
 
-void ShowPedPaths();
+void __cdecl ShowPedPaths();
 
-void PullPedPoint();
+void __cdecl PullPedPoint();
 
-void PullPedPointAir();
+void __cdecl PullPedPointAir();
 
-void DeletePedPath();
+void __cdecl DeletePedPath();
 
-void DeletePedPoint();
+void __cdecl DeletePedPoint();
 
-void DisposePedestrians();
+void __cdecl DisposePedestrians();
 
-void DoPedReport();
+void __cdecl DoPedReport();
 
-void RenderProximityRays(br_pixelmap *pRender_screen, br_pixelmap *pDepth_buffer, br_actor *pCamera, br_matrix34 *pCamera_to_world, tU32 pTime);
+void __cdecl RenderProximityRays(br_pixelmap *pRender_screen, br_pixelmap *pDepth_buffer, br_actor *pCamera, br_matrix34 *pCamera_to_world, tU32 pTime);
 
-void AdjustProxRay(int pRay_index, tU16 pCar_ID, tU16 pPed_index, tU32 pTime);
+void __cdecl AdjustProxRay(int pRay_index, tU16 pCar_ID, tU16 pPed_index, tU32 pTime);
 
-void ReceivedPedestrian(tNet_contents *pContents, tNet_message *pMessage, tU32 pReceive_time);
+void __cdecl ReceivedPedestrian(tNet_contents *pContents, tNet_message *pMessage, tU32 pReceive_time);
 
-void SendAllPedestrianPositions(tPlayer_ID pPlayer);
+void __cdecl SendAllPedestrianPositions(tPlayer_ID pPlayer);
 
 #endif

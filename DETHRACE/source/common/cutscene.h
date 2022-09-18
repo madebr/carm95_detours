@@ -10,26 +10,26 @@ void* radmalloc(unsigned long numbytes);
 
 void radfree(void *ptr);
 
-void ShowCutScene(int pIndex, int pWait_end, int pSound_ID, br_scalar pDelay);
+void __cdecl ShowCutScene(int pIndex, int pWait_end, int pSound_ID, br_scalar pDelay);
 
-void DoSCILogo();
+void __cdecl DoSCILogo();
 
-void DoStainlessLogo();
+void __cdecl DoStainlessLogo();
 
-void PlaySmackerFile(char *pSmack_name);
+void __cdecl PlaySmackerFile(char *pSmack_name);
 
-void DoOpeningAnimation();
+void __cdecl DoOpeningAnimation();
 
-void DoNewGameAnimation();
+void __cdecl DoNewGameAnimation();
 
-void DoGoToRaceAnimation();
+void __cdecl DoGoToRaceAnimation();
 
-void DoEndRaceAnimation();
+void __cdecl DoEndRaceAnimation();
 
-void DoGameOverAnimation();
+void __cdecl DoGameOverAnimation();
 
-void DoGameCompletedAnimation();
+void __cdecl DoGameCompletedAnimation();
 
-void StartLoadingScreen();
+void __cdecl StartLoadingScreen();
 
 #endif

@@ -4,7 +4,6 @@
 
 #include "carm95_hooks.h"
 
-#include <stdio.h>
 int(* hookvar_gDisabled_choices )[10] = (void*)0x0053a4d8;
 int * hookvar_gCurrent_mode  = (void*)0x0053a500;
 tU32 * hookvar_gStart_time  = (void*)0x0053a508;
@@ -13,27 +12,27 @@ tInterface_spec ** hookvar_gSpec  = (void*)0x0053a4c8;
 int * hookvar_gAlways_typing  = (void*)0x0053a4d0;
 int * hookvar_gDisabled_count  = (void*)0x0053a4cc;
 
-static void(*original_SetAlwaysTyping)() = (void(*)())0x004735b0;
+static void(__cdecl*original_SetAlwaysTyping)() = (void(__cdecl*)())0x004735b0;
 CARM95_HOOK_FUNCTION(original_SetAlwaysTyping, SetAlwaysTyping)
-void SetAlwaysTyping() {
+void __cdecl SetAlwaysTyping() {
     LOG_TRACE("()");
 
 
     original_SetAlwaysTyping();
 }
 
-static void(*original_ClearAlwaysTyping)() = (void(*)())0x004735c5;
+static void(__cdecl*original_ClearAlwaysTyping)() = (void(__cdecl*)())0x004735c5;
 CARM95_HOOK_FUNCTION(original_ClearAlwaysTyping, ClearAlwaysTyping)
-void ClearAlwaysTyping() {
+void __cdecl ClearAlwaysTyping() {
     LOG_TRACE("()");
 
 
     original_ClearAlwaysTyping();
 }
 
-static int(*original_ChoiceDisabled)(int, ...) = (int(*)(int, ...))0x00475027;
+static int(__cdecl*original_ChoiceDisabled)(int) = (int(__cdecl*)(int))0x00475027;
 CARM95_HOOK_FUNCTION(original_ChoiceDisabled, ChoiceDisabled)
-int ChoiceDisabled(int pChoice) {
+int __cdecl ChoiceDisabled(int pChoice) {
     int i;
     LOG_TRACE("(%d)", pChoice);
 
@@ -43,18 +42,18 @@ int ChoiceDisabled(int pChoice) {
     return original_ChoiceDisabled(pChoice);
 }
 
-static void(*original_ResetInterfaceTimeout)() = (void(*)())0x004735da;
+static void(__cdecl*original_ResetInterfaceTimeout)() = (void(__cdecl*)())0x004735da;
 CARM95_HOOK_FUNCTION(original_ResetInterfaceTimeout, ResetInterfaceTimeout)
-void ResetInterfaceTimeout() {
+void __cdecl ResetInterfaceTimeout() {
     LOG_TRACE("()");
 
 
     original_ResetInterfaceTimeout();
 }
 
-static void(*original_ChangeSelection)(tInterface_spec *, int *, int *, int, int, ...) = (void(*)(tInterface_spec *, int *, int *, int, int, ...))0x00474d84;
+static void(__cdecl*original_ChangeSelection)(tInterface_spec *, int *, int *, int, int) = (void(__cdecl*)(tInterface_spec *, int *, int *, int, int))0x00474d84;
 CARM95_HOOK_FUNCTION(original_ChangeSelection, ChangeSelection)
-void ChangeSelection(tInterface_spec *pSpec, int *pOld_selection, int *pNew_selection, int pMode, int pSkip_disabled) {
+void __cdecl ChangeSelection(tInterface_spec *pSpec, int *pOld_selection, int *pNew_selection, int pMode, int pSkip_disabled) {
     int i;
     LOG_TRACE("(%p, %p, %p, %d, %d)", pSpec, pOld_selection, pNew_selection, pMode, pSkip_disabled);
 
@@ -68,9 +67,9 @@ void ChangeSelection(tInterface_spec *pSpec, int *pOld_selection, int *pNew_sele
     original_ChangeSelection(pSpec, pOld_selection, pNew_selection, pMode, pSkip_disabled);
 }
 
-static void(*original_RecopyAreas)(tInterface_spec *, br_pixelmap **, ...) = (void(*)(tInterface_spec *, br_pixelmap **, ...))0x0047507b;
+static void(__cdecl*original_RecopyAreas)(tInterface_spec *, br_pixelmap **) = (void(__cdecl*)(tInterface_spec *, br_pixelmap **))0x0047507b;
 CARM95_HOOK_FUNCTION(original_RecopyAreas, RecopyAreas)
-void RecopyAreas(tInterface_spec *pSpec, br_pixelmap **pCopy_areas) {
+void __cdecl RecopyAreas(tInterface_spec *pSpec, br_pixelmap **pCopy_areas) {
     int i;
     LOG_TRACE("(%p, %p)", pSpec, pCopy_areas);
 
@@ -81,9 +80,9 @@ void RecopyAreas(tInterface_spec *pSpec, br_pixelmap **pCopy_areas) {
     original_RecopyAreas(pSpec, pCopy_areas);
 }
 
-static void(*original_DisableChoice)(int, ...) = (void(*)(int, ...))0x004735ef;
+static void(__cdecl*original_DisableChoice)(int) = (void(__cdecl*)(int))0x004735ef;
 CARM95_HOOK_FUNCTION(original_DisableChoice, DisableChoice)
-void DisableChoice(int pChoice) {
+void __cdecl DisableChoice(int pChoice) {
     int i;
     LOG_TRACE("(%d)", pChoice);
 
@@ -93,9 +92,9 @@ void DisableChoice(int pChoice) {
     original_DisableChoice(pChoice);
 }
 
-static void(*original_EnableChoice)(int, ...) = (void(*)(int, ...))0x0047364d;
+static void(__cdecl*original_EnableChoice)(int) = (void(__cdecl*)(int))0x0047364d;
 CARM95_HOOK_FUNCTION(original_EnableChoice, EnableChoice)
-void EnableChoice(int pChoice) {
+void __cdecl EnableChoice(int pChoice) {
     int i;
     LOG_TRACE("(%d)", pChoice);
 
@@ -105,9 +104,9 @@ void EnableChoice(int pChoice) {
     original_EnableChoice(pChoice);
 }
 
-static int(*original_DoInterfaceScreen)(tInterface_spec *, int, int, ...) = (int(*)(tInterface_spec *, int, int, ...))0x004736cc;
+static int(__cdecl*original_DoInterfaceScreen)(tInterface_spec *, int, int) = (int(__cdecl*)(tInterface_spec *, int, int))0x004736cc;
 CARM95_HOOK_FUNCTION(original_DoInterfaceScreen, DoInterfaceScreen)
-int DoInterfaceScreen(tInterface_spec *pSpec, int pOptions, int pCurrent_choice) {
+int __cdecl DoInterfaceScreen(tInterface_spec *pSpec, int pOptions, int pCurrent_choice) {
     tProg_status entry_status;
     int x_coord;
     int y_coord;
@@ -177,9 +176,9 @@ int DoInterfaceScreen(tInterface_spec *pSpec, int pOptions, int pCurrent_choice)
     return original_DoInterfaceScreen(pSpec, pOptions, pCurrent_choice);
 }
 
-static void(*original_ChangeSelectionTo)(int, int, ...) = (void(*)(int, int, ...))0x00475175;
+static void(__cdecl*original_ChangeSelectionTo)(int, int) = (void(__cdecl*)(int, int))0x00475175;
 CARM95_HOOK_FUNCTION(original_ChangeSelectionTo, ChangeSelectionTo)
-void ChangeSelectionTo(int pNew_choice, int pNew_mode) {
+void __cdecl ChangeSelectionTo(int pNew_choice, int pNew_mode) {
     int last_choice;
     LOG_TRACE("(%d, %d)", pNew_choice, pNew_mode);
 

@@ -4,7 +4,6 @@
 
 #include "carm95_hooks.h"
 
-#include <stdio.h>
  // Suffix added to avoid duplicate symbol
 #if 0
 char ** hookvar_gPalette_copy__mainmenu ;
@@ -22,9 +21,9 @@ int * hookvar_gReplace_background  = (void*)0x0053626c;
 char ** hookvar_gPixels_copy__mainmenu ;
 #endif
 
-static int(*original_MainMenuDone1)(int, int, int, int, int, ...) = (int(*)(int, int, int, int, int, ...))0x0044ae90;
+static int(__cdecl*original_MainMenuDone1)(int, int, int, int, int) = (int(__cdecl*)(int, int, int, int, int))0x0044ae90;
 CARM95_HOOK_FUNCTION(original_MainMenuDone1, MainMenuDone1)
-int MainMenuDone1(int pCurrent_choice, int pCurrent_mode, int pGo_ahead, int pEscaped, int pTimed_out) {
+int __cdecl MainMenuDone1(int pCurrent_choice, int pCurrent_mode, int pGo_ahead, int pEscaped, int pTimed_out) {
     LOG_TRACE("(%d, %d, %d, %d, %d)", pCurrent_choice, pCurrent_mode, pGo_ahead, pEscaped, pTimed_out);
 
     (void)pCurrent_choice;
@@ -36,9 +35,9 @@ int MainMenuDone1(int pCurrent_choice, int pCurrent_mode, int pGo_ahead, int pEs
     return original_MainMenuDone1(pCurrent_choice, pCurrent_mode, pGo_ahead, pEscaped, pTimed_out);
 }
 
-static int(*original_MainMenuDone2)(int, int, int, int, int, ...) = (int(*)(int, int, int, int, int, ...))0x0044af61;
+static int(__cdecl*original_MainMenuDone2)(int, int, int, int, int) = (int(__cdecl*)(int, int, int, int, int))0x0044af61;
 CARM95_HOOK_FUNCTION(original_MainMenuDone2, MainMenuDone2)
-int MainMenuDone2(int pCurrent_choice, int pCurrent_mode, int pGo_ahead, int pEscaped, int pTimed_out) {
+int __cdecl MainMenuDone2(int pCurrent_choice, int pCurrent_mode, int pGo_ahead, int pEscaped, int pTimed_out) {
     LOG_TRACE("(%d, %d, %d, %d, %d)", pCurrent_choice, pCurrent_mode, pGo_ahead, pEscaped, pTimed_out);
 
     (void)pCurrent_choice;
@@ -57,9 +56,9 @@ void StartMainMenu() {
     NOT_IMPLEMENTED();
 }
 
-static int(*original_DoMainMenuInterface)(tU32, int, ...) = (int(*)(tU32, int, ...))0x0044b7cc;
+static int(__cdecl*original_DoMainMenuInterface)(tU32, int) = (int(__cdecl*)(tU32, int))0x0044b7cc;
 CARM95_HOOK_FUNCTION(original_DoMainMenuInterface, DoMainMenuInterface)
-int DoMainMenuInterface(tU32 pTime_out, int pContinue_allowed) {
+int __cdecl DoMainMenuInterface(tU32 pTime_out, int pContinue_allowed) {
     static tFlicette flicker_on1[8];
     static tFlicette flicker_off1[8];
     static tFlicette push1[8];
@@ -90,9 +89,9 @@ int DoMainMenuInterface(tU32 pTime_out, int pContinue_allowed) {
     return original_DoMainMenuInterface(pTime_out, pContinue_allowed);
 }
 
-static tMM_result(*original_GetMainMenuOption)(tU32, int, ...) = (tMM_result(*)(tU32, int, ...))0x0044b6bc;
+static tMM_result(__cdecl*original_GetMainMenuOption)(tU32, int) = (tMM_result(__cdecl*)(tU32, int))0x0044b6bc;
 CARM95_HOOK_FUNCTION(original_GetMainMenuOption, GetMainMenuOption)
-tMM_result GetMainMenuOption(tU32 pTime_out, int pContinue_allowed) {
+tMM_result __cdecl GetMainMenuOption(tU32 pTime_out, int pContinue_allowed) {
     int result;
     LOG_TRACE("(%u, %d)", pTime_out, pContinue_allowed);
 
@@ -122,9 +121,9 @@ int QuitVerifyDone(int pCurrent_choice, int pCurrent_mode, int pGo_ahead, int pE
     NOT_IMPLEMENTED();
 }
 
-static int(*original_DoVerifyQuit)(int, ...) = (int(*)(int, ...))0x0044b25a;
+static int(__cdecl*original_DoVerifyQuit)(int) = (int(__cdecl*)(int))0x0044b25a;
 CARM95_HOOK_FUNCTION(original_DoVerifyQuit, DoVerifyQuit)
-int DoVerifyQuit(int pReplace_background) {
+int __cdecl DoVerifyQuit(int pReplace_background) {
     static tFlicette flicker_on[2];
     static tFlicette flicker_off[2];
     static tFlicette push[2];
@@ -148,9 +147,9 @@ int DoVerifyQuit(int pReplace_background) {
     return original_DoVerifyQuit(pReplace_background);
 }
 
-static tMM_result(*original_DoMainMenu)(tU32, int, int, ...) = (tMM_result(*)(tU32, int, int, ...))0x0044b51b;
+static tMM_result(__cdecl*original_DoMainMenu)(tU32, int, int) = (tMM_result(__cdecl*)(tU32, int, int))0x0044b51b;
 CARM95_HOOK_FUNCTION(original_DoMainMenu, DoMainMenu)
-tMM_result DoMainMenu(tU32 pTime_out, int pSave_allowed, int pContinue_allowed) {
+tMM_result __cdecl DoMainMenu(tU32 pTime_out, int pSave_allowed, int pContinue_allowed) {
     tMM_result the_result;
     LOG_TRACE("(%u, %d, %d)", pTime_out, pSave_allowed, pContinue_allowed);
 
@@ -162,9 +161,9 @@ tMM_result DoMainMenu(tU32 pTime_out, int pSave_allowed, int pContinue_allowed) 
     return original_DoMainMenu(pTime_out, pSave_allowed, pContinue_allowed);
 }
 
-static void(*original_DoMainMenuScreen)(tU32, int, int, ...) = (void(*)(tU32, int, int, ...))0x0044b3c3;
+static void(__cdecl*original_DoMainMenuScreen)(tU32, int, int) = (void(__cdecl*)(tU32, int, int))0x0044b3c3;
 CARM95_HOOK_FUNCTION(original_DoMainMenuScreen, DoMainMenuScreen)
-void DoMainMenuScreen(tU32 pTime_out, int pSave_allowed, int pContinue_allowed) {
+void __cdecl DoMainMenuScreen(tU32 pTime_out, int pSave_allowed, int pContinue_allowed) {
     tPlayer_status old_status;
     LOG_TRACE("(%u, %d, %d)", pTime_out, pSave_allowed, pContinue_allowed);
 

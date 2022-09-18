@@ -4,7 +4,6 @@
 
 #include "carm95_hooks.h"
 
-#include <stdio.h>
 int(* hookvar_gPowerup_cost )[4] = (void*)0x0050c5e0;
 #if 0
 int(* hookvar_gGame_scores )[6];
@@ -17,9 +16,9 @@ tNet_game_player_info ** hookvar_gLast_lepper  = (void*)0x00532200;
 int * hookvar_gInitialised_grid  = (void*)0x00551d7c;
 int * hookvar_gIt_or_fox  = (void*)0x00551d80;
 
-static void(*original_SendCarData)(tU32, ...) = (void(*)(tU32, ...))0x0042f2d0;
+static void(__cdecl*original_SendCarData)(tU32) = (void(__cdecl*)(tU32))0x0042f2d0;
 CARM95_HOOK_FUNCTION(original_SendCarData, SendCarData)
-void SendCarData(tU32 pNext_frame_time) {
+void __cdecl SendCarData(tU32 pNext_frame_time) {
     tNet_contents *contents;
     tCar_spec *car;
     tCollision_info *ncar;
@@ -43,9 +42,9 @@ void SendCarData(tU32 pNext_frame_time) {
     original_SendCarData(pNext_frame_time);
 }
 
-static void(*original_ReceivedRecover)(tNet_contents *, ...) = (void(*)(tNet_contents *, ...))0x0042fc35;
+static void(__cdecl*original_ReceivedRecover)(tNet_contents *) = (void(__cdecl*)(tNet_contents *))0x0042fc35;
 CARM95_HOOK_FUNCTION(original_ReceivedRecover, ReceivedRecover)
-void ReceivedRecover(tNet_contents *pContents) {
+void __cdecl ReceivedRecover(tNet_contents *pContents) {
     int i;
     LOG_TRACE("(%p)", pContents);
 
@@ -55,9 +54,9 @@ void ReceivedRecover(tNet_contents *pContents) {
     original_ReceivedRecover(pContents);
 }
 
-static void(*original_CopyMechanics)(tCar_spec *, tNet_contents *, ...) = (void(*)(tCar_spec *, tNet_contents *, ...))0x0042fcb8;
+static void(__cdecl*original_CopyMechanics)(tCar_spec *, tNet_contents *) = (void(__cdecl*)(tCar_spec *, tNet_contents *))0x0042fcb8;
 CARM95_HOOK_FUNCTION(original_CopyMechanics, CopyMechanics)
-void CopyMechanics(tCar_spec *pCar, tNet_contents *pContents) {
+void __cdecl CopyMechanics(tCar_spec *pCar, tNet_contents *pContents) {
     int j;
     LOG_TRACE("(%p, %p)", pCar, pContents);
 
@@ -68,9 +67,9 @@ void CopyMechanics(tCar_spec *pCar, tNet_contents *pContents) {
     original_CopyMechanics(pCar, pContents);
 }
 
-static void(*original_ReceivedMechanics)(tNet_contents *, ...) = (void(*)(tNet_contents *, ...))0x0042fd29;
+static void(__cdecl*original_ReceivedMechanics)(tNet_contents *) = (void(__cdecl*)(tNet_contents *))0x0042fd29;
 CARM95_HOOK_FUNCTION(original_ReceivedMechanics, ReceivedMechanics)
-void ReceivedMechanics(tNet_contents *pContents) {
+void __cdecl ReceivedMechanics(tNet_contents *pContents) {
     int i;
     tCar_spec *car;
     LOG_TRACE("(%p)", pContents);
@@ -82,9 +81,9 @@ void ReceivedMechanics(tNet_contents *pContents) {
     original_ReceivedMechanics(pContents);
 }
 
-static void(*original_ReceivedCopInfo)(tNet_contents *, ...) = (void(*)(tNet_contents *, ...))0x004302c5;
+static void(__cdecl*original_ReceivedCopInfo)(tNet_contents *) = (void(__cdecl*)(tNet_contents *))0x004302c5;
 CARM95_HOOK_FUNCTION(original_ReceivedCopInfo, ReceivedCopInfo)
-void ReceivedCopInfo(tNet_contents *pContents) {
+void __cdecl ReceivedCopInfo(tNet_contents *pContents) {
     tCar_spec *c;
     int i;
     LOG_TRACE("(%p)", pContents);
@@ -111,9 +110,9 @@ void SendAllNonCarPositions() {
     NOT_IMPLEMENTED();
 }
 
-static void(*original_ReceivedNonCarPosition)(tNet_contents *, ...) = (void(*)(tNet_contents *, ...))0x00430520;
+static void(__cdecl*original_ReceivedNonCarPosition)(tNet_contents *) = (void(__cdecl*)(tNet_contents *))0x00430520;
 CARM95_HOOK_FUNCTION(original_ReceivedNonCarPosition, ReceivedNonCarPosition)
-void ReceivedNonCarPosition(tNet_contents *pContents) {
+void __cdecl ReceivedNonCarPosition(tNet_contents *pContents) {
     br_actor *actor;
     LOG_TRACE("(%p)", pContents);
 
@@ -123,9 +122,9 @@ void ReceivedNonCarPosition(tNet_contents *pContents) {
     original_ReceivedNonCarPosition(pContents);
 }
 
-static void(*original_ReceivedNonCar)(tNet_contents *, ...) = (void(*)(tNet_contents *, ...))0x0043058d;
+static void(__cdecl*original_ReceivedNonCar)(tNet_contents *) = (void(__cdecl*)(tNet_contents *))0x0043058d;
 CARM95_HOOK_FUNCTION(original_ReceivedNonCar, ReceivedNonCar)
-void ReceivedNonCar(tNet_contents *pContents) {
+void __cdecl ReceivedNonCar(tNet_contents *pContents) {
     br_actor *actor;
     br_vector3 tv;
     tU8 cx;
@@ -147,9 +146,9 @@ void ReceivedNonCar(tNet_contents *pContents) {
     original_ReceivedNonCar(pContents);
 }
 
-static void(*original_SignalToStartRace2)(int, ...) = (void(*)(int, ...))0x004308fe;
+static void(__cdecl*original_SignalToStartRace2)(int) = (void(__cdecl*)(int))0x004308fe;
 CARM95_HOOK_FUNCTION(original_SignalToStartRace2, SignalToStartRace2)
-void SignalToStartRace2(int pIndex) {
+void __cdecl SignalToStartRace2(int pIndex) {
     tNet_message *the_message;
     int i;
     int j;
@@ -163,18 +162,18 @@ void SignalToStartRace2(int pIndex) {
     original_SignalToStartRace2(pIndex);
 }
 
-static void(*original_SignalToStartRace)() = (void(*)())0x00430bac;
+static void(__cdecl*original_SignalToStartRace)() = (void(__cdecl*)())0x00430bac;
 CARM95_HOOK_FUNCTION(original_SignalToStartRace, SignalToStartRace)
-void SignalToStartRace() {
+void __cdecl SignalToStartRace() {
     LOG_TRACE("()");
 
 
     original_SignalToStartRace();
 }
 
-static void(*original_SetUpNetCarPositions)() = (void(*)())0x00430bcd;
+static void(__cdecl*original_SetUpNetCarPositions)() = (void(__cdecl*)())0x00430bcd;
 CARM95_HOOK_FUNCTION(original_SetUpNetCarPositions, SetUpNetCarPositions)
-void SetUpNetCarPositions() {
+void __cdecl SetUpNetCarPositions() {
     int i;
     int j;
     int k;
@@ -191,9 +190,9 @@ void SetUpNetCarPositions() {
     original_SetUpNetCarPositions();
 }
 
-static void(*original_ReinitialiseCar)(tCar_spec *, ...) = (void(*)(tCar_spec *, ...))0x00430f14;
+static void(__cdecl*original_ReinitialiseCar)(tCar_spec *) = (void(__cdecl*)(tCar_spec *))0x00430f14;
 CARM95_HOOK_FUNCTION(original_ReinitialiseCar, ReinitialiseCar)
-void ReinitialiseCar(tCar_spec *pCar) {
+void __cdecl ReinitialiseCar(tCar_spec *pCar) {
     int i;
     LOG_TRACE("(%p)", pCar);
 
@@ -203,9 +202,9 @@ void ReinitialiseCar(tCar_spec *pCar) {
     original_ReinitialiseCar(pCar);
 }
 
-static void(*original_RepositionPlayer)(int, ...) = (void(*)(int, ...))0x00430f6e;
+static void(__cdecl*original_RepositionPlayer)(int) = (void(__cdecl*)(int))0x00430f6e;
 CARM95_HOOK_FUNCTION(original_RepositionPlayer, RepositionPlayer)
-void RepositionPlayer(int pIndex) {
+void __cdecl RepositionPlayer(int pIndex) {
     tNet_message *the_message;
     tCar_spec *car;
     LOG_TRACE("(%d)", pIndex);
@@ -217,9 +216,9 @@ void RepositionPlayer(int pIndex) {
     original_RepositionPlayer(pIndex);
 }
 
-static void(*original_DisableCar)(tCar_spec *, ...) = (void(*)(tCar_spec *, ...))0x00431094;
+static void(__cdecl*original_DisableCar)(tCar_spec *) = (void(__cdecl*)(tCar_spec *))0x00431094;
 CARM95_HOOK_FUNCTION(original_DisableCar, DisableCar)
-void DisableCar(tCar_spec *pCar) {
+void __cdecl DisableCar(tCar_spec *pCar) {
     LOG_TRACE("(%p)", pCar);
 
     (void)pCar;
@@ -227,9 +226,9 @@ void DisableCar(tCar_spec *pCar) {
     original_DisableCar(pCar);
 }
 
-static void(*original_EnableCar)(tCar_spec *, ...) = (void(*)(tCar_spec *, ...))0x00431165;
+static void(__cdecl*original_EnableCar)(tCar_spec *) = (void(__cdecl*)(tCar_spec *))0x00431165;
 CARM95_HOOK_FUNCTION(original_EnableCar, EnableCar)
-void EnableCar(tCar_spec *pCar) {
+void __cdecl EnableCar(tCar_spec *pCar) {
     LOG_TRACE("(%p)", pCar);
 
     (void)pCar;
@@ -237,9 +236,9 @@ void EnableCar(tCar_spec *pCar) {
     original_EnableCar(pCar);
 }
 
-static void(*original_DoNetworkHeadups)(int, ...) = (void(*)(int, ...))0x00431236;
+static void(__cdecl*original_DoNetworkHeadups)(int) = (void(__cdecl*)(int))0x00431236;
 CARM95_HOOK_FUNCTION(original_DoNetworkHeadups, DoNetworkHeadups)
-void DoNetworkHeadups(int pCredits) {
+void __cdecl DoNetworkHeadups(int pCredits) {
     char s[256];
     char s2[256];
     static tU32 last_flash;
@@ -255,9 +254,9 @@ void DoNetworkHeadups(int pCredits) {
     original_DoNetworkHeadups(pCredits);
 }
 
-static int(*original_SortNetHeadAscending)(void *, void *, ...) = (int(*)(void *, void *, ...))0x00431ff8;
+static int(__cdecl*original_SortNetHeadAscending)(void *, void *) = (int(__cdecl*)(void *, void *))0x00431ff8;
 CARM95_HOOK_FUNCTION(original_SortNetHeadAscending, SortNetHeadAscending)
-int SortNetHeadAscending(void *pFirst_one, void *pSecond_one) {
+int __cdecl SortNetHeadAscending(void *pFirst_one, void *pSecond_one) {
     LOG_TRACE("(%p, %p)", pFirst_one, pSecond_one);
 
     (void)pFirst_one;
@@ -266,9 +265,9 @@ int SortNetHeadAscending(void *pFirst_one, void *pSecond_one) {
     return original_SortNetHeadAscending(pFirst_one, pSecond_one);
 }
 
-static int(*original_SortNetHeadDescending)(void *, void *, ...) = (int(*)(void *, void *, ...))0x004320a9;
+static int(__cdecl*original_SortNetHeadDescending)(void *, void *) = (int(__cdecl*)(void *, void *))0x004320a9;
 CARM95_HOOK_FUNCTION(original_SortNetHeadDescending, SortNetHeadDescending)
-int SortNetHeadDescending(void *pFirst_one, void *pSecond_one) {
+int __cdecl SortNetHeadDescending(void *pFirst_one, void *pSecond_one) {
     LOG_TRACE("(%p, %p)", pFirst_one, pSecond_one);
 
     (void)pFirst_one;
@@ -277,9 +276,9 @@ int SortNetHeadDescending(void *pFirst_one, void *pSecond_one) {
     return original_SortNetHeadDescending(pFirst_one, pSecond_one);
 }
 
-static void(*original_ClipName)(char *, tDR_font *, int, ...) = (void(*)(char *, tDR_font *, int, ...))0x0043215a;
+static void(__cdecl*original_ClipName)(char *, tDR_font *, int) = (void(__cdecl*)(char *, tDR_font *, int))0x0043215a;
 CARM95_HOOK_FUNCTION(original_ClipName, ClipName)
-void ClipName(char *pName, tDR_font *pFont, int pMax_width) {
+void __cdecl ClipName(char *pName, tDR_font *pFont, int pMax_width) {
     LOG_TRACE("(\"%s\", %p, %d)", pName, pFont, pMax_width);
 
     (void)pName;
@@ -289,9 +288,9 @@ void ClipName(char *pName, tDR_font *pFont, int pMax_width) {
     original_ClipName(pName, pFont, pMax_width);
 }
 
-static void(*original_DoNetScores2)(int, ...) = (void(*)(int, ...))0x004315c0;
+static void(__cdecl*original_DoNetScores2)(int) = (void(__cdecl*)(int))0x004315c0;
 CARM95_HOOK_FUNCTION(original_DoNetScores2, DoNetScores2)
-void DoNetScores2(int pOnly_sort_scores) {
+void __cdecl DoNetScores2(int pOnly_sort_scores) {
     int i;
     int j;
     int score;
@@ -325,36 +324,36 @@ void DoNetScores2(int pOnly_sort_scores) {
     original_DoNetScores2(pOnly_sort_scores);
 }
 
-static void(*original_DoNetScores)() = (void(*)())0x004321a5;
+static void(__cdecl*original_DoNetScores)() = (void(__cdecl*)())0x004321a5;
 CARM95_HOOK_FUNCTION(original_DoNetScores, DoNetScores)
-void DoNetScores() {
+void __cdecl DoNetScores() {
     LOG_TRACE("()");
 
 
     original_DoNetScores();
 }
 
-static void(*original_InitNetHeadups)() = (void(*)())0x004321ba;
+static void(__cdecl*original_InitNetHeadups)() = (void(__cdecl*)())0x004321ba;
 CARM95_HOOK_FUNCTION(original_InitNetHeadups, InitNetHeadups)
-void InitNetHeadups() {
+void __cdecl InitNetHeadups() {
     LOG_TRACE("()");
 
 
     original_InitNetHeadups();
 }
 
-static void(*original_DisposeNetHeadups)() = (void(*)())0x0043221f;
+static void(__cdecl*original_DisposeNetHeadups)() = (void(__cdecl*)())0x0043221f;
 CARM95_HOOK_FUNCTION(original_DisposeNetHeadups, DisposeNetHeadups)
-void DisposeNetHeadups() {
+void __cdecl DisposeNetHeadups() {
     LOG_TRACE("()");
 
 
     original_DisposeNetHeadups();
 }
 
-static void(*original_EverybodysLost)() = (void(*)())0x00433554;
+static void(__cdecl*original_EverybodysLost)() = (void(__cdecl*)())0x00433554;
 CARM95_HOOK_FUNCTION(original_EverybodysLost, EverybodysLost)
-void EverybodysLost() {
+void __cdecl EverybodysLost() {
     tNet_message *the_message;
     int i;
     LOG_TRACE("()");
@@ -365,9 +364,9 @@ void EverybodysLost() {
     original_EverybodysLost();
 }
 
-static void(*original_DeclareWinner)(int, ...) = (void(*)(int, ...))0x0043227c;
+static void(__cdecl*original_DeclareWinner)(int) = (void(__cdecl*)(int))0x0043227c;
 CARM95_HOOK_FUNCTION(original_DeclareWinner, DeclareWinner)
-void DeclareWinner(int pWinner_index) {
+void __cdecl DeclareWinner(int pWinner_index) {
     tNet_message *the_message;
     int i;
     int j;
@@ -385,9 +384,9 @@ void DeclareWinner(int pWinner_index) {
     original_DeclareWinner(pWinner_index);
 }
 
-static void(*original_PlayerIsIt)(tNet_game_player_info *, ...) = (void(*)(tNet_game_player_info *, ...))0x004325be;
+static void(__cdecl*original_PlayerIsIt)(tNet_game_player_info *) = (void(__cdecl*)(tNet_game_player_info *))0x004325be;
 CARM95_HOOK_FUNCTION(original_PlayerIsIt, PlayerIsIt)
-void PlayerIsIt(tNet_game_player_info *pPlayer) {
+void __cdecl PlayerIsIt(tNet_game_player_info *pPlayer) {
     int i;
     char s[256];
     LOG_TRACE("(%p)", pPlayer);
@@ -399,9 +398,9 @@ void PlayerIsIt(tNet_game_player_info *pPlayer) {
     original_PlayerIsIt(pPlayer);
 }
 
-static int(*original_FarEnoughAway)(tNet_game_player_info *, tNet_game_player_info *, ...) = (int(*)(tNet_game_player_info *, tNet_game_player_info *, ...))0x004335cd;
+static int(__cdecl*original_FarEnoughAway)(tNet_game_player_info *, tNet_game_player_info *) = (int(__cdecl*)(tNet_game_player_info *, tNet_game_player_info *))0x004335cd;
 CARM95_HOOK_FUNCTION(original_FarEnoughAway, FarEnoughAway)
-int FarEnoughAway(tNet_game_player_info *pPlayer_1, tNet_game_player_info *pPlayer_2) {
+int __cdecl FarEnoughAway(tNet_game_player_info *pPlayer_1, tNet_game_player_info *pPlayer_2) {
     br_vector3 difference;
     LOG_TRACE("(%p, %p)", pPlayer_1, pPlayer_2);
 
@@ -412,9 +411,9 @@ int FarEnoughAway(tNet_game_player_info *pPlayer_1, tNet_game_player_info *pPlay
     return original_FarEnoughAway(pPlayer_1, pPlayer_2);
 }
 
-static void(*original_CarInContactWithItOrFox)(tNet_game_player_info *, ...) = (void(*)(tNet_game_player_info *, ...))0x004327a5;
+static void(__cdecl*original_CarInContactWithItOrFox)(tNet_game_player_info *) = (void(__cdecl*)(tNet_game_player_info *))0x004327a5;
 CARM95_HOOK_FUNCTION(original_CarInContactWithItOrFox, CarInContactWithItOrFox)
-void CarInContactWithItOrFox(tNet_game_player_info *pPlayer) {
+void __cdecl CarInContactWithItOrFox(tNet_game_player_info *pPlayer) {
     LOG_TRACE("(%p)", pPlayer);
 
     (void)pPlayer;
@@ -422,9 +421,9 @@ void CarInContactWithItOrFox(tNet_game_player_info *pPlayer) {
     original_CarInContactWithItOrFox(pPlayer);
 }
 
-static void(*original_SelectRandomItOrFox)(int, ...) = (void(*)(int, ...))0x00433676;
+static void(__cdecl*original_SelectRandomItOrFox)(int) = (void(__cdecl*)(int))0x00433676;
 CARM95_HOOK_FUNCTION(original_SelectRandomItOrFox, SelectRandomItOrFox)
-void SelectRandomItOrFox(int pNot_this_one) {
+void __cdecl SelectRandomItOrFox(int pNot_this_one) {
     int i;
     int new_choice;
     LOG_TRACE("(%d)", pNot_this_one);
@@ -436,9 +435,9 @@ void SelectRandomItOrFox(int pNot_this_one) {
     original_SelectRandomItOrFox(pNot_this_one);
 }
 
-static void(*original_CalcPlayerScores)() = (void(*)())0x00432865;
+static void(__cdecl*original_CalcPlayerScores)() = (void(__cdecl*)())0x00432865;
 CARM95_HOOK_FUNCTION(original_CalcPlayerScores, CalcPlayerScores)
-void CalcPlayerScores() {
+void __cdecl CalcPlayerScores() {
     int i;
     int j;
     int knock_out_bit;
@@ -487,9 +486,9 @@ void CalcPlayerScores() {
     original_CalcPlayerScores();
 }
 
-static void(*original_SendPlayerScores)() = (void(*)())0x004337a4;
+static void(__cdecl*original_SendPlayerScores)() = (void(__cdecl*)())0x004337a4;
 CARM95_HOOK_FUNCTION(original_SendPlayerScores, SendPlayerScores)
-void SendPlayerScores() {
+void __cdecl SendPlayerScores() {
     tNet_contents *the_contents;
     int i;
     LOG_TRACE("()");
@@ -500,18 +499,18 @@ void SendPlayerScores() {
     original_SendPlayerScores();
 }
 
-static void(*original_DoNetGameManagement)() = (void(*)())0x00432843;
+static void(__cdecl*original_DoNetGameManagement)() = (void(__cdecl*)())0x00432843;
 CARM95_HOOK_FUNCTION(original_DoNetGameManagement, DoNetGameManagement)
-void DoNetGameManagement() {
+void __cdecl DoNetGameManagement() {
     LOG_TRACE("()");
 
 
     original_DoNetGameManagement();
 }
 
-static void(*original_InitialisePlayerScore)(tNet_game_player_info *, ...) = (void(*)(tNet_game_player_info *, ...))0x0043385c;
+static void(__cdecl*original_InitialisePlayerScore)(tNet_game_player_info *) = (void(__cdecl*)(tNet_game_player_info *))0x0043385c;
 CARM95_HOOK_FUNCTION(original_InitialisePlayerScore, InitialisePlayerScore)
-void InitialisePlayerScore(tNet_game_player_info *pPlayer) {
+void __cdecl InitialisePlayerScore(tNet_game_player_info *pPlayer) {
     LOG_TRACE("(%p)", pPlayer);
 
     (void)pPlayer;
@@ -519,9 +518,9 @@ void InitialisePlayerScore(tNet_game_player_info *pPlayer) {
     original_InitialisePlayerScore(pPlayer);
 }
 
-static void(*original_InitPlayers)() = (void(*)())0x00433937;
+static void(__cdecl*original_InitPlayers)() = (void(__cdecl*)())0x00433937;
 CARM95_HOOK_FUNCTION(original_InitPlayers, InitPlayers)
-void InitPlayers() {
+void __cdecl InitPlayers() {
     int i;
     LOG_TRACE("()");
 
@@ -530,9 +529,9 @@ void InitPlayers() {
     original_InitPlayers();
 }
 
-static void(*original_BuyPSPowerup)(int, ...) = (void(*)(int, ...))0x004339be;
+static void(__cdecl*original_BuyPSPowerup)(int) = (void(__cdecl*)(int))0x004339be;
 CARM95_HOOK_FUNCTION(original_BuyPSPowerup, BuyPSPowerup)
-void BuyPSPowerup(int pIndex) {
+void __cdecl BuyPSPowerup(int pIndex) {
     char s[256];
     char s2[256];
     LOG_TRACE("(%d)", pIndex);
@@ -544,36 +543,36 @@ void BuyPSPowerup(int pIndex) {
     original_BuyPSPowerup(pIndex);
 }
 
-static void(*original_BuyArmour)() = (void(*)())0x00433b29;
+static void(__cdecl*original_BuyArmour)() = (void(__cdecl*)())0x00433b29;
 CARM95_HOOK_FUNCTION(original_BuyArmour, BuyArmour)
-void BuyArmour() {
+void __cdecl BuyArmour() {
     LOG_TRACE("()");
 
 
     original_BuyArmour();
 }
 
-static void(*original_BuyPower)() = (void(*)())0x00433b3e;
+static void(__cdecl*original_BuyPower)() = (void(__cdecl*)())0x00433b3e;
 CARM95_HOOK_FUNCTION(original_BuyPower, BuyPower)
-void BuyPower() {
+void __cdecl BuyPower() {
     LOG_TRACE("()");
 
 
     original_BuyPower();
 }
 
-static void(*original_BuyOffense)() = (void(*)())0x00433bf9;
+static void(__cdecl*original_BuyOffense)() = (void(__cdecl*)())0x00433bf9;
 CARM95_HOOK_FUNCTION(original_BuyOffense, BuyOffense)
-void BuyOffense() {
+void __cdecl BuyOffense() {
     LOG_TRACE("()");
 
 
     original_BuyOffense();
 }
 
-static void(*original_UseGeneralScore)(int, ...) = (void(*)(int, ...))0x00433c0e;
+static void(__cdecl*original_UseGeneralScore)(int) = (void(__cdecl*)(int))0x00433c0e;
 CARM95_HOOK_FUNCTION(original_UseGeneralScore, UseGeneralScore)
-void UseGeneralScore(int pScore) {
+void __cdecl UseGeneralScore(int pScore) {
     int i;
     LOG_TRACE("(%d)", pScore);
 
@@ -583,9 +582,9 @@ void UseGeneralScore(int pScore) {
     original_UseGeneralScore(pScore);
 }
 
-static void(*original_NetSendEnvironmentChanges)(tNet_game_player_info *, ...) = (void(*)(tNet_game_player_info *, ...))0x00433d0c;
+static void(__cdecl*original_NetSendEnvironmentChanges)(tNet_game_player_info *) = (void(__cdecl*)(tNet_game_player_info *))0x00433d0c;
 CARM95_HOOK_FUNCTION(original_NetSendEnvironmentChanges, NetSendEnvironmentChanges)
-void NetSendEnvironmentChanges(tNet_game_player_info *pPlayer) {
+void __cdecl NetSendEnvironmentChanges(tNet_game_player_info *pPlayer) {
     LOG_TRACE("(%p)", pPlayer);
 
     (void)pPlayer;
@@ -593,9 +592,9 @@ void NetSendEnvironmentChanges(tNet_game_player_info *pPlayer) {
     original_NetSendEnvironmentChanges(pPlayer);
 }
 
-static void(*original_UpdateEnvironments)() = (void(*)())0x00433e1b;
+static void(__cdecl*original_UpdateEnvironments)() = (void(__cdecl*)())0x00433e1b;
 CARM95_HOOK_FUNCTION(original_UpdateEnvironments, UpdateEnvironments)
-void UpdateEnvironments() {
+void __cdecl UpdateEnvironments() {
     int i;
     LOG_TRACE("()");
 
@@ -604,9 +603,9 @@ void UpdateEnvironments() {
     original_UpdateEnvironments();
 }
 
-static void(*original_ReceivedGameplay)(tNet_contents *, tNet_message *, tU32, ...) = (void(*)(tNet_contents *, tNet_message *, tU32, ...))0x00433eac;
+static void(__cdecl*original_ReceivedGameplay)(tNet_contents *, tNet_message *, tU32) = (void(__cdecl*)(tNet_contents *, tNet_message *, tU32))0x00433eac;
 CARM95_HOOK_FUNCTION(original_ReceivedGameplay, ReceivedGameplay)
-void ReceivedGameplay(tNet_contents *pContents, tNet_message *pMessage, tU32 pReceive_time) {
+void __cdecl ReceivedGameplay(tNet_contents *pContents, tNet_message *pMessage, tU32 pReceive_time) {
     int must_revert_reentrancy;
     int gPixel_buffer_size;
     char *gPixels_copy;
@@ -626,9 +625,9 @@ void ReceivedGameplay(tNet_contents *pContents, tNet_message *pMessage, tU32 pRe
     original_ReceivedGameplay(pContents, pMessage, pReceive_time);
 }
 
-static void(*original_SendGameplay)(tPlayer_ID, tNet_gameplay_mess, int, int, int, int, ...) = (void(*)(tPlayer_ID, tNet_gameplay_mess, int, int, int, int, ...))0x00434179;
+static void(__cdecl*original_SendGameplay)(tPlayer_ID, tNet_gameplay_mess, int, int, int, int) = (void(__cdecl*)(tPlayer_ID, tNet_gameplay_mess, int, int, int, int))0x00434179;
 CARM95_HOOK_FUNCTION(original_SendGameplay, SendGameplay)
-void SendGameplay(tPlayer_ID pPlayer, tNet_gameplay_mess pMess, int pParam_1, int pParam_2, int pParam_3, int pParam_4) {
+void __cdecl SendGameplay(tPlayer_ID pPlayer, tNet_gameplay_mess pMess, int pParam_1, int pParam_2, int pParam_3, int pParam_4) {
     tNet_message *the_message;
     LOG_TRACE("(%u, %d, %d, %d, %d, %d)", pPlayer, pMess, pParam_1, pParam_2, pParam_3, pParam_4);
 
@@ -643,9 +642,9 @@ void SendGameplay(tPlayer_ID pPlayer, tNet_gameplay_mess pMess, int pParam_1, in
     original_SendGameplay(pPlayer, pMess, pParam_1, pParam_2, pParam_3, pParam_4);
 }
 
-static void(*original_SendGameplayToAllPlayers)(tNet_gameplay_mess, int, int, int, int, ...) = (void(*)(tNet_gameplay_mess, int, int, int, int, ...))0x004341db;
+static void(__cdecl*original_SendGameplayToAllPlayers)(tNet_gameplay_mess, int, int, int, int) = (void(__cdecl*)(tNet_gameplay_mess, int, int, int, int))0x004341db;
 CARM95_HOOK_FUNCTION(original_SendGameplayToAllPlayers, SendGameplayToAllPlayers)
-void SendGameplayToAllPlayers(tNet_gameplay_mess pMess, int pParam_1, int pParam_2, int pParam_3, int pParam_4) {
+void __cdecl SendGameplayToAllPlayers(tNet_gameplay_mess pMess, int pParam_1, int pParam_2, int pParam_3, int pParam_4) {
     tNet_message *the_message;
     LOG_TRACE("(%d, %d, %d, %d, %d)", pMess, pParam_1, pParam_2, pParam_3, pParam_4);
 
@@ -659,9 +658,9 @@ void SendGameplayToAllPlayers(tNet_gameplay_mess pMess, int pParam_1, int pParam
     original_SendGameplayToAllPlayers(pMess, pParam_1, pParam_2, pParam_3, pParam_4);
 }
 
-static void(*original_SendGameplayToHost)(tNet_gameplay_mess, int, int, int, int, ...) = (void(*)(tNet_gameplay_mess, int, int, int, int, ...))0x00434239;
+static void(__cdecl*original_SendGameplayToHost)(tNet_gameplay_mess, int, int, int, int) = (void(__cdecl*)(tNet_gameplay_mess, int, int, int, int))0x00434239;
 CARM95_HOOK_FUNCTION(original_SendGameplayToHost, SendGameplayToHost)
-void SendGameplayToHost(tNet_gameplay_mess pMess, int pParam_1, int pParam_2, int pParam_3, int pParam_4) {
+void __cdecl SendGameplayToHost(tNet_gameplay_mess pMess, int pParam_1, int pParam_2, int pParam_3, int pParam_4) {
     tNet_message *the_message;
     LOG_TRACE("(%d, %d, %d, %d, %d)", pMess, pParam_1, pParam_2, pParam_3, pParam_4);
 
@@ -675,27 +674,27 @@ void SendGameplayToHost(tNet_gameplay_mess pMess, int pParam_1, int pParam_2, in
     original_SendGameplayToHost(pMess, pParam_1, pParam_2, pParam_3, pParam_4);
 }
 
-static void(*original_InitNetGameplayStuff)() = (void(*)())0x004342a4;
+static void(__cdecl*original_InitNetGameplayStuff)() = (void(__cdecl*)())0x004342a4;
 CARM95_HOOK_FUNCTION(original_InitNetGameplayStuff, InitNetGameplayStuff)
-void InitNetGameplayStuff() {
+void __cdecl InitNetGameplayStuff() {
     LOG_TRACE("()");
 
 
     original_InitNetGameplayStuff();
 }
 
-static void(*original_DefaultNetName)() = (void(*)())0x004342cc;
+static void(__cdecl*original_DefaultNetName)() = (void(__cdecl*)())0x004342cc;
 CARM95_HOOK_FUNCTION(original_DefaultNetName, DefaultNetName)
-void DefaultNetName() {
+void __cdecl DefaultNetName() {
     LOG_TRACE("()");
 
 
     original_DefaultNetName();
 }
 
-static void(*original_NetSendPointCrush)(tCar_spec *, tU16, br_vector3 *, ...) = (void(*)(tCar_spec *, tU16, br_vector3 *, ...))0x004342e6;
+static void(__cdecl*original_NetSendPointCrush)(tCar_spec *, tU16, br_vector3 *) = (void(__cdecl*)(tCar_spec *, tU16, br_vector3 *))0x004342e6;
 CARM95_HOOK_FUNCTION(original_NetSendPointCrush, NetSendPointCrush)
-void NetSendPointCrush(tCar_spec *pCar, tU16 pCrush_point_index, br_vector3 *pEnergy_vector) {
+void __cdecl NetSendPointCrush(tCar_spec *pCar, tU16 pCrush_point_index, br_vector3 *pEnergy_vector) {
     tNet_contents *contents;
     LOG_TRACE("(%p, %u, %p)", pCar, pCrush_point_index, pEnergy_vector);
 
@@ -707,9 +706,9 @@ void NetSendPointCrush(tCar_spec *pCar, tU16 pCrush_point_index, br_vector3 *pEn
     original_NetSendPointCrush(pCar, pCrush_point_index, pEnergy_vector);
 }
 
-static void(*original_RecievedCrushPoint)(tNet_contents *, ...) = (void(*)(tNet_contents *, ...))0x00434346;
+static void(__cdecl*original_RecievedCrushPoint)(tNet_contents *) = (void(__cdecl*)(tNet_contents *))0x00434346;
 CARM95_HOOK_FUNCTION(original_RecievedCrushPoint, RecievedCrushPoint)
-void RecievedCrushPoint(tNet_contents *pContents) {
+void __cdecl RecievedCrushPoint(tNet_contents *pContents) {
     tCar_spec *car;
     LOG_TRACE("(%p)", pContents);
 
@@ -719,9 +718,9 @@ void RecievedCrushPoint(tNet_contents *pContents) {
     original_RecievedCrushPoint(pContents);
 }
 
-static void(*original_GetReducedMatrix)(tReduced_matrix *, br_matrix34 *, ...) = (void(*)(tReduced_matrix *, br_matrix34 *, ...))0x0043447f;
+static void(__cdecl*original_GetReducedMatrix)(tReduced_matrix *, br_matrix34 *) = (void(__cdecl*)(tReduced_matrix *, br_matrix34 *))0x0043447f;
 CARM95_HOOK_FUNCTION(original_GetReducedMatrix, GetReducedMatrix)
-void GetReducedMatrix(tReduced_matrix *m1, br_matrix34 *m2) {
+void __cdecl GetReducedMatrix(tReduced_matrix *m1, br_matrix34 *m2) {
     LOG_TRACE("(%p, %p)", m1, m2);
 
     (void)m1;
@@ -730,9 +729,9 @@ void GetReducedMatrix(tReduced_matrix *m1, br_matrix34 *m2) {
     original_GetReducedMatrix(m1, m2);
 }
 
-static void(*original_GetExpandedMatrix)(br_matrix34 *, tReduced_matrix *, ...) = (void(*)(br_matrix34 *, tReduced_matrix *, ...))0x004344f4;
+static void(__cdecl*original_GetExpandedMatrix)(br_matrix34 *, tReduced_matrix *) = (void(__cdecl*)(br_matrix34 *, tReduced_matrix *))0x004344f4;
 CARM95_HOOK_FUNCTION(original_GetExpandedMatrix, GetExpandedMatrix)
-void GetExpandedMatrix(br_matrix34 *m1, tReduced_matrix *m2) {
+void __cdecl GetExpandedMatrix(br_matrix34 *m1, tReduced_matrix *m2) {
     LOG_TRACE("(%p, %p)", m1, m2);
 
     (void)m1;
@@ -741,12 +740,14 @@ void GetExpandedMatrix(br_matrix34 *m1, tReduced_matrix *m2) {
     original_GetExpandedMatrix(m1, m2);
 }
 
-void NetEarnCredits(tNet_game_player_info *pPlayer, tS32 pCredits) {
+static void(__cdecl*original_NetEarnCredits)(tNet_game_player_info *, tS32) = (void(__cdecl*)(tNet_game_player_info *, tS32))0x004345c7;
+CARM95_HOOK_FUNCTION(original_NetEarnCredits, NetEarnCredits)
+void __cdecl NetEarnCredits(tNet_game_player_info *pPlayer, tS32 pCredits) {
     LOG_TRACE("(%p, %d)", pPlayer, pCredits);
 
     (void)pPlayer;
     (void)pCredits;
 
-    NOT_IMPLEMENTED();
+    original_NetEarnCredits(pPlayer, pCredits);
 }
 

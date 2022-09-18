@@ -32,96 +32,96 @@ extern int * hookvar_gNet_ped_headup ; // addr: 00544E1C
 // extern int * hookvar_gCredits_lost_headup ;
 extern int * hookvar_gCredits_won_headup ; // addr: 00544E20
 
-void GetTimerString(char *pStr, int pFudge_colon);
+void __cdecl GetTimerString(char *pStr, int pFudge_colon);
 
-void InitHeadups();
+void __cdecl InitHeadups();
 
-void ClearHeadup(int pIndex);
+void __cdecl ClearHeadup(int pIndex);
 
-void ClearHeadupSlot(int pSlot_index);
+void __cdecl ClearHeadupSlot(int pSlot_index);
 
-void ClearHeadups();
+void __cdecl ClearHeadups();
 
-int HeadupActive(int pIndex);
+int __cdecl HeadupActive(int pIndex);
 
-void DRPixelmapText(br_pixelmap *pPixelmap, int pX, int pY, tDR_font *pFont, char *pText, int pRight_edge);
+void __cdecl DRPixelmapText(br_pixelmap *pPixelmap, int pX, int pY, tDR_font *pFont, char *pText, int pRight_edge);
 
-void DRPixelmapCleverText2(br_pixelmap *pPixelmap, int pX, int pY, tDR_font *pFont, signed char *pText, int pRight_edge);
+void __cdecl DRPixelmapCleverText2(br_pixelmap *pPixelmap, int pX, int pY, tDR_font *pFont, signed char *pText, int pRight_edge);
 
 void DeviouslyDimRectangle(br_pixelmap *pPixelmap, int pLeft, int pTop, int pRight, int pBottom, int pKnock_out_corners);
 
-void DimRectangle(br_pixelmap *pPixelmap, int pLeft, int pTop, int pRight, int pBottom, int pKnock_out_corners);
+void __cdecl DimRectangle(br_pixelmap *pPixelmap, int pLeft, int pTop, int pRight, int pBottom, int pKnock_out_corners);
 
-void DimAFewBits();
+void __cdecl DimAFewBits();
 
-void KillOldestQueuedHeadup();
+void __cdecl KillOldestQueuedHeadup();
 
-void DubreyBar(int pX_index, int pY, int pColour);
+void __cdecl DubreyBar(int pX_index, int pY, int pColour);
 
-void DoPSPowerHeadup(int pY, int pLevel, char *pName, int pBar_colour);
+void __cdecl DoPSPowerHeadup(int pY, int pLevel, char *pName, int pBar_colour);
 
-void DoPSPowerupHeadups();
+void __cdecl DoPSPowerupHeadups();
 
-void DoHeadups(tU32 pThe_time);
+void __cdecl DoHeadups(tU32 pThe_time);
 
-int FindAHeadupHoleWoofBarkSoundsABitRude(int pSlot_index);
+int __cdecl FindAHeadupHoleWoofBarkSoundsABitRude(int pSlot_index);
 
-int DRTextWidth(tDR_font *pFont, char *pText);
+int __cdecl DRTextWidth(tDR_font *pFont, char *pText);
 
-int DRTextCleverWidth(tDR_font *pFont, signed char *pText);
+int __cdecl DRTextCleverWidth(tDR_font *pFont, signed char *pText);
 
-void DRPixelmapCentredText(br_pixelmap *pPixelmap, int pX, int pY, tDR_font *pFont, char *pText);
+void __cdecl DRPixelmapCentredText(br_pixelmap *pPixelmap, int pX, int pY, tDR_font *pFont, char *pText);
 
-int IsHeadupTextClever(signed char *pText);
+int __cdecl IsHeadupTextClever(signed char *pText);
 
-int MungeHeadupWidth(tHeadup *pHeadup);
+int __cdecl MungeHeadupWidth(tHeadup *pHeadup);
 
-int NewTextHeadupSlot2(int pSlot_index, int pFlash_rate, int pLifetime, int pFont_index, char *pText, int pQueue_it);
+int __cdecl NewTextHeadupSlot2(int pSlot_index, int pFlash_rate, int pLifetime, int pFont_index, char *pText, int pQueue_it);
 
-int NewTextHeadupSlot(int pSlot_index, int pFlash_rate, int pLifetime, int pFont_index, char *pText);
+int __cdecl NewTextHeadupSlot(int pSlot_index, int pFlash_rate, int pLifetime, int pFont_index, char *pText);
 
-int NewImageHeadupSlot(int pSlot_index, int pFlash_rate, int pLifetime, int pImage_index);
+int __cdecl NewImageHeadupSlot(int pSlot_index, int pFlash_rate, int pLifetime, int pImage_index);
 
-void DoFancyHeadup(int pIndex);
+void __cdecl DoFancyHeadup(int pIndex);
 
-void AdjustHeadups();
+void __cdecl AdjustHeadups();
 
-void MoveHeadupTo(int pHeadup_index, int pNew_x, int pNew_y);
+void __cdecl MoveHeadupTo(int pHeadup_index, int pNew_x, int pNew_y);
 
-void ChangeHeadupText(int pHeadup_index, char *pNew_text);
+void __cdecl ChangeHeadupText(int pHeadup_index, char *pNew_text);
 
-void ChangeHeadupImage(int pHeadup_index, int pNew_image);
+void __cdecl ChangeHeadupImage(int pHeadup_index, int pNew_image);
 
-void ChangeHeadupColour(int pHeadup_index, int pNew_colour);
+void __cdecl ChangeHeadupColour(int pHeadup_index, int pNew_colour);
 
-void DoDamageScreen(tU32 pThe_time);
+void __cdecl DoDamageScreen(tU32 pThe_time);
 
-void PoshDrawLine(float pAngle, br_pixelmap *pDestn, int pX1, int pY1, int pX2, int pY2, int pColour);
+void __cdecl PoshDrawLine(float pAngle, br_pixelmap *pDestn, int pX1, int pY1, int pX2, int pY2, int pColour);
 
-void DoInstruments(tU32 pThe_time);
+void __cdecl DoInstruments(tU32 pThe_time);
 
-void DoSteeringWheel(tU32 pThe_time);
+void __cdecl DoSteeringWheel(tU32 pThe_time);
 
-void ChangingView();
+void __cdecl ChangingView();
 
-void EarnCredits2(int pAmount, char *pPrefix_text);
+void __cdecl EarnCredits2(int pAmount, char *pPrefix_text);
 
-void EarnCredits(int pAmount);
+void __cdecl EarnCredits(int pAmount);
 
-int SpendCredits(int pAmount);
+int __cdecl SpendCredits(int pAmount);
 
-void AwardTime(tU32 pTime);
+void __cdecl AwardTime(tU32 pTime);
 
-void DrawRectangle(br_pixelmap *pPixelmap, int pLeft, int pTop, int pRight, int pBottom, int pColour);
+void __cdecl DrawRectangle(br_pixelmap *pPixelmap, int pLeft, int pTop, int pRight, int pBottom, int pColour);
 
-void DrawRRectangle(br_pixelmap *pPixelmap, int pLeft, int pTop, int pRight, int pBottom, int pColour);
+void __cdecl DrawRRectangle(br_pixelmap *pPixelmap, int pLeft, int pTop, int pRight, int pBottom, int pColour);
 
-void OoerrIveGotTextInMeBoxMissus(int pFont_index, char *pText, br_pixelmap *pPixelmap, int pLeft, int pTop, int pRight, int pBottom, int pCentred);
+void __cdecl OoerrIveGotTextInMeBoxMissus(int pFont_index, char *pText, br_pixelmap *pPixelmap, int pLeft, int pTop, int pRight, int pBottom, int pCentred);
 
-void TransBrPixelmapText(br_pixelmap *pPixelmap, int pX, int pY, br_uint_32 pColour, br_font *pFont, signed char *pText);
+void __cdecl TransBrPixelmapText(br_pixelmap *pPixelmap, int pX, int pY, br_uint_32 pColour, br_font *pFont, signed char *pText);
 
-void TransDRPixelmapText(br_pixelmap *pPixelmap, int pX, int pY, tDR_font *pFont, char *pText, int pRight_edge);
+void __cdecl TransDRPixelmapText(br_pixelmap *pPixelmap, int pX, int pY, tDR_font *pFont, char *pText, int pRight_edge);
 
-void TransDRPixelmapCleverText(br_pixelmap *pPixelmap, int pX, int pY, tDR_font *pFont, char *pText, int pRight_edge);
+void __cdecl TransDRPixelmapCleverText(br_pixelmap *pPixelmap, int pX, int pY, tDR_font *pFont, char *pText, int pRight_edge);
 
 #endif

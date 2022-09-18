@@ -69,230 +69,232 @@ extern tU32 * hookvar_gFrame_period_for_this_munging ; // addr: 005520E0
 extern tU32 * hookvar_gTime_stamp_for_this_munging ; // addr: 005520E4
 extern tS16 * hookvar_gMobile_section ; // addr: 00530C90
 
-void PointActorAlongThisBloodyVector(br_actor *pThe_actor, br_vector3 *pThe_vector);
+void __cdecl PointActorAlongThisBloodyVector(br_actor *pThe_actor, br_vector3 *pThe_vector);
 
-void ProcessCurrentObjective(tOpponent_spec *pOpponent_spec, tProcess_objective_command pCommand);
+void __cdecl ProcessCurrentObjective(tOpponent_spec *pOpponent_spec, tProcess_objective_command pCommand);
 
-tS16 ReallocExtraPathNodes(int pHow_many_then);
+tS16 __cdecl ReallocExtraPathNodes(int pHow_many_then);
 
-tS16 ReallocExtraPathSections(int pHow_many_then);
+tS16 __cdecl ReallocExtraPathSections(int pHow_many_then);
 
-int PointVisibleFromHere(br_vector3 *pFrom, br_vector3 *pTo);
+int __cdecl PointVisibleFromHere(br_vector3 *pFrom, br_vector3 *pTo);
 
-tS16 FindNearestPathNode(br_vector3 *pActor_coords, br_scalar *pDistance);
+tS16 __cdecl FindNearestPathNode(br_vector3 *pActor_coords, br_scalar *pDistance);
 
-tS16 FindNearestPathSection(br_vector3 *pActor_coords, br_vector3 *pPath_direction, br_vector3 *pIntersect, br_scalar *pDistance);
+tS16 __cdecl FindNearestPathSection(br_vector3 *pActor_coords, br_vector3 *pPath_direction, br_vector3 *pIntersect, br_scalar *pDistance);
 
-tS16 FindNearestGeneralSection(tCar_spec *pPursuee, br_vector3 *pActor_coords, br_vector3 *pPath_direction, br_vector3 *pIntersect, br_scalar *pDistance);
+tS16 __cdecl FindNearestGeneralSection(tCar_spec *pPursuee, br_vector3 *pActor_coords, br_vector3 *pPath_direction, br_vector3 *pIntersect, br_scalar *pDistance);
 
-void DeadStopCar(tCar_spec *pCar_spec);
+void __cdecl DeadStopCar(tCar_spec *pCar_spec);
 
-void TurnOpponentPhysicsOn(tOpponent_spec *pOpponent_spec);
+void __cdecl TurnOpponentPhysicsOn(tOpponent_spec *pOpponent_spec);
 
-void TurnOpponentPhysicsOff(tOpponent_spec *pOpponent_spec);
+void __cdecl TurnOpponentPhysicsOff(tOpponent_spec *pOpponent_spec);
 
-extern void(*NewObjective)(tOpponent_spec *, tOpponent_objective_type, ...);
+extern void(__cdecl*NewObjective)(tOpponent_spec *, tOpponent_objective_type);
+#if 0
 void NewObjective_do_not_use(tOpponent_spec *pOpponent_spec, tOpponent_objective_type pObjective_type);
+#endif
 
-void CalcRaceRoute(tOpponent_spec *pOpponent_spec);
+void __cdecl CalcRaceRoute(tOpponent_spec *pOpponent_spec);
 
-void TopUpRandomRoute(tOpponent_spec *pOpponent_spec, int pSections_to_add);
+void __cdecl TopUpRandomRoute(tOpponent_spec *pOpponent_spec, int pSections_to_add);
 
-int SearchForSection(tRoute_section *pTemp_store, tRoute_section *pPerm_store, int *pNum_of_perm_store_sections, tS16 pTarget_section, int pDepth, br_scalar pDistance_so_far, tOpponent_spec *pOpponent_spec);
+int __cdecl SearchForSection(tRoute_section *pTemp_store, tRoute_section *pPerm_store, int *pNum_of_perm_store_sections, tS16 pTarget_section, int pDepth, br_scalar pDistance_so_far, tOpponent_spec *pOpponent_spec);
 
-void CalcGetNearPlayerRoute(tOpponent_spec *pOpponent_spec, tCar_spec *pPlayer);
+void __cdecl CalcGetNearPlayerRoute(tOpponent_spec *pOpponent_spec, tCar_spec *pPlayer);
 
-void CalcReturnToStartPointRoute(tOpponent_spec *pOpponent_spec);
+void __cdecl CalcReturnToStartPointRoute(tOpponent_spec *pOpponent_spec);
 
-void ClearOpponentsProjectedRoute(tOpponent_spec *pOpponent_spec);
+void __cdecl ClearOpponentsProjectedRoute(tOpponent_spec *pOpponent_spec);
 
-int AddToOpponentsProjectedRoute(tOpponent_spec *pOpponent_spec, tS16 pSection_no, int pDirection);
+int __cdecl AddToOpponentsProjectedRoute(tOpponent_spec *pOpponent_spec, tS16 pSection_no, int pDirection);
 
-int ShiftOpponentsProjectedRoute(tOpponent_spec *pOpponent_spec, int pPlaces);
+int __cdecl ShiftOpponentsProjectedRoute(tOpponent_spec *pOpponent_spec, int pPlaces);
 
-void StunTheBugger(tOpponent_spec *pOpponent_spec, int pMilliseconds);
+void __cdecl StunTheBugger(tOpponent_spec *pOpponent_spec, int pMilliseconds);
 
-void UnStunTheBugger(tOpponent_spec *pOpponent_spec);
+void __cdecl UnStunTheBugger(tOpponent_spec *pOpponent_spec);
 
-void ProcessCompleteRace(tOpponent_spec *pOpponent_spec, tProcess_objective_command pCommand);
+void __cdecl ProcessCompleteRace(tOpponent_spec *pOpponent_spec, tProcess_objective_command pCommand);
 
-void StartRecordingTrail(tCar_spec *pPursuee);
+void __cdecl StartRecordingTrail(tCar_spec *pPursuee);
 
-void RecordNextTrailNode(tCar_spec *pPursuee);
+void __cdecl RecordNextTrailNode(tCar_spec *pPursuee);
 
-tS16 FindNearestTrailSection(tOpponent_spec *pOpponent_spec, tCar_spec *pPursuee, br_vector3 *pSection_v, br_vector3 *pIntersect, br_scalar *pDistance);
+tS16 __cdecl FindNearestTrailSection(tOpponent_spec *pOpponent_spec, tCar_spec *pPursuee, br_vector3 *pSection_v, br_vector3 *pIntersect, br_scalar *pDistance);
 
-tS16 CalcNextTrailSection(tOpponent_spec *pOpponent_spec, int pSection);
+tS16 __cdecl CalcNextTrailSection(tOpponent_spec *pOpponent_spec, int pSection);
 
-void ProcessPursueAndTwat(tOpponent_spec *pOpponent_spec, tProcess_objective_command pCommand);
+void __cdecl ProcessPursueAndTwat(tOpponent_spec *pOpponent_spec, tProcess_objective_command pCommand);
 
-void ProcessRunAway(tOpponent_spec *pOpponent_spec, tProcess_objective_command pCommand);
+void __cdecl ProcessRunAway(tOpponent_spec *pOpponent_spec, tProcess_objective_command pCommand);
 
-void ProcessWaitForSomeHaplessSod(tOpponent_spec *pOpponent_spec, tProcess_objective_command pCommand);
+void __cdecl ProcessWaitForSomeHaplessSod(tOpponent_spec *pOpponent_spec, tProcess_objective_command pCommand);
 
-void ProcessReturnToStart(tOpponent_spec *pOpponent_spec, tProcess_objective_command pCommand);
+void __cdecl ProcessReturnToStart(tOpponent_spec *pOpponent_spec, tProcess_objective_command pCommand);
 
-void ProcessLevitate(tOpponent_spec *pOpponent_spec, tProcess_objective_command pCommand);
+void __cdecl ProcessLevitate(tOpponent_spec *pOpponent_spec, tProcess_objective_command pCommand);
 
-void ProcessGetNearPlayer(tOpponent_spec *pOpponent_spec, tProcess_objective_command pCommand);
+void __cdecl ProcessGetNearPlayer(tOpponent_spec *pOpponent_spec, tProcess_objective_command pCommand);
 
-void ProcessFrozen(tOpponent_spec *pOpponent_spec, tProcess_objective_command pCommand);
+void __cdecl ProcessFrozen(tOpponent_spec *pOpponent_spec, tProcess_objective_command pCommand);
 
-int HeadOnWithPlayerPossible(tOpponent_spec *pOpponent_spec);
+int __cdecl HeadOnWithPlayerPossible(tOpponent_spec *pOpponent_spec);
 
-int AlreadyPursuingCar(tOpponent_spec *pOpponent_spec, tCar_spec *pPursuee);
+int __cdecl AlreadyPursuingCar(tOpponent_spec *pOpponent_spec, tCar_spec *pPursuee);
 
-int LastTwatteeAPlayer(tOpponent_spec *pOpponent_spec);
+int __cdecl LastTwatteeAPlayer(tOpponent_spec *pOpponent_spec);
 
-int LastTwatterAPlayer(tOpponent_spec *pOpponent_spec);
+int __cdecl LastTwatterAPlayer(tOpponent_spec *pOpponent_spec);
 
-void ObjectiveComplete(tOpponent_spec *pOpponent_spec);
+void __cdecl ObjectiveComplete(tOpponent_spec *pOpponent_spec);
 
-void TeleportOpponentToNearestSafeLocation(tOpponent_spec *pOpponent_spec);
+void __cdecl TeleportOpponentToNearestSafeLocation(tOpponent_spec *pOpponent_spec);
 
-void ChooseNewObjective(tOpponent_spec *pOpponent_spec, int pMust_choose_one);
+void __cdecl ChooseNewObjective(tOpponent_spec *pOpponent_spec, int pMust_choose_one);
 
 void ProcessThisOpponent(tOpponent_spec *pOpponent_spec);
 
-int IsNetCarActive(br_vector3 *pPoint);
+int __cdecl IsNetCarActive(br_vector3 *pPoint);
 
-void RebuildActiveCarList();
+void __cdecl RebuildActiveCarList();
 
-void ForceRebuildActiveCarList();
+void __cdecl ForceRebuildActiveCarList();
 
-void StartToCheat(tOpponent_spec *pOpponent_spec);
+void __cdecl StartToCheat(tOpponent_spec *pOpponent_spec);
 
-void OiStopCheating(tOpponent_spec *pOpponent_spec);
+void __cdecl OiStopCheating(tOpponent_spec *pOpponent_spec);
 
-int TeleportCopToStart(tOpponent_spec *pOpponent_spec);
+int __cdecl TeleportCopToStart(tOpponent_spec *pOpponent_spec);
 
-void CalcDistanceFromHome(tOpponent_spec *pOpponent_spec);
+void __cdecl CalcDistanceFromHome(tOpponent_spec *pOpponent_spec);
 
-int MassageOpponentPosition(tOpponent_spec *pOpponent_spec, int pMassage_count);
+int __cdecl MassageOpponentPosition(tOpponent_spec *pOpponent_spec, int pMassage_count);
 
-int RematerialiseOpponentOnThisSection(tOpponent_spec *pOpponent_spec, br_scalar pSpeed, tS16 pSection_no);
+int __cdecl RematerialiseOpponentOnThisSection(tOpponent_spec *pOpponent_spec, br_scalar pSpeed, tS16 pSection_no);
 
-int RematerialiseOpponentOnNearestSection(tOpponent_spec *pOpponent_spec, br_scalar pSpeed);
+int __cdecl RematerialiseOpponentOnNearestSection(tOpponent_spec *pOpponent_spec, br_scalar pSpeed);
 
-int RematerialiseOpponent(tOpponent_spec *pOpponent_spec, br_scalar pSpeed);
+int __cdecl RematerialiseOpponent(tOpponent_spec *pOpponent_spec, br_scalar pSpeed);
 
-void CalcPlayerConspicuousness(tOpponent_spec *pOpponent_spec);
+void __cdecl CalcPlayerConspicuousness(tOpponent_spec *pOpponent_spec);
 
-void CalcOpponentConspicuousnessWithAViewToCheatingLikeFuck(tOpponent_spec *pOpponent_spec);
+void __cdecl CalcOpponentConspicuousnessWithAViewToCheatingLikeFuck(tOpponent_spec *pOpponent_spec);
 
-void ChallengeOccurred(int pChallenger_index, int pAccepted);
+void __cdecl ChallengeOccurred(int pChallenger_index, int pAccepted);
 
-void LoadCopCars();
+void __cdecl LoadCopCars();
 
-void LoadInOppoPaths(FILE *pF);
+void __cdecl LoadInOppoPaths(FILE *pF);
 
-void DisposeOpponentPaths();
+void __cdecl DisposeOpponentPaths();
 
-void MungeOpponents(tU32 pFrame_period);
+void __cdecl MungeOpponents(tU32 pFrame_period);
 
-void SetInitialCopPositions();
+void __cdecl SetInitialCopPositions();
 
-void InitOpponents(tRace_info *pRace_info);
+void __cdecl InitOpponents(tRace_info *pRace_info);
 
-void DisposeOpponents();
+void __cdecl DisposeOpponents();
 
-void WakeUpOpponentsToTheFactThatTheStartHasBeenJumped(int pWhat_the_countdown_was);
+void __cdecl WakeUpOpponentsToTheFactThatTheStartHasBeenJumped(int pWhat_the_countdown_was);
 
-void ReportMurderToPoliceDepartment(tCar_spec *pCar_spec);
+void __cdecl ReportMurderToPoliceDepartment(tCar_spec *pCar_spec);
 
-int GetCarCount(tVehicle_type pCategory);
+int __cdecl GetCarCount(tVehicle_type pCategory);
 
-tCar_spec* GetCarSpec(tVehicle_type pCategory, int pIndex);
+tCar_spec* __cdecl GetCarSpec(tVehicle_type pCategory, int pIndex);
 
-char* GetDriverName(tVehicle_type pCategory, int pIndex);
+char* __cdecl GetDriverName(tVehicle_type pCategory, int pIndex);
 
-tOpponent_spec* GetOpponentSpecFromCarSpec(tCar_spec *pCar_spec);
+tOpponent_spec* __cdecl GetOpponentSpecFromCarSpec(tCar_spec *pCar_spec);
 
-tCar_spec* GetCarSpecFromGlobalOppoIndex(int pIndex);
+tCar_spec* __cdecl GetCarSpecFromGlobalOppoIndex(int pIndex);
 
-int GetOpponentsRealSection(tOpponent_spec *pOpponent_spec, int pSection_no);
+int __cdecl GetOpponentsRealSection(tOpponent_spec *pOpponent_spec, int pSection_no);
 
-int GetOpponentsFirstSection(tOpponent_spec *pOpponent_spec);
+int __cdecl GetOpponentsFirstSection(tOpponent_spec *pOpponent_spec);
 
-int GetOpponentsNextSection(tOpponent_spec *pOpponent_spec, tS16 pCurrent_section);
+int __cdecl GetOpponentsNextSection(tOpponent_spec *pOpponent_spec, tS16 pCurrent_section);
 
-tS16 GetOpponentsSectionStartNode(tOpponent_spec *pOpponent_spec, tS16 pSection);
+tS16 __cdecl GetOpponentsSectionStartNode(tOpponent_spec *pOpponent_spec, tS16 pSection);
 
-tS16 GetOpponentsSectionFinishNode(tOpponent_spec *pOpponent_spec, tS16 pSection);
+tS16 __cdecl GetOpponentsSectionFinishNode(tOpponent_spec *pOpponent_spec, tS16 pSection);
 
-br_vector3* GetOpponentsSectionStartNodePoint(tOpponent_spec *pOpponent_spec, tS16 pSection);
+br_vector3* __cdecl GetOpponentsSectionStartNodePoint(tOpponent_spec *pOpponent_spec, tS16 pSection);
 
-br_vector3* GetOpponentsSectionFinishNodePoint(tOpponent_spec *pOpponent_spec, tS16 pSection);
+br_vector3* __cdecl GetOpponentsSectionFinishNodePoint(tOpponent_spec *pOpponent_spec, tS16 pSection);
 
-br_scalar GetOpponentsSectionWidth(tOpponent_spec *pOpponent_spec, tS16 pSection);
+br_scalar __cdecl GetOpponentsSectionWidth(tOpponent_spec *pOpponent_spec, tS16 pSection);
 
-int GetOpponentsSectionMinSpeed(tOpponent_spec *pOpponent_spec, tS16 pSection, int pTowards_finish);
+int __cdecl GetOpponentsSectionMinSpeed(tOpponent_spec *pOpponent_spec, tS16 pSection, int pTowards_finish);
 
-int GetOpponentsSectionMaxSpeed(tOpponent_spec *pOpponent_spec, tS16 pSection, int pTowards_finish);
+int __cdecl GetOpponentsSectionMaxSpeed(tOpponent_spec *pOpponent_spec, tS16 pSection, int pTowards_finish);
 
-void InitOpponentPsyche(int pOpponent_index);
+void __cdecl InitOpponentPsyche(int pOpponent_index);
 
-void ClearTwattageOccurrenceVariables(tOpponent_spec *pOpponent_spec);
+void __cdecl ClearTwattageOccurrenceVariables(tOpponent_spec *pOpponent_spec);
 
-void TwoCarsHitEachOther(tCar_spec *pA_car, tCar_spec *pAnother_car);
+void __cdecl TwoCarsHitEachOther(tCar_spec *pA_car, tCar_spec *pAnother_car);
 
-void RecordOpponentTwattageOccurrence(tCar_spec *pTwatter, tCar_spec *pTwattee);
+void __cdecl RecordOpponentTwattageOccurrence(tCar_spec *pTwatter, tCar_spec *pTwattee);
 
-void ToggleOpponentTest();
+void __cdecl ToggleOpponentTest();
 
-void ToggleOpponentProcessing();
+void __cdecl ToggleOpponentProcessing();
 
-void ToggleMellowOpponents();
+void __cdecl ToggleMellowOpponents();
 
-void RepairOpponentsSystems();
+void __cdecl RepairOpponentsSystems();
 
-void CopyVertex__opponent(br_vertex *pDest_vertex, br_vertex *pSrc_vertex);
+void __cdecl CopyVertex__opponent(br_vertex *pDest_vertex, br_vertex *pSrc_vertex);
 
-void CopyFace__opponent(br_face *pDest_face, br_face *pSrc_face);
+void __cdecl CopyFace__opponent(br_face *pDest_face, br_face *pSrc_face);
 
-void DeleteSection(tS16 pSection_to_delete);
+void __cdecl DeleteSection(tS16 pSection_to_delete);
 
-void DeleteNode(tS16 pNode_to_delete, int pAnd_sections);
+void __cdecl DeleteNode(tS16 pNode_to_delete, int pAnd_sections);
 
-void DeleteOrphanNodes();
+void __cdecl DeleteOrphanNodes();
 
-void InsertThisNodeInThisSectionHere(tS16 pInserted_node, tS16 pSection_no, br_vector3 *pWhere);
+void __cdecl InsertThisNodeInThisSectionHere(tS16 pInserted_node, tS16 pSection_no, br_vector3 *pWhere);
 
-void TrackElasticateyPath();
+void __cdecl TrackElasticateyPath();
 
-void RecalcNearestPathSectionSpeed(int pMax_not_min, int pAdjustment);
+void __cdecl RecalcNearestPathSectionSpeed(int pMax_not_min, int pAdjustment);
 
-void RecalcNearestPathSectionWidth(br_scalar pAdjustment);
+void __cdecl RecalcNearestPathSectionWidth(br_scalar pAdjustment);
 
-void CalcNegativeXVector(br_vector3 *pNegative_x_vector, br_vector3 *pStart, br_vector3 *pFinish, br_scalar pLength);
+void __cdecl CalcNegativeXVector(br_vector3 *pNegative_x_vector, br_vector3 *pStart, br_vector3 *pFinish, br_scalar pLength);
 
-void MakeVertexAndOffsetIt(br_model *pModel, int pVertex_num, br_scalar pX, br_scalar pY, br_scalar pZ, br_vector3 *pOffset);
+void __cdecl MakeVertexAndOffsetIt(br_model *pModel, int pVertex_num, br_scalar pX, br_scalar pY, br_scalar pZ, br_vector3 *pOffset);
 
-void MakeFaceAndTextureIt(br_model *pModel, int pFace_num, int pV0, int pV1, int pV2, br_material *pMaterial);
+void __cdecl MakeFaceAndTextureIt(br_model *pModel, int pFace_num, int pV0, int pV1, int pV2, br_material *pMaterial);
 
-void MakeSection(br_uint_16 pFirst_vertex, br_uint_16 pFirst_face, br_vector3 *pStart, br_vector3 *pFinish, br_scalar pWidth, br_material *pMaterial_centre_lt, br_material *pMaterial_centre_dk, br_material *pMaterial_edges_start_lt, br_material *pMaterial_edges_start_dk, br_material *pMaterial_edges_finish_lt, br_material *pMaterial_edges_finish_dk);
+void __cdecl MakeSection(br_uint_16 pFirst_vertex, br_uint_16 pFirst_face, br_vector3 *pStart, br_vector3 *pFinish, br_scalar pWidth, br_material *pMaterial_centre_lt, br_material *pMaterial_centre_dk, br_material *pMaterial_edges_start_lt, br_material *pMaterial_edges_start_dk, br_material *pMaterial_edges_finish_lt, br_material *pMaterial_edges_finish_dk);
 
-void MakeCube(br_uint_16 pFirst_vertex, br_uint_16 pFirst_face, br_vector3 *pPoint, br_material *pMaterial_1, br_material *pMaterial_2, br_material *pMaterial_3);
+void __cdecl MakeCube(br_uint_16 pFirst_vertex, br_uint_16 pFirst_face, br_vector3 *pPoint, br_material *pMaterial_1, br_material *pMaterial_2, br_material *pMaterial_3);
 
-void CalcNumberOfFacesAndVerticesForOppoPathModel(br_uint_16 *pFace_index_ptr, br_uint_16 *pVertex_index_ptr);
+void __cdecl CalcNumberOfFacesAndVerticesForOppoPathModel(br_uint_16 *pFace_index_ptr, br_uint_16 *pVertex_index_ptr);
 
-void ReallocModelFacesAndVertices(br_model *pModel, int pNum_faces, int pNum_vertices);
+void __cdecl ReallocModelFacesAndVertices(br_model *pModel, int pNum_faces, int pNum_vertices);
 
-br_material* CreateSimpleMaterial(int pColour_index);
+br_material* __cdecl CreateSimpleMaterial(int pColour_index);
 
-void AllocateMatsForOppoPathModel();
+void __cdecl AllocateMatsForOppoPathModel();
 
-void RebuildOppoPathModel();
+void __cdecl RebuildOppoPathModel();
 
-int ConsistencyCheck();
+int __cdecl ConsistencyCheck();
 
-void ShowOppoPaths();
+void __cdecl ShowOppoPaths();
 
-void WriteOutOppoPaths();
+void __cdecl WriteOutOppoPaths();
 
-int NewNodeOKHere();
+int __cdecl NewNodeOKHere();
 
-void ShowHideOppoPaths();
+void __cdecl ShowHideOppoPaths();
 
 void DropElasticateyNode();
 
@@ -304,44 +306,44 @@ void DropDeadEndNode();
 
 void DropNodeOnNodeAndStopElasticating();
 
-void WidenOppoPathSection();
+void __cdecl WidenOppoPathSection();
 
-void NarrowOppoPathSection();
+void __cdecl NarrowOppoPathSection();
 
-void IncreaseSectionMinSpeed();
+void __cdecl IncreaseSectionMinSpeed();
 
-void DecreaseSectionMinSpeed();
+void __cdecl DecreaseSectionMinSpeed();
 
-void IncreaseSectionMaxSpeed();
+void __fastcall IncreaseSectionMaxSpeed();
 
-void DecreaseSectionMaxSpeed();
+void __fastcall DecreaseSectionMaxSpeed();
 
-void PullOppoPoint();
+void __cdecl PullOppoPoint();
 
-void ShowNodeInfo();
+void __cdecl ShowNodeInfo();
 
-void ShowSectionInfo1();
+void __fastcall ShowSectionInfo1();
 
-void ShowSectionInfo2();
+void __fastcall ShowSectionInfo2();
 
 void DeleteOppoPathSection();
 
-void DeleteOppoPathNodeAndSections();
+void __fastcall DeleteOppoPathNodeAndSections();
 
-void DeleteOppoPathNodeAndJoin();
+void __cdecl DeleteOppoPathNodeAndJoin();
 
-void ReverseSectionDirection();
+void __fastcall ReverseSectionDirection();
 
-void CycleSectionType();
+void __fastcall CycleSectionType();
 
-void ToggleOneWayNess();
+void __fastcall ToggleOneWayNess();
 
-void CopStartPointInfo();
+void __fastcall CopStartPointInfo();
 
-void DropCopStartPoint();
+void __cdecl DropCopStartPoint();
 
-void DeleteCopStartPoint();
+void __fastcall DeleteCopStartPoint();
 
-void CycleCopStartPointType();
+void __cdecl CycleCopStartPointType();
 
 #endif

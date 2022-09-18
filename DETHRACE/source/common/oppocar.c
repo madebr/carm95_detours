@@ -4,7 +4,6 @@
 
 #include "carm95_hooks.h"
 
-#include <stdio.h>
  // Suffix added to avoid duplicate symbol
 #if 0
 int * hookvar_gCollision_detection_on__oppocar ;
@@ -15,7 +14,7 @@ br_vector3 * hookvar_gGround_normal__oppocar ;
 #endif
  // Suffix added to avoid duplicate symbol
 #if 0
-void(**(* hookvar_ControlCar__oppocar )[6])(tCar_spec *, br_scalar, ...);
+void(**(* hookvar_ControlCar__oppocar )[6])(tCar_spec *, br_scalar);
 #endif
  // Suffix added to avoid duplicate symbol
 #if 0
@@ -82,6 +81,7 @@ void MoveThisCar(tU32 pTime_difference, tCar_spec *car) {
     (void)i;
     (void)j;
     (void)phi;
+    (void)__block0___scale;
 
     NOT_IMPLEMENTED();
 }

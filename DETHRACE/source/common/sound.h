@@ -33,76 +33,76 @@ extern br_vector3 * hookvar_gCamera_position ; // addr: 00550A10
 extern br_vector3 * hookvar_gOld_camera_position ; // addr: 00550A40
 extern br_vector3 * hookvar_gCamera_velocity ; // addr: 00550A50
 
-void UsePathFileToDetermineIfFullInstallation();
+void __cdecl UsePathFileToDetermineIfFullInstallation();
 
-void InitSound();
+void __cdecl InitSound();
 
-tS3_sound_tag DRS3StartSound(tS3_outlet_ptr pOutlet, tS3_sound_id pSound);
+tS3_sound_tag __cdecl DRS3StartSound(tS3_outlet_ptr pOutlet, tS3_sound_id pSound);
 
-tS3_sound_tag DRS3StartSoundNoPiping(tS3_outlet_ptr pOutlet, tS3_sound_id pSound);
+tS3_sound_tag __cdecl DRS3StartSoundNoPiping(tS3_outlet_ptr pOutlet, tS3_sound_id pSound);
 
-tS3_sound_tag DRS3StartSound2(tS3_outlet_ptr pOutlet, tS3_sound_id pSound, tS3_repeats pRepeats, tS3_volume pLVolume, tS3_volume pRVolume, tS3_pitch pPitch, tS3_speed pSpeed);
+tS3_sound_tag __cdecl DRS3StartSound2(tS3_outlet_ptr pOutlet, tS3_sound_id pSound, tS3_repeats pRepeats, tS3_volume pLVolume, tS3_volume pRVolume, tS3_pitch pPitch, tS3_speed pSpeed);
 
-int DRS3ChangeVolume(tS3_sound_tag pSound_tag, tS3_volume pNew_volume);
+int __cdecl DRS3ChangeVolume(tS3_sound_tag pSound_tag, tS3_volume pNew_volume);
 
-int DRS3ChangeLRVolume(tS3_sound_tag pSound_tag, tS3_volume pNew_Lvolume, tS3_volume pNew_Rvolume);
+int __cdecl DRS3ChangeLRVolume(tS3_sound_tag pSound_tag, tS3_volume pNew_Lvolume, tS3_volume pNew_Rvolume);
 
-int DRS3ChangePitch(tS3_sound_tag pTag, tS3_pitch pNew_pitch);
+int __cdecl DRS3ChangePitch(tS3_sound_tag pTag, tS3_pitch pNew_pitch);
 
-int DRS3ChangeSpeed(tS3_sound_tag pTag, tS3_pitch pNew_speed);
+int __cdecl DRS3ChangeSpeed(tS3_sound_tag pTag, tS3_pitch pNew_speed);
 
-int DRS3ChangePitchSpeed(tS3_sound_tag pTag, tS3_pitch pNew_pitch);
+int __cdecl DRS3ChangePitchSpeed(tS3_sound_tag pTag, tS3_pitch pNew_pitch);
 
-int DRS3StopSound(tS3_sound_tag pSound_tag);
+int __cdecl DRS3StopSound(tS3_sound_tag pSound_tag);
 
-int DRS3LoadSound(tS3_sound_id pThe_sound);
+int __cdecl DRS3LoadSound(tS3_sound_id pThe_sound);
 
-int DRS3ReleaseSound(tS3_sound_id pThe_sound);
+int __cdecl DRS3ReleaseSound(tS3_sound_id pThe_sound);
 
 void DRS3Service();
 
-int DRS3OutletSoundsPlaying(tS3_outlet_ptr pOutlet);
+int __cdecl DRS3OutletSoundsPlaying(tS3_outlet_ptr pOutlet);
 
-int DRS3SoundStillPlaying(tS3_sound_tag pSound_tag);
+int __cdecl DRS3SoundStillPlaying(tS3_sound_tag pSound_tag);
 
-void DRS3ShutDown();
+void __cdecl DRS3ShutDown();
 
-int DRS3SetOutletVolume(tS3_outlet_ptr pOutlet, tS3_volume pVolume);
+int __cdecl DRS3SetOutletVolume(tS3_outlet_ptr pOutlet, tS3_volume pVolume);
 
-int DRS3OverallVolume(tS3_volume pVolume);
+int __cdecl DRS3OverallVolume(tS3_volume pVolume);
 
-int DRS3StopOutletSound(tS3_outlet_ptr pOutlet);
+int __cdecl DRS3StopOutletSound(tS3_outlet_ptr pOutlet);
 
-int DRS3StopAllOutletSounds();
+int __cdecl DRS3StopAllOutletSounds();
 
-void ToggleSoundEnable();
+void __cdecl ToggleSoundEnable();
 
-void SoundService();
+void __cdecl SoundService();
 
-void InitSoundSources();
+void __cdecl InitSoundSources();
 
-void DisposeSoundSources();
+void __cdecl DisposeSoundSources();
 
-tS3_sound_tag DRS3StartSound3D(tS3_outlet_ptr pOutlet, tS3_sound_id pSound, br_vector3 *pInitial_position, br_vector3 *pInitial_velocity, tS3_repeats pRepeats, tS3_volume pVolume, tS3_pitch pPitch, tS3_speed pSpeed);
+tS3_sound_tag __cdecl DRS3StartSound3D(tS3_outlet_ptr pOutlet, tS3_sound_id pSound, br_vector3 *pInitial_position, br_vector3 *pInitial_velocity, tS3_repeats pRepeats, tS3_volume pVolume, tS3_pitch pPitch, tS3_speed pSpeed);
 
-tS3_sound_tag DRS3StartSoundFromSource3(tS3_sound_source_ptr pSource, tS3_sound_id pSound, tS3_repeats pRepeats, tS3_volume pVolume, tS3_pitch pPitch, tS3_speed pSpeed);
+tS3_sound_tag __cdecl DRS3StartSoundFromSource3(tS3_sound_source_ptr pSource, tS3_sound_id pSound, tS3_repeats pRepeats, tS3_volume pVolume, tS3_pitch pPitch, tS3_speed pSpeed);
 
-tS3_sound_tag DRS3StartSoundFromSource(tS3_sound_source_ptr pSource, tS3_sound_id pSound);
+tS3_sound_tag __cdecl DRS3StartSoundFromSource(tS3_sound_source_ptr pSource, tS3_sound_id pSound);
 
-void MungeEngineNoise();
+void __fastcall MungeEngineNoise();
 
-void SetSoundVolumes();
+void __cdecl SetSoundVolumes();
 
-tS3_outlet_ptr GetOutletFromIndex(int pIndex);
+tS3_outlet_ptr __cdecl GetOutletFromIndex(int pIndex);
 
-int GetIndexFromOutlet(tS3_outlet_ptr pOutlet);
+int __cdecl GetIndexFromOutlet(tS3_outlet_ptr pOutlet);
 
-int DRS3StartCDA(tS3_sound_id pCDA_id);
+int __cdecl DRS3StartCDA(tS3_sound_id pCDA_id);
 
-int DRS3StopCDA();
+int __cdecl DRS3StopCDA();
 
-void StartMusic();
+void __cdecl StartMusic();
 
-void StopMusic();
+void __cdecl StopMusic();
 
 #endif

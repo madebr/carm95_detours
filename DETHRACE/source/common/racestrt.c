@@ -4,7 +4,6 @@
 
 #include "carm95_hooks.h"
 
-#include <stdio.h>
 int(* hookvar_gGrid_number_colour )[4] = (void*)0x0050f198;
 int * hookvar_gJust_bought_part  = (void*)0x0050f1a8;
 #if 0
@@ -44,9 +43,9 @@ tInterface_spec ** hookvar_gStart_interface_spec  = (void*)0x00536350;
 int * hookvar_gCurrent_car_index  = (void*)0x00536424;
 int * hookvar_gOur_starting_position  = (void*)0x00536368;
 
-static void(*original_DrawRaceList)(int, ...) = (void(*)(int, ...))0x0044e944;
+static void(__cdecl*original_DrawRaceList)(int) = (void(__cdecl*)(int))0x0044e944;
 CARM95_HOOK_FUNCTION(original_DrawRaceList, DrawRaceList)
-void DrawRaceList(int pOffset) {
+void __cdecl DrawRaceList(int pOffset) {
     int i;
     int font_height;
     int pitch;
@@ -78,9 +77,9 @@ void DrawRaceList(int pOffset) {
     original_DrawRaceList(pOffset);
 }
 
-static void(*original_MoveRaceList)(int, int, tS32, ...) = (void(*)(int, int, tS32, ...))0x0044e8c7;
+static void(__cdecl*original_MoveRaceList)(int, int, tS32) = (void(__cdecl*)(int, int, tS32))0x0044e8c7;
 CARM95_HOOK_FUNCTION(original_MoveRaceList, MoveRaceList)
-void MoveRaceList(int pFrom, int pTo, tS32 pTime_to_move) {
+void __cdecl MoveRaceList(int pFrom, int pTo, tS32 pTime_to_move) {
     tS32 start_time;
     tS32 the_time;
     int move_distance;
@@ -98,9 +97,9 @@ void MoveRaceList(int pFrom, int pTo, tS32 pTime_to_move) {
     original_MoveRaceList(pFrom, pTo, pTime_to_move);
 }
 
-static int(*original_UpRace)(int *, int *, ...) = (int(*)(int *, int *, ...))0x0044e7f0;
+static int(__cdecl*original_UpRace)(int *, int *) = (int(__cdecl*)(int *, int *))0x0044e7f0;
 CARM95_HOOK_FUNCTION(original_UpRace, UpRace)
-int UpRace(int *pCurrent_choice, int *pCurrent_mode) {
+int __cdecl UpRace(int *pCurrent_choice, int *pCurrent_mode) {
     LOG_TRACE("(%p, %p)", pCurrent_choice, pCurrent_mode);
 
     (void)pCurrent_choice;
@@ -109,9 +108,9 @@ int UpRace(int *pCurrent_choice, int *pCurrent_mode) {
     return original_UpRace(pCurrent_choice, pCurrent_mode);
 }
 
-static int(*original_DownRace)(int *, int *, ...) = (int(*)(int *, int *, ...))0x0044ef24;
+static int(__cdecl*original_DownRace)(int *, int *) = (int(__cdecl*)(int *, int *))0x0044ef24;
 CARM95_HOOK_FUNCTION(original_DownRace, DownRace)
-int DownRace(int *pCurrent_choice, int *pCurrent_mode) {
+int __cdecl DownRace(int *pCurrent_choice, int *pCurrent_mode) {
     LOG_TRACE("(%p, %p)", pCurrent_choice, pCurrent_mode);
 
     (void)pCurrent_choice;
@@ -120,9 +119,9 @@ int DownRace(int *pCurrent_choice, int *pCurrent_mode) {
     return original_DownRace(pCurrent_choice, pCurrent_mode);
 }
 
-static int(*original_ClickOnRace)(int *, int *, int, int, ...) = (int(*)(int *, int *, int, int, ...))0x0044f000;
+static int(__cdecl*original_ClickOnRace)(int *, int *, int, int) = (int(__cdecl*)(int *, int *, int, int))0x0044f000;
 CARM95_HOOK_FUNCTION(original_ClickOnRace, ClickOnRace)
-int ClickOnRace(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY_offset) {
+int __cdecl ClickOnRace(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY_offset) {
     int x_coord;
     int y_coord;
     int race_delta;
@@ -139,9 +138,9 @@ int ClickOnRace(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY_
     return original_ClickOnRace(pCurrent_choice, pCurrent_mode, pX_offset, pY_offset);
 }
 
-static int(*original_UpClickRace)(int *, int *, int, int, ...) = (int(*)(int *, int *, int, int, ...))0x0044f0cd;
+static int(__cdecl*original_UpClickRace)(int *, int *, int, int) = (int(__cdecl*)(int *, int *, int, int))0x0044f0cd;
 CARM95_HOOK_FUNCTION(original_UpClickRace, UpClickRace)
-int UpClickRace(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY_offset) {
+int __cdecl UpClickRace(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY_offset) {
     LOG_TRACE("(%p, %p, %d, %d)", pCurrent_choice, pCurrent_mode, pX_offset, pY_offset);
 
     (void)pCurrent_choice;
@@ -152,9 +151,9 @@ int UpClickRace(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY_
     return original_UpClickRace(pCurrent_choice, pCurrent_mode, pX_offset, pY_offset);
 }
 
-static int(*original_DownClickRace)(int *, int *, int, int, ...) = (int(*)(int *, int *, int, int, ...))0x0044f0ef;
+static int(__cdecl*original_DownClickRace)(int *, int *, int, int) = (int(__cdecl*)(int *, int *, int, int))0x0044f0ef;
 CARM95_HOOK_FUNCTION(original_DownClickRace, DownClickRace)
-int DownClickRace(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY_offset) {
+int __cdecl DownClickRace(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY_offset) {
     LOG_TRACE("(%p, %p, %d, %d)", pCurrent_choice, pCurrent_mode, pX_offset, pY_offset);
 
     (void)pCurrent_choice;
@@ -165,18 +164,18 @@ int DownClickRace(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int p
     return original_DownClickRace(pCurrent_choice, pCurrent_mode, pX_offset, pY_offset);
 }
 
-static void(*original_StartChangeRace)() = (void(*)())0x0044f111;
+static void(__cdecl*original_StartChangeRace)() = (void(__cdecl*)())0x0044f111;
 CARM95_HOOK_FUNCTION(original_StartChangeRace, StartChangeRace)
-void StartChangeRace() {
+void __cdecl StartChangeRace() {
     LOG_TRACE("()");
 
 
     original_StartChangeRace();
 }
 
-static int(*original_ChangeRace)(int *, int, tNet_sequence_type, ...) = (int(*)(int *, int, tNet_sequence_type, ...))0x0044f131;
+static int(__cdecl*original_ChangeRace)(int *, int, tNet_sequence_type) = (int(__cdecl*)(int *, int, tNet_sequence_type))0x0044f131;
 CARM95_HOOK_FUNCTION(original_ChangeRace, ChangeRace)
-int ChangeRace(int *pRace_index, int pNet_mode, tNet_sequence_type pNet_race_sequence) {
+int __cdecl ChangeRace(int *pRace_index, int pNet_mode, tNet_sequence_type pNet_race_sequence) {
     static tFlicette flicker_on[4];
     static tFlicette flicker_off[4];
     static tFlicette push[4];
@@ -198,18 +197,18 @@ int ChangeRace(int *pRace_index, int pNet_mode, tNet_sequence_type pNet_race_seq
     return original_ChangeRace(pRace_index, pNet_mode, pNet_race_sequence);
 }
 
-static void(*original_DoChangeRace)() = (void(*)())0x00451fe5;
+static void(__cdecl*original_DoChangeRace)() = (void(__cdecl*)())0x00451fe5;
 CARM95_HOOK_FUNCTION(original_DoChangeRace, DoChangeRace)
-void DoChangeRace() {
+void __cdecl DoChangeRace() {
     LOG_TRACE("()");
 
 
     original_DoChangeRace();
 }
 
-static void(*original_DrawCar)(int, int, ...) = (void(*)(int, int, ...))0x0044f1f2;
+static void(__cdecl*original_DrawCar)(int, int) = (void(__cdecl*)(int, int))0x0044f1f2;
 CARM95_HOOK_FUNCTION(original_DrawCar, DrawCar)
-void DrawCar(int pCurrent_choice, int pCurrent_mode) {
+void __cdecl DrawCar(int pCurrent_choice, int pCurrent_mode) {
     char s[64];
     int text_x;
     int text_width;
@@ -224,18 +223,18 @@ void DrawCar(int pCurrent_choice, int pCurrent_mode) {
     original_DrawCar(pCurrent_choice, pCurrent_mode);
 }
 
-static void(*original_SetCarFlic)() = (void(*)())0x0044f5de;
+static void(__cdecl*original_SetCarFlic)() = (void(__cdecl*)())0x0044f5de;
 CARM95_HOOK_FUNCTION(original_SetCarFlic, SetCarFlic)
-void SetCarFlic() {
+void __cdecl SetCarFlic() {
     LOG_TRACE("()");
 
 
     original_SetCarFlic();
 }
 
-static int(*original_UpCar)(int *, int *, ...) = (int(*)(int *, int *, ...))0x0044f4cc;
+static int(__cdecl*original_UpCar)(int *, int *) = (int(__cdecl*)(int *, int *))0x0044f4cc;
 CARM95_HOOK_FUNCTION(original_UpCar, UpCar)
-int UpCar(int *pCurrent_choice, int *pCurrent_mode) {
+int __cdecl UpCar(int *pCurrent_choice, int *pCurrent_mode) {
     LOG_TRACE("(%p, %p)", pCurrent_choice, pCurrent_mode);
 
     (void)pCurrent_choice;
@@ -244,9 +243,9 @@ int UpCar(int *pCurrent_choice, int *pCurrent_mode) {
     return original_UpCar(pCurrent_choice, pCurrent_mode);
 }
 
-static int(*original_DownCar)(int *, int *, ...) = (int(*)(int *, int *, ...))0x0044f62d;
+static int(__cdecl*original_DownCar)(int *, int *) = (int(__cdecl*)(int *, int *))0x0044f62d;
 CARM95_HOOK_FUNCTION(original_DownCar, DownCar)
-int DownCar(int *pCurrent_choice, int *pCurrent_mode) {
+int __cdecl DownCar(int *pCurrent_choice, int *pCurrent_mode) {
     LOG_TRACE("(%p, %p)", pCurrent_choice, pCurrent_mode);
 
     (void)pCurrent_choice;
@@ -255,9 +254,9 @@ int DownCar(int *pCurrent_choice, int *pCurrent_mode) {
     return original_DownCar(pCurrent_choice, pCurrent_mode);
 }
 
-static int(*original_UpClickCar)(int *, int *, int, int, ...) = (int(*)(int *, int *, int, int, ...))0x0044f744;
+static int(__cdecl*original_UpClickCar)(int *, int *, int, int) = (int(__cdecl*)(int *, int *, int, int))0x0044f744;
 CARM95_HOOK_FUNCTION(original_UpClickCar, UpClickCar)
-int UpClickCar(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY_offset) {
+int __cdecl UpClickCar(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY_offset) {
     LOG_TRACE("(%p, %p, %d, %d)", pCurrent_choice, pCurrent_mode, pX_offset, pY_offset);
 
     (void)pCurrent_choice;
@@ -268,9 +267,9 @@ int UpClickCar(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY_o
     return original_UpClickCar(pCurrent_choice, pCurrent_mode, pX_offset, pY_offset);
 }
 
-static int(*original_DownClickCar)(int *, int *, int, int, ...) = (int(*)(int *, int *, int, int, ...))0x0044f766;
+static int(__cdecl*original_DownClickCar)(int *, int *, int, int) = (int(__cdecl*)(int *, int *, int, int))0x0044f766;
 CARM95_HOOK_FUNCTION(original_DownClickCar, DownClickCar)
-int DownClickCar(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY_offset) {
+int __cdecl DownClickCar(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY_offset) {
     LOG_TRACE("(%p, %p, %d, %d)", pCurrent_choice, pCurrent_mode, pX_offset, pY_offset);
 
     (void)pCurrent_choice;
@@ -281,9 +280,9 @@ int DownClickCar(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY
     return original_DownClickCar(pCurrent_choice, pCurrent_mode, pX_offset, pY_offset);
 }
 
-static int(*original_ChangeCarGoAhead)(int *, int *, ...) = (int(*)(int *, int *, ...))0x0044f788;
+static int(__cdecl*original_ChangeCarGoAhead)(int *, int *) = (int(__cdecl*)(int *, int *))0x0044f788;
 CARM95_HOOK_FUNCTION(original_ChangeCarGoAhead, ChangeCarGoAhead)
-int ChangeCarGoAhead(int *pCurrent_choice, int *pCurrent_mode) {
+int __cdecl ChangeCarGoAhead(int *pCurrent_choice, int *pCurrent_mode) {
     LOG_TRACE("(%p, %p)", pCurrent_choice, pCurrent_mode);
 
     (void)pCurrent_choice;
@@ -292,9 +291,9 @@ int ChangeCarGoAhead(int *pCurrent_choice, int *pCurrent_mode) {
     return original_ChangeCarGoAhead(pCurrent_choice, pCurrent_mode);
 }
 
-static int(*original_ChangeCar)(int, int *, tNet_game_details *, ...) = (int(*)(int, int *, tNet_game_details *, ...))0x0044f7e6;
+static int(__cdecl*original_ChangeCar)(int, int *, tNet_game_details *) = (int(__cdecl*)(int, int *, tNet_game_details *))0x0044f7e6;
 CARM95_HOOK_FUNCTION(original_ChangeCar, ChangeCar)
-int ChangeCar(int pNet_mode, int *pCar_index, tNet_game_details *pNet_game) {
+int __cdecl ChangeCar(int pNet_mode, int *pCar_index, tNet_game_details *pNet_game) {
     static tFlicette flicker_on[4];
     static tFlicette flicker_off[4];
     static tFlicette push[4];
@@ -320,18 +319,18 @@ int ChangeCar(int pNet_mode, int *pCar_index, tNet_game_details *pNet_game) {
     return original_ChangeCar(pNet_mode, pCar_index, pNet_game);
 }
 
-static void(*original_DoChangeCar)() = (void(*)())0x00452017;
+static void(__cdecl*original_DoChangeCar)() = (void(__cdecl*)())0x00452017;
 CARM95_HOOK_FUNCTION(original_DoChangeCar, DoChangeCar)
-void DoChangeCar() {
+void __cdecl DoChangeCar() {
     LOG_TRACE("()");
 
 
     original_DoChangeCar();
 }
 
-static int(*original_PartsShopRecommended)() = (int(*)())0x00450cf3;
+static int(__cdecl*original_PartsShopRecommended)() = (int(__cdecl*)())0x00450cf3;
 CARM95_HOOK_FUNCTION(original_PartsShopRecommended, PartsShopRecommended)
-int PartsShopRecommended() {
+int __cdecl PartsShopRecommended() {
     int running_cost;
     int i;
     int current_index;
@@ -346,9 +345,9 @@ int PartsShopRecommended() {
     return original_PartsShopRecommended();
 }
 
-static void(*original_CalcPartPrice)(int, int, int *, int *, ...) = (void(*)(int, int, int *, int *, ...))0x004502ec;
+static void(__cdecl*original_CalcPartPrice)(int, int, int *, int *) = (void(__cdecl*)(int, int, int *, int *))0x004502ec;
 CARM95_HOOK_FUNCTION(original_CalcPartPrice, CalcPartPrice)
-void CalcPartPrice(int pCategory, int pIndex, int *pPrice, int *pCost) {
+void __cdecl CalcPartPrice(int pCategory, int pIndex, int *pPrice, int *pCost) {
     int current_value;
     LOG_TRACE("(%d, %d, %p, %p)", pCategory, pIndex, pPrice, pCost);
 
@@ -361,9 +360,9 @@ void CalcPartPrice(int pCategory, int pIndex, int *pPrice, int *pCost) {
     original_CalcPartPrice(pCategory, pIndex, pPrice, pCost);
 }
 
-static int(*original_BuyPart)(int, int, ...) = (int(*)(int, int, ...))0x004504c4;
+static int(__cdecl*original_BuyPart)(int, int) = (int(__cdecl*)(int, int))0x004504c4;
 CARM95_HOOK_FUNCTION(original_BuyPart, BuyPart)
-int BuyPart(int pCategory, int pIndex) {
+int __cdecl BuyPart(int pCategory, int pIndex) {
     int price;
     int cost;
     LOG_TRACE("(%d, %d)", pCategory, pIndex);
@@ -376,9 +375,9 @@ int BuyPart(int pCategory, int pIndex) {
     return original_BuyPart(pCategory, pIndex);
 }
 
-static void(*original_DoAutoParts)() = (void(*)())0x00450bc8;
+static void(__cdecl*original_DoAutoParts)() = (void(__cdecl*)())0x00450bc8;
 CARM95_HOOK_FUNCTION(original_DoAutoParts, DoAutoParts)
-void DoAutoParts() {
+void __cdecl DoAutoParts() {
     int i;
     int lowest_yet;
     int lowest_one;
@@ -397,18 +396,18 @@ void DoAutoParts() {
     original_DoAutoParts();
 }
 
-static void(*original_DrawPartsLabel)() = (void(*)())0x0044fdd1;
+static void(__cdecl*original_DrawPartsLabel)() = (void(__cdecl*)())0x0044fdd1;
 CARM95_HOOK_FUNCTION(original_DrawPartsLabel, DrawPartsLabel)
-void DrawPartsLabel() {
+void __cdecl DrawPartsLabel() {
     LOG_TRACE("()");
 
 
     original_DrawPartsLabel();
 }
 
-static void(*original_ErasePartsText)(int, ...) = (void(*)(int, ...))0x0044fe92;
+static void(__cdecl*original_ErasePartsText)(int) = (void(__cdecl*)(int))0x0044fe92;
 CARM95_HOOK_FUNCTION(original_ErasePartsText, ErasePartsText)
-void ErasePartsText(int pTotal_as_well) {
+void __cdecl ErasePartsText(int pTotal_as_well) {
     LOG_TRACE("(%d)", pTotal_as_well);
 
     (void)pTotal_as_well;
@@ -416,9 +415,9 @@ void ErasePartsText(int pTotal_as_well) {
     original_ErasePartsText(pTotal_as_well);
 }
 
-static void(*original_DrawPartsText)() = (void(*)())0x0044fffc;
+static void(__cdecl*original_DrawPartsText)() = (void(__cdecl*)())0x0044fffc;
 CARM95_HOOK_FUNCTION(original_DrawPartsText, DrawPartsText)
-void DrawPartsText() {
+void __cdecl DrawPartsText() {
     int price;
     int cost;
     LOG_TRACE("()");
@@ -429,18 +428,18 @@ void DrawPartsText() {
     original_DrawPartsText();
 }
 
-static void(*original_SetPartsImage)() = (void(*)())0x0044ff71;
+static void(__cdecl*original_SetPartsImage)() = (void(__cdecl*)())0x0044ff71;
 CARM95_HOOK_FUNCTION(original_SetPartsImage, SetPartsImage)
-void SetPartsImage() {
+void __cdecl SetPartsImage() {
     LOG_TRACE("()");
 
 
     original_SetPartsImage();
 }
 
-static int(*original_GetPartsMax)() = (int(*)())0x004506e4;
+static int(__cdecl*original_GetPartsMax)() = (int(__cdecl*)())0x004506e4;
 CARM95_HOOK_FUNCTION(original_GetPartsMax, GetPartsMax)
-int GetPartsMax() {
+int __cdecl GetPartsMax() {
     int i;
     LOG_TRACE("()");
 
@@ -449,9 +448,9 @@ int GetPartsMax() {
     return original_GetPartsMax();
 }
 
-static void(*original_CalcPartsIndex)() = (void(*)())0x0045039b;
+static void(__cdecl*original_CalcPartsIndex)() = (void(__cdecl*)())0x0045039b;
 CARM95_HOOK_FUNCTION(original_CalcPartsIndex, CalcPartsIndex)
-void CalcPartsIndex() {
+void __cdecl CalcPartsIndex() {
     int current_index;
     LOG_TRACE("()");
 
@@ -460,9 +459,9 @@ void CalcPartsIndex() {
     original_CalcPartsIndex();
 }
 
-static void(*original_DoExchangePart)() = (void(*)())0x00450429;
+static void(__cdecl*original_DoExchangePart)() = (void(__cdecl*)())0x00450429;
 CARM95_HOOK_FUNCTION(original_DoExchangePart, DoExchangePart)
-void DoExchangePart() {
+void __cdecl DoExchangePart() {
     int price;
     int cost;
     LOG_TRACE("()");
@@ -473,9 +472,9 @@ void DoExchangePart() {
     original_DoExchangePart();
 }
 
-static int(*original_PartsShopGoAhead)(int *, int *, ...) = (int(*)(int *, int *, ...))0x0044fbb7;
+static int(__cdecl*original_PartsShopGoAhead)(int *, int *) = (int(__cdecl*)(int *, int *))0x0044fbb7;
 CARM95_HOOK_FUNCTION(original_PartsShopGoAhead, PartsShopGoAhead)
-int PartsShopGoAhead(int *pCurrent_choice, int *pCurrent_mode) {
+int __cdecl PartsShopGoAhead(int *pCurrent_choice, int *pCurrent_mode) {
     int flic_index;
     LOG_TRACE("(%p, %p)", pCurrent_choice, pCurrent_mode);
 
@@ -486,9 +485,9 @@ int PartsShopGoAhead(int *pCurrent_choice, int *pCurrent_mode) {
     return original_PartsShopGoAhead(pCurrent_choice, pCurrent_mode);
 }
 
-static int(*original_UpPart)(int *, int *, ...) = (int(*)(int *, int *, ...))0x0045055c;
+static int(__cdecl*original_UpPart)(int *, int *) = (int(__cdecl*)(int *, int *))0x0045055c;
 CARM95_HOOK_FUNCTION(original_UpPart, UpPart)
-int UpPart(int *pCurrent_choice, int *pCurrent_mode) {
+int __cdecl UpPart(int *pCurrent_choice, int *pCurrent_mode) {
     LOG_TRACE("(%p, %p)", pCurrent_choice, pCurrent_mode);
 
     (void)pCurrent_choice;
@@ -497,9 +496,9 @@ int UpPart(int *pCurrent_choice, int *pCurrent_mode) {
     return original_UpPart(pCurrent_choice, pCurrent_mode);
 }
 
-static int(*original_DownPart)(int *, int *, ...) = (int(*)(int *, int *, ...))0x0045076c;
+static int(__cdecl*original_DownPart)(int *, int *) = (int(__cdecl*)(int *, int *))0x0045076c;
 CARM95_HOOK_FUNCTION(original_DownPart, DownPart)
-int DownPart(int *pCurrent_choice, int *pCurrent_mode) {
+int __cdecl DownPart(int *pCurrent_choice, int *pCurrent_mode) {
     LOG_TRACE("(%p, %p)", pCurrent_choice, pCurrent_mode);
 
     (void)pCurrent_choice;
@@ -508,9 +507,9 @@ int DownPart(int *pCurrent_choice, int *pCurrent_mode) {
     return original_DownPart(pCurrent_choice, pCurrent_mode);
 }
 
-static int(*original_UpClickPart)(int *, int *, int, int, ...) = (int(*)(int *, int *, int, int, ...))0x004508fb;
+static int(__cdecl*original_UpClickPart)(int *, int *, int, int) = (int(__cdecl*)(int *, int *, int, int))0x004508fb;
 CARM95_HOOK_FUNCTION(original_UpClickPart, UpClickPart)
-int UpClickPart(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY_offset) {
+int __cdecl UpClickPart(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY_offset) {
     LOG_TRACE("(%p, %p, %d, %d)", pCurrent_choice, pCurrent_mode, pX_offset, pY_offset);
 
     (void)pCurrent_choice;
@@ -521,9 +520,9 @@ int UpClickPart(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY_
     return original_UpClickPart(pCurrent_choice, pCurrent_mode, pX_offset, pY_offset);
 }
 
-static int(*original_DownClickPart)(int *, int *, int, int, ...) = (int(*)(int *, int *, int, int, ...))0x0045091d;
+static int(__cdecl*original_DownClickPart)(int *, int *, int, int) = (int(__cdecl*)(int *, int *, int, int))0x0045091d;
 CARM95_HOOK_FUNCTION(original_DownClickPart, DownClickPart)
-int DownClickPart(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY_offset) {
+int __cdecl DownClickPart(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY_offset) {
     LOG_TRACE("(%p, %p, %d, %d)", pCurrent_choice, pCurrent_mode, pX_offset, pY_offset);
 
     (void)pCurrent_choice;
@@ -534,9 +533,9 @@ int DownClickPart(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int p
     return original_DownClickPart(pCurrent_choice, pCurrent_mode, pX_offset, pY_offset);
 }
 
-static int(*original_PartsArrowsOn)(int *, int *, ...) = (int(*)(int *, int *, ...))0x0045093f;
+static int(__cdecl*original_PartsArrowsOn)(int *, int *) = (int(__cdecl*)(int *, int *))0x0045093f;
 CARM95_HOOK_FUNCTION(original_PartsArrowsOn, PartsArrowsOn)
-int PartsArrowsOn(int *pCurrent_choice, int *pCurrent_mode) {
+int __cdecl PartsArrowsOn(int *pCurrent_choice, int *pCurrent_mode) {
     LOG_TRACE("(%p, %p)", pCurrent_choice, pCurrent_mode);
 
     (void)pCurrent_choice;
@@ -545,9 +544,9 @@ int PartsArrowsOn(int *pCurrent_choice, int *pCurrent_mode) {
     return original_PartsArrowsOn(pCurrent_choice, pCurrent_mode);
 }
 
-static int(*original_PartsArrowsOff)(int *, int *, ...) = (int(*)(int *, int *, ...))0x004509de;
+static int(__cdecl*original_PartsArrowsOff)(int *, int *) = (int(__cdecl*)(int *, int *))0x004509de;
 CARM95_HOOK_FUNCTION(original_PartsArrowsOff, PartsArrowsOff)
-int PartsArrowsOff(int *pCurrent_choice, int *pCurrent_mode) {
+int __cdecl PartsArrowsOff(int *pCurrent_choice, int *pCurrent_mode) {
     LOG_TRACE("(%p, %p)", pCurrent_choice, pCurrent_mode);
 
     (void)pCurrent_choice;
@@ -556,18 +555,18 @@ int PartsArrowsOff(int *pCurrent_choice, int *pCurrent_mode) {
     return original_PartsArrowsOff(pCurrent_choice, pCurrent_mode);
 }
 
-static void(*original_StartPartsShop)() = (void(*)())0x00450a7d;
+static void(__cdecl*original_StartPartsShop)() = (void(__cdecl*)())0x00450a7d;
 CARM95_HOOK_FUNCTION(original_StartPartsShop, StartPartsShop)
-void StartPartsShop() {
+void __cdecl StartPartsShop() {
     LOG_TRACE("()");
 
 
     original_StartPartsShop();
 }
 
-static int(*original_DonePartsShop)(int, int, int, int, int, ...) = (int(*)(int, int, int, int, int, ...))0x00450a92;
+static int(__fastcall*original_DonePartsShop)(int, int, int, int, int) = (int(__fastcall*)(int, int, int, int, int))0x00450a92;
 CARM95_HOOK_FUNCTION(original_DonePartsShop, DonePartsShop)
-int DonePartsShop(int pCurrent_choice, int pCurrent_mode, int pGo_ahead, int pEscaped, int pTimed_out) {
+int __fastcall DonePartsShop(int pCurrent_choice, int pCurrent_mode, int pGo_ahead, int pEscaped, int pTimed_out) {
     LOG_TRACE("(%d, %d, %d, %d, %d)", pCurrent_choice, pCurrent_mode, pGo_ahead, pEscaped, pTimed_out);
 
     (void)pCurrent_choice;
@@ -579,9 +578,9 @@ int DonePartsShop(int pCurrent_choice, int pCurrent_mode, int pGo_ahead, int pEs
     return original_DonePartsShop(pCurrent_choice, pCurrent_mode, pGo_ahead, pEscaped, pTimed_out);
 }
 
-static void(*original_DrawPartsShop)(int, int, ...) = (void(*)(int, int, ...))0x00450ac9;
+static void(__cdecl*original_DrawPartsShop)(int, int) = (void(__cdecl*)(int, int))0x00450ac9;
 CARM95_HOOK_FUNCTION(original_DrawPartsShop, DrawPartsShop)
-void DrawPartsShop(int pCurrent_choice, int pCurrent_mode) {
+void __cdecl DrawPartsShop(int pCurrent_choice, int pCurrent_mode) {
     LOG_TRACE("(%d, %d)", pCurrent_choice, pCurrent_mode);
 
     (void)pCurrent_choice;
@@ -590,9 +589,9 @@ void DrawPartsShop(int pCurrent_choice, int pCurrent_mode) {
     original_DrawPartsShop(pCurrent_choice, pCurrent_mode);
 }
 
-static void(*original_DoPartsShop)(int, ...) = (void(*)(int, ...))0x00450e06;
+static void(__cdecl*original_DoPartsShop)(int) = (void(__cdecl*)(int))0x00450e06;
 CARM95_HOOK_FUNCTION(original_DoPartsShop, DoPartsShop)
-void DoPartsShop(int pFade_away) {
+void __cdecl DoPartsShop(int pFade_away) {
     static tFlicette flicker_on[7];
     static tFlicette flicker_off[7];
     static tFlicette push[7];
@@ -612,9 +611,9 @@ void DoPartsShop(int pFade_away) {
     original_DoPartsShop(pFade_away);
 }
 
-static int(*original_AutoPartsDone)(int, int, int, int, int, ...) = (int(*)(int, int, int, int, int, ...))0x00450ad9;
+static int(__cdecl*original_AutoPartsDone)(int, int, int, int, int) = (int(__cdecl*)(int, int, int, int, int))0x00450ad9;
 CARM95_HOOK_FUNCTION(original_AutoPartsDone, AutoPartsDone)
-int AutoPartsDone(int pCurrent_choice, int pCurrent_mode, int pGo_ahead, int pEscaped, int pTimed_out) {
+int __cdecl AutoPartsDone(int pCurrent_choice, int pCurrent_mode, int pGo_ahead, int pEscaped, int pTimed_out) {
     LOG_TRACE("(%d, %d, %d, %d, %d)", pCurrent_choice, pCurrent_mode, pGo_ahead, pEscaped, pTimed_out);
 
     (void)pCurrent_choice;
@@ -626,9 +625,9 @@ int AutoPartsDone(int pCurrent_choice, int pCurrent_mode, int pGo_ahead, int pEs
     return original_AutoPartsDone(pCurrent_choice, pCurrent_mode, pGo_ahead, pEscaped, pTimed_out);
 }
 
-static tSO_result(*original_DoAutoPartsShop)() = (tSO_result(*)())0x00450b05;
+static tSO_result(__cdecl*original_DoAutoPartsShop)() = (tSO_result(__cdecl*)())0x00450b05;
 CARM95_HOOK_FUNCTION(original_DoAutoPartsShop, DoAutoPartsShop)
-tSO_result DoAutoPartsShop() {
+tSO_result __cdecl DoAutoPartsShop() {
     static tFlicette flicker_on[3];
     static tFlicette flicker_off[3];
     static tFlicette push[3];
@@ -647,36 +646,36 @@ tSO_result DoAutoPartsShop() {
     return original_DoAutoPartsShop();
 }
 
-static void(*original_SetOpponentFlic)() = (void(*)())0x004510ba;
+static void(__cdecl*original_SetOpponentFlic)() = (void(__cdecl*)())0x004510ba;
 CARM95_HOOK_FUNCTION(original_SetOpponentFlic, SetOpponentFlic)
-void SetOpponentFlic() {
+void __cdecl SetOpponentFlic() {
     LOG_TRACE("()");
 
 
     original_SetOpponentFlic();
 }
 
-static void(*original_DrawSceneyMappyInfoVieweyThing)() = (void(*)())0x00451002;
+static void(__cdecl*original_DrawSceneyMappyInfoVieweyThing)() = (void(__cdecl*)())0x00451002;
 CARM95_HOOK_FUNCTION(original_DrawSceneyMappyInfoVieweyThing, DrawSceneyMappyInfoVieweyThing)
-void DrawSceneyMappyInfoVieweyThing() {
+void __cdecl DrawSceneyMappyInfoVieweyThing() {
     LOG_TRACE("()");
 
 
     original_DrawSceneyMappyInfoVieweyThing();
 }
 
-static void(*original_DismissSceneyMappyInfoVieweyThing)() = (void(*)())0x00450eea;
+static void(__cdecl*original_DismissSceneyMappyInfoVieweyThing)() = (void(__cdecl*)())0x00450eea;
 CARM95_HOOK_FUNCTION(original_DismissSceneyMappyInfoVieweyThing, DismissSceneyMappyInfoVieweyThing)
-void DismissSceneyMappyInfoVieweyThing() {
+void __cdecl DismissSceneyMappyInfoVieweyThing() {
     LOG_TRACE("()");
 
 
     original_DismissSceneyMappyInfoVieweyThing();
 }
 
-static int(*original_SelectRaceDone)(int, int, int, int, int, ...) = (int(*)(int, int, int, int, int, ...))0x00450eb9;
+static int(__cdecl*original_SelectRaceDone)(int, int, int, int, int) = (int(__cdecl*)(int, int, int, int, int))0x00450eb9;
 CARM95_HOOK_FUNCTION(original_SelectRaceDone, SelectRaceDone)
-int SelectRaceDone(int pCurrent_choice, int pCurrent_mode, int pGo_ahead, int pEscaped, int pTimed_out) {
+int __cdecl SelectRaceDone(int pCurrent_choice, int pCurrent_mode, int pGo_ahead, int pEscaped, int pTimed_out) {
     LOG_TRACE("(%d, %d, %d, %d, %d)", pCurrent_choice, pCurrent_mode, pGo_ahead, pEscaped, pTimed_out);
 
     (void)pCurrent_choice;
@@ -688,9 +687,9 @@ int SelectRaceDone(int pCurrent_choice, int pCurrent_mode, int pGo_ahead, int pE
     return original_SelectRaceDone(pCurrent_choice, pCurrent_mode, pGo_ahead, pEscaped, pTimed_out);
 }
 
-static int(*original_StartRaceGoAhead)(int *, int *, ...) = (int(*)(int *, int *, ...))0x00450f2a;
+static int(__cdecl*original_StartRaceGoAhead)(int *, int *) = (int(__cdecl*)(int *, int *))0x00450f2a;
 CARM95_HOOK_FUNCTION(original_StartRaceGoAhead, StartRaceGoAhead)
-int StartRaceGoAhead(int *pCurrent_choice, int *pCurrent_mode) {
+int __cdecl StartRaceGoAhead(int *pCurrent_choice, int *pCurrent_mode) {
     LOG_TRACE("(%p, %p)", pCurrent_choice, pCurrent_mode);
 
     (void)pCurrent_choice;
@@ -708,9 +707,9 @@ int TryToMoveToArrows(int *pCurrent_choice, int *pCurrent_mode) {
     NOT_IMPLEMENTED();
 }
 
-static int(*original_UpOpponent)(int *, int *, ...) = (int(*)(int *, int *, ...))0x00451160;
+static int(__cdecl*original_UpOpponent)(int *, int *) = (int(__cdecl*)(int *, int *))0x00451160;
 CARM95_HOOK_FUNCTION(original_UpOpponent, UpOpponent)
-int UpOpponent(int *pCurrent_choice, int *pCurrent_mode) {
+int __cdecl UpOpponent(int *pCurrent_choice, int *pCurrent_mode) {
     LOG_TRACE("(%p, %p)", pCurrent_choice, pCurrent_mode);
 
     (void)pCurrent_choice;
@@ -719,9 +718,9 @@ int UpOpponent(int *pCurrent_choice, int *pCurrent_mode) {
     return original_UpOpponent(pCurrent_choice, pCurrent_mode);
 }
 
-static int(*original_DownOpponent)(int *, int *, ...) = (int(*)(int *, int *, ...))0x00451285;
+static int(__cdecl*original_DownOpponent)(int *, int *) = (int(__cdecl*)(int *, int *))0x00451285;
 CARM95_HOOK_FUNCTION(original_DownOpponent, DownOpponent)
-int DownOpponent(int *pCurrent_choice, int *pCurrent_mode) {
+int __cdecl DownOpponent(int *pCurrent_choice, int *pCurrent_mode) {
     LOG_TRACE("(%p, %p)", pCurrent_choice, pCurrent_mode);
 
     (void)pCurrent_choice;
@@ -730,9 +729,9 @@ int DownOpponent(int *pCurrent_choice, int *pCurrent_mode) {
     return original_DownOpponent(pCurrent_choice, pCurrent_mode);
 }
 
-static int(*original_UpClickOpp)(int *, int *, int, int, ...) = (int(*)(int *, int *, int, int, ...))0x004513a8;
+static int(__cdecl*original_UpClickOpp)(int *, int *, int, int) = (int(__cdecl*)(int *, int *, int, int))0x004513a8;
 CARM95_HOOK_FUNCTION(original_UpClickOpp, UpClickOpp)
-int UpClickOpp(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY_offset) {
+int __cdecl UpClickOpp(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY_offset) {
     LOG_TRACE("(%p, %p, %d, %d)", pCurrent_choice, pCurrent_mode, pX_offset, pY_offset);
 
     (void)pCurrent_choice;
@@ -743,9 +742,9 @@ int UpClickOpp(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY_o
     return original_UpClickOpp(pCurrent_choice, pCurrent_mode, pX_offset, pY_offset);
 }
 
-static int(*original_DownClickOpp)(int *, int *, int, int, ...) = (int(*)(int *, int *, int, int, ...))0x004513ca;
+static int(__cdecl*original_DownClickOpp)(int *, int *, int, int) = (int(__cdecl*)(int *, int *, int, int))0x004513ca;
 CARM95_HOOK_FUNCTION(original_DownClickOpp, DownClickOpp)
-int DownClickOpp(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY_offset) {
+int __cdecl DownClickOpp(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY_offset) {
     LOG_TRACE("(%p, %p, %d, %d)", pCurrent_choice, pCurrent_mode, pX_offset, pY_offset);
 
     (void)pCurrent_choice;
@@ -756,18 +755,18 @@ int DownClickOpp(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY
     return original_DownClickOpp(pCurrent_choice, pCurrent_mode, pX_offset, pY_offset);
 }
 
-static void(*original_SelectRaceStart)() = (void(*)())0x004513ec;
+static void(__cdecl*original_SelectRaceStart)() = (void(__cdecl*)())0x004513ec;
 CARM95_HOOK_FUNCTION(original_SelectRaceStart, SelectRaceStart)
-void SelectRaceStart() {
+void __cdecl SelectRaceStart() {
     LOG_TRACE("()");
 
 
     original_SelectRaceStart();
 }
 
-static int(*original_SuggestRace)() = (int(*)())0x0045140b;
+static int(__cdecl*original_SuggestRace)() = (int(__cdecl*)())0x0045140b;
 CARM95_HOOK_FUNCTION(original_SuggestRace, SuggestRace)
-int SuggestRace() {
+int __cdecl SuggestRace() {
     int i;
     int least_done;
     int suggested_so_far;
@@ -786,9 +785,9 @@ int SuggestRace() {
     return original_SuggestRace();
 }
 
-static void(*original_SelectRaceDraw)(int, int, ...) = (void(*)(int, int, ...))0x00451634;
+static void(__cdecl*original_SelectRaceDraw)(int, int) = (void(__cdecl*)(int, int))0x00451634;
 CARM95_HOOK_FUNCTION(original_SelectRaceDraw, SelectRaceDraw)
-void SelectRaceDraw(int pCurrent_choice, int pCurrent_mode) {
+void __cdecl SelectRaceDraw(int pCurrent_choice, int pCurrent_mode) {
     tOpponent *the_opponent;
     tText_chunk *the_chunk;
     int j;
@@ -818,13 +817,16 @@ void SelectRaceDraw(int pCurrent_choice, int pCurrent_mode) {
     (void)sub_str;
     (void)test;
     (void)test2;
+    (void)__block0__s;
+    (void)__block0__f;
+    (void)__block0__i;
 
     original_SelectRaceDraw(pCurrent_choice, pCurrent_mode);
 }
 
-static tSO_result(*original_DoSelectRace)(int *, ...) = (tSO_result(*)(int *, ...))0x00451c8e;
+static tSO_result(__cdecl*original_DoSelectRace)(int *) = (tSO_result(__cdecl*)(int *))0x00451c8e;
 CARM95_HOOK_FUNCTION(original_DoSelectRace, DoSelectRace)
-tSO_result DoSelectRace(int *pSecond_time_around) {
+tSO_result __cdecl DoSelectRace(int *pSecond_time_around) {
     static tFlicette flicker_on[7];
     static tFlicette flicker_off[7];
     static tFlicette push[7];
@@ -850,9 +852,9 @@ tSO_result DoSelectRace(int *pSecond_time_around) {
     return original_DoSelectRace(pSecond_time_around);
 }
 
-static void(*original_DrawGridCar)(int, int, br_pixelmap *, ...) = (void(*)(int, int, br_pixelmap *, ...))0x00452b89;
+static void(__cdecl*original_DrawGridCar)(int, int, br_pixelmap *) = (void(__cdecl*)(int, int, br_pixelmap *))0x00452b89;
 CARM95_HOOK_FUNCTION(original_DrawGridCar, DrawGridCar)
-void DrawGridCar(int pX, int pY, br_pixelmap *pImage) {
+void __cdecl DrawGridCar(int pX, int pY, br_pixelmap *pImage) {
     LOG_TRACE("(%d, %d, %p)", pX, pY, pImage);
 
     (void)pX;
@@ -862,9 +864,9 @@ void DrawGridCar(int pX, int pY, br_pixelmap *pImage) {
     original_DrawGridCar(pX, pY, pImage);
 }
 
-static void(*original_DrawGrid)(int, int, ...) = (void(*)(int, int, ...))0x00452077;
+static void(__cdecl*original_DrawGrid)(int, int) = (void(__cdecl*)(int, int))0x00452077;
 CARM95_HOOK_FUNCTION(original_DrawGrid, DrawGrid)
-void DrawGrid(int pOffset, int pDraw_it) {
+void __cdecl DrawGrid(int pOffset, int pDraw_it) {
     int i;
     int j;
     int y;
@@ -909,9 +911,9 @@ void DrawGrid(int pOffset, int pDraw_it) {
     original_DrawGrid(pOffset, pDraw_it);
 }
 
-static void(*original_MoveGrid)(int, int, tS32, ...) = (void(*)(int, int, tS32, ...))0x004531d4;
+static void(__cdecl*original_MoveGrid)(int, int, tS32) = (void(__cdecl*)(int, int, tS32))0x004531d4;
 CARM95_HOOK_FUNCTION(original_MoveGrid, MoveGrid)
-void MoveGrid(int pFrom, int pTo, tS32 pTime_to_move) {
+void __cdecl MoveGrid(int pFrom, int pTo, tS32 pTime_to_move) {
     tS32 start_time;
     tS32 the_time;
     int move_distance;
@@ -929,9 +931,9 @@ void MoveGrid(int pFrom, int pTo, tS32 pTime_to_move) {
     original_MoveGrid(pFrom, pTo, pTime_to_move);
 }
 
-static int(*original_CalcGridOffset)(int, ...) = (int(*)(int, ...))0x00452bf3;
+static int(__cdecl*original_CalcGridOffset)(int) = (int(__cdecl*)(int))0x00452bf3;
 CARM95_HOOK_FUNCTION(original_CalcGridOffset, CalcGridOffset)
-int CalcGridOffset(int pPosition) {
+int __cdecl CalcGridOffset(int pPosition) {
     LOG_TRACE("(%d)", pPosition);
 
     (void)pPosition;
@@ -939,9 +941,9 @@ int CalcGridOffset(int pPosition) {
     return original_CalcGridOffset(pPosition);
 }
 
-static void(*original_GridDraw)(int, int, ...) = (void(*)(int, int, ...))0x00452039;
+static void(__cdecl*original_GridDraw)(int, int) = (void(__cdecl*)(int, int))0x00452039;
 CARM95_HOOK_FUNCTION(original_GridDraw, GridDraw)
-void GridDraw(int pCurrent_choice, int pCurrent_mode) {
+void __cdecl GridDraw(int pCurrent_choice, int pCurrent_mode) {
     LOG_TRACE("(%d, %d)", pCurrent_choice, pCurrent_mode);
 
     (void)pCurrent_choice;
@@ -950,9 +952,9 @@ void GridDraw(int pCurrent_choice, int pCurrent_mode) {
     original_GridDraw(pCurrent_choice, pCurrent_mode);
 }
 
-static void(*original_ActuallySwapOrder)(int, int, ...) = (void(*)(int, int, ...))0x00453255;
+static void(__cdecl*original_ActuallySwapOrder)(int, int) = (void(__cdecl*)(int, int))0x00453255;
 CARM95_HOOK_FUNCTION(original_ActuallySwapOrder, ActuallySwapOrder)
-void ActuallySwapOrder(int pFirst_index, int pSecond_index) {
+void __cdecl ActuallySwapOrder(int pFirst_index, int pSecond_index) {
     tOpp_spec temp_opp;
     LOG_TRACE("(%d, %d)", pFirst_index, pSecond_index);
 
@@ -963,9 +965,9 @@ void ActuallySwapOrder(int pFirst_index, int pSecond_index) {
     original_ActuallySwapOrder(pFirst_index, pSecond_index);
 }
 
-static void(*original_DoGridTransition)(int, int, ...) = (void(*)(int, int, ...))0x004530ca;
+static void(__cdecl*original_DoGridTransition)(int, int) = (void(__cdecl*)(int, int))0x004530ca;
 CARM95_HOOK_FUNCTION(original_DoGridTransition, DoGridTransition)
-void DoGridTransition(int pFirst_index, int pSecond_index) {
+void __cdecl DoGridTransition(int pFirst_index, int pSecond_index) {
     tU32 start_time;
     tU32 the_time;
     LOG_TRACE("(%d, %d)", pFirst_index, pSecond_index);
@@ -978,9 +980,9 @@ void DoGridTransition(int pFirst_index, int pSecond_index) {
     original_DoGridTransition(pFirst_index, pSecond_index);
 }
 
-static void(*original_ChallengeStart)() = (void(*)())0x00452c0c;
+static void(__cdecl*original_ChallengeStart)() = (void(__cdecl*)())0x00452c0c;
 CARM95_HOOK_FUNCTION(original_ChallengeStart, ChallengeStart)
-void ChallengeStart() {
+void __cdecl ChallengeStart() {
     br_pixelmap *the_map;
     int i;
     int j;
@@ -1003,9 +1005,9 @@ void ChallengeStart() {
     original_ChallengeStart();
 }
 
-static int(*original_CheckNextStage)(int *, int *, ...) = (int(*)(int *, int *, ...))0x00453021;
+static int(__cdecl*original_CheckNextStage)(int *, int *) = (int(__cdecl*)(int *, int *))0x00453021;
 CARM95_HOOK_FUNCTION(original_CheckNextStage, CheckNextStage)
-int CheckNextStage(int *pCurrent_choice, int *pCurrent_mode) {
+int __cdecl CheckNextStage(int *pCurrent_choice, int *pCurrent_mode) {
     LOG_TRACE("(%p, %p)", pCurrent_choice, pCurrent_mode);
 
     (void)pCurrent_choice;
@@ -1014,9 +1016,9 @@ int CheckNextStage(int *pCurrent_choice, int *pCurrent_mode) {
     return original_CheckNextStage(pCurrent_choice, pCurrent_mode);
 }
 
-static int(*original_ChallengeDone)(int, int, int, int, int, ...) = (int(*)(int, int, int, int, int, ...))0x004532f7;
+static int(__cdecl*original_ChallengeDone)(int, int, int, int, int) = (int(__cdecl*)(int, int, int, int, int))0x004532f7;
 CARM95_HOOK_FUNCTION(original_ChallengeDone, ChallengeDone)
-int ChallengeDone(int pCurrent_choice, int pCurrent_mode, int pGo_ahead, int pEscaped, int pTimed_out) {
+int __cdecl ChallengeDone(int pCurrent_choice, int pCurrent_mode, int pGo_ahead, int pEscaped, int pTimed_out) {
     LOG_TRACE("(%d, %d, %d, %d, %d)", pCurrent_choice, pCurrent_mode, pGo_ahead, pEscaped, pTimed_out);
 
     (void)pCurrent_choice;
@@ -1028,9 +1030,9 @@ int ChallengeDone(int pCurrent_choice, int pCurrent_mode, int pGo_ahead, int pEs
     return original_ChallengeDone(pCurrent_choice, pCurrent_mode, pGo_ahead, pEscaped, pTimed_out);
 }
 
-static void(*original_DoChallengeScreen)() = (void(*)())0x00453952;
+static void(__cdecl*original_DoChallengeScreen)() = (void(__cdecl*)())0x00453952;
 CARM95_HOOK_FUNCTION(original_DoChallengeScreen, DoChallengeScreen)
-void DoChallengeScreen() {
+void __cdecl DoChallengeScreen() {
     static tFlicette flicker_on[2];
     static tFlicette flicker_off[2];
     static tFlicette push[2];
@@ -1049,9 +1051,9 @@ void DoChallengeScreen() {
     original_DoChallengeScreen();
 }
 
-static int(*original_GridDone)(int, int, int, int, int, ...) = (int(*)(int, int, int, int, int, ...))0x004533c6;
+static int(__cdecl*original_GridDone)(int, int, int, int, int) = (int(__cdecl*)(int, int, int, int, int))0x004533c6;
 CARM95_HOOK_FUNCTION(original_GridDone, GridDone)
-int GridDone(int pCurrent_choice, int pCurrent_mode, int pGo_ahead, int pEscaped, int pTimed_out) {
+int __cdecl GridDone(int pCurrent_choice, int pCurrent_mode, int pGo_ahead, int pEscaped, int pTimed_out) {
     LOG_TRACE("(%d, %d, %d, %d, %d)", pCurrent_choice, pCurrent_mode, pGo_ahead, pEscaped, pTimed_out);
 
     (void)pCurrent_choice;
@@ -1063,18 +1065,18 @@ int GridDone(int pCurrent_choice, int pCurrent_mode, int pGo_ahead, int pEscaped
     return original_GridDone(pCurrent_choice, pCurrent_mode, pGo_ahead, pEscaped, pTimed_out);
 }
 
-static void(*original_GridStart)() = (void(*)())0x00453408;
+static void(__cdecl*original_GridStart)() = (void(__cdecl*)())0x00453408;
 CARM95_HOOK_FUNCTION(original_GridStart, GridStart)
-void GridStart() {
+void __cdecl GridStart() {
     LOG_TRACE("()");
 
 
     original_GridStart();
 }
 
-static int(*original_GridMoveLeft)(int *, int *, ...) = (int(*)(int *, int *, ...))0x00453440;
+static int(__cdecl*original_GridMoveLeft)(int *, int *) = (int(__cdecl*)(int *, int *))0x00453440;
 CARM95_HOOK_FUNCTION(original_GridMoveLeft, GridMoveLeft)
-int GridMoveLeft(int *pCurrent_choice, int *pCurrent_mode) {
+int __cdecl GridMoveLeft(int *pCurrent_choice, int *pCurrent_mode) {
     LOG_TRACE("(%p, %p)", pCurrent_choice, pCurrent_mode);
 
     (void)pCurrent_choice;
@@ -1083,9 +1085,9 @@ int GridMoveLeft(int *pCurrent_choice, int *pCurrent_mode) {
     return original_GridMoveLeft(pCurrent_choice, pCurrent_mode);
 }
 
-static int(*original_GridMoveRight)(int *, int *, ...) = (int(*)(int *, int *, ...))0x004534e7;
+static int(__cdecl*original_GridMoveRight)(int *, int *) = (int(__cdecl*)(int *, int *))0x004534e7;
 CARM95_HOOK_FUNCTION(original_GridMoveRight, GridMoveRight)
-int GridMoveRight(int *pCurrent_choice, int *pCurrent_mode) {
+int __cdecl GridMoveRight(int *pCurrent_choice, int *pCurrent_mode) {
     LOG_TRACE("(%p, %p)", pCurrent_choice, pCurrent_mode);
 
     (void)pCurrent_choice;
@@ -1094,9 +1096,9 @@ int GridMoveRight(int *pCurrent_choice, int *pCurrent_mode) {
     return original_GridMoveRight(pCurrent_choice, pCurrent_mode);
 }
 
-static int(*original_GridClickCar)(int *, int *, int, int, ...) = (int(*)(int *, int *, int, int, ...))0x00453578;
+static int(__cdecl*original_GridClickCar)(int *, int *, int, int) = (int(__cdecl*)(int *, int *, int, int))0x00453578;
 CARM95_HOOK_FUNCTION(original_GridClickCar, GridClickCar)
-int GridClickCar(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY_offset) {
+int __cdecl GridClickCar(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY_offset) {
     int rel_pos;
     int new_pos;
     int base_pos;
@@ -1115,9 +1117,9 @@ int GridClickCar(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY
     return original_GridClickCar(pCurrent_choice, pCurrent_mode, pX_offset, pY_offset);
 }
 
-static int(*original_GridClickNumbers)(int *, int *, int, int, ...) = (int(*)(int *, int *, int, int, ...))0x00453671;
+static int(__cdecl*original_GridClickNumbers)(int *, int *, int, int) = (int(__cdecl*)(int *, int *, int, int))0x00453671;
 CARM95_HOOK_FUNCTION(original_GridClickNumbers, GridClickNumbers)
-int GridClickNumbers(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY_offset) {
+int __cdecl GridClickNumbers(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY_offset) {
     int new_pos;
     int i;
     LOG_TRACE("(%p, %p, %d, %d)", pCurrent_choice, pCurrent_mode, pX_offset, pY_offset);
@@ -1132,9 +1134,9 @@ int GridClickNumbers(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, in
     return original_GridClickNumbers(pCurrent_choice, pCurrent_mode, pX_offset, pY_offset);
 }
 
-static int(*original_GridClickLeft)(int *, int *, int, int, ...) = (int(*)(int *, int *, int, int, ...))0x00453746;
+static int(__cdecl*original_GridClickLeft)(int *, int *, int, int) = (int(__cdecl*)(int *, int *, int, int))0x00453746;
 CARM95_HOOK_FUNCTION(original_GridClickLeft, GridClickLeft)
-int GridClickLeft(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY_offset) {
+int __cdecl GridClickLeft(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY_offset) {
     LOG_TRACE("(%p, %p, %d, %d)", pCurrent_choice, pCurrent_mode, pX_offset, pY_offset);
 
     (void)pCurrent_choice;
@@ -1145,9 +1147,9 @@ int GridClickLeft(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int p
     return original_GridClickLeft(pCurrent_choice, pCurrent_mode, pX_offset, pY_offset);
 }
 
-static int(*original_GridClickRight)(int *, int *, int, int, ...) = (int(*)(int *, int *, int, int, ...))0x00453768;
+static int(__cdecl*original_GridClickRight)(int *, int *, int, int) = (int(__cdecl*)(int *, int *, int, int))0x00453768;
 CARM95_HOOK_FUNCTION(original_GridClickRight, GridClickRight)
-int GridClickRight(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY_offset) {
+int __cdecl GridClickRight(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY_offset) {
     LOG_TRACE("(%p, %p, %d, %d)", pCurrent_choice, pCurrent_mode, pX_offset, pY_offset);
 
     (void)pCurrent_choice;
@@ -1158,9 +1160,9 @@ int GridClickRight(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int 
     return original_GridClickRight(pCurrent_choice, pCurrent_mode, pX_offset, pY_offset);
 }
 
-static int(*original_CheckChallenge)(int *, int *, ...) = (int(*)(int *, int *, ...))0x0045378a;
+static int(__cdecl*original_CheckChallenge)(int *, int *) = (int(__cdecl*)(int *, int *))0x0045378a;
 CARM95_HOOK_FUNCTION(original_CheckChallenge, CheckChallenge)
-int CheckChallenge(int *pCurrent_choice, int *pCurrent_mode) {
+int __cdecl CheckChallenge(int *pCurrent_choice, int *pCurrent_mode) {
     LOG_TRACE("(%p, %p)", pCurrent_choice, pCurrent_mode);
 
     (void)pCurrent_choice;
@@ -1169,9 +1171,9 @@ int CheckChallenge(int *pCurrent_choice, int *pCurrent_mode) {
     return original_CheckChallenge(pCurrent_choice, pCurrent_mode);
 }
 
-static int(*original_FindBestPos)(int, ...) = (int(*)(int, ...))0x00453b41;
+static int(__cdecl*original_FindBestPos)(int) = (int(__cdecl*)(int))0x00453b41;
 CARM95_HOOK_FUNCTION(original_FindBestPos, FindBestPos)
-int FindBestPos(int pOur_rank) {
+int __cdecl FindBestPos(int pOur_rank) {
     int i;
     LOG_TRACE("(%d)", pOur_rank);
 
@@ -1181,9 +1183,9 @@ int FindBestPos(int pOur_rank) {
     return original_FindBestPos(pOur_rank);
 }
 
-static int(*original_SortGridFunction)(void *, void *, ...) = (int(*)(void *, void *, ...))0x004537d2;
+static int(__cdecl*original_SortGridFunction)(void *, void *) = (int(__cdecl*)(void *, void *))0x004537d2;
 CARM95_HOOK_FUNCTION(original_SortGridFunction, SortGridFunction)
-int SortGridFunction(void *pFirst_one, void *pSecond_one) {
+int __cdecl SortGridFunction(void *pFirst_one, void *pSecond_one) {
     LOG_TRACE("(%p, %p)", pFirst_one, pSecond_one);
 
     (void)pFirst_one;
@@ -1192,9 +1194,9 @@ int SortGridFunction(void *pFirst_one, void *pSecond_one) {
     return original_SortGridFunction(pFirst_one, pSecond_one);
 }
 
-static void(*original_SortOpponents)() = (void(*)())0x004539f6;
+static void(__cdecl*original_SortOpponents)() = (void(__cdecl*)())0x004539f6;
 CARM95_HOOK_FUNCTION(original_SortOpponents, SortOpponents)
-void SortOpponents() {
+void __cdecl SortOpponents() {
     int i;
     LOG_TRACE("()");
 
@@ -1203,9 +1205,9 @@ void SortOpponents() {
     original_SortOpponents();
 }
 
-static tSO_result(*original_DoGridPosition)() = (tSO_result(*)())0x004537ee;
+static tSO_result(__cdecl*original_DoGridPosition)() = (tSO_result(__cdecl*)())0x004537ee;
 CARM95_HOOK_FUNCTION(original_DoGridPosition, DoGridPosition)
-tSO_result DoGridPosition() {
+tSO_result __cdecl DoGridPosition() {
     static tFlicette flicker_on[3];
     static tFlicette flicker_off[3];
     static tFlicette push[3];
@@ -1224,9 +1226,9 @@ tSO_result DoGridPosition() {
     return original_DoGridPosition();
 }
 
-static void(*original_CheckPlayersAreResponding)() = (void(*)())0x00453ba4;
+static void(__cdecl*original_CheckPlayersAreResponding)() = (void(__cdecl*)())0x00453ba4;
 CARM95_HOOK_FUNCTION(original_CheckPlayersAreResponding, CheckPlayersAreResponding)
-void CheckPlayersAreResponding() {
+void __cdecl CheckPlayersAreResponding() {
     int i;
     tU32 time;
     tNet_message *message;
@@ -1239,18 +1241,18 @@ void CheckPlayersAreResponding() {
     original_CheckPlayersAreResponding();
 }
 
-static void(*original_NetSynchStartStart)() = (void(*)())0x00453b94;
+static void(__cdecl*original_NetSynchStartStart)() = (void(__cdecl*)())0x00453b94;
 CARM95_HOOK_FUNCTION(original_NetSynchStartStart, NetSynchStartStart)
-void NetSynchStartStart() {
+void __cdecl NetSynchStartStart() {
     LOG_TRACE("()");
 
 
     original_NetSynchStartStart();
 }
 
-static void(*original_DrawAnItem__racestrt)(int, int, int, char *, ...) = (void(*)(int, int, int, char *, ...))0x00453fc0;
+static void(__cdecl*original_DrawAnItem__racestrt)(int, int, int, char *) = (void(__cdecl*)(int, int, int, char *))0x00453fc0;
 CARM95_HOOK_FUNCTION(original_DrawAnItem__racestrt, DrawAnItem__racestrt)
-void DrawAnItem__racestrt(int pX, int pY_index, int pFont_index, char *pText) {
+void __cdecl DrawAnItem__racestrt(int pX, int pY_index, int pFont_index, char *pText) {
     LOG_TRACE("(%d, %d, %d, \"%s\")", pX, pY_index, pFont_index, pText);
 
     (void)pX;
@@ -1261,9 +1263,9 @@ void DrawAnItem__racestrt(int pX, int pY_index, int pFont_index, char *pText) {
     original_DrawAnItem__racestrt(pX, pY_index, pFont_index, pText);
 }
 
-static void(*original_NetSynchStartDraw)(int, int, ...) = (void(*)(int, int, ...))0x00453c5b;
+static void(__cdecl*original_NetSynchStartDraw)(int, int) = (void(__cdecl*)(int, int))0x00453c5b;
 CARM95_HOOK_FUNCTION(original_NetSynchStartDraw, NetSynchStartDraw)
-void NetSynchStartDraw(int pCurrent_choice, int pCurrent_mode) {
+void __cdecl NetSynchStartDraw(int pCurrent_choice, int pCurrent_mode) {
     int i;
     int number_ready;
     char s[256];
@@ -1278,9 +1280,9 @@ void NetSynchStartDraw(int pCurrent_choice, int pCurrent_mode) {
     original_NetSynchStartDraw(pCurrent_choice, pCurrent_mode);
 }
 
-static int(*original_NetSynchStartDone)(int, int, int, int, int, ...) = (int(*)(int, int, int, int, int, ...))0x00454007;
+static int(__cdecl*original_NetSynchStartDone)(int, int, int, int, int) = (int(__cdecl*)(int, int, int, int, int))0x00454007;
 CARM95_HOOK_FUNCTION(original_NetSynchStartDone, NetSynchStartDone)
-int NetSynchStartDone(int pCurrent_choice, int pCurrent_mode, int pGo_ahead, int pEscaped, int pTimed_out) {
+int __cdecl NetSynchStartDone(int pCurrent_choice, int pCurrent_mode, int pGo_ahead, int pEscaped, int pTimed_out) {
     LOG_TRACE("(%d, %d, %d, %d, %d)", pCurrent_choice, pCurrent_mode, pGo_ahead, pEscaped, pTimed_out);
 
     (void)pCurrent_choice;
@@ -1292,9 +1294,9 @@ int NetSynchStartDone(int pCurrent_choice, int pCurrent_mode, int pGo_ahead, int
     return original_NetSynchStartDone(pCurrent_choice, pCurrent_mode, pGo_ahead, pEscaped, pTimed_out);
 }
 
-static int(*original_NetSynchStartGoAhead)(int *, int *, ...) = (int(*)(int *, int *, ...))0x00454047;
+static int(__cdecl*original_NetSynchStartGoAhead)(int *, int *) = (int(__cdecl*)(int *, int *))0x00454047;
 CARM95_HOOK_FUNCTION(original_NetSynchStartGoAhead, NetSynchStartGoAhead)
-int NetSynchStartGoAhead(int *pCurrent_choice, int *pCurrent_mode) {
+int __cdecl NetSynchStartGoAhead(int *pCurrent_choice, int *pCurrent_mode) {
     LOG_TRACE("(%p, %p)", pCurrent_choice, pCurrent_mode);
 
     (void)pCurrent_choice;
@@ -1303,9 +1305,9 @@ int NetSynchStartGoAhead(int *pCurrent_choice, int *pCurrent_mode) {
     return original_NetSynchStartGoAhead(pCurrent_choice, pCurrent_mode);
 }
 
-static int(*original_ExitWhenReady)(int *, int *, ...) = (int(*)(int *, int *, ...))0x0045412d;
+static int(__cdecl*original_ExitWhenReady)(int *, int *) = (int(__cdecl*)(int *, int *))0x0045412d;
 CARM95_HOOK_FUNCTION(original_ExitWhenReady, ExitWhenReady)
-int ExitWhenReady(int *pCurrent_choice, int *pCurrent_mode) {
+int __cdecl ExitWhenReady(int *pCurrent_choice, int *pCurrent_mode) {
     LOG_TRACE("(%p, %p)", pCurrent_choice, pCurrent_mode);
 
     (void)pCurrent_choice;
@@ -1314,9 +1316,9 @@ int ExitWhenReady(int *pCurrent_choice, int *pCurrent_mode) {
     return original_ExitWhenReady(pCurrent_choice, pCurrent_mode);
 }
 
-static tSO_result(*original_NetSynchRaceStart2)(tNet_synch_mode, ...) = (tSO_result(*)(tNet_synch_mode, ...))0x00454196;
+static tSO_result(__cdecl*original_NetSynchRaceStart2)(tNet_synch_mode) = (tSO_result(__cdecl*)(tNet_synch_mode))0x00454196;
 CARM95_HOOK_FUNCTION(original_NetSynchRaceStart2, NetSynchRaceStart2)
-tSO_result NetSynchRaceStart2(tNet_synch_mode pMode) {
+tSO_result __cdecl NetSynchRaceStart2(tNet_synch_mode pMode) {
     static tFlicette flicker_on_hf[2];
     static tFlicette flicker_off_hf[2];
     static tFlicette push_hf[2];
@@ -1356,9 +1358,9 @@ tSO_result NetSynchRaceStart2(tNet_synch_mode pMode) {
     return original_NetSynchRaceStart2(pMode);
 }
 
-static tSO_result(*original_NetSynchRaceStart)() = (tSO_result(*)())0x004542c4;
+static tSO_result(__cdecl*original_NetSynchRaceStart)() = (tSO_result(__cdecl*)())0x004542c4;
 CARM95_HOOK_FUNCTION(original_NetSynchRaceStart, NetSynchRaceStart)
-tSO_result NetSynchRaceStart() {
+tSO_result __cdecl NetSynchRaceStart() {
     LOG_TRACE("()");
 
 

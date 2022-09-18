@@ -4,11 +4,10 @@
 
 #include "carm95_hooks.h"
 
-#include <stdio.h>
 
-static void(*original_BrDbModelRender)(br_actor *, br_model *, br_material *, void *, br_uint_8, int, int, ...) = (void(*)(br_actor *, br_model *, br_material *, void *, br_uint_8, int, int, ...))0x004d9720;
+static void(__cdecl*original_BrDbModelRender)(br_actor *, br_model *, br_material *, void *, br_uint_8, int, int) = (void(__cdecl*)(br_actor *, br_model *, br_material *, void *, br_uint_8, int, int))0x004d9720;
 CARM95_HOOK_FUNCTION(original_BrDbModelRender, BrDbModelRender)
-void BrDbModelRender(br_actor *actor, br_model *model, br_material *material, void *render_data, br_uint_8 style, int on_screen, int use_custom) {
+void __cdecl BrDbModelRender(br_actor *actor, br_model *model, br_material *material, void *render_data, br_uint_8 style, int on_screen, int use_custom) {
     br_int_32 count;
     br_token_value tv[5];
     br_order_table *__block0__ot;
@@ -27,13 +26,18 @@ void BrDbModelRender(br_actor *actor, br_model *model, br_material *material, vo
     (void)use_custom;
     (void)count;
     (void)tv;
+    (void)__block0__ot;
+    (void)__block1__c;
+    (void)__block1__buffer;
+    (void)__block1__tv;
+    (void)__block1__int_bounds;
 
     original_BrDbModelRender(actor, model, material, render_data, style, on_screen, use_custom);
 }
 
-static br_uint_32(*original_BrOnScreenCheck)(br_bounds3 *, ...) = (br_uint_32(*)(br_bounds3 *, ...))0x004d9ab0;
+static br_uint_32(__cdecl*original_BrOnScreenCheck)(br_bounds3 *) = (br_uint_32(__cdecl*)(br_bounds3 *))0x004d9ab0;
 CARM95_HOOK_FUNCTION(original_BrOnScreenCheck, BrOnScreenCheck)
-br_uint_32 BrOnScreenCheck(br_bounds3 *bounds) {
+br_uint_32 __cdecl BrOnScreenCheck(br_bounds3 *bounds) {
     br_token r;
     LOG_TRACE("(%p)", bounds);
 
@@ -66,9 +70,9 @@ br_uint_16 prependMatrix(br_matrix34 *mat, br_uint_16 mat_t, br_uint_16 t) {
     NOT_IMPLEMENTED();
 }
 
-static void(*original_actorRender)(br_actor *, br_model *, br_material *, void *, br_uint_8, br_uint_16, ...) = (void(*)(br_actor *, br_model *, br_material *, void *, br_uint_8, br_uint_16, ...))0x004da0d0;
+static void(__stdcall*original_actorRender)(br_actor *, br_model *, br_material *, void *, br_uint_8, br_uint_16) = (void(__stdcall*)(br_actor *, br_model *, br_material *, void *, br_uint_8, br_uint_16))0x004da0d0;
 CARM95_HOOK_FUNCTION(original_actorRender, actorRender)
-void actorRender(br_actor *ap, br_model *model, br_material *material, void *render_data, br_uint_8 style, br_uint_16 t) {
+void __stdcall actorRender(br_actor *ap, br_model *model, br_material *material, void *render_data, br_uint_8 style, br_uint_16 t) {
     br_material *this_material;
     br_model *this_model;
     void *this_render_data;
@@ -130,9 +134,9 @@ void sceneRenderWorld(br_actor *world) {
     NOT_IMPLEMENTED();
 }
 
-static void(*original_sceneRenderAdd)(br_actor *, ...) = (void(*)(br_actor *, ...))0x004d9eb0;
+static void(__stdcall*original_sceneRenderAdd)(br_actor *) = (void(__stdcall*)(br_actor *))0x004d9eb0;
 CARM95_HOOK_FUNCTION(original_sceneRenderAdd, sceneRenderAdd)
-void sceneRenderAdd(br_actor *tree) {
+void __stdcall sceneRenderAdd(br_actor *tree) {
     br_material *material;
     br_model *model;
     void *render_data;
@@ -154,9 +158,9 @@ void sceneRenderAdd(br_actor *tree) {
     original_sceneRenderAdd(tree);
 }
 
-static void(*original_BrDbSceneRenderBegin)(br_actor *, br_actor *, ...) = (void(*)(br_actor *, br_actor *, ...))0x004d9ae0;
+static void(__cdecl*original_BrDbSceneRenderBegin)(br_actor *, br_actor *) = (void(__cdecl*)(br_actor *, br_actor *))0x004d9ae0;
 CARM95_HOOK_FUNCTION(original_BrDbSceneRenderBegin, BrDbSceneRenderBegin)
-void BrDbSceneRenderBegin(br_actor *world, br_actor *camera) {
+void __cdecl BrDbSceneRenderBegin(br_actor *world, br_actor *camera) {
     br_matrix34 tfm;
     br_matrix4 vtos;
     br_actor *a;
@@ -177,9 +181,9 @@ void BrDbSceneRenderBegin(br_actor *world, br_actor *camera) {
     original_BrDbSceneRenderBegin(world, camera);
 }
 
-static br_renderbounds_cbfn *(*original_BrDbSetRenderBoundsCallback)(br_renderbounds_cbfn *, ...) = (br_renderbounds_cbfn *(*)(br_renderbounds_cbfn *, ...))0x004d9cf0;
+static br_renderbounds_cbfn *(__cdecl*original_BrDbSetRenderBoundsCallback)(br_renderbounds_cbfn *) = (br_renderbounds_cbfn *(__cdecl*)(br_renderbounds_cbfn *))0x004d9cf0;
 CARM95_HOOK_FUNCTION(original_BrDbSetRenderBoundsCallback, BrDbSetRenderBoundsCallback)
-br_renderbounds_cbfn* BrDbSetRenderBoundsCallback(br_renderbounds_cbfn *new_cbfn) {
+br_renderbounds_cbfn* __cdecl BrDbSetRenderBoundsCallback(br_renderbounds_cbfn *new_cbfn) {
     br_renderbounds_cbfn *old_cbfn;
     LOG_TRACE("(%p)", new_cbfn);
 
@@ -205,9 +209,9 @@ void SetViewport(br_pixelmap *buffer) {
     NOT_IMPLEMENTED();
 }
 
-static void(*original_BrZbSceneRenderBegin)(br_actor *, br_actor *, br_pixelmap *, br_pixelmap *, ...) = (void(*)(br_actor *, br_actor *, br_pixelmap *, br_pixelmap *, ...))0x004d9d30;
+static void(__cdecl*original_BrZbSceneRenderBegin)(br_actor *, br_actor *, br_pixelmap *, br_pixelmap *) = (void(__cdecl*)(br_actor *, br_actor *, br_pixelmap *, br_pixelmap *))0x004d9d30;
 CARM95_HOOK_FUNCTION(original_BrZbSceneRenderBegin, BrZbSceneRenderBegin)
-void BrZbSceneRenderBegin(br_actor *world, br_actor *camera, br_pixelmap *colour_buffer, br_pixelmap *depth_buffer) {
+void __cdecl BrZbSceneRenderBegin(br_actor *world, br_actor *camera, br_pixelmap *colour_buffer, br_pixelmap *depth_buffer) {
     LOG_TRACE("(%p, %p, %p, %p)", world, camera, colour_buffer, depth_buffer);
 
     (void)world;
@@ -218,9 +222,9 @@ void BrZbSceneRenderBegin(br_actor *world, br_actor *camera, br_pixelmap *colour
     original_BrZbSceneRenderBegin(world, camera, colour_buffer, depth_buffer);
 }
 
-static void(*original_BrZbSceneRenderAdd)(br_actor *, ...) = (void(*)(br_actor *, ...))0x004d9ea0;
+static void(__cdecl*original_BrZbSceneRenderAdd)(br_actor *) = (void(__cdecl*)(br_actor *))0x004d9ea0;
 CARM95_HOOK_FUNCTION(original_BrZbSceneRenderAdd, BrZbSceneRenderAdd)
-void BrZbSceneRenderAdd(br_actor *tree) {
+void __cdecl BrZbSceneRenderAdd(br_actor *tree) {
     LOG_TRACE("(%p)", tree);
 
     (void)tree;
@@ -228,18 +232,18 @@ void BrZbSceneRenderAdd(br_actor *tree) {
     original_BrZbSceneRenderAdd(tree);
 }
 
-static void(*original_BrZbSceneRenderEnd)() = (void(*)())0x004da630;
+static void(__stdcall*original_BrZbSceneRenderEnd)() = (void(__stdcall*)())0x004da630;
 CARM95_HOOK_FUNCTION(original_BrZbSceneRenderEnd, BrZbSceneRenderEnd)
-void BrZbSceneRenderEnd() {
+void __stdcall BrZbSceneRenderEnd() {
     LOG_TRACE("()");
 
 
     original_BrZbSceneRenderEnd();
 }
 
-static void(*original_BrZbSceneRender)(br_actor *, br_actor *, br_pixelmap *, br_pixelmap *, ...) = (void(*)(br_actor *, br_actor *, br_pixelmap *, br_pixelmap *, ...))0x004da660;
+static void(__cdecl*original_BrZbSceneRender)(br_actor *, br_actor *, br_pixelmap *, br_pixelmap *) = (void(__cdecl*)(br_actor *, br_actor *, br_pixelmap *, br_pixelmap *))0x004da660;
 CARM95_HOOK_FUNCTION(original_BrZbSceneRender, BrZbSceneRender)
-void BrZbSceneRender(br_actor *world, br_actor *camera, br_pixelmap *colour_buffer, br_pixelmap *depth_buffer) {
+void __cdecl BrZbSceneRender(br_actor *world, br_actor *camera, br_pixelmap *colour_buffer, br_pixelmap *depth_buffer) {
     br_actor *a;
     LOG_TRACE("(%p, %p, %p, %p)", world, camera, colour_buffer, depth_buffer);
 
@@ -252,9 +256,9 @@ void BrZbSceneRender(br_actor *world, br_actor *camera, br_pixelmap *colour_buff
     original_BrZbSceneRender(world, camera, colour_buffer, depth_buffer);
 }
 
-static void(*original_BrZsSceneRenderBegin)(br_actor *, br_actor *, br_pixelmap *, ...) = (void(*)(br_actor *, br_actor *, br_pixelmap *, ...))0x004da860;
+static void(__cdecl*original_BrZsSceneRenderBegin)(br_actor *, br_actor *, br_pixelmap *) = (void(__cdecl*)(br_actor *, br_actor *, br_pixelmap *))0x004da860;
 CARM95_HOOK_FUNCTION(original_BrZsSceneRenderBegin, BrZsSceneRenderBegin)
-void BrZsSceneRenderBegin(br_actor *world, br_actor *camera, br_pixelmap *colour_buffer) {
+void __cdecl BrZsSceneRenderBegin(br_actor *world, br_actor *camera, br_pixelmap *colour_buffer) {
     br_camera *camera_data;
     LOG_TRACE("(%p, %p, %p)", world, camera, colour_buffer);
 
@@ -266,9 +270,9 @@ void BrZsSceneRenderBegin(br_actor *world, br_actor *camera, br_pixelmap *colour
     original_BrZsSceneRenderBegin(world, camera, colour_buffer);
 }
 
-static void(*original_BrZsSceneRenderAdd)(br_actor *, ...) = (void(*)(br_actor *, ...))0x004daa4c;
+static void(__cdecl*original_BrZsSceneRenderAdd)(br_actor *) = (void(__cdecl*)(br_actor *))0x004daa4c;
 CARM95_HOOK_FUNCTION(original_BrZsSceneRenderAdd, BrZsSceneRenderAdd)
-void BrZsSceneRenderAdd(br_actor *tree) {
+void __cdecl BrZsSceneRenderAdd(br_actor *tree) {
     LOG_TRACE("(%p)", tree);
 
     (void)tree;
@@ -276,18 +280,18 @@ void BrZsSceneRenderAdd(br_actor *tree) {
     original_BrZsSceneRenderAdd(tree);
 }
 
-static void(*original_BrZsSceneRenderEnd)() = (void(*)())0x004daa5b;
+static void(__stdcall*original_BrZsSceneRenderEnd)() = (void(__stdcall*)())0x004daa5b;
 CARM95_HOOK_FUNCTION(original_BrZsSceneRenderEnd, BrZsSceneRenderEnd)
-void BrZsSceneRenderEnd() {
+void __stdcall BrZsSceneRenderEnd() {
     LOG_TRACE("()");
 
 
     original_BrZsSceneRenderEnd();
 }
 
-static void(*original_BrZsSceneRender)(br_actor *, br_actor *, br_pixelmap *, ...) = (void(*)(br_actor *, br_actor *, br_pixelmap *, ...))0x004daae0;
+static void(__stdcall*original_BrZsSceneRender)(br_actor *, br_actor *, br_pixelmap *) = (void(__stdcall*)(br_actor *, br_actor *, br_pixelmap *))0x004daae0;
 CARM95_HOOK_FUNCTION(original_BrZsSceneRender, BrZsSceneRender)
-void BrZsSceneRender(br_actor *world, br_actor *camera, br_pixelmap *colour_buffer) {
+void __stdcall BrZsSceneRender(br_actor *world, br_actor *camera, br_pixelmap *colour_buffer) {
     br_actor *a;
     LOG_TRACE("(%p, %p, %p)", world, camera, colour_buffer);
 
@@ -299,9 +303,9 @@ void BrZsSceneRender(br_actor *world, br_actor *camera, br_pixelmap *colour_buff
     original_BrZsSceneRender(world, camera, colour_buffer);
 }
 
-static br_primitive_cbfn *(*original_BrZsPrimitiveCallbackSet)(br_primitive_cbfn *, ...) = (br_primitive_cbfn *(*)(br_primitive_cbfn *, ...))0x004dabe0;
+static br_primitive_cbfn *(__cdecl*original_BrZsPrimitiveCallbackSet)(br_primitive_cbfn *) = (br_primitive_cbfn *(__cdecl*)(br_primitive_cbfn *))0x004dabe0;
 CARM95_HOOK_FUNCTION(original_BrZsPrimitiveCallbackSet, BrZsPrimitiveCallbackSet)
-br_primitive_cbfn* BrZsPrimitiveCallbackSet(br_primitive_cbfn *new_cbfn) {
+br_primitive_cbfn* __cdecl BrZsPrimitiveCallbackSet(br_primitive_cbfn *new_cbfn) {
     br_primitive_cbfn *old_cbfn;
     LOG_TRACE("(%p)", new_cbfn);
 
@@ -311,9 +315,9 @@ br_primitive_cbfn* BrZsPrimitiveCallbackSet(br_primitive_cbfn *new_cbfn) {
     return original_BrZsPrimitiveCallbackSet(new_cbfn);
 }
 
-static void(*original_BrZbModelRender)(br_actor *, br_model *, br_material *, br_uint_8, int, int, ...) = (void(*)(br_actor *, br_model *, br_material *, br_uint_8, int, int, ...))0x004dabf0;
+static void(__cdecl*original_BrZbModelRender)(br_actor *, br_model *, br_material *, br_uint_8, int, int) = (void(__cdecl*)(br_actor *, br_model *, br_material *, br_uint_8, int, int))0x004dabf0;
 CARM95_HOOK_FUNCTION(original_BrZbModelRender, BrZbModelRender)
-void BrZbModelRender(br_actor *actor, br_model *model, br_material *material, br_uint_8 style, int on_screen, int use_custom) {
+void __cdecl BrZbModelRender(br_actor *actor, br_model *model, br_material *material, br_uint_8 style, int on_screen, int use_custom) {
     LOG_TRACE("(%p, %p, %p, %u, %d, %d)", actor, model, material, style, on_screen, use_custom);
 
     (void)actor;
@@ -326,9 +330,9 @@ void BrZbModelRender(br_actor *actor, br_model *model, br_material *material, br
     original_BrZbModelRender(actor, model, material, style, on_screen, use_custom);
 }
 
-static void(*original_BrZsModelRender)(br_actor *, br_model *, br_material *, br_order_table *, br_uint_8, int, int, ...) = (void(*)(br_actor *, br_model *, br_material *, br_order_table *, br_uint_8, int, int, ...))0x004dac19;
+static void(__cdecl*original_BrZsModelRender)(br_actor *, br_model *, br_material *, br_order_table *, br_uint_8, int, int) = (void(__cdecl*)(br_actor *, br_model *, br_material *, br_order_table *, br_uint_8, int, int))0x004dac19;
 CARM95_HOOK_FUNCTION(original_BrZsModelRender, BrZsModelRender)
-void BrZsModelRender(br_actor *actor, br_model *model, br_material *material, br_order_table *order_table, br_uint_8 style, int on_screen, int use_custom) {
+void __cdecl BrZsModelRender(br_actor *actor, br_model *model, br_material *material, br_order_table *order_table, br_uint_8 style, int on_screen, int use_custom) {
     LOG_TRACE("(%p, %p, %p, %p, %u, %d, %d)", actor, model, material, order_table, style, on_screen, use_custom);
 
     (void)actor;
@@ -342,9 +346,9 @@ void BrZsModelRender(br_actor *actor, br_model *model, br_material *material, br
     original_BrZsModelRender(actor, model, material, order_table, style, on_screen, use_custom);
 }
 
-static br_renderbounds_cbfn *(*original_BrZbRenderBoundsCallbackSet)(br_renderbounds_cbfn *, ...) = (br_renderbounds_cbfn *(*)(br_renderbounds_cbfn *, ...))0x004dac4c;
+static br_renderbounds_cbfn *(__cdecl*original_BrZbRenderBoundsCallbackSet)(br_renderbounds_cbfn *) = (br_renderbounds_cbfn *(__cdecl*)(br_renderbounds_cbfn *))0x004dac4c;
 CARM95_HOOK_FUNCTION(original_BrZbRenderBoundsCallbackSet, BrZbRenderBoundsCallbackSet)
-br_renderbounds_cbfn* BrZbRenderBoundsCallbackSet(br_renderbounds_cbfn *new_cbfn) {
+br_renderbounds_cbfn* __cdecl BrZbRenderBoundsCallbackSet(br_renderbounds_cbfn *new_cbfn) {
     LOG_TRACE("(%p)", new_cbfn);
 
     (void)new_cbfn;
@@ -352,9 +356,9 @@ br_renderbounds_cbfn* BrZbRenderBoundsCallbackSet(br_renderbounds_cbfn *new_cbfn
     return original_BrZbRenderBoundsCallbackSet(new_cbfn);
 }
 
-static br_renderbounds_cbfn *(*original_BrZsRenderBoundsCallbackSet)(br_renderbounds_cbfn *, ...) = (br_renderbounds_cbfn *(*)(br_renderbounds_cbfn *, ...))0x004dacb0;
+static br_renderbounds_cbfn *(__cdecl*original_BrZsRenderBoundsCallbackSet)(br_renderbounds_cbfn *) = (br_renderbounds_cbfn *(__cdecl*)(br_renderbounds_cbfn *))0x004dacb0;
 CARM95_HOOK_FUNCTION(original_BrZsRenderBoundsCallbackSet, BrZsRenderBoundsCallbackSet)
-br_renderbounds_cbfn* BrZsRenderBoundsCallbackSet(br_renderbounds_cbfn *new_cbfn) {
+br_renderbounds_cbfn* __cdecl BrZsRenderBoundsCallbackSet(br_renderbounds_cbfn *new_cbfn) {
     LOG_TRACE("(%p)", new_cbfn);
 
     (void)new_cbfn;

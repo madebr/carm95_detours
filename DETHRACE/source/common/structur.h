@@ -11,50 +11,50 @@ extern int(* hookvar_gOpponent_mix )[10][5]; // addr: 00509A70
 extern tU32 * hookvar_gLast_checkpoint_time ; // addr: 00509B38
 extern tRace_over_reason * hookvar_gRace_over_reason ; // addr: 00551DBC
 
-int NumberOfOpponentsLeft();
+int __cdecl NumberOfOpponentsLeft();
 
-void RaceCompleted(tRace_over_reason pReason);
+void __cdecl RaceCompleted(tRace_over_reason pReason);
 
-void Checkpoint(int pCheckpoint_index, int pDo_sound);
+void __cdecl Checkpoint(int pCheckpoint_index, int pDo_sound);
 
-void IncrementCheckpoint();
+void __cdecl IncrementCheckpoint();
 
-void IncrementLap();
+void __cdecl IncrementLap();
 
-int RayHitFace(br_vector3 *pV0, br_vector3 *pV1, br_vector3 *pV2, br_vector3 *pNormal, br_vector3 *pStart, br_vector3 *pDir);
+int __cdecl RayHitFace(br_vector3 *pV0, br_vector3 *pV1, br_vector3 *pV2, br_vector3 *pNormal, br_vector3 *pStart, br_vector3 *pDir);
 
-void WrongCheckpoint(int pCheckpoint_index);
+void __cdecl WrongCheckpoint(int pCheckpoint_index);
 
-void CheckCheckpoints();
+void __cdecl CheckCheckpoints();
 
-void TotalRepair();
+void __cdecl TotalRepair();
 
-void DoLogos();
+void __cdecl DoLogos();
 
-void DoProgOpeningAnimation();
+void __cdecl DoProgOpeningAnimation();
 
-void DoProgramDemo();
+void __cdecl DoProgramDemo();
 
-int ChooseOpponent(int pNastiness, int *pHad_scum);
+int __cdecl ChooseOpponent(int pNastiness, int *pHad_scum);
 
-void SelectOpponents(tRace_info *pRace_info);
+void __cdecl SelectOpponents(tRace_info *pRace_info);
 
-int PickNetRace(int pCurrent_race, tNet_sequence_type pNet_race_sequence);
+int __cdecl PickNetRace(int pCurrent_race, tNet_sequence_type pNet_race_sequence);
 
-void SwapNetCarsLoad();
+void __cdecl SwapNetCarsLoad();
 
-void SwapNetCarsDispose();
+void __cdecl SwapNetCarsDispose();
 
-void DoGame();
+void __cdecl DoGame();
 
-void InitialiseProgramState();
+void __cdecl InitialiseProgramState();
 
-void DoProgram();
+void __cdecl DoProgram();
 
-void JumpTheStart();
+void __cdecl JumpTheStart();
 
-void GoingToInterfaceFromRace();
+void __cdecl GoingToInterfaceFromRace();
 
-void GoingBackToRaceFromInterface();
+void __cdecl GoingBackToRaceFromInterface();
 
 #endif

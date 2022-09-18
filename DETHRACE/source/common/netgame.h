@@ -14,108 +14,108 @@ extern tNet_game_player_info ** hookvar_gLast_lepper ; // addr: 00532200
 extern int * hookvar_gInitialised_grid ; // addr: 00551D7C
 extern int * hookvar_gIt_or_fox ; // addr: 00551D80
 
-void SendCarData(tU32 pNext_frame_time);
+void __cdecl SendCarData(tU32 pNext_frame_time);
 
-void ReceivedRecover(tNet_contents *pContents);
+void __cdecl ReceivedRecover(tNet_contents *pContents);
 
-void CopyMechanics(tCar_spec *pCar, tNet_contents *pContents);
+void __cdecl CopyMechanics(tCar_spec *pCar, tNet_contents *pContents);
 
-void ReceivedMechanics(tNet_contents *pContents);
+void __cdecl ReceivedMechanics(tNet_contents *pContents);
 
-void ReceivedCopInfo(tNet_contents *pContents);
+void __cdecl ReceivedCopInfo(tNet_contents *pContents);
 
 void SendAllNonCarPositions();
 
-void ReceivedNonCarPosition(tNet_contents *pContents);
+void __cdecl ReceivedNonCarPosition(tNet_contents *pContents);
 
-void ReceivedNonCar(tNet_contents *pContents);
+void __cdecl ReceivedNonCar(tNet_contents *pContents);
 
-void SignalToStartRace2(int pIndex);
+void __cdecl SignalToStartRace2(int pIndex);
 
-void SignalToStartRace();
+void __cdecl SignalToStartRace();
 
-void SetUpNetCarPositions();
+void __cdecl SetUpNetCarPositions();
 
-void ReinitialiseCar(tCar_spec *pCar);
+void __cdecl ReinitialiseCar(tCar_spec *pCar);
 
-void RepositionPlayer(int pIndex);
+void __cdecl RepositionPlayer(int pIndex);
 
-void DisableCar(tCar_spec *pCar);
+void __cdecl DisableCar(tCar_spec *pCar);
 
-void EnableCar(tCar_spec *pCar);
+void __cdecl EnableCar(tCar_spec *pCar);
 
-void DoNetworkHeadups(int pCredits);
+void __cdecl DoNetworkHeadups(int pCredits);
 
-int SortNetHeadAscending(void *pFirst_one, void *pSecond_one);
+int __cdecl SortNetHeadAscending(void *pFirst_one, void *pSecond_one);
 
-int SortNetHeadDescending(void *pFirst_one, void *pSecond_one);
+int __cdecl SortNetHeadDescending(void *pFirst_one, void *pSecond_one);
 
-void ClipName(char *pName, tDR_font *pFont, int pMax_width);
+void __cdecl ClipName(char *pName, tDR_font *pFont, int pMax_width);
 
-void DoNetScores2(int pOnly_sort_scores);
+void __cdecl DoNetScores2(int pOnly_sort_scores);
 
-void DoNetScores();
+void __cdecl DoNetScores();
 
-void InitNetHeadups();
+void __cdecl InitNetHeadups();
 
-void DisposeNetHeadups();
+void __cdecl DisposeNetHeadups();
 
-void EverybodysLost();
+void __cdecl EverybodysLost();
 
-void DeclareWinner(int pWinner_index);
+void __cdecl DeclareWinner(int pWinner_index);
 
-void PlayerIsIt(tNet_game_player_info *pPlayer);
+void __cdecl PlayerIsIt(tNet_game_player_info *pPlayer);
 
-int FarEnoughAway(tNet_game_player_info *pPlayer_1, tNet_game_player_info *pPlayer_2);
+int __cdecl FarEnoughAway(tNet_game_player_info *pPlayer_1, tNet_game_player_info *pPlayer_2);
 
-void CarInContactWithItOrFox(tNet_game_player_info *pPlayer);
+void __cdecl CarInContactWithItOrFox(tNet_game_player_info *pPlayer);
 
-void SelectRandomItOrFox(int pNot_this_one);
+void __cdecl SelectRandomItOrFox(int pNot_this_one);
 
-void CalcPlayerScores();
+void __cdecl CalcPlayerScores();
 
-void SendPlayerScores();
+void __cdecl SendPlayerScores();
 
-void DoNetGameManagement();
+void __cdecl DoNetGameManagement();
 
-void InitialisePlayerScore(tNet_game_player_info *pPlayer);
+void __cdecl InitialisePlayerScore(tNet_game_player_info *pPlayer);
 
-void InitPlayers();
+void __cdecl InitPlayers();
 
-void BuyPSPowerup(int pIndex);
+void __cdecl BuyPSPowerup(int pIndex);
 
-void BuyArmour();
+void __cdecl BuyArmour();
 
-void BuyPower();
+void __cdecl BuyPower();
 
-void BuyOffense();
+void __cdecl BuyOffense();
 
-void UseGeneralScore(int pScore);
+void __cdecl UseGeneralScore(int pScore);
 
-void NetSendEnvironmentChanges(tNet_game_player_info *pPlayer);
+void __cdecl NetSendEnvironmentChanges(tNet_game_player_info *pPlayer);
 
-void UpdateEnvironments();
+void __cdecl UpdateEnvironments();
 
-void ReceivedGameplay(tNet_contents *pContents, tNet_message *pMessage, tU32 pReceive_time);
+void __cdecl ReceivedGameplay(tNet_contents *pContents, tNet_message *pMessage, tU32 pReceive_time);
 
-void SendGameplay(tPlayer_ID pPlayer, tNet_gameplay_mess pMess, int pParam_1, int pParam_2, int pParam_3, int pParam_4);
+void __cdecl SendGameplay(tPlayer_ID pPlayer, tNet_gameplay_mess pMess, int pParam_1, int pParam_2, int pParam_3, int pParam_4);
 
-void SendGameplayToAllPlayers(tNet_gameplay_mess pMess, int pParam_1, int pParam_2, int pParam_3, int pParam_4);
+void __cdecl SendGameplayToAllPlayers(tNet_gameplay_mess pMess, int pParam_1, int pParam_2, int pParam_3, int pParam_4);
 
-void SendGameplayToHost(tNet_gameplay_mess pMess, int pParam_1, int pParam_2, int pParam_3, int pParam_4);
+void __cdecl SendGameplayToHost(tNet_gameplay_mess pMess, int pParam_1, int pParam_2, int pParam_3, int pParam_4);
 
-void InitNetGameplayStuff();
+void __cdecl InitNetGameplayStuff();
 
-void DefaultNetName();
+void __cdecl DefaultNetName();
 
-void NetSendPointCrush(tCar_spec *pCar, tU16 pCrush_point_index, br_vector3 *pEnergy_vector);
+void __cdecl NetSendPointCrush(tCar_spec *pCar, tU16 pCrush_point_index, br_vector3 *pEnergy_vector);
 
-void RecievedCrushPoint(tNet_contents *pContents);
+void __cdecl RecievedCrushPoint(tNet_contents *pContents);
 
-void GetReducedMatrix(tReduced_matrix *m1, br_matrix34 *m2);
+void __cdecl GetReducedMatrix(tReduced_matrix *m1, br_matrix34 *m2);
 
-void GetExpandedMatrix(br_matrix34 *m1, tReduced_matrix *m2);
+void __cdecl GetExpandedMatrix(br_matrix34 *m1, tReduced_matrix *m2);
 
-void NetEarnCredits(tNet_game_player_info *pPlayer, tS32 pCredits);
+void __cdecl NetEarnCredits(tNet_game_player_info *pPlayer, tS32 pCredits);
 
 #endif

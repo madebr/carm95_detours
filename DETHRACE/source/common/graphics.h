@@ -91,212 +91,212 @@ extern int * hookvar_gMap_render_y_i ; // addr: 0054FF10
 extern int * hookvar_gMirror_on__graphics ; // addr: 0054FF04 // suffix added to avoid duplicate symbol
 extern br_scalar * hookvar_gYon_squared ; // addr: 0054FF1C
 
-void TurnOnPaletteConversion();
+void __cdecl TurnOnPaletteConversion();
 
-void TurnOffPaletteConversion();
+void __cdecl TurnOffPaletteConversion();
 
-void ResetLollipopQueue();
+void __cdecl ResetLollipopQueue();
 
-int AddToLollipopQueue(br_actor *pActor, int pIndex);
+int __cdecl AddToLollipopQueue(br_actor *pActor, int pIndex);
 
-void RenderLollipops();
+void __cdecl RenderLollipops();
 
-void DRDrawLine(br_pixelmap *pDestn, int pX1, int pY1, int pX2, int pY2, int pColour);
+void __cdecl DRDrawLine(br_pixelmap *pDestn, int pX1, int pY1, int pX2, int pY2, int pColour);
 
-void DrawDigitAt(br_pixelmap *gImage, int pX, int pY, int pY_pitch, int pValue);
+void __cdecl DrawDigitAt(br_pixelmap *gImage, int pX, int pY, int pY_pitch, int pValue);
 
-void DrawNumberAt(br_pixelmap *gImage, int pX, int pY, int pX_pitch, int pY_pitch, int pValue, int pDigit_count, int pLeading_zeroes);
+void __cdecl DrawNumberAt(br_pixelmap *gImage, int pX, int pY, int pX_pitch, int pY_pitch, int pValue, int pDigit_count, int pLeading_zeroes);
 
-void BuildColourTable(br_pixelmap *pPalette);
+void __cdecl BuildColourTable(br_pixelmap *pPalette);
 
-void ClearConcussion();
+void __cdecl ClearConcussion();
 
-tS8* SkipLines(tS8 *pSource, int pCount);
+tS8* __cdecl SkipLines(tS8 *pSource, int pCount);
 
 void CopyWords(char *pDst, char *pSrc, int pN);
 
 void Copy8BitStripImageTo16Bit(br_pixelmap *pDest, br_int_16 pDest_x, br_int_16 pOffset_x, br_int_16 pDest_y, br_int_16 pOffset_y, tS8 *pSource, br_int_16 pSource_x, br_int_16 pSource_y, br_uint_16 pWidth, br_uint_16 pHeight);
 
-void CopyStripImage(br_pixelmap *pDest, br_int_16 pDest_x, br_int_16 pOffset_x, br_int_16 pDest_y, br_int_16 pOffset_y, tS8 *pSource, br_int_16 pSource_x, br_int_16 pSource_y, br_uint_16 pWidth, br_uint_16 pHeight);
+void __cdecl CopyStripImage(br_pixelmap *pDest, br_int_16 pDest_x, br_int_16 pOffset_x, br_int_16 pDest_y, br_int_16 pOffset_y, tS8 *pSource, br_int_16 pSource_x, br_int_16 pSource_y, br_uint_16 pWidth, br_uint_16 pHeight);
 
-void SetBRenderScreenAndBuffers(int pX_offset, int pY_offset, int pWidth, int pHeight);
+void __cdecl SetBRenderScreenAndBuffers(int pX_offset, int pY_offset, int pWidth, int pHeight);
 
-void SetIntegerMapRenders();
+void __cdecl SetIntegerMapRenders();
 
-void AdjustRenderScreenSize();
+void __cdecl AdjustRenderScreenSize();
 
-void ScreenSmaller();
+void __fastcall ScreenSmaller();
 
-void ScreenLarger();
+void __fastcall ScreenLarger();
 
-void DRSetPaletteEntries(br_pixelmap *pPalette, int pFirst_colour, int pCount);
+void __cdecl DRSetPaletteEntries(br_pixelmap *pPalette, int pFirst_colour, int pCount);
 
-void DRSetPalette3(br_pixelmap *pThe_palette, int pSet_current_palette);
+void __cdecl DRSetPalette3(br_pixelmap *pThe_palette, int pSet_current_palette);
 
-void DRSetPalette2(br_pixelmap *pThe_palette, int pSet_current_palette);
+void __cdecl DRSetPalette2(br_pixelmap *pThe_palette, int pSet_current_palette);
 
-void DRSetPalette(br_pixelmap *pThe_palette);
+void __cdecl DRSetPalette(br_pixelmap *pThe_palette);
 
-void InitializePalettes();
+void __cdecl InitializePalettes();
 
-void SwitchToPalette(char *pPal_name);
+void __cdecl SwitchToPalette(char *pPal_name);
 
-void ClearEntireScreen();
+void __cdecl ClearEntireScreen();
 
-void ClearWobbles();
+void __cdecl ClearWobbles();
 
-void InitWobbleStuff();
+void __cdecl InitWobbleStuff();
 
-void NewScreenWobble(double pAmplitude_x, double pAmplitude_y, double pPeriod);
+void __cdecl NewScreenWobble(double pAmplitude_x, double pAmplitude_y, double pPeriod);
 
-void SetScreenWobble(int pWobble_x, int pWobble_y);
+void __cdecl SetScreenWobble(int pWobble_x, int pWobble_y);
 
-void ResetScreenWobble();
+void __cdecl ResetScreenWobble();
 
-void CalculateWobblitude(tU32 pThe_time);
+void __cdecl CalculateWobblitude(tU32 pThe_time);
 
-void CalculateConcussion(tU32 pThe_time);
+void __cdecl CalculateConcussion(tU32 pThe_time);
 
-void SufferFromConcussion(float pSeriousness);
+void __cdecl SufferFromConcussion(float pSeriousness);
 
-void ProcessNonTrackActors(br_pixelmap *pRender_buffer, br_pixelmap *pDepth_buffer, br_actor *pCamera, br_matrix34 *pCamera_to_world, br_matrix34 *pOld_camera_matrix);
+void __cdecl ProcessNonTrackActors(br_pixelmap *pRender_buffer, br_pixelmap *pDepth_buffer, br_actor *pCamera, br_matrix34 *pCamera_to_world, br_matrix34 *pOld_camera_matrix);
 
-int OppositeColour(int pColour);
+int __cdecl OppositeColour(int pColour);
 
-void DrawMapBlip(tCar_spec *pCar, tU32 pTime, br_matrix34 *pTrans, br_vector3 *pPos, int pColour);
+void __cdecl DrawMapBlip(tCar_spec *pCar, tU32 pTime, br_matrix34 *pTrans, br_vector3 *pPos, int pColour);
 
-void DrawMapSmallBlip(tU32 pTime, br_vector3 *pPos, int pColour);
+void __cdecl DrawMapSmallBlip(tU32 pTime, br_vector3 *pPos, int pColour);
 
-void MungeClipPlane(br_vector3 *pLight, tCar_spec *pCar, br_vector3 *p1, br_vector3 *p2, br_scalar pY_offset);
+void __cdecl MungeClipPlane(br_vector3 *pLight, tCar_spec *pCar, br_vector3 *p1, br_vector3 *p2, br_scalar pY_offset);
 
-void TryThisEdge(tCar_spec *pCar, br_vector3 *pLight, int pIndex_1, br_scalar pSign_1, int pIndex_2, br_scalar pSign_2, int pPoint_index_1, int pPoint_index_2, br_scalar pY_offset);
+void __cdecl TryThisEdge(tCar_spec *pCar, br_vector3 *pLight, int pIndex_1, br_scalar pSign_1, int pIndex_2, br_scalar pSign_2, int pPoint_index_1, int pPoint_index_2, br_scalar pY_offset);
 
-br_scalar DistanceFromPlane(br_vector3 *pPos, br_scalar pA, br_scalar pB, br_scalar pC, br_scalar pD);
+br_scalar __cdecl DistanceFromPlane(br_vector3 *pPos, br_scalar pA, br_scalar pB, br_scalar pC, br_scalar pD);
 
 void DisableLights();
 
 void EnableLights();
 
-void ProcessShadow(tCar_spec *pCar, br_actor *pWorld, tTrack_spec *pTrack_spec, br_actor *pCamera, br_matrix34 *pCamera_to_world_transform, br_scalar pDistance_factor);
+void __cdecl ProcessShadow(tCar_spec *pCar, br_actor *pWorld, tTrack_spec *pTrack_spec, br_actor *pCamera, br_matrix34 *pCamera_to_world_transform, br_scalar pDistance_factor);
 
-void RenderShadows(br_actor *pWorld, tTrack_spec *pTrack_spec, br_actor *pCamera, br_matrix34 *pCamera_to_world_transform);
+void __cdecl RenderShadows(br_actor *pWorld, tTrack_spec *pTrack_spec, br_actor *pCamera, br_matrix34 *pCamera_to_world_transform);
 
-void FlashyMapCheckpoint(int pIndex, tU32 pTime);
+void __cdecl FlashyMapCheckpoint(int pIndex, tU32 pTime);
 
-int ConditionallyFillWithSky(br_pixelmap *pPixelmap);
+int __cdecl ConditionallyFillWithSky(br_pixelmap *pPixelmap);
 
-void RenderAFrame(int pDepth_mask_on);
+void __cdecl RenderAFrame(int pDepth_mask_on);
 
-void InitPaletteAnimate();
+void __cdecl InitPaletteAnimate();
 
-void RevertPalette();
+void __cdecl RevertPalette();
 
 void MungePalette();
 
-void ResetPalette();
+void __cdecl ResetPalette();
 
-void Darken(tU8 *pPtr, unsigned int pDarken_amount);
+void __cdecl Darken(tU8 *pPtr, unsigned int pDarken_amount);
 
-void SetFadedPalette(int pDegree);
+void __cdecl SetFadedPalette(int pDegree);
 
-void FadePaletteDown();
+void __fastcall FadePaletteDown();
 
-void FadePaletteUp();
+void __cdecl FadePaletteUp();
 
-void KillSplashScreen();
+void __cdecl KillSplashScreen();
 
-void EnsureRenderPalette();
+void __cdecl EnsureRenderPalette();
 
-void SplashScreenWith(char *pPixmap_name);
+void __cdecl SplashScreenWith(char *pPixmap_name);
 
-void EnsurePaletteUp();
+void __cdecl EnsurePaletteUp();
 
-br_uint_32 AmbientificateMaterial(br_material *pMat, void *pArg);
+br_uint_32 __cdecl AmbientificateMaterial(br_material *pMat, void *pArg);
 
-void ChangeAmbience(br_scalar pDelta);
+void __cdecl ChangeAmbience(br_scalar pDelta);
 
-void InitAmbience();
+void __cdecl InitAmbience();
 
-void DRPixelmapRectangleMaskedCopy(br_pixelmap *pDest, br_int_16 pDest_x, br_int_16 pDest_y, br_pixelmap *pSource, br_int_16 pSource_x, br_int_16 pSource_y, br_int_16 pWidth, br_int_16 pHeight);
+void __cdecl DRPixelmapRectangleMaskedCopy(br_pixelmap *pDest, br_int_16 pDest_x, br_int_16 pDest_y, br_pixelmap *pSource, br_int_16 pSource_x, br_int_16 pSource_y, br_int_16 pWidth, br_int_16 pHeight);
 
-void DRMaskedStamp(br_int_16 pDest_x, br_int_16 pDest_y, br_pixelmap *pSource);
+void __cdecl DRMaskedStamp(br_int_16 pDest_x, br_int_16 pDest_y, br_pixelmap *pSource);
 
-void DRPixelmapRectangleOnscreenCopy(br_pixelmap *pDest, br_int_16 pDest_x, br_int_16 pDest_y, br_pixelmap *pSource, br_int_16 pSource_x, br_int_16 pSource_y, br_int_16 pWidth, br_int_16 pHeight);
+void __cdecl DRPixelmapRectangleOnscreenCopy(br_pixelmap *pDest, br_int_16 pDest_x, br_int_16 pDest_y, br_pixelmap *pSource, br_int_16 pSource_x, br_int_16 pSource_y, br_int_16 pWidth, br_int_16 pHeight);
 
-void DRPixelmapRectangleShearedCopy(br_pixelmap *pDest, br_int_16 pDest_x, br_int_16 pDest_y, br_pixelmap *pSource, br_int_16 pSource_x, br_int_16 pSource_y, br_int_16 pWidth, br_int_16 pHeight, tX1616 pShear);
+void __cdecl DRPixelmapRectangleShearedCopy(br_pixelmap *pDest, br_int_16 pDest_x, br_int_16 pDest_y, br_pixelmap *pSource, br_int_16 pSource_x, br_int_16 pSource_y, br_int_16 pWidth, br_int_16 pHeight, tX1616 pShear);
 
-void DRPixelmapRectangleVScaledCopy(br_pixelmap *pDest, br_int_16 pDest_x, br_int_16 pDest_y, br_pixelmap *pSource, br_int_16 pSource_x, br_int_16 pSource_y, br_int_16 pWidth, br_int_16 pHeight);
+void __cdecl DRPixelmapRectangleVScaledCopy(br_pixelmap *pDest, br_int_16 pDest_x, br_int_16 pDest_y, br_pixelmap *pSource, br_int_16 pSource_x, br_int_16 pSource_y, br_int_16 pWidth, br_int_16 pHeight);
 
-void InitTransientBitmaps();
+void __cdecl InitTransientBitmaps();
 
-int AllocateTransientBitmap(int pWidth, int pHeight, int pUser_data);
+int __cdecl AllocateTransientBitmap(int pWidth, int pHeight, int pUser_data);
 
-void DeallocateTransientBitmap(int pIndex);
+void __cdecl DeallocateTransientBitmap(int pIndex);
 
-void DeallocateAllTransientBitmaps();
+void __cdecl DeallocateAllTransientBitmaps();
 
-void RemoveTransientBitmaps(int pGraphically_remove_them);
+void __cdecl RemoveTransientBitmaps(int pGraphically_remove_them);
 
-void SaveTransient(int pIndex, int pX_coord, int pY_coord);
+void __cdecl SaveTransient(int pIndex, int pX_coord, int pY_coord);
 
-void DrawCursorGiblet(tCursor_giblet *pGib);
+void __cdecl DrawCursorGiblet(tCursor_giblet *pGib);
 
-void ProcessCursorGiblets(int pPeriod);
+void __cdecl ProcessCursorGiblets(int pPeriod);
 
-int NewCursorGiblet(int pX_coord, int pY_coord, float pX_speed, float pY_speed, tU32 pDrop_time);
+int __cdecl NewCursorGiblet(int pX_coord, int pY_coord, float pX_speed, float pY_speed, tU32 pDrop_time);
 
-int DoMouseCursor();
+int __cdecl DoMouseCursor();
 
-int AllocateCursorTransient();
+int __cdecl AllocateCursorTransient();
 
-void StartMouseCursor();
+void __cdecl StartMouseCursor();
 
-void EndMouseCursor();
+void __cdecl EndMouseCursor();
 
-void LoadFont(int pFont_ID);
+void __cdecl LoadFont(int pFont_ID);
 
-void DisposeFont(int pFont_ID);
+void __cdecl DisposeFont(int pFont_ID);
 
-void InitDRFonts();
+void __cdecl InitDRFonts();
 
-void DrawDropImage(br_pixelmap *pImage, int pLeft, int pTop, int pTop_clip, int pBottom_clip, int pOffset);
+void __cdecl DrawDropImage(br_pixelmap *pImage, int pLeft, int pTop, int pTop_clip, int pBottom_clip, int pOffset);
 
-void DropInImageFromTop(br_pixelmap *pImage, int pLeft, int pTop, int pTop_clip, int pBottom_clip);
+void __cdecl DropInImageFromTop(br_pixelmap *pImage, int pLeft, int pTop, int pTop_clip, int pBottom_clip);
 
-void DropOutImageThruBottom(br_pixelmap *pImage, int pLeft, int pTop, int pTop_clip, int pBottom_clip);
+void __cdecl DropOutImageThruBottom(br_pixelmap *pImage, int pLeft, int pTop, int pTop_clip, int pBottom_clip);
 
-void DropInImageFromBottom(br_pixelmap *pImage, int pLeft, int pTop, int pTop_clip, int pBottom_clip);
+void __cdecl DropInImageFromBottom(br_pixelmap *pImage, int pLeft, int pTop, int pTop_clip, int pBottom_clip);
 
-void DropOutImageThruTop(br_pixelmap *pImage, int pLeft, int pTop, int pTop_clip, int pBottom_clip);
+void __cdecl DropOutImageThruTop(br_pixelmap *pImage, int pLeft, int pTop, int pTop_clip, int pBottom_clip);
 
-void DrawTellyLine(br_pixelmap *pImage, int pLeft, int pTop, int pPercentage);
+void __cdecl DrawTellyLine(br_pixelmap *pImage, int pLeft, int pTop, int pPercentage);
 
-void DrawTellyImage(br_pixelmap *pImage, int pLeft, int pTop, int pPercentage);
+void __cdecl DrawTellyImage(br_pixelmap *pImage, int pLeft, int pTop, int pPercentage);
 
-void TellyInImage(br_pixelmap *pImage, int pLeft, int pTop);
+void __cdecl TellyInImage(br_pixelmap *pImage, int pLeft, int pTop);
 
-void TellyOutImage(br_pixelmap *pImage, int pLeft, int pTop);
+void __cdecl TellyOutImage(br_pixelmap *pImage, int pLeft, int pTop);
 
-void SetShadowLevel(tShadow_level pLevel);
+void __cdecl SetShadowLevel(tShadow_level pLevel);
 
-tShadow_level GetShadowLevel();
+tShadow_level __cdecl GetShadowLevel();
 
-void ToggleShadow();
+void __cdecl ToggleShadow();
 
-void InitShadow();
+void __cdecl InitShadow();
 
-br_uint_32 SaveShadeTable(br_pixelmap *pTable, void *pArg);
+br_uint_32 __cdecl SaveShadeTable(br_pixelmap *pTable, void *pArg);
 
-void SaveShadeTables();
+void __cdecl SaveShadeTables();
 
-void DisposeSavedShadeTables();
+void __cdecl DisposeSavedShadeTables();
 
-void ShadowMode();
+void __cdecl ShadowMode();
 
-int SwitchToRealResolution();
+int __cdecl SwitchToRealResolution();
 
-int SwitchToLoresMode();
+int __cdecl SwitchToLoresMode();
 
-void DRPixelmapDoubledCopy(br_pixelmap *pDestn, br_pixelmap *pSource, int pSource_width, int pSource_height, int pX_offset, int pY_offset);
+void __cdecl DRPixelmapDoubledCopy(br_pixelmap *pDestn, br_pixelmap *pSource, int pSource_width, int pSource_height, int pX_offset, int pY_offset);
 
 #endif

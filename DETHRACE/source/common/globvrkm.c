@@ -4,7 +4,6 @@
 
 #include "carm95_hooks.h"
 
-#include <stdio.h>
 br_scalar * hookvar_gCamera_zoom  = (void*)0x0050d380;
 br_angle * hookvar_gCamera_yaw  = (void*)0x0050d384;
 br_vector3 * hookvar_gView_direction  = (void*)0x0050d388;

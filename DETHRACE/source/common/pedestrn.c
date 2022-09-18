@@ -4,7 +4,6 @@
 
 #include "carm95_hooks.h"
 
-#include <stdio.h>
 int * hookvar_gDetect_peds  = (void*)0x00511740;
 int * hookvar_gReally_stupid_ped_bug_enable  = (void*)0x00511744;
 int * hookvar_gPed_sound_disable  = (void*)0x00511748;
@@ -77,9 +76,9 @@ tPedestrian_data ** hookvar_gPedestrian_array  = (void*)0x0053791c;
 tU32 * hookvar_gLast_ped_splat_time  = (void*)0x00536b34;
 int * hookvar_gCurrent_ped_multiplier  = (void*)0x00537918;
 
-static void(*original_PedModelUpdate)(br_model *, br_scalar, br_scalar, br_scalar, br_scalar, br_scalar, br_scalar, br_scalar, br_scalar, ...) = (void(*)(br_model *, br_scalar, br_scalar, br_scalar, br_scalar, br_scalar, br_scalar, br_scalar, br_scalar, ...))0x00455fcd;
+static void(__cdecl*original_PedModelUpdate)(br_model *, br_scalar, br_scalar, br_scalar, br_scalar, br_scalar, br_scalar, br_scalar, br_scalar) = (void(__cdecl*)(br_model *, br_scalar, br_scalar, br_scalar, br_scalar, br_scalar, br_scalar, br_scalar, br_scalar))0x00455fcd;
 CARM95_HOOK_FUNCTION(original_PedModelUpdate, PedModelUpdate)
-void PedModelUpdate(br_model *pModel, br_scalar x0, br_scalar y0, br_scalar x1, br_scalar y1, br_scalar x2, br_scalar y2, br_scalar x3, br_scalar y3) {
+void __cdecl PedModelUpdate(br_model *pModel, br_scalar x0, br_scalar y0, br_scalar x1, br_scalar y1, br_scalar x2, br_scalar y2, br_scalar x3, br_scalar y3) {
     LOG_TRACE("(%p, %f, %f, %f, %f, %f, %f, %f, %f)", pModel, x0, y0, x1, y1, x2, y2, x3, y3);
 
     (void)pModel;
@@ -95,9 +94,9 @@ void PedModelUpdate(br_model *pModel, br_scalar x0, br_scalar y0, br_scalar x1, 
     original_PedModelUpdate(pModel, x0, y0, x1, y1, x2, y2, x3, y3);
 }
 
-static int(*original_ActorIsPedestrian)(br_actor *, ...) = (int(*)(br_actor *, ...))0x00455870;
+static int(__cdecl*original_ActorIsPedestrian)(br_actor *) = (int(__cdecl*)(br_actor *))0x00455870;
 CARM95_HOOK_FUNCTION(original_ActorIsPedestrian, ActorIsPedestrian)
-int ActorIsPedestrian(br_actor *pActor) {
+int __cdecl ActorIsPedestrian(br_actor *pActor) {
     LOG_TRACE("(%p)", pActor);
 
     (void)pActor;
@@ -105,9 +104,9 @@ int ActorIsPedestrian(br_actor *pActor) {
     return original_ActorIsPedestrian(pActor);
 }
 
-static br_scalar(*original_PedHeightFromActor)(br_actor *, ...) = (br_scalar(*)(br_actor *, ...))0x004558b8;
+static br_scalar(__cdecl*original_PedHeightFromActor)(br_actor *) = (br_scalar(__cdecl*)(br_actor *))0x004558b8;
 CARM95_HOOK_FUNCTION(original_PedHeightFromActor, PedHeightFromActor)
-br_scalar PedHeightFromActor(br_actor *pActor) {
+br_scalar __cdecl PedHeightFromActor(br_actor *pActor) {
     LOG_TRACE("(%p)", pActor);
 
     (void)pActor;
@@ -115,9 +114,9 @@ br_scalar PedHeightFromActor(br_actor *pActor) {
     return original_PedHeightFromActor(pActor);
 }
 
-static int(*original_GetPedestrianValue)(br_actor *, ...) = (int(*)(br_actor *, ...))0x004558fa;
+static int(__cdecl*original_GetPedestrianValue)(br_actor *) = (int(__cdecl*)(br_actor *))0x004558fa;
 CARM95_HOOK_FUNCTION(original_GetPedestrianValue, GetPedestrianValue)
-int GetPedestrianValue(br_actor *pActor) {
+int __cdecl GetPedestrianValue(br_actor *pActor) {
     LOG_TRACE("(%p)", pActor);
 
     (void)pActor;
@@ -125,9 +124,9 @@ int GetPedestrianValue(br_actor *pActor) {
     return original_GetPedestrianValue(pActor);
 }
 
-static int(*original_PedestrianActorIsPerson)(br_actor *, ...) = (int(*)(br_actor *, ...))0x00455913;
+static int(__cdecl*original_PedestrianActorIsPerson)(br_actor *) = (int(__cdecl*)(br_actor *))0x00455913;
 CARM95_HOOK_FUNCTION(original_PedestrianActorIsPerson, PedestrianActorIsPerson)
-int PedestrianActorIsPerson(br_actor *pActor) {
+int __cdecl PedestrianActorIsPerson(br_actor *pActor) {
     LOG_TRACE("(%p)", pActor);
 
     (void)pActor;
@@ -135,9 +134,9 @@ int PedestrianActorIsPerson(br_actor *pActor) {
     return original_PedestrianActorIsPerson(pActor);
 }
 
-static br_actor *(*original_GetPedestrianActor)(int, ...) = (br_actor *(*)(int, ...))0x00455953;
+static br_actor *(__cdecl*original_GetPedestrianActor)(int) = (br_actor *(__cdecl*)(int))0x00455953;
 CARM95_HOOK_FUNCTION(original_GetPedestrianActor, GetPedestrianActor)
-br_actor* GetPedestrianActor(int pIndex) {
+br_actor* __cdecl GetPedestrianActor(int pIndex) {
     LOG_TRACE("(%d)", pIndex);
 
     (void)pIndex;
@@ -145,9 +144,9 @@ br_actor* GetPedestrianActor(int pIndex) {
     return original_GetPedestrianActor(pIndex);
 }
 
-static br_pixelmap *(*original_GetPedestrianTexture)(br_actor *, int *, ...) = (br_pixelmap *(*)(br_actor *, int *, ...))0x0045599e;
+static br_pixelmap *(__cdecl*original_GetPedestrianTexture)(br_actor *, int *) = (br_pixelmap *(__cdecl*)(br_actor *, int *))0x0045599e;
 CARM95_HOOK_FUNCTION(original_GetPedestrianTexture, GetPedestrianTexture)
-br_pixelmap* GetPedestrianTexture(br_actor *pActor, int *pFlipped) {
+br_pixelmap* __cdecl GetPedestrianTexture(br_actor *pActor, int *pFlipped) {
     LOG_TRACE("(%p, %p)", pActor, pFlipped);
 
     (void)pActor;
@@ -156,18 +155,18 @@ br_pixelmap* GetPedestrianTexture(br_actor *pActor, int *pFlipped) {
     return original_GetPedestrianTexture(pActor, pFlipped);
 }
 
-static void(*original_TogglePedestrians)() = (void(*)())0x004559ea;
+static void(__cdecl*original_TogglePedestrians)() = (void(__cdecl*)())0x004559ea;
 CARM95_HOOK_FUNCTION(original_TogglePedestrians, TogglePedestrians)
-void TogglePedestrians() {
+void __cdecl TogglePedestrians() {
     LOG_TRACE("()");
 
 
     original_TogglePedestrians();
 }
 
-static void(*original_InitPedGibs)() = (void(*)())0x0045e3ad;
+static void(__cdecl*original_InitPedGibs)() = (void(__cdecl*)())0x0045e3ad;
 CARM95_HOOK_FUNCTION(original_InitPedGibs, InitPedGibs)
-void InitPedGibs() {
+void __cdecl InitPedGibs() {
     int i;
     int j;
     br_model *the_model;
@@ -184,9 +183,9 @@ void InitPedGibs() {
     original_InitPedGibs();
 }
 
-static void(*original_SetPedMaterialForRender)(br_actor *, ...) = (void(*)(br_actor *, ...))0x00455a76;
+static void(__cdecl*original_SetPedMaterialForRender)(br_actor *) = (void(__cdecl*)(br_actor *))0x00455a76;
 CARM95_HOOK_FUNCTION(original_SetPedMaterialForRender, SetPedMaterialForRender)
-void SetPedMaterialForRender(br_actor *pActor) {
+void __cdecl SetPedMaterialForRender(br_actor *pActor) {
     tPedestrian_data *ped;
     int changed;
     LOG_TRACE("(%p)", pActor);
@@ -198,9 +197,9 @@ void SetPedMaterialForRender(br_actor *pActor) {
     original_SetPedMaterialForRender(pActor);
 }
 
-static void(*original_PedCallBack)(br_actor *, struct br_model *, struct br_material *, void *, br_uint_8, int, ...) = (void(*)(br_actor *, struct br_model *, struct br_material *, void *, br_uint_8, int, ...))0x00455b6f;
+static void(__cdecl*original_PedCallBack)(br_actor *, struct br_model *, struct br_material *, void *, br_uint_8, int) = (void(__cdecl*)(br_actor *, struct br_model *, struct br_material *, void *, br_uint_8, int))0x00455b6f;
 CARM95_HOOK_FUNCTION(original_PedCallBack, PedCallBack)
-void PedCallBack(br_actor *pActor, struct br_model *pModel, struct br_material *pMaterial, void *pRender_data, br_uint_8 pStyle, int pOn_screen) {
+void __cdecl PedCallBack(br_actor *pActor, struct br_model *pModel, struct br_material *pMaterial, void *pRender_data, br_uint_8 pStyle, int pOn_screen) {
     tPedestrian_data *ped;
     LOG_TRACE("(%p, %p, %p, %p, %u, %d)", pActor, pModel, pMaterial, pRender_data, pStyle, pOn_screen);
 
@@ -215,18 +214,18 @@ void PedCallBack(br_actor *pActor, struct br_model *pModel, struct br_material *
     original_PedCallBack(pActor, pModel, pMaterial, pRender_data, pStyle, pOn_screen);
 }
 
-static void(*original_InitPeds)() = (void(*)())0x00455c05;
+static void(__cdecl*original_InitPeds)() = (void(__cdecl*)())0x00455c05;
 CARM95_HOOK_FUNCTION(original_InitPeds, InitPeds)
-void InitPeds() {
+void __cdecl InitPeds() {
     LOG_TRACE("()");
 
 
     original_InitPeds();
 }
 
-static void(*original_MungeModelSize)(br_actor *, br_scalar, ...) = (void(*)(br_actor *, br_scalar, ...))0x00455f31;
+static void(__cdecl*original_MungeModelSize)(br_actor *, br_scalar) = (void(__cdecl*)(br_actor *, br_scalar))0x00455f31;
 CARM95_HOOK_FUNCTION(original_MungeModelSize, MungeModelSize)
-void MungeModelSize(br_actor *pActor, br_scalar pScaling_factor) {
+void __cdecl MungeModelSize(br_actor *pActor, br_scalar pScaling_factor) {
     br_pixelmap *the_pix;
     br_scalar half_width;
     br_scalar half_height;
@@ -241,9 +240,9 @@ void MungeModelSize(br_actor *pActor, br_scalar pScaling_factor) {
     original_MungeModelSize(pActor, pScaling_factor);
 }
 
-static int(*original_BurstPedestrian)(tPedestrian_data *, float, int, ...) = (int(*)(tPedestrian_data *, float, int, ...))0x00457ff5;
+static int(__cdecl*original_BurstPedestrian)(tPedestrian_data *, float, int) = (int(__cdecl*)(tPedestrian_data *, float, int))0x00457ff5;
 CARM95_HOOK_FUNCTION(original_BurstPedestrian, BurstPedestrian)
-int BurstPedestrian(tPedestrian_data *pPedestrian, float pSplattitudinalitude, int pAllow_explosion) {
+int __cdecl BurstPedestrian(tPedestrian_data *pPedestrian, float pSplattitudinalitude, int pAllow_explosion) {
     int i;
     int j;
     int gib_index;
@@ -279,9 +278,9 @@ int BurstPedestrian(tPedestrian_data *pPedestrian, float pSplattitudinalitude, i
     return original_BurstPedestrian(pPedestrian, pSplattitudinalitude, pAllow_explosion);
 }
 
-static void(*original_ResetAllPedGibs)() = (void(*)())0x00455df2;
+static void(__cdecl*original_ResetAllPedGibs)() = (void(__cdecl*)())0x00455df2;
 CARM95_HOOK_FUNCTION(original_ResetAllPedGibs, ResetAllPedGibs)
-void ResetAllPedGibs() {
+void __cdecl ResetAllPedGibs() {
     int i;
     tPed_gib *the_ped_gib;
     LOG_TRACE("()");
@@ -292,9 +291,9 @@ void ResetAllPedGibs() {
     original_ResetAllPedGibs();
 }
 
-static void(*original_AdjustPedGib)(int, int, int, int, br_matrix34 *, ...) = (void(*)(int, int, int, int, br_matrix34 *, ...))0x00455e72;
+static void(__cdecl*original_AdjustPedGib)(int, int, int, int, br_matrix34 *) = (void(__cdecl*)(int, int, int, int, br_matrix34 *))0x00455e72;
 CARM95_HOOK_FUNCTION(original_AdjustPedGib, AdjustPedGib)
-void AdjustPedGib(int pIndex, int pSize, int pGib_index, int pPed_index, br_matrix34 *pTrans) {
+void __cdecl AdjustPedGib(int pIndex, int pSize, int pGib_index, int pPed_index, br_matrix34 *pTrans) {
     tPed_gib *the_ped_gib;
     LOG_TRACE("(%d, %d, %d, %d, %p)", pIndex, pSize, pGib_index, pPed_index, pTrans);
 
@@ -308,9 +307,9 @@ void AdjustPedGib(int pIndex, int pSize, int pGib_index, int pPed_index, br_matr
     original_AdjustPedGib(pIndex, pSize, pGib_index, pPed_index, pTrans);
 }
 
-static void(*original_MungePedGibs)(tU32, ...) = (void(*)(tU32, ...))0x00456048;
+static void(__cdecl*original_MungePedGibs)(tU32) = (void(__cdecl*)(tU32))0x00456048;
 CARM95_HOOK_FUNCTION(original_MungePedGibs, MungePedGibs)
-void MungePedGibs(tU32 pFrame_period) {
+void __cdecl MungePedGibs(tU32 pFrame_period) {
     int i;
     int frame;
     tPed_gib *the_ped_gib;
@@ -330,9 +329,9 @@ void MungePedGibs(tU32 pFrame_period) {
     original_MungePedGibs(pFrame_period);
 }
 
-static void(*original_KillPedestrian)(tPedestrian_data *, ...) = (void(*)(tPedestrian_data *, ...))0x00456e92;
+static void(__cdecl*original_KillPedestrian)(tPedestrian_data *) = (void(__cdecl*)(tPedestrian_data *))0x00456e92;
 CARM95_HOOK_FUNCTION(original_KillPedestrian, KillPedestrian)
-void KillPedestrian(tPedestrian_data *pPedestrian) {
+void __cdecl KillPedestrian(tPedestrian_data *pPedestrian) {
     LOG_TRACE("(%p)", pPedestrian);
 
     (void)pPedestrian;
@@ -340,9 +339,9 @@ void KillPedestrian(tPedestrian_data *pPedestrian) {
     original_KillPedestrian(pPedestrian);
 }
 
-static void(*original_CalcPedWidthNHeight)(tPedestrian_data *, br_pixelmap *, br_scalar *, br_scalar *, ...) = (void(*)(tPedestrian_data *, br_pixelmap *, br_scalar *, br_scalar *, ...))0x00457492;
+static void(__cdecl*original_CalcPedWidthNHeight)(tPedestrian_data *, br_pixelmap *, br_scalar *, br_scalar *) = (void(__cdecl*)(tPedestrian_data *, br_pixelmap *, br_scalar *, br_scalar *))0x00457492;
 CARM95_HOOK_FUNCTION(original_CalcPedWidthNHeight, CalcPedWidthNHeight)
-void CalcPedWidthNHeight(tPedestrian_data *pPedestrian, br_pixelmap *pPixelmap, br_scalar *pHeight, br_scalar *pWidth) {
+void __cdecl CalcPedWidthNHeight(tPedestrian_data *pPedestrian, br_pixelmap *pPixelmap, br_scalar *pHeight, br_scalar *pWidth) {
     br_pixelmap *reference_pixel_bastard;
     br_scalar scale_to_use;
     LOG_TRACE("(%p, %p, %p, %p)", pPedestrian, pPixelmap, pHeight, pWidth);
@@ -357,9 +356,9 @@ void CalcPedWidthNHeight(tPedestrian_data *pPedestrian, br_pixelmap *pPixelmap, 
     original_CalcPedWidthNHeight(pPedestrian, pPixelmap, pHeight, pWidth);
 }
 
-static int(*original_PedestrianNextInstruction)(tPedestrian_data *, float, int, int, ...) = (int(*)(tPedestrian_data *, float, int, int, ...))0x004585f1;
+static int(__cdecl*original_PedestrianNextInstruction)(tPedestrian_data *, float, int, int) = (int(__cdecl*)(tPedestrian_data *, float, int, int))0x004585f1;
 CARM95_HOOK_FUNCTION(original_PedestrianNextInstruction, PedestrianNextInstruction)
-int PedestrianNextInstruction(tPedestrian_data *pPedestrian, float pDanger_level, int pPosition_explicitly, int pMove_pc) {
+int __cdecl PedestrianNextInstruction(tPedestrian_data *pPedestrian, float pDanger_level, int pPosition_explicitly, int pMove_pc) {
     tPedestrian_instruction *instruction;
     float most_dangerous;
     float chance_value;
@@ -387,13 +386,14 @@ int PedestrianNextInstruction(tPedestrian_data *pPedestrian, float pDanger_level
     (void)j;
     (void)choice;
     (void)the_marker_ref;
+    (void)__block0___scale;
 
     return original_PedestrianNextInstruction(pPedestrian, pDanger_level, pPosition_explicitly, pMove_pc);
 }
 
-static void(*original_MungePedestrianSequence)(tPedestrian_data *, int, ...) = (void(*)(tPedestrian_data *, int, ...))0x004566ee;
+static void(__cdecl*original_MungePedestrianSequence)(tPedestrian_data *, int) = (void(__cdecl*)(tPedestrian_data *, int))0x004566ee;
 CARM95_HOOK_FUNCTION(original_MungePedestrianSequence, MungePedestrianSequence)
-void MungePedestrianSequence(tPedestrian_data *pPedestrian, int pAction_changed) {
+void __cdecl MungePedestrianSequence(tPedestrian_data *pPedestrian, int pAction_changed) {
     tPedestrian_action *the_action;
     int i;
     int the_sequence;
@@ -416,9 +416,9 @@ void MungePedestrianSequence(tPedestrian_data *pPedestrian, int pAction_changed)
     original_MungePedestrianSequence(pPedestrian, pAction_changed);
 }
 
-static void(*original_DetachPedFromCar)(tPedestrian_data *, ...) = (void(*)(tPedestrian_data *, ...))0x004563dc;
+static void(__cdecl*original_DetachPedFromCar)(tPedestrian_data *) = (void(__cdecl*)(tPedestrian_data *))0x004563dc;
 CARM95_HOOK_FUNCTION(original_DetachPedFromCar, DetachPedFromCar)
-void DetachPedFromCar(tPedestrian_data *pPedestrian) {
+void __cdecl DetachPedFromCar(tPedestrian_data *pPedestrian) {
     LOG_TRACE("(%p)", pPedestrian);
 
     (void)pPedestrian;
@@ -426,9 +426,9 @@ void DetachPedFromCar(tPedestrian_data *pPedestrian) {
     original_DetachPedFromCar(pPedestrian);
 }
 
-static void(*original_SetPedPos)(tPedestrian_data *, ...) = (void(*)(tPedestrian_data *, ...))0x0045647b;
+static void(__cdecl*original_SetPedPos)(tPedestrian_data *) = (void(__cdecl*)(tPedestrian_data *))0x0045647b;
 CARM95_HOOK_FUNCTION(original_SetPedPos, SetPedPos)
-void SetPedPos(tPedestrian_data *pPedestrian) {
+void __cdecl SetPedPos(tPedestrian_data *pPedestrian) {
     br_vector3 temp_v;
     LOG_TRACE("(%p)", pPedestrian);
 
@@ -438,9 +438,9 @@ void SetPedPos(tPedestrian_data *pPedestrian) {
     original_SetPedPos(pPedestrian);
 }
 
-static void(*original_DetachPedActorFromCar)(br_actor *, ...) = (void(*)(br_actor *, ...))0x004563b3;
+static void(__cdecl*original_DetachPedActorFromCar)(br_actor *) = (void(__cdecl*)(br_actor *))0x004563b3;
 CARM95_HOOK_FUNCTION(original_DetachPedActorFromCar, DetachPedActorFromCar)
-void DetachPedActorFromCar(br_actor *pActor) {
+void __cdecl DetachPedActorFromCar(br_actor *pActor) {
     LOG_TRACE("(%p)", pActor);
 
     (void)pActor;
@@ -448,9 +448,9 @@ void DetachPedActorFromCar(br_actor *pActor) {
     original_DetachPedActorFromCar(pActor);
 }
 
-static void(*original_MungePedestrianFrames)(tPedestrian_data *, ...) = (void(*)(tPedestrian_data *, ...))0x004568d7;
+static void(__cdecl*original_MungePedestrianFrames)(tPedestrian_data *) = (void(__cdecl*)(tPedestrian_data *))0x004568d7;
 CARM95_HOOK_FUNCTION(original_MungePedestrianFrames, MungePedestrianFrames)
-void MungePedestrianFrames(tPedestrian_data *pPedestrian) {
+void __cdecl MungePedestrianFrames(tPedestrian_data *pPedestrian) {
     tPedestrian_sequence *the_sequence;
     float f_the_time;
     float frame_period;
@@ -472,9 +472,9 @@ void MungePedestrianFrames(tPedestrian_data *pPedestrian) {
     original_MungePedestrianFrames(pPedestrian);
 }
 
-static void(*original_MungePedModel)(tPedestrian_data *, ...) = (void(*)(tPedestrian_data *, ...))0x00456f86;
+static void(__cdecl*original_MungePedModel)(tPedestrian_data *) = (void(__cdecl*)(tPedestrian_data *))0x00456f86;
 CARM95_HOOK_FUNCTION(original_MungePedModel, MungePedModel)
-void MungePedModel(tPedestrian_data *pPedestrian) {
+void __cdecl MungePedModel(tPedestrian_data *pPedestrian) {
     br_vector3 old_pos;
     br_vector3 delta_pos;
     br_scalar height_over2;
@@ -512,9 +512,9 @@ void MungePedModel(tPedestrian_data *pPedestrian) {
     original_MungePedModel(pPedestrian);
 }
 
-static void(*original_ChangeActionTo)(tPedestrian_data *, int, int, ...) = (void(*)(tPedestrian_data *, int, int, ...))0x0045654d;
+static void(__cdecl*original_ChangeActionTo)(tPedestrian_data *, int, int) = (void(__cdecl*)(tPedestrian_data *, int, int))0x0045654d;
 CARM95_HOOK_FUNCTION(original_ChangeActionTo, ChangeActionTo)
-void ChangeActionTo(tPedestrian_data *pPedestrian, int pAction_index, int pRedo_frames_etc) {
+void __cdecl ChangeActionTo(tPedestrian_data *pPedestrian, int pAction_index, int pRedo_frames_etc) {
     tPedestrian_action *the_action;
     int the_sound;
     tU32 the_pitch;
@@ -530,9 +530,9 @@ void ChangeActionTo(tPedestrian_data *pPedestrian, int pAction_index, int pRedo_
     original_ChangeActionTo(pPedestrian, pAction_index, pRedo_frames_etc);
 }
 
-static int(*original_MungePedestrianAction)(tPedestrian_data *, float, ...) = (int(*)(tPedestrian_data *, float, ...))0x00459db7;
+static int(__cdecl*original_MungePedestrianAction)(tPedestrian_data *, float) = (int(__cdecl*)(tPedestrian_data *, float))0x00459db7;
 CARM95_HOOK_FUNCTION(original_MungePedestrianAction, MungePedestrianAction)
-int MungePedestrianAction(tPedestrian_data *pPedestrian, float pDanger_level) {
+int __cdecl MungePedestrianAction(tPedestrian_data *pPedestrian, float pDanger_level) {
     tU32 time_diff;
     int i;
     int choice;
@@ -555,18 +555,18 @@ int MungePedestrianAction(tPedestrian_data *pPedestrian, float pDanger_level) {
     return original_MungePedestrianAction(pPedestrian, pDanger_level);
 }
 
-static void(*original_MakeFlagWavingBastardWaveHisFlagWhichIsTheProbablyTheLastThingHeWillEverDo)() = (void(*)())0x004564ed;
+static void(__cdecl*original_MakeFlagWavingBastardWaveHisFlagWhichIsTheProbablyTheLastThingHeWillEverDo)() = (void(__cdecl*)())0x004564ed;
 CARM95_HOOK_FUNCTION(original_MakeFlagWavingBastardWaveHisFlagWhichIsTheProbablyTheLastThingHeWillEverDo, MakeFlagWavingBastardWaveHisFlagWhichIsTheProbablyTheLastThingHeWillEverDo)
-void MakeFlagWavingBastardWaveHisFlagWhichIsTheProbablyTheLastThingHeWillEverDo() {
+void __cdecl MakeFlagWavingBastardWaveHisFlagWhichIsTheProbablyTheLastThingHeWillEverDo() {
     LOG_TRACE("()");
 
 
     original_MakeFlagWavingBastardWaveHisFlagWhichIsTheProbablyTheLastThingHeWillEverDo();
 }
 
-static void(*original_MungePedestrianPath)(tPedestrian_data *, float, br_vector3 *, ...) = (void(*)(tPedestrian_data *, float, br_vector3 *, ...))0x00457548;
+static void(__cdecl*original_MungePedestrianPath)(tPedestrian_data *, float, br_vector3 *) = (void(__cdecl*)(tPedestrian_data *, float, br_vector3 *))0x00457548;
 CARM95_HOOK_FUNCTION(original_MungePedestrianPath, MungePedestrianPath)
-void MungePedestrianPath(tPedestrian_data *pPedestrian, float pDanger_level, br_vector3 *pDanger_direction) {
+void __cdecl MungePedestrianPath(tPedestrian_data *pPedestrian, float pDanger_level, br_vector3 *pDanger_direction) {
     tPedestrian_action *the_action;
     float terminal_speed;
     float new_falling_speed;
@@ -600,9 +600,9 @@ void MungePedestrianPath(tPedestrian_data *pPedestrian, float pDanger_level, br_
     original_MungePedestrianPath(pPedestrian, pDanger_level, pDanger_direction);
 }
 
-static float(*original_CalcPedestrianDangerLevel)(tPedestrian_data *, br_vector3 *, ...) = (float(*)(tPedestrian_data *, br_vector3 *, ...))0x0045a078;
+static float(__cdecl*original_CalcPedestrianDangerLevel)(tPedestrian_data *, br_vector3 *) = (float(__cdecl*)(tPedestrian_data *, br_vector3 *))0x0045a078;
 CARM95_HOOK_FUNCTION(original_CalcPedestrianDangerLevel, CalcPedestrianDangerLevel)
-float CalcPedestrianDangerLevel(tPedestrian_data *pPedestrian, br_vector3 *pDanger_direction) {
+float __cdecl CalcPedestrianDangerLevel(tPedestrian_data *pPedestrian, br_vector3 *pDanger_direction) {
     br_vector3 *ped_pos;
     int i;
     float most_dangerous;
@@ -631,9 +631,9 @@ float CalcPedestrianDangerLevel(tPedestrian_data *pPedestrian, br_vector3 *pDang
     return original_CalcPedestrianDangerLevel(pPedestrian, pDanger_direction);
 }
 
-static tPed_hit_position(*original_MoveToEdgeOfCar)(tPedestrian_data *, tCollision_info *, br_actor *, br_scalar, br_scalar, br_scalar, br_scalar, br_scalar, br_scalar, br_vector3 *, br_vector3 *, ...) = (tPed_hit_position(*)(tPedestrian_data *, tCollision_info *, br_actor *, br_scalar, br_scalar, br_scalar, br_scalar, br_scalar, br_scalar, br_vector3 *, br_vector3 *, ...))0x0045bcc5;
+static tPed_hit_position(__cdecl*original_MoveToEdgeOfCar)(tPedestrian_data *, tCollision_info *, br_actor *, br_scalar, br_scalar, br_scalar, br_scalar, br_scalar, br_scalar, br_vector3 *, br_vector3 *) = (tPed_hit_position(__cdecl*)(tPedestrian_data *, tCollision_info *, br_actor *, br_scalar, br_scalar, br_scalar, br_scalar, br_scalar, br_scalar, br_vector3 *, br_vector3 *))0x0045bcc5;
 CARM95_HOOK_FUNCTION(original_MoveToEdgeOfCar, MoveToEdgeOfCar)
-tPed_hit_position MoveToEdgeOfCar(tPedestrian_data *pPedestrian, tCollision_info *pCar, br_actor *pCar_actor, br_scalar pPed_x, br_scalar pPed_z, br_scalar pCar_bounds_min_x, br_scalar pCar_bounds_max_x, br_scalar pCar_bounds_min_z, br_scalar pCar_bounds_max_z, br_vector3 *pMin_ped_bounds_car, br_vector3 *pMax_ped_bounds_car) {
+tPed_hit_position __cdecl MoveToEdgeOfCar(tPedestrian_data *pPedestrian, tCollision_info *pCar, br_actor *pCar_actor, br_scalar pPed_x, br_scalar pPed_z, br_scalar pCar_bounds_min_x, br_scalar pCar_bounds_max_x, br_scalar pCar_bounds_min_z, br_scalar pCar_bounds_max_z, br_vector3 *pMin_ped_bounds_car, br_vector3 *pMax_ped_bounds_car) {
     br_vector3 car_plus_ped;
     br_vector3 delta_vector;
     br_vector3 ped_move_in_car;
@@ -677,18 +677,18 @@ tPed_hit_position MoveToEdgeOfCar(tPedestrian_data *pPedestrian, tCollision_info
     return original_MoveToEdgeOfCar(pPedestrian, pCar, pCar_actor, pPed_x, pPed_z, pCar_bounds_min_x, pCar_bounds_max_x, pCar_bounds_min_z, pCar_bounds_max_z, pMin_ped_bounds_car, pMax_ped_bounds_car);
 }
 
-static void(*original_CheckLastPed)() = (void(*)())0x0045c0db;
+static void(__cdecl*original_CheckLastPed)() = (void(__cdecl*)())0x0045c0db;
 CARM95_HOOK_FUNCTION(original_CheckLastPed, CheckLastPed)
-void CheckLastPed() {
+void __cdecl CheckLastPed() {
     LOG_TRACE("()");
 
 
     original_CheckLastPed();
 }
 
-static int(*original_BloodyWheels)(tCar_spec *, br_vector3 *, br_scalar, br_vector3 *, ...) = (int(*)(tCar_spec *, br_vector3 *, br_scalar, br_vector3 *, ...))0x0045c12c;
+static int(__cdecl*original_BloodyWheels)(tCar_spec *, br_vector3 *, br_scalar, br_vector3 *) = (int(__cdecl*)(tCar_spec *, br_vector3 *, br_scalar, br_vector3 *))0x0045c12c;
 CARM95_HOOK_FUNCTION(original_BloodyWheels, BloodyWheels)
-int BloodyWheels(tCar_spec *pCar, br_vector3 *pPed_car, br_scalar pSize, br_vector3 *pPed_glob) {
+int __cdecl BloodyWheels(tCar_spec *pCar, br_vector3 *pPed_car, br_scalar pSize, br_vector3 *pPed_glob) {
     int wheel;
     int squish;
     br_scalar ped_m_z;
@@ -711,9 +711,9 @@ int BloodyWheels(tCar_spec *pCar, br_vector3 *pPed_car, br_scalar pSize, br_vect
     return original_BloodyWheels(pCar, pPed_car, pSize, pPed_glob);
 }
 
-static int(*original_FancyATossOffMate)(tPedestrian_data *, tCollision_info *, float, ...) = (int(*)(tPedestrian_data *, tCollision_info *, float, ...))0x0045c273;
+static int(__cdecl*original_FancyATossOffMate)(tPedestrian_data *, tCollision_info *, float) = (int(__cdecl*)(tPedestrian_data *, tCollision_info *, float))0x0045c273;
 CARM95_HOOK_FUNCTION(original_FancyATossOffMate, FancyATossOffMate)
-int FancyATossOffMate(tPedestrian_data *pPedestrian, tCollision_info *pCar, float pImpact_speed) {
+int __cdecl FancyATossOffMate(tPedestrian_data *pPedestrian, tCollision_info *pCar, float pImpact_speed) {
     LOG_TRACE("(%p, %p, %f)", pPedestrian, pCar, pImpact_speed);
 
     (void)pPedestrian;
@@ -723,9 +723,9 @@ int FancyATossOffMate(tPedestrian_data *pPedestrian, tCollision_info *pCar, floa
     return original_FancyATossOffMate(pPedestrian, pCar, pImpact_speed);
 }
 
-static void(*original_CheckPedestrianDeathScenario)(tPedestrian_data *, ...) = (void(*)(tPedestrian_data *, ...))0x0045a3bd;
+static void(__cdecl*original_CheckPedestrianDeathScenario)(tPedestrian_data *) = (void(__cdecl*)(tPedestrian_data *))0x0045a3bd;
 CARM95_HOOK_FUNCTION(original_CheckPedestrianDeathScenario, CheckPedestrianDeathScenario)
-void CheckPedestrianDeathScenario(tPedestrian_data *pPedestrian) {
+void __cdecl CheckPedestrianDeathScenario(tPedestrian_data *pPedestrian) {
     int norman;
     int i;
     int tossing;
@@ -812,13 +812,16 @@ void CheckPedestrianDeathScenario(tPedestrian_data *pPedestrian) {
     (void)volume_damage;
     (void)the_time;
     (void)hit_pos;
+    (void)__block0__temp;
+    (void)__block1__temp;
+    (void)__block2__temp;
 
     original_CheckPedestrianDeathScenario(pPedestrian);
 }
 
-static void(*original_SendPedestrian)(tPedestrian_data *, int, ...) = (void(*)(tPedestrian_data *, int, ...))0x0045c2f0;
+static void(__cdecl*original_SendPedestrian)(tPedestrian_data *, int) = (void(__cdecl*)(tPedestrian_data *, int))0x0045c2f0;
 CARM95_HOOK_FUNCTION(original_SendPedestrian, SendPedestrian)
-void SendPedestrian(tPedestrian_data *pPedestrian, int pIndex) {
+void __cdecl SendPedestrian(tPedestrian_data *pPedestrian, int pIndex) {
     tNet_contents *the_contents;
     tNet_message *the_message;
     int size_decider;
@@ -833,9 +836,9 @@ void SendPedestrian(tPedestrian_data *pPedestrian, int pIndex) {
     original_SendPedestrian(pPedestrian, pIndex);
 }
 
-static void(*original_DoPedestrian)(tPedestrian_data *, int, ...) = (void(*)(tPedestrian_data *, int, ...))0x004598e2;
+static void(__cdecl*original_DoPedestrian)(tPedestrian_data *, int) = (void(__cdecl*)(tPedestrian_data *, int))0x004598e2;
 CARM95_HOOK_FUNCTION(original_DoPedestrian, DoPedestrian)
-void DoPedestrian(tPedestrian_data *pPedestrian, int pIndex) {
+void __cdecl DoPedestrian(tPedestrian_data *pPedestrian, int pIndex) {
     float danger_level;
     float start_speed;
     int action_changed;
@@ -866,9 +869,9 @@ void DoPedestrian(tPedestrian_data *pPedestrian, int pIndex) {
     original_DoPedestrian(pPedestrian, pIndex);
 }
 
-static void(*original_AdjustPedestrian)(int, int, int, int, int, tU16, br_actor *, float, br_scalar, br_vector3 *, br_vector3 *, ...) = (void(*)(int, int, int, int, int, tU16, br_actor *, float, br_scalar, br_vector3 *, br_vector3 *, ...))0x00458ec7;
+static void(__cdecl*original_AdjustPedestrian)(int, int, int, int, int, tU16, br_actor *, float, br_scalar, br_vector3 *, br_vector3 *) = (void(__cdecl*)(int, int, int, int, int, tU16, br_actor *, float, br_scalar, br_vector3 *, br_vector3 *))0x00458ec7;
 CARM95_HOOK_FUNCTION(original_AdjustPedestrian, AdjustPedestrian)
-void AdjustPedestrian(int pIndex, int pAction_index, int pFrame_index, int pHit_points, int pDone_initial, tU16 pParent, br_actor *pParent_actor, float pSpin_period, br_scalar pJump_magnitude, br_vector3 *pOffset, br_vector3 *pTrans) {
+void __cdecl AdjustPedestrian(int pIndex, int pAction_index, int pFrame_index, int pHit_points, int pDone_initial, tU16 pParent, br_actor *pParent_actor, float pSpin_period, br_scalar pJump_magnitude, br_vector3 *pOffset, br_vector3 *pTrans) {
     tPedestrian_data *pedestrian;
     br_actor *parent;
     br_vector3 old_pos;
@@ -889,13 +892,14 @@ void AdjustPedestrian(int pIndex, int pAction_index, int pFrame_index, int pHit_
     (void)pedestrian;
     (void)parent;
     (void)old_pos;
+    (void)__block0___scale;
 
     original_AdjustPedestrian(pIndex, pAction_index, pFrame_index, pHit_points, pDone_initial, pParent, pParent_actor, pSpin_period, pJump_magnitude, pOffset, pTrans);
 }
 
-static void(*original_SquirtPathVertex)(br_vertex *, br_vector3 *, ...) = (void(*)(br_vertex *, br_vector3 *, ...))0x0045c66a;
+static void(__cdecl*original_SquirtPathVertex)(br_vertex *, br_vector3 *) = (void(__cdecl*)(br_vertex *, br_vector3 *))0x0045c66a;
 CARM95_HOOK_FUNCTION(original_SquirtPathVertex, SquirtPathVertex)
-void SquirtPathVertex(br_vertex *pFirst_vertex, br_vector3 *pPoint) {
+void __cdecl SquirtPathVertex(br_vertex *pFirst_vertex, br_vector3 *pPoint) {
     LOG_TRACE("(%p, %p)", pFirst_vertex, pPoint);
 
     (void)pFirst_vertex;
@@ -904,9 +908,9 @@ void SquirtPathVertex(br_vertex *pFirst_vertex, br_vector3 *pPoint) {
     original_SquirtPathVertex(pFirst_vertex, pPoint);
 }
 
-static void(*original_ResetAllPedestrians)() = (void(*)())0x00459239;
+static void(__cdecl*original_ResetAllPedestrians)() = (void(__cdecl*)())0x00459239;
 CARM95_HOOK_FUNCTION(original_ResetAllPedestrians, ResetAllPedestrians)
-void ResetAllPedestrians() {
+void __cdecl ResetAllPedestrians() {
     int i;
     tPedestrian_data *the_pedestrian;
     LOG_TRACE("()");
@@ -917,9 +921,9 @@ void ResetAllPedestrians() {
     original_ResetAllPedestrians();
 }
 
-static void(*original_GroundPedestrian)(tPedestrian_data *, ...) = (void(*)(tPedestrian_data *, ...))0x0045c75a;
+static void(__cdecl*original_GroundPedestrian)(tPedestrian_data *) = (void(__cdecl*)(tPedestrian_data *))0x0045c75a;
 CARM95_HOOK_FUNCTION(original_GroundPedestrian, GroundPedestrian)
-void GroundPedestrian(tPedestrian_data *pPedestrian) {
+void __cdecl GroundPedestrian(tPedestrian_data *pPedestrian) {
     br_scalar new_y;
     br_vector3 cast_point;
     tPedestrian_sequence *sequence;
@@ -933,9 +937,9 @@ void GroundPedestrian(tPedestrian_data *pPedestrian) {
     original_GroundPedestrian(pPedestrian);
 }
 
-static void(*original_RevivePedestrian)(tPedestrian_data *, int, ...) = (void(*)(tPedestrian_data *, int, ...))0x00459282;
+static void(__cdecl*original_RevivePedestrian)(tPedestrian_data *, int) = (void(__cdecl*)(tPedestrian_data *, int))0x00459282;
 CARM95_HOOK_FUNCTION(original_RevivePedestrian, RevivePedestrian)
-void RevivePedestrian(tPedestrian_data *pPedestrian, int pAnimate) {
+void __cdecl RevivePedestrian(tPedestrian_data *pPedestrian, int pAnimate) {
     LOG_TRACE("(%p, %d)", pPedestrian, pAnimate);
 
     (void)pPedestrian;
@@ -944,9 +948,9 @@ void RevivePedestrian(tPedestrian_data *pPedestrian, int pAnimate) {
     original_RevivePedestrian(pPedestrian, pAnimate);
 }
 
-static void(*original_MungePedestrians)(tU32, ...) = (void(*)(tU32, ...))0x00459476;
+static void(__cdecl*original_MungePedestrians)(tU32) = (void(__cdecl*)(tU32))0x00459476;
 CARM95_HOOK_FUNCTION(original_MungePedestrians, MungePedestrians)
-void MungePedestrians(tU32 pFrame_period) {
+void __cdecl MungePedestrians(tU32 pFrame_period) {
     int i;
     int mirror_on;
     tPedestrian_data *the_pedestrian;
@@ -982,9 +986,9 @@ void MungePedestrians(tU32 pFrame_period) {
     original_MungePedestrians(pFrame_period);
 }
 
-static void(*original_RespawnPedestrians)() = (void(*)())0x0045c921;
+static void(__cdecl*original_RespawnPedestrians)() = (void(__cdecl*)())0x0045c921;
 CARM95_HOOK_FUNCTION(original_RespawnPedestrians, RespawnPedestrians)
-void RespawnPedestrians() {
+void __cdecl RespawnPedestrians() {
     int i;
     tPedestrian_data *the_pedestrian;
     LOG_TRACE("()");
@@ -995,18 +999,18 @@ void RespawnPedestrians() {
     original_RespawnPedestrians();
 }
 
-static int(*original_GetPedCount)() = (int(*)())0x0045c9f6;
+static int(__cdecl*original_GetPedCount)() = (int(__cdecl*)())0x0045c9f6;
 CARM95_HOOK_FUNCTION(original_GetPedCount, GetPedCount)
-int GetPedCount() {
+int __cdecl GetPedCount() {
     LOG_TRACE("()");
 
 
     return original_GetPedCount();
 }
 
-static int(*original_GetPedPosition)(int, br_vector3 *, ...) = (int(*)(int, br_vector3 *, ...))0x0045ca0b;
+static int(__cdecl*original_GetPedPosition)(int, br_vector3 *) = (int(__cdecl*)(int, br_vector3 *))0x0045ca0b;
 CARM95_HOOK_FUNCTION(original_GetPedPosition, GetPedPosition)
-int GetPedPosition(int pIndex, br_vector3 *pPos) {
+int __cdecl GetPedPosition(int pIndex, br_vector3 *pPos) {
     tPedestrian_data *pedestrian;
     LOG_TRACE("(%d, %p)", pIndex, pPos);
 
@@ -1017,9 +1021,9 @@ int GetPedPosition(int pIndex, br_vector3 *pPos) {
     return original_GetPedPosition(pIndex, pPos);
 }
 
-static void(*original_CreatePedestrian)(FILE *, tPedestrian_instruction *, int, int, int, int, ...) = (void(*)(FILE *, tPedestrian_instruction *, int, int, int, int, ...))0x0045cb28;
+static void(__cdecl*original_CreatePedestrian)(FILE *, tPedestrian_instruction *, int, int, int, int) = (void(__cdecl*)(FILE *, tPedestrian_instruction *, int, int, int, int))0x0045cb28;
 CARM95_HOOK_FUNCTION(original_CreatePedestrian, CreatePedestrian)
-void CreatePedestrian(FILE *pG, tPedestrian_instruction *pInstructions, int pInstruc_count, int pInit_instruc, int pRef_num, int pForce_read) {
+void __cdecl CreatePedestrian(FILE *pG, tPedestrian_instruction *pInstructions, int pInstruc_count, int pInit_instruc, int pRef_num, int pForce_read) {
     tPath_name the_path;
     char s[256];
     char s2[256];
@@ -1082,9 +1086,9 @@ void CreatePedestrian(FILE *pG, tPedestrian_instruction *pInstructions, int pIns
     original_CreatePedestrian(pG, pInstructions, pInstruc_count, pInit_instruc, pRef_num, pForce_read);
 }
 
-static void(*original_ResetProxRay)() = (void(*)())0x0045da5c;
+static void(__cdecl*original_ResetProxRay)() = (void(__cdecl*)())0x0045da5c;
 CARM95_HOOK_FUNCTION(original_ResetProxRay, ResetProxRay)
-void ResetProxRay() {
+void __cdecl ResetProxRay() {
     int i;
     LOG_TRACE("()");
 
@@ -1093,18 +1097,18 @@ void ResetProxRay() {
     original_ResetProxRay();
 }
 
-static void(*original_PedMaterialFromHell)() = (void(*)())0x0045da99;
+static void(__cdecl*original_PedMaterialFromHell)() = (void(__cdecl*)())0x0045da99;
 CARM95_HOOK_FUNCTION(original_PedMaterialFromHell, PedMaterialFromHell)
-void PedMaterialFromHell() {
+void __cdecl PedMaterialFromHell() {
     LOG_TRACE("()");
 
 
     original_PedMaterialFromHell();
 }
 
-static void(*original_ResetPedMaterial)() = (void(*)())0x0045daa4;
+static void(__cdecl*original_ResetPedMaterial)() = (void(__cdecl*)())0x0045daa4;
 CARM95_HOOK_FUNCTION(original_ResetPedMaterial, ResetPedMaterial)
-void ResetPedMaterial() {
+void __cdecl ResetPedMaterial() {
     int i;
     int j;
     LOG_TRACE("()");
@@ -1115,9 +1119,9 @@ void ResetPedMaterial() {
     original_ResetPedMaterial();
 }
 
-static void(*original_LoadInPedestrians)(FILE *, int, tPed_subs *, ...) = (void(*)(FILE *, int, tPed_subs *, ...))0x0045dab2;
+static void(__cdecl*original_LoadInPedestrians)(FILE *, int, tPed_subs *) = (void(__cdecl*)(FILE *, int, tPed_subs *))0x0045dab2;
 CARM95_HOOK_FUNCTION(original_LoadInPedestrians, LoadInPedestrians)
-void LoadInPedestrians(FILE *pF, int pSubs_count, tPed_subs *pSubs_array) {
+void __cdecl LoadInPedestrians(FILE *pF, int pSubs_count, tPed_subs *pSubs_array) {
     tPath_name the_path;
     char s[256];
     char s2[256];
@@ -1177,13 +1181,19 @@ void LoadInPedestrians(FILE *pF, int pSubs_count, tPed_subs *pSubs_array) {
     (void)instructions;
     (void)the_instruction;
     (void)the_choice;
+    (void)__block0__x_0;
+    (void)__block0__x_1;
+    (void)__block0__x_2;
+    (void)__block1__x_0;
+    (void)__block1__x_1;
+    (void)__block1__x_2;
 
     original_LoadInPedestrians(pF, pSubs_count, pSubs_array);
 }
 
-static br_actor *(*original_BuildPedPaths)(tPedestrian_instruction *, int, int, ...) = (br_actor *(*)(tPedestrian_instruction *, int, int, ...))0x0045e839;
+static br_actor *(__cdecl*original_BuildPedPaths)(tPedestrian_instruction *, int, int) = (br_actor *(__cdecl*)(tPedestrian_instruction *, int, int))0x0045e839;
 CARM95_HOOK_FUNCTION(original_BuildPedPaths, BuildPedPaths)
-br_actor* BuildPedPaths(tPedestrian_instruction *pInstructions, int pInstruc_count, int pInit_instruc) {
+br_actor* __cdecl BuildPedPaths(tPedestrian_instruction *pInstructions, int pInstruc_count, int pInit_instruc) {
     int vertex_count;
     int last_vertex_count;
     int face_count;
@@ -1211,9 +1221,9 @@ br_actor* BuildPedPaths(tPedestrian_instruction *pInstructions, int pInstruc_cou
     return original_BuildPedPaths(pInstructions, pInstruc_count, pInit_instruc);
 }
 
-static void(*original_WriteOutPeds)() = (void(*)())0x0045ee73;
+static void(__cdecl*original_WriteOutPeds)() = (void(__cdecl*)())0x0045ee73;
 CARM95_HOOK_FUNCTION(original_WriteOutPeds, WriteOutPeds)
-void WriteOutPeds() {
+void __cdecl WriteOutPeds() {
     int i;
     int j;
     int k;
@@ -1252,9 +1262,9 @@ void WriteOutPeds() {
     original_WriteOutPeds();
 }
 
-static void(*original_AddPed)() = (void(*)())0x0045f644;
+static void(__cdecl*original_AddPed)() = (void(__cdecl*)())0x0045f644;
 CARM95_HOOK_FUNCTION(original_AddPed, AddPed)
-void AddPed() {
+void __cdecl AddPed() {
     tPedestrian_instruction *instructions;
     FILE *g;
     tPath_name the_path;
@@ -1267,9 +1277,9 @@ void AddPed() {
     original_AddPed();
 }
 
-static void(*original_NewPed)(int, ...) = (void(*)(int, ...))0x0045f4f1;
+static void(__cdecl*original_NewPed)(int) = (void(__cdecl*)(int))0x0045f4f1;
 CARM95_HOOK_FUNCTION(original_NewPed, NewPed)
-void NewPed(int pRef_num) {
+void __cdecl NewPed(int pRef_num) {
     char s[255];
     LOG_TRACE("(%d)", pRef_num);
 
@@ -1279,279 +1289,279 @@ void NewPed(int pRef_num) {
     original_NewPed(pRef_num);
 }
 
-static void(*original_RemoveCurrentPedPath)() = (void(*)())0x0045f409;
+static void(__cdecl*original_RemoveCurrentPedPath)() = (void(__cdecl*)())0x0045f409;
 CARM95_HOOK_FUNCTION(original_RemoveCurrentPedPath, RemoveCurrentPedPath)
-void RemoveCurrentPedPath() {
+void __cdecl RemoveCurrentPedPath() {
     LOG_TRACE("()");
 
 
     original_RemoveCurrentPedPath();
 }
 
-static void(*original_ScrubPedestrian)() = (void(*)())0x0045f3cb;
+static void(__cdecl*original_ScrubPedestrian)() = (void(__cdecl*)())0x0045f3cb;
 CARM95_HOOK_FUNCTION(original_ScrubPedestrian, ScrubPedestrian)
-void ScrubPedestrian() {
+void __cdecl ScrubPedestrian() {
     LOG_TRACE("()");
 
 
     original_ScrubPedestrian();
 }
 
-static void(*original_TogglePedDetect)() = (void(*)())0x0045f469;
+static void(__cdecl*original_TogglePedDetect)() = (void(__cdecl*)())0x0045f469;
 CARM95_HOOK_FUNCTION(original_TogglePedDetect, TogglePedDetect)
-void TogglePedDetect() {
+void __cdecl TogglePedDetect() {
     LOG_TRACE("()");
 
 
     original_TogglePedDetect();
 }
 
-static void(*original_NewPed0)() = (void(*)())0x0045f4dc;
+static void(__cdecl*original_NewPed0)() = (void(__cdecl*)())0x0045f4dc;
 CARM95_HOOK_FUNCTION(original_NewPed0, NewPed0)
-void NewPed0() {
+void __cdecl NewPed0() {
     LOG_TRACE("()");
 
 
     original_NewPed0();
 }
 
-static void(*original_NewPed1)() = (void(*)())0x0045f72e;
+static void(__cdecl*original_NewPed1)() = (void(__cdecl*)())0x0045f72e;
 CARM95_HOOK_FUNCTION(original_NewPed1, NewPed1)
-void NewPed1() {
+void __cdecl NewPed1() {
     LOG_TRACE("()");
 
 
     original_NewPed1();
 }
 
-static void(*original_NewPed2)() = (void(*)())0x0045f743;
+static void(__cdecl*original_NewPed2)() = (void(__cdecl*)())0x0045f743;
 CARM95_HOOK_FUNCTION(original_NewPed2, NewPed2)
-void NewPed2() {
+void __cdecl NewPed2() {
     LOG_TRACE("()");
 
 
     original_NewPed2();
 }
 
-static void(*original_NewPed3)() = (void(*)())0x0045f758;
+static void(__cdecl*original_NewPed3)() = (void(__cdecl*)())0x0045f758;
 CARM95_HOOK_FUNCTION(original_NewPed3, NewPed3)
-void NewPed3() {
+void __cdecl NewPed3() {
     LOG_TRACE("()");
 
 
     original_NewPed3();
 }
 
-static void(*original_NewPed4)() = (void(*)())0x0045f76d;
+static void(__cdecl*original_NewPed4)() = (void(__cdecl*)())0x0045f76d;
 CARM95_HOOK_FUNCTION(original_NewPed4, NewPed4)
-void NewPed4() {
+void __cdecl NewPed4() {
     LOG_TRACE("()");
 
 
     original_NewPed4();
 }
 
-static void(*original_NewPed5)() = (void(*)())0x0045f782;
+static void(__cdecl*original_NewPed5)() = (void(__cdecl*)())0x0045f782;
 CARM95_HOOK_FUNCTION(original_NewPed5, NewPed5)
-void NewPed5() {
+void __cdecl NewPed5() {
     LOG_TRACE("()");
 
 
     original_NewPed5();
 }
 
-static void(*original_NewPed6)() = (void(*)())0x0045f797;
+static void(__cdecl*original_NewPed6)() = (void(__cdecl*)())0x0045f797;
 CARM95_HOOK_FUNCTION(original_NewPed6, NewPed6)
-void NewPed6() {
+void __cdecl NewPed6() {
     LOG_TRACE("()");
 
 
     original_NewPed6();
 }
 
-static void(*original_NewPed7)() = (void(*)())0x0045f7ac;
+static void(__cdecl*original_NewPed7)() = (void(__cdecl*)())0x0045f7ac;
 CARM95_HOOK_FUNCTION(original_NewPed7, NewPed7)
-void NewPed7() {
+void __cdecl NewPed7() {
     LOG_TRACE("()");
 
 
     original_NewPed7();
 }
 
-static void(*original_NewPed8)() = (void(*)())0x0045f7c1;
+static void(__cdecl*original_NewPed8)() = (void(__cdecl*)())0x0045f7c1;
 CARM95_HOOK_FUNCTION(original_NewPed8, NewPed8)
-void NewPed8() {
+void __cdecl NewPed8() {
     LOG_TRACE("()");
 
 
     original_NewPed8();
 }
 
-static void(*original_NewPed9)() = (void(*)())0x0045f7d6;
+static void(__cdecl*original_NewPed9)() = (void(__cdecl*)())0x0045f7d6;
 CARM95_HOOK_FUNCTION(original_NewPed9, NewPed9)
-void NewPed9() {
+void __cdecl NewPed9() {
     LOG_TRACE("()");
 
 
     original_NewPed9();
 }
 
-static void(*original_NewPed0B)() = (void(*)())0x0045f7eb;
+static void(__cdecl*original_NewPed0B)() = (void(__cdecl*)())0x0045f7eb;
 CARM95_HOOK_FUNCTION(original_NewPed0B, NewPed0B)
-void NewPed0B() {
+void __cdecl NewPed0B() {
     LOG_TRACE("()");
 
 
     original_NewPed0B();
 }
 
-static void(*original_NewPed1B)() = (void(*)())0x0045f800;
+static void(__cdecl*original_NewPed1B)() = (void(__cdecl*)())0x0045f800;
 CARM95_HOOK_FUNCTION(original_NewPed1B, NewPed1B)
-void NewPed1B() {
+void __cdecl NewPed1B() {
     LOG_TRACE("()");
 
 
     original_NewPed1B();
 }
 
-static void(*original_NewPed2B)() = (void(*)())0x0045f815;
+static void(__cdecl*original_NewPed2B)() = (void(__cdecl*)())0x0045f815;
 CARM95_HOOK_FUNCTION(original_NewPed2B, NewPed2B)
-void NewPed2B() {
+void __cdecl NewPed2B() {
     LOG_TRACE("()");
 
 
     original_NewPed2B();
 }
 
-static void(*original_NewPed3B)() = (void(*)())0x0045f82a;
+static void(__cdecl*original_NewPed3B)() = (void(__cdecl*)())0x0045f82a;
 CARM95_HOOK_FUNCTION(original_NewPed3B, NewPed3B)
-void NewPed3B() {
+void __cdecl NewPed3B() {
     LOG_TRACE("()");
 
 
     original_NewPed3B();
 }
 
-static void(*original_NewPed4B)() = (void(*)())0x0045f83f;
+static void(__cdecl*original_NewPed4B)() = (void(__cdecl*)())0x0045f83f;
 CARM95_HOOK_FUNCTION(original_NewPed4B, NewPed4B)
-void NewPed4B() {
+void __cdecl NewPed4B() {
     LOG_TRACE("()");
 
 
     original_NewPed4B();
 }
 
-static void(*original_NewPed5B)() = (void(*)())0x0045f854;
+static void(__cdecl*original_NewPed5B)() = (void(__cdecl*)())0x0045f854;
 CARM95_HOOK_FUNCTION(original_NewPed5B, NewPed5B)
-void NewPed5B() {
+void __cdecl NewPed5B() {
     LOG_TRACE("()");
 
 
     original_NewPed5B();
 }
 
-static void(*original_NewPed6B)() = (void(*)())0x0045f869;
+static void(__cdecl*original_NewPed6B)() = (void(__cdecl*)())0x0045f869;
 CARM95_HOOK_FUNCTION(original_NewPed6B, NewPed6B)
-void NewPed6B() {
+void __cdecl NewPed6B() {
     LOG_TRACE("()");
 
 
     original_NewPed6B();
 }
 
-static void(*original_NewPed7B)() = (void(*)())0x0045f87e;
+static void(__cdecl*original_NewPed7B)() = (void(__cdecl*)())0x0045f87e;
 CARM95_HOOK_FUNCTION(original_NewPed7B, NewPed7B)
-void NewPed7B() {
+void __cdecl NewPed7B() {
     LOG_TRACE("()");
 
 
     original_NewPed7B();
 }
 
-static void(*original_NewPed8B)() = (void(*)())0x0045f893;
+static void(__cdecl*original_NewPed8B)() = (void(__cdecl*)())0x0045f893;
 CARM95_HOOK_FUNCTION(original_NewPed8B, NewPed8B)
-void NewPed8B() {
+void __cdecl NewPed8B() {
     LOG_TRACE("()");
 
 
     original_NewPed8B();
 }
 
-static void(*original_NewPed9B)() = (void(*)())0x0045f8a8;
+static void(__cdecl*original_NewPed9B)() = (void(__cdecl*)())0x0045f8a8;
 CARM95_HOOK_FUNCTION(original_NewPed9B, NewPed9B)
-void NewPed9B() {
+void __cdecl NewPed9B() {
     LOG_TRACE("()");
 
 
     original_NewPed9B();
 }
 
-static void(*original_MungeShowPedPath)() = (void(*)())0x0045f94b;
+static void(__cdecl*original_MungeShowPedPath)() = (void(__cdecl*)())0x0045f94b;
 CARM95_HOOK_FUNCTION(original_MungeShowPedPath, MungeShowPedPath)
-void MungeShowPedPath() {
+void __cdecl MungeShowPedPath() {
     LOG_TRACE("()");
 
 
     original_MungeShowPedPath();
 }
 
-static void(*original_DropPedPoint2)() = (void(*)())0x0045f8e5;
+static void(__cdecl*original_DropPedPoint2)() = (void(__cdecl*)())0x0045f8e5;
 CARM95_HOOK_FUNCTION(original_DropPedPoint2, DropPedPoint2)
-void DropPedPoint2() {
+void __cdecl DropPedPoint2() {
     LOG_TRACE("()");
 
 
     original_DropPedPoint2();
 }
 
-static void(*original_DropPedPoint)() = (void(*)())0x0045f8bd;
+static void(__cdecl*original_DropPedPoint)() = (void(__cdecl*)())0x0045f8bd;
 CARM95_HOOK_FUNCTION(original_DropPedPoint, DropPedPoint)
-void DropPedPoint() {
+void __cdecl DropPedPoint() {
     LOG_TRACE("()");
 
 
     original_DropPedPoint();
 }
 
-static void(*original_DropInitPedPoint)() = (void(*)())0x0045f9a4;
+static void(__cdecl*original_DropInitPedPoint)() = (void(__cdecl*)())0x0045f9a4;
 CARM95_HOOK_FUNCTION(original_DropInitPedPoint, DropInitPedPoint)
-void DropInitPedPoint() {
+void __cdecl DropInitPedPoint() {
     LOG_TRACE("()");
 
 
     original_DropInitPedPoint();
 }
 
-static void(*original_DropPedPointAir2)() = (void(*)())0x0045f9fe;
+static void(__cdecl*original_DropPedPointAir2)() = (void(__cdecl*)())0x0045f9fe;
 CARM95_HOOK_FUNCTION(original_DropPedPointAir2, DropPedPointAir2)
-void DropPedPointAir2() {
+void __cdecl DropPedPointAir2() {
     LOG_TRACE("()");
 
 
     original_DropPedPointAir2();
 }
 
-static void(*original_DropPedPointAir)() = (void(*)())0x0045f9d6;
+static void(__cdecl*original_DropPedPointAir)() = (void(__cdecl*)())0x0045f9d6;
 CARM95_HOOK_FUNCTION(original_DropPedPointAir, DropPedPointAir)
-void DropPedPointAir() {
+void __cdecl DropPedPointAir() {
     LOG_TRACE("()");
 
 
     original_DropPedPointAir();
 }
 
-static void(*original_DropInitPedPointAir)() = (void(*)())0x0045fa88;
+static void(__cdecl*original_DropInitPedPointAir)() = (void(__cdecl*)())0x0045fa88;
 CARM95_HOOK_FUNCTION(original_DropInitPedPointAir, DropInitPedPointAir)
-void DropInitPedPointAir() {
+void __cdecl DropInitPedPointAir() {
     LOG_TRACE("()");
 
 
     original_DropInitPedPointAir();
 }
 
-static br_uint_32(*original_KillActorsModel)(br_actor *, void *, ...) = (br_uint_32(*)(br_actor *, void *, ...))0x0045ff83;
+static br_uint_32(__cdecl*original_KillActorsModel)(br_actor *, void *) = (br_uint_32(__cdecl*)(br_actor *, void *))0x0045ff83;
 CARM95_HOOK_FUNCTION(original_KillActorsModel, KillActorsModel)
-br_uint_32 KillActorsModel(br_actor *pActor, void *pArg) {
+br_uint_32 __cdecl KillActorsModel(br_actor *pActor, void *pArg) {
     LOG_TRACE("(%p, %p)", pActor, pArg);
 
     (void)pActor;
@@ -1560,18 +1570,18 @@ br_uint_32 KillActorsModel(br_actor *pActor, void *pArg) {
     return original_KillActorsModel(pActor, pArg);
 }
 
-static void(*original_DisposePedPaths)() = (void(*)())0x0045fef8;
+static void(__cdecl*original_DisposePedPaths)() = (void(__cdecl*)())0x0045fef8;
 CARM95_HOOK_FUNCTION(original_DisposePedPaths, DisposePedPaths)
-void DisposePedPaths() {
+void __cdecl DisposePedPaths() {
     LOG_TRACE("()");
 
 
     original_DisposePedPaths();
 }
 
-static void(*original_GetPedPos)(int *, int *, ...) = (void(*)(int *, int *, ...))0x0045faba;
+static void(__cdecl*original_GetPedPos)(int *, int *) = (void(__cdecl*)(int *, int *))0x0045faba;
 CARM95_HOOK_FUNCTION(original_GetPedPos, GetPedPos)
-void GetPedPos(int *pPed_index, int *pPoint_index) {
+void __cdecl GetPedPos(int *pPed_index, int *pPoint_index) {
     int i;
     int j;
     int point_count;
@@ -1594,9 +1604,9 @@ void GetPedPos(int *pPed_index, int *pPoint_index) {
     original_GetPedPos(pPed_index, pPoint_index);
 }
 
-static void(*original_ShowPedPos)() = (void(*)())0x0045fc96;
+static void(__cdecl*original_ShowPedPos)() = (void(__cdecl*)())0x0045fc96;
 CARM95_HOOK_FUNCTION(original_ShowPedPos, ShowPedPos)
-void ShowPedPos() {
+void __cdecl ShowPedPos() {
     int min_ped;
     int min_point;
     char s[255];
@@ -1609,9 +1619,9 @@ void ShowPedPos() {
     original_ShowPedPos();
 }
 
-static void(*original_ShowPedPaths)() = (void(*)())0x0045fcf5;
+static void(__cdecl*original_ShowPedPaths)() = (void(__cdecl*)())0x0045fcf5;
 CARM95_HOOK_FUNCTION(original_ShowPedPaths, ShowPedPaths)
-void ShowPedPaths() {
+void __cdecl ShowPedPaths() {
     int i;
     br_model *the_model;
     LOG_TRACE("()");
@@ -1622,9 +1632,9 @@ void ShowPedPaths() {
     original_ShowPedPaths();
 }
 
-static void(*original_PullPedPoint)() = (void(*)())0x0045fe84;
+static void(__cdecl*original_PullPedPoint)() = (void(__cdecl*)())0x0045fe84;
 CARM95_HOOK_FUNCTION(original_PullPedPoint, PullPedPoint)
-void PullPedPoint() {
+void __cdecl PullPedPoint() {
     int the_ped;
     int the_point;
     LOG_TRACE("()");
@@ -1635,9 +1645,9 @@ void PullPedPoint() {
     original_PullPedPoint();
 }
 
-static void(*original_PullPedPointAir)() = (void(*)())0x0045ffc0;
+static void(__cdecl*original_PullPedPointAir)() = (void(__cdecl*)())0x0045ffc0;
 CARM95_HOOK_FUNCTION(original_PullPedPointAir, PullPedPointAir)
-void PullPedPointAir() {
+void __cdecl PullPedPointAir() {
     int the_ped;
     int the_point;
     LOG_TRACE("()");
@@ -1648,9 +1658,9 @@ void PullPedPointAir() {
     original_PullPedPointAir();
 }
 
-static void(*original_DeletePedPath)() = (void(*)())0x00460082;
+static void(__cdecl*original_DeletePedPath)() = (void(__cdecl*)())0x00460082;
 CARM95_HOOK_FUNCTION(original_DeletePedPath, DeletePedPath)
-void DeletePedPath() {
+void __cdecl DeletePedPath() {
     int the_ped;
     int the_point;
     int i;
@@ -1663,18 +1673,18 @@ void DeletePedPath() {
     original_DeletePedPath();
 }
 
-static void(*original_DeletePedPoint)() = (void(*)())0x0046010f;
+static void(__cdecl*original_DeletePedPoint)() = (void(__cdecl*)())0x0046010f;
 CARM95_HOOK_FUNCTION(original_DeletePedPoint, DeletePedPoint)
-void DeletePedPoint() {
+void __cdecl DeletePedPoint() {
     LOG_TRACE("()");
 
 
     original_DeletePedPoint();
 }
 
-static void(*original_DisposePedestrians)() = (void(*)())0x00460169;
+static void(__cdecl*original_DisposePedestrians)() = (void(__cdecl*)())0x00460169;
 CARM95_HOOK_FUNCTION(original_DisposePedestrians, DisposePedestrians)
-void DisposePedestrians() {
+void __cdecl DisposePedestrians() {
     int i;
     int j;
     tPedestrian_data *the_pedestrian;
@@ -1687,9 +1697,9 @@ void DisposePedestrians() {
     original_DisposePedestrians();
 }
 
-static void(*original_DoPedReport)() = (void(*)())0x004603d6;
+static void(__cdecl*original_DoPedReport)() = (void(__cdecl*)())0x004603d6;
 CARM95_HOOK_FUNCTION(original_DoPedReport, DoPedReport)
-void DoPedReport() {
+void __cdecl DoPedReport() {
     FILE *f;
     tPath_name the_path;
     time_t the_bloody_time;
@@ -1710,9 +1720,9 @@ void DoPedReport() {
     original_DoPedReport();
 }
 
-static void(*original_RenderProximityRays)(br_pixelmap *, br_pixelmap *, br_actor *, br_matrix34 *, tU32, ...) = (void(*)(br_pixelmap *, br_pixelmap *, br_actor *, br_matrix34 *, tU32, ...))0x00460696;
+static void(__cdecl*original_RenderProximityRays)(br_pixelmap *, br_pixelmap *, br_actor *, br_matrix34 *, tU32) = (void(__cdecl*)(br_pixelmap *, br_pixelmap *, br_actor *, br_matrix34 *, tU32))0x00460696;
 CARM95_HOOK_FUNCTION(original_RenderProximityRays, RenderProximityRays)
-void RenderProximityRays(br_pixelmap *pRender_screen, br_pixelmap *pDepth_buffer, br_actor *pCamera, br_matrix34 *pCamera_to_world, tU32 pTime) {
+void __cdecl RenderProximityRays(br_pixelmap *pRender_screen, br_pixelmap *pDepth_buffer, br_actor *pCamera, br_matrix34 *pCamera_to_world, tU32 pTime) {
     int i;
     float seed;
     tU32 the_time;
@@ -1755,13 +1765,14 @@ void RenderProximityRays(br_pixelmap *pRender_screen, br_pixelmap *pDepth_buffer
     (void)car_model;
     (void)distance;
     (void)t;
+    (void)__block0___scale;
 
     original_RenderProximityRays(pRender_screen, pDepth_buffer, pCamera, pCamera_to_world, pTime);
 }
 
-static void(*original_AdjustProxRay)(int, tU16, tU16, tU32, ...) = (void(*)(int, tU16, tU16, tU32, ...))0x00460ac5;
+static void(__cdecl*original_AdjustProxRay)(int, tU16, tU16, tU32) = (void(__cdecl*)(int, tU16, tU16, tU32))0x00460ac5;
 CARM95_HOOK_FUNCTION(original_AdjustProxRay, AdjustProxRay)
-void AdjustProxRay(int pRay_index, tU16 pCar_ID, tU16 pPed_index, tU32 pTime) {
+void __cdecl AdjustProxRay(int pRay_index, tU16 pCar_ID, tU16 pPed_index, tU32 pTime) {
     LOG_TRACE("(%d, %u, %u, %u)", pRay_index, pCar_ID, pPed_index, pTime);
 
     (void)pRay_index;
@@ -1772,9 +1783,9 @@ void AdjustProxRay(int pRay_index, tU16 pCar_ID, tU16 pPed_index, tU32 pTime) {
     original_AdjustProxRay(pRay_index, pCar_ID, pPed_index, pTime);
 }
 
-static void(*original_ReceivedPedestrian)(tNet_contents *, tNet_message *, tU32, ...) = (void(*)(tNet_contents *, tNet_message *, tU32, ...))0x00460b66;
+static void(__cdecl*original_ReceivedPedestrian)(tNet_contents *, tNet_message *, tU32) = (void(__cdecl*)(tNet_contents *, tNet_message *, tU32))0x00460b66;
 CARM95_HOOK_FUNCTION(original_ReceivedPedestrian, ReceivedPedestrian)
-void ReceivedPedestrian(tNet_contents *pContents, tNet_message *pMessage, tU32 pReceive_time) {
+void __cdecl ReceivedPedestrian(tNet_contents *pContents, tNet_message *pMessage, tU32 pReceive_time) {
     tPedestrian_data *the_pedestrian;
     tNet_game_player_info *sender;
     tNet_game_player_info *murderer;
@@ -1802,9 +1813,9 @@ void ReceivedPedestrian(tNet_contents *pContents, tNet_message *pMessage, tU32 p
     original_ReceivedPedestrian(pContents, pMessage, pReceive_time);
 }
 
-static void(*original_SendAllPedestrianPositions)(tPlayer_ID, ...) = (void(*)(tPlayer_ID, ...))0x0046109c;
+static void(__cdecl*original_SendAllPedestrianPositions)(tPlayer_ID) = (void(__cdecl*)(tPlayer_ID))0x0046109c;
 CARM95_HOOK_FUNCTION(original_SendAllPedestrianPositions, SendAllPedestrianPositions)
-void SendAllPedestrianPositions(tPlayer_ID pPlayer) {
+void __cdecl SendAllPedestrianPositions(tPlayer_ID pPlayer) {
     int i;
     tPedestrian_data *the_pedestrian;
     tNet_contents *the_contents;

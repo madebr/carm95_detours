@@ -4,48 +4,52 @@
 #include "br_types.h"
 
 
-void lexerError(struct br_lexer *l, char *string);
+#if 0
+void lexerError_do_not_use(struct br_lexer *l, char *string);
+#endif
 
-struct br_lexer* BrLexerAllocate(struct br_lexer_keyword *keywords, int nkeywords);
+struct br_lexer* __cdecl BrLexerAllocate(struct br_lexer_keyword *keywords, int nkeywords);
 
-char BrLexerCommentSet(struct br_lexer *l, char eol_comment);
+char __cdecl BrLexerCommentSet(struct br_lexer *l, char eol_comment);
 
-br_lexer_error_cbfn* BrLexerErrorSet(struct br_lexer *l, br_lexer_error_cbfn *error);
+br_lexer_error_cbfn* __cdecl BrLexerErrorSet(struct br_lexer *l, br_lexer_error_cbfn *error);
 
-void BrLexerFree(struct br_lexer *l);
+void __cdecl BrLexerFree(struct br_lexer *l);
 
-void fileGetchar(struct br_lexer_source *source);
+void __cdecl fileGetchar(struct br_lexer_source *source);
 
-br_error BrLexerPushFile(struct br_lexer *l, char *file);
+br_error __cdecl BrLexerPushFile(struct br_lexer *l, char *file);
 
-void stringGetchar(struct br_lexer_source *source);
+void __cdecl stringGetchar(struct br_lexer_source *source);
 
-br_error BrLexerPushString(struct br_lexer *l, char *string, char *name);
+br_error __cdecl BrLexerPushString(struct br_lexer *l, char *string, char *name);
 
-struct br_lexer_source* BrLexerPop(struct br_lexer *l);
+struct br_lexer_source* __cdecl BrLexerPop(struct br_lexer *l);
 
-void lexerAdvance(struct br_lexer *l);
+void __stdcall lexerAdvance(struct br_lexer *l);
 
 void lexerAdvanceDump(struct br_lexer *l);
 
-br_error BrLexerDumpSet(struct br_lexer *l, br_putline_cbfn *putline, void *putline_arg);
+#if 0
+br_error BrLexerDumpSet_do_not_use(struct br_lexer *l, br_putline_cbfn *putline, void *putline_arg);
+#endif
 
-void BrLexerTokenError(struct br_lexer *l, br_lexer_token_id t);
+void __cdecl BrLexerTokenError(struct br_lexer *l, br_lexer_token_id t);
 
-void BrLexerPosition(struct br_lexer *l, char *buf, br_size_t buf_size);
+void __cdecl BrLexerPosition(struct br_lexer *l, char *buf, br_size_t buf_size);
 
-br_scalar BrParseFixed(struct br_lexer *l);
+br_scalar __cdecl BrParseFixed(struct br_lexer *l);
 
-br_float BrParseFloat(struct br_lexer *l);
+br_float __cdecl BrParseFloat(struct br_lexer *l);
 
-br_int_32 BrParseInteger(struct br_lexer *l);
+br_int_32 __cdecl BrParseInteger(struct br_lexer *l);
 
-br_int_32 BrParseVectorFixed(struct br_lexer *l, br_fixed_ls *v, br_int_32 max);
+br_int_32 __cdecl BrParseVectorFixed(struct br_lexer *l, br_fixed_ls *v, br_int_32 max);
 
-br_int_32 BrParseVectorFloat(struct br_lexer *l, br_float *v, br_int_32 max);
+br_int_32 __cdecl BrParseVectorFloat(struct br_lexer *l, br_float *v, br_int_32 max);
 
-br_int_32 BrParseMatrixFixed(struct br_lexer *l, br_fixed_ls *m, br_int_32 width, br_int_32 max_h);
+br_int_32 __cdecl BrParseMatrixFixed(struct br_lexer *l, br_fixed_ls *m, br_int_32 width, br_int_32 max_h);
 
-br_int_32 BrParseMatrixFloat(struct br_lexer *l, br_float *m, br_int_32 width, br_int_32 max_h);
+br_int_32 __cdecl BrParseMatrixFloat(struct br_lexer *l, br_float *m, br_int_32 width, br_int_32 max_h);
 
 #endif

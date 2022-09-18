@@ -8,42 +8,42 @@ extern tSave_game *(* hookvar_gSaved_games )[8]; // addr: 00536278
 extern int * hookvar_gStarted_typing ; // addr: 00536270
 extern int * hookvar_gSave_allowed ; // addr: 00536274
 
-void CorrectLoadByteOrdering(int pIndex);
+void __cdecl CorrectLoadByteOrdering(int pIndex);
 
-tU32 CalcLSChecksum(tSave_game *pSaved_game);
+tU32 __cdecl CalcLSChecksum(tSave_game *pSaved_game);
 
-void LoadSavedGames();
+void __cdecl LoadSavedGames();
 
-void DisposeSavedGames();
+void __cdecl DisposeSavedGames();
 
-void LoadTheGame(int pSlot_index);
+void __cdecl LoadTheGame(int pSlot_index);
 
-void StartRollingSaveNamesIn();
+void __cdecl StartRollingSaveNamesIn();
 
-void LoadStart();
+void __cdecl LoadStart();
 
-int DoLoadGame(int pSave_allowed);
+int __cdecl DoLoadGame(int pSave_allowed);
 
-void CorrectSaveByteOrdering(int pIndex);
+void __cdecl CorrectSaveByteOrdering(int pIndex);
 
-void SaveTheGame(int pSlot_number);
+void __cdecl SaveTheGame(int pSlot_number);
 
-int ConfirmMidGameSave();
+int __cdecl ConfirmMidGameSave();
 
-void MakeSavedGame(tSave_game **pSave_record);
+void __cdecl MakeSavedGame(tSave_game **pSave_record);
 
-void SaveStart();
+void __cdecl SaveStart();
 
-void GetSaveName(int pStarting_to_type, int pCurrent_choice, char *pString, int *pMax_length);
+void __cdecl GetSaveName(int pStarting_to_type, int pCurrent_choice, char *pString, int *pMax_length);
 
-int SaveDone(int pCurrent_choice, int pCurrent_mode, int pGo_ahead, int pEscaped, int pTimed_out);
+int __cdecl SaveDone(int pCurrent_choice, int pCurrent_mode, int pGo_ahead, int pEscaped, int pTimed_out);
 
-int SaveGoAhead(int *pCurrent_choice, int *pCurrent_mode);
+int __cdecl SaveGoAhead(int *pCurrent_choice, int *pCurrent_mode);
 
-int SaveEscape(int *pCurrent_choice, int *pCurrent_mode);
+int __cdecl SaveEscape(int *pCurrent_choice, int *pCurrent_mode);
 
-int SaveGameInterface(int pDefault_choice);
+int __cdecl SaveGameInterface(int pDefault_choice);
 
-void DoSaveGame(int pSave_allowed);
+void __cdecl DoSaveGame(int pSave_allowed);
 
 #endif

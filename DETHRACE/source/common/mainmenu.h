@@ -11,24 +11,24 @@ extern int * hookvar_gMouse_was_started__mainmenu ; // addr: 00536268 // suffix 
 extern int * hookvar_gReplace_background ; // addr: 0053626C
 // extern char ** hookvar_gPixels_copy__mainmenu ; // suffix added to avoid duplicate symbol
 
-int MainMenuDone1(int pCurrent_choice, int pCurrent_mode, int pGo_ahead, int pEscaped, int pTimed_out);
+int __cdecl MainMenuDone1(int pCurrent_choice, int pCurrent_mode, int pGo_ahead, int pEscaped, int pTimed_out);
 
-int MainMenuDone2(int pCurrent_choice, int pCurrent_mode, int pGo_ahead, int pEscaped, int pTimed_out);
+int __cdecl MainMenuDone2(int pCurrent_choice, int pCurrent_mode, int pGo_ahead, int pEscaped, int pTimed_out);
 
 void StartMainMenu();
 
-int DoMainMenuInterface(tU32 pTime_out, int pContinue_allowed);
+int __cdecl DoMainMenuInterface(tU32 pTime_out, int pContinue_allowed);
 
-tMM_result GetMainMenuOption(tU32 pTime_out, int pContinue_allowed);
+tMM_result __cdecl GetMainMenuOption(tU32 pTime_out, int pContinue_allowed);
 
 void QuitVerifyStart();
 
 int QuitVerifyDone(int pCurrent_choice, int pCurrent_mode, int pGo_ahead, int pEscaped, int pTimed_out);
 
-int DoVerifyQuit(int pReplace_background);
+int __cdecl DoVerifyQuit(int pReplace_background);
 
-tMM_result DoMainMenu(tU32 pTime_out, int pSave_allowed, int pContinue_allowed);
+tMM_result __cdecl DoMainMenu(tU32 pTime_out, int pSave_allowed, int pContinue_allowed);
 
-void DoMainMenuScreen(tU32 pTime_out, int pSave_allowed, int pContinue_allowed);
+void __cdecl DoMainMenuScreen(tU32 pTime_out, int pSave_allowed, int pContinue_allowed);
 
 #endif

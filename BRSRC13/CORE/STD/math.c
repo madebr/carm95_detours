@@ -4,11 +4,10 @@
 
 #include "carm95_hooks.h"
 
-#include <stdio.h>
 
-static float(*original_BrFloatFloor)(float, ...) = (float(*)(float, ...))0x00502b20;
+static float(__cdecl*original_BrFloatFloor)(float) = (float(__cdecl*)(float))0x00502b20;
 CARM95_HOOK_FUNCTION(original_BrFloatFloor, BrFloatFloor)
-float BrFloatFloor(float f) {
+float __cdecl BrFloatFloor(float f) {
     LOG_TRACE("(%f)", f);
 
     (void)f;
@@ -16,9 +15,9 @@ float BrFloatFloor(float f) {
     return original_BrFloatFloor(f);
 }
 
-static float(*original_BrFloatCeil)(float, ...) = (float(*)(float, ...))0x00502b40;
+static float(__cdecl*original_BrFloatCeil)(float) = (float(__cdecl*)(float))0x00502b40;
 CARM95_HOOK_FUNCTION(original_BrFloatCeil, BrFloatCeil)
-float BrFloatCeil(float f) {
+float __cdecl BrFloatCeil(float f) {
     LOG_TRACE("(%f)", f);
 
     (void)f;
@@ -26,9 +25,9 @@ float BrFloatCeil(float f) {
     return original_BrFloatCeil(f);
 }
 
-static float(*original_BrFloatSqrt)(float, ...) = (float(*)(float, ...))0x00502b60;
+static float(__cdecl*original_BrFloatSqrt)(float) = (float(__cdecl*)(float))0x00502b60;
 CARM95_HOOK_FUNCTION(original_BrFloatSqrt, BrFloatSqrt)
-float BrFloatSqrt(float f) {
+float __cdecl BrFloatSqrt(float f) {
     LOG_TRACE("(%f)", f);
 
     (void)f;
@@ -36,9 +35,9 @@ float BrFloatSqrt(float f) {
     return original_BrFloatSqrt(f);
 }
 
-static float(*original_BrFloatPow)(float, float, ...) = (float(*)(float, float, ...))0x00502b70;
+static float(__stdcall*original_BrFloatPow)(float, float) = (float(__stdcall*)(float, float))0x00502b70;
 CARM95_HOOK_FUNCTION(original_BrFloatPow, BrFloatPow)
-float BrFloatPow(float a, float b) {
+float __stdcall BrFloatPow(float a, float b) {
     LOG_TRACE("(%f, %f)", a, b);
 
     (void)a;
@@ -47,9 +46,9 @@ float BrFloatPow(float a, float b) {
     return original_BrFloatPow(a, b);
 }
 
-static float(*original_BrFloatAtan2)(float, float, ...) = (float(*)(float, float, ...))0x00502b80;
+static float(__cdecl*original_BrFloatAtan2)(float, float) = (float(__cdecl*)(float, float))0x00502b80;
 CARM95_HOOK_FUNCTION(original_BrFloatAtan2, BrFloatAtan2)
-float BrFloatAtan2(float x, float y) {
+float __cdecl BrFloatAtan2(float x, float y) {
     LOG_TRACE("(%f, %f)", x, y);
 
     (void)x;

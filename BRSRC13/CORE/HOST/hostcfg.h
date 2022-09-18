@@ -4,12 +4,12 @@
 #include "br_types.h"
 
 
-char* HostDefaultDevice();
+char* __stdcall HostDefaultDevice();
 
-br_boolean HostIniSectionExists(char *ini_file, char *section_name);
+br_boolean __cdecl HostIniSectionExists(char *ini_file, char *section_name);
 
-br_error HostIniQuery(char *ini_file, char *section_name, char *entry, char *Buffer, int max, br_uint_16 *size);
+br_error __cdecl HostIniQuery(char *ini_file, char *section_name, char *entry, char *Buffer, int max, br_uint_16 *size);
 
-br_error HostRegistryQuery(void *hKey, char *Path, char *entry, char *Buffer, br_uint_16 max, br_uint_16 *size);
+br_error __cdecl HostRegistryQuery(void *hKey, char *Path, char *entry, char *Buffer, br_uint_16 max, br_uint_16 *size);
 
 #endif

@@ -4,11 +4,10 @@
 
 #include "carm95_hooks.h"
 
-#include <stdio.h>
 
-static void(*original_BrQsort)(void *, unsigned int, unsigned int, br_qsort_cbfn *, ...) = (void(*)(void *, unsigned int, unsigned int, br_qsort_cbfn *, ...))0x004e5f80;
+static void(__cdecl*original_BrQsort)(void *, unsigned int, unsigned int, br_qsort_cbfn *) = (void(__cdecl*)(void *, unsigned int, unsigned int, br_qsort_cbfn *))0x004e5f80;
 CARM95_HOOK_FUNCTION(original_BrQsort, BrQsort)
-void BrQsort(void *basep, unsigned int nelems, unsigned int size, br_qsort_cbfn *comp) {
+void __cdecl BrQsort(void *basep, unsigned int nelems, unsigned int size, br_qsort_cbfn *comp) {
     char *stack[40];
     char **sp;
     char *i;
@@ -17,7 +16,7 @@ void BrQsort(void *basep, unsigned int nelems, unsigned int size, br_qsort_cbfn 
     unsigned int thresh;
     char *base;
     unsigned int width;
-    void(**swap_func)(char *, char *, unsigned int, ...);
+    void(**swap_func)(char *, char *, unsigned int);
     LOG_TRACE("(%p, %u, %u, %p)", basep, nelems, size, comp);
 
     (void)basep;

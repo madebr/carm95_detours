@@ -4,7 +4,6 @@
 
 #include "carm95_hooks.h"
 
-#include <stdio.h>
 tU8 ** hookvar_gPipe_buffer_start  = (void*)0x0050ba00;
 int * hookvar_gDisable_sound  = (void*)0x0050ba04;
 #if 0
@@ -79,9 +78,9 @@ tU32 * hookvar_gPipe_buffer_size  = (void*)0x00532088;
 tU8 ** hookvar_gLocal_buffer  = (void*)0x00532014;
 tU32 * hookvar_gLocal_buffer_size  = (void*)0x00532090;
 
-static void(*original_GetReducedPos)(br_vector3 *, tReduced_pos *, ...) = (void(*)(br_vector3 *, tReduced_pos *, ...))0x00427ed0;
+static void(__cdecl*original_GetReducedPos)(br_vector3 *, tReduced_pos *) = (void(__cdecl*)(br_vector3 *, tReduced_pos *))0x00427ed0;
 CARM95_HOOK_FUNCTION(original_GetReducedPos, GetReducedPos)
-void GetReducedPos(br_vector3 *v, tReduced_pos *p) {
+void __cdecl GetReducedPos(br_vector3 *v, tReduced_pos *p) {
     LOG_TRACE("(%p, %p)", v, p);
 
     (void)v;
@@ -90,9 +89,9 @@ void GetReducedPos(br_vector3 *v, tReduced_pos *p) {
     original_GetReducedPos(v, p);
 }
 
-static void(*original_SaveReducedPos)(tReduced_pos *, br_vector3 *, ...) = (void(*)(tReduced_pos *, br_vector3 *, ...))0x00427f61;
+static void(__cdecl*original_SaveReducedPos)(tReduced_pos *, br_vector3 *) = (void(__cdecl*)(tReduced_pos *, br_vector3 *))0x00427f61;
 CARM95_HOOK_FUNCTION(original_SaveReducedPos, SaveReducedPos)
-void SaveReducedPos(tReduced_pos *p, br_vector3 *v) {
+void __cdecl SaveReducedPos(tReduced_pos *p, br_vector3 *v) {
     br_vector3 tv;
     LOG_TRACE("(%p, %p)", p, v);
 
@@ -103,54 +102,54 @@ void SaveReducedPos(tReduced_pos *p, br_vector3 *v) {
     original_SaveReducedPos(p, v);
 }
 
-static int(*original_PipeSearchForwards)() = (int(*)())0x00427fdf;
+static int(__cdecl*original_PipeSearchForwards)() = (int(__cdecl*)())0x00427fdf;
 CARM95_HOOK_FUNCTION(original_PipeSearchForwards, PipeSearchForwards)
-int PipeSearchForwards() {
+int __cdecl PipeSearchForwards() {
     LOG_TRACE("()");
 
 
     return original_PipeSearchForwards();
 }
 
-static int(*original_IsActionReplayAvailable)() = (int(*)())0x00428078;
+static int(__cdecl*original_IsActionReplayAvailable)() = (int(__cdecl*)())0x00428078;
 CARM95_HOOK_FUNCTION(original_IsActionReplayAvailable, IsActionReplayAvailable)
-int IsActionReplayAvailable() {
+int __cdecl IsActionReplayAvailable() {
     LOG_TRACE("()");
 
 
     return original_IsActionReplayAvailable();
 }
 
-static int(*original_SomeReplayLeft)() = (int(*)())0x004280a1;
+static int(__cdecl*original_SomeReplayLeft)() = (int(__cdecl*)())0x004280a1;
 CARM95_HOOK_FUNCTION(original_SomeReplayLeft, SomeReplayLeft)
-int SomeReplayLeft() {
+int __cdecl SomeReplayLeft() {
     LOG_TRACE("()");
 
 
     return original_SomeReplayLeft();
 }
 
-static void(*original_DisablePipedSounds)() = (void(*)())0x004280f9;
+static void(__cdecl*original_DisablePipedSounds)() = (void(__cdecl*)())0x004280f9;
 CARM95_HOOK_FUNCTION(original_DisablePipedSounds, DisablePipedSounds)
-void DisablePipedSounds() {
+void __cdecl DisablePipedSounds() {
     LOG_TRACE("()");
 
 
     original_DisablePipedSounds();
 }
 
-static void(*original_EnablePipedSounds)() = (void(*)())0x0042810e;
+static void(__cdecl*original_EnablePipedSounds)() = (void(__cdecl*)())0x0042810e;
 CARM95_HOOK_FUNCTION(original_EnablePipedSounds, EnablePipedSounds)
-void EnablePipedSounds() {
+void __cdecl EnablePipedSounds() {
     LOG_TRACE("()");
 
 
     original_EnablePipedSounds();
 }
 
-static tU32(*original_LengthOfSession)(tPipe_session *, ...) = (tU32(*)(tPipe_session *, ...))0x00428123;
+static tU32(__cdecl*original_LengthOfSession)(tPipe_session *) = (tU32(__cdecl*)(tPipe_session *))0x00428123;
 CARM95_HOOK_FUNCTION(original_LengthOfSession, LengthOfSession)
-tU32 LengthOfSession(tPipe_session *pSession) {
+tU32 __cdecl LengthOfSession(tPipe_session *pSession) {
     int i;
     tU32 running_total;
     tPipe_chunk *the_chunk;
@@ -164,9 +163,9 @@ tU32 LengthOfSession(tPipe_session *pSession) {
     return original_LengthOfSession(pSession);
 }
 
-static void(*original_StartPipingSession2)(tPipe_chunk_type, int, ...) = (void(*)(tPipe_chunk_type, int, ...))0x004285e1;
+static void(__cdecl*original_StartPipingSession2)(tPipe_chunk_type, int) = (void(__cdecl*)(tPipe_chunk_type, int))0x004285e1;
 CARM95_HOOK_FUNCTION(original_StartPipingSession2, StartPipingSession2)
-void StartPipingSession2(tPipe_chunk_type pThe_type, int pMunge_reentrancy) {
+void __cdecl StartPipingSession2(tPipe_chunk_type pThe_type, int pMunge_reentrancy) {
     LOG_TRACE("(%d, %d)", pThe_type, pMunge_reentrancy);
 
     (void)pThe_type;
@@ -175,9 +174,9 @@ void StartPipingSession2(tPipe_chunk_type pThe_type, int pMunge_reentrancy) {
     original_StartPipingSession2(pThe_type, pMunge_reentrancy);
 }
 
-static void(*original_StartPipingSession)(tPipe_chunk_type, ...) = (void(*)(tPipe_chunk_type, ...))0x0042868f;
+static void(__cdecl*original_StartPipingSession)(tPipe_chunk_type) = (void(__cdecl*)(tPipe_chunk_type))0x0042868f;
 CARM95_HOOK_FUNCTION(original_StartPipingSession, StartPipingSession)
-void StartPipingSession(tPipe_chunk_type pThe_type) {
+void __cdecl StartPipingSession(tPipe_chunk_type pThe_type) {
     LOG_TRACE("(%d)", pThe_type);
 
     (void)pThe_type;
@@ -185,9 +184,9 @@ void StartPipingSession(tPipe_chunk_type pThe_type) {
     original_StartPipingSession(pThe_type);
 }
 
-static void(*original_EndPipingSession2)(int, ...) = (void(*)(int, ...))0x004286a8;
+static void(__cdecl*original_EndPipingSession2)(int) = (void(__cdecl*)(int))0x004286a8;
 CARM95_HOOK_FUNCTION(original_EndPipingSession2, EndPipingSession2)
-void EndPipingSession2(int pMunge_reentrancy) {
+void __cdecl EndPipingSession2(int pMunge_reentrancy) {
     int a;
     LOG_TRACE("(%d)", pMunge_reentrancy);
 
@@ -197,18 +196,18 @@ void EndPipingSession2(int pMunge_reentrancy) {
     original_EndPipingSession2(pMunge_reentrancy);
 }
 
-static void(*original_EndPipingSession)() = (void(*)())0x0042884c;
+static void(__cdecl*original_EndPipingSession)() = (void(__cdecl*)())0x0042884c;
 CARM95_HOOK_FUNCTION(original_EndPipingSession, EndPipingSession)
-void EndPipingSession() {
+void __cdecl EndPipingSession() {
     LOG_TRACE("()");
 
 
     original_EndPipingSession();
 }
 
-static void(*original_AddDataToSession)(int, void *, tU32, ...) = (void(*)(int, void *, tU32, ...))0x00428861;
+static void(__cdecl*original_AddDataToSession)(int, void *, tU32) = (void(__cdecl*)(int, void *, tU32))0x00428861;
 CARM95_HOOK_FUNCTION(original_AddDataToSession, AddDataToSession)
-void AddDataToSession(int pSubject_index, void *pData, tU32 pData_length) {
+void __cdecl AddDataToSession(int pSubject_index, void *pData, tU32 pData_length) {
     tU32 temp_buffer_size;
     int variable_for_breaking_on;
     LOG_TRACE("(%d, %p, %u)", pSubject_index, pData, pData_length);
@@ -222,9 +221,9 @@ void AddDataToSession(int pSubject_index, void *pData, tU32 pData_length) {
     original_AddDataToSession(pSubject_index, pData, pData_length);
 }
 
-static void(*original_AddModelGeometryToPipingSession)(tU16, int, int, tChanged_vertex *, ...) = (void(*)(tU16, int, int, tChanged_vertex *, ...))0x00428904;
+static void(__cdecl*original_AddModelGeometryToPipingSession)(tU16, int, int, tChanged_vertex *) = (void(__cdecl*)(tU16, int, int, tChanged_vertex *))0x00428904;
 CARM95_HOOK_FUNCTION(original_AddModelGeometryToPipingSession, AddModelGeometryToPipingSession)
-void AddModelGeometryToPipingSession(tU16 pCar_ID, int pModel_index, int pVertex_count, tChanged_vertex *pCoordinates) {
+void __cdecl AddModelGeometryToPipingSession(tU16 pCar_ID, int pModel_index, int pVertex_count, tChanged_vertex *pCoordinates) {
     tU32 data_size;
     LOG_TRACE("(%u, %d, %d, %p)", pCar_ID, pModel_index, pVertex_count, pCoordinates);
 
@@ -237,9 +236,9 @@ void AddModelGeometryToPipingSession(tU16 pCar_ID, int pModel_index, int pVertex
     original_AddModelGeometryToPipingSession(pCar_ID, pModel_index, pVertex_count, pCoordinates);
 }
 
-static void(*original_AddSmudgeToPipingSession)(tU16, int, int, tSmudged_vertex *, ...) = (void(*)(tU16, int, int, tSmudged_vertex *, ...))0x0042898f;
+static void(__cdecl*original_AddSmudgeToPipingSession)(tU16, int, int, tSmudged_vertex *) = (void(__cdecl*)(tU16, int, int, tSmudged_vertex *))0x0042898f;
 CARM95_HOOK_FUNCTION(original_AddSmudgeToPipingSession, AddSmudgeToPipingSession)
-void AddSmudgeToPipingSession(tU16 pCar_ID, int pModel_index, int pVertex_count, tSmudged_vertex *pCoordinates) {
+void __cdecl AddSmudgeToPipingSession(tU16 pCar_ID, int pModel_index, int pVertex_count, tSmudged_vertex *pCoordinates) {
     tU32 data_size;
     LOG_TRACE("(%u, %d, %d, %p)", pCar_ID, pModel_index, pVertex_count, pCoordinates);
 
@@ -252,9 +251,9 @@ void AddSmudgeToPipingSession(tU16 pCar_ID, int pModel_index, int pVertex_count,
     original_AddSmudgeToPipingSession(pCar_ID, pModel_index, pVertex_count, pCoordinates);
 }
 
-static void(*original_AddPedestrianToPipingSession)(int, br_matrix34 *, tU8, tU8, tS8, int, tU16, float, br_scalar, br_vector3 *, ...) = (void(*)(int, br_matrix34 *, tU8, tU8, tS8, int, tU16, float, br_scalar, br_vector3 *, ...))0x00428a1a;
+static void(__cdecl*original_AddPedestrianToPipingSession)(int, br_matrix34 *, tU8, tU8, tS8, int, tU16, float, br_scalar, br_vector3 *) = (void(__cdecl*)(int, br_matrix34 *, tU8, tU8, tS8, int, tU16, float, br_scalar, br_vector3 *))0x00428a1a;
 CARM95_HOOK_FUNCTION(original_AddPedestrianToPipingSession, AddPedestrianToPipingSession)
-void AddPedestrianToPipingSession(int pPedestrian_index, br_matrix34 *pTrans, tU8 pAction_index, tU8 pFrame_index, tS8 pHit_points, int pDone_initial, tU16 pParent_ID, float pSpin_period, br_scalar pJump_magnitude, br_vector3 *pOffset) {
+void __cdecl AddPedestrianToPipingSession(int pPedestrian_index, br_matrix34 *pTrans, tU8 pAction_index, tU8 pFrame_index, tS8 pHit_points, int pDone_initial, tU16 pParent_ID, float pSpin_period, br_scalar pJump_magnitude, br_vector3 *pOffset) {
     tPipe_pedestrian_data data;
     tU32 data_size;
     LOG_TRACE("(%d, %p, %u, %u, %d, %d, %u, %f, %f, %p)", pPedestrian_index, pTrans, pAction_index, pFrame_index, pHit_points, pDone_initial, pParent_ID, pSpin_period, pJump_magnitude, pOffset);
@@ -275,9 +274,9 @@ void AddPedestrianToPipingSession(int pPedestrian_index, br_matrix34 *pTrans, tU
     original_AddPedestrianToPipingSession(pPedestrian_index, pTrans, pAction_index, pFrame_index, pHit_points, pDone_initial, pParent_ID, pSpin_period, pJump_magnitude, pOffset);
 }
 
-static void(*original_AddSparkToPipingSession)(int, br_vector3 *, br_vector3 *, ...) = (void(*)(int, br_vector3 *, br_vector3 *, ...))0x00428af9;
+static void(__cdecl*original_AddSparkToPipingSession)(int, br_vector3 *, br_vector3 *) = (void(__cdecl*)(int, br_vector3 *, br_vector3 *))0x00428af9;
 CARM95_HOOK_FUNCTION(original_AddSparkToPipingSession, AddSparkToPipingSession)
-void AddSparkToPipingSession(int pSpark_index, br_vector3 *pPos, br_vector3 *pV) {
+void __cdecl AddSparkToPipingSession(int pSpark_index, br_vector3 *pPos, br_vector3 *pV) {
     tPipe_spark_data data;
     LOG_TRACE("(%d, %p, %p)", pSpark_index, pPos, pV);
 
@@ -289,9 +288,9 @@ void AddSparkToPipingSession(int pSpark_index, br_vector3 *pPos, br_vector3 *pV)
     original_AddSparkToPipingSession(pSpark_index, pPos, pV);
 }
 
-static void(*original_AddShrapnelToPipingSession)(int, br_vector3 *, tU16, br_material *, ...) = (void(*)(int, br_vector3 *, tU16, br_material *, ...))0x00428b4d;
+static void(__cdecl*original_AddShrapnelToPipingSession)(int, br_vector3 *, tU16, br_material *) = (void(__cdecl*)(int, br_vector3 *, tU16, br_material *))0x00428b4d;
 CARM95_HOOK_FUNCTION(original_AddShrapnelToPipingSession, AddShrapnelToPipingSession)
-void AddShrapnelToPipingSession(int pShrapnel_index, br_vector3 *pPos, tU16 pAge, br_material *pMaterial) {
+void __cdecl AddShrapnelToPipingSession(int pShrapnel_index, br_vector3 *pPos, tU16 pAge, br_material *pMaterial) {
     tPipe_shrapnel_data data;
     tU32 data_size;
     LOG_TRACE("(%d, %p, %u, %p)", pShrapnel_index, pPos, pAge, pMaterial);
@@ -306,9 +305,9 @@ void AddShrapnelToPipingSession(int pShrapnel_index, br_vector3 *pPos, tU16 pAge
     original_AddShrapnelToPipingSession(pShrapnel_index, pPos, pAge, pMaterial);
 }
 
-static void(*original_AddScreenWobbleToPipingSession)(int, int, ...) = (void(*)(int, int, ...))0x00428bb4;
+static void(__cdecl*original_AddScreenWobbleToPipingSession)(int, int) = (void(__cdecl*)(int, int))0x00428bb4;
 CARM95_HOOK_FUNCTION(original_AddScreenWobbleToPipingSession, AddScreenWobbleToPipingSession)
-void AddScreenWobbleToPipingSession(int pWobble_x, int pWobble_y) {
+void __cdecl AddScreenWobbleToPipingSession(int pWobble_x, int pWobble_y) {
     tPipe_screen_shake_data data;
     LOG_TRACE("(%d, %d)", pWobble_x, pWobble_y);
 
@@ -319,9 +318,9 @@ void AddScreenWobbleToPipingSession(int pWobble_x, int pWobble_y) {
     original_AddScreenWobbleToPipingSession(pWobble_x, pWobble_y);
 }
 
-static void(*original_AddGrooveStopToPipingSession)(int, br_matrix34 *, int, int, float, float, ...) = (void(*)(int, br_matrix34 *, int, int, float, float, ...))0x00428bde;
+static void(__cdecl*original_AddGrooveStopToPipingSession)(int, br_matrix34 *, int, int, float, float) = (void(__cdecl*)(int, br_matrix34 *, int, int, float, float))0x00428bde;
 CARM95_HOOK_FUNCTION(original_AddGrooveStopToPipingSession, AddGrooveStopToPipingSession)
-void AddGrooveStopToPipingSession(int pGroove_index, br_matrix34 *pMatrix, int pPath_interrupt, int pObject_interrupt, float pPath_resumption, float pObject_resumption) {
+void __cdecl AddGrooveStopToPipingSession(int pGroove_index, br_matrix34 *pMatrix, int pPath_interrupt, int pObject_interrupt, float pPath_resumption, float pObject_resumption) {
     tPipe_groove_stop_data data;
     LOG_TRACE("(%d, %p, %d, %d, %f, %f)", pGroove_index, pMatrix, pPath_interrupt, pObject_interrupt, pPath_resumption, pObject_resumption);
 
@@ -336,9 +335,9 @@ void AddGrooveStopToPipingSession(int pGroove_index, br_matrix34 *pMatrix, int p
     original_AddGrooveStopToPipingSession(pGroove_index, pMatrix, pPath_interrupt, pObject_interrupt, pPath_resumption, pObject_resumption);
 }
 
-static void(*original_AddNonCarToPipingSession)(int, br_actor *, ...) = (void(*)(int, br_actor *, ...))0x00428c26;
+static void(__cdecl*original_AddNonCarToPipingSession)(int, br_actor *) = (void(__cdecl*)(int, br_actor *))0x00428c26;
 CARM95_HOOK_FUNCTION(original_AddNonCarToPipingSession, AddNonCarToPipingSession)
-void AddNonCarToPipingSession(int pIndex, br_actor *pActor) {
+void __cdecl AddNonCarToPipingSession(int pIndex, br_actor *pActor) {
     tPipe_non_car_data data;
     LOG_TRACE("(%d, %p)", pIndex, pActor);
 
@@ -349,9 +348,9 @@ void AddNonCarToPipingSession(int pIndex, br_actor *pActor) {
     original_AddNonCarToPipingSession(pIndex, pActor);
 }
 
-static void(*original_AddSmokeToPipingSession)(int, tU8, br_vector3 *, br_scalar, br_scalar, ...) = (void(*)(int, tU8, br_vector3 *, br_scalar, br_scalar, ...))0x00428c5f;
+static void(__cdecl*original_AddSmokeToPipingSession)(int, tU8, br_vector3 *, br_scalar, br_scalar) = (void(__cdecl*)(int, tU8, br_vector3 *, br_scalar, br_scalar))0x00428c5f;
 CARM95_HOOK_FUNCTION(original_AddSmokeToPipingSession, AddSmokeToPipingSession)
-void AddSmokeToPipingSession(int pIndex, tU8 pType, br_vector3 *pPos, br_scalar pRadius, br_scalar pStrength) {
+void __cdecl AddSmokeToPipingSession(int pIndex, tU8 pType, br_vector3 *pPos, br_scalar pRadius, br_scalar pStrength) {
     tPipe_smoke_data data;
     LOG_TRACE("(%d, %u, %p, %f, %f)", pIndex, pType, pPos, pRadius, pStrength);
 
@@ -365,9 +364,9 @@ void AddSmokeToPipingSession(int pIndex, tU8 pType, br_vector3 *pPos, br_scalar 
     original_AddSmokeToPipingSession(pIndex, pType, pPos, pRadius, pStrength);
 }
 
-static void(*original_AddSmokeColumnToPipingSession)(int, tCar_spec *, int, int, ...) = (void(*)(int, tCar_spec *, int, int, ...))0x00428cb8;
+static void(__cdecl*original_AddSmokeColumnToPipingSession)(int, tCar_spec *, int, int) = (void(__cdecl*)(int, tCar_spec *, int, int))0x00428cb8;
 CARM95_HOOK_FUNCTION(original_AddSmokeColumnToPipingSession, AddSmokeColumnToPipingSession)
-void AddSmokeColumnToPipingSession(int pIndex, tCar_spec *pCar, int pVertex, int pColour) {
+void __cdecl AddSmokeColumnToPipingSession(int pIndex, tCar_spec *pCar, int pVertex, int pColour) {
     tPipe_smoke_column_data data;
     LOG_TRACE("(%d, %p, %d, %d)", pIndex, pCar, pVertex, pColour);
 
@@ -380,9 +379,9 @@ void AddSmokeColumnToPipingSession(int pIndex, tCar_spec *pCar, int pVertex, int
     original_AddSmokeColumnToPipingSession(pIndex, pCar, pVertex, pColour);
 }
 
-static void(*original_AddFlameToPipingSession)(int, int, br_scalar, br_scalar, br_scalar, br_scalar, ...) = (void(*)(int, int, br_scalar, br_scalar, br_scalar, br_scalar, ...))0x00428cf7;
+static void(__cdecl*original_AddFlameToPipingSession)(int, int, br_scalar, br_scalar, br_scalar, br_scalar) = (void(__cdecl*)(int, int, br_scalar, br_scalar, br_scalar, br_scalar))0x00428cf7;
 CARM95_HOOK_FUNCTION(original_AddFlameToPipingSession, AddFlameToPipingSession)
-void AddFlameToPipingSession(int pIndex, int pFrame_count, br_scalar pScale_x, br_scalar pScale_y, br_scalar pOffset_x, br_scalar pOffset_z) {
+void __cdecl AddFlameToPipingSession(int pIndex, int pFrame_count, br_scalar pScale_x, br_scalar pScale_y, br_scalar pOffset_x, br_scalar pOffset_z) {
     tPipe_flame_data data;
     LOG_TRACE("(%d, %d, %f, %f, %f, %f)", pIndex, pFrame_count, pScale_x, pScale_y, pOffset_x, pOffset_z);
 
@@ -397,9 +396,9 @@ void AddFlameToPipingSession(int pIndex, int pFrame_count, br_scalar pScale_x, b
     original_AddFlameToPipingSession(pIndex, pFrame_count, pScale_x, pScale_y, pOffset_x, pOffset_z);
 }
 
-static void(*original_AddSplashToPipingSession)(tCollision_info *, ...) = (void(*)(tCollision_info *, ...))0x00428d36;
+static void(__cdecl*original_AddSplashToPipingSession)(tCollision_info *) = (void(__cdecl*)(tCollision_info *))0x00428d36;
 CARM95_HOOK_FUNCTION(original_AddSplashToPipingSession, AddSplashToPipingSession)
-void AddSplashToPipingSession(tCollision_info *pCar) {
+void __cdecl AddSplashToPipingSession(tCollision_info *pCar) {
     tPipe_splash_data data;
     LOG_TRACE("(%p)", pCar);
 
@@ -409,9 +408,9 @@ void AddSplashToPipingSession(tCollision_info *pCar) {
     original_AddSplashToPipingSession(pCar);
 }
 
-static void(*original_AddOilSpillToPipingSession)(int, br_matrix34 *, br_scalar, br_scalar, tU32, tU32, tCar_spec *, br_vector3 *, br_pixelmap *, ...) = (void(*)(int, br_matrix34 *, br_scalar, br_scalar, tU32, tU32, tCar_spec *, br_vector3 *, br_pixelmap *, ...))0x00428da1;
+static void(__cdecl*original_AddOilSpillToPipingSession)(int, br_matrix34 *, br_scalar, br_scalar, tU32, tU32, tCar_spec *, br_vector3 *, br_pixelmap *) = (void(__cdecl*)(int, br_matrix34 *, br_scalar, br_scalar, tU32, tU32, tCar_spec *, br_vector3 *, br_pixelmap *))0x00428da1;
 CARM95_HOOK_FUNCTION(original_AddOilSpillToPipingSession, AddOilSpillToPipingSession)
-void AddOilSpillToPipingSession(int pIndex, br_matrix34 *pMat, br_scalar pFull_size, br_scalar pGrow_rate, tU32 pSpill_time, tU32 pStop_time, tCar_spec *pCar, br_vector3 *pOriginal_pos, br_pixelmap *pPixelmap) {
+void __cdecl AddOilSpillToPipingSession(int pIndex, br_matrix34 *pMat, br_scalar pFull_size, br_scalar pGrow_rate, tU32 pSpill_time, tU32 pStop_time, tCar_spec *pCar, br_vector3 *pOriginal_pos, br_pixelmap *pPixelmap) {
     tPipe_oil_spill_data data;
     LOG_TRACE("(%d, %p, %f, %f, %u, %u, %p, %p, %p)", pIndex, pMat, pFull_size, pGrow_rate, pSpill_time, pStop_time, pCar, pOriginal_pos, pPixelmap);
 
@@ -429,9 +428,9 @@ void AddOilSpillToPipingSession(int pIndex, br_matrix34 *pMat, br_scalar pFull_s
     original_AddOilSpillToPipingSession(pIndex, pMat, pFull_size, pGrow_rate, pSpill_time, pStop_time, pCar, pOriginal_pos, pPixelmap);
 }
 
-static void(*original_AddFrameFinishToPipingSession)(tU32, ...) = (void(*)(tU32, ...))0x00428e0f;
+static void(__cdecl*original_AddFrameFinishToPipingSession)(tU32) = (void(__cdecl*)(tU32))0x00428e0f;
 CARM95_HOOK_FUNCTION(original_AddFrameFinishToPipingSession, AddFrameFinishToPipingSession)
-void AddFrameFinishToPipingSession(tU32 pThe_time) {
+void __cdecl AddFrameFinishToPipingSession(tU32 pThe_time) {
     tPipe_frame_boundary_data data;
     LOG_TRACE("(%u)", pThe_time);
 
@@ -441,9 +440,9 @@ void AddFrameFinishToPipingSession(tU32 pThe_time) {
     original_AddFrameFinishToPipingSession(pThe_time);
 }
 
-static void(*original_AddCarToPipingSession)(int, br_matrix34 *, br_vector3 *, float, float, float, float, float, float, br_scalar, int, int, ...) = (void(*)(int, br_matrix34 *, br_vector3 *, float, float, float, float, float, float, br_scalar, int, int, ...))0x00428e33;
+static void(__cdecl*original_AddCarToPipingSession)(int, br_matrix34 *, br_vector3 *, float, float, float, float, float, float, br_scalar, int, int) = (void(__cdecl*)(int, br_matrix34 *, br_vector3 *, float, float, float, float, float, float, br_scalar, int, int))0x00428e33;
 CARM95_HOOK_FUNCTION(original_AddCarToPipingSession, AddCarToPipingSession)
-void AddCarToPipingSession(int pCar_ID, br_matrix34 *pCar_mat, br_vector3 *pCar_velocity, float pSpeedo_speed, float pLf_sus_position, float pRf_sus_position, float pLr_sus_position, float pRr_sus_position, float pSteering_angle, br_scalar pRevs, int pGear, int pFrame_coll_flag) {
+void __cdecl AddCarToPipingSession(int pCar_ID, br_matrix34 *pCar_mat, br_vector3 *pCar_velocity, float pSpeedo_speed, float pLf_sus_position, float pRf_sus_position, float pLr_sus_position, float pRr_sus_position, float pSteering_angle, br_scalar pRevs, int pGear, int pFrame_coll_flag) {
     tPipe_car_data data;
     LOG_TRACE("(%d, %p, %p, %f, %f, %f, %f, %f, %f, %f, %d, %d)", pCar_ID, pCar_mat, pCar_velocity, pSpeedo_speed, pLf_sus_position, pRf_sus_position, pLr_sus_position, pRr_sus_position, pSteering_angle, pRevs, pGear, pFrame_coll_flag);
 
@@ -464,9 +463,9 @@ void AddCarToPipingSession(int pCar_ID, br_matrix34 *pCar_mat, br_vector3 *pCar_
     original_AddCarToPipingSession(pCar_ID, pCar_mat, pCar_velocity, pSpeedo_speed, pLf_sus_position, pRf_sus_position, pLr_sus_position, pRr_sus_position, pSteering_angle, pRevs, pGear, pFrame_coll_flag);
 }
 
-static void(*original_AddSoundToPipingSession)(tS3_outlet_ptr, int, tS3_volume, tS3_volume, tS3_pitch, br_vector3 *, ...) = (void(*)(tS3_outlet_ptr, int, tS3_volume, tS3_volume, tS3_pitch, br_vector3 *, ...))0x00428f38;
+static void(__cdecl*original_AddSoundToPipingSession)(tS3_outlet_ptr, int, tS3_volume, tS3_volume, tS3_pitch, br_vector3 *) = (void(__cdecl*)(tS3_outlet_ptr, int, tS3_volume, tS3_volume, tS3_pitch, br_vector3 *))0x00428f38;
 CARM95_HOOK_FUNCTION(original_AddSoundToPipingSession, AddSoundToPipingSession)
-void AddSoundToPipingSession(tS3_outlet_ptr pOutlet, int pSound_index, tS3_volume pL_volume, tS3_volume pR_volume, tS3_pitch pPitch, br_vector3 *pPos) {
+void __cdecl AddSoundToPipingSession(tS3_outlet_ptr pOutlet, int pSound_index, tS3_volume pL_volume, tS3_volume pR_volume, tS3_pitch pPitch, br_vector3 *pPos) {
     tPipe_sound_data data;
     LOG_TRACE("(\"%s\", %d, %d, %d, %d, %p)", pOutlet, pSound_index, pL_volume, pR_volume, pPitch, pPos);
 
@@ -481,9 +480,9 @@ void AddSoundToPipingSession(tS3_outlet_ptr pOutlet, int pSound_index, tS3_volum
     original_AddSoundToPipingSession(pOutlet, pSound_index, pL_volume, pR_volume, pPitch, pPos);
 }
 
-static void(*original_AddDamageToPipingSession)(int, tS8 *, ...) = (void(*)(int, tS8 *, ...))0x00428fb5;
+static void(__cdecl*original_AddDamageToPipingSession)(int, tS8 *) = (void(__cdecl*)(int, tS8 *))0x00428fb5;
 CARM95_HOOK_FUNCTION(original_AddDamageToPipingSession, AddDamageToPipingSession)
-void AddDamageToPipingSession(int pCar_ID, tS8 *pDifferences) {
+void __cdecl AddDamageToPipingSession(int pCar_ID, tS8 *pDifferences) {
     tPipe_damage_data data;
     int i;
     LOG_TRACE("(%d, %p)", pCar_ID, pDifferences);
@@ -496,9 +495,9 @@ void AddDamageToPipingSession(int pCar_ID, tS8 *pDifferences) {
     original_AddDamageToPipingSession(pCar_ID, pDifferences);
 }
 
-static void(*original_AddSpecialToPipingSession)(tSpecial_type, ...) = (void(*)(tSpecial_type, ...))0x00429003;
+static void(__cdecl*original_AddSpecialToPipingSession)(tSpecial_type) = (void(__cdecl*)(tSpecial_type))0x00429003;
 CARM95_HOOK_FUNCTION(original_AddSpecialToPipingSession, AddSpecialToPipingSession)
-void AddSpecialToPipingSession(tSpecial_type pType) {
+void __cdecl AddSpecialToPipingSession(tSpecial_type pType) {
     tPipe_special_data data;
     LOG_TRACE("(%d)", pType);
 
@@ -508,9 +507,9 @@ void AddSpecialToPipingSession(tSpecial_type pType) {
     original_AddSpecialToPipingSession(pType);
 }
 
-static void(*original_AddPedGibToPipingSession)(int, br_matrix34 *, int, int, int, ...) = (void(*)(int, br_matrix34 *, int, int, int, ...))0x00429023;
+static void(__cdecl*original_AddPedGibToPipingSession)(int, br_matrix34 *, int, int, int) = (void(__cdecl*)(int, br_matrix34 *, int, int, int))0x00429023;
 CARM95_HOOK_FUNCTION(original_AddPedGibToPipingSession, AddPedGibToPipingSession)
-void AddPedGibToPipingSession(int pIndex, br_matrix34 *pTrans, int pSize, int pGib_index, int pPed_index) {
+void __cdecl AddPedGibToPipingSession(int pIndex, br_matrix34 *pTrans, int pSize, int pGib_index, int pPed_index) {
     tPipe_ped_gib_data data;
     LOG_TRACE("(%d, %p, %d, %d, %d)", pIndex, pTrans, pSize, pGib_index, pPed_index);
 
@@ -524,9 +523,9 @@ void AddPedGibToPipingSession(int pIndex, br_matrix34 *pTrans, int pSize, int pG
     original_AddPedGibToPipingSession(pIndex, pTrans, pSize, pGib_index, pPed_index);
 }
 
-static void(*original_AddCarIncidentToPipingSession)(float, tCar_spec *, br_vector3 *, ...) = (void(*)(float, tCar_spec *, br_vector3 *, ...))0x00429063;
+static void(__cdecl*original_AddCarIncidentToPipingSession)(float, tCar_spec *, br_vector3 *) = (void(__cdecl*)(float, tCar_spec *, br_vector3 *))0x00429063;
 CARM95_HOOK_FUNCTION(original_AddCarIncidentToPipingSession, AddCarIncidentToPipingSession)
-void AddCarIncidentToPipingSession(float pSeverity, tCar_spec *pCar, br_vector3 *pImpact_point) {
+void __cdecl AddCarIncidentToPipingSession(float pSeverity, tCar_spec *pCar, br_vector3 *pImpact_point) {
     tPipe_incident_data data;
     LOG_TRACE("(%f, %p, %p)", pSeverity, pCar, pImpact_point);
 
@@ -538,9 +537,9 @@ void AddCarIncidentToPipingSession(float pSeverity, tCar_spec *pCar, br_vector3 
     original_AddCarIncidentToPipingSession(pSeverity, pCar, pImpact_point);
 }
 
-static void(*original_AddPedIncidentToPipingSession)(int, br_actor *, ...) = (void(*)(int, br_actor *, ...))0x004290ab;
+static void(__cdecl*original_AddPedIncidentToPipingSession)(int, br_actor *) = (void(__cdecl*)(int, br_actor *))0x004290ab;
 CARM95_HOOK_FUNCTION(original_AddPedIncidentToPipingSession, AddPedIncidentToPipingSession)
-void AddPedIncidentToPipingSession(int pPed_index, br_actor *pActor) {
+void __cdecl AddPedIncidentToPipingSession(int pPed_index, br_actor *pActor) {
     tPipe_incident_data data;
     LOG_TRACE("(%d, %p)", pPed_index, pActor);
 
@@ -551,9 +550,9 @@ void AddPedIncidentToPipingSession(int pPed_index, br_actor *pActor) {
     original_AddPedIncidentToPipingSession(pPed_index, pActor);
 }
 
-static void(*original_AddWallIncidentToPipingSession)(float, br_vector3 *, ...) = (void(*)(float, br_vector3 *, ...))0x004290dd;
+static void(__cdecl*original_AddWallIncidentToPipingSession)(float, br_vector3 *) = (void(__cdecl*)(float, br_vector3 *))0x004290dd;
 CARM95_HOOK_FUNCTION(original_AddWallIncidentToPipingSession, AddWallIncidentToPipingSession)
-void AddWallIncidentToPipingSession(float pSeverity, br_vector3 *pImpact_point) {
+void __cdecl AddWallIncidentToPipingSession(float pSeverity, br_vector3 *pImpact_point) {
     tPipe_incident_data data;
     LOG_TRACE("(%f, %p)", pSeverity, pImpact_point);
 
@@ -564,9 +563,9 @@ void AddWallIncidentToPipingSession(float pSeverity, br_vector3 *pImpact_point) 
     original_AddWallIncidentToPipingSession(pSeverity, pImpact_point);
 }
 
-static void(*original_AddProxRayToPipingSession)(int, tCar_spec *, tU16, tU32, ...) = (void(*)(int, tCar_spec *, tU16, tU32, ...))0x00429117;
+static void(__cdecl*original_AddProxRayToPipingSession)(int, tCar_spec *, tU16, tU32) = (void(__cdecl*)(int, tCar_spec *, tU16, tU32))0x00429117;
 CARM95_HOOK_FUNCTION(original_AddProxRayToPipingSession, AddProxRayToPipingSession)
-void AddProxRayToPipingSession(int pRay_index, tCar_spec *pCar, tU16 pPed_index, tU32 pTime) {
+void __cdecl AddProxRayToPipingSession(int pRay_index, tCar_spec *pCar, tU16 pPed_index, tU32 pTime) {
     tPipe_prox_ray_data data;
     LOG_TRACE("(%d, %p, %u, %u)", pRay_index, pCar, pPed_index, pTime);
 
@@ -579,9 +578,9 @@ void AddProxRayToPipingSession(int pRay_index, tCar_spec *pCar, tU16 pPed_index,
     original_AddProxRayToPipingSession(pRay_index, pCar, pPed_index, pTime);
 }
 
-static void(*original_AddSkidAdjustmentToPipingSession)(int, br_matrix34 *, int, ...) = (void(*)(int, br_matrix34 *, int, ...))0x00429153;
+static void(__cdecl*original_AddSkidAdjustmentToPipingSession)(int, br_matrix34 *, int) = (void(__cdecl*)(int, br_matrix34 *, int))0x00429153;
 CARM95_HOOK_FUNCTION(original_AddSkidAdjustmentToPipingSession, AddSkidAdjustmentToPipingSession)
-void AddSkidAdjustmentToPipingSession(int pSkid_num, br_matrix34 *pMatrix, int pMaterial_index) {
+void __cdecl AddSkidAdjustmentToPipingSession(int pSkid_num, br_matrix34 *pMatrix, int pMaterial_index) {
     tPipe_skid_adjustment adjustment;
     LOG_TRACE("(%d, %p, %d)", pSkid_num, pMatrix, pMaterial_index);
 
@@ -593,9 +592,9 @@ void AddSkidAdjustmentToPipingSession(int pSkid_num, br_matrix34 *pMatrix, int p
     original_AddSkidAdjustmentToPipingSession(pSkid_num, pMatrix, pMaterial_index);
 }
 
-static void(*original_PipeSingleModelGeometry)(tU16, int, int, tChanged_vertex *, ...) = (void(*)(tU16, int, int, tChanged_vertex *, ...))0x00429186;
+static void(__cdecl*original_PipeSingleModelGeometry)(tU16, int, int, tChanged_vertex *) = (void(__cdecl*)(tU16, int, int, tChanged_vertex *))0x00429186;
 CARM95_HOOK_FUNCTION(original_PipeSingleModelGeometry, PipeSingleModelGeometry)
-void PipeSingleModelGeometry(tU16 pCar_ID, int pModel_index, int pVertex_count, tChanged_vertex *pCoordinates) {
+void __cdecl PipeSingleModelGeometry(tU16 pCar_ID, int pModel_index, int pVertex_count, tChanged_vertex *pCoordinates) {
     LOG_TRACE("(%u, %d, %d, %p)", pCar_ID, pModel_index, pVertex_count, pCoordinates);
 
     (void)pCar_ID;
@@ -606,9 +605,9 @@ void PipeSingleModelGeometry(tU16 pCar_ID, int pModel_index, int pVertex_count, 
     original_PipeSingleModelGeometry(pCar_ID, pModel_index, pVertex_count, pCoordinates);
 }
 
-static void(*original_PipeSinglePedestrian)(int, br_matrix34 *, tU8, tU8, tS8, int, tU16, float, br_scalar, br_vector3 *, ...) = (void(*)(int, br_matrix34 *, tU8, tU8, tS8, int, tU16, float, br_scalar, br_vector3 *, ...))0x004291b8;
+static void(__cdecl*original_PipeSinglePedestrian)(int, br_matrix34 *, tU8, tU8, tS8, int, tU16, float, br_scalar, br_vector3 *) = (void(__cdecl*)(int, br_matrix34 *, tU8, tU8, tS8, int, tU16, float, br_scalar, br_vector3 *))0x004291b8;
 CARM95_HOOK_FUNCTION(original_PipeSinglePedestrian, PipeSinglePedestrian)
-void PipeSinglePedestrian(int pPedestrian_index, br_matrix34 *pTrans, tU8 pAction_index, tU8 pFrame_index, tS8 pHit_points, int pDone_initial, tU16 pParent_ID, float pSpin_period, br_scalar pJump_magnitude, br_vector3 *pOffset) {
+void __cdecl PipeSinglePedestrian(int pPedestrian_index, br_matrix34 *pTrans, tU8 pAction_index, tU8 pFrame_index, tS8 pHit_points, int pDone_initial, tU16 pParent_ID, float pSpin_period, br_scalar pJump_magnitude, br_vector3 *pOffset) {
     LOG_TRACE("(%d, %p, %u, %u, %d, %d, %u, %f, %f, %p)", pPedestrian_index, pTrans, pAction_index, pFrame_index, pHit_points, pDone_initial, pParent_ID, pSpin_period, pJump_magnitude, pOffset);
 
     (void)pPedestrian_index;
@@ -625,9 +624,9 @@ void PipeSinglePedestrian(int pPedestrian_index, br_matrix34 *pTrans, tU8 pActio
     original_PipeSinglePedestrian(pPedestrian_index, pTrans, pAction_index, pFrame_index, pHit_points, pDone_initial, pParent_ID, pSpin_period, pJump_magnitude, pOffset);
 }
 
-static void(*original_PipeSingleCar)(int, br_matrix34 *, br_vector3 *, float, float, float, float, float, float, br_scalar, int, int, ...) = (void(*)(int, br_matrix34 *, br_vector3 *, float, float, float, float, float, float, br_scalar, int, int, ...))0x00429202;
+static void(__cdecl*original_PipeSingleCar)(int, br_matrix34 *, br_vector3 *, float, float, float, float, float, float, br_scalar, int, int) = (void(__cdecl*)(int, br_matrix34 *, br_vector3 *, float, float, float, float, float, float, br_scalar, int, int))0x00429202;
 CARM95_HOOK_FUNCTION(original_PipeSingleCar, PipeSingleCar)
-void PipeSingleCar(int pCar_ID, br_matrix34 *pCar_mat, br_vector3 *pCar_velocity, float pSpeedo_speed, float pLf_sus_position, float pRf_sus_position, float pLr_sus_position, float pRr_sus_position, float pSteering_angle, br_scalar pRevs, int pGear, int pFrame_coll_flag) {
+void __cdecl PipeSingleCar(int pCar_ID, br_matrix34 *pCar_mat, br_vector3 *pCar_velocity, float pSpeedo_speed, float pLf_sus_position, float pRf_sus_position, float pLr_sus_position, float pRr_sus_position, float pSteering_angle, br_scalar pRevs, int pGear, int pFrame_coll_flag) {
     LOG_TRACE("(%d, %p, %p, %f, %f, %f, %f, %f, %f, %f, %d, %d)", pCar_ID, pCar_mat, pCar_velocity, pSpeedo_speed, pLf_sus_position, pRf_sus_position, pLr_sus_position, pRr_sus_position, pSteering_angle, pRevs, pGear, pFrame_coll_flag);
 
     (void)pCar_ID;
@@ -646,9 +645,9 @@ void PipeSingleCar(int pCar_ID, br_matrix34 *pCar_mat, br_vector3 *pCar_velocity
     original_PipeSingleCar(pCar_ID, pCar_mat, pCar_velocity, pSpeedo_speed, pLf_sus_position, pRf_sus_position, pLr_sus_position, pRr_sus_position, pSteering_angle, pRevs, pGear, pFrame_coll_flag);
 }
 
-static void(*original_PipeSingleSound)(tS3_outlet_ptr, int, tS3_volume, tS3_volume, tS3_pitch, br_vector3 *, ...) = (void(*)(tS3_outlet_ptr, int, tS3_volume, tS3_volume, tS3_pitch, br_vector3 *, ...))0x00429254;
+static void(__cdecl*original_PipeSingleSound)(tS3_outlet_ptr, int, tS3_volume, tS3_volume, tS3_pitch, br_vector3 *) = (void(__cdecl*)(tS3_outlet_ptr, int, tS3_volume, tS3_volume, tS3_pitch, br_vector3 *))0x00429254;
 CARM95_HOOK_FUNCTION(original_PipeSingleSound, PipeSingleSound)
-void PipeSingleSound(tS3_outlet_ptr pOutlet, int pSound_index, tS3_volume pL_volume, tS3_volume pR_volume, tS3_pitch pPitch, br_vector3 *pPos) {
+void __cdecl PipeSingleSound(tS3_outlet_ptr pOutlet, int pSound_index, tS3_volume pL_volume, tS3_volume pR_volume, tS3_pitch pPitch, br_vector3 *pPos) {
     LOG_TRACE("(\"%s\", %d, %d, %d, %d, %p)", pOutlet, pSound_index, pL_volume, pR_volume, pPitch, pPos);
 
     (void)pOutlet;
@@ -661,9 +660,9 @@ void PipeSingleSound(tS3_outlet_ptr pOutlet, int pSound_index, tS3_volume pL_vol
     original_PipeSingleSound(pOutlet, pSound_index, pL_volume, pR_volume, pPitch, pPos);
 }
 
-static void(*original_PipeSingleOilSpill)(int, br_matrix34 *, br_scalar, br_scalar, tU32, tU32, tCar_spec *, br_vector3 *, br_pixelmap *, ...) = (void(*)(int, br_matrix34 *, br_scalar, br_scalar, tU32, tU32, tCar_spec *, br_vector3 *, br_pixelmap *, ...))0x004292a8;
+static void(__cdecl*original_PipeSingleOilSpill)(int, br_matrix34 *, br_scalar, br_scalar, tU32, tU32, tCar_spec *, br_vector3 *, br_pixelmap *) = (void(__cdecl*)(int, br_matrix34 *, br_scalar, br_scalar, tU32, tU32, tCar_spec *, br_vector3 *, br_pixelmap *))0x004292a8;
 CARM95_HOOK_FUNCTION(original_PipeSingleOilSpill, PipeSingleOilSpill)
-void PipeSingleOilSpill(int pIndex, br_matrix34 *pMat, br_scalar pFull_size, br_scalar pGrow_rate, tU32 pSpill_time, tU32 pStop_time, tCar_spec *pCar, br_vector3 *pOriginal_pos, br_pixelmap *pPixelmap) {
+void __cdecl PipeSingleOilSpill(int pIndex, br_matrix34 *pMat, br_scalar pFull_size, br_scalar pGrow_rate, tU32 pSpill_time, tU32 pStop_time, tCar_spec *pCar, br_vector3 *pOriginal_pos, br_pixelmap *pPixelmap) {
     LOG_TRACE("(%d, %p, %f, %f, %u, %u, %p, %p, %p)", pIndex, pMat, pFull_size, pGrow_rate, pSpill_time, pStop_time, pCar, pOriginal_pos, pPixelmap);
 
     (void)pIndex;
@@ -679,9 +678,9 @@ void PipeSingleOilSpill(int pIndex, br_matrix34 *pMat, br_scalar pFull_size, br_
     original_PipeSingleOilSpill(pIndex, pMat, pFull_size, pGrow_rate, pSpill_time, pStop_time, pCar, pOriginal_pos, pPixelmap);
 }
 
-static void(*original_PipeSingleDamage)(int, tS8 *, ...) = (void(*)(int, tS8 *, ...))0x004292ee;
+static void(__cdecl*original_PipeSingleDamage)(int, tS8 *) = (void(__cdecl*)(int, tS8 *))0x004292ee;
 CARM95_HOOK_FUNCTION(original_PipeSingleDamage, PipeSingleDamage)
-void PipeSingleDamage(int pCar_ID, tS8 *pDifferences) {
+void __cdecl PipeSingleDamage(int pCar_ID, tS8 *pDifferences) {
     LOG_TRACE("(%d, %p)", pCar_ID, pDifferences);
 
     (void)pCar_ID;
@@ -690,9 +689,9 @@ void PipeSingleDamage(int pCar_ID, tS8 *pDifferences) {
     original_PipeSingleDamage(pCar_ID, pDifferences);
 }
 
-static void(*original_PipeSingleSpecial)(tSpecial_type, ...) = (void(*)(tSpecial_type, ...))0x00429318;
+static void(__cdecl*original_PipeSingleSpecial)(tSpecial_type) = (void(__cdecl*)(tSpecial_type))0x00429318;
 CARM95_HOOK_FUNCTION(original_PipeSingleSpecial, PipeSingleSpecial)
-void PipeSingleSpecial(tSpecial_type pType) {
+void __cdecl PipeSingleSpecial(tSpecial_type pType) {
     LOG_TRACE("(%d)", pType);
 
     (void)pType;
@@ -700,9 +699,9 @@ void PipeSingleSpecial(tSpecial_type pType) {
     original_PipeSingleSpecial(pType);
 }
 
-static void(*original_PipeSinglePedGib)(int, br_matrix34 *, int, int, int, ...) = (void(*)(int, br_matrix34 *, int, int, int, ...))0x0042933e;
+static void(__cdecl*original_PipeSinglePedGib)(int, br_matrix34 *, int, int, int) = (void(__cdecl*)(int, br_matrix34 *, int, int, int))0x0042933e;
 CARM95_HOOK_FUNCTION(original_PipeSinglePedGib, PipeSinglePedGib)
-void PipeSinglePedGib(int pIndex, br_matrix34 *pTrans, int pSize, int pGib_index, int pPed_index) {
+void __cdecl PipeSinglePedGib(int pIndex, br_matrix34 *pTrans, int pSize, int pGib_index, int pPed_index) {
     LOG_TRACE("(%d, %p, %d, %d, %d)", pIndex, pTrans, pSize, pGib_index, pPed_index);
 
     (void)pIndex;
@@ -714,9 +713,9 @@ void PipeSinglePedGib(int pIndex, br_matrix34 *pTrans, int pSize, int pGib_index
     original_PipeSinglePedGib(pIndex, pTrans, pSize, pGib_index, pPed_index);
 }
 
-static void(*original_PipeSingleCarIncident)(float, tCar_spec *, br_vector3 *, ...) = (void(*)(float, tCar_spec *, br_vector3 *, ...))0x00429374;
+static void(__cdecl*original_PipeSingleCarIncident)(float, tCar_spec *, br_vector3 *) = (void(__cdecl*)(float, tCar_spec *, br_vector3 *))0x00429374;
 CARM95_HOOK_FUNCTION(original_PipeSingleCarIncident, PipeSingleCarIncident)
-void PipeSingleCarIncident(float pSeverity, tCar_spec *pCar, br_vector3 *pImpact_point) {
+void __cdecl PipeSingleCarIncident(float pSeverity, tCar_spec *pCar, br_vector3 *pImpact_point) {
     LOG_TRACE("(%f, %p, %p)", pSeverity, pCar, pImpact_point);
 
     (void)pSeverity;
@@ -726,9 +725,9 @@ void PipeSingleCarIncident(float pSeverity, tCar_spec *pCar, br_vector3 *pImpact
     original_PipeSingleCarIncident(pSeverity, pCar, pImpact_point);
 }
 
-static void(*original_PipeSinglePedIncident)(int, br_actor *, ...) = (void(*)(int, br_actor *, ...))0x004293a2;
+static void(__cdecl*original_PipeSinglePedIncident)(int, br_actor *) = (void(__cdecl*)(int, br_actor *))0x004293a2;
 CARM95_HOOK_FUNCTION(original_PipeSinglePedIncident, PipeSinglePedIncident)
-void PipeSinglePedIncident(int pPed_index, br_actor *pActor) {
+void __cdecl PipeSinglePedIncident(int pPed_index, br_actor *pActor) {
     LOG_TRACE("(%d, %p)", pPed_index, pActor);
 
     (void)pPed_index;
@@ -737,9 +736,9 @@ void PipeSinglePedIncident(int pPed_index, br_actor *pActor) {
     original_PipeSinglePedIncident(pPed_index, pActor);
 }
 
-static void(*original_PipeSingleWallIncident)(float, br_vector3 *, ...) = (void(*)(float, br_vector3 *, ...))0x004293d6;
+static void(__cdecl*original_PipeSingleWallIncident)(float, br_vector3 *) = (void(__cdecl*)(float, br_vector3 *))0x004293d6;
 CARM95_HOOK_FUNCTION(original_PipeSingleWallIncident, PipeSingleWallIncident)
-void PipeSingleWallIncident(float pSeverity, br_vector3 *pImpact_point) {
+void __cdecl PipeSingleWallIncident(float pSeverity, br_vector3 *pImpact_point) {
     LOG_TRACE("(%f, %p)", pSeverity, pImpact_point);
 
     (void)pSeverity;
@@ -748,9 +747,9 @@ void PipeSingleWallIncident(float pSeverity, br_vector3 *pImpact_point) {
     original_PipeSingleWallIncident(pSeverity, pImpact_point);
 }
 
-static void(*original_PipeSingleScreenShake)(int, int, ...) = (void(*)(int, int, ...))0x00429415;
+static void(__cdecl*original_PipeSingleScreenShake)(int, int) = (void(__cdecl*)(int, int))0x00429415;
 CARM95_HOOK_FUNCTION(original_PipeSingleScreenShake, PipeSingleScreenShake)
-void PipeSingleScreenShake(int pWobble_x, int pWobble_y) {
+void __cdecl PipeSingleScreenShake(int pWobble_x, int pWobble_y) {
     LOG_TRACE("(%d, %d)", pWobble_x, pWobble_y);
 
     (void)pWobble_x;
@@ -759,9 +758,9 @@ void PipeSingleScreenShake(int pWobble_x, int pWobble_y) {
     original_PipeSingleScreenShake(pWobble_x, pWobble_y);
 }
 
-static void(*original_PipeSingleGrooveStop)(int, br_matrix34 *, int, int, float, float, ...) = (void(*)(int, br_matrix34 *, int, int, float, float, ...))0x0042943f;
+static void(__cdecl*original_PipeSingleGrooveStop)(int, br_matrix34 *, int, int, float, float) = (void(__cdecl*)(int, br_matrix34 *, int, int, float, float))0x0042943f;
 CARM95_HOOK_FUNCTION(original_PipeSingleGrooveStop, PipeSingleGrooveStop)
-void PipeSingleGrooveStop(int pGroove_index, br_matrix34 *pMatrix, int pPath_interrupt, int pObject_interrupt, float pPath_resumption, float pObject_resumption) {
+void __cdecl PipeSingleGrooveStop(int pGroove_index, br_matrix34 *pMatrix, int pPath_interrupt, int pObject_interrupt, float pPath_resumption, float pObject_resumption) {
     LOG_TRACE("(%d, %p, %d, %d, %f, %f)", pGroove_index, pMatrix, pPath_interrupt, pObject_interrupt, pPath_resumption, pObject_resumption);
 
     (void)pGroove_index;
@@ -774,18 +773,18 @@ void PipeSingleGrooveStop(int pGroove_index, br_matrix34 *pMatrix, int pPath_int
     original_PipeSingleGrooveStop(pGroove_index, pMatrix, pPath_interrupt, pObject_interrupt, pPath_resumption, pObject_resumption);
 }
 
-static void(*original_PipeFrameFinish)() = (void(*)())0x00429479;
+static void(__cdecl*original_PipeFrameFinish)() = (void(__cdecl*)())0x00429479;
 CARM95_HOOK_FUNCTION(original_PipeFrameFinish, PipeFrameFinish)
-void PipeFrameFinish() {
+void __cdecl PipeFrameFinish() {
     LOG_TRACE("()");
 
 
     original_PipeFrameFinish();
 }
 
-static void(*original_PipingFrameReset)() = (void(*)())0x004294e4;
+static void(__cdecl*original_PipingFrameReset)() = (void(__cdecl*)())0x004294e4;
 CARM95_HOOK_FUNCTION(original_PipingFrameReset, PipingFrameReset)
-void PipingFrameReset() {
+void __cdecl PipingFrameReset() {
     int i;
     LOG_TRACE("()");
 
@@ -794,9 +793,9 @@ void PipingFrameReset() {
     original_PipingFrameReset();
 }
 
-static void(*original_PipeSingleSkidAdjustment)(int, br_matrix34 *, int, ...) = (void(*)(int, br_matrix34 *, int, ...))0x0042952b;
+static void(__cdecl*original_PipeSingleSkidAdjustment)(int, br_matrix34 *, int) = (void(__cdecl*)(int, br_matrix34 *, int))0x0042952b;
 CARM95_HOOK_FUNCTION(original_PipeSingleSkidAdjustment, PipeSingleSkidAdjustment)
-void PipeSingleSkidAdjustment(int pSkid_num, br_matrix34 *pMatrix, int pMaterial_index) {
+void __cdecl PipeSingleSkidAdjustment(int pSkid_num, br_matrix34 *pMatrix, int pMaterial_index) {
     LOG_TRACE("(%d, %p, %d)", pSkid_num, pMatrix, pMaterial_index);
 
     (void)pSkid_num;
@@ -806,36 +805,36 @@ void PipeSingleSkidAdjustment(int pSkid_num, br_matrix34 *pMatrix, int pMaterial
     original_PipeSingleSkidAdjustment(pSkid_num, pMatrix, pMaterial_index);
 }
 
-static void(*original_ResetPiping)() = (void(*)())0x00429559;
+static void(__cdecl*original_ResetPiping)() = (void(__cdecl*)())0x00429559;
 CARM95_HOOK_FUNCTION(original_ResetPiping, ResetPiping)
-void ResetPiping() {
+void __cdecl ResetPiping() {
     LOG_TRACE("()");
 
 
     original_ResetPiping();
 }
 
-static void(*original_InitialisePiping)() = (void(*)())0x00429596;
+static void(__cdecl*original_InitialisePiping)() = (void(__cdecl*)())0x00429596;
 CARM95_HOOK_FUNCTION(original_InitialisePiping, InitialisePiping)
-void InitialisePiping() {
+void __cdecl InitialisePiping() {
     LOG_TRACE("()");
 
 
     original_InitialisePiping();
 }
 
-static void(*original_DisposePiping)() = (void(*)())0x0042966f;
+static void(__cdecl*original_DisposePiping)() = (void(__cdecl*)())0x0042966f;
 CARM95_HOOK_FUNCTION(original_DisposePiping, DisposePiping)
-void DisposePiping() {
+void __cdecl DisposePiping() {
     LOG_TRACE("()");
 
 
     original_DisposePiping();
 }
 
-static void(*original_InitLastDamageArrayEtc)() = (void(*)())0x004296e9;
+static void(__cdecl*original_InitLastDamageArrayEtc)() = (void(__cdecl*)())0x004296e9;
 CARM95_HOOK_FUNCTION(original_InitLastDamageArrayEtc, InitLastDamageArrayEtc)
-void InitLastDamageArrayEtc() {
+void __cdecl InitLastDamageArrayEtc() {
     int i;
     int j;
     int cat;
@@ -852,9 +851,9 @@ void InitLastDamageArrayEtc() {
     original_InitLastDamageArrayEtc();
 }
 
-static void(*original_ResetCars)() = (void(*)())0x004297d2;
+static void(__cdecl*original_ResetCars)() = (void(__cdecl*)())0x004297d2;
 CARM95_HOOK_FUNCTION(original_ResetCars, ResetCars)
-void ResetCars() {
+void __cdecl ResetCars() {
     tCar_spec *car;
     int cat;
     int i;
@@ -869,9 +868,9 @@ void ResetCars() {
     original_ResetCars();
 }
 
-static void(*original_PipeCarPositions)() = (void(*)())0x0042987f;
+static void(__cdecl*original_PipeCarPositions)() = (void(__cdecl*)())0x0042987f;
 CARM95_HOOK_FUNCTION(original_PipeCarPositions, PipeCarPositions)
-void PipeCarPositions() {
+void __cdecl PipeCarPositions() {
     tCar_spec *car;
     int cat;
     int i;
@@ -894,36 +893,36 @@ void PipeCarPositions() {
     original_PipeCarPositions();
 }
 
-static void(*original_ResetPipePlayToEnd)() = (void(*)())0x00429b22;
+static void(__cdecl*original_ResetPipePlayToEnd)() = (void(__cdecl*)())0x00429b22;
 CARM95_HOOK_FUNCTION(original_ResetPipePlayToEnd, ResetPipePlayToEnd)
-void ResetPipePlayToEnd() {
+void __cdecl ResetPipePlayToEnd() {
     LOG_TRACE("()");
 
 
     original_ResetPipePlayToEnd();
 }
 
-static void(*original_ResetPipePlayToStart)() = (void(*)())0x00429b37;
+static void(__cdecl*original_ResetPipePlayToStart)() = (void(__cdecl*)())0x00429b37;
 CARM95_HOOK_FUNCTION(original_ResetPipePlayToStart, ResetPipePlayToStart)
-void ResetPipePlayToStart() {
+void __cdecl ResetPipePlayToStart() {
     LOG_TRACE("()");
 
 
     original_ResetPipePlayToStart();
 }
 
-static tU8 *(*original_GetPipePlayPtr)() = (tU8 *(*)())0x00429b4c;
+static tU8 *(__cdecl*original_GetPipePlayPtr)() = (tU8 *(__cdecl*)())0x00429b4c;
 CARM95_HOOK_FUNCTION(original_GetPipePlayPtr, GetPipePlayPtr)
-tU8* GetPipePlayPtr() {
+tU8* __cdecl GetPipePlayPtr() {
     LOG_TRACE("()");
 
 
     return original_GetPipePlayPtr();
 }
 
-static void(*original_SetPipePlayPtr)(tU8 *, ...) = (void(*)(tU8 *, ...))0x00429b61;
+static void(__cdecl*original_SetPipePlayPtr)(tU8 *) = (void(__cdecl*)(tU8 *))0x00429b61;
 CARM95_HOOK_FUNCTION(original_SetPipePlayPtr, SetPipePlayPtr)
-void SetPipePlayPtr(tU8 *pPtr) {
+void __cdecl SetPipePlayPtr(tU8 *pPtr) {
     LOG_TRACE("(%p)", pPtr);
 
     (void)pPtr;
@@ -931,9 +930,9 @@ void SetPipePlayPtr(tU8 *pPtr) {
     original_SetPipePlayPtr(pPtr);
 }
 
-static void(*original_AdvanceChunkPtr)(tPipe_chunk **, tChunk_subject_index, ...) = (void(*)(tPipe_chunk **, tChunk_subject_index, ...))0x00429fcd;
+static void(__cdecl*original_AdvanceChunkPtr)(tPipe_chunk **, tChunk_subject_index) = (void(__cdecl*)(tPipe_chunk **, tChunk_subject_index))0x00429fcd;
 CARM95_HOOK_FUNCTION(original_AdvanceChunkPtr, AdvanceChunkPtr)
-void AdvanceChunkPtr(tPipe_chunk **pChunk, tChunk_subject_index pType) {
+void __cdecl AdvanceChunkPtr(tPipe_chunk **pChunk, tChunk_subject_index pType) {
     tPipe_chunk *old_chunk;
     LOG_TRACE("(%p, %u)", pChunk, pType);
 
@@ -944,9 +943,9 @@ void AdvanceChunkPtr(tPipe_chunk **pChunk, tChunk_subject_index pType) {
     original_AdvanceChunkPtr(pChunk, pType);
 }
 
-static void(*original_ApplyModelGeometry)(tPipe_chunk **, ...) = (void(*)(tPipe_chunk **, ...))0x0042a1fd;
+static void(__cdecl*original_ApplyModelGeometry)(tPipe_chunk **) = (void(__cdecl*)(tPipe_chunk **))0x0042a1fd;
 CARM95_HOOK_FUNCTION(original_ApplyModelGeometry, ApplyModelGeometry)
-void ApplyModelGeometry(tPipe_chunk **pChunk) {
+void __cdecl ApplyModelGeometry(tPipe_chunk **pChunk) {
     int i;
     br_model *model_ptr;
     tCar_spec *car;
@@ -981,9 +980,9 @@ void DoSmudge(tPipe_chunk **pChunk, int pDir) {
     NOT_IMPLEMENTED();
 }
 
-static void(*original_ApplySmudge)(tPipe_chunk **, ...) = (void(*)(tPipe_chunk **, ...))0x0042a3b1;
+static void(__cdecl*original_ApplySmudge)(tPipe_chunk **) = (void(__cdecl*)(tPipe_chunk **))0x0042a3b1;
 CARM95_HOOK_FUNCTION(original_ApplySmudge, ApplySmudge)
-void ApplySmudge(tPipe_chunk **pChunk) {
+void __cdecl ApplySmudge(tPipe_chunk **pChunk) {
     LOG_TRACE("(%p)", pChunk);
 
     (void)pChunk;
@@ -991,9 +990,9 @@ void ApplySmudge(tPipe_chunk **pChunk) {
     original_ApplySmudge(pChunk);
 }
 
-static void(*original_ApplyPedestrian)(tPipe_chunk **, ...) = (void(*)(tPipe_chunk **, ...))0x0042a3d8;
+static void(__cdecl*original_ApplyPedestrian)(tPipe_chunk **) = (void(__cdecl*)(tPipe_chunk **))0x0042a3d8;
 CARM95_HOOK_FUNCTION(original_ApplyPedestrian, ApplyPedestrian)
-void ApplyPedestrian(tPipe_chunk **pChunk) {
+void __cdecl ApplyPedestrian(tPipe_chunk **pChunk) {
     LOG_TRACE("(%p)", pChunk);
 
     (void)pChunk;
@@ -1001,9 +1000,9 @@ void ApplyPedestrian(tPipe_chunk **pChunk) {
     original_ApplyPedestrian(pChunk);
 }
 
-static void(*original_ApplySpark)(tPipe_chunk **, ...) = (void(*)(tPipe_chunk **, ...))0x0042a472;
+static void(__cdecl*original_ApplySpark)(tPipe_chunk **) = (void(__cdecl*)(tPipe_chunk **))0x0042a472;
 CARM95_HOOK_FUNCTION(original_ApplySpark, ApplySpark)
-void ApplySpark(tPipe_chunk **pChunk) {
+void __cdecl ApplySpark(tPipe_chunk **pChunk) {
     LOG_TRACE("(%p)", pChunk);
 
     (void)pChunk;
@@ -1011,9 +1010,9 @@ void ApplySpark(tPipe_chunk **pChunk) {
     original_ApplySpark(pChunk);
 }
 
-static void(*original_ApplyShrapnel)(tPipe_chunk **, ...) = (void(*)(tPipe_chunk **, ...))0x0042a4b0;
+static void(__cdecl*original_ApplyShrapnel)(tPipe_chunk **) = (void(__cdecl*)(tPipe_chunk **))0x0042a4b0;
 CARM95_HOOK_FUNCTION(original_ApplyShrapnel, ApplyShrapnel)
-void ApplyShrapnel(tPipe_chunk **pChunk) {
+void __cdecl ApplyShrapnel(tPipe_chunk **pChunk) {
     LOG_TRACE("(%p)", pChunk);
 
     (void)pChunk;
@@ -1021,9 +1020,9 @@ void ApplyShrapnel(tPipe_chunk **pChunk) {
     original_ApplyShrapnel(pChunk);
 }
 
-static void(*original_ApplyScreenWobble)(tPipe_chunk **, ...) = (void(*)(tPipe_chunk **, ...))0x0042a4f8;
+static void(__cdecl*original_ApplyScreenWobble)(tPipe_chunk **) = (void(__cdecl*)(tPipe_chunk **))0x0042a4f8;
 CARM95_HOOK_FUNCTION(original_ApplyScreenWobble, ApplyScreenWobble)
-void ApplyScreenWobble(tPipe_chunk **pChunk) {
+void __cdecl ApplyScreenWobble(tPipe_chunk **pChunk) {
     LOG_TRACE("(%p)", pChunk);
 
     (void)pChunk;
@@ -1031,9 +1030,9 @@ void ApplyScreenWobble(tPipe_chunk **pChunk) {
     original_ApplyScreenWobble(pChunk);
 }
 
-static void(*original_ApplyGrooveStop)(tPipe_chunk **, ...) = (void(*)(tPipe_chunk **, ...))0x0042a52d;
+static void(__cdecl*original_ApplyGrooveStop)(tPipe_chunk **) = (void(__cdecl*)(tPipe_chunk **))0x0042a52d;
 CARM95_HOOK_FUNCTION(original_ApplyGrooveStop, ApplyGrooveStop)
-void ApplyGrooveStop(tPipe_chunk **pChunk) {
+void __cdecl ApplyGrooveStop(tPipe_chunk **pChunk) {
     LOG_TRACE("(%p)", pChunk);
 
     (void)pChunk;
@@ -1041,9 +1040,9 @@ void ApplyGrooveStop(tPipe_chunk **pChunk) {
     original_ApplyGrooveStop(pChunk);
 }
 
-static void(*original_ApplyNonCar)(tPipe_chunk **, ...) = (void(*)(tPipe_chunk **, ...))0x0042a586;
+static void(__cdecl*original_ApplyNonCar)(tPipe_chunk **) = (void(__cdecl*)(tPipe_chunk **))0x0042a586;
 CARM95_HOOK_FUNCTION(original_ApplyNonCar, ApplyNonCar)
-void ApplyNonCar(tPipe_chunk **pChunk) {
+void __cdecl ApplyNonCar(tPipe_chunk **pChunk) {
     LOG_TRACE("(%p)", pChunk);
 
     (void)pChunk;
@@ -1051,9 +1050,9 @@ void ApplyNonCar(tPipe_chunk **pChunk) {
     original_ApplyNonCar(pChunk);
 }
 
-static void(*original_ApplySmoke)(tPipe_chunk **, ...) = (void(*)(tPipe_chunk **, ...))0x0042a5b9;
+static void(__cdecl*original_ApplySmoke)(tPipe_chunk **) = (void(__cdecl*)(tPipe_chunk **))0x0042a5b9;
 CARM95_HOOK_FUNCTION(original_ApplySmoke, ApplySmoke)
-void ApplySmoke(tPipe_chunk **pChunk) {
+void __cdecl ApplySmoke(tPipe_chunk **pChunk) {
     br_vector3 pos;
     LOG_TRACE("(%p)", pChunk);
 
@@ -1063,9 +1062,9 @@ void ApplySmoke(tPipe_chunk **pChunk) {
     original_ApplySmoke(pChunk);
 }
 
-static void(*original_ApplySmokeColumn)(tPipe_chunk **, ...) = (void(*)(tPipe_chunk **, ...))0x0042a651;
+static void(__cdecl*original_ApplySmokeColumn)(tPipe_chunk **) = (void(__cdecl*)(tPipe_chunk **))0x0042a651;
 CARM95_HOOK_FUNCTION(original_ApplySmokeColumn, ApplySmokeColumn)
-void ApplySmokeColumn(tPipe_chunk **pChunk) {
+void __cdecl ApplySmokeColumn(tPipe_chunk **pChunk) {
     LOG_TRACE("(%p)", pChunk);
 
     (void)pChunk;
@@ -1073,9 +1072,9 @@ void ApplySmokeColumn(tPipe_chunk **pChunk) {
     original_ApplySmokeColumn(pChunk);
 }
 
-static void(*original_ApplyFlame)(tPipe_chunk **, ...) = (void(*)(tPipe_chunk **, ...))0x0042a6f8;
+static void(__cdecl*original_ApplyFlame)(tPipe_chunk **) = (void(__cdecl*)(tPipe_chunk **))0x0042a6f8;
 CARM95_HOOK_FUNCTION(original_ApplyFlame, ApplyFlame)
-void ApplyFlame(tPipe_chunk **pChunk) {
+void __cdecl ApplyFlame(tPipe_chunk **pChunk) {
     LOG_TRACE("(%p)", pChunk);
 
     (void)pChunk;
@@ -1083,9 +1082,9 @@ void ApplyFlame(tPipe_chunk **pChunk) {
     original_ApplyFlame(pChunk);
 }
 
-static void(*original_ApplySplash)(tPipe_chunk **, ...) = (void(*)(tPipe_chunk **, ...))0x0042a752;
+static void(__cdecl*original_ApplySplash)(tPipe_chunk **) = (void(__cdecl*)(tPipe_chunk **))0x0042a752;
 CARM95_HOOK_FUNCTION(original_ApplySplash, ApplySplash)
-void ApplySplash(tPipe_chunk **pChunk) {
+void __cdecl ApplySplash(tPipe_chunk **pChunk) {
     tCar_spec *c;
     LOG_TRACE("(%p)", pChunk);
 
@@ -1095,9 +1094,9 @@ void ApplySplash(tPipe_chunk **pChunk) {
     original_ApplySplash(pChunk);
 }
 
-static void(*original_ApplyOilSpill)(tPipe_chunk **, tU32, ...) = (void(*)(tPipe_chunk **, tU32, ...))0x0042a80d;
+static void(__cdecl*original_ApplyOilSpill)(tPipe_chunk **, tU32) = (void(__cdecl*)(tPipe_chunk **, tU32))0x0042a80d;
 CARM95_HOOK_FUNCTION(original_ApplyOilSpill, ApplyOilSpill)
-void ApplyOilSpill(tPipe_chunk **pChunk, tU32 pStop_time) {
+void __cdecl ApplyOilSpill(tPipe_chunk **pChunk, tU32 pStop_time) {
     LOG_TRACE("(%p, %u)", pChunk, pStop_time);
 
     (void)pChunk;
@@ -1106,9 +1105,9 @@ void ApplyOilSpill(tPipe_chunk **pChunk, tU32 pStop_time) {
     original_ApplyOilSpill(pChunk, pStop_time);
 }
 
-static void(*original_ApplyFrameBoundary)(tPipe_chunk **, ...) = (void(*)(tPipe_chunk **, ...))0x0042a87c;
+static void(__cdecl*original_ApplyFrameBoundary)(tPipe_chunk **) = (void(__cdecl*)(tPipe_chunk **))0x0042a87c;
 CARM95_HOOK_FUNCTION(original_ApplyFrameBoundary, ApplyFrameBoundary)
-void ApplyFrameBoundary(tPipe_chunk **pChunk) {
+void __cdecl ApplyFrameBoundary(tPipe_chunk **pChunk) {
     tU32 result;
     LOG_TRACE("(%p)", pChunk);
 
@@ -1118,9 +1117,9 @@ void ApplyFrameBoundary(tPipe_chunk **pChunk) {
     original_ApplyFrameBoundary(pChunk);
 }
 
-static void(*original_ApplySound)(tPipe_chunk **, ...) = (void(*)(tPipe_chunk **, ...))0x0042a8b5;
+static void(__cdecl*original_ApplySound)(tPipe_chunk **) = (void(__cdecl*)(tPipe_chunk **))0x0042a8b5;
 CARM95_HOOK_FUNCTION(original_ApplySound, ApplySound)
-void ApplySound(tPipe_chunk **pChunk) {
+void __cdecl ApplySound(tPipe_chunk **pChunk) {
     LOG_TRACE("(%p)", pChunk);
 
     (void)pChunk;
@@ -1128,9 +1127,9 @@ void ApplySound(tPipe_chunk **pChunk) {
     original_ApplySound(pChunk);
 }
 
-static void(*original_ApplyCar)(tPipe_chunk **, ...) = (void(*)(tPipe_chunk **, ...))0x0042aa59;
+static void(__cdecl*original_ApplyCar)(tPipe_chunk **) = (void(__cdecl*)(tPipe_chunk **))0x0042aa59;
 CARM95_HOOK_FUNCTION(original_ApplyCar, ApplyCar)
-void ApplyCar(tPipe_chunk **pChunk) {
+void __cdecl ApplyCar(tPipe_chunk **pChunk) {
     tCar_spec *car;
     br_vector3 com_offset_c;
     br_vector3 com_offset_w;
@@ -1141,13 +1140,14 @@ void ApplyCar(tPipe_chunk **pChunk) {
     (void)car;
     (void)com_offset_c;
     (void)com_offset_w;
+    (void)__block0___scale;
 
     original_ApplyCar(pChunk);
 }
 
-static void(*original_ApplyDamage)(tPipe_chunk **, ...) = (void(*)(tPipe_chunk **, ...))0x0042ae65;
+static void(__cdecl*original_ApplyDamage)(tPipe_chunk **) = (void(__cdecl*)(tPipe_chunk **))0x0042ae65;
 CARM95_HOOK_FUNCTION(original_ApplyDamage, ApplyDamage)
-void ApplyDamage(tPipe_chunk **pChunk) {
+void __cdecl ApplyDamage(tPipe_chunk **pChunk) {
     tCar_spec *car;
     int i;
     LOG_TRACE("(%p)", pChunk);
@@ -1159,9 +1159,9 @@ void ApplyDamage(tPipe_chunk **pChunk) {
     original_ApplyDamage(pChunk);
 }
 
-static void(*original_ApplySpecial)(tPipe_chunk **, ...) = (void(*)(tPipe_chunk **, ...))0x0042af1e;
+static void(__cdecl*original_ApplySpecial)(tPipe_chunk **) = (void(__cdecl*)(tPipe_chunk **))0x0042af1e;
 CARM95_HOOK_FUNCTION(original_ApplySpecial, ApplySpecial)
-void ApplySpecial(tPipe_chunk **pChunk) {
+void __cdecl ApplySpecial(tPipe_chunk **pChunk) {
     LOG_TRACE("(%p)", pChunk);
 
     (void)pChunk;
@@ -1169,9 +1169,9 @@ void ApplySpecial(tPipe_chunk **pChunk) {
     original_ApplySpecial(pChunk);
 }
 
-static void(*original_ApplyPedGib)(tPipe_chunk **, ...) = (void(*)(tPipe_chunk **, ...))0x0042afc8;
+static void(__cdecl*original_ApplyPedGib)(tPipe_chunk **) = (void(__cdecl*)(tPipe_chunk **))0x0042afc8;
 CARM95_HOOK_FUNCTION(original_ApplyPedGib, ApplyPedGib)
-void ApplyPedGib(tPipe_chunk **pChunk) {
+void __cdecl ApplyPedGib(tPipe_chunk **pChunk) {
     LOG_TRACE("(%p)", pChunk);
 
     (void)pChunk;
@@ -1179,9 +1179,9 @@ void ApplyPedGib(tPipe_chunk **pChunk) {
     original_ApplyPedGib(pChunk);
 }
 
-static void(*original_ApplyProxRay)(tPipe_chunk **, ...) = (void(*)(tPipe_chunk **, ...))0x0042b01f;
+static void(__cdecl*original_ApplyProxRay)(tPipe_chunk **) = (void(__cdecl*)(tPipe_chunk **))0x0042b01f;
 CARM95_HOOK_FUNCTION(original_ApplyProxRay, ApplyProxRay)
-void ApplyProxRay(tPipe_chunk **pChunk) {
+void __cdecl ApplyProxRay(tPipe_chunk **pChunk) {
     LOG_TRACE("(%p)", pChunk);
 
     (void)pChunk;
@@ -1189,9 +1189,9 @@ void ApplyProxRay(tPipe_chunk **pChunk) {
     original_ApplyProxRay(pChunk);
 }
 
-static void(*original_ApplySkidAdjustment)(tPipe_chunk **, ...) = (void(*)(tPipe_chunk **, ...))0x0042b068;
+static void(__cdecl*original_ApplySkidAdjustment)(tPipe_chunk **) = (void(__cdecl*)(tPipe_chunk **))0x0042b068;
 CARM95_HOOK_FUNCTION(original_ApplySkidAdjustment, ApplySkidAdjustment)
-void ApplySkidAdjustment(tPipe_chunk **pChunk) {
+void __cdecl ApplySkidAdjustment(tPipe_chunk **pChunk) {
     LOG_TRACE("(%p)", pChunk);
 
     (void)pChunk;
@@ -1199,9 +1199,9 @@ void ApplySkidAdjustment(tPipe_chunk **pChunk) {
     original_ApplySkidAdjustment(pChunk);
 }
 
-static int(*original_ApplyPipedSession)(tU8 **, ...) = (int(*)(tU8 **, ...))0x0042b0a6;
+static int(__cdecl*original_ApplyPipedSession)(tU8 **) = (int(__cdecl*)(tU8 **))0x0042b0a6;
 CARM95_HOOK_FUNCTION(original_ApplyPipedSession, ApplyPipedSession)
-int ApplyPipedSession(tU8 **pPtr) {
+int __cdecl ApplyPipedSession(tU8 **pPtr) {
     int i;
     int return_value;
     tPipe_chunk *chunk_ptr;
@@ -1217,9 +1217,9 @@ int ApplyPipedSession(tU8 **pPtr) {
     return original_ApplyPipedSession(pPtr);
 }
 
-static int(*original_MoveSessionPointerBackOne)(tU8 **, ...) = (int(*)(tU8 **, ...))0x0042b419;
+static int(__cdecl*original_MoveSessionPointerBackOne)(tU8 **) = (int(__cdecl*)(tU8 **))0x0042b419;
 CARM95_HOOK_FUNCTION(original_MoveSessionPointerBackOne, MoveSessionPointerBackOne)
-int MoveSessionPointerBackOne(tU8 **pPtr) {
+int __cdecl MoveSessionPointerBackOne(tU8 **pPtr) {
     LOG_TRACE("(%p)", pPtr);
 
     (void)pPtr;
@@ -1235,9 +1235,9 @@ int MoveSessionPointerForwardOne(tU8 **pPtr) {
     NOT_IMPLEMENTED();
 }
 
-static tPipe_chunk *(*original_FindPreviousChunk)(tU8 *, tPipe_chunk_type, tChunk_subject_index, ...) = (tPipe_chunk *(*)(tU8 *, tPipe_chunk_type, tChunk_subject_index, ...))0x0042b492;
+static tPipe_chunk *(__cdecl*original_FindPreviousChunk)(tU8 *, tPipe_chunk_type, tChunk_subject_index) = (tPipe_chunk *(__cdecl*)(tU8 *, tPipe_chunk_type, tChunk_subject_index))0x0042b492;
 CARM95_HOOK_FUNCTION(original_FindPreviousChunk, FindPreviousChunk)
-tPipe_chunk* FindPreviousChunk(tU8 *pPtr, tPipe_chunk_type pType, tChunk_subject_index pIndex) {
+tPipe_chunk* __cdecl FindPreviousChunk(tU8 *pPtr, tPipe_chunk_type pType, tChunk_subject_index pIndex) {
     tU8 *ptr;
     int i;
     int reached_end;
@@ -1340,9 +1340,9 @@ void UndoDamage(tPipe_chunk **pChunk) {
     NOT_IMPLEMENTED();
 }
 
-static void(*original_UndoSpecial)(tPipe_chunk **, ...) = (void(*)(tPipe_chunk **, ...))0x0042b94c;
+static void(__cdecl*original_UndoSpecial)(tPipe_chunk **) = (void(__cdecl*)(tPipe_chunk **))0x0042b94c;
 CARM95_HOOK_FUNCTION(original_UndoSpecial, UndoSpecial)
-void UndoSpecial(tPipe_chunk **pChunk) {
+void __cdecl UndoSpecial(tPipe_chunk **pChunk) {
     LOG_TRACE("(%p)", pChunk);
 
     (void)pChunk;
@@ -1350,9 +1350,9 @@ void UndoSpecial(tPipe_chunk **pChunk) {
     original_UndoSpecial(pChunk);
 }
 
-static void(*original_UndoPedGib)(tPipe_chunk **, tPipe_chunk *, ...) = (void(*)(tPipe_chunk **, tPipe_chunk *, ...))0x0042b9f6;
+static void(__cdecl*original_UndoPedGib)(tPipe_chunk **, tPipe_chunk *) = (void(__cdecl*)(tPipe_chunk **, tPipe_chunk *))0x0042b9f6;
 CARM95_HOOK_FUNCTION(original_UndoPedGib, UndoPedGib)
-void UndoPedGib(tPipe_chunk **pChunk, tPipe_chunk *pPrev_chunk) {
+void __cdecl UndoPedGib(tPipe_chunk **pChunk, tPipe_chunk *pPrev_chunk) {
     tPipe_chunk *temp_prev_chunk;
     LOG_TRACE("(%p, %p)", pChunk, pPrev_chunk);
 
@@ -1363,9 +1363,9 @@ void UndoPedGib(tPipe_chunk **pChunk, tPipe_chunk *pPrev_chunk) {
     original_UndoPedGib(pChunk, pPrev_chunk);
 }
 
-static void(*original_UndoSpark)(tPipe_chunk **, tPipe_chunk *, ...) = (void(*)(tPipe_chunk **, tPipe_chunk *, ...))0x0042ba42;
+static void(__cdecl*original_UndoSpark)(tPipe_chunk **, tPipe_chunk *) = (void(__cdecl*)(tPipe_chunk **, tPipe_chunk *))0x0042ba42;
 CARM95_HOOK_FUNCTION(original_UndoSpark, UndoSpark)
-void UndoSpark(tPipe_chunk **pChunk, tPipe_chunk *pPrev_chunk) {
+void __cdecl UndoSpark(tPipe_chunk **pChunk, tPipe_chunk *pPrev_chunk) {
     tPipe_chunk *temp_prev_chunk;
     LOG_TRACE("(%p, %p)", pChunk, pPrev_chunk);
 
@@ -1376,9 +1376,9 @@ void UndoSpark(tPipe_chunk **pChunk, tPipe_chunk *pPrev_chunk) {
     original_UndoSpark(pChunk, pPrev_chunk);
 }
 
-static void(*original_UndoShrapnel)(tPipe_chunk **, tPipe_chunk *, ...) = (void(*)(tPipe_chunk **, tPipe_chunk *, ...))0x0042ba8e;
+static void(__cdecl*original_UndoShrapnel)(tPipe_chunk **, tPipe_chunk *) = (void(__cdecl*)(tPipe_chunk **, tPipe_chunk *))0x0042ba8e;
 CARM95_HOOK_FUNCTION(original_UndoShrapnel, UndoShrapnel)
-void UndoShrapnel(tPipe_chunk **pChunk, tPipe_chunk *pPrev_chunk) {
+void __cdecl UndoShrapnel(tPipe_chunk **pChunk, tPipe_chunk *pPrev_chunk) {
     tPipe_chunk *temp_prev_chunk;
     LOG_TRACE("(%p, %p)", pChunk, pPrev_chunk);
 
@@ -1389,9 +1389,9 @@ void UndoShrapnel(tPipe_chunk **pChunk, tPipe_chunk *pPrev_chunk) {
     original_UndoShrapnel(pChunk, pPrev_chunk);
 }
 
-static void(*original_UndoScreenWobble)(tPipe_chunk **, tPipe_chunk *, ...) = (void(*)(tPipe_chunk **, tPipe_chunk *, ...))0x0042bada;
+static void(__cdecl*original_UndoScreenWobble)(tPipe_chunk **, tPipe_chunk *) = (void(__cdecl*)(tPipe_chunk **, tPipe_chunk *))0x0042bada;
 CARM95_HOOK_FUNCTION(original_UndoScreenWobble, UndoScreenWobble)
-void UndoScreenWobble(tPipe_chunk **pChunk, tPipe_chunk *pPrev_chunk) {
+void __cdecl UndoScreenWobble(tPipe_chunk **pChunk, tPipe_chunk *pPrev_chunk) {
     tPipe_chunk *temp_prev_chunk;
     LOG_TRACE("(%p, %p)", pChunk, pPrev_chunk);
 
@@ -1402,9 +1402,9 @@ void UndoScreenWobble(tPipe_chunk **pChunk, tPipe_chunk *pPrev_chunk) {
     original_UndoScreenWobble(pChunk, pPrev_chunk);
 }
 
-static void(*original_UndoGrooveStop)(tPipe_chunk **, tPipe_chunk *, ...) = (void(*)(tPipe_chunk **, tPipe_chunk *, ...))0x0042bb37;
+static void(__cdecl*original_UndoGrooveStop)(tPipe_chunk **, tPipe_chunk *) = (void(__cdecl*)(tPipe_chunk **, tPipe_chunk *))0x0042bb37;
 CARM95_HOOK_FUNCTION(original_UndoGrooveStop, UndoGrooveStop)
-void UndoGrooveStop(tPipe_chunk **pChunk, tPipe_chunk *pPrev_chunk) {
+void __cdecl UndoGrooveStop(tPipe_chunk **pChunk, tPipe_chunk *pPrev_chunk) {
     tPipe_chunk *temp_prev_chunk;
     LOG_TRACE("(%p, %p)", pChunk, pPrev_chunk);
 
@@ -1415,9 +1415,9 @@ void UndoGrooveStop(tPipe_chunk **pChunk, tPipe_chunk *pPrev_chunk) {
     original_UndoGrooveStop(pChunk, pPrev_chunk);
 }
 
-static void(*original_UndoNonCar)(tPipe_chunk **, tPipe_chunk *, ...) = (void(*)(tPipe_chunk **, tPipe_chunk *, ...))0x0042bb83;
+static void(__cdecl*original_UndoNonCar)(tPipe_chunk **, tPipe_chunk *) = (void(__cdecl*)(tPipe_chunk **, tPipe_chunk *))0x0042bb83;
 CARM95_HOOK_FUNCTION(original_UndoNonCar, UndoNonCar)
-void UndoNonCar(tPipe_chunk **pChunk, tPipe_chunk *pPrev_chunk) {
+void __cdecl UndoNonCar(tPipe_chunk **pChunk, tPipe_chunk *pPrev_chunk) {
     tPipe_chunk *temp_prev_chunk;
     LOG_TRACE("(%p, %p)", pChunk, pPrev_chunk);
 
@@ -1428,9 +1428,9 @@ void UndoNonCar(tPipe_chunk **pChunk, tPipe_chunk *pPrev_chunk) {
     original_UndoNonCar(pChunk, pPrev_chunk);
 }
 
-static void(*original_UndoSmoke)(tPipe_chunk **, tPipe_chunk *, ...) = (void(*)(tPipe_chunk **, tPipe_chunk *, ...))0x0042bbcf;
+static void(__cdecl*original_UndoSmoke)(tPipe_chunk **, tPipe_chunk *) = (void(__cdecl*)(tPipe_chunk **, tPipe_chunk *))0x0042bbcf;
 CARM95_HOOK_FUNCTION(original_UndoSmoke, UndoSmoke)
-void UndoSmoke(tPipe_chunk **pChunk, tPipe_chunk *pPrev_chunk) {
+void __cdecl UndoSmoke(tPipe_chunk **pChunk, tPipe_chunk *pPrev_chunk) {
     tPipe_chunk *temp_prev_chunk;
     LOG_TRACE("(%p, %p)", pChunk, pPrev_chunk);
 
@@ -1441,9 +1441,9 @@ void UndoSmoke(tPipe_chunk **pChunk, tPipe_chunk *pPrev_chunk) {
     original_UndoSmoke(pChunk, pPrev_chunk);
 }
 
-static void(*original_UndoSmokeColumn)(tPipe_chunk **, tPipe_chunk *, ...) = (void(*)(tPipe_chunk **, tPipe_chunk *, ...))0x0042bc1b;
+static void(__cdecl*original_UndoSmokeColumn)(tPipe_chunk **, tPipe_chunk *) = (void(__cdecl*)(tPipe_chunk **, tPipe_chunk *))0x0042bc1b;
 CARM95_HOOK_FUNCTION(original_UndoSmokeColumn, UndoSmokeColumn)
-void UndoSmokeColumn(tPipe_chunk **pChunk, tPipe_chunk *pPrev_chunk) {
+void __cdecl UndoSmokeColumn(tPipe_chunk **pChunk, tPipe_chunk *pPrev_chunk) {
     tPipe_chunk *temp_prev_chunk;
     LOG_TRACE("(%p, %p)", pChunk, pPrev_chunk);
 
@@ -1463,9 +1463,9 @@ void UndoFlame(tPipe_chunk **pChunk, tPipe_chunk *pPrev_chunk) {
     NOT_IMPLEMENTED();
 }
 
-static void(*original_UndoSplash)(tPipe_chunk **, tPipe_chunk *, ...) = (void(*)(tPipe_chunk **, tPipe_chunk *, ...))0x0042bc52;
+static void(__cdecl*original_UndoSplash)(tPipe_chunk **, tPipe_chunk *) = (void(__cdecl*)(tPipe_chunk **, tPipe_chunk *))0x0042bc52;
 CARM95_HOOK_FUNCTION(original_UndoSplash, UndoSplash)
-void UndoSplash(tPipe_chunk **pChunk, tPipe_chunk *pPrev_chunk) {
+void __cdecl UndoSplash(tPipe_chunk **pChunk, tPipe_chunk *pPrev_chunk) {
     tPipe_chunk *temp_prev_chunk;
     LOG_TRACE("(%p, %p)", pChunk, pPrev_chunk);
 
@@ -1476,9 +1476,9 @@ void UndoSplash(tPipe_chunk **pChunk, tPipe_chunk *pPrev_chunk) {
     original_UndoSplash(pChunk, pPrev_chunk);
 }
 
-static void(*original_UndoOilSpill)(tPipe_chunk **, tPipe_chunk *, ...) = (void(*)(tPipe_chunk **, tPipe_chunk *, ...))0x0042bd0b;
+static void(__cdecl*original_UndoOilSpill)(tPipe_chunk **, tPipe_chunk *) = (void(__cdecl*)(tPipe_chunk **, tPipe_chunk *))0x0042bd0b;
 CARM95_HOOK_FUNCTION(original_UndoOilSpill, UndoOilSpill)
-void UndoOilSpill(tPipe_chunk **pChunk, tPipe_chunk *pPrev_chunk) {
+void __cdecl UndoOilSpill(tPipe_chunk **pChunk, tPipe_chunk *pPrev_chunk) {
     tPipe_chunk *temp_prev_chunk;
     LOG_TRACE("(%p, %p)", pChunk, pPrev_chunk);
 
@@ -1489,9 +1489,9 @@ void UndoOilSpill(tPipe_chunk **pChunk, tPipe_chunk *pPrev_chunk) {
     original_UndoOilSpill(pChunk, pPrev_chunk);
 }
 
-static void(*original_UndoProxRay)(tPipe_chunk **, ...) = (void(*)(tPipe_chunk **, ...))0x0042bd60;
+static void(__cdecl*original_UndoProxRay)(tPipe_chunk **) = (void(__cdecl*)(tPipe_chunk **))0x0042bd60;
 CARM95_HOOK_FUNCTION(original_UndoProxRay, UndoProxRay)
-void UndoProxRay(tPipe_chunk **pChunk) {
+void __cdecl UndoProxRay(tPipe_chunk **pChunk) {
     LOG_TRACE("(%p)", pChunk);
 
     (void)pChunk;
@@ -1499,9 +1499,9 @@ void UndoProxRay(tPipe_chunk **pChunk) {
     original_UndoProxRay(pChunk);
 }
 
-static void(*original_UndoSkidAdjustment)(tPipe_chunk **, tPipe_chunk *, ...) = (void(*)(tPipe_chunk **, tPipe_chunk *, ...))0x0042bd77;
+static void(__cdecl*original_UndoSkidAdjustment)(tPipe_chunk **, tPipe_chunk *) = (void(__cdecl*)(tPipe_chunk **, tPipe_chunk *))0x0042bd77;
 CARM95_HOOK_FUNCTION(original_UndoSkidAdjustment, UndoSkidAdjustment)
-void UndoSkidAdjustment(tPipe_chunk **pChunk, tPipe_chunk *pPrev_chunk) {
+void __cdecl UndoSkidAdjustment(tPipe_chunk **pChunk, tPipe_chunk *pPrev_chunk) {
     LOG_TRACE("(%p, %p)", pChunk, pPrev_chunk);
 
     (void)pChunk;
@@ -1540,9 +1540,9 @@ tU32 FindPrevFrameTime(tU8 *pPtr) {
     NOT_IMPLEMENTED();
 }
 
-static void(*original_ScanBuffer)(tU8 **, tPipe_chunk_type, tU32, int(**)(tPipe_chunk *, int, tU32, ...), int(**)(tU32, ...), ...) = (void(*)(tU8 **, tPipe_chunk_type, tU32, int(**)(tPipe_chunk *, int, tU32, ...), int(**)(tU32, ...), ...))0x0042be18;
+static void(__cdecl*original_ScanBuffer)(tU8 **, tPipe_chunk_type, tU32, int(**)(tPipe_chunk *, int, tU32), int(**)(tU32)) = (void(__cdecl*)(tU8 **, tPipe_chunk_type, tU32, int(**)(tPipe_chunk *, int, tU32), int(**)(tU32)))0x0042be18;
 CARM95_HOOK_FUNCTION(original_ScanBuffer, ScanBuffer)
-void ScanBuffer(tU8 **pPtr, tPipe_chunk_type pType, tU32 pDefault_time, int(**pCall_back)(tPipe_chunk *, int, tU32, ...), int(**pTime_check)(tU32, ...)) {
+void __cdecl ScanBuffer(tU8 **pPtr, tPipe_chunk_type pType, tU32 pDefault_time, int(**pCall_back)(tPipe_chunk *, int, tU32), int(**pTime_check)(tU32)) {
     tPipe_chunk *chunk_ptr;
     tU32 the_time;
     LOG_TRACE("(%p, %d, %u, %p, %p)", pPtr, pType, pDefault_time, pCall_back, pTime_check);
@@ -1558,9 +1558,9 @@ void ScanBuffer(tU8 **pPtr, tPipe_chunk_type pType, tU32 pDefault_time, int(**pC
     original_ScanBuffer(pPtr, pType, pDefault_time, pCall_back, pTime_check);
 }
 
-static int(*original_CheckSound)(tPipe_chunk *, int, tU32, ...) = (int(*)(tPipe_chunk *, int, tU32, ...))0x0042c00a;
+static int(__cdecl*original_CheckSound)(tPipe_chunk *, int, tU32) = (int(__cdecl*)(tPipe_chunk *, int, tU32))0x0042c00a;
 CARM95_HOOK_FUNCTION(original_CheckSound, CheckSound)
-int CheckSound(tPipe_chunk *pChunk_ptr, int pChunk_count, tU32 pTime) {
+int __cdecl CheckSound(tPipe_chunk *pChunk_ptr, int pChunk_count, tU32 pTime) {
     int i;
     int sound_length;
     tPipe_chunk *temp_ptr;
@@ -1584,9 +1584,9 @@ int SoundTimeout(tU32 pTime) {
     NOT_IMPLEMENTED();
 }
 
-static void(*original_ScanAndPlaySoundsToBe)(tU8 *, tU32, tU32, ...) = (void(*)(tU8 *, tU32, tU32, ...))0x0042c06e;
+static void(__cdecl*original_ScanAndPlaySoundsToBe)(tU8 *, tU32, tU32) = (void(__cdecl*)(tU8 *, tU32, tU32))0x0042c06e;
 CARM95_HOOK_FUNCTION(original_ScanAndPlaySoundsToBe, ScanAndPlaySoundsToBe)
-void ScanAndPlaySoundsToBe(tU8 *pPtr, tU32 pOldest_time, tU32 pYoungest_time) {
+void __cdecl ScanAndPlaySoundsToBe(tU8 *pPtr, tU32 pOldest_time, tU32 pYoungest_time) {
     tU8 *temp_ptr;
     LOG_TRACE("(%p, %u, %u)", pPtr, pOldest_time, pYoungest_time);
 
@@ -1644,9 +1644,9 @@ void ScanCarsPositions(tCar_spec *pCar, br_vector3 *pSource_pos, br_scalar pMax_
     NOT_IMPLEMENTED();
 }
 
-static int(*original_CheckIncident)(tPipe_chunk *, int, tU32, ...) = (int(*)(tPipe_chunk *, int, tU32, ...))0x0042c90d;
+static int(__cdecl*original_CheckIncident)(tPipe_chunk *, int, tU32) = (int(__cdecl*)(tPipe_chunk *, int, tU32))0x0042c90d;
 CARM95_HOOK_FUNCTION(original_CheckIncident, CheckIncident)
-int CheckIncident(tPipe_chunk *pChunk_ptr, int pChunk_count, tU32 pTime) {
+int __cdecl CheckIncident(tPipe_chunk *pChunk_ptr, int pChunk_count, tU32 pTime) {
     LOG_TRACE("(%p, %d, %u)", pChunk_ptr, pChunk_count, pTime);
 
     (void)pChunk_ptr;
@@ -1656,9 +1656,9 @@ int CheckIncident(tPipe_chunk *pChunk_ptr, int pChunk_count, tU32 pTime) {
     return original_CheckIncident(pChunk_ptr, pChunk_count, pTime);
 }
 
-static int(*original_GetNextIncident)(tU32, tIncident_type *, float *, tIncident_info *, tU32 *, ...) = (int(*)(tU32, tIncident_type *, float *, tIncident_info *, tU32 *, ...))0x0042c6a3;
+static int(__cdecl*original_GetNextIncident)(tU32, tIncident_type *, float *, tIncident_info *, tU32 *) = (int(__cdecl*)(tU32, tIncident_type *, float *, tIncident_info *, tU32 *))0x0042c6a3;
 CARM95_HOOK_FUNCTION(original_GetNextIncident, GetNextIncident)
-int GetNextIncident(tU32 pOffset_time, tIncident_type *pIncident_type, float *pSeverity, tIncident_info *pInfo, tU32 *pTime_away) {
+int __cdecl GetNextIncident(tU32 pOffset_time, tIncident_type *pIncident_type, float *pSeverity, tIncident_info *pInfo, tU32 *pTime_away) {
     tU8 *temp_ptr;
     LOG_TRACE("(%u, %p, %p, %p, %p)", pOffset_time, pIncident_type, pSeverity, pInfo, pTime_away);
 

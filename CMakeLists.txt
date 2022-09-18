@@ -2,6 +2,10 @@
 cmake_minimum_required(VERSION 3.15)
 project(carm95hooks C CXX)
 
+include(TestBigEndian)
+
+test_big_endian(IS_BIG_ENDIAN)
+
 include(FetchContent)
 FetchContent_Declare(
   Detours
@@ -26,7 +30,7 @@ endif()
 add_library(Detours::Detours ALIAS detours)
 
 add_library(carm95hooks SHARED
-    hookmain.c
+    hookmain.cpp
     include/carm95_hooks.h
     carm95_hooks.cpp
     dummy.c
@@ -299,7 +303,28 @@ add_library(carm95hooks SHARED
 )
 target_compile_definitions(carm95hooks PRIVATE
     PLUGIN_NAME="carm95hooks"
+    BR_ENDIAN_BIG=$<BOOL:${IS_BIG_ENDIAN}>
 )
+target_compile_options(carm95hooks
+    PRIVATE
+        -Wall
+)
+if(CMAKE_C_COMPILER_ID MATCHES "MSVC")
+    target_compile_definitions(carm95hooks
+        PRIVATE
+            WIN32_LEAN_AND_MEAN
+            _CRT_SECURE_NO_WARNINGS
+    )
+    target_compile_options(carm95hooks
+        PRIVATE
+            -wd4820  # x' bytes padded
+            -wd4255  # no function prototype given: converting '()' to '(void)'
+            -wd4101  # unreferenced local variable
+            -wd4774  # 'printf' : format string expected in argument 1 is not a string literal
+            -wd5247  # section '.CRT$XCZ' is reserved for C++ dynamic initialization
+            -wd5045  # Compiler will insert Spectre mitigation for memory load if /Qspectre switch specified
+    )
+endif()
 target_include_directories(carm95hooks PRIVATE
    ${CMAKE_CURRENT_SOURCE_DIR}/BRSRC13
    ${CMAKE_CURRENT_SOURCE_DIR}/DETHRACE/source

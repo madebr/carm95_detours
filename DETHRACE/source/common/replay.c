@@ -4,7 +4,6 @@
 
 #include "carm95_hooks.h"
 
-#include <stdio.h>
 char *(* hookvar_gReplay_pixie_names )[10] = (void*)0x0050a1b0;
 #if 0
 int * hookvar_gSingle_frame_mode ;
@@ -60,18 +59,18 @@ int * hookvar_gPaused ;
 #endif
 tAction_replay_camera_type * hookvar_gAction_replay_camera_mode  = (void*)0x00551db4;
 
-static int(*original_ReplayIsPaused)() = (int(*)())0x0041adc0;
+static int(__cdecl*original_ReplayIsPaused)() = (int(__cdecl*)())0x0041adc0;
 CARM95_HOOK_FUNCTION(original_ReplayIsPaused, ReplayIsPaused)
-int ReplayIsPaused() {
+int __cdecl ReplayIsPaused() {
     LOG_TRACE("()");
 
 
     return original_ReplayIsPaused();
 }
 
-static float(*original_GetReplayRate)() = (float(*)())0x0041adf3;
+static float(__cdecl*original_GetReplayRate)() = (float(__cdecl*)())0x0041adf3;
 CARM95_HOOK_FUNCTION(original_GetReplayRate, GetReplayRate)
-float GetReplayRate() {
+float __cdecl GetReplayRate() {
     LOG_TRACE("()");
 
 
@@ -112,18 +111,18 @@ void ActualActionReplayHeadups(int pSpecial_zappy_bastard) {
     NOT_IMPLEMENTED();
 }
 
-static void(*original_DoActionReplayPostSwap)() = (void(*)())0x0041ae1e;
+static void(__cdecl*original_DoActionReplayPostSwap)() = (void(__cdecl*)())0x0041ae1e;
 CARM95_HOOK_FUNCTION(original_DoActionReplayPostSwap, DoActionReplayPostSwap)
-void DoActionReplayPostSwap() {
+void __cdecl DoActionReplayPostSwap() {
     LOG_TRACE("()");
 
 
     original_DoActionReplayPostSwap();
 }
 
-static void(*original_DoZappyActionReplayHeadups)(int, ...) = (void(*)(int, ...))0x0041ae48;
+static void(__cdecl*original_DoZappyActionReplayHeadups)(int) = (void(__cdecl*)(int))0x0041ae48;
 CARM95_HOOK_FUNCTION(original_DoZappyActionReplayHeadups, DoZappyActionReplayHeadups)
-void DoZappyActionReplayHeadups(int pSpecial_zappy_bastard) {
+void __cdecl DoZappyActionReplayHeadups(int pSpecial_zappy_bastard) {
     tU32 the_time;
     LOG_TRACE("(%d)", pSpecial_zappy_bastard);
 
@@ -133,9 +132,9 @@ void DoZappyActionReplayHeadups(int pSpecial_zappy_bastard) {
     original_DoZappyActionReplayHeadups(pSpecial_zappy_bastard);
 }
 
-static void(*original_DoActionReplayHeadups)() = (void(*)())0x0041ae33;
+static void(__cdecl*original_DoActionReplayHeadups)() = (void(__cdecl*)())0x0041ae33;
 CARM95_HOOK_FUNCTION(original_DoActionReplayHeadups, DoActionReplayHeadups)
-void DoActionReplayHeadups() {
+void __cdecl DoActionReplayHeadups() {
     LOG_TRACE("()");
 
 
@@ -180,18 +179,18 @@ void MoveToStartOfReplay() {
     NOT_IMPLEMENTED();
 }
 
-static void(*original_ToggleReplay)() = (void(*)())0x0041b661;
+static void(__cdecl*original_ToggleReplay)() = (void(__cdecl*)())0x0041b661;
 CARM95_HOOK_FUNCTION(original_ToggleReplay, ToggleReplay)
-void ToggleReplay() {
+void __cdecl ToggleReplay() {
     LOG_TRACE("()");
 
 
     original_ToggleReplay();
 }
 
-static void(*original_ReverseSound)(tS3_effect_tag, tS3_sound_tag, ...) = (void(*)(tS3_effect_tag, tS3_sound_tag, ...))0x0041b7fe;
+static void(__cdecl*original_ReverseSound)(tS3_effect_tag, tS3_sound_tag) = (void(__cdecl*)(tS3_effect_tag, tS3_sound_tag))0x0041b7fe;
 CARM95_HOOK_FUNCTION(original_ReverseSound, ReverseSound)
-void ReverseSound(tS3_effect_tag pEffect_index, tS3_sound_tag pSound_tag) {
+void __cdecl ReverseSound(tS3_effect_tag pEffect_index, tS3_sound_tag pSound_tag) {
     LOG_TRACE("(%d, %d)", pEffect_index, pSound_tag);
 
     (void)pEffect_index;
@@ -200,9 +199,9 @@ void ReverseSound(tS3_effect_tag pEffect_index, tS3_sound_tag pSound_tag) {
     original_ReverseSound(pEffect_index, pSound_tag);
 }
 
-static int(*original_FindUniqueFile)() = (int(*)())0x0041b819;
+static int(__cdecl*original_FindUniqueFile)() = (int(__cdecl*)())0x0041b819;
 CARM95_HOOK_FUNCTION(original_FindUniqueFile, FindUniqueFile)
-int FindUniqueFile() {
+int __cdecl FindUniqueFile() {
     int index;
     FILE *f;
     tPath_name the_path;
@@ -215,9 +214,9 @@ int FindUniqueFile() {
     return original_FindUniqueFile();
 }
 
-static void(*original_PollActionReplayControls)(tU32, ...) = (void(*)(tU32, ...))0x0041b925;
+static void(__cdecl*original_PollActionReplayControls)(tU32) = (void(__cdecl*)(tU32))0x0041b925;
 CARM95_HOOK_FUNCTION(original_PollActionReplayControls, PollActionReplayControls)
-void PollActionReplayControls(tU32 pFrame_period) {
+void __cdecl PollActionReplayControls(tU32 pFrame_period) {
     float old_replay_rate;
     int old_key_down;
     int x_coord;
@@ -243,18 +242,18 @@ void PollActionReplayControls(tU32 pFrame_period) {
     original_PollActionReplayControls(pFrame_period);
 }
 
-static void(*original_CheckReplayTurnOn)() = (void(*)())0x0041c03b;
+static void(__cdecl*original_CheckReplayTurnOn)() = (void(__cdecl*)())0x0041c03b;
 CARM95_HOOK_FUNCTION(original_CheckReplayTurnOn, CheckReplayTurnOn)
-void CheckReplayTurnOn() {
+void __cdecl CheckReplayTurnOn() {
     LOG_TRACE("()");
 
 
     original_CheckReplayTurnOn();
 }
 
-static void(*original_InitializeActionReplay)() = (void(*)())0x0041c093;
+static void(__cdecl*original_InitializeActionReplay)() = (void(__cdecl*)())0x0041c093;
 CARM95_HOOK_FUNCTION(original_InitializeActionReplay, InitializeActionReplay)
-void InitializeActionReplay() {
+void __cdecl InitializeActionReplay() {
     int i;
     LOG_TRACE("()");
 
@@ -263,9 +262,9 @@ void InitializeActionReplay() {
     original_InitializeActionReplay();
 }
 
-static void(*original_DoActionReplay)(tU32, ...) = (void(*)(tU32, ...))0x0041c0e6;
+static void(__cdecl*original_DoActionReplay)(tU32) = (void(__cdecl*)(tU32))0x0041c0e6;
 CARM95_HOOK_FUNCTION(original_DoActionReplay, DoActionReplay)
-void DoActionReplay(tU32 pFrame_period) {
+void __cdecl DoActionReplay(tU32 pFrame_period) {
     LOG_TRACE("(%u)", pFrame_period);
 
     (void)pFrame_period;
@@ -273,9 +272,9 @@ void DoActionReplay(tU32 pFrame_period) {
     original_DoActionReplay(pFrame_period);
 }
 
-static void(*original_SynchronizeActionReplay)() = (void(*)())0x0041c11c;
+static void(__cdecl*original_SynchronizeActionReplay)() = (void(__cdecl*)())0x0041c11c;
 CARM95_HOOK_FUNCTION(original_SynchronizeActionReplay, SynchronizeActionReplay)
-void SynchronizeActionReplay() {
+void __cdecl SynchronizeActionReplay() {
     FILE *f;
     tPath_name the_path;
     static tU32 gLast_synch_time;

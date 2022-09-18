@@ -4,25 +4,20 @@
 
 #include "carm95_hooks.h"
 
-#include <stdio.h>
-#if 0
-char *(* hookvar_gOil_pixie_names )[1];
-#endif
-#if 0
-int * hookvar_gNext_oil_pixie ;
-#endif
+char *(* hookvar_gOil_pixie_names )[1] = (void*)0x00509a38;
+int * hookvar_gNext_oil_pixie  = (void*)0x00509a3c;
 #if 0
 br_scalar * hookvar_gZ_buffer_diff ;
 #endif
 #if 0
 br_scalar * hookvar_gMin_z_diff ;
 #endif
-#if 0
-br_pixelmap *(* hookvar_gOil_pixies )[1];
-#endif
+br_pixelmap *(* hookvar_gOil_pixies )[1] = (void*)0x00551dc0;
 tOil_spill_info(* hookvar_gOily_spills )[15] = (void*)0x00551dd0;
 
-void InitOilSpills() {
+static void(__cdecl*original_InitOilSpills)() = (void(__cdecl*)())0x00412510;
+CARM95_HOOK_FUNCTION(original_InitOilSpills, InitOilSpills)
+void __cdecl InitOilSpills() {
     int i;
     br_model *the_model;
     br_material *the_material;
@@ -32,12 +27,12 @@ void InitOilSpills() {
     (void)the_model;
     (void)the_material;
 
-    NOT_IMPLEMENTED();
+    original_InitOilSpills();
 }
 
-static void(*original_ResetOilSpills)() = (void(*)())0x00412859;
+static void(__cdecl*original_ResetOilSpills)() = (void(__cdecl*)())0x00412859;
 CARM95_HOOK_FUNCTION(original_ResetOilSpills, ResetOilSpills)
-void ResetOilSpills() {
+void __cdecl ResetOilSpills() {
     int i;
     LOG_TRACE("()");
 
@@ -46,9 +41,9 @@ void ResetOilSpills() {
     original_ResetOilSpills();
 }
 
-static void(*original_QueueOilSpill)(tCar_spec *, ...) = (void(*)(tCar_spec *, ...))0x004128c7;
+static void(__cdecl*original_QueueOilSpill)(tCar_spec *) = (void(__cdecl*)(tCar_spec *))0x004128c7;
 CARM95_HOOK_FUNCTION(original_QueueOilSpill, QueueOilSpill)
-void QueueOilSpill(tCar_spec *pCar) {
+void __cdecl QueueOilSpill(tCar_spec *pCar) {
     int i;
     int oily_index;
     int oldest_one;
@@ -66,7 +61,9 @@ void QueueOilSpill(tCar_spec *pCar) {
     original_QueueOilSpill(pCar);
 }
 
-int OKToSpillOil(tOil_spill_info *pOil) {
+static int(__cdecl*original_OKToSpillOil)(tOil_spill_info *) = (int(__cdecl*)(tOil_spill_info *))0x0041337d;
+CARM95_HOOK_FUNCTION(original_OKToSpillOil, OKToSpillOil)
+int __cdecl OKToSpillOil(tOil_spill_info *pOil) {
     br_scalar temp;
     br_scalar size_with_margin;
     br_scalar distance;
@@ -103,12 +100,12 @@ int OKToSpillOil(tOil_spill_info *pOil) {
     (void)the_list;
     (void)face_ref;
 
-    NOT_IMPLEMENTED();
+    return original_OKToSpillOil(pOil);
 }
 
-static void(*original_Vector3Interpolate)(br_vector3 *, br_vector3 *, br_vector3 *, br_scalar, ...) = (void(*)(br_vector3 *, br_vector3 *, br_vector3 *, br_scalar, ...))0x00412b76;
+static void(__cdecl*original_Vector3Interpolate)(br_vector3 *, br_vector3 *, br_vector3 *, br_scalar) = (void(__cdecl*)(br_vector3 *, br_vector3 *, br_vector3 *, br_scalar))0x00412b76;
 CARM95_HOOK_FUNCTION(original_Vector3Interpolate, Vector3Interpolate)
-void Vector3Interpolate(br_vector3 *pDst, br_vector3 *pFrom, br_vector3 *pTo, br_scalar pP) {
+void __cdecl Vector3Interpolate(br_vector3 *pDst, br_vector3 *pFrom, br_vector3 *pTo, br_scalar pP) {
     LOG_TRACE("(%p, %p, %p, %f)", pDst, pFrom, pTo, pP);
 
     (void)pDst;
@@ -119,9 +116,9 @@ void Vector3Interpolate(br_vector3 *pDst, br_vector3 *pFrom, br_vector3 *pTo, br
     original_Vector3Interpolate(pDst, pFrom, pTo, pP);
 }
 
-static void(*original_EnsureGroundDetailVisible)(br_vector3 *, br_vector3 *, br_vector3 *, ...) = (void(*)(br_vector3 *, br_vector3 *, br_vector3 *, ...))0x00412a81;
+static void(__cdecl*original_EnsureGroundDetailVisible)(br_vector3 *, br_vector3 *, br_vector3 *) = (void(__cdecl*)(br_vector3 *, br_vector3 *, br_vector3 *))0x00412a81;
 CARM95_HOOK_FUNCTION(original_EnsureGroundDetailVisible, EnsureGroundDetailVisible)
-void EnsureGroundDetailVisible(br_vector3 *pNew_pos, br_vector3 *pGround_normal, br_vector3 *pOld_pos) {
+void __cdecl EnsureGroundDetailVisible(br_vector3 *pNew_pos, br_vector3 *pGround_normal, br_vector3 *pOld_pos) {
     br_scalar factor;
     br_scalar s;
     br_scalar dist;
@@ -139,9 +136,9 @@ void EnsureGroundDetailVisible(br_vector3 *pNew_pos, br_vector3 *pGround_normal,
     original_EnsureGroundDetailVisible(pNew_pos, pGround_normal, pOld_pos);
 }
 
-static void(*original_MungeOilsHeightAboveGround)(tOil_spill_info *, ...) = (void(*)(tOil_spill_info *, ...))0x00412bf4;
+static void(__cdecl*original_MungeOilsHeightAboveGround)(tOil_spill_info *) = (void(__cdecl*)(tOil_spill_info *))0x00412bf4;
 CARM95_HOOK_FUNCTION(original_MungeOilsHeightAboveGround, MungeOilsHeightAboveGround)
-void MungeOilsHeightAboveGround(tOil_spill_info *pOil) {
+void __cdecl MungeOilsHeightAboveGround(tOil_spill_info *pOil) {
     LOG_TRACE("(%p)", pOil);
 
     (void)pOil;
@@ -149,9 +146,9 @@ void MungeOilsHeightAboveGround(tOil_spill_info *pOil) {
     original_MungeOilsHeightAboveGround(pOil);
 }
 
-static void(*original_MungeIndexedOilsHeightAboveGround)(int, ...) = (void(*)(int, ...))0x00412bce;
+static void(__cdecl*original_MungeIndexedOilsHeightAboveGround)(int) = (void(__cdecl*)(int))0x00412bce;
 CARM95_HOOK_FUNCTION(original_MungeIndexedOilsHeightAboveGround, MungeIndexedOilsHeightAboveGround)
-void MungeIndexedOilsHeightAboveGround(int pIndex) {
+void __cdecl MungeIndexedOilsHeightAboveGround(int pIndex) {
     LOG_TRACE("(%d)", pIndex);
 
     (void)pIndex;
@@ -159,9 +156,9 @@ void MungeIndexedOilsHeightAboveGround(int pIndex) {
     original_MungeIndexedOilsHeightAboveGround(pIndex);
 }
 
-static void(*original_SetInitialOilStuff)(tOil_spill_info *, br_model *, ...) = (void(*)(tOil_spill_info *, br_model *, ...))0x004137ad;
+static void(__cdecl*original_SetInitialOilStuff)(tOil_spill_info *, br_model *) = (void(__cdecl*)(tOil_spill_info *, br_model *))0x004137ad;
 CARM95_HOOK_FUNCTION(original_SetInitialOilStuff, SetInitialOilStuff)
-void SetInitialOilStuff(tOil_spill_info *pOil, br_model *pModel) {
+void __cdecl SetInitialOilStuff(tOil_spill_info *pOil, br_model *pModel) {
     LOG_TRACE("(%p, %p)", pOil, pModel);
 
     (void)pOil;
@@ -170,9 +167,9 @@ void SetInitialOilStuff(tOil_spill_info *pOil, br_model *pModel) {
     original_SetInitialOilStuff(pOil, pModel);
 }
 
-static void(*original_ProcessOilSpills)(tU32, ...) = (void(*)(tU32, ...))0x00412c20;
+static void(__cdecl*original_ProcessOilSpills)(tU32) = (void(__cdecl*)(tU32))0x00412c20;
 CARM95_HOOK_FUNCTION(original_ProcessOilSpills, ProcessOilSpills)
-void ProcessOilSpills(tU32 pFrame_period) {
+void __cdecl ProcessOilSpills(tU32 pFrame_period) {
     int i;
     tU32 time;
     br_model *the_model;
@@ -196,18 +193,18 @@ void ProcessOilSpills(tU32 pFrame_period) {
     original_ProcessOilSpills(pFrame_period);
 }
 
-static int(*original_GetOilSpillCount)() = (int(*)())0x00413852;
+static int(__cdecl*original_GetOilSpillCount)() = (int(__cdecl*)())0x00413852;
 CARM95_HOOK_FUNCTION(original_GetOilSpillCount, GetOilSpillCount)
-int GetOilSpillCount() {
+int __cdecl GetOilSpillCount() {
     LOG_TRACE("()");
 
 
     return original_GetOilSpillCount();
 }
 
-static void(*original_GetOilSpillDetails)(int, br_actor **, br_scalar *, ...) = (void(*)(int, br_actor **, br_scalar *, ...))0x00413867;
+static void(__cdecl*original_GetOilSpillDetails)(int, br_actor **, br_scalar *) = (void(__cdecl*)(int, br_actor **, br_scalar *))0x00413867;
 CARM95_HOOK_FUNCTION(original_GetOilSpillDetails, GetOilSpillDetails)
-void GetOilSpillDetails(int pIndex, br_actor **pActor, br_scalar *pSize) {
+void __cdecl GetOilSpillDetails(int pIndex, br_actor **pActor, br_scalar *pSize) {
     LOG_TRACE("(%d, %p, %p)", pIndex, pActor, pSize);
 
     (void)pIndex;
@@ -217,9 +214,9 @@ void GetOilSpillDetails(int pIndex, br_actor **pActor, br_scalar *pSize) {
     original_GetOilSpillDetails(pIndex, pActor, pSize);
 }
 
-static int(*original_PointInSpill)(br_vector3 *, int, ...) = (int(*)(br_vector3 *, int, ...))0x00413b72;
+static int(__cdecl*original_PointInSpill)(br_vector3 *, int) = (int(__cdecl*)(br_vector3 *, int))0x00413b72;
 CARM95_HOOK_FUNCTION(original_PointInSpill, PointInSpill)
-int PointInSpill(br_vector3 *pV, int pSpill) {
+int __cdecl PointInSpill(br_vector3 *pV, int pSpill) {
     LOG_TRACE("(%p, %d)", pV, pSpill);
 
     (void)pV;
@@ -228,9 +225,9 @@ int PointInSpill(br_vector3 *pV, int pSpill) {
     return original_PointInSpill(pV, pSpill);
 }
 
-static void(*original_GetOilFrictionFactors)(tCar_spec *, br_scalar *, br_scalar *, br_scalar *, br_scalar *, ...) = (void(*)(tCar_spec *, br_scalar *, br_scalar *, br_scalar *, br_scalar *, ...))0x004138c7;
+static void(__cdecl*original_GetOilFrictionFactors)(tCar_spec *, br_scalar *, br_scalar *, br_scalar *, br_scalar *) = (void(__cdecl*)(tCar_spec *, br_scalar *, br_scalar *, br_scalar *, br_scalar *))0x004138c7;
 CARM95_HOOK_FUNCTION(original_GetOilFrictionFactors, GetOilFrictionFactors)
-void GetOilFrictionFactors(tCar_spec *pCar, br_scalar *pFl_factor, br_scalar *pFr_factor, br_scalar *pRl_factor, br_scalar *pRr_factor) {
+void __cdecl GetOilFrictionFactors(tCar_spec *pCar, br_scalar *pFl_factor, br_scalar *pFr_factor, br_scalar *pRl_factor, br_scalar *pRr_factor) {
     int i;
     br_vector3 wheel_world;
     LOG_TRACE("(%p, %p, %p, %p, %p)", pCar, pFl_factor, pFr_factor, pRl_factor, pRr_factor);
@@ -246,7 +243,9 @@ void GetOilFrictionFactors(tCar_spec *pCar, br_scalar *pFl_factor, br_scalar *pF
     original_GetOilFrictionFactors(pCar, pFl_factor, pFr_factor, pRl_factor, pRr_factor);
 }
 
-void AdjustOilSpill(int pIndex, br_matrix34 *pMat, br_scalar pFull_size, br_scalar pGrow_rate, tU32 pSpill_time, tU32 pStop_time, tCar_spec *pCar, br_vector3 *pOriginal_pos, br_pixelmap *pPixelmap) {
+static void(__cdecl*original_AdjustOilSpill)(int, br_matrix34 *, br_scalar, br_scalar, tU32, tU32, tCar_spec *, br_vector3 *, br_pixelmap *) = (void(__cdecl*)(int, br_matrix34 *, br_scalar, br_scalar, tU32, tU32, tCar_spec *, br_vector3 *, br_pixelmap *))0x00413cb6;
+CARM95_HOOK_FUNCTION(original_AdjustOilSpill, AdjustOilSpill)
+void __cdecl AdjustOilSpill(int pIndex, br_matrix34 *pMat, br_scalar pFull_size, br_scalar pGrow_rate, tU32 pSpill_time, tU32 pStop_time, tCar_spec *pCar, br_vector3 *pOriginal_pos, br_pixelmap *pPixelmap) {
     LOG_TRACE("(%d, %p, %f, %f, %u, %u, %p, %p, %p)", pIndex, pMat, pFull_size, pGrow_rate, pSpill_time, pStop_time, pCar, pOriginal_pos, pPixelmap);
 
     (void)pIndex;
@@ -259,12 +258,12 @@ void AdjustOilSpill(int pIndex, br_matrix34 *pMat, br_scalar pFull_size, br_scal
     (void)pOriginal_pos;
     (void)pPixelmap;
 
-    NOT_IMPLEMENTED();
+    original_AdjustOilSpill(pIndex, pMat, pFull_size, pGrow_rate, pSpill_time, pStop_time, pCar, pOriginal_pos, pPixelmap);
 }
 
-static void(*original_ReceivedOilSpill)(tNet_contents *, ...) = (void(*)(tNet_contents *, ...))0x00413dc4;
+static void(__cdecl*original_ReceivedOilSpill)(tNet_contents *) = (void(__cdecl*)(tNet_contents *))0x00413dc4;
 CARM95_HOOK_FUNCTION(original_ReceivedOilSpill, ReceivedOilSpill)
-void ReceivedOilSpill(tNet_contents *pContents) {
+void __cdecl ReceivedOilSpill(tNet_contents *pContents) {
     int i;
     int oily_index;
     int oldest_one;

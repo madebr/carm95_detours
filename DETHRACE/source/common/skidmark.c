@@ -4,7 +4,6 @@
 
 #include "carm95_hooks.h"
 
-#include <stdio.h>
 #if 0
 char *(* hookvar_gBoring_material_names )[2];
 #endif
@@ -13,9 +12,9 @@ char *(* hookvar_gMaterial_names )[2];
 #endif
 tSkid(* hookvar_gSkids )[100] = (void*)0x00530190;
 
-static void(*original_StretchMark)(tSkid *, br_vector3 *, br_vector3 *, br_scalar, ...) = (void(*)(tSkid *, br_vector3 *, br_vector3 *, br_scalar, ...))0x00401e7c;
+static void(__cdecl*original_StretchMark)(tSkid *, br_vector3 *, br_vector3 *, br_scalar) = (void(__cdecl*)(tSkid *, br_vector3 *, br_vector3 *, br_scalar))0x00401e7c;
 CARM95_HOOK_FUNCTION(original_StretchMark, StretchMark)
-void StretchMark(tSkid *pMark, br_vector3 *pFrom, br_vector3 *pTo, br_scalar pTexture_start) {
+void __cdecl StretchMark(tSkid *pMark, br_vector3 *pFrom, br_vector3 *pTo, br_scalar pTexture_start) {
     br_vector3 temp;
     br_vector3 *rows;
     br_scalar len;
@@ -34,9 +33,9 @@ void StretchMark(tSkid *pMark, br_vector3 *pFrom, br_vector3 *pTo, br_scalar pTe
     original_StretchMark(pMark, pFrom, pTo, pTexture_start);
 }
 
-static br_material *(*original_MaterialFromIndex)(int, ...) = (br_material *(*)(int, ...))0x00401088;
+static br_material *(__cdecl*original_MaterialFromIndex)(int) = (br_material *(__cdecl*)(int))0x00401088;
 CARM95_HOOK_FUNCTION(original_MaterialFromIndex, MaterialFromIndex)
-br_material* MaterialFromIndex(int pIndex) {
+br_material* __cdecl MaterialFromIndex(int pIndex) {
     LOG_TRACE("(%d)", pIndex);
 
     (void)pIndex;
@@ -44,9 +43,9 @@ br_material* MaterialFromIndex(int pIndex) {
     return original_MaterialFromIndex(pIndex);
 }
 
-static void(*original_AdjustSkid)(int, br_matrix34 *, int, ...) = (void(*)(int, br_matrix34 *, int, ...))0x00401000;
+static void(__cdecl*original_AdjustSkid)(int, br_matrix34 *, int) = (void(__cdecl*)(int, br_matrix34 *, int))0x00401000;
 CARM95_HOOK_FUNCTION(original_AdjustSkid, AdjustSkid)
-void AdjustSkid(int pSkid_num, br_matrix34 *pMatrix, int pMaterial_index) {
+void __cdecl AdjustSkid(int pSkid_num, br_matrix34 *pMatrix, int pMaterial_index) {
     LOG_TRACE("(%d, %p, %d)", pSkid_num, pMatrix, pMaterial_index);
 
     (void)pSkid_num;
@@ -56,9 +55,9 @@ void AdjustSkid(int pSkid_num, br_matrix34 *pMatrix, int pMaterial_index) {
     original_AdjustSkid(pSkid_num, pMatrix, pMaterial_index);
 }
 
-static int(*original_FarFromLine2D)(br_vector3 *, br_vector3 *, br_vector3 *, ...) = (int(*)(br_vector3 *, br_vector3 *, br_vector3 *, ...))0x004020dc;
+static int(__cdecl*original_FarFromLine2D)(br_vector3 *, br_vector3 *, br_vector3 *) = (int(__cdecl*)(br_vector3 *, br_vector3 *, br_vector3 *))0x004020dc;
 CARM95_HOOK_FUNCTION(original_FarFromLine2D, FarFromLine2D)
-int FarFromLine2D(br_vector3 *pPt, br_vector3 *pL1, br_vector3 *pL2) {
+int __cdecl FarFromLine2D(br_vector3 *pPt, br_vector3 *pL1, br_vector3 *pL2) {
     br_vector2 line;
     br_vector2 to_pt;
     br_scalar line_len;
@@ -76,9 +75,9 @@ int FarFromLine2D(br_vector3 *pPt, br_vector3 *pL1, br_vector3 *pL2) {
     return original_FarFromLine2D(pPt, pL1, pL2);
 }
 
-static int(*original_Reflex2D)(br_vector3 *, br_vector3 *, br_vector3 *, ...) = (int(*)(br_vector3 *, br_vector3 *, br_vector3 *, ...))0x00402179;
+static int(__cdecl*original_Reflex2D)(br_vector3 *, br_vector3 *, br_vector3 *) = (int(__cdecl*)(br_vector3 *, br_vector3 *, br_vector3 *))0x00402179;
 CARM95_HOOK_FUNCTION(original_Reflex2D, Reflex2D)
-int Reflex2D(br_vector3 *pPt, br_vector3 *pL1, br_vector3 *pL2) {
+int __cdecl Reflex2D(br_vector3 *pPt, br_vector3 *pL1, br_vector3 *pL2) {
     br_vector2 line;
     br_vector2 to_pt;
     LOG_TRACE("(%p, %p, %p)", pPt, pL1, pL2);
@@ -92,9 +91,9 @@ int Reflex2D(br_vector3 *pPt, br_vector3 *pL1, br_vector3 *pL2) {
     return original_Reflex2D(pPt, pL1, pL2);
 }
 
-static void(*original_InitSkids)() = (void(*)())0x004010c8;
+static void(__cdecl*original_InitSkids)() = (void(__cdecl*)())0x004010c8;
 CARM95_HOOK_FUNCTION(original_InitSkids, InitSkids)
-void InitSkids() {
+void __cdecl InitSkids() {
     int skid;
     int mat;
     int sl;
@@ -111,9 +110,9 @@ void InitSkids() {
     original_InitSkids();
 }
 
-static void(*original_HideSkid)(int, ...) = (void(*)(int, ...))0x0040148d;
+static void(__cdecl*original_HideSkid)(int) = (void(__cdecl*)(int))0x0040148d;
 CARM95_HOOK_FUNCTION(original_HideSkid, HideSkid)
-void HideSkid(int pSkid_num) {
+void __cdecl HideSkid(int pSkid_num) {
     LOG_TRACE("(%d)", pSkid_num);
 
     (void)pSkid_num;
@@ -121,9 +120,9 @@ void HideSkid(int pSkid_num) {
     original_HideSkid(pSkid_num);
 }
 
-static void(*original_HideSkids)() = (void(*)())0x004014ad;
+static void(__cdecl*original_HideSkids)() = (void(__cdecl*)())0x004014ad;
 CARM95_HOOK_FUNCTION(original_HideSkids, HideSkids)
-void HideSkids() {
+void __cdecl HideSkids() {
     int skid;
     LOG_TRACE("()");
 
@@ -132,9 +131,9 @@ void HideSkids() {
     original_HideSkids();
 }
 
-static br_scalar(*original_SkidLen)(int, ...) = (br_scalar(*)(int, ...))0x004021f1;
+static br_scalar(__cdecl*original_SkidLen)(int) = (br_scalar(__cdecl*)(int))0x004021f1;
 CARM95_HOOK_FUNCTION(original_SkidLen, SkidLen)
-br_scalar SkidLen(int pSkid) {
+br_scalar __cdecl SkidLen(int pSkid) {
     LOG_TRACE("(%d)", pSkid);
 
     (void)pSkid;
@@ -157,9 +156,9 @@ void SkidSection(tCar_spec *pCar, int pWheel_num, br_vector3 *pPos, int pMateria
     NOT_IMPLEMENTED();
 }
 
-static void(*original_SkidMark)(tCar_spec *, int, ...) = (void(*)(tCar_spec *, int, ...))0x004014e5;
+static void(__cdecl*original_SkidMark)(tCar_spec *, int) = (void(__cdecl*)(tCar_spec *, int))0x004014e5;
 CARM95_HOOK_FUNCTION(original_SkidMark, SkidMark)
-void SkidMark(tCar_spec *pCar, int pWheel_num) {
+void __cdecl SkidMark(tCar_spec *pCar, int pWheel_num) {
     br_vector3 pos;
     br_vector3 world_pos;
     br_vector3 disp;
@@ -186,9 +185,9 @@ void SkidMark(tCar_spec *pCar, int pWheel_num) {
     original_SkidMark(pCar, pWheel_num);
 }
 
-static void(*original_InitCarSkidStuff)(tCar_spec *, ...) = (void(*)(tCar_spec *, ...))0x00402282;
+static void(__cdecl*original_InitCarSkidStuff)(tCar_spec *) = (void(__cdecl*)(tCar_spec *))0x00402282;
 CARM95_HOOK_FUNCTION(original_InitCarSkidStuff, InitCarSkidStuff)
-void InitCarSkidStuff(tCar_spec *pCar) {
+void __cdecl InitCarSkidStuff(tCar_spec *pCar) {
     int wheel;
     LOG_TRACE("(%p)", pCar);
 
@@ -198,9 +197,9 @@ void InitCarSkidStuff(tCar_spec *pCar) {
     original_InitCarSkidStuff(pCar);
 }
 
-static void(*original_SkidsPerFrame)() = (void(*)())0x004022f1;
+static void(__cdecl*original_SkidsPerFrame)() = (void(__cdecl*)())0x004022f1;
 CARM95_HOOK_FUNCTION(original_SkidsPerFrame, SkidsPerFrame)
-void SkidsPerFrame() {
+void __cdecl SkidsPerFrame() {
     int skid;
     LOG_TRACE("()");
 

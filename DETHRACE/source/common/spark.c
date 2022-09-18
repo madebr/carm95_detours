@@ -4,7 +4,6 @@
 
 #include "carm95_hooks.h"
 
-#include <stdio.h>
 int * hookvar_gNext_spark  = (void*)0x005149e8;
 int * hookvar_gSpark_flags  = (void*)0x005149ec;
 int * hookvar_gNext_shrapnel  = (void*)0x005149f0;
@@ -52,9 +51,9 @@ br_camera ** hookvar_gSpark_cam  = (void*)0x00538290;
 br_material ** hookvar_gBlack_material  = (void*)0x00538288;
 tShrapnel(* hookvar_gShrapnel )[15] = (void*)0x00538b50;
 
-static void(*original_DrawDot)(br_scalar, tU8 *, tU16 *, tU8 *, ...) = (void(*)(br_scalar, tU8 *, tU16 *, tU8 *, ...))0x00466310;
+static void(__cdecl*original_DrawDot)(br_scalar, tU8 *, tU16 *, tU8 *) = (void(__cdecl*)(br_scalar, tU8 *, tU16 *, tU8 *))0x00466310;
 CARM95_HOOK_FUNCTION(original_DrawDot, DrawDot)
-void DrawDot(br_scalar z, tU8 *scr_ptr, tU16 *depth_ptr, tU8 *shade_ptr) {
+void __cdecl DrawDot(br_scalar z, tU8 *scr_ptr, tU16 *depth_ptr, tU8 *shade_ptr) {
     LOG_TRACE("(%f, %p, %p, %p)", z, scr_ptr, depth_ptr, shade_ptr);
 
     (void)z;
@@ -65,9 +64,9 @@ void DrawDot(br_scalar z, tU8 *scr_ptr, tU16 *depth_ptr, tU8 *shade_ptr) {
     original_DrawDot(z, scr_ptr, depth_ptr, shade_ptr);
 }
 
-static void(*original_SetWorldToScreen)(br_pixelmap *, ...) = (void(*)(br_pixelmap *, ...))0x00466be2;
+static void(__cdecl*original_SetWorldToScreen)(br_pixelmap *) = (void(__cdecl*)(br_pixelmap *))0x00466be2;
 CARM95_HOOK_FUNCTION(original_SetWorldToScreen, SetWorldToScreen)
-void SetWorldToScreen(br_pixelmap *pScreen) {
+void __cdecl SetWorldToScreen(br_pixelmap *pScreen) {
     br_matrix4 mat;
     br_matrix4 mat2;
     LOG_TRACE("(%p)", pScreen);
@@ -88,9 +87,9 @@ void DrawLine3DThroughBRender(br_vector3 *pStart, br_vector3 *pEnd) {
     NOT_IMPLEMENTED();
 }
 
-static int(*original_DrawLine3D)(br_vector3 *, br_vector3 *, br_pixelmap *, br_pixelmap *, br_pixelmap *, ...) = (int(*)(br_vector3 *, br_vector3 *, br_pixelmap *, br_pixelmap *, br_pixelmap *, ...))0x004658e0;
+static int(__cdecl*original_DrawLine3D)(br_vector3 *, br_vector3 *, br_pixelmap *, br_pixelmap *, br_pixelmap *) = (int(__cdecl*)(br_vector3 *, br_vector3 *, br_pixelmap *, br_pixelmap *, br_pixelmap *))0x004658e0;
 CARM95_HOOK_FUNCTION(original_DrawLine3D, DrawLine3D)
-int DrawLine3D(br_vector3 *start, br_vector3 *end, br_pixelmap *pScreen, br_pixelmap *pDepth_buffer, br_pixelmap *shade_table) {
+int __cdecl DrawLine3D(br_vector3 *start, br_vector3 *end, br_pixelmap *pScreen, br_pixelmap *pDepth_buffer, br_pixelmap *shade_table) {
     br_vector3 o;
     br_vector3 p;
     br_vector3 tv;
@@ -114,9 +113,9 @@ int DrawLine3D(br_vector3 *start, br_vector3 *end, br_pixelmap *pScreen, br_pixe
     return original_DrawLine3D(start, end, pScreen, pDepth_buffer, shade_table);
 }
 
-static int(*original_DrawLine2D)(br_vector3 *, br_vector3 *, br_pixelmap *, br_pixelmap *, br_scalar, br_pixelmap *, ...) = (int(*)(br_vector3 *, br_vector3 *, br_pixelmap *, br_pixelmap *, br_scalar, br_pixelmap *, ...))0x00465ab7;
+static int(__cdecl*original_DrawLine2D)(br_vector3 *, br_vector3 *, br_pixelmap *, br_pixelmap *, br_scalar, br_pixelmap *) = (int(__cdecl*)(br_vector3 *, br_vector3 *, br_pixelmap *, br_pixelmap *, br_scalar, br_pixelmap *))0x00465ab7;
 CARM95_HOOK_FUNCTION(original_DrawLine2D, DrawLine2D)
-int DrawLine2D(br_vector3 *o, br_vector3 *p, br_pixelmap *pScreen, br_pixelmap *pDepth_buffer, br_scalar brightness, br_pixelmap *shade_table) {
+int __cdecl DrawLine2D(br_vector3 *o, br_vector3 *p, br_pixelmap *pScreen, br_pixelmap *pDepth_buffer, br_scalar brightness, br_pixelmap *shade_table) {
     tU8 *scr_ptr;
     tU16 *depth_ptr;
     tU8 *shade_ptr;
@@ -177,9 +176,9 @@ void SetLineModelCols(tU8 pCol) {
     NOT_IMPLEMENTED();
 }
 
-static void(*original_ReplaySparks)(br_pixelmap *, br_pixelmap *, br_actor *, tU32, ...) = (void(*)(br_pixelmap *, br_pixelmap *, br_actor *, tU32, ...))0x00466c92;
+static void(__cdecl*original_ReplaySparks)(br_pixelmap *, br_pixelmap *, br_actor *, tU32) = (void(__cdecl*)(br_pixelmap *, br_pixelmap *, br_actor *, tU32))0x00466c92;
 CARM95_HOOK_FUNCTION(original_ReplaySparks, ReplaySparks)
-void ReplaySparks(br_pixelmap *pRender_screen, br_pixelmap *pDepth_buffer, br_actor *pCamera, tU32 pTime) {
+void __cdecl ReplaySparks(br_pixelmap *pRender_screen, br_pixelmap *pDepth_buffer, br_actor *pCamera, tU32 pTime) {
     int i;
     br_vector3 pos;
     br_vector3 o;
@@ -202,9 +201,9 @@ void ReplaySparks(br_pixelmap *pRender_screen, br_pixelmap *pDepth_buffer, br_ac
     original_ReplaySparks(pRender_screen, pDepth_buffer, pCamera, pTime);
 }
 
-static void(*original_RenderSparks)(br_pixelmap *, br_pixelmap *, br_actor *, br_matrix34 *, tU32, ...) = (void(*)(br_pixelmap *, br_pixelmap *, br_actor *, br_matrix34 *, tU32, ...))0x0046636c;
+static void(__cdecl*original_RenderSparks)(br_pixelmap *, br_pixelmap *, br_actor *, br_matrix34 *, tU32) = (void(__cdecl*)(br_pixelmap *, br_pixelmap *, br_actor *, br_matrix34 *, tU32))0x0046636c;
 CARM95_HOOK_FUNCTION(original_RenderSparks, RenderSparks)
-void RenderSparks(br_pixelmap *pRender_screen, br_pixelmap *pDepth_buffer, br_actor *pCamera, br_matrix34 *pCamera_to_world, tU32 pTime) {
+void __cdecl RenderSparks(br_pixelmap *pRender_screen, br_pixelmap *pDepth_buffer, br_actor *pCamera, br_matrix34 *pCamera_to_world, tU32 pTime) {
     int i;
     int time;
     br_vector3 tv;
@@ -232,9 +231,9 @@ void RenderSparks(br_pixelmap *pRender_screen, br_pixelmap *pDepth_buffer, br_ac
     original_RenderSparks(pRender_screen, pDepth_buffer, pCamera, pCamera_to_world, pTime);
 }
 
-static void(*original_CreateSingleSpark)(tCar_spec *, br_vector3 *, br_vector3 *, ...) = (void(*)(tCar_spec *, br_vector3 *, br_vector3 *, ...))0x0046e43e;
+static void(__cdecl*original_CreateSingleSpark)(tCar_spec *, br_vector3 *, br_vector3 *) = (void(__cdecl*)(tCar_spec *, br_vector3 *, br_vector3 *))0x0046e43e;
 CARM95_HOOK_FUNCTION(original_CreateSingleSpark, CreateSingleSpark)
-void CreateSingleSpark(tCar_spec *pCar, br_vector3 *pPos, br_vector3 *pVel) {
+void __cdecl CreateSingleSpark(tCar_spec *pCar, br_vector3 *pPos, br_vector3 *pVel) {
     LOG_TRACE("(%p, %p, %p)", pCar, pPos, pVel);
 
     (void)pCar;
@@ -244,9 +243,9 @@ void CreateSingleSpark(tCar_spec *pCar, br_vector3 *pPos, br_vector3 *pVel) {
     original_CreateSingleSpark(pCar, pPos, pVel);
 }
 
-static void(*original_CreateSparks)(br_vector3 *, br_vector3 *, br_vector3 *, br_scalar, tCar_spec *, ...) = (void(*)(br_vector3 *, br_vector3 *, br_vector3 *, br_scalar, tCar_spec *, ...))0x00466e70;
+static void(__cdecl*original_CreateSparks)(br_vector3 *, br_vector3 *, br_vector3 *, br_scalar, tCar_spec *) = (void(__cdecl*)(br_vector3 *, br_vector3 *, br_vector3 *, br_scalar, tCar_spec *))0x00466e70;
 CARM95_HOOK_FUNCTION(original_CreateSparks, CreateSparks)
-void CreateSparks(br_vector3 *pos, br_vector3 *v, br_vector3 *pForce, br_scalar sparkiness, tCar_spec *pCar) {
+void __cdecl CreateSparks(br_vector3 *pos, br_vector3 *v, br_vector3 *pForce, br_scalar sparkiness, tCar_spec *pCar) {
     br_vector3 norm;
     br_vector3 normal;
     br_vector3 tv;
@@ -276,9 +275,9 @@ void CreateSparks(br_vector3 *pos, br_vector3 *v, br_vector3 *pForce, br_scalar 
     original_CreateSparks(pos, v, pForce, sparkiness, pCar);
 }
 
-static void(*original_CreateSparkShower)(br_vector3 *, br_vector3 *, br_vector3 *, tCar_spec *, tCar_spec *, ...) = (void(*)(br_vector3 *, br_vector3 *, br_vector3 *, tCar_spec *, tCar_spec *, ...))0x004674b1;
+static void(__cdecl*original_CreateSparkShower)(br_vector3 *, br_vector3 *, br_vector3 *, tCar_spec *, tCar_spec *) = (void(__cdecl*)(br_vector3 *, br_vector3 *, br_vector3 *, tCar_spec *, tCar_spec *))0x004674b1;
 CARM95_HOOK_FUNCTION(original_CreateSparkShower, CreateSparkShower)
-void CreateSparkShower(br_vector3 *pos, br_vector3 *v, br_vector3 *pForce, tCar_spec *pCar1, tCar_spec *pCar2) {
+void __cdecl CreateSparkShower(br_vector3 *pos, br_vector3 *v, br_vector3 *pForce, tCar_spec *pCar1, tCar_spec *pCar2) {
     br_scalar ts;
     br_scalar ts2;
     int num;
@@ -306,9 +305,9 @@ void CreateSparkShower(br_vector3 *pos, br_vector3 *v, br_vector3 *pForce, tCar_
     original_CreateSparkShower(pos, v, pForce, pCar1, pCar2);
 }
 
-static void(*original_AdjustSpark)(int, br_vector3 *, br_vector3 *, ...) = (void(*)(int, br_vector3 *, br_vector3 *, ...))0x004678b3;
+static void(__cdecl*original_AdjustSpark)(int, br_vector3 *, br_vector3 *) = (void(__cdecl*)(int, br_vector3 *, br_vector3 *))0x004678b3;
 CARM95_HOOK_FUNCTION(original_AdjustSpark, AdjustSpark)
-void AdjustSpark(int pSpark_num, br_vector3 *pos, br_vector3 *length) {
+void __cdecl AdjustSpark(int pSpark_num, br_vector3 *pos, br_vector3 *length) {
     br_vector3 tv;
     br_matrix34 *mat;
     int i;
@@ -324,9 +323,9 @@ void AdjustSpark(int pSpark_num, br_vector3 *pos, br_vector3 *length) {
     original_AdjustSpark(pSpark_num, pos, length);
 }
 
-static void(*original_AdjustShrapnel)(int, br_vector3 *, tU16, br_material *, ...) = (void(*)(int, br_vector3 *, tU16, br_material *, ...))0x004679cd;
+static void(__cdecl*original_AdjustShrapnel)(int, br_vector3 *, tU16, br_material *) = (void(__cdecl*)(int, br_vector3 *, tU16, br_material *))0x004679cd;
 CARM95_HOOK_FUNCTION(original_AdjustShrapnel, AdjustShrapnel)
-void AdjustShrapnel(int pShrapnel_num, br_vector3 *pos, tU16 pAge, br_material *pMaterial) {
+void __cdecl AdjustShrapnel(int pShrapnel_num, br_vector3 *pos, tU16 pAge, br_material *pMaterial) {
     int i;
     LOG_TRACE("(%d, %p, %u, %p)", pShrapnel_num, pos, pAge, pMaterial);
 
@@ -339,18 +338,18 @@ void AdjustShrapnel(int pShrapnel_num, br_vector3 *pos, tU16 pAge, br_material *
     original_AdjustShrapnel(pShrapnel_num, pos, pAge, pMaterial);
 }
 
-static void(*original_ResetSparks)() = (void(*)())0x00467abf;
+static void(__cdecl*original_ResetSparks)() = (void(__cdecl*)())0x00467abf;
 CARM95_HOOK_FUNCTION(original_ResetSparks, ResetSparks)
-void ResetSparks() {
+void __cdecl ResetSparks() {
     LOG_TRACE("()");
 
 
     original_ResetSparks();
 }
 
-static void(*original_ResetShrapnel)() = (void(*)())0x00467ad4;
+static void(__cdecl*original_ResetShrapnel)() = (void(__cdecl*)())0x00467ad4;
 CARM95_HOOK_FUNCTION(original_ResetShrapnel, ResetShrapnel)
-void ResetShrapnel() {
+void __cdecl ResetShrapnel() {
     int i;
     LOG_TRACE("()");
 
@@ -359,9 +358,9 @@ void ResetShrapnel() {
     original_ResetShrapnel();
 }
 
-static void(*original_CreateShrapnelShower)(br_vector3 *, br_vector3 *, br_vector3 *, br_scalar, tCar_spec *, tCar_spec *, ...) = (void(*)(br_vector3 *, br_vector3 *, br_vector3 *, br_scalar, tCar_spec *, tCar_spec *, ...))0x00467b4e;
+static void(__cdecl*original_CreateShrapnelShower)(br_vector3 *, br_vector3 *, br_vector3 *, br_scalar, tCar_spec *, tCar_spec *) = (void(__cdecl*)(br_vector3 *, br_vector3 *, br_vector3 *, br_scalar, tCar_spec *, tCar_spec *))0x00467b4e;
 CARM95_HOOK_FUNCTION(original_CreateShrapnelShower, CreateShrapnelShower)
-void CreateShrapnelShower(br_vector3 *pos, br_vector3 *v, br_vector3 *pNormal, br_scalar pForce, tCar_spec *c1, tCar_spec *c2) {
+void __cdecl CreateShrapnelShower(br_vector3 *pos, br_vector3 *v, br_vector3 *pNormal, br_scalar pForce, tCar_spec *c1, tCar_spec *c2) {
     br_scalar ts;
     br_scalar ts2;
     br_scalar rnd;
@@ -399,9 +398,9 @@ br_scalar random() {
     NOT_IMPLEMENTED();
 }
 
-static void(*original_InitShrapnel)() = (void(*)())0x0046ec02;
+static void(__cdecl*original_InitShrapnel)() = (void(__cdecl*)())0x0046ec02;
 CARM95_HOOK_FUNCTION(original_InitShrapnel, InitShrapnel)
-void InitShrapnel() {
+void __cdecl InitShrapnel() {
     int i;
     int j;
     br_scalar __block0___scale;
@@ -409,22 +408,23 @@ void InitShrapnel() {
 
     (void)i;
     (void)j;
+    (void)__block0___scale;
 
     original_InitShrapnel();
 }
 
-static void(*original_LoadInShrapnel)() = (void(*)())0x00467f43;
+static void(__cdecl*original_LoadInShrapnel)() = (void(__cdecl*)())0x00467f43;
 CARM95_HOOK_FUNCTION(original_LoadInShrapnel, LoadInShrapnel)
-void LoadInShrapnel() {
+void __cdecl LoadInShrapnel() {
     LOG_TRACE("()");
 
 
     original_LoadInShrapnel();
 }
 
-static void(*original_KillShrapnel)(int, ...) = (void(*)(int, ...))0x00468567;
+static void(__cdecl*original_KillShrapnel)(int) = (void(__cdecl*)(int))0x00468567;
 CARM95_HOOK_FUNCTION(original_KillShrapnel, KillShrapnel)
-void KillShrapnel(int i) {
+void __cdecl KillShrapnel(int i) {
     LOG_TRACE("(%d)", i);
 
     (void)i;
@@ -432,9 +432,9 @@ void KillShrapnel(int i) {
     original_KillShrapnel(i);
 }
 
-static void(*original_DisposeShrapnel)() = (void(*)())0x00467fa0;
+static void(__cdecl*original_DisposeShrapnel)() = (void(__cdecl*)())0x00467fa0;
 CARM95_HOOK_FUNCTION(original_DisposeShrapnel, DisposeShrapnel)
-void DisposeShrapnel() {
+void __cdecl DisposeShrapnel() {
     int i;
     LOG_TRACE("()");
 
@@ -443,9 +443,9 @@ void DisposeShrapnel() {
     original_DisposeShrapnel();
 }
 
-static void(*original_ReplayShrapnel)(tU32, ...) = (void(*)(tU32, ...))0x004685a0;
+static void(__cdecl*original_ReplayShrapnel)(tU32) = (void(__cdecl*)(tU32))0x004685a0;
 CARM95_HOOK_FUNCTION(original_ReplayShrapnel, ReplayShrapnel)
-void ReplayShrapnel(tU32 pTime) {
+void __cdecl ReplayShrapnel(tU32 pTime) {
     int i;
     br_matrix34 *mat;
     LOG_TRACE("(%u)", pTime);
@@ -457,9 +457,9 @@ void ReplayShrapnel(tU32 pTime) {
     original_ReplayShrapnel(pTime);
 }
 
-static void(*original_MungeShrapnel)(tU32, ...) = (void(*)(tU32, ...))0x0046805c;
+static void(__cdecl*original_MungeShrapnel)(tU32) = (void(__cdecl*)(tU32))0x0046805c;
 CARM95_HOOK_FUNCTION(original_MungeShrapnel, MungeShrapnel)
-void MungeShrapnel(tU32 pTime) {
+void __cdecl MungeShrapnel(tU32 pTime) {
     br_vector3 disp;
     int i;
     br_matrix34 *mat;
@@ -475,9 +475,9 @@ void MungeShrapnel(tU32 pTime) {
     original_MungeShrapnel(pTime);
 }
 
-static void(*original_DrMatrix34Rotate)(br_matrix34 *, br_angle, br_vector3 *, ...) = (void(*)(br_matrix34 *, br_angle, br_vector3 *, ...))0x004686c8;
+static void(__cdecl*original_DrMatrix34Rotate)(br_matrix34 *, br_angle, br_vector3 *) = (void(__cdecl*)(br_matrix34 *, br_angle, br_vector3 *))0x004686c8;
 CARM95_HOOK_FUNCTION(original_DrMatrix34Rotate, DrMatrix34Rotate)
-void DrMatrix34Rotate(br_matrix34 *mat, br_angle r, br_vector3 *a) {
+void __cdecl DrMatrix34Rotate(br_matrix34 *mat, br_angle r, br_vector3 *a) {
     br_scalar t;
     br_scalar s;
     br_scalar c;
@@ -505,9 +505,9 @@ void DrMatrix34Rotate(br_matrix34 *mat, br_angle r, br_vector3 *a) {
     original_DrMatrix34Rotate(mat, r, a);
 }
 
-static void(*original_SmokeLine)(int, int, br_scalar, int, tU8 *, tU16 *, tU8 *, br_scalar, br_scalar, br_scalar, ...) = (void(*)(int, int, br_scalar, int, tU8 *, tU16 *, tU8 *, br_scalar, br_scalar, br_scalar, ...))0x00469fc0;
+static void(__cdecl*original_SmokeLine)(int, int, br_scalar, int, tU8 *, tU16 *, tU8 *, br_scalar, br_scalar, br_scalar) = (void(__cdecl*)(int, int, br_scalar, int, tU8 *, tU16 *, tU8 *, br_scalar, br_scalar, br_scalar))0x00469fc0;
 CARM95_HOOK_FUNCTION(original_SmokeLine, SmokeLine)
-void SmokeLine(int l, int x, br_scalar zbuff, int r_squared, tU8 *scr_ptr, tU16 *depth_ptr, tU8 *shade_ptr, br_scalar r_multiplier, br_scalar z_multiplier, br_scalar shade_offset) {
+void __cdecl SmokeLine(int l, int x, br_scalar zbuff, int r_squared, tU8 *scr_ptr, tU16 *depth_ptr, tU8 *shade_ptr, br_scalar r_multiplier, br_scalar z_multiplier, br_scalar shade_offset) {
     int i;
     int r_multiplier_int;
     int shade_offset_int;
@@ -532,9 +532,9 @@ void SmokeLine(int l, int x, br_scalar zbuff, int r_squared, tU8 *scr_ptr, tU16 
     original_SmokeLine(l, x, zbuff, r_squared, scr_ptr, depth_ptr, shade_ptr, r_multiplier, z_multiplier, shade_offset);
 }
 
-static void(*original_SmokeCircle)(br_vector3 *, br_scalar, br_scalar, br_scalar, br_scalar, br_pixelmap *, br_pixelmap *, br_pixelmap *, ...) = (void(*)(br_vector3 *, br_scalar, br_scalar, br_scalar, br_scalar, br_pixelmap *, br_pixelmap *, br_pixelmap *, ...))0x0046969c;
+static void(__cdecl*original_SmokeCircle)(br_vector3 *, br_scalar, br_scalar, br_scalar, br_scalar, br_pixelmap *, br_pixelmap *, br_pixelmap *) = (void(__cdecl*)(br_vector3 *, br_scalar, br_scalar, br_scalar, br_scalar, br_pixelmap *, br_pixelmap *, br_pixelmap *))0x0046969c;
 CARM95_HOOK_FUNCTION(original_SmokeCircle, SmokeCircle)
-void SmokeCircle(br_vector3 *o, br_scalar r, br_scalar extra_z, br_scalar strength, br_scalar pAspect, br_pixelmap *pRender_screen, br_pixelmap *pDepth_buffer, br_pixelmap *pShade_table) {
+void __cdecl SmokeCircle(br_vector3 *o, br_scalar r, br_scalar extra_z, br_scalar strength, br_scalar pAspect, br_pixelmap *pRender_screen, br_pixelmap *pDepth_buffer, br_pixelmap *pShade_table) {
     tU8 *scr_ptr;
     tU16 *depth_ptr;
     tU8 *shade_ptr;
@@ -561,7 +561,7 @@ void SmokeCircle(br_vector3 *o, br_scalar r, br_scalar extra_z, br_scalar streng
     br_scalar z_multiplier;
     br_scalar zbuff;
     br_scalar aspect_squared;
-    void(**line)(int, int, br_scalar, int, tU8 *, tU16 *, tU8 *, br_scalar, br_scalar, br_scalar, ...);
+    void(**line)(int, int, br_scalar, int, tU8 *, tU16 *, tU8 *, br_scalar, br_scalar, br_scalar);
     LOG_TRACE("(%p, %f, %f, %f, %f, %p, %p, %p)", o, r, extra_z, strength, pAspect, pRender_screen, pDepth_buffer, pShade_table);
 
     (void)o;
@@ -649,9 +649,9 @@ void RecordSmokeCircle(br_vector3 *pCent, br_scalar pR, br_scalar pStrength, br_
     NOT_IMPLEMENTED();
 }
 
-static void(*original_SmokeCircle3D)(br_vector3 *, br_scalar, br_scalar, br_scalar, br_pixelmap *, br_pixelmap *, br_pixelmap *, br_actor *, ...) = (void(*)(br_vector3 *, br_scalar, br_scalar, br_scalar, br_pixelmap *, br_pixelmap *, br_pixelmap *, br_actor *, ...))0x00469551;
+static void(__cdecl*original_SmokeCircle3D)(br_vector3 *, br_scalar, br_scalar, br_scalar, br_pixelmap *, br_pixelmap *, br_pixelmap *, br_actor *) = (void(__cdecl*)(br_vector3 *, br_scalar, br_scalar, br_scalar, br_pixelmap *, br_pixelmap *, br_pixelmap *, br_actor *))0x00469551;
 CARM95_HOOK_FUNCTION(original_SmokeCircle3D, SmokeCircle3D)
-void SmokeCircle3D(br_vector3 *o, br_scalar r, br_scalar strength, br_scalar pAspect, br_pixelmap *pRender_screen, br_pixelmap *pDepth_buffer, br_pixelmap *pShade_table, br_actor *pCam) {
+void __cdecl SmokeCircle3D(br_vector3 *o, br_scalar r, br_scalar strength, br_scalar pAspect, br_pixelmap *pRender_screen, br_pixelmap *pDepth_buffer, br_pixelmap *pShade_table, br_actor *pCam) {
     br_vector3 tv;
     br_vector3 p;
     br_vector4 o2;
@@ -678,9 +678,9 @@ void SmokeCircle3D(br_vector3 *o, br_scalar r, br_scalar strength, br_scalar pAs
     original_SmokeCircle3D(o, r, strength, pAspect, pRender_screen, pDepth_buffer, pShade_table, pCam);
 }
 
-static void(*original_ReplaySmoke)(br_pixelmap *, br_pixelmap *, br_actor *, ...) = (void(*)(br_pixelmap *, br_pixelmap *, br_actor *, ...))0x0046a09d;
+static void(__cdecl*original_ReplaySmoke)(br_pixelmap *, br_pixelmap *, br_actor *) = (void(__cdecl*)(br_pixelmap *, br_pixelmap *, br_actor *))0x0046a09d;
 CARM95_HOOK_FUNCTION(original_ReplaySmoke, ReplaySmoke)
-void ReplaySmoke(br_pixelmap *pRender_screen, br_pixelmap *pDepth_buffer, br_actor *pCamera) {
+void __cdecl ReplaySmoke(br_pixelmap *pRender_screen, br_pixelmap *pDepth_buffer, br_actor *pCamera) {
     br_scalar aspect;
     int i;
     LOG_TRACE("(%p, %p, %p)", pRender_screen, pDepth_buffer, pCamera);
@@ -694,9 +694,9 @@ void ReplaySmoke(br_pixelmap *pRender_screen, br_pixelmap *pDepth_buffer, br_act
     original_ReplaySmoke(pRender_screen, pDepth_buffer, pCamera);
 }
 
-static void(*original_GenerateContinuousSmoke)(tCar_spec *, int, tU32, ...) = (void(*)(tCar_spec *, int, tU32, ...))0x004687dc;
+static void(__cdecl*original_GenerateContinuousSmoke)(tCar_spec *, int, tU32) = (void(__cdecl*)(tCar_spec *, int, tU32))0x004687dc;
 CARM95_HOOK_FUNCTION(original_GenerateContinuousSmoke, GenerateContinuousSmoke)
-void GenerateContinuousSmoke(tCar_spec *pCar, int wheel, tU32 pTime) {
+void __cdecl GenerateContinuousSmoke(tCar_spec *pCar, int wheel, tU32 pTime) {
     br_vector3 pos;
     br_vector3 v;
     br_vector3 vcs;
@@ -731,9 +731,9 @@ void DustRotate() {
     NOT_IMPLEMENTED();
 }
 
-static void(*original_RenderSmoke)(br_pixelmap *, br_pixelmap *, br_actor *, br_matrix34 *, tU32, ...) = (void(*)(br_pixelmap *, br_pixelmap *, br_actor *, br_matrix34 *, tU32, ...))0x00468c09;
+static void(__cdecl*original_RenderSmoke)(br_pixelmap *, br_pixelmap *, br_actor *, br_matrix34 *, tU32) = (void(__cdecl*)(br_pixelmap *, br_pixelmap *, br_actor *, br_matrix34 *, tU32))0x00468c09;
 CARM95_HOOK_FUNCTION(original_RenderSmoke, RenderSmoke)
-void RenderSmoke(br_pixelmap *pRender_screen, br_pixelmap *pDepth_buffer, br_actor *pCamera, br_matrix34 *pCamera_to_world, tU32 pTime) {
+void __cdecl RenderSmoke(br_pixelmap *pRender_screen, br_pixelmap *pDepth_buffer, br_actor *pCamera, br_matrix34 *pCamera_to_world, tU32 pTime) {
     int i;
     int j;
     br_vector3 tv;
@@ -759,9 +759,9 @@ void RenderSmoke(br_pixelmap *pRender_screen, br_pixelmap *pDepth_buffer, br_act
     original_RenderSmoke(pRender_screen, pDepth_buffer, pCamera, pCamera_to_world, pTime);
 }
 
-static void(*original_CreatePuffOfSmoke)(br_vector3 *, br_vector3 *, br_scalar, br_scalar, int, tCar_spec *, ...) = (void(*)(br_vector3 *, br_vector3 *, br_scalar, br_scalar, int, tCar_spec *, ...))0x0046a225;
+static void(__cdecl*original_CreatePuffOfSmoke)(br_vector3 *, br_vector3 *, br_scalar, br_scalar, int, tCar_spec *) = (void(__cdecl*)(br_vector3 *, br_vector3 *, br_scalar, br_scalar, int, tCar_spec *))0x0046a225;
 CARM95_HOOK_FUNCTION(original_CreatePuffOfSmoke, CreatePuffOfSmoke)
-void CreatePuffOfSmoke(br_vector3 *pos, br_vector3 *v, br_scalar strength, br_scalar pDecay_factor, int pType, tCar_spec *pC) {
+void __cdecl CreatePuffOfSmoke(br_vector3 *pos, br_vector3 *v, br_scalar strength, br_scalar pDecay_factor, int pType, tCar_spec *pC) {
     br_vector3 tv;
     int pipe_me;
     LOG_TRACE("(%p, %p, %f, %f, %d, %p)", pos, v, strength, pDecay_factor, pType, pC);
@@ -778,18 +778,18 @@ void CreatePuffOfSmoke(br_vector3 *pos, br_vector3 *v, br_scalar strength, br_sc
     original_CreatePuffOfSmoke(pos, v, strength, pDecay_factor, pType, pC);
 }
 
-static void(*original_ResetSmoke)() = (void(*)())0x0046a58d;
+static void(__cdecl*original_ResetSmoke)() = (void(__cdecl*)())0x0046a58d;
 CARM95_HOOK_FUNCTION(original_ResetSmoke, ResetSmoke)
-void ResetSmoke() {
+void __cdecl ResetSmoke() {
     LOG_TRACE("()");
 
 
     original_ResetSmoke();
 }
 
-static void(*original_AdjustSmoke)(int, tU8, br_vector3 *, br_scalar, br_scalar, ...) = (void(*)(int, tU8, br_vector3 *, br_scalar, br_scalar, ...))0x0046a5a2;
+static void(__cdecl*original_AdjustSmoke)(int, tU8, br_vector3 *, br_scalar, br_scalar) = (void(__cdecl*)(int, tU8, br_vector3 *, br_scalar, br_scalar))0x0046a5a2;
 CARM95_HOOK_FUNCTION(original_AdjustSmoke, AdjustSmoke)
-void AdjustSmoke(int pIndex, tU8 pType, br_vector3 *pPos, br_scalar pRadius, br_scalar pStrength) {
+void __cdecl AdjustSmoke(int pIndex, tU8 pType, br_vector3 *pPos, br_scalar pRadius, br_scalar pStrength) {
     LOG_TRACE("(%d, %u, %p, %f, %f)", pIndex, pType, pPos, pRadius, pStrength);
 
     (void)pIndex;
@@ -801,18 +801,18 @@ void AdjustSmoke(int pIndex, tU8 pType, br_vector3 *pPos, br_scalar pRadius, br_
     original_AdjustSmoke(pIndex, pType, pPos, pRadius, pStrength);
 }
 
-static void(*original_ActorError)() = (void(*)())0x0046a791;
+static void(__cdecl*original_ActorError)() = (void(__cdecl*)())0x0046a791;
 CARM95_HOOK_FUNCTION(original_ActorError, ActorError)
-void ActorError() {
+void __cdecl ActorError() {
     LOG_TRACE("()");
 
 
     original_ActorError();
 }
 
-static void(*original_AdjustSmokeColumn)(int, tCar_spec *, int, int, ...) = (void(*)(int, tCar_spec *, int, int, ...))0x0046a649;
+static void(__cdecl*original_AdjustSmokeColumn)(int, tCar_spec *, int, int) = (void(__cdecl*)(int, tCar_spec *, int, int))0x0046a649;
 CARM95_HOOK_FUNCTION(original_AdjustSmokeColumn, AdjustSmokeColumn)
-void AdjustSmokeColumn(int pIndex, tCar_spec *pCar, int pVertex, int pColour) {
+void __cdecl AdjustSmokeColumn(int pIndex, tCar_spec *pCar, int pVertex, int pColour) {
     int i;
     br_actor *actor;
     LOG_TRACE("(%d, %p, %d, %d)", pIndex, pCar, pVertex, pColour);
@@ -827,9 +827,9 @@ void AdjustSmokeColumn(int pIndex, tCar_spec *pCar, int pVertex, int pColour) {
     original_AdjustSmokeColumn(pIndex, pCar, pVertex, pColour);
 }
 
-static void(*original_CreateSmokeColumn)(tCar_spec *, int, int, tU32, ...) = (void(*)(tCar_spec *, int, int, tU32, ...))0x0046a79c;
+static void(__cdecl*original_CreateSmokeColumn)(tCar_spec *, int, int, tU32) = (void(__cdecl*)(tCar_spec *, int, int, tU32))0x0046a79c;
 CARM95_HOOK_FUNCTION(original_CreateSmokeColumn, CreateSmokeColumn)
-void CreateSmokeColumn(tCar_spec *pCar, int pColour, int pVertex_index, tU32 pLifetime) {
+void __cdecl CreateSmokeColumn(tCar_spec *pCar, int pColour, int pVertex_index, tU32 pLifetime) {
     int i;
     br_actor *actor;
     tSmoke_column *col;
@@ -846,9 +846,9 @@ void CreateSmokeColumn(tCar_spec *pCar, int pColour, int pVertex_index, tU32 pLi
     original_CreateSmokeColumn(pCar, pColour, pVertex_index, pLifetime);
 }
 
-static void(*original_GenerateSmokeShades)() = (void(*)())0x0046abc9;
+static void(__cdecl*original_GenerateSmokeShades)() = (void(__cdecl*)())0x0046abc9;
 CARM95_HOOK_FUNCTION(original_GenerateSmokeShades, GenerateSmokeShades)
-void GenerateSmokeShades() {
+void __cdecl GenerateSmokeShades() {
     static int rb;
     static int gb;
     static int bb;
@@ -873,18 +873,18 @@ void GenerateSmokeShades() {
     original_GenerateSmokeShades();
 }
 
-static void(*original_GenerateItFoxShadeTable)() = (void(*)())0x0046ace7;
+static void(__cdecl*original_GenerateItFoxShadeTable)() = (void(__cdecl*)())0x0046ace7;
 CARM95_HOOK_FUNCTION(original_GenerateItFoxShadeTable, GenerateItFoxShadeTable)
-void GenerateItFoxShadeTable() {
+void __cdecl GenerateItFoxShadeTable() {
     LOG_TRACE("()");
 
 
     original_GenerateItFoxShadeTable();
 }
 
-static void(*original_AdjustFlame)(int, int, br_scalar, br_scalar, br_scalar, br_scalar, ...) = (void(*)(int, int, br_scalar, br_scalar, br_scalar, br_scalar, ...))0x0046ad34;
+static void(__cdecl*original_AdjustFlame)(int, int, br_scalar, br_scalar, br_scalar, br_scalar) = (void(__cdecl*)(int, int, br_scalar, br_scalar, br_scalar, br_scalar))0x0046ad34;
 CARM95_HOOK_FUNCTION(original_AdjustFlame, AdjustFlame)
-void AdjustFlame(int pIndex, int pFrame_count, br_scalar pScale_x, br_scalar pScale_y, br_scalar pOffset_x, br_scalar pOffset_z) {
+void __cdecl AdjustFlame(int pIndex, int pFrame_count, br_scalar pScale_x, br_scalar pScale_y, br_scalar pOffset_x, br_scalar pOffset_z) {
     int i;
     int j;
     tSmoke_column *col;
@@ -905,9 +905,9 @@ void AdjustFlame(int pIndex, int pFrame_count, br_scalar pScale_x, br_scalar pSc
     original_AdjustFlame(pIndex, pFrame_count, pScale_x, pScale_y, pOffset_x, pOffset_z);
 }
 
-static void(*original_ReplayFlame)(tSmoke_column *, br_actor *, ...) = (void(*)(tSmoke_column *, br_actor *, ...))0x0046b722;
+static void(__cdecl*original_ReplayFlame)(tSmoke_column *, br_actor *) = (void(__cdecl*)(tSmoke_column *, br_actor *))0x0046b722;
 CARM95_HOOK_FUNCTION(original_ReplayFlame, ReplayFlame)
-void ReplayFlame(tSmoke_column *col, br_actor *actor) {
+void __cdecl ReplayFlame(tSmoke_column *col, br_actor *actor) {
     int i;
     LOG_TRACE("(%p, %p)", col, actor);
 
@@ -918,9 +918,9 @@ void ReplayFlame(tSmoke_column *col, br_actor *actor) {
     original_ReplayFlame(col, actor);
 }
 
-static void(*original_FlameAnimate)(int, br_vector3 *, tU32, ...) = (void(*)(int, br_vector3 *, tU32, ...))0x0046b391;
+static void(__cdecl*original_FlameAnimate)(int, br_vector3 *, tU32) = (void(__cdecl*)(int, br_vector3 *, tU32))0x0046b391;
 CARM95_HOOK_FUNCTION(original_FlameAnimate, FlameAnimate)
-void FlameAnimate(int c, br_vector3 *pPos, tU32 pTime) {
+void __cdecl FlameAnimate(int c, br_vector3 *pPos, tU32 pTime) {
     tSmoke_column *col;
     br_actor *actor;
     int i;
@@ -936,9 +936,9 @@ void FlameAnimate(int c, br_vector3 *pPos, tU32 pTime) {
     original_FlameAnimate(c, pPos, pTime);
 }
 
-static void(*original_DoSmokeColumn)(int, tU32, br_vector3 *, ...) = (void(*)(int, tU32, br_vector3 *, ...))0x0046b86d;
+static void(__cdecl*original_DoSmokeColumn)(int, tU32, br_vector3 *) = (void(__cdecl*)(int, tU32, br_vector3 *))0x0046b86d;
 CARM95_HOOK_FUNCTION(original_DoSmokeColumn, DoSmokeColumn)
-void DoSmokeColumn(int i, tU32 pTime, br_vector3 *pRet_car_pos) {
+void __cdecl DoSmokeColumn(int i, tU32 pTime, br_vector3 *pRet_car_pos) {
     tCar_spec *c;
     br_actor *actor;
     br_actor *bonny;
@@ -956,9 +956,9 @@ void DoSmokeColumn(int i, tU32 pTime, br_vector3 *pRet_car_pos) {
     original_DoSmokeColumn(i, pTime, pRet_car_pos);
 }
 
-static void(*original_ReplaySmokeColumn)(tU32, ...) = (void(*)(tU32, ...))0x0046bb0b;
+static void(__cdecl*original_ReplaySmokeColumn)(tU32) = (void(__cdecl*)(tU32))0x0046bb0b;
 CARM95_HOOK_FUNCTION(original_ReplaySmokeColumn, ReplaySmokeColumn)
-void ReplaySmokeColumn(tU32 pTime) {
+void __cdecl ReplaySmokeColumn(tU32 pTime) {
     int i;
     br_vector3 dummy;
     LOG_TRACE("(%u)", pTime);
@@ -970,9 +970,9 @@ void ReplaySmokeColumn(tU32 pTime) {
     original_ReplaySmokeColumn(pTime);
 }
 
-static void(*original_MungeSmokeColumn)(tU32, ...) = (void(*)(tU32, ...))0x0046ada4;
+static void(__cdecl*original_MungeSmokeColumn)(tU32) = (void(__cdecl*)(tU32))0x0046ada4;
 CARM95_HOOK_FUNCTION(original_MungeSmokeColumn, MungeSmokeColumn)
-void MungeSmokeColumn(tU32 pTime) {
+void __cdecl MungeSmokeColumn(tU32 pTime) {
     int i;
     int plane;
     br_actor *actor;
@@ -1006,9 +1006,9 @@ void MungeSmokeColumn(tU32 pTime) {
     original_MungeSmokeColumn(pTime);
 }
 
-static void(*original_DisposeFlame)() = (void(*)())0x0046bba6;
+static void(__cdecl*original_DisposeFlame)() = (void(__cdecl*)())0x0046bba6;
 CARM95_HOOK_FUNCTION(original_DisposeFlame, DisposeFlame)
-void DisposeFlame() {
+void __cdecl DisposeFlame() {
     int i;
     int j;
     br_actor *actor;
@@ -1023,9 +1023,9 @@ void DisposeFlame() {
     original_DisposeFlame();
 }
 
-static void(*original_InitFlame)() = (void(*)())0x0046bcf7;
+static void(__cdecl*original_InitFlame)() = (void(__cdecl*)())0x0046bcf7;
 CARM95_HOOK_FUNCTION(original_InitFlame, InitFlame)
-void InitFlame() {
+void __cdecl InitFlame() {
     int i;
     int j;
     int num;
@@ -1044,9 +1044,9 @@ void InitFlame() {
     original_InitFlame();
 }
 
-static void(*original_InitSplash)(FILE *, ...) = (void(*)(FILE *, ...))0x0046ef01;
+static void(__cdecl*original_InitSplash)(FILE *) = (void(__cdecl*)(FILE *))0x0046ef01;
 CARM95_HOOK_FUNCTION(original_InitSplash, InitSplash)
-void InitSplash(FILE *pF) {
+void __cdecl InitSplash(FILE *pF) {
     int i;
     int num_files;
     int num;
@@ -1068,9 +1068,9 @@ void InitSplash(FILE *pF) {
     original_InitSplash(pF);
 }
 
-static void(*original_DisposeSplash)() = (void(*)())0x0046c02c;
+static void(__cdecl*original_DisposeSplash)() = (void(__cdecl*)())0x0046c02c;
 CARM95_HOOK_FUNCTION(original_DisposeSplash, DisposeSplash)
-void DisposeSplash() {
+void __cdecl DisposeSplash() {
     int i;
     LOG_TRACE("()");
 
@@ -1079,9 +1079,9 @@ void DisposeSplash() {
     original_DisposeSplash();
 }
 
-static void(*original_DrawTheGlow)(br_pixelmap *, br_pixelmap *, br_actor *, ...) = (void(*)(br_pixelmap *, br_pixelmap *, br_actor *, ...))0x0046c133;
+static void(__cdecl*original_DrawTheGlow)(br_pixelmap *, br_pixelmap *, br_actor *) = (void(__cdecl*)(br_pixelmap *, br_pixelmap *, br_actor *))0x0046c133;
 CARM95_HOOK_FUNCTION(original_DrawTheGlow, DrawTheGlow)
-void DrawTheGlow(br_pixelmap *pRender_screen, br_pixelmap *pDepth_buffer, br_actor *pCamera) {
+void __cdecl DrawTheGlow(br_pixelmap *pRender_screen, br_pixelmap *pDepth_buffer, br_actor *pCamera) {
     int i;
     br_scalar strength;
     br_vector3 tv;
@@ -1099,9 +1099,9 @@ void DrawTheGlow(br_pixelmap *pRender_screen, br_pixelmap *pDepth_buffer, br_act
     original_DrawTheGlow(pRender_screen, pDepth_buffer, pCamera);
 }
 
-static void(*original_PipeInstantUnSmudge)(tCar_spec *, ...) = (void(*)(tCar_spec *, ...))0x0046c29f;
+static void(__cdecl*original_PipeInstantUnSmudge)(tCar_spec *) = (void(__cdecl*)(tCar_spec *))0x0046c29f;
 CARM95_HOOK_FUNCTION(original_PipeInstantUnSmudge, PipeInstantUnSmudge)
-void PipeInstantUnSmudge(tCar_spec *pCar) {
+void __cdecl PipeInstantUnSmudge(tCar_spec *pCar) {
     br_model *model;
     br_model *b_model;
     br_actor *actor;
@@ -1127,9 +1127,9 @@ void PipeInstantUnSmudge(tCar_spec *pCar) {
     original_PipeInstantUnSmudge(pCar);
 }
 
-static void(*original_SmudgeCar)(tCar_spec *, int, ...) = (void(*)(tCar_spec *, int, ...))0x0046c72d;
+static void(__cdecl*original_SmudgeCar)(tCar_spec *, int) = (void(__cdecl*)(tCar_spec *, int))0x0046c72d;
 CARM95_HOOK_FUNCTION(original_SmudgeCar, SmudgeCar)
-void SmudgeCar(tCar_spec *pCar, int fire_point) {
+void __cdecl SmudgeCar(tCar_spec *pCar, int fire_point) {
     int v;
     int j;
     int real_vertex_number;
@@ -1166,9 +1166,9 @@ void SmudgeCar(tCar_spec *pCar, int fire_point) {
     original_SmudgeCar(pCar, fire_point);
 }
 
-static void(*original_ResetSmokeColumns)() = (void(*)())0x0046cff6;
+static void(__cdecl*original_ResetSmokeColumns)() = (void(__cdecl*)())0x0046cff6;
 CARM95_HOOK_FUNCTION(original_ResetSmokeColumns, ResetSmokeColumns)
-void ResetSmokeColumns() {
+void __cdecl ResetSmokeColumns() {
     int i;
     LOG_TRACE("()");
 
@@ -1177,9 +1177,9 @@ void ResetSmokeColumns() {
     original_ResetSmokeColumns();
 }
 
-static void(*original_SetSmokeOn)(int, ...) = (void(*)(int, ...))0x0046d05e;
+static void(__cdecl*original_SetSmokeOn)(int) = (void(__cdecl*)(int))0x0046d05e;
 CARM95_HOOK_FUNCTION(original_SetSmokeOn, SetSmokeOn)
-void SetSmokeOn(int pSmoke_on) {
+void __cdecl SetSmokeOn(int pSmoke_on) {
     LOG_TRACE("(%d)", pSmoke_on);
 
     (void)pSmoke_on;
@@ -1187,9 +1187,9 @@ void SetSmokeOn(int pSmoke_on) {
     original_SetSmokeOn(pSmoke_on);
 }
 
-static void(*original_ReallySetSmokeOn)(int, ...) = (void(*)(int, ...))0x0046d071;
+static void(__cdecl*original_ReallySetSmokeOn)(int) = (void(__cdecl*)(int))0x0046d071;
 CARM95_HOOK_FUNCTION(original_ReallySetSmokeOn, ReallySetSmokeOn)
-void ReallySetSmokeOn(int pSmoke_on) {
+void __cdecl ReallySetSmokeOn(int pSmoke_on) {
     LOG_TRACE("(%d)", pSmoke_on);
 
     (void)pSmoke_on;
@@ -1197,9 +1197,9 @@ void ReallySetSmokeOn(int pSmoke_on) {
     original_ReallySetSmokeOn(pSmoke_on);
 }
 
-static void(*original_SetSmoke)(int, ...) = (void(*)(int, ...))0x0046d086;
+static void(__cdecl*original_SetSmoke)(int) = (void(__cdecl*)(int))0x0046d086;
 CARM95_HOOK_FUNCTION(original_SetSmoke, SetSmoke)
-void SetSmoke(int pSmoke_on) {
+void __cdecl SetSmoke(int pSmoke_on) {
     LOG_TRACE("(%d)", pSmoke_on);
 
     (void)pSmoke_on;
@@ -1207,18 +1207,18 @@ void SetSmoke(int pSmoke_on) {
     original_SetSmoke(pSmoke_on);
 }
 
-static int(*original_GetSmokeOn)() = (int(*)())0x0046d0a9;
+static int(__cdecl*original_GetSmokeOn)() = (int(__cdecl*)())0x0046d0a9;
 CARM95_HOOK_FUNCTION(original_GetSmokeOn, GetSmokeOn)
-int GetSmokeOn() {
+int __cdecl GetSmokeOn() {
     LOG_TRACE("()");
 
 
     return original_GetSmokeOn();
 }
 
-static void(*original_StopCarSmoking)(tCar_spec *, ...) = (void(*)(tCar_spec *, ...))0x0046d0be;
+static void(__cdecl*original_StopCarSmoking)(tCar_spec *) = (void(__cdecl*)(tCar_spec *))0x0046d0be;
 CARM95_HOOK_FUNCTION(original_StopCarSmoking, StopCarSmoking)
-void StopCarSmoking(tCar_spec *pCar) {
+void __cdecl StopCarSmoking(tCar_spec *pCar) {
     int i;
     LOG_TRACE("(%p)", pCar);
 
@@ -1228,9 +1228,9 @@ void StopCarSmoking(tCar_spec *pCar) {
     original_StopCarSmoking(pCar);
 }
 
-static void(*original_StopCarSmokingInstantly)(tCar_spec *, ...) = (void(*)(tCar_spec *, ...))0x0046d13f;
+static void(__cdecl*original_StopCarSmokingInstantly)(tCar_spec *) = (void(__cdecl*)(tCar_spec *))0x0046d13f;
 CARM95_HOOK_FUNCTION(original_StopCarSmokingInstantly, StopCarSmokingInstantly)
-void StopCarSmokingInstantly(tCar_spec *pCar) {
+void __cdecl StopCarSmokingInstantly(tCar_spec *pCar) {
     int i;
     LOG_TRACE("(%p)", pCar);
 
@@ -1240,9 +1240,9 @@ void StopCarSmokingInstantly(tCar_spec *pCar) {
     original_StopCarSmokingInstantly(pCar);
 }
 
-static void(*original_ConditionalSmokeColumn)(tCar_spec *, int, int, ...) = (void(*)(tCar_spec *, int, int, ...))0x0046d19e;
+static void(__cdecl*original_ConditionalSmokeColumn)(tCar_spec *, int, int) = (void(__cdecl*)(tCar_spec *, int, int))0x0046d19e;
 CARM95_HOOK_FUNCTION(original_ConditionalSmokeColumn, ConditionalSmokeColumn)
-void ConditionalSmokeColumn(tCar_spec *pCar, int pDamage_index, int pColour) {
+void __cdecl ConditionalSmokeColumn(tCar_spec *pCar, int pDamage_index, int pColour) {
     int i;
     LOG_TRACE("(%p, %d, %d)", pCar, pDamage_index, pColour);
 
@@ -1254,9 +1254,9 @@ void ConditionalSmokeColumn(tCar_spec *pCar, int pDamage_index, int pColour) {
     original_ConditionalSmokeColumn(pCar, pDamage_index, pColour);
 }
 
-static void(*original_SingleSplash)(tCar_spec *, br_vector3 *, br_vector3 *, tU32, ...) = (void(*)(tCar_spec *, br_vector3 *, br_vector3 *, tU32, ...))0x0046dffa;
+static void(__cdecl*original_SingleSplash)(tCar_spec *, br_vector3 *, br_vector3 *, tU32) = (void(__cdecl*)(tCar_spec *, br_vector3 *, br_vector3 *, tU32))0x0046dffa;
 CARM95_HOOK_FUNCTION(original_SingleSplash, SingleSplash)
-void SingleSplash(tCar_spec *pCar, br_vector3 *sp, br_vector3 *normal, tU32 pTime) {
+void __cdecl SingleSplash(tCar_spec *pCar, br_vector3 *sp, br_vector3 *normal, tU32 pTime) {
     br_matrix34 *mat;
     br_matrix34 *c_mat;
     br_vector3 tv;
@@ -1281,9 +1281,9 @@ void SingleSplash(tCar_spec *pCar, br_vector3 *sp, br_vector3 *normal, tU32 pTim
     original_SingleSplash(pCar, sp, normal, pTime);
 }
 
-static void(*original_CreateSplash)(tCar_spec *, tU32, ...) = (void(*)(tCar_spec *, tU32, ...))0x0046d2ab;
+static void(__cdecl*original_CreateSplash)(tCar_spec *, tU32) = (void(__cdecl*)(tCar_spec *, tU32))0x0046d2ab;
 CARM95_HOOK_FUNCTION(original_CreateSplash, CreateSplash)
-void CreateSplash(tCar_spec *pCar, tU32 pTime) {
+void __cdecl CreateSplash(tCar_spec *pCar, tU32 pTime) {
     br_vector3 normal_car_space;
     br_vector3 pos2;
     br_vector3 v_plane;
@@ -1335,13 +1335,14 @@ void CreateSplash(tCar_spec *pCar, tU32 pTime) {
     (void)ts;
     (void)back_point;
     (void)back_val;
+    (void)__block0___scale;
 
     original_CreateSplash(pCar, pTime);
 }
 
-static void(*original_MungeSplash)(tU32, ...) = (void(*)(tU32, ...))0x0046e559;
+static void(__cdecl*original_MungeSplash)(tU32) = (void(__cdecl*)(tU32))0x0046e559;
 CARM95_HOOK_FUNCTION(original_MungeSplash, MungeSplash)
-void MungeSplash(tU32 pTime) {
+void __cdecl MungeSplash(tU32 pTime) {
     int i;
     br_vector3 tv;
     br_scalar dt;
@@ -1361,9 +1362,9 @@ void MungeSplash(tU32 pTime) {
     original_MungeSplash(pTime);
 }
 
-static void(*original_RenderSplashes)() = (void(*)())0x0046ea05;
+static void(__cdecl*original_RenderSplashes)() = (void(__cdecl*)())0x0046ea05;
 CARM95_HOOK_FUNCTION(original_RenderSplashes, RenderSplashes)
-void RenderSplashes() {
+void __cdecl RenderSplashes() {
     int i;
     LOG_TRACE("()");
 
@@ -1372,9 +1373,9 @@ void RenderSplashes() {
     original_RenderSplashes();
 }
 
-static void(*original_GetSmokeShadeTables)(FILE *, ...) = (void(*)(FILE *, ...))0x0046eaa6;
+static void(__cdecl*original_GetSmokeShadeTables)(FILE *) = (void(__cdecl*)(FILE *))0x0046eaa6;
 CARM95_HOOK_FUNCTION(original_GetSmokeShadeTables, GetSmokeShadeTables)
-void GetSmokeShadeTables(FILE *f) {
+void __cdecl GetSmokeShadeTables(FILE *f) {
     int i;
     int red;
     int green;
@@ -1396,9 +1397,9 @@ void GetSmokeShadeTables(FILE *f) {
     original_GetSmokeShadeTables(f);
 }
 
-static void(*original_FreeSmokeShadeTables)() = (void(*)())0x0046eb68;
+static void(__cdecl*original_FreeSmokeShadeTables)() = (void(__cdecl*)())0x0046eb68;
 CARM95_HOOK_FUNCTION(original_FreeSmokeShadeTables, FreeSmokeShadeTables)
-void FreeSmokeShadeTables() {
+void __cdecl FreeSmokeShadeTables() {
     int i;
     LOG_TRACE("()");
 
@@ -1407,9 +1408,9 @@ void FreeSmokeShadeTables() {
     original_FreeSmokeShadeTables();
 }
 
-static void(*original_LoadInKevStuff)(FILE *, ...) = (void(*)(FILE *, ...))0x0046ebc8;
+static void(__cdecl*original_LoadInKevStuff)(FILE *) = (void(__cdecl*)(FILE *))0x0046ebc8;
 CARM95_HOOK_FUNCTION(original_LoadInKevStuff, LoadInKevStuff)
-void LoadInKevStuff(FILE *pF) {
+void __cdecl LoadInKevStuff(FILE *pF) {
     LOG_TRACE("(%p)", pF);
 
     (void)pF;
@@ -1417,18 +1418,18 @@ void LoadInKevStuff(FILE *pF) {
     original_LoadInKevStuff(pF);
 }
 
-static void(*original_DisposeKevStuff)() = (void(*)())0x0046f3dc;
+static void(__cdecl*original_DisposeKevStuff)() = (void(__cdecl*)())0x0046f3dc;
 CARM95_HOOK_FUNCTION(original_DisposeKevStuff, DisposeKevStuff)
-void DisposeKevStuff() {
+void __cdecl DisposeKevStuff() {
     LOG_TRACE("()");
 
 
     original_DisposeKevStuff();
 }
 
-static void(*original_DisposeKevStuffCar)(tCar_spec *, ...) = (void(*)(tCar_spec *, ...))0x0046f3f6;
+static void(__cdecl*original_DisposeKevStuffCar)(tCar_spec *) = (void(__cdecl*)(tCar_spec *))0x0046f3f6;
 CARM95_HOOK_FUNCTION(original_DisposeKevStuffCar, DisposeKevStuffCar)
-void DisposeKevStuffCar(tCar_spec *pCar) {
+void __cdecl DisposeKevStuffCar(tCar_spec *pCar) {
     int i;
     LOG_TRACE("(%p)", pCar);
 
@@ -1438,9 +1439,9 @@ void DisposeKevStuffCar(tCar_spec *pCar) {
     original_DisposeKevStuffCar(pCar);
 }
 
-static void(*original_DoTrueColModelThing)(br_actor *, br_model *, br_material *, void *, br_uint_8, int, ...) = (void(*)(br_actor *, br_model *, br_material *, void *, br_uint_8, int, ...))0x0046f52a;
+static void(__cdecl*original_DoTrueColModelThing)(br_actor *, br_model *, br_material *, void *, br_uint_8, int) = (void(__cdecl*)(br_actor *, br_model *, br_material *, void *, br_uint_8, int))0x0046f52a;
 CARM95_HOOK_FUNCTION(original_DoTrueColModelThing, DoTrueColModelThing)
-void DoTrueColModelThing(br_actor *actor, br_model *pModel, br_material *material, void *render_data, br_uint_8 style, int on_screen) {
+void __cdecl DoTrueColModelThing(br_actor *actor, br_model *pModel, br_material *material, void *render_data, br_uint_8 style, int on_screen) {
     int group;
     int j;
     int val;
@@ -1482,9 +1483,9 @@ void DoModelThing(br_actor *actor, br_model *pModel, br_material *material, void
     NOT_IMPLEMENTED();
 }
 
-static void(*original_SetModelShade)(br_actor *, br_pixelmap *, ...) = (void(*)(br_actor *, br_pixelmap *, ...))0x0046f9b3;
+static void(__cdecl*original_SetModelShade)(br_actor *, br_pixelmap *) = (void(__cdecl*)(br_actor *, br_pixelmap *))0x0046f9b3;
 CARM95_HOOK_FUNCTION(original_SetModelShade, SetModelShade)
-void SetModelShade(br_actor *pActor, br_pixelmap *pShade) {
+void __cdecl SetModelShade(br_actor *pActor, br_pixelmap *pShade) {
     int i;
     br_material *material;
     br_model *model;
@@ -1499,9 +1500,9 @@ void SetModelShade(br_actor *pActor, br_pixelmap *pShade) {
     original_SetModelShade(pActor, pShade);
 }
 
-static void(*original_MakeCarIt)(tCar_spec *, ...) = (void(*)(tCar_spec *, ...))0x0046f877;
+static void(__cdecl*original_MakeCarIt)(tCar_spec *) = (void(__cdecl*)(tCar_spec *))0x0046f877;
 CARM95_HOOK_FUNCTION(original_MakeCarIt, MakeCarIt)
-void MakeCarIt(tCar_spec *pCar) {
+void __cdecl MakeCarIt(tCar_spec *pCar) {
     br_actor *actor;
     br_actor *bonny;
     br_pixelmap *shade[6];
@@ -1519,9 +1520,9 @@ void MakeCarIt(tCar_spec *pCar) {
     original_MakeCarIt(pCar);
 }
 
-static void(*original_StopCarBeingIt)(tCar_spec *, ...) = (void(*)(tCar_spec *, ...))0x0046fa75;
+static void(__cdecl*original_StopCarBeingIt)(tCar_spec *) = (void(__cdecl*)(tCar_spec *))0x0046fa75;
 CARM95_HOOK_FUNCTION(original_StopCarBeingIt, StopCarBeingIt)
-void StopCarBeingIt(tCar_spec *pCar) {
+void __cdecl StopCarBeingIt(tCar_spec *pCar) {
     int i;
     int group;
     br_actor *actor;

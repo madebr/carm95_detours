@@ -1,31 +1,18 @@
 #include "crush.h"
-#include "displays.h"
-#include "globvars.h"
-#include "globvrpb.h"
-#include "netgame.h"
-#include "network.h"
-#include "opponent.h"
-#include "pratcam.h"
-#include "raycast.h"
-#include "utility.h"
-
-#include <brender/brender.h>
-#include <pc-dos/dossys.h>
 
 #include "harness/trace.h"
 
 #include "carm95_hooks.h"
 
-#include <stdio.h>
 float(* hookvar_gWobble_spam_y )[8] = (void*)0x00521370;
 float(* hookvar_gWobble_spam_z )[8] = (void*)0x00521390;
 br_scalar * hookvar_gWheel_circ_to_width  = (void*)0x005213b0;
 tU8(* hookvar_gSmoke_damage_step )[12] = (void*)0x005213b8;
 int(* hookvar_gSteal_ranks )[5] = (void*)0x005213c4;
 
-static int(*original_ReadCrushData)(FILE *, tCrush_data *, ...) = (int(*)(FILE *, tCrush_data *, ...))0x004bca50;
+static int(__cdecl*original_ReadCrushData)(FILE *, tCrush_data *) = (int(__cdecl*)(FILE *, tCrush_data *))0x004bca50;
 CARM95_HOOK_FUNCTION(original_ReadCrushData, ReadCrushData)
-int ReadCrushData(FILE *pF, tCrush_data *pCrush_data) {
+int __cdecl ReadCrushData(FILE *pF, tCrush_data *pCrush_data) {
     char s[256];
     char *str;
     int i;
@@ -56,13 +43,25 @@ int ReadCrushData(FILE *pF, tCrush_data *pCrush_data) {
     (void)k;
     (void)the_spec;
     (void)the_neighbour;
+    (void)__block0__x_0;
+    (void)__block0__x_1;
+    (void)__block0__x_2;
+    (void)__block1__x_0;
+    (void)__block1__x_1;
+    (void)__block1__x_2;
+    (void)__block2__x_0;
+    (void)__block2__x_1;
+    (void)__block2__x_2;
+    (void)__block3__x_0;
+    (void)__block3__x_1;
+    (void)__block3__x_2;
 
     return original_ReadCrushData(pF, pCrush_data);
 }
 
-static float(*original_SkipCrushData)(FILE *, ...) = (float(*)(FILE *, ...))0x004bcd40;
+static float(__cdecl*original_SkipCrushData)(FILE *) = (float(__cdecl*)(FILE *))0x004bcd40;
 CARM95_HOOK_FUNCTION(original_SkipCrushData, SkipCrushData)
-float SkipCrushData(FILE *pF) {
+float __cdecl SkipCrushData(FILE *pF) {
     int i;
     int j;
     int count_1;
@@ -82,9 +81,9 @@ float SkipCrushData(FILE *pF) {
     return original_SkipCrushData(pF);
 }
 
-static int(*original_WriteCrushData)(FILE *, tCrush_data *, ...) = (int(*)(FILE *, tCrush_data *, ...))0x004bce73;
+static int(__cdecl*original_WriteCrushData)(FILE *, tCrush_data *) = (int(__cdecl*)(FILE *, tCrush_data *))0x004bce73;
 CARM95_HOOK_FUNCTION(original_WriteCrushData, WriteCrushData)
-int WriteCrushData(FILE *pF, tCrush_data *pCrush_data) {
+int __cdecl WriteCrushData(FILE *pF, tCrush_data *pCrush_data) {
     int i;
     int j;
     int k;
@@ -103,9 +102,9 @@ int WriteCrushData(FILE *pF, tCrush_data *pCrush_data) {
     return original_WriteCrushData(pF, pCrush_data);
 }
 
-static void(*original_DisposeCrushData)(tCrush_data *, ...) = (void(*)(tCrush_data *, ...))0x004bd0f7;
+static void(__cdecl*original_DisposeCrushData)(tCrush_data *) = (void(__cdecl*)(tCrush_data *))0x004bd0f7;
 CARM95_HOOK_FUNCTION(original_DisposeCrushData, DisposeCrushData)
-void DisposeCrushData(tCrush_data *pCrush_data) {
+void __cdecl DisposeCrushData(tCrush_data *pCrush_data) {
     int i;
     LOG_TRACE("(%p)", pCrush_data);
 
@@ -115,9 +114,9 @@ void DisposeCrushData(tCrush_data *pCrush_data) {
     original_DisposeCrushData(pCrush_data);
 }
 
-static void(*original_CrushModelPoint)(tCar_spec *, int, br_model *, int, br_vector3 *, br_scalar, tCrush_data *, ...) = (void(*)(tCar_spec *, int, br_model *, int, br_vector3 *, br_scalar, tCrush_data *, ...))0x004bd17b;
+static void(__cdecl*original_CrushModelPoint)(tCar_spec *, int, br_model *, int, br_vector3 *, br_scalar, tCrush_data *) = (void(__cdecl*)(tCar_spec *, int, br_model *, int, br_vector3 *, br_scalar, tCrush_data *))0x004bd17b;
 CARM95_HOOK_FUNCTION(original_CrushModelPoint, CrushModelPoint)
-void CrushModelPoint(tCar_spec *pCar, int pModel_index, br_model *pModel, int pCrush_point_index, br_vector3 *pEnergy_vector, br_scalar total_energy, tCrush_data *pCrush_data) {
+void __cdecl CrushModelPoint(tCar_spec *pCar, int pModel_index, br_model *pModel, int pCrush_point_index, br_vector3 *pEnergy_vector, br_scalar total_energy, tCrush_data *pCrush_data) {
     int i;
     int j;
     int k;
@@ -179,9 +178,9 @@ void CrushModelPoint(tCar_spec *pCar, int pModel_index, br_model *pModel, int pC
     original_CrushModelPoint(pCar, pModel_index, pModel, pCrush_point_index, pEnergy_vector, total_energy, pCrush_data);
 }
 
-static void(*original_CrushModel)(tCar_spec *, int, br_actor *, br_vector3 *, br_vector3 *, tCrush_data *, ...) = (void(*)(tCar_spec *, int, br_actor *, br_vector3 *, br_vector3 *, tCrush_data *, ...))0x004bd8da;
+static void(__cdecl*original_CrushModel)(tCar_spec *, int, br_actor *, br_vector3 *, br_vector3 *, tCrush_data *) = (void(__cdecl*)(tCar_spec *, int, br_actor *, br_vector3 *, br_vector3 *, tCrush_data *))0x004bd8da;
 CARM95_HOOK_FUNCTION(original_CrushModel, CrushModel)
-void CrushModel(tCar_spec *pCar, int pModel_index, br_actor *pActor, br_vector3 *pImpact_point, br_vector3 *pEnergy_vector, tCrush_data *pCrush_data) {
+void __cdecl CrushModel(tCar_spec *pCar, int pModel_index, br_actor *pActor, br_vector3 *pImpact_point, br_vector3 *pEnergy_vector, tCrush_data *pCrush_data) {
     br_scalar this_distance;
     br_scalar total_energy;
     br_scalar nearest_so_far;
@@ -216,9 +215,9 @@ void CrushModel(tCar_spec *pCar, int pModel_index, br_actor *pActor, br_vector3 
     original_CrushModel(pCar, pModel_index, pActor, pImpact_point, pEnergy_vector, pCrush_data);
 }
 
-static void(*original_JitModelUpdate)(br_actor *, br_model *, br_material *, void *, br_uint_8, int, ...) = (void(*)(br_actor *, br_model *, br_material *, void *, br_uint_8, int, ...))0x004bdad9;
+static void(__cdecl*original_JitModelUpdate)(br_actor *, br_model *, br_material *, void *, br_uint_8, int) = (void(__cdecl*)(br_actor *, br_model *, br_material *, void *, br_uint_8, int))0x004bdad9;
 CARM95_HOOK_FUNCTION(original_JitModelUpdate, JitModelUpdate)
-void JitModelUpdate(br_actor *actor, br_model *model, br_material *material, void *render_data, br_uint_8 style, int on_screen) {
+void __cdecl JitModelUpdate(br_actor *actor, br_model *model, br_material *material, void *render_data, br_uint_8 style, int on_screen) {
     LOG_TRACE("(%p, %p, %p, %p, %u, %d)", actor, model, material, render_data, style, on_screen);
 
     (void)actor;
@@ -231,9 +230,9 @@ void JitModelUpdate(br_actor *actor, br_model *model, br_material *material, voi
     original_JitModelUpdate(actor, model, material, render_data, style, on_screen);
 }
 
-static void(*original_SetModelForUpdate)(br_model *, tCar_spec *, int, ...) = (void(*)(br_model *, tCar_spec *, int, ...))0x004bdb2f;
+static void(__cdecl*original_SetModelForUpdate)(br_model *, tCar_spec *, int) = (void(__cdecl*)(br_model *, tCar_spec *, int))0x004bdb2f;
 CARM95_HOOK_FUNCTION(original_SetModelForUpdate, SetModelForUpdate)
-void SetModelForUpdate(br_model *pModel, tCar_spec *pCar, int crush_only) {
+void __cdecl SetModelForUpdate(br_model *pModel, tCar_spec *pCar, int crush_only) {
     LOG_TRACE("(%p, %p, %d)", pModel, pCar, crush_only);
 
     (void)pModel;
@@ -243,9 +242,9 @@ void SetModelForUpdate(br_model *pModel, tCar_spec *pCar, int crush_only) {
     original_SetModelForUpdate(pModel, pCar, crush_only);
 }
 
-static void(*original_TotallySpamTheModel)(tCar_spec *, int, br_actor *, tCrush_data *, br_scalar, ...) = (void(*)(tCar_spec *, int, br_actor *, tCrush_data *, br_scalar, ...))0x004bdbc1;
+static void(__cdecl*original_TotallySpamTheModel)(tCar_spec *, int, br_actor *, tCrush_data *, br_scalar) = (void(__cdecl*)(tCar_spec *, int, br_actor *, tCrush_data *, br_scalar))0x004bdbc1;
 CARM95_HOOK_FUNCTION(original_TotallySpamTheModel, TotallySpamTheModel)
-void TotallySpamTheModel(tCar_spec *pCar, int pModel_index, br_actor *pActor, tCrush_data *pCrush_data, br_scalar pMagnitude) {
+void __cdecl TotallySpamTheModel(tCar_spec *pCar, int pModel_index, br_actor *pActor, tCrush_data *pCrush_data, br_scalar pMagnitude) {
     br_scalar total_energy;
     br_vector3 energy_vector_model;
     int i;
@@ -266,13 +265,14 @@ void TotallySpamTheModel(tCar_spec *pCar, int pModel_index, br_actor *pActor, tC
     (void)the_index;
     (void)the_vertex;
     (void)vertices;
+    (void)__block0___scale;
 
     original_TotallySpamTheModel(pCar, pModel_index, pActor, pCrush_data, pMagnitude);
 }
 
-static br_scalar(*original_RepairModel)(tCar_spec *, int, br_actor *, br_vertex *, br_scalar, br_scalar *, ...) = (br_scalar(*)(tCar_spec *, int, br_actor *, br_vertex *, br_scalar, br_scalar *, ...))0x004bde6c;
+static br_scalar(__cdecl*original_RepairModel)(tCar_spec *, int, br_actor *, br_vertex *, br_scalar, br_scalar *) = (br_scalar(__cdecl*)(tCar_spec *, int, br_actor *, br_vertex *, br_scalar, br_scalar *))0x004bde6c;
 CARM95_HOOK_FUNCTION(original_RepairModel, RepairModel)
-br_scalar RepairModel(tCar_spec *pCar, int pModel_index, br_actor *pActor, br_vertex *pUndamaged_vertices, br_scalar pAmount, br_scalar *pTotal_deflection) {
+br_scalar __cdecl RepairModel(tCar_spec *pCar, int pModel_index, br_actor *pActor, br_vertex *pUndamaged_vertices, br_scalar pAmount, br_scalar *pTotal_deflection) {
     int i;
     int j;
     int pipe_vertex_count;
@@ -301,9 +301,9 @@ br_scalar RepairModel(tCar_spec *pCar, int pModel_index, br_actor *pActor, br_ve
     return original_RepairModel(pCar, pModel_index, pActor, pUndamaged_vertices, pAmount, pTotal_deflection);
 }
 
-static float(*original_RepairCar2)(tCar_spec *, tU32, br_scalar *, ...) = (float(*)(tCar_spec *, tU32, br_scalar *, ...))0x004bdd3b;
+static float(__cdecl*original_RepairCar2)(tCar_spec *, tU32, br_scalar *) = (float(__cdecl*)(tCar_spec *, tU32, br_scalar *))0x004bdd3b;
 CARM95_HOOK_FUNCTION(original_RepairCar2, RepairCar2)
-float RepairCar2(tCar_spec *pCar, tU32 pFrame_period, br_scalar *pTotal_deflection) {
+float __cdecl RepairCar2(tCar_spec *pCar, tU32 pFrame_period, br_scalar *pTotal_deflection) {
     int i;
     tCar_actor *the_car_actor;
     br_scalar amount;
@@ -321,9 +321,9 @@ float RepairCar2(tCar_spec *pCar, tU32 pFrame_period, br_scalar *pTotal_deflecti
     return original_RepairCar2(pCar, pFrame_period, pTotal_deflection);
 }
 
-static float(*original_RepairCar)(tU16, tU32, br_scalar *, ...) = (float(*)(tU16, tU32, br_scalar *, ...))0x004be159;
+static float(__cdecl*original_RepairCar)(tU16, tU32, br_scalar *) = (float(__cdecl*)(tU16, tU32, br_scalar *))0x004be159;
 CARM95_HOOK_FUNCTION(original_RepairCar, RepairCar)
-float RepairCar(tU16 pCar_ID, tU32 pFrame_period, br_scalar *pTotal_deflection) {
+float __cdecl RepairCar(tU16 pCar_ID, tU32 pFrame_period, br_scalar *pTotal_deflection) {
     LOG_TRACE("(%u, %u, %p)", pCar_ID, pFrame_period, pTotal_deflection);
 
     (void)pCar_ID;
@@ -333,9 +333,9 @@ float RepairCar(tU16 pCar_ID, tU32 pFrame_period, br_scalar *pTotal_deflection) 
     return original_RepairCar(pCar_ID, pFrame_period, pTotal_deflection);
 }
 
-static void(*original_TotallyRepairACar)(tCar_spec *, ...) = (void(*)(tCar_spec *, ...))0x004be1ca;
+static void(__cdecl*original_TotallyRepairACar)(tCar_spec *) = (void(__cdecl*)(tCar_spec *))0x004be1ca;
 CARM95_HOOK_FUNCTION(original_TotallyRepairACar, TotallyRepairACar)
-void TotallyRepairACar(tCar_spec *pCar) {
+void __cdecl TotallyRepairACar(tCar_spec *pCar) {
     int i;
     int j;
     int k;
@@ -357,27 +357,27 @@ void TotallyRepairACar(tCar_spec *pCar) {
     original_TotallyRepairACar(pCar);
 }
 
-static void(*original_TotallyRepairCar)() = (void(*)())0x004be52a;
+static void(__cdecl*original_TotallyRepairCar)() = (void(__cdecl*)())0x004be52a;
 CARM95_HOOK_FUNCTION(original_TotallyRepairCar, TotallyRepairCar)
-void TotallyRepairCar() {
+void __cdecl TotallyRepairCar() {
     LOG_TRACE("()");
 
 
     original_TotallyRepairCar();
 }
 
-static void(*original_CheckLastCar)() = (void(*)())0x004be5b5;
+static void(__cdecl*original_CheckLastCar)() = (void(__cdecl*)())0x004be5b5;
 CARM95_HOOK_FUNCTION(original_CheckLastCar, CheckLastCar)
-void CheckLastCar() {
+void __cdecl CheckLastCar() {
     LOG_TRACE("()");
 
 
     original_CheckLastCar();
 }
 
-static void(*original_KnackerThisCar)(tCar_spec *, ...) = (void(*)(tCar_spec *, ...))0x004be555;
+static void(__cdecl*original_KnackerThisCar)(tCar_spec *) = (void(__cdecl*)(tCar_spec *))0x004be555;
 CARM95_HOOK_FUNCTION(original_KnackerThisCar, KnackerThisCar)
-void KnackerThisCar(tCar_spec *pCar) {
+void __cdecl KnackerThisCar(tCar_spec *pCar) {
     LOG_TRACE("(%p)", pCar);
 
     (void)pCar;
@@ -393,9 +393,9 @@ void SetKnackeredFlag(tCar_spec *pCar) {
     NOT_IMPLEMENTED();
 }
 
-static void(*original_DamageUnit2)(tCar_spec *, int, int, ...) = (void(*)(tCar_spec *, int, int, ...))0x004be737;
+static void(__cdecl*original_DamageUnit2)(tCar_spec *, int, int) = (void(__cdecl*)(tCar_spec *, int, int))0x004be737;
 CARM95_HOOK_FUNCTION(original_DamageUnit2, DamageUnit2)
-void DamageUnit2(tCar_spec *pCar, int pUnit_type, int pDamage_amount) {
+void __cdecl DamageUnit2(tCar_spec *pCar, int pUnit_type, int pDamage_amount) {
     tDamage_unit *the_damage;
     int last_level;
     LOG_TRACE("(%p, %d, %d)", pCar, pUnit_type, pDamage_amount);
@@ -409,9 +409,9 @@ void DamageUnit2(tCar_spec *pCar, int pUnit_type, int pDamage_amount) {
     original_DamageUnit2(pCar, pUnit_type, pDamage_amount);
 }
 
-static void(*original_RecordLastDamage)(tCar_spec *, ...) = (void(*)(tCar_spec *, ...))0x004be86b;
+static void(__cdecl*original_RecordLastDamage)(tCar_spec *) = (void(__cdecl*)(tCar_spec *))0x004be86b;
 CARM95_HOOK_FUNCTION(original_RecordLastDamage, RecordLastDamage)
-void RecordLastDamage(tCar_spec *pCar) {
+void __cdecl RecordLastDamage(tCar_spec *pCar) {
     int i;
     LOG_TRACE("(%p)", pCar);
 
@@ -421,9 +421,9 @@ void RecordLastDamage(tCar_spec *pCar) {
     original_RecordLastDamage(pCar);
 }
 
-static void(*original_DoDamage)(tCar_spec *, tDamage_type, float, float, ...) = (void(*)(tCar_spec *, tDamage_type, float, float, ...))0x004bf3b9;
+static void(__cdecl*original_DoDamage)(tCar_spec *, tDamage_type, float, float) = (void(__cdecl*)(tCar_spec *, tDamage_type, float, float))0x004bf3b9;
 CARM95_HOOK_FUNCTION(original_DoDamage, DoDamage)
-void DoDamage(tCar_spec *pCar, tDamage_type pDamage_type, float pMagnitude, float pNastiness) {
+void __cdecl DoDamage(tCar_spec *pCar, tDamage_type pDamage_type, float pMagnitude, float pNastiness) {
     LOG_TRACE("(%p, %d, %f, %f)", pCar, pDamage_type, pMagnitude, pNastiness);
 
     (void)pCar;
@@ -434,9 +434,9 @@ void DoDamage(tCar_spec *pCar, tDamage_type pDamage_type, float pMagnitude, floa
     original_DoDamage(pCar, pDamage_type, pMagnitude, pNastiness);
 }
 
-static void(*original_CheckPiledriverBonus)(tCar_spec *, br_vector3 *, br_vector3 *, ...) = (void(*)(tCar_spec *, br_vector3 *, br_vector3 *, ...))0x004bf4b2;
+static void(__cdecl*original_CheckPiledriverBonus)(tCar_spec *, br_vector3 *, br_vector3 *) = (void(__cdecl*)(tCar_spec *, br_vector3 *, br_vector3 *))0x004bf4b2;
 CARM95_HOOK_FUNCTION(original_CheckPiledriverBonus, CheckPiledriverBonus)
-void CheckPiledriverBonus(tCar_spec *pCar, br_vector3 *pImpact_point, br_vector3 *pEnergy) {
+void __cdecl CheckPiledriverBonus(tCar_spec *pCar, br_vector3 *pImpact_point, br_vector3 *pEnergy) {
     br_actor *child;
     br_vector3 norm_impact;
     br_vector3 norm_child;
@@ -455,13 +455,16 @@ void CheckPiledriverBonus(tCar_spec *pCar, br_vector3 *pImpact_point, br_vector3
     (void)norm_child;
     (void)norm_energy;
     (void)dp;
+    (void)__block0___scale;
+    (void)__block1___scale;
+    (void)__block2___scale;
 
     original_CheckPiledriverBonus(pCar, pImpact_point, pEnergy);
 }
 
-static tImpact_location(*original_CalcModifiedLocation)(tCar_spec *, ...) = (tImpact_location(*)(tCar_spec *, ...))0x004c13e0;
+static tImpact_location(__cdecl*original_CalcModifiedLocation)(tCar_spec *) = (tImpact_location(__cdecl*)(tCar_spec *))0x004c13e0;
 CARM95_HOOK_FUNCTION(original_CalcModifiedLocation, CalcModifiedLocation)
-tImpact_location CalcModifiedLocation(tCar_spec *pCar) {
+tImpact_location __cdecl CalcModifiedLocation(tCar_spec *pCar) {
     LOG_TRACE("(%p)", pCar);
 
     (void)pCar;
@@ -469,9 +472,9 @@ tImpact_location CalcModifiedLocation(tCar_spec *pCar) {
     return original_CalcModifiedLocation(pCar);
 }
 
-static void(*original_DoPratcamHit)(br_vector3 *, ...) = (void(*)(br_vector3 *, ...))0x004be97b;
+static void(__cdecl*original_DoPratcamHit)(br_vector3 *) = (void(__cdecl*)(br_vector3 *))0x004be97b;
 CARM95_HOOK_FUNCTION(original_DoPratcamHit, DoPratcamHit)
-void DoPratcamHit(br_vector3 *pHit_vector) {
+void __cdecl DoPratcamHit(br_vector3 *pHit_vector) {
     int strength_modifier;
     br_scalar strength;
     LOG_TRACE("(%p)", pHit_vector);
@@ -483,9 +486,9 @@ void DoPratcamHit(br_vector3 *pHit_vector) {
     original_DoPratcamHit(pHit_vector);
 }
 
-static void(*original_DamageSystems)(tCar_spec *, br_vector3 *, br_vector3 *, int, ...) = (void(*)(tCar_spec *, br_vector3 *, br_vector3 *, int, ...))0x004beaa3;
+static void(__cdecl*original_DamageSystems)(tCar_spec *, br_vector3 *, br_vector3 *, int) = (void(__cdecl*)(tCar_spec *, br_vector3 *, br_vector3 *, int))0x004beaa3;
 CARM95_HOOK_FUNCTION(original_DamageSystems, DamageSystems)
-void DamageSystems(tCar_spec *pCar, br_vector3 *pImpact_point, br_vector3 *pEnergy_vector, int pWas_hitting_a_car) {
+void __cdecl DamageSystems(tCar_spec *pCar, br_vector3 *pImpact_point, br_vector3 *pEnergy_vector, int pWas_hitting_a_car) {
     int i;
     int j;
     int result;
@@ -546,9 +549,9 @@ void DamageSystems(tCar_spec *pCar, br_vector3 *pImpact_point, br_vector3 *pEner
     original_DamageSystems(pCar, pImpact_point, pEnergy_vector, pWas_hitting_a_car);
 }
 
-static tImpact_location(*original_GetDirection)(br_vector3 *, ...) = (tImpact_location(*)(br_vector3 *, ...))0x004c1486;
+static tImpact_location(__cdecl*original_GetDirection)(br_vector3 *) = (tImpact_location(__cdecl*)(br_vector3 *))0x004c1486;
 CARM95_HOOK_FUNCTION(original_GetDirection, GetDirection)
-tImpact_location GetDirection(br_vector3 *pVelocity) {
+tImpact_location __cdecl GetDirection(br_vector3 *pVelocity) {
     br_scalar mag_x;
     br_scalar mag_y;
     br_scalar mag_z;
@@ -562,9 +565,9 @@ tImpact_location GetDirection(br_vector3 *pVelocity) {
     return original_GetDirection(pVelocity);
 }
 
-static void(*original_SetSmokeLastDamageLevel)(tCar_spec *, ...) = (void(*)(tCar_spec *, ...))0x004bf768;
+static void(__cdecl*original_SetSmokeLastDamageLevel)(tCar_spec *) = (void(__cdecl*)(tCar_spec *))0x004bf768;
 CARM95_HOOK_FUNCTION(original_SetSmokeLastDamageLevel, SetSmokeLastDamageLevel)
-void SetSmokeLastDamageLevel(tCar_spec *pCar) {
+void __cdecl SetSmokeLastDamageLevel(tCar_spec *pCar) {
     int i;
     LOG_TRACE("(%p)", pCar);
 
@@ -574,9 +577,9 @@ void SetSmokeLastDamageLevel(tCar_spec *pCar) {
     original_SetSmokeLastDamageLevel(pCar);
 }
 
-static void(*original_SortOutSmoke)(tCar_spec *, ...) = (void(*)(tCar_spec *, ...))0x004bf7c2;
+static void(__cdecl*original_SortOutSmoke)(tCar_spec *) = (void(__cdecl*)(tCar_spec *))0x004bf7c2;
 CARM95_HOOK_FUNCTION(original_SortOutSmoke, SortOutSmoke)
-void SortOutSmoke(tCar_spec *pCar) {
+void __cdecl SortOutSmoke(tCar_spec *pCar) {
     int i;
     int colour;
     int old_colour;
@@ -596,9 +599,9 @@ void SortOutSmoke(tCar_spec *pCar) {
     original_SortOutSmoke(pCar);
 }
 
-static void(*original_StealCar)(tCar_spec *, ...) = (void(*)(tCar_spec *, ...))0x004bf923;
+static void(__cdecl*original_StealCar)(tCar_spec *) = (void(__cdecl*)(tCar_spec *))0x004bf923;
 CARM95_HOOK_FUNCTION(original_StealCar, StealCar)
-void StealCar(tCar_spec *pCar) {
+void __cdecl StealCar(tCar_spec *pCar) {
     LOG_TRACE("(%p)", pCar);
 
     (void)pCar;
@@ -606,9 +609,9 @@ void StealCar(tCar_spec *pCar) {
     original_StealCar(pCar);
 }
 
-static int(*original_DoCrashEarnings)(tCar_spec *, tCar_spec *, ...) = (int(*)(tCar_spec *, tCar_spec *, ...))0x004bfdb3;
+static int(__cdecl*original_DoCrashEarnings)(tCar_spec *, tCar_spec *) = (int(__cdecl*)(tCar_spec *, tCar_spec *))0x004bfdb3;
 CARM95_HOOK_FUNCTION(original_DoCrashEarnings, DoCrashEarnings)
-int DoCrashEarnings(tCar_spec *pCar1, tCar_spec *pCar2) {
+int __cdecl DoCrashEarnings(tCar_spec *pCar1, tCar_spec *pCar2) {
     tCar_spec *culprit;
     tCar_spec *victim;
     int i;
@@ -646,329 +649,50 @@ int DoCrashEarnings(tCar_spec *pCar1, tCar_spec *pCar2) {
     tNet_message *message;
     LOG_TRACE("(%p, %p)", pCar1, pCar2);
 
+    (void)pCar1;
+    (void)pCar2;
+    (void)culprit;
+    (void)victim;
+    (void)i;
+    (void)net_loop;
+    (void)head_on;
+    (void)bonus_level;
+    (void)credits;
+    (void)impact_in_moving_direction_1;
+    (void)impact_in_moving_direction_2;
+    (void)car_off_ground_1;
+    (void)car_off_ground_2;
+    (void)total_units_of_damage;
+    (void)inherited_damage;
+    (void)dam_acc_1;
+    (void)dam_acc_2;
+    (void)car_1_culpable;
+    (void)car_2_culpable;
+    (void)mutual_culpability;
+    (void)the_time;
+    (void)time;
+    (void)credits_squared;
+    (void)last_earn_time;
+    (void)s;
+    (void)modified_location_1;
+    (void)modified_location_2;
+    (void)car_direction_1;
+    (void)car_direction_2;
+    (void)car_1_height;
+    (void)car_2_height;
+    (void)dp;
+    (void)car_1_pos;
+    (void)car_2_pos;
+    (void)car_1_offset;
+    (void)car_2_offset;
+    (void)message;
 
-
-    culprit = 0;
-    victim = 0;
-    head_on = 0;
-    bonus_level = 1;
-    car_1_culpable = 0;
-    car_2_culpable = 0;
-    mutual_culpability = 0;
-    the_time = PDGetTotalTime();
-    inherited_damage = 0;
-    if (pCar1->driver <= eDriver_non_car) {
-        dam_acc_1 = 0;
-    }
-    else {
-        dam_acc_1 = pCar1->damage_magnitude_accumulator;
-    }
-    // dam_acc_2 = pCar2
-    //     && (pCar2->driver <= eDriver_non_car ? (v21 = 0.0) : (v21 = pCar2->damage_magnitude_accumulator), v21 != 0.0);
-
-    dam_acc_2 = 0;
-    if (pCar2) {
-        if (pCar1->driver <= eDriver_non_car) {
-            dam_acc_2 = 0;
-        }
-        else {
-            dam_acc_2 = pCar2->damage_magnitude_accumulator != 0;
-        }
-    }
-
-    if (pCar1->driver <= eDriver_non_car) {
-        if (pCar2 == NULL || pCar2->driver <= eDriver_non_car) {
-            return 0;
-        }
-        pCar1 = pCar2;
-        pCar2 = NULL;
-    }
-    if (pCar2 != NULL && pCar2->driver <= eDriver_non_car) {
-        pCar2 = NULL;
-    }
-
-    if (pCar1->pre_car_col_knackered || (pCar2 && pCar2->pre_car_col_knackered) || (pCar2 && pCar2->damage_magnitude_accumulator <= 0.00005f && pCar1->damage_magnitude_accumulator <= 0.00005f)) {
-        return dam_acc_1 || (pCar2 && dam_acc_2);
-    }
-    // if (!pCar1->pre_car_col_knackered
-    //     && (pCar2 == NULL || !pCar2->pre_car_col_knackered)
-    //     && (pCar2 == NULL || pCar2->damage_magnitude_accumulator > 0.00005f || pCar1->damage_magnitude_accumulator > 0.00005f)) {
-
-    modified_location_1 = CalcModifiedLocation(pCar1);
-    car_direction_1 = GetDirection(&pCar1->pre_car_col_velocity_car_space);
-    impact_in_moving_direction_1 = car_direction_1 == modified_location_1;
-    if (pCar2 != NULL) {
-        modified_location_2 = CalcModifiedLocation(pCar2);
-        car_direction_2 = GetDirection(&pCar2->pre_car_col_velocity_car_space);
-        impact_in_moving_direction_2 = car_direction_2 == modified_location_2;
-    }
-    if (pCar1->driver >= eDriver_net_human && pCar2) {
-        if (impact_in_moving_direction_1 && (pCar1->driver < eDriver_net_human || (pCar1->pre_car_col_velocity_car_space.v[2] != 0.0 && pCar1->pre_car_col_velocity_car_space.v[2] > 0.0 != pCar1->gear > 0 && (pCar1->keys.acc != 0 || pCar1->joystick.acc > 0x8000)))) {
-            pCar2->time_last_hit = the_time;
-            pCar2->last_hit_by = pCar1;
-        }
-    }
-    else if (pCar2 && pCar2->driver >= eDriver_net_human && impact_in_moving_direction_2 && (pCar2->driver < eDriver_net_human || (pCar2->pre_car_col_velocity_car_space.v[2] != 0.0f && pCar2->pre_car_col_velocity_car_space.v[2] > 0.0f != pCar2->gear > 0 && (pCar2->keys.acc != 0 || pCar2->joystick.acc > 0x8000)))) {
-        pCar1->time_last_hit = the_time;
-        pCar1->last_hit_by = pCar2;
-    }
-    if (pCar2) {
-        if (impact_in_moving_direction_1
-            && pCar1->pre_car_col_speed * 5.0f > pCar2->pre_car_col_speed
-            && pCar1->pre_car_col_speed > 0.0005f
-            && (pCar1->driver < eDriver_net_human
-                || (pCar1->pre_car_col_velocity_car_space.v[2] != 0.0f
-                    && pCar1->pre_car_col_velocity_car_space.v[2] > 0.0f != pCar1->gear > 0
-                    && (pCar1->keys.acc != 0 || pCar1->joystick.acc > 0x8000)))) {
-            car_1_culpable = 1;
-        }
-        if (impact_in_moving_direction_2
-            && pCar2->pre_car_col_speed * 5.0f > pCar1->pre_car_col_speed
-            && pCar2->pre_car_col_speed > 0.0005f
-            && (pCar2->driver < eDriver_net_human
-                || (pCar2->pre_car_col_velocity_car_space.v[2] != 0.0f
-                    && pCar2->pre_car_col_velocity_car_space.v[2] > 0.0f != pCar2->gear > 0
-                    && (pCar2->keys.acc != 0 || pCar2->joystick.acc > 0x8000)))) {
-            car_2_culpable = 1;
-        }
-        if (HV(gNet_mode) && car_1_culpable && car_2_culpable) {
-            mutual_culpability = 1;
-        }
-        else {
-            if (car_2_culpable && pCar2->driver == eDriver_local_human) {
-                car_1_culpable = 0;
-            }
-            if (car_1_culpable) {
-                culprit = pCar1;
-                victim = pCar2;
-                dp = BrVector3Dot(&pCar1->pre_car_col_direction, &pCar1->pre_car_col_direction); /* pCar1->pre_car_col_direction.v[2] * pCar2->pre_car_col_direction.v[2]
-                     + pCar2->pre_car_col_direction.v[1] * pCar1->pre_car_col_direction.v[1]
-                     + pCar2->pre_car_col_direction.v[0] * pCar1->pre_car_col_direction.v[0];*/
-                if (modified_location_1 == eImpact_front && modified_location_2 == eImpact_front && pCar1->pre_car_col_speed > 0.001f && pCar2->pre_car_col_speed > 0.001f && dp < -0.7f) {
-                    head_on = 1;
-                    bonus_level = 2;
-                }
-                else {
-                    bonus_level = 1;
-                }
-            }
-            else if (car_2_culpable) {
-                culprit = pCar2;
-                victim = pCar1;
-                // dp = pCar1->pre_car_col_direction.v[2] * pCar2->pre_car_col_direction.v[2]
-                //     + pCar2->pre_car_col_direction.v[1] * pCar1->pre_car_col_direction.v[1]
-                //     + pCar2->pre_car_col_direction.v[0] * pCar1->pre_car_col_direction.v[0];
-                dp = BrVector3Dot(&pCar1->pre_car_col_direction, &pCar1->pre_car_col_direction);
-                if (modified_location_1 == eImpact_front && modified_location_2 == eImpact_front && pCar1->pre_car_col_speed > 0.001f && pCar2->pre_car_col_speed > 0.001f && dp < -0.7f) {
-                    head_on = 1;
-                    bonus_level = 2;
-                }
-                else {
-                    bonus_level = 1;
-                }
-            }
-        }
-    }
-    else {
-        // LOG_DEBUG("no pCar2, timediff is %d", the_time - pCar1->time_last_hit);
-        if (the_time - pCar1->time_last_hit >= 3000) {
-            return 1;
-        }
-        culprit = pCar1->last_hit_by;
-        victim = pCar1;
-        bonus_level = 1;
-        inherited_damage = 1;
-    }
-    if (!mutual_culpability && (!victim || culprit->driver < eDriver_net_human)) {
-        if (pCar2 && pCar2->last_culprit == pCar1 && the_time - pCar2->time_last_victim < 750) {
-            inherited_damage = 1;
-            culprit = pCar1;
-            victim = pCar2;
-        }
-        else if (pCar2 && pCar1->last_culprit == pCar2 && the_time - pCar1->time_last_victim < 750) {
-            inherited_damage = 1;
-            culprit = pCar2;
-            victim = pCar1;
-        }
-        else if (!pCar2 && the_time - pCar1->time_last_victim < 750) {
-            inherited_damage = 1;
-            culprit = pCar1->last_culprit;
-            victim = pCar1;
-        }
-    }
-    if (culprit && victim) {
-        RecordOpponentTwattageOccurrence(culprit, victim);
-        total_units_of_damage = 0;
-        for (i = 0; i < COUNT_OF(victim->damage_units); i++) {
-            if (victim->damage_units[i].damage_level > victim->damage_units[i].last_level) {
-                victim->damage_units[i].damage_level = (victim->damage_units[i].damage_level - victim->damage_units[i].last_level) * 2.0f + victim->damage_units[i].last_level;
-                if (victim->damage_units[i].damage_level >= 99) {
-                    victim->damage_units[i].damage_level = 99;
-                }
-                total_units_of_damage += victim->damage_units[i].damage_level - victim->damage_units[i].last_level;
-            }
-            if (culprit->damage_units[i].damage_level > culprit->damage_units[i].last_level) {
-                culprit->damage_units[i].damage_level = (culprit->damage_units[i].damage_level - culprit->damage_units[i].last_level) * 0.1f + (double)culprit->damage_units[i].last_level;
-                if (culprit->damage_units[i].damage_level < 0) {
-                    culprit->damage_units[i].damage_level = 0;
-                }
-            }
-        }
-    }
-    // TODO: tidy this up
-    for (net_loop = 0; 2 - (mutual_culpability == 0) > net_loop; net_loop++) {
-        if (mutual_culpability) {
-            if (net_loop) {
-                culprit = pCar1;
-                victim = pCar2;
-            }
-            else {
-                culprit = pCar2;
-                victim = pCar1;
-            }
-            total_units_of_damage = 0;
-            for (i = 0; i < COUNT_OF(victim->damage_units); i++) {
-                if (victim->damage_units[i].damage_level > victim->damage_units[i].last_level) {
-                    total_units_of_damage += victim->damage_units[i].damage_level - victim->damage_units[i].last_level;
-                }
-            }
-        }
-        if (culprit && (culprit->driver == eDriver_local_human || HV(gNet_mode)) && victim) {
-            SetKnackeredFlag(victim);
-            if (victim->knackered && !victim->pre_car_col_knackered) {
-                victim->pre_car_col_knackered = 1;
-                credits_squared = sqr(0.7f / victim->car_model_actors[victim->principal_car_actor].crush_data.softness_factor) * HV(gWasted_creds)[HV(gProgram_state).skill_level] + 50.0f;
-                credits = 100 * (credits_squared / 100.0f);
-                if (HV(gNet_mode)) {
-                    message = NetBuildMessage(0x18u, 0);
-                    message->contents.data.wasted.victim = NetPlayerFromCar(victim)->ID;
-                    if (NetPlayerFromCar(culprit)) {
-                        message->contents.data.wasted.culprit = NetPlayerFromCar(culprit)->ID;
-                    }
-                    else {
-                        message->contents.data.wasted.culprit = -2;
-                    }
-                    //NetGuaranteedSendMessageToEverybody(gCurrent_net_game, message, NULL);
-                    NetEarnCredits(NetPlayerFromCar(culprit), credits);
-                }
-                else {
-                    PratcamEvent(32);
-                    DoFancyHeadup(11);
-                    credits_squared = sqr(0.7f / victim->car_model_actors[victim->principal_car_actor].crush_data.softness_factor) * HV(gWasted_creds)[HV(gProgram_state).skill_level] + 50.0f;
-                    credits = 100 * (credits_squared / 100.0);
-                    AwardTime(HV(gWasted_time)[HV(gProgram_state).skill_level]);
-                    EarnCredits(credits);
-                    if (victim->can_be_stolen && !HV(gOpponents)[victim->index].dead && ((PercentageChance(50) && HV(gSteal_ranks)[HV(gOpponents)[victim->index].strength_rating] >= HV(gProgram_state).rank) || victim->index == 4)) {
-                        StealCar(victim);
-                    }
-                }
-            }
-            victim->time_last_hit = the_time;
-            victim->last_hit_by = culprit;
-            if (!inherited_damage) {
-                victim->time_last_victim = the_time;
-                victim->last_culprit = culprit;
-            }
-            if (victim && (fabs(victim->omega.v[0]) > 4.0f || fabs(victim->omega.v[1]) > 6.0f || fabs(victim->omega.v[2]) > 4.0f)) {
-                bonus_level *= 2;
-            }
-            if (pCar1->number_of_wheels_on_ground) {
-                car_off_ground_1 = 0;
-            }
-            else {
-                // car_1_pos.v[0] = pCar1->car_master_actor->t.t.mat.m[3][0] / 6.9000001;
-                // car_1_pos.v[1] = pCar1->car_master_actor->t.t.mat.m[3][1] / 6.9000001;
-                // car_1_pos.v[2] = pCar1->car_master_actor->t.t.mat.m[3][2] / 6.9000001;
-                BrVector3InvScale(&car_1_pos, &pCar1->car_master_actor->t.t.translate.t, WORLD_SCALE);
-                BrMatrix34ApplyV(&car_1_offset, &pCar1->car_model_actors[pCar1->principal_car_actor].actor->t.t.translate.t, &pCar1->car_master_actor->t.t.mat);
-                // car_1_pos.v[0] = car_1_offset.v[0] + car_1_pos.v[0];
-                // car_1_pos.v[1] = car_1_offset.v[1] + car_1_pos.v[1];
-                // car_1_pos.v[2] = car_1_offset.v[2] + car_1_pos.v[2];
-                BrVector3Accumulate(&car_1_pos, &car_1_offset);
-                car_1_pos.v[1] += 0.15f;
-                car_1_height = FindYVerticallyBelow2(&car_1_pos);
-                car_off_ground_1 = car_1_height > -100.0f
-                                   && pCar1->car_model_actors[pCar1->principal_car_actor].actor->t.t.translate.t.v[1] * 4.0f <= car_1_pos.v[1] - car_1_height - 0.15f;
-            }
-            if (!pCar2 || pCar2->number_of_wheels_on_ground) {
-                car_off_ground_2 = 0;
-            }
-            else {
-                // car_2_pos.v[0] = pCar2->car_master_actor->t.t.mat.m[3][0] / 6.9000001;
-                // car_2_pos.v[1] = pCar2->car_master_actor->t.t.mat.m[3][1] / 6.9000001;
-                // car_2_pos.v[2] = pCar2->car_master_actor->t.t.mat.m[3][2] / 6.9000001;
-                BrVector3InvScale(&car_2_pos, &pCar2->car_master_actor->t.t.translate.t, WORLD_SCALE);
-                BrMatrix34ApplyV(&car_2_offset, &pCar2->car_model_actors[pCar2->principal_car_actor].actor->t.t.translate.t, &pCar2->car_master_actor->t.t.mat);
-                // car_2_pos.v[0] = car_2_offset.v[0] + car_2_pos.v[0];
-                // car_2_pos.v[1] = car_2_offset.v[1] + car_2_pos.v[1];
-                // car_2_pos.v[2] = car_2_pos.v[2] + car_2_offset.v[2];
-                BrVector3Accumulate(&car_2_pos, &car_2_offset);
-                car_2_pos.v[1] += 0.15f;
-                car_2_height = FindYVerticallyBelow2(&car_2_pos);
-                car_off_ground_2 = car_2_height > -100.0f
-                                   && pCar2->car_model_actors[pCar2->principal_car_actor].actor->t.t.translate.t.v[1] * 4.0f <= car_2_pos.v[1] - car_2_height - 0.15f;
-            }
-            if (car_off_ground_1) {
-                bonus_level *= 2;
-            }
-            if (car_off_ground_2) {
-                bonus_level *= 2;
-            }
-            total_units_of_damage = 0.7f / victim->car_model_actors[victim->principal_car_actor].crush_data.softness_factor * total_units_of_damage;
-            if (!victim->has_been_stolen) {
-                credits = 100 * (HV(gCar_cred_value)[HV(gProgram_state).skill_level] * MIN(bonus_level, 8) * total_units_of_damage + 50.0f) / 100.0f;
-                if (credits || victim->knackered) {
-                    if (!victim->knackered) {
-                        if (HV(gNet_mode)) {
-                            NetEarnCredits(NetPlayerFromCar(culprit), MIN(credits, 2000));
-                        }
-                        else {
-                            EarnCredits(MIN(credits, 2000));
-                        }
-                        last_earn_time = the_time;
-                        if (HV(gNet_mode) == eNet_mode_none) {
-                            time = 5 * ((total_units_of_damage * HV(gCar_time_value)[HV(gProgram_state).skill_level] + 2.5f) / 5.0f);
-                            AwardTime(MIN(time, 90));
-                            if (pCar2) {
-                                if (head_on) {
-                                    DoFancyHeadup(10);
-                                }
-                                else if (bonus_level <= 2) {
-                                    if (bonus_level > 1) {
-                                        DoFancyHeadup(2);
-                                    }
-                                }
-                                else {
-                                    DoFancyHeadup(3);
-                                }
-                            }
-                        }
-                    }
-                    for (i = 0; i < COUNT_OF(victim->damage_units); i++) {
-                        victim->damage_units[i].last_level = victim->damage_units[i].damage_level;
-                    }
-                }
-            }
-        }
-        else {
-            pCar1->time_last_hit = 0;
-            if (pCar2) {
-                pCar2->time_last_hit = 0;
-            }
-        }
-    }
-    pCar1->damage_magnitude_accumulator = 0.0f;
-    if (pCar2) {
-        pCar2->damage_magnitude_accumulator = 0.0f;
-    }
-    return 1;
-
-    // return dam_acc_1 || pCar2 && dam_acc_2;
+    return original_DoCrashEarnings(pCar1, pCar2);
 }
 
-static void(*original_DoWheelDamage)(tU32, ...) = (void(*)(tU32, ...))0x004bf96c;
+static void(__cdecl*original_DoWheelDamage)(tU32) = (void(__cdecl*)(tU32))0x004bf96c;
 CARM95_HOOK_FUNCTION(original_DoWheelDamage, DoWheelDamage)
-void DoWheelDamage(tU32 pFrame_period) {
+void __cdecl DoWheelDamage(tU32 pFrame_period) {
     int i;
     int j;
     int damage;
@@ -998,9 +722,9 @@ void DoWheelDamage(tU32 pFrame_period) {
     original_DoWheelDamage(pFrame_period);
 }
 
-static void(*original_CrashEarnings)(tCar_spec *, tCar_spec *, ...) = (void(*)(tCar_spec *, tCar_spec *, ...))0x004bfd78;
+static void(__cdecl*original_CrashEarnings)(tCar_spec *, tCar_spec *) = (void(__cdecl*)(tCar_spec *, tCar_spec *))0x004bfd78;
 CARM95_HOOK_FUNCTION(original_CrashEarnings, CrashEarnings)
-void CrashEarnings(tCar_spec *pCar1, tCar_spec *pCar2) {
+void __cdecl CrashEarnings(tCar_spec *pCar1, tCar_spec *pCar2) {
     LOG_TRACE("(%p, %p)", pCar1, pCar2);
 
     (void)pCar1;

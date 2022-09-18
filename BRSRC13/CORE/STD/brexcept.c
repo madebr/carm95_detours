@@ -4,13 +4,12 @@
 
 #include "carm95_hooks.h"
 
-#include <stdio.h>
 br_exception_handler ** hookvar__BrExceptionHandler  = (void*)0x0053005c;
 void ** hookvar_exceptionValue  = (void*)0x00544d84;
 
-static br_exception_handler *(*original__BrExceptionBegin)() = (br_exception_handler *(*)())0x00502b90;
+static br_exception_handler *(__stdcall*original__BrExceptionBegin)() = (br_exception_handler *(__stdcall*)())0x00502b90;
 CARM95_HOOK_FUNCTION(original__BrExceptionBegin, _BrExceptionBegin)
-br_exception_handler* _BrExceptionBegin() {
+br_exception_handler* __stdcall _BrExceptionBegin() {
     br_exception_handler *h;
     LOG_TRACE("()");
 
@@ -19,9 +18,9 @@ br_exception_handler* _BrExceptionBegin() {
     return original__BrExceptionBegin();
 }
 
-static void(*original__BrExceptionEnd)() = (void(*)())0x00502bb0;
+static void(__stdcall*original__BrExceptionEnd)() = (void(__stdcall*)())0x00502bb0;
 CARM95_HOOK_FUNCTION(original__BrExceptionEnd, _BrExceptionEnd)
-void _BrExceptionEnd() {
+void __stdcall _BrExceptionEnd() {
     br_exception_handler *old;
     LOG_TRACE("()");
 
@@ -30,9 +29,9 @@ void _BrExceptionEnd() {
     original__BrExceptionEnd();
 }
 
-static void(*original__BrExceptionThrow)(br_int_32, void *, ...) = (void(*)(br_int_32, void *, ...))0x00502be0;
+static void(__cdecl*original__BrExceptionThrow)(br_int_32, void *) = (void(__cdecl*)(br_int_32, void *))0x00502be0;
 CARM95_HOOK_FUNCTION(original__BrExceptionThrow, _BrExceptionThrow)
-void _BrExceptionThrow(br_int_32 type, void *value) {
+void __cdecl _BrExceptionThrow(br_int_32 type, void *value) {
     br_exception_handler h;
     br_exception_handler *old;
     LOG_TRACE("(%d, %p)", type, value);
@@ -45,9 +44,9 @@ void _BrExceptionThrow(br_int_32 type, void *value) {
     original__BrExceptionThrow(type, value);
 }
 
-static br_exception(*original__BrExceptionValueFetch)(br_exception, void **, ...) = (br_exception(*)(br_exception, void **, ...))0x00502c50;
+static br_exception(__cdecl*original__BrExceptionValueFetch)(br_exception, void **) = (br_exception(__cdecl*)(br_exception, void **))0x00502c50;
 CARM95_HOOK_FUNCTION(original__BrExceptionValueFetch, _BrExceptionValueFetch)
-br_exception _BrExceptionValueFetch(br_exception type, void **evp) {
+br_exception __cdecl _BrExceptionValueFetch(br_exception type, void **evp) {
     LOG_TRACE("(%u, %p)", type, evp);
 
     (void)type;
@@ -56,9 +55,9 @@ br_exception _BrExceptionValueFetch(br_exception type, void **evp) {
     return original__BrExceptionValueFetch(type, evp);
 }
 
-static void *(*original__BrExceptionResource)() = (void *(*)())0x00502c70;
+static void *(__stdcall*original__BrExceptionResource)() = (void *(__stdcall*)())0x00502c70;
 CARM95_HOOK_FUNCTION(original__BrExceptionResource, _BrExceptionResource)
-void* _BrExceptionResource() {
+void* __stdcall _BrExceptionResource() {
     LOG_TRACE("()");
 
 

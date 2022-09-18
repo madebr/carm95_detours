@@ -4,6 +4,6 @@
 #include "br_types.h"
 
 
-br_boolean BrNamePatternMatch(char *p, char *s);
+br_boolean __cdecl BrNamePatternMatch(char *p, char *s);
 
 #endif

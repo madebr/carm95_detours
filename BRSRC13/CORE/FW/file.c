@@ -4,7 +4,6 @@
 
 #include "carm95_hooks.h"
 
-#include <stdio.h>
 
 void _BrFileFree(void *res, br_uint_8 res_class, br_size_t size) {
     br_file *file;
@@ -18,18 +17,18 @@ void _BrFileFree(void *res, br_uint_8 res_class, br_size_t size) {
     NOT_IMPLEMENTED();
 }
 
-static br_uint_32(*original_BrFileAttributes)() = (br_uint_32(*)())0x004e5fc0;
+static br_uint_32(__stdcall*original_BrFileAttributes)() = (br_uint_32(__stdcall*)())0x004e5fc0;
 CARM95_HOOK_FUNCTION(original_BrFileAttributes, BrFileAttributes)
-br_uint_32 BrFileAttributes() {
+br_uint_32 __stdcall BrFileAttributes() {
     LOG_TRACE("()");
 
 
     return original_BrFileAttributes();
 }
 
-static void *(*original_BrFileOpenRead)(char *, br_size_t, br_mode_test_cbfn *, int *, ...) = (void *(*)(char *, br_size_t, br_mode_test_cbfn *, int *, ...))0x004e5fd0;
+static void *(__cdecl*original_BrFileOpenRead)(char *, br_size_t, br_mode_test_cbfn *, int *) = (void *(__cdecl*)(char *, br_size_t, br_mode_test_cbfn *, int *))0x004e5fd0;
 CARM95_HOOK_FUNCTION(original_BrFileOpenRead, BrFileOpenRead)
-void* BrFileOpenRead(char *name, br_size_t n_magics, br_mode_test_cbfn *mode_test, int *mode_result) {
+void* __cdecl BrFileOpenRead(char *name, br_size_t n_magics, br_mode_test_cbfn *mode_test, int *mode_result) {
     void *raw_file;
     br_file *file;
     int bin_mode;
@@ -46,9 +45,9 @@ void* BrFileOpenRead(char *name, br_size_t n_magics, br_mode_test_cbfn *mode_tes
     return original_BrFileOpenRead(name, n_magics, mode_test, mode_result);
 }
 
-static void *(*original_BrFileOpenWrite)(char *, int, ...) = (void *(*)(char *, int, ...))0x004e6080;
+static void *(__cdecl*original_BrFileOpenWrite)(char *, int) = (void *(__cdecl*)(char *, int))0x004e6080;
 CARM95_HOOK_FUNCTION(original_BrFileOpenWrite, BrFileOpenWrite)
-void* BrFileOpenWrite(char *name, int mode) {
+void* __cdecl BrFileOpenWrite(char *name, int mode) {
     void *raw_file;
     br_file *file;
     LOG_TRACE("(\"%s\", %d)", name, mode);
@@ -61,9 +60,9 @@ void* BrFileOpenWrite(char *name, int mode) {
     return original_BrFileOpenWrite(name, mode);
 }
 
-static void(*original_BrFileClose)(void *, ...) = (void(*)(void *, ...))0x004e60f0;
+static void(__cdecl*original_BrFileClose)(void *) = (void(__cdecl*)(void *))0x004e60f0;
 CARM95_HOOK_FUNCTION(original_BrFileClose, BrFileClose)
-void BrFileClose(void *f) {
+void __cdecl BrFileClose(void *f) {
     LOG_TRACE("(%p)", f);
 
     (void)f;
@@ -71,9 +70,9 @@ void BrFileClose(void *f) {
     original_BrFileClose(f);
 }
 
-static int(*original_BrFileEof)(void *, ...) = (int(*)(void *, ...))0x004e6100;
+static int(__cdecl*original_BrFileEof)(void *) = (int(__cdecl*)(void *))0x004e6100;
 CARM95_HOOK_FUNCTION(original_BrFileEof, BrFileEof)
-int BrFileEof(void *f) {
+int __cdecl BrFileEof(void *f) {
     LOG_TRACE("(%p)", f);
 
     (void)f;
@@ -81,9 +80,9 @@ int BrFileEof(void *f) {
     return original_BrFileEof(f);
 }
 
-static int(*original_BrFileGetChar)(void *, ...) = (int(*)(void *, ...))0x004e6120;
+static int(__cdecl*original_BrFileGetChar)(void *) = (int(__cdecl*)(void *))0x004e6120;
 CARM95_HOOK_FUNCTION(original_BrFileGetChar, BrFileGetChar)
-int BrFileGetChar(void *f) {
+int __cdecl BrFileGetChar(void *f) {
     LOG_TRACE("(%p)", f);
 
     (void)f;
@@ -91,9 +90,9 @@ int BrFileGetChar(void *f) {
     return original_BrFileGetChar(f);
 }
 
-static void(*original_BrFilePutChar)(int, void *, ...) = (void(*)(int, void *, ...))0x004e6140;
+static void(__cdecl*original_BrFilePutChar)(int, void *) = (void(__cdecl*)(int, void *))0x004e6140;
 CARM95_HOOK_FUNCTION(original_BrFilePutChar, BrFilePutChar)
-void BrFilePutChar(int c, void *f) {
+void __cdecl BrFilePutChar(int c, void *f) {
     LOG_TRACE("(%d, %p)", c, f);
 
     (void)c;
@@ -102,9 +101,9 @@ void BrFilePutChar(int c, void *f) {
     original_BrFilePutChar(c, f);
 }
 
-static int(*original_BrFileRead)(void *, int, int, void *, ...) = (int(*)(void *, int, int, void *, ...))0x004e6160;
+static int(__cdecl*original_BrFileRead)(void *, int, int, void *) = (int(__cdecl*)(void *, int, int, void *))0x004e6160;
 CARM95_HOOK_FUNCTION(original_BrFileRead, BrFileRead)
-int BrFileRead(void *buf, int size, int n, void *f) {
+int __cdecl BrFileRead(void *buf, int size, int n, void *f) {
     LOG_TRACE("(%p, %d, %d, %p)", buf, size, n, f);
 
     (void)buf;
@@ -115,9 +114,9 @@ int BrFileRead(void *buf, int size, int n, void *f) {
     return original_BrFileRead(buf, size, n, f);
 }
 
-static int(*original_BrFileWrite)(void *, int, int, void *, ...) = (int(*)(void *, int, int, void *, ...))0x004e6190;
+static int(__cdecl*original_BrFileWrite)(void *, int, int, void *) = (int(__cdecl*)(void *, int, int, void *))0x004e6190;
 CARM95_HOOK_FUNCTION(original_BrFileWrite, BrFileWrite)
-int BrFileWrite(void *buf, int size, int n, void *f) {
+int __cdecl BrFileWrite(void *buf, int size, int n, void *f) {
     LOG_TRACE("(%p, %d, %d, %p)", buf, size, n, f);
 
     (void)buf;
@@ -128,9 +127,9 @@ int BrFileWrite(void *buf, int size, int n, void *f) {
     return original_BrFileWrite(buf, size, n, f);
 }
 
-static int(*original_BrFileGetLine)(char *, br_size_t, void *, ...) = (int(*)(char *, br_size_t, void *, ...))0x004e61c0;
+static int(__cdecl*original_BrFileGetLine)(char *, br_size_t, void *) = (int(__cdecl*)(char *, br_size_t, void *))0x004e61c0;
 CARM95_HOOK_FUNCTION(original_BrFileGetLine, BrFileGetLine)
-int BrFileGetLine(char *buf, br_size_t buf_len, void *f) {
+int __cdecl BrFileGetLine(char *buf, br_size_t buf_len, void *f) {
     LOG_TRACE("(\"%s\", %u, %p)", buf, buf_len, f);
 
     (void)buf;
@@ -140,9 +139,9 @@ int BrFileGetLine(char *buf, br_size_t buf_len, void *f) {
     return original_BrFileGetLine(buf, buf_len, f);
 }
 
-static void(*original_BrFilePutLine)(char *, void *, ...) = (void(*)(char *, void *, ...))0x004e61e0;
+static void(__cdecl*original_BrFilePutLine)(char *, void *) = (void(__cdecl*)(char *, void *))0x004e61e0;
 CARM95_HOOK_FUNCTION(original_BrFilePutLine, BrFilePutLine)
-void BrFilePutLine(char *buf, void *f) {
+void __cdecl BrFilePutLine(char *buf, void *f) {
     LOG_TRACE("(\"%s\", %p)", buf, f);
 
     (void)buf;
@@ -151,9 +150,9 @@ void BrFilePutLine(char *buf, void *f) {
     original_BrFilePutLine(buf, f);
 }
 
-static void(*original_BrFileAdvance)(long, void *, ...) = (void(*)(long, void *, ...))0x004e6200;
+static void(__cdecl*original_BrFileAdvance)(long, void *) = (void(__cdecl*)(long, void *))0x004e6200;
 CARM95_HOOK_FUNCTION(original_BrFileAdvance, BrFileAdvance)
-void BrFileAdvance(long count, void *f) {
+void __cdecl BrFileAdvance(long count, void *f) {
     LOG_TRACE("(%d, %p)", count, f);
 
     (void)count;
@@ -162,6 +161,7 @@ void BrFileAdvance(long count, void *f) {
     original_BrFileAdvance(count, f);
 }
 
+int(__cdecl*BrFilePrintf)(void *, char *) = (int(__cdecl*)(void *, char *))0x004e6220;
 int BrFilePrintf_do_not_use(void *f, char *fmt) {
     int n;
     va_list args;

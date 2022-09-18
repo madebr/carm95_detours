@@ -111,9 +111,9 @@ void KeyTranslation(tU8 pKey_index, tU8 pScan_code_1, tU8 pScan_code_2) {
     NOT_IMPLEMENTED();
 }
 
-static void(*original_KeyBegin)() = (void(*)())0x004a6b34;
+static void(__cdecl*original_KeyBegin)() = (void(__cdecl*)())0x004a6b34;
 CARM95_HOOK_FUNCTION(original_KeyBegin, KeyBegin)
-void KeyBegin() {
+void __cdecl KeyBegin() {
     LOG_TRACE("()");
 
 
@@ -135,9 +135,9 @@ int KeyDown22(int pKey_index) {
     NOT_IMPLEMENTED();
 }
 
-static void(*original_PDSetKeyArray)(int *, int, ...) = (void(*)(int *, int, ...))0x004a7d4c;
+static void(__cdecl*original_PDSetKeyArray)(int *, int) = (void(__cdecl*)(int *, int))0x004a7d4c;
 CARM95_HOOK_FUNCTION(original_PDSetKeyArray, PDSetKeyArray)
-void PDSetKeyArray(int *pKeys, int pMark) {
+void __cdecl PDSetKeyArray(int *pKeys, int pMark) {
     int i;
     tS32 joyX;
     tS32 joyY;
@@ -152,9 +152,9 @@ void PDSetKeyArray(int *pKeys, int pMark) {
     original_PDSetKeyArray(pKeys, pMark);
 }
 
-static int(*original_PDGetASCIIFromKey)(int, ...) = (int(*)(int, ...))0x004a7a49;
+static int(__cdecl*original_PDGetASCIIFromKey)(int) = (int(__cdecl*)(int))0x004a7a49;
 CARM95_HOOK_FUNCTION(original_PDGetASCIIFromKey, PDGetASCIIFromKey)
-int PDGetASCIIFromKey(int pKey) {
+int __cdecl PDGetASCIIFromKey(int pKey) {
     LOG_TRACE("(%d)", pKey);
 
     (void)pKey;
@@ -162,9 +162,9 @@ int PDGetASCIIFromKey(int pKey) {
     return original_PDGetASCIIFromKey(pKey);
 }
 
-static void(*original_PDFatalError)(char *, ...) = (void(*)(char *, ...))0x004a633f;
+static void(__cdecl*original_PDFatalError)(char *) = (void(__cdecl*)(char *))0x004a633f;
 CARM95_HOOK_FUNCTION(original_PDFatalError, PDFatalError)
-void PDFatalError(char *pThe_str) {
+void __cdecl PDFatalError(char *pThe_str) {
     static int been_here;
     LOG_TRACE("(\"%s\")", pThe_str);
 
@@ -174,9 +174,9 @@ void PDFatalError(char *pThe_str) {
     original_PDFatalError(pThe_str);
 }
 
-static void(*original_PDNonFatalError)(char *, ...) = (void(*)(char *, ...))0x004a63aa;
+static void(__cdecl*original_PDNonFatalError)(char *) = (void(__cdecl*)(char *))0x004a63aa;
 CARM95_HOOK_FUNCTION(original_PDNonFatalError, PDNonFatalError)
-void PDNonFatalError(char *pThe_str) {
+void __cdecl PDNonFatalError(char *pThe_str) {
     LOG_TRACE("(\"%s\")", pThe_str);
 
     (void)pThe_str;
@@ -184,9 +184,9 @@ void PDNonFatalError(char *pThe_str) {
     original_PDNonFatalError(pThe_str);
 }
 
-static void(*original_PDInitialiseSystem)() = (void(*)())0x004a692c;
+static void(__cdecl*original_PDInitialiseSystem)() = (void(__cdecl*)())0x004a692c;
 CARM95_HOOK_FUNCTION(original_PDInitialiseSystem, PDInitialiseSystem)
-void PDInitialiseSystem() {
+void __cdecl PDInitialiseSystem() {
     tPath_name the_path;
     FILE *f;
     int len;
@@ -199,36 +199,36 @@ void PDInitialiseSystem() {
     original_PDInitialiseSystem();
 }
 
-static void(*original_PDShutdownSystem)() = (void(*)())0x004a6f6d;
+static void(__cdecl*original_PDShutdownSystem)() = (void(__cdecl*)())0x004a6f6d;
 CARM95_HOOK_FUNCTION(original_PDShutdownSystem, PDShutdownSystem)
-void PDShutdownSystem() {
+void __cdecl PDShutdownSystem() {
     LOG_TRACE("()");
 
 
     original_PDShutdownSystem();
 }
 
-static void(*original_PDSaveOriginalPalette)() = (void(*)())0x004a7097;
+static void(__cdecl*original_PDSaveOriginalPalette)() = (void(__cdecl*)())0x004a7097;
 CARM95_HOOK_FUNCTION(original_PDSaveOriginalPalette, PDSaveOriginalPalette)
-void PDSaveOriginalPalette() {
+void __cdecl PDSaveOriginalPalette() {
     LOG_TRACE("()");
 
 
     original_PDSaveOriginalPalette();
 }
 
-static void(*original_PDRevertPalette)() = (void(*)())0x004a70a2;
+static void(__cdecl*original_PDRevertPalette)() = (void(__cdecl*)())0x004a70a2;
 CARM95_HOOK_FUNCTION(original_PDRevertPalette, PDRevertPalette)
-void PDRevertPalette() {
+void __cdecl PDRevertPalette() {
     LOG_TRACE("()");
 
 
     original_PDRevertPalette();
 }
 
-static int(*original_PDInitScreenVars)(int, char **, ...) = (int(*)(int, char **, ...))0x004a70ad;
+static int(__cdecl*original_PDInitScreenVars)(int, char **) = (int(__cdecl*)(int, char **))0x004a70ad;
 CARM95_HOOK_FUNCTION(original_PDInitScreenVars, PDInitScreenVars)
-int PDInitScreenVars(int pArgc, char **pArgv) {
+int __cdecl PDInitScreenVars(int pArgc, char **pArgv) {
     LOG_TRACE("(%d, %p)", pArgc, pArgv);
 
     (void)pArgc;
@@ -237,36 +237,36 @@ int PDInitScreenVars(int pArgc, char **pArgv) {
     return original_PDInitScreenVars(pArgc, pArgv);
 }
 
-static void(*original_PDInitScreen)() = (void(*)())0x004a70d6;
+static void(__cdecl*original_PDInitScreen)() = (void(__cdecl*)())0x004a70d6;
 CARM95_HOOK_FUNCTION(original_PDInitScreen, PDInitScreen)
-void PDInitScreen() {
+void __cdecl PDInitScreen() {
     LOG_TRACE("()");
 
 
     original_PDInitScreen();
 }
 
-static void(*original_PDLockRealBackScreen)() = (void(*)())0x004a7217;
+static void(__cdecl*original_PDLockRealBackScreen)() = (void(__cdecl*)())0x004a7217;
 CARM95_HOOK_FUNCTION(original_PDLockRealBackScreen, PDLockRealBackScreen)
-void PDLockRealBackScreen() {
+void __cdecl PDLockRealBackScreen() {
     LOG_TRACE("()");
 
 
     original_PDLockRealBackScreen();
 }
 
-static void(*original_PDUnlockRealBackScreen)() = (void(*)())0x004a727d;
+static void(__cdecl*original_PDUnlockRealBackScreen)() = (void(__cdecl*)())0x004a727d;
 CARM95_HOOK_FUNCTION(original_PDUnlockRealBackScreen, PDUnlockRealBackScreen)
-void PDUnlockRealBackScreen() {
+void __cdecl PDUnlockRealBackScreen() {
     LOG_TRACE("()");
 
 
     original_PDUnlockRealBackScreen();
 }
 
-static void(*original_PDAllocateScreenAndBack)() = (void(*)())0x004a728d;
+static void(__cdecl*original_PDAllocateScreenAndBack)() = (void(__cdecl*)())0x004a728d;
 CARM95_HOOK_FUNCTION(original_PDAllocateScreenAndBack, PDAllocateScreenAndBack)
-void PDAllocateScreenAndBack() {
+void __cdecl PDAllocateScreenAndBack() {
     LOG_TRACE("()");
 
 
@@ -367,9 +367,9 @@ void CopyBackScreen(int pRendering_area_only) {
     NOT_IMPLEMENTED();
 }
 
-static void(*original_PDScreenBufferSwap)(int, ...) = (void(*)(int, ...))0x004a758e;
+static void(__cdecl*original_PDScreenBufferSwap)(int) = (void(__cdecl*)(int))0x004a758e;
 CARM95_HOOK_FUNCTION(original_PDScreenBufferSwap, PDScreenBufferSwap)
-void PDScreenBufferSwap(int pRendering_area_only) {
+void __cdecl PDScreenBufferSwap(int pRendering_area_only) {
     LOG_TRACE("(%d)", pRendering_area_only);
 
     (void)pRendering_area_only;
@@ -377,9 +377,9 @@ void PDScreenBufferSwap(int pRendering_area_only) {
     original_PDScreenBufferSwap(pRendering_area_only);
 }
 
-static void(*original_PDPixelmapToScreenRectangleCopy)(br_pixelmap *, br_int_16, br_int_16, br_pixelmap *, br_int_16, br_int_16, br_uint_16, br_uint_16, ...) = (void(*)(br_pixelmap *, br_int_16, br_int_16, br_pixelmap *, br_int_16, br_int_16, br_uint_16, br_uint_16, ...))0x004a763e;
+static void(__cdecl*original_PDPixelmapToScreenRectangleCopy)(br_pixelmap *, br_int_16, br_int_16, br_pixelmap *, br_int_16, br_int_16, br_uint_16, br_uint_16) = (void(__cdecl*)(br_pixelmap *, br_int_16, br_int_16, br_pixelmap *, br_int_16, br_int_16, br_uint_16, br_uint_16))0x004a763e;
 CARM95_HOOK_FUNCTION(original_PDPixelmapToScreenRectangleCopy, PDPixelmapToScreenRectangleCopy)
-void PDPixelmapToScreenRectangleCopy(br_pixelmap *dst, br_int_16 dx, br_int_16 dy, br_pixelmap *src, br_int_16 sx, br_int_16 sy, br_uint_16 w, br_uint_16 h) {
+void __cdecl PDPixelmapToScreenRectangleCopy(br_pixelmap *dst, br_int_16 dx, br_int_16 dy, br_pixelmap *src, br_int_16 sx, br_int_16 sy, br_uint_16 w, br_uint_16 h) {
     LOG_TRACE("(%p, %d, %d, %p, %d, %d, %u, %u)", dst, dx, dy, src, sx, sy, w, h);
 
     (void)dst;
@@ -394,9 +394,9 @@ void PDPixelmapToScreenRectangleCopy(br_pixelmap *dst, br_int_16 dx, br_int_16 d
     original_PDPixelmapToScreenRectangleCopy(dst, dx, dy, src, sx, sy, w, h);
 }
 
-static void(*original_PDPixelmapHLineOnScreen)(br_pixelmap *, br_int_16, br_int_16, br_int_16, br_int_16, br_uint_32, ...) = (void(*)(br_pixelmap *, br_int_16, br_int_16, br_int_16, br_int_16, br_uint_32, ...))0x004a768b;
+static void(__cdecl*original_PDPixelmapHLineOnScreen)(br_pixelmap *, br_int_16, br_int_16, br_int_16, br_int_16, br_uint_32) = (void(__cdecl*)(br_pixelmap *, br_int_16, br_int_16, br_int_16, br_int_16, br_uint_32))0x004a768b;
 CARM95_HOOK_FUNCTION(original_PDPixelmapHLineOnScreen, PDPixelmapHLineOnScreen)
-void PDPixelmapHLineOnScreen(br_pixelmap *dst, br_int_16 x1, br_int_16 y1, br_int_16 x2, br_int_16 y2, br_uint_32 colour) {
+void __cdecl PDPixelmapHLineOnScreen(br_pixelmap *dst, br_int_16 x1, br_int_16 y1, br_int_16 x2, br_int_16 y2, br_uint_32 colour) {
     LOG_TRACE("(%p, %d, %d, %d, %d, %u)", dst, x1, y1, x2, y2, colour);
 
     (void)dst;
@@ -409,9 +409,9 @@ void PDPixelmapHLineOnScreen(br_pixelmap *dst, br_int_16 x1, br_int_16 y1, br_in
     original_PDPixelmapHLineOnScreen(dst, x1, y1, x2, y2, colour);
 }
 
-static void(*original_PDPixelmapVLineOnScreen)(br_pixelmap *, br_int_16, br_int_16, br_int_16, br_int_16, br_uint_32, ...) = (void(*)(br_pixelmap *, br_int_16, br_int_16, br_int_16, br_int_16, br_uint_32, ...))0x004a76ba;
+static void(__cdecl*original_PDPixelmapVLineOnScreen)(br_pixelmap *, br_int_16, br_int_16, br_int_16, br_int_16, br_uint_32) = (void(__cdecl*)(br_pixelmap *, br_int_16, br_int_16, br_int_16, br_int_16, br_uint_32))0x004a76ba;
 CARM95_HOOK_FUNCTION(original_PDPixelmapVLineOnScreen, PDPixelmapVLineOnScreen)
-void PDPixelmapVLineOnScreen(br_pixelmap *dst, br_int_16 x1, br_int_16 y1, br_int_16 x2, br_int_16 y2, br_uint_32 colour) {
+void __cdecl PDPixelmapVLineOnScreen(br_pixelmap *dst, br_int_16 x1, br_int_16 y1, br_int_16 x2, br_int_16 y2, br_uint_32 colour) {
     LOG_TRACE("(%p, %d, %d, %d, %d, %u)", dst, x1, y1, x2, y2, colour);
 
     (void)dst;
@@ -424,27 +424,27 @@ void PDPixelmapVLineOnScreen(br_pixelmap *dst, br_int_16 x1, br_int_16 y1, br_in
     original_PDPixelmapVLineOnScreen(dst, x1, y1, x2, y2, colour);
 }
 
-static void(*original_PDInstallErrorHandlers)() = (void(*)())0x004a7766;
+static void(__cdecl*original_PDInstallErrorHandlers)() = (void(__cdecl*)())0x004a7766;
 CARM95_HOOK_FUNCTION(original_PDInstallErrorHandlers, PDInstallErrorHandlers)
-void PDInstallErrorHandlers() {
+void __cdecl PDInstallErrorHandlers() {
     LOG_TRACE("()");
 
 
     original_PDInstallErrorHandlers();
 }
 
-static void(*original_PDSetFileVariables)() = (void(*)())0x004a779c;
+static void(__cdecl*original_PDSetFileVariables)() = (void(__cdecl*)())0x004a779c;
 CARM95_HOOK_FUNCTION(original_PDSetFileVariables, PDSetFileVariables)
-void PDSetFileVariables() {
+void __cdecl PDSetFileVariables() {
     LOG_TRACE("()");
 
 
     original_PDSetFileVariables();
 }
 
-static void(*original_PDBuildAppPath)(char *, ...) = (void(*)(char *, ...))0x004a77b3;
+static void(__cdecl*original_PDBuildAppPath)(char *) = (void(__cdecl*)(char *))0x004a77b3;
 CARM95_HOOK_FUNCTION(original_PDBuildAppPath, PDBuildAppPath)
-void PDBuildAppPath(char *pThe_path) {
+void __cdecl PDBuildAppPath(char *pThe_path) {
     int pos;
     LOG_TRACE("(\"%s\")", pThe_path);
 
@@ -454,9 +454,9 @@ void PDBuildAppPath(char *pThe_path) {
     original_PDBuildAppPath(pThe_path);
 }
 
-static void(*original_PDForEveryFile)(char *, void(**)(char *, ...), ...) = (void(*)(char *, void(**)(char *, ...), ...))0x004a7807;
+static void(__cdecl*original_PDForEveryFile)(char *, void(**)(char *)) = (void(__cdecl*)(char *, void(**)(char *)))0x004a7807;
 CARM95_HOOK_FUNCTION(original_PDForEveryFile, PDForEveryFile)
-void PDForEveryFile(char *pThe_path, void(**pAction_routine)(char *, ...)) {
+void __cdecl PDForEveryFile(char *pThe_path, void(**pAction_routine)(char *)) {
     char find_path[256];
     char found_path[256];
     struct find_t the_find_buffer;
@@ -471,9 +471,9 @@ void PDForEveryFile(char *pThe_path, void(**pAction_routine)(char *, ...)) {
     original_PDForEveryFile(pThe_path, pAction_routine);
 }
 
-static void(*original_PDSetPalette)(br_pixelmap *, ...) = (void(*)(br_pixelmap *, ...))0x004a7903;
+static void(__cdecl*original_PDSetPalette)(br_pixelmap *) = (void(__cdecl*)(br_pixelmap *))0x004a7903;
 CARM95_HOOK_FUNCTION(original_PDSetPalette, PDSetPalette)
-void PDSetPalette(br_pixelmap *pThe_palette) {
+void __cdecl PDSetPalette(br_pixelmap *pThe_palette) {
     LOG_TRACE("(%p)", pThe_palette);
 
     (void)pThe_palette;
@@ -481,9 +481,9 @@ void PDSetPalette(br_pixelmap *pThe_palette) {
     original_PDSetPalette(pThe_palette);
 }
 
-static void(*original_PDSetPaletteEntries)(br_pixelmap *, int, int, ...) = (void(*)(br_pixelmap *, int, int, ...))0x004a79d0;
+static void(__cdecl*original_PDSetPaletteEntries)(br_pixelmap *, int, int) = (void(__cdecl*)(br_pixelmap *, int, int))0x004a79d0;
 CARM95_HOOK_FUNCTION(original_PDSetPaletteEntries, PDSetPaletteEntries)
-void PDSetPaletteEntries(br_pixelmap *pPalette, int pFirst_colour, int pCount) {
+void __cdecl PDSetPaletteEntries(br_pixelmap *pPalette, int pFirst_colour, int pCount) {
     int i;
     tU8 *p;
     LOG_TRACE("(%p, %d, %d)", pPalette, pFirst_colour, pCount);
@@ -497,27 +497,27 @@ void PDSetPaletteEntries(br_pixelmap *pPalette, int pFirst_colour, int pCount) {
     original_PDSetPaletteEntries(pPalette, pFirst_colour, pCount);
 }
 
-static void(*original_PDSwitchToRealResolution)() = (void(*)())0x004a71ce;
+static void(__cdecl*original_PDSwitchToRealResolution)() = (void(__cdecl*)())0x004a71ce;
 CARM95_HOOK_FUNCTION(original_PDSwitchToRealResolution, PDSwitchToRealResolution)
-void PDSwitchToRealResolution() {
+void __cdecl PDSwitchToRealResolution() {
     LOG_TRACE("()");
 
 
     original_PDSwitchToRealResolution();
 }
 
-static void(*original_PDSwitchToLoresMode)() = (void(*)())0x004a71f1;
+static void(__cdecl*original_PDSwitchToLoresMode)() = (void(__cdecl*)())0x004a71f1;
 CARM95_HOOK_FUNCTION(original_PDSwitchToLoresMode, PDSwitchToLoresMode)
-void PDSwitchToLoresMode() {
+void __cdecl PDSwitchToLoresMode() {
     LOG_TRACE("()");
 
 
     original_PDSwitchToLoresMode();
 }
 
-static void(*original_PDMouseButtons)(int *, int *, ...) = (void(*)(int *, int *, ...))0x004a79f2;
+static void(__cdecl*original_PDMouseButtons)(int *, int *) = (void(__cdecl*)(int *, int *))0x004a79f2;
 CARM95_HOOK_FUNCTION(original_PDMouseButtons, PDMouseButtons)
-void PDMouseButtons(int *pButton_1, int *pButton_2) {
+void __cdecl PDMouseButtons(int *pButton_1, int *pButton_2) {
     br_uint_32 mouse_buttons;
     br_int_32 mouse_x;
     br_int_32 mouse_y;
@@ -532,9 +532,9 @@ void PDMouseButtons(int *pButton_1, int *pButton_2) {
     original_PDMouseButtons(pButton_1, pButton_2);
 }
 
-static void(*original_PDGetMousePosition)(int *, int *, ...) = (void(*)(int *, int *, ...))0x004a7a11;
+static void(__cdecl*original_PDGetMousePosition)(int *, int *) = (void(__cdecl*)(int *, int *))0x004a7a11;
 CARM95_HOOK_FUNCTION(original_PDGetMousePosition, PDGetMousePosition)
-void PDGetMousePosition(int *pX_coord, int *pY_coord) {
+void __cdecl PDGetMousePosition(int *pX_coord, int *pY_coord) {
     br_uint_32 mouse_buttons;
     br_int_32 mouse_x2;
     br_int_32 mouse_y2;
@@ -557,18 +557,18 @@ void PDGetMousePosition(int *pX_coord, int *pY_coord) {
     original_PDGetMousePosition(pX_coord, pY_coord);
 }
 
-static int(*original_PDGetTotalTime)() = (int(*)())0x004a83c5;
+static int(__cdecl*original_PDGetTotalTime)() = (int(__cdecl*)())0x004a83c5;
 CARM95_HOOK_FUNCTION(original_PDGetTotalTime, PDGetTotalTime)
-int PDGetTotalTime() {
+int __cdecl PDGetTotalTime() {
     LOG_TRACE("()");
 
 
     return original_PDGetTotalTime();
 }
 
-static int(*original_PDServiceSystem)(tU32, ...) = (int(*)(tU32, ...))0x004a7b63;
+static int(__cdecl*original_PDServiceSystem)(tU32) = (int(__cdecl*)(tU32))0x004a7b63;
 CARM95_HOOK_FUNCTION(original_PDServiceSystem, PDServiceSystem)
-int PDServiceSystem(tU32 pTime_since_last_call) {
+int __cdecl PDServiceSystem(tU32 pTime_since_last_call) {
     LOG_TRACE("(%u)", pTime_since_last_call);
 
     (void)pTime_since_last_call;
@@ -602,9 +602,9 @@ void* PDGrabLargestMammaryWeCanPlayWith(tU32 pMaximum_required, tU32 *pAmount_al
     NOT_IMPLEMENTED();
 }
 
-static void(*original_PDAllocateActionReplayBuffer)(char **, tU32 *, ...) = (void(*)(char **, tU32 *, ...))0x004a68e2;
+static void(__cdecl*original_PDAllocateActionReplayBuffer)(char **, tU32 *) = (void(__cdecl*)(char **, tU32 *))0x004a68e2;
 CARM95_HOOK_FUNCTION(original_PDAllocateActionReplayBuffer, PDAllocateActionReplayBuffer)
-void PDAllocateActionReplayBuffer(char **pBuffer, tU32 *pBuffer_size) {
+void __cdecl PDAllocateActionReplayBuffer(char **pBuffer, tU32 *pBuffer_size) {
     tU32 lba;
     tU32 required;
     LOG_TRACE("(%p, %p)", pBuffer, pBuffer_size);
@@ -617,9 +617,9 @@ void PDAllocateActionReplayBuffer(char **pBuffer, tU32 *pBuffer_size) {
     original_PDAllocateActionReplayBuffer(pBuffer, pBuffer_size);
 }
 
-static void(*original_PDDisposeActionReplayBuffer)(char *, ...) = (void(*)(char *, ...))0x004a6906;
+static void(__cdecl*original_PDDisposeActionReplayBuffer)(char *) = (void(__cdecl*)(char *))0x004a6906;
 CARM95_HOOK_FUNCTION(original_PDDisposeActionReplayBuffer, PDDisposeActionReplayBuffer)
-void PDDisposeActionReplayBuffer(char *pBuffer) {
+void __cdecl PDDisposeActionReplayBuffer(char *pBuffer) {
     LOG_TRACE("(\"%s\")", pBuffer);
 
     (void)pBuffer;
@@ -686,9 +686,9 @@ void PDDisplayGoreworthiness(int pGory) {
     NOT_IMPLEMENTED();
 }
 
-static void(*original_PDEnterDebugger)(char *, ...) = (void(*)(char *, ...))0x004a60e3;
+static void(__cdecl*original_PDEnterDebugger)(char *) = (void(__cdecl*)(char *))0x004a60e3;
 CARM95_HOOK_FUNCTION(original_PDEnterDebugger, PDEnterDebugger)
-void PDEnterDebugger(char *pStr) {
+void __cdecl PDEnterDebugger(char *pStr) {
     static unsigned char *save_it;
     LOG_TRACE("(\"%s\")", pStr);
 
@@ -866,9 +866,9 @@ int PDGetJoy2Button4() {
     NOT_IMPLEMENTED();
 }
 
-static int(*original_PDFileUnlock)(char *, ...) = (int(*)(char *, ...))0x004a83e6;
+static int(__cdecl*original_PDFileUnlock)(char *) = (int(__cdecl*)(char *))0x004a83e6;
 CARM95_HOOK_FUNCTION(original_PDFileUnlock, PDFileUnlock)
-int PDFileUnlock(char *pThe_path) {
+int __cdecl PDFileUnlock(char *pThe_path) {
     unsigned int attr;
     LOG_TRACE("(\"%s\")", pThe_path);
 
@@ -878,7 +878,6 @@ int PDFileUnlock(char *pThe_path) {
     return original_PDFileUnlock(pThe_path);
 }
 
-#if 0
 void CriticalISR(union INTPACK pRegs) {
     LOG_TRACE("()");
 
@@ -886,11 +885,10 @@ void CriticalISR(union INTPACK pRegs) {
 
     NOT_IMPLEMENTED();
 }
-#endif
 
-static int(*original_PDCheckDriveExists2)(char *, char *, tU32, ...) = (int(*)(char *, char *, tU32, ...))0x004a8429;
+static int(__cdecl*original_PDCheckDriveExists2)(char *, char *, tU32) = (int(__cdecl*)(char *, char *, tU32))0x004a8429;
 CARM95_HOOK_FUNCTION(original_PDCheckDriveExists2, PDCheckDriveExists2)
-int PDCheckDriveExists2(char *pThe_path, char *pFile_name, tU32 pMin_size) {
+int __cdecl PDCheckDriveExists2(char *pThe_path, char *pFile_name, tU32 pMin_size) {
     struct stat buf;
     void(**old_critical_isr)();
     int stat_failed;
@@ -910,9 +908,9 @@ int PDCheckDriveExists2(char *pThe_path, char *pFile_name, tU32 pMin_size) {
     return original_PDCheckDriveExists2(pThe_path, pFile_name, pMin_size);
 }
 
-static int(*original_PDDoWeLeadAnAustereExistance)() = (int(*)())0x004a856f;
+static int(__cdecl*original_PDDoWeLeadAnAustereExistance)() = (int(__cdecl*)())0x004a856f;
 CARM95_HOOK_FUNCTION(original_PDDoWeLeadAnAustereExistance, PDDoWeLeadAnAustereExistance)
-int PDDoWeLeadAnAustereExistance() {
+int __cdecl PDDoWeLeadAnAustereExistance() {
     tU32 lba;
     LOG_TRACE("()");
 

@@ -4,11 +4,10 @@
 
 #include "carm95_hooks.h"
 
-#include <stdio.h>
 
-static br_int_32(*original_BrPlaneEquation)(br_vector4 *, br_vector3 *, br_vector3 *, br_vector3 *, ...) = (br_int_32(*)(br_vector4 *, br_vector3 *, br_vector3 *, br_vector3 *, ...))0x00501d90;
+static br_int_32(__cdecl*original_BrPlaneEquation)(br_vector4 *, br_vector3 *, br_vector3 *, br_vector3 *) = (br_int_32(__cdecl*)(br_vector4 *, br_vector3 *, br_vector3 *, br_vector3 *))0x00501d90;
 CARM95_HOOK_FUNCTION(original_BrPlaneEquation, BrPlaneEquation)
-br_int_32 BrPlaneEquation(br_vector4 *eqn, br_vector3 *v0, br_vector3 *v1, br_vector3 *v2) {
+br_int_32 __cdecl BrPlaneEquation(br_vector4 *eqn, br_vector3 *v0, br_vector3 *v1, br_vector3 *v2) {
     br_vector3 a;
     br_vector3 b;
     float ax;

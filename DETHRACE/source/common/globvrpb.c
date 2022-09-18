@@ -4,7 +4,6 @@
 
 #include "carm95_hooks.h"
 
-#include <stdio.h>
 tNet_mode * hookvar_gNet_mode  = (void*)0x0050dd94;
 tNet_game_player_info(* hookvar_gNet_players )[6] = (void*)0x00550fa0;
 #if 0

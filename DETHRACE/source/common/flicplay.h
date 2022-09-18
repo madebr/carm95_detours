@@ -41,132 +41,132 @@ extern br_pixelmap ** hookvar_gPalette ; // addr: 0053D0C8
 extern void ** hookvar_gPalette_pixels ; // addr: 0053D068
 extern tFlic_descriptor ** hookvar_gFirst_flic ; // addr: 0053D0AC
 
-void EnableTranslationText();
+void __cdecl EnableTranslationText();
 
-void DisableTranslationText();
+void __cdecl DisableTranslationText();
 
-void SetFlicSound(int pSound_ID, tU32 pSound_time);
+void __cdecl SetFlicSound(int pSound_ID, tU32 pSound_time);
 
-int TranslationMode();
+int __cdecl TranslationMode();
 
-void DontLetFlicFuckWithPalettes();
+void __cdecl DontLetFlicFuckWithPalettes();
 
-void LetFlicFuckWithPalettes();
+void __cdecl LetFlicFuckWithPalettes();
 
-void PlayFlicsInDarkness();
+void __cdecl PlayFlicsInDarkness();
 
-void ReilluminateFlics();
+void __cdecl ReilluminateFlics();
 
-void TurnFlicTransparencyOn();
+void __cdecl TurnFlicTransparencyOn();
 
-void TurnFlicTransparencyOff();
+void __cdecl TurnFlicTransparencyOff();
 
-void PlayFlicsFromDisk();
+void __cdecl PlayFlicsFromDisk();
 
-void PlayFlicsFromMemory();
+void __cdecl PlayFlicsFromMemory();
 
-int FlicsPlayedFromDisk();
+int __cdecl FlicsPlayedFromDisk();
 
-void TurnOffPanelFlics();
+void __cdecl TurnOffPanelFlics();
 
-void TurnOnPanelFlics();
+void __cdecl TurnOnPanelFlics();
 
-int GetPanelFlicFrameIndex(int pIndex);
+int __cdecl GetPanelFlicFrameIndex(int pIndex);
 
-void FlicPaletteAllocate();
+void __cdecl FlicPaletteAllocate();
 
-void AssertFlicPixelmap(tFlic_descriptor_ptr pFlic_info, br_pixelmap *pDest_pixelmap);
+void __cdecl AssertFlicPixelmap(tFlic_descriptor_ptr pFlic_info, br_pixelmap *pDest_pixelmap);
 
-int StartFlic(char *pFile_name, int pIndex, tFlic_descriptor_ptr pFlic_info, tU32 pSize, tS8 *pData_ptr, br_pixelmap *pDest_pixelmap, int pX_offset, int pY_offset, int pFrame_rate);
+int __cdecl StartFlic(char *pFile_name, int pIndex, tFlic_descriptor_ptr pFlic_info, tU32 pSize, tS8 *pData_ptr, br_pixelmap *pDest_pixelmap, int pX_offset, int pY_offset, int pFrame_rate);
 
-void FreeFlicPaletteAllocate();
+void __cdecl FreeFlicPaletteAllocate();
 
-int EndFlic(tFlic_descriptor_ptr pFlic_info);
+int __cdecl EndFlic(tFlic_descriptor_ptr pFlic_info);
 
-void DoColourMap(tFlic_descriptor_ptr pFlic_info, tU32 chunk_length);
+void __cdecl DoColourMap(tFlic_descriptor_ptr pFlic_info, tU32 chunk_length);
 
-void DoDifferenceX(tFlic_descriptor *pFlic_info, tU32 chunk_length);
+void __cdecl DoDifferenceX(tFlic_descriptor *pFlic_info, tU32 chunk_length);
 
-void DoDifferenceTrans(tFlic_descriptor *pFlic_info, tU32 chunk_length);
+void __cdecl DoDifferenceTrans(tFlic_descriptor *pFlic_info, tU32 chunk_length);
 
-void DoColour256(tFlic_descriptor *pFlic_info, tU32 chunk_length);
+void __cdecl DoColour256(tFlic_descriptor *pFlic_info, tU32 chunk_length);
 
-void DoDeltaTrans(tFlic_descriptor *pFlic_info, tU32 chunk_length);
+void __cdecl DoDeltaTrans(tFlic_descriptor *pFlic_info, tU32 chunk_length);
 
-void DoDeltaX(tFlic_descriptor *pFlic_info, tU32 chunk_length);
+void __cdecl DoDeltaX(tFlic_descriptor *pFlic_info, tU32 chunk_length);
 
-void DoBlack(tFlic_descriptor *pFlic_info, tU32 chunk_length);
+void __cdecl DoBlack(tFlic_descriptor *pFlic_info, tU32 chunk_length);
 
-void DoRunLengthX(tFlic_descriptor *pFlic_info, tU32 chunk_length);
+void __cdecl DoRunLengthX(tFlic_descriptor *pFlic_info, tU32 chunk_length);
 
-void DoRunLengthTrans(tFlic_descriptor *pFlic_info, tU32 chunk_length);
+void __cdecl DoRunLengthTrans(tFlic_descriptor *pFlic_info, tU32 chunk_length);
 
-void DoUncompressed(tFlic_descriptor *pFlic_info, tU32 chunk_length);
+void __cdecl DoUncompressed(tFlic_descriptor *pFlic_info, tU32 chunk_length);
 
-void DoUncompressedTrans(tFlic_descriptor *pFlic_info, tU32 chunk_length);
+void __cdecl DoUncompressedTrans(tFlic_descriptor *pFlic_info, tU32 chunk_length);
 
-void DoMini(tFlic_descriptor *pFlic_info, tU32 chunk_length);
+void __cdecl DoMini(tFlic_descriptor *pFlic_info, tU32 chunk_length);
 
-void DrawTranslations(tFlic_descriptor *pFlic_info, int pLast_frame);
+void __cdecl DrawTranslations(tFlic_descriptor *pFlic_info, int pLast_frame);
 
-int PlayNextFlicFrame2(tFlic_descriptor *pFlic_info, int pPanel_flic);
+int __cdecl PlayNextFlicFrame2(tFlic_descriptor *pFlic_info, int pPanel_flic);
 
-int PlayNextFlicFrame(tFlic_descriptor *pFlic_info);
+int __cdecl PlayNextFlicFrame(tFlic_descriptor *pFlic_info);
 
-int PlayFlic(int pIndex, tU32 pSize, tS8 *pData_ptr, br_pixelmap *pDest_pixelmap, int pX_offset, int pY_offset, void(**DoPerFrame)(), int pInterruptable, int pFrame_rate);
+int __cdecl PlayFlic(int pIndex, tU32 pSize, tS8 *pData_ptr, br_pixelmap *pDest_pixelmap, int pX_offset, int pY_offset, void(**DoPerFrame)(), int pInterruptable, int pFrame_rate);
 
-void SwapScreen();
+void __cdecl SwapScreen();
 
-void ShowFlic(int pIndex);
+void __cdecl ShowFlic(int pIndex);
 
-void InitFlics();
+void __cdecl InitFlics();
 
-int LoadFlic(int pIndex);
+int __cdecl LoadFlic(int pIndex);
 
-void UnlockFlic(int pIndex);
+void __cdecl UnlockFlic(int pIndex);
 
-int LoadFlicData(char *pName, tU8 **pData, tU32 *pData_length);
+int __cdecl LoadFlicData(char *pName, tU8 **pData, tU32 *pData_length);
 
-void FreeFlic(int pIndex);
+void __cdecl FreeFlic(int pIndex);
 
-void ForceRunFlic(int pIndex);
+void __cdecl ForceRunFlic(int pIndex);
 
-void RunFlicAt(int pIndex, int pX, int pY);
+void __cdecl RunFlicAt(int pIndex, int pX, int pY);
 
-void RunFlic(int pIndex);
+void __cdecl RunFlic(int pIndex);
 
-void PreloadBunchOfFlics(int pBunch_index);
+void __cdecl PreloadBunchOfFlics(int pBunch_index);
 
-void UnlockBunchOfFlics(int pBunch_index);
+void __cdecl UnlockBunchOfFlics(int pBunch_index);
 
-void FlushAllFlics(int pBunch_index);
+void __cdecl FlushAllFlics(int pBunch_index);
 
-void InitFlicQueue();
+void __cdecl InitFlicQueue();
 
-int FlicQueueFinished();
+int __cdecl FlicQueueFinished();
 
-void ProcessFlicQueue(tU32 pInterval);
+void __cdecl ProcessFlicQueue(tU32 pInterval);
 
-void FlushFlicQueue();
+void __cdecl FlushFlicQueue();
 
-void AddToFlicQueue(int pIndex, int pX, int pY, int pMust_finish);
+void __cdecl AddToFlicQueue(int pIndex, int pX, int pY, int pMust_finish);
 
-void InitialiseFlicPanel(int pIndex, int pLeft, int pTop, int pWidth, int pHeight);
+void __cdecl InitialiseFlicPanel(int pIndex, int pLeft, int pTop, int pWidth, int pHeight);
 
-void DisposeFlicPanel(int pIndex);
+void __cdecl DisposeFlicPanel(int pIndex);
 
-void ServicePanelFlics(int pCopy_to_buffer);
+void __cdecl ServicePanelFlics(int pCopy_to_buffer);
 
-void ChangePanelFlic(int pIndex, tU8 *pData, tU32 pData_length);
+void __cdecl ChangePanelFlic(int pIndex, tU8 *pData, tU32 pData_length);
 
-br_pixelmap* GetPanelPixelmap(int pIndex);
+br_pixelmap* __cdecl GetPanelPixelmap(int pIndex);
 
-void LoadInterfaceStrings();
+void __cdecl LoadInterfaceStrings();
 
-void FlushInterfaceFonts();
+void __cdecl FlushInterfaceFonts();
 
-void SuspendPendingFlic();
+void __cdecl SuspendPendingFlic();
 
-void ResumePendingFlic();
+void __cdecl ResumePendingFlic();
 
 #endif

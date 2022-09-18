@@ -4,7 +4,6 @@
 
 #include "carm95_hooks.h"
 
-#include <stdio.h>
 #if 0
 int * hookvar_num_edges ;
 #endif
@@ -59,9 +58,9 @@ void BrPrepareEdges(br_model *model) {
     NOT_IMPLEMENTED();
 }
 
-static int(*original_FacesCompare)(void *, void *, ...) = (int(*)(void *, void *, ...))0x004d8a40;
+static int(__cdecl*original_FacesCompare)(void *, void *) = (int(__cdecl*)(void *, void *))0x004d8a40;
 CARM95_HOOK_FUNCTION(original_FacesCompare, FacesCompare)
-int FacesCompare(void *p1, void *p2) {
+int __cdecl FacesCompare(void *p1, void *p2) {
     br_face *f1;
     br_face *f2;
     LOG_TRACE("(%p, %p)", p1, p2);
@@ -74,9 +73,9 @@ int FacesCompare(void *p1, void *p2) {
     return original_FacesCompare(p1, p2);
 }
 
-static int(*original_TVCompare_XYZ)(void *, void *, ...) = (int(*)(void *, void *, ...))0x004d8a70;
+static int(__cdecl*original_TVCompare_XYZ)(void *, void *) = (int(__cdecl*)(void *, void *))0x004d8a70;
 CARM95_HOOK_FUNCTION(original_TVCompare_XYZ, TVCompare_XYZ)
-int TVCompare_XYZ(void *p1, void *p2) {
+int __cdecl TVCompare_XYZ(void *p1, void *p2) {
     struct prep_vertex *tv1;
     struct prep_vertex *tv2;
     struct br_vertex *v1;
@@ -95,9 +94,9 @@ int TVCompare_XYZ(void *p1, void *p2) {
     return original_TVCompare_XYZ(p1, p2);
 }
 
-static int(*original_TVCompare_MXYZUVN)(void *, void *, ...) = (int(*)(void *, void *, ...))0x004d8af0;
+static int(__cdecl*original_TVCompare_MXYZUVN)(void *, void *) = (int(__cdecl*)(void *, void *))0x004d8af0;
 CARM95_HOOK_FUNCTION(original_TVCompare_MXYZUVN, TVCompare_MXYZUVN)
-int TVCompare_MXYZUVN(void *p1, void *p2) {
+int __cdecl TVCompare_MXYZUVN(void *p1, void *p2) {
     struct prep_vertex *tv1;
     struct prep_vertex *tv2;
     struct br_vertex *v1;
@@ -116,9 +115,9 @@ int TVCompare_MXYZUVN(void *p1, void *p2) {
     return original_TVCompare_MXYZUVN(p1, p2);
 }
 
-static int(*original_TVCompare_MVN)(void *, void *, ...) = (int(*)(void *, void *, ...))0x004d8c50;
+static int(__cdecl*original_TVCompare_MVN)(void *, void *) = (int(__cdecl*)(void *, void *))0x004d8c50;
 CARM95_HOOK_FUNCTION(original_TVCompare_MVN, TVCompare_MVN)
-int TVCompare_MVN(void *p1, void *p2) {
+int __cdecl TVCompare_MVN(void *p1, void *p2) {
     struct prep_vertex *tv1;
     struct prep_vertex *tv2;
     int i;
@@ -133,9 +132,9 @@ int TVCompare_MVN(void *p1, void *p2) {
     return original_TVCompare_MVN(p1, p2);
 }
 
-static br_fraction(*original_BrScalarToFractionClamp)(br_scalar, ...) = (br_fraction(*)(br_scalar, ...))0x004d7807;
+static br_fraction(__stdcall*original_BrScalarToFractionClamp)(br_scalar) = (br_fraction(__stdcall*)(br_scalar))0x004d7807;
 CARM95_HOOK_FUNCTION(original_BrScalarToFractionClamp, BrScalarToFractionClamp)
-br_fraction BrScalarToFractionClamp(br_scalar s) {
+br_fraction __stdcall BrScalarToFractionClamp(br_scalar s) {
     LOG_TRACE("(%f)", s);
 
     (void)s;
@@ -159,9 +158,9 @@ void PrepareFaceNormals(br_model *model) {
     NOT_IMPLEMENTED();
 }
 
-static void(*original_Smoothing)(br_model *, br_scalar, struct prep_vertex **, struct prep_vertex **, ...) = (void(*)(br_model *, br_scalar, struct prep_vertex **, struct prep_vertex **, ...))0x004d8d00;
+static void(__stdcall*original_Smoothing)(br_model *, br_scalar, struct prep_vertex **, struct prep_vertex **) = (void(__stdcall*)(br_model *, br_scalar, struct prep_vertex **, struct prep_vertex **))0x004d8d00;
 CARM95_HOOK_FUNCTION(original_Smoothing, Smoothing)
-void Smoothing(br_model *model, br_scalar crease_limit, struct prep_vertex **start, struct prep_vertex **end) {
+void __stdcall Smoothing(br_model *model, br_scalar crease_limit, struct prep_vertex **start, struct prep_vertex **end) {
     struct prep_vertex **outer;
     struct prep_vertex **inner;
     LOG_TRACE("(%p, %f, %p, %p)", model, crease_limit, start, end);
@@ -176,9 +175,9 @@ void Smoothing(br_model *model, br_scalar crease_limit, struct prep_vertex **sta
     original_Smoothing(model, crease_limit, start, end);
 }
 
-static void(*original_SmoothingCreased)(br_model *, br_scalar, struct prep_vertex **, struct prep_vertex **, ...) = (void(*)(br_model *, br_scalar, struct prep_vertex **, struct prep_vertex **, ...))0x004d8db0;
+static void(__stdcall*original_SmoothingCreased)(br_model *, br_scalar, struct prep_vertex **, struct prep_vertex **) = (void(__stdcall*)(br_model *, br_scalar, struct prep_vertex **, struct prep_vertex **))0x004d8db0;
 CARM95_HOOK_FUNCTION(original_SmoothingCreased, SmoothingCreased)
-void SmoothingCreased(br_model *model, br_scalar crease_limit, struct prep_vertex **start, struct prep_vertex **end) {
+void __stdcall SmoothingCreased(br_model *model, br_scalar crease_limit, struct prep_vertex **start, struct prep_vertex **end) {
     br_vector3 o_n;
     struct prep_vertex **outer;
     struct prep_vertex **inner;
@@ -207,6 +206,7 @@ void CopyVertex__prepmesh(struct v11group *group, int v, struct prep_vertex *src
     (void)model;
     (void)srcv;
     (void)n;
+    (void)__block0___scale;
 
     NOT_IMPLEMENTED();
 }
@@ -222,12 +222,12 @@ void CopyFace__prepmesh(struct v11group *group, int f, br_face *src, br_model *m
     NOT_IMPLEMENTED();
 }
 
-static void(*original_PrepareGroups)(br_model *, ...) = (void(*)(br_model *, ...))0x004d83c0;
+static void(__stdcall*original_PrepareGroups)(br_model *) = (void(__stdcall*)(br_model *))0x004d83c0;
 CARM95_HOOK_FUNCTION(original_PrepareGroups, PrepareGroups)
-void PrepareGroups(br_model *model) {
+void __stdcall PrepareGroups(br_model *model) {
     br_qsort_cbfn *vertex_compare_smoothing;
     br_qsort_cbfn *vertex_compare_groups;
-    void(**smoothing_fn)(br_model *, br_scalar, struct prep_vertex **, struct prep_vertex **, ...);
+    void(**smoothing_fn)(br_model *, br_scalar, struct prep_vertex **, struct prep_vertex **);
     void *vp;
     br_size_t block_size;
     struct prep_vertex *temp_verts;
@@ -324,9 +324,9 @@ void PrepareBoundingBox(br_model *model) {
     NOT_IMPLEMENTED();
 }
 
-static void(*original_RegenerateFaceNormals)(struct v11model *, ...) = (void(*)(struct v11model *, ...))0x004d7840;
+static void(__stdcall*original_RegenerateFaceNormals)(struct v11model *) = (void(__stdcall*)(struct v11model *))0x004d7840;
 CARM95_HOOK_FUNCTION(original_RegenerateFaceNormals, RegenerateFaceNormals)
-void RegenerateFaceNormals(struct v11model *v11m) {
+void __stdcall RegenerateFaceNormals(struct v11model *v11m) {
     int g;
     int f;
     struct v11face *fp;
@@ -340,9 +340,9 @@ void RegenerateFaceNormals(struct v11model *v11m) {
     original_RegenerateFaceNormals(v11m);
 }
 
-static void(*original_RegenerateVertexNormals)(struct v11model *, ...) = (void(*)(struct v11model *, ...))0x004d78e0;
+static void(__stdcall*original_RegenerateVertexNormals)(struct v11model *) = (void(__stdcall*)(struct v11model *))0x004d78e0;
 CARM95_HOOK_FUNCTION(original_RegenerateVertexNormals, RegenerateVertexNormals)
-void RegenerateVertexNormals(struct v11model *v11m) {
+void __stdcall RegenerateVertexNormals(struct v11model *v11m) {
     int g;
     int v;
     int f;
@@ -359,13 +359,14 @@ void RegenerateVertexNormals(struct v11model *v11m) {
     (void)fp;
     (void)vp;
     (void)normals;
+    (void)__block0___scale;
 
     original_RegenerateVertexNormals(v11m);
 }
 
-static void(*original_BrModelUpdate)(br_model *, br_uint_16, ...) = (void(*)(br_model *, br_uint_16, ...))0x004d7af0;
+static void(__cdecl*original_BrModelUpdate)(br_model *, br_uint_16) = (void(__cdecl*)(br_model *, br_uint_16))0x004d7af0;
 CARM95_HOOK_FUNCTION(original_BrModelUpdate, BrModelUpdate)
-void BrModelUpdate(br_model *model, br_uint_16 flags) {
+void __cdecl BrModelUpdate(br_model *model, br_uint_16 flags) {
     int g;
     int f;
     int v;
@@ -390,13 +391,17 @@ void BrModelUpdate(br_model *model, br_uint_16 flags) {
     (void)ffp;
     (void)vp;
     (void)fp;
+    (void)__block0__r;
+    (void)__block0__sg;
+    (void)__block0__b;
+    (void)__block0__tv;
 
     original_BrModelUpdate(model, flags);
 }
 
-static void(*original_BrModelClear)(struct br_model *, ...) = (void(*)(struct br_model *, ...))0x004d90a0;
+static void(__stdcall*original_BrModelClear)(struct br_model *) = (void(__stdcall*)(struct br_model *))0x004d90a0;
 CARM95_HOOK_FUNCTION(original_BrModelClear, BrModelClear)
-void BrModelClear(struct br_model *model) {
+void __stdcall BrModelClear(struct br_model *model) {
     LOG_TRACE("(%p)", model);
 
     (void)model;

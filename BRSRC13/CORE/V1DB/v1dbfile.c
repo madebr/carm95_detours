@@ -4,7 +4,6 @@
 
 #include "carm95_hooks.h"
 
-#include <stdio.h>
 br_file_struct_member(* hookvar_br_vertex_FM )[3] = (void*)0x00523fd0;
 br_file_struct * hookvar_br_vertex_F  = (void*)0x00524000;
 br_file_struct_member(* hookvar_br_vertex_uv_FM )[2] = (void*)0x00524010;
@@ -82,9 +81,9 @@ int FopWrite_VERTICES(br_datafile *df, br_vertex *vertices, int nvertices) {
     NOT_IMPLEMENTED();
 }
 
-static int(*original_FopRead_VERTICES)(br_datafile *, br_uint_32, br_uint_32, br_uint_32, ...) = (int(*)(br_datafile *, br_uint_32, br_uint_32, br_uint_32, ...))0x004dad10;
+static int(__stdcall*original_FopRead_VERTICES)(br_datafile *, br_uint_32, br_uint_32, br_uint_32) = (int(__stdcall*)(br_datafile *, br_uint_32, br_uint_32, br_uint_32))0x004dad10;
 CARM95_HOOK_FUNCTION(original_FopRead_VERTICES, FopRead_VERTICES)
-int FopRead_VERTICES(br_datafile *df, br_uint_32 id, br_uint_32 length, br_uint_32 count) {
+int __stdcall FopRead_VERTICES(br_datafile *df, br_uint_32 id, br_uint_32 length, br_uint_32 count) {
     br_model *mp;
     LOG_TRACE("(%p, %u, %u, %u)", df, id, length, count);
 
@@ -97,9 +96,9 @@ int FopRead_VERTICES(br_datafile *df, br_uint_32 id, br_uint_32 length, br_uint_
     return original_FopRead_VERTICES(df, id, length, count);
 }
 
-static int(*original_FopRead_OLD_VERTICES)(br_datafile *, br_uint_32, br_uint_32, br_uint_32, ...) = (int(*)(br_datafile *, br_uint_32, br_uint_32, br_uint_32, ...))0x004dad60;
+static int(__cdecl*original_FopRead_OLD_VERTICES)(br_datafile *, br_uint_32, br_uint_32, br_uint_32) = (int(__cdecl*)(br_datafile *, br_uint_32, br_uint_32, br_uint_32))0x004dad60;
 CARM95_HOOK_FUNCTION(original_FopRead_OLD_VERTICES, FopRead_OLD_VERTICES)
-int FopRead_OLD_VERTICES(br_datafile *df, br_uint_32 id, br_uint_32 length, br_uint_32 count) {
+int __cdecl FopRead_OLD_VERTICES(br_datafile *df, br_uint_32 id, br_uint_32 length, br_uint_32 count) {
     void *ptr;
     LOG_TRACE("(%p, %u, %u, %u)", df, id, length, count);
 
@@ -122,9 +121,9 @@ int FopWrite_VERTEX_UV(br_datafile *df, br_vertex *vertices, int nvertices) {
     NOT_IMPLEMENTED();
 }
 
-static int(*original_FopRead_VERTEX_UV)(br_datafile *, br_uint_32, br_uint_32, br_uint_32, ...) = (int(*)(br_datafile *, br_uint_32, br_uint_32, br_uint_32, ...))0x004dadc0;
+static int(__stdcall*original_FopRead_VERTEX_UV)(br_datafile *, br_uint_32, br_uint_32, br_uint_32) = (int(__stdcall*)(br_datafile *, br_uint_32, br_uint_32, br_uint_32))0x004dadc0;
 CARM95_HOOK_FUNCTION(original_FopRead_VERTEX_UV, FopRead_VERTEX_UV)
-int FopRead_VERTEX_UV(br_datafile *df, br_uint_32 id, br_uint_32 length, br_uint_32 count) {
+int __stdcall FopRead_VERTEX_UV(br_datafile *df, br_uint_32 id, br_uint_32 length, br_uint_32 count) {
     br_model *mp;
     LOG_TRACE("(%p, %u, %u, %u)", df, id, length, count);
 
@@ -137,9 +136,9 @@ int FopRead_VERTEX_UV(br_datafile *df, br_uint_32 id, br_uint_32 length, br_uint
     return original_FopRead_VERTEX_UV(df, id, length, count);
 }
 
-static int(*original_FopRead_OLD_VERTICES_UV)(br_datafile *, br_uint_32, br_uint_32, br_uint_32, ...) = (int(*)(br_datafile *, br_uint_32, br_uint_32, br_uint_32, ...))0x004dae10;
+static int(__stdcall*original_FopRead_OLD_VERTICES_UV)(br_datafile *, br_uint_32, br_uint_32, br_uint_32) = (int(__stdcall*)(br_datafile *, br_uint_32, br_uint_32, br_uint_32))0x004dae10;
 CARM95_HOOK_FUNCTION(original_FopRead_OLD_VERTICES_UV, FopRead_OLD_VERTICES_UV)
-int FopRead_OLD_VERTICES_UV(br_datafile *df, br_uint_32 id, br_uint_32 length, br_uint_32 count) {
+int __stdcall FopRead_OLD_VERTICES_UV(br_datafile *df, br_uint_32 id, br_uint_32 length, br_uint_32 count) {
     void *ptr;
     LOG_TRACE("(%p, %u, %u, %u)", df, id, length, count);
 
@@ -152,9 +151,9 @@ int FopRead_OLD_VERTICES_UV(br_datafile *df, br_uint_32 id, br_uint_32 length, b
     return original_FopRead_OLD_VERTICES_UV(df, id, length, count);
 }
 
-static int(*original_FopRead_MATERIAL_INDEX)(br_datafile *, br_uint_32, br_uint_32, br_uint_32, ...) = (int(*)(br_datafile *, br_uint_32, br_uint_32, br_uint_32, ...))0x004dae70;
+static int(__stdcall*original_FopRead_MATERIAL_INDEX)(br_datafile *, br_uint_32, br_uint_32, br_uint_32) = (int(__stdcall*)(br_datafile *, br_uint_32, br_uint_32, br_uint_32))0x004dae70;
 CARM95_HOOK_FUNCTION(original_FopRead_MATERIAL_INDEX, FopRead_MATERIAL_INDEX)
-int FopRead_MATERIAL_INDEX(br_datafile *df, br_uint_32 id, br_uint_32 length, br_uint_32 count) {
+int __stdcall FopRead_MATERIAL_INDEX(br_datafile *df, br_uint_32 id, br_uint_32 length, br_uint_32 count) {
     char name[256];
     br_material **mip;
     br_uint_32 i;
@@ -185,9 +184,9 @@ int FopWrite_MATERIAL_INDEX(br_datafile *df, br_material **materials, int nmater
     NOT_IMPLEMENTED();
 }
 
-static int(*original_FopRead_OLD_MATERIAL_INDEX)(br_datafile *, br_uint_32, br_uint_32, br_uint_32, ...) = (int(*)(br_datafile *, br_uint_32, br_uint_32, br_uint_32, ...))0x004daf00;
+static int(__stdcall*original_FopRead_OLD_MATERIAL_INDEX)(br_datafile *, br_uint_32, br_uint_32, br_uint_32) = (int(__stdcall*)(br_datafile *, br_uint_32, br_uint_32, br_uint_32))0x004daf00;
 CARM95_HOOK_FUNCTION(original_FopRead_OLD_MATERIAL_INDEX, FopRead_OLD_MATERIAL_INDEX)
-int FopRead_OLD_MATERIAL_INDEX(br_datafile *df, br_uint_32 id, br_uint_32 length, br_uint_32 count) {
+int __stdcall FopRead_OLD_MATERIAL_INDEX(br_datafile *df, br_uint_32 id, br_uint_32 length, br_uint_32 count) {
     char *mblock;
     char *cp;
     int i;
@@ -208,9 +207,9 @@ int FopRead_OLD_MATERIAL_INDEX(br_datafile *df, br_uint_32 id, br_uint_32 length
     return original_FopRead_OLD_MATERIAL_INDEX(df, id, length, count);
 }
 
-static int(*original_FopRead_FACES)(br_datafile *, br_uint_32, br_uint_32, br_uint_32, ...) = (int(*)(br_datafile *, br_uint_32, br_uint_32, br_uint_32, ...))0x004dafd0;
+static int(__stdcall*original_FopRead_FACES)(br_datafile *, br_uint_32, br_uint_32, br_uint_32) = (int(__stdcall*)(br_datafile *, br_uint_32, br_uint_32, br_uint_32))0x004dafd0;
 CARM95_HOOK_FUNCTION(original_FopRead_FACES, FopRead_FACES)
-int FopRead_FACES(br_datafile *df, br_uint_32 id, br_uint_32 length, br_uint_32 count) {
+int __stdcall FopRead_FACES(br_datafile *df, br_uint_32 id, br_uint_32 length, br_uint_32 count) {
     struct br_model *mp;
     int i;
     LOG_TRACE("(%p, %u, %u, %u)", df, id, length, count);
@@ -235,9 +234,9 @@ int FopWrite_FACES(br_datafile *df, br_face *faces, int nfaces) {
     NOT_IMPLEMENTED();
 }
 
-static int(*original_FopRead_OLD_FACES_1)(br_datafile *, br_uint_32, br_uint_32, br_uint_32, ...) = (int(*)(br_datafile *, br_uint_32, br_uint_32, br_uint_32, ...))0x004db050;
+static int(__stdcall*original_FopRead_OLD_FACES_1)(br_datafile *, br_uint_32, br_uint_32, br_uint_32) = (int(__stdcall*)(br_datafile *, br_uint_32, br_uint_32, br_uint_32))0x004db050;
 CARM95_HOOK_FUNCTION(original_FopRead_OLD_FACES_1, FopRead_OLD_FACES_1)
-int FopRead_OLD_FACES_1(br_datafile *df, br_uint_32 id, br_uint_32 length, br_uint_32 count) {
+int __stdcall FopRead_OLD_FACES_1(br_datafile *df, br_uint_32 id, br_uint_32 length, br_uint_32 count) {
     struct br_model *mp;
     int i;
     LOG_TRACE("(%p, %u, %u, %u)", df, id, length, count);
@@ -252,9 +251,9 @@ int FopRead_OLD_FACES_1(br_datafile *df, br_uint_32 id, br_uint_32 length, br_ui
     return original_FopRead_OLD_FACES_1(df, id, length, count);
 }
 
-static int(*original_FopRead_OLD_FACES)(br_datafile *, br_uint_32, br_uint_32, br_uint_32, ...) = (int(*)(br_datafile *, br_uint_32, br_uint_32, br_uint_32, ...))0x004db100;
+static int(__stdcall*original_FopRead_OLD_FACES)(br_datafile *, br_uint_32, br_uint_32, br_uint_32) = (int(__stdcall*)(br_datafile *, br_uint_32, br_uint_32, br_uint_32))0x004db100;
 CARM95_HOOK_FUNCTION(original_FopRead_OLD_FACES, FopRead_OLD_FACES)
-int FopRead_OLD_FACES(br_datafile *df, br_uint_32 id, br_uint_32 length, br_uint_32 count) {
+int __stdcall FopRead_OLD_FACES(br_datafile *df, br_uint_32 id, br_uint_32 length, br_uint_32 count) {
     struct br_face *fp;
     br_material **mip;
     int mi_count;
@@ -297,9 +296,9 @@ int FopWrite_FACE_MATERIAL(br_datafile *df, br_face *faces, int nfaces, br_mater
     NOT_IMPLEMENTED();
 }
 
-static int(*original_FopRead_FACE_MATERIAL)(br_datafile *, br_uint_32, br_uint_32, br_uint_32, ...) = (int(*)(br_datafile *, br_uint_32, br_uint_32, br_uint_32, ...))0x004db1e0;
+static int(__stdcall*original_FopRead_FACE_MATERIAL)(br_datafile *, br_uint_32, br_uint_32, br_uint_32) = (int(__stdcall*)(br_datafile *, br_uint_32, br_uint_32, br_uint_32))0x004db1e0;
 CARM95_HOOK_FUNCTION(original_FopRead_FACE_MATERIAL, FopRead_FACE_MATERIAL)
-int FopRead_FACE_MATERIAL(br_datafile *df, br_uint_32 id, br_uint_32 length, br_uint_32 count) {
+int __stdcall FopRead_FACE_MATERIAL(br_datafile *df, br_uint_32 id, br_uint_32 length, br_uint_32 count) {
     br_material **mindex;
     int nmaterials;
     br_model *mp;
@@ -326,9 +325,9 @@ int FopRead_FACE_MATERIAL(br_datafile *df, br_uint_32 id, br_uint_32 length, br_
     return original_FopRead_FACE_MATERIAL(df, id, length, count);
 }
 
-static int(*original_FopRead_MODEL)(br_datafile *, br_uint_32, br_uint_32, br_uint_32, ...) = (int(*)(br_datafile *, br_uint_32, br_uint_32, br_uint_32, ...))0x004db2b0;
+static int(__stdcall*original_FopRead_MODEL)(br_datafile *, br_uint_32, br_uint_32, br_uint_32) = (int(__stdcall*)(br_datafile *, br_uint_32, br_uint_32, br_uint_32))0x004db2b0;
 CARM95_HOOK_FUNCTION(original_FopRead_MODEL, FopRead_MODEL)
-int FopRead_MODEL(br_datafile *df, br_uint_32 id, br_uint_32 length, br_uint_32 count) {
+int __stdcall FopRead_MODEL(br_datafile *df, br_uint_32 id, br_uint_32 length, br_uint_32 count) {
     br_model *mp;
     LOG_TRACE("(%p, %u, %u, %u)", df, id, length, count);
 
@@ -352,9 +351,9 @@ int FopWrite_MODEL(br_datafile *df, br_model *mp) {
     NOT_IMPLEMENTED();
 }
 
-static int(*original_FopRead_OLD_MODEL_1)(br_datafile *, br_uint_32, br_uint_32, br_uint_32, ...) = (int(*)(br_datafile *, br_uint_32, br_uint_32, br_uint_32, ...))0x004db300;
+static int(__stdcall*original_FopRead_OLD_MODEL_1)(br_datafile *, br_uint_32, br_uint_32, br_uint_32) = (int(__stdcall*)(br_datafile *, br_uint_32, br_uint_32, br_uint_32))0x004db300;
 CARM95_HOOK_FUNCTION(original_FopRead_OLD_MODEL_1, FopRead_OLD_MODEL_1)
-int FopRead_OLD_MODEL_1(br_datafile *df, br_uint_32 id, br_uint_32 length, br_uint_32 count) {
+int __stdcall FopRead_OLD_MODEL_1(br_datafile *df, br_uint_32 id, br_uint_32 length, br_uint_32 count) {
     br_model *mp;
     LOG_TRACE("(%p, %u, %u, %u)", df, id, length, count);
 
@@ -367,9 +366,9 @@ int FopRead_OLD_MODEL_1(br_datafile *df, br_uint_32 id, br_uint_32 length, br_ui
     return original_FopRead_OLD_MODEL_1(df, id, length, count);
 }
 
-static int(*original_FopRead_OLD_MODEL)(br_datafile *, br_uint_32, br_uint_32, br_uint_32, ...) = (int(*)(br_datafile *, br_uint_32, br_uint_32, br_uint_32, ...))0x004db340;
+static int(__stdcall*original_FopRead_OLD_MODEL)(br_datafile *, br_uint_32, br_uint_32, br_uint_32) = (int(__stdcall*)(br_datafile *, br_uint_32, br_uint_32, br_uint_32))0x004db340;
 CARM95_HOOK_FUNCTION(original_FopRead_OLD_MODEL, FopRead_OLD_MODEL)
-int FopRead_OLD_MODEL(br_datafile *df, br_uint_32 id, br_uint_32 length, br_uint_32 count) {
+int __stdcall FopRead_OLD_MODEL(br_datafile *df, br_uint_32 id, br_uint_32 length, br_uint_32 count) {
     br_model *mp;
     int i;
     LOG_TRACE("(%p, %u, %u, %u)", df, id, length, count);
@@ -384,9 +383,9 @@ int FopRead_OLD_MODEL(br_datafile *df, br_uint_32 id, br_uint_32 length, br_uint
     return original_FopRead_OLD_MODEL(df, id, length, count);
 }
 
-static int(*original_FopRead_PIVOT)(br_datafile *, br_uint_32, br_uint_32, br_uint_32, ...) = (int(*)(br_datafile *, br_uint_32, br_uint_32, br_uint_32, ...))0x004db3e0;
+static int(__stdcall*original_FopRead_PIVOT)(br_datafile *, br_uint_32, br_uint_32, br_uint_32) = (int(__stdcall*)(br_datafile *, br_uint_32, br_uint_32, br_uint_32))0x004db3e0;
 CARM95_HOOK_FUNCTION(original_FopRead_PIVOT, FopRead_PIVOT)
-int FopRead_PIVOT(br_datafile *df, br_uint_32 id, br_uint_32 length, br_uint_32 count) {
+int __stdcall FopRead_PIVOT(br_datafile *df, br_uint_32 id, br_uint_32 length, br_uint_32 count) {
     br_model *mp;
     LOG_TRACE("(%p, %u, %u, %u)", df, id, length, count);
 
@@ -399,9 +398,9 @@ int FopRead_PIVOT(br_datafile *df, br_uint_32 id, br_uint_32 length, br_uint_32 
     return original_FopRead_PIVOT(df, id, length, count);
 }
 
-static int(*original_FopRead_MATERIAL_OLD)(br_datafile *, br_uint_32, br_uint_32, br_uint_32, ...) = (int(*)(br_datafile *, br_uint_32, br_uint_32, br_uint_32, ...))0x004db420;
+static int(__stdcall*original_FopRead_MATERIAL_OLD)(br_datafile *, br_uint_32, br_uint_32, br_uint_32) = (int(__stdcall*)(br_datafile *, br_uint_32, br_uint_32, br_uint_32))0x004db420;
 CARM95_HOOK_FUNCTION(original_FopRead_MATERIAL_OLD, FopRead_MATERIAL_OLD)
-int FopRead_MATERIAL_OLD(br_datafile *df, br_uint_32 id, br_uint_32 length, br_uint_32 count) {
+int __stdcall FopRead_MATERIAL_OLD(br_datafile *df, br_uint_32 id, br_uint_32 length, br_uint_32 count) {
     br_material *mp;
     LOG_TRACE("(%p, %u, %u, %u)", df, id, length, count);
 
@@ -414,9 +413,9 @@ int FopRead_MATERIAL_OLD(br_datafile *df, br_uint_32 id, br_uint_32 length, br_u
     return original_FopRead_MATERIAL_OLD(df, id, length, count);
 }
 
-static int(*original_FopRead_MATERIAL)(br_datafile *, br_uint_32, br_uint_32, br_uint_32, ...) = (int(*)(br_datafile *, br_uint_32, br_uint_32, br_uint_32, ...))0x004db460;
+static int(__stdcall*original_FopRead_MATERIAL)(br_datafile *, br_uint_32, br_uint_32, br_uint_32) = (int(__stdcall*)(br_datafile *, br_uint_32, br_uint_32, br_uint_32))0x004db460;
 CARM95_HOOK_FUNCTION(original_FopRead_MATERIAL, FopRead_MATERIAL)
-int FopRead_MATERIAL(br_datafile *df, br_uint_32 id, br_uint_32 length, br_uint_32 count) {
+int __stdcall FopRead_MATERIAL(br_datafile *df, br_uint_32 id, br_uint_32 length, br_uint_32 count) {
     br_material *mp;
     LOG_TRACE("(%p, %u, %u, %u)", df, id, length, count);
 
@@ -438,9 +437,9 @@ int FopWrite_MATERIAL(br_datafile *df, br_material *mp) {
     NOT_IMPLEMENTED();
 }
 
-static int(*original_FopRead_PIXELMAP_REF)(br_datafile *, br_uint_32, br_uint_32, br_uint_32, ...) = (int(*)(br_datafile *, br_uint_32, br_uint_32, br_uint_32, ...))0x004db4a0;
+static int(__stdcall*original_FopRead_PIXELMAP_REF)(br_datafile *, br_uint_32, br_uint_32, br_uint_32) = (int(__stdcall*)(br_datafile *, br_uint_32, br_uint_32, br_uint_32))0x004db4a0;
 CARM95_HOOK_FUNCTION(original_FopRead_PIXELMAP_REF, FopRead_PIXELMAP_REF)
-int FopRead_PIXELMAP_REF(br_datafile *df, br_uint_32 id, br_uint_32 length, br_uint_32 count) {
+int __stdcall FopRead_PIXELMAP_REF(br_datafile *df, br_uint_32 id, br_uint_32 length, br_uint_32 count) {
     br_pixelmap *pm;
     char name[256];
     char *mp;
@@ -478,9 +477,9 @@ int FopWrite_ACTOR(br_datafile *df, br_actor *ap) {
     NOT_IMPLEMENTED();
 }
 
-static int(*original_FopRead_ACTOR)(br_datafile *, br_uint_32, br_uint_32, br_uint_32, ...) = (int(*)(br_datafile *, br_uint_32, br_uint_32, br_uint_32, ...))0x004db530;
+static int(__stdcall*original_FopRead_ACTOR)(br_datafile *, br_uint_32, br_uint_32, br_uint_32) = (int(__stdcall*)(br_datafile *, br_uint_32, br_uint_32, br_uint_32))0x004db530;
 CARM95_HOOK_FUNCTION(original_FopRead_ACTOR, FopRead_ACTOR)
-int FopRead_ACTOR(br_datafile *df, br_uint_32 id, br_uint_32 length, br_uint_32 count) {
+int __stdcall FopRead_ACTOR(br_datafile *df, br_uint_32 id, br_uint_32 length, br_uint_32 count) {
     br_actor *ap;
     LOG_TRACE("(%p, %u, %u, %u)", df, id, length, count);
 
@@ -502,9 +501,9 @@ int FopWrite_ACTOR_MODEL(br_datafile *df, br_model *model) {
     NOT_IMPLEMENTED();
 }
 
-static int(*original_FopRead_ACTOR_MODEL)(br_datafile *, br_uint_32, br_uint_32, br_uint_32, ...) = (int(*)(br_datafile *, br_uint_32, br_uint_32, br_uint_32, ...))0x004db580;
+static int(__stdcall*original_FopRead_ACTOR_MODEL)(br_datafile *, br_uint_32, br_uint_32, br_uint_32) = (int(__stdcall*)(br_datafile *, br_uint_32, br_uint_32, br_uint_32))0x004db580;
 CARM95_HOOK_FUNCTION(original_FopRead_ACTOR_MODEL, FopRead_ACTOR_MODEL)
-int FopRead_ACTOR_MODEL(br_datafile *df, br_uint_32 id, br_uint_32 length, br_uint_32 count) {
+int __stdcall FopRead_ACTOR_MODEL(br_datafile *df, br_uint_32 id, br_uint_32 length, br_uint_32 count) {
     char name[256];
     br_actor *a;
     LOG_TRACE("(%p, %u, %u, %u)", df, id, length, count);
@@ -528,9 +527,9 @@ int FopWrite_ACTOR_MATERIAL(br_datafile *df, br_material *material) {
     NOT_IMPLEMENTED();
 }
 
-static int(*original_FopRead_ACTOR_MATERIAL)(br_datafile *, br_uint_32, br_uint_32, br_uint_32, ...) = (int(*)(br_datafile *, br_uint_32, br_uint_32, br_uint_32, ...))0x004db5c0;
+static int(__stdcall*original_FopRead_ACTOR_MATERIAL)(br_datafile *, br_uint_32, br_uint_32, br_uint_32) = (int(__stdcall*)(br_datafile *, br_uint_32, br_uint_32, br_uint_32))0x004db5c0;
 CARM95_HOOK_FUNCTION(original_FopRead_ACTOR_MATERIAL, FopRead_ACTOR_MATERIAL)
-int FopRead_ACTOR_MATERIAL(br_datafile *df, br_uint_32 id, br_uint_32 length, br_uint_32 count) {
+int __stdcall FopRead_ACTOR_MATERIAL(br_datafile *df, br_uint_32 id, br_uint_32 length, br_uint_32 count) {
     char name[256];
     br_actor *a;
     LOG_TRACE("(%p, %u, %u, %u)", df, id, length, count);
@@ -553,9 +552,9 @@ int FopWrite_ACTOR_TRANSFORM(br_datafile *df) {
     NOT_IMPLEMENTED();
 }
 
-static int(*original_FopRead_ACTOR_TRANSFORM)(br_datafile *, br_uint_32, br_uint_32, br_uint_32, ...) = (int(*)(br_datafile *, br_uint_32, br_uint_32, br_uint_32, ...))0x004db600;
+static int(__stdcall*original_FopRead_ACTOR_TRANSFORM)(br_datafile *, br_uint_32, br_uint_32, br_uint_32) = (int(__stdcall*)(br_datafile *, br_uint_32, br_uint_32, br_uint_32))0x004db600;
 CARM95_HOOK_FUNCTION(original_FopRead_ACTOR_TRANSFORM, FopRead_ACTOR_TRANSFORM)
-int FopRead_ACTOR_TRANSFORM(br_datafile *df, br_uint_32 id, br_uint_32 length, br_uint_32 count) {
+int __stdcall FopRead_ACTOR_TRANSFORM(br_datafile *df, br_uint_32 id, br_uint_32 length, br_uint_32 count) {
     br_actor *a;
     br_transform *tp;
     LOG_TRACE("(%p, %u, %u, %u)", df, id, length, count);
@@ -578,9 +577,9 @@ int FopWrite_ACTOR_LIGHT(br_datafile *df) {
     NOT_IMPLEMENTED();
 }
 
-static int(*original_FopRead_ACTOR_LIGHT)(br_datafile *, br_uint_32, br_uint_32, br_uint_32, ...) = (int(*)(br_datafile *, br_uint_32, br_uint_32, br_uint_32, ...))0x004db640;
+static int(__stdcall*original_FopRead_ACTOR_LIGHT)(br_datafile *, br_uint_32, br_uint_32, br_uint_32) = (int(__stdcall*)(br_datafile *, br_uint_32, br_uint_32, br_uint_32))0x004db640;
 CARM95_HOOK_FUNCTION(original_FopRead_ACTOR_LIGHT, FopRead_ACTOR_LIGHT)
-int FopRead_ACTOR_LIGHT(br_datafile *df, br_uint_32 id, br_uint_32 length, br_uint_32 count) {
+int __stdcall FopRead_ACTOR_LIGHT(br_datafile *df, br_uint_32 id, br_uint_32 length, br_uint_32 count) {
     br_actor *a;
     br_light *lp;
     LOG_TRACE("(%p, %u, %u, %u)", df, id, length, count);
@@ -603,9 +602,9 @@ int FopWrite_ACTOR_CAMERA(br_datafile *df) {
     NOT_IMPLEMENTED();
 }
 
-static int(*original_FopRead_ACTOR_CAMERA)(br_datafile *, br_uint_32, br_uint_32, br_uint_32, ...) = (int(*)(br_datafile *, br_uint_32, br_uint_32, br_uint_32, ...))0x004db660;
+static int(__stdcall*original_FopRead_ACTOR_CAMERA)(br_datafile *, br_uint_32, br_uint_32, br_uint_32) = (int(__stdcall*)(br_datafile *, br_uint_32, br_uint_32, br_uint_32))0x004db660;
 CARM95_HOOK_FUNCTION(original_FopRead_ACTOR_CAMERA, FopRead_ACTOR_CAMERA)
-int FopRead_ACTOR_CAMERA(br_datafile *df, br_uint_32 id, br_uint_32 length, br_uint_32 count) {
+int __stdcall FopRead_ACTOR_CAMERA(br_datafile *df, br_uint_32 id, br_uint_32 length, br_uint_32 count) {
     br_actor *a;
     br_light *cp;
     LOG_TRACE("(%p, %u, %u, %u)", df, id, length, count);
@@ -628,9 +627,9 @@ int FopWrite_ACTOR_BOUNDS(br_datafile *df) {
     NOT_IMPLEMENTED();
 }
 
-static int(*original_FopRead_ACTOR_BOUNDS)(br_datafile *, br_uint_32, br_uint_32, br_uint_32, ...) = (int(*)(br_datafile *, br_uint_32, br_uint_32, br_uint_32, ...))0x004db680;
+static int(__stdcall*original_FopRead_ACTOR_BOUNDS)(br_datafile *, br_uint_32, br_uint_32, br_uint_32) = (int(__stdcall*)(br_datafile *, br_uint_32, br_uint_32, br_uint_32))0x004db680;
 CARM95_HOOK_FUNCTION(original_FopRead_ACTOR_BOUNDS, FopRead_ACTOR_BOUNDS)
-int FopRead_ACTOR_BOUNDS(br_datafile *df, br_uint_32 id, br_uint_32 length, br_uint_32 count) {
+int __stdcall FopRead_ACTOR_BOUNDS(br_datafile *df, br_uint_32 id, br_uint_32 length, br_uint_32 count) {
     br_actor *a;
     br_bounds *bp;
     LOG_TRACE("(%p, %u, %u, %u)", df, id, length, count);
@@ -653,9 +652,9 @@ int FopWrite_ACTOR_CLIP_PLANE(br_datafile *df) {
     NOT_IMPLEMENTED();
 }
 
-static int(*original_FopRead_ACTOR_CLIP_PLANE)(br_datafile *, br_uint_32, br_uint_32, br_uint_32, ...) = (int(*)(br_datafile *, br_uint_32, br_uint_32, br_uint_32, ...))0x004db6a0;
+static int(__stdcall*original_FopRead_ACTOR_CLIP_PLANE)(br_datafile *, br_uint_32, br_uint_32, br_uint_32) = (int(__stdcall*)(br_datafile *, br_uint_32, br_uint_32, br_uint_32))0x004db6a0;
 CARM95_HOOK_FUNCTION(original_FopRead_ACTOR_CLIP_PLANE, FopRead_ACTOR_CLIP_PLANE)
-int FopRead_ACTOR_CLIP_PLANE(br_datafile *df, br_uint_32 id, br_uint_32 length, br_uint_32 count) {
+int __stdcall FopRead_ACTOR_CLIP_PLANE(br_datafile *df, br_uint_32 id, br_uint_32 length, br_uint_32 count) {
     br_actor *a;
     br_vector4 *vp;
     LOG_TRACE("(%p, %u, %u, %u)", df, id, length, count);
@@ -678,9 +677,9 @@ int FopWrite_ACTOR_ADD_CHILD(br_datafile *df) {
     NOT_IMPLEMENTED();
 }
 
-static int(*original_FopRead_ACTOR_ADD_CHILD)(br_datafile *, br_uint_32, br_uint_32, br_uint_32, ...) = (int(*)(br_datafile *, br_uint_32, br_uint_32, br_uint_32, ...))0x004db6c0;
+static int(__stdcall*original_FopRead_ACTOR_ADD_CHILD)(br_datafile *, br_uint_32, br_uint_32, br_uint_32) = (int(__stdcall*)(br_datafile *, br_uint_32, br_uint_32, br_uint_32))0x004db6c0;
 CARM95_HOOK_FUNCTION(original_FopRead_ACTOR_ADD_CHILD, FopRead_ACTOR_ADD_CHILD)
-int FopRead_ACTOR_ADD_CHILD(br_datafile *df, br_uint_32 id, br_uint_32 length, br_uint_32 count) {
+int __stdcall FopRead_ACTOR_ADD_CHILD(br_datafile *df, br_uint_32 id, br_uint_32 length, br_uint_32 count) {
     br_actor *a;
     br_actor *p;
     LOG_TRACE("(%p, %u, %u, %u)", df, id, length, count);
@@ -706,9 +705,9 @@ int FopWrite_TRANSFORM(br_datafile *df, br_transform *t) {
     NOT_IMPLEMENTED();
 }
 
-static int(*original_FopRead_TRANSFORM)(br_datafile *, br_uint_32, br_uint_32, br_uint_32, ...) = (int(*)(br_datafile *, br_uint_32, br_uint_32, br_uint_32, ...))0x004db6f0;
+static int(__stdcall*original_FopRead_TRANSFORM)(br_datafile *, br_uint_32, br_uint_32, br_uint_32) = (int(__stdcall*)(br_datafile *, br_uint_32, br_uint_32, br_uint_32))0x004db6f0;
 CARM95_HOOK_FUNCTION(original_FopRead_TRANSFORM, FopRead_TRANSFORM)
-int FopRead_TRANSFORM(br_datafile *df, br_uint_32 id, br_uint_32 length, br_uint_32 count) {
+int __stdcall FopRead_TRANSFORM(br_datafile *df, br_uint_32 id, br_uint_32 length, br_uint_32 count) {
     int t;
     br_transform *tp;
     LOG_TRACE("(%p, %u, %u, %u)", df, id, length, count);
@@ -732,9 +731,9 @@ int FopWrite_BOUNDS(br_datafile *df, br_bounds *bp) {
     NOT_IMPLEMENTED();
 }
 
-static int(*original_FopRead_BOUNDS)(br_datafile *, br_uint_32, br_uint_32, br_uint_32, ...) = (int(*)(br_datafile *, br_uint_32, br_uint_32, br_uint_32, ...))0x004db760;
+static int(__stdcall*original_FopRead_BOUNDS)(br_datafile *, br_uint_32, br_uint_32, br_uint_32) = (int(__stdcall*)(br_datafile *, br_uint_32, br_uint_32, br_uint_32))0x004db760;
 CARM95_HOOK_FUNCTION(original_FopRead_BOUNDS, FopRead_BOUNDS)
-int FopRead_BOUNDS(br_datafile *df, br_uint_32 id, br_uint_32 length, br_uint_32 count) {
+int __stdcall FopRead_BOUNDS(br_datafile *df, br_uint_32 id, br_uint_32 length, br_uint_32 count) {
     br_bounds3 *bp;
     LOG_TRACE("(%p, %u, %u, %u)", df, id, length, count);
 
@@ -756,9 +755,9 @@ int FopWrite_PLANE(br_datafile *df, br_vector4 *pp) {
     NOT_IMPLEMENTED();
 }
 
-static int(*original_FopRead_PLANE)(br_datafile *, br_uint_32, br_uint_32, br_uint_32, ...) = (int(*)(br_datafile *, br_uint_32, br_uint_32, br_uint_32, ...))0x004db7b0;
+static int(__stdcall*original_FopRead_PLANE)(br_datafile *, br_uint_32, br_uint_32, br_uint_32) = (int(__stdcall*)(br_datafile *, br_uint_32, br_uint_32, br_uint_32))0x004db7b0;
 CARM95_HOOK_FUNCTION(original_FopRead_PLANE, FopRead_PLANE)
-int FopRead_PLANE(br_datafile *df, br_uint_32 id, br_uint_32 length, br_uint_32 count) {
+int __stdcall FopRead_PLANE(br_datafile *df, br_uint_32 id, br_uint_32 length, br_uint_32 count) {
     br_vector4 *pp;
     LOG_TRACE("(%p, %u, %u, %u)", df, id, length, count);
 
@@ -780,9 +779,9 @@ int FopWrite_LIGHT(br_datafile *df, br_light *lp) {
     NOT_IMPLEMENTED();
 }
 
-static int(*original_FopRead_LIGHT)(br_datafile *, br_uint_32, br_uint_32, br_uint_32, ...) = (int(*)(br_datafile *, br_uint_32, br_uint_32, br_uint_32, ...))0x004db800;
+static int(__stdcall*original_FopRead_LIGHT)(br_datafile *, br_uint_32, br_uint_32, br_uint_32) = (int(__stdcall*)(br_datafile *, br_uint_32, br_uint_32, br_uint_32))0x004db800;
 CARM95_HOOK_FUNCTION(original_FopRead_LIGHT, FopRead_LIGHT)
-int FopRead_LIGHT(br_datafile *df, br_uint_32 id, br_uint_32 length, br_uint_32 count) {
+int __stdcall FopRead_LIGHT(br_datafile *df, br_uint_32 id, br_uint_32 length, br_uint_32 count) {
     br_light *lp;
     LOG_TRACE("(%p, %u, %u, %u)", df, id, length, count);
 
@@ -804,9 +803,9 @@ int FopWrite_CAMERA(br_datafile *df, br_camera *cp) {
     NOT_IMPLEMENTED();
 }
 
-static int(*original_FopRead_CAMERA)(br_datafile *, br_uint_32, br_uint_32, br_uint_32, ...) = (int(*)(br_datafile *, br_uint_32, br_uint_32, br_uint_32, ...))0x004db850;
+static int(__stdcall*original_FopRead_CAMERA)(br_datafile *, br_uint_32, br_uint_32, br_uint_32) = (int(__stdcall*)(br_datafile *, br_uint_32, br_uint_32, br_uint_32))0x004db850;
 CARM95_HOOK_FUNCTION(original_FopRead_CAMERA, FopRead_CAMERA)
-int FopRead_CAMERA(br_datafile *df, br_uint_32 id, br_uint_32 length, br_uint_32 count) {
+int __stdcall FopRead_CAMERA(br_datafile *df, br_uint_32 id, br_uint_32 length, br_uint_32 count) {
     br_camera *cp;
     LOG_TRACE("(%p, %u, %u, %u)", df, id, length, count);
 
@@ -819,9 +818,9 @@ int FopRead_CAMERA(br_datafile *df, br_uint_32 id, br_uint_32 length, br_uint_32
     return original_FopRead_CAMERA(df, id, length, count);
 }
 
-static br_uint_32(*original_BrModelLoadMany)(char *, br_model **, br_uint_16, ...) = (br_uint_32(*)(char *, br_model **, br_uint_16, ...))0x004db8a0;
+static br_uint_32(__cdecl*original_BrModelLoadMany)(char *, br_model **, br_uint_16) = (br_uint_32(__cdecl*)(char *, br_model **, br_uint_16))0x004db8a0;
 CARM95_HOOK_FUNCTION(original_BrModelLoadMany, BrModelLoadMany)
-br_uint_32 BrModelLoadMany(char *filename, br_model **models, br_uint_16 num) {
+br_uint_32 __cdecl BrModelLoadMany(char *filename, br_model **models, br_uint_16 num) {
     int count;
     int r;
     br_datafile *df;
@@ -837,9 +836,9 @@ br_uint_32 BrModelLoadMany(char *filename, br_model **models, br_uint_16 num) {
     return original_BrModelLoadMany(filename, models, num);
 }
 
-static int(*original_PtrCompare)(void *, void *, ...) = (int(*)(void *, void *, ...))0x004dbdd0;
+static int(__cdecl*original_PtrCompare)(void *, void *) = (int(__cdecl*)(void *, void *))0x004dbdd0;
 CARM95_HOOK_FUNCTION(original_PtrCompare, PtrCompare)
-int PtrCompare(void *a, void *b) {
+int __cdecl PtrCompare(void *a, void *b) {
     LOG_TRACE("(%p, %p)", a, b);
 
     (void)a;
@@ -848,9 +847,9 @@ int PtrCompare(void *a, void *b) {
     return original_PtrCompare(a, b);
 }
 
-static br_uint_32(*original_WriteModel)(br_model *, br_datafile *, ...) = (br_uint_32(*)(br_model *, br_datafile *, ...))0x004db9b0;
+static br_uint_32(__cdecl*original_WriteModel)(br_model *, br_datafile *) = (br_uint_32(__cdecl*)(br_model *, br_datafile *))0x004db9b0;
 CARM95_HOOK_FUNCTION(original_WriteModel, WriteModel)
-br_uint_32 WriteModel(br_model *mp, br_datafile *df) {
+br_uint_32 __cdecl WriteModel(br_model *mp, br_datafile *df) {
     br_material **mindex;
     br_vertex *vp;
     int nmaterials;
@@ -869,9 +868,9 @@ br_uint_32 WriteModel(br_model *mp, br_datafile *df) {
     return original_WriteModel(mp, df);
 }
 
-static br_uint_32(*original_BrModelSaveMany)(char *, br_model **, br_uint_16, ...) = (br_uint_32(*)(char *, br_model **, br_uint_16, ...))0x004db920;
+static br_uint_32(__cdecl*original_BrModelSaveMany)(char *, br_model **, br_uint_16) = (br_uint_32(__cdecl*)(char *, br_model **, br_uint_16))0x004db920;
 CARM95_HOOK_FUNCTION(original_BrModelSaveMany, BrModelSaveMany)
-br_uint_32 BrModelSaveMany(char *filename, br_model **models, br_uint_16 num) {
+br_uint_32 __cdecl BrModelSaveMany(char *filename, br_model **models, br_uint_16 num) {
     br_datafile *df;
     int i;
     int m;
@@ -887,9 +886,9 @@ br_uint_32 BrModelSaveMany(char *filename, br_model **models, br_uint_16 num) {
     return original_BrModelSaveMany(filename, models, num);
 }
 
-static br_uint_32(*original_BrActorLoadMany)(char *, br_actor **, br_uint_16, ...) = (br_uint_32(*)(char *, br_actor **, br_uint_16, ...))0x004dbdf0;
+static br_uint_32(__cdecl*original_BrActorLoadMany)(char *, br_actor **, br_uint_16) = (br_uint_32(__cdecl*)(char *, br_actor **, br_uint_16))0x004dbdf0;
 CARM95_HOOK_FUNCTION(original_BrActorLoadMany, BrActorLoadMany)
-br_uint_32 BrActorLoadMany(char *filename, br_actor **actors, br_uint_16 num) {
+br_uint_32 __cdecl BrActorLoadMany(char *filename, br_actor **actors, br_uint_16 num) {
     br_datafile *df;
     int count;
     int r;
@@ -905,9 +904,9 @@ br_uint_32 BrActorLoadMany(char *filename, br_actor **actors, br_uint_16 num) {
     return original_BrActorLoadMany(filename, actors, num);
 }
 
-static int(*original_WriteActor)(br_actor *, br_datafile *, ...) = (int(*)(br_actor *, br_datafile *, ...))0x004dbee0;
+static int(__stdcall*original_WriteActor)(br_actor *, br_datafile *) = (int(__stdcall*)(br_actor *, br_datafile *))0x004dbee0;
 CARM95_HOOK_FUNCTION(original_WriteActor, WriteActor)
-int WriteActor(br_actor *a, br_datafile *df) {
+int __stdcall WriteActor(br_actor *a, br_datafile *df) {
     br_actor *ap;
     br_actor *last_ap;
     LOG_TRACE("(%p, %p)", a, df);
@@ -920,9 +919,9 @@ int WriteActor(br_actor *a, br_datafile *df) {
     return original_WriteActor(a, df);
 }
 
-static br_uint_32(*original_BrActorSaveMany)(char *, br_actor **, br_uint_16, ...) = (br_uint_32(*)(char *, br_actor **, br_uint_16, ...))0x004dbe6b;
+static br_uint_32(__cdecl*original_BrActorSaveMany)(char *, br_actor **, br_uint_16) = (br_uint_32(__cdecl*)(char *, br_actor **, br_uint_16))0x004dbe6b;
 CARM95_HOOK_FUNCTION(original_BrActorSaveMany, BrActorSaveMany)
-br_uint_32 BrActorSaveMany(char *filename, br_actor **actors, br_uint_16 num) {
+br_uint_32 __cdecl BrActorSaveMany(char *filename, br_actor **actors, br_uint_16 num) {
     br_datafile *df;
     int i;
     LOG_TRACE("(\"%s\", %p, %u)", filename, actors, num);
@@ -936,9 +935,9 @@ br_uint_32 BrActorSaveMany(char *filename, br_actor **actors, br_uint_16 num) {
     return original_BrActorSaveMany(filename, actors, num);
 }
 
-static br_uint_32(*original_BrMaterialLoadMany)(char *, br_material **, br_uint_16, ...) = (br_uint_32(*)(char *, br_material **, br_uint_16, ...))0x004dc0e0;
+static br_uint_32(__cdecl*original_BrMaterialLoadMany)(char *, br_material **, br_uint_16) = (br_uint_32(__cdecl*)(char *, br_material **, br_uint_16))0x004dc0e0;
 CARM95_HOOK_FUNCTION(original_BrMaterialLoadMany, BrMaterialLoadMany)
-br_uint_32 BrMaterialLoadMany(char *filename, br_material **materials, br_uint_16 num) {
+br_uint_32 __cdecl BrMaterialLoadMany(char *filename, br_material **materials, br_uint_16 num) {
     br_datafile *df;
     int count;
     int r;
@@ -954,9 +953,9 @@ br_uint_32 BrMaterialLoadMany(char *filename, br_material **materials, br_uint_1
     return original_BrMaterialLoadMany(filename, materials, num);
 }
 
-static br_uint_32(*original_WriteMaterial)(br_material *, br_datafile *, ...) = (br_uint_32(*)(br_material *, br_datafile *, ...))0x004dc2e0;
+static br_uint_32(__cdecl*original_WriteMaterial)(br_material *, br_datafile *) = (br_uint_32(__cdecl*)(br_material *, br_datafile *))0x004dc2e0;
 CARM95_HOOK_FUNCTION(original_WriteMaterial, WriteMaterial)
-br_uint_32 WriteMaterial(br_material *mp, br_datafile *df) {
+br_uint_32 __cdecl WriteMaterial(br_material *mp, br_datafile *df) {
     LOG_TRACE("(%p, %p)", mp, df);
 
     (void)mp;
@@ -965,9 +964,9 @@ br_uint_32 WriteMaterial(br_material *mp, br_datafile *df) {
     return original_WriteMaterial(mp, df);
 }
 
-static br_uint_32(*original_BrMaterialSaveMany)(char *, br_material **, br_uint_16, ...) = (br_uint_32(*)(char *, br_material **, br_uint_16, ...))0x004dc160;
+static br_uint_32(__cdecl*original_BrMaterialSaveMany)(char *, br_material **, br_uint_16) = (br_uint_32(__cdecl*)(char *, br_material **, br_uint_16))0x004dc160;
 CARM95_HOOK_FUNCTION(original_BrMaterialSaveMany, BrMaterialSaveMany)
-br_uint_32 BrMaterialSaveMany(char *filename, br_material **materials, br_uint_16 num) {
+br_uint_32 __cdecl BrMaterialSaveMany(char *filename, br_material **materials, br_uint_16 num) {
     br_datafile *df;
     int i;
     int count;
@@ -983,9 +982,9 @@ br_uint_32 BrMaterialSaveMany(char *filename, br_material **materials, br_uint_1
     return original_BrMaterialSaveMany(filename, materials, num);
 }
 
-static br_model *(*original_BrModelLoad)(char *, ...) = (br_model *(*)(char *, ...))0x004dc3d0;
+static br_model *(__cdecl*original_BrModelLoad)(char *) = (br_model *(__cdecl*)(char *))0x004dc3d0;
 CARM95_HOOK_FUNCTION(original_BrModelLoad, BrModelLoad)
-br_model* BrModelLoad(char *filename) {
+br_model* __cdecl BrModelLoad(char *filename) {
     br_model *ptr;
     LOG_TRACE("(\"%s\")", filename);
 
@@ -995,9 +994,9 @@ br_model* BrModelLoad(char *filename) {
     return original_BrModelLoad(filename);
 }
 
-static br_uint_32(*original_BrModelSave)(char *, br_model *, ...) = (br_uint_32(*)(char *, br_model *, ...))0x004dc445;
+static br_uint_32(__cdecl*original_BrModelSave)(char *, br_model *) = (br_uint_32(__cdecl*)(char *, br_model *))0x004dc445;
 CARM95_HOOK_FUNCTION(original_BrModelSave, BrModelSave)
-br_uint_32 BrModelSave(char *filename, br_model *ptr) {
+br_uint_32 __cdecl BrModelSave(char *filename, br_model *ptr) {
     LOG_TRACE("(\"%s\", %p)", filename, ptr);
 
     (void)filename;
@@ -1006,9 +1005,9 @@ br_uint_32 BrModelSave(char *filename, br_model *ptr) {
     return original_BrModelSave(filename, ptr);
 }
 
-static br_material *(*original_BrMaterialLoad)(char *, ...) = (br_material *(*)(char *, ...))0x004dc4a0;
+static br_material *(__cdecl*original_BrMaterialLoad)(char *) = (br_material *(__cdecl*)(char *))0x004dc4a0;
 CARM95_HOOK_FUNCTION(original_BrMaterialLoad, BrMaterialLoad)
-br_material* BrMaterialLoad(char *filename) {
+br_material* __cdecl BrMaterialLoad(char *filename) {
     br_material *ptr;
     LOG_TRACE("(\"%s\")", filename);
 
@@ -1018,9 +1017,9 @@ br_material* BrMaterialLoad(char *filename) {
     return original_BrMaterialLoad(filename);
 }
 
-static br_uint_32(*original_BrMaterialSave)(char *, br_material *, ...) = (br_uint_32(*)(char *, br_material *, ...))0x004dc515;
+static br_uint_32(__cdecl*original_BrMaterialSave)(char *, br_material *) = (br_uint_32(__cdecl*)(char *, br_material *))0x004dc515;
 CARM95_HOOK_FUNCTION(original_BrMaterialSave, BrMaterialSave)
-br_uint_32 BrMaterialSave(char *filename, br_material *ptr) {
+br_uint_32 __cdecl BrMaterialSave(char *filename, br_material *ptr) {
     LOG_TRACE("(\"%s\", %p)", filename, ptr);
 
     (void)filename;
@@ -1029,9 +1028,9 @@ br_uint_32 BrMaterialSave(char *filename, br_material *ptr) {
     return original_BrMaterialSave(filename, ptr);
 }
 
-static br_actor *(*original_BrActorLoad)(char *, ...) = (br_actor *(*)(char *, ...))0x004dc660;
+static br_actor *(__cdecl*original_BrActorLoad)(char *) = (br_actor *(__cdecl*)(char *))0x004dc660;
 CARM95_HOOK_FUNCTION(original_BrActorLoad, BrActorLoad)
-br_actor* BrActorLoad(char *filename) {
+br_actor* __cdecl BrActorLoad(char *filename) {
     br_actor *ptr;
     LOG_TRACE("(\"%s\")", filename);
 
@@ -1041,9 +1040,9 @@ br_actor* BrActorLoad(char *filename) {
     return original_BrActorLoad(filename);
 }
 
-static br_uint_32(*original_BrActorSave)(char *, br_actor *, ...) = (br_uint_32(*)(char *, br_actor *, ...))0x004dc6e0;
+static br_uint_32(__cdecl*original_BrActorSave)(char *, br_actor *) = (br_uint_32(__cdecl*)(char *, br_actor *))0x004dc6e0;
 CARM95_HOOK_FUNCTION(original_BrActorSave, BrActorSave)
-br_uint_32 BrActorSave(char *filename, br_actor *ptr) {
+br_uint_32 __cdecl BrActorSave(char *filename, br_actor *ptr) {
     LOG_TRACE("(\"%s\", %p)", filename, ptr);
 
     (void)filename;
@@ -1052,9 +1051,9 @@ br_uint_32 BrActorSave(char *filename, br_actor *ptr) {
     return original_BrActorSave(filename, ptr);
 }
 
-static br_error(*original_BrModelFileCount)(char *, br_uint_16 *, ...) = (br_error(*)(char *, br_uint_16 *, ...))0x004dc730;
+static br_error(__cdecl*original_BrModelFileCount)(char *, br_uint_16 *) = (br_error(__cdecl*)(char *, br_uint_16 *))0x004dc730;
 CARM95_HOOK_FUNCTION(original_BrModelFileCount, BrModelFileCount)
-br_error BrModelFileCount(char *filename, br_uint_16 *num) {
+br_error __cdecl BrModelFileCount(char *filename, br_uint_16 *num) {
     br_datafile *df;
     LOG_TRACE("(\"%s\", %p)", filename, num);
 
@@ -1065,9 +1064,9 @@ br_error BrModelFileCount(char *filename, br_uint_16 *num) {
     return original_BrModelFileCount(filename, num);
 }
 
-static br_error(*original_BrActorFileCount)(char *, br_uint_16 *, ...) = (br_error(*)(char *, br_uint_16 *, ...))0x004dc7b0;
+static br_error(__cdecl*original_BrActorFileCount)(char *, br_uint_16 *) = (br_error(__cdecl*)(char *, br_uint_16 *))0x004dc7b0;
 CARM95_HOOK_FUNCTION(original_BrActorFileCount, BrActorFileCount)
-br_error BrActorFileCount(char *filename, br_uint_16 *num) {
+br_error __cdecl BrActorFileCount(char *filename, br_uint_16 *num) {
     br_datafile *df;
     LOG_TRACE("(\"%s\", %p)", filename, num);
 
@@ -1078,9 +1077,9 @@ br_error BrActorFileCount(char *filename, br_uint_16 *num) {
     return original_BrActorFileCount(filename, num);
 }
 
-static br_error(*original_BrMaterialFileCount)(char *, br_uint_16 *, ...) = (br_error(*)(char *, br_uint_16 *, ...))0x004dc830;
+static br_error(__cdecl*original_BrMaterialFileCount)(char *, br_uint_16 *) = (br_error(__cdecl*)(char *, br_uint_16 *))0x004dc830;
 CARM95_HOOK_FUNCTION(original_BrMaterialFileCount, BrMaterialFileCount)
-br_error BrMaterialFileCount(char *filename, br_uint_16 *num) {
+br_error __cdecl BrMaterialFileCount(char *filename, br_uint_16 *num) {
     br_datafile *df;
     LOG_TRACE("(\"%s\", %p)", filename, num);
 

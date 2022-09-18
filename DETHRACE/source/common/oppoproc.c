@@ -4,7 +4,6 @@
 
 #include "carm95_hooks.h"
 
-#include <stdio.h>
 
 int StraightestArcForCorner2D(br_vector2 *pCent, br_scalar *pRadius, br_scalar *pEntry_length, int *pLeft_not_right, br_vector2 *p1, br_vector2 *p2, br_vector2 *p3, br_scalar pWidth12, br_scalar pWidth23) {
     br_vector2 rel1;
@@ -37,13 +36,14 @@ int StraightestArcForCorner2D(br_vector2 *pCent, br_scalar *pRadius, br_scalar *
     (void)c;
     (void)numerator;
     (void)x;
+    (void)__block0___scale;
 
     NOT_IMPLEMENTED();
 }
 
-static br_scalar(*original_CornerFudge)(tCar_spec *, ...) = (br_scalar(*)(tCar_spec *, ...))0x004a003e;
+static br_scalar(__cdecl*original_CornerFudge)(tCar_spec *) = (br_scalar(__cdecl*)(tCar_spec *))0x004a003e;
 CARM95_HOOK_FUNCTION(original_CornerFudge, CornerFudge)
-br_scalar CornerFudge(tCar_spec *pCar_spec) {
+br_scalar __cdecl CornerFudge(tCar_spec *pCar_spec) {
     LOG_TRACE("(%p)", pCar_spec);
 
     (void)pCar_spec;
@@ -51,9 +51,9 @@ br_scalar CornerFudge(tCar_spec *pCar_spec) {
     return original_CornerFudge(pCar_spec);
 }
 
-static br_scalar(*original_MaxCurvatureForCarSpeed)(tCar_spec *, br_scalar, ...) = (br_scalar(*)(tCar_spec *, br_scalar, ...))0x004a0054;
+static br_scalar(__cdecl*original_MaxCurvatureForCarSpeed)(tCar_spec *, br_scalar) = (br_scalar(__cdecl*)(tCar_spec *, br_scalar))0x004a0054;
 CARM95_HOOK_FUNCTION(original_MaxCurvatureForCarSpeed, MaxCurvatureForCarSpeed)
-br_scalar MaxCurvatureForCarSpeed(tCar_spec *pCar, br_scalar pSpeed) {
+br_scalar __cdecl MaxCurvatureForCarSpeed(tCar_spec *pCar, br_scalar pSpeed) {
     br_scalar curv;
     LOG_TRACE("(%p, %f)", pCar, pSpeed);
 
@@ -124,9 +124,9 @@ int GetStraight(br_vector2 *pStart, br_vector2 *pFinish, br_scalar *pWidth, int 
     NOT_IMPLEMENTED();
 }
 
-static tFollow_path_result(*original_ProcessFollowPath)(tOpponent_spec *, tProcess_objective_command, int, int, int, ...) = (tFollow_path_result(*)(tOpponent_spec *, tProcess_objective_command, int, int, int, ...))0x0049e3a0;
+static tFollow_path_result(__cdecl*original_ProcessFollowPath)(tOpponent_spec *, tProcess_objective_command, int, int, int) = (tFollow_path_result(__cdecl*)(tOpponent_spec *, tProcess_objective_command, int, int, int))0x0049e3a0;
 CARM95_HOOK_FUNCTION(original_ProcessFollowPath, ProcessFollowPath)
-tFollow_path_result ProcessFollowPath(tOpponent_spec *pOpponent_spec, tProcess_objective_command pCommand, int pPursuit_mode, int pIgnore_end, int pNever_struggle) {
+tFollow_path_result __cdecl ProcessFollowPath(tOpponent_spec *pOpponent_spec, tProcess_objective_command pCommand, int pPursuit_mode, int pIgnore_end, int pNever_struggle) {
     tS16 real_section_no;
     tFollow_path_data *data;
     br_vector3 wank;
@@ -298,9 +298,9 @@ tFollow_path_result ProcessFollowPath(tOpponent_spec *pOpponent_spec, tProcess_o
     return original_ProcessFollowPath(pOpponent_spec, pCommand, pPursuit_mode, pIgnore_end, pNever_struggle);
 }
 
-static tFollow_path_result(*original_FollowCheatyPath)(tOpponent_spec *, ...) = (tFollow_path_result(*)(tOpponent_spec *, ...))0x004a00a4;
+static tFollow_path_result(__cdecl*original_FollowCheatyPath)(tOpponent_spec *) = (tFollow_path_result(__cdecl*)(tOpponent_spec *))0x004a00a4;
 CARM95_HOOK_FUNCTION(original_FollowCheatyPath, FollowCheatyPath)
-tFollow_path_result FollowCheatyPath(tOpponent_spec *pOpponent_spec) {
+tFollow_path_result __cdecl FollowCheatyPath(tOpponent_spec *pOpponent_spec) {
     tFollow_path_data *data;
     br_vector3 a;
     br_vector3 p;
@@ -340,6 +340,10 @@ tFollow_path_result FollowCheatyPath(tOpponent_spec *pOpponent_spec) {
     (void)section_min;
     (void)section_max;
     (void)desired_speed_BRU;
+    (void)__block0___scale;
+    (void)__block1___scale;
+    (void)__block2___scale;
+    (void)__block3___scale;
 
     return original_FollowCheatyPath(pOpponent_spec);
 }

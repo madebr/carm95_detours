@@ -41,57 +41,57 @@ extern br_camera ** hookvar_gSpark_cam ; // addr: 00538290
 extern br_material ** hookvar_gBlack_material ; // addr: 00538288
 extern tShrapnel(* hookvar_gShrapnel )[15]; // addr: 00538B50
 
-void DrawDot(br_scalar z, tU8 *scr_ptr, tU16 *depth_ptr, tU8 *shade_ptr);
+void __cdecl DrawDot(br_scalar z, tU8 *scr_ptr, tU16 *depth_ptr, tU8 *shade_ptr);
 
-void SetWorldToScreen(br_pixelmap *pScreen);
+void __cdecl SetWorldToScreen(br_pixelmap *pScreen);
 
 void DrawLine3DThroughBRender(br_vector3 *pStart, br_vector3 *pEnd);
 
-int DrawLine3D(br_vector3 *start, br_vector3 *end, br_pixelmap *pScreen, br_pixelmap *pDepth_buffer, br_pixelmap *shade_table);
+int __cdecl DrawLine3D(br_vector3 *start, br_vector3 *end, br_pixelmap *pScreen, br_pixelmap *pDepth_buffer, br_pixelmap *shade_table);
 
-int DrawLine2D(br_vector3 *o, br_vector3 *p, br_pixelmap *pScreen, br_pixelmap *pDepth_buffer, br_scalar brightness, br_pixelmap *shade_table);
+int __cdecl DrawLine2D(br_vector3 *o, br_vector3 *p, br_pixelmap *pScreen, br_pixelmap *pDepth_buffer, br_scalar brightness, br_pixelmap *shade_table);
 
 void SetLineModelCols(tU8 pCol);
 
-void ReplaySparks(br_pixelmap *pRender_screen, br_pixelmap *pDepth_buffer, br_actor *pCamera, tU32 pTime);
+void __cdecl ReplaySparks(br_pixelmap *pRender_screen, br_pixelmap *pDepth_buffer, br_actor *pCamera, tU32 pTime);
 
-void RenderSparks(br_pixelmap *pRender_screen, br_pixelmap *pDepth_buffer, br_actor *pCamera, br_matrix34 *pCamera_to_world, tU32 pTime);
+void __cdecl RenderSparks(br_pixelmap *pRender_screen, br_pixelmap *pDepth_buffer, br_actor *pCamera, br_matrix34 *pCamera_to_world, tU32 pTime);
 
-void CreateSingleSpark(tCar_spec *pCar, br_vector3 *pPos, br_vector3 *pVel);
+void __cdecl CreateSingleSpark(tCar_spec *pCar, br_vector3 *pPos, br_vector3 *pVel);
 
-void CreateSparks(br_vector3 *pos, br_vector3 *v, br_vector3 *pForce, br_scalar sparkiness, tCar_spec *pCar);
+void __cdecl CreateSparks(br_vector3 *pos, br_vector3 *v, br_vector3 *pForce, br_scalar sparkiness, tCar_spec *pCar);
 
-void CreateSparkShower(br_vector3 *pos, br_vector3 *v, br_vector3 *pForce, tCar_spec *pCar1, tCar_spec *pCar2);
+void __cdecl CreateSparkShower(br_vector3 *pos, br_vector3 *v, br_vector3 *pForce, tCar_spec *pCar1, tCar_spec *pCar2);
 
-void AdjustSpark(int pSpark_num, br_vector3 *pos, br_vector3 *length);
+void __cdecl AdjustSpark(int pSpark_num, br_vector3 *pos, br_vector3 *length);
 
-void AdjustShrapnel(int pShrapnel_num, br_vector3 *pos, tU16 pAge, br_material *pMaterial);
+void __cdecl AdjustShrapnel(int pShrapnel_num, br_vector3 *pos, tU16 pAge, br_material *pMaterial);
 
-void ResetSparks();
+void __cdecl ResetSparks();
 
-void ResetShrapnel();
+void __cdecl ResetShrapnel();
 
-void CreateShrapnelShower(br_vector3 *pos, br_vector3 *v, br_vector3 *pNormal, br_scalar pForce, tCar_spec *c1, tCar_spec *c2);
+void __cdecl CreateShrapnelShower(br_vector3 *pos, br_vector3 *v, br_vector3 *pNormal, br_scalar pForce, tCar_spec *c1, tCar_spec *c2);
 
 br_scalar random();
 
-void InitShrapnel();
+void __cdecl InitShrapnel();
 
-void LoadInShrapnel();
+void __cdecl LoadInShrapnel();
 
-void KillShrapnel(int i);
+void __cdecl KillShrapnel(int i);
 
-void DisposeShrapnel();
+void __cdecl DisposeShrapnel();
 
-void ReplayShrapnel(tU32 pTime);
+void __cdecl ReplayShrapnel(tU32 pTime);
 
-void MungeShrapnel(tU32 pTime);
+void __cdecl MungeShrapnel(tU32 pTime);
 
-void DrMatrix34Rotate(br_matrix34 *mat, br_angle r, br_vector3 *a);
+void __cdecl DrMatrix34Rotate(br_matrix34 *mat, br_angle r, br_vector3 *a);
 
-void SmokeLine(int l, int x, br_scalar zbuff, int r_squared, tU8 *scr_ptr, tU16 *depth_ptr, tU8 *shade_ptr, br_scalar r_multiplier, br_scalar z_multiplier, br_scalar shade_offset);
+void __cdecl SmokeLine(int l, int x, br_scalar zbuff, int r_squared, tU8 *scr_ptr, tU16 *depth_ptr, tU8 *shade_ptr, br_scalar r_multiplier, br_scalar z_multiplier, br_scalar shade_offset);
 
-void SmokeCircle(br_vector3 *o, br_scalar r, br_scalar extra_z, br_scalar strength, br_scalar pAspect, br_pixelmap *pRender_screen, br_pixelmap *pDepth_buffer, br_pixelmap *pShade_table);
+void __cdecl SmokeCircle(br_vector3 *o, br_scalar r, br_scalar extra_z, br_scalar strength, br_scalar pAspect, br_pixelmap *pRender_screen, br_pixelmap *pDepth_buffer, br_pixelmap *pShade_table);
 
 int CmpSmokeZ(void *p1, void *p2);
 
@@ -99,100 +99,100 @@ void RenderRecordedSmokeCircles();
 
 void RecordSmokeCircle(br_vector3 *pCent, br_scalar pR, br_scalar pStrength, br_pixelmap *pShade, br_scalar pAspect);
 
-void SmokeCircle3D(br_vector3 *o, br_scalar r, br_scalar strength, br_scalar pAspect, br_pixelmap *pRender_screen, br_pixelmap *pDepth_buffer, br_pixelmap *pShade_table, br_actor *pCam);
+void __cdecl SmokeCircle3D(br_vector3 *o, br_scalar r, br_scalar strength, br_scalar pAspect, br_pixelmap *pRender_screen, br_pixelmap *pDepth_buffer, br_pixelmap *pShade_table, br_actor *pCam);
 
-void ReplaySmoke(br_pixelmap *pRender_screen, br_pixelmap *pDepth_buffer, br_actor *pCamera);
+void __cdecl ReplaySmoke(br_pixelmap *pRender_screen, br_pixelmap *pDepth_buffer, br_actor *pCamera);
 
-void GenerateContinuousSmoke(tCar_spec *pCar, int wheel, tU32 pTime);
+void __cdecl GenerateContinuousSmoke(tCar_spec *pCar, int wheel, tU32 pTime);
 
 void DustRotate();
 
-void RenderSmoke(br_pixelmap *pRender_screen, br_pixelmap *pDepth_buffer, br_actor *pCamera, br_matrix34 *pCamera_to_world, tU32 pTime);
+void __cdecl RenderSmoke(br_pixelmap *pRender_screen, br_pixelmap *pDepth_buffer, br_actor *pCamera, br_matrix34 *pCamera_to_world, tU32 pTime);
 
-void CreatePuffOfSmoke(br_vector3 *pos, br_vector3 *v, br_scalar strength, br_scalar pDecay_factor, int pType, tCar_spec *pC);
+void __cdecl CreatePuffOfSmoke(br_vector3 *pos, br_vector3 *v, br_scalar strength, br_scalar pDecay_factor, int pType, tCar_spec *pC);
 
-void ResetSmoke();
+void __cdecl ResetSmoke();
 
-void AdjustSmoke(int pIndex, tU8 pType, br_vector3 *pPos, br_scalar pRadius, br_scalar pStrength);
+void __cdecl AdjustSmoke(int pIndex, tU8 pType, br_vector3 *pPos, br_scalar pRadius, br_scalar pStrength);
 
-void ActorError();
+void __cdecl ActorError();
 
-void AdjustSmokeColumn(int pIndex, tCar_spec *pCar, int pVertex, int pColour);
+void __cdecl AdjustSmokeColumn(int pIndex, tCar_spec *pCar, int pVertex, int pColour);
 
-void CreateSmokeColumn(tCar_spec *pCar, int pColour, int pVertex_index, tU32 pLifetime);
+void __cdecl CreateSmokeColumn(tCar_spec *pCar, int pColour, int pVertex_index, tU32 pLifetime);
 
-void GenerateSmokeShades();
+void __cdecl GenerateSmokeShades();
 
-void GenerateItFoxShadeTable();
+void __cdecl GenerateItFoxShadeTable();
 
-void AdjustFlame(int pIndex, int pFrame_count, br_scalar pScale_x, br_scalar pScale_y, br_scalar pOffset_x, br_scalar pOffset_z);
+void __cdecl AdjustFlame(int pIndex, int pFrame_count, br_scalar pScale_x, br_scalar pScale_y, br_scalar pOffset_x, br_scalar pOffset_z);
 
-void ReplayFlame(tSmoke_column *col, br_actor *actor);
+void __cdecl ReplayFlame(tSmoke_column *col, br_actor *actor);
 
-void FlameAnimate(int c, br_vector3 *pPos, tU32 pTime);
+void __cdecl FlameAnimate(int c, br_vector3 *pPos, tU32 pTime);
 
-void DoSmokeColumn(int i, tU32 pTime, br_vector3 *pRet_car_pos);
+void __cdecl DoSmokeColumn(int i, tU32 pTime, br_vector3 *pRet_car_pos);
 
-void ReplaySmokeColumn(tU32 pTime);
+void __cdecl ReplaySmokeColumn(tU32 pTime);
 
-void MungeSmokeColumn(tU32 pTime);
+void __cdecl MungeSmokeColumn(tU32 pTime);
 
-void DisposeFlame();
+void __cdecl DisposeFlame();
 
-void InitFlame();
+void __cdecl InitFlame();
 
-void InitSplash(FILE *pF);
+void __cdecl InitSplash(FILE *pF);
 
-void DisposeSplash();
+void __cdecl DisposeSplash();
 
-void DrawTheGlow(br_pixelmap *pRender_screen, br_pixelmap *pDepth_buffer, br_actor *pCamera);
+void __cdecl DrawTheGlow(br_pixelmap *pRender_screen, br_pixelmap *pDepth_buffer, br_actor *pCamera);
 
-void PipeInstantUnSmudge(tCar_spec *pCar);
+void __cdecl PipeInstantUnSmudge(tCar_spec *pCar);
 
-void SmudgeCar(tCar_spec *pCar, int fire_point);
+void __cdecl SmudgeCar(tCar_spec *pCar, int fire_point);
 
-void ResetSmokeColumns();
+void __cdecl ResetSmokeColumns();
 
-void SetSmokeOn(int pSmoke_on);
+void __cdecl SetSmokeOn(int pSmoke_on);
 
-void ReallySetSmokeOn(int pSmoke_on);
+void __cdecl ReallySetSmokeOn(int pSmoke_on);
 
-void SetSmoke(int pSmoke_on);
+void __cdecl SetSmoke(int pSmoke_on);
 
-int GetSmokeOn();
+int __cdecl GetSmokeOn();
 
-void StopCarSmoking(tCar_spec *pCar);
+void __cdecl StopCarSmoking(tCar_spec *pCar);
 
-void StopCarSmokingInstantly(tCar_spec *pCar);
+void __cdecl StopCarSmokingInstantly(tCar_spec *pCar);
 
-void ConditionalSmokeColumn(tCar_spec *pCar, int pDamage_index, int pColour);
+void __cdecl ConditionalSmokeColumn(tCar_spec *pCar, int pDamage_index, int pColour);
 
-void SingleSplash(tCar_spec *pCar, br_vector3 *sp, br_vector3 *normal, tU32 pTime);
+void __cdecl SingleSplash(tCar_spec *pCar, br_vector3 *sp, br_vector3 *normal, tU32 pTime);
 
-void CreateSplash(tCar_spec *pCar, tU32 pTime);
+void __cdecl CreateSplash(tCar_spec *pCar, tU32 pTime);
 
-void MungeSplash(tU32 pTime);
+void __cdecl MungeSplash(tU32 pTime);
 
-void RenderSplashes();
+void __cdecl RenderSplashes();
 
-void GetSmokeShadeTables(FILE *f);
+void __cdecl GetSmokeShadeTables(FILE *f);
 
-void FreeSmokeShadeTables();
+void __cdecl FreeSmokeShadeTables();
 
-void LoadInKevStuff(FILE *pF);
+void __cdecl LoadInKevStuff(FILE *pF);
 
-void DisposeKevStuff();
+void __cdecl DisposeKevStuff();
 
-void DisposeKevStuffCar(tCar_spec *pCar);
+void __cdecl DisposeKevStuffCar(tCar_spec *pCar);
 
-void DoTrueColModelThing(br_actor *actor, br_model *pModel, br_material *material, void *render_data, br_uint_8 style, int on_screen);
+void __cdecl DoTrueColModelThing(br_actor *actor, br_model *pModel, br_material *material, void *render_data, br_uint_8 style, int on_screen);
 
 void DoModelThing(br_actor *actor, br_model *pModel, br_material *material, void *render_data, br_uint_8 style, int on_screen);
 
-void SetModelShade(br_actor *pActor, br_pixelmap *pShade);
+void __cdecl SetModelShade(br_actor *pActor, br_pixelmap *pShade);
 
-void MakeCarIt(tCar_spec *pCar);
+void __cdecl MakeCarIt(tCar_spec *pCar);
 
-void StopCarBeingIt(tCar_spec *pCar);
+void __cdecl StopCarBeingIt(tCar_spec *pCar);
 
 #endif

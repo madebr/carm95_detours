@@ -4,14 +4,14 @@
 #include "br_types.h"
 
 
-float BrFloatFloor(float f);
+float __cdecl BrFloatFloor(float f);
 
-float BrFloatCeil(float f);
+float __cdecl BrFloatCeil(float f);
 
-float BrFloatSqrt(float f);
+float __cdecl BrFloatSqrt(float f);
 
-float BrFloatPow(float a, float b);
+float __stdcall BrFloatPow(float a, float b);
 
-float BrFloatAtan2(float x, float y);
+float __cdecl BrFloatAtan2(float x, float y);
 
 #endif

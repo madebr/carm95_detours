@@ -5,18 +5,18 @@
 #include "dr_types.h"
 
 
-void QuitGame();
+void __cdecl QuitGame();
 
 tU32 TrackCount(br_actor *pActor, tU32 *pCount);
 
 void CheckNumberOfTracks();
 
-void ServiceTheGame(int pRacing);
+void __cdecl ServiceTheGame(int pRacing);
 
-void ServiceGame();
+void __cdecl ServiceGame();
 
-void ServiceGameInRace();
+void __cdecl ServiceGameInRace();
 
-void GameMain(int pArgc, char **pArgv);
+void __cdecl GameMain(int pArgc, char **pArgv);
 
 #endif

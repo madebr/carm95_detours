@@ -4,7 +4,6 @@
 
 #include "carm95_hooks.h"
 
-#include <stdio.h>
 int * hookvar_gNasty_kludgey_cockpit_variable  = (void*)0x00514afc;
 tInfo_mode * hookvar_gInfo_mode  = (void*)0x00514b00;
 tU32 * hookvar_gLast_tick_count  = (void*)0x00514b04;
@@ -28,18 +27,18 @@ tU32 * hookvar_gTime_bonus_start  = (void*)0x0053a124;
  // Suffix added to avoid duplicate symbol
 int * hookvar_gLast_credit_headup__mainloop  = (void*)0x0053a108;
 
-static void(*original_ToggleInfo)() = (void(*)())0x0046fd00;
+static void(__cdecl*original_ToggleInfo)() = (void(__cdecl*)())0x0046fd00;
 CARM95_HOOK_FUNCTION(original_ToggleInfo, ToggleInfo)
-void ToggleInfo() {
+void __cdecl ToggleInfo() {
     LOG_TRACE("()");
 
 
     original_ToggleInfo();
 }
 
-static void(*original_CalculateFrameRate)() = (void(*)())0x004706fa;
+static void(__cdecl*original_CalculateFrameRate)() = (void(__cdecl*)())0x004706fa;
 CARM95_HOOK_FUNCTION(original_CalculateFrameRate, CalculateFrameRate)
-void CalculateFrameRate() {
+void __cdecl CalculateFrameRate() {
     static tU32 last_time;
     tU32 new_time;
     static int last_rates[30];
@@ -56,9 +55,9 @@ void CalculateFrameRate() {
     original_CalculateFrameRate();
 }
 
-static void(*original_LoseOldestWastedMassage)() = (void(*)())0x0046fde6;
+static void(__cdecl*original_LoseOldestWastedMassage)() = (void(__cdecl*)())0x0046fde6;
 CARM95_HOOK_FUNCTION(original_LoseOldestWastedMassage, LoseOldestWastedMassage)
-void LoseOldestWastedMassage() {
+void __cdecl LoseOldestWastedMassage() {
     int i;
     LOG_TRACE("()");
 
@@ -67,9 +66,9 @@ void LoseOldestWastedMassage() {
     original_LoseOldestWastedMassage();
 }
 
-static void(*original_QueueWastedMassage)(int, ...) = (void(*)(int, ...))0x0046fd9c;
+static void(__cdecl*original_QueueWastedMassage)(int) = (void(__cdecl*)(int))0x0046fd9c;
 CARM95_HOOK_FUNCTION(original_QueueWastedMassage, QueueWastedMassage)
-void QueueWastedMassage(int pIndex) {
+void __cdecl QueueWastedMassage(int pIndex) {
     LOG_TRACE("(%d)", pIndex);
 
     (void)pIndex;
@@ -77,9 +76,9 @@ void QueueWastedMassage(int pIndex) {
     original_QueueWastedMassage(pIndex);
 }
 
-static void(*original_MungeHeadups)() = (void(*)())0x004707bd;
+static void(__cdecl*original_MungeHeadups)() = (void(__cdecl*)())0x004707bd;
 CARM95_HOOK_FUNCTION(original_MungeHeadups, MungeHeadups)
-void MungeHeadups() {
+void __cdecl MungeHeadups() {
     char the_text[256];
     int flash_rate;
     int new_countdown;
@@ -114,9 +113,9 @@ void MungeHeadups() {
     original_MungeHeadups();
 }
 
-static void(*original_UpdateFramePeriod)(tU32 *, ...) = (void(*)(tU32 *, ...))0x004712bd;
+static void(__cdecl*original_UpdateFramePeriod)(tU32 *) = (void(__cdecl*)(tU32 *))0x004712bd;
 CARM95_HOOK_FUNCTION(original_UpdateFramePeriod, UpdateFramePeriod)
-void UpdateFramePeriod(tU32 *pCamera_period) {
+void __cdecl UpdateFramePeriod(tU32 *pCamera_period) {
     tU32 new_tick_count;
     tU32 new_camera_tick_count;
     int error;
@@ -132,18 +131,18 @@ void UpdateFramePeriod(tU32 *pCamera_period) {
     original_UpdateFramePeriod(pCamera_period);
 }
 
-static tU32(*original_GetLastTickCount)() = (tU32(*)())0x0046fe3a;
+static tU32(__cdecl*original_GetLastTickCount)() = (tU32(__cdecl*)())0x0046fe3a;
 CARM95_HOOK_FUNCTION(original_GetLastTickCount, GetLastTickCount)
-tU32 GetLastTickCount() {
+tU32 __cdecl GetLastTickCount() {
     LOG_TRACE("()");
 
 
     return original_GetLastTickCount();
 }
 
-static void(*original_CheckTimer)() = (void(*)())0x00471543;
+static void(__cdecl*original_CheckTimer)() = (void(__cdecl*)())0x00471543;
 CARM95_HOOK_FUNCTION(original_CheckTimer, CheckTimer)
-void CheckTimer() {
+void __cdecl CheckTimer() {
     tS32 time_in_seconds;
     tS32 time_left;
     static tU32 last_time_in_seconds;
@@ -158,18 +157,18 @@ void CheckTimer() {
     original_CheckTimer();
 }
 
-static int(*original_MungeRaceFinished)() = (int(*)())0x00471607;
+static int(__cdecl*original_MungeRaceFinished)() = (int(__cdecl*)())0x00471607;
 CARM95_HOOK_FUNCTION(original_MungeRaceFinished, MungeRaceFinished)
-int MungeRaceFinished() {
+int __cdecl MungeRaceFinished() {
     LOG_TRACE("()");
 
 
     return original_MungeRaceFinished();
 }
 
-static tRace_result(*original_MainGameLoop)() = (tRace_result(*)())0x0046fe77;
+static tRace_result(__cdecl*original_MainGameLoop)() = (tRace_result(__cdecl*)())0x0046fe77;
 CARM95_HOOK_FUNCTION(original_MainGameLoop, MainGameLoop)
-tRace_result MainGameLoop() {
+tRace_result __cdecl MainGameLoop() {
     tU32 camera_period;
     tU32 start_menu_time;
     tU32 frame_start_time;
@@ -190,9 +189,9 @@ tRace_result MainGameLoop() {
     return original_MainGameLoop();
 }
 
-static tRace_result(*original_DoRace)() = (tRace_result(*)())0x0046fe4f;
+static tRace_result(__cdecl*original_DoRace)() = (tRace_result(__cdecl*)())0x0046fe4f;
 CARM95_HOOK_FUNCTION(original_DoRace, DoRace)
-tRace_result DoRace() {
+tRace_result __cdecl DoRace() {
     tRace_result result;
     LOG_TRACE("()");
 

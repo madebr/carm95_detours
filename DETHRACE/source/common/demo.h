@@ -6,6 +6,6 @@
 
 extern int * hookvar_gLast_demo ; // addr: 00512080
 
-void DoDemo();
+void __cdecl DoDemo();
 
 #endif

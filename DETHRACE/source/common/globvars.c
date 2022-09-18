@@ -4,7 +4,6 @@
 
 #include "carm95_hooks.h"
 
-#include <stdio.h>
 int * hookvar_gTyping  = (void*)0x005212f0;
 int * hookvar_gArrow_mode  = (void*)0x005212f4;
 int * hookvar_gInfo_on  = (void*)0x005212f8;

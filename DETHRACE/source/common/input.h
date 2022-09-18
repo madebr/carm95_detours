@@ -25,90 +25,90 @@ extern int * hookvar_gLast_key_down ; // addr: 0053A244
 extern int(* hookvar_gKey_mapping )[67]; // addr: 005507E0
 extern char(* hookvar_gCurrent_typing )[110]; // addr: 0053A450
 
-void SetJoystickArrays(int *pKeys, int pMark);
+void __cdecl SetJoystickArrays(int *pKeys, int pMark);
 
-void PollKeys();
+void __cdecl PollKeys();
 
-void CyclePollKeys();
+void __cdecl CyclePollKeys();
 
-void ResetPollKeys();
+void __cdecl ResetPollKeys();
 
-void CheckKeysForMouldiness();
+void __cdecl CheckKeysForMouldiness();
 
-int EitherMouseButtonDown();
+int __cdecl EitherMouseButtonDown();
 
-tKey_down_result PDKeyDown2(int pKey_index);
+tKey_down_result __cdecl PDKeyDown2(int pKey_index);
 
-int PDKeyDown(int pKey_index);
+int __cdecl PDKeyDown(int pKey_index);
 
-int PDKeyDown3(int pKey_index);
+int __cdecl PDKeyDown3(int pKey_index);
 
-int PDAnyKeyDown();
+int __cdecl PDAnyKeyDown();
 
-int AnyKeyDown();
+int __cdecl AnyKeyDown();
 
-tU32* KevKeyService();
+tU32* __cdecl KevKeyService();
 
-int OldKeyIsDown(int pKey_index);
+int __cdecl OldKeyIsDown(int pKey_index);
 
-int KeyIsDown(int pKey_index);
+int __cdecl KeyIsDown(int pKey_index);
 
-void WaitForNoKeys();
+void __cdecl WaitForNoKeys();
 
-void WaitForAKey();
+void __cdecl WaitForAKey();
 
-int CmdKeyDown(int pFKey_ID, int pCmd_key_ID);
+int __cdecl CmdKeyDown(int pFKey_ID, int pCmd_key_ID);
 
-void GetMousePosition(int *pX_coord, int *pY_coord);
+void __cdecl GetMousePosition(int *pX_coord, int *pY_coord);
 
-void InitRollingLetters();
+void __cdecl InitRollingLetters();
 
-void EndRollingLetters();
+void __cdecl EndRollingLetters();
 
-int AddRollingLetter(char pChar, int pX, int pY, tRolling_type rolling_type);
+int __cdecl AddRollingLetter(char pChar, int pX, int pY, tRolling_type rolling_type);
 
-void AddRollingString(char *pStr, int pX, int pY, tRolling_type rolling_type);
+void __cdecl AddRollingString(char *pStr, int pX, int pY, tRolling_type rolling_type);
 
-void AddRollingNumber(tU32 pNumber, int pWidth, int pX, int pY);
+void __cdecl AddRollingNumber(tU32 pNumber, int pWidth, int pX, int pY);
 
-void RollLettersIn();
+void __cdecl RollLettersIn();
 
-int ChangeCharTo(int pSlot_index, int pChar_index, char pNew_char);
+int __cdecl ChangeCharTo(int pSlot_index, int pChar_index, char pNew_char);
 
-void ChangeTextTo(int pXcoord, int pYcoord, char *pNew_str, char *pOld_str);
+void __cdecl ChangeTextTo(int pXcoord, int pYcoord, char *pNew_str, char *pOld_str);
 
-void SetRollingCursor(int pSlot_index);
+void __cdecl SetRollingCursor(int pSlot_index);
 
-void BlankSlot(int pIndex, int pName_length, int pVisible_length);
+void __cdecl BlankSlot(int pIndex, int pName_length, int pVisible_length);
 
-void DoRLBackspace(int pSlot_index);
+void __cdecl DoRLBackspace(int pSlot_index);
 
-void DoRLDelete(int pSlot_index);
+void __cdecl DoRLDelete(int pSlot_index);
 
-void DoRLInsert(int pSlot_index);
+void __cdecl DoRLInsert(int pSlot_index);
 
-void DoRLCursorLeft(int pSlot_index);
+void __cdecl DoRLCursorLeft(int pSlot_index);
 
-void DoRLCursorRight(int pSlot_index);
+void __cdecl DoRLCursorRight(int pSlot_index);
 
-void DoRLTypeLetter(int pChar, int pSlot_index);
+void __cdecl DoRLTypeLetter(int pChar, int pSlot_index);
 
-void StopTyping(int pSlot_index);
+void __cdecl StopTyping(int pSlot_index);
 
-void RevertTyping(int pSlot_index, char *pRevert_str);
+void __cdecl RevertTyping(int pSlot_index, char *pRevert_str);
 
-void StartTyping(int pSlot_index, char *pText, int pVisible_length);
+void __cdecl StartTyping(int pSlot_index, char *pText, int pVisible_length);
 
-void TypeKey(int pSlot_index, char pKey);
+void __cdecl TypeKey(int pSlot_index, char pKey);
 
-void SetSlotXY(int pSlot_index, int pX_coord, int pY_coord);
+void __cdecl SetSlotXY(int pSlot_index, int pX_coord, int pY_coord);
 
-void GetTypedName(char *pDestn, int pMax_length);
+void __cdecl GetTypedName(char *pDestn, int pMax_length);
 
-void KillCursor(int pSlot_index);
+void __cdecl KillCursor(int pSlot_index);
 
-void EdgeTriggerModeOn();
+void __cdecl EdgeTriggerModeOn();
 
-void EdgeTriggerModeOff();
+void __cdecl EdgeTriggerModeOff();
 
 #endif

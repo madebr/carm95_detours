@@ -51,125 +51,125 @@ extern br_actor ** hookvar_gNearest_actor ; // addr: 00534C50
 // extern br_actor ** hookvar_gStandard_lamp ;
 extern br_scalar * hookvar_gSight_distance_squared ; // addr: 00534ABC
 
-float MapSawToTriangle(float pNumber);
+float __cdecl MapSawToTriangle(float pNumber);
 
-void SetSightDistance(br_scalar pYon);
+void __cdecl SetSightDistance(br_scalar pYon);
 
-br_actor* FindActorInArray(char *pThe_name);
+br_actor* __cdecl FindActorInArray(char *pThe_name);
 
-br_actor* FindLightInArray(char *pThe_name);
+br_actor* __cdecl FindLightInArray(char *pThe_name);
 
-br_actor* CloneActor(br_actor *pSource_actor);
+br_actor* __cdecl CloneActor(br_actor *pSource_actor);
 
-void InitialiseStorageSpace(tBrender_storage *pStorage_space, int pMax_pixelmaps, int pMax_shade_tables, int pMax_materials, int pMax_models);
+void __cdecl InitialiseStorageSpace(tBrender_storage *pStorage_space, int pMax_pixelmaps, int pMax_shade_tables, int pMax_materials, int pMax_models);
 
-void DisposeStorageSpace(tBrender_storage *pStorage_space);
+void __cdecl DisposeStorageSpace(tBrender_storage *pStorage_space);
 
-void ClearOutStorageSpace(tBrender_storage *pStorage_space);
+void __cdecl ClearOutStorageSpace(tBrender_storage *pStorage_space);
 
-tAdd_to_storage_result AddPixelmapToStorage(tBrender_storage *pStorage_space, br_pixelmap **pThe_pm);
+tAdd_to_storage_result __cdecl AddPixelmapToStorage(tBrender_storage *pStorage_space, br_pixelmap **pThe_pm);
 
-tAdd_to_storage_result AddShadeTableToStorage(tBrender_storage *pStorage_space, br_pixelmap *pThe_st);
+tAdd_to_storage_result __cdecl AddShadeTableToStorage(tBrender_storage *pStorage_space, br_pixelmap *pThe_st);
 
-tAdd_to_storage_result AddMaterialToStorage(tBrender_storage *pStorage_space, br_material *pThe_mat);
+tAdd_to_storage_result __cdecl AddMaterialToStorage(tBrender_storage *pStorage_space, br_material *pThe_mat);
 
-tAdd_to_storage_result AddModelToStorage(tBrender_storage *pStorage_space, br_model *pThe_mod);
+tAdd_to_storage_result __cdecl AddModelToStorage(tBrender_storage *pStorage_space, br_model *pThe_mod);
 
-int LoadNPixelmaps(tBrender_storage *pStorage_space, FILE *pF, int pCount);
+int __cdecl LoadNPixelmaps(tBrender_storage *pStorage_space, FILE *pF, int pCount);
 
-br_pixelmap* LoadSinglePixelmap(tBrender_storage *pStorage_space, char *pName);
+br_pixelmap* __cdecl LoadSinglePixelmap(tBrender_storage *pStorage_space, char *pName);
 
-br_material* LoadSingleMaterial(tBrender_storage *pStorage_space, char *pName);
+br_material* __cdecl LoadSingleMaterial(tBrender_storage *pStorage_space, char *pName);
 
-int LoadNShadeTables(tBrender_storage *pStorage_space, FILE *pF, int pCount);
+int __cdecl LoadNShadeTables(tBrender_storage *pStorage_space, FILE *pF, int pCount);
 
-br_pixelmap* LoadSingleShadeTable(tBrender_storage *pStorage_space, char *pName);
+br_pixelmap* __cdecl LoadSingleShadeTable(tBrender_storage *pStorage_space, char *pName);
 
-int LoadNMaterials(tBrender_storage *pStorage_space, FILE *pF, int pCount);
+int __cdecl LoadNMaterials(tBrender_storage *pStorage_space, FILE *pF, int pCount);
 
-int LoadNModels(tBrender_storage *pStorage_space, FILE *pF, int pCount);
+int __cdecl LoadNModels(tBrender_storage *pStorage_space, FILE *pF, int pCount);
 
-void DodgyModelUpdate(br_model *pM);
+void __cdecl DodgyModelUpdate(br_model *pM);
 
-br_material* SuffixedMaterial(br_material *pOld, char *pSuffix);
+br_material* __cdecl SuffixedMaterial(br_material *pOld, char *pSuffix);
 
-int FaceIsRoad(br_model *pModel, tU16 pFace);
+int __cdecl FaceIsRoad(br_model *pModel, tU16 pFace);
 
-br_material* RoadPerspToUntex(br_model *pModel, tU16 pFace);
+br_material* __cdecl RoadPerspToUntex(br_model *pModel, tU16 pFace);
 
-br_material* WallPerspToLinear(br_model *pModel, tU16 pFace);
+br_material* __cdecl WallPerspToLinear(br_model *pModel, tU16 pFace);
 
-br_material* WallPerspToUntex(br_model *pModel, tU16 pFace);
+br_material* __cdecl WallPerspToUntex(br_model *pModel, tU16 pFace);
 
 void ProcessModelFaceMaterials2(br_model *pModel, tPMFM2CB pCallback);
 
-void ProcessModelFaceMaterials(br_model *pModel, tPMFMCB pCallback);
+void __cdecl ProcessModelFaceMaterials(br_model *pModel, tPMFMCB pCallback);
 
-int LoadNTrackModels(tBrender_storage *pStorage_space, FILE *pF, int pCount);
+int __cdecl LoadNTrackModels(tBrender_storage *pStorage_space, FILE *pF, int pCount);
 
-void LoadSomePixelmaps(tBrender_storage *pStorage_space, FILE *pF);
+void __cdecl LoadSomePixelmaps(tBrender_storage *pStorage_space, FILE *pF);
 
-void LoadSomeShadeTables(tBrender_storage *pStorage_space, FILE *pF);
+void __cdecl LoadSomeShadeTables(tBrender_storage *pStorage_space, FILE *pF);
 
-void LoadSomeMaterials(tBrender_storage *pStorage_space, FILE *pF);
+void __cdecl LoadSomeMaterials(tBrender_storage *pStorage_space, FILE *pF);
 
-void LoadSomeModels(tBrender_storage *pStorage_space, FILE *pF);
+void __cdecl LoadSomeModels(tBrender_storage *pStorage_space, FILE *pF);
 
-void LoadSomeTrackModels(tBrender_storage *pStorage_space, FILE *pF);
+void __cdecl LoadSomeTrackModels(tBrender_storage *pStorage_space, FILE *pF);
 
-void AddFunkGrooveBinding(int pSlot_number, float *pPeriod_address);
+void __cdecl AddFunkGrooveBinding(int pSlot_number, float *pPeriod_address);
 
-void ControlBoundFunkGroove(int pSlot_number, float pValue);
+void __cdecl ControlBoundFunkGroove(int pSlot_number, float pValue);
 
-float ControlBoundFunkGroovePlus(int pSlot_number, float pValue);
+float __cdecl ControlBoundFunkGroovePlus(int pSlot_number, float pValue);
 
-void ShiftBoundGrooveFunks(char *pStart, char *pEnd, int pDelta);
+void __cdecl ShiftBoundGrooveFunks(char *pStart, char *pEnd, int pDelta);
 
-tFunkotronic_spec* AddNewFunkotronic();
+tFunkotronic_spec* __cdecl AddNewFunkotronic();
 
-void DisposeFunkotronics(int pOwner);
+void __cdecl DisposeFunkotronics(int pOwner);
 
-void AddProximityVertex(br_vector3 *pV, tFunkotronic_spec *pThe_funk);
+void __cdecl AddProximityVertex(br_vector3 *pV, tFunkotronic_spec *pThe_funk);
 
-void AddProximityVertexXYZ(br_scalar pX, br_scalar pY, br_scalar pZ, tFunkotronic_spec *pThe_funk);
+void __cdecl AddProximityVertexXYZ(br_scalar pX, br_scalar pY, br_scalar pZ, tFunkotronic_spec *pThe_funk);
 
-br_uint_32 CalcProximities(br_actor *pActor, br_material *pMat, tFunkotronic_spec *pThe_funk);
+br_uint_32 __cdecl CalcProximities(br_actor *pActor, br_material *pMat, tFunkotronic_spec *pThe_funk);
 
-br_uint_32 AddProximities(br_actor *pActor, br_material *pMat, tFunkotronic_spec *pThe_funk);
+br_uint_32 __cdecl AddProximities(br_actor *pActor, br_material *pMat, tFunkotronic_spec *pThe_funk);
 
 void Adjust2FloatsForExceptions(float *pVictim1, float *pVictim2, br_pixelmap *pCulprit);
 
-void AddFunkotronics(FILE *pF, int pOwner, int pRef_offset);
+void __cdecl AddFunkotronics(FILE *pF, int pOwner, int pRef_offset);
 
-void DisposeGroovidelics(int pOwner);
+void __cdecl DisposeGroovidelics(int pOwner);
 
-tGroovidelic_spec* AddNewGroovidelic();
+tGroovidelic_spec* __cdecl AddNewGroovidelic();
 
-void AddGroovidelics(FILE *pF, int pOwner, br_actor *pParent_actor, int pRef_offset, int pAllowed_to_be_absent);
+void __cdecl AddGroovidelics(FILE *pF, int pOwner, br_actor *pParent_actor, int pRef_offset, int pAllowed_to_be_absent);
 
-void KillGroovadelic(int pOwner);
+void __cdecl KillGroovadelic(int pOwner);
 
-void KillFunkotronic(int pOwner);
+void __cdecl KillFunkotronic(int pOwner);
 
-br_uint_32 DeleteBastards(br_actor *pActor, br_matrix34 *pMatrix, void *pArg);
+br_uint_32 __cdecl DeleteBastards(br_actor *pActor, br_matrix34 *pMatrix, void *pArg);
 
-void DeleteAnyZeroBastards();
+void __cdecl DeleteAnyZeroBastards();
 
-br_uint_32 ApplyTransToModels(br_actor *pActor, br_matrix34 *pMatrix, void *pArg);
+br_uint_32 __cdecl ApplyTransToModels(br_actor *pActor, br_matrix34 *pMatrix, void *pArg);
 
-int FindSpecVolIndex(br_actor *pActor);
+int __cdecl FindSpecVolIndex(br_actor *pActor);
 
-void MungeMaterial(br_matrix34 *pMat, br_material *pMat_1, br_material *pMat_2, int pAxis_0, int pAxis_1);
+void __cdecl MungeMaterial(br_matrix34 *pMat, br_material *pMat_1, br_material *pMat_2, int pAxis_0, int pAxis_1);
 
-void SetSpecVolMatSize(br_actor *pActor);
+void __cdecl SetSpecVolMatSize(br_actor *pActor);
 
-void FindInverseAndWorldBox(tSpecial_volume *pSpec);
+void __cdecl FindInverseAndWorldBox(tSpecial_volume *pSpec);
 
-void UpdateSpecVol();
+void __cdecl UpdateSpecVol();
 
-void SaveSpecialVolumes();
+void __cdecl SaveSpecialVolumes();
 
-void SaveAdditionalStuff();
+void __cdecl SaveAdditionalStuff();
 
 br_uint_32 ProcessMaterials(br_actor *pActor, tPMFM2CB pCallback);
 
@@ -183,67 +183,67 @@ void ChangeSubdivToPerspCB(br_material *pMaterial);
 
 void ChangeSubdivToPersp();
 
-br_uint_32 ProcessFaceMaterials(br_actor *pActor, tPMFMCB pCallback);
+br_uint_32 __cdecl ProcessFaceMaterials(br_actor *pActor, tPMFMCB pCallback);
 
-int DRPixelmapHasZeros(br_pixelmap *pm);
+int __cdecl DRPixelmapHasZeros(br_pixelmap *pm);
 
-int StorageContainsPixelmap(tBrender_storage *pStorage, br_pixelmap *pMap);
+int __cdecl StorageContainsPixelmap(tBrender_storage *pStorage, br_pixelmap *pMap);
 
-void HideStoredOpaqueTextures(tBrender_storage *pStorage);
+void __cdecl HideStoredOpaqueTextures(tBrender_storage *pStorage);
 
-void RevealStoredTransparentTextures(tBrender_storage *pStorage);
+void __cdecl RevealStoredTransparentTextures(tBrender_storage *pStorage);
 
-void HideStoredTextures(tBrender_storage *pStorage);
+void __cdecl HideStoredTextures(tBrender_storage *pStorage);
 
-void RevealStoredTextures(tBrender_storage *pStorage);
+void __cdecl RevealStoredTextures(tBrender_storage *pStorage);
 
-void SetCarStorageTexturingLevel(tBrender_storage *pStorage, tCar_texturing_level pNew, tCar_texturing_level pOld);
+void __cdecl SetCarStorageTexturingLevel(tBrender_storage *pStorage, tCar_texturing_level pNew, tCar_texturing_level pOld);
 
-tCar_texturing_level GetCarTexturingLevel();
+tCar_texturing_level __cdecl GetCarTexturingLevel();
 
-void SetCarTexturingLevel(tCar_texturing_level pLevel);
+void __cdecl SetCarTexturingLevel(tCar_texturing_level pLevel);
 
-int HasThisSuffix(char *pIdent, char *pSuffix);
+int __cdecl HasThisSuffix(char *pIdent, char *pSuffix);
 
-br_material* UnsuffixedMaterial(char *pOld_ident, char *pSuffix);
+br_material* __cdecl UnsuffixedMaterial(char *pOld_ident, char *pSuffix);
 
-br_material* RoadUntexToPersp(br_model *pModel, tU16 pFace);
+br_material* __cdecl RoadUntexToPersp(br_model *pModel, tU16 pFace);
 
-br_material* WallLinearToUntex(br_model *pModel, tU16 pFace);
+br_material* __cdecl WallLinearToUntex(br_model *pModel, tU16 pFace);
 
-br_material* WallUntexToLinear(br_model *pModel, tU16 pFace);
+br_material* __cdecl WallUntexToLinear(br_model *pModel, tU16 pFace);
 
-br_material* WallUntexToPersp(br_model *pModel, tU16 pFace);
+br_material* __cdecl WallUntexToPersp(br_model *pModel, tU16 pFace);
 
-br_material* WallLinearToPersp(br_model *pModel, tU16 pFace);
+br_material* __cdecl WallLinearToPersp(br_model *pModel, tU16 pFace);
 
-tRoad_texturing_level GetRoadTexturingLevel();
+tRoad_texturing_level __cdecl GetRoadTexturingLevel();
 
-void SetRoadTexturingLevel(tRoad_texturing_level pLevel);
+void __cdecl SetRoadTexturingLevel(tRoad_texturing_level pLevel);
 
-void ReallySetRoadTexturingLevel(tRoad_texturing_level pLevel);
+void __cdecl ReallySetRoadTexturingLevel(tRoad_texturing_level pLevel);
 
-tWall_texturing_level GetWallTexturingLevel();
+tWall_texturing_level __cdecl GetWallTexturingLevel();
 
-void SetWallTexturingLevel(tWall_texturing_level pLevel);
+void __cdecl SetWallTexturingLevel(tWall_texturing_level pLevel);
 
-void ReallySetWallTexturingLevel(tWall_texturing_level pLevel);
+void __cdecl ReallySetWallTexturingLevel(tWall_texturing_level pLevel);
 
-br_material* DisposeSuffixedMaterials(br_model *pModel, tU16 pFace);
+br_material* __cdecl DisposeSuffixedMaterials(br_model *pModel, tU16 pFace);
 
-void DisposeTexturingMaterials();
+void __cdecl DisposeTexturingMaterials();
 
-br_uint_32 SetAccessoryRenderingCB(br_actor *pActor, void *pFlag);
+br_uint_32 __cdecl SetAccessoryRenderingCB(br_actor *pActor, void *pFlag);
 
-void SetAccessoryRendering(int pOn);
+void __cdecl SetAccessoryRendering(int pOn);
 
-int GetAccessoryRendering();
+int __cdecl GetAccessoryRendering();
 
-void SetCarSimplificationLevel(int pLevel);
+void __cdecl SetCarSimplificationLevel(int pLevel);
 
-int GetCarSimplificationLevel();
+int __cdecl GetCarSimplificationLevel();
 
-void ParseSpecialVolume(FILE *pF, tSpecial_volume *pSpec, char *pScreen_name_str);
+void __cdecl ParseSpecialVolume(FILE *pF, tSpecial_volume *pSpec, char *pScreen_name_str);
 
 void AddExceptionToList(tException_list *pDst, tException_list pNew);
 
@@ -253,306 +253,306 @@ void LoadExceptionsFileForTrack(char *pTrack_file_name);
 
 void FreeExceptions();
 
-void LoadTrack(char *pFile_name, tTrack_spec *pTrack_spec, tRace_info *pRace_info);
+void __cdecl LoadTrack(char *pFile_name, tTrack_spec *pTrack_spec, tRace_info *pRace_info);
 
-br_uint_32 RemoveBounds(br_actor *pActor, void *pArg);
+br_uint_32 __cdecl RemoveBounds(br_actor *pActor, void *pArg);
 
-void RemoveBoundsStructures(br_actor *pActor);
+void __cdecl RemoveBoundsStructures(br_actor *pActor);
 
-void FreeTrack(tTrack_spec *pTrack_spec);
+void __cdecl FreeTrack(tTrack_spec *pTrack_spec);
 
-void ProcessTrack(br_actor *pWorld, tTrack_spec *pTrack_spec, br_actor *pCamera, br_matrix34 *pCamera_to_world_transform, int pRender_blends);
+void __cdecl ProcessTrack(br_actor *pWorld, tTrack_spec *pTrack_spec, br_actor *pCamera, br_matrix34 *pCamera_to_world_transform, int pRender_blends);
 
-br_scalar NormaliseDegreeAngle(br_scalar pAngle);
+br_scalar __cdecl NormaliseDegreeAngle(br_scalar pAngle);
 
-void FunkThoseTronics();
+void __cdecl FunkThoseTronics();
 
-void LollipopizeActor(br_actor *pSubject_actor, br_matrix34 *ref_to_world, tLollipop_mode pWhich_axis);
+void __cdecl LollipopizeActor(br_actor *pSubject_actor, br_matrix34 *ref_to_world, tLollipop_mode pWhich_axis);
 
-void CalcActorGlobalPos(br_vector3 *pResult, br_actor *pActor);
+void __cdecl CalcActorGlobalPos(br_vector3 *pResult, br_actor *pActor);
 
-int PointOutOfSight(br_vector3 *pPoint, br_scalar pMax_distance);
+int __cdecl PointOutOfSight(br_vector3 *pPoint, br_scalar pMax_distance);
 
-void PathGrooveBastard(tGroovidelic_spec *pGroove, tU32 pTime, br_matrix34 *pMat, int pInterrupt_it);
+void __cdecl PathGrooveBastard(tGroovidelic_spec *pGroove, tU32 pTime, br_matrix34 *pMat, int pInterrupt_it);
 
 void ObjectGrooveBastard(tGroovidelic_spec *pGroove, tU32 pTime, br_matrix34 *pMat, int pInterrupt_it);
 
-void GrooveThisDelic(tGroovidelic_spec *pGroove, tU32 pTime, int pInterrupt_it);
+void __cdecl GrooveThisDelic(tGroovidelic_spec *pGroove, tU32 pTime, int pInterrupt_it);
 
-void GrooveThoseDelics();
+void __cdecl GrooveThoseDelics();
 
-void StopGroovidelic(br_actor *pActor);
+void __cdecl StopGroovidelic(br_actor *pActor);
 
-void SetGrooveInterrupt(int pGroove_index, br_matrix34 *pMatrix, int pPath_interrupt, int pObject_interrupt, float pPath_resumption, float pObject_resumption);
+void __cdecl SetGrooveInterrupt(int pGroove_index, br_matrix34 *pMatrix, int pPath_interrupt, int pObject_interrupt, float pPath_resumption, float pObject_resumption);
 
-void ResetGrooveFlags();
+void __cdecl ResetGrooveFlags();
 
-tSpecial_volume* GetDefaultSpecialVolumeForWater();
+tSpecial_volume* __cdecl GetDefaultSpecialVolumeForWater();
 
-tSpecial_volume* FindSpecialVolume(br_vector3 *pP, tSpecial_volume *pLast_vol);
+tSpecial_volume* __cdecl FindSpecialVolume(br_vector3 *pP, tSpecial_volume *pLast_vol);
 
-void SaveAdditionalActors();
+void __cdecl SaveAdditionalActors();
 
-br_scalar DistanceFromFace(br_vector3 *pPos, tFace_ref *pFace);
+br_scalar __cdecl DistanceFromFace(br_vector3 *pPos, tFace_ref *pFace);
 
-br_uint_32 CalcHighestID(br_actor *pActor, int *pHighest);
+br_uint_32 __cdecl CalcHighestID(br_actor *pActor, int *pHighest);
 
-br_uint_32 SetID(br_actor *pActor, void *pArg);
+br_uint_32 __cdecl SetID(br_actor *pActor, void *pArg);
 
-void UniquificateActorsName(br_actor *pUniverse_actor, br_actor *pActor);
+void __cdecl UniquificateActorsName(br_actor *pUniverse_actor, br_actor *pActor);
 
-void AccessoryHeadup(br_actor *pActor, char *pPrefix);
+void __cdecl AccessoryHeadup(br_actor *pActor, char *pPrefix);
 
-br_uint_32 CalcHighestNonAmID(br_actor *pActor, int *pHighest);
+br_uint_32 __cdecl CalcHighestNonAmID(br_actor *pActor, int *pHighest);
 
-br_uint_32 SetIDAndDupModel(br_actor *pActor, void *pArg);
+br_uint_32 __cdecl SetIDAndDupModel(br_actor *pActor, void *pArg);
 
-void DuplicateIfNotAmpersand(br_actor *pActor);
+void __cdecl DuplicateIfNotAmpersand(br_actor *pActor);
 
-void DropActor(int pIndex);
+void __cdecl DropActor(int pIndex);
 
-void DropActor0();
+void __cdecl DropActor0();
 
-void DropActor1();
+void __cdecl DropActor1();
 
-void DropActor2();
+void __cdecl DropActor2();
 
-void DropActor3();
+void __cdecl DropActor3();
 
-void DropActor4();
+void __cdecl DropActor4();
 
-void DropActor5();
+void __cdecl DropActor5();
 
-void DropActor6();
+void __cdecl DropActor6();
 
-void DropActor7();
+void __cdecl DropActor7();
 
-void DropActor8();
+void __cdecl DropActor8();
 
-void DropActor9();
+void __cdecl DropActor9();
 
-br_uint_32 IdentifyAccCB(br_actor *pActor, void *pArg);
+br_uint_32 __cdecl IdentifyAccCB(br_actor *pActor, void *pArg);
 
-void IdentifyAcc();
+void __cdecl IdentifyAcc();
 
-br_uint_32 DelGrooveRef(br_actor *pActor, void *pArg);
+br_uint_32 __cdecl DelGrooveRef(br_actor *pActor, void *pArg);
 
-br_uint_32 DelReferencedModels(br_actor *pActor, void *pArg);
+br_uint_32 __cdecl DelReferencedModels(br_actor *pActor, void *pArg);
 
-void DeleteAcc();
+void __cdecl DeleteAcc();
 
-br_uint_32 OffsetModel(br_actor *pActor, void *pArg);
+br_uint_32 __cdecl OffsetModel(br_actor *pActor, void *pArg);
 
-void OffsetActor(br_actor *pActor, br_vector3 *pOffset);
+void __cdecl OffsetActor(br_actor *pActor, br_vector3 *pOffset);
 
-void CentreActor(br_actor *pActor, br_vector3 *pOffset);
+void __cdecl CentreActor(br_actor *pActor, br_vector3 *pOffset);
 
-void SnapAccToVertical();
+void __cdecl SnapAccToVertical();
 
-void RotateAccessory(br_angle pAngle);
+void __cdecl RotateAccessory(br_angle pAngle);
 
-void ScaleAccessory(float pScaling_factor);
+void __cdecl ScaleAccessory(float pScaling_factor);
 
-void MoveAccessory(br_scalar pX_shift, br_scalar pY_shift, br_scalar pZ_shift);
+void __cdecl MoveAccessory(br_scalar pX_shift, br_scalar pY_shift, br_scalar pZ_shift);
 
-void RotateAccL();
+void __cdecl RotateAccL();
 
-void RotateAccL2();
+void __cdecl RotateAccL2();
 
-void RotateAccL3();
+void __cdecl RotateAccL3();
 
-void RotateAccL4();
+void __cdecl RotateAccL4();
 
-void RotateAccR();
+void __cdecl RotateAccR();
 
-void RotateAccR2();
+void __cdecl RotateAccR2();
 
-void RotateAccR3();
+void __cdecl RotateAccR3();
 
-void RotateAccR4();
+void __cdecl RotateAccR4();
 
-void CycleAccRotate();
+void __cdecl CycleAccRotate();
 
-void CycleAccScale();
+void __cdecl CycleAccScale();
 
-void ScaleAccUp2();
+void __cdecl ScaleAccUp2();
 
-void ScaleAccUp3();
+void __cdecl ScaleAccUp3();
 
-void ScaleAccUp4();
+void __cdecl ScaleAccUp4();
 
-void ScaleAccDown2();
+void __cdecl ScaleAccDown2();
 
-void ScaleAccDown3();
+void __cdecl ScaleAccDown3();
 
-void ScaleAccDown4();
+void __cdecl ScaleAccDown4();
 
-void MoveXAccL();
+void __cdecl MoveXAccL();
 
-void MoveXAccL2();
+void __cdecl MoveXAccL2();
 
-void MoveXAccL3();
+void __cdecl MoveXAccL3();
 
-void MoveXAccL4();
+void __cdecl MoveXAccL4();
 
-void MoveXAccR();
+void __cdecl MoveXAccR();
 
-void MoveXAccR2();
+void __cdecl MoveXAccR2();
 
-void MoveXAccR3();
+void __cdecl MoveXAccR3();
 
-void MoveXAccR4();
+void __cdecl MoveXAccR4();
 
-void MoveYAccL();
+void __cdecl MoveYAccL();
 
-void MoveYAccL2();
+void __cdecl MoveYAccL2();
 
-void MoveYAccL3();
+void __cdecl MoveYAccL3();
 
-void MoveYAccL4();
+void __cdecl MoveYAccL4();
 
-void MoveYAccR();
+void __cdecl MoveYAccR();
 
-void MoveYAccR2();
+void __cdecl MoveYAccR2();
 
-void MoveYAccR3();
+void __cdecl MoveYAccR3();
 
-void MoveYAccR4();
+void __cdecl MoveYAccR4();
 
-void MoveZAccL();
+void __cdecl MoveZAccL();
 
-void MoveZAccL2();
+void __cdecl MoveZAccL2();
 
-void MoveZAccL3();
+void __cdecl MoveZAccL3();
 
-void MoveZAccL4();
+void __cdecl MoveZAccL4();
 
-void MoveZAccR();
+void __cdecl MoveZAccR();
 
-void MoveZAccR2();
+void __cdecl MoveZAccR2();
 
-void MoveZAccR3();
+void __cdecl MoveZAccR3();
 
-void MoveZAccR4();
+void __cdecl MoveZAccR4();
 
-br_material* GetInternalMat();
+br_material* __cdecl GetInternalMat();
 
-br_material* GetExternalMat();
+br_material* __cdecl GetExternalMat();
 
-void BuildSpecVolModel(tSpecial_volume *pSpec, int pIndex, br_material *pInt_mat, br_material *pExt_mat);
+void __cdecl BuildSpecVolModel(tSpecial_volume *pSpec, int pIndex, br_material *pInt_mat, br_material *pExt_mat);
 
-void DropSpecVol(int pIndex);
+void __cdecl DropSpecVol(int pIndex);
 
-void DropSpecVol0();
+void __cdecl DropSpecVol0();
 
-void DropSpecVol1();
+void __cdecl DropSpecVol1();
 
-void DropSpecVol2();
+void __cdecl DropSpecVol2();
 
-void DropSpecVol3();
+void __cdecl DropSpecVol3();
 
-void DropSpecVol4();
+void __cdecl DropSpecVol4();
 
-void DropSpecVol5();
+void __cdecl DropSpecVol5();
 
-void DropSpecVol6();
+void __cdecl DropSpecVol6();
 
-void DropSpecVol7();
+void __cdecl DropSpecVol7();
 
-void DropSpecVol8();
+void __cdecl DropSpecVol8();
 
-void DropSpecVol9();
+void __cdecl DropSpecVol9();
 
-void IdentifySpecVol();
+void __cdecl IdentifySpecVol();
 
-void DelSpecVolumeGraph(int pIndex);
+void __cdecl DelSpecVolumeGraph(int pIndex);
 
-void DeleteSpecVol();
+void __cdecl DeleteSpecVol();
 
-void RotateSpecVolL();
+void __cdecl RotateSpecVolL();
 
-void RotateSpecVolL2();
+void __cdecl RotateSpecVolL2();
 
-void RotateSpecVolL3();
+void __cdecl RotateSpecVolL3();
 
-void RotateSpecVolL4();
+void __cdecl RotateSpecVolL4();
 
-void RotateSpecVolR();
+void __cdecl RotateSpecVolR();
 
-void RotateSpecVolR2();
+void __cdecl RotateSpecVolR2();
 
-void RotateSpecVolR3();
+void __cdecl RotateSpecVolR3();
 
-void RotateSpecVolR4();
+void __cdecl RotateSpecVolR4();
 
-void CycleSpecVolRotate();
+void __cdecl CycleSpecVolRotate();
 
-void CycleSpecVolScale();
+void __cdecl CycleSpecVolScale();
 
-void ScaleSpecVolUp2();
+void __cdecl ScaleSpecVolUp2();
 
-void ScaleSpecVolUp3();
+void __cdecl ScaleSpecVolUp3();
 
-void ScaleSpecVolUp4();
+void __cdecl ScaleSpecVolUp4();
 
-void ScaleSpecVolDown2();
+void __cdecl ScaleSpecVolDown2();
 
-void ScaleSpecVolDown3();
+void __cdecl ScaleSpecVolDown3();
 
-void ScaleSpecVolDown4();
+void __cdecl ScaleSpecVolDown4();
 
-void MoveXSpecVolL();
+void __cdecl MoveXSpecVolL();
 
-void MoveXSpecVolL2();
+void __cdecl MoveXSpecVolL2();
 
-void MoveXSpecVolL3();
+void __cdecl MoveXSpecVolL3();
 
-void MoveXSpecVolL4();
+void __cdecl MoveXSpecVolL4();
 
-void MoveXSpecVolR();
+void __cdecl MoveXSpecVolR();
 
-void MoveXSpecVolR2();
+void __cdecl MoveXSpecVolR2();
 
-void MoveXSpecVolR3();
+void __cdecl MoveXSpecVolR3();
 
-void MoveXSpecVolR4();
+void __cdecl MoveXSpecVolR4();
 
-void MoveYSpecVolL();
+void __cdecl MoveYSpecVolL();
 
-void MoveYSpecVolL2();
+void __cdecl MoveYSpecVolL2();
 
-void MoveYSpecVolL3();
+void __cdecl MoveYSpecVolL3();
 
-void MoveYSpecVolL4();
+void __cdecl MoveYSpecVolL4();
 
-void MoveYSpecVolR();
+void __cdecl MoveYSpecVolR();
 
-void MoveYSpecVolR2();
+void __cdecl MoveYSpecVolR2();
 
-void MoveYSpecVolR3();
+void __cdecl MoveYSpecVolR3();
 
-void MoveYSpecVolR4();
+void __cdecl MoveYSpecVolR4();
 
-void MoveZSpecVolL();
+void __cdecl MoveZSpecVolL();
 
-void MoveZSpecVolL2();
+void __cdecl MoveZSpecVolL2();
 
-void MoveZSpecVolL3();
+void __cdecl MoveZSpecVolL3();
 
-void MoveZSpecVolL4();
+void __cdecl MoveZSpecVolL4();
 
-void MoveZSpecVolR();
+void __cdecl MoveZSpecVolR();
 
-void MoveZSpecVolR2();
+void __cdecl MoveZSpecVolR2();
 
-void MoveZSpecVolR3();
+void __cdecl MoveZSpecVolR3();
 
-void MoveZSpecVolR4();
+void __cdecl MoveZSpecVolR4();
 
-void SnapSpecVolToVertical();
+void __cdecl SnapSpecVolToVertical();
 
-void ShowSpecialVolumes();
+void __cdecl ShowSpecialVolumes();
 
-void HideSpecialVolumes();
+void __cdecl HideSpecialVolumes();
 
 #endif

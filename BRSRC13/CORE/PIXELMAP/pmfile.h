@@ -10,26 +10,26 @@ extern br_chunks_table * hookvar_PixelmapLoadTable ; // addr: 00521898
 
 int FopWrite_PIXELMAP(br_datafile *df, br_pixelmap *pixelmap);
 
-int FopRead_OLD_PIXELMAP(br_datafile *df, br_uint_32 id, br_uint_32 length, br_uint_32 count);
+int __stdcall FopRead_OLD_PIXELMAP(br_datafile *df, br_uint_32 id, br_uint_32 length, br_uint_32 count);
 
-int FopRead_PIXELMAP(br_datafile *df, br_uint_32 id, br_uint_32 length, br_uint_32 count);
+int __stdcall FopRead_PIXELMAP(br_datafile *df, br_uint_32 id, br_uint_32 length, br_uint_32 count);
 
 int FopWrite_PIXELS(br_datafile *df, br_pixelmap *pixelmap);
 
-int FopRead_PIXELS(br_datafile *df, br_uint_32 id, br_uint_32 length, br_uint_32 count);
+int __stdcall FopRead_PIXELS(br_datafile *df, br_uint_32 id, br_uint_32 length, br_uint_32 count);
 
 int FopWrite_ADD_MAP(br_datafile *df);
 
-int FopRead_ADD_MAP(br_datafile *df, br_uint_32 id, br_uint_32 length, br_uint_32 count);
+int __stdcall FopRead_ADD_MAP(br_datafile *df, br_uint_32 id, br_uint_32 length, br_uint_32 count);
 
-br_uint_32 BrPixelmapLoadMany(char *filename, br_pixelmap **pixelmaps, br_uint_16 num);
+br_uint_32 __cdecl BrPixelmapLoadMany(char *filename, br_pixelmap **pixelmaps, br_uint_16 num);
 
-int WritePixelmap(br_pixelmap *pp, br_datafile *df);
+int __stdcall WritePixelmap(br_pixelmap *pp, br_datafile *df);
 
-br_uint_32 BrPixelmapSaveMany(char *filename, br_pixelmap **pixelmaps, br_uint_16 num);
+br_uint_32 __cdecl BrPixelmapSaveMany(char *filename, br_pixelmap **pixelmaps, br_uint_16 num);
 
-br_pixelmap* BrPixelmapLoad(char *filename);
+br_pixelmap* __cdecl BrPixelmapLoad(char *filename);
 
-br_uint_32 BrPixelmapSave(char *filename, br_pixelmap *ptr);
+br_uint_32 __cdecl BrPixelmapSave(char *filename, br_pixelmap *ptr);
 
 #endif

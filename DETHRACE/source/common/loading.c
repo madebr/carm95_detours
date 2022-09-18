@@ -4,7 +4,6 @@
 
 #include "carm95_hooks.h"
 
-#include <stdio.h>
 tHeadup_info(* hookvar_gHeadup_image_info )[31] = (void*)0x0050a3f0;
 #if 0
 char *(* hookvar_gYour_car_names )[2][6];
@@ -36,9 +35,9 @@ int(* hookvar_gDemo_opponents )[5];
 int * hookvar_gDemo_power  = (void*)0x00551da4;
 int * hookvar_gDemo_offensive  = (void*)0x00551dac;
 
-static tU32(*original_ReadU32)(FILE *, ...) = (tU32(*)(FILE *, ...))0x0041c2b0;
+static tU32(__cdecl*original_ReadU32)(FILE *) = (tU32(__cdecl*)(FILE *))0x0041c2b0;
 CARM95_HOOK_FUNCTION(original_ReadU32, ReadU32)
-tU32 ReadU32(FILE *pF) {
+tU32 __cdecl ReadU32(FILE *pF) {
     tU32 raw_long;
     LOG_TRACE("(%p)", pF);
 
@@ -48,9 +47,9 @@ tU32 ReadU32(FILE *pF) {
     return original_ReadU32(pF);
 }
 
-static tU16(*original_ReadU16)(FILE *, ...) = (tU16(*)(FILE *, ...))0x0041c2da;
+static tU16(__cdecl*original_ReadU16)(FILE *) = (tU16(__cdecl*)(FILE *))0x0041c2da;
 CARM95_HOOK_FUNCTION(original_ReadU16, ReadU16)
-tU16 ReadU16(FILE *pF) {
+tU16 __cdecl ReadU16(FILE *pF) {
     tU16 raw_short;
     LOG_TRACE("(%p)", pF);
 
@@ -60,9 +59,9 @@ tU16 ReadU16(FILE *pF) {
     return original_ReadU16(pF);
 }
 
-static tU8(*original_ReadU8)(FILE *, ...) = (tU8(*)(FILE *, ...))0x0041c305;
+static tU8(__cdecl*original_ReadU8)(FILE *) = (tU8(__cdecl*)(FILE *))0x0041c305;
 CARM95_HOOK_FUNCTION(original_ReadU8, ReadU8)
-tU8 ReadU8(FILE *pF) {
+tU8 __cdecl ReadU8(FILE *pF) {
     tU8 raw_byte;
     LOG_TRACE("(%p)", pF);
 
@@ -72,9 +71,9 @@ tU8 ReadU8(FILE *pF) {
     return original_ReadU8(pF);
 }
 
-static tS32(*original_ReadS32)(FILE *, ...) = (tS32(*)(FILE *, ...))0x0041c32f;
+static tS32(__cdecl*original_ReadS32)(FILE *) = (tS32(__cdecl*)(FILE *))0x0041c32f;
 CARM95_HOOK_FUNCTION(original_ReadS32, ReadS32)
-tS32 ReadS32(FILE *pF) {
+tS32 __cdecl ReadS32(FILE *pF) {
     tS32 raw_long;
     LOG_TRACE("(%p)", pF);
 
@@ -84,9 +83,9 @@ tS32 ReadS32(FILE *pF) {
     return original_ReadS32(pF);
 }
 
-static tS16(*original_ReadS16)(FILE *, ...) = (tS16(*)(FILE *, ...))0x0041c359;
+static tS16(__cdecl*original_ReadS16)(FILE *) = (tS16(__cdecl*)(FILE *))0x0041c359;
 CARM95_HOOK_FUNCTION(original_ReadS16, ReadS16)
-tS16 ReadS16(FILE *pF) {
+tS16 __cdecl ReadS16(FILE *pF) {
     tS16 raw_short;
     LOG_TRACE("(%p)", pF);
 
@@ -96,9 +95,9 @@ tS16 ReadS16(FILE *pF) {
     return original_ReadS16(pF);
 }
 
-static tS8(*original_ReadS8)(FILE *, ...) = (tS8(*)(FILE *, ...))0x0041c384;
+static tS8(__cdecl*original_ReadS8)(FILE *) = (tS8(__cdecl*)(FILE *))0x0041c384;
 CARM95_HOOK_FUNCTION(original_ReadS8, ReadS8)
-tS8 ReadS8(FILE *pF) {
+tS8 __cdecl ReadS8(FILE *pF) {
     tS8 raw_byte;
     LOG_TRACE("(%p)", pF);
 
@@ -108,9 +107,9 @@ tS8 ReadS8(FILE *pF) {
     return original_ReadS8(pF);
 }
 
-static void(*original_WriteU32L)(FILE *, tU32, ...) = (void(*)(FILE *, tU32, ...))0x0041c3ae;
+static void(__cdecl*original_WriteU32L)(FILE *, tU32) = (void(__cdecl*)(FILE *, tU32))0x0041c3ae;
 CARM95_HOOK_FUNCTION(original_WriteU32L, WriteU32L)
-void WriteU32L(FILE *pF, tU32 pNumber) {
+void __cdecl WriteU32L(FILE *pF, tU32 pNumber) {
     tU32 raw_long;
     LOG_TRACE("(%p, %u)", pF, pNumber);
 
@@ -121,9 +120,9 @@ void WriteU32L(FILE *pF, tU32 pNumber) {
     original_WriteU32L(pF, pNumber);
 }
 
-static void(*original_WriteU16L)(FILE *, tU16, ...) = (void(*)(FILE *, tU16, ...))0x0041c3d6;
+static void(__cdecl*original_WriteU16L)(FILE *, tU16) = (void(__cdecl*)(FILE *, tU16))0x0041c3d6;
 CARM95_HOOK_FUNCTION(original_WriteU16L, WriteU16L)
-void WriteU16L(FILE *pF, tU16 pNumber) {
+void __cdecl WriteU16L(FILE *pF, tU16 pNumber) {
     tU16 raw_short;
     LOG_TRACE("(%p, %u)", pF, pNumber);
 
@@ -134,9 +133,9 @@ void WriteU16L(FILE *pF, tU16 pNumber) {
     original_WriteU16L(pF, pNumber);
 }
 
-static void(*original_WriteU8L)(FILE *, tU8, ...) = (void(*)(FILE *, tU8, ...))0x0041c400;
+static void(__cdecl*original_WriteU8L)(FILE *, tU8) = (void(__cdecl*)(FILE *, tU8))0x0041c400;
 CARM95_HOOK_FUNCTION(original_WriteU8L, WriteU8L)
-void WriteU8L(FILE *pF, tU8 pNumber) {
+void __cdecl WriteU8L(FILE *pF, tU8 pNumber) {
     tU8 raw_byte;
     LOG_TRACE("(%p, %u)", pF, pNumber);
 
@@ -147,9 +146,9 @@ void WriteU8L(FILE *pF, tU8 pNumber) {
     original_WriteU8L(pF, pNumber);
 }
 
-static void(*original_WriteS32L)(FILE *, tS32, ...) = (void(*)(FILE *, tS32, ...))0x0041c428;
+static void(__cdecl*original_WriteS32L)(FILE *, tS32) = (void(__cdecl*)(FILE *, tS32))0x0041c428;
 CARM95_HOOK_FUNCTION(original_WriteS32L, WriteS32L)
-void WriteS32L(FILE *pF, tS32 pNumber) {
+void __cdecl WriteS32L(FILE *pF, tS32 pNumber) {
     tS32 raw_long;
     LOG_TRACE("(%p, %d)", pF, pNumber);
 
@@ -160,9 +159,9 @@ void WriteS32L(FILE *pF, tS32 pNumber) {
     original_WriteS32L(pF, pNumber);
 }
 
-static void(*original_WriteS16L)(FILE *, tS16, ...) = (void(*)(FILE *, tS16, ...))0x0041c450;
+static void(__cdecl*original_WriteS16L)(FILE *, tS16) = (void(__cdecl*)(FILE *, tS16))0x0041c450;
 CARM95_HOOK_FUNCTION(original_WriteS16L, WriteS16L)
-void WriteS16L(FILE *pF, tS16 pNumber) {
+void __cdecl WriteS16L(FILE *pF, tS16 pNumber) {
     tS16 raw_short;
     LOG_TRACE("(%p, %d)", pF, pNumber);
 
@@ -173,9 +172,9 @@ void WriteS16L(FILE *pF, tS16 pNumber) {
     original_WriteS16L(pF, pNumber);
 }
 
-static void(*original_WriteS8L)(FILE *, tS8, ...) = (void(*)(FILE *, tS8, ...))0x0041c47a;
+static void(__cdecl*original_WriteS8L)(FILE *, tS8) = (void(__cdecl*)(FILE *, tS8))0x0041c47a;
 CARM95_HOOK_FUNCTION(original_WriteS8L, WriteS8L)
-void WriteS8L(FILE *pF, tS8 pNumber) {
+void __cdecl WriteS8L(FILE *pF, tS8 pNumber) {
     tS8 raw_byte;
     LOG_TRACE("(%p, %d)", pF, pNumber);
 
@@ -186,9 +185,9 @@ void WriteS8L(FILE *pF, tS8 pNumber) {
     original_WriteS8L(pF, pNumber);
 }
 
-static void(*original_SkipBytes)(FILE *, int, ...) = (void(*)(FILE *, int, ...))0x0041c4a2;
+static void(__cdecl*original_SkipBytes)(FILE *, int) = (void(__cdecl*)(FILE *, int))0x0041c4a2;
 CARM95_HOOK_FUNCTION(original_SkipBytes, SkipBytes)
-void SkipBytes(FILE *pF, int pBytes_to_skip) {
+void __cdecl SkipBytes(FILE *pF, int pBytes_to_skip) {
     LOG_TRACE("(%p, %d)", pF, pBytes_to_skip);
 
     (void)pF;
@@ -197,9 +196,9 @@ void SkipBytes(FILE *pF, int pBytes_to_skip) {
     original_SkipBytes(pF, pBytes_to_skip);
 }
 
-static tU32(*original_MemReadU32)(char **, ...) = (tU32(*)(char **, ...))0x0041c4bf;
+static tU32(__cdecl*original_MemReadU32)(char **) = (tU32(__cdecl*)(char **))0x0041c4bf;
 CARM95_HOOK_FUNCTION(original_MemReadU32, MemReadU32)
-tU32 MemReadU32(char **pPtr) {
+tU32 __cdecl MemReadU32(char **pPtr) {
     tU32 raw_long;
     LOG_TRACE("(%p)", pPtr);
 
@@ -209,9 +208,9 @@ tU32 MemReadU32(char **pPtr) {
     return original_MemReadU32(pPtr);
 }
 
-static tU16(*original_MemReadU16)(char **, ...) = (tU16(*)(char **, ...))0x0041c4e5;
+static tU16(__cdecl*original_MemReadU16)(char **) = (tU16(__cdecl*)(char **))0x0041c4e5;
 CARM95_HOOK_FUNCTION(original_MemReadU16, MemReadU16)
-tU16 MemReadU16(char **pPtr) {
+tU16 __cdecl MemReadU16(char **pPtr) {
     tU16 raw_short;
     LOG_TRACE("(%p)", pPtr);
 
@@ -221,9 +220,9 @@ tU16 MemReadU16(char **pPtr) {
     return original_MemReadU16(pPtr);
 }
 
-static tU8(*original_MemReadU8)(char **, ...) = (tU8(*)(char **, ...))0x0041c50e;
+static tU8(__cdecl*original_MemReadU8)(char **) = (tU8(__cdecl*)(char **))0x0041c50e;
 CARM95_HOOK_FUNCTION(original_MemReadU8, MemReadU8)
-tU8 MemReadU8(char **pPtr) {
+tU8 __cdecl MemReadU8(char **pPtr) {
     LOG_TRACE("(%p)", pPtr);
 
     (void)pPtr;
@@ -231,9 +230,9 @@ tU8 MemReadU8(char **pPtr) {
     return original_MemReadU8(pPtr);
 }
 
-static tS32(*original_MemReadS32)(char **, ...) = (tS32(*)(char **, ...))0x0041c533;
+static tS32(__cdecl*original_MemReadS32)(char **) = (tS32(__cdecl*)(char **))0x0041c533;
 CARM95_HOOK_FUNCTION(original_MemReadS32, MemReadS32)
-tS32 MemReadS32(char **pPtr) {
+tS32 __cdecl MemReadS32(char **pPtr) {
     tS32 raw_long;
     LOG_TRACE("(%p)", pPtr);
 
@@ -243,9 +242,9 @@ tS32 MemReadS32(char **pPtr) {
     return original_MemReadS32(pPtr);
 }
 
-static tS16(*original_MemReadS16)(char **, ...) = (tS16(*)(char **, ...))0x0041c559;
+static tS16(__cdecl*original_MemReadS16)(char **) = (tS16(__cdecl*)(char **))0x0041c559;
 CARM95_HOOK_FUNCTION(original_MemReadS16, MemReadS16)
-tS16 MemReadS16(char **pPtr) {
+tS16 __cdecl MemReadS16(char **pPtr) {
     tS16 raw_short;
     LOG_TRACE("(%p)", pPtr);
 
@@ -255,9 +254,9 @@ tS16 MemReadS16(char **pPtr) {
     return original_MemReadS16(pPtr);
 }
 
-static tS8(*original_MemReadS8)(char **, ...) = (tS8(*)(char **, ...))0x0041c582;
+static tS8(__cdecl*original_MemReadS8)(char **) = (tS8(__cdecl*)(char **))0x0041c582;
 CARM95_HOOK_FUNCTION(original_MemReadS8, MemReadS8)
-tS8 MemReadS8(char **pPtr) {
+tS8 __cdecl MemReadS8(char **pPtr) {
     tS8 raw_byte;
     LOG_TRACE("(%p)", pPtr);
 
@@ -267,9 +266,9 @@ tS8 MemReadS8(char **pPtr) {
     return original_MemReadS8(pPtr);
 }
 
-static void(*original_MemSkipBytes)(char **, int, ...) = (void(*)(char **, int, ...))0x0041c5a7;
+static void(__cdecl*original_MemSkipBytes)(char **, int) = (void(__cdecl*)(char **, int))0x0041c5a7;
 CARM95_HOOK_FUNCTION(original_MemSkipBytes, MemSkipBytes)
-void MemSkipBytes(char **pPtr, int pBytes_to_skip) {
+void __cdecl MemSkipBytes(char **pPtr, int pBytes_to_skip) {
     LOG_TRACE("(%p, %d)", pPtr, pBytes_to_skip);
 
     (void)pPtr;
@@ -278,9 +277,9 @@ void MemSkipBytes(char **pPtr, int pBytes_to_skip) {
     original_MemSkipBytes(pPtr, pBytes_to_skip);
 }
 
-static void(*original_LoadGeneralParameters)() = (void(*)())0x0041c5ba;
+static void(__cdecl*original_LoadGeneralParameters)() = (void(__cdecl*)())0x0041c5ba;
 CARM95_HOOK_FUNCTION(original_LoadGeneralParameters, LoadGeneralParameters)
-void LoadGeneralParameters() {
+void __cdecl LoadGeneralParameters() {
     FILE *f;
     tPath_name the_path;
     int i;
@@ -299,18 +298,18 @@ void LoadGeneralParameters() {
     original_LoadGeneralParameters();
 }
 
-static void(*original_FinishLoadingGeneral)() = (void(*)())0x0041d210;
+static void(__cdecl*original_FinishLoadingGeneral)() = (void(__cdecl*)())0x0041d210;
 CARM95_HOOK_FUNCTION(original_FinishLoadingGeneral, FinishLoadingGeneral)
-void FinishLoadingGeneral() {
+void __cdecl FinishLoadingGeneral() {
     LOG_TRACE("()");
 
 
     original_FinishLoadingGeneral();
 }
 
-static br_pixelmap *(*original_LoadPixelmap)(char *, ...) = (br_pixelmap *(*)(char *, ...))0x0041d22d;
+static br_pixelmap *(__cdecl*original_LoadPixelmap)(char *) = (br_pixelmap *(__cdecl*)(char *))0x0041d22d;
 CARM95_HOOK_FUNCTION(original_LoadPixelmap, LoadPixelmap)
-br_pixelmap* LoadPixelmap(char *pName) {
+br_pixelmap* __cdecl LoadPixelmap(char *pName) {
     tPath_name the_path;
     br_pixelmap *pm;
     char *end;
@@ -324,9 +323,9 @@ br_pixelmap* LoadPixelmap(char *pName) {
     return original_LoadPixelmap(pName);
 }
 
-static br_uint_32(*original_LoadPixelmaps)(char *, br_pixelmap **, br_uint_16, ...) = (br_uint_32(*)(char *, br_pixelmap **, br_uint_16, ...))0x0041d372;
+static br_uint_32(__cdecl*original_LoadPixelmaps)(char *, br_pixelmap **, br_uint_16) = (br_uint_32(__cdecl*)(char *, br_pixelmap **, br_uint_16))0x0041d372;
 CARM95_HOOK_FUNCTION(original_LoadPixelmaps, LoadPixelmaps)
-br_uint_32 LoadPixelmaps(char *pFile_name, br_pixelmap **pPixelmaps, br_uint_16 pNum) {
+br_uint_32 __cdecl LoadPixelmaps(char *pFile_name, br_pixelmap **pPixelmaps, br_uint_16 pNum) {
     tPath_name path;
     int count;
     LOG_TRACE("(\"%s\", %p, %u)", pFile_name, pPixelmaps, pNum);
@@ -340,9 +339,9 @@ br_uint_32 LoadPixelmaps(char *pFile_name, br_pixelmap **pPixelmaps, br_uint_16 
     return original_LoadPixelmaps(pFile_name, pPixelmaps, pNum);
 }
 
-static br_pixelmap *(*original_LoadShadeTable)(char *, ...) = (br_pixelmap *(*)(char *, ...))0x0041d470;
+static br_pixelmap *(__cdecl*original_LoadShadeTable)(char *) = (br_pixelmap *(__cdecl*)(char *))0x0041d470;
 CARM95_HOOK_FUNCTION(original_LoadShadeTable, LoadShadeTable)
-br_pixelmap* LoadShadeTable(char *pName) {
+br_pixelmap* __cdecl LoadShadeTable(char *pName) {
     tPath_name the_path;
     LOG_TRACE("(\"%s\")", pName);
 
@@ -352,9 +351,9 @@ br_pixelmap* LoadShadeTable(char *pName) {
     return original_LoadShadeTable(pName);
 }
 
-static br_material *(*original_LoadMaterial)(char *, ...) = (br_material *(*)(char *, ...))0x0041d4c8;
+static br_material *(__cdecl*original_LoadMaterial)(char *) = (br_material *(__cdecl*)(char *))0x0041d4c8;
 CARM95_HOOK_FUNCTION(original_LoadMaterial, LoadMaterial)
-br_material* LoadMaterial(char *pName) {
+br_material* __cdecl LoadMaterial(char *pName) {
     tPath_name the_path;
     br_material *result;
     LOG_TRACE("(\"%s\")", pName);
@@ -366,9 +365,9 @@ br_material* LoadMaterial(char *pName) {
     return original_LoadMaterial(pName);
 }
 
-static br_model *(*original_LoadModel)(char *, ...) = (br_model *(*)(char *, ...))0x0041d525;
+static br_model *(__cdecl*original_LoadModel)(char *) = (br_model *(__cdecl*)(char *))0x0041d525;
 CARM95_HOOK_FUNCTION(original_LoadModel, LoadModel)
-br_model* LoadModel(char *pName) {
+br_model* __cdecl LoadModel(char *pName) {
     tPath_name the_path;
     br_model *model;
     LOG_TRACE("(\"%s\")", pName);
@@ -380,9 +379,9 @@ br_model* LoadModel(char *pName) {
     return original_LoadModel(pName);
 }
 
-static br_actor *(*original_LoadActor)(char *, ...) = (br_actor *(*)(char *, ...))0x0041d582;
+static br_actor *(__cdecl*original_LoadActor)(char *) = (br_actor *(__cdecl*)(char *))0x0041d582;
 CARM95_HOOK_FUNCTION(original_LoadActor, LoadActor)
-br_actor* LoadActor(char *pName) {
+br_actor* __cdecl LoadActor(char *pName) {
     tPath_name the_path;
     LOG_TRACE("(\"%s\")", pName);
 
@@ -392,9 +391,9 @@ br_actor* LoadActor(char *pName) {
     return original_LoadActor(pName);
 }
 
-static void(*original_DRLoadPalette)(char *, ...) = (void(*)(char *, ...))0x0041d6d5;
+static void(__cdecl*original_DRLoadPalette)(char *) = (void(__cdecl*)(char *))0x0041d6d5;
 CARM95_HOOK_FUNCTION(original_DRLoadPalette, DRLoadPalette)
-void DRLoadPalette(char *pPath_name) {
+void __cdecl DRLoadPalette(char *pPath_name) {
     br_pixelmap *palette_array[100];
     int number_of_palettes;
     LOG_TRACE("(\"%s\")", pPath_name);
@@ -406,9 +405,9 @@ void DRLoadPalette(char *pPath_name) {
     original_DRLoadPalette(pPath_name);
 }
 
-static void(*original_DRLoadShadeTable)(char *, ...) = (void(*)(char *, ...))0x0041d717;
+static void(__cdecl*original_DRLoadShadeTable)(char *) = (void(__cdecl*)(char *))0x0041d717;
 CARM95_HOOK_FUNCTION(original_DRLoadShadeTable, DRLoadShadeTable)
-void DRLoadShadeTable(char *pPath_name) {
+void __cdecl DRLoadShadeTable(char *pPath_name) {
     br_pixelmap *table_array[100];
     int number_of_tables;
     LOG_TRACE("(\"%s\")", pPath_name);
@@ -420,9 +419,9 @@ void DRLoadShadeTable(char *pPath_name) {
     original_DRLoadShadeTable(pPath_name);
 }
 
-static void(*original_RezeroPixelmaps)(br_pixelmap **, int, ...) = (void(*)(br_pixelmap **, int, ...))0x0041d7b6;
+static void(__cdecl*original_RezeroPixelmaps)(br_pixelmap **, int) = (void(__cdecl*)(br_pixelmap **, int))0x0041d7b6;
 CARM95_HOOK_FUNCTION(original_RezeroPixelmaps, RezeroPixelmaps)
-void RezeroPixelmaps(br_pixelmap **pPixelmap_array, int pCount) {
+void __cdecl RezeroPixelmaps(br_pixelmap **pPixelmap_array, int pCount) {
     LOG_TRACE("(%p, %d)", pPixelmap_array, pCount);
 
     (void)pPixelmap_array;
@@ -431,9 +430,9 @@ void RezeroPixelmaps(br_pixelmap **pPixelmap_array, int pCount) {
     original_RezeroPixelmaps(pPixelmap_array, pCount);
 }
 
-static void(*original_DRLoadPixelmaps)(char *, ...) = (void(*)(char *, ...))0x0041d759;
+static void(__cdecl*original_DRLoadPixelmaps)(char *) = (void(__cdecl*)(char *))0x0041d759;
 CARM95_HOOK_FUNCTION(original_DRLoadPixelmaps, DRLoadPixelmaps)
-void DRLoadPixelmaps(char *pPath_name) {
+void __cdecl DRLoadPixelmaps(char *pPath_name) {
     br_pixelmap *pixelmap_array[100];
     int number_of_pixelmaps;
     LOG_TRACE("(\"%s\")", pPath_name);
@@ -445,9 +444,9 @@ void DRLoadPixelmaps(char *pPath_name) {
     original_DRLoadPixelmaps(pPath_name);
 }
 
-static void(*original_DRLoadMaterials)(char *, ...) = (void(*)(char *, ...))0x0041d7ed;
+static void(__cdecl*original_DRLoadMaterials)(char *) = (void(__cdecl*)(char *))0x0041d7ed;
 CARM95_HOOK_FUNCTION(original_DRLoadMaterials, DRLoadMaterials)
-void DRLoadMaterials(char *pPath_name) {
+void __cdecl DRLoadMaterials(char *pPath_name) {
     br_material *material_array[100];
     int number_of_materials;
     LOG_TRACE("(\"%s\")", pPath_name);
@@ -459,9 +458,9 @@ void DRLoadMaterials(char *pPath_name) {
     original_DRLoadMaterials(pPath_name);
 }
 
-static void(*original_DRLoadModels)(char *, ...) = (void(*)(char *, ...))0x0041d82e;
+static void(__cdecl*original_DRLoadModels)(char *) = (void(__cdecl*)(char *))0x0041d82e;
 CARM95_HOOK_FUNCTION(original_DRLoadModels, DRLoadModels)
-void DRLoadModels(char *pPath_name) {
+void __cdecl DRLoadModels(char *pPath_name) {
     br_model *model_array[100];
     int number_of_models;
     LOG_TRACE("(\"%s\")", pPath_name);
@@ -473,9 +472,9 @@ void DRLoadModels(char *pPath_name) {
     original_DRLoadModels(pPath_name);
 }
 
-static void(*original_DRLoadActors)(char *, ...) = (void(*)(char *, ...))0x0041d86f;
+static void(__cdecl*original_DRLoadActors)(char *) = (void(__cdecl*)(char *))0x0041d86f;
 CARM95_HOOK_FUNCTION(original_DRLoadActors, DRLoadActors)
-void DRLoadActors(char *pPath_name) {
+void __cdecl DRLoadActors(char *pPath_name) {
     br_actor *actor_array[100];
     int number_of_actors;
     int i;
@@ -489,9 +488,9 @@ void DRLoadActors(char *pPath_name) {
     original_DRLoadActors(pPath_name);
 }
 
-static void(*original_DRLoadLights)(char *, ...) = (void(*)(char *, ...))0x0041d8e0;
+static void(__cdecl*original_DRLoadLights)(char *) = (void(__cdecl*)(char *))0x0041d8e0;
 CARM95_HOOK_FUNCTION(original_DRLoadLights, DRLoadLights)
-void DRLoadLights(char *pPath_name) {
+void __cdecl DRLoadLights(char *pPath_name) {
     br_actor *light_array[100];
     int number_of_lights;
     int i;
@@ -505,9 +504,9 @@ void DRLoadLights(char *pPath_name) {
     original_DRLoadLights(pPath_name);
 }
 
-static void(*original_LoadInFiles)(char *, char *, void(**)(char *, ...), ...) = (void(*)(char *, char *, void(**)(char *, ...), ...))0x0041d957;
+static void(__cdecl*original_LoadInFiles)(char *, char *, void(**)(char *)) = (void(__cdecl*)(char *, char *, void(**)(char *)))0x0041d957;
 CARM95_HOOK_FUNCTION(original_LoadInFiles, LoadInFiles)
-void LoadInFiles(char *pThe_base_path, char *pThe_dir_name, void(**pLoad_routine)(char *, ...)) {
+void __cdecl LoadInFiles(char *pThe_base_path, char *pThe_dir_name, void(**pLoad_routine)(char *)) {
     tPath_name the_path;
     LOG_TRACE("(\"%s\", \"%s\", %p)", pThe_base_path, pThe_dir_name, pLoad_routine);
 
@@ -519,9 +518,9 @@ void LoadInFiles(char *pThe_base_path, char *pThe_dir_name, void(**pLoad_routine
     original_LoadInFiles(pThe_base_path, pThe_dir_name, pLoad_routine);
 }
 
-static void(*original_LoadInRegisteeDir)(char *, ...) = (void(*)(char *, ...))0x0041d5fd;
+static void(__cdecl*original_LoadInRegisteeDir)(char *) = (void(__cdecl*)(char *))0x0041d5fd;
 CARM95_HOOK_FUNCTION(original_LoadInRegisteeDir, LoadInRegisteeDir)
-void LoadInRegisteeDir(char *pThe_dir_path) {
+void __cdecl LoadInRegisteeDir(char *pThe_dir_path) {
     tPath_name the_path;
     LOG_TRACE("(\"%s\")", pThe_dir_path);
 
@@ -531,9 +530,9 @@ void LoadInRegisteeDir(char *pThe_dir_path) {
     original_LoadInRegisteeDir(pThe_dir_path);
 }
 
-static void(*original_LoadInRegistees)() = (void(*)())0x0041d5df;
+static void(__cdecl*original_LoadInRegistees)() = (void(__cdecl*)())0x0041d5df;
 CARM95_HOOK_FUNCTION(original_LoadInRegistees, LoadInRegistees)
-void LoadInRegistees() {
+void __cdecl LoadInRegistees() {
     tPath_name the_path;
     LOG_TRACE("()");
 
@@ -542,9 +541,9 @@ void LoadInRegistees() {
     original_LoadInRegistees();
 }
 
-static void(*original_LoadKeyMapping)() = (void(*)())0x0041d992;
+static void(__cdecl*original_LoadKeyMapping)() = (void(__cdecl*)())0x0041d992;
 CARM95_HOOK_FUNCTION(original_LoadKeyMapping, LoadKeyMapping)
-void LoadKeyMapping() {
+void __cdecl LoadKeyMapping() {
     FILE *f;
     tPath_name the_path;
     int i;
@@ -557,9 +556,9 @@ void LoadKeyMapping() {
     original_LoadKeyMapping();
 }
 
-static void(*original_LoadInterfaceStuff)(int, ...) = (void(*)(int, ...))0x0041da5c;
+static void(__cdecl*original_LoadInterfaceStuff)(int) = (void(__cdecl*)(int))0x0041da5c;
 CARM95_HOOK_FUNCTION(original_LoadInterfaceStuff, LoadInterfaceStuff)
-void LoadInterfaceStuff(int pWithin_race) {
+void __cdecl LoadInterfaceStuff(int pWithin_race) {
     tPath_name path;
     int i;
     LOG_TRACE("(%d)", pWithin_race);
@@ -571,9 +570,9 @@ void LoadInterfaceStuff(int pWithin_race) {
     original_LoadInterfaceStuff(pWithin_race);
 }
 
-static void(*original_UnlockInterfaceStuff)() = (void(*)())0x0041dbbf;
+static void(__cdecl*original_UnlockInterfaceStuff)() = (void(__cdecl*)())0x0041dbbf;
 CARM95_HOOK_FUNCTION(original_UnlockInterfaceStuff, UnlockInterfaceStuff)
-void UnlockInterfaceStuff() {
+void __cdecl UnlockInterfaceStuff() {
     int i;
     LOG_TRACE("()");
 
@@ -582,9 +581,9 @@ void UnlockInterfaceStuff() {
     original_UnlockInterfaceStuff();
 }
 
-static void(*original_InitInterfaceLoadState)() = (void(*)())0x0041dcc7;
+static void(__cdecl*original_InitInterfaceLoadState)() = (void(__cdecl*)())0x0041dcc7;
 CARM95_HOOK_FUNCTION(original_InitInterfaceLoadState, InitInterfaceLoadState)
-void InitInterfaceLoadState() {
+void __cdecl InitInterfaceLoadState() {
     int i;
     LOG_TRACE("()");
 
@@ -631,9 +630,9 @@ tS8* ConvertPixTo16BitStripMap(br_pixelmap *pBr_map) {
     NOT_IMPLEMENTED();
 }
 
-static tS8 *(*original_ConvertPixToStripMap)(br_pixelmap *, ...) = (tS8 *(*)(br_pixelmap *, ...))0x0041dd01;
+static tS8 *(__cdecl*original_ConvertPixToStripMap)(br_pixelmap *) = (tS8 *(__cdecl*)(br_pixelmap *))0x0041dd01;
 CARM95_HOOK_FUNCTION(original_ConvertPixToStripMap, ConvertPixToStripMap)
-tS8* ConvertPixToStripMap(br_pixelmap *pThe_br_map) {
+tS8* __cdecl ConvertPixToStripMap(br_pixelmap *pThe_br_map) {
     int i;
     int j;
     int new_line_length;
@@ -667,9 +666,9 @@ tS8* ConvertPixToStripMap(br_pixelmap *pThe_br_map) {
     return original_ConvertPixToStripMap(pThe_br_map);
 }
 
-static void(*original_KillWindscreen)(br_model *, br_material *, ...) = (void(*)(br_model *, br_material *, ...))0x0041e4de;
+static void(__cdecl*original_KillWindscreen)(br_model *, br_material *) = (void(__cdecl*)(br_model *, br_material *))0x0041e4de;
 CARM95_HOOK_FUNCTION(original_KillWindscreen, KillWindscreen)
-void KillWindscreen(br_model *pModel, br_material *pMaterial) {
+void __cdecl KillWindscreen(br_model *pModel, br_material *pMaterial) {
     br_face *face;
     int i;
     LOG_TRACE("(%p, %p)", pModel, pMaterial);
@@ -682,9 +681,9 @@ void KillWindscreen(br_model *pModel, br_material *pMaterial) {
     original_KillWindscreen(pModel, pMaterial);
 }
 
-static void(*original_DropOffDyingPeds)(tCar_spec *, ...) = (void(*)(tCar_spec *, ...))0x0041e564;
+static void(__cdecl*original_DropOffDyingPeds)(tCar_spec *) = (void(__cdecl*)(tCar_spec *))0x0041e564;
 CARM95_HOOK_FUNCTION(original_DropOffDyingPeds, DropOffDyingPeds)
-void DropOffDyingPeds(tCar_spec *pCar) {
+void __cdecl DropOffDyingPeds(tCar_spec *pCar) {
     br_actor *child;
     br_actor *next;
     LOG_TRACE("(%p)", pCar);
@@ -696,9 +695,9 @@ void DropOffDyingPeds(tCar_spec *pCar) {
     original_DropOffDyingPeds(pCar);
 }
 
-static void(*original_DisposeCar)(tCar_spec *, int, ...) = (void(*)(tCar_spec *, int, ...))0x0041dfbd;
+static void(__cdecl*original_DisposeCar)(tCar_spec *, int) = (void(__cdecl*)(tCar_spec *, int))0x0041dfbd;
 CARM95_HOOK_FUNCTION(original_DisposeCar, DisposeCar)
-void DisposeCar(tCar_spec *pCar_spec, int pOwner) {
+void __cdecl DisposeCar(tCar_spec *pCar_spec, int pOwner) {
     int i;
     int j;
     LOG_TRACE("(%p, %d)", pCar_spec, pOwner);
@@ -711,9 +710,9 @@ void DisposeCar(tCar_spec *pCar_spec, int pOwner) {
     original_DisposeCar(pCar_spec, pOwner);
 }
 
-static void(*original_AdjustCarCoordinates)(tCar_spec *, ...) = (void(*)(tCar_spec *, ...))0x00422a79;
+static void(__cdecl*original_AdjustCarCoordinates)(tCar_spec *) = (void(__cdecl*)(tCar_spec *))0x00422a79;
 CARM95_HOOK_FUNCTION(original_AdjustCarCoordinates, AdjustCarCoordinates)
-void AdjustCarCoordinates(tCar_spec *pCar) {
+void __cdecl AdjustCarCoordinates(tCar_spec *pCar) {
     int i;
     LOG_TRACE("(%p)", pCar);
 
@@ -723,9 +722,9 @@ void AdjustCarCoordinates(tCar_spec *pCar) {
     original_AdjustCarCoordinates(pCar);
 }
 
-static void(*original_LoadSpeedo)(FILE *, int, tCar_spec *, ...) = (void(*)(FILE *, int, tCar_spec *, ...))0x00422d43;
+static void(__cdecl*original_LoadSpeedo)(FILE *, int, tCar_spec *) = (void(__cdecl*)(FILE *, int, tCar_spec *))0x00422d43;
 CARM95_HOOK_FUNCTION(original_LoadSpeedo, LoadSpeedo)
-void LoadSpeedo(FILE *pF, int pIndex, tCar_spec *pCar_spec) {
+void __cdecl LoadSpeedo(FILE *pF, int pIndex, tCar_spec *pCar_spec) {
     tPath_name the_path;
     char s[256];
     char *str;
@@ -745,9 +744,9 @@ void LoadSpeedo(FILE *pF, int pIndex, tCar_spec *pCar_spec) {
     original_LoadSpeedo(pF, pIndex, pCar_spec);
 }
 
-static void(*original_LoadTacho)(FILE *, int, tCar_spec *, ...) = (void(*)(FILE *, int, tCar_spec *, ...))0x004230de;
+static void(__cdecl*original_LoadTacho)(FILE *, int, tCar_spec *) = (void(__cdecl*)(FILE *, int, tCar_spec *))0x004230de;
 CARM95_HOOK_FUNCTION(original_LoadTacho, LoadTacho)
-void LoadTacho(FILE *pF, int pIndex, tCar_spec *pCar_spec) {
+void __cdecl LoadTacho(FILE *pF, int pIndex, tCar_spec *pCar_spec) {
     tPath_name the_path;
     char s[256];
     char *str;
@@ -767,9 +766,9 @@ void LoadTacho(FILE *pF, int pIndex, tCar_spec *pCar_spec) {
     original_LoadTacho(pF, pIndex, pCar_spec);
 }
 
-static void(*original_LoadHeadups)(FILE *, int, tCar_spec *, ...) = (void(*)(FILE *, int, tCar_spec *, ...))0x004233d3;
+static void(__cdecl*original_LoadHeadups)(FILE *, int, tCar_spec *) = (void(__cdecl*)(FILE *, int, tCar_spec *))0x004233d3;
 CARM95_HOOK_FUNCTION(original_LoadHeadups, LoadHeadups)
-void LoadHeadups(FILE *pF, int pIndex, tCar_spec *pCar_spec) {
+void __cdecl LoadHeadups(FILE *pF, int pIndex, tCar_spec *pCar_spec) {
     char s[256];
     char *str;
     int j;
@@ -787,9 +786,9 @@ void LoadHeadups(FILE *pF, int pIndex, tCar_spec *pCar_spec) {
     original_LoadHeadups(pF, pIndex, pCar_spec);
 }
 
-static void(*original_ReadNonCarMechanicsData)(FILE *, tNon_car_spec *, ...) = (void(*)(FILE *, tNon_car_spec *, ...))0x0041e5d0;
+static void(__cdecl*original_ReadNonCarMechanicsData)(FILE *, tNon_car_spec *) = (void(__cdecl*)(FILE *, tNon_car_spec *))0x0041e5d0;
 CARM95_HOOK_FUNCTION(original_ReadNonCarMechanicsData, ReadNonCarMechanicsData)
-void ReadNonCarMechanicsData(FILE *pF, tNon_car_spec *non_car) {
+void __cdecl ReadNonCarMechanicsData(FILE *pF, tNon_car_spec *non_car) {
     int number;
     int i;
     int j;
@@ -836,13 +835,33 @@ void ReadNonCarMechanicsData(FILE *pF, tNon_car_spec *non_car) {
     (void)ts;
     (void)ts1;
     (void)snap_angle;
+    (void)__block0__x_0;
+    (void)__block0__x_1;
+    (void)__block0__x_2;
+    (void)__block1__x_0;
+    (void)__block1__x_1;
+    (void)__block1__x_2;
+    (void)__block2__x_0;
+    (void)__block2__x_1;
+    (void)__block2__x_2;
+    (void)__block3__x_0;
+    (void)__block3__x_1;
+    (void)__block3__x_2;
+    (void)__block4__x_0;
+    (void)__block4__x_1;
+    (void)__block4__x_2;
+    (void)__block5__x_0;
+    (void)__block5__x_1;
+    (void)__block6__x_0;
+    (void)__block6__x_1;
+    (void)__block6__x_2;
 
     original_ReadNonCarMechanicsData(pF, non_car);
 }
 
-static void(*original_ReadMechanicsData)(FILE *, tCar_spec *, ...) = (void(*)(FILE *, tCar_spec *, ...))0x0041edfb;
+static void(__cdecl*original_ReadMechanicsData)(FILE *, tCar_spec *) = (void(__cdecl*)(FILE *, tCar_spec *))0x0041edfb;
 CARM95_HOOK_FUNCTION(original_ReadMechanicsData, ReadMechanicsData)
-void ReadMechanicsData(FILE *pF, tCar_spec *c) {
+void __cdecl ReadMechanicsData(FILE *pF, tCar_spec *c) {
     char s[256];
     char version;
     int i;
@@ -904,13 +923,40 @@ void ReadMechanicsData(FILE *pF, tCar_spec *c) {
     (void)actor_offset;
     (void)speed;
     (void)force;
+    (void)__block0__x_0;
+    (void)__block0__x_1;
+    (void)__block0__x_2;
+    (void)__block1__x_0;
+    (void)__block1__x_1;
+    (void)__block1__x_2;
+    (void)__block2__x_0;
+    (void)__block2__x_1;
+    (void)__block2__x_2;
+    (void)__block3__x_0;
+    (void)__block3__x_1;
+    (void)__block3__x_2;
+    (void)__block4__x_0;
+    (void)__block4__x_1;
+    (void)__block4__x_2;
+    (void)__block5__x_0;
+    (void)__block5__x_1;
+    (void)__block6__x_0;
+    (void)__block6__x_1;
+    (void)__block7__x_0;
+    (void)__block7__x_1;
+    (void)__block7__x_2;
+    (void)__block8__x_0;
+    (void)__block8__x_1;
+    (void)__block8__x_2;
+    (void)__block9__x_0;
+    (void)__block9__x_1;
 
     original_ReadMechanicsData(pF, c);
 }
 
-static void(*original_LoadGear)(FILE *, int, tCar_spec *, ...) = (void(*)(FILE *, int, tCar_spec *, ...))0x004237be;
+static void(__cdecl*original_LoadGear)(FILE *, int, tCar_spec *) = (void(__cdecl*)(FILE *, int, tCar_spec *))0x004237be;
 CARM95_HOOK_FUNCTION(original_LoadGear, LoadGear)
-void LoadGear(FILE *pF, int pIndex, tCar_spec *pCar_spec) {
+void __cdecl LoadGear(FILE *pF, int pIndex, tCar_spec *pCar_spec) {
     tPath_name the_path;
     char s[256];
     char *str;
@@ -926,9 +972,9 @@ void LoadGear(FILE *pF, int pIndex, tCar_spec *pCar_spec) {
     original_LoadGear(pF, pIndex, pCar_spec);
 }
 
-static void(*original_AddRefOffset)(int *, ...) = (void(*)(int *, ...))0x0042387c;
+static void(__cdecl*original_AddRefOffset)(int *) = (void(__cdecl*)(int *))0x0042387c;
 CARM95_HOOK_FUNCTION(original_AddRefOffset, AddRefOffset)
-void AddRefOffset(int *pRef_holder) {
+void __cdecl AddRefOffset(int *pRef_holder) {
     LOG_TRACE("(%p)", pRef_holder);
 
     (void)pRef_holder;
@@ -936,9 +982,9 @@ void AddRefOffset(int *pRef_holder) {
     original_AddRefOffset(pRef_holder);
 }
 
-static void(*original_GetDamageProgram)(FILE *, tCar_spec *, tImpact_location, ...) = (void(*)(FILE *, tCar_spec *, tImpact_location, ...))0x0042389d;
+static void(__cdecl*original_GetDamageProgram)(FILE *, tCar_spec *, tImpact_location) = (void(__cdecl*)(FILE *, tCar_spec *, tImpact_location))0x0042389d;
 CARM95_HOOK_FUNCTION(original_GetDamageProgram, GetDamageProgram)
-void GetDamageProgram(FILE *pF, tCar_spec *pCar_spec, tImpact_location pImpact_location) {
+void __cdecl GetDamageProgram(FILE *pF, tCar_spec *pCar_spec, tImpact_location pImpact_location) {
     tDamage_clause *the_clause;
     int i;
     int j;
@@ -964,9 +1010,9 @@ void GetDamageProgram(FILE *pF, tCar_spec *pCar_spec, tImpact_location pImpact_l
     original_GetDamageProgram(pF, pCar_spec, pImpact_location);
 }
 
-static br_uint_32(*original_LinkModel)(br_actor *, tModel_pool *, ...) = (br_uint_32(*)(br_actor *, tModel_pool *, ...))0x00423d40;
+static br_uint_32(__cdecl*original_LinkModel)(br_actor *, tModel_pool *) = (br_uint_32(__cdecl*)(br_actor *, tModel_pool *))0x00423d40;
 CARM95_HOOK_FUNCTION(original_LinkModel, LinkModel)
-br_uint_32 LinkModel(br_actor *pActor, tModel_pool *pModel_pool) {
+br_uint_32 __cdecl LinkModel(br_actor *pActor, tModel_pool *pModel_pool) {
     int i;
     LOG_TRACE("(%p, %p)", pActor, pModel_pool);
 
@@ -988,9 +1034,9 @@ void FreeUpBonnetModels(br_model **pModel_array, int pModel_count) {
     NOT_IMPLEMENTED();
 }
 
-static void(*original_LinkModelsToActor)(br_actor *, br_model **, int, ...) = (void(*)(br_actor *, br_model **, int, ...))0x00423d11;
+static void(__cdecl*original_LinkModelsToActor)(br_actor *, br_model **, int) = (void(__cdecl*)(br_actor *, br_model **, int))0x00423d11;
 CARM95_HOOK_FUNCTION(original_LinkModelsToActor, LinkModelsToActor)
-void LinkModelsToActor(br_actor *pActor, br_model **pModel_array, int pModel_count) {
+void __cdecl LinkModelsToActor(br_actor *pActor, br_model **pModel_array, int pModel_count) {
     tModel_pool model_pool;
     LOG_TRACE("(%p, %p, %d)", pActor, pModel_array, pModel_count);
 
@@ -1002,9 +1048,9 @@ void LinkModelsToActor(br_actor *pActor, br_model **pModel_array, int pModel_cou
     original_LinkModelsToActor(pActor, pModel_array, pModel_count);
 }
 
-static void(*original_ReadShrapnelMaterials)(FILE *, tCollision_info *, ...) = (void(*)(FILE *, tCollision_info *, ...))0x0041fde3;
+static void(__cdecl*original_ReadShrapnelMaterials)(FILE *, tCollision_info *) = (void(__cdecl*)(FILE *, tCollision_info *))0x0041fde3;
 CARM95_HOOK_FUNCTION(original_ReadShrapnelMaterials, ReadShrapnelMaterials)
-void ReadShrapnelMaterials(FILE *pF, tCollision_info *pCar_spec) {
+void __cdecl ReadShrapnelMaterials(FILE *pF, tCollision_info *pCar_spec) {
     char s[256];
     char version;
     int i;
@@ -1019,9 +1065,9 @@ void ReadShrapnelMaterials(FILE *pF, tCollision_info *pCar_spec) {
     original_ReadShrapnelMaterials(pF, pCar_spec);
 }
 
-static void(*original_CloneCar)(tCar_spec **, tCar_spec *, ...) = (void(*)(tCar_spec **, tCar_spec *, ...))0x0041fe6a;
+static void(__cdecl*original_CloneCar)(tCar_spec **, tCar_spec *) = (void(__cdecl*)(tCar_spec **, tCar_spec *))0x0041fe6a;
 CARM95_HOOK_FUNCTION(original_CloneCar, CloneCar)
-void CloneCar(tCar_spec **pOutput_car, tCar_spec *pInput_car) {
+void __cdecl CloneCar(tCar_spec **pOutput_car, tCar_spec *pInput_car) {
     int i;
     LOG_TRACE("(%p, %p)", pOutput_car, pInput_car);
 
@@ -1032,9 +1078,9 @@ void CloneCar(tCar_spec **pOutput_car, tCar_spec *pInput_car) {
     original_CloneCar(pOutput_car, pInput_car);
 }
 
-static void(*original_DisposeClonedCar)(tCar_spec *, ...) = (void(*)(tCar_spec *, ...))0x0041ff2f;
+static void(__cdecl*original_DisposeClonedCar)(tCar_spec *) = (void(__cdecl*)(tCar_spec *))0x0041ff2f;
 CARM95_HOOK_FUNCTION(original_DisposeClonedCar, DisposeClonedCar)
-void DisposeClonedCar(tCar_spec *pCar) {
+void __cdecl DisposeClonedCar(tCar_spec *pCar) {
     LOG_TRACE("(%p)", pCar);
 
     (void)pCar;
@@ -1042,9 +1088,9 @@ void DisposeClonedCar(tCar_spec *pCar) {
     original_DisposeClonedCar(pCar);
 }
 
-static int(*original_RemoveDoubleSided)(br_model *, ...) = (int(*)(br_model *, ...))0x0041ff58;
+static int(__cdecl*original_RemoveDoubleSided)(br_model *) = (int(__cdecl*)(br_model *))0x0041ff58;
 CARM95_HOOK_FUNCTION(original_RemoveDoubleSided, RemoveDoubleSided)
-int RemoveDoubleSided(br_model *pModel) {
+int __cdecl RemoveDoubleSided(br_model *pModel) {
     br_face *faces;
     br_face *face;
     int temp;
@@ -1066,9 +1112,9 @@ int RemoveDoubleSided(br_model *pModel) {
     return original_RemoveDoubleSided(pModel);
 }
 
-static void(*original_MungeWindscreen)(br_model *, ...) = (void(*)(br_model *, ...))0x00423e17;
+static void(__cdecl*original_MungeWindscreen)(br_model *) = (void(__cdecl*)(br_model *))0x00423e17;
 CARM95_HOOK_FUNCTION(original_MungeWindscreen, MungeWindscreen)
-void MungeWindscreen(br_model *pModel) {
+void __cdecl MungeWindscreen(br_model *pModel) {
     br_face *face;
     int i;
     LOG_TRACE("(%p)", pModel);
@@ -1080,9 +1126,9 @@ void MungeWindscreen(br_model *pModel) {
     original_MungeWindscreen(pModel);
 }
 
-static void(*original_SetModelFlags)(br_model *, int, ...) = (void(*)(br_model *, int, ...))0x00423f0b;
+static void(__cdecl*original_SetModelFlags)(br_model *, int) = (void(__cdecl*)(br_model *, int))0x00423f0b;
 CARM95_HOOK_FUNCTION(original_SetModelFlags, SetModelFlags)
-void SetModelFlags(br_model *pModel, int pOwner) {
+void __cdecl SetModelFlags(br_model *pModel, int pOwner) {
     LOG_TRACE("(%p, %d)", pModel, pOwner);
 
     (void)pModel;
@@ -1091,9 +1137,9 @@ void SetModelFlags(br_model *pModel, int pOwner) {
     original_SetModelFlags(pModel, pOwner);
 }
 
-static void(*original_LoadCar)(char *, tDriver, tCar_spec *, int, char *, tBrender_storage *, ...) = (void(*)(char *, tDriver, tCar_spec *, int, char *, tBrender_storage *, ...))0x00420144;
+static void(__cdecl*original_LoadCar)(char *, tDriver, tCar_spec *, int, char *, tBrender_storage *) = (void(__cdecl*)(char *, tDriver, tCar_spec *, int, char *, tBrender_storage *))0x00420144;
 CARM95_HOOK_FUNCTION(original_LoadCar, LoadCar)
-void LoadCar(char *pCar_name, tDriver pDriver, tCar_spec *pCar_spec, int pOwner, char *pDriver_name, tBrender_storage *pStorage_space) {
+void __cdecl LoadCar(char *pCar_name, tDriver pDriver, tCar_spec *pCar_spec, int pOwner, char *pDriver_name, tBrender_storage *pStorage_space) {
     FILE *f;
     FILE *g;
     FILE *h;
@@ -1158,9 +1204,9 @@ void LoadCar(char *pCar_name, tDriver pDriver, tCar_spec *pCar_spec, int pOwner,
     original_LoadCar(pCar_name, pDriver, pCar_spec, pOwner, pDriver_name, pStorage_space);
 }
 
-static void(*original_LoadHeadupImages)() = (void(*)())0x00423fad;
+static void(__cdecl*original_LoadHeadupImages)() = (void(__cdecl*)())0x00423fad;
 CARM95_HOOK_FUNCTION(original_LoadHeadupImages, LoadHeadupImages)
-void LoadHeadupImages() {
+void __cdecl LoadHeadupImages() {
     int i;
     tPath_name the_path;
     LOG_TRACE("()");
@@ -1171,9 +1217,9 @@ void LoadHeadupImages() {
     original_LoadHeadupImages();
 }
 
-static void(*original_DisposeHeadupImages)() = (void(*)())0x0042405e;
+static void(__cdecl*original_DisposeHeadupImages)() = (void(__cdecl*)())0x0042405e;
 CARM95_HOOK_FUNCTION(original_DisposeHeadupImages, DisposeHeadupImages)
-void DisposeHeadupImages() {
+void __cdecl DisposeHeadupImages() {
     int i;
     tPath_name the_path;
     LOG_TRACE("()");
@@ -1184,9 +1230,9 @@ void DisposeHeadupImages() {
     original_DisposeHeadupImages();
 }
 
-static FILE *(*original_OpenRaceFile)() = (FILE *(*)())0x004240b1;
+static FILE *(__cdecl*original_OpenRaceFile)() = (FILE *(__cdecl*)())0x004240b1;
 CARM95_HOOK_FUNCTION(original_OpenRaceFile, OpenRaceFile)
-FILE* OpenRaceFile() {
+FILE* __cdecl OpenRaceFile() {
     FILE *f;
     tPath_name the_path;
     LOG_TRACE("()");
@@ -1197,9 +1243,9 @@ FILE* OpenRaceFile() {
     return original_OpenRaceFile();
 }
 
-static void(*original_SkipRestOfRace)(FILE *, ...) = (void(*)(FILE *, ...))0x0042434a;
+static void(__cdecl*original_SkipRestOfRace)(FILE *) = (void(__cdecl*)(FILE *))0x0042434a;
 CARM95_HOOK_FUNCTION(original_SkipRestOfRace, SkipRestOfRace)
-void SkipRestOfRace(FILE *pF) {
+void __cdecl SkipRestOfRace(FILE *pF) {
     int j;
     int k;
     int text_chunk_count;
@@ -1217,9 +1263,9 @@ void SkipRestOfRace(FILE *pF) {
     original_SkipRestOfRace(pF);
 }
 
-static void(*original_LoadRaces)(tRace_list_spec *, int *, int, ...) = (void(*)(tRace_list_spec *, int *, int, ...))0x00424116;
+static void(__cdecl*original_LoadRaces)(tRace_list_spec *, int *, int) = (void(__cdecl*)(tRace_list_spec *, int *, int))0x00424116;
 CARM95_HOOK_FUNCTION(original_LoadRaces, LoadRaces)
-void LoadRaces(tRace_list_spec *pRace_list, int *pCount, int pRace_type_index) {
+void __cdecl LoadRaces(tRace_list_spec *pRace_list, int *pCount, int pRace_type_index) {
     FILE *f;
     int i;
     int j;
@@ -1245,9 +1291,9 @@ void LoadRaces(tRace_list_spec *pRace_list, int *pCount, int pRace_type_index) {
     original_LoadRaces(pRace_list, pCount, pRace_type_index);
 }
 
-static void(*original_UnlockOpponentMugshot)(int, ...) = (void(*)(int, ...))0x00424466;
+static void(__cdecl*original_UnlockOpponentMugshot)(int) = (void(__cdecl*)(int))0x00424466;
 CARM95_HOOK_FUNCTION(original_UnlockOpponentMugshot, UnlockOpponentMugshot)
-void UnlockOpponentMugshot(int pIndex) {
+void __cdecl UnlockOpponentMugshot(int pIndex) {
     LOG_TRACE("(%d)", pIndex);
 
     (void)pIndex;
@@ -1255,9 +1301,9 @@ void UnlockOpponentMugshot(int pIndex) {
     original_UnlockOpponentMugshot(pIndex);
 }
 
-static void(*original_LoadOpponentMugShot)(int, ...) = (void(*)(int, ...))0x004244b0;
+static void(__cdecl*original_LoadOpponentMugShot)(int) = (void(__cdecl*)(int))0x004244b0;
 CARM95_HOOK_FUNCTION(original_LoadOpponentMugShot, LoadOpponentMugShot)
-void LoadOpponentMugShot(int pIndex) {
+void __cdecl LoadOpponentMugShot(int pIndex) {
     LOG_TRACE("(%d)", pIndex);
 
     (void)pIndex;
@@ -1265,9 +1311,9 @@ void LoadOpponentMugShot(int pIndex) {
     original_LoadOpponentMugShot(pIndex);
 }
 
-static void(*original_DisposeOpponentGridIcon)(tRace_info *, int, ...) = (void(*)(tRace_info *, int, ...))0x00424557;
+static void(__cdecl*original_DisposeOpponentGridIcon)(tRace_info *, int) = (void(__cdecl*)(tRace_info *, int))0x00424557;
 CARM95_HOOK_FUNCTION(original_DisposeOpponentGridIcon, DisposeOpponentGridIcon)
-void DisposeOpponentGridIcon(tRace_info *pRace_info, int pIndex) {
+void __cdecl DisposeOpponentGridIcon(tRace_info *pRace_info, int pIndex) {
     LOG_TRACE("(%p, %d)", pRace_info, pIndex);
 
     (void)pRace_info;
@@ -1276,9 +1322,9 @@ void DisposeOpponentGridIcon(tRace_info *pRace_info, int pIndex) {
     original_DisposeOpponentGridIcon(pRace_info, pIndex);
 }
 
-static void(*original_LoadOpponentGridIcon)(tRace_info *, int, ...) = (void(*)(tRace_info *, int, ...))0x004245cf;
+static void(__cdecl*original_LoadOpponentGridIcon)(tRace_info *, int) = (void(__cdecl*)(tRace_info *, int))0x004245cf;
 CARM95_HOOK_FUNCTION(original_LoadOpponentGridIcon, LoadOpponentGridIcon)
-void LoadOpponentGridIcon(tRace_info *pRace_info, int pIndex) {
+void __cdecl LoadOpponentGridIcon(tRace_info *pRace_info, int pIndex) {
     LOG_TRACE("(%p, %d)", pRace_info, pIndex);
 
     (void)pRace_info;
@@ -1287,9 +1333,9 @@ void LoadOpponentGridIcon(tRace_info *pRace_info, int pIndex) {
     original_LoadOpponentGridIcon(pRace_info, pIndex);
 }
 
-static void(*original_LoadRaceInfo)(int, tRace_info *, ...) = (void(*)(int, tRace_info *, ...))0x0042466e;
+static void(__cdecl*original_LoadRaceInfo)(int, tRace_info *) = (void(__cdecl*)(int, tRace_info *))0x0042466e;
 CARM95_HOOK_FUNCTION(original_LoadRaceInfo, LoadRaceInfo)
-void LoadRaceInfo(int pRace_index, tRace_info *pRace_info) {
+void __cdecl LoadRaceInfo(int pRace_index, tRace_info *pRace_info) {
     FILE *f;
     int i;
     int j;
@@ -1324,9 +1370,9 @@ void LoadRaceInfo(int pRace_index, tRace_info *pRace_info) {
     original_LoadRaceInfo(pRace_index, pRace_info);
 }
 
-static void(*original_DisposeRaceInfo)(tRace_info *, ...) = (void(*)(tRace_info *, ...))0x00424ac0;
+static void(__cdecl*original_DisposeRaceInfo)(tRace_info *) = (void(__cdecl*)(tRace_info *))0x00424ac0;
 CARM95_HOOK_FUNCTION(original_DisposeRaceInfo, DisposeRaceInfo)
-void DisposeRaceInfo(tRace_info *pRace_info) {
+void __cdecl DisposeRaceInfo(tRace_info *pRace_info) {
     int i;
     int j;
     int k;
@@ -1342,9 +1388,9 @@ void DisposeRaceInfo(tRace_info *pRace_info) {
     original_DisposeRaceInfo(pRace_info);
 }
 
-static void(*original_LoadGridIcons)(tRace_info *, ...) = (void(*)(tRace_info *, ...))0x00424c2e;
+static void(__cdecl*original_LoadGridIcons)(tRace_info *) = (void(__cdecl*)(tRace_info *))0x00424c2e;
 CARM95_HOOK_FUNCTION(original_LoadGridIcons, LoadGridIcons)
-void LoadGridIcons(tRace_info *pRace_info) {
+void __cdecl LoadGridIcons(tRace_info *pRace_info) {
     int i;
     LOG_TRACE("(%p)", pRace_info);
 
@@ -1354,9 +1400,9 @@ void LoadGridIcons(tRace_info *pRace_info) {
     original_LoadGridIcons(pRace_info);
 }
 
-static void(*original_DisposeGridIcons)(tRace_info *, ...) = (void(*)(tRace_info *, ...))0x00424cab;
+static void(__cdecl*original_DisposeGridIcons)(tRace_info *) = (void(__cdecl*)(tRace_info *))0x00424cab;
 CARM95_HOOK_FUNCTION(original_DisposeGridIcons, DisposeGridIcons)
-void DisposeGridIcons(tRace_info *pRace_info) {
+void __cdecl DisposeGridIcons(tRace_info *pRace_info) {
     int i;
     LOG_TRACE("(%p)", pRace_info);
 
@@ -1366,9 +1412,9 @@ void DisposeGridIcons(tRace_info *pRace_info) {
     original_DisposeGridIcons(pRace_info);
 }
 
-static void(*original_LoadOpponents)() = (void(*)())0x00424d15;
+static void(__cdecl*original_LoadOpponents)() = (void(__cdecl*)())0x00424d15;
 CARM95_HOOK_FUNCTION(original_LoadOpponents, LoadOpponents)
-void LoadOpponents() {
+void __cdecl LoadOpponents() {
     FILE *f;
     tPath_name the_path;
     int i;
@@ -1391,9 +1437,9 @@ void LoadOpponents() {
     original_LoadOpponents();
 }
 
-static br_font *(*original_LoadBRFont)(char *, ...) = (br_font *(*)(char *, ...))0x004252ee;
+static br_font *(__cdecl*original_LoadBRFont)(char *) = (br_font *(__cdecl*)(char *))0x004252ee;
 CARM95_HOOK_FUNCTION(original_LoadBRFont, LoadBRFont)
-br_font* LoadBRFont(char *pName) {
+br_font* __cdecl LoadBRFont(char *pName) {
     FILE *f;
     tPath_name the_path;
     br_font *the_font;
@@ -1411,9 +1457,9 @@ br_font* LoadBRFont(char *pName) {
     return original_LoadBRFont(pName);
 }
 
-static void(*original_LoadParts)() = (void(*)())0x00425573;
+static void(__cdecl*original_LoadParts)() = (void(__cdecl*)())0x00425573;
 CARM95_HOOK_FUNCTION(original_LoadParts, LoadParts)
-void LoadParts() {
+void __cdecl LoadParts() {
     int i;
     int j;
     LOG_TRACE("()");
@@ -1424,9 +1470,9 @@ void LoadParts() {
     original_LoadParts();
 }
 
-static void(*original_UnlockParts)() = (void(*)())0x004256b1;
+static void(__cdecl*original_UnlockParts)() = (void(__cdecl*)())0x004256b1;
 CARM95_HOOK_FUNCTION(original_UnlockParts, UnlockParts)
-void UnlockParts() {
+void __cdecl UnlockParts() {
     int i;
     int j;
     LOG_TRACE("()");
@@ -1437,9 +1483,9 @@ void UnlockParts() {
     original_UnlockParts();
 }
 
-static br_pixelmap *(*original_LoadChromeFont)() = (br_pixelmap *(*)())0x0042575f;
+static br_pixelmap *(__cdecl*original_LoadChromeFont)() = (br_pixelmap *(__cdecl*)())0x0042575f;
 CARM95_HOOK_FUNCTION(original_LoadChromeFont, LoadChromeFont)
-br_pixelmap* LoadChromeFont() {
+br_pixelmap* __cdecl LoadChromeFont() {
     br_pixelmap *result;
     LOG_TRACE("()");
 
@@ -1448,9 +1494,9 @@ br_pixelmap* LoadChromeFont() {
     return original_LoadChromeFont();
 }
 
-static void(*original_DisposeChromeFont)(br_pixelmap *, ...) = (void(*)(br_pixelmap *, ...))0x00425799;
+static void(__cdecl*original_DisposeChromeFont)(br_pixelmap *) = (void(__cdecl*)(br_pixelmap *))0x00425799;
 CARM95_HOOK_FUNCTION(original_DisposeChromeFont, DisposeChromeFont)
-void DisposeChromeFont(br_pixelmap *pThe_font) {
+void __cdecl DisposeChromeFont(br_pixelmap *pThe_font) {
     LOG_TRACE("(%p)", pThe_font);
 
     (void)pThe_font;
@@ -1458,9 +1504,9 @@ void DisposeChromeFont(br_pixelmap *pThe_font) {
     original_DisposeChromeFont(pThe_font);
 }
 
-static int(*original_GetALineAndInterpretCommand)(FILE *, char **, int, ...) = (int(*)(FILE *, char **, int, ...))0x004257b0;
+static int(__cdecl*original_GetALineAndInterpretCommand)(FILE *, char **, int) = (int(__cdecl*)(FILE *, char **, int))0x004257b0;
 CARM95_HOOK_FUNCTION(original_GetALineAndInterpretCommand, GetALineAndInterpretCommand)
-int GetALineAndInterpretCommand(FILE *pF, char **pString_list, int pCount) {
+int __cdecl GetALineAndInterpretCommand(FILE *pF, char **pString_list, int pCount) {
     int i;
     char s[256];
     char *str;
@@ -1476,9 +1522,9 @@ int GetALineAndInterpretCommand(FILE *pF, char **pString_list, int pCount) {
     return original_GetALineAndInterpretCommand(pF, pString_list, pCount);
 }
 
-static int(*original_GetAnInt)(FILE *, ...) = (int(*)(FILE *, ...))0x00425878;
+static int(__cdecl*original_GetAnInt)(FILE *) = (int(__cdecl*)(FILE *))0x00425878;
 CARM95_HOOK_FUNCTION(original_GetAnInt, GetAnInt)
-int GetAnInt(FILE *pF) {
+int __cdecl GetAnInt(FILE *pF) {
     char s[256];
     char *str;
     int result;
@@ -1492,9 +1538,9 @@ int GetAnInt(FILE *pF) {
     return original_GetAnInt(pF);
 }
 
-static float(*original_GetAFloat)(FILE *, ...) = (float(*)(FILE *, ...))0x004258d0;
+static float(__cdecl*original_GetAFloat)(FILE *) = (float(__cdecl*)(FILE *))0x004258d0;
 CARM95_HOOK_FUNCTION(original_GetAFloat, GetAFloat)
-float GetAFloat(FILE *pF) {
+float __cdecl GetAFloat(FILE *pF) {
     char s[256];
     char *str;
     float result;
@@ -1508,9 +1554,9 @@ float GetAFloat(FILE *pF) {
     return original_GetAFloat(pF);
 }
 
-static float(*original_GetAFloatPercent)(FILE *, ...) = (float(*)(FILE *, ...))0x00425928;
+static float(__cdecl*original_GetAFloatPercent)(FILE *) = (float(__cdecl*)(FILE *))0x00425928;
 CARM95_HOOK_FUNCTION(original_GetAFloatPercent, GetAFloatPercent)
-float GetAFloatPercent(FILE *pF) {
+float __cdecl GetAFloatPercent(FILE *pF) {
     char s[256];
     char *str;
     float result;
@@ -1524,9 +1570,9 @@ float GetAFloatPercent(FILE *pF) {
     return original_GetAFloatPercent(pF);
 }
 
-static void(*original_GetPairOfFloats)(FILE *, float *, float *, ...) = (void(*)(FILE *, float *, float *, ...))0x00425986;
+static void(__cdecl*original_GetPairOfFloats)(FILE *, float *, float *) = (void(__cdecl*)(FILE *, float *, float *))0x00425986;
 CARM95_HOOK_FUNCTION(original_GetPairOfFloats, GetPairOfFloats)
-void GetPairOfFloats(FILE *pF, float *pF1, float *pF2) {
+void __cdecl GetPairOfFloats(FILE *pF, float *pF1, float *pF2) {
     char s[256];
     char *str;
     LOG_TRACE("(%p, %p, %p)", pF, pF1, pF2);
@@ -1540,9 +1586,9 @@ void GetPairOfFloats(FILE *pF, float *pF1, float *pF2) {
     original_GetPairOfFloats(pF, pF1, pF2);
 }
 
-static void(*original_GetThreeFloats)(FILE *, float *, float *, float *, ...) = (void(*)(FILE *, float *, float *, float *, ...))0x004259fd;
+static void(__cdecl*original_GetThreeFloats)(FILE *, float *, float *, float *) = (void(__cdecl*)(FILE *, float *, float *, float *))0x004259fd;
 CARM95_HOOK_FUNCTION(original_GetThreeFloats, GetThreeFloats)
-void GetThreeFloats(FILE *pF, float *pF1, float *pF2, float *pF3) {
+void __cdecl GetThreeFloats(FILE *pF, float *pF1, float *pF2, float *pF3) {
     char s[256];
     char *str;
     LOG_TRACE("(%p, %p, %p, %p)", pF, pF1, pF2, pF3);
@@ -1557,9 +1603,9 @@ void GetThreeFloats(FILE *pF, float *pF1, float *pF2, float *pF3) {
     original_GetThreeFloats(pF, pF1, pF2, pF3);
 }
 
-static void(*original_GetPairOfInts)(FILE *, int *, int *, ...) = (void(*)(FILE *, int *, int *, ...))0x00425a9b;
+static void(__cdecl*original_GetPairOfInts)(FILE *, int *, int *) = (void(__cdecl*)(FILE *, int *, int *))0x00425a9b;
 CARM95_HOOK_FUNCTION(original_GetPairOfInts, GetPairOfInts)
-void GetPairOfInts(FILE *pF, int *pF1, int *pF2) {
+void __cdecl GetPairOfInts(FILE *pF, int *pF1, int *pF2) {
     char s[256];
     char *str;
     LOG_TRACE("(%p, %p, %p)", pF, pF1, pF2);
@@ -1573,9 +1619,9 @@ void GetPairOfInts(FILE *pF, int *pF1, int *pF2) {
     original_GetPairOfInts(pF, pF1, pF2);
 }
 
-static void(*original_GetThreeInts)(FILE *, int *, int *, int *, ...) = (void(*)(FILE *, int *, int *, int *, ...))0x00425b12;
+static void(__cdecl*original_GetThreeInts)(FILE *, int *, int *, int *) = (void(__cdecl*)(FILE *, int *, int *, int *))0x00425b12;
 CARM95_HOOK_FUNCTION(original_GetThreeInts, GetThreeInts)
-void GetThreeInts(FILE *pF, int *pF1, int *pF2, int *pF3) {
+void __cdecl GetThreeInts(FILE *pF, int *pF1, int *pF2, int *pF3) {
     char s[256];
     char *str;
     LOG_TRACE("(%p, %p, %p, %p)", pF, pF1, pF2, pF3);
@@ -1590,9 +1636,9 @@ void GetThreeInts(FILE *pF, int *pF1, int *pF2, int *pF3) {
     original_GetThreeInts(pF, pF1, pF2, pF3);
 }
 
-static void(*original_GetThreeIntsAndAString)(FILE *, int *, int *, int *, char *, ...) = (void(*)(FILE *, int *, int *, int *, char *, ...))0x00425bb0;
+static void(__cdecl*original_GetThreeIntsAndAString)(FILE *, int *, int *, int *, char *) = (void(__cdecl*)(FILE *, int *, int *, int *, char *))0x00425bb0;
 CARM95_HOOK_FUNCTION(original_GetThreeIntsAndAString, GetThreeIntsAndAString)
-void GetThreeIntsAndAString(FILE *pF, int *pF1, int *pF2, int *pF3, char *pS) {
+void __cdecl GetThreeIntsAndAString(FILE *pF, int *pF1, int *pF2, int *pF3, char *pS) {
     char s[256];
     char *str;
     LOG_TRACE("(%p, %p, %p, %p, \"%s\")", pF, pF1, pF2, pF3, pS);
@@ -1608,9 +1654,9 @@ void GetThreeIntsAndAString(FILE *pF, int *pF1, int *pF2, int *pF3, char *pS) {
     original_GetThreeIntsAndAString(pF, pF1, pF2, pF3, pS);
 }
 
-static void(*original_GetFourInts)(FILE *, int *, int *, int *, int *, ...) = (void(*)(FILE *, int *, int *, int *, int *, ...))0x00425c85;
+static void(__cdecl*original_GetFourInts)(FILE *, int *, int *, int *, int *) = (void(__cdecl*)(FILE *, int *, int *, int *, int *))0x00425c85;
 CARM95_HOOK_FUNCTION(original_GetFourInts, GetFourInts)
-void GetFourInts(FILE *pF, int *pF1, int *pF2, int *pF3, int *pF4) {
+void __cdecl GetFourInts(FILE *pF, int *pF1, int *pF2, int *pF3, int *pF4) {
     char s[256];
     char *str;
     LOG_TRACE("(%p, %p, %p, %p, %p)", pF, pF1, pF2, pF3, pF4);
@@ -1626,9 +1672,9 @@ void GetFourInts(FILE *pF, int *pF1, int *pF2, int *pF3, int *pF4) {
     original_GetFourInts(pF, pF1, pF2, pF3, pF4);
 }
 
-static br_scalar(*original_GetAScalar)(FILE *, ...) = (br_scalar(*)(FILE *, ...))0x00425d4a;
+static br_scalar(__cdecl*original_GetAScalar)(FILE *) = (br_scalar(__cdecl*)(FILE *))0x00425d4a;
 CARM95_HOOK_FUNCTION(original_GetAScalar, GetAScalar)
-br_scalar GetAScalar(FILE *pF) {
+br_scalar __cdecl GetAScalar(FILE *pF) {
     LOG_TRACE("(%p)", pF);
 
     (void)pF;
@@ -1636,9 +1682,9 @@ br_scalar GetAScalar(FILE *pF) {
     return original_GetAScalar(pF);
 }
 
-static void(*original_GetPairOfScalars)(FILE *, br_scalar *, br_scalar *, ...) = (void(*)(FILE *, br_scalar *, br_scalar *, ...))0x00425d66;
+static void(__cdecl*original_GetPairOfScalars)(FILE *, br_scalar *, br_scalar *) = (void(__cdecl*)(FILE *, br_scalar *, br_scalar *))0x00425d66;
 CARM95_HOOK_FUNCTION(original_GetPairOfScalars, GetPairOfScalars)
-void GetPairOfScalars(FILE *pF, br_scalar *pS1, br_scalar *pS2) {
+void __cdecl GetPairOfScalars(FILE *pF, br_scalar *pS1, br_scalar *pS2) {
     float __block0__x_0;
     float __block0__x_1;
     LOG_TRACE("(%p, %p, %p)", pF, pS1, pS2);
@@ -1646,13 +1692,15 @@ void GetPairOfScalars(FILE *pF, br_scalar *pS1, br_scalar *pS2) {
     (void)pF;
     (void)pS1;
     (void)pS2;
+    (void)__block0__x_0;
+    (void)__block0__x_1;
 
     original_GetPairOfScalars(pF, pS1, pS2);
 }
 
-static void(*original_GetThreeScalars)(FILE *, br_scalar *, br_scalar *, br_scalar *, ...) = (void(*)(FILE *, br_scalar *, br_scalar *, br_scalar *, ...))0x00425d98;
+static void(__cdecl*original_GetThreeScalars)(FILE *, br_scalar *, br_scalar *, br_scalar *) = (void(__cdecl*)(FILE *, br_scalar *, br_scalar *, br_scalar *))0x00425d98;
 CARM95_HOOK_FUNCTION(original_GetThreeScalars, GetThreeScalars)
-void GetThreeScalars(FILE *pF, br_scalar *pS1, br_scalar *pS2, br_scalar *pS3) {
+void __cdecl GetThreeScalars(FILE *pF, br_scalar *pS1, br_scalar *pS2, br_scalar *pS3) {
     float __block0__x_0;
     float __block0__x_1;
     float __block0__x_2;
@@ -1662,13 +1710,16 @@ void GetThreeScalars(FILE *pF, br_scalar *pS1, br_scalar *pS2, br_scalar *pS3) {
     (void)pS1;
     (void)pS2;
     (void)pS3;
+    (void)__block0__x_0;
+    (void)__block0__x_1;
+    (void)__block0__x_2;
 
     original_GetThreeScalars(pF, pS1, pS2, pS3);
 }
 
-static void(*original_GetFourScalars)(FILE *, br_scalar *, br_scalar *, br_scalar *, br_scalar *, ...) = (void(*)(FILE *, br_scalar *, br_scalar *, br_scalar *, br_scalar *, ...))0x00425dd6;
+static void(__cdecl*original_GetFourScalars)(FILE *, br_scalar *, br_scalar *, br_scalar *, br_scalar *) = (void(__cdecl*)(FILE *, br_scalar *, br_scalar *, br_scalar *, br_scalar *))0x00425dd6;
 CARM95_HOOK_FUNCTION(original_GetFourScalars, GetFourScalars)
-void GetFourScalars(FILE *pF, br_scalar *pF1, br_scalar *pF2, br_scalar *pF3, br_scalar *pF4) {
+void __cdecl GetFourScalars(FILE *pF, br_scalar *pF1, br_scalar *pF2, br_scalar *pF3, br_scalar *pF4) {
     char s[256];
     char *str;
     float f1;
@@ -1692,9 +1743,9 @@ void GetFourScalars(FILE *pF, br_scalar *pF1, br_scalar *pF2, br_scalar *pF3, br
     original_GetFourScalars(pF, pF1, pF2, pF3, pF4);
 }
 
-static void(*original_GetFiveScalars)(FILE *, br_scalar *, br_scalar *, br_scalar *, br_scalar *, br_scalar *, ...) = (void(*)(FILE *, br_scalar *, br_scalar *, br_scalar *, br_scalar *, br_scalar *, ...))0x00425ec1;
+static void(__cdecl*original_GetFiveScalars)(FILE *, br_scalar *, br_scalar *, br_scalar *, br_scalar *, br_scalar *) = (void(__cdecl*)(FILE *, br_scalar *, br_scalar *, br_scalar *, br_scalar *, br_scalar *))0x00425ec1;
 CARM95_HOOK_FUNCTION(original_GetFiveScalars, GetFiveScalars)
-void GetFiveScalars(FILE *pF, br_scalar *pF1, br_scalar *pF2, br_scalar *pF3, br_scalar *pF4, br_scalar *pF5) {
+void __cdecl GetFiveScalars(FILE *pF, br_scalar *pF1, br_scalar *pF2, br_scalar *pF3, br_scalar *pF4, br_scalar *pF5) {
     char s[256];
     char *str;
     float f1;
@@ -1721,9 +1772,9 @@ void GetFiveScalars(FILE *pF, br_scalar *pF1, br_scalar *pF2, br_scalar *pF3, br
     original_GetFiveScalars(pF, pF1, pF2, pF3, pF4, pF5);
 }
 
-static void(*original_GetNScalars)(FILE *, int, br_scalar *, ...) = (void(*)(FILE *, int, br_scalar *, ...))0x00425fdb;
+static void(__cdecl*original_GetNScalars)(FILE *, int, br_scalar *) = (void(__cdecl*)(FILE *, int, br_scalar *))0x00425fdb;
 CARM95_HOOK_FUNCTION(original_GetNScalars, GetNScalars)
-void GetNScalars(FILE *pF, int pNumber, br_scalar *pScalars) {
+void __cdecl GetNScalars(FILE *pF, int pNumber, br_scalar *pScalars) {
     char s[256];
     char *str;
     float fleurting_point_numero;
@@ -1741,9 +1792,9 @@ void GetNScalars(FILE *pF, int pNumber, br_scalar *pScalars) {
     original_GetNScalars(pF, pNumber, pScalars);
 }
 
-static void(*original_GetPairOfFloatPercents)(FILE *, float *, float *, ...) = (void(*)(FILE *, float *, float *, ...))0x0042607b;
+static void(__cdecl*original_GetPairOfFloatPercents)(FILE *, float *, float *) = (void(__cdecl*)(FILE *, float *, float *))0x0042607b;
 CARM95_HOOK_FUNCTION(original_GetPairOfFloatPercents, GetPairOfFloatPercents)
-void GetPairOfFloatPercents(FILE *pF, float *pF1, float *pF2) {
+void __cdecl GetPairOfFloatPercents(FILE *pF, float *pF1, float *pF2) {
     char s[256];
     char *str;
     LOG_TRACE("(%p, %p, %p)", pF, pF1, pF2);
@@ -1757,9 +1808,9 @@ void GetPairOfFloatPercents(FILE *pF, float *pF1, float *pF2) {
     original_GetPairOfFloatPercents(pF, pF1, pF2);
 }
 
-static void(*original_GetThreeFloatPercents)(FILE *, float *, float *, float *, ...) = (void(*)(FILE *, float *, float *, float *, ...))0x00426112;
+static void(__cdecl*original_GetThreeFloatPercents)(FILE *, float *, float *, float *) = (void(__cdecl*)(FILE *, float *, float *, float *))0x00426112;
 CARM95_HOOK_FUNCTION(original_GetThreeFloatPercents, GetThreeFloatPercents)
-void GetThreeFloatPercents(FILE *pF, float *pF1, float *pF2, float *pF3) {
+void __cdecl GetThreeFloatPercents(FILE *pF, float *pF1, float *pF2, float *pF3) {
     char s[256];
     char *str;
     LOG_TRACE("(%p, %p, %p, %p)", pF, pF1, pF2, pF3);
@@ -1774,9 +1825,9 @@ void GetThreeFloatPercents(FILE *pF, float *pF1, float *pF2, float *pF3) {
     original_GetThreeFloatPercents(pF, pF1, pF2, pF3);
 }
 
-static void(*original_GetAString)(FILE *, char *, ...) = (void(*)(FILE *, char *, ...))0x004261e0;
+static void(__cdecl*original_GetAString)(FILE *, char *) = (void(__cdecl*)(FILE *, char *))0x004261e0;
 CARM95_HOOK_FUNCTION(original_GetAString, GetAString)
-void GetAString(FILE *pF, char *pString) {
+void __cdecl GetAString(FILE *pF, char *pString) {
     char s[256];
     char *str;
     LOG_TRACE("(%p, \"%s\")", pF, pString);
@@ -1789,18 +1840,18 @@ void GetAString(FILE *pF, char *pString) {
     original_GetAString(pF, pString);
 }
 
-static void(*original_AboutToLoadFirstCar)() = (void(*)())0x00426240;
+static void(__cdecl*original_AboutToLoadFirstCar)() = (void(__cdecl*)())0x00426240;
 CARM95_HOOK_FUNCTION(original_AboutToLoadFirstCar, AboutToLoadFirstCar)
-void AboutToLoadFirstCar() {
+void __cdecl AboutToLoadFirstCar() {
     LOG_TRACE("()");
 
 
     original_AboutToLoadFirstCar();
 }
 
-static void(*original_LoadOpponentsCars)(tRace_info *, ...) = (void(*)(tRace_info *, ...))0x0042625a;
+static void(__cdecl*original_LoadOpponentsCars)(tRace_info *) = (void(__cdecl*)(tRace_info *))0x0042625a;
 CARM95_HOOK_FUNCTION(original_LoadOpponentsCars, LoadOpponentsCars)
-void LoadOpponentsCars(tRace_info *pRace_info) {
+void __cdecl LoadOpponentsCars(tRace_info *pRace_info) {
     int i;
     LOG_TRACE("(%p)", pRace_info);
 
@@ -1810,9 +1861,9 @@ void LoadOpponentsCars(tRace_info *pRace_info) {
     original_LoadOpponentsCars(pRace_info);
 }
 
-static void(*original_DisposeOpponentsCars)(tRace_info *, ...) = (void(*)(tRace_info *, ...))0x00426359;
+static void(__cdecl*original_DisposeOpponentsCars)(tRace_info *) = (void(__cdecl*)(tRace_info *))0x00426359;
 CARM95_HOOK_FUNCTION(original_DisposeOpponentsCars, DisposeOpponentsCars)
-void DisposeOpponentsCars(tRace_info *pRace_info) {
+void __cdecl DisposeOpponentsCars(tRace_info *pRace_info) {
     int i;
     LOG_TRACE("(%p)", pRace_info);
 
@@ -1822,9 +1873,9 @@ void DisposeOpponentsCars(tRace_info *pRace_info) {
     original_DisposeOpponentsCars(pRace_info);
 }
 
-static void(*original_LoadMiscStrings)() = (void(*)())0x00426410;
+static void(__cdecl*original_LoadMiscStrings)() = (void(__cdecl*)())0x00426410;
 CARM95_HOOK_FUNCTION(original_LoadMiscStrings, LoadMiscStrings)
-void LoadMiscStrings() {
+void __cdecl LoadMiscStrings() {
     int i;
     FILE *f;
     char s[256];
@@ -1839,9 +1890,9 @@ void LoadMiscStrings() {
     original_LoadMiscStrings();
 }
 
-static void(*original_FillInRaceInfo)(tRace_info *, ...) = (void(*)(tRace_info *, ...))0x0042652d;
+static void(__cdecl*original_FillInRaceInfo)(tRace_info *) = (void(__cdecl*)(tRace_info *))0x0042652d;
 CARM95_HOOK_FUNCTION(original_FillInRaceInfo, FillInRaceInfo)
-void FillInRaceInfo(tRace_info *pThe_race) {
+void __cdecl FillInRaceInfo(tRace_info *pThe_race) {
     LOG_TRACE("(%p)", pThe_race);
 
     (void)pThe_race;
@@ -1849,9 +1900,9 @@ void FillInRaceInfo(tRace_info *pThe_race) {
     original_FillInRaceInfo(pThe_race);
 }
 
-static FILE *(*original_OldDRfopen)(char *, char *, ...) = (FILE *(*)(char *, char *, ...))0x00426654;
+static FILE *(__cdecl*original_OldDRfopen)(char *, char *) = (FILE *(__cdecl*)(char *, char *))0x00426654;
 CARM95_HOOK_FUNCTION(original_OldDRfopen, OldDRfopen)
-FILE* OldDRfopen(char *pFilename, char *pMode) {
+FILE* __cdecl OldDRfopen(char *pFilename, char *pMode) {
     FILE *fp;
     FILE *file_ptr;
     FILE *test1;
@@ -1877,13 +1928,14 @@ FILE* OldDRfopen(char *pFilename, char *pMode) {
     (void)source_check;
     (void)source_exists;
     (void)len;
+    (void)__block0__ch;
 
     return original_OldDRfopen(pFilename, pMode);
 }
 
-static void(*original_AllowOpenToFail)() = (void(*)())0x00426563;
+static void(__cdecl*original_AllowOpenToFail)() = (void(__cdecl*)())0x00426563;
 CARM95_HOOK_FUNCTION(original_AllowOpenToFail, AllowOpenToFail)
-void AllowOpenToFail() {
+void __cdecl AllowOpenToFail() {
     LOG_TRACE("()");
 
 
@@ -1897,9 +1949,9 @@ void DoNotAllowOpenToFail() {
     NOT_IMPLEMENTED();
 }
 
-static FILE *(*original_DRfopen)(char *, char *, ...) = (FILE *(*)(char *, char *, ...))0x00426583;
+static FILE *(__cdecl*original_DRfopen)(char *, char *) = (FILE *(__cdecl*)(char *, char *))0x00426583;
 CARM95_HOOK_FUNCTION(original_DRfopen, DRfopen)
-FILE* DRfopen(char *pFilename, char *pMode) {
+FILE* __cdecl DRfopen(char *pFilename, char *pMode) {
     FILE *result;
     tPath_name CD_dir;
     char msg[336];
@@ -1914,9 +1966,9 @@ FILE* DRfopen(char *pFilename, char *pMode) {
     return original_DRfopen(pFilename, pMode);
 }
 
-static int(*original_GetCDPathFromPathsTxtFile)(char *, ...) = (int(*)(char *, ...))0x00426cc5;
+static int(__cdecl*original_GetCDPathFromPathsTxtFile)(char *) = (int(__cdecl*)(char *))0x00426cc5;
 CARM95_HOOK_FUNCTION(original_GetCDPathFromPathsTxtFile, GetCDPathFromPathsTxtFile)
-int GetCDPathFromPathsTxtFile(char *pPath_name) {
+int __cdecl GetCDPathFromPathsTxtFile(char *pPath_name) {
     static int got_it_already;
     static tPath_name cd_pathname;
     FILE *paths_txt_fp;
@@ -1939,27 +1991,27 @@ int TestForOriginalCarmaCDinDrive() {
     NOT_IMPLEMENTED();
 }
 
-static int(*original_OriginalCarmaCDinDrive)() = (int(*)())0x00427158;
+static int(__cdecl*original_OriginalCarmaCDinDrive)() = (int(__cdecl*)())0x00427158;
 CARM95_HOOK_FUNCTION(original_OriginalCarmaCDinDrive, OriginalCarmaCDinDrive)
-int OriginalCarmaCDinDrive() {
+int __cdecl OriginalCarmaCDinDrive() {
     LOG_TRACE("()");
 
 
     return original_OriginalCarmaCDinDrive();
 }
 
-static int(*original_CarmaCDinDriveOrFullGameInstalled)() = (int(*)())0x0042716d;
+static int(__cdecl*original_CarmaCDinDriveOrFullGameInstalled)() = (int(__cdecl*)())0x0042716d;
 CARM95_HOOK_FUNCTION(original_CarmaCDinDriveOrFullGameInstalled, CarmaCDinDriveOrFullGameInstalled)
-int CarmaCDinDriveOrFullGameInstalled() {
+int __cdecl CarmaCDinDriveOrFullGameInstalled() {
     LOG_TRACE("()");
 
 
     return original_CarmaCDinDriveOrFullGameInstalled();
 }
 
-static void(*original_ReadNetworkSettings)(FILE *, tNet_game_options *, ...) = (void(*)(FILE *, tNet_game_options *, ...))0x00427199;
+static void(__cdecl*original_ReadNetworkSettings)(FILE *, tNet_game_options *) = (void(__cdecl*)(FILE *, tNet_game_options *))0x00427199;
 CARM95_HOOK_FUNCTION(original_ReadNetworkSettings, ReadNetworkSettings)
-void ReadNetworkSettings(FILE *pF, tNet_game_options *pOptions) {
+void __cdecl ReadNetworkSettings(FILE *pF, tNet_game_options *pOptions) {
     LOG_TRACE("(%p, %p)", pF, pOptions);
 
     (void)pF;
@@ -1968,9 +2020,9 @@ void ReadNetworkSettings(FILE *pF, tNet_game_options *pOptions) {
     original_ReadNetworkSettings(pF, pOptions);
 }
 
-static int(*original_PrintNetOptions)(FILE *, int, ...) = (int(*)(FILE *, int, ...))0x00427269;
+static int(__cdecl*original_PrintNetOptions)(FILE *, int) = (int(__cdecl*)(FILE *, int))0x00427269;
 CARM95_HOOK_FUNCTION(original_PrintNetOptions, PrintNetOptions)
-int PrintNetOptions(FILE *pF, int pIndex) {
+int __cdecl PrintNetOptions(FILE *pF, int pIndex) {
     LOG_TRACE("(%p, %d)", pF, pIndex);
 
     (void)pF;
@@ -1979,9 +2031,9 @@ int PrintNetOptions(FILE *pF, int pIndex) {
     return original_PrintNetOptions(pF, pIndex);
 }
 
-static int(*original_SaveOptions)() = (int(*)())0x004273e5;
+static int(__cdecl*original_SaveOptions)() = (int(__cdecl*)())0x004273e5;
 CARM95_HOOK_FUNCTION(original_SaveOptions, SaveOptions)
-int SaveOptions() {
+int __cdecl SaveOptions() {
     tPath_name the_path;
     FILE *f;
     LOG_TRACE("()");
@@ -1992,9 +2044,9 @@ int SaveOptions() {
     return original_SaveOptions();
 }
 
-static int(*original_RestoreOptions)() = (int(*)())0x004278be;
+static int(__cdecl*original_RestoreOptions)() = (int(__cdecl*)())0x004278be;
 CARM95_HOOK_FUNCTION(original_RestoreOptions, RestoreOptions)
-int RestoreOptions() {
+int __cdecl RestoreOptions() {
     tPath_name the_path;
     FILE *f;
     char line[80];
@@ -2013,9 +2065,9 @@ int RestoreOptions() {
     return original_RestoreOptions();
 }
 
-static void(*original_InitFunkGrooveFlags)() = (void(*)())0x00427e87;
+static void(__cdecl*original_InitFunkGrooveFlags)() = (void(__cdecl*)())0x00427e87;
 CARM95_HOOK_FUNCTION(original_InitFunkGrooveFlags, InitFunkGrooveFlags)
-void InitFunkGrooveFlags() {
+void __cdecl InitFunkGrooveFlags() {
     int i;
     LOG_TRACE("()");
 

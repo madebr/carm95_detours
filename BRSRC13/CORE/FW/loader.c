@@ -4,11 +4,10 @@
 
 #include "carm95_hooks.h"
 
-#include <stdio.h>
 
-static br_image *(*original_ImageLoad)(char *, ...) = (br_image *(*)(char *, ...))0x004e8bb0;
+static br_image *(__stdcall*original_ImageLoad)(char *) = (br_image *(__stdcall*)(char *))0x004e8bb0;
 CARM95_HOOK_FUNCTION(original_ImageLoad, ImageLoad)
-br_image* ImageLoad(char *name) {
+br_image* __stdcall ImageLoad(char *name) {
     void *fh;
     int mode;
     struct msdos_header dos_header;
@@ -51,6 +50,17 @@ br_image* ImageLoad(char *name) {
     (void)i;
     (void)offset;
     (void)n;
+    (void)__block0__ed;
+    (void)__block1__id;
+    (void)__block1__at;
+    (void)__block1__lt;
+    (void)__block1__import_img;
+    (void)__block2__header;
+    (void)__block2__entry;
+    (void)__block2__fixup;
+    (void)__block2__delta;
+    (void)__block2__delta_h;
+    (void)__block2__delta_l;
 
     return original_ImageLoad(name);
 }

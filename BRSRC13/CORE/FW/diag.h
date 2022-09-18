@@ -5,17 +5,23 @@
 
 // extern char(* hookvar__diag_scratch )[128];
 
-extern void(*BrFailure)(char *, ...);
+extern void(__cdecl*BrFailure)(char *);
+#if 0
 void BrFailure_do_not_use(char *s);
+#endif
 
-extern void(*BrWarning)(char *, ...);
+extern void(__cdecl*BrWarning)(char *);
+#if 0
 void BrWarning_do_not_use(char *s);
+#endif
 
-extern void(*BrFatal)(char *, int, char *, ...);
+extern void(__cdecl*BrFatal)(char *, int, char *);
+#if 0
 void BrFatal_do_not_use(char *name, int line, char *s);
+#endif
 
-void _BrAssert(char *condition, char *file, unsigned int line);
+void __stdcall _BrAssert(char *condition, char *file, unsigned int line);
 
-void _BrUAssert(char *condition, char *file, unsigned int line);
+void __cdecl _BrUAssert(char *condition, char *file, unsigned int line);
 
 #endif

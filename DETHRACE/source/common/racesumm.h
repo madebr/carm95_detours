@@ -35,82 +35,82 @@ extern int * hookvar_gWreck_zoomed_in ; // addr: 00530E24
 extern int * hookvar_gDone_initial ; // addr: 00530E04
 extern int * hookvar_gTemp_lost ; // addr: 00530E20
 
-void MungeRankEtc(tProgram_state *pThe_state);
+void __cdecl MungeRankEtc(tProgram_state *pThe_state);
 
-void CalcRankIncrease();
+void __cdecl CalcRankIncrease();
 
-int RaceSummaryDone(int pCurrent_choice, int pCurrent_mode, int pGo_ahead, int pEscaped, int pTimed_out);
+int __cdecl RaceSummaryDone(int pCurrent_choice, int pCurrent_mode, int pGo_ahead, int pEscaped, int pTimed_out);
 
-void DrawInBox(int pBox_left, int pText_left, int pTop, int pRight, int pBottom, int pColour, int pAmount);
+void __cdecl DrawInBox(int pBox_left, int pText_left, int pTop, int pRight, int pBottom, int pColour, int pAmount);
 
-void DrawChromeNumber(int pLeft_1, int pLeft_2, int pPitch, int pTop, int pAmount);
+void __cdecl DrawChromeNumber(int pLeft_1, int pLeft_2, int pPitch, int pTop, int pAmount);
 
-void DrawSummaryItems();
+void __cdecl DrawSummaryItems();
 
-void RampUpRate(float *pRate, tU32 pTime);
+void __cdecl RampUpRate(float *pRate, tU32 pTime);
 
-void DrawSummary(int pCurrent_choice, int pCurrent_mode);
+void __cdecl DrawSummary(int pCurrent_choice, int pCurrent_mode);
 
-void StartSummary();
+void __cdecl StartSummary();
 
-void SetUpTemps();
+void __cdecl SetUpTemps();
 
-int Summ1GoAhead(int *pCurrent_choice, int *pCurrent_mode);
+int __cdecl Summ1GoAhead(int *pCurrent_choice, int *pCurrent_mode);
 
-int SummCheckGameOver(int *pCurrent_choice, int *pCurrent_mode);
+int __cdecl SummCheckGameOver(int *pCurrent_choice, int *pCurrent_mode);
 
-tSO_result DoEndRaceSummary1();
+tSO_result __cdecl DoEndRaceSummary1();
 
-void PrepareBoundingRadius__racesumm(br_model *model);
+void __cdecl PrepareBoundingRadius__racesumm(br_model *model);
 
-void BuildWrecks();
+void __cdecl BuildWrecks();
 
-void DisposeWrecks();
+void __cdecl DisposeWrecks();
 
-int MatrixIsIdentity(br_matrix34 *pMat);
+int __cdecl MatrixIsIdentity(br_matrix34 *pMat);
 
-void SpinWrecks(tU32 pFrame_period);
+void __cdecl SpinWrecks(tU32 pFrame_period);
 
-void ZoomInTo(int pIndex, int *pCurrent_choice, int *pCurrent_mode);
+void __cdecl ZoomInTo(int pIndex, int *pCurrent_choice, int *pCurrent_mode);
 
-void ZoomOutTo(int pIndex, int *pCurrent_choice, int *pCurrent_mode);
+void __cdecl ZoomOutTo(int pIndex, int *pCurrent_choice, int *pCurrent_mode);
 
-int WreckPick(br_actor *pActor, br_model *pModel, br_material *pMaterial, br_vector3 *pRay_pos, br_vector3 *pRay_dir, br_scalar pNear, br_scalar pFar, void *pArg);
+int __cdecl WreckPick(br_actor *pActor, br_model *pModel, br_material *pMaterial, br_vector3 *pRay_pos, br_vector3 *pRay_dir, br_scalar pNear, br_scalar pFar, void *pArg);
 
-int CastSelectionRay(int *pCurrent_choice, int *pCurrent_mode);
+int __cdecl CastSelectionRay(int *pCurrent_choice, int *pCurrent_mode);
 
-int DamageScrnExit(int *pCurrent_choice, int *pCurrent_mode);
+int __cdecl DamageScrnExit(int *pCurrent_choice, int *pCurrent_mode);
 
-void DamageScrnDraw(int pCurrent_choice, int pCurrent_mode);
+void __cdecl DamageScrnDraw(int pCurrent_choice, int pCurrent_mode);
 
-int DamageScrnLeft(int *pCurrent_choice, int *pCurrent_mode);
+int __cdecl DamageScrnLeft(int *pCurrent_choice, int *pCurrent_mode);
 
-int DamageScrnRight(int *pCurrent_choice, int *pCurrent_mode);
+int __cdecl DamageScrnRight(int *pCurrent_choice, int *pCurrent_mode);
 
-int DamageScrnUp(int *pCurrent_choice, int *pCurrent_mode);
+int __cdecl DamageScrnUp(int *pCurrent_choice, int *pCurrent_mode);
 
-int DamageScrnDown(int *pCurrent_choice, int *pCurrent_mode);
+int __cdecl DamageScrnDown(int *pCurrent_choice, int *pCurrent_mode);
 
-int DamageScrnGoHead(int *pCurrent_choice, int *pCurrent_mode);
+int __cdecl DamageScrnGoHead(int *pCurrent_choice, int *pCurrent_mode);
 
-int ClickDamage(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY_offset);
+int __cdecl ClickDamage(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY_offset);
 
-int DamageScrnDone(int pCurrent_choice, int pCurrent_mode, int pGo_ahead, int pEscaped, int pTimed_out);
+int __cdecl DamageScrnDone(int pCurrent_choice, int pCurrent_mode, int pGo_ahead, int pEscaped, int pTimed_out);
 
-tSO_result DoEndRaceSummary2();
+tSO_result __cdecl DoEndRaceSummary2();
 
-void DrawAnItem__racesumm(int pX, int pY_index, int pFont_index, char *pText);
+void __cdecl DrawAnItem__racesumm(int pX, int pY_index, int pFont_index, char *pText);
 
-void DrawColumnHeading__racesumm(int pStr_index, int pX);
+void __cdecl DrawColumnHeading__racesumm(int pStr_index, int pX);
 
-int SortScores(void *pFirst_one, void *pSecond_one);
+int __cdecl SortScores(void *pFirst_one, void *pSecond_one);
 
-void SortGameScores();
+void __cdecl SortGameScores();
 
-void NetSumDraw(int pCurrent_choice, int pCurrent_mode);
+void __cdecl NetSumDraw(int pCurrent_choice, int pCurrent_mode);
 
-void DoNetRaceSummary();
+void __cdecl DoNetRaceSummary();
 
-tSO_result DoEndRaceSummary(int *pFirst_summary_done, tRace_result pRace_result);
+tSO_result __cdecl DoEndRaceSummary(int *pFirst_summary_done, tRace_result pRace_result);
 
 #endif

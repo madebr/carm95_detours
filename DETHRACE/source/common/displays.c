@@ -4,7 +4,6 @@
 
 #include "carm95_hooks.h"
 
-#include <stdio.h>
 int * hookvar_gLast_fancy_index  = (void*)0x00521678;
  // Suffix added to avoid duplicate symbol
 int * hookvar_gLast_credit_headup__displays  = (void*)0x0052167c;
@@ -40,9 +39,9 @@ int * hookvar_gCredits_lost_headup ;
 #endif
 int * hookvar_gCredits_won_headup  = (void*)0x00544e20;
 
-static void(*original_GetTimerString)(char *, int, ...) = (void(*)(char *, int, ...))0x004c4030;
+static void(__cdecl*original_GetTimerString)(char *, int) = (void(__cdecl*)(char *, int))0x004c4030;
 CARM95_HOOK_FUNCTION(original_GetTimerString, GetTimerString)
-void GetTimerString(char *pStr, int pFudge_colon) {
+void __cdecl GetTimerString(char *pStr, int pFudge_colon) {
     LOG_TRACE("(\"%s\", %d)", pStr, pFudge_colon);
 
     (void)pStr;
@@ -51,9 +50,9 @@ void GetTimerString(char *pStr, int pFudge_colon) {
     original_GetTimerString(pStr, pFudge_colon);
 }
 
-static void(*original_InitHeadups)() = (void(*)())0x004c4053;
+static void(__cdecl*original_InitHeadups)() = (void(__cdecl*)())0x004c4053;
 CARM95_HOOK_FUNCTION(original_InitHeadups, InitHeadups)
-void InitHeadups() {
+void __cdecl InitHeadups() {
     int i;
     LOG_TRACE("()");
 
@@ -62,9 +61,9 @@ void InitHeadups() {
     original_InitHeadups();
 }
 
-static void(*original_ClearHeadup)(int, ...) = (void(*)(int, ...))0x004c40c1;
+static void(__cdecl*original_ClearHeadup)(int) = (void(__cdecl*)(int))0x004c40c1;
 CARM95_HOOK_FUNCTION(original_ClearHeadup, ClearHeadup)
-void ClearHeadup(int pIndex) {
+void __cdecl ClearHeadup(int pIndex) {
     LOG_TRACE("(%d)", pIndex);
 
     (void)pIndex;
@@ -72,9 +71,9 @@ void ClearHeadup(int pIndex) {
     original_ClearHeadup(pIndex);
 }
 
-static void(*original_ClearHeadupSlot)(int, ...) = (void(*)(int, ...))0x004c40e6;
+static void(__cdecl*original_ClearHeadupSlot)(int) = (void(__cdecl*)(int))0x004c40e6;
 CARM95_HOOK_FUNCTION(original_ClearHeadupSlot, ClearHeadupSlot)
-void ClearHeadupSlot(int pSlot_index) {
+void __cdecl ClearHeadupSlot(int pSlot_index) {
     int i;
     tHeadup *the_headup;
     LOG_TRACE("(%d)", pSlot_index);
@@ -86,9 +85,9 @@ void ClearHeadupSlot(int pSlot_index) {
     original_ClearHeadupSlot(pSlot_index);
 }
 
-static void(*original_ClearHeadups)() = (void(*)())0x004c414c;
+static void(__cdecl*original_ClearHeadups)() = (void(__cdecl*)())0x004c414c;
 CARM95_HOOK_FUNCTION(original_ClearHeadups, ClearHeadups)
-void ClearHeadups() {
+void __cdecl ClearHeadups() {
     int i;
     LOG_TRACE("()");
 
@@ -97,9 +96,9 @@ void ClearHeadups() {
     original_ClearHeadups();
 }
 
-static int(*original_HeadupActive)(int, ...) = (int(*)(int, ...))0x004c421d;
+static int(__cdecl*original_HeadupActive)(int) = (int(__cdecl*)(int))0x004c421d;
 CARM95_HOOK_FUNCTION(original_HeadupActive, HeadupActive)
-int HeadupActive(int pIndex) {
+int __cdecl HeadupActive(int pIndex) {
     LOG_TRACE("(%d)", pIndex);
 
     (void)pIndex;
@@ -107,9 +106,9 @@ int HeadupActive(int pIndex) {
     return original_HeadupActive(pIndex);
 }
 
-static void(*original_DRPixelmapText)(br_pixelmap *, int, int, tDR_font *, char *, int, ...) = (void(*)(br_pixelmap *, int, int, tDR_font *, char *, int, ...))0x004c4256;
+static void(__cdecl*original_DRPixelmapText)(br_pixelmap *, int, int, tDR_font *, char *, int) = (void(__cdecl*)(br_pixelmap *, int, int, tDR_font *, char *, int))0x004c4256;
 CARM95_HOOK_FUNCTION(original_DRPixelmapText, DRPixelmapText)
-void DRPixelmapText(br_pixelmap *pPixelmap, int pX, int pY, tDR_font *pFont, char *pText, int pRight_edge) {
+void __cdecl DRPixelmapText(br_pixelmap *pPixelmap, int pX, int pY, tDR_font *pFont, char *pText, int pRight_edge) {
     int i;
     int x;
     int len;
@@ -134,9 +133,9 @@ void DRPixelmapText(br_pixelmap *pPixelmap, int pX, int pY, tDR_font *pFont, cha
     original_DRPixelmapText(pPixelmap, pX, pY, pFont, pText, pRight_edge);
 }
 
-static void(*original_DRPixelmapCleverText2)(br_pixelmap *, int, int, tDR_font *, signed char *, int, ...) = (void(*)(br_pixelmap *, int, int, tDR_font *, signed char *, int, ...))0x004c43cf;
+static void(__cdecl*original_DRPixelmapCleverText2)(br_pixelmap *, int, int, tDR_font *, signed char *, int) = (void(__cdecl*)(br_pixelmap *, int, int, tDR_font *, signed char *, int))0x004c43cf;
 CARM95_HOOK_FUNCTION(original_DRPixelmapCleverText2, DRPixelmapCleverText2)
-void DRPixelmapCleverText2(br_pixelmap *pPixelmap, int pX, int pY, tDR_font *pFont, signed char *pText, int pRight_edge) {
+void __cdecl DRPixelmapCleverText2(br_pixelmap *pPixelmap, int pX, int pY, tDR_font *pFont, signed char *pText, int pRight_edge) {
     int i;
     int x;
     int len;
@@ -176,9 +175,9 @@ void DeviouslyDimRectangle(br_pixelmap *pPixelmap, int pLeft, int pTop, int pRig
     NOT_IMPLEMENTED();
 }
 
-static void(*original_DimRectangle)(br_pixelmap *, int, int, int, int, int, ...) = (void(*)(br_pixelmap *, int, int, int, int, int, ...))0x004c4604;
+static void(__cdecl*original_DimRectangle)(br_pixelmap *, int, int, int, int, int) = (void(__cdecl*)(br_pixelmap *, int, int, int, int, int))0x004c4604;
 CARM95_HOOK_FUNCTION(original_DimRectangle, DimRectangle)
-void DimRectangle(br_pixelmap *pPixelmap, int pLeft, int pTop, int pRight, int pBottom, int pKnock_out_corners) {
+void __cdecl DimRectangle(br_pixelmap *pPixelmap, int pLeft, int pTop, int pRight, int pBottom, int pKnock_out_corners) {
     tU8 *ptr;
     tU8 *depth_table_ptr;
     tU8 *right_ptr;
@@ -205,9 +204,9 @@ void DimRectangle(br_pixelmap *pPixelmap, int pLeft, int pTop, int pRight, int p
     original_DimRectangle(pPixelmap, pLeft, pTop, pRight, pBottom, pKnock_out_corners);
 }
 
-static void(*original_DimAFewBits)() = (void(*)())0x004c479c;
+static void(__cdecl*original_DimAFewBits)() = (void(__cdecl*)())0x004c479c;
 CARM95_HOOK_FUNCTION(original_DimAFewBits, DimAFewBits)
-void DimAFewBits() {
+void __cdecl DimAFewBits() {
     int i;
     LOG_TRACE("()");
 
@@ -216,18 +215,18 @@ void DimAFewBits() {
     original_DimAFewBits();
 }
 
-static void(*original_KillOldestQueuedHeadup)() = (void(*)())0x004c524c;
+static void(__cdecl*original_KillOldestQueuedHeadup)() = (void(__cdecl*)())0x004c524c;
 CARM95_HOOK_FUNCTION(original_KillOldestQueuedHeadup, KillOldestQueuedHeadup)
-void KillOldestQueuedHeadup() {
+void __cdecl KillOldestQueuedHeadup() {
     LOG_TRACE("()");
 
 
     original_KillOldestQueuedHeadup();
 }
 
-static void(*original_DubreyBar)(int, int, int, ...) = (void(*)(int, int, int, ...))0x004c5438;
+static void(__cdecl*original_DubreyBar)(int, int, int) = (void(__cdecl*)(int, int, int))0x004c5438;
 CARM95_HOOK_FUNCTION(original_DubreyBar, DubreyBar)
-void DubreyBar(int pX_index, int pY, int pColour) {
+void __cdecl DubreyBar(int pX_index, int pY, int pColour) {
     int x;
     LOG_TRACE("(%d, %d, %d)", pX_index, pY, pColour);
 
@@ -239,9 +238,9 @@ void DubreyBar(int pX_index, int pY, int pColour) {
     original_DubreyBar(pX_index, pY, pColour);
 }
 
-static void(*original_DoPSPowerHeadup)(int, int, char *, int, ...) = (void(*)(int, int, char *, int, ...))0x004c530b;
+static void(__cdecl*original_DoPSPowerHeadup)(int, int, char *, int) = (void(__cdecl*)(int, int, char *, int))0x004c530b;
 CARM95_HOOK_FUNCTION(original_DoPSPowerHeadup, DoPSPowerHeadup)
-void DoPSPowerHeadup(int pY, int pLevel, char *pName, int pBar_colour) {
+void __cdecl DoPSPowerHeadup(int pY, int pLevel, char *pName, int pBar_colour) {
     char s[16];
     int i;
     LOG_TRACE("(%d, %d, \"%s\", %d)", pY, pLevel, pName, pBar_colour);
@@ -256,18 +255,18 @@ void DoPSPowerHeadup(int pY, int pLevel, char *pName, int pBar_colour) {
     original_DoPSPowerHeadup(pY, pLevel, pName, pBar_colour);
 }
 
-static void(*original_DoPSPowerupHeadups)() = (void(*)())0x004c5288;
+static void(__cdecl*original_DoPSPowerupHeadups)() = (void(__cdecl*)())0x004c5288;
 CARM95_HOOK_FUNCTION(original_DoPSPowerupHeadups, DoPSPowerupHeadups)
-void DoPSPowerupHeadups() {
+void __cdecl DoPSPowerupHeadups() {
     LOG_TRACE("()");
 
 
     original_DoPSPowerupHeadups();
 }
 
-static void(*original_DoHeadups)(tU32, ...) = (void(*)(tU32, ...))0x004c4906;
+static void(__cdecl*original_DoHeadups)(tU32) = (void(__cdecl*)(tU32))0x004c4906;
 CARM95_HOOK_FUNCTION(original_DoHeadups, DoHeadups)
-void DoHeadups(tU32 pThe_time) {
+void __cdecl DoHeadups(tU32 pThe_time) {
     int i;
     int x_offset;
     int y_offset;
@@ -285,9 +284,9 @@ void DoHeadups(tU32 pThe_time) {
     original_DoHeadups(pThe_time);
 }
 
-static int(*original_FindAHeadupHoleWoofBarkSoundsABitRude)(int, ...) = (int(*)(int, ...))0x004c5493;
+static int(__cdecl*original_FindAHeadupHoleWoofBarkSoundsABitRude)(int) = (int(__cdecl*)(int))0x004c5493;
 CARM95_HOOK_FUNCTION(original_FindAHeadupHoleWoofBarkSoundsABitRude, FindAHeadupHoleWoofBarkSoundsABitRude)
-int FindAHeadupHoleWoofBarkSoundsABitRude(int pSlot_index) {
+int __cdecl FindAHeadupHoleWoofBarkSoundsABitRude(int pSlot_index) {
     int i;
     int empty_one;
     tHeadup *the_headup;
@@ -301,9 +300,9 @@ int FindAHeadupHoleWoofBarkSoundsABitRude(int pSlot_index) {
     return original_FindAHeadupHoleWoofBarkSoundsABitRude(pSlot_index);
 }
 
-static int(*original_DRTextWidth)(tDR_font *, char *, ...) = (int(*)(tDR_font *, char *, ...))0x004c5514;
+static int(__cdecl*original_DRTextWidth)(tDR_font *, char *) = (int(__cdecl*)(tDR_font *, char *))0x004c5514;
 CARM95_HOOK_FUNCTION(original_DRTextWidth, DRTextWidth)
-int DRTextWidth(tDR_font *pFont, char *pText) {
+int __cdecl DRTextWidth(tDR_font *pFont, char *pText) {
     int i;
     int len;
     int result;
@@ -320,9 +319,9 @@ int DRTextWidth(tDR_font *pFont, char *pText) {
     return original_DRTextWidth(pFont, pText);
 }
 
-static int(*original_DRTextCleverWidth)(tDR_font *, signed char *, ...) = (int(*)(tDR_font *, signed char *, ...))0x004c5591;
+static int(__cdecl*original_DRTextCleverWidth)(tDR_font *, signed char *) = (int(__cdecl*)(tDR_font *, signed char *))0x004c5591;
 CARM95_HOOK_FUNCTION(original_DRTextCleverWidth, DRTextCleverWidth)
-int DRTextCleverWidth(tDR_font *pFont, signed char *pText) {
+int __cdecl DRTextCleverWidth(tDR_font *pFont, signed char *pText) {
     int i;
     int len;
     int result;
@@ -339,9 +338,9 @@ int DRTextCleverWidth(tDR_font *pFont, signed char *pText) {
     return original_DRTextCleverWidth(pFont, pText);
 }
 
-static void(*original_DRPixelmapCentredText)(br_pixelmap *, int, int, tDR_font *, char *, ...) = (void(*)(br_pixelmap *, int, int, tDR_font *, char *, ...))0x004c5665;
+static void(__cdecl*original_DRPixelmapCentredText)(br_pixelmap *, int, int, tDR_font *, char *) = (void(__cdecl*)(br_pixelmap *, int, int, tDR_font *, char *))0x004c5665;
 CARM95_HOOK_FUNCTION(original_DRPixelmapCentredText, DRPixelmapCentredText)
-void DRPixelmapCentredText(br_pixelmap *pPixelmap, int pX, int pY, tDR_font *pFont, char *pText) {
+void __cdecl DRPixelmapCentredText(br_pixelmap *pPixelmap, int pX, int pY, tDR_font *pFont, char *pText) {
     int width_over_2;
     LOG_TRACE("(%p, %d, %d, %p, \"%s\")", pPixelmap, pX, pY, pFont, pText);
 
@@ -355,9 +354,9 @@ void DRPixelmapCentredText(br_pixelmap *pPixelmap, int pX, int pY, tDR_font *pFo
     original_DRPixelmapCentredText(pPixelmap, pX, pY, pFont, pText);
 }
 
-static int(*original_IsHeadupTextClever)(signed char *, ...) = (int(*)(signed char *, ...))0x004c5bd4;
+static int(__cdecl*original_IsHeadupTextClever)(signed char *) = (int(__cdecl*)(signed char *))0x004c5bd4;
 CARM95_HOOK_FUNCTION(original_IsHeadupTextClever, IsHeadupTextClever)
-int IsHeadupTextClever(signed char *pText) {
+int __cdecl IsHeadupTextClever(signed char *pText) {
     LOG_TRACE("(%p)", pText);
 
     (void)pText;
@@ -365,9 +364,9 @@ int IsHeadupTextClever(signed char *pText) {
     return original_IsHeadupTextClever(pText);
 }
 
-static int(*original_MungeHeadupWidth)(tHeadup *, ...) = (int(*)(tHeadup *, ...))0x004c5981;
+static int(__cdecl*original_MungeHeadupWidth)(tHeadup *) = (int(__cdecl*)(tHeadup *))0x004c5981;
 CARM95_HOOK_FUNCTION(original_MungeHeadupWidth, MungeHeadupWidth)
-int MungeHeadupWidth(tHeadup *pHeadup) {
+int __cdecl MungeHeadupWidth(tHeadup *pHeadup) {
     int width;
     LOG_TRACE("(%p)", pHeadup);
 
@@ -377,9 +376,9 @@ int MungeHeadupWidth(tHeadup *pHeadup) {
     return original_MungeHeadupWidth(pHeadup);
 }
 
-static int(*original_NewTextHeadupSlot2)(int, int, int, int, char *, int, ...) = (int(*)(int, int, int, int, char *, int, ...))0x004c56b1;
+static int(__cdecl*original_NewTextHeadupSlot2)(int, int, int, int, char *, int) = (int(__cdecl*)(int, int, int, int, char *, int))0x004c56b1;
 CARM95_HOOK_FUNCTION(original_NewTextHeadupSlot2, NewTextHeadupSlot2)
-int NewTextHeadupSlot2(int pSlot_index, int pFlash_rate, int pLifetime, int pFont_index, char *pText, int pQueue_it) {
+int __cdecl NewTextHeadupSlot2(int pSlot_index, int pFlash_rate, int pLifetime, int pFont_index, char *pText, int pQueue_it) {
     int index;
     tHeadup *the_headup;
     tHeadup_slot *headup_slot;
@@ -400,9 +399,9 @@ int NewTextHeadupSlot2(int pSlot_index, int pFlash_rate, int pLifetime, int pFon
     return original_NewTextHeadupSlot2(pSlot_index, pFlash_rate, pLifetime, pFont_index, pText, pQueue_it);
 }
 
-static int(*original_NewTextHeadupSlot)(int, int, int, int, char *, ...) = (int(*)(int, int, int, int, char *, ...))0x004c5c1d;
+static int(__cdecl*original_NewTextHeadupSlot)(int, int, int, int, char *) = (int(__cdecl*)(int, int, int, int, char *))0x004c5c1d;
 CARM95_HOOK_FUNCTION(original_NewTextHeadupSlot, NewTextHeadupSlot)
-int NewTextHeadupSlot(int pSlot_index, int pFlash_rate, int pLifetime, int pFont_index, char *pText) {
+int __cdecl NewTextHeadupSlot(int pSlot_index, int pFlash_rate, int pLifetime, int pFont_index, char *pText) {
     LOG_TRACE("(%d, %d, %d, %d, \"%s\")", pSlot_index, pFlash_rate, pLifetime, pFont_index, pText);
 
     (void)pSlot_index;
@@ -414,9 +413,9 @@ int NewTextHeadupSlot(int pSlot_index, int pFlash_rate, int pLifetime, int pFont
     return original_NewTextHeadupSlot(pSlot_index, pFlash_rate, pLifetime, pFont_index, pText);
 }
 
-static int(*original_NewImageHeadupSlot)(int, int, int, int, ...) = (int(*)(int, int, int, int, ...))0x004c5c4b;
+static int(__cdecl*original_NewImageHeadupSlot)(int, int, int, int) = (int(__cdecl*)(int, int, int, int))0x004c5c4b;
 CARM95_HOOK_FUNCTION(original_NewImageHeadupSlot, NewImageHeadupSlot)
-int NewImageHeadupSlot(int pSlot_index, int pFlash_rate, int pLifetime, int pImage_index) {
+int __cdecl NewImageHeadupSlot(int pSlot_index, int pFlash_rate, int pLifetime, int pImage_index) {
     int index;
     tHeadup *the_headup;
     tHeadup_slot *headup_slot;
@@ -433,9 +432,9 @@ int NewImageHeadupSlot(int pSlot_index, int pFlash_rate, int pLifetime, int pIma
     return original_NewImageHeadupSlot(pSlot_index, pFlash_rate, pLifetime, pImage_index);
 }
 
-static void(*original_DoFancyHeadup)(int, ...) = (void(*)(int, ...))0x004c5e50;
+static void(__cdecl*original_DoFancyHeadup)(int) = (void(__cdecl*)(int))0x004c5e50;
 CARM95_HOOK_FUNCTION(original_DoFancyHeadup, DoFancyHeadup)
-void DoFancyHeadup(int pIndex) {
+void __cdecl DoFancyHeadup(int pIndex) {
     tU32 the_time;
     tHeadup *the_headup;
     int temp_ref;
@@ -449,9 +448,9 @@ void DoFancyHeadup(int pIndex) {
     original_DoFancyHeadup(pIndex);
 }
 
-static void(*original_AdjustHeadups)() = (void(*)())0x004c5f58;
+static void(__cdecl*original_AdjustHeadups)() = (void(__cdecl*)())0x004c5f58;
 CARM95_HOOK_FUNCTION(original_AdjustHeadups, AdjustHeadups)
-void AdjustHeadups() {
+void __cdecl AdjustHeadups() {
     int i;
     int delta_x;
     int delta_y;
@@ -466,9 +465,9 @@ void AdjustHeadups() {
     original_AdjustHeadups();
 }
 
-static void(*original_MoveHeadupTo)(int, int, int, ...) = (void(*)(int, int, int, ...))0x004c6107;
+static void(__cdecl*original_MoveHeadupTo)(int, int, int) = (void(__cdecl*)(int, int, int))0x004c6107;
 CARM95_HOOK_FUNCTION(original_MoveHeadupTo, MoveHeadupTo)
-void MoveHeadupTo(int pHeadup_index, int pNew_x, int pNew_y) {
+void __cdecl MoveHeadupTo(int pHeadup_index, int pNew_x, int pNew_y) {
     int delta_x;
     tHeadup *the_headup;
     LOG_TRACE("(%d, %d, %d)", pHeadup_index, pNew_x, pNew_y);
@@ -482,9 +481,9 @@ void MoveHeadupTo(int pHeadup_index, int pNew_x, int pNew_y) {
     original_MoveHeadupTo(pHeadup_index, pNew_x, pNew_y);
 }
 
-static void(*original_ChangeHeadupText)(int, char *, ...) = (void(*)(int, char *, ...))0x004c6169;
+static void(__cdecl*original_ChangeHeadupText)(int, char *) = (void(__cdecl*)(int, char *))0x004c6169;
 CARM95_HOOK_FUNCTION(original_ChangeHeadupText, ChangeHeadupText)
-void ChangeHeadupText(int pHeadup_index, char *pNew_text) {
+void __cdecl ChangeHeadupText(int pHeadup_index, char *pNew_text) {
     tHeadup *the_headup;
     LOG_TRACE("(%d, \"%s\")", pHeadup_index, pNew_text);
 
@@ -495,9 +494,9 @@ void ChangeHeadupText(int pHeadup_index, char *pNew_text) {
     original_ChangeHeadupText(pHeadup_index, pNew_text);
 }
 
-static void(*original_ChangeHeadupImage)(int, int, ...) = (void(*)(int, int, ...))0x004c61d2;
+static void(__cdecl*original_ChangeHeadupImage)(int, int) = (void(__cdecl*)(int, int))0x004c61d2;
 CARM95_HOOK_FUNCTION(original_ChangeHeadupImage, ChangeHeadupImage)
-void ChangeHeadupImage(int pHeadup_index, int pNew_image) {
+void __cdecl ChangeHeadupImage(int pHeadup_index, int pNew_image) {
     tHeadup *the_headup;
     LOG_TRACE("(%d, %d)", pHeadup_index, pNew_image);
 
@@ -508,9 +507,9 @@ void ChangeHeadupImage(int pHeadup_index, int pNew_image) {
     original_ChangeHeadupImage(pHeadup_index, pNew_image);
 }
 
-static void(*original_ChangeHeadupColour)(int, int, ...) = (void(*)(int, int, ...))0x004c629e;
+static void(__cdecl*original_ChangeHeadupColour)(int, int) = (void(__cdecl*)(int, int))0x004c629e;
 CARM95_HOOK_FUNCTION(original_ChangeHeadupColour, ChangeHeadupColour)
-void ChangeHeadupColour(int pHeadup_index, int pNew_colour) {
+void __cdecl ChangeHeadupColour(int pHeadup_index, int pNew_colour) {
     LOG_TRACE("(%d, %d)", pHeadup_index, pNew_colour);
 
     (void)pHeadup_index;
@@ -519,9 +518,9 @@ void ChangeHeadupColour(int pHeadup_index, int pNew_colour) {
     original_ChangeHeadupColour(pHeadup_index, pNew_colour);
 }
 
-static void(*original_DoDamageScreen)(tU32, ...) = (void(*)(tU32, ...))0x004c62d8;
+static void(__cdecl*original_DoDamageScreen)(tU32) = (void(__cdecl*)(tU32))0x004c62d8;
 CARM95_HOOK_FUNCTION(original_DoDamageScreen, DoDamageScreen)
-void DoDamageScreen(tU32 pThe_time) {
+void __cdecl DoDamageScreen(tU32 pThe_time) {
     int i;
     int y_pitch;
     int the_step;
@@ -543,9 +542,9 @@ void DoDamageScreen(tU32 pThe_time) {
     original_DoDamageScreen(pThe_time);
 }
 
-static void(*original_PoshDrawLine)(float, br_pixelmap *, int, int, int, int, int, ...) = (void(*)(float, br_pixelmap *, int, int, int, int, int, ...))0x004c70fd;
+static void(__cdecl*original_PoshDrawLine)(float, br_pixelmap *, int, int, int, int, int) = (void(__cdecl*)(float, br_pixelmap *, int, int, int, int, int))0x004c70fd;
 CARM95_HOOK_FUNCTION(original_PoshDrawLine, PoshDrawLine)
-void PoshDrawLine(float pAngle, br_pixelmap *pDestn, int pX1, int pY1, int pX2, int pY2, int pColour) {
+void __cdecl PoshDrawLine(float pAngle, br_pixelmap *pDestn, int pX1, int pY1, int pX2, int pY2, int pColour) {
     LOG_TRACE("(%f, %p, %d, %d, %d, %d, %d)", pAngle, pDestn, pX1, pY1, pX2, pY2, pColour);
 
     (void)pAngle;
@@ -559,9 +558,9 @@ void PoshDrawLine(float pAngle, br_pixelmap *pDestn, int pX1, int pY1, int pX2, 
     original_PoshDrawLine(pAngle, pDestn, pX1, pY1, pX2, pY2, pColour);
 }
 
-static void(*original_DoInstruments)(tU32, ...) = (void(*)(tU32, ...))0x004c6474;
+static void(__cdecl*original_DoInstruments)(tU32) = (void(__cdecl*)(tU32))0x004c6474;
 CARM95_HOOK_FUNCTION(original_DoInstruments, DoInstruments)
-void DoInstruments(tU32 pThe_time) {
+void __cdecl DoInstruments(tU32 pThe_time) {
     br_pixelmap *speedo_image;
     br_pixelmap *tacho_image;
     int the_wobble_x;
@@ -589,9 +588,9 @@ void DoInstruments(tU32 pThe_time) {
     original_DoInstruments(pThe_time);
 }
 
-static void(*original_DoSteeringWheel)(tU32, ...) = (void(*)(tU32, ...))0x004c72e1;
+static void(__cdecl*original_DoSteeringWheel)(tU32) = (void(__cdecl*)(tU32))0x004c72e1;
 CARM95_HOOK_FUNCTION(original_DoSteeringWheel, DoSteeringWheel)
-void DoSteeringWheel(tU32 pThe_time) {
+void __cdecl DoSteeringWheel(tU32 pThe_time) {
     br_pixelmap *hands_image;
     int hands_index;
     LOG_TRACE("(%u)", pThe_time);
@@ -603,9 +602,9 @@ void DoSteeringWheel(tU32 pThe_time) {
     original_DoSteeringWheel(pThe_time);
 }
 
-static void(*original_ChangingView)() = (void(*)())0x004c7455;
+static void(__cdecl*original_ChangingView)() = (void(__cdecl*)())0x004c7455;
 CARM95_HOOK_FUNCTION(original_ChangingView, ChangingView)
-void ChangingView() {
+void __cdecl ChangingView() {
     tU32 the_time;
     LOG_TRACE("()");
 
@@ -614,9 +613,9 @@ void ChangingView() {
     original_ChangingView();
 }
 
-static void(*original_EarnCredits2)(int, char *, ...) = (void(*)(int, char *, ...))0x004c76d8;
+static void(__cdecl*original_EarnCredits2)(int, char *) = (void(__cdecl*)(int, char *))0x004c76d8;
 CARM95_HOOK_FUNCTION(original_EarnCredits2, EarnCredits2)
-void EarnCredits2(int pAmount, char *pPrefix_text) {
+void __cdecl EarnCredits2(int pAmount, char *pPrefix_text) {
     char s[256];
     int original_amount;
     tU32 the_time;
@@ -631,9 +630,9 @@ void EarnCredits2(int pAmount, char *pPrefix_text) {
     original_EarnCredits2(pAmount, pPrefix_text);
 }
 
-static void(*original_EarnCredits)(int, ...) = (void(*)(int, ...))0x004c78a8;
+static void(__cdecl*original_EarnCredits)(int) = (void(__cdecl*)(int))0x004c78a8;
 CARM95_HOOK_FUNCTION(original_EarnCredits, EarnCredits)
-void EarnCredits(int pAmount) {
+void __cdecl EarnCredits(int pAmount) {
     LOG_TRACE("(%d)", pAmount);
 
     (void)pAmount;
@@ -641,9 +640,9 @@ void EarnCredits(int pAmount) {
     original_EarnCredits(pAmount);
 }
 
-static int(*original_SpendCredits)(int, ...) = (int(*)(int, ...))0x004c78c4;
+static int(__cdecl*original_SpendCredits)(int) = (int(__cdecl*)(int))0x004c78c4;
 CARM95_HOOK_FUNCTION(original_SpendCredits, SpendCredits)
-int SpendCredits(int pAmount) {
+int __cdecl SpendCredits(int pAmount) {
     int amount;
     LOG_TRACE("(%d)", pAmount);
 
@@ -653,9 +652,9 @@ int SpendCredits(int pAmount) {
     return original_SpendCredits(pAmount);
 }
 
-static void(*original_AwardTime)(tU32, ...) = (void(*)(tU32, ...))0x004c791e;
+static void(__cdecl*original_AwardTime)(tU32) = (void(__cdecl*)(tU32))0x004c791e;
 CARM95_HOOK_FUNCTION(original_AwardTime, AwardTime)
-void AwardTime(tU32 pTime) {
+void __cdecl AwardTime(tU32 pTime) {
     char s[256];
     tU32 original_amount;
     tU32 the_time;
@@ -671,9 +670,9 @@ void AwardTime(tU32 pTime) {
     original_AwardTime(pTime);
 }
 
-static void(*original_DrawRectangle)(br_pixelmap *, int, int, int, int, int, ...) = (void(*)(br_pixelmap *, int, int, int, int, int, ...))0x004c7a61;
+static void(__cdecl*original_DrawRectangle)(br_pixelmap *, int, int, int, int, int) = (void(__cdecl*)(br_pixelmap *, int, int, int, int, int))0x004c7a61;
 CARM95_HOOK_FUNCTION(original_DrawRectangle, DrawRectangle)
-void DrawRectangle(br_pixelmap *pPixelmap, int pLeft, int pTop, int pRight, int pBottom, int pColour) {
+void __cdecl DrawRectangle(br_pixelmap *pPixelmap, int pLeft, int pTop, int pRight, int pBottom, int pColour) {
     LOG_TRACE("(%p, %d, %d, %d, %d, %d)", pPixelmap, pLeft, pTop, pRight, pBottom, pColour);
 
     (void)pPixelmap;
@@ -686,9 +685,9 @@ void DrawRectangle(br_pixelmap *pPixelmap, int pLeft, int pTop, int pRight, int 
     original_DrawRectangle(pPixelmap, pLeft, pTop, pRight, pBottom, pColour);
 }
 
-static void(*original_DrawRRectangle)(br_pixelmap *, int, int, int, int, int, ...) = (void(*)(br_pixelmap *, int, int, int, int, int, ...))0x004c7aec;
+static void(__cdecl*original_DrawRRectangle)(br_pixelmap *, int, int, int, int, int) = (void(__cdecl*)(br_pixelmap *, int, int, int, int, int))0x004c7aec;
 CARM95_HOOK_FUNCTION(original_DrawRRectangle, DrawRRectangle)
-void DrawRRectangle(br_pixelmap *pPixelmap, int pLeft, int pTop, int pRight, int pBottom, int pColour) {
+void __cdecl DrawRRectangle(br_pixelmap *pPixelmap, int pLeft, int pTop, int pRight, int pBottom, int pColour) {
     LOG_TRACE("(%p, %d, %d, %d, %d, %d)", pPixelmap, pLeft, pTop, pRight, pBottom, pColour);
 
     (void)pPixelmap;
@@ -701,9 +700,9 @@ void DrawRRectangle(br_pixelmap *pPixelmap, int pLeft, int pTop, int pRight, int
     original_DrawRRectangle(pPixelmap, pLeft, pTop, pRight, pBottom, pColour);
 }
 
-static void(*original_OoerrIveGotTextInMeBoxMissus)(int, char *, br_pixelmap *, int, int, int, int, int, ...) = (void(*)(int, char *, br_pixelmap *, int, int, int, int, int, ...))0x004c7b7f;
+static void(__cdecl*original_OoerrIveGotTextInMeBoxMissus)(int, char *, br_pixelmap *, int, int, int, int, int) = (void(__cdecl*)(int, char *, br_pixelmap *, int, int, int, int, int))0x004c7b7f;
 CARM95_HOOK_FUNCTION(original_OoerrIveGotTextInMeBoxMissus, OoerrIveGotTextInMeBoxMissus)
-void OoerrIveGotTextInMeBoxMissus(int pFont_index, char *pText, br_pixelmap *pPixelmap, int pLeft, int pTop, int pRight, int pBottom, int pCentred) {
+void __cdecl OoerrIveGotTextInMeBoxMissus(int pFont_index, char *pText, br_pixelmap *pPixelmap, int pLeft, int pTop, int pRight, int pBottom, int pCentred) {
     tDR_font *font;
     int width;
     int current_width;
@@ -740,9 +739,9 @@ void OoerrIveGotTextInMeBoxMissus(int pFont_index, char *pText, br_pixelmap *pPi
     original_OoerrIveGotTextInMeBoxMissus(pFont_index, pText, pPixelmap, pLeft, pTop, pRight, pBottom, pCentred);
 }
 
-static void(*original_TransBrPixelmapText)(br_pixelmap *, int, int, br_uint_32, br_font *, signed char *, ...) = (void(*)(br_pixelmap *, int, int, br_uint_32, br_font *, signed char *, ...))0x004c7ec5;
+static void(__cdecl*original_TransBrPixelmapText)(br_pixelmap *, int, int, br_uint_32, br_font *, signed char *) = (void(__cdecl*)(br_pixelmap *, int, int, br_uint_32, br_font *, signed char *))0x004c7ec5;
 CARM95_HOOK_FUNCTION(original_TransBrPixelmapText, TransBrPixelmapText)
-void TransBrPixelmapText(br_pixelmap *pPixelmap, int pX, int pY, br_uint_32 pColour, br_font *pFont, signed char *pText) {
+void __cdecl TransBrPixelmapText(br_pixelmap *pPixelmap, int pX, int pY, br_uint_32 pColour, br_font *pFont, signed char *pText) {
     int i;
     int len;
     LOG_TRACE("(%p, %d, %d, %u, %p, %p)", pPixelmap, pX, pY, pColour, pFont, pText);
@@ -759,9 +758,9 @@ void TransBrPixelmapText(br_pixelmap *pPixelmap, int pX, int pY, br_uint_32 pCol
     original_TransBrPixelmapText(pPixelmap, pX, pY, pColour, pFont, pText);
 }
 
-static void(*original_TransDRPixelmapText)(br_pixelmap *, int, int, tDR_font *, char *, int, ...) = (void(*)(br_pixelmap *, int, int, tDR_font *, char *, int, ...))0x004c7f08;
+static void(__cdecl*original_TransDRPixelmapText)(br_pixelmap *, int, int, tDR_font *, char *, int) = (void(__cdecl*)(br_pixelmap *, int, int, tDR_font *, char *, int))0x004c7f08;
 CARM95_HOOK_FUNCTION(original_TransDRPixelmapText, TransDRPixelmapText)
-void TransDRPixelmapText(br_pixelmap *pPixelmap, int pX, int pY, tDR_font *pFont, char *pText, int pRight_edge) {
+void __cdecl TransDRPixelmapText(br_pixelmap *pPixelmap, int pX, int pY, tDR_font *pFont, char *pText, int pRight_edge) {
     LOG_TRACE("(%p, %d, %d, %p, \"%s\", %d)", pPixelmap, pX, pY, pFont, pText, pRight_edge);
 
     (void)pPixelmap;
@@ -774,9 +773,9 @@ void TransDRPixelmapText(br_pixelmap *pPixelmap, int pX, int pY, tDR_font *pFont
     original_TransDRPixelmapText(pPixelmap, pX, pY, pFont, pText, pRight_edge);
 }
 
-static void(*original_TransDRPixelmapCleverText)(br_pixelmap *, int, int, tDR_font *, char *, int, ...) = (void(*)(br_pixelmap *, int, int, tDR_font *, char *, int, ...))0x004c7fd5;
+static void(__cdecl*original_TransDRPixelmapCleverText)(br_pixelmap *, int, int, tDR_font *, char *, int) = (void(__cdecl*)(br_pixelmap *, int, int, tDR_font *, char *, int))0x004c7fd5;
 CARM95_HOOK_FUNCTION(original_TransDRPixelmapCleverText, TransDRPixelmapCleverText)
-void TransDRPixelmapCleverText(br_pixelmap *pPixelmap, int pX, int pY, tDR_font *pFont, char *pText, int pRight_edge) {
+void __cdecl TransDRPixelmapCleverText(br_pixelmap *pPixelmap, int pX, int pY, tDR_font *pFont, char *pText, int pRight_edge) {
     LOG_TRACE("(%p, %d, %d, %p, \"%s\", %d)", pPixelmap, pX, pY, pFont, pText, pRight_edge);
 
     (void)pPixelmap;

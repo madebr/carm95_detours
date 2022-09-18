@@ -4,11 +4,10 @@
 
 #include "carm95_hooks.h"
 
-#include <stdio.h>
 
-static void(*original_BrMaterialUpdate)(br_material *, br_uint_16, ...) = (void(*)(br_material *, br_uint_16, ...))0x004d9150;
+static void(__cdecl*original_BrMaterialUpdate)(br_material *, br_uint_16) = (void(__cdecl*)(br_material *, br_uint_16))0x004d9150;
 CARM95_HOOK_FUNCTION(original_BrMaterialUpdate, BrMaterialUpdate)
-void BrMaterialUpdate(br_material *mat, br_uint_16 flags) {
+void __cdecl BrMaterialUpdate(br_material *mat, br_uint_16 flags) {
     br_token_value tva[32];
     br_token_value *tvp;
     br_token t;
@@ -25,9 +24,9 @@ void BrMaterialUpdate(br_material *mat, br_uint_16 flags) {
     original_BrMaterialUpdate(mat, flags);
 }
 
-static void(*original_BrMaterialClear)(br_material *, ...) = (void(*)(br_material *, ...))0x004d9700;
+static void(__stdcall*original_BrMaterialClear)(br_material *) = (void(__stdcall*)(br_material *))0x004d9700;
 CARM95_HOOK_FUNCTION(original_BrMaterialClear, BrMaterialClear)
-void BrMaterialClear(br_material *mat) {
+void __stdcall BrMaterialClear(br_material *mat) {
     LOG_TRACE("(%p)", mat);
 
     (void)mat;

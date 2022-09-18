@@ -36,9 +36,9 @@ extern br_angle * hookvar_gSky_image_width ; // addr: 00550A6E
 extern br_angle * hookvar_gSky_image_height ; // addr: 00550A6C
 extern br_angle * hookvar_gSky_image_underground ; // addr: 00550A70
 
-int Log2(int pNumber);
+int __cdecl Log2(int pNumber);
 
-br_scalar CalculateWrappingMultiplier(br_scalar pValue, br_scalar pYon);
+br_scalar __cdecl CalculateWrappingMultiplier(br_scalar pValue, br_scalar pYon);
 
 br_scalar DepthCueingShiftToDistance(int pShift);
 
@@ -46,84 +46,84 @@ void FogAccordingToGPSCDE(br_material *pMaterial);
 
 void FrobFog();
 
-void InstantDepthChange(tDepth_effect_type pType, br_pixelmap *pSky_texture, int pStart, int pEnd);
+void __cdecl InstantDepthChange(tDepth_effect_type pType, br_pixelmap *pSky_texture, int pStart, int pEnd);
 
-br_scalar Tan(br_scalar pAngle);
+br_scalar __cdecl Tan(br_scalar pAngle);
 
-br_scalar EdgeU(br_angle pSky, br_angle pView, br_angle pPerfect);
+br_scalar __cdecl EdgeU(br_angle pSky, br_angle pView, br_angle pPerfect);
 
-void MungeSkyModel(br_actor *pCamera, br_model *pModel);
+void __cdecl MungeSkyModel(br_actor *pCamera, br_model *pModel);
 
-br_model* CreateHorizonModel(br_actor *pCamera);
+br_model* __cdecl CreateHorizonModel(br_actor *pCamera);
 
-void LoadDepthTable(char *pName, br_pixelmap **pTable, int *pPower);
+void __cdecl LoadDepthTable(char *pName, br_pixelmap **pTable, int *pPower);
 
-void InitDepthEffects();
+void __cdecl InitDepthEffects();
 
-void DoDepthByShadeTable(br_pixelmap *pRender_buffer, br_pixelmap *pDepth_buffer, br_pixelmap *pShade_table, int pShade_table_power, int pStart, int pEnd);
+void __cdecl DoDepthByShadeTable(br_pixelmap *pRender_buffer, br_pixelmap *pDepth_buffer, br_pixelmap *pShade_table, int pShade_table_power, int pStart, int pEnd);
 
-void ExternalSky(br_pixelmap *pRender_buffer, br_pixelmap *pDepth_buffer, br_actor *pCamera, br_matrix34 *pCamera_to_world);
+void __cdecl ExternalSky(br_pixelmap *pRender_buffer, br_pixelmap *pDepth_buffer, br_actor *pCamera, br_matrix34 *pCamera_to_world);
 
-void DoHorizon(br_pixelmap *pRender_buffer, br_pixelmap *pDepth_buffer, br_actor *pCamera, br_matrix34 *pCamera_to_world);
+void __cdecl DoHorizon(br_pixelmap *pRender_buffer, br_pixelmap *pDepth_buffer, br_actor *pCamera, br_matrix34 *pCamera_to_world);
 
-void DoDepthCue(br_pixelmap *pRender_buffer, br_pixelmap *pDepth_buffer);
+void __cdecl DoDepthCue(br_pixelmap *pRender_buffer, br_pixelmap *pDepth_buffer);
 
-void DoFog(br_pixelmap *pRender_buffer, br_pixelmap *pDepth_buffer);
+void __cdecl DoFog(br_pixelmap *pRender_buffer, br_pixelmap *pDepth_buffer);
 
-void DepthEffect(br_pixelmap *pRender_buffer, br_pixelmap *pDepth_buffer, br_actor *pCamera, br_matrix34 *pCamera_to_world);
+void __cdecl DepthEffect(br_pixelmap *pRender_buffer, br_pixelmap *pDepth_buffer, br_actor *pCamera, br_matrix34 *pCamera_to_world);
 
-void DepthEffectSky(br_pixelmap *pRender_buffer, br_pixelmap *pDepth_buffer, br_actor *pCamera, br_matrix34 *pCamera_to_world);
+void __cdecl DepthEffectSky(br_pixelmap *pRender_buffer, br_pixelmap *pDepth_buffer, br_actor *pCamera, br_matrix34 *pCamera_to_world);
 
-void DoWobbleCamera(br_actor *pCamera);
+void __cdecl DoWobbleCamera(br_actor *pCamera);
 
-void DoDrugWobbleCamera(br_actor *pCamera);
+void __cdecl DoDrugWobbleCamera(br_actor *pCamera);
 
-void DoSpecialCameraEffect(br_actor *pCamera, br_matrix34 *pCamera_to_world);
+void __cdecl DoSpecialCameraEffect(br_actor *pCamera, br_matrix34 *pCamera_to_world);
 
-void LessDepthFactor();
+void __cdecl LessDepthFactor();
 
-void MoreDepthFactor();
+void __cdecl MoreDepthFactor();
 
-void LessDepthFactor2();
+void __cdecl LessDepthFactor2();
 
-void MoreDepthFactor2();
+void __cdecl MoreDepthFactor2();
 
-void AssertYons();
+void __cdecl AssertYons();
 
-void IncreaseYon();
+void __cdecl IncreaseYon();
 
-void DecreaseYon();
+void __cdecl DecreaseYon();
 
-void SetYon(br_scalar pYon);
+void __cdecl SetYon(br_scalar pYon);
 
-br_scalar GetYon();
+br_scalar __cdecl GetYon();
 
-void IncreaseAngle();
+void __cdecl IncreaseAngle();
 
-void DecreaseAngle();
+void __cdecl DecreaseAngle();
 
-void ToggleDepthMode();
+void __cdecl ToggleDepthMode();
 
-int GetSkyTextureOn();
+int __cdecl GetSkyTextureOn();
 
-void SetSkyTextureOn(int pOn);
+void __cdecl SetSkyTextureOn(int pOn);
 
-void ToggleSkyQuietly();
+void __cdecl ToggleSkyQuietly();
 
-void ToggleSky();
+void __cdecl ToggleSky();
 
-int GetDepthCueingOn();
+int __cdecl GetDepthCueingOn();
 
-void SetDepthCueingOn(int pOn);
+void __cdecl SetDepthCueingOn(int pOn);
 
-void ToggleDepthCueingQuietly();
+void __cdecl ToggleDepthCueingQuietly();
 
-void ToggleDepthCueing();
+void __cdecl ToggleDepthCueing();
 
-void ChangeDepthEffect();
+void __cdecl ChangeDepthEffect();
 
-void MungeForwardSky();
+void __cdecl MungeForwardSky();
 
-void MungeRearviewSky();
+void __cdecl MungeRearviewSky();
 
 #endif

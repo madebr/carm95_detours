@@ -4,7 +4,6 @@
 
 #include "carm95_hooks.h"
 
-#include <stdio.h>
 int * hookvar_gDoing_physics  = (void*)0x00514cb0;
 br_scalar * hookvar_gDt  = (void*)0x00514cb4;
  // Suffix added to avoid duplicate symbol
@@ -13,7 +12,7 @@ int * hookvar_gCollision_detection_on__car  = (void*)0x00514cb8;
 br_vector3 * hookvar_gGround_normal__car  = (void*)0x00514cc0;
  // Suffix added to avoid duplicate symbol
 #if 0
-void(**(* hookvar_ControlCar__car )[6])(tCar_spec *, br_scalar, ...);
+void(**(* hookvar_ControlCar__car )[6])(tCar_spec *, br_scalar);
 #endif
  // Suffix added to avoid duplicate symbol
 int * hookvar_gControl__car  = (void*)0x00514ce8;
@@ -102,9 +101,9 @@ char(* hookvar_gNon_car_spec_list )[100] = (void*)0x00550750;
 tU32 * hookvar_gMechanics_time_sync  = (void*)0x00550670;
 int * hookvar_gNum_cars_and_non_cars  = (void*)0x00550748;
 
-static void(*original_DamageUnit)(tCar_spec *, int, int, ...) = (void(*)(tCar_spec *, int, int, ...))0x004751c0;
+static void(__cdecl*original_DamageUnit)(tCar_spec *, int, int) = (void(__cdecl*)(tCar_spec *, int, int))0x004751c0;
 CARM95_HOOK_FUNCTION(original_DamageUnit, DamageUnit)
-void DamageUnit(tCar_spec *pCar, int pUnit_type, int pDamage_amount) {
+void __cdecl DamageUnit(tCar_spec *pCar, int pUnit_type, int pDamage_amount) {
     tDamage_unit *the_damage;
     LOG_TRACE("(%p, %d, %d)", pCar, pUnit_type, pDamage_amount);
 
@@ -116,9 +115,9 @@ void DamageUnit(tCar_spec *pCar, int pUnit_type, int pDamage_amount) {
     original_DamageUnit(pCar, pUnit_type, pDamage_amount);
 }
 
-static void(*original_DamageUnitWithSmoke)(tCar_spec *, int, int, ...) = (void(*)(tCar_spec *, int, int, ...))0x00475239;
+static void(__cdecl*original_DamageUnitWithSmoke)(tCar_spec *, int, int) = (void(__cdecl*)(tCar_spec *, int, int))0x00475239;
 CARM95_HOOK_FUNCTION(original_DamageUnitWithSmoke, DamageUnitWithSmoke)
-void DamageUnitWithSmoke(tCar_spec *pCar, int pUnit_type, int pDamage_amount) {
+void __cdecl DamageUnitWithSmoke(tCar_spec *pCar, int pUnit_type, int pDamage_amount) {
     LOG_TRACE("(%p, %d, %d)", pCar, pUnit_type, pDamage_amount);
 
     (void)pCar;
@@ -128,9 +127,9 @@ void DamageUnitWithSmoke(tCar_spec *pCar, int pUnit_type, int pDamage_amount) {
     original_DamageUnitWithSmoke(pCar, pUnit_type, pDamage_amount);
 }
 
-static void(*original_DamageEngine)(int, ...) = (void(*)(int, ...))0x00475215;
+static void(__cdecl*original_DamageEngine)(int) = (void(__cdecl*)(int))0x00475215;
 CARM95_HOOK_FUNCTION(original_DamageEngine, DamageEngine)
-void DamageEngine(int pDamage_amount) {
+void __cdecl DamageEngine(int pDamage_amount) {
     LOG_TRACE("(%d)", pDamage_amount);
 
     (void)pDamage_amount;
@@ -138,9 +137,9 @@ void DamageEngine(int pDamage_amount) {
     original_DamageEngine(pDamage_amount);
 }
 
-static void(*original_DamageTrans)(int, ...) = (void(*)(int, ...))0x00475264;
+static void(__cdecl*original_DamageTrans)(int) = (void(__cdecl*)(int))0x00475264;
 CARM95_HOOK_FUNCTION(original_DamageTrans, DamageTrans)
-void DamageTrans(int pDamage_amount) {
+void __cdecl DamageTrans(int pDamage_amount) {
     LOG_TRACE("(%d)", pDamage_amount);
 
     (void)pDamage_amount;
@@ -148,9 +147,9 @@ void DamageTrans(int pDamage_amount) {
     original_DamageTrans(pDamage_amount);
 }
 
-static void(*original_DamageSteering)(int, ...) = (void(*)(int, ...))0x00475288;
+static void(__cdecl*original_DamageSteering)(int) = (void(__cdecl*)(int))0x00475288;
 CARM95_HOOK_FUNCTION(original_DamageSteering, DamageSteering)
-void DamageSteering(int pDamage_amount) {
+void __cdecl DamageSteering(int pDamage_amount) {
     LOG_TRACE("(%d)", pDamage_amount);
 
     (void)pDamage_amount;
@@ -158,9 +157,9 @@ void DamageSteering(int pDamage_amount) {
     original_DamageSteering(pDamage_amount);
 }
 
-static void(*original_DamageLFWheel)(int, ...) = (void(*)(int, ...))0x004752ac;
+static void(__cdecl*original_DamageLFWheel)(int) = (void(__cdecl*)(int))0x004752ac;
 CARM95_HOOK_FUNCTION(original_DamageLFWheel, DamageLFWheel)
-void DamageLFWheel(int pDamage_amount) {
+void __cdecl DamageLFWheel(int pDamage_amount) {
     LOG_TRACE("(%d)", pDamage_amount);
 
     (void)pDamage_amount;
@@ -168,9 +167,9 @@ void DamageLFWheel(int pDamage_amount) {
     original_DamageLFWheel(pDamage_amount);
 }
 
-static void(*original_DamageLFBrake)(int, ...) = (void(*)(int, ...))0x004752d0;
+static void(__cdecl*original_DamageLFBrake)(int) = (void(__cdecl*)(int))0x004752d0;
 CARM95_HOOK_FUNCTION(original_DamageLFBrake, DamageLFBrake)
-void DamageLFBrake(int pDamage_amount) {
+void __cdecl DamageLFBrake(int pDamage_amount) {
     LOG_TRACE("(%d)", pDamage_amount);
 
     (void)pDamage_amount;
@@ -178,9 +177,9 @@ void DamageLFBrake(int pDamage_amount) {
     original_DamageLFBrake(pDamage_amount);
 }
 
-static void(*original_DamageLRBrake)(int, ...) = (void(*)(int, ...))0x004752f4;
+static void(__cdecl*original_DamageLRBrake)(int) = (void(__cdecl*)(int))0x004752f4;
 CARM95_HOOK_FUNCTION(original_DamageLRBrake, DamageLRBrake)
-void DamageLRBrake(int pDamage_amount) {
+void __cdecl DamageLRBrake(int pDamage_amount) {
     LOG_TRACE("(%d)", pDamage_amount);
 
     (void)pDamage_amount;
@@ -188,9 +187,9 @@ void DamageLRBrake(int pDamage_amount) {
     original_DamageLRBrake(pDamage_amount);
 }
 
-static void(*original_DamageLRWheel)(int, ...) = (void(*)(int, ...))0x00475318;
+static void(__cdecl*original_DamageLRWheel)(int) = (void(__cdecl*)(int))0x00475318;
 CARM95_HOOK_FUNCTION(original_DamageLRWheel, DamageLRWheel)
-void DamageLRWheel(int pDamage_amount) {
+void __cdecl DamageLRWheel(int pDamage_amount) {
     LOG_TRACE("(%d)", pDamage_amount);
 
     (void)pDamage_amount;
@@ -198,9 +197,9 @@ void DamageLRWheel(int pDamage_amount) {
     original_DamageLRWheel(pDamage_amount);
 }
 
-static void(*original_DamageRFWheel)(int, ...) = (void(*)(int, ...))0x0047533c;
+static void(__cdecl*original_DamageRFWheel)(int) = (void(__cdecl*)(int))0x0047533c;
 CARM95_HOOK_FUNCTION(original_DamageRFWheel, DamageRFWheel)
-void DamageRFWheel(int pDamage_amount) {
+void __cdecl DamageRFWheel(int pDamage_amount) {
     LOG_TRACE("(%d)", pDamage_amount);
 
     (void)pDamage_amount;
@@ -208,9 +207,9 @@ void DamageRFWheel(int pDamage_amount) {
     original_DamageRFWheel(pDamage_amount);
 }
 
-static void(*original_DamageRFBrake)(int, ...) = (void(*)(int, ...))0x00475360;
+static void(__cdecl*original_DamageRFBrake)(int) = (void(__cdecl*)(int))0x00475360;
 CARM95_HOOK_FUNCTION(original_DamageRFBrake, DamageRFBrake)
-void DamageRFBrake(int pDamage_amount) {
+void __cdecl DamageRFBrake(int pDamage_amount) {
     LOG_TRACE("(%d)", pDamage_amount);
 
     (void)pDamage_amount;
@@ -218,9 +217,9 @@ void DamageRFBrake(int pDamage_amount) {
     original_DamageRFBrake(pDamage_amount);
 }
 
-static void(*original_DamageRRBrake)(int, ...) = (void(*)(int, ...))0x00475384;
+static void(__cdecl*original_DamageRRBrake)(int) = (void(__cdecl*)(int))0x00475384;
 CARM95_HOOK_FUNCTION(original_DamageRRBrake, DamageRRBrake)
-void DamageRRBrake(int pDamage_amount) {
+void __cdecl DamageRRBrake(int pDamage_amount) {
     LOG_TRACE("(%d)", pDamage_amount);
 
     (void)pDamage_amount;
@@ -228,9 +227,9 @@ void DamageRRBrake(int pDamage_amount) {
     original_DamageRRBrake(pDamage_amount);
 }
 
-static void(*original_DamageRRWheel)(int, ...) = (void(*)(int, ...))0x004753a8;
+static void(__cdecl*original_DamageRRWheel)(int) = (void(__cdecl*)(int))0x004753a8;
 CARM95_HOOK_FUNCTION(original_DamageRRWheel, DamageRRWheel)
-void DamageRRWheel(int pDamage_amount) {
+void __cdecl DamageRRWheel(int pDamage_amount) {
     LOG_TRACE("(%d)", pDamage_amount);
 
     (void)pDamage_amount;
@@ -256,6 +255,9 @@ void CalculatePlaneNormal(br_vector3 *pP1, br_vector3 *pP2, br_vector3 *pP3, br_
     (void)p1;
     (void)cross_product;
     (void)temp_vector;
+    (void)__block0___scale;
+    (void)__block1___scale;
+    (void)__block2___scale;
 
     NOT_IMPLEMENTED();
 }
@@ -286,9 +288,9 @@ void ChangeYCoordinate(br_scalar pNew_y, tU32 pTime_taken, br_model *pThe_model,
     NOT_IMPLEMENTED();
 }
 
-static void(*original_SwitchCarActor)(tCar_spec *, int, ...) = (void(*)(tCar_spec *, int, ...))0x004753cc;
+static void(__cdecl*original_SwitchCarActor)(tCar_spec *, int) = (void(__cdecl*)(tCar_spec *, int))0x004753cc;
 CARM95_HOOK_FUNCTION(original_SwitchCarActor, SwitchCarActor)
-void SwitchCarActor(tCar_spec *pCar_spec, int pModel_index) {
+void __cdecl SwitchCarActor(tCar_spec *pCar_spec, int pModel_index) {
     int i;
     LOG_TRACE("(%p, %d)", pCar_spec, pModel_index);
 
@@ -299,9 +301,9 @@ void SwitchCarActor(tCar_spec *pCar_spec, int pModel_index) {
     original_SwitchCarActor(pCar_spec, pModel_index);
 }
 
-static void(*original_InitialiseCar2)(tCar_spec *, int, ...) = (void(*)(tCar_spec *, int, ...))0x0047544b;
+static void(__cdecl*original_InitialiseCar2)(tCar_spec *, int) = (void(__cdecl*)(tCar_spec *, int))0x0047544b;
 CARM95_HOOK_FUNCTION(original_InitialiseCar2, InitialiseCar2)
-void InitialiseCar2(tCar_spec *pCar, int pClear_disabled_flag) {
+void __cdecl InitialiseCar2(tCar_spec *pCar, int pClear_disabled_flag) {
     int index;
     int j;
     int cat;
@@ -342,9 +344,9 @@ void InitialiseCar2(tCar_spec *pCar, int pClear_disabled_flag) {
     original_InitialiseCar2(pCar, pClear_disabled_flag);
 }
 
-static void(*original_InitialiseCar)(tCar_spec *, ...) = (void(*)(tCar_spec *, ...))0x00475b63;
+static void(__cdecl*original_InitialiseCar)(tCar_spec *) = (void(__cdecl*)(tCar_spec *))0x00475b63;
 CARM95_HOOK_FUNCTION(original_InitialiseCar, InitialiseCar)
-void InitialiseCar(tCar_spec *pCar) {
+void __cdecl InitialiseCar(tCar_spec *pCar) {
     LOG_TRACE("(%p)", pCar);
 
     (void)pCar;
@@ -352,9 +354,9 @@ void InitialiseCar(tCar_spec *pCar) {
     original_InitialiseCar(pCar);
 }
 
-static void(*original_InitialiseCarsEtc)(tRace_info *, ...) = (void(*)(tRace_info *, ...))0x00475b7c;
+static void(__cdecl*original_InitialiseCarsEtc)(tRace_info *) = (void(__cdecl*)(tRace_info *))0x00475b7c;
 CARM95_HOOK_FUNCTION(original_InitialiseCarsEtc, InitialiseCarsEtc)
-void InitialiseCarsEtc(tRace_info *pThe_race) {
+void __cdecl InitialiseCarsEtc(tRace_info *pThe_race) {
     int i;
     int cat;
     int car_count;
@@ -372,9 +374,9 @@ void InitialiseCarsEtc(tRace_info *pThe_race) {
     original_InitialiseCarsEtc(pThe_race);
 }
 
-static void(*original_GetAverageGridPosition)(tRace_info *, ...) = (void(*)(tRace_info *, ...))0x00475ca4;
+static void(__cdecl*original_GetAverageGridPosition)(tRace_info *) = (void(__cdecl*)(tRace_info *))0x00475ca4;
 CARM95_HOOK_FUNCTION(original_GetAverageGridPosition, GetAverageGridPosition)
-void GetAverageGridPosition(tRace_info *pThe_race) {
+void __cdecl GetAverageGridPosition(tRace_info *pThe_race) {
     int i;
     br_scalar total_cars;
     tCar_spec *car;
@@ -388,9 +390,9 @@ void GetAverageGridPosition(tRace_info *pThe_race) {
     original_GetAverageGridPosition(pThe_race);
 }
 
-static void(*original_SetInitialPosition)(tRace_info *, int, int, ...) = (void(*)(tRace_info *, int, int, ...))0x00475d7d;
+static void(__cdecl*original_SetInitialPosition)(tRace_info *, int, int) = (void(__cdecl*)(tRace_info *, int, int))0x00475d7d;
 CARM95_HOOK_FUNCTION(original_SetInitialPosition, SetInitialPosition)
-void SetInitialPosition(tRace_info *pThe_race, int pCar_index, int pGrid_index) {
+void __cdecl SetInitialPosition(tRace_info *pThe_race, int pCar_index, int pGrid_index) {
     int place_on_grid;
     int i;
     int start_i;
@@ -438,9 +440,9 @@ void SetInitialPosition(tRace_info *pThe_race, int pCar_index, int pGrid_index) 
     original_SetInitialPosition(pThe_race, pCar_index, pGrid_index);
 }
 
-static void(*original_SetInitialPositions)(tRace_info *, ...) = (void(*)(tRace_info *, ...))0x00476279;
+static void(__cdecl*original_SetInitialPositions)(tRace_info *) = (void(__cdecl*)(tRace_info *))0x00476279;
 CARM95_HOOK_FUNCTION(original_SetInitialPositions, SetInitialPositions)
-void SetInitialPositions(tRace_info *pThe_race) {
+void __cdecl SetInitialPositions(tRace_info *pThe_race) {
     int i;
     LOG_TRACE("(%p)", pThe_race);
 
@@ -450,9 +452,9 @@ void SetInitialPositions(tRace_info *pThe_race) {
     original_SetInitialPositions(pThe_race);
 }
 
-static void(*original_InitialiseNonCar)(tNon_car_spec *, ...) = (void(*)(tNon_car_spec *, ...))0x004762c1;
+static void(__cdecl*original_InitialiseNonCar)(tNon_car_spec *) = (void(__cdecl*)(tNon_car_spec *))0x004762c1;
 CARM95_HOOK_FUNCTION(original_InitialiseNonCar, InitialiseNonCar)
-void InitialiseNonCar(tNon_car_spec *non_car) {
+void __cdecl InitialiseNonCar(tNon_car_spec *non_car) {
     tCollision_info *c;
     LOG_TRACE("(%p)", non_car);
 
@@ -462,9 +464,9 @@ void InitialiseNonCar(tNon_car_spec *non_car) {
     original_InitialiseNonCar(non_car);
 }
 
-static void(*original_GetFacesInBox)(tCollision_info *, ...) = (void(*)(tCollision_info *, ...))0x004764ca;
+static void(__cdecl*original_GetFacesInBox)(tCollision_info *) = (void(__cdecl*)(tCollision_info *))0x004764ca;
 CARM95_HOOK_FUNCTION(original_GetFacesInBox, GetFacesInBox)
-void GetFacesInBox(tCollision_info *c) {
+void __cdecl GetFacesInBox(tCollision_info *c) {
     tBounds bnds;
     br_bounds new_in_old;
     br_bounds predicted_bounds;
@@ -496,18 +498,18 @@ void GetFacesInBox(tCollision_info *c) {
     original_GetFacesInBox(c);
 }
 
-static int(*original_IsCarInTheSea)() = (int(*)())0x00476cf4;
+static int(__cdecl*original_IsCarInTheSea)() = (int(__cdecl*)())0x00476cf4;
 CARM95_HOOK_FUNCTION(original_IsCarInTheSea, IsCarInTheSea)
-int IsCarInTheSea() {
+int __cdecl IsCarInTheSea() {
     LOG_TRACE("()");
 
 
     return original_IsCarInTheSea();
 }
 
-static void(*original_RememberSafePosition)(tCar_spec *, tU32, ...) = (void(*)(tCar_spec *, tU32, ...))0x004771a2;
+static void(__cdecl*original_RememberSafePosition)(tCar_spec *, tU32) = (void(__cdecl*)(tCar_spec *, tU32))0x004771a2;
 CARM95_HOOK_FUNCTION(original_RememberSafePosition, RememberSafePosition)
-void RememberSafePosition(tCar_spec *car, tU32 pTime) {
+void __cdecl RememberSafePosition(tCar_spec *car, tU32 pTime) {
     static tU32 time_count;
     int j;
     br_vector3 r;
@@ -524,9 +526,9 @@ void RememberSafePosition(tCar_spec *car, tU32 pTime) {
     original_RememberSafePosition(car, pTime);
 }
 
-static void(*original_ControlOurCar)(tU32, ...) = (void(*)(tU32, ...))0x00476d09;
+static void(__cdecl*original_ControlOurCar)(tU32) = (void(__cdecl*)(tU32))0x00476d09;
 CARM95_HOOK_FUNCTION(original_ControlOurCar, ControlOurCar)
-void ControlOurCar(tU32 pTime_difference) {
+void __cdecl ControlOurCar(tU32 pTime_difference) {
     br_scalar ts;
     br_vector3 minus_k;
     tCar_spec *car;
@@ -546,9 +548,9 @@ void ControlOurCar(tU32 pTime_difference) {
     original_ControlOurCar(pTime_difference);
 }
 
-static void(*original_CalcEngineForce)(tCar_spec *, br_scalar, ...) = (void(*)(tCar_spec *, br_scalar, ...))0x00477433;
+static void(__cdecl*original_CalcEngineForce)(tCar_spec *, br_scalar) = (void(__cdecl*)(tCar_spec *, br_scalar))0x00477433;
 CARM95_HOOK_FUNCTION(original_CalcEngineForce, CalcEngineForce)
-void CalcEngineForce(tCar_spec *c, br_scalar dt) {
+void __cdecl CalcEngineForce(tCar_spec *c, br_scalar dt) {
     br_scalar torque;
     br_scalar ts;
     br_scalar ts2;
@@ -569,9 +571,9 @@ void CalcEngineForce(tCar_spec *c, br_scalar dt) {
     original_CalcEngineForce(c, dt);
 }
 
-static void(*original_PrepareCars)(tU32, ...) = (void(*)(tU32, ...))0x00477b11;
+static void(__cdecl*original_PrepareCars)(tU32) = (void(__cdecl*)(tU32))0x00477b11;
 CARM95_HOOK_FUNCTION(original_PrepareCars, PrepareCars)
-void PrepareCars(tU32 pFrame_start_time) {
+void __cdecl PrepareCars(tU32 pFrame_start_time) {
     tCar_spec *car;
     int i;
     static tU32 last_frame_start;
@@ -585,9 +587,9 @@ void PrepareCars(tU32 pFrame_start_time) {
     original_PrepareCars(pFrame_start_time);
 }
 
-static void(*original_FinishCars)(tU32, tU32, ...) = (void(*)(tU32, tU32, ...))0x00477d38;
+static void(__cdecl*original_FinishCars)(tU32, tU32) = (void(__cdecl*)(tU32, tU32))0x00477d38;
 CARM95_HOOK_FUNCTION(original_FinishCars, FinishCars)
-void FinishCars(tU32 pLast_frame_time, tU32 pTime) {
+void __cdecl FinishCars(tU32 pLast_frame_time, tU32 pTime) {
     tCar_spec *car;
     br_vector3 minus_k;
     int i;
@@ -602,13 +604,15 @@ void FinishCars(tU32 pLast_frame_time, tU32 pTime) {
     (void)minus_k;
     (void)i;
     (void)wheel;
+    (void)__block0___scale;
+    (void)__block1___scale;
 
     original_FinishCars(pLast_frame_time, pTime);
 }
 
-static void(*original_InterpolateCars)(tU32, tU32, ...) = (void(*)(tU32, tU32, ...))0x00478928;
+static void(__cdecl*original_InterpolateCars)(tU32, tU32) = (void(__cdecl*)(tU32, tU32))0x00478928;
 CARM95_HOOK_FUNCTION(original_InterpolateCars, InterpolateCars)
-void InterpolateCars(tU32 pLast_frame_time, tU32 pTime) {
+void __cdecl InterpolateCars(tU32 pLast_frame_time, tU32 pTime) {
     br_scalar dt;
     tCar_spec *car;
     int i;
@@ -623,9 +627,9 @@ void InterpolateCars(tU32 pLast_frame_time, tU32 pTime) {
     original_InterpolateCars(pLast_frame_time, pTime);
 }
 
-static void(*original_ResetOldmat)() = (void(*)())0x00478a88;
+static void(__cdecl*original_ResetOldmat)() = (void(__cdecl*)())0x00478a88;
 CARM95_HOOK_FUNCTION(original_ResetOldmat, ResetOldmat)
-void ResetOldmat() {
+void __cdecl ResetOldmat() {
     tCar_spec *car;
     int i;
     br_matrix34 mat;
@@ -640,9 +644,9 @@ void ResetOldmat() {
     original_ResetOldmat();
 }
 
-static void(*original_GetNonCars)() = (void(*)())0x00478b58;
+static void(__cdecl*original_GetNonCars)() = (void(__cdecl*)())0x00478b58;
 CARM95_HOOK_FUNCTION(original_GetNonCars, GetNonCars)
-void GetNonCars() {
+void __cdecl GetNonCars() {
     int i;
     int j;
     LOG_TRACE("()");
@@ -667,9 +671,9 @@ void GetNetPos(tCar_spec *pCar) {
     NOT_IMPLEMENTED();
 }
 
-static void(*original_ApplyPhysicsToCars)(tU32, tU32, ...) = (void(*)(tU32, tU32, ...))0x0047839b;
+static void(__cdecl*original_ApplyPhysicsToCars)(tU32, tU32) = (void(__cdecl*)(tU32, tU32))0x0047839b;
 CARM95_HOOK_FUNCTION(original_ApplyPhysicsToCars, ApplyPhysicsToCars)
-void ApplyPhysicsToCars(tU32 last_frame_time, tU32 pTime_difference) {
+void __cdecl ApplyPhysicsToCars(tU32 last_frame_time, tU32 pTime_difference) {
     br_vector3 minus_k;
     int i;
     int old_num_cars;
@@ -700,9 +704,9 @@ void ApplyPhysicsToCars(tU32 last_frame_time, tU32 pTime_difference) {
     original_ApplyPhysicsToCars(last_frame_time, pTime_difference);
 }
 
-static void(*original_MungeSpecialVolume)(tCollision_info *, ...) = (void(*)(tCollision_info *, ...))0x004792d0;
+static void(__cdecl*original_MungeSpecialVolume)(tCollision_info *) = (void(__cdecl*)(tCollision_info *))0x004792d0;
 CARM95_HOOK_FUNCTION(original_MungeSpecialVolume, MungeSpecialVolume)
-void MungeSpecialVolume(tCollision_info *pCar) {
+void __cdecl MungeSpecialVolume(tCollision_info *pCar) {
     tSpecial_volume *new_special_volume;
     tCar_spec *car;
     LOG_TRACE("(%p)", pCar);
@@ -714,9 +718,9 @@ void MungeSpecialVolume(tCollision_info *pCar) {
     original_MungeSpecialVolume(pCar);
 }
 
-static void(*original_ResetCarSpecialVolume)(tCollision_info *, ...) = (void(*)(tCollision_info *, ...))0x0047901e;
+static void(__cdecl*original_ResetCarSpecialVolume)(tCollision_info *) = (void(__cdecl*)(tCollision_info *))0x0047901e;
 CARM95_HOOK_FUNCTION(original_ResetCarSpecialVolume, ResetCarSpecialVolume)
-void ResetCarSpecialVolume(tCollision_info *pCar) {
+void __cdecl ResetCarSpecialVolume(tCollision_info *pCar) {
     br_vector3 cast_v;
     br_vector3 norm;
     br_scalar t;
@@ -738,9 +742,9 @@ void ResetCarSpecialVolume(tCollision_info *pCar) {
     original_ResetCarSpecialVolume(pCar);
 }
 
-static void(*original_TestAutoSpecialVolume)(tCollision_info *, ...) = (void(*)(tCollision_info *, ...))0x004794d3;
+static void(__cdecl*original_TestAutoSpecialVolume)(tCollision_info *) = (void(__cdecl*)(tCollision_info *))0x004794d3;
 CARM95_HOOK_FUNCTION(original_TestAutoSpecialVolume, TestAutoSpecialVolume)
-void TestAutoSpecialVolume(tCollision_info *pCar) {
+void __cdecl TestAutoSpecialVolume(tCollision_info *pCar) {
     br_vector3 pos;
     br_scalar car_d;
     br_scalar d;
@@ -776,9 +780,9 @@ void TestAutoSpecialVolume(tCollision_info *pCar) {
     original_TestAutoSpecialVolume(pCar);
 }
 
-static void(*original_MoveAndCollideCar)(tCar_spec *, br_scalar, ...) = (void(*)(tCar_spec *, br_scalar, ...))0x004790fd;
+static void(__cdecl*original_MoveAndCollideCar)(tCar_spec *, br_scalar) = (void(__cdecl*)(tCar_spec *, br_scalar))0x004790fd;
 CARM95_HOOK_FUNCTION(original_MoveAndCollideCar, MoveAndCollideCar)
-void MoveAndCollideCar(tCar_spec *car, br_scalar dt) {
+void __cdecl MoveAndCollideCar(tCar_spec *car, br_scalar dt) {
     tCollision_info *car_info;
     int wheel;
     LOG_TRACE("(%p, %f)", car, dt);
@@ -791,9 +795,9 @@ void MoveAndCollideCar(tCar_spec *car, br_scalar dt) {
     original_MoveAndCollideCar(car, dt);
 }
 
-static void(*original_MoveAndCollideNonCar)(tNon_car_spec *, br_scalar, ...) = (void(*)(tNon_car_spec *, br_scalar, ...))0x00479914;
+static void(__cdecl*original_MoveAndCollideNonCar)(tNon_car_spec *, br_scalar) = (void(__cdecl*)(tNon_car_spec *, br_scalar))0x00479914;
 CARM95_HOOK_FUNCTION(original_MoveAndCollideNonCar, MoveAndCollideNonCar)
-void MoveAndCollideNonCar(tNon_car_spec *non_car, br_scalar dt) {
+void __cdecl MoveAndCollideNonCar(tNon_car_spec *non_car, br_scalar dt) {
     tCollision_info *car_info;
     LOG_TRACE("(%p, %f)", non_car, dt);
 
@@ -804,9 +808,9 @@ void MoveAndCollideNonCar(tNon_car_spec *non_car, br_scalar dt) {
     original_MoveAndCollideNonCar(non_car, dt);
 }
 
-static int(*original_CollideCarWithWall)(tCollision_info *, br_scalar, ...) = (int(*)(tCollision_info *, br_scalar, ...))0x00479a2c;
+static int(__cdecl*original_CollideCarWithWall)(tCollision_info *, br_scalar) = (int(__cdecl*)(tCollision_info *, br_scalar))0x00479a2c;
 CARM95_HOOK_FUNCTION(original_CollideCarWithWall, CollideCarWithWall)
-int CollideCarWithWall(tCollision_info *car, br_scalar dt) {
+int __cdecl CollideCarWithWall(tCollision_info *car, br_scalar dt) {
     LOG_TRACE("(%p, %f)", car, dt);
 
     (void)car;
@@ -822,9 +826,9 @@ void ToggleControls() {
     NOT_IMPLEMENTED();
 }
 
-static void(*original_ControlCar2)(tCar_spec *, br_scalar, ...) = (void(*)(tCar_spec *, br_scalar, ...))0x00479c6d;
+static void(__cdecl*original_ControlCar2)(tCar_spec *, br_scalar) = (void(__cdecl*)(tCar_spec *, br_scalar))0x00479c6d;
 CARM95_HOOK_FUNCTION(original_ControlCar2, ControlCar2)
-void ControlCar2(tCar_spec *c, br_scalar dt) {
+void __cdecl ControlCar2(tCar_spec *c, br_scalar dt) {
     LOG_TRACE("(%p, %f)", c, dt);
 
     (void)c;
@@ -833,9 +837,9 @@ void ControlCar2(tCar_spec *c, br_scalar dt) {
     original_ControlCar2(c, dt);
 }
 
-static void(*original_ControlCar3)(tCar_spec *, br_scalar, ...) = (void(*)(tCar_spec *, br_scalar, ...))0x00479f4b;
+static void(__cdecl*original_ControlCar3)(tCar_spec *, br_scalar) = (void(__cdecl*)(tCar_spec *, br_scalar))0x00479f4b;
 CARM95_HOOK_FUNCTION(original_ControlCar3, ControlCar3)
-void ControlCar3(tCar_spec *c, br_scalar dt) {
+void __cdecl ControlCar3(tCar_spec *c, br_scalar dt) {
     LOG_TRACE("(%p, %f)", c, dt);
 
     (void)c;
@@ -844,9 +848,9 @@ void ControlCar3(tCar_spec *c, br_scalar dt) {
     original_ControlCar3(c, dt);
 }
 
-static void(*original_ControlCar4)(tCar_spec *, br_scalar, ...) = (void(*)(tCar_spec *, br_scalar, ...))0x0047a20e;
+static void(__cdecl*original_ControlCar4)(tCar_spec *, br_scalar) = (void(__cdecl*)(tCar_spec *, br_scalar))0x0047a20e;
 CARM95_HOOK_FUNCTION(original_ControlCar4, ControlCar4)
-void ControlCar4(tCar_spec *c, br_scalar dt) {
+void __cdecl ControlCar4(tCar_spec *c, br_scalar dt) {
     br_scalar ts;
     LOG_TRACE("(%p, %f)", c, dt);
 
@@ -857,9 +861,9 @@ void ControlCar4(tCar_spec *c, br_scalar dt) {
     original_ControlCar4(c, dt);
 }
 
-static void(*original_ControlCar5)(tCar_spec *, br_scalar, ...) = (void(*)(tCar_spec *, br_scalar, ...))0x0047a7b1;
+static void(__cdecl*original_ControlCar5)(tCar_spec *, br_scalar) = (void(__cdecl*)(tCar_spec *, br_scalar))0x0047a7b1;
 CARM95_HOOK_FUNCTION(original_ControlCar5, ControlCar5)
-void ControlCar5(tCar_spec *c, br_scalar dt) {
+void __cdecl ControlCar5(tCar_spec *c, br_scalar dt) {
     LOG_TRACE("(%p, %f)", c, dt);
 
     (void)c;
@@ -868,9 +872,9 @@ void ControlCar5(tCar_spec *c, br_scalar dt) {
     original_ControlCar5(c, dt);
 }
 
-static void(*original_ControlCar1)(tCar_spec *, br_scalar, ...) = (void(*)(tCar_spec *, br_scalar, ...))0x0047ac31;
+static void(__cdecl*original_ControlCar1)(tCar_spec *, br_scalar) = (void(__cdecl*)(tCar_spec *, br_scalar))0x0047ac31;
 CARM95_HOOK_FUNCTION(original_ControlCar1, ControlCar1)
-void ControlCar1(tCar_spec *c, br_scalar dt) {
+void __cdecl ControlCar1(tCar_spec *c, br_scalar dt) {
     LOG_TRACE("(%p, %f)", c, dt);
 
     (void)c;
@@ -909,9 +913,9 @@ void RotateCar2(tCollision_info *c, br_scalar dt) {
     NOT_IMPLEMENTED();
 }
 
-static void(*original_RotateCarSecondOrder)(tCollision_info *, br_scalar, ...) = (void(*)(tCollision_info *, br_scalar, ...))0x0047b434;
+static void(__cdecl*original_RotateCarSecondOrder)(tCollision_info *, br_scalar) = (void(__cdecl*)(tCollision_info *, br_scalar))0x0047b434;
 CARM95_HOOK_FUNCTION(original_RotateCarSecondOrder, RotateCarSecondOrder)
-void RotateCarSecondOrder(tCollision_info *c, br_scalar dt) {
+void __cdecl RotateCarSecondOrder(tCollision_info *c, br_scalar dt) {
     br_vector3 L;
     br_vector3 L2;
     br_vector3 axis;
@@ -961,9 +965,9 @@ void RotateCarFirstOrder(tCollision_info *c, br_scalar dt) {
     NOT_IMPLEMENTED();
 }
 
-static void(*original_SimpleRotate)(tCollision_info *, br_scalar, ...) = (void(*)(tCollision_info *, br_scalar, ...))0x0047b23c;
+static void(__cdecl*original_SimpleRotate)(tCollision_info *, br_scalar) = (void(__cdecl*)(tCollision_info *, br_scalar))0x0047b23c;
 CARM95_HOOK_FUNCTION(original_SimpleRotate, SimpleRotate)
-void SimpleRotate(tCollision_info *c, br_scalar dt) {
+void __cdecl SimpleRotate(tCollision_info *c, br_scalar dt) {
     br_vector3 axis;
     br_scalar rad_rate;
     br_scalar rad;
@@ -978,9 +982,9 @@ void SimpleRotate(tCollision_info *c, br_scalar dt) {
     original_SimpleRotate(c, dt);
 }
 
-static void(*original_RotateCar)(tCollision_info *, br_scalar, ...) = (void(*)(tCollision_info *, br_scalar, ...))0x0047b2fd;
+static void(__cdecl*original_RotateCar)(tCollision_info *, br_scalar) = (void(__cdecl*)(tCollision_info *, br_scalar))0x0047b2fd;
 CARM95_HOOK_FUNCTION(original_RotateCar, RotateCar)
-void RotateCar(tCollision_info *c, br_scalar dt) {
+void __cdecl RotateCar(tCollision_info *c, br_scalar dt) {
     br_scalar rad_squared;
     int steps;
     int i;
@@ -995,9 +999,9 @@ void RotateCar(tCollision_info *c, br_scalar dt) {
     original_RotateCar(c, dt);
 }
 
-static void(*original_SteeringSelfCentre)(tCar_spec *, br_scalar, br_vector3 *, ...) = (void(*)(tCar_spec *, br_scalar, br_vector3 *, ...))0x0047ea86;
+static void(__cdecl*original_SteeringSelfCentre)(tCar_spec *, br_scalar, br_vector3 *) = (void(__cdecl*)(tCar_spec *, br_scalar, br_vector3 *))0x0047ea86;
 CARM95_HOOK_FUNCTION(original_SteeringSelfCentre, SteeringSelfCentre)
-void SteeringSelfCentre(tCar_spec *c, br_scalar dt, br_vector3 *n) {
+void __cdecl SteeringSelfCentre(tCar_spec *c, br_scalar dt, br_vector3 *n) {
     br_scalar ts;
     br_scalar ts2;
     LOG_TRACE("(%p, %f, %p)", c, dt, n);
@@ -1011,9 +1015,9 @@ void SteeringSelfCentre(tCar_spec *c, br_scalar dt, br_vector3 *n) {
     original_SteeringSelfCentre(c, dt, n);
 }
 
-static void(*original_NonCarCalcForce)(tNon_car_spec *, br_scalar, ...) = (void(*)(tNon_car_spec *, br_scalar, ...))0x0047b68d;
+static void(__cdecl*original_NonCarCalcForce)(tNon_car_spec *, br_scalar) = (void(__cdecl*)(tNon_car_spec *, br_scalar))0x0047b68d;
 CARM95_HOOK_FUNCTION(original_NonCarCalcForce, NonCarCalcForce)
-void NonCarCalcForce(tNon_car_spec *nc, br_scalar dt) {
+void __cdecl NonCarCalcForce(tNon_car_spec *nc, br_scalar dt) {
     tCollision_info *c;
     tSpecial_volume *vol;
     br_scalar ts;
@@ -1032,9 +1036,9 @@ void NonCarCalcForce(tNon_car_spec *nc, br_scalar dt) {
     original_NonCarCalcForce(nc, dt);
 }
 
-static void(*original_AddDrag)(tCar_spec *, br_scalar, ...) = (void(*)(tCar_spec *, br_scalar, ...))0x0047ec63;
+static void(__cdecl*original_AddDrag)(tCar_spec *, br_scalar) = (void(__cdecl*)(tCar_spec *, br_scalar))0x0047ec63;
 CARM95_HOOK_FUNCTION(original_AddDrag, AddDrag)
-void AddDrag(tCar_spec *c, br_scalar dt) {
+void __cdecl AddDrag(tCar_spec *c, br_scalar dt) {
     br_scalar drag_multiplier;
     br_scalar ts;
     tSpecial_volume *vol;
@@ -1051,9 +1055,9 @@ void AddDrag(tCar_spec *c, br_scalar dt) {
     original_AddDrag(c, dt);
 }
 
-static void(*original_DoBumpiness)(tCar_spec *, br_vector3 *, br_vector3 *, br_scalar *, int, ...) = (void(*)(tCar_spec *, br_vector3 *, br_vector3 *, br_scalar *, int, ...))0x0047ede9;
+static void(__cdecl*original_DoBumpiness)(tCar_spec *, br_vector3 *, br_vector3 *, br_scalar *, int) = (void(__cdecl*)(tCar_spec *, br_vector3 *, br_vector3 *, br_scalar *, int))0x0047ede9;
 CARM95_HOOK_FUNCTION(original_DoBumpiness, DoBumpiness)
-void DoBumpiness(tCar_spec *c, br_vector3 *wheel_pos, br_vector3 *norm, br_scalar *d, int n) {
+void __cdecl DoBumpiness(tCar_spec *c, br_vector3 *wheel_pos, br_vector3 *norm, br_scalar *d, int n) {
     br_vector3 tv;
     int delta;
     int x;
@@ -1075,9 +1079,9 @@ void DoBumpiness(tCar_spec *c, br_vector3 *wheel_pos, br_vector3 *norm, br_scala
     original_DoBumpiness(c, wheel_pos, norm, d, n);
 }
 
-static void(*original_CalcForce)(tCar_spec *, br_scalar, ...) = (void(*)(tCar_spec *, br_scalar, ...))0x0047ba5d;
+static void(__cdecl*original_CalcForce)(tCar_spec *, br_scalar) = (void(__cdecl*)(tCar_spec *, br_scalar))0x0047ba5d;
 CARM95_HOOK_FUNCTION(original_CalcForce, CalcForce)
-void CalcForce(tCar_spec *c, br_scalar dt) {
+void __cdecl CalcForce(tCar_spec *c, br_scalar dt) {
     int n;
     int normnum;
     int i;
@@ -1190,13 +1194,17 @@ void CalcForce(tCar_spec *c, br_scalar dt) {
     (void)dam;
     (void)v;
     (void)vol;
+    (void)__block0___scale;
+    (void)__block1___scale;
+    (void)__block2___scale;
+    (void)__block3___scale;
 
     original_CalcForce(c, dt);
 }
 
-static void(*original_DoRevs)(tCar_spec *, br_scalar, ...) = (void(*)(tCar_spec *, br_scalar, ...))0x0047ef8e;
+static void(__cdecl*original_DoRevs)(tCar_spec *, br_scalar) = (void(__cdecl*)(tCar_spec *, br_scalar))0x0047ef8e;
 CARM95_HOOK_FUNCTION(original_DoRevs, DoRevs)
-void DoRevs(tCar_spec *c, br_scalar dt) {
+void __cdecl DoRevs(tCar_spec *c, br_scalar dt) {
     br_scalar wheel_spin_force;
     br_scalar ts;
     int revs_increase;
@@ -1211,9 +1219,9 @@ void DoRevs(tCar_spec *c, br_scalar dt) {
     original_DoRevs(c, dt);
 }
 
-static void(*original_ApplyTorque)(tCar_spec *, br_vector3 *, ...) = (void(*)(tCar_spec *, br_vector3 *, ...))0x0047f4f2;
+static void(__cdecl*original_ApplyTorque)(tCar_spec *, br_vector3 *) = (void(__cdecl*)(tCar_spec *, br_vector3 *))0x0047f4f2;
 CARM95_HOOK_FUNCTION(original_ApplyTorque, ApplyTorque)
-void ApplyTorque(tCar_spec *c, br_vector3 *tdt) {
+void __cdecl ApplyTorque(tCar_spec *c, br_vector3 *tdt) {
     LOG_TRACE("(%p, %p)", c, tdt);
 
     (void)c;
@@ -1222,9 +1230,9 @@ void ApplyTorque(tCar_spec *c, br_vector3 *tdt) {
     original_ApplyTorque(c, tdt);
 }
 
-static void(*original_TranslateCar)(tCollision_info *, br_scalar, ...) = (void(*)(tCollision_info *, br_scalar, ...))0x0047f55f;
+static void(__cdecl*original_TranslateCar)(tCollision_info *, br_scalar) = (void(__cdecl*)(tCollision_info *, br_scalar))0x0047f55f;
 CARM95_HOOK_FUNCTION(original_TranslateCar, TranslateCar)
-void TranslateCar(tCollision_info *c, br_scalar dt) {
+void __cdecl TranslateCar(tCollision_info *c, br_scalar dt) {
     br_vector3 t;
     LOG_TRACE("(%p, %f)", c, dt);
 
@@ -1235,9 +1243,9 @@ void TranslateCar(tCollision_info *c, br_scalar dt) {
     original_TranslateCar(c, dt);
 }
 
-static int(*original_CollCheck)(tCollision_info *, br_scalar, ...) = (int(*)(tCollision_info *, br_scalar, ...))0x0047f5d0;
+static int(__cdecl*original_CollCheck)(tCollision_info *, br_scalar) = (int(__cdecl*)(tCollision_info *, br_scalar))0x0047f5d0;
 CARM95_HOOK_FUNCTION(original_CollCheck, CollCheck)
-int CollCheck(tCollision_info *c, br_scalar dt) {
+int __cdecl CollCheck(tCollision_info *c, br_scalar dt) {
     br_vector3 a;
     br_vector3 a1;
     br_vector3 aa;
@@ -1352,13 +1360,15 @@ int CollCheck(tCollision_info *c, br_scalar dt) {
     (void)min_acc;
     (void)max_acc;
     (void)message_mat;
+    (void)__block0___scale;
+    (void)__block1___scale;
 
     return original_CollCheck(c, dt);
 }
 
-static br_scalar(*original_AddFriction)(tCollision_info *, br_vector3 *, br_vector3 *, br_vector3 *, br_scalar, br_vector3 *, ...) = (br_scalar(*)(tCollision_info *, br_vector3 *, br_vector3 *, br_vector3 *, br_scalar, br_vector3 *, ...))0x00481cb9;
+static br_scalar(__cdecl*original_AddFriction)(tCollision_info *, br_vector3 *, br_vector3 *, br_vector3 *, br_scalar, br_vector3 *) = (br_scalar(__cdecl*)(tCollision_info *, br_vector3 *, br_vector3 *, br_vector3 *, br_scalar, br_vector3 *))0x00481cb9;
 CARM95_HOOK_FUNCTION(original_AddFriction, AddFriction)
-br_scalar AddFriction(tCollision_info *c, br_vector3 *vel, br_vector3 *normal_force, br_vector3 *pos, br_scalar total_force, br_vector3 *max_friction) {
+br_scalar __cdecl AddFriction(tCollision_info *c, br_vector3 *vel, br_vector3 *normal_force, br_vector3 *pos, br_scalar total_force, br_vector3 *max_friction) {
     br_vector3 norm;
     br_vector3 tv;
     br_vector3 ftau;
@@ -1381,9 +1391,9 @@ br_scalar AddFriction(tCollision_info *c, br_vector3 *vel, br_vector3 *normal_fo
     return original_AddFriction(c, vel, normal_force, pos, total_force, max_friction);
 }
 
-static void(*original_AddFrictionCarToCar)(tCollision_info *, tCollision_info *, br_vector3 *, br_vector3 *, br_vector3 *, br_vector3 *, br_vector3 *, br_scalar, br_vector3 *, ...) = (void(*)(tCollision_info *, tCollision_info *, br_vector3 *, br_vector3 *, br_vector3 *, br_vector3 *, br_vector3 *, br_scalar, br_vector3 *, ...))0x0049231c;
+static void(__cdecl*original_AddFrictionCarToCar)(tCollision_info *, tCollision_info *, br_vector3 *, br_vector3 *, br_vector3 *, br_vector3 *, br_vector3 *, br_scalar, br_vector3 *) = (void(__cdecl*)(tCollision_info *, tCollision_info *, br_vector3 *, br_vector3 *, br_vector3 *, br_vector3 *, br_vector3 *, br_scalar, br_vector3 *))0x0049231c;
 CARM95_HOOK_FUNCTION(original_AddFrictionCarToCar, AddFrictionCarToCar)
-void AddFrictionCarToCar(tCollision_info *car1, tCollision_info *car2, br_vector3 *vel1, br_vector3 *vel2, br_vector3 *normal_force1, br_vector3 *pos1, br_vector3 *pos2, br_scalar total_force, br_vector3 *max_friction) {
+void __cdecl AddFrictionCarToCar(tCollision_info *car1, tCollision_info *car2, br_vector3 *vel1, br_vector3 *vel2, br_vector3 *normal_force1, br_vector3 *pos1, br_vector3 *pos2, br_scalar total_force, br_vector3 *max_friction) {
     br_vector3 v_diff1;
     br_vector3 v_diff2;
     br_vector3 tau1;
@@ -1425,9 +1435,9 @@ void AddFrictionCarToCar(tCollision_info *car1, tCollision_info *car2, br_vector
     original_AddFrictionCarToCar(car1, car2, vel1, vel2, normal_force1, pos1, pos2, total_force, max_friction);
 }
 
-static void(*original_ScrapeNoise)(br_scalar, br_vector3 *, int, ...) = (void(*)(br_scalar, br_vector3 *, int, ...))0x00482070;
+static void(__cdecl*original_ScrapeNoise)(br_scalar, br_vector3 *, int) = (void(__cdecl*)(br_scalar, br_vector3 *, int))0x00482070;
 CARM95_HOOK_FUNCTION(original_ScrapeNoise, ScrapeNoise)
-void ScrapeNoise(br_scalar vel, br_vector3 *position, int material) {
+void __cdecl ScrapeNoise(br_scalar vel, br_vector3 *position, int material) {
     tS3_volume vol;
     static tS3_sound_tag scrape_tag;
     static tS3_volume last_scrape_vol;
@@ -1447,9 +1457,9 @@ void ScrapeNoise(br_scalar vel, br_vector3 *position, int material) {
     original_ScrapeNoise(vel, position, material);
 }
 
-static void(*original_SkidNoise)(tCar_spec *, int, br_scalar, int, ...) = (void(*)(tCar_spec *, int, br_scalar, int, ...))0x0048216d;
+static void(__cdecl*original_SkidNoise)(tCar_spec *, int, br_scalar, int) = (void(__cdecl*)(tCar_spec *, int, br_scalar, int))0x0048216d;
 CARM95_HOOK_FUNCTION(original_SkidNoise, SkidNoise)
-void SkidNoise(tCar_spec *pC, int pWheel_num, br_scalar pV, int material) {
+void __cdecl SkidNoise(tCar_spec *pC, int pWheel_num, br_scalar pV, int material) {
     br_vector3 pos;
     br_vector3 world_pos;
     br_vector3 wv;
@@ -1474,9 +1484,9 @@ void SkidNoise(tCar_spec *pC, int pWheel_num, br_scalar pV, int material) {
     original_SkidNoise(pC, pWheel_num, pV, material);
 }
 
-static void(*original_StopSkid)(tCar_spec *, ...) = (void(*)(tCar_spec *, ...))0x00482458;
+static void(__cdecl*original_StopSkid)(tCar_spec *) = (void(__cdecl*)(tCar_spec *))0x00482458;
 CARM95_HOOK_FUNCTION(original_StopSkid, StopSkid)
-void StopSkid(tCar_spec *pC) {
+void __cdecl StopSkid(tCar_spec *pC) {
     LOG_TRACE("(%p)", pC);
 
     (void)pC;
@@ -1484,9 +1494,9 @@ void StopSkid(tCar_spec *pC) {
     original_StopSkid(pC);
 }
 
-static void(*original_CrashNoise)(br_vector3 *, br_vector3 *, int, ...) = (void(*)(br_vector3 *, br_vector3 *, int, ...))0x0048249d;
+static void(__cdecl*original_CrashNoise)(br_vector3 *, br_vector3 *, int) = (void(__cdecl*)(br_vector3 *, br_vector3 *, int))0x0048249d;
 CARM95_HOOK_FUNCTION(original_CrashNoise, CrashNoise)
-void CrashNoise(br_vector3 *pForce, br_vector3 *position, int material) {
+void __cdecl CrashNoise(br_vector3 *pForce, br_vector3 *position, int material) {
     static tS3_sound_tag crunch_tag;
     static tS3_volume last_crunch_vol;
     tS3_volume vol;
@@ -1504,9 +1514,9 @@ void CrashNoise(br_vector3 *pForce, br_vector3 *position, int material) {
     original_CrashNoise(pForce, position, material);
 }
 
-static void(*original_CrushAndDamageCar)(tCar_spec *, br_vector3 *, br_vector3 *, tCar_spec *, ...) = (void(*)(tCar_spec *, br_vector3 *, br_vector3 *, tCar_spec *, ...))0x004825a8;
+static void(__cdecl*original_CrushAndDamageCar)(tCar_spec *, br_vector3 *, br_vector3 *, tCar_spec *) = (void(__cdecl*)(tCar_spec *, br_vector3 *, br_vector3 *, tCar_spec *))0x004825a8;
 CARM95_HOOK_FUNCTION(original_CrushAndDamageCar, CrushAndDamageCar)
-void CrushAndDamageCar(tCar_spec *c, br_vector3 *pPosition, br_vector3 *pForce_car_space, tCar_spec *car2) {
+void __cdecl CrushAndDamageCar(tCar_spec *c, br_vector3 *pPosition, br_vector3 *pForce_car_space, tCar_spec *car2) {
     br_vector3 force;
     br_vector3 force2;
     br_vector3 position;
@@ -1537,9 +1547,9 @@ void CrushAndDamageCar(tCar_spec *c, br_vector3 *pPosition, br_vector3 *pForce_c
     original_CrushAndDamageCar(c, pPosition, pForce_car_space, car2);
 }
 
-static int(*original_ExpandBoundingBox)(tCar_spec *, ...) = (int(*)(tCar_spec *, ...))0x00482c00;
+static int(__cdecl*original_ExpandBoundingBox)(tCar_spec *) = (int(__cdecl*)(tCar_spec *))0x00482c00;
 CARM95_HOOK_FUNCTION(original_ExpandBoundingBox, ExpandBoundingBox)
-int ExpandBoundingBox(tCar_spec *c) {
+int __cdecl ExpandBoundingBox(tCar_spec *c) {
     br_scalar min_z;
     br_scalar max_z;
     br_scalar dist;
@@ -1561,9 +1571,9 @@ int ExpandBoundingBox(tCar_spec *c) {
     return original_ExpandBoundingBox(c);
 }
 
-static void(*original_CrushBoundingBox)(tCar_spec *, int, ...) = (void(*)(tCar_spec *, int, ...))0x00482dee;
+static void(__cdecl*original_CrushBoundingBox)(tCar_spec *, int) = (void(__cdecl*)(tCar_spec *, int))0x00482dee;
 CARM95_HOOK_FUNCTION(original_CrushBoundingBox, CrushBoundingBox)
-void CrushBoundingBox(tCar_spec *c, int crush_only) {
+void __cdecl CrushBoundingBox(tCar_spec *c, int crush_only) {
     br_vector3 min;
     br_vector3 max;
     int i;
@@ -1580,9 +1590,9 @@ void CrushBoundingBox(tCar_spec *c, int crush_only) {
     original_CrushBoundingBox(c, crush_only);
 }
 
-static void(*original_AddCollPoint)(br_scalar, br_vector3 *, br_vector3 *, br_vector3 *, br_vector3 *, br_vector3 *, int, tCollision_info *, ...) = (void(*)(br_scalar, br_vector3 *, br_vector3 *, br_vector3 *, br_vector3 *, br_vector3 *, int, tCollision_info *, ...))0x00483152;
+static void(__cdecl*original_AddCollPoint)(br_scalar, br_vector3 *, br_vector3 *, br_vector3 *, br_vector3 *, br_vector3 *, int, tCollision_info *) = (void(__cdecl*)(br_scalar, br_vector3 *, br_vector3 *, br_vector3 *, br_vector3 *, br_vector3 *, int, tCollision_info *))0x00483152;
 CARM95_HOOK_FUNCTION(original_AddCollPoint, AddCollPoint)
-void AddCollPoint(br_scalar dist, br_vector3 *p, br_vector3 *norm, br_vector3 *r, br_vector3 *n, br_vector3 *dir, int num, tCollision_info *c) {
+void __cdecl AddCollPoint(br_scalar dist, br_vector3 *p, br_vector3 *norm, br_vector3 *r, br_vector3 *n, br_vector3 *dir, int num, tCollision_info *c) {
     static br_scalar d[4];
     int i;
     int furthest;
@@ -1603,9 +1613,9 @@ void AddCollPoint(br_scalar dist, br_vector3 *p, br_vector3 *norm, br_vector3 *r
     original_AddCollPoint(dist, p, norm, r, n, dir, num, c);
 }
 
-static br_scalar(*original_SinglePointColl)(br_scalar *, br_matrix4 *, br_scalar *, ...) = (br_scalar(*)(br_scalar *, br_matrix4 *, br_scalar *, ...))0x0048326d;
+static br_scalar(__cdecl*original_SinglePointColl)(br_scalar *, br_matrix4 *, br_scalar *) = (br_scalar(__cdecl*)(br_scalar *, br_matrix4 *, br_scalar *))0x0048326d;
 CARM95_HOOK_FUNCTION(original_SinglePointColl, SinglePointColl)
-br_scalar SinglePointColl(br_scalar *f, br_matrix4 *m, br_scalar *d) {
+br_scalar __cdecl SinglePointColl(br_scalar *f, br_matrix4 *m, br_scalar *d) {
     LOG_TRACE("(%p, %p, %p)", f, m, d);
 
     (void)f;
@@ -1615,9 +1625,9 @@ br_scalar SinglePointColl(br_scalar *f, br_matrix4 *m, br_scalar *d) {
     return original_SinglePointColl(f, m, d);
 }
 
-static br_scalar(*original_TwoPointColl)(br_scalar *, br_matrix4 *, br_scalar *, br_vector3 *, br_vector3 *, ...) = (br_scalar(*)(br_scalar *, br_matrix4 *, br_scalar *, br_vector3 *, br_vector3 *, ...))0x004832b2;
+static br_scalar(__cdecl*original_TwoPointColl)(br_scalar *, br_matrix4 *, br_scalar *, br_vector3 *, br_vector3 *) = (br_scalar(__cdecl*)(br_scalar *, br_matrix4 *, br_scalar *, br_vector3 *, br_vector3 *))0x004832b2;
 CARM95_HOOK_FUNCTION(original_TwoPointColl, TwoPointColl)
-br_scalar TwoPointColl(br_scalar *f, br_matrix4 *m, br_scalar *d, br_vector3 *tau, br_vector3 *n) {
+br_scalar __cdecl TwoPointColl(br_scalar *f, br_matrix4 *m, br_scalar *d, br_vector3 *tau, br_vector3 *n) {
     br_scalar ts;
     LOG_TRACE("(%p, %p, %p, %p, %p)", f, m, d, tau, n);
 
@@ -1631,9 +1641,9 @@ br_scalar TwoPointColl(br_scalar *f, br_matrix4 *m, br_scalar *d, br_vector3 *ta
     return original_TwoPointColl(f, m, d, tau, n);
 }
 
-static br_scalar(*original_DrMatrix4Inverse)(br_matrix4 *, br_matrix4 *, ...) = (br_scalar(*)(br_matrix4 *, br_matrix4 *, ...))0x0048377f;
+static br_scalar(__cdecl*original_DrMatrix4Inverse)(br_matrix4 *, br_matrix4 *) = (br_scalar(__cdecl*)(br_matrix4 *, br_matrix4 *))0x0048377f;
 CARM95_HOOK_FUNCTION(original_DrMatrix4Inverse, DrMatrix4Inverse)
-br_scalar DrMatrix4Inverse(br_matrix4 *mi, br_matrix4 *mc) {
+br_scalar __cdecl DrMatrix4Inverse(br_matrix4 *mi, br_matrix4 *mc) {
     LOG_TRACE("(%p, %p)", mi, mc);
 
     (void)mi;
@@ -1642,9 +1652,9 @@ br_scalar DrMatrix4Inverse(br_matrix4 *mi, br_matrix4 *mc) {
     return original_DrMatrix4Inverse(mi, mc);
 }
 
-static br_scalar(*original_ThreePointColl)(br_scalar *, br_matrix4 *, br_scalar *, ...) = (br_scalar(*)(br_scalar *, br_matrix4 *, br_scalar *, ...))0x004836f1;
+static br_scalar(__cdecl*original_ThreePointColl)(br_scalar *, br_matrix4 *, br_scalar *) = (br_scalar(__cdecl*)(br_scalar *, br_matrix4 *, br_scalar *))0x004836f1;
 CARM95_HOOK_FUNCTION(original_ThreePointColl, ThreePointColl)
-br_scalar ThreePointColl(br_scalar *f, br_matrix4 *m, br_scalar *d) {
+br_scalar __cdecl ThreePointColl(br_scalar *f, br_matrix4 *m, br_scalar *d) {
     br_matrix4 mc;
     br_matrix4 mi;
     br_scalar ts;
@@ -1660,9 +1670,9 @@ br_scalar ThreePointColl(br_scalar *f, br_matrix4 *m, br_scalar *d) {
     return original_ThreePointColl(f, m, d);
 }
 
-static br_scalar(*original_ThreePointCollRec)(br_scalar *, br_matrix4 *, br_scalar *, br_vector3 *, br_vector3 *, tCollision_info *, ...) = (br_scalar(*)(br_scalar *, br_matrix4 *, br_scalar *, br_vector3 *, br_vector3 *, tCollision_info *, ...))0x00483425;
+static br_scalar(__cdecl*original_ThreePointCollRec)(br_scalar *, br_matrix4 *, br_scalar *, br_vector3 *, br_vector3 *, tCollision_info *) = (br_scalar(__cdecl*)(br_scalar *, br_matrix4 *, br_scalar *, br_vector3 *, br_vector3 *, tCollision_info *))0x00483425;
 CARM95_HOOK_FUNCTION(original_ThreePointCollRec, ThreePointCollRec)
-br_scalar ThreePointCollRec(br_scalar *f, br_matrix4 *m, br_scalar *d, br_vector3 *tau, br_vector3 *n, tCollision_info *c) {
+br_scalar __cdecl ThreePointCollRec(br_scalar *f, br_matrix4 *m, br_scalar *d, br_vector3 *tau, br_vector3 *n, tCollision_info *c) {
     int i;
     int j;
     br_scalar ts;
@@ -1681,9 +1691,9 @@ br_scalar ThreePointCollRec(br_scalar *f, br_matrix4 *m, br_scalar *d, br_vector
     return original_ThreePointCollRec(f, m, d, tau, n, c);
 }
 
-static br_scalar(*original_FourPointColl)(br_scalar *, br_matrix4 *, br_scalar *, br_vector3 *, br_vector3 *, tCollision_info *, ...) = (br_scalar(*)(br_scalar *, br_matrix4 *, br_scalar *, br_vector3 *, br_vector3 *, tCollision_info *, ...))0x0048379f;
+static br_scalar(__cdecl*original_FourPointColl)(br_scalar *, br_matrix4 *, br_scalar *, br_vector3 *, br_vector3 *, tCollision_info *) = (br_scalar(__cdecl*)(br_scalar *, br_matrix4 *, br_scalar *, br_vector3 *, br_vector3 *, tCollision_info *))0x0048379f;
 CARM95_HOOK_FUNCTION(original_FourPointColl, FourPointColl)
-br_scalar FourPointColl(br_scalar *f, br_matrix4 *m, br_scalar *d, br_vector3 *tau, br_vector3 *n, tCollision_info *c) {
+br_scalar __cdecl FourPointColl(br_scalar *f, br_matrix4 *m, br_scalar *d, br_vector3 *tau, br_vector3 *n, tCollision_info *c) {
     int i;
     int j;
     int l;
@@ -1704,9 +1714,9 @@ br_scalar FourPointColl(br_scalar *f, br_matrix4 *m, br_scalar *d, br_vector3 *t
     return original_FourPointColl(f, m, d, tau, n, c);
 }
 
-static void(*original_MultiFindFloorInBoxM)(int, br_vector3 *, br_vector3 *, br_vector3 *, br_scalar *, tCar_spec *, int *, ...) = (void(*)(int, br_vector3 *, br_vector3 *, br_vector3 *, br_scalar *, tCar_spec *, int *, ...))0x00483a49;
+static void(__cdecl*original_MultiFindFloorInBoxM)(int, br_vector3 *, br_vector3 *, br_vector3 *, br_scalar *, tCar_spec *, int *) = (void(__cdecl*)(int, br_vector3 *, br_vector3 *, br_vector3 *, br_scalar *, tCar_spec *, int *))0x00483a49;
 CARM95_HOOK_FUNCTION(original_MultiFindFloorInBoxM, MultiFindFloorInBoxM)
-void MultiFindFloorInBoxM(int pNum_rays, br_vector3 *a, br_vector3 *b, br_vector3 *nor, br_scalar *d, tCar_spec *c, int *mat_ref) {
+void __cdecl MultiFindFloorInBoxM(int pNum_rays, br_vector3 *a, br_vector3 *b, br_vector3 *nor, br_scalar *d, tCar_spec *c, int *mat_ref) {
     br_vector3 aa[4];
     br_vector3 bb;
     int i;
@@ -1726,9 +1736,9 @@ void MultiFindFloorInBoxM(int pNum_rays, br_vector3 *a, br_vector3 *b, br_vector
     original_MultiFindFloorInBoxM(pNum_rays, a, b, nor, d, c, mat_ref);
 }
 
-static void(*original_MultiFindFloorInBoxBU)(int, br_vector3 *, br_vector3 *, br_vector3 *, br_scalar *, tCar_spec *, int *, ...) = (void(*)(int, br_vector3 *, br_vector3 *, br_vector3 *, br_scalar *, tCar_spec *, int *, ...))0x00483b2a;
+static void(__cdecl*original_MultiFindFloorInBoxBU)(int, br_vector3 *, br_vector3 *, br_vector3 *, br_scalar *, tCar_spec *, int *) = (void(__cdecl*)(int, br_vector3 *, br_vector3 *, br_vector3 *, br_scalar *, tCar_spec *, int *))0x00483b2a;
 CARM95_HOOK_FUNCTION(original_MultiFindFloorInBoxBU, MultiFindFloorInBoxBU)
-void MultiFindFloorInBoxBU(int pNum_rays, br_vector3 *a, br_vector3 *b, br_vector3 *nor, br_scalar *d, tCar_spec *c, int *mat_ref) {
+void __cdecl MultiFindFloorInBoxBU(int pNum_rays, br_vector3 *a, br_vector3 *b, br_vector3 *nor, br_scalar *d, tCar_spec *c, int *mat_ref) {
     br_vector3 nor2;
     int i;
     int j;
@@ -1754,9 +1764,9 @@ void MultiFindFloorInBoxBU(int pNum_rays, br_vector3 *a, br_vector3 *b, br_vecto
     original_MultiFindFloorInBoxBU(pNum_rays, a, b, nor, d, c, mat_ref);
 }
 
-static void(*original_findfloor)(br_vector3 *, br_vector3 *, br_vector3 *, br_scalar *, ...) = (void(*)(br_vector3 *, br_vector3 *, br_vector3 *, br_scalar *, ...))0x00483c6a;
+static void(__cdecl*original_findfloor)(br_vector3 *, br_vector3 *, br_vector3 *, br_scalar *) = (void(__cdecl*)(br_vector3 *, br_vector3 *, br_vector3 *, br_scalar *))0x00483c6a;
 CARM95_HOOK_FUNCTION(original_findfloor, findfloor)
-void findfloor(br_vector3 *a, br_vector3 *b, br_vector3 *nor, br_scalar *d) {
+void __cdecl findfloor(br_vector3 *a, br_vector3 *b, br_vector3 *nor, br_scalar *d) {
     br_material *material;
     br_vector3 aa;
     br_vector3 bb;
@@ -1773,9 +1783,9 @@ void findfloor(br_vector3 *a, br_vector3 *b, br_vector3 *nor, br_scalar *d) {
     original_findfloor(a, b, nor, d);
 }
 
-static int(*original_FindFloorInBoxM)(br_vector3 *, br_vector3 *, br_vector3 *, br_scalar *, tCollision_info *, ...) = (int(*)(br_vector3 *, br_vector3 *, br_vector3 *, br_scalar *, tCollision_info *, ...))0x00483cec;
+static int(__cdecl*original_FindFloorInBoxM)(br_vector3 *, br_vector3 *, br_vector3 *, br_scalar *, tCollision_info *) = (int(__cdecl*)(br_vector3 *, br_vector3 *, br_vector3 *, br_scalar *, tCollision_info *))0x00483cec;
 CARM95_HOOK_FUNCTION(original_FindFloorInBoxM, FindFloorInBoxM)
-int FindFloorInBoxM(br_vector3 *a, br_vector3 *b, br_vector3 *nor, br_scalar *d, tCollision_info *c) {
+int __cdecl FindFloorInBoxM(br_vector3 *a, br_vector3 *b, br_vector3 *nor, br_scalar *d, tCollision_info *c) {
     br_vector3 aa;
     br_vector3 bb;
     LOG_TRACE("(%p, %p, %p, %p, %p)", a, b, nor, d, c);
@@ -1791,9 +1801,9 @@ int FindFloorInBoxM(br_vector3 *a, br_vector3 *b, br_vector3 *nor, br_scalar *d,
     return original_FindFloorInBoxM(a, b, nor, d, c);
 }
 
-static int(*original_FindFloorInBoxBU)(br_vector3 *, br_vector3 *, br_vector3 *, br_scalar *, tCollision_info *, ...) = (int(*)(br_vector3 *, br_vector3 *, br_vector3 *, br_scalar *, tCollision_info *, ...))0x00483d73;
+static int(__cdecl*original_FindFloorInBoxBU)(br_vector3 *, br_vector3 *, br_vector3 *, br_scalar *, tCollision_info *) = (int(__cdecl*)(br_vector3 *, br_vector3 *, br_vector3 *, br_scalar *, tCollision_info *))0x00483d73;
 CARM95_HOOK_FUNCTION(original_FindFloorInBoxBU, FindFloorInBoxBU)
-int FindFloorInBoxBU(br_vector3 *a, br_vector3 *b, br_vector3 *nor, br_scalar *d, tCollision_info *c) {
+int __cdecl FindFloorInBoxBU(br_vector3 *a, br_vector3 *b, br_vector3 *nor, br_scalar *d, tCollision_info *c) {
     br_vector3 nor2;
     int i;
     int j;
@@ -1815,9 +1825,9 @@ int FindFloorInBoxBU(br_vector3 *a, br_vector3 *b, br_vector3 *nor, br_scalar *d
     return original_FindFloorInBoxBU(a, b, nor, d, c);
 }
 
-static int(*original_FindFloorInBoxBU2)(br_vector3 *, br_vector3 *, br_vector3 *, br_scalar *, tCollision_info *, ...) = (int(*)(br_vector3 *, br_vector3 *, br_vector3 *, br_scalar *, tCollision_info *, ...))0x00483e92;
+static int(__cdecl*original_FindFloorInBoxBU2)(br_vector3 *, br_vector3 *, br_vector3 *, br_scalar *, tCollision_info *) = (int(__cdecl*)(br_vector3 *, br_vector3 *, br_vector3 *, br_scalar *, tCollision_info *))0x00483e92;
 CARM95_HOOK_FUNCTION(original_FindFloorInBoxBU2, FindFloorInBoxBU2)
-int FindFloorInBoxBU2(br_vector3 *a, br_vector3 *b, br_vector3 *nor, br_scalar *d, tCollision_info *c) {
+int __cdecl FindFloorInBoxBU2(br_vector3 *a, br_vector3 *b, br_vector3 *nor, br_scalar *d, tCollision_info *c) {
     br_vector3 nor2;
     br_vector3 tv;
     int i;
@@ -1841,9 +1851,9 @@ int FindFloorInBoxBU2(br_vector3 *a, br_vector3 *b, br_vector3 *nor, br_scalar *
     return original_FindFloorInBoxBU2(a, b, nor, d, c);
 }
 
-static int(*original_FindFloorInBoxM2)(br_vector3 *, br_vector3 *, br_vector3 *, br_scalar *, tCollision_info *, ...) = (int(*)(br_vector3 *, br_vector3 *, br_vector3 *, br_scalar *, tCollision_info *, ...))0x0048405b;
+static int(__cdecl*original_FindFloorInBoxM2)(br_vector3 *, br_vector3 *, br_vector3 *, br_scalar *, tCollision_info *) = (int(__cdecl*)(br_vector3 *, br_vector3 *, br_vector3 *, br_scalar *, tCollision_info *))0x0048405b;
 CARM95_HOOK_FUNCTION(original_FindFloorInBoxM2, FindFloorInBoxM2)
-int FindFloorInBoxM2(br_vector3 *a, br_vector3 *b, br_vector3 *nor, br_scalar *d, tCollision_info *c) {
+int __cdecl FindFloorInBoxM2(br_vector3 *a, br_vector3 *b, br_vector3 *nor, br_scalar *d, tCollision_info *c) {
     br_vector3 aa;
     br_vector3 bb;
     LOG_TRACE("(%p, %p, %p, %p, %p)", a, b, nor, d, c);
@@ -1859,9 +1869,9 @@ int FindFloorInBoxM2(br_vector3 *a, br_vector3 *b, br_vector3 *nor, br_scalar *d
     return original_FindFloorInBoxM2(a, b, nor, d, c);
 }
 
-static int(*original_BoxFaceIntersect)(br_bounds *, br_matrix34 *, br_matrix34 *, br_vector3 *, br_vector3 *, br_scalar *, int, tCollision_info *, ...) = (int(*)(br_bounds *, br_matrix34 *, br_matrix34 *, br_vector3 *, br_vector3 *, br_scalar *, int, tCollision_info *, ...))0x004840e2;
+static int(__cdecl*original_BoxFaceIntersect)(br_bounds *, br_matrix34 *, br_matrix34 *, br_vector3 *, br_vector3 *, br_scalar *, int, tCollision_info *) = (int(__cdecl*)(br_bounds *, br_matrix34 *, br_matrix34 *, br_vector3 *, br_vector3 *, br_scalar *, int, tCollision_info *))0x004840e2;
 CARM95_HOOK_FUNCTION(original_BoxFaceIntersect, BoxFaceIntersect)
-int BoxFaceIntersect(br_bounds *pB, br_matrix34 *pM, br_matrix34 *pMold, br_vector3 *pPoint_list, br_vector3 *pNorm_list, br_scalar *pDist_list, int pMax_pnts, tCollision_info *c) {
+int __cdecl BoxFaceIntersect(br_bounds *pB, br_matrix34 *pM, br_matrix34 *pMold, br_vector3 *pPoint_list, br_vector3 *pNorm_list, br_scalar *pDist_list, int pMax_pnts, tCollision_info *c) {
     br_vector3 p[3];
     br_vector3 tv;
     br_vector3 pos;
@@ -1898,9 +1908,9 @@ int BoxFaceIntersect(br_bounds *pB, br_matrix34 *pM, br_matrix34 *pMold, br_vect
     return original_BoxFaceIntersect(pB, pM, pMold, pPoint_list, pNorm_list, pDist_list, pMax_pnts, c);
 }
 
-static int(*original_AddEdgeCollPoints)(br_vector3 *, br_vector3 *, br_bounds *, br_matrix34 *, br_vector3 *, br_vector3 *, int, int, tCollision_info *, ...) = (int(*)(br_vector3 *, br_vector3 *, br_bounds *, br_matrix34 *, br_vector3 *, br_vector3 *, int, int, tCollision_info *, ...))0x0048469b;
+static int(__cdecl*original_AddEdgeCollPoints)(br_vector3 *, br_vector3 *, br_bounds *, br_matrix34 *, br_vector3 *, br_vector3 *, int, int, tCollision_info *) = (int(__cdecl*)(br_vector3 *, br_vector3 *, br_bounds *, br_matrix34 *, br_vector3 *, br_vector3 *, int, int, tCollision_info *))0x0048469b;
 CARM95_HOOK_FUNCTION(original_AddEdgeCollPoints, AddEdgeCollPoints)
-int AddEdgeCollPoints(br_vector3 *p1, br_vector3 *p2, br_bounds *pB, br_matrix34 *pMold, br_vector3 *pPoint_list, br_vector3 *pNorm_list, int n, int pMax_pnts, tCollision_info *c) {
+int __cdecl AddEdgeCollPoints(br_vector3 *p1, br_vector3 *p2, br_bounds *pB, br_matrix34 *pMold, br_vector3 *pPoint_list, br_vector3 *pNorm_list, int n, int pMax_pnts, tCollision_info *c) {
     br_vector3 op1;
     br_vector3 op2;
     br_vector3 a;
@@ -1939,13 +1949,16 @@ int AddEdgeCollPoints(br_vector3 *p1, br_vector3 *p2, br_bounds *pB, br_matrix34
     (void)plane2;
     (void)plane3;
     (void)d;
+    (void)__block0___scale;
+    (void)__block1___scale;
+    (void)__block2___scale;
 
     return original_AddEdgeCollPoints(p1, p2, pB, pMold, pPoint_list, pNorm_list, n, pMax_pnts, c);
 }
 
-static void(*original_GetPlaneNormal)(br_vector3 *, int, ...) = (void(*)(br_vector3 *, int, ...))0x004854c1;
+static void(__cdecl*original_GetPlaneNormal)(br_vector3 *, int) = (void(__cdecl*)(br_vector3 *, int))0x004854c1;
 CARM95_HOOK_FUNCTION(original_GetPlaneNormal, GetPlaneNormal)
-void GetPlaneNormal(br_vector3 *n, int p) {
+void __cdecl GetPlaneNormal(br_vector3 *n, int p) {
     int d;
     LOG_TRACE("(%p, %d)", n, p);
 
@@ -1956,9 +1969,9 @@ void GetPlaneNormal(br_vector3 *n, int p) {
     original_GetPlaneNormal(n, p);
 }
 
-static int(*original_GetBoundsEdge)(br_vector3 *, br_vector3 *, br_bounds *, int, int, br_vector3 *, br_vector3 *, br_vector3 *, int, ...) = (int(*)(br_vector3 *, br_vector3 *, br_bounds *, int, int, br_vector3 *, br_vector3 *, br_vector3 *, int, ...))0x0048551f;
+static int(__cdecl*original_GetBoundsEdge)(br_vector3 *, br_vector3 *, br_bounds *, int, int, br_vector3 *, br_vector3 *, br_vector3 *, int) = (int(__cdecl*)(br_vector3 *, br_vector3 *, br_bounds *, int, int, br_vector3 *, br_vector3 *, br_vector3 *, int))0x0048551f;
 CARM95_HOOK_FUNCTION(original_GetBoundsEdge, GetBoundsEdge)
-int GetBoundsEdge(br_vector3 *pos, br_vector3 *edge, br_bounds *pB, int plane1, int plane2, br_vector3 *a, br_vector3 *b, br_vector3 *c, int flag) {
+int __cdecl GetBoundsEdge(br_vector3 *pos, br_vector3 *edge, br_bounds *pB, int plane1, int plane2, br_vector3 *a, br_vector3 *b, br_vector3 *c, int flag) {
     int d1;
     int d2;
     int d3;
@@ -2023,18 +2036,18 @@ void ToggleCollisionDetection() {
     NOT_IMPLEMENTED();
 }
 
-static void(*original_CancelPendingCunningStunt)() = (void(*)())0x00485d8b;
+static void(__cdecl*original_CancelPendingCunningStunt)() = (void(__cdecl*)())0x00485d8b;
 CARM95_HOOK_FUNCTION(original_CancelPendingCunningStunt, CancelPendingCunningStunt)
-void CancelPendingCunningStunt() {
+void __cdecl CancelPendingCunningStunt() {
     LOG_TRACE("()");
 
 
     original_CancelPendingCunningStunt();
 }
 
-static float(*original_frac)(float, ...) = (float(*)(float, ...))0x00485dc8;
+static float(__cdecl*original_frac)(float) = (float(__cdecl*)(float))0x00485dc8;
 CARM95_HOOK_FUNCTION(original_frac, frac)
-float frac(float pN) {
+float __cdecl frac(float pN) {
     LOG_TRACE("(%f)", pN);
 
     (void)pN;
@@ -2042,9 +2055,9 @@ float frac(float pN) {
     return original_frac(pN);
 }
 
-static void(*original_SetAmbientPratCam)(tCar_spec *, ...) = (void(*)(tCar_spec *, ...))0x00486d06;
+static void(__cdecl*original_SetAmbientPratCam)(tCar_spec *) = (void(__cdecl*)(tCar_spec *))0x00486d06;
 CARM95_HOOK_FUNCTION(original_SetAmbientPratCam, SetAmbientPratCam)
-void SetAmbientPratCam(tCar_spec *pCar) {
+void __cdecl SetAmbientPratCam(tCar_spec *pCar) {
     br_scalar vcs_x;
     br_scalar vcs_y;
     br_scalar vcs_z;
@@ -2074,9 +2087,9 @@ void SetAmbientPratCam(tCar_spec *pCar) {
     original_SetAmbientPratCam(pCar);
 }
 
-static void(*original_MungeCarGraphics)(tU32, ...) = (void(*)(tU32, ...))0x00485dee;
+static void(__cdecl*original_MungeCarGraphics)(tU32) = (void(__cdecl*)(tU32))0x00485dee;
 CARM95_HOOK_FUNCTION(original_MungeCarGraphics, MungeCarGraphics)
-void MungeCarGraphics(tU32 pFrame_period) {
+void __cdecl MungeCarGraphics(tU32 pFrame_period) {
     int i;
     int j;
     int update_mat;
@@ -2142,9 +2155,9 @@ void MungeCarGraphics(tU32 pFrame_period) {
     original_MungeCarGraphics(pFrame_period);
 }
 
-static void(*original_ResetCarScreens)() = (void(*)())0x0048701d;
+static void(__cdecl*original_ResetCarScreens)() = (void(__cdecl*)())0x0048701d;
 CARM95_HOOK_FUNCTION(original_ResetCarScreens, ResetCarScreens)
-void ResetCarScreens() {
+void __cdecl ResetCarScreens() {
     int cat;
     int car_count;
     int i;
@@ -2159,9 +2172,9 @@ void ResetCarScreens() {
     original_ResetCarScreens();
 }
 
-static tCar_spec *(*original_GetRaceLeader)() = (tCar_spec *(*)())0x00487179;
+static tCar_spec *(__cdecl*original_GetRaceLeader)() = (tCar_spec *(__cdecl*)())0x00487179;
 CARM95_HOOK_FUNCTION(original_GetRaceLeader, GetRaceLeader)
-tCar_spec* GetRaceLeader() {
+tCar_spec* __cdecl GetRaceLeader() {
     int i;
     int score;
     tCar_spec *car;
@@ -2174,9 +2187,9 @@ tCar_spec* GetRaceLeader() {
     return original_GetRaceLeader();
 }
 
-static void(*original_AmIGettingBoredWatchingCameraSpin)() = (void(*)())0x004876f1;
+static void(__cdecl*original_AmIGettingBoredWatchingCameraSpin)() = (void(__cdecl*)())0x004876f1;
 CARM95_HOOK_FUNCTION(original_AmIGettingBoredWatchingCameraSpin, AmIGettingBoredWatchingCameraSpin)
-void AmIGettingBoredWatchingCameraSpin() {
+void __cdecl AmIGettingBoredWatchingCameraSpin() {
     static tU32 time_of_death;
     static tU32 headup_timer;
     tCar_spec *car;
@@ -2191,18 +2204,18 @@ void AmIGettingBoredWatchingCameraSpin() {
     original_AmIGettingBoredWatchingCameraSpin();
 }
 
-static void(*original_ViewNetPlayer)() = (void(*)())0x004870d8;
+static void(__fastcall*original_ViewNetPlayer)() = (void(__fastcall*)())0x004870d8;
 CARM95_HOOK_FUNCTION(original_ViewNetPlayer, ViewNetPlayer)
-void ViewNetPlayer() {
+void __fastcall ViewNetPlayer() {
     LOG_TRACE("()");
 
 
     original_ViewNetPlayer();
 }
 
-static void(*original_ViewOpponent)() = (void(*)())0x00487248;
+static void(__cdecl*original_ViewOpponent)() = (void(__cdecl*)())0x00487248;
 CARM95_HOOK_FUNCTION(original_ViewOpponent, ViewOpponent)
-void ViewOpponent() {
+void __cdecl ViewOpponent() {
     static int n;
     LOG_TRACE("()");
 
@@ -2211,27 +2224,27 @@ void ViewOpponent() {
     original_ViewOpponent();
 }
 
-static void(*original_ToggleCarToCarCollisions)() = (void(*)())0x00487333;
+static void(__cdecl*original_ToggleCarToCarCollisions)() = (void(__cdecl*)())0x00487333;
 CARM95_HOOK_FUNCTION(original_ToggleCarToCarCollisions, ToggleCarToCarCollisions)
-void ToggleCarToCarCollisions() {
+void __cdecl ToggleCarToCarCollisions() {
     LOG_TRACE("()");
 
 
     original_ToggleCarToCarCollisions();
 }
 
-static void(*original_SwapCar)() = (void(*)())0x004873a6;
+static void(__cdecl*original_SwapCar)() = (void(__cdecl*)())0x004873a6;
 CARM95_HOOK_FUNCTION(original_SwapCar, SwapCar)
-void SwapCar() {
+void __cdecl SwapCar() {
     LOG_TRACE("()");
 
 
     original_SwapCar();
 }
 
-static void(*original_AdjustDownForce)() = (void(*)())0x004873b1;
+static void(__cdecl*original_AdjustDownForce)() = (void(__cdecl*)())0x004873b1;
 CARM95_HOOK_FUNCTION(original_AdjustDownForce, AdjustDownForce)
-void AdjustDownForce() {
+void __cdecl AdjustDownForce() {
     char s[100];
     tCar_spec *c;
     LOG_TRACE("()");
@@ -2242,27 +2255,27 @@ void AdjustDownForce() {
     original_AdjustDownForce();
 }
 
-static void(*original_FreezeMechanics)() = (void(*)())0x00487464;
+static void(__cdecl*original_FreezeMechanics)() = (void(__cdecl*)())0x00487464;
 CARM95_HOOK_FUNCTION(original_FreezeMechanics, FreezeMechanics)
-void FreezeMechanics() {
+void __cdecl FreezeMechanics() {
     LOG_TRACE("()");
 
 
     original_FreezeMechanics();
 }
 
-static void(*original_PutOpponentsInNeutral)() = (void(*)())0x004874d7;
+static void(__cdecl*original_PutOpponentsInNeutral)() = (void(__cdecl*)())0x004874d7;
 CARM95_HOOK_FUNCTION(original_PutOpponentsInNeutral, PutOpponentsInNeutral)
-void PutOpponentsInNeutral() {
+void __cdecl PutOpponentsInNeutral() {
     LOG_TRACE("()");
 
 
     original_PutOpponentsInNeutral();
 }
 
-static void(*original_SetPanningFieldOfView)() = (void(*)())0x004879d8;
+static void(__cdecl*original_SetPanningFieldOfView)() = (void(__cdecl*)())0x004879d8;
 CARM95_HOOK_FUNCTION(original_SetPanningFieldOfView, SetPanningFieldOfView)
-void SetPanningFieldOfView() {
+void __cdecl SetPanningFieldOfView() {
     br_camera *camera_ptr;
     LOG_TRACE("()");
 
@@ -2271,9 +2284,9 @@ void SetPanningFieldOfView() {
     original_SetPanningFieldOfView();
 }
 
-static void(*original_CheckDisablePlingMaterials)(tCar_spec *, ...) = (void(*)(tCar_spec *, ...))0x00487a3b;
+static void(__cdecl*original_CheckDisablePlingMaterials)(tCar_spec *) = (void(__cdecl*)(tCar_spec *))0x00487a3b;
 CARM95_HOOK_FUNCTION(original_CheckDisablePlingMaterials, CheckDisablePlingMaterials)
-void CheckDisablePlingMaterials(tCar_spec *pCar) {
+void __cdecl CheckDisablePlingMaterials(tCar_spec *pCar) {
     br_matrix34 *mat;
     br_scalar height;
     int i;
@@ -2287,9 +2300,9 @@ void CheckDisablePlingMaterials(tCar_spec *pCar) {
     original_CheckDisablePlingMaterials(pCar);
 }
 
-static void(*original_PositionExternalCamera)(tCar_spec *, tU32, ...) = (void(*)(tCar_spec *, tU32, ...))0x0048754a;
+static void(__cdecl*original_PositionExternalCamera)(tCar_spec *, tU32) = (void(__cdecl*)(tCar_spec *, tU32))0x0048754a;
 CARM95_HOOK_FUNCTION(original_PositionExternalCamera, PositionExternalCamera)
-void PositionExternalCamera(tCar_spec *c, tU32 pTime) {
+void __cdecl PositionExternalCamera(tCar_spec *c, tU32 pTime) {
     static int old_camera_mode;
     br_camera *camera_ptr;
     LOG_TRACE("(%p, %u)", c, pTime);
@@ -2302,9 +2315,9 @@ void PositionExternalCamera(tCar_spec *c, tU32 pTime) {
     original_PositionExternalCamera(c, pTime);
 }
 
-static void(*original_CameraBugFix)(tCar_spec *, tU32, ...) = (void(*)(tCar_spec *, tU32, ...))0x00487b2c;
+static void(__cdecl*original_CameraBugFix)(tCar_spec *, tU32) = (void(__cdecl*)(tCar_spec *, tU32))0x00487b2c;
 CARM95_HOOK_FUNCTION(original_CameraBugFix, CameraBugFix)
-void CameraBugFix(tCar_spec *c, tU32 pTime) {
+void __cdecl CameraBugFix(tCar_spec *c, tU32 pTime) {
     br_matrix34 mat;
     br_matrix34 *m2;
     br_vector3 tv;
@@ -2319,9 +2332,9 @@ void CameraBugFix(tCar_spec *c, tU32 pTime) {
     original_CameraBugFix(c, pTime);
 }
 
-static int(*original_PossibleRemoveNonCarFromWorld)(br_actor *, ...) = (int(*)(br_actor *, ...))0x0048876d;
+static int(__cdecl*original_PossibleRemoveNonCarFromWorld)(br_actor *) = (int(__cdecl*)(br_actor *))0x0048876d;
 CARM95_HOOK_FUNCTION(original_PossibleRemoveNonCarFromWorld, PossibleRemoveNonCarFromWorld)
-int PossibleRemoveNonCarFromWorld(br_actor *pActor) {
+int __cdecl PossibleRemoveNonCarFromWorld(br_actor *pActor) {
     tU8 cx;
     tU8 cz;
     tTrack_spec *track_spec;
@@ -2335,9 +2348,9 @@ int PossibleRemoveNonCarFromWorld(br_actor *pActor) {
     return original_PossibleRemoveNonCarFromWorld(pActor);
 }
 
-static void(*original_PutNonCarBackInWorld)(br_actor *, ...) = (void(*)(br_actor *, ...))0x004887e9;
+static void(__cdecl*original_PutNonCarBackInWorld)(br_actor *) = (void(__cdecl*)(br_actor *))0x004887e9;
 CARM95_HOOK_FUNCTION(original_PutNonCarBackInWorld, PutNonCarBackInWorld)
-void PutNonCarBackInWorld(br_actor *pActor) {
+void __cdecl PutNonCarBackInWorld(br_actor *pActor) {
     tU8 cx;
     tU8 cz;
     tTrack_spec *track_spec;
@@ -2351,9 +2364,9 @@ void PutNonCarBackInWorld(br_actor *pActor) {
     original_PutNonCarBackInWorld(pActor);
 }
 
-static int(*original_IncidentCam)(tCar_spec *, tU32, ...) = (int(*)(tCar_spec *, tU32, ...))0x00487b89;
+static int(__cdecl*original_IncidentCam)(tCar_spec *, tU32) = (int(__cdecl*)(tCar_spec *, tU32))0x00487b89;
 CARM95_HOOK_FUNCTION(original_IncidentCam, IncidentCam)
-int IncidentCam(tCar_spec *c, tU32 pTime) {
+int __cdecl IncidentCam(tCar_spec *c, tU32 pTime) {
     br_matrix34 *m2;
     br_matrix34 mat;
     br_vector3 tv;
@@ -2397,13 +2410,16 @@ int IncidentCam(tCar_spec *c, tU32 pTime) {
     (void)temp;
     (void)old_cam_pos;
     (void)removed;
+    (void)__block0___scale;
+    (void)__block1___scale;
+    (void)__block2___scale;
 
     return original_IncidentCam(c, pTime);
 }
 
-static int(*original_MoveCamToIncident)(tCar_spec *, tIncident_type *, float *, tIncident_info *, tU32 *, ...) = (int(*)(tCar_spec *, tIncident_type *, float *, tIncident_info *, tU32 *, ...))0x00488849;
+static int(__cdecl*original_MoveCamToIncident)(tCar_spec *, tIncident_type *, float *, tIncident_info *, tU32 *) = (int(__cdecl*)(tCar_spec *, tIncident_type *, float *, tIncident_info *, tU32 *))0x00488849;
 CARM95_HOOK_FUNCTION(original_MoveCamToIncident, MoveCamToIncident)
-int MoveCamToIncident(tCar_spec *c, tIncident_type *type, float *severity, tIncident_info *info, tU32 *next_incident_time) {
+int __cdecl MoveCamToIncident(tCar_spec *c, tIncident_type *type, float *severity, tIncident_info *info, tU32 *next_incident_time) {
     tU32 next_incident_time2;
     tU32 t;
     tIncident_type type2;
@@ -2438,13 +2454,14 @@ int MoveCamToIncident(tCar_spec *c, tIncident_type *type, float *severity, tInci
     (void)tv2;
     (void)perp;
     (void)test;
+    (void)__block0___scale;
 
     return original_MoveCamToIncident(c, type, severity, info, next_incident_time);
 }
 
-static void(*original_PanningExternalCamera)(tCar_spec *, tU32, ...) = (void(*)(tCar_spec *, tU32, ...))0x00488d45;
+static void(__cdecl*original_PanningExternalCamera)(tCar_spec *, tU32) = (void(__cdecl*)(tCar_spec *, tU32))0x00488d45;
 CARM95_HOOK_FUNCTION(original_PanningExternalCamera, PanningExternalCamera)
-void PanningExternalCamera(tCar_spec *c, tU32 pTime) {
+void __cdecl PanningExternalCamera(tCar_spec *c, tU32 pTime) {
     br_matrix34 *m2;
     br_matrix34 *m1;
     br_vector3 tv;
@@ -2463,9 +2480,9 @@ void PanningExternalCamera(tCar_spec *c, tU32 pTime) {
     original_PanningExternalCamera(c, pTime);
 }
 
-static int(*original_CheckForWall)(br_vector3 *, br_vector3 *, ...) = (int(*)(br_vector3 *, br_vector3 *, ...))0x00488ed6;
+static int(__cdecl*original_CheckForWall)(br_vector3 *, br_vector3 *) = (int(__cdecl*)(br_vector3 *, br_vector3 *))0x00488ed6;
 CARM95_HOOK_FUNCTION(original_CheckForWall, CheckForWall)
-int CheckForWall(br_vector3 *start, br_vector3 *end) {
+int __cdecl CheckForWall(br_vector3 *start, br_vector3 *end) {
     br_vector3 dir;
     br_material *material;
     br_vector3 normal;
@@ -2482,9 +2499,9 @@ int CheckForWall(br_vector3 *start, br_vector3 *end) {
     return original_CheckForWall(start, end);
 }
 
-static void(*original_SetUpPanningCamera)(tCar_spec *, ...) = (void(*)(tCar_spec *, ...))0x00488f50;
+static void(__cdecl*original_SetUpPanningCamera)(tCar_spec *) = (void(__cdecl*)(tCar_spec *))0x00488f50;
 CARM95_HOOK_FUNCTION(original_SetUpPanningCamera, SetUpPanningCamera)
-void SetUpPanningCamera(tCar_spec *c) {
+void __cdecl SetUpPanningCamera(tCar_spec *c) {
     br_vector3 pos;
     br_vector3 perp;
     br_vector3 dir;
@@ -2526,9 +2543,9 @@ void SetUpPanningCamera(tCar_spec *c) {
     original_SetUpPanningCamera(c);
 }
 
-static void(*original_SaveCameraPosition)(int, ...) = (void(*)(int, ...))0x0048949c;
+static void(__cdecl*original_SaveCameraPosition)(int) = (void(__cdecl*)(int))0x0048949c;
 CARM95_HOOK_FUNCTION(original_SaveCameraPosition, SaveCameraPosition)
-void SaveCameraPosition(int i) {
+void __cdecl SaveCameraPosition(int i) {
     LOG_TRACE("(%d)", i);
 
     (void)i;
@@ -2536,9 +2553,9 @@ void SaveCameraPosition(int i) {
     original_SaveCameraPosition(i);
 }
 
-static void(*original_RestoreCameraPosition)(int, ...) = (void(*)(int, ...))0x004894f8;
+static void(__cdecl*original_RestoreCameraPosition)(int) = (void(__cdecl*)(int))0x004894f8;
 CARM95_HOOK_FUNCTION(original_RestoreCameraPosition, RestoreCameraPosition)
-void RestoreCameraPosition(int i) {
+void __cdecl RestoreCameraPosition(int i) {
     LOG_TRACE("(%d)", i);
 
     (void)i;
@@ -2546,9 +2563,9 @@ void RestoreCameraPosition(int i) {
     original_RestoreCameraPosition(i);
 }
 
-static void(*original_NormalPositionExternalCamera)(tCar_spec *, tU32, ...) = (void(*)(tCar_spec *, tU32, ...))0x00489553;
+static void(__cdecl*original_NormalPositionExternalCamera)(tCar_spec *, tU32) = (void(__cdecl*)(tCar_spec *, tU32))0x00489553;
 CARM95_HOOK_FUNCTION(original_NormalPositionExternalCamera, NormalPositionExternalCamera)
-void NormalPositionExternalCamera(tCar_spec *c, tU32 pTime) {
+void __cdecl NormalPositionExternalCamera(tCar_spec *c, tU32 pTime) {
     br_matrix34 *m2;
     br_matrix34 *m1;
     br_scalar time;
@@ -2599,13 +2616,15 @@ void NormalPositionExternalCamera(tCar_spec *c, tU32 pTime) {
     (void)manual_swing;
     (void)manual_zoom;
     (void)old_camera_pos;
+    (void)__block0___scale;
+    (void)__block1___scale;
 
     original_NormalPositionExternalCamera(c, pTime);
 }
 
-static void(*original_MoveWithWheels)(tCar_spec *, br_vector3 *, int, ...) = (void(*)(tCar_spec *, br_vector3 *, int, ...))0x00489dc2;
+static void(__cdecl*original_MoveWithWheels)(tCar_spec *, br_vector3 *, int) = (void(__cdecl*)(tCar_spec *, br_vector3 *, int))0x00489dc2;
 CARM95_HOOK_FUNCTION(original_MoveWithWheels, MoveWithWheels)
-void MoveWithWheels(tCar_spec *c, br_vector3 *vn, int manual_swing) {
+void __cdecl MoveWithWheels(tCar_spec *c, br_vector3 *vn, int manual_swing) {
     br_angle yaw;
     br_angle theta;
     static int move_with_wheels;
@@ -2621,9 +2640,9 @@ void MoveWithWheels(tCar_spec *c, br_vector3 *vn, int manual_swing) {
     original_MoveWithWheels(c, vn, manual_swing);
 }
 
-static void(*original_SwingCamera)(tCar_spec *, br_matrix34 *, br_matrix34 *, br_vector3 *, tU32, ...) = (void(*)(tCar_spec *, br_matrix34 *, br_matrix34 *, br_vector3 *, tU32, ...))0x00489f7c;
+static void(__cdecl*original_SwingCamera)(tCar_spec *, br_matrix34 *, br_matrix34 *, br_vector3 *, tU32) = (void(__cdecl*)(tCar_spec *, br_matrix34 *, br_matrix34 *, br_vector3 *, tU32))0x00489f7c;
 CARM95_HOOK_FUNCTION(original_SwingCamera, SwingCamera)
-void SwingCamera(tCar_spec *c, br_matrix34 *m1, br_matrix34 *m2, br_vector3 *vn, tU32 pTime) {
+void __cdecl SwingCamera(tCar_spec *c, br_matrix34 *m1, br_matrix34 *m2, br_vector3 *vn, tU32 pTime) {
     int i;
     br_scalar ts;
     br_angle yaw;
@@ -2659,9 +2678,9 @@ void SwingCamera(tCar_spec *c, br_matrix34 *m1, br_matrix34 *m2, br_vector3 *vn,
     original_SwingCamera(c, m1, m2, vn, pTime);
 }
 
-static void(*original_PointCameraAtCar)(tCar_spec *, br_matrix34 *, br_matrix34 *, ...) = (void(*)(tCar_spec *, br_matrix34 *, br_matrix34 *, ...))0x0048a73b;
+static void(__cdecl*original_PointCameraAtCar)(tCar_spec *, br_matrix34 *, br_matrix34 *) = (void(__cdecl*)(tCar_spec *, br_matrix34 *, br_matrix34 *))0x0048a73b;
 CARM95_HOOK_FUNCTION(original_PointCameraAtCar, PointCameraAtCar)
-void PointCameraAtCar(tCar_spec *c, br_matrix34 *m1, br_matrix34 *m2) {
+void __cdecl PointCameraAtCar(tCar_spec *c, br_matrix34 *m1, br_matrix34 *m2) {
     br_vector3 vn;
     br_vector3 tv;
     br_vector3 tv2;
@@ -2688,13 +2707,14 @@ void PointCameraAtCar(tCar_spec *c, br_matrix34 *m1, br_matrix34 *m2) {
     (void)camera_ptr;
     (void)off_centre_angle;
     (void)swoop;
+    (void)__block0___scale;
 
     original_PointCameraAtCar(c, m1, m2);
 }
 
-static void(*original_PointCamera)(br_vector3 *, br_matrix34 *, ...) = (void(*)(br_vector3 *, br_matrix34 *, ...))0x0048aa19;
+static void(__cdecl*original_PointCamera)(br_vector3 *, br_matrix34 *) = (void(__cdecl*)(br_vector3 *, br_matrix34 *))0x0048aa19;
 CARM95_HOOK_FUNCTION(original_PointCamera, PointCamera)
-void PointCamera(br_vector3 *pos, br_matrix34 *m2) {
+void __cdecl PointCamera(br_vector3 *pos, br_matrix34 *m2) {
     br_vector3 vn;
     br_scalar dist;
     br_angle theta;
@@ -2708,13 +2728,14 @@ void PointCamera(br_vector3 *pos, br_matrix34 *m2) {
     (void)dist;
     (void)theta;
     (void)camera_ptr;
+    (void)__block0___scale;
 
     original_PointCamera(pos, m2);
 }
 
-static int(*original_CollideCamera2)(br_vector3 *, br_vector3 *, br_vector3 *, int, ...) = (int(*)(br_vector3 *, br_vector3 *, br_vector3 *, int, ...))0x0048abbb;
+static int(__cdecl*original_CollideCamera2)(br_vector3 *, br_vector3 *, br_vector3 *, int) = (int(__cdecl*)(br_vector3 *, br_vector3 *, br_vector3 *, int))0x0048abbb;
 CARM95_HOOK_FUNCTION(original_CollideCamera2, CollideCamera2)
-int CollideCamera2(br_vector3 *car_pos, br_vector3 *cam_pos, br_vector3 *old_camera_pos, int manual_move) {
+int __cdecl CollideCamera2(br_vector3 *car_pos, br_vector3 *cam_pos, br_vector3 *old_camera_pos, int manual_move) {
     int i;
     int k;
     br_vector3 a;
@@ -2767,13 +2788,15 @@ int CollideCamera2(br_vector3 *car_pos, br_vector3 *cam_pos, br_vector3 *old_cam
     (void)sb;
     (void)sc;
     (void)face_list;
+    (void)__block0___scale;
+    (void)__block1___scale;
 
     return original_CollideCamera2(car_pos, cam_pos, old_camera_pos, manual_move);
 }
 
-static int(*original_BoundsTest)(br_bounds *, br_vector3 *, ...) = (int(*)(br_bounds *, br_vector3 *, ...))0x0048ba12;
+static int(__cdecl*original_BoundsTest)(br_bounds *, br_vector3 *) = (int(__cdecl*)(br_bounds *, br_vector3 *))0x0048ba12;
 CARM95_HOOK_FUNCTION(original_BoundsTest, BoundsTest)
-int BoundsTest(br_bounds *bnds, br_vector3 *p) {
+int __cdecl BoundsTest(br_bounds *bnds, br_vector3 *p) {
     int j;
     LOG_TRACE("(%p, %p)", bnds, p);
 
@@ -2784,9 +2807,9 @@ int BoundsTest(br_bounds *bnds, br_vector3 *p) {
     return original_BoundsTest(bnds, p);
 }
 
-static int(*original_CollideCameraWithOtherCars)(br_vector3 *, br_vector3 *, ...) = (int(*)(br_vector3 *, br_vector3 *, ...))0x0048b820;
+static int(__cdecl*original_CollideCameraWithOtherCars)(br_vector3 *, br_vector3 *) = (int(__cdecl*)(br_vector3 *, br_vector3 *))0x0048b820;
 CARM95_HOOK_FUNCTION(original_CollideCameraWithOtherCars, CollideCameraWithOtherCars)
-int CollideCameraWithOtherCars(br_vector3 *car_pos, br_vector3 *cam_pos) {
+int __cdecl CollideCameraWithOtherCars(br_vector3 *car_pos, br_vector3 *cam_pos) {
     int i;
     int plane;
     br_scalar ts;
@@ -2815,9 +2838,9 @@ int CollideCameraWithOtherCars(br_vector3 *car_pos, br_vector3 *cam_pos) {
     return original_CollideCameraWithOtherCars(car_pos, cam_pos);
 }
 
-static void(*original_InitialiseExternalCamera)() = (void(*)())0x0048ba8a;
+static void(__fastcall*original_InitialiseExternalCamera)() = (void(__fastcall*)())0x0048ba8a;
 CARM95_HOOK_FUNCTION(original_InitialiseExternalCamera, InitialiseExternalCamera)
-void InitialiseExternalCamera() {
+void __fastcall InitialiseExternalCamera() {
     br_scalar ts;
     tCar_spec *c;
     br_vector3 r;
@@ -2829,22 +2852,23 @@ void InitialiseExternalCamera() {
     (void)c;
     (void)r;
     (void)yaw;
+    (void)__block0___scale;
 
     original_InitialiseExternalCamera();
 }
 
-static void(*original_FreezeCamera)() = (void(*)())0x0048bc93;
+static void(__cdecl*original_FreezeCamera)() = (void(__cdecl*)())0x0048bc93;
 CARM95_HOOK_FUNCTION(original_FreezeCamera, FreezeCamera)
-void FreezeCamera() {
+void __cdecl FreezeCamera() {
     LOG_TRACE("()");
 
 
     original_FreezeCamera();
 }
 
-static void(*original_FlyCar)(tCar_spec *, br_scalar, ...) = (void(*)(tCar_spec *, br_scalar, ...))0x0048bca8;
+static void(__cdecl*original_FlyCar)(tCar_spec *, br_scalar) = (void(__cdecl*)(tCar_spec *, br_scalar))0x0048bca8;
 CARM95_HOOK_FUNCTION(original_FlyCar, FlyCar)
-void FlyCar(tCar_spec *c, br_scalar dt) {
+void __cdecl FlyCar(tCar_spec *c, br_scalar dt) {
     int accflag;
     int turnflag;
     br_vector3 step;
@@ -2875,13 +2899,23 @@ void FlyCar(tCar_spec *c, br_scalar dt) {
     (void)vel;
     (void)faces;
     (void)bnds;
+    (void)__block0__a;
+    (void)__block0__b;
+    (void)__block0__norm;
+    (void)__block0__norm2;
+    (void)__block0__dist;
+    (void)__block0__dist2;
+    (void)__block0__ts;
+    (void)__block0__phi;
+    (void)__block0__i;
+    (void)__block0__theta;
 
     original_FlyCar(c, dt);
 }
 
-static void(*original_DrVector3RotateY)(br_vector3 *, br_angle, ...) = (void(*)(br_vector3 *, br_angle, ...))0x0048c718;
+static void(__cdecl*original_DrVector3RotateY)(br_vector3 *, br_angle) = (void(__cdecl*)(br_vector3 *, br_angle))0x0048c718;
 CARM95_HOOK_FUNCTION(original_DrVector3RotateY, DrVector3RotateY)
-void DrVector3RotateY(br_vector3 *v, br_angle t) {
+void __cdecl DrVector3RotateY(br_vector3 *v, br_angle t) {
     br_scalar c;
     br_scalar s;
     br_scalar ts;
@@ -2896,9 +2930,9 @@ void DrVector3RotateY(br_vector3 *v, br_angle t) {
     original_DrVector3RotateY(v, t);
 }
 
-static void(*original_CrashCarsTogether)(br_scalar, ...) = (void(*)(br_scalar, ...))0x0048c795;
+static void(__cdecl*original_CrashCarsTogether)(br_scalar) = (void(__cdecl*)(br_scalar))0x0048c795;
 CARM95_HOOK_FUNCTION(original_CrashCarsTogether, CrashCarsTogether)
-void CrashCarsTogether(br_scalar dt) {
+void __cdecl CrashCarsTogether(br_scalar dt) {
     int pass;
     int k;
     int i;
@@ -2914,9 +2948,9 @@ void CrashCarsTogether(br_scalar dt) {
     original_CrashCarsTogether(dt);
 }
 
-static int(*original_CrashCarsTogetherSinglePass)(br_scalar, int, tCollison_data *, ...) = (int(*)(br_scalar, int, tCollison_data *, ...))0x0048c8af;
+static int(__cdecl*original_CrashCarsTogetherSinglePass)(br_scalar, int, tCollison_data *) = (int(__cdecl*)(br_scalar, int, tCollison_data *))0x0048c8af;
 CARM95_HOOK_FUNCTION(original_CrashCarsTogetherSinglePass, CrashCarsTogetherSinglePass)
-int CrashCarsTogetherSinglePass(br_scalar dt, int pPass, tCollison_data *collide_list) {
+int __cdecl CrashCarsTogetherSinglePass(br_scalar dt, int pPass, tCollison_data *collide_list) {
     int i;
     int j;
     int l;
@@ -2958,9 +2992,9 @@ int CrashCarsTogetherSinglePass(br_scalar dt, int pPass, tCollison_data *collide
     return original_CrashCarsTogetherSinglePass(dt, pPass, collide_list);
 }
 
-static void(*original_BringCarToAGrindingHalt)(tCollision_info *, ...) = (void(*)(tCollision_info *, ...))0x0048d21b;
+static void(__cdecl*original_BringCarToAGrindingHalt)(tCollision_info *) = (void(__cdecl*)(tCollision_info *))0x0048d21b;
 CARM95_HOOK_FUNCTION(original_BringCarToAGrindingHalt, BringCarToAGrindingHalt)
-void BringCarToAGrindingHalt(tCollision_info *car) {
+void __cdecl BringCarToAGrindingHalt(tCollision_info *car) {
     LOG_TRACE("(%p)", car);
 
     (void)car;
@@ -2977,9 +3011,9 @@ int BoundsOverlapTest__car(br_bounds *b1, br_bounds *b2) {
     NOT_IMPLEMENTED();
 }
 
-static int(*original_SimpleCarCarCollisionTest)(tCollision_info *, tCollision_info *, ...) = (int(*)(tCollision_info *, tCollision_info *, ...))0x0048d28f;
+static int(__cdecl*original_SimpleCarCarCollisionTest)(tCollision_info *, tCollision_info *) = (int(__cdecl*)(tCollision_info *, tCollision_info *))0x0048d28f;
 CARM95_HOOK_FUNCTION(original_SimpleCarCarCollisionTest, SimpleCarCarCollisionTest)
-int SimpleCarCarCollisionTest(tCollision_info *car1, tCollision_info *car2) {
+int __cdecl SimpleCarCarCollisionTest(tCollision_info *car1, tCollision_info *car2) {
     LOG_TRACE("(%p, %p)", car1, car2);
 
     (void)car1;
@@ -2988,9 +3022,9 @@ int SimpleCarCarCollisionTest(tCollision_info *car1, tCollision_info *car2) {
     return original_SimpleCarCarCollisionTest(car1, car2);
 }
 
-static int(*original_CollideTwoCarsWithWalls)(tCollision_info *, tCollision_info *, br_scalar, ...) = (int(*)(tCollision_info *, tCollision_info *, br_scalar, ...))0x0048d38c;
+static int(__cdecl*original_CollideTwoCarsWithWalls)(tCollision_info *, tCollision_info *, br_scalar) = (int(__cdecl*)(tCollision_info *, tCollision_info *, br_scalar))0x0048d38c;
 CARM95_HOOK_FUNCTION(original_CollideTwoCarsWithWalls, CollideTwoCarsWithWalls)
-int CollideTwoCarsWithWalls(tCollision_info *car1, tCollision_info *car2, br_scalar dt) {
+int __cdecl CollideTwoCarsWithWalls(tCollision_info *car1, tCollision_info *car2, br_scalar dt) {
     br_vector3 mom1;
     br_vector3 mom2;
     int l;
@@ -3016,9 +3050,9 @@ int CollideTwoCarsWithWalls(tCollision_info *car1, tCollision_info *car2, br_sca
     return original_CollideTwoCarsWithWalls(car1, car2, dt);
 }
 
-static int(*original_CollideTwoCarsRepeatedly)(tCollision_info *, tCollision_info *, br_scalar, ...) = (int(*)(tCollision_info *, tCollision_info *, br_scalar, ...))0x0048d719;
+static int(__cdecl*original_CollideTwoCarsRepeatedly)(tCollision_info *, tCollision_info *, br_scalar) = (int(__cdecl*)(tCollision_info *, tCollision_info *, br_scalar))0x0048d719;
 CARM95_HOOK_FUNCTION(original_CollideTwoCarsRepeatedly, CollideTwoCarsRepeatedly)
-int CollideTwoCarsRepeatedly(tCollision_info *car1, tCollision_info *car2, br_scalar dt) {
+int __cdecl CollideTwoCarsRepeatedly(tCollision_info *car1, tCollision_info *car2, br_scalar dt) {
     int l;
     int collide;
     br_scalar ts;
@@ -3034,9 +3068,9 @@ int CollideTwoCarsRepeatedly(tCollision_info *car1, tCollision_info *car2, br_sc
     return original_CollideTwoCarsRepeatedly(car1, car2, dt);
 }
 
-static int(*original_CollideTwoCars)(tCollision_info *, tCollision_info *, int, ...) = (int(*)(tCollision_info *, tCollision_info *, int, ...))0x0048d84a;
+static int(__cdecl*original_CollideTwoCars)(tCollision_info *, tCollision_info *, int) = (int(__cdecl*)(tCollision_info *, tCollision_info *, int))0x0048d84a;
 CARM95_HOOK_FUNCTION(original_CollideTwoCars, CollideTwoCars)
-int CollideTwoCars(tCollision_info *car1, tCollision_info *car2, int pPass) {
+int __cdecl CollideTwoCars(tCollision_info *car1, tCollision_info *car2, int pPass) {
     int k;
     int old_k;
     int i;
@@ -3112,9 +3146,9 @@ int CollideTwoCars(tCollision_info *car1, tCollision_info *car2, int pPass) {
     return original_CollideTwoCars(car1, car2, pPass);
 }
 
-static int(*original_GetEdgeEdgeCollisions)(br_bounds *, br_bounds *, br_matrix34 *, br_matrix34 *, br_matrix34 *, br_matrix34 *, br_matrix34 *, br_vector3 *, br_vector3 *, int, ...) = (int(*)(br_bounds *, br_bounds *, br_matrix34 *, br_matrix34 *, br_matrix34 *, br_matrix34 *, br_matrix34 *, br_vector3 *, br_vector3 *, int, ...))0x0048e82a;
+static int(__cdecl*original_GetEdgeEdgeCollisions)(br_bounds *, br_bounds *, br_matrix34 *, br_matrix34 *, br_matrix34 *, br_matrix34 *, br_matrix34 *, br_vector3 *, br_vector3 *, int) = (int(__cdecl*)(br_bounds *, br_bounds *, br_matrix34 *, br_matrix34 *, br_matrix34 *, br_matrix34 *, br_matrix34 *, br_vector3 *, br_vector3 *, int))0x0048e82a;
 CARM95_HOOK_FUNCTION(original_GetEdgeEdgeCollisions, GetEdgeEdgeCollisions)
-int GetEdgeEdgeCollisions(br_bounds *pB1, br_bounds *pB2, br_matrix34 *pM21, br_matrix34 *pM12, br_matrix34 *pMo21, br_matrix34 *pMo12, br_matrix34 *pM1o1, br_vector3 *pPoint_list, br_vector3 *pNorm_list, int pMax) {
+int __cdecl GetEdgeEdgeCollisions(br_bounds *pB1, br_bounds *pB2, br_matrix34 *pM21, br_matrix34 *pM12, br_matrix34 *pMo21, br_matrix34 *pMo12, br_matrix34 *pM1o1, br_vector3 *pPoint_list, br_vector3 *pNorm_list, int pMax) {
     br_vector3 p1;
     br_vector3 p2;
     br_vector3 tp1;
@@ -3165,13 +3199,15 @@ int GetEdgeEdgeCollisions(br_bounds *pB1, br_bounds *pB2, br_matrix34 *pM21, br_
     (void)i;
     (void)j;
     (void)n;
+    (void)__block0___scale;
+    (void)__block1___scale;
 
     return original_GetEdgeEdgeCollisions(pB1, pB2, pM21, pM12, pMo21, pMo12, pM1o1, pPoint_list, pNorm_list, pMax);
 }
 
-static int(*original_FacePointCarCarCollide)(tCollision_info *, tCollision_info *, br_matrix34 *, br_matrix34 *, br_matrix34 *, br_vector3 *, br_vector3 *, int, int, ...) = (int(*)(tCollision_info *, tCollision_info *, br_matrix34 *, br_matrix34 *, br_matrix34 *, br_vector3 *, br_vector3 *, int, int, ...))0x0048f686;
+static int(__cdecl*original_FacePointCarCarCollide)(tCollision_info *, tCollision_info *, br_matrix34 *, br_matrix34 *, br_matrix34 *, br_vector3 *, br_vector3 *, int, int) = (int(__cdecl*)(tCollision_info *, tCollision_info *, br_matrix34 *, br_matrix34 *, br_matrix34 *, br_vector3 *, br_vector3 *, int, int))0x0048f686;
 CARM95_HOOK_FUNCTION(original_FacePointCarCarCollide, FacePointCarCarCollide)
-int FacePointCarCarCollide(tCollision_info *car1, tCollision_info *car2, br_matrix34 *pMms, br_matrix34 *pMoms, br_matrix34 *pMsos, br_vector3 *pPoint_list, br_vector3 *pNorm_list, int pMax, int order) {
+int __cdecl FacePointCarCarCollide(tCollision_info *car1, tCollision_info *car2, br_matrix34 *pMms, br_matrix34 *pMoms, br_matrix34 *pMsos, br_vector3 *pPoint_list, br_vector3 *pNorm_list, int pMax, int order) {
     int k;
     int i;
     int j;
@@ -3217,9 +3253,9 @@ int FacePointCarCarCollide(tCollision_info *car1, tCollision_info *car2, br_matr
     return original_FacePointCarCarCollide(car1, car2, pMms, pMoms, pMsos, pPoint_list, pNorm_list, pMax, order);
 }
 
-static void(*original_MungeCarsMass)(tCollision_info *, br_scalar, ...) = (void(*)(tCollision_info *, br_scalar, ...))0x0048fc1c;
+static void(__cdecl*original_MungeCarsMass)(tCollision_info *, br_scalar) = (void(__cdecl*)(tCollision_info *, br_scalar))0x0048fc1c;
 CARM95_HOOK_FUNCTION(original_MungeCarsMass, MungeCarsMass)
-void MungeCarsMass(tCollision_info *pCar, br_scalar pFactor) {
+void __cdecl MungeCarsMass(tCollision_info *pCar, br_scalar pFactor) {
     LOG_TRACE("(%p, %f)", pCar, pFactor);
 
     (void)pCar;
@@ -3228,9 +3264,9 @@ void MungeCarsMass(tCollision_info *pCar, br_scalar pFactor) {
     original_MungeCarsMass(pCar, pFactor);
 }
 
-static void(*original_ModifyCarsMass)(tCollision_info *, tCollision_info *, ...) = (void(*)(tCollision_info *, tCollision_info *, ...))0x0048fb97;
+static void(__cdecl*original_ModifyCarsMass)(tCollision_info *, tCollision_info *) = (void(__cdecl*)(tCollision_info *, tCollision_info *))0x0048fb97;
 CARM95_HOOK_FUNCTION(original_ModifyCarsMass, ModifyCarsMass)
-void ModifyCarsMass(tCollision_info *pCar_1, tCollision_info *pCar_2) {
+void __cdecl ModifyCarsMass(tCollision_info *pCar_1, tCollision_info *pCar_2) {
     LOG_TRACE("(%p, %p)", pCar_1, pCar_2);
 
     (void)pCar_1;
@@ -3239,9 +3275,9 @@ void ModifyCarsMass(tCollision_info *pCar_1, tCollision_info *pCar_2) {
     original_ModifyCarsMass(pCar_1, pCar_2);
 }
 
-static void(*original_ResetCarsMass)(tCollision_info *, tCollision_info *, ...) = (void(*)(tCollision_info *, tCollision_info *, ...))0x0048fc7b;
+static void(__cdecl*original_ResetCarsMass)(tCollision_info *, tCollision_info *) = (void(__cdecl*)(tCollision_info *, tCollision_info *))0x0048fc7b;
 CARM95_HOOK_FUNCTION(original_ResetCarsMass, ResetCarsMass)
-void ResetCarsMass(tCollision_info *pCar_1, tCollision_info *pCar_2) {
+void __cdecl ResetCarsMass(tCollision_info *pCar_1, tCollision_info *pCar_2) {
     LOG_TRACE("(%p, %p)", pCar_1, pCar_2);
 
     (void)pCar_1;
@@ -3250,9 +3286,9 @@ void ResetCarsMass(tCollision_info *pCar_1, tCollision_info *pCar_2) {
     original_ResetCarsMass(pCar_1, pCar_2);
 }
 
-static int(*original_DoCollide)(tCollision_info *, tCollision_info *, br_vector3 *, br_vector3 *, int, int, br_matrix34 *, ...) = (int(*)(tCollision_info *, tCollision_info *, br_vector3 *, br_vector3 *, int, int, br_matrix34 *, ...))0x0048fd16;
+static int(__cdecl*original_DoCollide)(tCollision_info *, tCollision_info *, br_vector3 *, br_vector3 *, int, int, br_matrix34 *) = (int(__cdecl*)(tCollision_info *, tCollision_info *, br_vector3 *, br_vector3 *, int, int, br_matrix34 *))0x0048fd16;
 CARM95_HOOK_FUNCTION(original_DoCollide, DoCollide)
-int DoCollide(tCollision_info *car1, tCollision_info *car2, br_vector3 *r, br_vector3 *n, int k, int pPass, br_matrix34 *mat1_to_mat2) {
+int __cdecl DoCollide(tCollision_info *car1, tCollision_info *car2, br_vector3 *r, br_vector3 *n, int k, int pPass, br_matrix34 *mat1_to_mat2) {
     br_matrix34 *mat1;
     br_matrix34 *mat2;
     br_matrix34 *oldmat1;
@@ -3340,9 +3376,9 @@ int DoCollide(tCollision_info *car1, tCollision_info *car2, br_vector3 *r, br_ve
     return original_DoCollide(car1, car2, r, n, k, pPass, mat1_to_mat2);
 }
 
-static br_scalar(*original_TwoPointCollB)(br_scalar *, br_matrix4 *, br_scalar *, br_vector3 *, br_vector3 *, ...) = (br_scalar(*)(br_scalar *, br_matrix4 *, br_scalar *, br_vector3 *, br_vector3 *, ...))0x004927be;
+static br_scalar(__cdecl*original_TwoPointCollB)(br_scalar *, br_matrix4 *, br_scalar *, br_vector3 *, br_vector3 *) = (br_scalar(__cdecl*)(br_scalar *, br_matrix4 *, br_scalar *, br_vector3 *, br_vector3 *))0x004927be;
 CARM95_HOOK_FUNCTION(original_TwoPointCollB, TwoPointCollB)
-br_scalar TwoPointCollB(br_scalar *f, br_matrix4 *m, br_scalar *d, br_vector3 *tau, br_vector3 *n) {
+br_scalar __cdecl TwoPointCollB(br_scalar *f, br_matrix4 *m, br_scalar *d, br_vector3 *tau, br_vector3 *n) {
     br_scalar ts;
     LOG_TRACE("(%p, %p, %p, %p, %p)", f, m, d, tau, n);
 
@@ -3356,9 +3392,9 @@ br_scalar TwoPointCollB(br_scalar *f, br_matrix4 *m, br_scalar *d, br_vector3 *t
     return original_TwoPointCollB(f, m, d, tau, n);
 }
 
-static br_scalar(*original_ThreePointCollRecB)(br_scalar *, br_matrix4 *, br_scalar *, br_vector3 *, br_vector3 *, ...) = (br_scalar(*)(br_scalar *, br_matrix4 *, br_scalar *, br_vector3 *, br_vector3 *, ...))0x00492961;
+static br_scalar(__cdecl*original_ThreePointCollRecB)(br_scalar *, br_matrix4 *, br_scalar *, br_vector3 *, br_vector3 *) = (br_scalar(__cdecl*)(br_scalar *, br_matrix4 *, br_scalar *, br_vector3 *, br_vector3 *))0x00492961;
 CARM95_HOOK_FUNCTION(original_ThreePointCollRecB, ThreePointCollRecB)
-br_scalar ThreePointCollRecB(br_scalar *f, br_matrix4 *m, br_scalar *d, br_vector3 *tau, br_vector3 *n) {
+br_scalar __cdecl ThreePointCollRecB(br_scalar *f, br_matrix4 *m, br_scalar *d, br_vector3 *tau, br_vector3 *n) {
     int i;
     int j;
     br_scalar ts;
@@ -3376,9 +3412,9 @@ br_scalar ThreePointCollRecB(br_scalar *f, br_matrix4 *m, br_scalar *d, br_vecto
     return original_ThreePointCollRecB(f, m, d, tau, n);
 }
 
-static br_scalar(*original_FourPointCollB)(br_scalar *, br_matrix4 *, br_scalar *, br_vector3 *, br_vector3 *, ...) = (br_scalar(*)(br_scalar *, br_matrix4 *, br_scalar *, br_vector3 *, br_vector3 *, ...))0x00492cdd;
+static br_scalar(__cdecl*original_FourPointCollB)(br_scalar *, br_matrix4 *, br_scalar *, br_vector3 *, br_vector3 *) = (br_scalar(__cdecl*)(br_scalar *, br_matrix4 *, br_scalar *, br_vector3 *, br_vector3 *))0x00492cdd;
 CARM95_HOOK_FUNCTION(original_FourPointCollB, FourPointCollB)
-br_scalar FourPointCollB(br_scalar *f, br_matrix4 *m, br_scalar *d, br_vector3 *tau, br_vector3 *n) {
+br_scalar __cdecl FourPointCollB(br_scalar *f, br_matrix4 *m, br_scalar *d, br_vector3 *tau, br_vector3 *n) {
     int i;
     int j;
     int l;
@@ -3398,9 +3434,9 @@ br_scalar FourPointCollB(br_scalar *f, br_matrix4 *m, br_scalar *d, br_vector3 *
     return original_FourPointCollB(f, m, d, tau, n);
 }
 
-static int(*original_TestForNan)(float *, ...) = (int(*)(float *, ...))0x00492ff8;
+static int(__cdecl*original_TestForNan)(float *) = (int(__cdecl*)(float *))0x00492ff8;
 CARM95_HOOK_FUNCTION(original_TestForNan, TestForNan)
-int TestForNan(float *f) {
+int __cdecl TestForNan(float *f) {
     tU32 i;
     LOG_TRACE("(%p)", f);
 
@@ -3410,9 +3446,9 @@ int TestForNan(float *f) {
     return original_TestForNan(f);
 }
 
-static void(*original_CheckCameraHither)() = (void(*)())0x00493036;
+static void(__cdecl*original_CheckCameraHither)() = (void(__cdecl*)())0x00493036;
 CARM95_HOOK_FUNCTION(original_CheckCameraHither, CheckCameraHither)
-void CheckCameraHither() {
+void __cdecl CheckCameraHither() {
     br_camera *cam;
     static int old_hither;
     LOG_TRACE("()");
@@ -3423,9 +3459,9 @@ void CheckCameraHither() {
     original_CheckCameraHither();
 }
 
-static void(*original_SetCarSuspGiveAndHeight)(tCar_spec *, br_scalar, br_scalar, br_scalar, br_scalar, br_scalar, ...) = (void(*)(tCar_spec *, br_scalar, br_scalar, br_scalar, br_scalar, br_scalar, ...))0x00493087;
+static void(__cdecl*original_SetCarSuspGiveAndHeight)(tCar_spec *, br_scalar, br_scalar, br_scalar, br_scalar, br_scalar) = (void(__cdecl*)(tCar_spec *, br_scalar, br_scalar, br_scalar, br_scalar, br_scalar))0x00493087;
 CARM95_HOOK_FUNCTION(original_SetCarSuspGiveAndHeight, SetCarSuspGiveAndHeight)
-void SetCarSuspGiveAndHeight(tCar_spec *pCar, br_scalar pFront_give_factor, br_scalar pRear_give_factor, br_scalar pDamping_factor, br_scalar pExtra_front_height, br_scalar pExtra_rear_height) {
+void __cdecl SetCarSuspGiveAndHeight(tCar_spec *pCar, br_scalar pFront_give_factor, br_scalar pRear_give_factor, br_scalar pDamping_factor, br_scalar pExtra_front_height, br_scalar pExtra_rear_height) {
     br_scalar front_give;
     br_scalar rear_give;
     br_scalar damping;
@@ -3448,9 +3484,9 @@ void SetCarSuspGiveAndHeight(tCar_spec *pCar, br_scalar pFront_give_factor, br_s
     original_SetCarSuspGiveAndHeight(pCar, pFront_give_factor, pRear_give_factor, pDamping_factor, pExtra_front_height, pExtra_rear_height);
 }
 
-static int(*original_TestForCarInSensiblePlace)(tCar_spec *, ...) = (int(*)(tCar_spec *, ...))0x0049327e;
+static int(__cdecl*original_TestForCarInSensiblePlace)(tCar_spec *) = (int(__cdecl*)(tCar_spec *))0x0049327e;
 CARM95_HOOK_FUNCTION(original_TestForCarInSensiblePlace, TestForCarInSensiblePlace)
-int TestForCarInSensiblePlace(tCar_spec *car) {
+int __cdecl TestForCarInSensiblePlace(tCar_spec *car) {
     br_bounds bnds;
     br_matrix34 mat;
     br_matrix34 *mat1;
@@ -3479,13 +3515,14 @@ int TestForCarInSensiblePlace(tCar_spec *car) {
     (void)sep;
     (void)tv;
     (void)tv2;
+    (void)__block0___scale;
 
     return original_TestForCarInSensiblePlace(car);
 }
 
-static int(*original_TestOldMats)(tCollision_info *, tCollision_info *, int, ...) = (int(*)(tCollision_info *, tCollision_info *, int, ...))0x004936e6;
+static int(__cdecl*original_TestOldMats)(tCollision_info *, tCollision_info *, int) = (int(__cdecl*)(tCollision_info *, tCollision_info *, int))0x004936e6;
 CARM95_HOOK_FUNCTION(original_TestOldMats, TestOldMats)
-int TestOldMats(tCollision_info *c1, tCollision_info *c2, int newmats) {
+int __cdecl TestOldMats(tCollision_info *c1, tCollision_info *c2, int newmats) {
     br_vector3 p1;
     br_vector3 p2;
     br_vector3 tp1;
@@ -3539,9 +3576,9 @@ int TestOldMats(tCollision_info *c1, tCollision_info *c2, int newmats) {
     return original_TestOldMats(c1, c2, newmats);
 }
 
-static int(*original_PullActorFromWorld)(br_actor *, ...) = (int(*)(br_actor *, ...))0x0049393a;
+static int(__cdecl*original_PullActorFromWorld)(br_actor *) = (int(__cdecl*)(br_actor *))0x0049393a;
 CARM95_HOOK_FUNCTION(original_PullActorFromWorld, PullActorFromWorld)
-int PullActorFromWorld(br_actor *pActor) {
+int __cdecl PullActorFromWorld(br_actor *pActor) {
     LOG_TRACE("(%p)", pActor);
 
     (void)pActor;
@@ -3549,9 +3586,9 @@ int PullActorFromWorld(br_actor *pActor) {
     return original_PullActorFromWorld(pActor);
 }
 
-static int(*original_DoPullActorFromWorld)(br_actor *, ...) = (int(*)(br_actor *, ...))0x0049396a;
+static int(__cdecl*original_DoPullActorFromWorld)(br_actor *) = (int(__cdecl*)(br_actor *))0x0049396a;
 CARM95_HOOK_FUNCTION(original_DoPullActorFromWorld, DoPullActorFromWorld)
-int DoPullActorFromWorld(br_actor *pActor) {
+int __cdecl DoPullActorFromWorld(br_actor *pActor) {
     int num;
     int i;
     tCollision_info *c;
@@ -3567,9 +3604,9 @@ int DoPullActorFromWorld(br_actor *pActor) {
     return original_DoPullActorFromWorld(pActor);
 }
 
-static void(*original_CheckForDeAttachmentOfNonCars)(tU32, ...) = (void(*)(tU32, ...))0x00493c46;
+static void(__cdecl*original_CheckForDeAttachmentOfNonCars)(tU32) = (void(__cdecl*)(tU32))0x00493c46;
 CARM95_HOOK_FUNCTION(original_CheckForDeAttachmentOfNonCars, CheckForDeAttachmentOfNonCars)
-void CheckForDeAttachmentOfNonCars(tU32 pTime) {
+void __cdecl CheckForDeAttachmentOfNonCars(tU32 pTime) {
     static tU32 total_time;
     br_bounds bnds;
     int i;
@@ -3603,9 +3640,9 @@ void CheckForDeAttachmentOfNonCars(tU32 pTime) {
     original_CheckForDeAttachmentOfNonCars(pTime);
 }
 
-static void(*original_AdjustNonCar)(br_actor *, br_matrix34 *, ...) = (void(*)(br_actor *, br_matrix34 *, ...))0x00493ff2;
+static void(__cdecl*original_AdjustNonCar)(br_actor *, br_matrix34 *) = (void(__cdecl*)(br_actor *, br_matrix34 *))0x00493ff2;
 CARM95_HOOK_FUNCTION(original_AdjustNonCar, AdjustNonCar)
-void AdjustNonCar(br_actor *pActor, br_matrix34 *pMat) {
+void __cdecl AdjustNonCar(br_actor *pActor, br_matrix34 *pMat) {
     tU8 cx;
     tU8 cz;
     tTrack_spec *track_spec;
@@ -3620,9 +3657,9 @@ void AdjustNonCar(br_actor *pActor, br_matrix34 *pMat) {
     original_AdjustNonCar(pActor, pMat);
 }
 
-static void(*original_PipeSingleNonCar)(tCollision_info *, ...) = (void(*)(tCollision_info *, ...))0x004940c2;
+static void(__cdecl*original_PipeSingleNonCar)(tCollision_info *) = (void(__cdecl*)(tCollision_info *))0x004940c2;
 CARM95_HOOK_FUNCTION(original_PipeSingleNonCar, PipeSingleNonCar)
-void PipeSingleNonCar(tCollision_info *c) {
+void __cdecl PipeSingleNonCar(tCollision_info *c) {
     LOG_TRACE("(%p)", c);
 
     (void)c;
@@ -3630,9 +3667,9 @@ void PipeSingleNonCar(tCollision_info *c) {
     original_PipeSingleNonCar(c);
 }
 
-static int(*original_GetPrecalculatedFacesUnderCar)(tCar_spec *, tFace_ref **, ...) = (int(*)(tCar_spec *, tFace_ref **, ...))0x004941a2;
+static int(__cdecl*original_GetPrecalculatedFacesUnderCar)(tCar_spec *, tFace_ref **) = (int(__cdecl*)(tCar_spec *, tFace_ref **))0x004941a2;
 CARM95_HOOK_FUNCTION(original_GetPrecalculatedFacesUnderCar, GetPrecalculatedFacesUnderCar)
-int GetPrecalculatedFacesUnderCar(tCar_spec *pCar, tFace_ref **pFace_refs) {
+int __cdecl GetPrecalculatedFacesUnderCar(tCar_spec *pCar, tFace_ref **pFace_refs) {
     LOG_TRACE("(%p, %p)", pCar, pFace_refs);
 
     (void)pCar;

@@ -4,7 +4,6 @@
 
 #include "carm95_hooks.h"
 
-#include <stdio.h>
 br_allocator * hookvar_BrStdlibAllocator  = (void*)0x00530090;
 #if 0
 br_allocator ** hookvar__BrDefaultAllocator ;

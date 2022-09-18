@@ -6,7 +6,7 @@
 
 // extern int * hookvar_gCollision_detection_on__oppocar ; // suffix added to avoid duplicate symbol
 // extern br_vector3 * hookvar_gGround_normal__oppocar ; // suffix added to avoid duplicate symbol
-// extern void(**(* hookvar_ControlCar__oppocar )[6])(tCar_spec *, br_scalar, ...); // suffix added to avoid duplicate symbol
+// extern void(**(* hookvar_ControlCar__oppocar )[6])(tCar_spec *, br_scalar); // suffix added to avoid duplicate symbol
 // extern int * hookvar_gControl__oppocar ; // suffix added to avoid duplicate symbol
 // extern int * hookvar_gFace_num__oppocar ; // suffix added to avoid duplicate symbol
 // extern br_angle * hookvar_gOld_yaw__oppocar ; // suffix added to avoid duplicate symbol

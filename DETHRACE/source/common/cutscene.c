@@ -4,7 +4,6 @@
 
 #include "carm95_hooks.h"
 
-#include <stdio.h>
 #if 0
 tS32 * hookvar_gLast_demo_end_anim ;
 #endif
@@ -29,9 +28,9 @@ void radfree(void *ptr) {
     NOT_IMPLEMENTED();
 }
 
-static void(*original_ShowCutScene)(int, int, int, br_scalar, ...) = (void(*)(int, int, int, br_scalar, ...))0x004a58c0;
+static void(__cdecl*original_ShowCutScene)(int, int, int, br_scalar) = (void(__cdecl*)(int, int, int, br_scalar))0x004a58c0;
 CARM95_HOOK_FUNCTION(original_ShowCutScene, ShowCutScene)
-void ShowCutScene(int pIndex, int pWait_end, int pSound_ID, br_scalar pDelay) {
+void __cdecl ShowCutScene(int pIndex, int pWait_end, int pSound_ID, br_scalar pDelay) {
     LOG_TRACE("(%d, %d, %d, %f)", pIndex, pWait_end, pSound_ID, pDelay);
 
     (void)pIndex;
@@ -42,27 +41,27 @@ void ShowCutScene(int pIndex, int pWait_end, int pSound_ID, br_scalar pDelay) {
     original_ShowCutScene(pIndex, pWait_end, pSound_ID, pDelay);
 }
 
-static void(*original_DoSCILogo)() = (void(*)())0x004a5974;
+static void(__cdecl*original_DoSCILogo)() = (void(__cdecl*)())0x004a5974;
 CARM95_HOOK_FUNCTION(original_DoSCILogo, DoSCILogo)
-void DoSCILogo() {
+void __cdecl DoSCILogo() {
     LOG_TRACE("()");
 
 
     original_DoSCILogo();
 }
 
-static void(*original_DoStainlessLogo)() = (void(*)())0x004a597f;
+static void(__cdecl*original_DoStainlessLogo)() = (void(__cdecl*)())0x004a597f;
 CARM95_HOOK_FUNCTION(original_DoStainlessLogo, DoStainlessLogo)
-void DoStainlessLogo() {
+void __cdecl DoStainlessLogo() {
     LOG_TRACE("()");
 
 
     original_DoStainlessLogo();
 }
 
-static void(*original_PlaySmackerFile)(char *, ...) = (void(*)(char *, ...))0x004a598a;
+static void(__cdecl*original_PlaySmackerFile)(char *) = (void(__cdecl*)(char *))0x004a598a;
 CARM95_HOOK_FUNCTION(original_PlaySmackerFile, PlaySmackerFile)
-void PlaySmackerFile(char *pSmack_name) {
+void __cdecl PlaySmackerFile(char *pSmack_name) {
     tPath_name the_path;
     br_colour *br_colours_ptr;
     tU8 *smack_colours_ptr;
@@ -86,36 +85,36 @@ void PlaySmackerFile(char *pSmack_name) {
     original_PlaySmackerFile(pSmack_name);
 }
 
-static void(*original_DoOpeningAnimation)() = (void(*)())0x004a5d73;
+static void(__cdecl*original_DoOpeningAnimation)() = (void(__cdecl*)())0x004a5d73;
 CARM95_HOOK_FUNCTION(original_DoOpeningAnimation, DoOpeningAnimation)
-void DoOpeningAnimation() {
+void __cdecl DoOpeningAnimation() {
     LOG_TRACE("()");
 
 
     original_DoOpeningAnimation();
 }
 
-static void(*original_DoNewGameAnimation)() = (void(*)())0x004a5de6;
+static void(__cdecl*original_DoNewGameAnimation)() = (void(__cdecl*)())0x004a5de6;
 CARM95_HOOK_FUNCTION(original_DoNewGameAnimation, DoNewGameAnimation)
-void DoNewGameAnimation() {
+void __cdecl DoNewGameAnimation() {
     LOG_TRACE("()");
 
 
     original_DoNewGameAnimation();
 }
 
-static void(*original_DoGoToRaceAnimation)() = (void(*)())0x004a5d9d;
+static void(__cdecl*original_DoGoToRaceAnimation)() = (void(__cdecl*)())0x004a5d9d;
 CARM95_HOOK_FUNCTION(original_DoGoToRaceAnimation, DoGoToRaceAnimation)
-void DoGoToRaceAnimation() {
+void __cdecl DoGoToRaceAnimation() {
     LOG_TRACE("()");
 
 
     original_DoGoToRaceAnimation();
 }
 
-static void(*original_DoEndRaceAnimation)() = (void(*)())0x004a5df1;
+static void(__cdecl*original_DoEndRaceAnimation)() = (void(__cdecl*)())0x004a5df1;
 CARM95_HOOK_FUNCTION(original_DoEndRaceAnimation, DoEndRaceAnimation)
-void DoEndRaceAnimation() {
+void __cdecl DoEndRaceAnimation() {
     int made_a_profit;
     int went_up_a_rank;
     LOG_TRACE("()");
@@ -126,27 +125,27 @@ void DoEndRaceAnimation() {
     original_DoEndRaceAnimation();
 }
 
-static void(*original_DoGameOverAnimation)() = (void(*)())0x004a5ed6;
+static void(__cdecl*original_DoGameOverAnimation)() = (void(__cdecl*)())0x004a5ed6;
 CARM95_HOOK_FUNCTION(original_DoGameOverAnimation, DoGameOverAnimation)
-void DoGameOverAnimation() {
+void __cdecl DoGameOverAnimation() {
     LOG_TRACE("()");
 
 
     original_DoGameOverAnimation();
 }
 
-static void(*original_DoGameCompletedAnimation)() = (void(*)())0x004a5ef8;
+static void(__cdecl*original_DoGameCompletedAnimation)() = (void(__cdecl*)())0x004a5ef8;
 CARM95_HOOK_FUNCTION(original_DoGameCompletedAnimation, DoGameCompletedAnimation)
-void DoGameCompletedAnimation() {
+void __cdecl DoGameCompletedAnimation() {
     LOG_TRACE("()");
 
 
     original_DoGameCompletedAnimation();
 }
 
-static void(*original_StartLoadingScreen)() = (void(*)())0x004a5f1a;
+static void(__cdecl*original_StartLoadingScreen)() = (void(__cdecl*)())0x004a5f1a;
 CARM95_HOOK_FUNCTION(original_StartLoadingScreen, StartLoadingScreen)
-void StartLoadingScreen() {
+void __cdecl StartLoadingScreen() {
     LOG_TRACE("()");
 
 

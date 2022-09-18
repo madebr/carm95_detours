@@ -4,7 +4,6 @@
 
 #include "carm95_hooks.h"
 
-#include <stdio.h>
 tGot_proc*(* hookvar_gGot_procs )[34] = (void*)0x0050ba98;
 tLose_proc*(* hookvar_gLose_procs )[34] = (void*)0x0050bb20;
 tPeriodic_proc*(* hookvar_gPeriodic_procs )[34] = (void*)0x0050bba8;
@@ -20,9 +19,9 @@ int * hookvar_gFizzle_height  = (void*)0x005321e4;
 int * hookvar_gNumber_of_icons  = (void*)0x005321e0;
 tPowerup ** hookvar_gPowerup_array  = (void*)0x005321e8;
 
-static void(*original_LosePowerupX)(tPowerup *, int, ...) = (void(*)(tPowerup *, int, ...))0x0042cff6;
+static void(__cdecl*original_LosePowerupX)(tPowerup *, int) = (void(__cdecl*)(tPowerup *, int))0x0042cff6;
 CARM95_HOOK_FUNCTION(original_LosePowerupX, LosePowerupX)
-void LosePowerupX(tPowerup *pThe_powerup, int pTell_net_players) {
+void __cdecl LosePowerupX(tPowerup *pThe_powerup, int pTell_net_players) {
     int i;
     tNet_message *the_message;
     LOG_TRACE("(%p, %d)", pThe_powerup, pTell_net_players);
@@ -35,9 +34,9 @@ void LosePowerupX(tPowerup *pThe_powerup, int pTell_net_players) {
     original_LosePowerupX(pThe_powerup, pTell_net_players);
 }
 
-static void(*original_LosePowerup)(tPowerup *, ...) = (void(*)(tPowerup *, ...))0x0042cfdd;
+static void(__cdecl*original_LosePowerup)(tPowerup *) = (void(__cdecl*)(tPowerup *))0x0042cfdd;
 CARM95_HOOK_FUNCTION(original_LosePowerup, LosePowerup)
-void LosePowerup(tPowerup *pThe_powerup) {
+void __cdecl LosePowerup(tPowerup *pThe_powerup) {
     LOG_TRACE("(%p)", pThe_powerup);
 
     (void)pThe_powerup;
@@ -45,9 +44,9 @@ void LosePowerup(tPowerup *pThe_powerup) {
     original_LosePowerup(pThe_powerup);
 }
 
-static void(*original_LoseAllSimilarPowerups)(tPowerup *, ...) = (void(*)(tPowerup *, ...))0x0042cf5e;
+static void(__cdecl*original_LoseAllSimilarPowerups)(tPowerup *) = (void(__cdecl*)(tPowerup *))0x0042cf5e;
 CARM95_HOOK_FUNCTION(original_LoseAllSimilarPowerups, LoseAllSimilarPowerups)
-void LoseAllSimilarPowerups(tPowerup *pThe_powerup) {
+void __cdecl LoseAllSimilarPowerups(tPowerup *pThe_powerup) {
     int i;
     tPowerup *the_powerup;
     LOG_TRACE("(%p)", pThe_powerup);
@@ -59,9 +58,9 @@ void LoseAllSimilarPowerups(tPowerup *pThe_powerup) {
     original_LoseAllSimilarPowerups(pThe_powerup);
 }
 
-static int(*original_GotPowerupX)(tCar_spec *, int, int, int, tU32, ...) = (int(*)(tCar_spec *, int, int, int, tU32, ...))0x0042ca60;
+static int(__cdecl*original_GotPowerupX)(tCar_spec *, int, int, int, tU32) = (int(__cdecl*)(tCar_spec *, int, int, int, tU32))0x0042ca60;
 CARM95_HOOK_FUNCTION(original_GotPowerupX, GotPowerupX)
-int GotPowerupX(tCar_spec *pCar, int pIndex, int pTell_net_players, int pDisplay_headup, tU32 pTime_left) {
+int __cdecl GotPowerupX(tCar_spec *pCar, int pIndex, int pTell_net_players, int pDisplay_headup, tU32 pTime_left) {
     tPowerup *the_powerup;
     int i;
     int original_index;
@@ -89,9 +88,9 @@ int GotPowerupX(tCar_spec *pCar, int pIndex, int pTell_net_players, int pDisplay
     return original_GotPowerupX(pCar, pIndex, pTell_net_players, pDisplay_headup, pTime_left);
 }
 
-static int(*original_GotPowerup)(tCar_spec *, int, ...) = (int(*)(tCar_spec *, int, ...))0x0042d121;
+static int(__cdecl*original_GotPowerup)(tCar_spec *, int) = (int(__cdecl*)(tCar_spec *, int))0x0042d121;
 CARM95_HOOK_FUNCTION(original_GotPowerup, GotPowerup)
-int GotPowerup(tCar_spec *pCar, int pIndex) {
+int __cdecl GotPowerup(tCar_spec *pCar, int pIndex) {
     LOG_TRACE("(%p, %d)", pCar, pIndex);
 
     (void)pCar;
@@ -100,9 +99,9 @@ int GotPowerup(tCar_spec *pCar, int pIndex) {
     return original_GotPowerup(pCar, pIndex);
 }
 
-static void(*original_LoadPowerups)() = (void(*)())0x0042d147;
+static void(__cdecl*original_LoadPowerups)() = (void(__cdecl*)())0x0042d147;
 CARM95_HOOK_FUNCTION(original_LoadPowerups, LoadPowerups)
-void LoadPowerups() {
+void __cdecl LoadPowerups() {
     FILE *f;
     tPath_name the_path;
     char s[256];
@@ -125,9 +124,9 @@ void LoadPowerups() {
     original_LoadPowerups();
 }
 
-static void(*original_InitPowerups)() = (void(*)())0x0042d536;
+static void(__cdecl*original_InitPowerups)() = (void(__cdecl*)())0x0042d536;
 CARM95_HOOK_FUNCTION(original_InitPowerups, InitPowerups)
-void InitPowerups() {
+void __cdecl InitPowerups() {
     int i;
     tPowerup *the_powerup;
     LOG_TRACE("()");
@@ -138,9 +137,9 @@ void InitPowerups() {
     original_InitPowerups();
 }
 
-static void(*original_CloseDownPowerUps)() = (void(*)())0x0042d594;
+static void(__cdecl*original_CloseDownPowerUps)() = (void(__cdecl*)())0x0042d594;
 CARM95_HOOK_FUNCTION(original_CloseDownPowerUps, CloseDownPowerUps)
-void CloseDownPowerUps() {
+void __cdecl CloseDownPowerUps() {
     int i;
     tPowerup *the_powerup;
     LOG_TRACE("()");
@@ -151,9 +150,9 @@ void CloseDownPowerUps() {
     original_CloseDownPowerUps();
 }
 
-static void(*original_DrawPowerups)(tU32, ...) = (void(*)(tU32, ...))0x0042d5ec;
+static void(__cdecl*original_DrawPowerups)(tU32) = (void(__cdecl*)(tU32))0x0042d5ec;
 CARM95_HOOK_FUNCTION(original_DrawPowerups, DrawPowerups)
-void DrawPowerups(tU32 pTime) {
+void __cdecl DrawPowerups(tU32 pTime) {
     int i;
     int y;
     int timer;
@@ -175,9 +174,9 @@ void DrawPowerups(tU32 pTime) {
     original_DrawPowerups(pTime);
 }
 
-static void(*original_DoPowerupPeriodics)(tU32, ...) = (void(*)(tU32, ...))0x0042d8a9;
+static void(__cdecl*original_DoPowerupPeriodics)(tU32) = (void(__cdecl*)(tU32))0x0042d8a9;
 CARM95_HOOK_FUNCTION(original_DoPowerupPeriodics, DoPowerupPeriodics)
-void DoPowerupPeriodics(tU32 pFrame_period) {
+void __cdecl DoPowerupPeriodics(tU32 pFrame_period) {
     int i;
     tPowerup *the_powerup;
     tU32 the_time;
@@ -191,9 +190,9 @@ void DoPowerupPeriodics(tU32 pFrame_period) {
     original_DoPowerupPeriodics(pFrame_period);
 }
 
-static void(*original_GotPowerupN)(int, ...) = (void(*)(int, ...))0x0042d965;
+static void(__cdecl*original_GotPowerupN)(int) = (void(__cdecl*)(int))0x0042d965;
 CARM95_HOOK_FUNCTION(original_GotPowerupN, GotPowerupN)
-void GotPowerupN(int pN) {
+void __cdecl GotPowerupN(int pN) {
     int modifiers;
     LOG_TRACE("(%d)", pN);
 
@@ -203,99 +202,99 @@ void GotPowerupN(int pN) {
     original_GotPowerupN(pN);
 }
 
-static void(*original_GotPowerup0)() = (void(*)())0x0042d9e8;
+static void(__cdecl*original_GotPowerup0)() = (void(__cdecl*)())0x0042d9e8;
 CARM95_HOOK_FUNCTION(original_GotPowerup0, GotPowerup0)
-void GotPowerup0() {
+void __cdecl GotPowerup0() {
     LOG_TRACE("()");
 
 
     original_GotPowerup0();
 }
 
-static void(*original_GotPowerup1)() = (void(*)())0x0042d9fd;
+static void(__cdecl*original_GotPowerup1)() = (void(__cdecl*)())0x0042d9fd;
 CARM95_HOOK_FUNCTION(original_GotPowerup1, GotPowerup1)
-void GotPowerup1() {
+void __cdecl GotPowerup1() {
     LOG_TRACE("()");
 
 
     original_GotPowerup1();
 }
 
-static void(*original_GotPowerup2)() = (void(*)())0x0042da12;
+static void(__cdecl*original_GotPowerup2)() = (void(__cdecl*)())0x0042da12;
 CARM95_HOOK_FUNCTION(original_GotPowerup2, GotPowerup2)
-void GotPowerup2() {
+void __cdecl GotPowerup2() {
     LOG_TRACE("()");
 
 
     original_GotPowerup2();
 }
 
-static void(*original_GotPowerup3)() = (void(*)())0x0042da27;
+static void(__cdecl*original_GotPowerup3)() = (void(__cdecl*)())0x0042da27;
 CARM95_HOOK_FUNCTION(original_GotPowerup3, GotPowerup3)
-void GotPowerup3() {
+void __cdecl GotPowerup3() {
     LOG_TRACE("()");
 
 
     original_GotPowerup3();
 }
 
-static void(*original_GotPowerup4)() = (void(*)())0x0042da3c;
+static void(__cdecl*original_GotPowerup4)() = (void(__cdecl*)())0x0042da3c;
 CARM95_HOOK_FUNCTION(original_GotPowerup4, GotPowerup4)
-void GotPowerup4() {
+void __cdecl GotPowerup4() {
     LOG_TRACE("()");
 
 
     original_GotPowerup4();
 }
 
-static void(*original_GotPowerup5)() = (void(*)())0x0042da51;
+static void(__cdecl*original_GotPowerup5)() = (void(__cdecl*)())0x0042da51;
 CARM95_HOOK_FUNCTION(original_GotPowerup5, GotPowerup5)
-void GotPowerup5() {
+void __cdecl GotPowerup5() {
     LOG_TRACE("()");
 
 
     original_GotPowerup5();
 }
 
-static void(*original_GotPowerup6)() = (void(*)())0x0042da66;
+static void(__cdecl*original_GotPowerup6)() = (void(__cdecl*)())0x0042da66;
 CARM95_HOOK_FUNCTION(original_GotPowerup6, GotPowerup6)
-void GotPowerup6() {
+void __cdecl GotPowerup6() {
     LOG_TRACE("()");
 
 
     original_GotPowerup6();
 }
 
-static void(*original_GotPowerup7)() = (void(*)())0x0042da7b;
+static void(__cdecl*original_GotPowerup7)() = (void(__cdecl*)())0x0042da7b;
 CARM95_HOOK_FUNCTION(original_GotPowerup7, GotPowerup7)
-void GotPowerup7() {
+void __cdecl GotPowerup7() {
     LOG_TRACE("()");
 
 
     original_GotPowerup7();
 }
 
-static void(*original_GotPowerup8)() = (void(*)())0x0042da90;
+static void(__cdecl*original_GotPowerup8)() = (void(__cdecl*)())0x0042da90;
 CARM95_HOOK_FUNCTION(original_GotPowerup8, GotPowerup8)
-void GotPowerup8() {
+void __cdecl GotPowerup8() {
     LOG_TRACE("()");
 
 
     original_GotPowerup8();
 }
 
-static void(*original_GotPowerup9)() = (void(*)())0x0042daa5;
+static void(__cdecl*original_GotPowerup9)() = (void(__cdecl*)())0x0042daa5;
 CARM95_HOOK_FUNCTION(original_GotPowerup9, GotPowerup9)
-void GotPowerup9() {
+void __cdecl GotPowerup9() {
     LOG_TRACE("()");
 
 
     original_GotPowerup9();
 }
 
-static int(*original_GotCredits)(tPowerup *, tCar_spec *, ...) = (int(*)(tPowerup *, tCar_spec *, ...))0x0042daba;
+static int(__cdecl*original_GotCredits)(tPowerup *, tCar_spec *) = (int(__cdecl*)(tPowerup *, tCar_spec *))0x0042daba;
 CARM95_HOOK_FUNCTION(original_GotCredits, GotCredits)
-int GotCredits(tPowerup *pPowerup, tCar_spec *pCar) {
+int __cdecl GotCredits(tPowerup *pPowerup, tCar_spec *pCar) {
     int credits;
     char s[256];
     LOG_TRACE("(%p, %p)", pPowerup, pCar);
@@ -308,9 +307,9 @@ int GotCredits(tPowerup *pPowerup, tCar_spec *pCar) {
     return original_GotCredits(pPowerup, pCar);
 }
 
-static void(*original_ImprovePSPowerup)(tCar_spec *, int, ...) = (void(*)(tCar_spec *, int, ...))0x0042db7a;
+static void(__cdecl*original_ImprovePSPowerup)(tCar_spec *, int) = (void(__cdecl*)(tCar_spec *, int))0x0042db7a;
 CARM95_HOOK_FUNCTION(original_ImprovePSPowerup, ImprovePSPowerup)
-void ImprovePSPowerup(tCar_spec *pCar, int pIndex) {
+void __cdecl ImprovePSPowerup(tCar_spec *pCar, int pIndex) {
     tNet_message *the_message;
     LOG_TRACE("(%p, %d)", pCar, pIndex);
 
@@ -321,9 +320,9 @@ void ImprovePSPowerup(tCar_spec *pCar, int pIndex) {
     original_ImprovePSPowerup(pCar, pIndex);
 }
 
-static int(*original_GotTimeOrPower)(tPowerup *, tCar_spec *, ...) = (int(*)(tPowerup *, tCar_spec *, ...))0x0042dbba;
+static int(__cdecl*original_GotTimeOrPower)(tPowerup *, tCar_spec *) = (int(__cdecl*)(tPowerup *, tCar_spec *))0x0042dbba;
 CARM95_HOOK_FUNCTION(original_GotTimeOrPower, GotTimeOrPower)
-int GotTimeOrPower(tPowerup *pPowerup, tCar_spec *pCar) {
+int __cdecl GotTimeOrPower(tPowerup *pPowerup, tCar_spec *pCar) {
     int time;
     int index;
     int i;
@@ -342,9 +341,9 @@ int GotTimeOrPower(tPowerup *pPowerup, tCar_spec *pCar) {
     return original_GotTimeOrPower(pPowerup, pCar);
 }
 
-static int(*original_SetPedSpeed)(tPowerup *, tCar_spec *, ...) = (int(*)(tPowerup *, tCar_spec *, ...))0x0042dd8b;
+static int(__cdecl*original_SetPedSpeed)(tPowerup *, tCar_spec *) = (int(__cdecl*)(tPowerup *, tCar_spec *))0x0042dd8b;
 CARM95_HOOK_FUNCTION(original_SetPedSpeed, SetPedSpeed)
-int SetPedSpeed(tPowerup *pPowerup, tCar_spec *pCar) {
+int __cdecl SetPedSpeed(tPowerup *pPowerup, tCar_spec *pCar) {
     LOG_TRACE("(%p, %p)", pPowerup, pCar);
 
     (void)pPowerup;
@@ -353,9 +352,9 @@ int SetPedSpeed(tPowerup *pPowerup, tCar_spec *pCar) {
     return original_SetPedSpeed(pPowerup, pCar);
 }
 
-static int(*original_SetHades)(tPowerup *, tCar_spec *, ...) = (int(*)(tPowerup *, tCar_spec *, ...))0x0042ddb9;
+static int(__cdecl*original_SetHades)(tPowerup *, tCar_spec *) = (int(__cdecl*)(tPowerup *, tCar_spec *))0x0042ddb9;
 CARM95_HOOK_FUNCTION(original_SetHades, SetHades)
-int SetHades(tPowerup *pPowerup, tCar_spec *pCar) {
+int __cdecl SetHades(tPowerup *pPowerup, tCar_spec *pCar) {
     LOG_TRACE("(%p, %p)", pPowerup, pCar);
 
     (void)pPowerup;
@@ -364,9 +363,9 @@ int SetHades(tPowerup *pPowerup, tCar_spec *pCar) {
     return original_SetHades(pPowerup, pCar);
 }
 
-static void(*original_ResetHades)(tPowerup *, tCar_spec *, ...) = (void(*)(tPowerup *, tCar_spec *, ...))0x0042dddf;
+static void(__cdecl*original_ResetHades)(tPowerup *, tCar_spec *) = (void(__cdecl*)(tPowerup *, tCar_spec *))0x0042dddf;
 CARM95_HOOK_FUNCTION(original_ResetHades, ResetHades)
-void ResetHades(tPowerup *pPowerup, tCar_spec *pCar) {
+void __cdecl ResetHades(tPowerup *pPowerup, tCar_spec *pCar) {
     LOG_TRACE("(%p, %p)", pPowerup, pCar);
 
     (void)pPowerup;
@@ -375,9 +374,9 @@ void ResetHades(tPowerup *pPowerup, tCar_spec *pCar) {
     original_ResetHades(pPowerup, pCar);
 }
 
-static int(*original_SetPedSize)(tPowerup *, tCar_spec *, ...) = (int(*)(tPowerup *, tCar_spec *, ...))0x0042ddef;
+static int(__cdecl*original_SetPedSize)(tPowerup *, tCar_spec *) = (int(__cdecl*)(tPowerup *, tCar_spec *))0x0042ddef;
 CARM95_HOOK_FUNCTION(original_SetPedSize, SetPedSize)
-int SetPedSize(tPowerup *pPowerup, tCar_spec *pCar) {
+int __cdecl SetPedSize(tPowerup *pPowerup, tCar_spec *pCar) {
     br_scalar old_scale;
     LOG_TRACE("(%p, %p)", pPowerup, pCar);
 
@@ -388,9 +387,9 @@ int SetPedSize(tPowerup *pPowerup, tCar_spec *pCar) {
     return original_SetPedSize(pPowerup, pCar);
 }
 
-static int(*original_SetPedExplode)(tPowerup *, tCar_spec *, ...) = (int(*)(tPowerup *, tCar_spec *, ...))0x0042dec4;
+static int(__cdecl*original_SetPedExplode)(tPowerup *, tCar_spec *) = (int(__cdecl*)(tPowerup *, tCar_spec *))0x0042dec4;
 CARM95_HOOK_FUNCTION(original_SetPedExplode, SetPedExplode)
-int SetPedExplode(tPowerup *pPowerup, tCar_spec *pCar) {
+int __cdecl SetPedExplode(tPowerup *pPowerup, tCar_spec *pCar) {
     LOG_TRACE("(%p, %p)", pPowerup, pCar);
 
     (void)pPowerup;
@@ -399,9 +398,9 @@ int SetPedExplode(tPowerup *pPowerup, tCar_spec *pCar) {
     return original_SetPedExplode(pPowerup, pCar);
 }
 
-static int(*original_SetInvulnerability)(tPowerup *, tCar_spec *, ...) = (int(*)(tPowerup *, tCar_spec *, ...))0x0042deef;
+static int(__cdecl*original_SetInvulnerability)(tPowerup *, tCar_spec *) = (int(__cdecl*)(tPowerup *, tCar_spec *))0x0042deef;
 CARM95_HOOK_FUNCTION(original_SetInvulnerability, SetInvulnerability)
-int SetInvulnerability(tPowerup *pPowerup, tCar_spec *pCar) {
+int __cdecl SetInvulnerability(tPowerup *pPowerup, tCar_spec *pCar) {
     LOG_TRACE("(%p, %p)", pPowerup, pCar);
 
     (void)pPowerup;
@@ -410,9 +409,9 @@ int SetInvulnerability(tPowerup *pPowerup, tCar_spec *pCar) {
     return original_SetInvulnerability(pPowerup, pCar);
 }
 
-static void(*original_ResetInvulnerability)(tPowerup *, tCar_spec *, ...) = (void(*)(tPowerup *, tCar_spec *, ...))0x0042df1d;
+static void(__cdecl*original_ResetInvulnerability)(tPowerup *, tCar_spec *) = (void(__cdecl*)(tPowerup *, tCar_spec *))0x0042df1d;
 CARM95_HOOK_FUNCTION(original_ResetInvulnerability, ResetInvulnerability)
-void ResetInvulnerability(tPowerup *pPowerup, tCar_spec *pCar) {
+void __cdecl ResetInvulnerability(tPowerup *pPowerup, tCar_spec *pCar) {
     LOG_TRACE("(%p, %p)", pPowerup, pCar);
 
     (void)pPowerup;
@@ -421,9 +420,9 @@ void ResetInvulnerability(tPowerup *pPowerup, tCar_spec *pCar) {
     original_ResetInvulnerability(pPowerup, pCar);
 }
 
-static int(*original_SetFreeRepairs)(tPowerup *, tCar_spec *, ...) = (int(*)(tPowerup *, tCar_spec *, ...))0x0042df35;
+static int(__cdecl*original_SetFreeRepairs)(tPowerup *, tCar_spec *) = (int(__cdecl*)(tPowerup *, tCar_spec *))0x0042df35;
 CARM95_HOOK_FUNCTION(original_SetFreeRepairs, SetFreeRepairs)
-int SetFreeRepairs(tPowerup *pPowerup, tCar_spec *pCar) {
+int __cdecl SetFreeRepairs(tPowerup *pPowerup, tCar_spec *pCar) {
     LOG_TRACE("(%p, %p)", pPowerup, pCar);
 
     (void)pPowerup;
@@ -432,9 +431,9 @@ int SetFreeRepairs(tPowerup *pPowerup, tCar_spec *pCar) {
     return original_SetFreeRepairs(pPowerup, pCar);
 }
 
-static void(*original_ResetFreeRepairs)(tPowerup *, tCar_spec *, ...) = (void(*)(tPowerup *, tCar_spec *, ...))0x0042df6d;
+static void(__cdecl*original_ResetFreeRepairs)(tPowerup *, tCar_spec *) = (void(__cdecl*)(tPowerup *, tCar_spec *))0x0042df6d;
 CARM95_HOOK_FUNCTION(original_ResetFreeRepairs, ResetFreeRepairs)
-void ResetFreeRepairs(tPowerup *pPowerup, tCar_spec *pCar) {
+void __cdecl ResetFreeRepairs(tPowerup *pPowerup, tCar_spec *pCar) {
     LOG_TRACE("(%p, %p)", pPowerup, pCar);
 
     (void)pPowerup;
@@ -443,9 +442,9 @@ void ResetFreeRepairs(tPowerup *pPowerup, tCar_spec *pCar) {
     original_ResetFreeRepairs(pPowerup, pCar);
 }
 
-static int(*original_SetBlindPedestrians)(tPowerup *, tCar_spec *, ...) = (int(*)(tPowerup *, tCar_spec *, ...))0x0042df8f;
+static int(__cdecl*original_SetBlindPedestrians)(tPowerup *, tCar_spec *) = (int(__cdecl*)(tPowerup *, tCar_spec *))0x0042df8f;
 CARM95_HOOK_FUNCTION(original_SetBlindPedestrians, SetBlindPedestrians)
-int SetBlindPedestrians(tPowerup *pPowerup, tCar_spec *pCar) {
+int __cdecl SetBlindPedestrians(tPowerup *pPowerup, tCar_spec *pCar) {
     LOG_TRACE("(%p, %p)", pPowerup, pCar);
 
     (void)pPowerup;
@@ -454,9 +453,9 @@ int SetBlindPedestrians(tPowerup *pPowerup, tCar_spec *pCar) {
     return original_SetBlindPedestrians(pPowerup, pCar);
 }
 
-static void(*original_ResetBlindPedestrians)(tPowerup *, tCar_spec *, ...) = (void(*)(tPowerup *, tCar_spec *, ...))0x0042dfba;
+static void(__cdecl*original_ResetBlindPedestrians)(tPowerup *, tCar_spec *) = (void(__cdecl*)(tPowerup *, tCar_spec *))0x0042dfba;
 CARM95_HOOK_FUNCTION(original_ResetBlindPedestrians, ResetBlindPedestrians)
-void ResetBlindPedestrians(tPowerup *pPowerup, tCar_spec *pCar) {
+void __cdecl ResetBlindPedestrians(tPowerup *pPowerup, tCar_spec *pCar) {
     LOG_TRACE("(%p, %p)", pPowerup, pCar);
 
     (void)pPowerup;
@@ -465,9 +464,9 @@ void ResetBlindPedestrians(tPowerup *pPowerup, tCar_spec *pCar) {
     original_ResetBlindPedestrians(pPowerup, pCar);
 }
 
-static int(*original_FreezeTimer)(tPowerup *, tCar_spec *, ...) = (int(*)(tPowerup *, tCar_spec *, ...))0x0042dfcf;
+static int(__cdecl*original_FreezeTimer)(tPowerup *, tCar_spec *) = (int(__cdecl*)(tPowerup *, tCar_spec *))0x0042dfcf;
 CARM95_HOOK_FUNCTION(original_FreezeTimer, FreezeTimer)
-int FreezeTimer(tPowerup *pPowerup, tCar_spec *pCar) {
+int __cdecl FreezeTimer(tPowerup *pPowerup, tCar_spec *pCar) {
     LOG_TRACE("(%p, %p)", pPowerup, pCar);
 
     (void)pPowerup;
@@ -476,9 +475,9 @@ int FreezeTimer(tPowerup *pPowerup, tCar_spec *pCar) {
     return original_FreezeTimer(pPowerup, pCar);
 }
 
-static void(*original_UnfreezeTimer)(tPowerup *, tCar_spec *, ...) = (void(*)(tPowerup *, tCar_spec *, ...))0x0042e023;
+static void(__cdecl*original_UnfreezeTimer)(tPowerup *, tCar_spec *) = (void(__cdecl*)(tPowerup *, tCar_spec *))0x0042e023;
 CARM95_HOOK_FUNCTION(original_UnfreezeTimer, UnfreezeTimer)
-void UnfreezeTimer(tPowerup *pPowerup, tCar_spec *pCar) {
+void __cdecl UnfreezeTimer(tPowerup *pPowerup, tCar_spec *pCar) {
     LOG_TRACE("(%p, %p)", pPowerup, pCar);
 
     (void)pPowerup;
@@ -487,9 +486,9 @@ void UnfreezeTimer(tPowerup *pPowerup, tCar_spec *pCar) {
     original_UnfreezeTimer(pPowerup, pCar);
 }
 
-static int(*original_DoInstantRepair)(tPowerup *, tCar_spec *, ...) = (int(*)(tPowerup *, tCar_spec *, ...))0x0042e045;
+static int(__cdecl*original_DoInstantRepair)(tPowerup *, tCar_spec *) = (int(__cdecl*)(tPowerup *, tCar_spec *))0x0042e045;
 CARM95_HOOK_FUNCTION(original_DoInstantRepair, DoInstantRepair)
-int DoInstantRepair(tPowerup *pPowerup, tCar_spec *pCar) {
+int __cdecl DoInstantRepair(tPowerup *pPowerup, tCar_spec *pCar) {
     LOG_TRACE("(%p, %p)", pPowerup, pCar);
 
     (void)pPowerup;
@@ -498,9 +497,9 @@ int DoInstantRepair(tPowerup *pPowerup, tCar_spec *pCar) {
     return original_DoInstantRepair(pPowerup, pCar);
 }
 
-static void(*original_ResetPedSpeed)(tPowerup *, tCar_spec *, ...) = (void(*)(tPowerup *, tCar_spec *, ...))0x0042e078;
+static void(__cdecl*original_ResetPedSpeed)(tPowerup *, tCar_spec *) = (void(__cdecl*)(tPowerup *, tCar_spec *))0x0042e078;
 CARM95_HOOK_FUNCTION(original_ResetPedSpeed, ResetPedSpeed)
-void ResetPedSpeed(tPowerup *pPowerup, tCar_spec *pCar) {
+void __cdecl ResetPedSpeed(tPowerup *pPowerup, tCar_spec *pCar) {
     LOG_TRACE("(%p, %p)", pPowerup, pCar);
 
     (void)pPowerup;
@@ -509,9 +508,9 @@ void ResetPedSpeed(tPowerup *pPowerup, tCar_spec *pCar) {
     original_ResetPedSpeed(pPowerup, pCar);
 }
 
-static void(*original_ResetPedSize)(tPowerup *, tCar_spec *, ...) = (void(*)(tPowerup *, tCar_spec *, ...))0x0042e08d;
+static void(__cdecl*original_ResetPedSize)(tPowerup *, tCar_spec *) = (void(__cdecl*)(tPowerup *, tCar_spec *))0x0042e08d;
 CARM95_HOOK_FUNCTION(original_ResetPedSize, ResetPedSize)
-void ResetPedSize(tPowerup *pPowerup, tCar_spec *pCar) {
+void __cdecl ResetPedSize(tPowerup *pPowerup, tCar_spec *pCar) {
     LOG_TRACE("(%p, %p)", pPowerup, pCar);
 
     (void)pPowerup;
@@ -520,9 +519,9 @@ void ResetPedSize(tPowerup *pPowerup, tCar_spec *pCar) {
     original_ResetPedSize(pPowerup, pCar);
 }
 
-static void(*original_ResetPedExplode)(tPowerup *, tCar_spec *, ...) = (void(*)(tPowerup *, tCar_spec *, ...))0x0042e0ac;
+static void(__cdecl*original_ResetPedExplode)(tPowerup *, tCar_spec *) = (void(__cdecl*)(tPowerup *, tCar_spec *))0x0042e0ac;
 CARM95_HOOK_FUNCTION(original_ResetPedExplode, ResetPedExplode)
-void ResetPedExplode(tPowerup *pPowerup, tCar_spec *pCar) {
+void __cdecl ResetPedExplode(tPowerup *pPowerup, tCar_spec *pCar) {
     LOG_TRACE("(%p, %p)", pPowerup, pCar);
 
     (void)pPowerup;
@@ -531,9 +530,9 @@ void ResetPedExplode(tPowerup *pPowerup, tCar_spec *pCar) {
     original_ResetPedExplode(pPowerup, pCar);
 }
 
-static int(*original_SetEngineFactor)(tPowerup *, tCar_spec *, ...) = (int(*)(tPowerup *, tCar_spec *, ...))0x0042e0c1;
+static int(__cdecl*original_SetEngineFactor)(tPowerup *, tCar_spec *) = (int(__cdecl*)(tPowerup *, tCar_spec *))0x0042e0c1;
 CARM95_HOOK_FUNCTION(original_SetEngineFactor, SetEngineFactor)
-int SetEngineFactor(tPowerup *pPowerup, tCar_spec *pCar) {
+int __cdecl SetEngineFactor(tPowerup *pPowerup, tCar_spec *pCar) {
     LOG_TRACE("(%p, %p)", pPowerup, pCar);
 
     (void)pPowerup;
@@ -542,9 +541,9 @@ int SetEngineFactor(tPowerup *pPowerup, tCar_spec *pCar) {
     return original_SetEngineFactor(pPowerup, pCar);
 }
 
-static int(*original_SetUnderwater)(tPowerup *, tCar_spec *, ...) = (int(*)(tPowerup *, tCar_spec *, ...))0x0042e143;
+static int(__cdecl*original_SetUnderwater)(tPowerup *, tCar_spec *) = (int(__cdecl*)(tPowerup *, tCar_spec *))0x0042e143;
 CARM95_HOOK_FUNCTION(original_SetUnderwater, SetUnderwater)
-int SetUnderwater(tPowerup *pPowerup, tCar_spec *pCar) {
+int __cdecl SetUnderwater(tPowerup *pPowerup, tCar_spec *pCar) {
     LOG_TRACE("(%p, %p)", pPowerup, pCar);
 
     (void)pPowerup;
@@ -553,9 +552,9 @@ int SetUnderwater(tPowerup *pPowerup, tCar_spec *pCar) {
     return original_SetUnderwater(pPowerup, pCar);
 }
 
-static int(*original_TrashBodywork)(tPowerup *, tCar_spec *, ...) = (int(*)(tPowerup *, tCar_spec *, ...))0x0042e171;
+static int(__cdecl*original_TrashBodywork)(tPowerup *, tCar_spec *) = (int(__cdecl*)(tPowerup *, tCar_spec *))0x0042e171;
 CARM95_HOOK_FUNCTION(original_TrashBodywork, TrashBodywork)
-int TrashBodywork(tPowerup *pPowerup, tCar_spec *pCar) {
+int __cdecl TrashBodywork(tPowerup *pPowerup, tCar_spec *pCar) {
     int i;
     tCar_spec *c;
     LOG_TRACE("(%p, %p)", pPowerup, pCar);
@@ -568,9 +567,9 @@ int TrashBodywork(tPowerup *pPowerup, tCar_spec *pCar) {
     return original_TrashBodywork(pPowerup, pCar);
 }
 
-static int(*original_TakeDrugs)(tPowerup *, tCar_spec *, ...) = (int(*)(tPowerup *, tCar_spec *, ...))0x0042e26c;
+static int(__cdecl*original_TakeDrugs)(tPowerup *, tCar_spec *) = (int(__cdecl*)(tPowerup *, tCar_spec *))0x0042e26c;
 CARM95_HOOK_FUNCTION(original_TakeDrugs, TakeDrugs)
-int TakeDrugs(tPowerup *pPowerup, tCar_spec *pCar) {
+int __cdecl TakeDrugs(tPowerup *pPowerup, tCar_spec *pCar) {
     LOG_TRACE("(%p, %p)", pPowerup, pCar);
 
     (void)pPowerup;
@@ -579,9 +578,9 @@ int TakeDrugs(tPowerup *pPowerup, tCar_spec *pCar) {
     return original_TakeDrugs(pPowerup, pCar);
 }
 
-static void(*original_PaletteFuckedUpByDrugs)(br_pixelmap *, int, ...) = (void(*)(br_pixelmap *, int, ...))0x0042e30a;
+static void(__cdecl*original_PaletteFuckedUpByDrugs)(br_pixelmap *, int) = (void(__cdecl*)(br_pixelmap *, int))0x0042e30a;
 CARM95_HOOK_FUNCTION(original_PaletteFuckedUpByDrugs, PaletteFuckedUpByDrugs)
-void PaletteFuckedUpByDrugs(br_pixelmap *pPixelmap, int pOffset) {
+void __cdecl PaletteFuckedUpByDrugs(br_pixelmap *pPixelmap, int pOffset) {
     int i;
     LOG_TRACE("(%p, %d)", pPixelmap, pOffset);
 
@@ -592,9 +591,9 @@ void PaletteFuckedUpByDrugs(br_pixelmap *pPixelmap, int pOffset) {
     original_PaletteFuckedUpByDrugs(pPixelmap, pOffset);
 }
 
-static void(*original_TheEffectsOfDrugs)(tPowerup *, tU32, ...) = (void(*)(tPowerup *, tU32, ...))0x0042e2dd;
+static void(__cdecl*original_TheEffectsOfDrugs)(tPowerup *, tU32) = (void(__cdecl*)(tPowerup *, tU32))0x0042e2dd;
 CARM95_HOOK_FUNCTION(original_TheEffectsOfDrugs, TheEffectsOfDrugs)
-void TheEffectsOfDrugs(tPowerup *pPowerup, tU32 pPeriod) {
+void __cdecl TheEffectsOfDrugs(tPowerup *pPowerup, tU32 pPeriod) {
     LOG_TRACE("(%p, %u)", pPowerup, pPeriod);
 
     (void)pPowerup;
@@ -603,9 +602,9 @@ void TheEffectsOfDrugs(tPowerup *pPowerup, tU32 pPeriod) {
     original_TheEffectsOfDrugs(pPowerup, pPeriod);
 }
 
-static int(*original_SetOpponentsSpeed)(tPowerup *, tCar_spec *, ...) = (int(*)(tPowerup *, tCar_spec *, ...))0x0042e3af;
+static int(__cdecl*original_SetOpponentsSpeed)(tPowerup *, tCar_spec *) = (int(__cdecl*)(tPowerup *, tCar_spec *))0x0042e3af;
 CARM95_HOOK_FUNCTION(original_SetOpponentsSpeed, SetOpponentsSpeed)
-int SetOpponentsSpeed(tPowerup *pPowerup, tCar_spec *pCar) {
+int __cdecl SetOpponentsSpeed(tPowerup *pPowerup, tCar_spec *pCar) {
     int i;
     LOG_TRACE("(%p, %p)", pPowerup, pCar);
 
@@ -616,9 +615,9 @@ int SetOpponentsSpeed(tPowerup *pPowerup, tCar_spec *pCar) {
     return original_SetOpponentsSpeed(pPowerup, pCar);
 }
 
-static int(*original_SetCopsSpeed)(tPowerup *, tCar_spec *, ...) = (int(*)(tPowerup *, tCar_spec *, ...))0x0042e445;
+static int(__cdecl*original_SetCopsSpeed)(tPowerup *, tCar_spec *) = (int(__cdecl*)(tPowerup *, tCar_spec *))0x0042e445;
 CARM95_HOOK_FUNCTION(original_SetCopsSpeed, SetCopsSpeed)
-int SetCopsSpeed(tPowerup *pPowerup, tCar_spec *pCar) {
+int __cdecl SetCopsSpeed(tPowerup *pPowerup, tCar_spec *pCar) {
     LOG_TRACE("(%p, %p)", pPowerup, pCar);
 
     (void)pPowerup;
@@ -627,9 +626,9 @@ int SetCopsSpeed(tPowerup *pPowerup, tCar_spec *pCar) {
     return original_SetCopsSpeed(pPowerup, pCar);
 }
 
-static int(*original_SetGravity)(tPowerup *, tCar_spec *, ...) = (int(*)(tPowerup *, tCar_spec *, ...))0x0042e473;
+static int(__cdecl*original_SetGravity)(tPowerup *, tCar_spec *) = (int(__cdecl*)(tPowerup *, tCar_spec *))0x0042e473;
 CARM95_HOOK_FUNCTION(original_SetGravity, SetGravity)
-int SetGravity(tPowerup *pPowerup, tCar_spec *pCar) {
+int __cdecl SetGravity(tPowerup *pPowerup, tCar_spec *pCar) {
     LOG_TRACE("(%p, %p)", pPowerup, pCar);
 
     (void)pPowerup;
@@ -638,9 +637,9 @@ int SetGravity(tPowerup *pPowerup, tCar_spec *pCar) {
     return original_SetGravity(pPowerup, pCar);
 }
 
-static int(*original_SetPinball)(tPowerup *, tCar_spec *, ...) = (int(*)(tPowerup *, tCar_spec *, ...))0x0042e4a1;
+static int(__cdecl*original_SetPinball)(tPowerup *, tCar_spec *) = (int(__cdecl*)(tPowerup *, tCar_spec *))0x0042e4a1;
 CARM95_HOOK_FUNCTION(original_SetPinball, SetPinball)
-int SetPinball(tPowerup *pPowerup, tCar_spec *pCar) {
+int __cdecl SetPinball(tPowerup *pPowerup, tCar_spec *pCar) {
     LOG_TRACE("(%p, %p)", pPowerup, pCar);
 
     (void)pPowerup;
@@ -649,9 +648,9 @@ int SetPinball(tPowerup *pPowerup, tCar_spec *pCar) {
     return original_SetPinball(pPowerup, pCar);
 }
 
-static int(*original_SetWallclimb)(tPowerup *, tCar_spec *, ...) = (int(*)(tPowerup *, tCar_spec *, ...))0x0042e4cf;
+static int(__cdecl*original_SetWallclimb)(tPowerup *, tCar_spec *) = (int(__cdecl*)(tPowerup *, tCar_spec *))0x0042e4cf;
 CARM95_HOOK_FUNCTION(original_SetWallclimb, SetWallclimb)
-int SetWallclimb(tPowerup *pPowerup, tCar_spec *pCar) {
+int __cdecl SetWallclimb(tPowerup *pPowerup, tCar_spec *pCar) {
     LOG_TRACE("(%p, %p)", pPowerup, pCar);
 
     (void)pPowerup;
@@ -660,9 +659,9 @@ int SetWallclimb(tPowerup *pPowerup, tCar_spec *pCar) {
     return original_SetWallclimb(pPowerup, pCar);
 }
 
-static int(*original_SetBouncey)(tPowerup *, tCar_spec *, ...) = (int(*)(tPowerup *, tCar_spec *, ...))0x0042e4fd;
+static int(__cdecl*original_SetBouncey)(tPowerup *, tCar_spec *) = (int(__cdecl*)(tPowerup *, tCar_spec *))0x0042e4fd;
 CARM95_HOOK_FUNCTION(original_SetBouncey, SetBouncey)
-int SetBouncey(tPowerup *pPowerup, tCar_spec *pCar) {
+int __cdecl SetBouncey(tPowerup *pPowerup, tCar_spec *pCar) {
     LOG_TRACE("(%p, %p)", pPowerup, pCar);
 
     (void)pPowerup;
@@ -671,9 +670,9 @@ int SetBouncey(tPowerup *pPowerup, tCar_spec *pCar) {
     return original_SetBouncey(pPowerup, pCar);
 }
 
-static int(*original_SetSuspension)(tPowerup *, tCar_spec *, ...) = (int(*)(tPowerup *, tCar_spec *, ...))0x0042e554;
+static int(__cdecl*original_SetSuspension)(tPowerup *, tCar_spec *) = (int(__cdecl*)(tPowerup *, tCar_spec *))0x0042e554;
 CARM95_HOOK_FUNCTION(original_SetSuspension, SetSuspension)
-int SetSuspension(tPowerup *pPowerup, tCar_spec *pCar) {
+int __cdecl SetSuspension(tPowerup *pPowerup, tCar_spec *pCar) {
     LOG_TRACE("(%p, %p)", pPowerup, pCar);
 
     (void)pPowerup;
@@ -682,9 +681,9 @@ int SetSuspension(tPowerup *pPowerup, tCar_spec *pCar) {
     return original_SetSuspension(pPowerup, pCar);
 }
 
-static int(*original_SetTyreGrip)(tPowerup *, tCar_spec *, ...) = (int(*)(tPowerup *, tCar_spec *, ...))0x0042e5b2;
+static int(__cdecl*original_SetTyreGrip)(tPowerup *, tCar_spec *) = (int(__cdecl*)(tPowerup *, tCar_spec *))0x0042e5b2;
 CARM95_HOOK_FUNCTION(original_SetTyreGrip, SetTyreGrip)
-int SetTyreGrip(tPowerup *pPowerup, tCar_spec *pCar) {
+int __cdecl SetTyreGrip(tPowerup *pPowerup, tCar_spec *pCar) {
     LOG_TRACE("(%p, %p)", pPowerup, pCar);
 
     (void)pPowerup;
@@ -693,9 +692,9 @@ int SetTyreGrip(tPowerup *pPowerup, tCar_spec *pCar) {
     return original_SetTyreGrip(pPowerup, pCar);
 }
 
-static int(*original_SetDamageMultiplier)(tPowerup *, tCar_spec *, ...) = (int(*)(tPowerup *, tCar_spec *, ...))0x0042e5e4;
+static int(__cdecl*original_SetDamageMultiplier)(tPowerup *, tCar_spec *) = (int(__cdecl*)(tPowerup *, tCar_spec *))0x0042e5e4;
 CARM95_HOOK_FUNCTION(original_SetDamageMultiplier, SetDamageMultiplier)
-int SetDamageMultiplier(tPowerup *pPowerup, tCar_spec *pCar) {
+int __cdecl SetDamageMultiplier(tPowerup *pPowerup, tCar_spec *pCar) {
     LOG_TRACE("(%p, %p)", pPowerup, pCar);
 
     (void)pPowerup;
@@ -704,9 +703,9 @@ int SetDamageMultiplier(tPowerup *pPowerup, tCar_spec *pCar) {
     return original_SetDamageMultiplier(pPowerup, pCar);
 }
 
-static void(*original_ResetEngineFactor)(tPowerup *, tCar_spec *, ...) = (void(*)(tPowerup *, tCar_spec *, ...))0x0042e616;
+static void(__cdecl*original_ResetEngineFactor)(tPowerup *, tCar_spec *) = (void(__cdecl*)(tPowerup *, tCar_spec *))0x0042e616;
 CARM95_HOOK_FUNCTION(original_ResetEngineFactor, ResetEngineFactor)
-void ResetEngineFactor(tPowerup *pPowerup, tCar_spec *pCar) {
+void __cdecl ResetEngineFactor(tPowerup *pPowerup, tCar_spec *pCar) {
     LOG_TRACE("(%p, %p)", pPowerup, pCar);
 
     (void)pPowerup;
@@ -715,9 +714,9 @@ void ResetEngineFactor(tPowerup *pPowerup, tCar_spec *pCar) {
     original_ResetEngineFactor(pPowerup, pCar);
 }
 
-static void(*original_ResetUnderwater)(tPowerup *, tCar_spec *, ...) = (void(*)(tPowerup *, tCar_spec *, ...))0x0042e65a;
+static void(__cdecl*original_ResetUnderwater)(tPowerup *, tCar_spec *) = (void(__cdecl*)(tPowerup *, tCar_spec *))0x0042e65a;
 CARM95_HOOK_FUNCTION(original_ResetUnderwater, ResetUnderwater)
-void ResetUnderwater(tPowerup *pPowerup, tCar_spec *pCar) {
+void __cdecl ResetUnderwater(tPowerup *pPowerup, tCar_spec *pCar) {
     LOG_TRACE("(%p, %p)", pPowerup, pCar);
 
     (void)pPowerup;
@@ -726,9 +725,9 @@ void ResetUnderwater(tPowerup *pPowerup, tCar_spec *pCar) {
     original_ResetUnderwater(pPowerup, pCar);
 }
 
-static void(*original_PukeDrugsBackUp)(tPowerup *, tCar_spec *, ...) = (void(*)(tPowerup *, tCar_spec *, ...))0x0042e672;
+static void(__cdecl*original_PukeDrugsBackUp)(tPowerup *, tCar_spec *) = (void(__cdecl*)(tPowerup *, tCar_spec *))0x0042e672;
 CARM95_HOOK_FUNCTION(original_PukeDrugsBackUp, PukeDrugsBackUp)
-void PukeDrugsBackUp(tPowerup *pPowerup, tCar_spec *pCar) {
+void __cdecl PukeDrugsBackUp(tPowerup *pPowerup, tCar_spec *pCar) {
     LOG_TRACE("(%p, %p)", pPowerup, pCar);
 
     (void)pPowerup;
@@ -737,9 +736,9 @@ void PukeDrugsBackUp(tPowerup *pPowerup, tCar_spec *pCar) {
     original_PukeDrugsBackUp(pPowerup, pCar);
 }
 
-static void(*original_ResetOpponentsSpeed)(tPowerup *, tCar_spec *, ...) = (void(*)(tPowerup *, tCar_spec *, ...))0x0042e6a9;
+static void(__fastcall*original_ResetOpponentsSpeed)(tPowerup *, tCar_spec *) = (void(__fastcall*)(tPowerup *, tCar_spec *))0x0042e6a9;
 CARM95_HOOK_FUNCTION(original_ResetOpponentsSpeed, ResetOpponentsSpeed)
-void ResetOpponentsSpeed(tPowerup *pPowerup, tCar_spec *pCar) {
+void __fastcall ResetOpponentsSpeed(tPowerup *pPowerup, tCar_spec *pCar) {
     int i;
     LOG_TRACE("(%p, %p)", pPowerup, pCar);
 
@@ -750,9 +749,9 @@ void ResetOpponentsSpeed(tPowerup *pPowerup, tCar_spec *pCar) {
     original_ResetOpponentsSpeed(pPowerup, pCar);
 }
 
-static void(*original_ResetCopsSpeed)(tPowerup *, tCar_spec *, ...) = (void(*)(tPowerup *, tCar_spec *, ...))0x0042e726;
+static void(__cdecl*original_ResetCopsSpeed)(tPowerup *, tCar_spec *) = (void(__cdecl*)(tPowerup *, tCar_spec *))0x0042e726;
 CARM95_HOOK_FUNCTION(original_ResetCopsSpeed, ResetCopsSpeed)
-void ResetCopsSpeed(tPowerup *pPowerup, tCar_spec *pCar) {
+void __cdecl ResetCopsSpeed(tPowerup *pPowerup, tCar_spec *pCar) {
     LOG_TRACE("(%p, %p)", pPowerup, pCar);
 
     (void)pPowerup;
@@ -761,9 +760,9 @@ void ResetCopsSpeed(tPowerup *pPowerup, tCar_spec *pCar) {
     original_ResetCopsSpeed(pPowerup, pCar);
 }
 
-static void(*original_ResetGravity)(tPowerup *, tCar_spec *, ...) = (void(*)(tPowerup *, tCar_spec *, ...))0x0042e73b;
+static void(__cdecl*original_ResetGravity)(tPowerup *, tCar_spec *) = (void(__cdecl*)(tPowerup *, tCar_spec *))0x0042e73b;
 CARM95_HOOK_FUNCTION(original_ResetGravity, ResetGravity)
-void ResetGravity(tPowerup *pPowerup, tCar_spec *pCar) {
+void __cdecl ResetGravity(tPowerup *pPowerup, tCar_spec *pCar) {
     LOG_TRACE("(%p, %p)", pPowerup, pCar);
 
     (void)pPowerup;
@@ -772,9 +771,9 @@ void ResetGravity(tPowerup *pPowerup, tCar_spec *pCar) {
     original_ResetGravity(pPowerup, pCar);
 }
 
-static void(*original_ResetPinball)(tPowerup *, tCar_spec *, ...) = (void(*)(tPowerup *, tCar_spec *, ...))0x0042e750;
+static void(__cdecl*original_ResetPinball)(tPowerup *, tCar_spec *) = (void(__cdecl*)(tPowerup *, tCar_spec *))0x0042e750;
 CARM95_HOOK_FUNCTION(original_ResetPinball, ResetPinball)
-void ResetPinball(tPowerup *pPowerup, tCar_spec *pCar) {
+void __cdecl ResetPinball(tPowerup *pPowerup, tCar_spec *pCar) {
     LOG_TRACE("(%p, %p)", pPowerup, pCar);
 
     (void)pPowerup;
@@ -783,9 +782,9 @@ void ResetPinball(tPowerup *pPowerup, tCar_spec *pCar) {
     original_ResetPinball(pPowerup, pCar);
 }
 
-static void(*original_ResetWallclimb)(tPowerup *, tCar_spec *, ...) = (void(*)(tPowerup *, tCar_spec *, ...))0x0042e765;
+static void(__cdecl*original_ResetWallclimb)(tPowerup *, tCar_spec *) = (void(__cdecl*)(tPowerup *, tCar_spec *))0x0042e765;
 CARM95_HOOK_FUNCTION(original_ResetWallclimb, ResetWallclimb)
-void ResetWallclimb(tPowerup *pPowerup, tCar_spec *pCar) {
+void __cdecl ResetWallclimb(tPowerup *pPowerup, tCar_spec *pCar) {
     LOG_TRACE("(%p, %p)", pPowerup, pCar);
 
     (void)pPowerup;
@@ -794,9 +793,9 @@ void ResetWallclimb(tPowerup *pPowerup, tCar_spec *pCar) {
     original_ResetWallclimb(pPowerup, pCar);
 }
 
-static void(*original_ResetBouncey)(tPowerup *, tCar_spec *, ...) = (void(*)(tPowerup *, tCar_spec *, ...))0x0042e77d;
+static void(__cdecl*original_ResetBouncey)(tPowerup *, tCar_spec *) = (void(__cdecl*)(tPowerup *, tCar_spec *))0x0042e77d;
 CARM95_HOOK_FUNCTION(original_ResetBouncey, ResetBouncey)
-void ResetBouncey(tPowerup *pPowerup, tCar_spec *pCar) {
+void __cdecl ResetBouncey(tPowerup *pPowerup, tCar_spec *pCar) {
     LOG_TRACE("(%p, %p)", pPowerup, pCar);
 
     (void)pPowerup;
@@ -805,9 +804,9 @@ void ResetBouncey(tPowerup *pPowerup, tCar_spec *pCar) {
     original_ResetBouncey(pPowerup, pCar);
 }
 
-static void(*original_ResetSuspension)(tPowerup *, tCar_spec *, ...) = (void(*)(tPowerup *, tCar_spec *, ...))0x0042e7a2;
+static void(__cdecl*original_ResetSuspension)(tPowerup *, tCar_spec *) = (void(__cdecl*)(tPowerup *, tCar_spec *))0x0042e7a2;
 CARM95_HOOK_FUNCTION(original_ResetSuspension, ResetSuspension)
-void ResetSuspension(tPowerup *pPowerup, tCar_spec *pCar) {
+void __cdecl ResetSuspension(tPowerup *pPowerup, tCar_spec *pCar) {
     LOG_TRACE("(%p, %p)", pPowerup, pCar);
 
     (void)pPowerup;
@@ -816,9 +815,9 @@ void ResetSuspension(tPowerup *pPowerup, tCar_spec *pCar) {
     original_ResetSuspension(pPowerup, pCar);
 }
 
-static void(*original_ResetDamageMultiplier)(tPowerup *, tCar_spec *, ...) = (void(*)(tPowerup *, tCar_spec *, ...))0x0042e7cc;
+static void(__cdecl*original_ResetDamageMultiplier)(tPowerup *, tCar_spec *) = (void(__cdecl*)(tPowerup *, tCar_spec *))0x0042e7cc;
 CARM95_HOOK_FUNCTION(original_ResetDamageMultiplier, ResetDamageMultiplier)
-void ResetDamageMultiplier(tPowerup *pPowerup, tCar_spec *pCar) {
+void __cdecl ResetDamageMultiplier(tPowerup *pPowerup, tCar_spec *pCar) {
     LOG_TRACE("(%p, %p)", pPowerup, pCar);
 
     (void)pPowerup;
@@ -827,9 +826,9 @@ void ResetDamageMultiplier(tPowerup *pPowerup, tCar_spec *pCar) {
     original_ResetDamageMultiplier(pPowerup, pCar);
 }
 
-static void(*original_ResetTyreGrip)(tPowerup *, tCar_spec *, ...) = (void(*)(tPowerup *, tCar_spec *, ...))0x0042e7e4;
+static void(__cdecl*original_ResetTyreGrip)(tPowerup *, tCar_spec *) = (void(__cdecl*)(tPowerup *, tCar_spec *))0x0042e7e4;
 CARM95_HOOK_FUNCTION(original_ResetTyreGrip, ResetTyreGrip)
-void ResetTyreGrip(tPowerup *pPowerup, tCar_spec *pCar) {
+void __cdecl ResetTyreGrip(tPowerup *pPowerup, tCar_spec *pCar) {
     LOG_TRACE("(%p, %p)", pPowerup, pCar);
 
     (void)pPowerup;
@@ -838,9 +837,9 @@ void ResetTyreGrip(tPowerup *pPowerup, tCar_spec *pCar) {
     original_ResetTyreGrip(pPowerup, pCar);
 }
 
-static int(*original_PickAtRandom)(tPowerup *, tCar_spec *, ...) = (int(*)(tPowerup *, tCar_spec *, ...))0x0042e7fc;
+static int(__cdecl*original_PickAtRandom)(tPowerup *, tCar_spec *) = (int(__cdecl*)(tPowerup *, tCar_spec *))0x0042e7fc;
 CARM95_HOOK_FUNCTION(original_PickAtRandom, PickAtRandom)
-int PickAtRandom(tPowerup *pPowerup, tCar_spec *pCar) {
+int __cdecl PickAtRandom(tPowerup *pPowerup, tCar_spec *pCar) {
     LOG_TRACE("(%p, %p)", pPowerup, pCar);
 
     (void)pPowerup;
@@ -849,9 +848,9 @@ int PickAtRandom(tPowerup *pPowerup, tCar_spec *pCar) {
     return original_PickAtRandom(pPowerup, pCar);
 }
 
-static int(*original_PedestrianRespawn)(tPowerup *, tCar_spec *, ...) = (int(*)(tPowerup *, tCar_spec *, ...))0x0042e834;
+static int(__cdecl*original_PedestrianRespawn)(tPowerup *, tCar_spec *) = (int(__cdecl*)(tPowerup *, tCar_spec *))0x0042e834;
 CARM95_HOOK_FUNCTION(original_PedestrianRespawn, PedestrianRespawn)
-int PedestrianRespawn(tPowerup *pPowerup, tCar_spec *pCar) {
+int __cdecl PedestrianRespawn(tPowerup *pPowerup, tCar_spec *pCar) {
     LOG_TRACE("(%p, %p)", pPowerup, pCar);
 
     (void)pPowerup;
@@ -860,9 +859,9 @@ int PedestrianRespawn(tPowerup *pPowerup, tCar_spec *pCar) {
     return original_PedestrianRespawn(pPowerup, pCar);
 }
 
-static int(*original_GotVouchers)(tPowerup *, tCar_spec *, ...) = (int(*)(tPowerup *, tCar_spec *, ...))0x0042e85a;
+static int(__cdecl*original_GotVouchers)(tPowerup *, tCar_spec *) = (int(__cdecl*)(tPowerup *, tCar_spec *))0x0042e85a;
 CARM95_HOOK_FUNCTION(original_GotVouchers, GotVouchers)
-int GotVouchers(tPowerup *pPowerup, tCar_spec *pCar) {
+int __cdecl GotVouchers(tPowerup *pPowerup, tCar_spec *pCar) {
     LOG_TRACE("(%p, %p)", pPowerup, pCar);
 
     (void)pPowerup;
@@ -871,9 +870,9 @@ int GotVouchers(tPowerup *pPowerup, tCar_spec *pCar) {
     return original_GotVouchers(pPowerup, pCar);
 }
 
-static void(*original_MungeVouchers)(tPowerup *, tU32, ...) = (void(*)(tPowerup *, tU32, ...))0x0042e899;
+static void(__cdecl*original_MungeVouchers)(tPowerup *, tU32) = (void(__cdecl*)(tPowerup *, tU32))0x0042e899;
 CARM95_HOOK_FUNCTION(original_MungeVouchers, MungeVouchers)
-void MungeVouchers(tPowerup *pPowerup, tU32 pPeriod) {
+void __cdecl MungeVouchers(tPowerup *pPowerup, tU32 pPeriod) {
     LOG_TRACE("(%p, %u)", pPowerup, pPeriod);
 
     (void)pPowerup;
@@ -882,9 +881,9 @@ void MungeVouchers(tPowerup *pPowerup, tU32 pPeriod) {
     original_MungeVouchers(pPowerup, pPeriod);
 }
 
-static int(*original_SetInstantHandbrake)(tPowerup *, tCar_spec *, ...) = (int(*)(tPowerup *, tCar_spec *, ...))0x0042e8af;
+static int(__cdecl*original_SetInstantHandbrake)(tPowerup *, tCar_spec *) = (int(__cdecl*)(tPowerup *, tCar_spec *))0x0042e8af;
 CARM95_HOOK_FUNCTION(original_SetInstantHandbrake, SetInstantHandbrake)
-int SetInstantHandbrake(tPowerup *pPowerup, tCar_spec *pCar) {
+int __cdecl SetInstantHandbrake(tPowerup *pPowerup, tCar_spec *pCar) {
     LOG_TRACE("(%p, %p)", pPowerup, pCar);
 
     (void)pPowerup;
@@ -893,9 +892,9 @@ int SetInstantHandbrake(tPowerup *pPowerup, tCar_spec *pCar) {
     return original_SetInstantHandbrake(pPowerup, pCar);
 }
 
-static void(*original_ResetInstantHandbrake)(tPowerup *, tCar_spec *, ...) = (void(*)(tPowerup *, tCar_spec *, ...))0x0042e8e7;
+static void(__cdecl*original_ResetInstantHandbrake)(tPowerup *, tCar_spec *) = (void(__cdecl*)(tPowerup *, tCar_spec *))0x0042e8e7;
 CARM95_HOOK_FUNCTION(original_ResetInstantHandbrake, ResetInstantHandbrake)
-void ResetInstantHandbrake(tPowerup *pPowerup, tCar_spec *pCar) {
+void __cdecl ResetInstantHandbrake(tPowerup *pPowerup, tCar_spec *pCar) {
     LOG_TRACE("(%p, %p)", pPowerup, pCar);
 
     (void)pPowerup;
@@ -904,9 +903,9 @@ void ResetInstantHandbrake(tPowerup *pPowerup, tCar_spec *pCar) {
     original_ResetInstantHandbrake(pPowerup, pCar);
 }
 
-static void(*original_DoBouncey)(tPowerup *, tU32, ...) = (void(*)(tPowerup *, tU32, ...))0x0042e909;
+static void(__cdecl*original_DoBouncey)(tPowerup *, tU32) = (void(__cdecl*)(tPowerup *, tU32))0x0042e909;
 CARM95_HOOK_FUNCTION(original_DoBouncey, DoBouncey)
-void DoBouncey(tPowerup *pPowerup, tU32 pPeriod) {
+void __cdecl DoBouncey(tPowerup *pPowerup, tU32 pPeriod) {
     LOG_TRACE("(%p, %u)", pPowerup, pPeriod);
 
     (void)pPowerup;
@@ -915,9 +914,9 @@ void DoBouncey(tPowerup *pPowerup, tU32 pPeriod) {
     original_DoBouncey(pPowerup, pPeriod);
 }
 
-static int(*original_HitMine)(tPowerup *, tCar_spec *, ...) = (int(*)(tPowerup *, tCar_spec *, ...))0x0042e986;
+static int(__cdecl*original_HitMine)(tPowerup *, tCar_spec *) = (int(__cdecl*)(tPowerup *, tCar_spec *))0x0042e986;
 CARM95_HOOK_FUNCTION(original_HitMine, HitMine)
-int HitMine(tPowerup *pPowerup, tCar_spec *pCar) {
+int __cdecl HitMine(tPowerup *pPowerup, tCar_spec *pCar) {
     int i;
     float fudge_multiplier;
     LOG_TRACE("(%p, %p)", pPowerup, pCar);
@@ -930,9 +929,9 @@ int HitMine(tPowerup *pPowerup, tCar_spec *pCar) {
     return original_HitMine(pPowerup, pCar);
 }
 
-static int(*original_SetMassMultiplier)(tPowerup *, tCar_spec *, ...) = (int(*)(tPowerup *, tCar_spec *, ...))0x0042eb2f;
+static int(__cdecl*original_SetMassMultiplier)(tPowerup *, tCar_spec *) = (int(__cdecl*)(tPowerup *, tCar_spec *))0x0042eb2f;
 CARM95_HOOK_FUNCTION(original_SetMassMultiplier, SetMassMultiplier)
-int SetMassMultiplier(tPowerup *pPowerup, tCar_spec *pCar) {
+int __cdecl SetMassMultiplier(tPowerup *pPowerup, tCar_spec *pCar) {
     LOG_TRACE("(%p, %p)", pPowerup, pCar);
 
     (void)pPowerup;
@@ -941,9 +940,9 @@ int SetMassMultiplier(tPowerup *pPowerup, tCar_spec *pCar) {
     return original_SetMassMultiplier(pPowerup, pCar);
 }
 
-static void(*original_ResetMassMultiplier)(tPowerup *, tCar_spec *, ...) = (void(*)(tPowerup *, tCar_spec *, ...))0x0042eb61;
+static void(__cdecl*original_ResetMassMultiplier)(tPowerup *, tCar_spec *) = (void(__cdecl*)(tPowerup *, tCar_spec *))0x0042eb61;
 CARM95_HOOK_FUNCTION(original_ResetMassMultiplier, ResetMassMultiplier)
-void ResetMassMultiplier(tPowerup *pPowerup, tCar_spec *pCar) {
+void __cdecl ResetMassMultiplier(tPowerup *pPowerup, tCar_spec *pCar) {
     LOG_TRACE("(%p, %p)", pPowerup, pCar);
 
     (void)pPowerup;
@@ -952,9 +951,9 @@ void ResetMassMultiplier(tPowerup *pPowerup, tCar_spec *pCar) {
     original_ResetMassMultiplier(pPowerup, pCar);
 }
 
-static int(*original_ShowPedestrians)(tPowerup *, tCar_spec *, ...) = (int(*)(tPowerup *, tCar_spec *, ...))0x0042eb79;
+static int(__cdecl*original_ShowPedestrians)(tPowerup *, tCar_spec *) = (int(__cdecl*)(tPowerup *, tCar_spec *))0x0042eb79;
 CARM95_HOOK_FUNCTION(original_ShowPedestrians, ShowPedestrians)
-int ShowPedestrians(tPowerup *pPowerup, tCar_spec *pCar) {
+int __cdecl ShowPedestrians(tPowerup *pPowerup, tCar_spec *pCar) {
     LOG_TRACE("(%p, %p)", pPowerup, pCar);
 
     (void)pPowerup;
@@ -963,9 +962,9 @@ int ShowPedestrians(tPowerup *pPowerup, tCar_spec *pCar) {
     return original_ShowPedestrians(pPowerup, pCar);
 }
 
-static void(*original_HidePedestrians)(tPowerup *, tCar_spec *, ...) = (void(*)(tPowerup *, tCar_spec *, ...))0x0042ebb1;
+static void(__cdecl*original_HidePedestrians)(tPowerup *, tCar_spec *) = (void(__cdecl*)(tPowerup *, tCar_spec *))0x0042ebb1;
 CARM95_HOOK_FUNCTION(original_HidePedestrians, HidePedestrians)
-void HidePedestrians(tPowerup *pPowerup, tCar_spec *pCar) {
+void __cdecl HidePedestrians(tPowerup *pPowerup, tCar_spec *pCar) {
     LOG_TRACE("(%p, %p)", pPowerup, pCar);
 
     (void)pPowerup;
@@ -974,9 +973,9 @@ void HidePedestrians(tPowerup *pPowerup, tCar_spec *pCar) {
     original_HidePedestrians(pPowerup, pCar);
 }
 
-static int(*original_SetProximity)(tPowerup *, tCar_spec *, ...) = (int(*)(tPowerup *, tCar_spec *, ...))0x0042ebd3;
+static int(__cdecl*original_SetProximity)(tPowerup *, tCar_spec *) = (int(__cdecl*)(tPowerup *, tCar_spec *))0x0042ebd3;
 CARM95_HOOK_FUNCTION(original_SetProximity, SetProximity)
-int SetProximity(tPowerup *pPowerup, tCar_spec *pCar) {
+int __cdecl SetProximity(tPowerup *pPowerup, tCar_spec *pCar) {
     LOG_TRACE("(%p, %p)", pPowerup, pCar);
 
     (void)pPowerup;
@@ -985,9 +984,9 @@ int SetProximity(tPowerup *pPowerup, tCar_spec *pCar) {
     return original_SetProximity(pPowerup, pCar);
 }
 
-static void(*original_ResetProximity)(tPowerup *, tCar_spec *, ...) = (void(*)(tPowerup *, tCar_spec *, ...))0x0042ec0d;
+static void(__cdecl*original_ResetProximity)(tPowerup *, tCar_spec *) = (void(__cdecl*)(tPowerup *, tCar_spec *))0x0042ec0d;
 CARM95_HOOK_FUNCTION(original_ResetProximity, ResetProximity)
-void ResetProximity(tPowerup *pPowerup, tCar_spec *pCar) {
+void __cdecl ResetProximity(tPowerup *pPowerup, tCar_spec *pCar) {
     LOG_TRACE("(%p, %p)", pPowerup, pCar);
 
     (void)pPowerup;
@@ -996,9 +995,9 @@ void ResetProximity(tPowerup *pPowerup, tCar_spec *pCar) {
     original_ResetProximity(pPowerup, pCar);
 }
 
-static int(*original_SetPedHarvest)(tPowerup *, tCar_spec *, ...) = (int(*)(tPowerup *, tCar_spec *, ...))0x0042ec25;
+static int(__cdecl*original_SetPedHarvest)(tPowerup *, tCar_spec *) = (int(__cdecl*)(tPowerup *, tCar_spec *))0x0042ec25;
 CARM95_HOOK_FUNCTION(original_SetPedHarvest, SetPedHarvest)
-int SetPedHarvest(tPowerup *pPowerup, tCar_spec *pCar) {
+int __cdecl SetPedHarvest(tPowerup *pPowerup, tCar_spec *pCar) {
     LOG_TRACE("(%p, %p)", pPowerup, pCar);
 
     (void)pPowerup;
@@ -1007,9 +1006,9 @@ int SetPedHarvest(tPowerup *pPowerup, tCar_spec *pCar) {
     return original_SetPedHarvest(pPowerup, pCar);
 }
 
-static void(*original_ResetPedHarvest)(tPowerup *, tCar_spec *, ...) = (void(*)(tPowerup *, tCar_spec *, ...))0x0042ec50;
+static void(__cdecl*original_ResetPedHarvest)(tPowerup *, tCar_spec *) = (void(__cdecl*)(tPowerup *, tCar_spec *))0x0042ec50;
 CARM95_HOOK_FUNCTION(original_ResetPedHarvest, ResetPedHarvest)
-void ResetPedHarvest(tPowerup *pPowerup, tCar_spec *pCar) {
+void __cdecl ResetPedHarvest(tPowerup *pPowerup, tCar_spec *pCar) {
     int i;
     LOG_TRACE("(%p, %p)", pPowerup, pCar);
 
@@ -1020,9 +1019,9 @@ void ResetPedHarvest(tPowerup *pPowerup, tCar_spec *pCar) {
     original_ResetPedHarvest(pPowerup, pCar);
 }
 
-static int(*original_SetVesuvianCorpses)(tPowerup *, tCar_spec *, ...) = (int(*)(tPowerup *, tCar_spec *, ...))0x0042ecb8;
+static int(__cdecl*original_SetVesuvianCorpses)(tPowerup *, tCar_spec *) = (int(__cdecl*)(tPowerup *, tCar_spec *))0x0042ecb8;
 CARM95_HOOK_FUNCTION(original_SetVesuvianCorpses, SetVesuvianCorpses)
-int SetVesuvianCorpses(tPowerup *pPowerup, tCar_spec *pCar) {
+int __cdecl SetVesuvianCorpses(tPowerup *pPowerup, tCar_spec *pCar) {
     LOG_TRACE("(%p, %p)", pPowerup, pCar);
 
     (void)pPowerup;
@@ -1031,9 +1030,9 @@ int SetVesuvianCorpses(tPowerup *pPowerup, tCar_spec *pCar) {
     return original_SetVesuvianCorpses(pPowerup, pCar);
 }
 
-static void(*original_ResetVesuvianCorpses)(tPowerup *, tCar_spec *, ...) = (void(*)(tPowerup *, tCar_spec *, ...))0x0042ece3;
+static void(__cdecl*original_ResetVesuvianCorpses)(tPowerup *, tCar_spec *) = (void(__cdecl*)(tPowerup *, tCar_spec *))0x0042ece3;
 CARM95_HOOK_FUNCTION(original_ResetVesuvianCorpses, ResetVesuvianCorpses)
-void ResetVesuvianCorpses(tPowerup *pPowerup, tCar_spec *pCar) {
+void __cdecl ResetVesuvianCorpses(tPowerup *pPowerup, tCar_spec *pCar) {
     LOG_TRACE("(%p, %p)", pPowerup, pCar);
 
     (void)pPowerup;
@@ -1042,9 +1041,9 @@ void ResetVesuvianCorpses(tPowerup *pPowerup, tCar_spec *pCar) {
     original_ResetVesuvianCorpses(pPowerup, pCar);
 }
 
-static void(*original_ReceivedPowerup)(tNet_contents *, ...) = (void(*)(tNet_contents *, ...))0x0042ecf8;
+static void(__cdecl*original_ReceivedPowerup)(tNet_contents *) = (void(__cdecl*)(tNet_contents *))0x0042ecf8;
 CARM95_HOOK_FUNCTION(original_ReceivedPowerup, ReceivedPowerup)
-void ReceivedPowerup(tNet_contents *pContents) {
+void __cdecl ReceivedPowerup(tNet_contents *pContents) {
     tPowerup *powerup;
     tCar_spec *car;
     LOG_TRACE("(%p)", pContents);
@@ -1056,9 +1055,9 @@ void ReceivedPowerup(tNet_contents *pContents) {
     original_ReceivedPowerup(pContents);
 }
 
-static void(*original_SendCurrentPowerups)() = (void(*)())0x0042eed9;
+static void(__cdecl*original_SendCurrentPowerups)() = (void(__cdecl*)())0x0042eed9;
 CARM95_HOOK_FUNCTION(original_SendCurrentPowerups, SendCurrentPowerups)
-void SendCurrentPowerups() {
+void __cdecl SendCurrentPowerups() {
     int i;
     int cat;
     int j;
@@ -1079,9 +1078,9 @@ void SendCurrentPowerups() {
     original_SendCurrentPowerups();
 }
 
-static void(*original_LoseAllLocalPowerups)(tCar_spec *, ...) = (void(*)(tCar_spec *, ...))0x0042f043;
+static void(__cdecl*original_LoseAllLocalPowerups)(tCar_spec *) = (void(__cdecl*)(tCar_spec *))0x0042f043;
 CARM95_HOOK_FUNCTION(original_LoseAllLocalPowerups, LoseAllLocalPowerups)
-void LoseAllLocalPowerups(tCar_spec *pCar) {
+void __cdecl LoseAllLocalPowerups(tCar_spec *pCar) {
     int i;
     LOG_TRACE("(%p)", pCar);
 

@@ -19,58 +19,58 @@ extern int * hookvar_gCurrent_pratcam_precedence ; // addr: 00536328
 extern int * hookvar_gCurrent_ambient_prat_sequence ; // addr: 00536338
 extern int * hookvar_gCurrent_pratcam_alternative ; // addr: 005362A8
 
-int PratcamGetCurrent();
+int __cdecl PratcamGetCurrent();
 
-int PratcamGetAmbient();
+int __cdecl PratcamGetAmbient();
 
-int PratcamGetPending();
+int __cdecl PratcamGetPending();
 
-void TogglePratcam();
+void __cdecl TogglePratcam();
 
-void LoadPratcam(char *pFolder_name);
+void __cdecl LoadPratcam(char *pFolder_name);
 
-void NextPratcamChunk();
+void __cdecl NextPratcamChunk();
 
-void NewPratcamSequence(int pSequence_index, int pStart_chunk);
+void __cdecl NewPratcamSequence(int pSequence_index, int pStart_chunk);
 
-void ChangeAmbientPratcamNow(int pIndex, int pStart_chunk);
+void __cdecl ChangeAmbientPratcamNow(int pIndex, int pStart_chunk);
 
-void ChangeAmbientPratcam(int pIndex);
+void __cdecl ChangeAmbientPratcam(int pIndex);
 
-void PratcamEventNow(int pIndex);
+void __cdecl PratcamEventNow(int pIndex);
 
-void PratcamEvent(int pIndex);
+void __cdecl PratcamEvent(int pIndex);
 
 int HighResPratBufferWidth();
 
 int HighResPratBufferHeight();
 
-void InitPratcam();
+void __cdecl InitPratcam();
 
-void DisposePratcam();
+void __cdecl DisposePratcam();
 
-void DoPratcam(tU32 pThe_time);
+void __cdecl DoPratcam(tU32 pThe_time);
 
-void TestPratCam(int pIndex);
+void __cdecl TestPratCam(int pIndex);
 
-void PratCam0();
+void __cdecl PratCam0();
 
-void PratCam1();
+void __cdecl PratCam1();
 
-void PratCam2();
+void __cdecl PratCam2();
 
-void PratCam3();
+void __cdecl PratCam3();
 
-void PratCam4();
+void __cdecl PratCam4();
 
-void PratCam5();
+void __cdecl PratCam5();
 
-void PratCam6();
+void __cdecl PratCam6();
 
-void PratCam7();
+void __cdecl PratCam7();
 
-void PratCam8();
+void __cdecl PratCam8();
 
-void PratCam9();
+void __cdecl PratCam9();
 
 #endif

@@ -4,6 +4,6 @@
 #include "br_types.h"
 
 
-int BrLogWrite(void *buffer, br_size_t s, br_size_t n);
+int __cdecl BrLogWrite(void *buffer, br_size_t s, br_size_t n);
 
 #endif

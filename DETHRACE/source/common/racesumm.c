@@ -4,7 +4,6 @@
 
 #include "carm95_hooks.h"
 
-#include <stdio.h>
 int(* hookvar_gPlayer_lookup )[6] = (void*)0x00530e38;
 tMouse_area * hookvar_gOld_back_button  = (void*)0x00530e58;
 tWreck_info(* hookvar_gWreck_array )[30] = (void*)0x00530ec0;
@@ -36,9 +35,9 @@ int * hookvar_gWreck_zoomed_in  = (void*)0x00530e24;
 int * hookvar_gDone_initial  = (void*)0x00530e04;
 int * hookvar_gTemp_lost  = (void*)0x00530e20;
 
-static void(*original_MungeRankEtc)(tProgram_state *, ...) = (void(*)(tProgram_state *, ...))0x00415740;
+static void(__cdecl*original_MungeRankEtc)(tProgram_state *) = (void(__cdecl*)(tProgram_state *))0x00415740;
 CARM95_HOOK_FUNCTION(original_MungeRankEtc, MungeRankEtc)
-void MungeRankEtc(tProgram_state *pThe_state) {
+void __cdecl MungeRankEtc(tProgram_state *pThe_state) {
     int i;
     int not_done_yet;
     LOG_TRACE("(%p)", pThe_state);
@@ -50,18 +49,18 @@ void MungeRankEtc(tProgram_state *pThe_state) {
     original_MungeRankEtc(pThe_state);
 }
 
-static void(*original_CalcRankIncrease)() = (void(*)())0x0041631f;
+static void(__cdecl*original_CalcRankIncrease)() = (void(__cdecl*)())0x0041631f;
 CARM95_HOOK_FUNCTION(original_CalcRankIncrease, CalcRankIncrease)
-void CalcRankIncrease() {
+void __cdecl CalcRankIncrease() {
     LOG_TRACE("()");
 
 
     original_CalcRankIncrease();
 }
 
-static int(*original_RaceSummaryDone)(int, int, int, int, int, ...) = (int(*)(int, int, int, int, int, ...))0x0041587e;
+static int(__cdecl*original_RaceSummaryDone)(int, int, int, int, int) = (int(__cdecl*)(int, int, int, int, int))0x0041587e;
 CARM95_HOOK_FUNCTION(original_RaceSummaryDone, RaceSummaryDone)
-int RaceSummaryDone(int pCurrent_choice, int pCurrent_mode, int pGo_ahead, int pEscaped, int pTimed_out) {
+int __cdecl RaceSummaryDone(int pCurrent_choice, int pCurrent_mode, int pGo_ahead, int pEscaped, int pTimed_out) {
     LOG_TRACE("(%d, %d, %d, %d, %d)", pCurrent_choice, pCurrent_mode, pGo_ahead, pEscaped, pTimed_out);
 
     (void)pCurrent_choice;
@@ -73,9 +72,9 @@ int RaceSummaryDone(int pCurrent_choice, int pCurrent_mode, int pGo_ahead, int p
     return original_RaceSummaryDone(pCurrent_choice, pCurrent_mode, pGo_ahead, pEscaped, pTimed_out);
 }
 
-static void(*original_DrawInBox)(int, int, int, int, int, int, int, ...) = (void(*)(int, int, int, int, int, int, int, ...))0x00415e44;
+static void(__cdecl*original_DrawInBox)(int, int, int, int, int, int, int) = (void(__cdecl*)(int, int, int, int, int, int, int))0x00415e44;
 CARM95_HOOK_FUNCTION(original_DrawInBox, DrawInBox)
-void DrawInBox(int pBox_left, int pText_left, int pTop, int pRight, int pBottom, int pColour, int pAmount) {
+void __cdecl DrawInBox(int pBox_left, int pText_left, int pTop, int pRight, int pBottom, int pColour, int pAmount) {
     LOG_TRACE("(%d, %d, %d, %d, %d, %d, %d)", pBox_left, pText_left, pTop, pRight, pBottom, pColour, pAmount);
 
     (void)pBox_left;
@@ -89,9 +88,9 @@ void DrawInBox(int pBox_left, int pText_left, int pTop, int pRight, int pBottom,
     original_DrawInBox(pBox_left, pText_left, pTop, pRight, pBottom, pColour, pAmount);
 }
 
-static void(*original_DrawChromeNumber)(int, int, int, int, int, ...) = (void(*)(int, int, int, int, int, ...))0x00415ebd;
+static void(__cdecl*original_DrawChromeNumber)(int, int, int, int, int) = (void(__cdecl*)(int, int, int, int, int))0x00415ebd;
 CARM95_HOOK_FUNCTION(original_DrawChromeNumber, DrawChromeNumber)
-void DrawChromeNumber(int pLeft_1, int pLeft_2, int pPitch, int pTop, int pAmount) {
+void __cdecl DrawChromeNumber(int pLeft_1, int pLeft_2, int pPitch, int pTop, int pAmount) {
     LOG_TRACE("(%d, %d, %d, %d, %d)", pLeft_1, pLeft_2, pPitch, pTop, pAmount);
 
     (void)pLeft_1;
@@ -103,18 +102,18 @@ void DrawChromeNumber(int pLeft_1, int pLeft_2, int pPitch, int pTop, int pAmoun
     original_DrawChromeNumber(pLeft_1, pLeft_2, pPitch, pTop, pAmount);
 }
 
-static void(*original_DrawSummaryItems)() = (void(*)())0x00415beb;
+static void(__cdecl*original_DrawSummaryItems)() = (void(__cdecl*)())0x00415beb;
 CARM95_HOOK_FUNCTION(original_DrawSummaryItems, DrawSummaryItems)
-void DrawSummaryItems() {
+void __cdecl DrawSummaryItems() {
     LOG_TRACE("()");
 
 
     original_DrawSummaryItems();
 }
 
-static void(*original_RampUpRate)(float *, tU32, ...) = (void(*)(float *, tU32, ...))0x00415f72;
+static void(__cdecl*original_RampUpRate)(float *, tU32) = (void(__cdecl*)(float *, tU32))0x00415f72;
 CARM95_HOOK_FUNCTION(original_RampUpRate, RampUpRate)
-void RampUpRate(float *pRate, tU32 pTime) {
+void __cdecl RampUpRate(float *pRate, tU32 pTime) {
     LOG_TRACE("(%p, %u)", pRate, pTime);
 
     (void)pRate;
@@ -123,9 +122,9 @@ void RampUpRate(float *pRate, tU32 pTime) {
     original_RampUpRate(pRate, pTime);
 }
 
-static void(*original_DrawSummary)(int, int, ...) = (void(*)(int, int, ...))0x004158c0;
+static void(__cdecl*original_DrawSummary)(int, int) = (void(__cdecl*)(int, int))0x004158c0;
 CARM95_HOOK_FUNCTION(original_DrawSummary, DrawSummary)
-void DrawSummary(int pCurrent_choice, int pCurrent_mode) {
+void __cdecl DrawSummary(int pCurrent_choice, int pCurrent_mode) {
     tU32 the_time;
     static tU32 last_time;
     static tU32 last_change_time;
@@ -146,27 +145,27 @@ void DrawSummary(int pCurrent_choice, int pCurrent_mode) {
     original_DrawSummary(pCurrent_choice, pCurrent_mode);
 }
 
-static void(*original_StartSummary)() = (void(*)())0x00415ff2;
+static void(__cdecl*original_StartSummary)() = (void(__cdecl*)())0x00415ff2;
 CARM95_HOOK_FUNCTION(original_StartSummary, StartSummary)
-void StartSummary() {
+void __cdecl StartSummary() {
     LOG_TRACE("()");
 
 
     original_StartSummary();
 }
 
-static void(*original_SetUpTemps)() = (void(*)())0x00416046;
+static void(__cdecl*original_SetUpTemps)() = (void(__cdecl*)())0x00416046;
 CARM95_HOOK_FUNCTION(original_SetUpTemps, SetUpTemps)
-void SetUpTemps() {
+void __cdecl SetUpTemps() {
     LOG_TRACE("()");
 
 
     original_SetUpTemps();
 }
 
-static int(*original_Summ1GoAhead)(int *, int *, ...) = (int(*)(int *, int *, ...))0x0041600c;
+static int(__cdecl*original_Summ1GoAhead)(int *, int *) = (int(__cdecl*)(int *, int *))0x0041600c;
 CARM95_HOOK_FUNCTION(original_Summ1GoAhead, Summ1GoAhead)
-int Summ1GoAhead(int *pCurrent_choice, int *pCurrent_mode) {
+int __cdecl Summ1GoAhead(int *pCurrent_choice, int *pCurrent_mode) {
     LOG_TRACE("(%p, %p)", pCurrent_choice, pCurrent_mode);
 
     (void)pCurrent_choice;
@@ -175,9 +174,9 @@ int Summ1GoAhead(int *pCurrent_choice, int *pCurrent_mode) {
     return original_Summ1GoAhead(pCurrent_choice, pCurrent_mode);
 }
 
-static int(*original_SummCheckGameOver)(int *, int *, ...) = (int(*)(int *, int *, ...))0x0041608d;
+static int(__cdecl*original_SummCheckGameOver)(int *, int *) = (int(__cdecl*)(int *, int *))0x0041608d;
 CARM95_HOOK_FUNCTION(original_SummCheckGameOver, SummCheckGameOver)
-int SummCheckGameOver(int *pCurrent_choice, int *pCurrent_mode) {
+int __cdecl SummCheckGameOver(int *pCurrent_choice, int *pCurrent_mode) {
     int i;
     tS3_sound_tag sound_tag;
     LOG_TRACE("(%p, %p)", pCurrent_choice, pCurrent_mode);
@@ -190,9 +189,9 @@ int SummCheckGameOver(int *pCurrent_choice, int *pCurrent_mode) {
     return original_SummCheckGameOver(pCurrent_choice, pCurrent_mode);
 }
 
-static tSO_result(*original_DoEndRaceSummary1)() = (tSO_result(*)())0x004161dd;
+static tSO_result(__cdecl*original_DoEndRaceSummary1)() = (tSO_result(__cdecl*)())0x004161dd;
 CARM95_HOOK_FUNCTION(original_DoEndRaceSummary1, DoEndRaceSummary1)
-tSO_result DoEndRaceSummary1() {
+tSO_result __cdecl DoEndRaceSummary1() {
     static tFlicette flicker_on[1];
     static tFlicette flicker_off[1];
     static tFlicette push[1];
@@ -213,9 +212,9 @@ tSO_result DoEndRaceSummary1() {
     return original_DoEndRaceSummary1();
 }
 
-static void(*original_PrepareBoundingRadius__racesumm)(br_model *, ...) = (void(*)(br_model *, ...))0x00417e27;
+static void(__cdecl*original_PrepareBoundingRadius__racesumm)(br_model *) = (void(__cdecl*)(br_model *))0x00417e27;
 CARM95_HOOK_FUNCTION(original_PrepareBoundingRadius__racesumm, PrepareBoundingRadius__racesumm)
-void PrepareBoundingRadius__racesumm(br_model *model) {
+void __cdecl PrepareBoundingRadius__racesumm(br_model *model) {
     float d;
     float max;
     int v;
@@ -231,9 +230,9 @@ void PrepareBoundingRadius__racesumm(br_model *model) {
     original_PrepareBoundingRadius__racesumm(model);
 }
 
-static void(*original_BuildWrecks)() = (void(*)())0x00417a91;
+static void(__cdecl*original_BuildWrecks)() = (void(__cdecl*)())0x00417a91;
 CARM95_HOOK_FUNCTION(original_BuildWrecks, BuildWrecks)
-void BuildWrecks() {
+void __cdecl BuildWrecks() {
     int cat;
     int i;
     int position;
@@ -252,9 +251,9 @@ void BuildWrecks() {
     original_BuildWrecks();
 }
 
-static void(*original_DisposeWrecks)() = (void(*)())0x00417eba;
+static void(__cdecl*original_DisposeWrecks)() = (void(__cdecl*)())0x00417eba;
 CARM95_HOOK_FUNCTION(original_DisposeWrecks, DisposeWrecks)
-void DisposeWrecks() {
+void __cdecl DisposeWrecks() {
     int cat;
     int i;
     int position;
@@ -273,9 +272,9 @@ void DisposeWrecks() {
     original_DisposeWrecks();
 }
 
-static int(*original_MatrixIsIdentity)(br_matrix34 *, ...) = (int(*)(br_matrix34 *, ...))0x00416f4e;
+static int(__cdecl*original_MatrixIsIdentity)(br_matrix34 *) = (int(__cdecl*)(br_matrix34 *))0x00416f4e;
 CARM95_HOOK_FUNCTION(original_MatrixIsIdentity, MatrixIsIdentity)
-int MatrixIsIdentity(br_matrix34 *pMat) {
+int __cdecl MatrixIsIdentity(br_matrix34 *pMat) {
     LOG_TRACE("(%p)", pMat);
 
     (void)pMat;
@@ -283,9 +282,9 @@ int MatrixIsIdentity(br_matrix34 *pMat) {
     return original_MatrixIsIdentity(pMat);
 }
 
-static void(*original_SpinWrecks)(tU32, ...) = (void(*)(tU32, ...))0x00416d47;
+static void(__cdecl*original_SpinWrecks)(tU32) = (void(__cdecl*)(tU32))0x00416d47;
 CARM95_HOOK_FUNCTION(original_SpinWrecks, SpinWrecks)
-void SpinWrecks(tU32 pFrame_period) {
+void __cdecl SpinWrecks(tU32 pFrame_period) {
     int i;
     br_vector3 translation;
     br_matrix34 old_mat;
@@ -299,9 +298,9 @@ void SpinWrecks(tU32 pFrame_period) {
     original_SpinWrecks(pFrame_period);
 }
 
-static void(*original_ZoomInTo)(int, int *, int *, ...) = (void(*)(int, int *, int *, ...))0x0041778f;
+static void(__cdecl*original_ZoomInTo)(int, int *, int *) = (void(__cdecl*)(int, int *, int *))0x0041778f;
 CARM95_HOOK_FUNCTION(original_ZoomInTo, ZoomInTo)
-void ZoomInTo(int pIndex, int *pCurrent_choice, int *pCurrent_mode) {
+void __cdecl ZoomInTo(int pIndex, int *pCurrent_choice, int *pCurrent_mode) {
     LOG_TRACE("(%d, %p, %p)", pIndex, pCurrent_choice, pCurrent_mode);
 
     (void)pIndex;
@@ -311,9 +310,9 @@ void ZoomInTo(int pIndex, int *pCurrent_choice, int *pCurrent_mode) {
     original_ZoomInTo(pIndex, pCurrent_choice, pCurrent_mode);
 }
 
-static void(*original_ZoomOutTo)(int, int *, int *, ...) = (void(*)(int, int *, int *, ...))0x00416413;
+static void(__cdecl*original_ZoomOutTo)(int, int *, int *) = (void(__cdecl*)(int, int *, int *))0x00416413;
 CARM95_HOOK_FUNCTION(original_ZoomOutTo, ZoomOutTo)
-void ZoomOutTo(int pIndex, int *pCurrent_choice, int *pCurrent_mode) {
+void __cdecl ZoomOutTo(int pIndex, int *pCurrent_choice, int *pCurrent_mode) {
     LOG_TRACE("(%d, %p, %p)", pIndex, pCurrent_choice, pCurrent_mode);
 
     (void)pIndex;
@@ -323,9 +322,9 @@ void ZoomOutTo(int pIndex, int *pCurrent_choice, int *pCurrent_mode) {
     original_ZoomOutTo(pIndex, pCurrent_choice, pCurrent_mode);
 }
 
-static int(*original_WreckPick)(br_actor *, br_model *, br_material *, br_vector3 *, br_vector3 *, br_scalar, br_scalar, void *, ...) = (int(*)(br_actor *, br_model *, br_material *, br_vector3 *, br_vector3 *, br_scalar, br_scalar, void *, ...))0x0041660d;
+static int(__cdecl*original_WreckPick)(br_actor *, br_model *, br_material *, br_vector3 *, br_vector3 *, br_scalar, br_scalar, void *) = (int(__cdecl*)(br_actor *, br_model *, br_material *, br_vector3 *, br_vector3 *, br_scalar, br_scalar, void *))0x0041660d;
 CARM95_HOOK_FUNCTION(original_WreckPick, WreckPick)
-int WreckPick(br_actor *pActor, br_model *pModel, br_material *pMaterial, br_vector3 *pRay_pos, br_vector3 *pRay_dir, br_scalar pNear, br_scalar pFar, void *pArg) {
+int __cdecl WreckPick(br_actor *pActor, br_model *pModel, br_material *pMaterial, br_vector3 *pRay_pos, br_vector3 *pRay_dir, br_scalar pNear, br_scalar pFar, void *pArg) {
     int i;
     LOG_TRACE("(%p, %p, %p, %p, %p, %f, %f, %p)", pActor, pModel, pMaterial, pRay_pos, pRay_dir, pNear, pFar, pArg);
 
@@ -342,9 +341,9 @@ int WreckPick(br_actor *pActor, br_model *pModel, br_material *pMaterial, br_vec
     return original_WreckPick(pActor, pModel, pMaterial, pRay_pos, pRay_dir, pNear, pFar, pArg);
 }
 
-static int(*original_CastSelectionRay)(int *, int *, ...) = (int(*)(int *, int *, ...))0x00416486;
+static int(__cdecl*original_CastSelectionRay)(int *, int *) = (int(__cdecl*)(int *, int *))0x00416486;
 CARM95_HOOK_FUNCTION(original_CastSelectionRay, CastSelectionRay)
-int CastSelectionRay(int *pCurrent_choice, int *pCurrent_mode) {
+int __cdecl CastSelectionRay(int *pCurrent_choice, int *pCurrent_mode) {
     int mouse_x;
     int mouse_y;
     int i;
@@ -363,9 +362,9 @@ int CastSelectionRay(int *pCurrent_choice, int *pCurrent_mode) {
     return original_CastSelectionRay(pCurrent_choice, pCurrent_mode);
 }
 
-static int(*original_DamageScrnExit)(int *, int *, ...) = (int(*)(int *, int *, ...))0x0041636e;
+static int(__cdecl*original_DamageScrnExit)(int *, int *) = (int(__cdecl*)(int *, int *))0x0041636e;
 CARM95_HOOK_FUNCTION(original_DamageScrnExit, DamageScrnExit)
-int DamageScrnExit(int *pCurrent_choice, int *pCurrent_mode) {
+int __cdecl DamageScrnExit(int *pCurrent_choice, int *pCurrent_mode) {
     LOG_TRACE("(%p, %p)", pCurrent_choice, pCurrent_mode);
 
     (void)pCurrent_choice;
@@ -374,9 +373,9 @@ int DamageScrnExit(int *pCurrent_choice, int *pCurrent_mode) {
     return original_DamageScrnExit(pCurrent_choice, pCurrent_mode);
 }
 
-static void(*original_DamageScrnDraw)(int, int, ...) = (void(*)(int, int, ...))0x00416671;
+static void(__cdecl*original_DamageScrnDraw)(int, int) = (void(__cdecl*)(int, int))0x00416671;
 CARM95_HOOK_FUNCTION(original_DamageScrnDraw, DamageScrnDraw)
-void DamageScrnDraw(int pCurrent_choice, int pCurrent_mode) {
+void __cdecl DamageScrnDraw(int pCurrent_choice, int pCurrent_mode) {
     tU32 the_time;
     br_vector3 camera_movement;
     int finished;
@@ -405,9 +404,9 @@ void DamageScrnDraw(int pCurrent_choice, int pCurrent_mode) {
     original_DamageScrnDraw(pCurrent_choice, pCurrent_mode);
 }
 
-static int(*original_DamageScrnLeft)(int *, int *, ...) = (int(*)(int *, int *, ...))0x00417038;
+static int(__cdecl*original_DamageScrnLeft)(int *, int *) = (int(__cdecl*)(int *, int *))0x00417038;
 CARM95_HOOK_FUNCTION(original_DamageScrnLeft, DamageScrnLeft)
-int DamageScrnLeft(int *pCurrent_choice, int *pCurrent_mode) {
+int __cdecl DamageScrnLeft(int *pCurrent_choice, int *pCurrent_mode) {
     int i;
     LOG_TRACE("(%p, %p)", pCurrent_choice, pCurrent_mode);
 
@@ -418,9 +417,9 @@ int DamageScrnLeft(int *pCurrent_choice, int *pCurrent_mode) {
     return original_DamageScrnLeft(pCurrent_choice, pCurrent_mode);
 }
 
-static int(*original_DamageScrnRight)(int *, int *, ...) = (int(*)(int *, int *, ...))0x00417175;
+static int(__cdecl*original_DamageScrnRight)(int *, int *) = (int(__cdecl*)(int *, int *))0x00417175;
 CARM95_HOOK_FUNCTION(original_DamageScrnRight, DamageScrnRight)
-int DamageScrnRight(int *pCurrent_choice, int *pCurrent_mode) {
+int __cdecl DamageScrnRight(int *pCurrent_choice, int *pCurrent_mode) {
     int i;
     LOG_TRACE("(%p, %p)", pCurrent_choice, pCurrent_mode);
 
@@ -431,9 +430,9 @@ int DamageScrnRight(int *pCurrent_choice, int *pCurrent_mode) {
     return original_DamageScrnRight(pCurrent_choice, pCurrent_mode);
 }
 
-static int(*original_DamageScrnUp)(int *, int *, ...) = (int(*)(int *, int *, ...))0x004172b9;
+static int(__cdecl*original_DamageScrnUp)(int *, int *) = (int(__cdecl*)(int *, int *))0x004172b9;
 CARM95_HOOK_FUNCTION(original_DamageScrnUp, DamageScrnUp)
-int DamageScrnUp(int *pCurrent_choice, int *pCurrent_mode) {
+int __cdecl DamageScrnUp(int *pCurrent_choice, int *pCurrent_mode) {
     int i;
     int difference;
     int new_difference;
@@ -450,9 +449,9 @@ int DamageScrnUp(int *pCurrent_choice, int *pCurrent_mode) {
     return original_DamageScrnUp(pCurrent_choice, pCurrent_mode);
 }
 
-static int(*original_DamageScrnDown)(int *, int *, ...) = (int(*)(int *, int *, ...))0x004174a9;
+static int(__cdecl*original_DamageScrnDown)(int *, int *) = (int(__cdecl*)(int *, int *))0x004174a9;
 CARM95_HOOK_FUNCTION(original_DamageScrnDown, DamageScrnDown)
-int DamageScrnDown(int *pCurrent_choice, int *pCurrent_mode) {
+int __cdecl DamageScrnDown(int *pCurrent_choice, int *pCurrent_mode) {
     int i;
     int difference;
     int new_difference;
@@ -469,9 +468,9 @@ int DamageScrnDown(int *pCurrent_choice, int *pCurrent_mode) {
     return original_DamageScrnDown(pCurrent_choice, pCurrent_mode);
 }
 
-static int(*original_DamageScrnGoHead)(int *, int *, ...) = (int(*)(int *, int *, ...))0x004176dd;
+static int(__cdecl*original_DamageScrnGoHead)(int *, int *) = (int(__cdecl*)(int *, int *))0x004176dd;
 CARM95_HOOK_FUNCTION(original_DamageScrnGoHead, DamageScrnGoHead)
-int DamageScrnGoHead(int *pCurrent_choice, int *pCurrent_mode) {
+int __cdecl DamageScrnGoHead(int *pCurrent_choice, int *pCurrent_mode) {
     LOG_TRACE("(%p, %p)", pCurrent_choice, pCurrent_mode);
 
     (void)pCurrent_choice;
@@ -480,9 +479,9 @@ int DamageScrnGoHead(int *pCurrent_choice, int *pCurrent_mode) {
     return original_DamageScrnGoHead(pCurrent_choice, pCurrent_mode);
 }
 
-static int(*original_ClickDamage)(int *, int *, int, int, ...) = (int(*)(int *, int *, int, int, ...))0x00417839;
+static int(__cdecl*original_ClickDamage)(int *, int *, int, int) = (int(__cdecl*)(int *, int *, int, int))0x00417839;
 CARM95_HOOK_FUNCTION(original_ClickDamage, ClickDamage)
-int ClickDamage(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY_offset) {
+int __cdecl ClickDamage(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY_offset) {
     int mouse_x;
     int mouse_y;
     int old_mouse_x;
@@ -501,9 +500,9 @@ int ClickDamage(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY_
     return original_ClickDamage(pCurrent_choice, pCurrent_mode, pX_offset, pY_offset);
 }
 
-static int(*original_DamageScrnDone)(int, int, int, int, int, ...) = (int(*)(int, int, int, int, int, ...))0x0041794f;
+static int(__cdecl*original_DamageScrnDone)(int, int, int, int, int) = (int(__cdecl*)(int, int, int, int, int))0x0041794f;
 CARM95_HOOK_FUNCTION(original_DamageScrnDone, DamageScrnDone)
-int DamageScrnDone(int pCurrent_choice, int pCurrent_mode, int pGo_ahead, int pEscaped, int pTimed_out) {
+int __cdecl DamageScrnDone(int pCurrent_choice, int pCurrent_mode, int pGo_ahead, int pEscaped, int pTimed_out) {
     LOG_TRACE("(%d, %d, %d, %d, %d)", pCurrent_choice, pCurrent_mode, pGo_ahead, pEscaped, pTimed_out);
 
     (void)pCurrent_choice;
@@ -515,9 +514,9 @@ int DamageScrnDone(int pCurrent_choice, int pCurrent_mode, int pGo_ahead, int pE
     return original_DamageScrnDone(pCurrent_choice, pCurrent_mode, pGo_ahead, pEscaped, pTimed_out);
 }
 
-static tSO_result(*original_DoEndRaceSummary2)() = (tSO_result(*)())0x0041797b;
+static tSO_result(__cdecl*original_DoEndRaceSummary2)() = (tSO_result(__cdecl*)())0x0041797b;
 CARM95_HOOK_FUNCTION(original_DoEndRaceSummary2, DoEndRaceSummary2)
-tSO_result DoEndRaceSummary2() {
+tSO_result __cdecl DoEndRaceSummary2() {
     static tFlicette flicker_on[3];
     static tFlicette flicker_off[3];
     static tFlicette push[3];
@@ -536,9 +535,9 @@ tSO_result DoEndRaceSummary2() {
     return original_DoEndRaceSummary2();
 }
 
-static void(*original_DrawAnItem__racesumm)(int, int, int, char *, ...) = (void(*)(int, int, int, char *, ...))0x004183be;
+static void(__cdecl*original_DrawAnItem__racesumm)(int, int, int, char *) = (void(__cdecl*)(int, int, int, char *))0x004183be;
 CARM95_HOOK_FUNCTION(original_DrawAnItem__racesumm, DrawAnItem__racesumm)
-void DrawAnItem__racesumm(int pX, int pY_index, int pFont_index, char *pText) {
+void __cdecl DrawAnItem__racesumm(int pX, int pY_index, int pFont_index, char *pText) {
     LOG_TRACE("(%d, %d, %d, \"%s\")", pX, pY_index, pFont_index, pText);
 
     (void)pX;
@@ -549,9 +548,9 @@ void DrawAnItem__racesumm(int pX, int pY_index, int pFont_index, char *pText) {
     original_DrawAnItem__racesumm(pX, pY_index, pFont_index, pText);
 }
 
-static void(*original_DrawColumnHeading__racesumm)(int, int, ...) = (void(*)(int, int, ...))0x00418405;
+static void(__cdecl*original_DrawColumnHeading__racesumm)(int, int) = (void(__cdecl*)(int, int))0x00418405;
 CARM95_HOOK_FUNCTION(original_DrawColumnHeading__racesumm, DrawColumnHeading__racesumm)
-void DrawColumnHeading__racesumm(int pStr_index, int pX) {
+void __cdecl DrawColumnHeading__racesumm(int pStr_index, int pX) {
     LOG_TRACE("(%d, %d)", pStr_index, pX);
 
     (void)pStr_index;
@@ -560,9 +559,9 @@ void DrawColumnHeading__racesumm(int pStr_index, int pX) {
     original_DrawColumnHeading__racesumm(pStr_index, pX);
 }
 
-static int(*original_SortScores)(void *, void *, ...) = (int(*)(void *, void *, ...))0x0041853a;
+static int(__cdecl*original_SortScores)(void *, void *) = (int(__cdecl*)(void *, void *))0x0041853a;
 CARM95_HOOK_FUNCTION(original_SortScores, SortScores)
-int SortScores(void *pFirst_one, void *pSecond_one) {
+int __cdecl SortScores(void *pFirst_one, void *pSecond_one) {
     LOG_TRACE("(%p, %p)", pFirst_one, pSecond_one);
 
     (void)pFirst_one;
@@ -571,18 +570,18 @@ int SortScores(void *pFirst_one, void *pSecond_one) {
     return original_SortScores(pFirst_one, pSecond_one);
 }
 
-static void(*original_SortGameScores)() = (void(*)())0x00418515;
+static void(__cdecl*original_SortGameScores)() = (void(__cdecl*)())0x00418515;
 CARM95_HOOK_FUNCTION(original_SortGameScores, SortGameScores)
-void SortGameScores() {
+void __cdecl SortGameScores() {
     LOG_TRACE("()");
 
 
     original_SortGameScores();
 }
 
-static void(*original_NetSumDraw)(int, int, ...) = (void(*)(int, int, ...))0x0041804b;
+static void(__cdecl*original_NetSumDraw)(int, int) = (void(__cdecl*)(int, int))0x0041804b;
 CARM95_HOOK_FUNCTION(original_NetSumDraw, NetSumDraw)
-void NetSumDraw(int pCurrent_choice, int pCurrent_mode) {
+void __cdecl NetSumDraw(int pCurrent_choice, int pCurrent_mode) {
     int i;
     char s[256];
     tNet_game_player_info *player;
@@ -597,9 +596,9 @@ void NetSumDraw(int pCurrent_choice, int pCurrent_mode) {
     original_NetSumDraw(pCurrent_choice, pCurrent_mode);
 }
 
-static void(*original_DoNetRaceSummary)() = (void(*)())0x00418452;
+static void(__cdecl*original_DoNetRaceSummary)() = (void(__cdecl*)())0x00418452;
 CARM95_HOOK_FUNCTION(original_DoNetRaceSummary, DoNetRaceSummary)
-void DoNetRaceSummary() {
+void __cdecl DoNetRaceSummary() {
     static tFlicette flicker_on[1];
     static tFlicette flicker_off[1];
     static tFlicette push[1];
@@ -622,9 +621,9 @@ void DoNetRaceSummary() {
     original_DoNetRaceSummary();
 }
 
-static tSO_result(*original_DoEndRaceSummary)(int *, tRace_result, ...) = (tSO_result(*)(int *, tRace_result, ...))0x00418590;
+static tSO_result(__cdecl*original_DoEndRaceSummary)(int *, tRace_result) = (tSO_result(__cdecl*)(int *, tRace_result))0x00418590;
 CARM95_HOOK_FUNCTION(original_DoEndRaceSummary, DoEndRaceSummary)
-tSO_result DoEndRaceSummary(int *pFirst_summary_done, tRace_result pRace_result) {
+tSO_result __cdecl DoEndRaceSummary(int *pFirst_summary_done, tRace_result pRace_result) {
     tSO_result result;
     LOG_TRACE("(%p, %d)", pFirst_summary_done, pRace_result);
 

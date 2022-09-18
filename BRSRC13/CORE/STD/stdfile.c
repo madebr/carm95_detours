@@ -15,9 +15,9 @@ br_uint_32 BrStdioAttributes() {
     NOT_IMPLEMENTED();
 }
 
-static void *(*original_BrStdioOpenRead)(char *, br_size_t, br_mode_test_cbfn *, int *, ...) = (void *(*)(char *, br_size_t, br_mode_test_cbfn *, int *, ...))0x00502cf0;
+static void *(__cdecl*original_BrStdioOpenRead)(char *, br_size_t, br_mode_test_cbfn *, int *) = (void *(__cdecl*)(char *, br_size_t, br_mode_test_cbfn *, int *))0x00502cf0;
 CARM95_HOOK_FUNCTION(original_BrStdioOpenRead, BrStdioOpenRead)
-void* BrStdioOpenRead(char *name, br_size_t n_magics, br_mode_test_cbfn *identify, int *mode_result) {
+void* __cdecl BrStdioOpenRead(char *name, br_size_t n_magics, br_mode_test_cbfn *identify, int *mode_result) {
     FILE *fh;
     char *br_path;
     char config_path[512];
@@ -42,9 +42,9 @@ void* BrStdioOpenRead(char *name, br_size_t n_magics, br_mode_test_cbfn *identif
     return original_BrStdioOpenRead(name, n_magics, identify, mode_result);
 }
 
-static void *(*original_BrStdioOpenWrite)(char *, int, ...) = (void *(*)(char *, int, ...))0x00502f20;
+static void *(__cdecl*original_BrStdioOpenWrite)(char *, int) = (void *(__cdecl*)(char *, int))0x00502f20;
 CARM95_HOOK_FUNCTION(original_BrStdioOpenWrite, BrStdioOpenWrite)
-void* BrStdioOpenWrite(char *name, int mode) {
+void* __cdecl BrStdioOpenWrite(char *name, int mode) {
     FILE *fh;
     LOG_TRACE("(\"%s\", %d)", name, mode);
 
@@ -55,9 +55,9 @@ void* BrStdioOpenWrite(char *name, int mode) {
     return original_BrStdioOpenWrite(name, mode);
 }
 
-static void(*original_BrStdioClose)(void *, ...) = (void(*)(void *, ...))0x00502f50;
+static void(__cdecl*original_BrStdioClose)(void *) = (void(__cdecl*)(void *))0x00502f50;
 CARM95_HOOK_FUNCTION(original_BrStdioClose, BrStdioClose)
-void BrStdioClose(void *f) {
+void __cdecl BrStdioClose(void *f) {
     LOG_TRACE("(%p)", f);
 
     (void)f;
@@ -65,9 +65,9 @@ void BrStdioClose(void *f) {
     original_BrStdioClose(f);
 }
 
-static int(*original_BrStdioEof)(void *, ...) = (int(*)(void *, ...))0x00502f60;
+static int(__cdecl*original_BrStdioEof)(void *) = (int(__cdecl*)(void *))0x00502f60;
 CARM95_HOOK_FUNCTION(original_BrStdioEof, BrStdioEof)
-int BrStdioEof(void *f) {
+int __cdecl BrStdioEof(void *f) {
     LOG_TRACE("(%p)", f);
 
     (void)f;
@@ -75,9 +75,9 @@ int BrStdioEof(void *f) {
     return original_BrStdioEof(f);
 }
 
-static int(*original_BrStdioGetChar)(void *, ...) = (int(*)(void *, ...))0x00502f70;
+static int(__cdecl*original_BrStdioGetChar)(void *) = (int(__cdecl*)(void *))0x00502f70;
 CARM95_HOOK_FUNCTION(original_BrStdioGetChar, BrStdioGetChar)
-int BrStdioGetChar(void *f) {
+int __cdecl BrStdioGetChar(void *f) {
     LOG_TRACE("(%p)", f);
 
     (void)f;
@@ -85,9 +85,9 @@ int BrStdioGetChar(void *f) {
     return original_BrStdioGetChar(f);
 }
 
-static void(*original_BrStdioPutChar)(int, void *, ...) = (void(*)(int, void *, ...))0x00502fa0;
+static void(__cdecl*original_BrStdioPutChar)(int, void *) = (void(__cdecl*)(int, void *))0x00502fa0;
 CARM95_HOOK_FUNCTION(original_BrStdioPutChar, BrStdioPutChar)
-void BrStdioPutChar(int c, void *f) {
+void __cdecl BrStdioPutChar(int c, void *f) {
     LOG_TRACE("(%d, %p)", c, f);
 
     (void)c;
@@ -96,9 +96,9 @@ void BrStdioPutChar(int c, void *f) {
     original_BrStdioPutChar(c, f);
 }
 
-static br_size_t(*original_BrStdioRead)(void *, br_size_t, unsigned int, void *, ...) = (br_size_t(*)(void *, br_size_t, unsigned int, void *, ...))0x00502fc0;
+static br_size_t(__cdecl*original_BrStdioRead)(void *, br_size_t, unsigned int, void *) = (br_size_t(__cdecl*)(void *, br_size_t, unsigned int, void *))0x00502fc0;
 CARM95_HOOK_FUNCTION(original_BrStdioRead, BrStdioRead)
-br_size_t BrStdioRead(void *buf, br_size_t size, unsigned int n, void *f) {
+br_size_t __cdecl BrStdioRead(void *buf, br_size_t size, unsigned int n, void *f) {
     LOG_TRACE("(%p, %u, %u, %p)", buf, size, n, f);
 
     (void)buf;
@@ -109,9 +109,9 @@ br_size_t BrStdioRead(void *buf, br_size_t size, unsigned int n, void *f) {
     return original_BrStdioRead(buf, size, n, f);
 }
 
-static br_size_t(*original_BrStdioWrite)(void *, br_size_t, unsigned int, void *, ...) = (br_size_t(*)(void *, br_size_t, unsigned int, void *, ...))0x00502fe0;
+static br_size_t(__cdecl*original_BrStdioWrite)(void *, br_size_t, unsigned int, void *) = (br_size_t(__cdecl*)(void *, br_size_t, unsigned int, void *))0x00502fe0;
 CARM95_HOOK_FUNCTION(original_BrStdioWrite, BrStdioWrite)
-br_size_t BrStdioWrite(void *buf, br_size_t size, unsigned int n, void *f) {
+br_size_t __cdecl BrStdioWrite(void *buf, br_size_t size, unsigned int n, void *f) {
     LOG_TRACE("(%p, %u, %u, %p)", buf, size, n, f);
 
     (void)buf;
@@ -122,9 +122,9 @@ br_size_t BrStdioWrite(void *buf, br_size_t size, unsigned int n, void *f) {
     return original_BrStdioWrite(buf, size, n, f);
 }
 
-static br_size_t(*original_BrStdioGetLine)(char *, br_size_t, void *, ...) = (br_size_t(*)(char *, br_size_t, void *, ...))0x00503000;
+static br_size_t(__cdecl*original_BrStdioGetLine)(char *, br_size_t, void *) = (br_size_t(__cdecl*)(char *, br_size_t, void *))0x00503000;
 CARM95_HOOK_FUNCTION(original_BrStdioGetLine, BrStdioGetLine)
-br_size_t BrStdioGetLine(char *buf, br_size_t buf_len, void *f) {
+br_size_t __cdecl BrStdioGetLine(char *buf, br_size_t buf_len, void *f) {
     br_size_t l;
     LOG_TRACE("(\"%s\", %u, %p)", buf, buf_len, f);
 
@@ -136,9 +136,9 @@ br_size_t BrStdioGetLine(char *buf, br_size_t buf_len, void *f) {
     return original_BrStdioGetLine(buf, buf_len, f);
 }
 
-static void(*original_BrStdioPutLine)(char *, void *, ...) = (void(*)(char *, void *, ...))0x00503050;
+static void(__cdecl*original_BrStdioPutLine)(char *, void *) = (void(__cdecl*)(char *, void *))0x00503050;
 CARM95_HOOK_FUNCTION(original_BrStdioPutLine, BrStdioPutLine)
-void BrStdioPutLine(char *buf, void *f) {
+void __cdecl BrStdioPutLine(char *buf, void *f) {
     LOG_TRACE("(\"%s\", %p)", buf, f);
 
     (void)buf;
@@ -147,9 +147,9 @@ void BrStdioPutLine(char *buf, void *f) {
     original_BrStdioPutLine(buf, f);
 }
 
-static void(*original_BrStdioAdvance)(br_size_t, void *, ...) = (void(*)(br_size_t, void *, ...))0x00503070;
+static void(__cdecl*original_BrStdioAdvance)(br_size_t, void *) = (void(__cdecl*)(br_size_t, void *))0x00503070;
 CARM95_HOOK_FUNCTION(original_BrStdioAdvance, BrStdioAdvance)
-void BrStdioAdvance(br_size_t count, void *f) {
+void __cdecl BrStdioAdvance(br_size_t count, void *f) {
     LOG_TRACE("(%u, %p)", count, f);
 
     (void)count;

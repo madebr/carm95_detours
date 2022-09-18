@@ -39,37 +39,37 @@ int KeyDown(tU8 pScan_code);
 
 void KeyTranslation(tU8 pKey_index, tU8 pScan_code_1, tU8 pScan_code_2);
 
-void KeyBegin();
+void __cdecl KeyBegin();
 
 void KeyEnd();
 
 int KeyDown22(int pKey_index);
 
-void PDSetKeyArray(int *pKeys, int pMark);
+void __cdecl PDSetKeyArray(int *pKeys, int pMark);
 
-int PDGetASCIIFromKey(int pKey);
+int __cdecl PDGetASCIIFromKey(int pKey);
 
-void PDFatalError(char *pThe_str);
+void __cdecl PDFatalError(char *pThe_str);
 
-void PDNonFatalError(char *pThe_str);
+void __cdecl PDNonFatalError(char *pThe_str);
 
-void PDInitialiseSystem();
+void __cdecl PDInitialiseSystem();
 
-void PDShutdownSystem();
+void __cdecl PDShutdownSystem();
 
-void PDSaveOriginalPalette();
+void __cdecl PDSaveOriginalPalette();
 
-void PDRevertPalette();
+void __cdecl PDRevertPalette();
 
-int PDInitScreenVars(int pArgc, char **pArgv);
+int __cdecl PDInitScreenVars(int pArgc, char **pArgv);
 
-void PDInitScreen();
+void __cdecl PDInitScreen();
 
-void PDLockRealBackScreen();
+void __cdecl PDLockRealBackScreen();
 
-void PDUnlockRealBackScreen();
+void __cdecl PDUnlockRealBackScreen();
 
-void PDAllocateScreenAndBack();
+void __cdecl PDAllocateScreenAndBack();
 
 void Copy8BitTo16BitPixelmap(br_pixelmap *pDst, br_pixelmap *pSrc, br_pixelmap *pPalette);
 
@@ -83,45 +83,45 @@ void ReallyCopyBackScreen(int pRendering_area_only, int pClear_top_and_bottom);
 
 void CopyBackScreen(int pRendering_area_only);
 
-void PDScreenBufferSwap(int pRendering_area_only);
+void __cdecl PDScreenBufferSwap(int pRendering_area_only);
 
-void PDPixelmapToScreenRectangleCopy(br_pixelmap *dst, br_int_16 dx, br_int_16 dy, br_pixelmap *src, br_int_16 sx, br_int_16 sy, br_uint_16 w, br_uint_16 h);
+void __cdecl PDPixelmapToScreenRectangleCopy(br_pixelmap *dst, br_int_16 dx, br_int_16 dy, br_pixelmap *src, br_int_16 sx, br_int_16 sy, br_uint_16 w, br_uint_16 h);
 
-void PDPixelmapHLineOnScreen(br_pixelmap *dst, br_int_16 x1, br_int_16 y1, br_int_16 x2, br_int_16 y2, br_uint_32 colour);
+void __cdecl PDPixelmapHLineOnScreen(br_pixelmap *dst, br_int_16 x1, br_int_16 y1, br_int_16 x2, br_int_16 y2, br_uint_32 colour);
 
-void PDPixelmapVLineOnScreen(br_pixelmap *dst, br_int_16 x1, br_int_16 y1, br_int_16 x2, br_int_16 y2, br_uint_32 colour);
+void __cdecl PDPixelmapVLineOnScreen(br_pixelmap *dst, br_int_16 x1, br_int_16 y1, br_int_16 x2, br_int_16 y2, br_uint_32 colour);
 
-void PDInstallErrorHandlers();
+void __cdecl PDInstallErrorHandlers();
 
-void PDSetFileVariables();
+void __cdecl PDSetFileVariables();
 
-void PDBuildAppPath(char *pThe_path);
+void __cdecl PDBuildAppPath(char *pThe_path);
 
-void PDForEveryFile(char *pThe_path, void(**pAction_routine)(char *, ...));
+void __cdecl PDForEveryFile(char *pThe_path, void(**pAction_routine)(char *));
 
-void PDSetPalette(br_pixelmap *pThe_palette);
+void __cdecl PDSetPalette(br_pixelmap *pThe_palette);
 
-void PDSetPaletteEntries(br_pixelmap *pPalette, int pFirst_colour, int pCount);
+void __cdecl PDSetPaletteEntries(br_pixelmap *pPalette, int pFirst_colour, int pCount);
 
-void PDSwitchToRealResolution();
+void __cdecl PDSwitchToRealResolution();
 
-void PDSwitchToLoresMode();
+void __cdecl PDSwitchToLoresMode();
 
-void PDMouseButtons(int *pButton_1, int *pButton_2);
+void __cdecl PDMouseButtons(int *pButton_1, int *pButton_2);
 
-void PDGetMousePosition(int *pX_coord, int *pY_coord);
+void __cdecl PDGetMousePosition(int *pX_coord, int *pY_coord);
 
-int PDGetTotalTime();
+int __cdecl PDGetTotalTime();
 
-int PDServiceSystem(tU32 pTime_since_last_call);
+int __cdecl PDServiceSystem(tU32 pTime_since_last_call);
 
 tU32 LargestBlockAvail();
 
 void* PDGrabLargestMammaryWeCanPlayWith(tU32 pMaximum_required, tU32 *pAmount_allocated);
 
-void PDAllocateActionReplayBuffer(char **pBuffer, tU32 *pBuffer_size);
+void __cdecl PDAllocateActionReplayBuffer(char **pBuffer, tU32 *pBuffer_size);
 
-void PDDisposeActionReplayBuffer(char *pBuffer);
+void __cdecl PDDisposeActionReplayBuffer(char *pBuffer);
 
 void Usage(char *pProgpath);
 
@@ -133,7 +133,7 @@ int PDGetGorePassword();
 
 void PDDisplayGoreworthiness(int pGory);
 
-void PDEnterDebugger(char *pStr);
+void __cdecl PDEnterDebugger(char *pStr);
 
 void PDEndItAllAndReRunTheBastard();
 
@@ -177,14 +177,12 @@ int PDGetJoy2Button3();
 
 int PDGetJoy2Button4();
 
-int PDFileUnlock(char *pThe_path);
+int __cdecl PDFileUnlock(char *pThe_path);
 
-#if 0
 void CriticalISR(union INTPACK pRegs);
-#endif
 
-int PDCheckDriveExists2(char *pThe_path, char *pFile_name, tU32 pMin_size);
+int __cdecl PDCheckDriveExists2(char *pThe_path, char *pFile_name, tU32 pMin_size);
 
-int PDDoWeLeadAnAustereExistance();
+int __cdecl PDDoWeLeadAnAustereExistance();
 
 #endif

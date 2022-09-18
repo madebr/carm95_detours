@@ -4,7 +4,7 @@
 #include "br_types.h"
 
 
-void BrQsort(void *basep, unsigned int nelems, unsigned int size, br_qsort_cbfn *comp);
+void __cdecl BrQsort(void *basep, unsigned int nelems, unsigned int size, br_qsort_cbfn *comp);
 
 void swap_chars(char *a, char *b, unsigned int nbytes);
 

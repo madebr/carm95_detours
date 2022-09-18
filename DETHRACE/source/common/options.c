@@ -4,7 +4,6 @@
 
 #include "carm95_hooks.h"
 
-#include <stdio.h>
 int(* hookvar_gKey_defns )[18] = (void*)0x00519ad8;
  // Suffix added to avoid duplicate symbol
 tRadio_bastards(* hookvar_gRadio_bastards__options )[13] = (void*)0x00519b20;
@@ -110,9 +109,9 @@ int SoundClick(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY_o
     NOT_IMPLEMENTED();
 }
 
-static void(*original_DoSoundOptions)() = (void(*)())0x0049b7bf;
+static void(__cdecl*original_DoSoundOptions)() = (void(__cdecl*)())0x0049b7bf;
 CARM95_HOOK_FUNCTION(original_DoSoundOptions, DoSoundOptions)
-void DoSoundOptions() {
+void __cdecl DoSoundOptions() {
     static tFlicette flicker_on[3];
     static tFlicette flicker_off[3];
     static tFlicette push[3];
@@ -131,9 +130,9 @@ void DoSoundOptions() {
     original_DoSoundOptions();
 }
 
-static void(*original_GetGraphicsOptions)() = (void(*)())0x0049b87f;
+static void(__cdecl*original_GetGraphicsOptions)() = (void(__cdecl*)())0x0049b87f;
 CARM95_HOOK_FUNCTION(original_GetGraphicsOptions, GetGraphicsOptions)
-void GetGraphicsOptions() {
+void __cdecl GetGraphicsOptions() {
     int value;
     br_scalar br_value;
     LOG_TRACE("()");
@@ -144,18 +143,18 @@ void GetGraphicsOptions() {
     original_GetGraphicsOptions();
 }
 
-static void(*original_SetGraphicsOptions)() = (void(*)())0x0049bb74;
+static void(__cdecl*original_SetGraphicsOptions)() = (void(__cdecl*)())0x0049bb74;
 CARM95_HOOK_FUNCTION(original_SetGraphicsOptions, SetGraphicsOptions)
-void SetGraphicsOptions() {
+void __cdecl SetGraphicsOptions() {
     LOG_TRACE("()");
 
 
     original_SetGraphicsOptions();
 }
 
-static void(*original_PlayRadioOn2)(int, int, ...) = (void(*)(int, int, ...))0x00499efe;
+static void(__cdecl*original_PlayRadioOn2)(int, int) = (void(__cdecl*)(int, int))0x00499efe;
 CARM95_HOOK_FUNCTION(original_PlayRadioOn2, PlayRadioOn2)
-void PlayRadioOn2(int pIndex, int pValue) {
+void __cdecl PlayRadioOn2(int pIndex, int pValue) {
     LOG_TRACE("(%d, %d)", pIndex, pValue);
 
     (void)pIndex;
@@ -164,9 +163,9 @@ void PlayRadioOn2(int pIndex, int pValue) {
     original_PlayRadioOn2(pIndex, pValue);
 }
 
-static void(*original_PlayRadioOff2)(int, int, ...) = (void(*)(int, int, ...))0x0049a05d;
+static void(__cdecl*original_PlayRadioOff2)(int, int) = (void(__cdecl*)(int, int))0x0049a05d;
 CARM95_HOOK_FUNCTION(original_PlayRadioOff2, PlayRadioOff2)
-void PlayRadioOff2(int pIndex, int pValue) {
+void __cdecl PlayRadioOff2(int pIndex, int pValue) {
     LOG_TRACE("(%d, %d)", pIndex, pValue);
 
     (void)pIndex;
@@ -175,9 +174,9 @@ void PlayRadioOff2(int pIndex, int pValue) {
     original_PlayRadioOff2(pIndex, pValue);
 }
 
-static void(*original_PlayRadioOn__options)(int, int, ...) = (void(*)(int, int, ...))0x00499feb;
+static void(__cdecl*original_PlayRadioOn__options)(int, int) = (void(__cdecl*)(int, int))0x00499feb;
 CARM95_HOOK_FUNCTION(original_PlayRadioOn__options, PlayRadioOn__options)
-void PlayRadioOn__options(int pIndex, int pValue) {
+void __cdecl PlayRadioOn__options(int pIndex, int pValue) {
     LOG_TRACE("(%d, %d)", pIndex, pValue);
 
     (void)pIndex;
@@ -186,9 +185,9 @@ void PlayRadioOn__options(int pIndex, int pValue) {
     original_PlayRadioOn__options(pIndex, pValue);
 }
 
-static void(*original_PlayRadioOff__options)(int, int, ...) = (void(*)(int, int, ...))0x0049a024;
+static void(__cdecl*original_PlayRadioOff__options)(int, int) = (void(__cdecl*)(int, int))0x0049a024;
 CARM95_HOOK_FUNCTION(original_PlayRadioOff__options, PlayRadioOff__options)
-void PlayRadioOff__options(int pIndex, int pValue) {
+void __cdecl PlayRadioOff__options(int pIndex, int pValue) {
     LOG_TRACE("(%d, %d)", pIndex, pValue);
 
     (void)pIndex;
@@ -197,9 +196,9 @@ void PlayRadioOff__options(int pIndex, int pValue) {
     original_PlayRadioOff__options(pIndex, pValue);
 }
 
-static void(*original_DrawInitialRadios)() = (void(*)())0x00499e9b;
+static void(__cdecl*original_DrawInitialRadios)() = (void(__cdecl*)())0x00499e9b;
 CARM95_HOOK_FUNCTION(original_DrawInitialRadios, DrawInitialRadios)
-void DrawInitialRadios() {
+void __cdecl DrawInitialRadios() {
     int i;
     LOG_TRACE("()");
 
@@ -208,9 +207,9 @@ void DrawInitialRadios() {
     original_DrawInitialRadios();
 }
 
-static void(*original_RadioChanged)(int, int, ...) = (void(*)(int, int, ...))0x00499fa8;
+static void(__cdecl*original_RadioChanged)(int, int) = (void(__cdecl*)(int, int))0x00499fa8;
 CARM95_HOOK_FUNCTION(original_RadioChanged, RadioChanged)
-void RadioChanged(int pIndex, int pNew_value) {
+void __cdecl RadioChanged(int pIndex, int pNew_value) {
     LOG_TRACE("(%d, %d)", pIndex, pNew_value);
 
     (void)pIndex;
@@ -219,9 +218,9 @@ void RadioChanged(int pIndex, int pNew_value) {
     original_RadioChanged(pIndex, pNew_value);
 }
 
-static int(*original_GraphOptLeft)(int *, int *, ...) = (int(*)(int *, int *, ...))0x00499f34;
+static int(__cdecl*original_GraphOptLeft)(int *, int *) = (int(__cdecl*)(int *, int *))0x00499f34;
 CARM95_HOOK_FUNCTION(original_GraphOptLeft, GraphOptLeft)
-int GraphOptLeft(int *pCurrent_choice, int *pCurrent_mode) {
+int __cdecl GraphOptLeft(int *pCurrent_choice, int *pCurrent_mode) {
     int new_value;
     LOG_TRACE("(%p, %p)", pCurrent_choice, pCurrent_mode);
 
@@ -232,9 +231,9 @@ int GraphOptLeft(int *pCurrent_choice, int *pCurrent_mode) {
     return original_GraphOptLeft(pCurrent_choice, pCurrent_mode);
 }
 
-static int(*original_GraphOptRight)(int *, int *, ...) = (int(*)(int *, int *, ...))0x0049a093;
+static int(__cdecl*original_GraphOptRight)(int *, int *) = (int(__cdecl*)(int *, int *))0x0049a093;
 CARM95_HOOK_FUNCTION(original_GraphOptRight, GraphOptRight)
-int GraphOptRight(int *pCurrent_choice, int *pCurrent_mode) {
+int __cdecl GraphOptRight(int *pCurrent_choice, int *pCurrent_mode) {
     int new_value;
     LOG_TRACE("(%p, %p)", pCurrent_choice, pCurrent_mode);
 
@@ -245,9 +244,9 @@ int GraphOptRight(int *pCurrent_choice, int *pCurrent_mode) {
     return original_GraphOptRight(pCurrent_choice, pCurrent_mode);
 }
 
-static int(*original_GraphOptUp)(int *, int *, ...) = (int(*)(int *, int *, ...))0x0049a109;
+static int(__cdecl*original_GraphOptUp)(int *, int *) = (int(__cdecl*)(int *, int *))0x0049a109;
 CARM95_HOOK_FUNCTION(original_GraphOptUp, GraphOptUp)
-int GraphOptUp(int *pCurrent_choice, int *pCurrent_mode) {
+int __cdecl GraphOptUp(int *pCurrent_choice, int *pCurrent_mode) {
     LOG_TRACE("(%p, %p)", pCurrent_choice, pCurrent_mode);
 
     (void)pCurrent_choice;
@@ -256,9 +255,9 @@ int GraphOptUp(int *pCurrent_choice, int *pCurrent_mode) {
     return original_GraphOptUp(pCurrent_choice, pCurrent_mode);
 }
 
-static int(*original_GraphOptDown)(int *, int *, ...) = (int(*)(int *, int *, ...))0x0049a19b;
+static int(__cdecl*original_GraphOptDown)(int *, int *) = (int(__cdecl*)(int *, int *))0x0049a19b;
 CARM95_HOOK_FUNCTION(original_GraphOptDown, GraphOptDown)
-int GraphOptDown(int *pCurrent_choice, int *pCurrent_mode) {
+int __cdecl GraphOptDown(int *pCurrent_choice, int *pCurrent_mode) {
     LOG_TRACE("(%p, %p)", pCurrent_choice, pCurrent_mode);
 
     (void)pCurrent_choice;
@@ -267,9 +266,9 @@ int GraphOptDown(int *pCurrent_choice, int *pCurrent_mode) {
     return original_GraphOptDown(pCurrent_choice, pCurrent_mode);
 }
 
-static int(*original_RadioClick)(int *, int *, int, int, ...) = (int(*)(int *, int *, int, int, ...))0x0049a22d;
+static int(__cdecl*original_RadioClick)(int *, int *, int, int) = (int(__cdecl*)(int *, int *, int, int))0x0049a22d;
 CARM95_HOOK_FUNCTION(original_RadioClick, RadioClick)
-int RadioClick(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY_offset) {
+int __cdecl RadioClick(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY_offset) {
     int i;
     LOG_TRACE("(%p, %p, %d, %d)", pCurrent_choice, pCurrent_mode, pX_offset, pY_offset);
 
@@ -282,9 +281,9 @@ int RadioClick(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY_o
     return original_RadioClick(pCurrent_choice, pCurrent_mode, pX_offset, pY_offset);
 }
 
-static int(*original_GraphOptGoAhead)(int *, int *, ...) = (int(*)(int *, int *, ...))0x0049a2d1;
+static int(__cdecl*original_GraphOptGoAhead)(int *, int *) = (int(__cdecl*)(int *, int *))0x0049a2d1;
 CARM95_HOOK_FUNCTION(original_GraphOptGoAhead, GraphOptGoAhead)
-int GraphOptGoAhead(int *pCurrent_choice, int *pCurrent_mode) {
+int __cdecl GraphOptGoAhead(int *pCurrent_choice, int *pCurrent_mode) {
     LOG_TRACE("(%p, %p)", pCurrent_choice, pCurrent_mode);
 
     (void)pCurrent_choice;
@@ -293,9 +292,9 @@ int GraphOptGoAhead(int *pCurrent_choice, int *pCurrent_mode) {
     return original_GraphOptGoAhead(pCurrent_choice, pCurrent_mode);
 }
 
-static void(*original_PlotAGraphBox__options)(int, int, ...) = (void(*)(int, int, ...))0x0049a34d;
+static void(__cdecl*original_PlotAGraphBox__options)(int, int) = (void(__cdecl*)(int, int))0x0049a34d;
 CARM95_HOOK_FUNCTION(original_PlotAGraphBox__options, PlotAGraphBox__options)
-void PlotAGraphBox__options(int pIndex, int pColour_value) {
+void __cdecl PlotAGraphBox__options(int pIndex, int pColour_value) {
     LOG_TRACE("(%d, %d)", pIndex, pColour_value);
 
     (void)pIndex;
@@ -304,9 +303,9 @@ void PlotAGraphBox__options(int pIndex, int pColour_value) {
     original_PlotAGraphBox__options(pIndex, pColour_value);
 }
 
-static void(*original_DrawAGraphBox__options)(int, ...) = (void(*)(int, ...))0x0049a334;
+static void(__cdecl*original_DrawAGraphBox__options)(int) = (void(__cdecl*)(int))0x0049a334;
 CARM95_HOOK_FUNCTION(original_DrawAGraphBox__options, DrawAGraphBox__options)
-void DrawAGraphBox__options(int pIndex) {
+void __cdecl DrawAGraphBox__options(int pIndex) {
     LOG_TRACE("(%d)", pIndex);
 
     (void)pIndex;
@@ -314,9 +313,9 @@ void DrawAGraphBox__options(int pIndex) {
     original_DrawAGraphBox__options(pIndex);
 }
 
-static void(*original_EraseAGraphBox__options)(int, ...) = (void(*)(int, ...))0x0049a3e1;
+static void(__cdecl*original_EraseAGraphBox__options)(int) = (void(__cdecl*)(int))0x0049a3e1;
 CARM95_HOOK_FUNCTION(original_EraseAGraphBox__options, EraseAGraphBox__options)
-void EraseAGraphBox__options(int pIndex) {
+void __cdecl EraseAGraphBox__options(int pIndex) {
     LOG_TRACE("(%d)", pIndex);
 
     (void)pIndex;
@@ -324,9 +323,9 @@ void EraseAGraphBox__options(int pIndex) {
     original_EraseAGraphBox__options(pIndex);
 }
 
-static void(*original_DrawGraphBox)(int, int, ...) = (void(*)(int, int, ...))0x0049a2f3;
+static void(__cdecl*original_DrawGraphBox)(int, int) = (void(__cdecl*)(int, int))0x0049a2f3;
 CARM95_HOOK_FUNCTION(original_DrawGraphBox, DrawGraphBox)
-void DrawGraphBox(int pCurrent_choice, int pCurrent_mode) {
+void __cdecl DrawGraphBox(int pCurrent_choice, int pCurrent_mode) {
     LOG_TRACE("(%d, %d)", pCurrent_choice, pCurrent_mode);
 
     (void)pCurrent_choice;
@@ -335,9 +334,9 @@ void DrawGraphBox(int pCurrent_choice, int pCurrent_mode) {
     original_DrawGraphBox(pCurrent_choice, pCurrent_mode);
 }
 
-static void(*original_DoGraphicsOptions)() = (void(*)())0x0049b805;
+static void(__cdecl*original_DoGraphicsOptions)() = (void(__cdecl*)())0x0049b805;
 CARM95_HOOK_FUNCTION(original_DoGraphicsOptions, DoGraphicsOptions)
-void DoGraphicsOptions() {
+void __cdecl DoGraphicsOptions() {
     static tFlicette flicker_on[14];
     static tFlicette flicker_off[14];
     static tFlicette push[14];
@@ -354,9 +353,9 @@ void DoGraphicsOptions() {
     original_DoGraphicsOptions();
 }
 
-static void(*original_CalibrateJoysticks)() = (void(*)())0x0049bf81;
+static void(__fastcall*original_CalibrateJoysticks)() = (void(__fastcall*)())0x0049bf81;
 CARM95_HOOK_FUNCTION(original_CalibrateJoysticks, CalibrateJoysticks)
-void CalibrateJoysticks() {
+void __fastcall CalibrateJoysticks() {
     tJoy_calib_stage stage;
     int escaped;
     int joy_value_x;
@@ -397,9 +396,9 @@ void CalibrateJoysticks() {
     original_CalibrateJoysticks();
 }
 
-static void(*original_StripControls)(unsigned char *, ...) = (void(*)(unsigned char *, ...))0x0049c0b4;
+static void(__cdecl*original_StripControls)(unsigned char *) = (void(__cdecl*)(unsigned char *))0x0049c0b4;
 CARM95_HOOK_FUNCTION(original_StripControls, StripControls)
-void StripControls(unsigned char *pStr) {
+void __cdecl StripControls(unsigned char *pStr) {
     int i;
     int len;
     LOG_TRACE("(%p)", pStr);
@@ -411,9 +410,9 @@ void StripControls(unsigned char *pStr) {
     original_StripControls(pStr);
 }
 
-static void(*original_LoadKeyNames)() = (void(*)())0x0049bf9b;
+static void(__cdecl*original_LoadKeyNames)() = (void(__cdecl*)())0x0049bf9b;
 CARM95_HOOK_FUNCTION(original_LoadKeyNames, LoadKeyNames)
-void LoadKeyNames() {
+void __cdecl LoadKeyNames() {
     int i;
     FILE *f;
     tPath_name the_path;
@@ -428,9 +427,9 @@ void LoadKeyNames() {
     original_LoadKeyNames();
 }
 
-static void(*original_DisposeKeyNames)() = (void(*)())0x0049c133;
+static void(__cdecl*original_DisposeKeyNames)() = (void(__cdecl*)())0x0049c133;
 CARM95_HOOK_FUNCTION(original_DisposeKeyNames, DisposeKeyNames)
-void DisposeKeyNames() {
+void __cdecl DisposeKeyNames() {
     int i;
     LOG_TRACE("()");
 
@@ -439,18 +438,18 @@ void DisposeKeyNames() {
     original_DisposeKeyNames();
 }
 
-static void(*original_SaveOrigKeyMapping)() = (void(*)())0x0049ab5e;
+static void(__cdecl*original_SaveOrigKeyMapping)() = (void(__cdecl*)())0x0049ab5e;
 CARM95_HOOK_FUNCTION(original_SaveOrigKeyMapping, SaveOrigKeyMapping)
-void SaveOrigKeyMapping() {
+void __cdecl SaveOrigKeyMapping() {
     LOG_TRACE("()");
 
 
     original_SaveOrigKeyMapping();
 }
 
-static void(*original_GetKeyCoords)(int, int *, int *, int *, int *, ...) = (void(*)(int, int *, int *, int *, int *, ...))0x0049a8e2;
+static void(__cdecl*original_GetKeyCoords)(int, int *, int *, int *, int *) = (void(__cdecl*)(int, int *, int *, int *, int *))0x0049a8e2;
 CARM95_HOOK_FUNCTION(original_GetKeyCoords, GetKeyCoords)
-void GetKeyCoords(int pIndex, int *pY, int *pName_x, int *pKey_x, int *pEnd_box) {
+void __cdecl GetKeyCoords(int pIndex, int *pY, int *pName_x, int *pKey_x, int *pEnd_box) {
     int col;
     LOG_TRACE("(%d, %p, %p, %p, %p)", pIndex, pY, pName_x, pKey_x, pEnd_box);
 
@@ -464,9 +463,9 @@ void GetKeyCoords(int pIndex, int *pY, int *pName_x, int *pKey_x, int *pEnd_box)
     original_GetKeyCoords(pIndex, pY, pName_x, pKey_x, pEnd_box);
 }
 
-static void(*original_SetKeysToDefault)() = (void(*)())0x0049b3f3;
+static void(__cdecl*original_SetKeysToDefault)() = (void(__cdecl*)())0x0049b3f3;
 CARM95_HOOK_FUNCTION(original_SetKeysToDefault, SetKeysToDefault)
-void SetKeysToDefault() {
+void __cdecl SetKeysToDefault() {
     FILE *f;
     tPath_name the_path;
     int i;
@@ -479,9 +478,9 @@ void SetKeysToDefault() {
     original_SetKeysToDefault();
 }
 
-static void(*original_SaveKeyMapping)() = (void(*)())0x0049ab7a;
+static void(__cdecl*original_SaveKeyMapping)() = (void(__cdecl*)())0x0049ab7a;
 CARM95_HOOK_FUNCTION(original_SaveKeyMapping, SaveKeyMapping)
-void SaveKeyMapping() {
+void __cdecl SaveKeyMapping() {
     FILE *f;
     tPath_name the_path;
     int i;
@@ -494,9 +493,9 @@ void SaveKeyMapping() {
     original_SaveKeyMapping();
 }
 
-static void(*original_ChangeKeyMapIndex)(int, ...) = (void(*)(int, ...))0x0049ab3c;
+static void(__cdecl*original_ChangeKeyMapIndex)(int) = (void(__cdecl*)(int))0x0049ab3c;
 CARM95_HOOK_FUNCTION(original_ChangeKeyMapIndex, ChangeKeyMapIndex)
-void ChangeKeyMapIndex(int pNew_one) {
+void __cdecl ChangeKeyMapIndex(int pNew_one) {
     LOG_TRACE("(%d)", pNew_one);
 
     (void)pNew_one;
@@ -504,9 +503,9 @@ void ChangeKeyMapIndex(int pNew_one) {
     original_ChangeKeyMapIndex(pNew_one);
 }
 
-static void(*original_DrawKeyAssignments)(int, int, ...) = (void(*)(int, int, ...))0x0049a3fa;
+static void(__cdecl*original_DrawKeyAssignments)(int, int) = (void(__cdecl*)(int, int))0x0049a3fa;
 CARM95_HOOK_FUNCTION(original_DrawKeyAssignments, DrawKeyAssignments)
-void DrawKeyAssignments(int pCurrent_choice, int pCurrent_mode) {
+void __cdecl DrawKeyAssignments(int pCurrent_choice, int pCurrent_mode) {
     int i;
     int y;
     int x_coord;
@@ -537,9 +536,9 @@ void DrawKeyAssignments(int pCurrent_choice, int pCurrent_mode) {
     original_DrawKeyAssignments(pCurrent_choice, pCurrent_mode);
 }
 
-static int(*original_KeyAssignLeft)(int *, int *, ...) = (int(*)(int *, int *, ...))0x0049aa3a;
+static int(__cdecl*original_KeyAssignLeft)(int *, int *) = (int(__cdecl*)(int *, int *))0x0049aa3a;
 CARM95_HOOK_FUNCTION(original_KeyAssignLeft, KeyAssignLeft)
-int KeyAssignLeft(int *pCurrent_choice, int *pCurrent_mode) {
+int __cdecl KeyAssignLeft(int *pCurrent_choice, int *pCurrent_mode) {
     int new_index;
     LOG_TRACE("(%p, %p)", pCurrent_choice, pCurrent_mode);
 
@@ -550,9 +549,9 @@ int KeyAssignLeft(int *pCurrent_choice, int *pCurrent_mode) {
     return original_KeyAssignLeft(pCurrent_choice, pCurrent_mode);
 }
 
-static int(*original_KeyAssignRight)(int *, int *, ...) = (int(*)(int *, int *, ...))0x0049ac6f;
+static int(__cdecl*original_KeyAssignRight)(int *, int *) = (int(__cdecl*)(int *, int *))0x0049ac6f;
 CARM95_HOOK_FUNCTION(original_KeyAssignRight, KeyAssignRight)
-int KeyAssignRight(int *pCurrent_choice, int *pCurrent_mode) {
+int __cdecl KeyAssignRight(int *pCurrent_choice, int *pCurrent_mode) {
     int new_index;
     LOG_TRACE("(%p, %p)", pCurrent_choice, pCurrent_mode);
 
@@ -563,9 +562,9 @@ int KeyAssignRight(int *pCurrent_choice, int *pCurrent_mode) {
     return original_KeyAssignRight(pCurrent_choice, pCurrent_mode);
 }
 
-static int(*original_KeyAssignUp)(int *, int *, ...) = (int(*)(int *, int *, ...))0x0049ad71;
+static int(__cdecl*original_KeyAssignUp)(int *, int *) = (int(__cdecl*)(int *, int *))0x0049ad71;
 CARM95_HOOK_FUNCTION(original_KeyAssignUp, KeyAssignUp)
-int KeyAssignUp(int *pCurrent_choice, int *pCurrent_mode) {
+int __cdecl KeyAssignUp(int *pCurrent_choice, int *pCurrent_mode) {
     LOG_TRACE("(%p, %p)", pCurrent_choice, pCurrent_mode);
 
     (void)pCurrent_choice;
@@ -574,9 +573,9 @@ int KeyAssignUp(int *pCurrent_choice, int *pCurrent_mode) {
     return original_KeyAssignUp(pCurrent_choice, pCurrent_mode);
 }
 
-static int(*original_KeyAssignDown)(int *, int *, ...) = (int(*)(int *, int *, ...))0x0049ae9b;
+static int(__cdecl*original_KeyAssignDown)(int *, int *) = (int(__cdecl*)(int *, int *))0x0049ae9b;
 CARM95_HOOK_FUNCTION(original_KeyAssignDown, KeyAssignDown)
-int KeyAssignDown(int *pCurrent_choice, int *pCurrent_mode) {
+int __cdecl KeyAssignDown(int *pCurrent_choice, int *pCurrent_mode) {
     LOG_TRACE("(%p, %p)", pCurrent_choice, pCurrent_mode);
 
     (void)pCurrent_choice;
@@ -585,9 +584,9 @@ int KeyAssignDown(int *pCurrent_choice, int *pCurrent_mode) {
     return original_KeyAssignDown(pCurrent_choice, pCurrent_mode);
 }
 
-static int(*original_KeyAssignGoAhead)(int *, int *, ...) = (int(*)(int *, int *, ...))0x0049afa5;
+static int(__cdecl*original_KeyAssignGoAhead)(int *, int *) = (int(__cdecl*)(int *, int *))0x0049afa5;
 CARM95_HOOK_FUNCTION(original_KeyAssignGoAhead, KeyAssignGoAhead)
-int KeyAssignGoAhead(int *pCurrent_choice, int *pCurrent_mode) {
+int __cdecl KeyAssignGoAhead(int *pCurrent_choice, int *pCurrent_mode) {
     int key;
     int i;
     int j;
@@ -616,9 +615,9 @@ int KeyAssignGoAhead(int *pCurrent_choice, int *pCurrent_mode) {
     return original_KeyAssignGoAhead(pCurrent_choice, pCurrent_mode);
 }
 
-static int(*original_MouseyClickBastard)(int *, int *, int, int, ...) = (int(*)(int *, int *, int, int, ...))0x0049b4bd;
+static int(__cdecl*original_MouseyClickBastard)(int *, int *, int, int) = (int(__cdecl*)(int *, int *, int, int))0x0049b4bd;
 CARM95_HOOK_FUNCTION(original_MouseyClickBastard, MouseyClickBastard)
-int MouseyClickBastard(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY_offset) {
+int __cdecl MouseyClickBastard(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY_offset) {
     int i;
     int x_coord;
     int y_coord;
@@ -635,9 +634,9 @@ int MouseyClickBastard(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, 
     return original_MouseyClickBastard(pCurrent_choice, pCurrent_mode, pX_offset, pY_offset);
 }
 
-static void(*original_DrawInitialKMRadios)() = (void(*)())0x0049b56c;
+static void(__cdecl*original_DrawInitialKMRadios)() = (void(__cdecl*)())0x0049b56c;
 CARM95_HOOK_FUNCTION(original_DrawInitialKMRadios, DrawInitialKMRadios)
-void DrawInitialKMRadios() {
+void __cdecl DrawInitialKMRadios() {
     int i;
     LOG_TRACE("()");
 
@@ -646,9 +645,9 @@ void DrawInitialKMRadios() {
     original_DrawInitialKMRadios();
 }
 
-static void(*original_DoControlOptions)() = (void(*)())0x0049be2c;
+static void(__cdecl*original_DoControlOptions)() = (void(__cdecl*)())0x0049be2c;
 CARM95_HOOK_FUNCTION(original_DoControlOptions, DoControlOptions)
-void DoControlOptions() {
+void __cdecl DoControlOptions() {
     static tFlicette flicker_on[4];
     static tFlicette flicker_off[4];
     static tFlicette push[4];
@@ -677,27 +676,27 @@ void DoControlOptions() {
     original_DoControlOptions();
 }
 
-static void(*original_LoadSoundOptionsData)() = (void(*)())0x0049b5b2;
+static void(__cdecl*original_LoadSoundOptionsData)() = (void(__cdecl*)())0x0049b5b2;
 CARM95_HOOK_FUNCTION(original_LoadSoundOptionsData, LoadSoundOptionsData)
-void LoadSoundOptionsData() {
+void __cdecl LoadSoundOptionsData() {
     LOG_TRACE("()");
 
 
     original_LoadSoundOptionsData();
 }
 
-static void(*original_FreeSoundOptionsData)() = (void(*)())0x0049b5e6;
+static void(__cdecl*original_FreeSoundOptionsData)() = (void(__cdecl*)())0x0049b5e6;
 CARM95_HOOK_FUNCTION(original_FreeSoundOptionsData, FreeSoundOptionsData)
-void FreeSoundOptionsData() {
+void __cdecl FreeSoundOptionsData() {
     LOG_TRACE("()");
 
 
     original_FreeSoundOptionsData();
 }
 
-static void(*original_DrawDisabledOptions)() = (void(*)())0x0049b5ff;
+static void(__cdecl*original_DrawDisabledOptions)() = (void(__cdecl*)())0x0049b5ff;
 CARM95_HOOK_FUNCTION(original_DrawDisabledOptions, DrawDisabledOptions)
-void DrawDisabledOptions() {
+void __cdecl DrawDisabledOptions() {
     br_pixelmap *image;
     LOG_TRACE("()");
 
@@ -706,9 +705,9 @@ void DrawDisabledOptions() {
     original_DrawDisabledOptions();
 }
 
-static void(*original_DoOptions)() = (void(*)())0x0049b705;
+static void(__cdecl*original_DoOptions)() = (void(__cdecl*)())0x0049b705;
 CARM95_HOOK_FUNCTION(original_DoOptions, DoOptions)
-void DoOptions() {
+void __cdecl DoOptions() {
     static tFlicette flicker_on[4];
     static tFlicette flicker_off[4];
     static tFlicette push[4];

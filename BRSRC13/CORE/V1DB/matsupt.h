@@ -4,8 +4,8 @@
 #include "br_types.h"
 
 
-br_material* BrMaterialAllocate(char *name);
+br_material* __cdecl BrMaterialAllocate(char *name);
 
-void BrMaterialFree(br_material *m);
+void __cdecl BrMaterialFree(br_material *m);
 
 #endif

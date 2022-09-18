@@ -4,12 +4,12 @@
 #include "br_types.h"
 
 
-br_uint_32 BrSwap32(br_uint_32 l);
+br_uint_32 __cdecl BrSwap32(br_uint_32 l);
 
-br_uint_16 BrSwap16(br_uint_16 s);
+br_uint_16 __cdecl BrSwap16(br_uint_16 s);
 
-br_float BrSwapFloat(br_float f);
+br_float __cdecl BrSwapFloat(br_float f);
 
-void* BrSwapBlock(void *block, int count, int size);
+void* __cdecl BrSwapBlock(void *block, int count, int size);
 
 #endif

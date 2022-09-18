@@ -27,9 +27,9 @@ extern float * hookvar_gReplay_rate ; // addr: 00531DCC
 // extern int * hookvar_gPaused ;
 extern tAction_replay_camera_type * hookvar_gAction_replay_camera_mode ; // addr: 00551DB4
 
-int ReplayIsPaused();
+int __cdecl ReplayIsPaused();
 
-float GetReplayRate();
+float __cdecl GetReplayRate();
 
 int GetReplayDirection();
 
@@ -37,11 +37,11 @@ void StopSaving();
 
 void ActualActionReplayHeadups(int pSpecial_zappy_bastard);
 
-void DoActionReplayPostSwap();
+void __cdecl DoActionReplayPostSwap();
 
-void DoZappyActionReplayHeadups(int pSpecial_zappy_bastard);
+void __cdecl DoZappyActionReplayHeadups(int pSpecial_zappy_bastard);
 
-void DoActionReplayHeadups();
+void __cdecl DoActionReplayHeadups();
 
 void MoveReplayBuffer(tS32 pMove_amount);
 
@@ -49,20 +49,20 @@ void MoveToEndOfReplay();
 
 void MoveToStartOfReplay();
 
-void ToggleReplay();
+void __cdecl ToggleReplay();
 
-void ReverseSound(tS3_effect_tag pEffect_index, tS3_sound_tag pSound_tag);
+void __cdecl ReverseSound(tS3_effect_tag pEffect_index, tS3_sound_tag pSound_tag);
 
-int FindUniqueFile();
+int __cdecl FindUniqueFile();
 
-void PollActionReplayControls(tU32 pFrame_period);
+void __cdecl PollActionReplayControls(tU32 pFrame_period);
 
-void CheckReplayTurnOn();
+void __cdecl CheckReplayTurnOn();
 
-void InitializeActionReplay();
+void __cdecl InitializeActionReplay();
 
-void DoActionReplay(tU32 pFrame_period);
+void __cdecl DoActionReplay(tU32 pFrame_period);
 
-void SynchronizeActionReplay();
+void __cdecl SynchronizeActionReplay();
 
 #endif

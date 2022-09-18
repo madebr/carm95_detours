@@ -3999,7 +3999,7 @@ typedef struct REGPACKX {
     unsigned int flags;
 } REGPACKX;
 
-typedef union REGPACK {
+typedef struct REGPACK {
     REGPACKB h;
     REGPACKW w;
     REGPACKX x;

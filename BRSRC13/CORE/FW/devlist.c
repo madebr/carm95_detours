@@ -4,7 +4,6 @@
 
 #include "carm95_hooks.h"
 
-#include <stdio.h>
 
 br_error AddRequestedDrivers() {
     char devstr[256];
@@ -17,9 +16,9 @@ br_error AddRequestedDrivers() {
     NOT_IMPLEMENTED();
 }
 
-static br_error(*original_devAdd)(br_device **, br_device_begin_fn *, char *, br_image *, ...) = (br_error(*)(br_device **, br_device_begin_fn *, char *, br_image *, ...))0x004e78e0;
+static br_error(__stdcall*original_devAdd)(br_device **, br_device_begin_fn *, char *, br_image *) = (br_error(__stdcall*)(br_device **, br_device_begin_fn *, char *, br_image *))0x004e78e0;
 CARM95_HOOK_FUNCTION(original_devAdd, devAdd)
-br_error devAdd(br_device **pdev, br_device_begin_fn *dev_begin, char *args, br_image *image) {
+br_error __stdcall devAdd(br_device **pdev, br_device_begin_fn *dev_begin, char *args, br_image *image) {
     int i;
     br_device *dev;
     struct br_open_device *new_slots;
@@ -36,9 +35,9 @@ br_error devAdd(br_device **pdev, br_device_begin_fn *dev_begin, char *args, br_
     return original_devAdd(pdev, dev_begin, args, image);
 }
 
-static br_error(*original_BrDevAdd)(br_device **, char *, char *, ...) = (br_error(*)(br_device **, char *, char *, ...))0x004e7880;
+static br_error(__cdecl*original_BrDevAdd)(br_device **, char *, char *) = (br_error(__cdecl*)(br_device **, char *, char *))0x004e7880;
 CARM95_HOOK_FUNCTION(original_BrDevAdd, BrDevAdd)
-br_error BrDevAdd(br_device **pdev, char *image, char *args) {
+br_error __cdecl BrDevAdd(br_device **pdev, char *image, char *args) {
     br_image *dev_image;
     br_device_begin_fn *dev_begin;
     LOG_TRACE("(%p, \"%s\", \"%s\")", pdev, image, args);
@@ -52,9 +51,9 @@ br_error BrDevAdd(br_device **pdev, char *image, char *args) {
     return original_BrDevAdd(pdev, image, args);
 }
 
-static br_error(*original_BrDevAddStatic)(br_device **, br_device_begin_fn *, char *, ...) = (br_error(*)(br_device **, br_device_begin_fn *, char *, ...))0x004e7a00;
+static br_error(__cdecl*original_BrDevAddStatic)(br_device **, br_device_begin_fn *, char *) = (br_error(__cdecl*)(br_device **, br_device_begin_fn *, char *))0x004e7a00;
 CARM95_HOOK_FUNCTION(original_BrDevAddStatic, BrDevAddStatic)
-br_error BrDevAddStatic(br_device **pdev, br_device_begin_fn *dev_begin, char *args) {
+br_error __cdecl BrDevAddStatic(br_device **pdev, br_device_begin_fn *dev_begin, char *args) {
     LOG_TRACE("(%p, %p, \"%s\")", pdev, dev_begin, args);
 
     (void)pdev;
@@ -64,9 +63,9 @@ br_error BrDevAddStatic(br_device **pdev, br_device_begin_fn *dev_begin, char *a
     return original_BrDevAddStatic(pdev, dev_begin, args);
 }
 
-static br_error(*original_BrDevCheckAdd)(br_device **, char *, char *, ...) = (br_error(*)(br_device **, char *, char *, ...))0x004e7a20;
+static br_error(__cdecl*original_BrDevCheckAdd)(br_device **, char *, char *) = (br_error(__cdecl*)(br_device **, char *, char *))0x004e7a20;
 CARM95_HOOK_FUNCTION(original_BrDevCheckAdd, BrDevCheckAdd)
-br_error BrDevCheckAdd(br_device **pdev, char *name, char *args) {
+br_error __cdecl BrDevCheckAdd(br_device **pdev, char *name, char *args) {
     LOG_TRACE("(%p, \"%s\", \"%s\")", pdev, name, args);
 
     (void)pdev;
@@ -94,9 +93,9 @@ br_error BrDevAddConfig(char *config) {
     NOT_IMPLEMENTED();
 }
 
-static br_error(*original_BrDevRemove)(br_device *, ...) = (br_error(*)(br_device *, ...))0x004e7c60;
+static br_error(__cdecl*original_BrDevRemove)(br_device *) = (br_error(__cdecl*)(br_device *))0x004e7c60;
 CARM95_HOOK_FUNCTION(original_BrDevRemove, BrDevRemove)
-br_error BrDevRemove(br_device *dev) {
+br_error __cdecl BrDevRemove(br_device *dev) {
     int i;
     LOG_TRACE("(%p)", dev);
 
@@ -106,9 +105,9 @@ br_error BrDevRemove(br_device *dev) {
     return original_BrDevRemove(dev);
 }
 
-static br_error(*original_BrDevFind)(struct br_device **, char *, ...) = (br_error(*)(struct br_device **, char *, ...))0x004e7cd0;
+static br_error(__stdcall*original_BrDevFind)(struct br_device **, char *) = (br_error(__stdcall*)(struct br_device **, char *))0x004e7cd0;
 CARM95_HOOK_FUNCTION(original_BrDevFind, BrDevFind)
-br_error BrDevFind(struct br_device **pdev, char *pattern) {
+br_error __stdcall BrDevFind(struct br_device **pdev, char *pattern) {
     int i;
     int c;
     LOG_TRACE("(%p, \"%s\")", pdev, pattern);
@@ -121,9 +120,9 @@ br_error BrDevFind(struct br_device **pdev, char *pattern) {
     return original_BrDevFind(pdev, pattern);
 }
 
-static br_error(*original_BrDevFindMany)(struct br_device **, br_int_32 *, br_int_32, char *, ...) = (br_error(*)(struct br_device **, br_int_32 *, br_int_32, char *, ...))0x004e7d90;
+static br_error(__stdcall*original_BrDevFindMany)(struct br_device **, br_int_32 *, br_int_32, char *) = (br_error(__stdcall*)(struct br_device **, br_int_32 *, br_int_32, char *))0x004e7d90;
 CARM95_HOOK_FUNCTION(original_BrDevFindMany, BrDevFindMany)
-br_error BrDevFindMany(struct br_device **devices, br_int_32 *ndevices, br_int_32 max_devices, char *pattern) {
+br_error __stdcall BrDevFindMany(struct br_device **devices, br_int_32 *ndevices, br_int_32 max_devices, char *pattern) {
     int i;
     int c;
     LOG_TRACE("(%p, %p, %d, \"%s\")", devices, ndevices, max_devices, pattern);
@@ -138,9 +137,9 @@ br_error BrDevFindMany(struct br_device **devices, br_int_32 *ndevices, br_int_3
     return original_BrDevFindMany(devices, ndevices, max_devices, pattern);
 }
 
-static br_error(*original_BrDevCount)(br_int_32 *, char *, ...) = (br_error(*)(br_int_32 *, char *, ...))0x004e7e70;
+static br_error(__stdcall*original_BrDevCount)(br_int_32 *, char *) = (br_error(__stdcall*)(br_int_32 *, char *))0x004e7e70;
 CARM95_HOOK_FUNCTION(original_BrDevCount, BrDevCount)
-br_error BrDevCount(br_int_32 *ndevices, char *pattern) {
+br_error __stdcall BrDevCount(br_int_32 *ndevices, char *pattern) {
     int i;
     int c;
     LOG_TRACE("(%p, \"%s\")", ndevices, pattern);
@@ -153,9 +152,9 @@ br_error BrDevCount(br_int_32 *ndevices, char *pattern) {
     return original_BrDevCount(ndevices, pattern);
 }
 
-static br_error(*original_BrDevContainedFind)(struct br_object **, br_token, char *, br_token_value *, ...) = (br_error(*)(struct br_object **, br_token, char *, br_token_value *, ...))0x004e7f20;
+static br_error(__cdecl*original_BrDevContainedFind)(struct br_object **, br_token, char *, br_token_value *) = (br_error(__cdecl*)(struct br_object **, br_token, char *, br_token_value *))0x004e7f20;
 CARM95_HOOK_FUNCTION(original_BrDevContainedFind, BrDevContainedFind)
-br_error BrDevContainedFind(struct br_object **ph, br_token type, char *pattern, br_token_value *tv) {
+br_error __cdecl BrDevContainedFind(struct br_object **ph, br_token type, char *pattern, br_token_value *tv) {
     int i;
     LOG_TRACE("(%p, %d, \"%s\", %p)", ph, type, pattern, tv);
 
@@ -168,9 +167,9 @@ br_error BrDevContainedFind(struct br_object **ph, br_token type, char *pattern,
     return original_BrDevContainedFind(ph, type, pattern, tv);
 }
 
-static br_error(*original_BrDevContainedFindMany)(struct br_object **, br_int_32, br_int_32 *, br_token, char *, br_token_value *, ...) = (br_error(*)(struct br_object **, br_int_32, br_int_32 *, br_token, char *, br_token_value *, ...))0x004e7fe0;
+static br_error(__cdecl*original_BrDevContainedFindMany)(struct br_object **, br_int_32, br_int_32 *, br_token, char *, br_token_value *) = (br_error(__cdecl*)(struct br_object **, br_int_32, br_int_32 *, br_token, char *, br_token_value *))0x004e7fe0;
 CARM95_HOOK_FUNCTION(original_BrDevContainedFindMany, BrDevContainedFindMany)
-br_error BrDevContainedFindMany(struct br_object **objects, br_int_32 max_objects, br_int_32 *pnum_objects, br_token type, char *pattern, br_token_value *tv) {
+br_error __cdecl BrDevContainedFindMany(struct br_object **objects, br_int_32 max_objects, br_int_32 *pnum_objects, br_token type, char *pattern, br_token_value *tv) {
     int i;
     br_int_32 n;
     br_int_32 total;
@@ -191,9 +190,9 @@ br_error BrDevContainedFindMany(struct br_object **objects, br_int_32 max_object
     return original_BrDevContainedFindMany(objects, max_objects, pnum_objects, type, pattern, tv);
 }
 
-static br_error(*original_BrDevContainedCount)(br_int_32 *, br_token, char *, br_token_value *, ...) = (br_error(*)(br_int_32 *, br_token, char *, br_token_value *, ...))0x004e80c0;
+static br_error(__cdecl*original_BrDevContainedCount)(br_int_32 *, br_token, char *, br_token_value *) = (br_error(__cdecl*)(br_int_32 *, br_token, char *, br_token_value *))0x004e80c0;
 CARM95_HOOK_FUNCTION(original_BrDevContainedCount, BrDevContainedCount)
-br_error BrDevContainedCount(br_int_32 *pcount, br_token type, char *pattern, br_token_value *tv) {
+br_error __cdecl BrDevContainedCount(br_int_32 *pcount, br_token type, char *pattern, br_token_value *tv) {
     int i;
     br_int_32 n;
     br_int_32 total;

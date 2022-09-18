@@ -9,10 +9,10 @@ extern void *(* hookvar_functionPointers_BRHOST1 )[50]; // addr: 0052EF40
 extern br_image * hookvar_Image_BRHOST1 ; // addr: 0052F008
 extern host_info * hookvar_hostInfo ; // addr: 0052F048
 
-void HostBegin();
+void __stdcall HostBegin();
 
-void HostEnd();
+void __stdcall HostEnd();
 
-br_error HostInfo(host_info *buffer, br_size_t buffersize);
+br_error __cdecl HostInfo(host_info *buffer, br_size_t buffersize);
 
 #endif

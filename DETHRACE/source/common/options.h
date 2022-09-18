@@ -29,88 +29,88 @@ int SoundOptionsRight(int *pCurrent_choice, int *pCurrent_mode);
 
 int SoundClick(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY_offset);
 
-void DoSoundOptions();
+void __cdecl DoSoundOptions();
 
-void GetGraphicsOptions();
+void __cdecl GetGraphicsOptions();
 
-void SetGraphicsOptions();
+void __cdecl SetGraphicsOptions();
 
-void PlayRadioOn2(int pIndex, int pValue);
+void __cdecl PlayRadioOn2(int pIndex, int pValue);
 
-void PlayRadioOff2(int pIndex, int pValue);
+void __cdecl PlayRadioOff2(int pIndex, int pValue);
 
-void PlayRadioOn__options(int pIndex, int pValue);
+void __cdecl PlayRadioOn__options(int pIndex, int pValue);
 
-void PlayRadioOff__options(int pIndex, int pValue);
+void __cdecl PlayRadioOff__options(int pIndex, int pValue);
 
-void DrawInitialRadios();
+void __cdecl DrawInitialRadios();
 
-void RadioChanged(int pIndex, int pNew_value);
+void __cdecl RadioChanged(int pIndex, int pNew_value);
 
-int GraphOptLeft(int *pCurrent_choice, int *pCurrent_mode);
+int __cdecl GraphOptLeft(int *pCurrent_choice, int *pCurrent_mode);
 
-int GraphOptRight(int *pCurrent_choice, int *pCurrent_mode);
+int __cdecl GraphOptRight(int *pCurrent_choice, int *pCurrent_mode);
 
-int GraphOptUp(int *pCurrent_choice, int *pCurrent_mode);
+int __cdecl GraphOptUp(int *pCurrent_choice, int *pCurrent_mode);
 
-int GraphOptDown(int *pCurrent_choice, int *pCurrent_mode);
+int __cdecl GraphOptDown(int *pCurrent_choice, int *pCurrent_mode);
 
-int RadioClick(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY_offset);
+int __cdecl RadioClick(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY_offset);
 
-int GraphOptGoAhead(int *pCurrent_choice, int *pCurrent_mode);
+int __cdecl GraphOptGoAhead(int *pCurrent_choice, int *pCurrent_mode);
 
-void PlotAGraphBox__options(int pIndex, int pColour_value);
+void __cdecl PlotAGraphBox__options(int pIndex, int pColour_value);
 
-void DrawAGraphBox__options(int pIndex);
+void __cdecl DrawAGraphBox__options(int pIndex);
 
-void EraseAGraphBox__options(int pIndex);
+void __cdecl EraseAGraphBox__options(int pIndex);
 
-void DrawGraphBox(int pCurrent_choice, int pCurrent_mode);
+void __cdecl DrawGraphBox(int pCurrent_choice, int pCurrent_mode);
 
-void DoGraphicsOptions();
+void __cdecl DoGraphicsOptions();
 
-void CalibrateJoysticks();
+void __fastcall CalibrateJoysticks();
 
-void StripControls(unsigned char *pStr);
+void __cdecl StripControls(unsigned char *pStr);
 
-void LoadKeyNames();
+void __cdecl LoadKeyNames();
 
-void DisposeKeyNames();
+void __cdecl DisposeKeyNames();
 
-void SaveOrigKeyMapping();
+void __cdecl SaveOrigKeyMapping();
 
-void GetKeyCoords(int pIndex, int *pY, int *pName_x, int *pKey_x, int *pEnd_box);
+void __cdecl GetKeyCoords(int pIndex, int *pY, int *pName_x, int *pKey_x, int *pEnd_box);
 
-void SetKeysToDefault();
+void __cdecl SetKeysToDefault();
 
-void SaveKeyMapping();
+void __cdecl SaveKeyMapping();
 
-void ChangeKeyMapIndex(int pNew_one);
+void __cdecl ChangeKeyMapIndex(int pNew_one);
 
-void DrawKeyAssignments(int pCurrent_choice, int pCurrent_mode);
+void __cdecl DrawKeyAssignments(int pCurrent_choice, int pCurrent_mode);
 
-int KeyAssignLeft(int *pCurrent_choice, int *pCurrent_mode);
+int __cdecl KeyAssignLeft(int *pCurrent_choice, int *pCurrent_mode);
 
-int KeyAssignRight(int *pCurrent_choice, int *pCurrent_mode);
+int __cdecl KeyAssignRight(int *pCurrent_choice, int *pCurrent_mode);
 
-int KeyAssignUp(int *pCurrent_choice, int *pCurrent_mode);
+int __cdecl KeyAssignUp(int *pCurrent_choice, int *pCurrent_mode);
 
-int KeyAssignDown(int *pCurrent_choice, int *pCurrent_mode);
+int __cdecl KeyAssignDown(int *pCurrent_choice, int *pCurrent_mode);
 
-int KeyAssignGoAhead(int *pCurrent_choice, int *pCurrent_mode);
+int __cdecl KeyAssignGoAhead(int *pCurrent_choice, int *pCurrent_mode);
 
-int MouseyClickBastard(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY_offset);
+int __cdecl MouseyClickBastard(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY_offset);
 
-void DrawInitialKMRadios();
+void __cdecl DrawInitialKMRadios();
 
-void DoControlOptions();
+void __cdecl DoControlOptions();
 
-void LoadSoundOptionsData();
+void __cdecl LoadSoundOptionsData();
 
-void FreeSoundOptionsData();
+void __cdecl FreeSoundOptionsData();
 
-void DrawDisabledOptions();
+void __cdecl DrawDisabledOptions();
 
-void DoOptions();
+void __cdecl DoOptions();
 
 #endif

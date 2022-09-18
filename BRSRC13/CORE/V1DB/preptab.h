@@ -4,6 +4,6 @@
 #include "br_types.h"
 
 
-void BrTableUpdate(br_pixelmap *table, br_uint_16 flags);
+void __cdecl BrTableUpdate(br_pixelmap *table, br_uint_16 flags);
 
 #endif

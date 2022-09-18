@@ -40,185 +40,185 @@ extern tU32 * hookvar_gPipe_buffer_size ; // addr: 00532088
 extern tU8 ** hookvar_gLocal_buffer ; // addr: 00532014
 extern tU32 * hookvar_gLocal_buffer_size ; // addr: 00532090
 
-void GetReducedPos(br_vector3 *v, tReduced_pos *p);
+void __cdecl GetReducedPos(br_vector3 *v, tReduced_pos *p);
 
-void SaveReducedPos(tReduced_pos *p, br_vector3 *v);
+void __cdecl SaveReducedPos(tReduced_pos *p, br_vector3 *v);
 
-int PipeSearchForwards();
+int __cdecl PipeSearchForwards();
 
-int IsActionReplayAvailable();
+int __cdecl IsActionReplayAvailable();
 
-int SomeReplayLeft();
+int __cdecl SomeReplayLeft();
 
-void DisablePipedSounds();
+void __cdecl DisablePipedSounds();
 
-void EnablePipedSounds();
+void __cdecl EnablePipedSounds();
 
-tU32 LengthOfSession(tPipe_session *pSession);
+tU32 __cdecl LengthOfSession(tPipe_session *pSession);
 
-void StartPipingSession2(tPipe_chunk_type pThe_type, int pMunge_reentrancy);
+void __cdecl StartPipingSession2(tPipe_chunk_type pThe_type, int pMunge_reentrancy);
 
-void StartPipingSession(tPipe_chunk_type pThe_type);
+void __cdecl StartPipingSession(tPipe_chunk_type pThe_type);
 
-void EndPipingSession2(int pMunge_reentrancy);
+void __cdecl EndPipingSession2(int pMunge_reentrancy);
 
-void EndPipingSession();
+void __cdecl EndPipingSession();
 
-void AddDataToSession(int pSubject_index, void *pData, tU32 pData_length);
+void __cdecl AddDataToSession(int pSubject_index, void *pData, tU32 pData_length);
 
-void AddModelGeometryToPipingSession(tU16 pCar_ID, int pModel_index, int pVertex_count, tChanged_vertex *pCoordinates);
+void __cdecl AddModelGeometryToPipingSession(tU16 pCar_ID, int pModel_index, int pVertex_count, tChanged_vertex *pCoordinates);
 
-void AddSmudgeToPipingSession(tU16 pCar_ID, int pModel_index, int pVertex_count, tSmudged_vertex *pCoordinates);
+void __cdecl AddSmudgeToPipingSession(tU16 pCar_ID, int pModel_index, int pVertex_count, tSmudged_vertex *pCoordinates);
 
-void AddPedestrianToPipingSession(int pPedestrian_index, br_matrix34 *pTrans, tU8 pAction_index, tU8 pFrame_index, tS8 pHit_points, int pDone_initial, tU16 pParent_ID, float pSpin_period, br_scalar pJump_magnitude, br_vector3 *pOffset);
+void __cdecl AddPedestrianToPipingSession(int pPedestrian_index, br_matrix34 *pTrans, tU8 pAction_index, tU8 pFrame_index, tS8 pHit_points, int pDone_initial, tU16 pParent_ID, float pSpin_period, br_scalar pJump_magnitude, br_vector3 *pOffset);
 
-void AddSparkToPipingSession(int pSpark_index, br_vector3 *pPos, br_vector3 *pV);
+void __cdecl AddSparkToPipingSession(int pSpark_index, br_vector3 *pPos, br_vector3 *pV);
 
-void AddShrapnelToPipingSession(int pShrapnel_index, br_vector3 *pPos, tU16 pAge, br_material *pMaterial);
+void __cdecl AddShrapnelToPipingSession(int pShrapnel_index, br_vector3 *pPos, tU16 pAge, br_material *pMaterial);
 
-void AddScreenWobbleToPipingSession(int pWobble_x, int pWobble_y);
+void __cdecl AddScreenWobbleToPipingSession(int pWobble_x, int pWobble_y);
 
-void AddGrooveStopToPipingSession(int pGroove_index, br_matrix34 *pMatrix, int pPath_interrupt, int pObject_interrupt, float pPath_resumption, float pObject_resumption);
+void __cdecl AddGrooveStopToPipingSession(int pGroove_index, br_matrix34 *pMatrix, int pPath_interrupt, int pObject_interrupt, float pPath_resumption, float pObject_resumption);
 
-void AddNonCarToPipingSession(int pIndex, br_actor *pActor);
+void __cdecl AddNonCarToPipingSession(int pIndex, br_actor *pActor);
 
-void AddSmokeToPipingSession(int pIndex, tU8 pType, br_vector3 *pPos, br_scalar pRadius, br_scalar pStrength);
+void __cdecl AddSmokeToPipingSession(int pIndex, tU8 pType, br_vector3 *pPos, br_scalar pRadius, br_scalar pStrength);
 
-void AddSmokeColumnToPipingSession(int pIndex, tCar_spec *pCar, int pVertex, int pColour);
+void __cdecl AddSmokeColumnToPipingSession(int pIndex, tCar_spec *pCar, int pVertex, int pColour);
 
-void AddFlameToPipingSession(int pIndex, int pFrame_count, br_scalar pScale_x, br_scalar pScale_y, br_scalar pOffset_x, br_scalar pOffset_z);
+void __cdecl AddFlameToPipingSession(int pIndex, int pFrame_count, br_scalar pScale_x, br_scalar pScale_y, br_scalar pOffset_x, br_scalar pOffset_z);
 
-void AddSplashToPipingSession(tCollision_info *pCar);
+void __cdecl AddSplashToPipingSession(tCollision_info *pCar);
 
-void AddOilSpillToPipingSession(int pIndex, br_matrix34 *pMat, br_scalar pFull_size, br_scalar pGrow_rate, tU32 pSpill_time, tU32 pStop_time, tCar_spec *pCar, br_vector3 *pOriginal_pos, br_pixelmap *pPixelmap);
+void __cdecl AddOilSpillToPipingSession(int pIndex, br_matrix34 *pMat, br_scalar pFull_size, br_scalar pGrow_rate, tU32 pSpill_time, tU32 pStop_time, tCar_spec *pCar, br_vector3 *pOriginal_pos, br_pixelmap *pPixelmap);
 
-void AddFrameFinishToPipingSession(tU32 pThe_time);
+void __cdecl AddFrameFinishToPipingSession(tU32 pThe_time);
 
-void AddCarToPipingSession(int pCar_ID, br_matrix34 *pCar_mat, br_vector3 *pCar_velocity, float pSpeedo_speed, float pLf_sus_position, float pRf_sus_position, float pLr_sus_position, float pRr_sus_position, float pSteering_angle, br_scalar pRevs, int pGear, int pFrame_coll_flag);
+void __cdecl AddCarToPipingSession(int pCar_ID, br_matrix34 *pCar_mat, br_vector3 *pCar_velocity, float pSpeedo_speed, float pLf_sus_position, float pRf_sus_position, float pLr_sus_position, float pRr_sus_position, float pSteering_angle, br_scalar pRevs, int pGear, int pFrame_coll_flag);
 
-void AddSoundToPipingSession(tS3_outlet_ptr pOutlet, int pSound_index, tS3_volume pL_volume, tS3_volume pR_volume, tS3_pitch pPitch, br_vector3 *pPos);
+void __cdecl AddSoundToPipingSession(tS3_outlet_ptr pOutlet, int pSound_index, tS3_volume pL_volume, tS3_volume pR_volume, tS3_pitch pPitch, br_vector3 *pPos);
 
-void AddDamageToPipingSession(int pCar_ID, tS8 *pDifferences);
+void __cdecl AddDamageToPipingSession(int pCar_ID, tS8 *pDifferences);
 
-void AddSpecialToPipingSession(tSpecial_type pType);
+void __cdecl AddSpecialToPipingSession(tSpecial_type pType);
 
-void AddPedGibToPipingSession(int pIndex, br_matrix34 *pTrans, int pSize, int pGib_index, int pPed_index);
+void __cdecl AddPedGibToPipingSession(int pIndex, br_matrix34 *pTrans, int pSize, int pGib_index, int pPed_index);
 
-void AddCarIncidentToPipingSession(float pSeverity, tCar_spec *pCar, br_vector3 *pImpact_point);
+void __cdecl AddCarIncidentToPipingSession(float pSeverity, tCar_spec *pCar, br_vector3 *pImpact_point);
 
-void AddPedIncidentToPipingSession(int pPed_index, br_actor *pActor);
+void __cdecl AddPedIncidentToPipingSession(int pPed_index, br_actor *pActor);
 
-void AddWallIncidentToPipingSession(float pSeverity, br_vector3 *pImpact_point);
+void __cdecl AddWallIncidentToPipingSession(float pSeverity, br_vector3 *pImpact_point);
 
-void AddProxRayToPipingSession(int pRay_index, tCar_spec *pCar, tU16 pPed_index, tU32 pTime);
+void __cdecl AddProxRayToPipingSession(int pRay_index, tCar_spec *pCar, tU16 pPed_index, tU32 pTime);
 
-void AddSkidAdjustmentToPipingSession(int pSkid_num, br_matrix34 *pMatrix, int pMaterial_index);
+void __cdecl AddSkidAdjustmentToPipingSession(int pSkid_num, br_matrix34 *pMatrix, int pMaterial_index);
 
-void PipeSingleModelGeometry(tU16 pCar_ID, int pModel_index, int pVertex_count, tChanged_vertex *pCoordinates);
+void __cdecl PipeSingleModelGeometry(tU16 pCar_ID, int pModel_index, int pVertex_count, tChanged_vertex *pCoordinates);
 
-void PipeSinglePedestrian(int pPedestrian_index, br_matrix34 *pTrans, tU8 pAction_index, tU8 pFrame_index, tS8 pHit_points, int pDone_initial, tU16 pParent_ID, float pSpin_period, br_scalar pJump_magnitude, br_vector3 *pOffset);
+void __cdecl PipeSinglePedestrian(int pPedestrian_index, br_matrix34 *pTrans, tU8 pAction_index, tU8 pFrame_index, tS8 pHit_points, int pDone_initial, tU16 pParent_ID, float pSpin_period, br_scalar pJump_magnitude, br_vector3 *pOffset);
 
-void PipeSingleCar(int pCar_ID, br_matrix34 *pCar_mat, br_vector3 *pCar_velocity, float pSpeedo_speed, float pLf_sus_position, float pRf_sus_position, float pLr_sus_position, float pRr_sus_position, float pSteering_angle, br_scalar pRevs, int pGear, int pFrame_coll_flag);
+void __cdecl PipeSingleCar(int pCar_ID, br_matrix34 *pCar_mat, br_vector3 *pCar_velocity, float pSpeedo_speed, float pLf_sus_position, float pRf_sus_position, float pLr_sus_position, float pRr_sus_position, float pSteering_angle, br_scalar pRevs, int pGear, int pFrame_coll_flag);
 
-void PipeSingleSound(tS3_outlet_ptr pOutlet, int pSound_index, tS3_volume pL_volume, tS3_volume pR_volume, tS3_pitch pPitch, br_vector3 *pPos);
+void __cdecl PipeSingleSound(tS3_outlet_ptr pOutlet, int pSound_index, tS3_volume pL_volume, tS3_volume pR_volume, tS3_pitch pPitch, br_vector3 *pPos);
 
-void PipeSingleOilSpill(int pIndex, br_matrix34 *pMat, br_scalar pFull_size, br_scalar pGrow_rate, tU32 pSpill_time, tU32 pStop_time, tCar_spec *pCar, br_vector3 *pOriginal_pos, br_pixelmap *pPixelmap);
+void __cdecl PipeSingleOilSpill(int pIndex, br_matrix34 *pMat, br_scalar pFull_size, br_scalar pGrow_rate, tU32 pSpill_time, tU32 pStop_time, tCar_spec *pCar, br_vector3 *pOriginal_pos, br_pixelmap *pPixelmap);
 
-void PipeSingleDamage(int pCar_ID, tS8 *pDifferences);
+void __cdecl PipeSingleDamage(int pCar_ID, tS8 *pDifferences);
 
-void PipeSingleSpecial(tSpecial_type pType);
+void __cdecl PipeSingleSpecial(tSpecial_type pType);
 
-void PipeSinglePedGib(int pIndex, br_matrix34 *pTrans, int pSize, int pGib_index, int pPed_index);
+void __cdecl PipeSinglePedGib(int pIndex, br_matrix34 *pTrans, int pSize, int pGib_index, int pPed_index);
 
-void PipeSingleCarIncident(float pSeverity, tCar_spec *pCar, br_vector3 *pImpact_point);
+void __cdecl PipeSingleCarIncident(float pSeverity, tCar_spec *pCar, br_vector3 *pImpact_point);
 
-void PipeSinglePedIncident(int pPed_index, br_actor *pActor);
+void __cdecl PipeSinglePedIncident(int pPed_index, br_actor *pActor);
 
-void PipeSingleWallIncident(float pSeverity, br_vector3 *pImpact_point);
+void __cdecl PipeSingleWallIncident(float pSeverity, br_vector3 *pImpact_point);
 
-void PipeSingleScreenShake(int pWobble_x, int pWobble_y);
+void __cdecl PipeSingleScreenShake(int pWobble_x, int pWobble_y);
 
-void PipeSingleGrooveStop(int pGroove_index, br_matrix34 *pMatrix, int pPath_interrupt, int pObject_interrupt, float pPath_resumption, float pObject_resumption);
+void __cdecl PipeSingleGrooveStop(int pGroove_index, br_matrix34 *pMatrix, int pPath_interrupt, int pObject_interrupt, float pPath_resumption, float pObject_resumption);
 
-void PipeFrameFinish();
+void __cdecl PipeFrameFinish();
 
-void PipingFrameReset();
+void __cdecl PipingFrameReset();
 
-void PipeSingleSkidAdjustment(int pSkid_num, br_matrix34 *pMatrix, int pMaterial_index);
+void __cdecl PipeSingleSkidAdjustment(int pSkid_num, br_matrix34 *pMatrix, int pMaterial_index);
 
-void ResetPiping();
+void __cdecl ResetPiping();
 
-void InitialisePiping();
+void __cdecl InitialisePiping();
 
-void DisposePiping();
+void __cdecl DisposePiping();
 
-void InitLastDamageArrayEtc();
+void __cdecl InitLastDamageArrayEtc();
 
-void ResetCars();
+void __cdecl ResetCars();
 
-void PipeCarPositions();
+void __cdecl PipeCarPositions();
 
-void ResetPipePlayToEnd();
+void __cdecl ResetPipePlayToEnd();
 
-void ResetPipePlayToStart();
+void __cdecl ResetPipePlayToStart();
 
-tU8* GetPipePlayPtr();
+tU8* __cdecl GetPipePlayPtr();
 
-void SetPipePlayPtr(tU8 *pPtr);
+void __cdecl SetPipePlayPtr(tU8 *pPtr);
 
-void AdvanceChunkPtr(tPipe_chunk **pChunk, tChunk_subject_index pType);
+void __cdecl AdvanceChunkPtr(tPipe_chunk **pChunk, tChunk_subject_index pType);
 
-void ApplyModelGeometry(tPipe_chunk **pChunk);
+void __cdecl ApplyModelGeometry(tPipe_chunk **pChunk);
 
 void DoSmudge(tPipe_chunk **pChunk, int pDir);
 
-void ApplySmudge(tPipe_chunk **pChunk);
+void __cdecl ApplySmudge(tPipe_chunk **pChunk);
 
-void ApplyPedestrian(tPipe_chunk **pChunk);
+void __cdecl ApplyPedestrian(tPipe_chunk **pChunk);
 
-void ApplySpark(tPipe_chunk **pChunk);
+void __cdecl ApplySpark(tPipe_chunk **pChunk);
 
-void ApplyShrapnel(tPipe_chunk **pChunk);
+void __cdecl ApplyShrapnel(tPipe_chunk **pChunk);
 
-void ApplyScreenWobble(tPipe_chunk **pChunk);
+void __cdecl ApplyScreenWobble(tPipe_chunk **pChunk);
 
-void ApplyGrooveStop(tPipe_chunk **pChunk);
+void __cdecl ApplyGrooveStop(tPipe_chunk **pChunk);
 
-void ApplyNonCar(tPipe_chunk **pChunk);
+void __cdecl ApplyNonCar(tPipe_chunk **pChunk);
 
-void ApplySmoke(tPipe_chunk **pChunk);
+void __cdecl ApplySmoke(tPipe_chunk **pChunk);
 
-void ApplySmokeColumn(tPipe_chunk **pChunk);
+void __cdecl ApplySmokeColumn(tPipe_chunk **pChunk);
 
-void ApplyFlame(tPipe_chunk **pChunk);
+void __cdecl ApplyFlame(tPipe_chunk **pChunk);
 
-void ApplySplash(tPipe_chunk **pChunk);
+void __cdecl ApplySplash(tPipe_chunk **pChunk);
 
-void ApplyOilSpill(tPipe_chunk **pChunk, tU32 pStop_time);
+void __cdecl ApplyOilSpill(tPipe_chunk **pChunk, tU32 pStop_time);
 
-void ApplyFrameBoundary(tPipe_chunk **pChunk);
+void __cdecl ApplyFrameBoundary(tPipe_chunk **pChunk);
 
-void ApplySound(tPipe_chunk **pChunk);
+void __cdecl ApplySound(tPipe_chunk **pChunk);
 
-void ApplyCar(tPipe_chunk **pChunk);
+void __cdecl ApplyCar(tPipe_chunk **pChunk);
 
-void ApplyDamage(tPipe_chunk **pChunk);
+void __cdecl ApplyDamage(tPipe_chunk **pChunk);
 
-void ApplySpecial(tPipe_chunk **pChunk);
+void __cdecl ApplySpecial(tPipe_chunk **pChunk);
 
-void ApplyPedGib(tPipe_chunk **pChunk);
+void __cdecl ApplyPedGib(tPipe_chunk **pChunk);
 
-void ApplyProxRay(tPipe_chunk **pChunk);
+void __cdecl ApplyProxRay(tPipe_chunk **pChunk);
 
-void ApplySkidAdjustment(tPipe_chunk **pChunk);
+void __cdecl ApplySkidAdjustment(tPipe_chunk **pChunk);
 
-int ApplyPipedSession(tU8 **pPtr);
+int __cdecl ApplyPipedSession(tU8 **pPtr);
 
-int MoveSessionPointerBackOne(tU8 **pPtr);
+int __cdecl MoveSessionPointerBackOne(tU8 **pPtr);
 
 int MoveSessionPointerForwardOne(tU8 **pPtr);
 
-tPipe_chunk* FindPreviousChunk(tU8 *pPtr, tPipe_chunk_type pType, tChunk_subject_index pIndex);
+tPipe_chunk* __cdecl FindPreviousChunk(tU8 *pPtr, tPipe_chunk_type pType, tChunk_subject_index pIndex);
 
 void UndoModelGeometry(tPipe_chunk **pChunk);
 
@@ -234,45 +234,45 @@ void UndoSound(tPipe_chunk **pChunk);
 
 void UndoDamage(tPipe_chunk **pChunk);
 
-void UndoSpecial(tPipe_chunk **pChunk);
+void __cdecl UndoSpecial(tPipe_chunk **pChunk);
 
-void UndoPedGib(tPipe_chunk **pChunk, tPipe_chunk *pPrev_chunk);
+void __cdecl UndoPedGib(tPipe_chunk **pChunk, tPipe_chunk *pPrev_chunk);
 
-void UndoSpark(tPipe_chunk **pChunk, tPipe_chunk *pPrev_chunk);
+void __cdecl UndoSpark(tPipe_chunk **pChunk, tPipe_chunk *pPrev_chunk);
 
-void UndoShrapnel(tPipe_chunk **pChunk, tPipe_chunk *pPrev_chunk);
+void __cdecl UndoShrapnel(tPipe_chunk **pChunk, tPipe_chunk *pPrev_chunk);
 
-void UndoScreenWobble(tPipe_chunk **pChunk, tPipe_chunk *pPrev_chunk);
+void __cdecl UndoScreenWobble(tPipe_chunk **pChunk, tPipe_chunk *pPrev_chunk);
 
-void UndoGrooveStop(tPipe_chunk **pChunk, tPipe_chunk *pPrev_chunk);
+void __cdecl UndoGrooveStop(tPipe_chunk **pChunk, tPipe_chunk *pPrev_chunk);
 
-void UndoNonCar(tPipe_chunk **pChunk, tPipe_chunk *pPrev_chunk);
+void __cdecl UndoNonCar(tPipe_chunk **pChunk, tPipe_chunk *pPrev_chunk);
 
-void UndoSmoke(tPipe_chunk **pChunk, tPipe_chunk *pPrev_chunk);
+void __cdecl UndoSmoke(tPipe_chunk **pChunk, tPipe_chunk *pPrev_chunk);
 
-void UndoSmokeColumn(tPipe_chunk **pChunk, tPipe_chunk *pPrev_chunk);
+void __cdecl UndoSmokeColumn(tPipe_chunk **pChunk, tPipe_chunk *pPrev_chunk);
 
 void UndoFlame(tPipe_chunk **pChunk, tPipe_chunk *pPrev_chunk);
 
-void UndoSplash(tPipe_chunk **pChunk, tPipe_chunk *pPrev_chunk);
+void __cdecl UndoSplash(tPipe_chunk **pChunk, tPipe_chunk *pPrev_chunk);
 
-void UndoOilSpill(tPipe_chunk **pChunk, tPipe_chunk *pPrev_chunk);
+void __cdecl UndoOilSpill(tPipe_chunk **pChunk, tPipe_chunk *pPrev_chunk);
 
-void UndoProxRay(tPipe_chunk **pChunk);
+void __cdecl UndoProxRay(tPipe_chunk **pChunk);
 
-void UndoSkidAdjustment(tPipe_chunk **pChunk, tPipe_chunk *pPrev_chunk);
+void __cdecl UndoSkidAdjustment(tPipe_chunk **pChunk, tPipe_chunk *pPrev_chunk);
 
 int UndoPipedSession(tU8 **pPtr);
 
 tU32 FindPrevFrameTime(tU8 *pPtr);
 
-void ScanBuffer(tU8 **pPtr, tPipe_chunk_type pType, tU32 pDefault_time, int(**pCall_back)(tPipe_chunk *, int, tU32, ...), int(**pTime_check)(tU32, ...));
+void __cdecl ScanBuffer(tU8 **pPtr, tPipe_chunk_type pType, tU32 pDefault_time, int(**pCall_back)(tPipe_chunk *, int, tU32), int(**pTime_check)(tU32));
 
-int CheckSound(tPipe_chunk *pChunk_ptr, int pChunk_count, tU32 pTime);
+int __cdecl CheckSound(tPipe_chunk *pChunk_ptr, int pChunk_count, tU32 pTime);
 
 int SoundTimeout(tU32 pTime);
 
-void ScanAndPlaySoundsToBe(tU8 *pPtr, tU32 pOldest_time, tU32 pYoungest_time);
+void __cdecl ScanAndPlaySoundsToBe(tU8 *pPtr, tU32 pOldest_time, tU32 pYoungest_time);
 
 int CheckCar(tPipe_chunk *pChunk_ptr, int pChunk_count, tU32 pTime);
 
@@ -280,9 +280,9 @@ int CarTimeout(tU32 pTime);
 
 void ScanCarsPositions(tCar_spec *pCar, br_vector3 *pSource_pos, br_scalar pMax_distance_sqr, tU32 pOffset_time, tU32 pTime_period, br_vector3 *pCar_pos, tU32 *pTime_returned);
 
-int CheckIncident(tPipe_chunk *pChunk_ptr, int pChunk_count, tU32 pTime);
+int __cdecl CheckIncident(tPipe_chunk *pChunk_ptr, int pChunk_count, tU32 pTime);
 
-int GetNextIncident(tU32 pOffset_time, tIncident_type *pIncident_type, float *pSeverity, tIncident_info *pInfo, tU32 *pTime_away);
+int __cdecl GetNextIncident(tU32 pOffset_time, tIncident_type *pIncident_type, float *pSeverity, tIncident_info *pInfo, tU32 *pTime_away);
 
 tU32 GetARStartTime();
 

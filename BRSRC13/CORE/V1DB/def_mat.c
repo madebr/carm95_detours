@@ -4,11 +4,10 @@
 
 #include "carm95_hooks.h"
 
-#include <stdio.h>
 
-static br_material *(*original_SetupDefaultMaterial)() = (br_material *(*)())0x004de450;
+static br_material *(__stdcall*original_SetupDefaultMaterial)() = (br_material *(__stdcall*)())0x004de450;
 CARM95_HOOK_FUNCTION(original_SetupDefaultMaterial, SetupDefaultMaterial)
-br_material* SetupDefaultMaterial() {
+br_material* __stdcall SetupDefaultMaterial() {
     static br_material *default_mat;
     LOG_TRACE("()");
 

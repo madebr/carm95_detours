@@ -4,42 +4,41 @@
 
 #include "carm95_hooks.h"
 
-#include <stdio.h>
 br_allocator * hookvar_gAllocator  = (void*)0x00513600;
 int * hookvar_gNon_fatal_allocation_errors  = (void*)0x00513614;
 char *(* hookvar_gMem_names )[247] = (void*)0x00513618;
 br_resource_class(* hookvar_gStainless_classes )[118] = (void*)0x00537960;
 
-static void(*original_SetNonFatalAllocationErrors)() = (void(*)())0x00463d80;
+static void(__cdecl*original_SetNonFatalAllocationErrors)() = (void(__cdecl*)())0x00463d80;
 CARM95_HOOK_FUNCTION(original_SetNonFatalAllocationErrors, SetNonFatalAllocationErrors)
-void SetNonFatalAllocationErrors() {
+void __cdecl SetNonFatalAllocationErrors() {
     LOG_TRACE("()");
 
 
     original_SetNonFatalAllocationErrors();
 }
 
-static void(*original_ResetNonFatalAllocationErrors)() = (void(*)())0x00463d95;
+static void(__cdecl*original_ResetNonFatalAllocationErrors)() = (void(__cdecl*)())0x00463d95;
 CARM95_HOOK_FUNCTION(original_ResetNonFatalAllocationErrors, ResetNonFatalAllocationErrors)
-void ResetNonFatalAllocationErrors() {
+void __cdecl ResetNonFatalAllocationErrors() {
     LOG_TRACE("()");
 
 
     original_ResetNonFatalAllocationErrors();
 }
 
-static int(*original_AllocationErrorsAreFatal)() = (int(*)())0x00463daa;
+static int(__cdecl*original_AllocationErrorsAreFatal)() = (int(__cdecl*)())0x00463daa;
 CARM95_HOOK_FUNCTION(original_AllocationErrorsAreFatal, AllocationErrorsAreFatal)
-int AllocationErrorsAreFatal() {
+int __cdecl AllocationErrorsAreFatal() {
     LOG_TRACE("()");
 
 
     return original_AllocationErrorsAreFatal();
 }
 
-static void(*original_MAMSInitMem)() = (void(*)())0x00463dd3;
+static void(__cdecl*original_MAMSInitMem)() = (void(__cdecl*)())0x00463dd3;
 CARM95_HOOK_FUNCTION(original_MAMSInitMem, MAMSInitMem)
-void MAMSInitMem() {
+void __cdecl MAMSInitMem() {
     int i;
     FILE *f;
     tPath_name the_path;
@@ -52,9 +51,9 @@ void MAMSInitMem() {
     original_MAMSInitMem();
 }
 
-static void(*original_PrintMemoryDump)(int, char *, ...) = (void(*)(int, char *, ...))0x00463de4;
+static void(__cdecl*original_PrintMemoryDump)(int, char *) = (void(__cdecl*)(int, char *))0x00463de4;
 CARM95_HOOK_FUNCTION(original_PrintMemoryDump, PrintMemoryDump)
-void PrintMemoryDump(int pFlags, char *pTitle) {
+void __cdecl PrintMemoryDump(int pFlags, char *pTitle) {
     LOG_TRACE("(%d, \"%s\")", pFlags, pTitle);
 
     (void)pFlags;
@@ -63,9 +62,9 @@ void PrintMemoryDump(int pFlags, char *pTitle) {
     original_PrintMemoryDump(pFlags, pTitle);
 }
 
-static void *(*original_DRStdlibAllocate)(br_size_t, br_uint_8, ...) = (void *(*)(br_size_t, br_uint_8, ...))0x00463def;
+static void *(__cdecl*original_DRStdlibAllocate)(br_size_t, br_uint_8) = (void *(__cdecl*)(br_size_t, br_uint_8))0x00463def;
 CARM95_HOOK_FUNCTION(original_DRStdlibAllocate, DRStdlibAllocate)
-void* DRStdlibAllocate(br_size_t size, br_uint_8 type) {
+void* __cdecl DRStdlibAllocate(br_size_t size, br_uint_8 type) {
     void *p;
     int i;
     char s[256];
@@ -80,9 +79,9 @@ void* DRStdlibAllocate(br_size_t size, br_uint_8 type) {
     return original_DRStdlibAllocate(size, type);
 }
 
-static void(*original_DRStdlibFree)(void *, ...) = (void(*)(void *, ...))0x00463ea1;
+static void(__cdecl*original_DRStdlibFree)(void *) = (void(__cdecl*)(void *))0x00463ea1;
 CARM95_HOOK_FUNCTION(original_DRStdlibFree, DRStdlibFree)
-void DRStdlibFree(void *mem) {
+void __cdecl DRStdlibFree(void *mem) {
     int i;
     LOG_TRACE("(%p)", mem);
 
@@ -92,9 +91,9 @@ void DRStdlibFree(void *mem) {
     original_DRStdlibFree(mem);
 }
 
-static br_size_t(*original_DRStdlibInquire)(br_uint_8, ...) = (br_size_t(*)(br_uint_8, ...))0x00463ebb;
+static br_size_t(__cdecl*original_DRStdlibInquire)(br_uint_8) = (br_size_t(__cdecl*)(br_uint_8))0x00463ebb;
 CARM95_HOOK_FUNCTION(original_DRStdlibInquire, DRStdlibInquire)
-br_size_t DRStdlibInquire(br_uint_8 type) {
+br_size_t __cdecl DRStdlibInquire(br_uint_8 type) {
     LOG_TRACE("(%u)", type);
 
     (void)type;
@@ -102,9 +101,9 @@ br_size_t DRStdlibInquire(br_uint_8 type) {
     return original_DRStdlibInquire(type);
 }
 
-static br_uint_32(*original_Claim4ByteAlignment)(br_uint_8, ...) = (br_uint_32(*)(br_uint_8, ...))0x00463ecd;
+static br_uint_32(__cdecl*original_Claim4ByteAlignment)(br_uint_8) = (br_uint_32(__cdecl*)(br_uint_8))0x00463ecd;
 CARM95_HOOK_FUNCTION(original_Claim4ByteAlignment, Claim4ByteAlignment)
-br_uint_32 Claim4ByteAlignment(br_uint_8 type) {
+br_uint_32 __cdecl Claim4ByteAlignment(br_uint_8 type) {
     LOG_TRACE("(%u)", type);
 
     (void)type;
@@ -112,18 +111,18 @@ br_uint_32 Claim4ByteAlignment(br_uint_8 type) {
     return original_Claim4ByteAlignment(type);
 }
 
-static void(*original_InstallDRMemCalls)() = (void(*)())0x00463ee2;
+static void(__cdecl*original_InstallDRMemCalls)() = (void(__cdecl*)())0x00463ee2;
 CARM95_HOOK_FUNCTION(original_InstallDRMemCalls, InstallDRMemCalls)
-void InstallDRMemCalls() {
+void __cdecl InstallDRMemCalls() {
     LOG_TRACE("()");
 
 
     original_InstallDRMemCalls();
 }
 
-static void(*original_MAMSUnlock)(void **, ...) = (void(*)(void **, ...))0x00463efa;
+static void(__cdecl*original_MAMSUnlock)(void **) = (void(__cdecl*)(void **))0x00463efa;
 CARM95_HOOK_FUNCTION(original_MAMSUnlock, MAMSUnlock)
-void MAMSUnlock(void **pPtr) {
+void __cdecl MAMSUnlock(void **pPtr) {
     LOG_TRACE("(%p)", pPtr);
 
     (void)pPtr;
@@ -131,9 +130,9 @@ void MAMSUnlock(void **pPtr) {
     original_MAMSUnlock(pPtr);
 }
 
-static void(*original_MAMSLock)(void **, ...) = (void(*)(void **, ...))0x00463f1c;
+static void(__cdecl*original_MAMSLock)(void **) = (void(__cdecl*)(void **))0x00463f1c;
 CARM95_HOOK_FUNCTION(original_MAMSLock, MAMSLock)
-void MAMSLock(void **pPtr) {
+void __cdecl MAMSLock(void **pPtr) {
     LOG_TRACE("(%p)", pPtr);
 
     (void)pPtr;
@@ -141,9 +140,9 @@ void MAMSLock(void **pPtr) {
     original_MAMSLock(pPtr);
 }
 
-static void(*original_CreateStainlessClasses)() = (void(*)())0x00463f27;
+static void(__cdecl*original_CreateStainlessClasses)() = (void(__cdecl*)())0x00463f27;
 CARM95_HOOK_FUNCTION(original_CreateStainlessClasses, CreateStainlessClasses)
-void CreateStainlessClasses() {
+void __cdecl CreateStainlessClasses() {
     int i;
     LOG_TRACE("()");
 
@@ -152,9 +151,9 @@ void CreateStainlessClasses() {
     original_CreateStainlessClasses();
 }
 
-static void(*original_CheckMemory)() = (void(*)())0x00463f97;
+static void(__cdecl*original_CheckMemory)() = (void(__cdecl*)())0x00463f97;
 CARM95_HOOK_FUNCTION(original_CheckMemory, CheckMemory)
-void CheckMemory() {
+void __cdecl CheckMemory() {
     LOG_TRACE("()");
 
 

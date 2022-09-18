@@ -4,7 +4,6 @@
 
 #include "carm95_hooks.h"
 
-#include <stdio.h>
 #if 0
 int * hookvar__DOSEventQEnabled ;
 #endif

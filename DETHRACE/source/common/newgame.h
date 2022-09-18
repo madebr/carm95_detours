@@ -27,150 +27,150 @@ extern int * hookvar_gCurrent_game_selection ; // addr: 0053E5A0
 extern int * hookvar_gRace_index ; // addr: 0053E5B4
 extern int * hookvar_gRadio_selected ; // addr: 0053E590
 
-void StartRollingPlayerNamesIn();
+void __cdecl StartRollingPlayerNamesIn();
 
-void FrankAnneStart1();
+void __cdecl FrankAnneStart1();
 
-void FrankAnneStart2();
+void __cdecl FrankAnneStart2();
 
-void GetPlayerName(int pStarting_to_type, int pCurrent_choice, char *pString, int *pMax_length);
+void __cdecl GetPlayerName(int pStarting_to_type, int pCurrent_choice, char *pString, int *pMax_length);
 
-int FrankAnneDone(int pCurrent_choice, int pCurrent_mode, int pGo_ahead, int pEscaped, int pTimed_out);
+int __cdecl FrankAnneDone(int pCurrent_choice, int pCurrent_mode, int pGo_ahead, int pEscaped, int pTimed_out);
 
-void FrankAnneDraw(int pCurrent_choice, int pCurrent_mode);
+void __cdecl FrankAnneDraw(int pCurrent_choice, int pCurrent_mode);
 
-int FrankieOrAnnie();
+int __cdecl FrankieOrAnnie();
 
-int SelectSkillLevel();
+int __cdecl SelectSkillLevel();
 
-int DoOnePlayerStart();
+int __cdecl DoOnePlayerStart();
 
-int NewNetGameUp(int *pCurrent_choice, int *pCurrent_mode);
+int __cdecl NewNetGameUp(int *pCurrent_choice, int *pCurrent_mode);
 
-int NewNetGameDown(int *pCurrent_choice, int *pCurrent_mode);
+int __cdecl NewNetGameDown(int *pCurrent_choice, int *pCurrent_mode);
 
-void DisposeJoinableGame(int pIndex);
+void __cdecl DisposeJoinableGame(int pIndex);
 
-void DrawAnItem__newgame(int pX, int pY_index, int pFont_index, char *pText);
+void __cdecl DrawAnItem__newgame(int pX, int pY_index, int pFont_index, char *pText);
 
-void DrawColumnHeading__newgame(int pStr_index, int pX);
+void __cdecl DrawColumnHeading__newgame(int pStr_index, int pX);
 
-void DrawGames(int pCurrent_choice, int pCurrent_mode);
+void __cdecl DrawGames(int pCurrent_choice, int pCurrent_mode);
 
-void InitGamesToJoin();
+void __cdecl InitGamesToJoin();
 
-void DisposeJoinList(int pExemption);
+void __cdecl DisposeJoinList(int pExemption);
 
-void AddToJoinList(tNet_game_details *pGame);
+void __cdecl AddToJoinList(tNet_game_details *pGame);
 
-void NewNetStart1();
+void __cdecl NewNetStart1();
 
-void NewNetStart2();
+void __cdecl NewNetStart2();
 
-void NewNetGetName(int pStarting_to_type, int pCurrent_choice, char *pString, int *pMax_length);
+void __cdecl NewNetGetName(int pStarting_to_type, int pCurrent_choice, char *pString, int *pMax_length);
 
-int NewNetDone(int pCurrent_choice, int pCurrent_mode, int pGo_ahead, int pEscaped, int pTimed_out);
+int __cdecl NewNetDone(int pCurrent_choice, int pCurrent_mode, int pGo_ahead, int pEscaped, int pTimed_out);
 
-int NewNetGoAhead(int *pCurrent_choice, int *pCurrent_mode);
+int __cdecl NewNetGoAhead(int *pCurrent_choice, int *pCurrent_mode);
 
-tJoin_or_host_result JoinOrHostGame(tNet_game_details **pGame_to_join);
+tJoin_or_host_result __cdecl JoinOrHostGame(tNet_game_details **pGame_to_join);
 
-void GetNetOptions(tNet_game_options *pGame_options);
+void __cdecl GetNetOptions(tNet_game_options *pGame_options);
 
-void SetNetOptions(tNet_game_options *pGame_options);
+void __cdecl SetNetOptions(tNet_game_options *pGame_options);
 
-void NetPlayCheckboxOn2(int pIndex);
+void __cdecl NetPlayCheckboxOn2(int pIndex);
 
-void NetPlayCheckboxOff2(int pIndex);
+void __cdecl NetPlayCheckboxOff2(int pIndex);
 
-void NetPlayCheckboxOn(int pIndex);
+void __cdecl NetPlayCheckboxOn(int pIndex);
 
-void NetPlayCheckboxOff(int pIndex);
+void __cdecl NetPlayCheckboxOff(int pIndex);
 
-void NetPlayRadioOn2(int pIndex, int pValue);
+void __cdecl NetPlayRadioOn2(int pIndex, int pValue);
 
-void NetPlayRadioOff2(int pIndex, int pValue);
+void __cdecl NetPlayRadioOff2(int pIndex, int pValue);
 
-void NetPlayRadioOn(int pIndex, int pValue);
+void __cdecl NetPlayRadioOn(int pIndex, int pValue);
 
-void NetPlayRadioOff(int pIndex, int pValue);
+void __cdecl NetPlayRadioOff(int pIndex, int pValue);
 
-void DrawNOptInitialRadios();
+void __cdecl DrawNOptInitialRadios();
 
-void NetRadioChanged(int pIndex, int pNew_value);
+void __cdecl NetRadioChanged(int pIndex, int pNew_value);
 
-void NetCheckboxChanged(int pIndex);
+void __cdecl NetCheckboxChanged(int pIndex);
 
-int NetOptLeft(int *pCurrent_choice, int *pCurrent_mode);
+int __cdecl NetOptLeft(int *pCurrent_choice, int *pCurrent_mode);
 
-int NetOptRight(int *pCurrent_choice, int *pCurrent_mode);
+int __cdecl NetOptRight(int *pCurrent_choice, int *pCurrent_mode);
 
-int NetOptUp(int *pCurrent_choice, int *pCurrent_mode);
+int __cdecl NetOptUp(int *pCurrent_choice, int *pCurrent_mode);
 
-int NetOptDown(int *pCurrent_choice, int *pCurrent_mode);
+int __cdecl NetOptDown(int *pCurrent_choice, int *pCurrent_mode);
 
-int NetRadioClick(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY_offset);
+int __cdecl NetRadioClick(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY_offset);
 
-void RevertToDefaults();
+void __cdecl RevertToDefaults();
 
-void DefaultNetSettings();
+void __cdecl DefaultNetSettings();
 
-int NetOptGoAhead(int *pCurrent_choice, int *pCurrent_mode);
+int __cdecl NetOptGoAhead(int *pCurrent_choice, int *pCurrent_mode);
 
-void NetPlotAGraphBox(int pIndex, int pColour_value);
+void __cdecl NetPlotAGraphBox(int pIndex, int pColour_value);
 
-void NetDrawAGraphBox(int pIndex);
+void __cdecl NetDrawAGraphBox(int pIndex);
 
-void NetEraseAGraphBox(int pIndex);
+void __cdecl NetEraseAGraphBox(int pIndex);
 
-void DrawNetOptBox(int pCurrent_choice, int pCurrent_mode);
+void __cdecl DrawNetOptBox(int pCurrent_choice, int pCurrent_mode);
 
-void DoNetOptions(tNet_game_options *pGame_options);
+void __cdecl DoNetOptions(tNet_game_options *pGame_options);
 
-void SetOptions(tNet_game_type pGame_type, tNet_game_options *pGame_options);
+void __cdecl SetOptions(tNet_game_type pGame_type, tNet_game_options *pGame_options);
 
-void PlayRadioOn__newgame(int pIndex);
+void __cdecl PlayRadioOn__newgame(int pIndex);
 
-void PlayRadioOff__newgame(int pIndex);
+void __cdecl PlayRadioOff__newgame(int pIndex);
 
-void DrawNetChooseInitial();
+void __cdecl DrawNetChooseInitial();
 
-int NetChooseGoAhead(int *pCurrent_choice, int *pCurrent_mode);
+int __cdecl NetChooseGoAhead(int *pCurrent_choice, int *pCurrent_mode);
 
-void PlotAGraphBox__newgame(int pIndex, int pColour_value);
+void __cdecl PlotAGraphBox__newgame(int pIndex, int pColour_value);
 
-void DrawAGraphBox__newgame(int pIndex);
+void __cdecl DrawAGraphBox__newgame(int pIndex);
 
-void EraseAGraphBox__newgame(int pIndex);
+void __cdecl EraseAGraphBox__newgame(int pIndex);
 
-void DrawNetChoose(int pCurrent_choice, int pCurrent_mode);
+void __cdecl DrawNetChoose(int pCurrent_choice, int pCurrent_mode);
 
-int NetChooseLR(int *pCurrent_choice, int *pCurrent_mode);
+int __cdecl NetChooseLR(int *pCurrent_choice, int *pCurrent_mode);
 
-void SetGameTarget(tNet_game_type *pGame_type, tNet_game_options *pGame_options);
+void __cdecl SetGameTarget(tNet_game_type *pGame_type, tNet_game_options *pGame_options);
 
-int NetGameChoices(tNet_game_type *pGame_type, tNet_game_options *pGame_options, int *pRace_index);
+int __cdecl NetGameChoices(tNet_game_type *pGame_type, tNet_game_options *pGame_options, int *pRace_index);
 
-void ReadNetGameChoices(tNet_game_type *pGame_type, tNet_game_options *pGame_options, int *pRace_index);
+void __cdecl ReadNetGameChoices(tNet_game_type *pGame_type, tNet_game_options *pGame_options, int *pRace_index);
 
-int ChooseStartRace(int *pRank);
+int __cdecl ChooseStartRace(int *pRank);
 
-void SetUpOtherNetThings(tNet_game_details *pNet_game);
+void __cdecl SetUpOtherNetThings(tNet_game_details *pNet_game);
 
-void RequestCarDetails(tNet_game_details *pNet_game);
+void __cdecl RequestCarDetails(tNet_game_details *pNet_game);
 
-int PickARandomCar();
+int __cdecl PickARandomCar();
 
-void PollCarDetails(tNet_game_details *pNet_game);
+void __cdecl PollCarDetails(tNet_game_details *pNet_game);
 
-void SetNetAvailability(tNet_game_options *pOptions);
+void __cdecl SetNetAvailability(tNet_game_options *pOptions);
 
-int ChooseNetCar(tNet_game_details *pNet_game, tNet_game_options *pOptions, int *pCar_index, int pIm_the_host_so_fuck_off);
+int __cdecl ChooseNetCar(tNet_game_details *pNet_game, tNet_game_options *pOptions, int *pCar_index, int pIm_the_host_so_fuck_off);
 
-void InitNetStorageSpace();
+void __cdecl InitNetStorageSpace();
 
-void DisposeNetStorageSpace();
+void __cdecl DisposeNetStorageSpace();
 
-int DoMultiPlayerStart();
+int __fastcall DoMultiPlayerStart();
 
 #endif

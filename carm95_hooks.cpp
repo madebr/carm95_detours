@@ -16,7 +16,8 @@ typedef struct hook_function_information {
     void** victim;
     void* original_victim;
     void* detour;
-    std::function<void(void)> callback;
+    const char* victimname;
+    const char* detourname;
 } hook_function_information;
 
 static std::vector<std::function<void(void)>> hook_startups;
@@ -27,12 +28,28 @@ void hook_register(void (*function)(void)) {
     hook_startups.push_back(function);
 }
 
-void hook_function_register(void **victim, void *detour) {
+const char* detour_errcode_to_string(LONG code) {
+    switch (code) {
+        case ERROR_INVALID_BLOCK:
+            return "ERROR_INVALID_BLOCK";
+        case ERROR_INVALID_HANDLE:
+            return "ERROR_INVALID_HANDLE";
+        case ERROR_INVALID_OPERATION:
+            return "ERROR_INVALID_OPERATION";
+        case ERROR_NOT_ENOUGH_MEMORY:
+            return "ERROR_NOT_ENOUGH_MEMORY";
+        default:
+            return "<unknown>";
+    }
+}
+
+void hook_function_register(void **victim, void *detour, const char* victimname, const char* detourname) {
     hook_function_startups.push_back({
         victim,
         *victim,
         detour,
-        [=]() { DetourAttach(victim, detour); },
+        victimname,
+        detourname,
     });
 }
 
@@ -41,7 +58,8 @@ void hook_function_deregister(void **victim, void *detour) {
         victim,
         *victim,
         detour,
-        [=]() { DetourDetach(victim, detour); },
+        NULL,
+        NULL,
     });
 }
 
@@ -52,9 +70,21 @@ void hook_run_functions(void) {
 }
 
 void hook_apply_all(void) {
-    for (const auto &info : hook_function_startups) {
-        info.callback();
+    FILE* f = fopen("hook.log", "w");
+    for (auto &info : hook_function_startups) {
+        fprintf(f, "Hooking %s (0x%p) with %s: ", info.victimname, info.original_victim, info.detourname);
+        fflush(f);
+        LONG r = DetourAttach(info.victim, info.detour);
+        if (r == NO_ERROR) {
+            fprintf(f, "SUCCESS!\n");
+        } else {
+            fprintf(f, "ERROR! (code=%ld, txt=\"%s\")\n",
+                    r, detour_errcode_to_string(r));
+        }
+        fflush(f);
     }
+    fclose(f);
+    f = NULL;
 }
 
 void hook_check(void) {
@@ -74,8 +104,8 @@ void hook_check(void) {
 }
 
 void hook_unapply_all(void) {
-    for (const auto &info : hook_function_shutdowns) {
-        info.callback();
+    for (auto &info : hook_function_shutdowns) {
+        DetourDetach(info.victim, info.detour);
     }
 }
 

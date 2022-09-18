@@ -47,17 +47,17 @@ tU32 EthernetAddressToU32(_IPX_LOCAL_TARGET *pAddr_ipx);
 
 void NetNowIPXLocalTarget2String(char *pString, _IPX_LOCAL_TARGET *pSock_addr_ipx);
 
-int GetMessageTypeFromMessage(char *pMessage_str);
+int __cdecl GetMessageTypeFromMessage(char *pMessage_str);
 
-int SameEthernetAddress(_IPX_LOCAL_TARGET *pAddr_ipx1, _IPX_LOCAL_TARGET *pAddr_ipx2);
+int __cdecl SameEthernetAddress(_IPX_LOCAL_TARGET *pAddr_ipx1, _IPX_LOCAL_TARGET *pAddr_ipx2);
 
 _IPX_LOCAL_TARGET* GetIPXAddrFromPlayerID(tPlayer_ID pPlayer_id);
 
-void MakeMessageToSend(int pMessage_type);
+void __cdecl MakeMessageToSend(int pMessage_type);
 
-int ReceiveHostResponses();
+int __cdecl ReceiveHostResponses();
 
-int BroadcastMessage();
+int __cdecl BroadcastMessage();
 
 BOOL hmiIPXCloseSocket(W32 wSocket);
 
@@ -89,50 +89,50 @@ BOOL hmiIPXInitSystem(W32 wSocket);
 
 void GetIPXToStickItsEarToTheGround();
 
-int PDNetInitialise();
+int __cdecl PDNetInitialise();
 
-int PDNetShutdown();
+int __cdecl PDNetShutdown();
 
-void PDNetStartProducingJoinList();
+void __cdecl PDNetStartProducingJoinList();
 
-void PDNetEndJoinList();
+void __cdecl PDNetEndJoinList();
 
-int PDNetGetNextJoinGame(tNet_game_details *pGame, int pIndex);
+int __cdecl PDNetGetNextJoinGame(tNet_game_details *pGame, int pIndex);
 
-void PDNetDisposeGameDetails(tNet_game_details *pDetails);
+void __cdecl PDNetDisposeGameDetails(tNet_game_details *pDetails);
 
-int PDNetHostGame(tNet_game_details *pDetails, char *pHost_name, void **pHost_address);
+int __cdecl PDNetHostGame(tNet_game_details *pDetails, char *pHost_name, void **pHost_address);
 
-int PDNetJoinGame(tNet_game_details *pDetails, char *pPlayer_name);
+int __cdecl PDNetJoinGame(tNet_game_details *pDetails, char *pPlayer_name);
 
-void PDNetLeaveGame(tNet_game_details *pDetails);
+void __cdecl PDNetLeaveGame(tNet_game_details *pDetails);
 
-void PDNetHostFinishGame(tNet_game_details *pDetails);
+void __cdecl PDNetHostFinishGame(tNet_game_details *pDetails);
 
-tU32 PDNetExtractGameID(tNet_game_details *pDetails);
+tU32 __cdecl PDNetExtractGameID(tNet_game_details *pDetails);
 
-tPlayer_ID PDNetExtractPlayerID(tNet_game_details *pDetails);
+tPlayer_ID __cdecl PDNetExtractPlayerID(tNet_game_details *pDetails);
 
-void PDNetObtainSystemUserName(char *pName, int pMax_length);
+void __cdecl PDNetObtainSystemUserName(char *pName, int pMax_length);
 
-int PDNetSendMessageToPlayer(tNet_game_details *pDetails, tNet_message *pMessage, tPlayer_ID pPlayer);
+int __cdecl PDNetSendMessageToPlayer(tNet_game_details *pDetails, tNet_message *pMessage, tPlayer_ID pPlayer);
 
-int PDNetSendMessageToAllPlayers(tNet_game_details *pDetails, tNet_message *pMessage);
+int __cdecl PDNetSendMessageToAllPlayers(tNet_game_details *pDetails, tNet_message *pMessage);
 
-tNet_message* PDNetGetNextMessage(tNet_game_details *pDetails, void **pSender_address);
+tNet_message* __cdecl PDNetGetNextMessage(tNet_game_details *pDetails, void **pSender_address);
 
-tNet_message* PDNetAllocateMessage(tU32 pSize, tS32 pSize_decider);
+tNet_message* __cdecl PDNetAllocateMessage(tU32 pSize, tS32 pSize_decider);
 
 void PDNetDisposeMessage(tNet_game_details *pDetails, tNet_message *pMessage);
 
-void PDNetSetPlayerSystemInfo(tNet_game_player_info *pPlayer, void *pSender_address);
+void __cdecl PDNetSetPlayerSystemInfo(tNet_game_player_info *pPlayer, void *pSender_address);
 
-void PDNetDisposePlayer(tNet_game_player_info *pPlayer);
+void __cdecl PDNetDisposePlayer(tNet_game_player_info *pPlayer);
 
-int PDNetSendMessageToAddress(tNet_game_details *pDetails, tNet_message *pMessage, void *pAddress);
+int __cdecl PDNetSendMessageToAddress(tNet_game_details *pDetails, tNet_message *pMessage, void *pAddress);
 
-int PDNetInitClient(tNet_game_details *pDetails);
+int __cdecl PDNetInitClient(tNet_game_details *pDetails);
 
-int PDNetGetHeaderSize();
+int __cdecl PDNetGetHeaderSize();
 
 #endif

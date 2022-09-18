@@ -12,23 +12,23 @@ extern br_file_primitives * hookvar__BrFilePrimsWriteBinary ; // addr: 00527E80
 extern br_file_primitives * hookvar__BrFilePrimsReadText ; // addr: 00527EC0
 extern br_file_primitives * hookvar__BrFilePrimsWriteText ; // addr: 00527F00
 
-void DfPush(int type, void *value, int count);
+void __stdcall DfPush(int type, void *value, int count);
 
-void* DfPop(int type, int *countp);
+void* __stdcall DfPop(int type, int *countp);
 
-void* DfTop(int type, int *countp);
+void* __stdcall DfTop(int type, int *countp);
 
-int DfTopType();
+int __stdcall DfTopType();
 
-int TextReadLine(br_datafile *df, char **ident, char **data);
+int __stdcall TextReadLine(br_datafile *df, char **ident, char **data);
 
 br_uint_16 scalarTypeConvert(br_datafile *df, br_uint_16 t);
 
-br_uint_32 DfStructWriteBinary(br_datafile *df, br_file_struct *str, void *base);
+br_uint_32 __stdcall DfStructWriteBinary(br_datafile *df, br_file_struct *str, void *base);
 
-br_uint_32 DfStructReadBinary(br_datafile *df, br_file_struct *str, void *base);
+br_uint_32 __stdcall DfStructReadBinary(br_datafile *df, br_file_struct *str, void *base);
 
-int DfStructSizeBinary(br_datafile *df, br_file_struct *str, void *base);
+int __stdcall DfStructSizeBinary(br_datafile *df, br_file_struct *str, void *base);
 
 int EnumFromString(br_file_enum *e, char *str);
 
@@ -36,77 +36,77 @@ char* EnumToString(br_file_enum *e, int num);
 
 br_uint_32 DfStructWriteText(br_datafile *df, br_file_struct *str, void *base);
 
-br_uint_32 StructWriteTextSub(br_datafile *df, br_file_struct *str, void *base, int indent);
+br_uint_32 __stdcall StructWriteTextSub(br_datafile *df, br_file_struct *str, void *base, int indent);
 
 br_uint_32 DfStructReadText(br_datafile *df, br_file_struct *str, void *base);
 
-br_uint_32 StructReadTextSub(br_datafile *df, br_file_struct *str, void *base);
+br_uint_32 __stdcall StructReadTextSub(br_datafile *df, br_file_struct *str, void *base);
 
-int DfStructSizeText(br_datafile *df, br_file_struct *str, void *base);
+int __stdcall DfStructSizeText(br_datafile *df, br_file_struct *str, void *base);
 
-br_uint_32 DfStructWriteArray(br_datafile *df, br_file_struct *str, void *base, int n);
+br_uint_32 __stdcall DfStructWriteArray(br_datafile *df, br_file_struct *str, void *base, int n);
 
-br_uint_32 DfStructReadArray(br_datafile *df, br_file_struct *str, void *base, int n);
+br_uint_32 __stdcall DfStructReadArray(br_datafile *df, br_file_struct *str, void *base, int n);
 
-int DfChunkWriteText(br_datafile *df, br_uint_32 id, br_uint_32 length);
+int __stdcall DfChunkWriteText(br_datafile *df, br_uint_32 id, br_uint_32 length);
 
-int DfChunkReadText(br_datafile *df, br_uint_32 *plength);
+int __stdcall DfChunkReadText(br_datafile *df, br_uint_32 *plength);
 
-int DfChunkWriteBinary(br_datafile *df, br_uint_32 id, br_uint_32 length);
+int __stdcall DfChunkWriteBinary(br_datafile *df, br_uint_32 id, br_uint_32 length);
 
-int DfChunkReadBinary(br_datafile *df, br_uint_32 *plength);
+int __stdcall DfChunkReadBinary(br_datafile *df, br_uint_32 *plength);
 
-void DfCountWriteText(br_datafile *df, br_uint_32 count);
+void __stdcall DfCountWriteText(br_datafile *df, br_uint_32 count);
 
-br_uint_32 DfCountReadText(br_datafile *df);
+br_uint_32 __stdcall DfCountReadText(br_datafile *df);
 
-void DfCountWriteBinary(br_datafile *df, br_uint_32 count);
+void __stdcall DfCountWriteBinary(br_datafile *df, br_uint_32 count);
 
-br_uint_32 DfCountReadBinary(br_datafile *df);
+br_uint_32 __stdcall DfCountReadBinary(br_datafile *df);
 
-int DfCountSizeText(br_datafile *df);
+int __stdcall DfCountSizeText(br_datafile *df);
 
-int DfCountSizeBinary(br_datafile *df);
+int __stdcall DfCountSizeBinary(br_datafile *df);
 
 br_uint_8* BlockWriteSetup(void *base, int block_size, int block_stride, int block_count, int size);
 
-int DfBlockWriteText(br_datafile *df, void *base, int block_size, int block_stride, int block_count, int size);
+int __stdcall DfBlockWriteText(br_datafile *df, void *base, int block_size, int block_stride, int block_count, int size);
 
-void* DfBlockReadText(br_datafile *df, void *base, int *count, int size, int mtype);
+void* __stdcall DfBlockReadText(br_datafile *df, void *base, int *count, int size, int mtype);
 
-int DfBlockWriteBinary(br_datafile *df, void *base, int block_size, int block_stride, int block_count, int size);
+int __stdcall DfBlockWriteBinary(br_datafile *df, void *base, int block_size, int block_stride, int block_count, int size);
 
-void* DfBlockReadBinary(br_datafile *df, void *base, int *count, int size, int mtype);
+void* __stdcall DfBlockReadBinary(br_datafile *df, void *base, int *count, int size, int mtype);
 
-int DfBlockSizeText(br_datafile *df, void *base, int block_size, int block_stride, int block_count, int size);
+int __stdcall DfBlockSizeText(br_datafile *df, void *base, int block_size, int block_stride, int block_count, int size);
 
 int DfBlockSizeBinary(br_datafile *df, void *base, int block_size, int block_stride, int block_count, int size);
 
-char* DfNameReadText(br_datafile *df, char *name);
+char* __stdcall DfNameReadText(br_datafile *df, char *name);
 
-int DfNameWriteText(br_datafile *df, char *name);
+int __stdcall DfNameWriteText(br_datafile *df, char *name);
 
-int DfNameSizeText(br_datafile *df, char *name);
+int __stdcall DfNameSizeText(br_datafile *df, char *name);
 
-char* DfNameReadBinary(br_datafile *df, char *name);
+char* __stdcall DfNameReadBinary(br_datafile *df, char *name);
 
-int DfNameWriteBinary(br_datafile *df, char *name);
+int __stdcall DfNameWriteBinary(br_datafile *df, char *name);
 
-int DfNameSizeBinary(br_datafile *df, char *name);
+int __stdcall DfNameSizeBinary(br_datafile *df, char *name);
 
-int DfSkipText(br_datafile *df, br_uint_32 length);
+int __stdcall DfSkipText(br_datafile *df, br_uint_32 length);
 
-int DfSkipBinary(br_datafile *df, br_uint_32 length);
+int __stdcall DfSkipBinary(br_datafile *df, br_uint_32 length);
 
-int DfChunksInterpret(br_datafile *df, br_chunks_table *table);
+int __stdcall DfChunksInterpret(br_datafile *df, br_chunks_table *table);
 
-void BrNullOther();
+void __stdcall BrNullOther();
 
-int DfFileIdentify(br_uint_8 *magics, br_size_t n_magics);
+int __cdecl DfFileIdentify(br_uint_8 *magics, br_size_t n_magics);
 
-br_datafile* DfOpen(char *name, int write, br_token scalar_type);
+br_datafile* __stdcall DfOpen(char *name, int write, br_token scalar_type);
 
-void DfClose(br_datafile *df);
+void __stdcall DfClose(br_datafile *df);
 
 int BrWriteModeSet(int mode);
 

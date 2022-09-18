@@ -4,12 +4,11 @@
 
 #include "carm95_hooks.h"
 
-#include <stdio.h>
 struct order_info(* hookvar_OrderAxes )[32] = (void*)0x00523cd8;
 
-static br_matrix34 *(*original_BrEulerToMatrix34)(br_matrix34 *, br_euler *, ...) = (br_matrix34 *(*)(br_matrix34 *, br_euler *, ...))0x004d4c70;
+static br_matrix34 *(__cdecl*original_BrEulerToMatrix34)(br_matrix34 *, br_euler *) = (br_matrix34 *(__cdecl*)(br_matrix34 *, br_euler *))0x004d4c70;
 CARM95_HOOK_FUNCTION(original_BrEulerToMatrix34, BrEulerToMatrix34)
-br_matrix34* BrEulerToMatrix34(br_matrix34 *mat, br_euler *euler) {
+br_matrix34* __cdecl BrEulerToMatrix34(br_matrix34 *mat, br_euler *euler) {
     br_uint_8 o;
     br_angle ti;
     br_angle tj;
@@ -52,9 +51,9 @@ br_matrix34* BrEulerToMatrix34(br_matrix34 *mat, br_euler *euler) {
     return original_BrEulerToMatrix34(mat, euler);
 }
 
-static br_euler *(*original_BrMatrix34ToEuler)(br_euler *, br_matrix34 *, ...) = (br_euler *(*)(br_euler *, br_matrix34 *, ...))0x004d4ee0;
+static br_euler *(__cdecl*original_BrMatrix34ToEuler)(br_euler *, br_matrix34 *) = (br_euler *(__cdecl*)(br_euler *, br_matrix34 *))0x004d4ee0;
 CARM95_HOOK_FUNCTION(original_BrMatrix34ToEuler, BrMatrix34ToEuler)
-br_euler* BrMatrix34ToEuler(br_euler *euler, br_matrix34 *mat) {
+br_euler* __cdecl BrMatrix34ToEuler(br_euler *euler, br_matrix34 *mat) {
     br_uint_8 o;
     int a0;
     int a1;
@@ -70,13 +69,16 @@ br_euler* BrMatrix34ToEuler(br_euler *euler, br_matrix34 *mat) {
     (void)a0;
     (void)a1;
     (void)a2;
+    (void)__block0__sy;
+    (void)__block1__cy;
+    (void)__block2__t;
 
     return original_BrMatrix34ToEuler(euler, mat);
 }
 
-static br_matrix4 *(*original_BrEulerToMatrix4)(br_matrix4 *, br_euler *, ...) = (br_matrix4 *(*)(br_matrix4 *, br_euler *, ...))0x004d5150;
+static br_matrix4 *(__cdecl*original_BrEulerToMatrix4)(br_matrix4 *, br_euler *) = (br_matrix4 *(__cdecl*)(br_matrix4 *, br_euler *))0x004d5150;
 CARM95_HOOK_FUNCTION(original_BrEulerToMatrix4, BrEulerToMatrix4)
-br_matrix4* BrEulerToMatrix4(br_matrix4 *mat, br_euler *euler) {
+br_matrix4* __cdecl BrEulerToMatrix4(br_matrix4 *mat, br_euler *euler) {
     br_matrix34 tmp;
     LOG_TRACE("(%p, %p)", mat, euler);
 
@@ -87,9 +89,9 @@ br_matrix4* BrEulerToMatrix4(br_matrix4 *mat, br_euler *euler) {
     return original_BrEulerToMatrix4(mat, euler);
 }
 
-static br_euler *(*original_BrMatrix4ToEuler)(br_euler *, br_matrix4 *, ...) = (br_euler *(*)(br_euler *, br_matrix4 *, ...))0x004d5180;
+static br_euler *(__cdecl*original_BrMatrix4ToEuler)(br_euler *, br_matrix4 *) = (br_euler *(__cdecl*)(br_euler *, br_matrix4 *))0x004d5180;
 CARM95_HOOK_FUNCTION(original_BrMatrix4ToEuler, BrMatrix4ToEuler)
-br_euler* BrMatrix4ToEuler(br_euler *dest, br_matrix4 *mat) {
+br_euler* __cdecl BrMatrix4ToEuler(br_euler *dest, br_matrix4 *mat) {
     br_matrix34 tmp;
     LOG_TRACE("(%p, %p)", dest, mat);
 
@@ -100,9 +102,9 @@ br_euler* BrMatrix4ToEuler(br_euler *dest, br_matrix4 *mat) {
     return original_BrMatrix4ToEuler(dest, mat);
 }
 
-static br_quat *(*original_BrEulerToQuat)(br_quat *, br_euler *, ...) = (br_quat *(*)(br_quat *, br_euler *, ...))0x004d51b0;
+static br_quat *(__cdecl*original_BrEulerToQuat)(br_quat *, br_euler *) = (br_quat *(__cdecl*)(br_quat *, br_euler *))0x004d51b0;
 CARM95_HOOK_FUNCTION(original_BrEulerToQuat, BrEulerToQuat)
-br_quat* BrEulerToQuat(br_quat *q, br_euler *euler) {
+br_quat* __cdecl BrEulerToQuat(br_quat *q, br_euler *euler) {
     br_uint_8 o;
     br_angle ti;
     br_angle tj;
@@ -145,9 +147,9 @@ br_quat* BrEulerToQuat(br_quat *q, br_euler *euler) {
     return original_BrEulerToQuat(q, euler);
 }
 
-static br_euler *(*original_BrQuatToEuler)(br_euler *, br_quat *, ...) = (br_euler *(*)(br_euler *, br_quat *, ...))0x004d5370;
+static br_euler *(__cdecl*original_BrQuatToEuler)(br_euler *, br_quat *) = (br_euler *(__cdecl*)(br_euler *, br_quat *))0x004d5370;
 CARM95_HOOK_FUNCTION(original_BrQuatToEuler, BrQuatToEuler)
-br_euler* BrQuatToEuler(br_euler *euler, br_quat *q) {
+br_euler* __cdecl BrQuatToEuler(br_euler *euler, br_quat *q) {
     br_matrix34 mat;
     LOG_TRACE("(%p, %p)", euler, q);
 

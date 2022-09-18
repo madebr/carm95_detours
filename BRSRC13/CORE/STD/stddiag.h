@@ -6,8 +6,8 @@
 extern br_diaghandler * hookvar_BrStdioDiagHandler ; // addr: 00530168
 extern br_diaghandler ** hookvar__BrDefaultDiagHandler ; // addr: 00530174
 
-void BrStdioWarning(char *message);
+void __cdecl BrStdioWarning(char *message);
 
-void BrStdioFailure(char *message);
+void __cdecl BrStdioFailure(char *message);
 
 #endif

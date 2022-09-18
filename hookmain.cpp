@@ -6,6 +6,8 @@
 
 #include <stdio.h>
 
+extern "C" {
+
 #ifndef CONSOLE_TITLE
 #define CONSOLE_TITLE "console"
 #endif
@@ -18,6 +20,8 @@ void HOOK_DEINIT_FUNCTION(void);
 #endif
 
 BOOL WINAPI DllMain(HINSTANCE hinst, DWORD dwReason, LPVOID reserved) {
+    (void)hinst;
+    (void)reserved;
     if (DetourIsHelperProcess()) {
         return TRUE;
     }
@@ -34,7 +38,7 @@ BOOL WINAPI DllMain(HINSTANCE hinst, DWORD dwReason, LPVOID reserved) {
 
         DetourTransactionBegin();
 
-        DetourUpdateThread (GetCurrentThread());
+        DetourUpdateThread(GetCurrentThread());
         hook_apply_all();
 
         DetourTransactionCommit();
@@ -61,10 +65,11 @@ BOOL WINAPI DllMain(HINSTANCE hinst, DWORD dwReason, LPVOID reserved) {
         DetourTransactionBegin();
 
         hook_unapply_all();
-        DetourUpdateThread (GetCurrentThread());
+        DetourUpdateThread(GetCurrentThread());
 
         DetourTransactionCommit();
     }
     return TRUE;
 }
 
+}

@@ -8,7 +8,7 @@ extern int * hookvar_gDoing_physics ; // addr: 00514CB0
 extern br_scalar * hookvar_gDt ; // addr: 00514CB4
 extern int * hookvar_gCollision_detection_on__car ; // addr: 00514CB8 // suffix added to avoid duplicate symbol
 extern br_vector3 * hookvar_gGround_normal__car ; // addr: 00514CC0 // suffix added to avoid duplicate symbol
-// extern void(**(* hookvar_ControlCar__car )[6])(tCar_spec *, br_scalar, ...); // suffix added to avoid duplicate symbol
+// extern void(**(* hookvar_ControlCar__car )[6])(tCar_spec *, br_scalar); // suffix added to avoid duplicate symbol
 extern int * hookvar_gControl__car ; // addr: 00514CE8 // suffix added to avoid duplicate symbol
 extern int * hookvar_gFace_num__car ; // addr: 00514DF8 // suffix added to avoid duplicate symbol
 extern br_angle * hookvar_gOld_yaw__car ; // addr: 00514CF0 // suffix added to avoid duplicate symbol
@@ -64,31 +64,31 @@ extern char(* hookvar_gNon_car_spec_list )[100]; // addr: 00550750
 extern tU32 * hookvar_gMechanics_time_sync ; // addr: 00550670
 extern int * hookvar_gNum_cars_and_non_cars ; // addr: 00550748
 
-void DamageUnit(tCar_spec *pCar, int pUnit_type, int pDamage_amount);
+void __cdecl DamageUnit(tCar_spec *pCar, int pUnit_type, int pDamage_amount);
 
-void DamageUnitWithSmoke(tCar_spec *pCar, int pUnit_type, int pDamage_amount);
+void __cdecl DamageUnitWithSmoke(tCar_spec *pCar, int pUnit_type, int pDamage_amount);
 
-void DamageEngine(int pDamage_amount);
+void __cdecl DamageEngine(int pDamage_amount);
 
-void DamageTrans(int pDamage_amount);
+void __cdecl DamageTrans(int pDamage_amount);
 
-void DamageSteering(int pDamage_amount);
+void __cdecl DamageSteering(int pDamage_amount);
 
-void DamageLFWheel(int pDamage_amount);
+void __cdecl DamageLFWheel(int pDamage_amount);
 
-void DamageLFBrake(int pDamage_amount);
+void __cdecl DamageLFBrake(int pDamage_amount);
 
-void DamageLRBrake(int pDamage_amount);
+void __cdecl DamageLRBrake(int pDamage_amount);
 
-void DamageLRWheel(int pDamage_amount);
+void __cdecl DamageLRWheel(int pDamage_amount);
 
-void DamageRFWheel(int pDamage_amount);
+void __cdecl DamageRFWheel(int pDamage_amount);
 
-void DamageRFBrake(int pDamage_amount);
+void __cdecl DamageRFBrake(int pDamage_amount);
 
-void DamageRRBrake(int pDamage_amount);
+void __cdecl DamageRRBrake(int pDamage_amount);
 
-void DamageRRWheel(int pDamage_amount);
+void __cdecl DamageRRWheel(int pDamage_amount);
 
 void CalculatePlaneNormal(br_vector3 *pP1, br_vector3 *pP2, br_vector3 *pP3, br_vector3 *pNormal);
 
@@ -96,291 +96,291 @@ void CalculateGroundNormal(br_model *pThe_model, int pFace_index);
 
 void ChangeYCoordinate(br_scalar pNew_y, tU32 pTime_taken, br_model *pThe_model, int pFace_index);
 
-void SwitchCarActor(tCar_spec *pCar_spec, int pModel_index);
+void __cdecl SwitchCarActor(tCar_spec *pCar_spec, int pModel_index);
 
-void InitialiseCar2(tCar_spec *pCar, int pClear_disabled_flag);
+void __cdecl InitialiseCar2(tCar_spec *pCar, int pClear_disabled_flag);
 
-void InitialiseCar(tCar_spec *pCar);
+void __cdecl InitialiseCar(tCar_spec *pCar);
 
-void InitialiseCarsEtc(tRace_info *pThe_race);
+void __cdecl InitialiseCarsEtc(tRace_info *pThe_race);
 
-void GetAverageGridPosition(tRace_info *pThe_race);
+void __cdecl GetAverageGridPosition(tRace_info *pThe_race);
 
-void SetInitialPosition(tRace_info *pThe_race, int pCar_index, int pGrid_index);
+void __cdecl SetInitialPosition(tRace_info *pThe_race, int pCar_index, int pGrid_index);
 
-void SetInitialPositions(tRace_info *pThe_race);
+void __cdecl SetInitialPositions(tRace_info *pThe_race);
 
-void InitialiseNonCar(tNon_car_spec *non_car);
+void __cdecl InitialiseNonCar(tNon_car_spec *non_car);
 
-void GetFacesInBox(tCollision_info *c);
+void __cdecl GetFacesInBox(tCollision_info *c);
 
-int IsCarInTheSea();
+int __cdecl IsCarInTheSea();
 
-void RememberSafePosition(tCar_spec *car, tU32 pTime);
+void __cdecl RememberSafePosition(tCar_spec *car, tU32 pTime);
 
-void ControlOurCar(tU32 pTime_difference);
+void __cdecl ControlOurCar(tU32 pTime_difference);
 
-void CalcEngineForce(tCar_spec *c, br_scalar dt);
+void __cdecl CalcEngineForce(tCar_spec *c, br_scalar dt);
 
-void PrepareCars(tU32 pFrame_start_time);
+void __cdecl PrepareCars(tU32 pFrame_start_time);
 
-void FinishCars(tU32 pLast_frame_time, tU32 pTime);
+void __cdecl FinishCars(tU32 pLast_frame_time, tU32 pTime);
 
-void InterpolateCars(tU32 pLast_frame_time, tU32 pTime);
+void __cdecl InterpolateCars(tU32 pLast_frame_time, tU32 pTime);
 
-void ResetOldmat();
+void __cdecl ResetOldmat();
 
-void GetNonCars();
+void __cdecl GetNonCars();
 
 void GetNetPos(tCar_spec *pCar);
 
-void ApplyPhysicsToCars(tU32 last_frame_time, tU32 pTime_difference);
+void __cdecl ApplyPhysicsToCars(tU32 last_frame_time, tU32 pTime_difference);
 
-void MungeSpecialVolume(tCollision_info *pCar);
+void __cdecl MungeSpecialVolume(tCollision_info *pCar);
 
-void ResetCarSpecialVolume(tCollision_info *pCar);
+void __cdecl ResetCarSpecialVolume(tCollision_info *pCar);
 
-void TestAutoSpecialVolume(tCollision_info *pCar);
+void __cdecl TestAutoSpecialVolume(tCollision_info *pCar);
 
-void MoveAndCollideCar(tCar_spec *car, br_scalar dt);
+void __cdecl MoveAndCollideCar(tCar_spec *car, br_scalar dt);
 
-void MoveAndCollideNonCar(tNon_car_spec *non_car, br_scalar dt);
+void __cdecl MoveAndCollideNonCar(tNon_car_spec *non_car, br_scalar dt);
 
-int CollideCarWithWall(tCollision_info *car, br_scalar dt);
+int __cdecl CollideCarWithWall(tCollision_info *car, br_scalar dt);
 
 void ToggleControls();
 
-void ControlCar2(tCar_spec *c, br_scalar dt);
+void __cdecl ControlCar2(tCar_spec *c, br_scalar dt);
 
-void ControlCar3(tCar_spec *c, br_scalar dt);
+void __cdecl ControlCar3(tCar_spec *c, br_scalar dt);
 
-void ControlCar4(tCar_spec *c, br_scalar dt);
+void __cdecl ControlCar4(tCar_spec *c, br_scalar dt);
 
-void ControlCar5(tCar_spec *c, br_scalar dt);
+void __cdecl ControlCar5(tCar_spec *c, br_scalar dt);
 
-void ControlCar1(tCar_spec *c, br_scalar dt);
+void __cdecl ControlCar1(tCar_spec *c, br_scalar dt);
 
 void setrotate(struct br_vector3 *wdt, struct br_matrix34 *m);
 
 void RotateCar2(tCollision_info *c, br_scalar dt);
 
-void RotateCarSecondOrder(tCollision_info *c, br_scalar dt);
+void __cdecl RotateCarSecondOrder(tCollision_info *c, br_scalar dt);
 
 void RotateCarFirstOrder(tCollision_info *c, br_scalar dt);
 
-void SimpleRotate(tCollision_info *c, br_scalar dt);
+void __cdecl SimpleRotate(tCollision_info *c, br_scalar dt);
 
-void RotateCar(tCollision_info *c, br_scalar dt);
+void __cdecl RotateCar(tCollision_info *c, br_scalar dt);
 
-void SteeringSelfCentre(tCar_spec *c, br_scalar dt, br_vector3 *n);
+void __cdecl SteeringSelfCentre(tCar_spec *c, br_scalar dt, br_vector3 *n);
 
-void NonCarCalcForce(tNon_car_spec *nc, br_scalar dt);
+void __cdecl NonCarCalcForce(tNon_car_spec *nc, br_scalar dt);
 
-void AddDrag(tCar_spec *c, br_scalar dt);
+void __cdecl AddDrag(tCar_spec *c, br_scalar dt);
 
-void DoBumpiness(tCar_spec *c, br_vector3 *wheel_pos, br_vector3 *norm, br_scalar *d, int n);
+void __cdecl DoBumpiness(tCar_spec *c, br_vector3 *wheel_pos, br_vector3 *norm, br_scalar *d, int n);
 
-void CalcForce(tCar_spec *c, br_scalar dt);
+void __cdecl CalcForce(tCar_spec *c, br_scalar dt);
 
-void DoRevs(tCar_spec *c, br_scalar dt);
+void __cdecl DoRevs(tCar_spec *c, br_scalar dt);
 
-void ApplyTorque(tCar_spec *c, br_vector3 *tdt);
+void __cdecl ApplyTorque(tCar_spec *c, br_vector3 *tdt);
 
-void TranslateCar(tCollision_info *c, br_scalar dt);
+void __cdecl TranslateCar(tCollision_info *c, br_scalar dt);
 
-int CollCheck(tCollision_info *c, br_scalar dt);
+int __cdecl CollCheck(tCollision_info *c, br_scalar dt);
 
-br_scalar AddFriction(tCollision_info *c, br_vector3 *vel, br_vector3 *normal_force, br_vector3 *pos, br_scalar total_force, br_vector3 *max_friction);
+br_scalar __cdecl AddFriction(tCollision_info *c, br_vector3 *vel, br_vector3 *normal_force, br_vector3 *pos, br_scalar total_force, br_vector3 *max_friction);
 
-void AddFrictionCarToCar(tCollision_info *car1, tCollision_info *car2, br_vector3 *vel1, br_vector3 *vel2, br_vector3 *normal_force1, br_vector3 *pos1, br_vector3 *pos2, br_scalar total_force, br_vector3 *max_friction);
+void __cdecl AddFrictionCarToCar(tCollision_info *car1, tCollision_info *car2, br_vector3 *vel1, br_vector3 *vel2, br_vector3 *normal_force1, br_vector3 *pos1, br_vector3 *pos2, br_scalar total_force, br_vector3 *max_friction);
 
-void ScrapeNoise(br_scalar vel, br_vector3 *position, int material);
+void __cdecl ScrapeNoise(br_scalar vel, br_vector3 *position, int material);
 
-void SkidNoise(tCar_spec *pC, int pWheel_num, br_scalar pV, int material);
+void __cdecl SkidNoise(tCar_spec *pC, int pWheel_num, br_scalar pV, int material);
 
-void StopSkid(tCar_spec *pC);
+void __cdecl StopSkid(tCar_spec *pC);
 
-void CrashNoise(br_vector3 *pForce, br_vector3 *position, int material);
+void __cdecl CrashNoise(br_vector3 *pForce, br_vector3 *position, int material);
 
-void CrushAndDamageCar(tCar_spec *c, br_vector3 *pPosition, br_vector3 *pForce_car_space, tCar_spec *car2);
+void __cdecl CrushAndDamageCar(tCar_spec *c, br_vector3 *pPosition, br_vector3 *pForce_car_space, tCar_spec *car2);
 
-int ExpandBoundingBox(tCar_spec *c);
+int __cdecl ExpandBoundingBox(tCar_spec *c);
 
-void CrushBoundingBox(tCar_spec *c, int crush_only);
+void __cdecl CrushBoundingBox(tCar_spec *c, int crush_only);
 
-void AddCollPoint(br_scalar dist, br_vector3 *p, br_vector3 *norm, br_vector3 *r, br_vector3 *n, br_vector3 *dir, int num, tCollision_info *c);
+void __cdecl AddCollPoint(br_scalar dist, br_vector3 *p, br_vector3 *norm, br_vector3 *r, br_vector3 *n, br_vector3 *dir, int num, tCollision_info *c);
 
-br_scalar SinglePointColl(br_scalar *f, br_matrix4 *m, br_scalar *d);
+br_scalar __cdecl SinglePointColl(br_scalar *f, br_matrix4 *m, br_scalar *d);
 
-br_scalar TwoPointColl(br_scalar *f, br_matrix4 *m, br_scalar *d, br_vector3 *tau, br_vector3 *n);
+br_scalar __cdecl TwoPointColl(br_scalar *f, br_matrix4 *m, br_scalar *d, br_vector3 *tau, br_vector3 *n);
 
-br_scalar DrMatrix4Inverse(br_matrix4 *mi, br_matrix4 *mc);
+br_scalar __cdecl DrMatrix4Inverse(br_matrix4 *mi, br_matrix4 *mc);
 
-br_scalar ThreePointColl(br_scalar *f, br_matrix4 *m, br_scalar *d);
+br_scalar __cdecl ThreePointColl(br_scalar *f, br_matrix4 *m, br_scalar *d);
 
-br_scalar ThreePointCollRec(br_scalar *f, br_matrix4 *m, br_scalar *d, br_vector3 *tau, br_vector3 *n, tCollision_info *c);
+br_scalar __cdecl ThreePointCollRec(br_scalar *f, br_matrix4 *m, br_scalar *d, br_vector3 *tau, br_vector3 *n, tCollision_info *c);
 
-br_scalar FourPointColl(br_scalar *f, br_matrix4 *m, br_scalar *d, br_vector3 *tau, br_vector3 *n, tCollision_info *c);
+br_scalar __cdecl FourPointColl(br_scalar *f, br_matrix4 *m, br_scalar *d, br_vector3 *tau, br_vector3 *n, tCollision_info *c);
 
-void MultiFindFloorInBoxM(int pNum_rays, br_vector3 *a, br_vector3 *b, br_vector3 *nor, br_scalar *d, tCar_spec *c, int *mat_ref);
+void __cdecl MultiFindFloorInBoxM(int pNum_rays, br_vector3 *a, br_vector3 *b, br_vector3 *nor, br_scalar *d, tCar_spec *c, int *mat_ref);
 
-void MultiFindFloorInBoxBU(int pNum_rays, br_vector3 *a, br_vector3 *b, br_vector3 *nor, br_scalar *d, tCar_spec *c, int *mat_ref);
+void __cdecl MultiFindFloorInBoxBU(int pNum_rays, br_vector3 *a, br_vector3 *b, br_vector3 *nor, br_scalar *d, tCar_spec *c, int *mat_ref);
 
-void findfloor(br_vector3 *a, br_vector3 *b, br_vector3 *nor, br_scalar *d);
+void __cdecl findfloor(br_vector3 *a, br_vector3 *b, br_vector3 *nor, br_scalar *d);
 
-int FindFloorInBoxM(br_vector3 *a, br_vector3 *b, br_vector3 *nor, br_scalar *d, tCollision_info *c);
+int __cdecl FindFloorInBoxM(br_vector3 *a, br_vector3 *b, br_vector3 *nor, br_scalar *d, tCollision_info *c);
 
-int FindFloorInBoxBU(br_vector3 *a, br_vector3 *b, br_vector3 *nor, br_scalar *d, tCollision_info *c);
+int __cdecl FindFloorInBoxBU(br_vector3 *a, br_vector3 *b, br_vector3 *nor, br_scalar *d, tCollision_info *c);
 
-int FindFloorInBoxBU2(br_vector3 *a, br_vector3 *b, br_vector3 *nor, br_scalar *d, tCollision_info *c);
+int __cdecl FindFloorInBoxBU2(br_vector3 *a, br_vector3 *b, br_vector3 *nor, br_scalar *d, tCollision_info *c);
 
-int FindFloorInBoxM2(br_vector3 *a, br_vector3 *b, br_vector3 *nor, br_scalar *d, tCollision_info *c);
+int __cdecl FindFloorInBoxM2(br_vector3 *a, br_vector3 *b, br_vector3 *nor, br_scalar *d, tCollision_info *c);
 
-int BoxFaceIntersect(br_bounds *pB, br_matrix34 *pM, br_matrix34 *pMold, br_vector3 *pPoint_list, br_vector3 *pNorm_list, br_scalar *pDist_list, int pMax_pnts, tCollision_info *c);
+int __cdecl BoxFaceIntersect(br_bounds *pB, br_matrix34 *pM, br_matrix34 *pMold, br_vector3 *pPoint_list, br_vector3 *pNorm_list, br_scalar *pDist_list, int pMax_pnts, tCollision_info *c);
 
-int AddEdgeCollPoints(br_vector3 *p1, br_vector3 *p2, br_bounds *pB, br_matrix34 *pMold, br_vector3 *pPoint_list, br_vector3 *pNorm_list, int n, int pMax_pnts, tCollision_info *c);
+int __cdecl AddEdgeCollPoints(br_vector3 *p1, br_vector3 *p2, br_bounds *pB, br_matrix34 *pMold, br_vector3 *pPoint_list, br_vector3 *pNorm_list, int n, int pMax_pnts, tCollision_info *c);
 
-void GetPlaneNormal(br_vector3 *n, int p);
+void __cdecl GetPlaneNormal(br_vector3 *n, int p);
 
-int GetBoundsEdge(br_vector3 *pos, br_vector3 *edge, br_bounds *pB, int plane1, int plane2, br_vector3 *a, br_vector3 *b, br_vector3 *c, int flag);
+int __cdecl GetBoundsEdge(br_vector3 *pos, br_vector3 *edge, br_bounds *pB, int plane1, int plane2, br_vector3 *a, br_vector3 *b, br_vector3 *c, int flag);
 
 void oldMoveOurCar(tU32 pTime_difference);
 
 void ToggleCollisionDetection();
 
-void CancelPendingCunningStunt();
+void __cdecl CancelPendingCunningStunt();
 
-float frac(float pN);
+float __cdecl frac(float pN);
 
-void SetAmbientPratCam(tCar_spec *pCar);
+void __cdecl SetAmbientPratCam(tCar_spec *pCar);
 
-void MungeCarGraphics(tU32 pFrame_period);
+void __cdecl MungeCarGraphics(tU32 pFrame_period);
 
-void ResetCarScreens();
+void __cdecl ResetCarScreens();
 
-tCar_spec* GetRaceLeader();
+tCar_spec* __cdecl GetRaceLeader();
 
-void AmIGettingBoredWatchingCameraSpin();
+void __cdecl AmIGettingBoredWatchingCameraSpin();
 
-void ViewNetPlayer();
+void __fastcall ViewNetPlayer();
 
-void ViewOpponent();
+void __cdecl ViewOpponent();
 
-void ToggleCarToCarCollisions();
+void __cdecl ToggleCarToCarCollisions();
 
-void SwapCar();
+void __cdecl SwapCar();
 
-void AdjustDownForce();
+void __cdecl AdjustDownForce();
 
-void FreezeMechanics();
+void __cdecl FreezeMechanics();
 
-void PutOpponentsInNeutral();
+void __cdecl PutOpponentsInNeutral();
 
-void SetPanningFieldOfView();
+void __cdecl SetPanningFieldOfView();
 
-void CheckDisablePlingMaterials(tCar_spec *pCar);
+void __cdecl CheckDisablePlingMaterials(tCar_spec *pCar);
 
-void PositionExternalCamera(tCar_spec *c, tU32 pTime);
+void __cdecl PositionExternalCamera(tCar_spec *c, tU32 pTime);
 
-void CameraBugFix(tCar_spec *c, tU32 pTime);
+void __cdecl CameraBugFix(tCar_spec *c, tU32 pTime);
 
-int PossibleRemoveNonCarFromWorld(br_actor *pActor);
+int __cdecl PossibleRemoveNonCarFromWorld(br_actor *pActor);
 
-void PutNonCarBackInWorld(br_actor *pActor);
+void __cdecl PutNonCarBackInWorld(br_actor *pActor);
 
-int IncidentCam(tCar_spec *c, tU32 pTime);
+int __cdecl IncidentCam(tCar_spec *c, tU32 pTime);
 
-int MoveCamToIncident(tCar_spec *c, tIncident_type *type, float *severity, tIncident_info *info, tU32 *next_incident_time);
+int __cdecl MoveCamToIncident(tCar_spec *c, tIncident_type *type, float *severity, tIncident_info *info, tU32 *next_incident_time);
 
-void PanningExternalCamera(tCar_spec *c, tU32 pTime);
+void __cdecl PanningExternalCamera(tCar_spec *c, tU32 pTime);
 
-int CheckForWall(br_vector3 *start, br_vector3 *end);
+int __cdecl CheckForWall(br_vector3 *start, br_vector3 *end);
 
-void SetUpPanningCamera(tCar_spec *c);
+void __cdecl SetUpPanningCamera(tCar_spec *c);
 
-void SaveCameraPosition(int i);
+void __cdecl SaveCameraPosition(int i);
 
-void RestoreCameraPosition(int i);
+void __cdecl RestoreCameraPosition(int i);
 
-void NormalPositionExternalCamera(tCar_spec *c, tU32 pTime);
+void __cdecl NormalPositionExternalCamera(tCar_spec *c, tU32 pTime);
 
-void MoveWithWheels(tCar_spec *c, br_vector3 *vn, int manual_swing);
+void __cdecl MoveWithWheels(tCar_spec *c, br_vector3 *vn, int manual_swing);
 
-void SwingCamera(tCar_spec *c, br_matrix34 *m1, br_matrix34 *m2, br_vector3 *vn, tU32 pTime);
+void __cdecl SwingCamera(tCar_spec *c, br_matrix34 *m1, br_matrix34 *m2, br_vector3 *vn, tU32 pTime);
 
-void PointCameraAtCar(tCar_spec *c, br_matrix34 *m1, br_matrix34 *m2);
+void __cdecl PointCameraAtCar(tCar_spec *c, br_matrix34 *m1, br_matrix34 *m2);
 
-void PointCamera(br_vector3 *pos, br_matrix34 *m2);
+void __cdecl PointCamera(br_vector3 *pos, br_matrix34 *m2);
 
-int CollideCamera2(br_vector3 *car_pos, br_vector3 *cam_pos, br_vector3 *old_camera_pos, int manual_move);
+int __cdecl CollideCamera2(br_vector3 *car_pos, br_vector3 *cam_pos, br_vector3 *old_camera_pos, int manual_move);
 
-int BoundsTest(br_bounds *bnds, br_vector3 *p);
+int __cdecl BoundsTest(br_bounds *bnds, br_vector3 *p);
 
-int CollideCameraWithOtherCars(br_vector3 *car_pos, br_vector3 *cam_pos);
+int __cdecl CollideCameraWithOtherCars(br_vector3 *car_pos, br_vector3 *cam_pos);
 
-void InitialiseExternalCamera();
+void __fastcall InitialiseExternalCamera();
 
-void FreezeCamera();
+void __cdecl FreezeCamera();
 
-void FlyCar(tCar_spec *c, br_scalar dt);
+void __cdecl FlyCar(tCar_spec *c, br_scalar dt);
 
-void DrVector3RotateY(br_vector3 *v, br_angle t);
+void __cdecl DrVector3RotateY(br_vector3 *v, br_angle t);
 
-void CrashCarsTogether(br_scalar dt);
+void __cdecl CrashCarsTogether(br_scalar dt);
 
-int CrashCarsTogetherSinglePass(br_scalar dt, int pPass, tCollison_data *collide_list);
+int __cdecl CrashCarsTogetherSinglePass(br_scalar dt, int pPass, tCollison_data *collide_list);
 
-void BringCarToAGrindingHalt(tCollision_info *car);
+void __cdecl BringCarToAGrindingHalt(tCollision_info *car);
 
 int BoundsOverlapTest__car(br_bounds *b1, br_bounds *b2);
 
-int SimpleCarCarCollisionTest(tCollision_info *car1, tCollision_info *car2);
+int __cdecl SimpleCarCarCollisionTest(tCollision_info *car1, tCollision_info *car2);
 
-int CollideTwoCarsWithWalls(tCollision_info *car1, tCollision_info *car2, br_scalar dt);
+int __cdecl CollideTwoCarsWithWalls(tCollision_info *car1, tCollision_info *car2, br_scalar dt);
 
-int CollideTwoCarsRepeatedly(tCollision_info *car1, tCollision_info *car2, br_scalar dt);
+int __cdecl CollideTwoCarsRepeatedly(tCollision_info *car1, tCollision_info *car2, br_scalar dt);
 
-int CollideTwoCars(tCollision_info *car1, tCollision_info *car2, int pPass);
+int __cdecl CollideTwoCars(tCollision_info *car1, tCollision_info *car2, int pPass);
 
-int GetEdgeEdgeCollisions(br_bounds *pB1, br_bounds *pB2, br_matrix34 *pM21, br_matrix34 *pM12, br_matrix34 *pMo21, br_matrix34 *pMo12, br_matrix34 *pM1o1, br_vector3 *pPoint_list, br_vector3 *pNorm_list, int pMax);
+int __cdecl GetEdgeEdgeCollisions(br_bounds *pB1, br_bounds *pB2, br_matrix34 *pM21, br_matrix34 *pM12, br_matrix34 *pMo21, br_matrix34 *pMo12, br_matrix34 *pM1o1, br_vector3 *pPoint_list, br_vector3 *pNorm_list, int pMax);
 
-int FacePointCarCarCollide(tCollision_info *car1, tCollision_info *car2, br_matrix34 *pMms, br_matrix34 *pMoms, br_matrix34 *pMsos, br_vector3 *pPoint_list, br_vector3 *pNorm_list, int pMax, int order);
+int __cdecl FacePointCarCarCollide(tCollision_info *car1, tCollision_info *car2, br_matrix34 *pMms, br_matrix34 *pMoms, br_matrix34 *pMsos, br_vector3 *pPoint_list, br_vector3 *pNorm_list, int pMax, int order);
 
-void MungeCarsMass(tCollision_info *pCar, br_scalar pFactor);
+void __cdecl MungeCarsMass(tCollision_info *pCar, br_scalar pFactor);
 
-void ModifyCarsMass(tCollision_info *pCar_1, tCollision_info *pCar_2);
+void __cdecl ModifyCarsMass(tCollision_info *pCar_1, tCollision_info *pCar_2);
 
-void ResetCarsMass(tCollision_info *pCar_1, tCollision_info *pCar_2);
+void __cdecl ResetCarsMass(tCollision_info *pCar_1, tCollision_info *pCar_2);
 
-int DoCollide(tCollision_info *car1, tCollision_info *car2, br_vector3 *r, br_vector3 *n, int k, int pPass, br_matrix34 *mat1_to_mat2);
+int __cdecl DoCollide(tCollision_info *car1, tCollision_info *car2, br_vector3 *r, br_vector3 *n, int k, int pPass, br_matrix34 *mat1_to_mat2);
 
-br_scalar TwoPointCollB(br_scalar *f, br_matrix4 *m, br_scalar *d, br_vector3 *tau, br_vector3 *n);
+br_scalar __cdecl TwoPointCollB(br_scalar *f, br_matrix4 *m, br_scalar *d, br_vector3 *tau, br_vector3 *n);
 
-br_scalar ThreePointCollRecB(br_scalar *f, br_matrix4 *m, br_scalar *d, br_vector3 *tau, br_vector3 *n);
+br_scalar __cdecl ThreePointCollRecB(br_scalar *f, br_matrix4 *m, br_scalar *d, br_vector3 *tau, br_vector3 *n);
 
-br_scalar FourPointCollB(br_scalar *f, br_matrix4 *m, br_scalar *d, br_vector3 *tau, br_vector3 *n);
+br_scalar __cdecl FourPointCollB(br_scalar *f, br_matrix4 *m, br_scalar *d, br_vector3 *tau, br_vector3 *n);
 
-int TestForNan(float *f);
+int __cdecl TestForNan(float *f);
 
-void CheckCameraHither();
+void __cdecl CheckCameraHither();
 
-void SetCarSuspGiveAndHeight(tCar_spec *pCar, br_scalar pFront_give_factor, br_scalar pRear_give_factor, br_scalar pDamping_factor, br_scalar pExtra_front_height, br_scalar pExtra_rear_height);
+void __cdecl SetCarSuspGiveAndHeight(tCar_spec *pCar, br_scalar pFront_give_factor, br_scalar pRear_give_factor, br_scalar pDamping_factor, br_scalar pExtra_front_height, br_scalar pExtra_rear_height);
 
-int TestForCarInSensiblePlace(tCar_spec *car);
+int __cdecl TestForCarInSensiblePlace(tCar_spec *car);
 
-int TestOldMats(tCollision_info *c1, tCollision_info *c2, int newmats);
+int __cdecl TestOldMats(tCollision_info *c1, tCollision_info *c2, int newmats);
 
-int PullActorFromWorld(br_actor *pActor);
+int __cdecl PullActorFromWorld(br_actor *pActor);
 
-int DoPullActorFromWorld(br_actor *pActor);
+int __cdecl DoPullActorFromWorld(br_actor *pActor);
 
-void CheckForDeAttachmentOfNonCars(tU32 pTime);
+void __cdecl CheckForDeAttachmentOfNonCars(tU32 pTime);
 
-void AdjustNonCar(br_actor *pActor, br_matrix34 *pMat);
+void __cdecl AdjustNonCar(br_actor *pActor, br_matrix34 *pMat);
 
-void PipeSingleNonCar(tCollision_info *c);
+void __cdecl PipeSingleNonCar(tCollision_info *c);
 
-int GetPrecalculatedFacesUnderCar(tCar_spec *pCar, tFace_ref **pFace_refs);
+int __cdecl GetPrecalculatedFacesUnderCar(tCar_spec *pCar, tFace_ref **pFace_refs);
 
 br_material* SomeNearbyMaterial();
 

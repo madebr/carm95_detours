@@ -9,32 +9,32 @@ extern int * hookvar_gNon_fatal_allocation_errors ; // addr: 00513614
 extern char *(* hookvar_gMem_names )[247]; // addr: 00513618
 extern br_resource_class(* hookvar_gStainless_classes )[118]; // addr: 00537960
 
-void SetNonFatalAllocationErrors();
+void __cdecl SetNonFatalAllocationErrors();
 
-void ResetNonFatalAllocationErrors();
+void __cdecl ResetNonFatalAllocationErrors();
 
-int AllocationErrorsAreFatal();
+int __cdecl AllocationErrorsAreFatal();
 
-void MAMSInitMem();
+void __cdecl MAMSInitMem();
 
-void PrintMemoryDump(int pFlags, char *pTitle);
+void __cdecl PrintMemoryDump(int pFlags, char *pTitle);
 
-void* DRStdlibAllocate(br_size_t size, br_uint_8 type);
+void* __cdecl DRStdlibAllocate(br_size_t size, br_uint_8 type);
 
-void DRStdlibFree(void *mem);
+void __cdecl DRStdlibFree(void *mem);
 
-br_size_t DRStdlibInquire(br_uint_8 type);
+br_size_t __cdecl DRStdlibInquire(br_uint_8 type);
 
-br_uint_32 Claim4ByteAlignment(br_uint_8 type);
+br_uint_32 __cdecl Claim4ByteAlignment(br_uint_8 type);
 
-void InstallDRMemCalls();
+void __cdecl InstallDRMemCalls();
 
-void MAMSUnlock(void **pPtr);
+void __cdecl MAMSUnlock(void **pPtr);
 
-void MAMSLock(void **pPtr);
+void __cdecl MAMSLock(void **pPtr);
 
-void CreateStainlessClasses();
+void __cdecl CreateStainlessClasses();
 
-void CheckMemory();
+void __cdecl CheckMemory();
 
 #endif

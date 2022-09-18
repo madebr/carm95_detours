@@ -4,6 +4,6 @@
 #include "br_types.h"
 
 
-br_material* SetupDefaultMaterial();
+br_material* __stdcall SetupDefaultMaterial();
 
 #endif

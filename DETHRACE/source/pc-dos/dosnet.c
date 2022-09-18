@@ -4,7 +4,6 @@
 
 #include "carm95_hooks.h"
 
-#include <sys/stat.h>
 #if 0
 tU32 * hookvar_gNetwork_init_flags ;
 #endif
@@ -142,9 +141,9 @@ void NetNowIPXLocalTarget2String(char *pString, _IPX_LOCAL_TARGET *pSock_addr_ip
     NOT_IMPLEMENTED();
 }
 
-static int(*original_GetMessageTypeFromMessage)(char *, ...) = (int(*)(char *, ...))0x00455050;
+static int(__cdecl*original_GetMessageTypeFromMessage)(char *) = (int(__cdecl*)(char *))0x00455050;
 CARM95_HOOK_FUNCTION(original_GetMessageTypeFromMessage, GetMessageTypeFromMessage)
-int GetMessageTypeFromMessage(char *pMessage_str) {
+int __cdecl GetMessageTypeFromMessage(char *pMessage_str) {
     char *real_msg;
     int msg_type_int;
     LOG_TRACE("(\"%s\")", pMessage_str);
@@ -156,9 +155,9 @@ int GetMessageTypeFromMessage(char *pMessage_str) {
     return original_GetMessageTypeFromMessage(pMessage_str);
 }
 
-static int(*original_SameEthernetAddress)(_IPX_LOCAL_TARGET *, _IPX_LOCAL_TARGET *, ...) = (int(*)(_IPX_LOCAL_TARGET *, _IPX_LOCAL_TARGET *, ...))0x00455119;
+static int(__cdecl*original_SameEthernetAddress)(_IPX_LOCAL_TARGET *, _IPX_LOCAL_TARGET *) = (int(__cdecl*)(_IPX_LOCAL_TARGET *, _IPX_LOCAL_TARGET *))0x00455119;
 CARM95_HOOK_FUNCTION(original_SameEthernetAddress, SameEthernetAddress)
-int SameEthernetAddress(_IPX_LOCAL_TARGET *pAddr_ipx1, _IPX_LOCAL_TARGET *pAddr_ipx2) {
+int __cdecl SameEthernetAddress(_IPX_LOCAL_TARGET *pAddr_ipx1, _IPX_LOCAL_TARGET *pAddr_ipx2) {
     LOG_TRACE("(%p, %p)", pAddr_ipx1, pAddr_ipx2);
 
     (void)pAddr_ipx1;
@@ -179,9 +178,9 @@ _IPX_LOCAL_TARGET* GetIPXAddrFromPlayerID(tPlayer_ID pPlayer_id) {
     NOT_IMPLEMENTED();
 }
 
-static void(*original_MakeMessageToSend)(int, ...) = (void(*)(int, ...))0x00454c4c;
+static void(__cdecl*original_MakeMessageToSend)(int) = (void(__cdecl*)(int))0x00454c4c;
 CARM95_HOOK_FUNCTION(original_MakeMessageToSend, MakeMessageToSend)
-void MakeMessageToSend(int pMessage_type) {
+void __cdecl MakeMessageToSend(int pMessage_type) {
     LOG_TRACE("(%d)", pMessage_type);
 
     (void)pMessage_type;
@@ -189,9 +188,9 @@ void MakeMessageToSend(int pMessage_type) {
     original_MakeMessageToSend(pMessage_type);
 }
 
-static int(*original_ReceiveHostResponses)() = (int(*)())0x00454d4d;
+static int(__cdecl*original_ReceiveHostResponses)() = (int(__cdecl*)())0x00454d4d;
 CARM95_HOOK_FUNCTION(original_ReceiveHostResponses, ReceiveHostResponses)
-int ReceiveHostResponses() {
+int __cdecl ReceiveHostResponses() {
     char str[256];
     int i;
     int already_registered;
@@ -204,9 +203,9 @@ int ReceiveHostResponses() {
     return original_ReceiveHostResponses();
 }
 
-static int(*original_BroadcastMessage)() = (int(*)())0x00454c72;
+static int(__cdecl*original_BroadcastMessage)() = (int(__cdecl*)())0x00454c72;
 CARM95_HOOK_FUNCTION(original_BroadcastMessage, BroadcastMessage)
-int BroadcastMessage() {
+int __cdecl BroadcastMessage() {
     int i;
     int errors;
     char broadcast_addr_string[32];
@@ -443,9 +442,9 @@ void GetIPXToStickItsEarToTheGround() {
     NOT_IMPLEMENTED();
 }
 
-static int(*original_PDNetInitialise)() = (int(*)())0x004543f8;
+static int(__cdecl*original_PDNetInitialise)() = (int(__cdecl*)())0x004543f8;
 CARM95_HOOK_FUNCTION(original_PDNetInitialise, PDNetInitialise)
-int PDNetInitialise() {
+int __cdecl PDNetInitialise() {
     tU32 timenow;
     char profile_string[32];
     char key_name[32];
@@ -468,36 +467,36 @@ int PDNetInitialise() {
     return original_PDNetInitialise();
 }
 
-static int(*original_PDNetShutdown)() = (int(*)())0x004549f2;
+static int(__cdecl*original_PDNetShutdown)() = (int(__cdecl*)())0x004549f2;
 CARM95_HOOK_FUNCTION(original_PDNetShutdown, PDNetShutdown)
-int PDNetShutdown() {
+int __cdecl PDNetShutdown() {
     LOG_TRACE("()");
 
 
     return original_PDNetShutdown();
 }
 
-static void(*original_PDNetStartProducingJoinList)() = (void(*)())0x00454a33;
+static void(__cdecl*original_PDNetStartProducingJoinList)() = (void(__cdecl*)())0x00454a33;
 CARM95_HOOK_FUNCTION(original_PDNetStartProducingJoinList, PDNetStartProducingJoinList)
-void PDNetStartProducingJoinList() {
+void __cdecl PDNetStartProducingJoinList() {
     LOG_TRACE("()");
 
 
     original_PDNetStartProducingJoinList();
 }
 
-static void(*original_PDNetEndJoinList)() = (void(*)())0x00454a86;
+static void(__cdecl*original_PDNetEndJoinList)() = (void(__cdecl*)())0x00454a86;
 CARM95_HOOK_FUNCTION(original_PDNetEndJoinList, PDNetEndJoinList)
-void PDNetEndJoinList() {
+void __cdecl PDNetEndJoinList() {
     LOG_TRACE("()");
 
 
     original_PDNetEndJoinList();
 }
 
-static int(*original_PDNetGetNextJoinGame)(tNet_game_details *, int, ...) = (int(*)(tNet_game_details *, int, ...))0x00454ac3;
+static int(__cdecl*original_PDNetGetNextJoinGame)(tNet_game_details *, int) = (int(__cdecl*)(tNet_game_details *, int))0x00454ac3;
 CARM95_HOOK_FUNCTION(original_PDNetGetNextJoinGame, PDNetGetNextJoinGame)
-int PDNetGetNextJoinGame(tNet_game_details *pGame, int pIndex) {
+int __cdecl PDNetGetNextJoinGame(tNet_game_details *pGame, int pIndex) {
     static tU32 next_broadcast_time;
     int i;
     int j;
@@ -516,9 +515,9 @@ int PDNetGetNextJoinGame(tNet_game_details *pGame, int pIndex) {
     return original_PDNetGetNextJoinGame(pGame, pIndex);
 }
 
-static void(*original_PDNetDisposeGameDetails)(tNet_game_details *, ...) = (void(*)(tNet_game_details *, ...))0x00455161;
+static void(__cdecl*original_PDNetDisposeGameDetails)(tNet_game_details *) = (void(__cdecl*)(tNet_game_details *))0x00455161;
 CARM95_HOOK_FUNCTION(original_PDNetDisposeGameDetails, PDNetDisposeGameDetails)
-void PDNetDisposeGameDetails(tNet_game_details *pDetails) {
+void __cdecl PDNetDisposeGameDetails(tNet_game_details *pDetails) {
     LOG_TRACE("(%p)", pDetails);
 
     (void)pDetails;
@@ -526,9 +525,9 @@ void PDNetDisposeGameDetails(tNet_game_details *pDetails) {
     original_PDNetDisposeGameDetails(pDetails);
 }
 
-static int(*original_PDNetHostGame)(tNet_game_details *, char *, void **, ...) = (int(*)(tNet_game_details *, char *, void **, ...))0x00455179;
+static int(__cdecl*original_PDNetHostGame)(tNet_game_details *, char *, void **) = (int(__cdecl*)(tNet_game_details *, char *, void **))0x00455179;
 CARM95_HOOK_FUNCTION(original_PDNetHostGame, PDNetHostGame)
-int PDNetHostGame(tNet_game_details *pDetails, char *pHost_name, void **pHost_address) {
+int __cdecl PDNetHostGame(tNet_game_details *pDetails, char *pHost_name, void **pHost_address) {
     LOG_TRACE("(%p, \"%s\", %p)", pDetails, pHost_name, pHost_address);
 
     (void)pDetails;
@@ -538,9 +537,9 @@ int PDNetHostGame(tNet_game_details *pDetails, char *pHost_name, void **pHost_ad
     return original_PDNetHostGame(pDetails, pHost_name, pHost_address);
 }
 
-static int(*original_PDNetJoinGame)(tNet_game_details *, char *, ...) = (int(*)(tNet_game_details *, char *, ...))0x004551a4;
+static int(__cdecl*original_PDNetJoinGame)(tNet_game_details *, char *) = (int(__cdecl*)(tNet_game_details *, char *))0x004551a4;
 CARM95_HOOK_FUNCTION(original_PDNetJoinGame, PDNetJoinGame)
-int PDNetJoinGame(tNet_game_details *pDetails, char *pPlayer_name) {
+int __cdecl PDNetJoinGame(tNet_game_details *pDetails, char *pPlayer_name) {
     LOG_TRACE("(%p, \"%s\")", pDetails, pPlayer_name);
 
     (void)pDetails;
@@ -549,9 +548,9 @@ int PDNetJoinGame(tNet_game_details *pDetails, char *pPlayer_name) {
     return original_PDNetJoinGame(pDetails, pPlayer_name);
 }
 
-static void(*original_PDNetLeaveGame)(tNet_game_details *, ...) = (void(*)(tNet_game_details *, ...))0x004551c3;
+static void(__cdecl*original_PDNetLeaveGame)(tNet_game_details *) = (void(__cdecl*)(tNet_game_details *))0x004551c3;
 CARM95_HOOK_FUNCTION(original_PDNetLeaveGame, PDNetLeaveGame)
-void PDNetLeaveGame(tNet_game_details *pDetails) {
+void __cdecl PDNetLeaveGame(tNet_game_details *pDetails) {
     LOG_TRACE("(%p)", pDetails);
 
     (void)pDetails;
@@ -559,9 +558,9 @@ void PDNetLeaveGame(tNet_game_details *pDetails) {
     original_PDNetLeaveGame(pDetails);
 }
 
-static void(*original_PDNetHostFinishGame)(tNet_game_details *, ...) = (void(*)(tNet_game_details *, ...))0x004551db;
+static void(__cdecl*original_PDNetHostFinishGame)(tNet_game_details *) = (void(__cdecl*)(tNet_game_details *))0x004551db;
 CARM95_HOOK_FUNCTION(original_PDNetHostFinishGame, PDNetHostFinishGame)
-void PDNetHostFinishGame(tNet_game_details *pDetails) {
+void __cdecl PDNetHostFinishGame(tNet_game_details *pDetails) {
     LOG_TRACE("(%p)", pDetails);
 
     (void)pDetails;
@@ -569,9 +568,9 @@ void PDNetHostFinishGame(tNet_game_details *pDetails) {
     original_PDNetHostFinishGame(pDetails);
 }
 
-static tU32(*original_PDNetExtractGameID)(tNet_game_details *, ...) = (tU32(*)(tNet_game_details *, ...))0x004551f3;
+static tU32(__cdecl*original_PDNetExtractGameID)(tNet_game_details *) = (tU32(__cdecl*)(tNet_game_details *))0x004551f3;
 CARM95_HOOK_FUNCTION(original_PDNetExtractGameID, PDNetExtractGameID)
-tU32 PDNetExtractGameID(tNet_game_details *pDetails) {
+tU32 __cdecl PDNetExtractGameID(tNet_game_details *pDetails) {
     LOG_TRACE("(%p)", pDetails);
 
     (void)pDetails;
@@ -579,9 +578,9 @@ tU32 PDNetExtractGameID(tNet_game_details *pDetails) {
     return original_PDNetExtractGameID(pDetails);
 }
 
-static tPlayer_ID(*original_PDNetExtractPlayerID)(tNet_game_details *, ...) = (tPlayer_ID(*)(tNet_game_details *, ...))0x00455277;
+static tPlayer_ID(__cdecl*original_PDNetExtractPlayerID)(tNet_game_details *) = (tPlayer_ID(__cdecl*)(tNet_game_details *))0x00455277;
 CARM95_HOOK_FUNCTION(original_PDNetExtractPlayerID, PDNetExtractPlayerID)
-tPlayer_ID PDNetExtractPlayerID(tNet_game_details *pDetails) {
+tPlayer_ID __cdecl PDNetExtractPlayerID(tNet_game_details *pDetails) {
     LOG_TRACE("(%p)", pDetails);
 
     (void)pDetails;
@@ -589,9 +588,9 @@ tPlayer_ID PDNetExtractPlayerID(tNet_game_details *pDetails) {
     return original_PDNetExtractPlayerID(pDetails);
 }
 
-static void(*original_PDNetObtainSystemUserName)(char *, int, ...) = (void(*)(char *, int, ...))0x004552be;
+static void(__cdecl*original_PDNetObtainSystemUserName)(char *, int) = (void(__cdecl*)(char *, int))0x004552be;
 CARM95_HOOK_FUNCTION(original_PDNetObtainSystemUserName, PDNetObtainSystemUserName)
-void PDNetObtainSystemUserName(char *pName, int pMax_length) {
+void __cdecl PDNetObtainSystemUserName(char *pName, int pMax_length) {
     LOG_TRACE("(\"%s\", %d)", pName, pMax_length);
 
     (void)pName;
@@ -600,9 +599,9 @@ void PDNetObtainSystemUserName(char *pName, int pMax_length) {
     original_PDNetObtainSystemUserName(pName, pMax_length);
 }
 
-static int(*original_PDNetSendMessageToPlayer)(tNet_game_details *, tNet_message *, tPlayer_ID, ...) = (int(*)(tNet_game_details *, tNet_message *, tPlayer_ID, ...))0x00455349;
+static int(__cdecl*original_PDNetSendMessageToPlayer)(tNet_game_details *, tNet_message *, tPlayer_ID) = (int(__cdecl*)(tNet_game_details *, tNet_message *, tPlayer_ID))0x00455349;
 CARM95_HOOK_FUNCTION(original_PDNetSendMessageToPlayer, PDNetSendMessageToPlayer)
-int PDNetSendMessageToPlayer(tNet_game_details *pDetails, tNet_message *pMessage, tPlayer_ID pPlayer) {
+int __cdecl PDNetSendMessageToPlayer(tNet_game_details *pDetails, tNet_message *pMessage, tPlayer_ID pPlayer) {
     char str[256];
     _IPX_LOCAL_TARGET *remote_addr_ipx;
     LOG_TRACE("(%p, %p, %u)", pDetails, pMessage, pPlayer);
@@ -616,9 +615,9 @@ int PDNetSendMessageToPlayer(tNet_game_details *pDetails, tNet_message *pMessage
     return original_PDNetSendMessageToPlayer(pDetails, pMessage, pPlayer);
 }
 
-static int(*original_PDNetSendMessageToAllPlayers)(tNet_game_details *, tNet_message *, ...) = (int(*)(tNet_game_details *, tNet_message *, ...))0x004553de;
+static int(__cdecl*original_PDNetSendMessageToAllPlayers)(tNet_game_details *, tNet_message *) = (int(__cdecl*)(tNet_game_details *, tNet_message *))0x004553de;
 CARM95_HOOK_FUNCTION(original_PDNetSendMessageToAllPlayers, PDNetSendMessageToAllPlayers)
-int PDNetSendMessageToAllPlayers(tNet_game_details *pDetails, tNet_message *pMessage) {
+int __cdecl PDNetSendMessageToAllPlayers(tNet_game_details *pDetails, tNet_message *pMessage) {
     char str[256];
     int i;
     LOG_TRACE("(%p, %p)", pDetails, pMessage);
@@ -631,9 +630,9 @@ int PDNetSendMessageToAllPlayers(tNet_game_details *pDetails, tNet_message *pMes
     return original_PDNetSendMessageToAllPlayers(pDetails, pMessage);
 }
 
-static tNet_message *(*original_PDNetGetNextMessage)(tNet_game_details *, void **, ...) = (tNet_message *(*)(tNet_game_details *, void **, ...))0x00455495;
+static tNet_message *(__cdecl*original_PDNetGetNextMessage)(tNet_game_details *, void **) = (tNet_message *(__cdecl*)(tNet_game_details *, void **))0x00455495;
 CARM95_HOOK_FUNCTION(original_PDNetGetNextMessage, PDNetGetNextMessage)
-tNet_message* PDNetGetNextMessage(tNet_game_details *pDetails, void **pSender_address) {
+tNet_message* __cdecl PDNetGetNextMessage(tNet_game_details *pDetails, void **pSender_address) {
     char *receive_buffer;
     char str[256];
     int msg_type;
@@ -648,9 +647,9 @@ tNet_message* PDNetGetNextMessage(tNet_game_details *pDetails, void **pSender_ad
     return original_PDNetGetNextMessage(pDetails, pSender_address);
 }
 
-static tNet_message *(*original_PDNetAllocateMessage)(tU32, tS32, ...) = (tNet_message *(*)(tU32, tS32, ...))0x00455730;
+static tNet_message *(__cdecl*original_PDNetAllocateMessage)(tU32, tS32) = (tNet_message *(__cdecl*)(tU32, tS32))0x00455730;
 CARM95_HOOK_FUNCTION(original_PDNetAllocateMessage, PDNetAllocateMessage)
-tNet_message* PDNetAllocateMessage(tU32 pSize, tS32 pSize_decider) {
+tNet_message* __cdecl PDNetAllocateMessage(tU32 pSize, tS32 pSize_decider) {
     LOG_TRACE("(%u, %d)", pSize, pSize_decider);
 
     (void)pSize;
@@ -668,9 +667,9 @@ void PDNetDisposeMessage(tNet_game_details *pDetails, tNet_message *pMessage) {
     NOT_IMPLEMENTED();
 }
 
-static void(*original_PDNetSetPlayerSystemInfo)(tNet_game_player_info *, void *, ...) = (void(*)(tNet_game_player_info *, void *, ...))0x0045576c;
+static void(__cdecl*original_PDNetSetPlayerSystemInfo)(tNet_game_player_info *, void *) = (void(__cdecl*)(tNet_game_player_info *, void *))0x0045576c;
 CARM95_HOOK_FUNCTION(original_PDNetSetPlayerSystemInfo, PDNetSetPlayerSystemInfo)
-void PDNetSetPlayerSystemInfo(tNet_game_player_info *pPlayer, void *pSender_address) {
+void __cdecl PDNetSetPlayerSystemInfo(tNet_game_player_info *pPlayer, void *pSender_address) {
     LOG_TRACE("(%p, %p)", pPlayer, pSender_address);
 
     (void)pPlayer;
@@ -679,9 +678,9 @@ void PDNetSetPlayerSystemInfo(tNet_game_player_info *pPlayer, void *pSender_addr
     original_PDNetSetPlayerSystemInfo(pPlayer, pSender_address);
 }
 
-static void(*original_PDNetDisposePlayer)(tNet_game_player_info *, ...) = (void(*)(tNet_game_player_info *, ...))0x004557a2;
+static void(__cdecl*original_PDNetDisposePlayer)(tNet_game_player_info *) = (void(__cdecl*)(tNet_game_player_info *))0x004557a2;
 CARM95_HOOK_FUNCTION(original_PDNetDisposePlayer, PDNetDisposePlayer)
-void PDNetDisposePlayer(tNet_game_player_info *pPlayer) {
+void __cdecl PDNetDisposePlayer(tNet_game_player_info *pPlayer) {
     LOG_TRACE("(%p)", pPlayer);
 
     (void)pPlayer;
@@ -689,9 +688,9 @@ void PDNetDisposePlayer(tNet_game_player_info *pPlayer) {
     original_PDNetDisposePlayer(pPlayer);
 }
 
-static int(*original_PDNetSendMessageToAddress)(tNet_game_details *, tNet_message *, void *, ...) = (int(*)(tNet_game_details *, tNet_message *, void *, ...))0x004557ba;
+static int(__cdecl*original_PDNetSendMessageToAddress)(tNet_game_details *, tNet_message *, void *) = (int(__cdecl*)(tNet_game_details *, tNet_message *, void *))0x004557ba;
 CARM95_HOOK_FUNCTION(original_PDNetSendMessageToAddress, PDNetSendMessageToAddress)
-int PDNetSendMessageToAddress(tNet_game_details *pDetails, tNet_message *pMessage, void *pAddress) {
+int __cdecl PDNetSendMessageToAddress(tNet_game_details *pDetails, tNet_message *pMessage, void *pAddress) {
     char str[256];
     LOG_TRACE("(%p, %p, %p)", pDetails, pMessage, pAddress);
 
@@ -703,9 +702,9 @@ int PDNetSendMessageToAddress(tNet_game_details *pDetails, tNet_message *pMessag
     return original_PDNetSendMessageToAddress(pDetails, pMessage, pAddress);
 }
 
-static int(*original_PDNetInitClient)(tNet_game_details *, ...) = (int(*)(tNet_game_details *, ...))0x00455838;
+static int(__cdecl*original_PDNetInitClient)(tNet_game_details *) = (int(__cdecl*)(tNet_game_details *))0x00455838;
 CARM95_HOOK_FUNCTION(original_PDNetInitClient, PDNetInitClient)
-int PDNetInitClient(tNet_game_details *pDetails) {
+int __cdecl PDNetInitClient(tNet_game_details *pDetails) {
     LOG_TRACE("(%p)", pDetails);
 
     (void)pDetails;
@@ -713,9 +712,9 @@ int PDNetInitClient(tNet_game_details *pDetails) {
     return original_PDNetInitClient(pDetails);
 }
 
-static int(*original_PDNetGetHeaderSize)() = (int(*)())0x00455857;
+static int(__cdecl*original_PDNetGetHeaderSize)() = (int(__cdecl*)())0x00455857;
 CARM95_HOOK_FUNCTION(original_PDNetGetHeaderSize, PDNetGetHeaderSize)
-int PDNetGetHeaderSize() {
+int __cdecl PDNetGetHeaderSize() {
     LOG_TRACE("()");
 
 

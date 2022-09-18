@@ -4,11 +4,10 @@
 
 #include "carm95_hooks.h"
 
-#include <stdio.h>
 
-static br_quat *(*original_BrQuatMul)(br_quat *, br_quat *, br_quat *, ...) = (br_quat *(*)(br_quat *, br_quat *, br_quat *, ...))0x004d53a0;
+static br_quat *(__cdecl*original_BrQuatMul)(br_quat *, br_quat *, br_quat *) = (br_quat *(__cdecl*)(br_quat *, br_quat *, br_quat *))0x004d53a0;
 CARM95_HOOK_FUNCTION(original_BrQuatMul, BrQuatMul)
-br_quat* BrQuatMul(br_quat *q, br_quat *l, br_quat *r) {
+br_quat* __cdecl BrQuatMul(br_quat *q, br_quat *l, br_quat *r) {
     br_scalar x1;
     br_scalar x2;
     br_scalar x3;
@@ -38,9 +37,9 @@ br_quat* BrQuatMul(br_quat *q, br_quat *l, br_quat *r) {
     return original_BrQuatMul(q, l, r);
 }
 
-static br_quat *(*original_BrQuatNormalise)(br_quat *, br_quat *, ...) = (br_quat *(*)(br_quat *, br_quat *, ...))0x004d5490;
+static br_quat *(__cdecl*original_BrQuatNormalise)(br_quat *, br_quat *) = (br_quat *(__cdecl*)(br_quat *, br_quat *))0x004d5490;
 CARM95_HOOK_FUNCTION(original_BrQuatNormalise, BrQuatNormalise)
-br_quat* BrQuatNormalise(br_quat *q, br_quat *qq) {
+br_quat* __cdecl BrQuatNormalise(br_quat *q, br_quat *qq) {
     br_scalar s;
     LOG_TRACE("(%p, %p)", q, qq);
 
@@ -51,9 +50,9 @@ br_quat* BrQuatNormalise(br_quat *q, br_quat *qq) {
     return original_BrQuatNormalise(q, qq);
 }
 
-static br_quat *(*original_BrQuatInvert)(br_quat *, br_quat *, ...) = (br_quat *(*)(br_quat *, br_quat *, ...))0x004d54f0;
+static br_quat *(__cdecl*original_BrQuatInvert)(br_quat *, br_quat *) = (br_quat *(__cdecl*)(br_quat *, br_quat *))0x004d54f0;
 CARM95_HOOK_FUNCTION(original_BrQuatInvert, BrQuatInvert)
-br_quat* BrQuatInvert(br_quat *q, br_quat *qq) {
+br_quat* __cdecl BrQuatInvert(br_quat *q, br_quat *qq) {
     LOG_TRACE("(%p, %p)", q, qq);
 
     (void)q;
@@ -62,9 +61,9 @@ br_quat* BrQuatInvert(br_quat *q, br_quat *qq) {
     return original_BrQuatInvert(q, qq);
 }
 
-static br_quat *(*original_BrQuatSlerp)(br_quat *, br_quat *, br_quat *, br_scalar, br_int_16, ...) = (br_quat *(*)(br_quat *, br_quat *, br_quat *, br_scalar, br_int_16, ...))0x004d5520;
+static br_quat *(__cdecl*original_BrQuatSlerp)(br_quat *, br_quat *, br_quat *, br_scalar, br_int_16) = (br_quat *(__cdecl*)(br_quat *, br_quat *, br_quat *, br_scalar, br_int_16))0x004d5520;
 CARM95_HOOK_FUNCTION(original_BrQuatSlerp, BrQuatSlerp)
-br_quat* BrQuatSlerp(br_quat *q, br_quat *l, br_quat *r, br_scalar a, br_int_16 spins) {
+br_quat* __cdecl BrQuatSlerp(br_quat *q, br_quat *l, br_quat *r, br_scalar a, br_int_16 spins) {
     int omega;
     int omega_spin;
     br_scalar s_omega;
@@ -90,9 +89,9 @@ br_quat* BrQuatSlerp(br_quat *q, br_quat *l, br_quat *r, br_scalar a, br_int_16 
     return original_BrQuatSlerp(q, l, r, a, spins);
 }
 
-static br_matrix34 *(*original_BrQuatToMatrix34)(br_matrix34 *, br_quat *, ...) = (br_matrix34 *(*)(br_matrix34 *, br_quat *, ...))0x004d56e0;
+static br_matrix34 *(__cdecl*original_BrQuatToMatrix34)(br_matrix34 *, br_quat *) = (br_matrix34 *(__cdecl*)(br_matrix34 *, br_quat *))0x004d56e0;
 CARM95_HOOK_FUNCTION(original_BrQuatToMatrix34, BrQuatToMatrix34)
-br_matrix34* BrQuatToMatrix34(br_matrix34 *mat, br_quat *q) {
+br_matrix34* __cdecl BrQuatToMatrix34(br_matrix34 *mat, br_quat *q) {
     br_scalar xs;
     br_scalar ys;
     br_scalar zs;
@@ -125,9 +124,9 @@ br_matrix34* BrQuatToMatrix34(br_matrix34 *mat, br_quat *q) {
     return original_BrQuatToMatrix34(mat, q);
 }
 
-static br_quat *(*original_BrMatrix34ToQuat)(br_quat *, br_matrix34 *, ...) = (br_quat *(*)(br_quat *, br_matrix34 *, ...))0x004d57c0;
+static br_quat *(__cdecl*original_BrMatrix34ToQuat)(br_quat *, br_matrix34 *) = (br_quat *(__cdecl*)(br_quat *, br_matrix34 *))0x004d57c0;
 CARM95_HOOK_FUNCTION(original_BrMatrix34ToQuat, BrMatrix34ToQuat)
-br_quat* BrMatrix34ToQuat(br_quat *q, br_matrix34 *mat) {
+br_quat* __cdecl BrMatrix34ToQuat(br_quat *q, br_matrix34 *mat) {
     br_scalar tr;
     br_scalar s;
     int i;
@@ -143,13 +142,14 @@ br_quat* BrMatrix34ToQuat(br_quat *q, br_matrix34 *mat) {
     (void)i;
     (void)j;
     (void)k;
+    (void)__block0__n;
 
     return original_BrMatrix34ToQuat(q, mat);
 }
 
-static br_matrix4 *(*original_BrQuatToMatrix4)(br_matrix4 *, br_quat *, ...) = (br_matrix4 *(*)(br_matrix4 *, br_quat *, ...))0x004d58fb;
+static br_matrix4 *(__cdecl*original_BrQuatToMatrix4)(br_matrix4 *, br_quat *) = (br_matrix4 *(__cdecl*)(br_matrix4 *, br_quat *))0x004d58fb;
 CARM95_HOOK_FUNCTION(original_BrQuatToMatrix4, BrQuatToMatrix4)
-br_matrix4* BrQuatToMatrix4(br_matrix4 *mat, br_quat *q) {
+br_matrix4* __cdecl BrQuatToMatrix4(br_matrix4 *mat, br_quat *q) {
     br_matrix34 tmp;
     LOG_TRACE("(%p, %p)", mat, q);
 
@@ -160,9 +160,9 @@ br_matrix4* BrQuatToMatrix4(br_matrix4 *mat, br_quat *q) {
     return original_BrQuatToMatrix4(mat, q);
 }
 
-static br_quat *(*original_BrMatrix4ToQuat)(br_quat *, br_matrix4 *, ...) = (br_quat *(*)(br_quat *, br_matrix4 *, ...))0x004d5930;
+static br_quat *(__cdecl*original_BrMatrix4ToQuat)(br_quat *, br_matrix4 *) = (br_quat *(__cdecl*)(br_quat *, br_matrix4 *))0x004d5930;
 CARM95_HOOK_FUNCTION(original_BrMatrix4ToQuat, BrMatrix4ToQuat)
-br_quat* BrMatrix4ToQuat(br_quat *q, br_matrix4 *mat) {
+br_quat* __cdecl BrMatrix4ToQuat(br_quat *q, br_matrix4 *mat) {
     br_matrix34 tmp;
     LOG_TRACE("(%p, %p)", q, mat);
 

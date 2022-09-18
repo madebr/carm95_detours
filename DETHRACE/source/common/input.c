@@ -4,7 +4,6 @@
 
 #include "carm95_hooks.h"
 
-#include <stdio.h>
 int * hookvar_gEdge_trigger_mode  = (void*)0x00514c70;
 tU32 * hookvar_gLast_poll_keys  = (void*)0x00514c74;
 int * hookvar_gInsert_mode  = (void*)0x00514c78;
@@ -28,9 +27,9 @@ int * hookvar_gLast_key_down  = (void*)0x0053a244;
 int(* hookvar_gKey_mapping )[67] = (void*)0x005507e0;
 char(* hookvar_gCurrent_typing )[110] = (void*)0x0053a450;
 
-static void(*original_SetJoystickArrays)(int *, int, ...) = (void(*)(int *, int, ...))0x00471750;
+static void(__cdecl*original_SetJoystickArrays)(int *, int) = (void(__cdecl*)(int *, int))0x00471750;
 CARM95_HOOK_FUNCTION(original_SetJoystickArrays, SetJoystickArrays)
-void SetJoystickArrays(int *pKeys, int pMark) {
+void __cdecl SetJoystickArrays(int *pKeys, int pMark) {
     int i;
     tS32 joyX;
     tS32 joyY;
@@ -53,9 +52,9 @@ void SetJoystickArrays(int *pKeys, int pMark) {
     original_SetJoystickArrays(pKeys, pMark);
 }
 
-static void(*original_PollKeys)() = (void(*)())0x00471bbf;
+static void(__cdecl*original_PollKeys)() = (void(__cdecl*)())0x00471bbf;
 CARM95_HOOK_FUNCTION(original_PollKeys, PollKeys)
-void PollKeys() {
+void __cdecl PollKeys() {
     int i;
     LOG_TRACE("()");
 
@@ -64,9 +63,9 @@ void PollKeys() {
     original_PollKeys();
 }
 
-static void(*original_CyclePollKeys)() = (void(*)())0x00471c03;
+static void(__cdecl*original_CyclePollKeys)() = (void(__cdecl*)())0x00471c03;
 CARM95_HOOK_FUNCTION(original_CyclePollKeys, CyclePollKeys)
-void CyclePollKeys() {
+void __cdecl CyclePollKeys() {
     int i;
     LOG_TRACE("()");
 
@@ -75,9 +74,9 @@ void CyclePollKeys() {
     original_CyclePollKeys();
 }
 
-static void(*original_ResetPollKeys)() = (void(*)())0x00471c75;
+static void(__cdecl*original_ResetPollKeys)() = (void(__cdecl*)())0x00471c75;
 CARM95_HOOK_FUNCTION(original_ResetPollKeys, ResetPollKeys)
-void ResetPollKeys() {
+void __cdecl ResetPollKeys() {
     int i;
     LOG_TRACE("()");
 
@@ -86,18 +85,18 @@ void ResetPollKeys() {
     original_ResetPollKeys();
 }
 
-static void(*original_CheckKeysForMouldiness)() = (void(*)())0x00471cdb;
+static void(__cdecl*original_CheckKeysForMouldiness)() = (void(__cdecl*)())0x00471cdb;
 CARM95_HOOK_FUNCTION(original_CheckKeysForMouldiness, CheckKeysForMouldiness)
-void CheckKeysForMouldiness() {
+void __cdecl CheckKeysForMouldiness() {
     LOG_TRACE("()");
 
 
     original_CheckKeysForMouldiness();
 }
 
-static int(*original_EitherMouseButtonDown)() = (int(*)())0x00471d0b;
+static int(__cdecl*original_EitherMouseButtonDown)() = (int(__cdecl*)())0x00471d0b;
 CARM95_HOOK_FUNCTION(original_EitherMouseButtonDown, EitherMouseButtonDown)
-int EitherMouseButtonDown() {
+int __cdecl EitherMouseButtonDown() {
     int but_1;
     int but_2;
     LOG_TRACE("()");
@@ -108,9 +107,9 @@ int EitherMouseButtonDown() {
     return original_EitherMouseButtonDown();
 }
 
-static tKey_down_result(*original_PDKeyDown2)(int, ...) = (tKey_down_result(*)(int, ...))0x00471d4e;
+static tKey_down_result(__cdecl*original_PDKeyDown2)(int) = (tKey_down_result(__cdecl*)(int))0x00471d4e;
 CARM95_HOOK_FUNCTION(original_PDKeyDown2, PDKeyDown2)
-tKey_down_result PDKeyDown2(int pKey_index) {
+tKey_down_result __cdecl PDKeyDown2(int pKey_index) {
     tU32 the_time;
     LOG_TRACE("(%d)", pKey_index);
 
@@ -120,9 +119,9 @@ tKey_down_result PDKeyDown2(int pKey_index) {
     return original_PDKeyDown2(pKey_index);
 }
 
-static int(*original_PDKeyDown)(int, ...) = (int(*)(int, ...))0x00471e2d;
+static int(__cdecl*original_PDKeyDown)(int) = (int(__cdecl*)(int))0x00471e2d;
 CARM95_HOOK_FUNCTION(original_PDKeyDown, PDKeyDown)
-int PDKeyDown(int pKey_index) {
+int __cdecl PDKeyDown(int pKey_index) {
     tKey_down_result result;
     LOG_TRACE("(%d)", pKey_index);
 
@@ -132,9 +131,9 @@ int PDKeyDown(int pKey_index) {
     return original_PDKeyDown(pKey_index);
 }
 
-static int(*original_PDKeyDown3)(int, ...) = (int(*)(int, ...))0x00471ea6;
+static int(__cdecl*original_PDKeyDown3)(int) = (int(__cdecl*)(int))0x00471ea6;
 CARM95_HOOK_FUNCTION(original_PDKeyDown3, PDKeyDown3)
-int PDKeyDown3(int pKey_index) {
+int __cdecl PDKeyDown3(int pKey_index) {
     int last_key_down_time;
     int last_key_down;
     tKey_down_result result;
@@ -148,9 +147,9 @@ int PDKeyDown3(int pKey_index) {
     return original_PDKeyDown3(pKey_index);
 }
 
-static int(*original_PDAnyKeyDown)() = (int(*)())0x00471f08;
+static int(__cdecl*original_PDAnyKeyDown)() = (int(__cdecl*)())0x00471f08;
 CARM95_HOOK_FUNCTION(original_PDAnyKeyDown, PDAnyKeyDown)
-int PDAnyKeyDown() {
+int __cdecl PDAnyKeyDown() {
     int i;
     tKey_down_result result;
     LOG_TRACE("()");
@@ -161,9 +160,9 @@ int PDAnyKeyDown() {
     return original_PDAnyKeyDown();
 }
 
-static int(*original_AnyKeyDown)() = (int(*)())0x00471fe4;
+static int(__cdecl*original_AnyKeyDown)() = (int(__cdecl*)())0x00471fe4;
 CARM95_HOOK_FUNCTION(original_AnyKeyDown, AnyKeyDown)
-int AnyKeyDown() {
+int __cdecl AnyKeyDown() {
     int the_key;
     LOG_TRACE("()");
 
@@ -172,9 +171,9 @@ int AnyKeyDown() {
     return original_AnyKeyDown();
 }
 
-static tU32 *(*original_KevKeyService)() = (tU32 *(*)())0x0047202c;
+static tU32 *(__cdecl*original_KevKeyService)() = (tU32 *(__cdecl*)())0x0047202c;
 CARM95_HOOK_FUNCTION(original_KevKeyService, KevKeyService)
-tU32* KevKeyService() {
+tU32* __cdecl KevKeyService() {
     static tU32 sum;
     static tU32 code;
     static tU32 code2;
@@ -197,9 +196,9 @@ tU32* KevKeyService() {
     return original_KevKeyService();
 }
 
-static int(*original_OldKeyIsDown)(int, ...) = (int(*)(int, ...))0x004721fb;
+static int(__cdecl*original_OldKeyIsDown)(int) = (int(__cdecl*)(int))0x004721fb;
 CARM95_HOOK_FUNCTION(original_OldKeyIsDown, OldKeyIsDown)
-int OldKeyIsDown(int pKey_index) {
+int __cdecl OldKeyIsDown(int pKey_index) {
     int i;
     LOG_TRACE("(%d)", pKey_index);
 
@@ -209,9 +208,9 @@ int OldKeyIsDown(int pKey_index) {
     return original_OldKeyIsDown(pKey_index);
 }
 
-static int(*original_KeyIsDown)(int, ...) = (int(*)(int, ...))0x00472293;
+static int(__cdecl*original_KeyIsDown)(int) = (int(__cdecl*)(int))0x00472293;
 CARM95_HOOK_FUNCTION(original_KeyIsDown, KeyIsDown)
-int KeyIsDown(int pKey_index) {
+int __cdecl KeyIsDown(int pKey_index) {
     int i;
     LOG_TRACE("(%d)", pKey_index);
 
@@ -221,27 +220,27 @@ int KeyIsDown(int pKey_index) {
     return original_KeyIsDown(pKey_index);
 }
 
-static void(*original_WaitForNoKeys)() = (void(*)())0x0047232b;
+static void(__cdecl*original_WaitForNoKeys)() = (void(__cdecl*)())0x0047232b;
 CARM95_HOOK_FUNCTION(original_WaitForNoKeys, WaitForNoKeys)
-void WaitForNoKeys() {
+void __cdecl WaitForNoKeys() {
     LOG_TRACE("()");
 
 
     original_WaitForNoKeys();
 }
 
-static void(*original_WaitForAKey)() = (void(*)())0x0047235a;
+static void(__cdecl*original_WaitForAKey)() = (void(__cdecl*)())0x0047235a;
 CARM95_HOOK_FUNCTION(original_WaitForAKey, WaitForAKey)
-void WaitForAKey() {
+void __cdecl WaitForAKey() {
     LOG_TRACE("()");
 
 
     original_WaitForAKey();
 }
 
-static int(*original_CmdKeyDown)(int, int, ...) = (int(*)(int, int, ...))0x0047238e;
+static int(__cdecl*original_CmdKeyDown)(int, int) = (int(__cdecl*)(int, int))0x0047238e;
 CARM95_HOOK_FUNCTION(original_CmdKeyDown, CmdKeyDown)
-int CmdKeyDown(int pFKey_ID, int pCmd_key_ID) {
+int __cdecl CmdKeyDown(int pFKey_ID, int pCmd_key_ID) {
     LOG_TRACE("(%d, %d)", pFKey_ID, pCmd_key_ID);
 
     (void)pFKey_ID;
@@ -250,9 +249,9 @@ int CmdKeyDown(int pFKey_ID, int pCmd_key_ID) {
     return original_CmdKeyDown(pFKey_ID, pCmd_key_ID);
 }
 
-static void(*original_GetMousePosition)(int *, int *, ...) = (void(*)(int *, int *, ...))0x004723e4;
+static void(__cdecl*original_GetMousePosition)(int *, int *) = (void(__cdecl*)(int *, int *))0x004723e4;
 CARM95_HOOK_FUNCTION(original_GetMousePosition, GetMousePosition)
-void GetMousePosition(int *pX_coord, int *pY_coord) {
+void __cdecl GetMousePosition(int *pX_coord, int *pY_coord) {
     int x_left_margin;
     int x_right_margin;
     int y_top_margin;
@@ -269,9 +268,9 @@ void GetMousePosition(int *pX_coord, int *pY_coord) {
     original_GetMousePosition(pX_coord, pY_coord);
 }
 
-static void(*original_InitRollingLetters)() = (void(*)())0x004724d1;
+static void(__cdecl*original_InitRollingLetters)() = (void(__cdecl*)())0x004724d1;
 CARM95_HOOK_FUNCTION(original_InitRollingLetters, InitRollingLetters)
-void InitRollingLetters() {
+void __cdecl InitRollingLetters() {
     int i;
     LOG_TRACE("()");
 
@@ -280,18 +279,18 @@ void InitRollingLetters() {
     original_InitRollingLetters();
 }
 
-static void(*original_EndRollingLetters)() = (void(*)())0x00472543;
+static void(__cdecl*original_EndRollingLetters)() = (void(__cdecl*)())0x00472543;
 CARM95_HOOK_FUNCTION(original_EndRollingLetters, EndRollingLetters)
-void EndRollingLetters() {
+void __cdecl EndRollingLetters() {
     LOG_TRACE("()");
 
 
     original_EndRollingLetters();
 }
 
-static int(*original_AddRollingLetter)(char, int, int, tRolling_type, ...) = (int(*)(char, int, int, tRolling_type, ...))0x0047255c;
+static int(__cdecl*original_AddRollingLetter)(char, int, int, tRolling_type) = (int(__cdecl*)(char, int, int, tRolling_type))0x0047255c;
 CARM95_HOOK_FUNCTION(original_AddRollingLetter, AddRollingLetter)
-int AddRollingLetter(char pChar, int pX, int pY, tRolling_type rolling_type) {
+int __cdecl AddRollingLetter(char pChar, int pX, int pY, tRolling_type rolling_type) {
     tRolling_letter *let;
     int i;
     int number_of_letters;
@@ -308,9 +307,9 @@ int AddRollingLetter(char pChar, int pX, int pY, tRolling_type rolling_type) {
     return original_AddRollingLetter(pChar, pX, pY, rolling_type);
 }
 
-static void(*original_AddRollingString)(char *, int, int, tRolling_type, ...) = (void(*)(char *, int, int, tRolling_type, ...))0x004726c3;
+static void(__cdecl*original_AddRollingString)(char *, int, int, tRolling_type) = (void(__cdecl*)(char *, int, int, tRolling_type))0x004726c3;
 CARM95_HOOK_FUNCTION(original_AddRollingString, AddRollingString)
-void AddRollingString(char *pStr, int pX, int pY, tRolling_type rolling_type) {
+void __cdecl AddRollingString(char *pStr, int pX, int pY, tRolling_type rolling_type) {
     int i;
     LOG_TRACE("(\"%s\", %d, %d, %d)", pStr, pX, pY, rolling_type);
 
@@ -323,9 +322,9 @@ void AddRollingString(char *pStr, int pX, int pY, tRolling_type rolling_type) {
     original_AddRollingString(pStr, pX, pY, rolling_type);
 }
 
-static void(*original_AddRollingNumber)(tU32, int, int, int, ...) = (void(*)(tU32, int, int, int, ...))0x00472729;
+static void(__cdecl*original_AddRollingNumber)(tU32, int, int, int) = (void(__cdecl*)(tU32, int, int, int))0x00472729;
 CARM95_HOOK_FUNCTION(original_AddRollingNumber, AddRollingNumber)
-void AddRollingNumber(tU32 pNumber, int pWidth, int pX, int pY) {
+void __cdecl AddRollingNumber(tU32 pNumber, int pWidth, int pX, int pY) {
     char the_string[32];
     LOG_TRACE("(%u, %d, %d, %d)", pNumber, pWidth, pX, pY);
 
@@ -338,9 +337,9 @@ void AddRollingNumber(tU32 pNumber, int pWidth, int pX, int pY) {
     original_AddRollingNumber(pNumber, pWidth, pX, pY);
 }
 
-static void(*original_RollLettersIn)() = (void(*)())0x00472766;
+static void(__cdecl*original_RollLettersIn)() = (void(__cdecl*)())0x00472766;
 CARM95_HOOK_FUNCTION(original_RollLettersIn, RollLettersIn)
-void RollLettersIn() {
+void __cdecl RollLettersIn() {
     tU32 new_time;
     tU32 period;
     tRolling_letter *let;
@@ -379,9 +378,9 @@ void RollLettersIn() {
     original_RollLettersIn();
 }
 
-static int(*original_ChangeCharTo)(int, int, char, ...) = (int(*)(int, int, char, ...))0x00472be8;
+static int(__cdecl*original_ChangeCharTo)(int, int, char) = (int(__cdecl*)(int, int, char))0x00472be8;
 CARM95_HOOK_FUNCTION(original_ChangeCharTo, ChangeCharTo)
-int ChangeCharTo(int pSlot_index, int pChar_index, char pNew_char) {
+int __cdecl ChangeCharTo(int pSlot_index, int pChar_index, char pNew_char) {
     int x_coord;
     int y_coord;
     int i;
@@ -403,9 +402,9 @@ int ChangeCharTo(int pSlot_index, int pChar_index, char pNew_char) {
     return original_ChangeCharTo(pSlot_index, pChar_index, pNew_char);
 }
 
-static void(*original_ChangeTextTo)(int, int, char *, char *, ...) = (void(*)(int, int, char *, char *, ...))0x004729df;
+static void(__cdecl*original_ChangeTextTo)(int, int, char *, char *) = (void(__cdecl*)(int, int, char *, char *))0x004729df;
 CARM95_HOOK_FUNCTION(original_ChangeTextTo, ChangeTextTo)
-void ChangeTextTo(int pXcoord, int pYcoord, char *pNew_str, char *pOld_str) {
+void __cdecl ChangeTextTo(int pXcoord, int pYcoord, char *pNew_str, char *pOld_str) {
     int x_coord;
     int i;
     int len;
@@ -432,9 +431,9 @@ void ChangeTextTo(int pXcoord, int pYcoord, char *pNew_str, char *pOld_str) {
     original_ChangeTextTo(pXcoord, pYcoord, pNew_str, pOld_str);
 }
 
-static void(*original_SetRollingCursor)(int, ...) = (void(*)(int, ...))0x00472ea8;
+static void(__cdecl*original_SetRollingCursor)(int) = (void(__cdecl*)(int))0x00472ea8;
 CARM95_HOOK_FUNCTION(original_SetRollingCursor, SetRollingCursor)
-void SetRollingCursor(int pSlot_index) {
+void __cdecl SetRollingCursor(int pSlot_index) {
     LOG_TRACE("(%d)", pSlot_index);
 
     (void)pSlot_index;
@@ -442,9 +441,9 @@ void SetRollingCursor(int pSlot_index) {
     original_SetRollingCursor(pSlot_index);
 }
 
-static void(*original_BlankSlot)(int, int, int, ...) = (void(*)(int, int, int, ...))0x00472ba0;
+static void(__cdecl*original_BlankSlot)(int, int, int) = (void(__cdecl*)(int, int, int))0x00472ba0;
 CARM95_HOOK_FUNCTION(original_BlankSlot, BlankSlot)
-void BlankSlot(int pIndex, int pName_length, int pVisible_length) {
+void __cdecl BlankSlot(int pIndex, int pName_length, int pVisible_length) {
     int i;
     LOG_TRACE("(%d, %d, %d)", pIndex, pName_length, pVisible_length);
 
@@ -456,9 +455,9 @@ void BlankSlot(int pIndex, int pName_length, int pVisible_length) {
     original_BlankSlot(pIndex, pName_length, pVisible_length);
 }
 
-static void(*original_DoRLBackspace)(int, ...) = (void(*)(int, ...))0x00472fb9;
+static void(__cdecl*original_DoRLBackspace)(int) = (void(__cdecl*)(int))0x00472fb9;
 CARM95_HOOK_FUNCTION(original_DoRLBackspace, DoRLBackspace)
-void DoRLBackspace(int pSlot_index) {
+void __cdecl DoRLBackspace(int pSlot_index) {
     int i;
     int new_len;
     LOG_TRACE("(%d)", pSlot_index);
@@ -470,9 +469,9 @@ void DoRLBackspace(int pSlot_index) {
     original_DoRLBackspace(pSlot_index);
 }
 
-static void(*original_DoRLDelete)(int, ...) = (void(*)(int, ...))0x004730be;
+static void(__cdecl*original_DoRLDelete)(int) = (void(__cdecl*)(int))0x004730be;
 CARM95_HOOK_FUNCTION(original_DoRLDelete, DoRLDelete)
-void DoRLDelete(int pSlot_index) {
+void __cdecl DoRLDelete(int pSlot_index) {
     int i;
     int new_len;
     LOG_TRACE("(%d)", pSlot_index);
@@ -484,9 +483,9 @@ void DoRLDelete(int pSlot_index) {
     original_DoRLDelete(pSlot_index);
 }
 
-static void(*original_DoRLInsert)(int, ...) = (void(*)(int, ...))0x00473189;
+static void(__cdecl*original_DoRLInsert)(int) = (void(__cdecl*)(int))0x00473189;
 CARM95_HOOK_FUNCTION(original_DoRLInsert, DoRLInsert)
-void DoRLInsert(int pSlot_index) {
+void __cdecl DoRLInsert(int pSlot_index) {
     LOG_TRACE("(%d)", pSlot_index);
 
     (void)pSlot_index;
@@ -494,9 +493,9 @@ void DoRLInsert(int pSlot_index) {
     original_DoRLInsert(pSlot_index);
 }
 
-static void(*original_DoRLCursorLeft)(int, ...) = (void(*)(int, ...))0x004731ba;
+static void(__cdecl*original_DoRLCursorLeft)(int) = (void(__cdecl*)(int))0x004731ba;
 CARM95_HOOK_FUNCTION(original_DoRLCursorLeft, DoRLCursorLeft)
-void DoRLCursorLeft(int pSlot_index) {
+void __cdecl DoRLCursorLeft(int pSlot_index) {
     LOG_TRACE("(%d)", pSlot_index);
 
     (void)pSlot_index;
@@ -504,9 +503,9 @@ void DoRLCursorLeft(int pSlot_index) {
     original_DoRLCursorLeft(pSlot_index);
 }
 
-static void(*original_DoRLCursorRight)(int, ...) = (void(*)(int, ...))0x00473248;
+static void(__cdecl*original_DoRLCursorRight)(int) = (void(__cdecl*)(int))0x00473248;
 CARM95_HOOK_FUNCTION(original_DoRLCursorRight, DoRLCursorRight)
-void DoRLCursorRight(int pSlot_index) {
+void __cdecl DoRLCursorRight(int pSlot_index) {
     LOG_TRACE("(%d)", pSlot_index);
 
     (void)pSlot_index;
@@ -514,9 +513,9 @@ void DoRLCursorRight(int pSlot_index) {
     original_DoRLCursorRight(pSlot_index);
 }
 
-static void(*original_DoRLTypeLetter)(int, int, ...) = (void(*)(int, int, ...))0x004732a2;
+static void(__cdecl*original_DoRLTypeLetter)(int, int) = (void(__cdecl*)(int, int))0x004732a2;
 CARM95_HOOK_FUNCTION(original_DoRLTypeLetter, DoRLTypeLetter)
-void DoRLTypeLetter(int pChar, int pSlot_index) {
+void __cdecl DoRLTypeLetter(int pChar, int pSlot_index) {
     int i;
     int new_len;
     LOG_TRACE("(%d, %d)", pChar, pSlot_index);
@@ -529,9 +528,9 @@ void DoRLTypeLetter(int pChar, int pSlot_index) {
     original_DoRLTypeLetter(pChar, pSlot_index);
 }
 
-static void(*original_StopTyping)(int, ...) = (void(*)(int, ...))0x00472d51;
+static void(__cdecl*original_StopTyping)(int) = (void(__cdecl*)(int))0x00472d51;
 CARM95_HOOK_FUNCTION(original_StopTyping, StopTyping)
-void StopTyping(int pSlot_index) {
+void __cdecl StopTyping(int pSlot_index) {
     int i;
     LOG_TRACE("(%d)", pSlot_index);
 
@@ -541,9 +540,9 @@ void StopTyping(int pSlot_index) {
     original_StopTyping(pSlot_index);
 }
 
-static void(*original_RevertTyping)(int, char *, ...) = (void(*)(int, char *, ...))0x00472dca;
+static void(__cdecl*original_RevertTyping)(int, char *) = (void(__cdecl*)(int, char *))0x00472dca;
 CARM95_HOOK_FUNCTION(original_RevertTyping, RevertTyping)
-void RevertTyping(int pSlot_index, char *pRevert_str) {
+void __cdecl RevertTyping(int pSlot_index, char *pRevert_str) {
     int i;
     LOG_TRACE("(%d, \"%s\")", pSlot_index, pRevert_str);
 
@@ -554,9 +553,9 @@ void RevertTyping(int pSlot_index, char *pRevert_str) {
     original_RevertTyping(pSlot_index, pRevert_str);
 }
 
-static void(*original_StartTyping)(int, char *, int, ...) = (void(*)(int, char *, int, ...))0x00472e42;
+static void(__cdecl*original_StartTyping)(int, char *, int) = (void(__cdecl*)(int, char *, int))0x00472e42;
 CARM95_HOOK_FUNCTION(original_StartTyping, StartTyping)
-void StartTyping(int pSlot_index, char *pText, int pVisible_length) {
+void __cdecl StartTyping(int pSlot_index, char *pText, int pVisible_length) {
     LOG_TRACE("(%d, \"%s\", %d)", pSlot_index, pText, pVisible_length);
 
     (void)pSlot_index;
@@ -566,9 +565,9 @@ void StartTyping(int pSlot_index, char *pText, int pVisible_length) {
     original_StartTyping(pSlot_index, pText, pVisible_length);
 }
 
-static void(*original_TypeKey)(int, char, ...) = (void(*)(int, char, ...))0x00472ecc;
+static void(__cdecl*original_TypeKey)(int, char) = (void(__cdecl*)(int, char))0x00472ecc;
 CARM95_HOOK_FUNCTION(original_TypeKey, TypeKey)
-void TypeKey(int pSlot_index, char pKey) {
+void __cdecl TypeKey(int pSlot_index, char pKey) {
     LOG_TRACE("(%d, '%c')", pSlot_index, pKey);
 
     (void)pSlot_index;
@@ -577,9 +576,9 @@ void TypeKey(int pSlot_index, char pKey) {
     original_TypeKey(pSlot_index, pKey);
 }
 
-static void(*original_SetSlotXY)(int, int, int, ...) = (void(*)(int, int, int, ...))0x0047340f;
+static void(__cdecl*original_SetSlotXY)(int, int, int) = (void(__cdecl*)(int, int, int))0x0047340f;
 CARM95_HOOK_FUNCTION(original_SetSlotXY, SetSlotXY)
-void SetSlotXY(int pSlot_index, int pX_coord, int pY_coord) {
+void __cdecl SetSlotXY(int pSlot_index, int pX_coord, int pY_coord) {
     LOG_TRACE("(%d, %d, %d)", pSlot_index, pX_coord, pY_coord);
 
     (void)pSlot_index;
@@ -589,9 +588,9 @@ void SetSlotXY(int pSlot_index, int pX_coord, int pY_coord) {
     original_SetSlotXY(pSlot_index, pX_coord, pY_coord);
 }
 
-static void(*original_GetTypedName)(char *, int, ...) = (void(*)(char *, int, ...))0x00473434;
+static void(__cdecl*original_GetTypedName)(char *, int) = (void(__cdecl*)(char *, int))0x00473434;
 CARM95_HOOK_FUNCTION(original_GetTypedName, GetTypedName)
-void GetTypedName(char *pDestn, int pMax_length) {
+void __cdecl GetTypedName(char *pDestn, int pMax_length) {
     LOG_TRACE("(\"%s\", %d)", pDestn, pMax_length);
 
     (void)pDestn;
@@ -600,9 +599,9 @@ void GetTypedName(char *pDestn, int pMax_length) {
     original_GetTypedName(pDestn, pMax_length);
 }
 
-static void(*original_KillCursor)(int, ...) = (void(*)(int, ...))0x004734aa;
+static void(__cdecl*original_KillCursor)(int) = (void(__cdecl*)(int))0x004734aa;
 CARM95_HOOK_FUNCTION(original_KillCursor, KillCursor)
-void KillCursor(int pSlot_index) {
+void __cdecl KillCursor(int pSlot_index) {
     int x_coord;
     int y_coord;
     int i;
@@ -622,18 +621,18 @@ void KillCursor(int pSlot_index) {
     original_KillCursor(pSlot_index);
 }
 
-static void(*original_EdgeTriggerModeOn)() = (void(*)())0x00473577;
+static void(__cdecl*original_EdgeTriggerModeOn)() = (void(__cdecl*)())0x00473577;
 CARM95_HOOK_FUNCTION(original_EdgeTriggerModeOn, EdgeTriggerModeOn)
-void EdgeTriggerModeOn() {
+void __cdecl EdgeTriggerModeOn() {
     LOG_TRACE("()");
 
 
     original_EdgeTriggerModeOn();
 }
 
-static void(*original_EdgeTriggerModeOff)() = (void(*)())0x0047358c;
+static void(__cdecl*original_EdgeTriggerModeOff)() = (void(__cdecl*)())0x0047358c;
 CARM95_HOOK_FUNCTION(original_EdgeTriggerModeOff, EdgeTriggerModeOff)
-void EdgeTriggerModeOff() {
+void __cdecl EdgeTriggerModeOff() {
     LOG_TRACE("()");
 
 

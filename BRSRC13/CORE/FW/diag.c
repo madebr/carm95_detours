@@ -4,11 +4,11 @@
 
 #include "carm95_hooks.h"
 
-#include <stdio.h>
 #if 0
 char(* hookvar__diag_scratch )[128];
 #endif
 
+void(__cdecl*BrFailure)(char *) = (void(__cdecl*)(char *))0x004df0b0;
 void BrFailure_do_not_use(char *s) {
     va_list args;
     static char failure_header[10];
@@ -21,6 +21,7 @@ void BrFailure_do_not_use(char *s) {
     NOT_IMPLEMENTED();
 }
 
+void(__cdecl*BrWarning)(char *) = (void(__cdecl*)(char *))0x004df100;
 void BrWarning_do_not_use(char *s) {
     va_list args;
     static char warning_header[10];
@@ -33,6 +34,7 @@ void BrWarning_do_not_use(char *s) {
     NOT_IMPLEMENTED();
 }
 
+void(__cdecl*BrFatal)(char *, int, char *) = (void(__cdecl*)(char *, int, char *))0x004df150;
 void BrFatal_do_not_use(char *name, int line, char *s) {
     va_list args;
     int n;
@@ -47,9 +49,9 @@ void BrFatal_do_not_use(char *name, int line, char *s) {
     NOT_IMPLEMENTED();
 }
 
-static void(*original__BrAssert)(char *, char *, unsigned int, ...) = (void(*)(char *, char *, unsigned int, ...))0x004df1b0;
+static void(__stdcall*original__BrAssert)(char *, char *, unsigned int) = (void(__stdcall*)(char *, char *, unsigned int))0x004df1b0;
 CARM95_HOOK_FUNCTION(original__BrAssert, _BrAssert)
-void _BrAssert(char *condition, char *file, unsigned int line) {
+void __stdcall _BrAssert(char *condition, char *file, unsigned int line) {
     LOG_TRACE("(\"%s\", \"%s\", %u)", condition, file, line);
 
     (void)condition;
@@ -59,9 +61,9 @@ void _BrAssert(char *condition, char *file, unsigned int line) {
     original__BrAssert(condition, file, line);
 }
 
-static void(*original__BrUAssert)(char *, char *, unsigned int, ...) = (void(*)(char *, char *, unsigned int, ...))0x004df200;
+static void(__cdecl*original__BrUAssert)(char *, char *, unsigned int) = (void(__cdecl*)(char *, char *, unsigned int))0x004df200;
 CARM95_HOOK_FUNCTION(original__BrUAssert, _BrUAssert)
-void _BrUAssert(char *condition, char *file, unsigned int line) {
+void __cdecl _BrUAssert(char *condition, char *file, unsigned int line) {
     LOG_TRACE("(\"%s\", \"%s\", %u)", condition, file, line);
 
     (void)condition;

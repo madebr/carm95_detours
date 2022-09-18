@@ -5,8 +5,8 @@
 
 extern br_boolean * hookvar_active ; // addr: 005289B0
 
-br_error BrBegin();
+br_error __stdcall BrBegin();
 
-br_error BrEnd();
+br_error __cdecl BrEnd();
 
 #endif

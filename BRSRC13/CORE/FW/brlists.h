@@ -4,28 +4,28 @@
 #include "br_types.h"
 
 
-void BrNewList(struct br_list *list);
+void __cdecl BrNewList(struct br_list *list);
 
-void BrAddHead(struct br_list *list, struct br_node *node);
+void __cdecl BrAddHead(struct br_list *list, struct br_node *node);
 
-void BrAddTail(struct br_list *list, struct br_node *node);
+void __cdecl BrAddTail(struct br_list *list, struct br_node *node);
 
-struct br_node* BrRemHead(struct br_list *list);
+struct br_node* __cdecl BrRemHead(struct br_list *list);
 
-struct br_node* BrRemTail(struct br_list *list);
+struct br_node* __cdecl BrRemTail(struct br_list *list);
 
-void BrInsert(struct br_list *list, struct br_node *here, struct br_node *node);
+void __cdecl BrInsert(struct br_list *list, struct br_node *here, struct br_node *node);
 
-struct br_node* BrRemove(struct br_node *node);
+struct br_node* __cdecl BrRemove(struct br_node *node);
 
-void BrSimpleNewList(struct br_simple_list *list);
+void __cdecl BrSimpleNewList(struct br_simple_list *list);
 
-void BrSimpleAddHead(struct br_simple_list *list, struct br_simple_node *node);
+void __cdecl BrSimpleAddHead(struct br_simple_list *list, struct br_simple_node *node);
 
-struct br_simple_node* BrSimpleRemHead(struct br_simple_list *list);
+struct br_simple_node* __cdecl BrSimpleRemHead(struct br_simple_list *list);
 
-void BrSimpleInsert(struct br_simple_list *list, struct br_simple_node *here, struct br_simple_node *node);
+void __cdecl BrSimpleInsert(struct br_simple_list *list, struct br_simple_node *here, struct br_simple_node *node);
 
-struct br_simple_node* BrSimpleRemove(struct br_simple_node *node);
+struct br_simple_node* __cdecl BrSimpleRemove(struct br_simple_node *node);
 
 #endif

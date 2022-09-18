@@ -6,42 +6,42 @@
 // extern br_resource_class(* hookvar_resourceClasses__dbsetup )[14]; // suffix added to avoid duplicate symbol
 extern br_v1db_state * hookvar_v1db ; // addr: 00552100
 
-br_error BrV1dbBegin();
+br_error __cdecl BrV1dbBegin();
 
-br_error BrV1dbEnd();
+br_error __cdecl BrV1dbEnd();
 
-br_uint_32 updateTable(br_pixelmap *item, void *arg);
+br_uint_32 __cdecl updateTable(br_pixelmap *item, void *arg);
 
-br_uint_32 updateMap(br_pixelmap *item, void *arg);
+br_uint_32 __cdecl updateMap(br_pixelmap *item, void *arg);
 
-br_uint_32 updateMaterial(br_material *item, void *arg);
+br_uint_32 __cdecl updateMaterial(br_material *item, void *arg);
 
 br_uint_32 updateModel(br_model *item, void *arg);
 
-br_uint_32 clearTable(br_pixelmap *item, void *arg);
+br_uint_32 __cdecl clearTable(br_pixelmap *item, void *arg);
 
-br_uint_32 clearMap(br_pixelmap *item, void *arg);
+br_uint_32 __cdecl clearMap(br_pixelmap *item, void *arg);
 
-br_uint_32 clearMaterial(br_material *item, void *arg);
+br_uint_32 __cdecl clearMaterial(br_material *item, void *arg);
 
-br_uint_32 clearModel(br_model *item, void *arg);
+br_uint_32 __cdecl clearModel(br_model *item, void *arg);
 
-br_error BrV1dbRendererBegin(br_device_pixelmap *destination, br_renderer *renderer);
+br_error __cdecl BrV1dbRendererBegin(br_device_pixelmap *destination, br_renderer *renderer);
 
-br_renderer* BrV1dbRendererQuery();
+br_renderer* __cdecl BrV1dbRendererQuery();
 
-br_error BrV1dbRendererEnd();
+br_error __cdecl BrV1dbRendererEnd();
 
-void BrZbBegin(br_uint_8 colour_type, br_uint_8 depth_type);
+void __cdecl BrZbBegin(br_uint_8 colour_type, br_uint_8 depth_type);
 
-void BrZsBegin(br_uint_8 colour_type, void *primitive, br_uint_32 size);
+void __cdecl BrZsBegin(br_uint_8 colour_type, void *primitive, br_uint_32 size);
 
-void BrZbEnd();
+void __cdecl BrZbEnd();
 
-void BrZsEnd();
+void __cdecl BrZsEnd();
 
 void BrV1dbBeginWrapper_Float();
 
-void BrV1dbEndWrapper();
+void __cdecl BrV1dbEndWrapper();
 
 #endif

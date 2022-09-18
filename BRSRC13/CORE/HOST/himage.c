@@ -4,11 +4,10 @@
 
 #include "carm95_hooks.h"
 
-#include <stdio.h>
 
-static void *(*original_HostImageLoad)(char *, ...) = (void *(*)(char *, ...))0x005012d0;
+static void *(__cdecl*original_HostImageLoad)(char *) = (void *(__cdecl*)(char *))0x005012d0;
 CARM95_HOOK_FUNCTION(original_HostImageLoad, HostImageLoad)
-void* HostImageLoad(char *name) {
+void* __cdecl HostImageLoad(char *name) {
     LOG_TRACE("(\"%s\")", name);
 
     (void)name;
@@ -16,19 +15,18 @@ void* HostImageLoad(char *name) {
     return original_HostImageLoad(name);
 }
 
-static void(*original_HostImageUnload)(void *, ...) = (void(*)(void *, ...))0x005012e0;
-CARM95_HOOK_FUNCTION(original_HostImageUnload, HostImageUnload)
-void HostImageUnload(void *image) {
+void(__stdcall*HostImageUnload)(void *) = (void(__stdcall*)(void *))0x005012e0;
+void HostImageUnload_do_not_use(void *image) {
     LOG_TRACE("(%p)", image);
 
     (void)image;
 
-    original_HostImageUnload(image);
+    NOT_IMPLEMENTED();
 }
 
-static void *(*original_HostImageLookupName)(void *, char *, br_uint_32, ...) = (void *(*)(void *, char *, br_uint_32, ...))0x005012f0;
+static void *(__cdecl*original_HostImageLookupName)(void *, char *, br_uint_32) = (void *(__cdecl*)(void *, char *, br_uint_32))0x005012f0;
 CARM95_HOOK_FUNCTION(original_HostImageLookupName, HostImageLookupName)
-void* HostImageLookupName(void *img, char *name, br_uint_32 hint) {
+void* __cdecl HostImageLookupName(void *img, char *name, br_uint_32 hint) {
     LOG_TRACE("(%p, \"%s\", %u)", img, name, hint);
 
     (void)img;
@@ -38,14 +36,13 @@ void* HostImageLookupName(void *img, char *name, br_uint_32 hint) {
     return original_HostImageLookupName(img, name, hint);
 }
 
-static void *(*original_HostImageLookupOrdinal)(void *, br_uint_32, ...) = (void *(*)(void *, br_uint_32, ...))0x00501310;
-CARM95_HOOK_FUNCTION(original_HostImageLookupOrdinal, HostImageLookupOrdinal)
-void* HostImageLookupOrdinal(void *img, br_uint_32 ordinal) {
+void *(__stdcall*HostImageLookupOrdinal)(void *, br_uint_32) = (void *(__stdcall*)(void *, br_uint_32))0x00501310;
+void* HostImageLookupOrdinal_do_not_use(void *img, br_uint_32 ordinal) {
     LOG_TRACE("(%p, %u)", img, ordinal);
 
     (void)img;
     (void)ordinal;
 
-    return original_HostImageLookupOrdinal(img, ordinal);
+    NOT_IMPLEMENTED();
 }
 

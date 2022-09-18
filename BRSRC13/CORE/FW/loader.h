@@ -4,6 +4,6 @@
 #include "br_types.h"
 
 
-br_image* ImageLoad(char *name);
+br_image* __stdcall ImageLoad(char *name);
 
 #endif

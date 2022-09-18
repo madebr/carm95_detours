@@ -4,12 +4,11 @@
 
 #include "carm95_hooks.h"
 
-#include <stdio.h>
 int * hookvar_gLast_demo  = (void*)0x00512080;
 
-static void(*original_DoDemo)() = (void(*)())0x00461110;
+static void(__cdecl*original_DoDemo)() = (void(__cdecl*)())0x00461110;
 CARM95_HOOK_FUNCTION(original_DoDemo, DoDemo)
-void DoDemo() {
+void __cdecl DoDemo() {
     tS32 start_time;
     tS32 frame_time;
     FILE *f;

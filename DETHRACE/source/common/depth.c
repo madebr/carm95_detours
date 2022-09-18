@@ -4,7 +4,6 @@
 
 #include "carm95_hooks.h"
 
-#include <stdio.h>
 #if 0
 tDepth_effect(* hookvar_gDistance_depth_effects )[4];
 #endif
@@ -41,9 +40,9 @@ br_angle * hookvar_gSky_image_width  = (void*)0x00550a6e;
 br_angle * hookvar_gSky_image_height  = (void*)0x00550a6c;
 br_angle * hookvar_gSky_image_underground  = (void*)0x00550a70;
 
-static int(*original_Log2)(int, ...) = (int(*)(int, ...))0x00461e02;
+static int(__cdecl*original_Log2)(int) = (int(__cdecl*)(int))0x00461e02;
 CARM95_HOOK_FUNCTION(original_Log2, Log2)
-int Log2(int pNumber) {
+int __cdecl Log2(int pNumber) {
     int i;
     int bits[16];
     LOG_TRACE("(%d)", pNumber);
@@ -55,9 +54,9 @@ int Log2(int pNumber) {
     return original_Log2(pNumber);
 }
 
-static br_scalar(*original_CalculateWrappingMultiplier)(br_scalar, br_scalar, ...) = (br_scalar(*)(br_scalar, br_scalar, ...))0x00462ebc;
+static br_scalar(__cdecl*original_CalculateWrappingMultiplier)(br_scalar, br_scalar) = (br_scalar(__cdecl*)(br_scalar, br_scalar))0x00462ebc;
 CARM95_HOOK_FUNCTION(original_CalculateWrappingMultiplier, CalculateWrappingMultiplier)
-br_scalar CalculateWrappingMultiplier(br_scalar pValue, br_scalar pYon) {
+br_scalar __cdecl CalculateWrappingMultiplier(br_scalar pValue, br_scalar pYon) {
     br_scalar k;
     br_scalar trunc_k;
     int int_k;
@@ -103,9 +102,9 @@ void FrobFog() {
     NOT_IMPLEMENTED();
 }
 
-static void(*original_InstantDepthChange)(tDepth_effect_type, br_pixelmap *, int, int, ...) = (void(*)(tDepth_effect_type, br_pixelmap *, int, int, ...))0x00461670;
+static void(__cdecl*original_InstantDepthChange)(tDepth_effect_type, br_pixelmap *, int, int) = (void(__cdecl*)(tDepth_effect_type, br_pixelmap *, int, int))0x00461670;
 CARM95_HOOK_FUNCTION(original_InstantDepthChange, InstantDepthChange)
-void InstantDepthChange(tDepth_effect_type pType, br_pixelmap *pSky_texture, int pStart, int pEnd) {
+void __cdecl InstantDepthChange(tDepth_effect_type pType, br_pixelmap *pSky_texture, int pStart, int pEnd) {
     LOG_TRACE("(%d, %p, %d, %d)", pType, pSky_texture, pStart, pEnd);
 
     (void)pType;
@@ -116,9 +115,9 @@ void InstantDepthChange(tDepth_effect_type pType, br_pixelmap *pSky_texture, int
     original_InstantDepthChange(pType, pSky_texture, pStart, pEnd);
 }
 
-static br_scalar(*original_Tan)(br_scalar, ...) = (br_scalar(*)(br_scalar, ...))0x00462226;
+static br_scalar(__cdecl*original_Tan)(br_scalar) = (br_scalar(__cdecl*)(br_scalar))0x00462226;
 CARM95_HOOK_FUNCTION(original_Tan, Tan)
-br_scalar Tan(br_scalar pAngle) {
+br_scalar __cdecl Tan(br_scalar pAngle) {
     LOG_TRACE("(%f)", pAngle);
 
     (void)pAngle;
@@ -126,9 +125,9 @@ br_scalar Tan(br_scalar pAngle) {
     return original_Tan(pAngle);
 }
 
-static br_scalar(*original_EdgeU)(br_angle, br_angle, br_angle, ...) = (br_scalar(*)(br_angle, br_angle, br_angle, ...))0x00462f34;
+static br_scalar(__cdecl*original_EdgeU)(br_angle, br_angle, br_angle) = (br_scalar(__cdecl*)(br_angle, br_angle, br_angle))0x00462f34;
 CARM95_HOOK_FUNCTION(original_EdgeU, EdgeU)
-br_scalar EdgeU(br_angle pSky, br_angle pView, br_angle pPerfect) {
+br_scalar __cdecl EdgeU(br_angle pSky, br_angle pView, br_angle pPerfect) {
     br_scalar a;
     br_scalar b;
     br_scalar c;
@@ -144,9 +143,9 @@ br_scalar EdgeU(br_angle pSky, br_angle pView, br_angle pPerfect) {
     return original_EdgeU(pSky, pView, pPerfect);
 }
 
-static void(*original_MungeSkyModel)(br_actor *, br_model *, ...) = (void(*)(br_actor *, br_model *, ...))0x0046280d;
+static void(__cdecl*original_MungeSkyModel)(br_actor *, br_model *) = (void(__cdecl*)(br_actor *, br_model *))0x0046280d;
 CARM95_HOOK_FUNCTION(original_MungeSkyModel, MungeSkyModel)
-void MungeSkyModel(br_actor *pCamera, br_model *pModel) {
+void __cdecl MungeSkyModel(br_actor *pCamera, br_model *pModel) {
     br_camera *camera_data;
     br_scalar horizon_half_height;
     br_scalar horizon_half_width;
@@ -189,9 +188,9 @@ void MungeSkyModel(br_actor *pCamera, br_model *pModel) {
     original_MungeSkyModel(pCamera, pModel);
 }
 
-static br_model *(*original_CreateHorizonModel)(br_actor *, ...) = (br_model *(*)(br_actor *, ...))0x0046194b;
+static br_model *(__cdecl*original_CreateHorizonModel)(br_actor *) = (br_model *(__cdecl*)(br_actor *))0x0046194b;
 CARM95_HOOK_FUNCTION(original_CreateHorizonModel, CreateHorizonModel)
-br_model* CreateHorizonModel(br_actor *pCamera) {
+br_model* __cdecl CreateHorizonModel(br_actor *pCamera) {
     tU8 nbands;
     tU8 band;
     tU8 vertex;
@@ -209,9 +208,9 @@ br_model* CreateHorizonModel(br_actor *pCamera) {
     return original_CreateHorizonModel(pCamera);
 }
 
-static void(*original_LoadDepthTable)(char *, br_pixelmap **, int *, ...) = (void(*)(char *, br_pixelmap **, int *, ...))0x00461c9b;
+static void(__cdecl*original_LoadDepthTable)(char *, br_pixelmap **, int *) = (void(__cdecl*)(char *, br_pixelmap **, int *))0x00461c9b;
 CARM95_HOOK_FUNCTION(original_LoadDepthTable, LoadDepthTable)
-void LoadDepthTable(char *pName, br_pixelmap **pTable, int *pPower) {
+void __cdecl LoadDepthTable(char *pName, br_pixelmap **pTable, int *pPower) {
     tPath_name the_path;
     int i;
     int j;
@@ -229,9 +228,9 @@ void LoadDepthTable(char *pName, br_pixelmap **pTable, int *pPower) {
     original_LoadDepthTable(pName, pTable, pPower);
 }
 
-static void(*original_InitDepthEffects)() = (void(*)())0x004616f2;
+static void(__cdecl*original_InitDepthEffects)() = (void(__cdecl*)())0x004616f2;
 CARM95_HOOK_FUNCTION(original_InitDepthEffects, InitDepthEffects)
-void InitDepthEffects() {
+void __cdecl InitDepthEffects() {
     tPath_name the_path;
     int i;
     int j;
@@ -244,9 +243,9 @@ void InitDepthEffects() {
     original_InitDepthEffects();
 }
 
-static void(*original_DoDepthByShadeTable)(br_pixelmap *, br_pixelmap *, br_pixelmap *, int, int, int, ...) = (void(*)(br_pixelmap *, br_pixelmap *, br_pixelmap *, int, int, int, ...))0x004622cc;
+static void(__cdecl*original_DoDepthByShadeTable)(br_pixelmap *, br_pixelmap *, br_pixelmap *, int, int, int) = (void(__cdecl*)(br_pixelmap *, br_pixelmap *, br_pixelmap *, int, int, int))0x004622cc;
 CARM95_HOOK_FUNCTION(original_DoDepthByShadeTable, DoDepthByShadeTable)
-void DoDepthByShadeTable(br_pixelmap *pRender_buffer, br_pixelmap *pDepth_buffer, br_pixelmap *pShade_table, int pShade_table_power, int pStart, int pEnd) {
+void __cdecl DoDepthByShadeTable(br_pixelmap *pRender_buffer, br_pixelmap *pDepth_buffer, br_pixelmap *pShade_table, int pShade_table_power, int pStart, int pEnd) {
     tU8 *render_ptr;
     tU8 *shade_table_pixels;
     tU16 *depth_ptr;
@@ -281,9 +280,9 @@ void DoDepthByShadeTable(br_pixelmap *pRender_buffer, br_pixelmap *pDepth_buffer
     original_DoDepthByShadeTable(pRender_buffer, pDepth_buffer, pShade_table, pShade_table_power, pStart, pEnd);
 }
 
-static void(*original_ExternalSky)(br_pixelmap *, br_pixelmap *, br_actor *, br_matrix34 *, ...) = (void(*)(br_pixelmap *, br_pixelmap *, br_actor *, br_matrix34 *, ...))0x00461ebd;
+static void(__cdecl*original_ExternalSky)(br_pixelmap *, br_pixelmap *, br_actor *, br_matrix34 *) = (void(__cdecl*)(br_pixelmap *, br_pixelmap *, br_actor *, br_matrix34 *))0x00461ebd;
 CARM95_HOOK_FUNCTION(original_ExternalSky, ExternalSky)
-void ExternalSky(br_pixelmap *pRender_buffer, br_pixelmap *pDepth_buffer, br_actor *pCamera, br_matrix34 *pCamera_to_world) {
+void __cdecl ExternalSky(br_pixelmap *pRender_buffer, br_pixelmap *pDepth_buffer, br_actor *pCamera, br_matrix34 *pCamera_to_world) {
     int dst_x;
     int src_x;
     int dx;
@@ -336,9 +335,9 @@ void ExternalSky(br_pixelmap *pRender_buffer, br_pixelmap *pDepth_buffer, br_act
     original_ExternalSky(pRender_buffer, pDepth_buffer, pCamera, pCamera_to_world);
 }
 
-static void(*original_DoHorizon)(br_pixelmap *, br_pixelmap *, br_actor *, br_matrix34 *, ...) = (void(*)(br_pixelmap *, br_pixelmap *, br_actor *, br_matrix34 *, ...))0x00462658;
+static void(__cdecl*original_DoHorizon)(br_pixelmap *, br_pixelmap *, br_actor *, br_matrix34 *) = (void(__cdecl*)(br_pixelmap *, br_pixelmap *, br_actor *, br_matrix34 *))0x00462658;
 CARM95_HOOK_FUNCTION(original_DoHorizon, DoHorizon)
-void DoHorizon(br_pixelmap *pRender_buffer, br_pixelmap *pDepth_buffer, br_actor *pCamera, br_matrix34 *pCamera_to_world) {
+void __cdecl DoHorizon(br_pixelmap *pRender_buffer, br_pixelmap *pDepth_buffer, br_actor *pCamera, br_matrix34 *pCamera_to_world) {
     br_angle yaw;
     br_actor *actor;
     LOG_TRACE("(%p, %p, %p, %p)", pRender_buffer, pDepth_buffer, pCamera, pCamera_to_world);
@@ -353,9 +352,9 @@ void DoHorizon(br_pixelmap *pRender_buffer, br_pixelmap *pDepth_buffer, br_actor
     original_DoHorizon(pRender_buffer, pDepth_buffer, pCamera, pCamera_to_world);
 }
 
-static void(*original_DoDepthCue)(br_pixelmap *, br_pixelmap *, ...) = (void(*)(br_pixelmap *, br_pixelmap *, ...))0x00462299;
+static void(__cdecl*original_DoDepthCue)(br_pixelmap *, br_pixelmap *) = (void(__cdecl*)(br_pixelmap *, br_pixelmap *))0x00462299;
 CARM95_HOOK_FUNCTION(original_DoDepthCue, DoDepthCue)
-void DoDepthCue(br_pixelmap *pRender_buffer, br_pixelmap *pDepth_buffer) {
+void __cdecl DoDepthCue(br_pixelmap *pRender_buffer, br_pixelmap *pDepth_buffer) {
     LOG_TRACE("(%p, %p)", pRender_buffer, pDepth_buffer);
 
     (void)pRender_buffer;
@@ -364,9 +363,9 @@ void DoDepthCue(br_pixelmap *pRender_buffer, br_pixelmap *pDepth_buffer) {
     original_DoDepthCue(pRender_buffer, pDepth_buffer);
 }
 
-static void(*original_DoFog)(br_pixelmap *, br_pixelmap *, ...) = (void(*)(br_pixelmap *, br_pixelmap *, ...))0x004625d6;
+static void(__cdecl*original_DoFog)(br_pixelmap *, br_pixelmap *) = (void(__cdecl*)(br_pixelmap *, br_pixelmap *))0x004625d6;
 CARM95_HOOK_FUNCTION(original_DoFog, DoFog)
-void DoFog(br_pixelmap *pRender_buffer, br_pixelmap *pDepth_buffer) {
+void __cdecl DoFog(br_pixelmap *pRender_buffer, br_pixelmap *pDepth_buffer) {
     LOG_TRACE("(%p, %p)", pRender_buffer, pDepth_buffer);
 
     (void)pRender_buffer;
@@ -375,9 +374,9 @@ void DoFog(br_pixelmap *pRender_buffer, br_pixelmap *pDepth_buffer) {
     original_DoFog(pRender_buffer, pDepth_buffer);
 }
 
-static void(*original_DepthEffect)(br_pixelmap *, br_pixelmap *, br_actor *, br_matrix34 *, ...) = (void(*)(br_pixelmap *, br_pixelmap *, br_actor *, br_matrix34 *, ...))0x00462254;
+static void(__cdecl*original_DepthEffect)(br_pixelmap *, br_pixelmap *, br_actor *, br_matrix34 *) = (void(__cdecl*)(br_pixelmap *, br_pixelmap *, br_actor *, br_matrix34 *))0x00462254;
 CARM95_HOOK_FUNCTION(original_DepthEffect, DepthEffect)
-void DepthEffect(br_pixelmap *pRender_buffer, br_pixelmap *pDepth_buffer, br_actor *pCamera, br_matrix34 *pCamera_to_world) {
+void __cdecl DepthEffect(br_pixelmap *pRender_buffer, br_pixelmap *pDepth_buffer, br_actor *pCamera, br_matrix34 *pCamera_to_world) {
     LOG_TRACE("(%p, %p, %p, %p)", pRender_buffer, pDepth_buffer, pCamera, pCamera_to_world);
 
     (void)pRender_buffer;
@@ -388,9 +387,9 @@ void DepthEffect(br_pixelmap *pRender_buffer, br_pixelmap *pDepth_buffer, br_act
     original_DepthEffect(pRender_buffer, pDepth_buffer, pCamera, pCamera_to_world);
 }
 
-static void(*original_DepthEffectSky)(br_pixelmap *, br_pixelmap *, br_actor *, br_matrix34 *, ...) = (void(*)(br_pixelmap *, br_pixelmap *, br_actor *, br_matrix34 *, ...))0x00462609;
+static void(__cdecl*original_DepthEffectSky)(br_pixelmap *, br_pixelmap *, br_actor *, br_matrix34 *) = (void(__cdecl*)(br_pixelmap *, br_pixelmap *, br_actor *, br_matrix34 *))0x00462609;
 CARM95_HOOK_FUNCTION(original_DepthEffectSky, DepthEffectSky)
-void DepthEffectSky(br_pixelmap *pRender_buffer, br_pixelmap *pDepth_buffer, br_actor *pCamera, br_matrix34 *pCamera_to_world) {
+void __cdecl DepthEffectSky(br_pixelmap *pRender_buffer, br_pixelmap *pDepth_buffer, br_actor *pCamera, br_matrix34 *pCamera_to_world) {
     LOG_TRACE("(%p, %p, %p, %p)", pRender_buffer, pDepth_buffer, pCamera, pCamera_to_world);
 
     (void)pRender_buffer;
@@ -401,9 +400,9 @@ void DepthEffectSky(br_pixelmap *pRender_buffer, br_pixelmap *pDepth_buffer, br_
     original_DepthEffectSky(pRender_buffer, pDepth_buffer, pCamera, pCamera_to_world);
 }
 
-static void(*original_DoWobbleCamera)(br_actor *, ...) = (void(*)(br_actor *, ...))0x00463066;
+static void(__cdecl*original_DoWobbleCamera)(br_actor *) = (void(__cdecl*)(br_actor *))0x00463066;
 CARM95_HOOK_FUNCTION(original_DoWobbleCamera, DoWobbleCamera)
-void DoWobbleCamera(br_actor *pCamera) {
+void __cdecl DoWobbleCamera(br_actor *pCamera) {
     float f_time;
     static br_scalar mag00;
     static br_scalar mag01;
@@ -449,9 +448,9 @@ void DoWobbleCamera(br_actor *pCamera) {
     original_DoWobbleCamera(pCamera);
 }
 
-static void(*original_DoDrugWobbleCamera)(br_actor *, ...) = (void(*)(br_actor *, ...))0x00463289;
+static void(__cdecl*original_DoDrugWobbleCamera)(br_actor *) = (void(__cdecl*)(br_actor *))0x00463289;
 CARM95_HOOK_FUNCTION(original_DoDrugWobbleCamera, DoDrugWobbleCamera)
-void DoDrugWobbleCamera(br_actor *pCamera) {
+void __cdecl DoDrugWobbleCamera(br_actor *pCamera) {
     float f_time;
     static br_scalar mag00;
     static br_scalar mag01;
@@ -497,9 +496,9 @@ void DoDrugWobbleCamera(br_actor *pCamera) {
     original_DoDrugWobbleCamera(pCamera);
 }
 
-static void(*original_DoSpecialCameraEffect)(br_actor *, br_matrix34 *, ...) = (void(*)(br_actor *, br_matrix34 *, ...))0x00462fdb;
+static void(__cdecl*original_DoSpecialCameraEffect)(br_actor *, br_matrix34 *) = (void(__cdecl*)(br_actor *, br_matrix34 *))0x00462fdb;
 CARM95_HOOK_FUNCTION(original_DoSpecialCameraEffect, DoSpecialCameraEffect)
-void DoSpecialCameraEffect(br_actor *pCamera, br_matrix34 *pCamera_to_world) {
+void __cdecl DoSpecialCameraEffect(br_actor *pCamera, br_matrix34 *pCamera_to_world) {
     LOG_TRACE("(%p, %p)", pCamera, pCamera_to_world);
 
     (void)pCamera;
@@ -508,9 +507,9 @@ void DoSpecialCameraEffect(br_actor *pCamera, br_matrix34 *pCamera_to_world) {
     original_DoSpecialCameraEffect(pCamera, pCamera_to_world);
 }
 
-static void(*original_LessDepthFactor)() = (void(*)())0x004634ac;
+static void(__cdecl*original_LessDepthFactor)() = (void(__cdecl*)())0x004634ac;
 CARM95_HOOK_FUNCTION(original_LessDepthFactor, LessDepthFactor)
-void LessDepthFactor() {
+void __cdecl LessDepthFactor() {
     char s[256];
     LOG_TRACE("()");
 
@@ -519,9 +518,9 @@ void LessDepthFactor() {
     original_LessDepthFactor();
 }
 
-static void(*original_MoreDepthFactor)() = (void(*)())0x0046350e;
+static void(__cdecl*original_MoreDepthFactor)() = (void(__cdecl*)())0x0046350e;
 CARM95_HOOK_FUNCTION(original_MoreDepthFactor, MoreDepthFactor)
-void MoreDepthFactor() {
+void __cdecl MoreDepthFactor() {
     char s[256];
     LOG_TRACE("()");
 
@@ -530,9 +529,9 @@ void MoreDepthFactor() {
     original_MoreDepthFactor();
 }
 
-static void(*original_LessDepthFactor2)() = (void(*)())0x00463570;
+static void(__cdecl*original_LessDepthFactor2)() = (void(__cdecl*)())0x00463570;
 CARM95_HOOK_FUNCTION(original_LessDepthFactor2, LessDepthFactor2)
-void LessDepthFactor2() {
+void __cdecl LessDepthFactor2() {
     char s[256];
     LOG_TRACE("()");
 
@@ -541,9 +540,9 @@ void LessDepthFactor2() {
     original_LessDepthFactor2();
 }
 
-static void(*original_MoreDepthFactor2)() = (void(*)())0x004635d2;
+static void(__cdecl*original_MoreDepthFactor2)() = (void(__cdecl*)())0x004635d2;
 CARM95_HOOK_FUNCTION(original_MoreDepthFactor2, MoreDepthFactor2)
-void MoreDepthFactor2() {
+void __cdecl MoreDepthFactor2() {
     char s[256];
     LOG_TRACE("()");
 
@@ -552,9 +551,9 @@ void MoreDepthFactor2() {
     original_MoreDepthFactor2();
 }
 
-static void(*original_AssertYons)() = (void(*)())0x00463634;
+static void(__cdecl*original_AssertYons)() = (void(__cdecl*)())0x00463634;
 CARM95_HOOK_FUNCTION(original_AssertYons, AssertYons)
-void AssertYons() {
+void __cdecl AssertYons() {
     br_camera *camera_ptr;
     int i;
     LOG_TRACE("()");
@@ -565,9 +564,9 @@ void AssertYons() {
     original_AssertYons();
 }
 
-static void(*original_IncreaseYon)() = (void(*)())0x00463682;
+static void(__cdecl*original_IncreaseYon)() = (void(__cdecl*)())0x00463682;
 CARM95_HOOK_FUNCTION(original_IncreaseYon, IncreaseYon)
-void IncreaseYon() {
+void __cdecl IncreaseYon() {
     br_camera *camera_ptr;
     int i;
     char s[256];
@@ -580,9 +579,9 @@ void IncreaseYon() {
     original_IncreaseYon();
 }
 
-static void(*original_DecreaseYon)() = (void(*)())0x004636ef;
+static void(__cdecl*original_DecreaseYon)() = (void(__cdecl*)())0x004636ef;
 CARM95_HOOK_FUNCTION(original_DecreaseYon, DecreaseYon)
-void DecreaseYon() {
+void __cdecl DecreaseYon() {
     br_camera *camera_ptr;
     int i;
     char s[256];
@@ -595,9 +594,9 @@ void DecreaseYon() {
     original_DecreaseYon();
 }
 
-static void(*original_SetYon)(br_scalar, ...) = (void(*)(br_scalar, ...))0x00463777;
+static void(__cdecl*original_SetYon)(br_scalar) = (void(__cdecl*)(br_scalar))0x00463777;
 CARM95_HOOK_FUNCTION(original_SetYon, SetYon)
-void SetYon(br_scalar pYon) {
+void __cdecl SetYon(br_scalar pYon) {
     int i;
     br_camera *camera_ptr;
     LOG_TRACE("(%f)", pYon);
@@ -609,18 +608,18 @@ void SetYon(br_scalar pYon) {
     original_SetYon(pYon);
 }
 
-static br_scalar(*original_GetYon)() = (br_scalar(*)())0x004637f0;
+static br_scalar(__cdecl*original_GetYon)() = (br_scalar(__cdecl*)())0x004637f0;
 CARM95_HOOK_FUNCTION(original_GetYon, GetYon)
-br_scalar GetYon() {
+br_scalar __cdecl GetYon() {
     LOG_TRACE("()");
 
 
     return original_GetYon();
 }
 
-static void(*original_IncreaseAngle)() = (void(*)())0x00463806;
+static void(__cdecl*original_IncreaseAngle)() = (void(__cdecl*)())0x00463806;
 CARM95_HOOK_FUNCTION(original_IncreaseAngle, IncreaseAngle)
-void IncreaseAngle() {
+void __cdecl IncreaseAngle() {
     br_camera *camera_ptr;
     int i;
     char s[256];
@@ -633,9 +632,9 @@ void IncreaseAngle() {
     original_IncreaseAngle();
 }
 
-static void(*original_DecreaseAngle)() = (void(*)())0x004638c8;
+static void(__cdecl*original_DecreaseAngle)() = (void(__cdecl*)())0x004638c8;
 CARM95_HOOK_FUNCTION(original_DecreaseAngle, DecreaseAngle)
-void DecreaseAngle() {
+void __cdecl DecreaseAngle() {
     br_camera *camera_ptr;
     int i;
     char s[256];
@@ -648,27 +647,27 @@ void DecreaseAngle() {
     original_DecreaseAngle();
 }
 
-static void(*original_ToggleDepthMode)() = (void(*)())0x0046398a;
+static void(__cdecl*original_ToggleDepthMode)() = (void(__cdecl*)())0x0046398a;
 CARM95_HOOK_FUNCTION(original_ToggleDepthMode, ToggleDepthMode)
-void ToggleDepthMode() {
+void __cdecl ToggleDepthMode() {
     LOG_TRACE("()");
 
 
     original_ToggleDepthMode();
 }
 
-static int(*original_GetSkyTextureOn)() = (int(*)())0x00463a7e;
+static int(__cdecl*original_GetSkyTextureOn)() = (int(__cdecl*)())0x00463a7e;
 CARM95_HOOK_FUNCTION(original_GetSkyTextureOn, GetSkyTextureOn)
-int GetSkyTextureOn() {
+int __cdecl GetSkyTextureOn() {
     LOG_TRACE("()");
 
 
     return original_GetSkyTextureOn();
 }
 
-static void(*original_SetSkyTextureOn)(int, ...) = (void(*)(int, ...))0x00463a93;
+static void(__cdecl*original_SetSkyTextureOn)(int) = (void(__cdecl*)(int))0x00463a93;
 CARM95_HOOK_FUNCTION(original_SetSkyTextureOn, SetSkyTextureOn)
-void SetSkyTextureOn(int pOn) {
+void __cdecl SetSkyTextureOn(int pOn) {
     LOG_TRACE("(%d)", pOn);
 
     (void)pOn;
@@ -676,9 +675,9 @@ void SetSkyTextureOn(int pOn) {
     original_SetSkyTextureOn(pOn);
 }
 
-static void(*original_ToggleSkyQuietly)() = (void(*)())0x00463aba;
+static void(__cdecl*original_ToggleSkyQuietly)() = (void(__cdecl*)())0x00463aba;
 CARM95_HOOK_FUNCTION(original_ToggleSkyQuietly, ToggleSkyQuietly)
-void ToggleSkyQuietly() {
+void __cdecl ToggleSkyQuietly() {
     br_pixelmap *temp;
     LOG_TRACE("()");
 
@@ -687,27 +686,27 @@ void ToggleSkyQuietly() {
     original_ToggleSkyQuietly();
 }
 
-static void(*original_ToggleSky)() = (void(*)())0x00463b27;
+static void(__cdecl*original_ToggleSky)() = (void(__cdecl*)())0x00463b27;
 CARM95_HOOK_FUNCTION(original_ToggleSky, ToggleSky)
-void ToggleSky() {
+void __cdecl ToggleSky() {
     LOG_TRACE("()");
 
 
     original_ToggleSky();
 }
 
-static int(*original_GetDepthCueingOn)() = (int(*)())0x00463bc5;
+static int(__cdecl*original_GetDepthCueingOn)() = (int(__cdecl*)())0x00463bc5;
 CARM95_HOOK_FUNCTION(original_GetDepthCueingOn, GetDepthCueingOn)
-int GetDepthCueingOn() {
+int __cdecl GetDepthCueingOn() {
     LOG_TRACE("()");
 
 
     return original_GetDepthCueingOn();
 }
 
-static void(*original_SetDepthCueingOn)(int, ...) = (void(*)(int, ...))0x00463bda;
+static void(__cdecl*original_SetDepthCueingOn)(int) = (void(__cdecl*)(int))0x00463bda;
 CARM95_HOOK_FUNCTION(original_SetDepthCueingOn, SetDepthCueingOn)
-void SetDepthCueingOn(int pOn) {
+void __cdecl SetDepthCueingOn(int pOn) {
     LOG_TRACE("(%d)", pOn);
 
     (void)pOn;
@@ -715,9 +714,9 @@ void SetDepthCueingOn(int pOn) {
     original_SetDepthCueingOn(pOn);
 }
 
-static void(*original_ToggleDepthCueingQuietly)() = (void(*)())0x00463c0d;
+static void(__cdecl*original_ToggleDepthCueingQuietly)() = (void(__cdecl*)())0x00463c0d;
 CARM95_HOOK_FUNCTION(original_ToggleDepthCueingQuietly, ToggleDepthCueingQuietly)
-void ToggleDepthCueingQuietly() {
+void __cdecl ToggleDepthCueingQuietly() {
     tDepth_effect_type temp_type;
     int temp_start;
     int temp_end;
@@ -730,18 +729,18 @@ void ToggleDepthCueingQuietly() {
     original_ToggleDepthCueingQuietly();
 }
 
-static void(*original_ToggleDepthCueing)() = (void(*)())0x00463c6b;
+static void(__cdecl*original_ToggleDepthCueing)() = (void(__cdecl*)())0x00463c6b;
 CARM95_HOOK_FUNCTION(original_ToggleDepthCueing, ToggleDepthCueing)
-void ToggleDepthCueing() {
+void __cdecl ToggleDepthCueing() {
     LOG_TRACE("()");
 
 
     original_ToggleDepthCueing();
 }
 
-static void(*original_ChangeDepthEffect)() = (void(*)())0x00463d09;
+static void(__cdecl*original_ChangeDepthEffect)() = (void(__cdecl*)())0x00463d09;
 CARM95_HOOK_FUNCTION(original_ChangeDepthEffect, ChangeDepthEffect)
-void ChangeDepthEffect() {
+void __cdecl ChangeDepthEffect() {
     br_scalar x1;
     br_scalar x2;
     br_scalar y1;
@@ -764,18 +763,18 @@ void ChangeDepthEffect() {
     original_ChangeDepthEffect();
 }
 
-static void(*original_MungeForwardSky)() = (void(*)())0x00463d3f;
+static void(__cdecl*original_MungeForwardSky)() = (void(__cdecl*)())0x00463d3f;
 CARM95_HOOK_FUNCTION(original_MungeForwardSky, MungeForwardSky)
-void MungeForwardSky() {
+void __cdecl MungeForwardSky() {
     LOG_TRACE("()");
 
 
     original_MungeForwardSky();
 }
 
-static void(*original_MungeRearviewSky)() = (void(*)())0x00463d4a;
+static void(__cdecl*original_MungeRearviewSky)() = (void(__cdecl*)())0x00463d4a;
 CARM95_HOOK_FUNCTION(original_MungeRearviewSky, MungeRearviewSky)
-void MungeRearviewSky() {
+void __cdecl MungeRearviewSky() {
     LOG_TRACE("()");
 
 

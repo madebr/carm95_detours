@@ -37,184 +37,184 @@ extern tInterface_spec ** hookvar_gStart_interface_spec ; // addr: 00536350
 extern int * hookvar_gCurrent_car_index ; // addr: 00536424
 extern int * hookvar_gOur_starting_position ; // addr: 00536368
 
-void DrawRaceList(int pOffset);
+void __cdecl DrawRaceList(int pOffset);
 
-void MoveRaceList(int pFrom, int pTo, tS32 pTime_to_move);
+void __cdecl MoveRaceList(int pFrom, int pTo, tS32 pTime_to_move);
 
-int UpRace(int *pCurrent_choice, int *pCurrent_mode);
+int __cdecl UpRace(int *pCurrent_choice, int *pCurrent_mode);
 
-int DownRace(int *pCurrent_choice, int *pCurrent_mode);
+int __cdecl DownRace(int *pCurrent_choice, int *pCurrent_mode);
 
-int ClickOnRace(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY_offset);
+int __cdecl ClickOnRace(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY_offset);
 
-int UpClickRace(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY_offset);
+int __cdecl UpClickRace(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY_offset);
 
-int DownClickRace(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY_offset);
+int __cdecl DownClickRace(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY_offset);
 
-void StartChangeRace();
+void __cdecl StartChangeRace();
 
-int ChangeRace(int *pRace_index, int pNet_mode, tNet_sequence_type pNet_race_sequence);
+int __cdecl ChangeRace(int *pRace_index, int pNet_mode, tNet_sequence_type pNet_race_sequence);
 
-void DoChangeRace();
+void __cdecl DoChangeRace();
 
-void DrawCar(int pCurrent_choice, int pCurrent_mode);
+void __cdecl DrawCar(int pCurrent_choice, int pCurrent_mode);
 
-void SetCarFlic();
+void __cdecl SetCarFlic();
 
-int UpCar(int *pCurrent_choice, int *pCurrent_mode);
+int __cdecl UpCar(int *pCurrent_choice, int *pCurrent_mode);
 
-int DownCar(int *pCurrent_choice, int *pCurrent_mode);
+int __cdecl DownCar(int *pCurrent_choice, int *pCurrent_mode);
 
-int UpClickCar(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY_offset);
+int __cdecl UpClickCar(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY_offset);
 
-int DownClickCar(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY_offset);
+int __cdecl DownClickCar(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY_offset);
 
-int ChangeCarGoAhead(int *pCurrent_choice, int *pCurrent_mode);
+int __cdecl ChangeCarGoAhead(int *pCurrent_choice, int *pCurrent_mode);
 
-int ChangeCar(int pNet_mode, int *pCar_index, tNet_game_details *pNet_game);
+int __cdecl ChangeCar(int pNet_mode, int *pCar_index, tNet_game_details *pNet_game);
 
-void DoChangeCar();
+void __cdecl DoChangeCar();
 
-int PartsShopRecommended();
+int __cdecl PartsShopRecommended();
 
-void CalcPartPrice(int pCategory, int pIndex, int *pPrice, int *pCost);
+void __cdecl CalcPartPrice(int pCategory, int pIndex, int *pPrice, int *pCost);
 
-int BuyPart(int pCategory, int pIndex);
+int __cdecl BuyPart(int pCategory, int pIndex);
 
-void DoAutoParts();
+void __cdecl DoAutoParts();
 
-void DrawPartsLabel();
+void __cdecl DrawPartsLabel();
 
-void ErasePartsText(int pTotal_as_well);
+void __cdecl ErasePartsText(int pTotal_as_well);
 
-void DrawPartsText();
+void __cdecl DrawPartsText();
 
-void SetPartsImage();
+void __cdecl SetPartsImage();
 
-int GetPartsMax();
+int __cdecl GetPartsMax();
 
-void CalcPartsIndex();
+void __cdecl CalcPartsIndex();
 
-void DoExchangePart();
+void __cdecl DoExchangePart();
 
-int PartsShopGoAhead(int *pCurrent_choice, int *pCurrent_mode);
+int __cdecl PartsShopGoAhead(int *pCurrent_choice, int *pCurrent_mode);
 
-int UpPart(int *pCurrent_choice, int *pCurrent_mode);
+int __cdecl UpPart(int *pCurrent_choice, int *pCurrent_mode);
 
-int DownPart(int *pCurrent_choice, int *pCurrent_mode);
+int __cdecl DownPart(int *pCurrent_choice, int *pCurrent_mode);
 
-int UpClickPart(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY_offset);
+int __cdecl UpClickPart(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY_offset);
 
-int DownClickPart(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY_offset);
+int __cdecl DownClickPart(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY_offset);
 
-int PartsArrowsOn(int *pCurrent_choice, int *pCurrent_mode);
+int __cdecl PartsArrowsOn(int *pCurrent_choice, int *pCurrent_mode);
 
-int PartsArrowsOff(int *pCurrent_choice, int *pCurrent_mode);
+int __cdecl PartsArrowsOff(int *pCurrent_choice, int *pCurrent_mode);
 
-void StartPartsShop();
+void __cdecl StartPartsShop();
 
-int DonePartsShop(int pCurrent_choice, int pCurrent_mode, int pGo_ahead, int pEscaped, int pTimed_out);
+int __fastcall DonePartsShop(int pCurrent_choice, int pCurrent_mode, int pGo_ahead, int pEscaped, int pTimed_out);
 
-void DrawPartsShop(int pCurrent_choice, int pCurrent_mode);
+void __cdecl DrawPartsShop(int pCurrent_choice, int pCurrent_mode);
 
-void DoPartsShop(int pFade_away);
+void __cdecl DoPartsShop(int pFade_away);
 
-int AutoPartsDone(int pCurrent_choice, int pCurrent_mode, int pGo_ahead, int pEscaped, int pTimed_out);
+int __cdecl AutoPartsDone(int pCurrent_choice, int pCurrent_mode, int pGo_ahead, int pEscaped, int pTimed_out);
 
-tSO_result DoAutoPartsShop();
+tSO_result __cdecl DoAutoPartsShop();
 
-void SetOpponentFlic();
+void __cdecl SetOpponentFlic();
 
-void DrawSceneyMappyInfoVieweyThing();
+void __cdecl DrawSceneyMappyInfoVieweyThing();
 
-void DismissSceneyMappyInfoVieweyThing();
+void __cdecl DismissSceneyMappyInfoVieweyThing();
 
-int SelectRaceDone(int pCurrent_choice, int pCurrent_mode, int pGo_ahead, int pEscaped, int pTimed_out);
+int __cdecl SelectRaceDone(int pCurrent_choice, int pCurrent_mode, int pGo_ahead, int pEscaped, int pTimed_out);
 
-int StartRaceGoAhead(int *pCurrent_choice, int *pCurrent_mode);
+int __cdecl StartRaceGoAhead(int *pCurrent_choice, int *pCurrent_mode);
 
 int TryToMoveToArrows(int *pCurrent_choice, int *pCurrent_mode);
 
-int UpOpponent(int *pCurrent_choice, int *pCurrent_mode);
+int __cdecl UpOpponent(int *pCurrent_choice, int *pCurrent_mode);
 
-int DownOpponent(int *pCurrent_choice, int *pCurrent_mode);
+int __cdecl DownOpponent(int *pCurrent_choice, int *pCurrent_mode);
 
-int UpClickOpp(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY_offset);
+int __cdecl UpClickOpp(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY_offset);
 
-int DownClickOpp(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY_offset);
+int __cdecl DownClickOpp(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY_offset);
 
-void SelectRaceStart();
+void __cdecl SelectRaceStart();
 
-int SuggestRace();
+int __cdecl SuggestRace();
 
-void SelectRaceDraw(int pCurrent_choice, int pCurrent_mode);
+void __cdecl SelectRaceDraw(int pCurrent_choice, int pCurrent_mode);
 
-tSO_result DoSelectRace(int *pSecond_time_around);
+tSO_result __cdecl DoSelectRace(int *pSecond_time_around);
 
-void DrawGridCar(int pX, int pY, br_pixelmap *pImage);
+void __cdecl DrawGridCar(int pX, int pY, br_pixelmap *pImage);
 
-void DrawGrid(int pOffset, int pDraw_it);
+void __cdecl DrawGrid(int pOffset, int pDraw_it);
 
-void MoveGrid(int pFrom, int pTo, tS32 pTime_to_move);
+void __cdecl MoveGrid(int pFrom, int pTo, tS32 pTime_to_move);
 
-int CalcGridOffset(int pPosition);
+int __cdecl CalcGridOffset(int pPosition);
 
-void GridDraw(int pCurrent_choice, int pCurrent_mode);
+void __cdecl GridDraw(int pCurrent_choice, int pCurrent_mode);
 
-void ActuallySwapOrder(int pFirst_index, int pSecond_index);
+void __cdecl ActuallySwapOrder(int pFirst_index, int pSecond_index);
 
-void DoGridTransition(int pFirst_index, int pSecond_index);
+void __cdecl DoGridTransition(int pFirst_index, int pSecond_index);
 
-void ChallengeStart();
+void __cdecl ChallengeStart();
 
-int CheckNextStage(int *pCurrent_choice, int *pCurrent_mode);
+int __cdecl CheckNextStage(int *pCurrent_choice, int *pCurrent_mode);
 
-int ChallengeDone(int pCurrent_choice, int pCurrent_mode, int pGo_ahead, int pEscaped, int pTimed_out);
+int __cdecl ChallengeDone(int pCurrent_choice, int pCurrent_mode, int pGo_ahead, int pEscaped, int pTimed_out);
 
-void DoChallengeScreen();
+void __cdecl DoChallengeScreen();
 
-int GridDone(int pCurrent_choice, int pCurrent_mode, int pGo_ahead, int pEscaped, int pTimed_out);
+int __cdecl GridDone(int pCurrent_choice, int pCurrent_mode, int pGo_ahead, int pEscaped, int pTimed_out);
 
-void GridStart();
+void __cdecl GridStart();
 
-int GridMoveLeft(int *pCurrent_choice, int *pCurrent_mode);
+int __cdecl GridMoveLeft(int *pCurrent_choice, int *pCurrent_mode);
 
-int GridMoveRight(int *pCurrent_choice, int *pCurrent_mode);
+int __cdecl GridMoveRight(int *pCurrent_choice, int *pCurrent_mode);
 
-int GridClickCar(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY_offset);
+int __cdecl GridClickCar(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY_offset);
 
-int GridClickNumbers(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY_offset);
+int __cdecl GridClickNumbers(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY_offset);
 
-int GridClickLeft(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY_offset);
+int __cdecl GridClickLeft(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY_offset);
 
-int GridClickRight(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY_offset);
+int __cdecl GridClickRight(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY_offset);
 
-int CheckChallenge(int *pCurrent_choice, int *pCurrent_mode);
+int __cdecl CheckChallenge(int *pCurrent_choice, int *pCurrent_mode);
 
-int FindBestPos(int pOur_rank);
+int __cdecl FindBestPos(int pOur_rank);
 
-int SortGridFunction(void *pFirst_one, void *pSecond_one);
+int __cdecl SortGridFunction(void *pFirst_one, void *pSecond_one);
 
-void SortOpponents();
+void __cdecl SortOpponents();
 
-tSO_result DoGridPosition();
+tSO_result __cdecl DoGridPosition();
 
-void CheckPlayersAreResponding();
+void __cdecl CheckPlayersAreResponding();
 
-void NetSynchStartStart();
+void __cdecl NetSynchStartStart();
 
-void DrawAnItem__racestrt(int pX, int pY_index, int pFont_index, char *pText);
+void __cdecl DrawAnItem__racestrt(int pX, int pY_index, int pFont_index, char *pText);
 
-void NetSynchStartDraw(int pCurrent_choice, int pCurrent_mode);
+void __cdecl NetSynchStartDraw(int pCurrent_choice, int pCurrent_mode);
 
-int NetSynchStartDone(int pCurrent_choice, int pCurrent_mode, int pGo_ahead, int pEscaped, int pTimed_out);
+int __cdecl NetSynchStartDone(int pCurrent_choice, int pCurrent_mode, int pGo_ahead, int pEscaped, int pTimed_out);
 
-int NetSynchStartGoAhead(int *pCurrent_choice, int *pCurrent_mode);
+int __cdecl NetSynchStartGoAhead(int *pCurrent_choice, int *pCurrent_mode);
 
-int ExitWhenReady(int *pCurrent_choice, int *pCurrent_mode);
+int __cdecl ExitWhenReady(int *pCurrent_choice, int *pCurrent_mode);
 
-tSO_result NetSynchRaceStart2(tNet_synch_mode pMode);
+tSO_result __cdecl NetSynchRaceStart2(tNet_synch_mode pMode);
 
-tSO_result NetSynchRaceStart();
+tSO_result __cdecl NetSynchRaceStart();
 
 #endif

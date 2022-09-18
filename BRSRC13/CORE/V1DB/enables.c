@@ -4,7 +4,6 @@
 
 #include "carm95_hooks.h"
 
-#include <stdio.h>
 
 void actorEnable(br_v1db_enable *e, br_actor *a) {
     int i;
@@ -28,9 +27,9 @@ void actorDisable(br_v1db_enable *e, br_actor *a) {
     NOT_IMPLEMENTED();
 }
 
-static void(*original_BrLightEnable)(br_actor *, ...) = (void(*)(br_actor *, ...))0x004dd030;
+static void(__cdecl*original_BrLightEnable)(br_actor *) = (void(__cdecl*)(br_actor *))0x004dd030;
 CARM95_HOOK_FUNCTION(original_BrLightEnable, BrLightEnable)
-void BrLightEnable(br_actor *l) {
+void __cdecl BrLightEnable(br_actor *l) {
     LOG_TRACE("(%p)", l);
 
     (void)l;
@@ -38,9 +37,9 @@ void BrLightEnable(br_actor *l) {
     original_BrLightEnable(l);
 }
 
-static void(*original_BrLightDisable)(br_actor *, ...) = (void(*)(br_actor *, ...))0x004dd0e0;
+static void(__cdecl*original_BrLightDisable)(br_actor *) = (void(__cdecl*)(br_actor *))0x004dd0e0;
 CARM95_HOOK_FUNCTION(original_BrLightDisable, BrLightDisable)
-void BrLightDisable(br_actor *l) {
+void __cdecl BrLightDisable(br_actor *l) {
     LOG_TRACE("(%p)", l);
 
     (void)l;
@@ -48,9 +47,9 @@ void BrLightDisable(br_actor *l) {
     original_BrLightDisable(l);
 }
 
-static void(*original_BrClipPlaneEnable)(br_actor *, ...) = (void(*)(br_actor *, ...))0x004dd130;
+static void(__cdecl*original_BrClipPlaneEnable)(br_actor *) = (void(__cdecl*)(br_actor *))0x004dd130;
 CARM95_HOOK_FUNCTION(original_BrClipPlaneEnable, BrClipPlaneEnable)
-void BrClipPlaneEnable(br_actor *c) {
+void __cdecl BrClipPlaneEnable(br_actor *c) {
     LOG_TRACE("(%p)", c);
 
     (void)c;
@@ -58,9 +57,9 @@ void BrClipPlaneEnable(br_actor *c) {
     original_BrClipPlaneEnable(c);
 }
 
-static void(*original_BrClipPlaneDisable)(br_actor *, ...) = (void(*)(br_actor *, ...))0x004dd1e0;
+static void(__cdecl*original_BrClipPlaneDisable)(br_actor *) = (void(__cdecl*)(br_actor *))0x004dd1e0;
 CARM95_HOOK_FUNCTION(original_BrClipPlaneDisable, BrClipPlaneDisable)
-void BrClipPlaneDisable(br_actor *c) {
+void __cdecl BrClipPlaneDisable(br_actor *c) {
     LOG_TRACE("(%p)", c);
 
     (void)c;
@@ -68,9 +67,9 @@ void BrClipPlaneDisable(br_actor *c) {
     original_BrClipPlaneDisable(c);
 }
 
-static void(*original_BrHorizonPlaneEnable)(br_actor *, ...) = (void(*)(br_actor *, ...))0x004dd230;
+static void(__cdecl*original_BrHorizonPlaneEnable)(br_actor *) = (void(__cdecl*)(br_actor *))0x004dd230;
 CARM95_HOOK_FUNCTION(original_BrHorizonPlaneEnable, BrHorizonPlaneEnable)
-void BrHorizonPlaneEnable(br_actor *h) {
+void __cdecl BrHorizonPlaneEnable(br_actor *h) {
     LOG_TRACE("(%p)", h);
 
     (void)h;
@@ -78,9 +77,9 @@ void BrHorizonPlaneEnable(br_actor *h) {
     original_BrHorizonPlaneEnable(h);
 }
 
-static void(*original_BrHorizonPlaneDisable)(br_actor *, ...) = (void(*)(br_actor *, ...))0x004dd2e0;
+static void(__cdecl*original_BrHorizonPlaneDisable)(br_actor *) = (void(__cdecl*)(br_actor *))0x004dd2e0;
 CARM95_HOOK_FUNCTION(original_BrHorizonPlaneDisable, BrHorizonPlaneDisable)
-void BrHorizonPlaneDisable(br_actor *h) {
+void __cdecl BrHorizonPlaneDisable(br_actor *h) {
     LOG_TRACE("(%p)", h);
 
     (void)h;
@@ -88,9 +87,9 @@ void BrHorizonPlaneDisable(br_actor *h) {
     original_BrHorizonPlaneDisable(h);
 }
 
-static br_actor *(*original_BrEnvironmentSet)(br_actor *, ...) = (br_actor *(*)(br_actor *, ...))0x004dd330;
+static br_actor *(__cdecl*original_BrEnvironmentSet)(br_actor *) = (br_actor *(__cdecl*)(br_actor *))0x004dd330;
 CARM95_HOOK_FUNCTION(original_BrEnvironmentSet, BrEnvironmentSet)
-br_actor* BrEnvironmentSet(br_actor *a) {
+br_actor* __cdecl BrEnvironmentSet(br_actor *a) {
     br_actor *old_a;
     LOG_TRACE("(%p)", a);
 
@@ -119,9 +118,9 @@ br_boolean setupView(br_matrix34 *view_to_this, br_matrix34 *this_to_view, br_ma
     NOT_IMPLEMENTED();
 }
 
-static void(*original_BrSetupLights)(br_actor *, br_matrix34 *, br_int_32, ...) = (void(*)(br_actor *, br_matrix34 *, br_int_32, ...))0x004dd340;
+static void(__stdcall*original_BrSetupLights)(br_actor *, br_matrix34 *, br_int_32) = (void(__stdcall*)(br_actor *, br_matrix34 *, br_int_32))0x004dd340;
 CARM95_HOOK_FUNCTION(original_BrSetupLights, BrSetupLights)
-void BrSetupLights(br_actor *world, br_matrix34 *world_to_view, br_int_32 w2vt) {
+void __stdcall BrSetupLights(br_actor *world, br_matrix34 *world_to_view, br_int_32 w2vt) {
     br_matrix34 this_to_view;
     br_matrix34 view_to_this;
     int light_part;
@@ -149,9 +148,9 @@ void BrSetupLights(br_actor *world, br_matrix34 *world_to_view, br_int_32 w2vt) 
     original_BrSetupLights(world, world_to_view, w2vt);
 }
 
-static void(*original_BrSetupClipPlanes)(br_actor *, br_matrix34 *, br_int_32, br_matrix4 *, ...) = (void(*)(br_actor *, br_matrix34 *, br_int_32, br_matrix4 *, ...))0x004dd640;
+static void(__stdcall*original_BrSetupClipPlanes)(br_actor *, br_matrix34 *, br_int_32, br_matrix4 *) = (void(__stdcall*)(br_actor *, br_matrix34 *, br_int_32, br_matrix4 *))0x004dd640;
 CARM95_HOOK_FUNCTION(original_BrSetupClipPlanes, BrSetupClipPlanes)
-void BrSetupClipPlanes(br_actor *world, br_matrix34 *world_to_view, br_int_32 w2vt, br_matrix4 *view_to_screen) {
+void __stdcall BrSetupClipPlanes(br_actor *world, br_matrix34 *world_to_view, br_int_32 w2vt, br_matrix4 *view_to_screen) {
     br_matrix34 this_to_view;
     br_matrix34 view_to_this;
     br_matrix4 screen_to_view;
@@ -182,9 +181,9 @@ void BrSetupClipPlanes(br_actor *world, br_matrix34 *world_to_view, br_int_32 w2
     original_BrSetupClipPlanes(world, world_to_view, w2vt, view_to_screen);
 }
 
-static void(*original_BrSetupEnvironment)(br_actor *, br_matrix34 *, br_int_32, ...) = (void(*)(br_actor *, br_matrix34 *, br_int_32, ...))0x004dd820;
+static void(__stdcall*original_BrSetupEnvironment)(br_actor *, br_matrix34 *, br_int_32) = (void(__stdcall*)(br_actor *, br_matrix34 *, br_int_32))0x004dd820;
 CARM95_HOOK_FUNCTION(original_BrSetupEnvironment, BrSetupEnvironment)
-void BrSetupEnvironment(br_actor *world, br_matrix34 *world_to_view, br_int_32 w2vt) {
+void __stdcall BrSetupEnvironment(br_actor *world, br_matrix34 *world_to_view, br_int_32 w2vt) {
     br_matrix34 view_to_this;
     br_matrix34 this_to_view;
     br_token h;
@@ -200,21 +199,20 @@ void BrSetupEnvironment(br_actor *world, br_matrix34 *world_to_view, br_int_32 w
     original_BrSetupEnvironment(world, world_to_view, w2vt);
 }
 
-static void(*original_BrSetupHorizons)(br_actor *, br_matrix34 *, br_int_32, ...) = (void(*)(br_actor *, br_matrix34 *, br_int_32, ...))0x004dd930;
-CARM95_HOOK_FUNCTION(original_BrSetupHorizons, BrSetupHorizons)
-void BrSetupHorizons(br_actor *world, br_matrix34 *world_to_view, br_int_32 w2vt) {
+void(__stdcall*BrSetupHorizons)(br_actor *, br_matrix34 *, br_int_32) = (void(__stdcall*)(br_actor *, br_matrix34 *, br_int_32))0x004dd930;
+void BrSetupHorizons_do_not_use(br_actor *world, br_matrix34 *world_to_view, br_int_32 w2vt) {
     LOG_TRACE("(%p, %p, %d)", world, world_to_view, w2vt);
 
     (void)world;
     (void)world_to_view;
     (void)w2vt;
 
-    original_BrSetupHorizons(world, world_to_view, w2vt);
+    NOT_IMPLEMENTED();
 }
 
-static void(*original_BrActorEnableCheck)(br_actor *, ...) = (void(*)(br_actor *, ...))0x004dd940;
+static void(__stdcall*original_BrActorEnableCheck)(br_actor *) = (void(__stdcall*)(br_actor *))0x004dd940;
 CARM95_HOOK_FUNCTION(original_BrActorEnableCheck, BrActorEnableCheck)
-void BrActorEnableCheck(br_actor *a) {
+void __stdcall BrActorEnableCheck(br_actor *a) {
     LOG_TRACE("(%p)", a);
 
     (void)a;

@@ -8,7 +8,6 @@ extern "C" {
 #define HOOK_JOIN2(V1, V2) HOOK_JOIN(V1, V2)
 #define HOOK_VALUE(V) V
 #define HOOK_STRINGIFY(A) #A
-
 #if defined(_MSC_VER)
 
 #pragma section(".CRT$XCZ", read)
@@ -35,7 +34,16 @@ extern "C" {
 
 #define CARM95_HOOK_FUNCTION(ORIGINAL, FUNCTION)                      \
     HOOK_FUNCTION_STARTUP(FUNCTION) {                                 \
-        hook_function_register((void**)&ORIGINAL, (void*)FUNCTION);   \
+        hook_function_register((void**)&ORIGINAL, (void*)FUNCTION, #ORIGINAL, #FUNCTION);   \
+    }                                                                 \
+    HOOK_FUNCTION_SHUTDOWN(FUNCTION) {                                \
+        hook_function_deregister((void**)&ORIGINAL, (void*)FUNCTION); \
+    }
+
+#define CARM95_HOOK_FUNCTION_ADDR(ADDR, ORIGINAL, FUNCTION)                      \
+    HOOK_FUNCTION_STARTUP(FUNCTION) {                                            \
+        *((void**)&ORIGINAL) = (void*)ADDR;                                                  \
+        hook_function_register((void**)&ORIGINAL, (void*)FUNCTION, #ORIGINAL, #FUNCTION);   \
     }                                                                 \
     HOOK_FUNCTION_SHUTDOWN(FUNCTION) {                                \
         hook_function_deregister((void**)&ORIGINAL, (void*)FUNCTION); \
@@ -44,7 +52,7 @@ extern "C" {
 #define HV(N) (*HOOK_JOIN2(hookvar_,N))
 
 void hook_register(void (*function)(void));
-void hook_function_register(void **victim, void *detour);
+void hook_function_register(void **victim, void *detour, const char* victimname, const char* detourname);
 void hook_function_deregister(void **victim, void *detour);
 
 void hook_run_functions(void);

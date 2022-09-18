@@ -4,11 +4,10 @@
 
 #include "carm95_hooks.h"
 
-#include <stdio.h>
 
-static void(*original_BrModelApplyMap)(br_model *, int, br_matrix34 *, ...) = (void(*)(br_model *, int, br_matrix34 *, ...))0x004d6320;
+static void(__cdecl*original_BrModelApplyMap)(br_model *, int, br_matrix34 *) = (void(__cdecl*)(br_model *, int, br_matrix34 *))0x004d6320;
 CARM95_HOOK_FUNCTION(original_BrModelApplyMap, BrModelApplyMap)
-void BrModelApplyMap(br_model *model, int map_type, br_matrix34 *xform) {
+void __cdecl BrModelApplyMap(br_model *model, int map_type, br_matrix34 *xform) {
     int v;
     br_vertex *vp;
     br_vector3 mv;
@@ -28,9 +27,9 @@ void BrModelApplyMap(br_model *model, int map_type, br_matrix34 *xform) {
     original_BrModelApplyMap(model, map_type, xform);
 }
 
-static br_matrix34 *(*original_BrModelFitMap)(br_model *, int, int, br_matrix34 *, ...) = (br_matrix34 *(*)(br_model *, int, int, br_matrix34 *, ...))0x004d6500;
+static br_matrix34 *(__cdecl*original_BrModelFitMap)(br_model *, int, int, br_matrix34 *) = (br_matrix34 *(__cdecl*)(br_model *, int, int, br_matrix34 *))0x004d6500;
 CARM95_HOOK_FUNCTION(original_BrModelFitMap, BrModelFitMap)
-br_matrix34* BrModelFitMap(br_model *model, int axis_0, int axis_1, br_matrix34 *transform) {
+br_matrix34* __cdecl BrModelFitMap(br_model *model, int axis_0, int axis_1, br_matrix34 *transform) {
     br_vector3 axis_3;
     br_vector3 tr;
     br_vector3 sc;
@@ -51,9 +50,9 @@ br_matrix34* BrModelFitMap(br_model *model, int axis_0, int axis_1, br_matrix34 
     return original_BrModelFitMap(model, axis_0, axis_1, transform);
 }
 
-static void(*original_BrModelFree)(br_model *, ...) = (void(*)(br_model *, ...))0x004d6680;
+static void(__cdecl*original_BrModelFree)(br_model *) = (void(__cdecl*)(br_model *))0x004d6680;
 CARM95_HOOK_FUNCTION(original_BrModelFree, BrModelFree)
-void BrModelFree(br_model *m) {
+void __cdecl BrModelFree(br_model *m) {
     LOG_TRACE("(%p)", m);
 
     (void)m;
@@ -61,9 +60,9 @@ void BrModelFree(br_model *m) {
     original_BrModelFree(m);
 }
 
-static br_model *(*original_BrModelAllocate)(char *, int, int, ...) = (br_model *(*)(char *, int, int, ...))0x004d6690;
+static br_model *(__cdecl*original_BrModelAllocate)(char *, int, int) = (br_model *(__cdecl*)(char *, int, int))0x004d6690;
 CARM95_HOOK_FUNCTION(original_BrModelAllocate, BrModelAllocate)
-br_model* BrModelAllocate(char *name, int nvertices, int nfaces) {
+br_model* __cdecl BrModelAllocate(char *name, int nvertices, int nfaces) {
     br_model *m;
     LOG_TRACE("(\"%s\", %d, %d)", name, nvertices, nfaces);
 

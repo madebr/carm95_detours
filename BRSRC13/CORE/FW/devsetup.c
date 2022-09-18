@@ -4,21 +4,20 @@
 
 #include "carm95_hooks.h"
 
-#include <stdio.h>
 br_pixelmap ** hookvar_last_begin_screen  = (void*)0x00541b08;
 
-static br_pixelmap *(*original_BrDevLastBeginQuery)() = (br_pixelmap *(*)())0x004dff60;
+static br_pixelmap *(__stdcall*original_BrDevLastBeginQuery)() = (br_pixelmap *(__stdcall*)())0x004dff60;
 CARM95_HOOK_FUNCTION(original_BrDevLastBeginQuery, BrDevLastBeginQuery)
-br_pixelmap* BrDevLastBeginQuery() {
+br_pixelmap* __stdcall BrDevLastBeginQuery() {
     LOG_TRACE("()");
 
 
     return original_BrDevLastBeginQuery();
 }
 
-static void(*original_BrDevLastBeginSet)(br_pixelmap *, ...) = (void(*)(br_pixelmap *, ...))0x004dff70;
+static void(__stdcall*original_BrDevLastBeginSet)(br_pixelmap *) = (void(__stdcall*)(br_pixelmap *))0x004dff70;
 CARM95_HOOK_FUNCTION(original_BrDevLastBeginSet, BrDevLastBeginSet)
-void BrDevLastBeginSet(br_pixelmap *pm) {
+void __stdcall BrDevLastBeginSet(br_pixelmap *pm) {
     LOG_TRACE("(%p)", pm);
 
     (void)pm;
@@ -26,6 +25,7 @@ void BrDevLastBeginSet(br_pixelmap *pm) {
     original_BrDevLastBeginSet(pm);
 }
 
+br_error(__stdcall*BrDevBeginVar)(br_pixelmap **, char *) = (br_error(__stdcall*)(br_pixelmap **, char *))0x004dff80;
 br_error BrDevBeginVar_do_not_use(br_pixelmap **ppm, char *setup_string) {
     va_list vl;
     br_uint_32 i;
@@ -43,9 +43,9 @@ br_error BrDevBeginVar_do_not_use(br_pixelmap **ppm, char *setup_string) {
     NOT_IMPLEMENTED();
 }
 
-static br_error(*original_BrDevBegin)(br_pixelmap **, char *, ...) = (br_error(*)(br_pixelmap **, char *, ...))0x004e0140;
+static br_error(__cdecl*original_BrDevBegin)(br_pixelmap **, char *) = (br_error(__cdecl*)(br_pixelmap **, char *))0x004e0140;
 CARM95_HOOK_FUNCTION(original_BrDevBegin, BrDevBegin)
-br_error BrDevBegin(br_pixelmap **ppm, char *setup_string) {
+br_error __cdecl BrDevBegin(br_pixelmap **ppm, char *setup_string) {
     LOG_TRACE("(%p, \"%s\")", ppm, setup_string);
 
     (void)ppm;
@@ -106,18 +106,18 @@ br_pixelmap* BrDevBeginOld(char *setup_string) {
     NOT_IMPLEMENTED();
 }
 
-static void(*original_BrDevEndOld)() = (void(*)())0x004e0360;
+static void(__stdcall*original_BrDevEndOld)() = (void(__stdcall*)())0x004e0360;
 CARM95_HOOK_FUNCTION(original_BrDevEndOld, BrDevEndOld)
-void BrDevEndOld() {
+void __stdcall BrDevEndOld() {
     LOG_TRACE("()");
 
 
     original_BrDevEndOld();
 }
 
-static void(*original_BrDevPaletteSetOld)(br_pixelmap *, ...) = (void(*)(br_pixelmap *, ...))0x004e0380;
+static void(__cdecl*original_BrDevPaletteSetOld)(br_pixelmap *) = (void(__cdecl*)(br_pixelmap *))0x004e0380;
 CARM95_HOOK_FUNCTION(original_BrDevPaletteSetOld, BrDevPaletteSetOld)
-void BrDevPaletteSetOld(br_pixelmap *pm) {
+void __cdecl BrDevPaletteSetOld(br_pixelmap *pm) {
     LOG_TRACE("(%p)", pm);
 
     (void)pm;
@@ -125,9 +125,9 @@ void BrDevPaletteSetOld(br_pixelmap *pm) {
     original_BrDevPaletteSetOld(pm);
 }
 
-static void(*original_BrDevPaletteSetEntryOld)(int, br_colour, ...) = (void(*)(int, br_colour, ...))0x004e03a0;
+static void(__cdecl*original_BrDevPaletteSetEntryOld)(int, br_colour) = (void(__cdecl*)(int, br_colour))0x004e03a0;
 CARM95_HOOK_FUNCTION(original_BrDevPaletteSetEntryOld, BrDevPaletteSetEntryOld)
-void BrDevPaletteSetEntryOld(int i, br_colour colour) {
+void __cdecl BrDevPaletteSetEntryOld(int i, br_colour colour) {
     LOG_TRACE("(%d, %u)", i, colour);
 
     (void)i;
@@ -136,9 +136,9 @@ void BrDevPaletteSetEntryOld(int i, br_colour colour) {
     original_BrDevPaletteSetEntryOld(i, colour);
 }
 
-static br_error(*original_BrRendererFacilityFind)(br_renderer_facility **, br_device_pixelmap *, br_token, ...) = (br_error(*)(br_renderer_facility **, br_device_pixelmap *, br_token, ...))0x004e03c0;
+static br_error(__cdecl*original_BrRendererFacilityFind)(br_renderer_facility **, br_device_pixelmap *, br_token) = (br_error(__cdecl*)(br_renderer_facility **, br_device_pixelmap *, br_token))0x004e03c0;
 CARM95_HOOK_FUNCTION(original_BrRendererFacilityFind, BrRendererFacilityFind)
-br_error BrRendererFacilityFind(br_renderer_facility **prf, br_device_pixelmap *destination, br_token scalar_type) {
+br_error __cdecl BrRendererFacilityFind(br_renderer_facility **prf, br_device_pixelmap *destination, br_token scalar_type) {
     br_renderer_facility *renderer_facility;
     br_error r;
     br_output_facility *ot;
@@ -160,9 +160,9 @@ br_error BrRendererFacilityFind(br_renderer_facility **prf, br_device_pixelmap *
     return original_BrRendererFacilityFind(prf, destination, scalar_type);
 }
 
-static br_error(*original_BrPrimitiveLibraryFind)(br_primitive_library **, br_device_pixelmap *, br_token, ...) = (br_error(*)(br_primitive_library **, br_device_pixelmap *, br_token, ...))0x004e0580;
+static br_error(__cdecl*original_BrPrimitiveLibraryFind)(br_primitive_library **, br_device_pixelmap *, br_token) = (br_error(__cdecl*)(br_primitive_library **, br_device_pixelmap *, br_token))0x004e0580;
 CARM95_HOOK_FUNCTION(original_BrPrimitiveLibraryFind, BrPrimitiveLibraryFind)
-br_error BrPrimitiveLibraryFind(br_primitive_library **ppl, br_device_pixelmap *destination, br_token scalar_type) {
+br_error __cdecl BrPrimitiveLibraryFind(br_primitive_library **ppl, br_device_pixelmap *destination, br_token scalar_type) {
     br_primitive_library *primitive_library;
     br_error r;
     br_output_facility *ot;
@@ -184,9 +184,9 @@ br_error BrPrimitiveLibraryFind(br_primitive_library **ppl, br_device_pixelmap *
     return original_BrPrimitiveLibraryFind(ppl, destination, scalar_type);
 }
 
-static br_error(*original_BrGeometryFormatFind)(br_geometry **, br_renderer *, br_renderer_facility *, br_token, br_token, ...) = (br_error(*)(br_geometry **, br_renderer *, br_renderer_facility *, br_token, br_token, ...))0x004e0740;
+static br_error(__cdecl*original_BrGeometryFormatFind)(br_geometry **, br_renderer *, br_renderer_facility *, br_token, br_token) = (br_error(__cdecl*)(br_geometry **, br_renderer *, br_renderer_facility *, br_token, br_token))0x004e0740;
 CARM95_HOOK_FUNCTION(original_BrGeometryFormatFind, BrGeometryFormatFind)
-br_error BrGeometryFormatFind(br_geometry **pgf, br_renderer *renderer, br_renderer_facility *renderer_facility, br_token scalar_type, br_token format_type) {
+br_error __cdecl BrGeometryFormatFind(br_geometry **pgf, br_renderer *renderer, br_renderer_facility *renderer_facility, br_token scalar_type, br_token format_type) {
     br_error r;
     br_geometry *gf;
     char object_name[21];

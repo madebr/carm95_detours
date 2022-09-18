@@ -16,27 +16,27 @@ extern int(* hookvar_gCredits_per_rank )[3]; // addr: 0054B2B0
 extern int * hookvar_gNet_mode_of_last_game ; // addr: 0054B2A0
 extern br_material ** hookvar_gDefault_track_material ; // addr: 0054B29C
 
-void AllocateSelf();
+void __cdecl AllocateSelf();
 
-void AllocateCamera();
+void __cdecl AllocateCamera();
 
-void ReinitialiseForwardCamera();
+void __cdecl ReinitialiseForwardCamera();
 
-void AllocateRearviewPixelmap();
+void __cdecl AllocateRearviewPixelmap();
 
-void ReinitialiseRearviewCamera();
+void __cdecl ReinitialiseRearviewCamera();
 
-void ReinitialiseRenderStuff();
+void __cdecl ReinitialiseRenderStuff();
 
 void InstallFindFailedHooks();
 
-void AllocateStandardLamp();
+void __cdecl AllocateStandardLamp();
 
-void InitializeBRenderEnvironment();
+void __cdecl InitializeBRenderEnvironment();
 
-void InitBRFonts();
+void __cdecl InitBRFonts();
 
-void AustereWarning();
+void __cdecl AustereWarning();
 
 void InitLineStuff();
 
@@ -44,26 +44,26 @@ void InitSmokeStuff();
 
 void Init2DStuff();
 
-void InitialiseApplication(int pArgc, char **pArgv);
+void __cdecl InitialiseApplication(int pArgc, char **pArgv);
 
 void InitialiseDeathRace(int pArgc, char **pArgv);
 
-void InitGame(int pStart_race);
+void __cdecl InitGame(int pStart_race);
 
-void DisposeGameIfNecessary();
+void __cdecl DisposeGameIfNecessary();
 
-void LoadInTrack();
+void __cdecl LoadInTrack();
 
-void DisposeTrack();
+void __cdecl DisposeTrack();
 
 void CopyMaterialColourFromIndex(br_material *pMaterial);
 
-void InitRace();
+void __cdecl InitRace();
 
-void DisposeRace();
+void __cdecl DisposeRace();
 
-int GetScreenSize();
+int __cdecl GetScreenSize();
 
-void SetScreenSize(int pNew_size);
+void __cdecl SetScreenSize(int pNew_size);
 
 #endif
