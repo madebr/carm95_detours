@@ -54,9 +54,9 @@ void* __stdcall DfTop(int type, int *countp) {
     return original_DfTop(type, countp);
 }
 
-static int(__stdcall*original_DfTopType)() = (int(__stdcall*)())0x004e0be0;
+static int(__cdecl*original_DfTopType)() = (int(__cdecl*)())0x004e0be0;
 CARM95_HOOK_FUNCTION(original_DfTopType, DfTopType)
-int __stdcall DfTopType() {
+int __cdecl DfTopType() {
     LOG_TRACE("()");
 
 
@@ -708,9 +708,9 @@ int __stdcall DfChunksInterpret(br_datafile *df, br_chunks_table *table) {
     return original_DfChunksInterpret(df, table);
 }
 
-static void(__stdcall*original_BrNullOther)() = (void(__stdcall*)())0x004e33e0;
+static void(__cdecl*original_BrNullOther)() = (void(__cdecl*)())0x004e33e0;
 CARM95_HOOK_FUNCTION(original_BrNullOther, BrNullOther)
-void __stdcall BrNullOther() {
+void __cdecl BrNullOther() {
     LOG_TRACE("()");
 
 

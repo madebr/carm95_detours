@@ -300,6 +300,7 @@ add_library(carm95hooks SHARED
     BRSRC13/CORE/PIXELMAP/pmnull.c
     BRSRC13/CORE/PIXELMAP/pmnull.h
 
+    S3/s3sound.c
 )
 target_compile_definitions(carm95hooks PRIVATE
     PLUGIN_NAME="carm95hooks"
@@ -323,6 +324,8 @@ if(CMAKE_C_COMPILER_ID MATCHES "MSVC")
             -wd4774  # 'printf' : format string expected in argument 1 is not a string literal
             -wd5247  # section '.CRT$XCZ' is reserved for C++ dynamic initialization
             -wd5045  # Compiler will insert Spectre mitigation for memory load if /Qspectre switch specified
+            -wd4242  # function': conversion from 'xxx' to 'yyy', possible loss of data
+            -wd4244  # function': conversion from 'xxx' to 'yyy', possible loss of data
     )
 endif()
 target_include_directories(carm95hooks PRIVATE

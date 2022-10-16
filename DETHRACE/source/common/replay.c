@@ -5,58 +5,28 @@
 #include "carm95_hooks.h"
 
 char *(* hookvar_gReplay_pixie_names )[10] = (void*)0x0050a1b0;
-#if 0
-int * hookvar_gSingle_frame_mode ;
-#endif
-#if 0
-tU32 * hookvar_gCam_change_time ;
-#endif
-#if 0
-int * hookvar_gSave_file ;
-#endif
-#if 0
-int(* hookvar_gProgress_line_left )[2];
-#endif
-#if 0
-int(* hookvar_gProgress_line_right )[2];
-#endif
-#if 0
-int(* hookvar_gProgress_line_top )[2];
-#endif
+int * hookvar_gSingle_frame_mode  = (void*)0x0050a1d8;
+tU32 * hookvar_gCam_change_time  = (void*)0x0050a1dc;
+int * hookvar_gSave_file  = (void*)0x0050a1e0;
+int(* hookvar_gProgress_line_left )[2] = (void*)0x0050a1e8;
+int(* hookvar_gProgress_line_right )[2] = (void*)0x0050a1f0;
+int(* hookvar_gProgress_line_top )[2] = (void*)0x0050a1f8;
 br_pixelmap *(* hookvar_gReplay_pixies )[10] = (void*)0x00531dd0;
 int * hookvar_gKey_down  = (void*)0x00531db8;
 #if 0
 int * hookvar_gNo_cursor ;
 #endif
-#if 0
-int * hookvar_gSave_frame_number ;
-#endif
-#if 0
-int * hookvar_gCam_change_button_down ;
-#endif
-#if 0
-tU32 * hookvar_gAction_replay_start_time ;
-#endif
-#if 0
-tU32 * hookvar_gLast_replay_zappy_screen ;
-#endif
-#if 0
-tS32 * hookvar_gStopped_time ;
-#endif
+int * hookvar_gSave_frame_number  = (void*)0x00531db4;
+int * hookvar_gCam_change_button_down  = (void*)0x00531da8;
+tU32 * hookvar_gAction_replay_start_time  = (void*)0x00531da0;
+tU32 * hookvar_gLast_replay_zappy_screen  = (void*)0x00531dc4;
+tS32 * hookvar_gStopped_time  = (void*)0x00531dc0;
 float * hookvar_gPending_replay_rate  = (void*)0x00531dbc;
-#if 0
-tU32 * hookvar_gAction_replay_end_time ;
-#endif
+tU32 * hookvar_gAction_replay_end_time  = (void*)0x00531da4;
 float * hookvar_gReplay_rate  = (void*)0x00531dcc;
-#if 0
-int * hookvar_gSave_bunch_ID ;
-#endif
-#if 0
-int * hookvar_gPlay_direction ;
-#endif
-#if 0
-int * hookvar_gPaused ;
-#endif
+int * hookvar_gSave_bunch_ID  = (void*)0x00531db0;
+int * hookvar_gPlay_direction  = (void*)0x00531dac;
+int * hookvar_gPaused  = (void*)0x00531dc8;
 tAction_replay_camera_type * hookvar_gAction_replay_camera_mode  = (void*)0x00551db4;
 
 static int(__cdecl*original_ReplayIsPaused)() = (int(__cdecl*)())0x0041adc0;
@@ -77,21 +47,27 @@ float __cdecl GetReplayRate() {
     return original_GetReplayRate();
 }
 
-int GetReplayDirection() {
+static int(__stdcall*original_GetReplayDirection)() = (int(__stdcall*)())0x0041ae09;
+CARM95_HOOK_FUNCTION(original_GetReplayDirection, GetReplayDirection)
+int __stdcall GetReplayDirection() {
     LOG_TRACE("()");
 
 
-    NOT_IMPLEMENTED();
+    return original_GetReplayDirection();
 }
 
-void StopSaving() {
+static void(__cdecl*original_StopSaving)() = (void(__cdecl*)())0x0041b5a0;
+CARM95_HOOK_FUNCTION(original_StopSaving, StopSaving)
+void __cdecl StopSaving() {
     LOG_TRACE("()");
 
 
-    NOT_IMPLEMENTED();
+    original_StopSaving();
 }
 
-void ActualActionReplayHeadups(int pSpecial_zappy_bastard) {
+static void(__cdecl*original_ActualActionReplayHeadups)(int) = (void(__cdecl*)(int))0x0041ae48;
+CARM95_HOOK_FUNCTION(original_ActualActionReplayHeadups, ActualActionReplayHeadups)
+void __cdecl ActualActionReplayHeadups(int pSpecial_zappy_bastard) {
     tU32 the_time;
     int x;
     tU16 played_col1;
@@ -108,7 +84,7 @@ void ActualActionReplayHeadups(int pSpecial_zappy_bastard) {
     (void)to_play_col1;
     (void)to_play_col2;
 
-    NOT_IMPLEMENTED();
+    original_ActualActionReplayHeadups(pSpecial_zappy_bastard);
 }
 
 static void(__cdecl*original_DoActionReplayPostSwap)() = (void(__cdecl*)())0x0041ae1e;
@@ -120,7 +96,7 @@ void __cdecl DoActionReplayPostSwap() {
     original_DoActionReplayPostSwap();
 }
 
-static void(__cdecl*original_DoZappyActionReplayHeadups)(int) = (void(__cdecl*)(int))0x0041ae48;
+static void(__cdecl*original_DoZappyActionReplayHeadups)(int) = (void(__cdecl*)(int))0x0041b5bf;
 CARM95_HOOK_FUNCTION(original_DoZappyActionReplayHeadups, DoZappyActionReplayHeadups)
 void __cdecl DoZappyActionReplayHeadups(int pSpecial_zappy_bastard) {
     tU32 the_time;
@@ -141,7 +117,9 @@ void __cdecl DoActionReplayHeadups() {
     original_DoActionReplayHeadups();
 }
 
-void MoveReplayBuffer(tS32 pMove_amount) {
+static void(__cdecl*original_MoveReplayBuffer)(tS32) = (void(__cdecl*)(tS32))0x0041b41e;
+CARM95_HOOK_FUNCTION(original_MoveReplayBuffer, MoveReplayBuffer)
+void __cdecl MoveReplayBuffer(tS32 pMove_amount) {
     tU8 *play_ptr;
     tU8 *old_play_ptr;
     tU8 *old_play_ptr2;
@@ -158,25 +136,29 @@ void MoveReplayBuffer(tS32 pMove_amount) {
     (void)a;
     (void)old_time;
 
-    NOT_IMPLEMENTED();
+    original_MoveReplayBuffer(pMove_amount);
 }
 
-void MoveToEndOfReplay() {
+static void(__cdecl*original_MoveToEndOfReplay)() = (void(__cdecl*)())0x0041b3df;
+CARM95_HOOK_FUNCTION(original_MoveToEndOfReplay, MoveToEndOfReplay)
+void __cdecl MoveToEndOfReplay() {
     float old_replay_rate;
     LOG_TRACE("()");
 
     (void)old_replay_rate;
 
-    NOT_IMPLEMENTED();
+    original_MoveToEndOfReplay();
 }
 
-void MoveToStartOfReplay() {
+static void(__cdecl*original_MoveToStartOfReplay)() = (void(__cdecl*)())0x0041b622;
+CARM95_HOOK_FUNCTION(original_MoveToStartOfReplay, MoveToStartOfReplay)
+void __cdecl MoveToStartOfReplay() {
     float old_replay_rate;
     LOG_TRACE("()");
 
     (void)old_replay_rate;
 
-    NOT_IMPLEMENTED();
+    original_MoveToStartOfReplay();
 }
 
 static void(__cdecl*original_ToggleReplay)() = (void(__cdecl*)())0x0041b661;

@@ -6,28 +6,20 @@
 
 tU8 ** hookvar_gPipe_buffer_start  = (void*)0x0050ba00;
 int * hookvar_gDisable_sound  = (void*)0x0050ba04;
-#if 0
-int * hookvar_gDisable_advance ;
-#endif
-#if 0
-int * hookvar_gMax_rewind_chunks ;
-#endif
+int * hookvar_gDisable_advance  = (void*)0x0050ba08;
+int * hookvar_gMax_rewind_chunks  = (void*)0x0050ba0c;
 float * hookvar_gWall_severity  = (void*)0x0050ba10;
 tPipe_reset_proc*(* hookvar_gReset_procs )[32] = (void*)0x0050ba18;
 #if 0
 tPiped_registration_snapshot(* hookvar_gRegistration_snapshots )[5];
 #endif
 tPipe_smudge_data ** hookvar_gSmudge_space  = (void*)0x00531ffc;
-#if 0
-tU32 * hookvar_gOldest_time ;
-#endif
+tU32 * hookvar_gOldest_time  = (void*)0x00531ff8;
 #if 0
 int * hookvar_gCurrent_snapshot_registration_index ;
 #endif
 tPipe_chunk ** hookvar_gMr_chunky  = (void*)0x00531fa0;
-#if 0
-tCar_spec ** hookvar_gCar_ptr ;
-#endif
+tCar_spec ** hookvar_gCar_ptr  = (void*)0x00532040;
 br_vector3 * hookvar_gZero_vector  = (void*)0x00532068;
 tPipe_chunk_type(* hookvar_gReentrancy_array )[5] = (void*)0x00532050;
 #if 0
@@ -37,43 +29,25 @@ tPipe_model_geometry_data ** hookvar_gModel_geometry_space  = (void*)0x0053204c;
 #if 0
 tU32 * hookvar_gEnd_time ;
 #endif
-#if 0
-tU32 * hookvar_gTrigger_time ;
-#endif
+tU32 * hookvar_gTrigger_time  = (void*)0x00532094;
 int * hookvar_gReentrancy_count  = (void*)0x00532074;
-#if 0
-br_vector3 * hookvar_gCar_pos ;
-#endif
-#if 0
-br_vector3 * hookvar_gReference_pos ;
-#endif
-#if 0
-br_scalar * hookvar_gMax_distance ;
-#endif
+br_vector3 * hookvar_gCar_pos  = (void*)0x00532030;
+br_vector3 * hookvar_gReference_pos  = (void*)0x00532020;
+br_scalar * hookvar_gMax_distance  = (void*)0x00532004;
 #if 0
 tU32 * hookvar_gLoop_abort_time ;
 #endif
 br_vector3 * hookvar_gWall_impact_point  = (void*)0x00532078;
-#if 0
-tU8 ** hookvar_gPipe_buffer_working_end ;
-#endif
-#if 0
-tU32 * hookvar_gYoungest_time ;
-#endif
+tU8 ** hookvar_gPipe_buffer_working_end  = (void*)0x00532044;
+tU32 * hookvar_gYoungest_time  = (void*)0x00532084;
 tU8 ** hookvar_gPipe_buffer_phys_end  = (void*)0x0053208c;
 #if 0
 tU8 ** hookvar_gLocal_buffer_record_ptr ;
 #endif
 tU8 ** hookvar_gPipe_play_ptr  = (void*)0x00532018;
-#if 0
-tU8 ** hookvar_gEnd_of_session ;
-#endif
-#if 0
-tU8 ** hookvar_gPipe_record_ptr ;
-#endif
-#if 0
-tU8 ** hookvar_gPipe_buffer_oldest ;
-#endif
+tU8 ** hookvar_gEnd_of_session  = (void*)0x00532048;
+tU8 ** hookvar_gPipe_record_ptr  = (void*)0x0053201c;
+tU8 ** hookvar_gPipe_buffer_oldest  = (void*)0x0053200c;
 tU32 * hookvar_gPipe_buffer_size  = (void*)0x00532088;
 tU8 ** hookvar_gLocal_buffer  = (void*)0x00532014;
 tU32 * hookvar_gLocal_buffer_size  = (void*)0x00532090;
@@ -959,7 +933,9 @@ void __cdecl ApplyModelGeometry(tPipe_chunk **pChunk) {
     original_ApplyModelGeometry(pChunk);
 }
 
-void DoSmudge(tPipe_chunk **pChunk, int pDir) {
+static void(__cdecl*original_DoSmudge)(tPipe_chunk **, int) = (void(__cdecl*)(tPipe_chunk **, int))0x00429b74;
+CARM95_HOOK_FUNCTION(original_DoSmudge, DoSmudge)
+void __cdecl DoSmudge(tPipe_chunk **pChunk, int pDir) {
     int i;
     int v;
     tU8 inc;
@@ -977,7 +953,7 @@ void DoSmudge(tPipe_chunk **pChunk, int pDir) {
     (void)car;
     (void)group;
 
-    NOT_IMPLEMENTED();
+    original_DoSmudge(pChunk, pDir);
 }
 
 static void(__cdecl*original_ApplySmudge)(tPipe_chunk **) = (void(__cdecl*)(tPipe_chunk **))0x0042a3b1;
@@ -1199,7 +1175,7 @@ void __cdecl ApplySkidAdjustment(tPipe_chunk **pChunk) {
     original_ApplySkidAdjustment(pChunk);
 }
 
-static int(__cdecl*original_ApplyPipedSession)(tU8 **) = (int(__cdecl*)(tU8 **))0x0042b0a6;
+static int(__cdecl*original_ApplyPipedSession)(tU8 **) = (int(__cdecl*)(tU8 **))0x00429cfb;
 CARM95_HOOK_FUNCTION(original_ApplyPipedSession, ApplyPipedSession)
 int __cdecl ApplyPipedSession(tU8 **pPtr) {
     int i;
@@ -1227,12 +1203,14 @@ int __cdecl MoveSessionPointerBackOne(tU8 **pPtr) {
     return original_MoveSessionPointerBackOne(pPtr);
 }
 
-int MoveSessionPointerForwardOne(tU8 **pPtr) {
+static int(__cdecl*original_MoveSessionPointerForwardOne)(tU8 **) = (int(__cdecl*)(tU8 **))0x0042bf9e;
+CARM95_HOOK_FUNCTION(original_MoveSessionPointerForwardOne, MoveSessionPointerForwardOne)
+int __cdecl MoveSessionPointerForwardOne(tU8 **pPtr) {
     LOG_TRACE("(%p)", pPtr);
 
     (void)pPtr;
 
-    NOT_IMPLEMENTED();
+    return original_MoveSessionPointerForwardOne(pPtr);
 }
 
 static tPipe_chunk *(__cdecl*original_FindPreviousChunk)(tU8 *, tPipe_chunk_type, tChunk_subject_index) = (tPipe_chunk *(__cdecl*)(tU8 *, tPipe_chunk_type, tChunk_subject_index))0x0042b492;
@@ -1259,7 +1237,9 @@ tPipe_chunk* __cdecl FindPreviousChunk(tU8 *pPtr, tPipe_chunk_type pType, tChunk
     return original_FindPreviousChunk(pPtr, pType, pIndex);
 }
 
-void UndoModelGeometry(tPipe_chunk **pChunk) {
+static void(__cdecl*original_UndoModelGeometry)(tPipe_chunk **) = (void(__cdecl*)(tPipe_chunk **))0x0042b5ae;
+CARM95_HOOK_FUNCTION(original_UndoModelGeometry, UndoModelGeometry)
+void __cdecl UndoModelGeometry(tPipe_chunk **pChunk) {
     int i;
     br_model *model_ptr;
     tCar_spec *car;
@@ -1270,10 +1250,12 @@ void UndoModelGeometry(tPipe_chunk **pChunk) {
     (void)model_ptr;
     (void)car;
 
-    NOT_IMPLEMENTED();
+    original_UndoModelGeometry(pChunk);
 }
 
-void UndoSmudge(tPipe_chunk **pChunk) {
+static void(__cdecl*original_UndoSmudge)(tPipe_chunk **) = (void(__cdecl*)(tPipe_chunk **))0x0042b762;
+CARM95_HOOK_FUNCTION(original_UndoSmudge, UndoSmudge)
+void __cdecl UndoSmudge(tPipe_chunk **pChunk) {
     int i;
     br_model *model_ptr;
     tCar_spec *car;
@@ -1284,10 +1266,12 @@ void UndoSmudge(tPipe_chunk **pChunk) {
     (void)model_ptr;
     (void)car;
 
-    NOT_IMPLEMENTED();
+    original_UndoSmudge(pChunk);
 }
 
-void UndoPedestrian(tPipe_chunk **pChunk, tPipe_chunk *pPrev_chunk) {
+static void(__cdecl*original_UndoPedestrian)(tPipe_chunk **, tPipe_chunk *) = (void(__cdecl*)(tPipe_chunk **, tPipe_chunk *))0x0042b78c;
+CARM95_HOOK_FUNCTION(original_UndoPedestrian, UndoPedestrian)
+void __cdecl UndoPedestrian(tPipe_chunk **pChunk, tPipe_chunk *pPrev_chunk) {
     tPipe_chunk *temp_prev_chunk;
     LOG_TRACE("(%p, %p)", pChunk, pPrev_chunk);
 
@@ -1295,10 +1279,12 @@ void UndoPedestrian(tPipe_chunk **pChunk, tPipe_chunk *pPrev_chunk) {
     (void)pPrev_chunk;
     (void)temp_prev_chunk;
 
-    NOT_IMPLEMENTED();
+    original_UndoPedestrian(pChunk, pPrev_chunk);
 }
 
-void UndoFrameBoundary(tPipe_chunk **pChunk, tPipe_chunk *pPrev_chunk) {
+static void(__cdecl*original_UndoFrameBoundary)(tPipe_chunk **, tPipe_chunk *) = (void(__cdecl*)(tPipe_chunk **, tPipe_chunk *))0x0042b7e9;
+CARM95_HOOK_FUNCTION(original_UndoFrameBoundary, UndoFrameBoundary)
+void __cdecl UndoFrameBoundary(tPipe_chunk **pChunk, tPipe_chunk *pPrev_chunk) {
     tPipe_chunk *temp_prev_chunk;
     LOG_TRACE("(%p, %p)", pChunk, pPrev_chunk);
 
@@ -1306,10 +1292,12 @@ void UndoFrameBoundary(tPipe_chunk **pChunk, tPipe_chunk *pPrev_chunk) {
     (void)pPrev_chunk;
     (void)temp_prev_chunk;
 
-    NOT_IMPLEMENTED();
+    original_UndoFrameBoundary(pChunk, pPrev_chunk);
 }
 
-void UndoCar(tPipe_chunk **pChunk, tPipe_chunk *pPrev_chunk) {
+static void(__cdecl*original_UndoCar)(tPipe_chunk **, tPipe_chunk *) = (void(__cdecl*)(tPipe_chunk **, tPipe_chunk *))0x0042b817;
+CARM95_HOOK_FUNCTION(original_UndoCar, UndoCar)
+void __cdecl UndoCar(tPipe_chunk **pChunk, tPipe_chunk *pPrev_chunk) {
     tPipe_chunk *temp_prev_chunk;
     LOG_TRACE("(%p, %p)", pChunk, pPrev_chunk);
 
@@ -1317,18 +1305,22 @@ void UndoCar(tPipe_chunk **pChunk, tPipe_chunk *pPrev_chunk) {
     (void)pPrev_chunk;
     (void)temp_prev_chunk;
 
-    NOT_IMPLEMENTED();
+    original_UndoCar(pChunk, pPrev_chunk);
 }
 
-void UndoSound(tPipe_chunk **pChunk) {
+static void(__cdecl*original_UndoSound)(tPipe_chunk **) = (void(__cdecl*)(tPipe_chunk **))0x0042b874;
+CARM95_HOOK_FUNCTION(original_UndoSound, UndoSound)
+void __cdecl UndoSound(tPipe_chunk **pChunk) {
     LOG_TRACE("(%p)", pChunk);
 
     (void)pChunk;
 
-    NOT_IMPLEMENTED();
+    original_UndoSound(pChunk);
 }
 
-void UndoDamage(tPipe_chunk **pChunk) {
+static void(__cdecl*original_UndoDamage)(tPipe_chunk **) = (void(__cdecl*)(tPipe_chunk **))0x0042b88d;
+CARM95_HOOK_FUNCTION(original_UndoDamage, UndoDamage)
+void __cdecl UndoDamage(tPipe_chunk **pChunk) {
     tCar_spec *car;
     int i;
     LOG_TRACE("(%p)", pChunk);
@@ -1337,7 +1329,7 @@ void UndoDamage(tPipe_chunk **pChunk) {
     (void)car;
     (void)i;
 
-    NOT_IMPLEMENTED();
+    original_UndoDamage(pChunk);
 }
 
 static void(__cdecl*original_UndoSpecial)(tPipe_chunk **) = (void(__cdecl*)(tPipe_chunk **))0x0042b94c;
@@ -1454,13 +1446,15 @@ void __cdecl UndoSmokeColumn(tPipe_chunk **pChunk, tPipe_chunk *pPrev_chunk) {
     original_UndoSmokeColumn(pChunk, pPrev_chunk);
 }
 
-void UndoFlame(tPipe_chunk **pChunk, tPipe_chunk *pPrev_chunk) {
+static void(__cdecl*original_UndoFlame)(tPipe_chunk **, tPipe_chunk *) = (void(__cdecl*)(tPipe_chunk **, tPipe_chunk *))0x0042bc3b;
+CARM95_HOOK_FUNCTION(original_UndoFlame, UndoFlame)
+void __cdecl UndoFlame(tPipe_chunk **pChunk, tPipe_chunk *pPrev_chunk) {
     LOG_TRACE("(%p, %p)", pChunk, pPrev_chunk);
 
     (void)pChunk;
     (void)pPrev_chunk;
 
-    NOT_IMPLEMENTED();
+    original_UndoFlame(pChunk, pPrev_chunk);
 }
 
 static void(__cdecl*original_UndoSplash)(tPipe_chunk **, tPipe_chunk *) = (void(__cdecl*)(tPipe_chunk **, tPipe_chunk *))0x0042bc52;
@@ -1510,7 +1504,9 @@ void __cdecl UndoSkidAdjustment(tPipe_chunk **pChunk, tPipe_chunk *pPrev_chunk) 
     original_UndoSkidAdjustment(pChunk, pPrev_chunk);
 }
 
-int UndoPipedSession(tU8 **pPtr) {
+static int(__cdecl*original_UndoPipedSession)(tU8 **) = (int(__cdecl*)(tU8 **))0x0042b0a6;
+CARM95_HOOK_FUNCTION(original_UndoPipedSession, UndoPipedSession)
+int __cdecl UndoPipedSession(tU8 **pPtr) {
     tPipe_chunk *chunk_ptr;
     tPipe_chunk *prev_chunk;
     tU8 *temp_ptr;
@@ -1527,17 +1523,19 @@ int UndoPipedSession(tU8 **pPtr) {
     (void)i;
     (void)chunk_type;
 
-    NOT_IMPLEMENTED();
+    return original_UndoPipedSession(pPtr);
 }
 
-tU32 FindPrevFrameTime(tU8 *pPtr) {
+static tU32(__cdecl*original_FindPrevFrameTime)(tU8 *) = (tU32(__cdecl*)(tU8 *))0x0042bdd2;
+CARM95_HOOK_FUNCTION(original_FindPrevFrameTime, FindPrevFrameTime)
+tU32 __cdecl FindPrevFrameTime(tU8 *pPtr) {
     tU8 *temp_ptr;
     LOG_TRACE("(%p)", pPtr);
 
     (void)pPtr;
     (void)temp_ptr;
 
-    NOT_IMPLEMENTED();
+    return original_FindPrevFrameTime(pPtr);
 }
 
 static void(__cdecl*original_ScanBuffer)(tU8 **, tPipe_chunk_type, tU32, int(**)(tPipe_chunk *, int, tU32), int(**)(tU32)) = (void(__cdecl*)(tU8 **, tPipe_chunk_type, tU32, int(**)(tPipe_chunk *, int, tU32), int(**)(tU32)))0x0042be18;
@@ -1576,12 +1574,14 @@ int __cdecl CheckSound(tPipe_chunk *pChunk_ptr, int pChunk_count, tU32 pTime) {
     return original_CheckSound(pChunk_ptr, pChunk_count, pTime);
 }
 
-int SoundTimeout(tU32 pTime) {
+static int(__cdecl*original_SoundTimeout)(tU32) = (int(__cdecl*)(tU32))0x0042c132;
+CARM95_HOOK_FUNCTION(original_SoundTimeout, SoundTimeout)
+int __cdecl SoundTimeout(tU32 pTime) {
     LOG_TRACE("(%u)", pTime);
 
     (void)pTime;
 
-    NOT_IMPLEMENTED();
+    return original_SoundTimeout(pTime);
 }
 
 static void(__cdecl*original_ScanAndPlaySoundsToBe)(tU8 *, tU32, tU32) = (void(__cdecl*)(tU8 *, tU32, tU32))0x0042c06e;
@@ -1598,7 +1598,9 @@ void __cdecl ScanAndPlaySoundsToBe(tU8 *pPtr, tU32 pOldest_time, tU32 pYoungest_
     original_ScanAndPlaySoundsToBe(pPtr, pOldest_time, pYoungest_time);
 }
 
-int CheckCar(tPipe_chunk *pChunk_ptr, int pChunk_count, tU32 pTime) {
+static int(__cdecl*original_CheckCar)(tPipe_chunk *, int, tU32) = (int(__cdecl*)(tPipe_chunk *, int, tU32))0x0042c327;
+CARM95_HOOK_FUNCTION(original_CheckCar, CheckCar)
+int __cdecl CheckCar(tPipe_chunk *pChunk_ptr, int pChunk_count, tU32 pTime) {
     int i;
     tCar_spec *car;
     br_vector3 com_offset_c;
@@ -1617,18 +1619,22 @@ int CheckCar(tPipe_chunk *pChunk_ptr, int pChunk_count, tU32 pTime) {
     (void)difference;
     (void)temp_ptr;
 
-    NOT_IMPLEMENTED();
+    return original_CheckCar(pChunk_ptr, pChunk_count, pTime);
 }
 
-int CarTimeout(tU32 pTime) {
+static int(__cdecl*original_CarTimeout)(tU32) = (int(__cdecl*)(tU32))0x0042c5b2;
+CARM95_HOOK_FUNCTION(original_CarTimeout, CarTimeout)
+int __cdecl CarTimeout(tU32 pTime) {
     LOG_TRACE("(%u)", pTime);
 
     (void)pTime;
 
-    NOT_IMPLEMENTED();
+    return original_CarTimeout(pTime);
 }
 
-void ScanCarsPositions(tCar_spec *pCar, br_vector3 *pSource_pos, br_scalar pMax_distance_sqr, tU32 pOffset_time, tU32 pTime_period, br_vector3 *pCar_pos, tU32 *pTime_returned) {
+static void(__cdecl*original_ScanCarsPositions)(tCar_spec *, br_vector3 *, br_scalar, tU32, tU32, br_vector3 *, tU32 *) = (void(__cdecl*)(tCar_spec *, br_vector3 *, br_scalar, tU32, tU32, br_vector3 *, tU32 *))0x0042c171;
+CARM95_HOOK_FUNCTION(original_ScanCarsPositions, ScanCarsPositions)
+void __cdecl ScanCarsPositions(tCar_spec *pCar, br_vector3 *pSource_pos, br_scalar pMax_distance_sqr, tU32 pOffset_time, tU32 pTime_period, br_vector3 *pCar_pos, tU32 *pTime_returned) {
     tU8 *temp_ptr;
     LOG_TRACE("(%p, %p, %f, %u, %u, %p, %p)", pCar, pSource_pos, pMax_distance_sqr, pOffset_time, pTime_period, pCar_pos, pTime_returned);
 
@@ -1641,7 +1647,7 @@ void ScanCarsPositions(tCar_spec *pCar, br_vector3 *pSource_pos, br_scalar pMax_
     (void)pTime_returned;
     (void)temp_ptr;
 
-    NOT_IMPLEMENTED();
+    original_ScanCarsPositions(pCar, pSource_pos, pMax_distance_sqr, pOffset_time, pTime_period, pCar_pos, pTime_returned);
 }
 
 static int(__cdecl*original_CheckIncident)(tPipe_chunk *, int, tU32) = (int(__cdecl*)(tPipe_chunk *, int, tU32))0x0042c90d;
@@ -1672,12 +1678,14 @@ int __cdecl GetNextIncident(tU32 pOffset_time, tIncident_type *pIncident_type, f
     return original_GetNextIncident(pOffset_time, pIncident_type, pSeverity, pInfo, pTime_away);
 }
 
-tU32 GetARStartTime() {
+static tU32(__cdecl*original_GetARStartTime)() = (tU32(__cdecl*)())0x0042ca0e;
+CARM95_HOOK_FUNCTION(original_GetARStartTime, GetARStartTime)
+tU32 __cdecl GetARStartTime() {
     tU8 *temp_ptr;
     LOG_TRACE("()");
 
     (void)temp_ptr;
 
-    NOT_IMPLEMENTED();
+    return original_GetARStartTime();
 }
 

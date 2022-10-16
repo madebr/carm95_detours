@@ -113,7 +113,7 @@ int __cdecl PartsArrowsOff(int *pCurrent_choice, int *pCurrent_mode);
 
 void __cdecl StartPartsShop();
 
-int __fastcall DonePartsShop(int pCurrent_choice, int pCurrent_mode, int pGo_ahead, int pEscaped, int pTimed_out);
+int __cdecl DonePartsShop(int pCurrent_choice, int pCurrent_mode, int pGo_ahead, int pEscaped, int pTimed_out);
 
 void __cdecl DrawPartsShop(int pCurrent_choice, int pCurrent_mode);
 

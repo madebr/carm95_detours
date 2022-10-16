@@ -4,7 +4,7 @@
 #include "br_types.h"
 
 
-char* __stdcall HostDefaultDevice();
+char* __cdecl HostDefaultDevice();
 
 br_boolean __cdecl HostIniSectionExists(char *ini_file, char *section_name);
 

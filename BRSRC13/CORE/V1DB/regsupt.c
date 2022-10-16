@@ -183,9 +183,9 @@ br_uint_32 __cdecl BrMaterialRemoveMany(br_material **items, int n) {
     return original_BrMaterialRemoveMany(items, n);
 }
 
-static br_uint_32(__fastcall*original_BrMaterialFindMany)(char *, br_material **, int) = (br_uint_32(__fastcall*)(char *, br_material **, int))0x004d603c;
+static br_uint_32(__cdecl*original_BrMaterialFindMany)(char *, br_material **, int) = (br_uint_32(__cdecl*)(char *, br_material **, int))0x004d603c;
 CARM95_HOOK_FUNCTION(original_BrMaterialFindMany, BrMaterialFindMany)
-br_uint_32 __fastcall BrMaterialFindMany(char *pattern, br_material **items, int max) {
+br_uint_32 __cdecl BrMaterialFindMany(char *pattern, br_material **items, int max) {
     LOG_TRACE("(\"%s\", %p, %d)", pattern, items, max);
 
     (void)pattern;
@@ -289,9 +289,9 @@ br_uint_32 __cdecl BrMapRemoveMany(br_pixelmap **items, int n) {
     return original_BrMapRemoveMany(items, n);
 }
 
-static br_uint_32(__fastcall*original_BrMapFindMany)(char *, br_pixelmap **, int) = (br_uint_32(__fastcall*)(char *, br_pixelmap **, int))0x004d618c;
+static br_uint_32(__cdecl*original_BrMapFindMany)(char *, br_pixelmap **, int) = (br_uint_32(__cdecl*)(char *, br_pixelmap **, int))0x004d618c;
 CARM95_HOOK_FUNCTION(original_BrMapFindMany, BrMapFindMany)
-br_uint_32 __fastcall BrMapFindMany(char *pattern, br_pixelmap **items, int max) {
+br_uint_32 __cdecl BrMapFindMany(char *pattern, br_pixelmap **items, int max) {
     LOG_TRACE("(\"%s\", %p, %d)", pattern, items, max);
 
     (void)pattern;
@@ -301,9 +301,9 @@ br_uint_32 __fastcall BrMapFindMany(char *pattern, br_pixelmap **items, int max)
     return original_BrMapFindMany(pattern, items, max);
 }
 
-static br_uint_32(__stdcall*original_BrMapCount)(char *) = (br_uint_32(__stdcall*)(char *))0x004d61a4;
+static br_uint_32(__cdecl*original_BrMapCount)(char *) = (br_uint_32(__cdecl*)(char *))0x004d61a4;
 CARM95_HOOK_FUNCTION(original_BrMapCount, BrMapCount)
-br_uint_32 __stdcall BrMapCount(char *pattern) {
+br_uint_32 __cdecl BrMapCount(char *pattern) {
     LOG_TRACE("(\"%s\")", pattern);
 
     (void)pattern;

@@ -14,9 +14,9 @@ struct br_pixelmap_state * hookvar__pixelmap  = (void*)0x005520f0;
 br_resource_class(* hookvar_resourceClasses__pmsetup )[2];
 #endif
 
-static void(__stdcall*original_BrPixelmapBegin)() = (void(__stdcall*)())0x004d03f0;
+static void(__cdecl*original_BrPixelmapBegin)() = (void(__cdecl*)())0x004d03f0;
 CARM95_HOOK_FUNCTION(original_BrPixelmapBegin, BrPixelmapBegin)
-void __stdcall BrPixelmapBegin() {
+void __cdecl BrPixelmapBegin() {
     int i;
     LOG_TRACE("()");
 
@@ -25,9 +25,9 @@ void __stdcall BrPixelmapBegin() {
     original_BrPixelmapBegin();
 }
 
-static void(__stdcall*original_BrPixelmapEnd)() = (void(__stdcall*)())0x004d0440;
+static void(__cdecl*original_BrPixelmapEnd)() = (void(__cdecl*)())0x004d0440;
 CARM95_HOOK_FUNCTION(original_BrPixelmapEnd, BrPixelmapEnd)
-void __stdcall BrPixelmapEnd() {
+void __cdecl BrPixelmapEnd() {
     LOG_TRACE("()");
 
 

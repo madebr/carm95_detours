@@ -736,9 +736,9 @@ void __cdecl PukeDrugsBackUp(tPowerup *pPowerup, tCar_spec *pCar) {
     original_PukeDrugsBackUp(pPowerup, pCar);
 }
 
-static void(__fastcall*original_ResetOpponentsSpeed)(tPowerup *, tCar_spec *) = (void(__fastcall*)(tPowerup *, tCar_spec *))0x0042e6a9;
+static void(__cdecl*original_ResetOpponentsSpeed)(tPowerup *, tCar_spec *) = (void(__cdecl*)(tPowerup *, tCar_spec *))0x0042e6a9;
 CARM95_HOOK_FUNCTION(original_ResetOpponentsSpeed, ResetOpponentsSpeed)
-void __fastcall ResetOpponentsSpeed(tPowerup *pPowerup, tCar_spec *pCar) {
+void __cdecl ResetOpponentsSpeed(tPowerup *pPowerup, tCar_spec *pCar) {
     int i;
     LOG_TRACE("(%p, %p)", pPowerup, pCar);
 

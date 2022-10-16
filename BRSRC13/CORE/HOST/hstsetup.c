@@ -10,9 +10,9 @@ void *(* hookvar_functionPointers_BRHOST1 )[50] = (void*)0x0052ef40;
 br_image * hookvar_Image_BRHOST1  = (void*)0x0052f008;
 host_info * hookvar_hostInfo  = (void*)0x0052f048;
 
-static void(__stdcall*original_HostBegin)() = (void(__stdcall*)())0x00501320;
+static void(__cdecl*original_HostBegin)() = (void(__cdecl*)())0x00501320;
 CARM95_HOOK_FUNCTION(original_HostBegin, HostBegin)
-void __stdcall HostBegin() {
+void __cdecl HostBegin() {
     LOG_TRACE("()");
 
 

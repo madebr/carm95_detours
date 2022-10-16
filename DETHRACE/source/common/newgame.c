@@ -950,9 +950,9 @@ void __cdecl DisposeNetStorageSpace() {
     original_DisposeNetStorageSpace();
 }
 
-static int(__fastcall*original_DoMultiPlayerStart)() = (int(__fastcall*)())0x004b27a7;
+static int(__cdecl*original_DoMultiPlayerStart)() = (int(__cdecl*)())0x004b27a7;
 CARM95_HOOK_FUNCTION(original_DoMultiPlayerStart, DoMultiPlayerStart)
-int __fastcall DoMultiPlayerStart() {
+int __cdecl DoMultiPlayerStart() {
     tJoin_or_host_result result;
     tNet_game_details *game_to_join;
     char s[256];

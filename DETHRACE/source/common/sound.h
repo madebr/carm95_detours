@@ -25,7 +25,7 @@ extern tS3_outlet_ptr * hookvar_gDriver_outlet ; // addr: 005149A0
 extern tS3_outlet_ptr * hookvar_gPedestrians_outlet ; // addr: 005149A4
 extern tS3_outlet_ptr * hookvar_gMusic_outlet ; // addr: 005149A8
 // extern tS3_sound_id * hookvar_gMIDI_id ;
-// extern tS3_outlet_ptr(* hookvar_gIndexed_outlets )[6];
+extern tS3_outlet_ptr(* hookvar_gIndexed_outlets )[6]; // addr: 00550A20
 // extern tU32 * hookvar_gLast_sound_service ;
 // extern int * hookvar_gCD_is_disabled ;
 extern br_vector3 * hookvar_gCamera_left ; // addr: 00550A00
@@ -89,7 +89,7 @@ tS3_sound_tag __cdecl DRS3StartSoundFromSource3(tS3_sound_source_ptr pSource, tS
 
 tS3_sound_tag __cdecl DRS3StartSoundFromSource(tS3_sound_source_ptr pSource, tS3_sound_id pSound);
 
-void __fastcall MungeEngineNoise();
+void __cdecl MungeEngineNoise();
 
 void __cdecl SetSoundVolumes();
 

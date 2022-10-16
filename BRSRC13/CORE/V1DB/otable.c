@@ -105,9 +105,9 @@ void __cdecl BrZsOrderTablePrimaryEnable(br_order_table *order_table) {
     original_BrZsOrderTablePrimaryEnable(order_table);
 }
 
-static void(__stdcall*original_BrZsOrderTablePrimaryDisable)() = (void(__stdcall*)())0x004de070;
+static void(__cdecl*original_BrZsOrderTablePrimaryDisable)() = (void(__cdecl*)())0x004de070;
 CARM95_HOOK_FUNCTION(original_BrZsOrderTablePrimaryDisable, BrZsOrderTablePrimaryDisable)
-void __stdcall BrZsOrderTablePrimaryDisable() {
+void __cdecl BrZsOrderTablePrimaryDisable() {
     LOG_TRACE("()");
 
 
@@ -165,9 +165,9 @@ void __stdcall SetOrderTableRange(br_order_table *order_table) {
     original_SetOrderTableRange(order_table);
 }
 
-static void(__stdcall*original_RenderOrderTableList)() = (void(__stdcall*)())0x004de270;
+static void(__cdecl*original_RenderOrderTableList)() = (void(__cdecl*)())0x004de270;
 CARM95_HOOK_FUNCTION(original_RenderOrderTableList, RenderOrderTableList)
-void __stdcall RenderOrderTableList() {
+void __cdecl RenderOrderTableList() {
     br_order_table *order_table;
     LOG_TRACE("()");
 
@@ -176,9 +176,9 @@ void __stdcall RenderOrderTableList() {
     original_RenderOrderTableList();
 }
 
-static void(__stdcall*original_RenderPrimaryOrderTable)() = (void(__stdcall*)())0x004de2b0;
+static void(__cdecl*original_RenderPrimaryOrderTable)() = (void(__cdecl*)())0x004de2b0;
 CARM95_HOOK_FUNCTION(original_RenderPrimaryOrderTable, RenderPrimaryOrderTable)
-void __stdcall RenderPrimaryOrderTable() {
+void __cdecl RenderPrimaryOrderTable() {
     br_uint_16 m;
     br_uint_16 size;
     br_scalar bucket_size;

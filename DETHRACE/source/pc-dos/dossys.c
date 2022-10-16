@@ -199,9 +199,9 @@ void __cdecl PDInitialiseSystem() {
     original_PDInitialiseSystem();
 }
 
-static void(__cdecl*original_PDShutdownSystem)() = (void(__cdecl*)())0x004a6f6d;
+static void(__stdcall*original_PDShutdownSystem)() = (void(__stdcall*)())0x004a6f6d;
 CARM95_HOOK_FUNCTION(original_PDShutdownSystem, PDShutdownSystem)
-void __cdecl PDShutdownSystem() {
+void __stdcall PDShutdownSystem() {
     LOG_TRACE("()");
 
 

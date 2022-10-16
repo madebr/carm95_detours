@@ -564,9 +564,9 @@ void __cdecl StartPartsShop() {
     original_StartPartsShop();
 }
 
-static int(__fastcall*original_DonePartsShop)(int, int, int, int, int) = (int(__fastcall*)(int, int, int, int, int))0x00450a92;
+static int(__cdecl*original_DonePartsShop)(int, int, int, int, int) = (int(__cdecl*)(int, int, int, int, int))0x00450a92;
 CARM95_HOOK_FUNCTION(original_DonePartsShop, DonePartsShop)
-int __fastcall DonePartsShop(int pCurrent_choice, int pCurrent_mode, int pGo_ahead, int pEscaped, int pTimed_out) {
+int __cdecl DonePartsShop(int pCurrent_choice, int pCurrent_mode, int pGo_ahead, int pEscaped, int pTimed_out) {
     LOG_TRACE("(%d, %d, %d, %d, %d)", pCurrent_choice, pCurrent_mode, pGo_ahead, pEscaped, pTimed_out);
 
     (void)pCurrent_choice;

@@ -240,7 +240,7 @@ void InternalResourceDump(struct resource_header *res, br_putline_cbfn *putline,
     NOT_IMPLEMENTED();
 }
 
-void(__stdcall*BrResDump)(void *, br_putline_cbfn *, void *) = (void(__stdcall*)(void *, br_putline_cbfn *, void *))0x004df8f0;
+void(__cdecl*BrResDump)(void *, br_putline_cbfn *, void *) = (void(__cdecl*)(void *, br_putline_cbfn *, void *))0x004df8f0;
 void BrResDump_do_not_use(void *vres, br_putline_cbfn *putline, void *arg) {
     struct resource_header *res;
     LOG_TRACE("(%p, %p, %p)", vres, putline, arg);

@@ -20,7 +20,7 @@ extern void(__cdecl*BrFatal)(char *, int, char *);
 void BrFatal_do_not_use(char *name, int line, char *s);
 #endif
 
-void __stdcall _BrAssert(char *condition, char *file, unsigned int line);
+void __cdecl _BrAssert(char *condition, char *file, unsigned int line);
 
 void __cdecl _BrUAssert(char *condition, char *file, unsigned int line);
 

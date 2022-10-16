@@ -101,9 +101,9 @@ br_error __stdcall BrSetDefaultConfig(br_token t, char *Entry) {
     return original_BrSetDefaultConfig(t, Entry);
 }
 
-static br_error(__stdcall*original_BrSystemConfigBegin)() = (br_error(__stdcall*)())0x004e8180;
+static br_error(__cdecl*original_BrSystemConfigBegin)() = (br_error(__cdecl*)())0x004e8180;
 CARM95_HOOK_FUNCTION(original_BrSystemConfigBegin, BrSystemConfigBegin)
-br_error __stdcall BrSystemConfigBegin() {
+br_error __cdecl BrSystemConfigBegin() {
     char temp[255];
     br_value v;
     LOG_TRACE("()");

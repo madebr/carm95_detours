@@ -32,7 +32,7 @@ void __cdecl BrZbSceneRenderBegin(br_actor *world, br_actor *camera, br_pixelmap
 
 void __cdecl BrZbSceneRenderAdd(br_actor *tree);
 
-void __stdcall BrZbSceneRenderEnd();
+void __cdecl BrZbSceneRenderEnd();
 
 void __cdecl BrZbSceneRender(br_actor *world, br_actor *camera, br_pixelmap *colour_buffer, br_pixelmap *depth_buffer);
 
@@ -40,7 +40,7 @@ void __cdecl BrZsSceneRenderBegin(br_actor *world, br_actor *camera, br_pixelmap
 
 void __cdecl BrZsSceneRenderAdd(br_actor *tree);
 
-void __stdcall BrZsSceneRenderEnd();
+void __cdecl BrZsSceneRenderEnd();
 
 void __stdcall BrZsSceneRender(br_actor *world, br_actor *camera, br_pixelmap *colour_buffer);
 

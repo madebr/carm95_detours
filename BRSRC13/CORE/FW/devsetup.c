@@ -6,9 +6,9 @@
 
 br_pixelmap ** hookvar_last_begin_screen  = (void*)0x00541b08;
 
-static br_pixelmap *(__stdcall*original_BrDevLastBeginQuery)() = (br_pixelmap *(__stdcall*)())0x004dff60;
+static br_pixelmap *(__cdecl*original_BrDevLastBeginQuery)() = (br_pixelmap *(__cdecl*)())0x004dff60;
 CARM95_HOOK_FUNCTION(original_BrDevLastBeginQuery, BrDevLastBeginQuery)
-br_pixelmap* __stdcall BrDevLastBeginQuery() {
+br_pixelmap* __cdecl BrDevLastBeginQuery() {
     LOG_TRACE("()");
 
 
@@ -106,9 +106,9 @@ br_pixelmap* BrDevBeginOld(char *setup_string) {
     NOT_IMPLEMENTED();
 }
 
-static void(__stdcall*original_BrDevEndOld)() = (void(__stdcall*)())0x004e0360;
+static void(__cdecl*original_BrDevEndOld)() = (void(__cdecl*)())0x004e0360;
 CARM95_HOOK_FUNCTION(original_BrDevEndOld, BrDevEndOld)
-void __stdcall BrDevEndOld() {
+void __cdecl BrDevEndOld() {
     LOG_TRACE("()");
 
 

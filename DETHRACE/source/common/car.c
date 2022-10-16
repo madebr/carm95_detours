@@ -34,18 +34,12 @@ tU32 * hookvar_gQuite_wild_start  = (void*)0x00514d3c;
 tU32 * hookvar_gQuite_wild_end  = (void*)0x00514d40;
 tU32 * hookvar_gOn_me_wheels_start  = (void*)0x00514d44;
 int * hookvar_gWoz_upside_down_at_all  = (void*)0x00514d48;
-#if 0
-tS3_sound_tag(* hookvar_gSkid_tag )[2];
-#endif
-#if 0
-tCar_spec *(* hookvar_gLast_car_to_skid )[2];
-#endif
+tS3_sound_tag(* hookvar_gSkid_tag )[2] = (void*)0x00514d50;
+tCar_spec *(* hookvar_gLast_car_to_skid )[2] = (void*)0x00514d58;
 int * hookvar_gEliminate_faces  = (void*)0x00514d60;
  // Suffix added to avoid duplicate symbol
 br_vector3 * hookvar_gZero_v__car  = (void*)0x00514d68;
-#if 0
-tU32 * hookvar_gSwitch_time ;
-#endif
+tU32 * hookvar_gSwitch_time  = (void*)0x00514d74;
 #if 0
 tSave_camera(* hookvar_gSave_camera )[2];
 #endif
@@ -657,7 +651,9 @@ void __cdecl GetNonCars() {
     original_GetNonCars();
 }
 
-void GetNetPos(tCar_spec *pCar) {
+static void(__cdecl*original_GetNetPos)(tCar_spec *) = (void(__cdecl*)(tCar_spec *))0x00478bb7;
+CARM95_HOOK_FUNCTION(original_GetNetPos, GetNetPos)
+void __cdecl GetNetPos(tCar_spec *pCar) {
     int j;
     float amount;
     br_scalar total_deflection;
@@ -668,7 +664,7 @@ void GetNetPos(tCar_spec *pCar) {
     (void)amount;
     (void)total_deflection;
 
-    NOT_IMPLEMENTED();
+    original_GetNetPos(pCar);
 }
 
 static void(__cdecl*original_ApplyPhysicsToCars)(tU32, tU32) = (void(__cdecl*)(tU32, tU32))0x0047839b;
@@ -2204,9 +2200,9 @@ void __cdecl AmIGettingBoredWatchingCameraSpin() {
     original_AmIGettingBoredWatchingCameraSpin();
 }
 
-static void(__fastcall*original_ViewNetPlayer)() = (void(__fastcall*)())0x004870d8;
+static void(__cdecl*original_ViewNetPlayer)() = (void(__cdecl*)())0x004870d8;
 CARM95_HOOK_FUNCTION(original_ViewNetPlayer, ViewNetPlayer)
-void __fastcall ViewNetPlayer() {
+void __cdecl ViewNetPlayer() {
     LOG_TRACE("()");
 
 
@@ -2838,9 +2834,9 @@ int __cdecl CollideCameraWithOtherCars(br_vector3 *car_pos, br_vector3 *cam_pos)
     return original_CollideCameraWithOtherCars(car_pos, cam_pos);
 }
 
-static void(__fastcall*original_InitialiseExternalCamera)() = (void(__fastcall*)())0x0048ba8a;
+static void(__cdecl*original_InitialiseExternalCamera)() = (void(__cdecl*)())0x0048ba8a;
 CARM95_HOOK_FUNCTION(original_InitialiseExternalCamera, InitialiseExternalCamera)
-void __fastcall InitialiseExternalCamera() {
+void __cdecl InitialiseExternalCamera() {
     br_scalar ts;
     tCar_spec *c;
     br_vector3 r;

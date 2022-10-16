@@ -9,8 +9,8 @@ extern void *(* hookvar_functionPointers_BRPMAP1 )[77]; // addr: 00522F38
 extern br_image * hookvar_Image_BRPMAP1 ; // addr: 00523070
 // extern br_resource_class(* hookvar_resourceClasses__pmsetup )[2]; // suffix added to avoid duplicate symbol
 
-void __stdcall BrPixelmapBegin();
+void __cdecl BrPixelmapBegin();
 
-void __stdcall BrPixelmapEnd();
+void __cdecl BrPixelmapEnd();
 
 #endif

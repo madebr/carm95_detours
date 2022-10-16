@@ -15,7 +15,7 @@ void* __cdecl HostImageLoad(char *name) {
     return original_HostImageLoad(name);
 }
 
-void(__stdcall*HostImageUnload)(void *) = (void(__stdcall*)(void *))0x005012e0;
+void(__cdecl*HostImageUnload)(void *) = (void(__cdecl*)(void *))0x005012e0;
 void HostImageUnload_do_not_use(void *image) {
     LOG_TRACE("(%p)", image);
 
@@ -36,7 +36,7 @@ void* __cdecl HostImageLookupName(void *img, char *name, br_uint_32 hint) {
     return original_HostImageLookupName(img, name, hint);
 }
 
-void *(__stdcall*HostImageLookupOrdinal)(void *, br_uint_32) = (void *(__stdcall*)(void *, br_uint_32))0x00501310;
+void *(__cdecl*HostImageLookupOrdinal)(void *, br_uint_32) = (void *(__cdecl*)(void *, br_uint_32))0x00501310;
 void* HostImageLookupOrdinal_do_not_use(void *img, br_uint_32 ordinal) {
     LOG_TRACE("(%p, %u)", img, ordinal);
 

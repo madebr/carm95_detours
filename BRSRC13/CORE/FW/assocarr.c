@@ -5,9 +5,9 @@
 #include "carm95_hooks.h"
 
 
-static br_associative_array *(__stdcall*original_BrAssociativeArrayAllocate)() = (br_associative_array *(__stdcall*)())0x004e9250;
+static br_associative_array *(__cdecl*original_BrAssociativeArrayAllocate)() = (br_associative_array *(__cdecl*)())0x004e9250;
 CARM95_HOOK_FUNCTION(original_BrAssociativeArrayAllocate, BrAssociativeArrayAllocate)
-br_associative_array* __stdcall BrAssociativeArrayAllocate() {
+br_associative_array* __cdecl BrAssociativeArrayAllocate() {
     br_associative_array *pArray;
     LOG_TRACE("()");
 

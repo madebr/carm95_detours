@@ -5,7 +5,7 @@
 #include "carm95_hooks.h"
 
 
-void(__stdcall*lexerError)(struct br_lexer *, char *) = (void(__stdcall*)(struct br_lexer *, char *))0x004e6d60;
+void(__cdecl*lexerError)(struct br_lexer *, char *) = (void(__cdecl*)(struct br_lexer *, char *))0x004e6d60;
 void lexerError_do_not_use(struct br_lexer *l, char *string) {
     LOG_TRACE("(%p, \"%s\")", l, string);
 
@@ -159,7 +159,7 @@ void lexerAdvanceDump(struct br_lexer *l) {
     NOT_IMPLEMENTED();
 }
 
-br_error(__stdcall*BrLexerDumpSet)(struct br_lexer *, br_putline_cbfn *, void *) = (br_error(__stdcall*)(struct br_lexer *, br_putline_cbfn *, void *))0x004e7290;
+br_error(__cdecl*BrLexerDumpSet)(struct br_lexer *, br_putline_cbfn *, void *) = (br_error(__cdecl*)(struct br_lexer *, br_putline_cbfn *, void *))0x004e7290;
 br_error BrLexerDumpSet_do_not_use(struct br_lexer *l, br_putline_cbfn *putline, void *putline_arg) {
     LOG_TRACE("(%p, %p, %p)", l, putline, putline_arg);
 

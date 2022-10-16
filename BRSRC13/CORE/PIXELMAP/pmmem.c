@@ -71,9 +71,9 @@ char* __cdecl _M_br_device_pixelmap_mem_identifier(br_device_pixelmap *self) {
     return original__M_br_device_pixelmap_mem_identifier(self);
 }
 
-static br_token(__stdcall*original__M_br_device_pixelmap_mem_type)(br_device_pixelmap *) = (br_token(__stdcall*)(br_device_pixelmap *))0x004cb100;
+static br_token(__cdecl*original__M_br_device_pixelmap_mem_type)(br_device_pixelmap *) = (br_token(__cdecl*)(br_device_pixelmap *))0x004cb100;
 CARM95_HOOK_FUNCTION(original__M_br_device_pixelmap_mem_type, _M_br_device_pixelmap_mem_type)
-br_token __stdcall _M_br_device_pixelmap_mem_type(br_device_pixelmap *self) {
+br_token __cdecl _M_br_device_pixelmap_mem_type(br_device_pixelmap *self) {
     LOG_TRACE("(%p)", self);
 
     (void)self;
@@ -92,7 +92,7 @@ br_boolean __cdecl _M_br_device_pixelmap_mem_isType(br_device_pixelmap *self, br
     return original__M_br_device_pixelmap_mem_isType(self, t);
 }
 
-struct br_device *(__stdcall*_M_br_device_pixelmap_mem_device)(br_device_pixelmap *) = (struct br_device *(__stdcall*)(br_device_pixelmap *))0x004cb130;
+struct br_device *(__cdecl*_M_br_device_pixelmap_mem_device)(br_device_pixelmap *) = (struct br_device *(__cdecl*)(br_device_pixelmap *))0x004cb130;
 struct br_device* _M_br_device_pixelmap_mem_device_do_not_use(br_device_pixelmap *self) {
     LOG_TRACE("(%p)", self);
 
@@ -111,9 +111,9 @@ br_int_32 __cdecl _M_br_device_pixelmap_mem_space(br_device_pixelmap *self) {
     return original__M_br_device_pixelmap_mem_space(self);
 }
 
-static struct br_tv_template *(__stdcall*original__M_br_device_pixelmap_mem_queryTemplate)(br_device_pixelmap *) = (struct br_tv_template *(__stdcall*)(br_device_pixelmap *))0x004cb150;
+static struct br_tv_template *(__cdecl*original__M_br_device_pixelmap_mem_queryTemplate)(br_device_pixelmap *) = (struct br_tv_template *(__cdecl*)(br_device_pixelmap *))0x004cb150;
 CARM95_HOOK_FUNCTION(original__M_br_device_pixelmap_mem_queryTemplate, _M_br_device_pixelmap_mem_queryTemplate)
-struct br_tv_template* __stdcall _M_br_device_pixelmap_mem_queryTemplate(br_device_pixelmap *self) {
+struct br_tv_template* __cdecl _M_br_device_pixelmap_mem_queryTemplate(br_device_pixelmap *self) {
     LOG_TRACE("(%p)", self);
 
     (void)self;
@@ -121,7 +121,7 @@ struct br_tv_template* __stdcall _M_br_device_pixelmap_mem_queryTemplate(br_devi
     return original__M_br_device_pixelmap_mem_queryTemplate(self);
 }
 
-br_error(__stdcall*_M_br_device_pixelmap_mem_validSource)(br_device_pixelmap *, br_object *) = (br_error(__stdcall*)(br_device_pixelmap *, br_object *))0x004cb180;
+br_error(__cdecl*_M_br_device_pixelmap_mem_validSource)(br_device_pixelmap *, br_object *) = (br_error(__cdecl*)(br_device_pixelmap *, br_object *))0x004cb180;
 br_error _M_br_device_pixelmap_mem_validSource_do_not_use(br_device_pixelmap *self, br_object *h) {
     LOG_TRACE("(%p, %p)", self, h);
 
@@ -226,9 +226,9 @@ br_error __cdecl _M_br_device_pixelmap_mem_fill(br_device_pixelmap *self, br_uin
     return original__M_br_device_pixelmap_mem_fill(self, colour);
 }
 
-static br_error(__stdcall*original__M_br_device_pixelmap_mem_doubleBuffer)(br_device_pixelmap *, br_device_pixelmap *) = (br_error(__stdcall*)(br_device_pixelmap *, br_device_pixelmap *))0x004cba30;
+static br_error(__cdecl*original__M_br_device_pixelmap_mem_doubleBuffer)(br_device_pixelmap *, br_device_pixelmap *) = (br_error(__cdecl*)(br_device_pixelmap *, br_device_pixelmap *))0x004cba30;
 CARM95_HOOK_FUNCTION(original__M_br_device_pixelmap_mem_doubleBuffer, _M_br_device_pixelmap_mem_doubleBuffer)
-br_error __stdcall _M_br_device_pixelmap_mem_doubleBuffer(br_device_pixelmap *self, br_device_pixelmap *src) {
+br_error __cdecl _M_br_device_pixelmap_mem_doubleBuffer(br_device_pixelmap *self, br_device_pixelmap *src) {
     LOG_TRACE("(%p, %p)", self, src);
 
     (void)self;
@@ -237,9 +237,9 @@ br_error __stdcall _M_br_device_pixelmap_mem_doubleBuffer(br_device_pixelmap *se
     return original__M_br_device_pixelmap_mem_doubleBuffer(self, src);
 }
 
-static br_error(__stdcall*original__M_br_device_pixelmap_mem_copyDirty)(br_device_pixelmap *, br_device_pixelmap *, br_rectangle *, br_int_32) = (br_error(__stdcall*)(br_device_pixelmap *, br_device_pixelmap *, br_rectangle *, br_int_32))0x004cba40;
+static br_error(__cdecl*original__M_br_device_pixelmap_mem_copyDirty)(br_device_pixelmap *, br_device_pixelmap *, br_rectangle *, br_int_32) = (br_error(__cdecl*)(br_device_pixelmap *, br_device_pixelmap *, br_rectangle *, br_int_32))0x004cba40;
 CARM95_HOOK_FUNCTION(original__M_br_device_pixelmap_mem_copyDirty, _M_br_device_pixelmap_mem_copyDirty)
-br_error __stdcall _M_br_device_pixelmap_mem_copyDirty(br_device_pixelmap *self, br_device_pixelmap *src, br_rectangle *dirty, br_int_32 num_rects) {
+br_error __cdecl _M_br_device_pixelmap_mem_copyDirty(br_device_pixelmap *self, br_device_pixelmap *src, br_rectangle *dirty, br_int_32 num_rects) {
     LOG_TRACE("(%p, %p, %p, %d)", self, src, dirty, num_rects);
 
     (void)self;
@@ -250,9 +250,9 @@ br_error __stdcall _M_br_device_pixelmap_mem_copyDirty(br_device_pixelmap *self,
     return original__M_br_device_pixelmap_mem_copyDirty(self, src, dirty, num_rects);
 }
 
-static br_error(__stdcall*original__M_br_device_pixelmap_mem_copyToDirty)(br_device_pixelmap *, br_device_pixelmap *, br_rectangle *, br_int_32) = (br_error(__stdcall*)(br_device_pixelmap *, br_device_pixelmap *, br_rectangle *, br_int_32))0x004cba50;
+static br_error(__cdecl*original__M_br_device_pixelmap_mem_copyToDirty)(br_device_pixelmap *, br_device_pixelmap *, br_rectangle *, br_int_32) = (br_error(__cdecl*)(br_device_pixelmap *, br_device_pixelmap *, br_rectangle *, br_int_32))0x004cba50;
 CARM95_HOOK_FUNCTION(original__M_br_device_pixelmap_mem_copyToDirty, _M_br_device_pixelmap_mem_copyToDirty)
-br_error __stdcall _M_br_device_pixelmap_mem_copyToDirty(br_device_pixelmap *self, br_device_pixelmap *src, br_rectangle *dirty, br_int_32 num_rects) {
+br_error __cdecl _M_br_device_pixelmap_mem_copyToDirty(br_device_pixelmap *self, br_device_pixelmap *src, br_rectangle *dirty, br_int_32 num_rects) {
     LOG_TRACE("(%p, %p, %p, %d)", self, src, dirty, num_rects);
 
     (void)self;
@@ -263,9 +263,9 @@ br_error __stdcall _M_br_device_pixelmap_mem_copyToDirty(br_device_pixelmap *sel
     return original__M_br_device_pixelmap_mem_copyToDirty(self, src, dirty, num_rects);
 }
 
-static br_error(__stdcall*original__M_br_device_pixelmap_mem_copyFromDirty)(br_device_pixelmap *, br_device_pixelmap *, br_rectangle *, br_int_32) = (br_error(__stdcall*)(br_device_pixelmap *, br_device_pixelmap *, br_rectangle *, br_int_32))0x004cba60;
+static br_error(__cdecl*original__M_br_device_pixelmap_mem_copyFromDirty)(br_device_pixelmap *, br_device_pixelmap *, br_rectangle *, br_int_32) = (br_error(__cdecl*)(br_device_pixelmap *, br_device_pixelmap *, br_rectangle *, br_int_32))0x004cba60;
 CARM95_HOOK_FUNCTION(original__M_br_device_pixelmap_mem_copyFromDirty, _M_br_device_pixelmap_mem_copyFromDirty)
-br_error __stdcall _M_br_device_pixelmap_mem_copyFromDirty(br_device_pixelmap *self, br_device_pixelmap *src, br_rectangle *dirty, br_int_32 num_rects) {
+br_error __cdecl _M_br_device_pixelmap_mem_copyFromDirty(br_device_pixelmap *self, br_device_pixelmap *src, br_rectangle *dirty, br_int_32 num_rects) {
     LOG_TRACE("(%p, %p, %p, %d)", self, src, dirty, num_rects);
 
     (void)self;
@@ -276,9 +276,9 @@ br_error __stdcall _M_br_device_pixelmap_mem_copyFromDirty(br_device_pixelmap *s
     return original__M_br_device_pixelmap_mem_copyFromDirty(self, src, dirty, num_rects);
 }
 
-static br_error(__stdcall*original__M_br_device_pixelmap_mem_fillDirty)(br_device_pixelmap *, br_uint_32, br_rectangle *, br_int_32) = (br_error(__stdcall*)(br_device_pixelmap *, br_uint_32, br_rectangle *, br_int_32))0x004cba70;
+static br_error(__cdecl*original__M_br_device_pixelmap_mem_fillDirty)(br_device_pixelmap *, br_uint_32, br_rectangle *, br_int_32) = (br_error(__cdecl*)(br_device_pixelmap *, br_uint_32, br_rectangle *, br_int_32))0x004cba70;
 CARM95_HOOK_FUNCTION(original__M_br_device_pixelmap_mem_fillDirty, _M_br_device_pixelmap_mem_fillDirty)
-br_error __stdcall _M_br_device_pixelmap_mem_fillDirty(br_device_pixelmap *self, br_uint_32 colour, br_rectangle *dirty, br_int_32 num_rects) {
+br_error __cdecl _M_br_device_pixelmap_mem_fillDirty(br_device_pixelmap *self, br_uint_32 colour, br_rectangle *dirty, br_int_32 num_rects) {
     LOG_TRACE("(%p, %u, %p, %d)", self, colour, dirty, num_rects);
 
     (void)self;
@@ -289,9 +289,9 @@ br_error __stdcall _M_br_device_pixelmap_mem_fillDirty(br_device_pixelmap *self,
     return original__M_br_device_pixelmap_mem_fillDirty(self, colour, dirty, num_rects);
 }
 
-static br_error(__stdcall*original__M_br_device_pixelmap_mem_doubleBufferDirty)(br_device_pixelmap *, br_device_pixelmap *, br_rectangle *, br_int_32) = (br_error(__stdcall*)(br_device_pixelmap *, br_device_pixelmap *, br_rectangle *, br_int_32))0x004cba80;
+static br_error(__cdecl*original__M_br_device_pixelmap_mem_doubleBufferDirty)(br_device_pixelmap *, br_device_pixelmap *, br_rectangle *, br_int_32) = (br_error(__cdecl*)(br_device_pixelmap *, br_device_pixelmap *, br_rectangle *, br_int_32))0x004cba80;
 CARM95_HOOK_FUNCTION(original__M_br_device_pixelmap_mem_doubleBufferDirty, _M_br_device_pixelmap_mem_doubleBufferDirty)
-br_error __stdcall _M_br_device_pixelmap_mem_doubleBufferDirty(br_device_pixelmap *self, br_device_pixelmap *src, br_rectangle *dirty, br_int_32 num_rects) {
+br_error __cdecl _M_br_device_pixelmap_mem_doubleBufferDirty(br_device_pixelmap *self, br_device_pixelmap *src, br_rectangle *dirty, br_int_32 num_rects) {
     LOG_TRACE("(%p, %p, %p, %d)", self, src, dirty, num_rects);
 
     (void)self;
@@ -352,9 +352,9 @@ br_error __cdecl _M_br_device_pixelmap_mem_rectangleCopyFrom(br_device_pixelmap 
     return original__M_br_device_pixelmap_mem_rectangleCopyFrom(self, p, dest, r);
 }
 
-static br_error(__stdcall*original__M_br_device_pixelmap_mem_rectangleStretchCopyTo)(br_device_pixelmap *, br_rectangle *, br_device_pixelmap *, br_rectangle *) = (br_error(__stdcall*)(br_device_pixelmap *, br_rectangle *, br_device_pixelmap *, br_rectangle *))0x004cc010;
+static br_error(__cdecl*original__M_br_device_pixelmap_mem_rectangleStretchCopyTo)(br_device_pixelmap *, br_rectangle *, br_device_pixelmap *, br_rectangle *) = (br_error(__cdecl*)(br_device_pixelmap *, br_rectangle *, br_device_pixelmap *, br_rectangle *))0x004cc010;
 CARM95_HOOK_FUNCTION(original__M_br_device_pixelmap_mem_rectangleStretchCopyTo, _M_br_device_pixelmap_mem_rectangleStretchCopyTo)
-br_error __stdcall _M_br_device_pixelmap_mem_rectangleStretchCopyTo(br_device_pixelmap *self, br_rectangle *destinationRectangle, br_device_pixelmap *src, br_rectangle *sourceRectangle) {
+br_error __cdecl _M_br_device_pixelmap_mem_rectangleStretchCopyTo(br_device_pixelmap *self, br_rectangle *destinationRectangle, br_device_pixelmap *src, br_rectangle *sourceRectangle) {
     LOG_TRACE("(%p, %p, %p, %p)", self, destinationRectangle, src, sourceRectangle);
 
     (void)self;
@@ -365,9 +365,9 @@ br_error __stdcall _M_br_device_pixelmap_mem_rectangleStretchCopyTo(br_device_pi
     return original__M_br_device_pixelmap_mem_rectangleStretchCopyTo(self, destinationRectangle, src, sourceRectangle);
 }
 
-static br_error(__stdcall*original__M_br_device_pixelmap_mem_rectangleStretchCopyFrom)(br_device_pixelmap *, br_rectangle *, br_device_pixelmap *, br_rectangle *) = (br_error(__stdcall*)(br_device_pixelmap *, br_rectangle *, br_device_pixelmap *, br_rectangle *))0x004cc020;
+static br_error(__cdecl*original__M_br_device_pixelmap_mem_rectangleStretchCopyFrom)(br_device_pixelmap *, br_rectangle *, br_device_pixelmap *, br_rectangle *) = (br_error(__cdecl*)(br_device_pixelmap *, br_rectangle *, br_device_pixelmap *, br_rectangle *))0x004cc020;
 CARM95_HOOK_FUNCTION(original__M_br_device_pixelmap_mem_rectangleStretchCopyFrom, _M_br_device_pixelmap_mem_rectangleStretchCopyFrom)
-br_error __stdcall _M_br_device_pixelmap_mem_rectangleStretchCopyFrom(br_device_pixelmap *self, br_rectangle *d, br_device_pixelmap *src, br_rectangle *s) {
+br_error __cdecl _M_br_device_pixelmap_mem_rectangleStretchCopyFrom(br_device_pixelmap *self, br_rectangle *d, br_device_pixelmap *src, br_rectangle *s) {
     LOG_TRACE("(%p, %p, %p, %p)", self, d, src, s);
 
     (void)self;
@@ -546,7 +546,7 @@ br_error __cdecl _M_br_device_pixelmap_mem_originSet(br_device_pixelmap *self, b
     return original__M_br_device_pixelmap_mem_originSet(self, p);
 }
 
-br_error(__stdcall*_M_br_device_pixelmap_mem_rowSize)(br_device_pixelmap *, br_size_t *) = (br_error(__stdcall*)(br_device_pixelmap *, br_size_t *))0x004cda80;
+br_error(__cdecl*_M_br_device_pixelmap_mem_rowSize)(br_device_pixelmap *, br_size_t *) = (br_error(__cdecl*)(br_device_pixelmap *, br_size_t *))0x004cda80;
 br_error _M_br_device_pixelmap_mem_rowSize_do_not_use(br_device_pixelmap *self, br_size_t *sizep) {
     LOG_TRACE("(%p, %p)", self, sizep);
 
@@ -556,7 +556,7 @@ br_error _M_br_device_pixelmap_mem_rowSize_do_not_use(br_device_pixelmap *self, 
     NOT_IMPLEMENTED();
 }
 
-br_error(__stdcall*_M_br_device_pixelmap_mem_rowQuery)(br_device_pixelmap *, void *, br_size_t, br_int_32) = (br_error(__stdcall*)(br_device_pixelmap *, void *, br_size_t, br_int_32))0x004cdaa0;
+br_error(__cdecl*_M_br_device_pixelmap_mem_rowQuery)(br_device_pixelmap *, void *, br_size_t, br_int_32) = (br_error(__cdecl*)(br_device_pixelmap *, void *, br_size_t, br_int_32))0x004cdaa0;
 br_error _M_br_device_pixelmap_mem_rowQuery_do_not_use(br_device_pixelmap *self, void *buffer, br_size_t buffer_size, br_int_32 row) {
     LOG_TRACE("(%p, %p, %u, %d)", self, buffer, buffer_size, row);
 
@@ -568,7 +568,7 @@ br_error _M_br_device_pixelmap_mem_rowQuery_do_not_use(br_device_pixelmap *self,
     NOT_IMPLEMENTED();
 }
 
-br_error(__stdcall*_M_br_device_pixelmap_mem_rowSet)(br_device_pixelmap *, void *, br_size_t, br_int_32) = (br_error(__stdcall*)(br_device_pixelmap *, void *, br_size_t, br_int_32))0x004cda90;
+br_error(__cdecl*_M_br_device_pixelmap_mem_rowSet)(br_device_pixelmap *, void *, br_size_t, br_int_32) = (br_error(__cdecl*)(br_device_pixelmap *, void *, br_size_t, br_int_32))0x004cda90;
 br_error _M_br_device_pixelmap_mem_rowSet_do_not_use(br_device_pixelmap *self, void *buffer, br_size_t buffer_size, br_int_32 row) {
     LOG_TRACE("(%p, %p, %u, %d)", self, buffer, buffer_size, row);
 
@@ -580,7 +580,7 @@ br_error _M_br_device_pixelmap_mem_rowSet_do_not_use(br_device_pixelmap *self, v
     NOT_IMPLEMENTED();
 }
 
-br_error(__stdcall*_M_br_device_pixelmap_mem_flush)(struct br_device_pixelmap *) = (br_error(__stdcall*)(struct br_device_pixelmap *))0x004cdab0;
+br_error(__cdecl*_M_br_device_pixelmap_mem_flush)(struct br_device_pixelmap *) = (br_error(__cdecl*)(struct br_device_pixelmap *))0x004cdab0;
 br_error _M_br_device_pixelmap_mem_flush_do_not_use(struct br_device_pixelmap *self) {
     LOG_TRACE("(%p)", self);
 
@@ -589,7 +589,7 @@ br_error _M_br_device_pixelmap_mem_flush_do_not_use(struct br_device_pixelmap *s
     NOT_IMPLEMENTED();
 }
 
-br_error(__stdcall*_M_br_device_pixelmap_mem_synchronise)(struct br_device_pixelmap *, br_token, br_boolean) = (br_error(__stdcall*)(struct br_device_pixelmap *, br_token, br_boolean))0x004cdac0;
+br_error(__cdecl*_M_br_device_pixelmap_mem_synchronise)(struct br_device_pixelmap *, br_token, br_boolean) = (br_error(__cdecl*)(struct br_device_pixelmap *, br_token, br_boolean))0x004cdac0;
 br_error _M_br_device_pixelmap_mem_synchronise_do_not_use(struct br_device_pixelmap *self, br_token sync_type, br_boolean block) {
     LOG_TRACE("(%p, %d, %d)", self, sync_type, block);
 
@@ -600,7 +600,7 @@ br_error _M_br_device_pixelmap_mem_synchronise_do_not_use(struct br_device_pixel
     NOT_IMPLEMENTED();
 }
 
-br_error(__stdcall*_M_br_device_pixelmap_mem_directLock)(struct br_device_pixelmap *, br_boolean) = (br_error(__stdcall*)(struct br_device_pixelmap *, br_boolean))0x004cdad0;
+br_error(__cdecl*_M_br_device_pixelmap_mem_directLock)(struct br_device_pixelmap *, br_boolean) = (br_error(__cdecl*)(struct br_device_pixelmap *, br_boolean))0x004cdad0;
 br_error _M_br_device_pixelmap_mem_directLock_do_not_use(struct br_device_pixelmap *self, br_boolean block) {
     LOG_TRACE("(%p, %d)", self, block);
 
@@ -610,7 +610,7 @@ br_error _M_br_device_pixelmap_mem_directLock_do_not_use(struct br_device_pixelm
     NOT_IMPLEMENTED();
 }
 
-br_error(__stdcall*_M_br_device_pixelmap_mem_directUnlock)(struct br_device_pixelmap *) = (br_error(__stdcall*)(struct br_device_pixelmap *))0x004cdae0;
+br_error(__cdecl*_M_br_device_pixelmap_mem_directUnlock)(struct br_device_pixelmap *) = (br_error(__cdecl*)(struct br_device_pixelmap *))0x004cdae0;
 br_error _M_br_device_pixelmap_mem_directUnlock_do_not_use(struct br_device_pixelmap *self) {
     LOG_TRACE("(%p)", self);
 

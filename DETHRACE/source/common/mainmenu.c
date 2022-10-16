@@ -5,21 +5,15 @@
 #include "carm95_hooks.h"
 
  // Suffix added to avoid duplicate symbol
-#if 0
-char ** hookvar_gPalette_copy__mainmenu ;
-#endif
+char ** hookvar_gPalette_copy__mainmenu  = (void*)0x00536264;
  // Suffix added to avoid duplicate symbol
-#if 0
-int * hookvar_gPixel_buffer_size__mainmenu ;
-#endif
+int * hookvar_gPixel_buffer_size__mainmenu  = (void*)0x0053625c;
 tInterface_spec ** hookvar_gMain_menu_spec  = (void*)0x00536260;
  // Suffix added to avoid duplicate symbol
 int * hookvar_gMouse_was_started__mainmenu  = (void*)0x00536268;
 int * hookvar_gReplace_background  = (void*)0x0053626c;
  // Suffix added to avoid duplicate symbol
-#if 0
-char ** hookvar_gPixels_copy__mainmenu ;
-#endif
+char ** hookvar_gPixels_copy__mainmenu  = (void*)0x00536258;
 
 static int(__cdecl*original_MainMenuDone1)(int, int, int, int, int) = (int(__cdecl*)(int, int, int, int, int))0x0044ae90;
 CARM95_HOOK_FUNCTION(original_MainMenuDone1, MainMenuDone1)
@@ -49,11 +43,13 @@ int __cdecl MainMenuDone2(int pCurrent_choice, int pCurrent_mode, int pGo_ahead,
     return original_MainMenuDone2(pCurrent_choice, pCurrent_mode, pGo_ahead, pEscaped, pTimed_out);
 }
 
-void StartMainMenu() {
+static void(__cdecl*original_StartMainMenu)() = (void(__cdecl*)())0x0044b018;
+CARM95_HOOK_FUNCTION(original_StartMainMenu, StartMainMenu)
+void __cdecl StartMainMenu() {
     LOG_TRACE("()");
 
 
-    NOT_IMPLEMENTED();
+    original_StartMainMenu();
 }
 
 static int(__cdecl*original_DoMainMenuInterface)(tU32, int) = (int(__cdecl*)(tU32, int))0x0044b7cc;
@@ -102,14 +98,18 @@ tMM_result __cdecl GetMainMenuOption(tU32 pTime_out, int pContinue_allowed) {
     return original_GetMainMenuOption(pTime_out, pContinue_allowed);
 }
 
-void QuitVerifyStart() {
+static void(__cdecl*original_QuitVerifyStart)() = (void(__cdecl*)())0x0044b101;
+CARM95_HOOK_FUNCTION(original_QuitVerifyStart, QuitVerifyStart)
+void __cdecl QuitVerifyStart() {
     LOG_TRACE("()");
 
 
-    NOT_IMPLEMENTED();
+    original_QuitVerifyStart();
 }
 
-int QuitVerifyDone(int pCurrent_choice, int pCurrent_mode, int pGo_ahead, int pEscaped, int pTimed_out) {
+static int(__cdecl*original_QuitVerifyDone)(int, int, int, int, int) = (int(__cdecl*)(int, int, int, int, int))0x0044b192;
+CARM95_HOOK_FUNCTION(original_QuitVerifyDone, QuitVerifyDone)
+int __cdecl QuitVerifyDone(int pCurrent_choice, int pCurrent_mode, int pGo_ahead, int pEscaped, int pTimed_out) {
     LOG_TRACE("(%d, %d, %d, %d, %d)", pCurrent_choice, pCurrent_mode, pGo_ahead, pEscaped, pTimed_out);
 
     (void)pCurrent_choice;
@@ -118,7 +118,7 @@ int QuitVerifyDone(int pCurrent_choice, int pCurrent_mode, int pGo_ahead, int pE
     (void)pEscaped;
     (void)pTimed_out;
 
-    NOT_IMPLEMENTED();
+    return original_QuitVerifyDone(pCurrent_choice, pCurrent_mode, pGo_ahead, pEscaped, pTimed_out);
 }
 
 static int(__cdecl*original_DoVerifyQuit)(int) = (int(__cdecl*)(int))0x0044b25a;

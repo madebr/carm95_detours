@@ -49,9 +49,9 @@ void BrFatal_do_not_use(char *name, int line, char *s) {
     NOT_IMPLEMENTED();
 }
 
-static void(__stdcall*original__BrAssert)(char *, char *, unsigned int) = (void(__stdcall*)(char *, char *, unsigned int))0x004df1b0;
+static void(__cdecl*original__BrAssert)(char *, char *, unsigned int) = (void(__cdecl*)(char *, char *, unsigned int))0x004df1b0;
 CARM95_HOOK_FUNCTION(original__BrAssert, _BrAssert)
-void __stdcall _BrAssert(char *condition, char *file, unsigned int line) {
+void __cdecl _BrAssert(char *condition, char *file, unsigned int line) {
     LOG_TRACE("(\"%s\", \"%s\", %u)", condition, file, line);
 
     (void)condition;

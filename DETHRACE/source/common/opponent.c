@@ -846,14 +846,16 @@ void __cdecl ChooseNewObjective(tOpponent_spec *pOpponent_spec, int pMust_choose
     original_ChooseNewObjective(pOpponent_spec, pMust_choose_one);
 }
 
-void ProcessThisOpponent(tOpponent_spec *pOpponent_spec) {
+static void(__cdecl*original_ProcessThisOpponent)(tOpponent_spec *) = (void(__cdecl*)(tOpponent_spec *))0x00406458;
+CARM95_HOOK_FUNCTION(original_ProcessThisOpponent, ProcessThisOpponent)
+void __cdecl ProcessThisOpponent(tOpponent_spec *pOpponent_spec) {
     int i;
     LOG_TRACE("(%p)", pOpponent_spec);
 
     (void)pOpponent_spec;
     (void)i;
 
-    NOT_IMPLEMENTED();
+    original_ProcessThisOpponent(pOpponent_spec);
 }
 
 static int(__cdecl*original_IsNetCarActive)(br_vector3 *) = (int(__cdecl*)(br_vector3 *))0x004034b7;
@@ -2120,18 +2122,18 @@ void __cdecl DecreaseSectionMinSpeed() {
     original_DecreaseSectionMinSpeed();
 }
 
-static void(__fastcall*original_IncreaseSectionMaxSpeed)() = (void(__fastcall*)())0x00410aa8;
+static void(__cdecl*original_IncreaseSectionMaxSpeed)() = (void(__cdecl*)())0x00410aa8;
 CARM95_HOOK_FUNCTION(original_IncreaseSectionMaxSpeed, IncreaseSectionMaxSpeed)
-void __fastcall IncreaseSectionMaxSpeed() {
+void __cdecl IncreaseSectionMaxSpeed() {
     LOG_TRACE("()");
 
 
     original_IncreaseSectionMaxSpeed();
 }
 
-static void(__fastcall*original_DecreaseSectionMaxSpeed)() = (void(__fastcall*)())0x00410ad1;
+static void(__cdecl*original_DecreaseSectionMaxSpeed)() = (void(__cdecl*)())0x00410ad1;
 CARM95_HOOK_FUNCTION(original_DecreaseSectionMaxSpeed, DecreaseSectionMaxSpeed)
-void __fastcall DecreaseSectionMaxSpeed() {
+void __cdecl DecreaseSectionMaxSpeed() {
     LOG_TRACE("()");
 
 
@@ -2166,9 +2168,9 @@ void __cdecl ShowNodeInfo() {
     original_ShowNodeInfo();
 }
 
-static void(__fastcall*original_ShowSectionInfo1)() = (void(__fastcall*)())0x00410d28;
+static void(__cdecl*original_ShowSectionInfo1)() = (void(__cdecl*)())0x00410d28;
 CARM95_HOOK_FUNCTION(original_ShowSectionInfo1, ShowSectionInfo1)
-void __fastcall ShowSectionInfo1() {
+void __cdecl ShowSectionInfo1() {
     tS16 section_no;
     char str[256];
     br_scalar distance;
@@ -2185,9 +2187,9 @@ void __fastcall ShowSectionInfo1() {
     original_ShowSectionInfo1();
 }
 
-static void(__fastcall*original_ShowSectionInfo2)() = (void(__fastcall*)())0x00410e9b;
+static void(__cdecl*original_ShowSectionInfo2)() = (void(__cdecl*)())0x00410e9b;
 CARM95_HOOK_FUNCTION(original_ShowSectionInfo2, ShowSectionInfo2)
-void __fastcall ShowSectionInfo2() {
+void __cdecl ShowSectionInfo2() {
     tS16 section_no;
     char str[256];
     br_scalar distance;
@@ -2219,9 +2221,9 @@ void DeleteOppoPathSection() {
     NOT_IMPLEMENTED();
 }
 
-static void(__fastcall*original_DeleteOppoPathNodeAndSections)() = (void(__fastcall*)())0x00411124;
+static void(__cdecl*original_DeleteOppoPathNodeAndSections)() = (void(__cdecl*)())0x00411124;
 CARM95_HOOK_FUNCTION(original_DeleteOppoPathNodeAndSections, DeleteOppoPathNodeAndSections)
-void __fastcall DeleteOppoPathNodeAndSections() {
+void __cdecl DeleteOppoPathNodeAndSections() {
     br_scalar distance;
     tS16 node_no;
     LOG_TRACE("()");
@@ -2245,9 +2247,9 @@ void __cdecl DeleteOppoPathNodeAndJoin() {
     original_DeleteOppoPathNodeAndJoin();
 }
 
-static void(__fastcall*original_ReverseSectionDirection)() = (void(__fastcall*)())0x004114dd;
+static void(__cdecl*original_ReverseSectionDirection)() = (void(__cdecl*)())0x004114dd;
 CARM95_HOOK_FUNCTION(original_ReverseSectionDirection, ReverseSectionDirection)
-void __fastcall ReverseSectionDirection() {
+void __cdecl ReverseSectionDirection() {
     tS16 temp;
     tU8 speed_temp;
     br_scalar distance;
@@ -2266,9 +2268,9 @@ void __fastcall ReverseSectionDirection() {
     original_ReverseSectionDirection();
 }
 
-static void(__fastcall*original_CycleSectionType)() = (void(__fastcall*)())0x0041169c;
+static void(__cdecl*original_CycleSectionType)() = (void(__cdecl*)())0x0041169c;
 CARM95_HOOK_FUNCTION(original_CycleSectionType, CycleSectionType)
-void __fastcall CycleSectionType() {
+void __cdecl CycleSectionType() {
     br_scalar distance;
     br_vector3 intersect;
     br_vector3 direction_v;
@@ -2285,9 +2287,9 @@ void __fastcall CycleSectionType() {
     original_CycleSectionType();
 }
 
-static void(__fastcall*original_ToggleOneWayNess)() = (void(__fastcall*)())0x004117ee;
+static void(__cdecl*original_ToggleOneWayNess)() = (void(__cdecl*)())0x004117ee;
 CARM95_HOOK_FUNCTION(original_ToggleOneWayNess, ToggleOneWayNess)
-void __fastcall ToggleOneWayNess() {
+void __cdecl ToggleOneWayNess() {
     br_scalar distance;
     br_vector3 intersect;
     br_vector3 direction_v;
@@ -2302,9 +2304,9 @@ void __fastcall ToggleOneWayNess() {
     original_ToggleOneWayNess();
 }
 
-static void(__fastcall*original_CopStartPointInfo)() = (void(__fastcall*)())0x00411947;
+static void(__cdecl*original_CopStartPointInfo)() = (void(__cdecl*)())0x00411947;
 CARM95_HOOK_FUNCTION(original_CopStartPointInfo, CopStartPointInfo)
-void __fastcall CopStartPointInfo() {
+void __cdecl CopStartPointInfo() {
     char str[256];
     int i;
     int closest;
@@ -2334,9 +2336,9 @@ void __cdecl DropCopStartPoint() {
     original_DropCopStartPoint();
 }
 
-static void(__fastcall*original_DeleteCopStartPoint)() = (void(__fastcall*)())0x00411c18;
+static void(__cdecl*original_DeleteCopStartPoint)() = (void(__cdecl*)())0x00411c18;
 CARM95_HOOK_FUNCTION(original_DeleteCopStartPoint, DeleteCopStartPoint)
-void __fastcall DeleteCopStartPoint() {
+void __cdecl DeleteCopStartPoint() {
     char str[256];
     int i;
     int closest;

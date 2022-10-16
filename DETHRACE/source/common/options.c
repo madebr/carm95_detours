@@ -353,9 +353,9 @@ void __cdecl DoGraphicsOptions() {
     original_DoGraphicsOptions();
 }
 
-static void(__fastcall*original_CalibrateJoysticks)() = (void(__fastcall*)())0x0049bf81;
+static void(__cdecl*original_CalibrateJoysticks)() = (void(__cdecl*)())0x0049bf81;
 CARM95_HOOK_FUNCTION(original_CalibrateJoysticks, CalibrateJoysticks)
-void __fastcall CalibrateJoysticks() {
+void __cdecl CalibrateJoysticks() {
     tJoy_calib_stage stage;
     int escaped;
     int joy_value_x;

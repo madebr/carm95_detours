@@ -24,11 +24,11 @@ extern tU32 * hookvar_gQuite_wild_start ; // addr: 00514D3C
 extern tU32 * hookvar_gQuite_wild_end ; // addr: 00514D40
 extern tU32 * hookvar_gOn_me_wheels_start ; // addr: 00514D44
 extern int * hookvar_gWoz_upside_down_at_all ; // addr: 00514D48
-// extern tS3_sound_tag(* hookvar_gSkid_tag )[2];
-// extern tCar_spec *(* hookvar_gLast_car_to_skid )[2];
+extern tS3_sound_tag(* hookvar_gSkid_tag )[2]; // addr: 00514D50
+extern tCar_spec *(* hookvar_gLast_car_to_skid )[2]; // addr: 00514D58
 extern int * hookvar_gEliminate_faces ; // addr: 00514D60
 extern br_vector3 * hookvar_gZero_v__car ; // addr: 00514D68 // suffix added to avoid duplicate symbol
-// extern tU32 * hookvar_gSwitch_time ;
+extern tU32 * hookvar_gSwitch_time ; // addr: 00514D74
 // extern tSave_camera(* hookvar_gSave_camera )[2];
 extern tU32 * hookvar_gLast_mechanics_time ; // addr: 00514D90
 extern int * hookvar_gOpponent_viewing_mode ; // addr: 00514D94
@@ -132,7 +132,7 @@ void __cdecl ResetOldmat();
 
 void __cdecl GetNonCars();
 
-void GetNetPos(tCar_spec *pCar);
+void __cdecl GetNetPos(tCar_spec *pCar);
 
 void __cdecl ApplyPhysicsToCars(tU32 last_frame_time, tU32 pTime_difference);
 
@@ -262,7 +262,7 @@ tCar_spec* __cdecl GetRaceLeader();
 
 void __cdecl AmIGettingBoredWatchingCameraSpin();
 
-void __fastcall ViewNetPlayer();
+void __cdecl ViewNetPlayer();
 
 void __cdecl ViewOpponent();
 
@@ -318,7 +318,7 @@ int __cdecl BoundsTest(br_bounds *bnds, br_vector3 *p);
 
 int __cdecl CollideCameraWithOtherCars(br_vector3 *car_pos, br_vector3 *cam_pos);
 
-void __fastcall InitialiseExternalCamera();
+void __cdecl InitialiseExternalCamera();
 
 void __cdecl FreezeCamera();
 

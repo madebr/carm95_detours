@@ -47,9 +47,7 @@ tS3_outlet_ptr * hookvar_gMusic_outlet  = (void*)0x005149a8;
 #if 0
 tS3_sound_id * hookvar_gMIDI_id ;
 #endif
-#if 0
-tS3_outlet_ptr(* hookvar_gIndexed_outlets )[6];
-#endif
+tS3_outlet_ptr(* hookvar_gIndexed_outlets )[6] = (void*)0x00550a20;
 #if 0
 tU32 * hookvar_gLast_sound_service ;
 #endif
@@ -408,9 +406,9 @@ tS3_sound_tag __cdecl DRS3StartSoundFromSource(tS3_sound_source_ptr pSource, tS3
     return original_DRS3StartSoundFromSource(pSource, pSound);
 }
 
-static void(__fastcall*original_MungeEngineNoise)() = (void(__fastcall*)())0x00465090;
+static void(__cdecl*original_MungeEngineNoise)() = (void(__cdecl*)())0x00465090;
 CARM95_HOOK_FUNCTION(original_MungeEngineNoise, MungeEngineNoise)
-void __fastcall MungeEngineNoise() {
+void __cdecl MungeEngineNoise() {
     tCar_spec *the_car;
     tU32 pitch;
     int vol;

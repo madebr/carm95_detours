@@ -6,9 +6,9 @@
 
 br_boolean * hookvar_active  = (void*)0x005289b0;
 
-static br_error(__stdcall*original_BrBegin)() = (br_error(__stdcall*)())0x004e6260;
+static br_error(__cdecl*original_BrBegin)() = (br_error(__cdecl*)())0x004e6260;
 CARM95_HOOK_FUNCTION(original_BrBegin, BrBegin)
-br_error __stdcall BrBegin() {
+br_error __cdecl BrBegin() {
     LOG_TRACE("()");
 
 

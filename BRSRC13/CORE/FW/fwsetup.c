@@ -16,9 +16,9 @@ void *(* hookvar_functionPointers_BRCORE1 )[185] = (void*)0x00526618;
 br_image * hookvar_Image_BRCORE1  = (void*)0x00526900;
 br_framework_state * hookvar_fw  = (void*)0x00552610;
 
-static br_error(__stdcall*original_BrFwBegin)() = (br_error(__stdcall*)())0x004dfc20;
+static br_error(__cdecl*original_BrFwBegin)() = (br_error(__cdecl*)())0x004dfc20;
 CARM95_HOOK_FUNCTION(original_BrFwBegin, BrFwBegin)
-br_error __stdcall BrFwBegin() {
+br_error __cdecl BrFwBegin() {
     int i;
     LOG_TRACE("()");
 
@@ -27,9 +27,9 @@ br_error __stdcall BrFwBegin() {
     return original_BrFwBegin();
 }
 
-static br_error(__stdcall*original_BrFwEnd)() = (br_error(__stdcall*)())0x004dfd20;
+static br_error(__cdecl*original_BrFwEnd)() = (br_error(__cdecl*)())0x004dfd20;
 CARM95_HOOK_FUNCTION(original_BrFwEnd, BrFwEnd)
-br_error __stdcall BrFwEnd() {
+br_error __cdecl BrFwEnd() {
     LOG_TRACE("()");
 
 

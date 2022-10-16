@@ -5,9 +5,9 @@
 #include "carm95_hooks.h"
 
 
-static br_error(__stdcall*original_BrLastErrorGet)(void **) = (br_error(__stdcall*)(void **))0x004e7850;
+static br_error(__cdecl*original_BrLastErrorGet)(void **) = (br_error(__cdecl*)(void **))0x004e7850;
 CARM95_HOOK_FUNCTION(original_BrLastErrorGet, BrLastErrorGet)
-br_error __stdcall BrLastErrorGet(void **valuep) {
+br_error __cdecl BrLastErrorGet(void **valuep) {
     LOG_TRACE("(%p)", valuep);
 
     (void)valuep;

@@ -402,7 +402,7 @@ void DumpObject(br_object *h, char *prefix, char *info, br_putline_cbfn *putline
     NOT_IMPLEMENTED();
 }
 
-void(__stdcall*BrTokenValueDump)(br_token_value *, char *, br_putline_cbfn *, void *) = (void(__stdcall*)(br_token_value *, char *, br_putline_cbfn *, void *))0x004e4ce0;
+void(__cdecl*BrTokenValueDump)(br_token_value *, char *, br_putline_cbfn *, void *) = (void(__cdecl*)(br_token_value *, char *, br_putline_cbfn *, void *))0x004e4ce0;
 void BrTokenValueDump_do_not_use(br_token_value *tv, char *prefix, br_putline_cbfn *putline, void *arg) {
     char *id;
     char value[128];

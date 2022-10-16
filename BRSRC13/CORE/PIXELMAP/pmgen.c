@@ -5,7 +5,7 @@
 #include "carm95_hooks.h"
 
 
-br_error(__stdcall*_M_br_device_pixelmap_gen_match)(br_device_pixelmap *, br_device_pixelmap **, br_token_value *) = (br_error(__stdcall*)(br_device_pixelmap *, br_device_pixelmap **, br_token_value *))0x004cdb20;
+br_error(__cdecl*_M_br_device_pixelmap_gen_match)(br_device_pixelmap *, br_device_pixelmap **, br_token_value *) = (br_error(__cdecl*)(br_device_pixelmap *, br_device_pixelmap **, br_token_value *))0x004cdb20;
 br_error _M_br_device_pixelmap_gen_match_do_not_use(br_device_pixelmap *self, br_device_pixelmap **newpm, br_token_value *tv) {
     LOG_TRACE("(%p, %p, %p)", self, newpm, tv);
 
@@ -342,7 +342,7 @@ br_error __cdecl _M_br_device_pixelmap_gen_copyBits(br_device_pixelmap *self, br
     return original__M_br_device_pixelmap_gen_copyBits(self, point, src, s_stride, bit_rect, colour);
 }
 
-br_error(__stdcall*_M_br_device_pixelmap_gen_flush)(struct br_device_pixelmap *) = (br_error(__stdcall*)(struct br_device_pixelmap *))0x004cf2b0;
+br_error(__cdecl*_M_br_device_pixelmap_gen_flush)(struct br_device_pixelmap *) = (br_error(__cdecl*)(struct br_device_pixelmap *))0x004cf2b0;
 br_error _M_br_device_pixelmap_gen_flush_do_not_use(struct br_device_pixelmap *self) {
     LOG_TRACE("(%p)", self);
 
@@ -351,7 +351,7 @@ br_error _M_br_device_pixelmap_gen_flush_do_not_use(struct br_device_pixelmap *s
     NOT_IMPLEMENTED();
 }
 
-br_error(__stdcall*_M_br_device_pixelmap_gen_synchronise)(struct br_device_pixelmap *, br_token, br_boolean) = (br_error(__stdcall*)(struct br_device_pixelmap *, br_token, br_boolean))0x004cf2c0;
+br_error(__cdecl*_M_br_device_pixelmap_gen_synchronise)(struct br_device_pixelmap *, br_token, br_boolean) = (br_error(__cdecl*)(struct br_device_pixelmap *, br_token, br_boolean))0x004cf2c0;
 br_error _M_br_device_pixelmap_gen_synchronise_do_not_use(struct br_device_pixelmap *self, br_token sync_type, br_boolean block) {
     LOG_TRACE("(%p, %d, %d)", self, sync_type, block);
 
@@ -362,7 +362,7 @@ br_error _M_br_device_pixelmap_gen_synchronise_do_not_use(struct br_device_pixel
     NOT_IMPLEMENTED();
 }
 
-br_error(__stdcall*_M_br_device_pixelmap_gen_directLock)(br_device_pixelmap *, br_boolean) = (br_error(__stdcall*)(br_device_pixelmap *, br_boolean))0x004cf2d0;
+br_error(__cdecl*_M_br_device_pixelmap_gen_directLock)(br_device_pixelmap *, br_boolean) = (br_error(__cdecl*)(br_device_pixelmap *, br_boolean))0x004cf2d0;
 br_error _M_br_device_pixelmap_gen_directLock_do_not_use(br_device_pixelmap *self, br_boolean block) {
     LOG_TRACE("(%p, %d)", self, block);
 
@@ -372,7 +372,7 @@ br_error _M_br_device_pixelmap_gen_directLock_do_not_use(br_device_pixelmap *sel
     NOT_IMPLEMENTED();
 }
 
-br_error(__stdcall*_M_br_device_pixelmap_gen_directUnlock)(br_device_pixelmap *) = (br_error(__stdcall*)(br_device_pixelmap *))0x004cf2e0;
+br_error(__cdecl*_M_br_device_pixelmap_gen_directUnlock)(br_device_pixelmap *) = (br_error(__cdecl*)(br_device_pixelmap *))0x004cf2e0;
 br_error _M_br_device_pixelmap_gen_directUnlock_do_not_use(br_device_pixelmap *self) {
     LOG_TRACE("(%p)", self);
 

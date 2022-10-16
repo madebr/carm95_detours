@@ -232,9 +232,9 @@ void __cdecl BrZbSceneRenderAdd(br_actor *tree) {
     original_BrZbSceneRenderAdd(tree);
 }
 
-static void(__stdcall*original_BrZbSceneRenderEnd)() = (void(__stdcall*)())0x004da630;
+static void(__cdecl*original_BrZbSceneRenderEnd)() = (void(__cdecl*)())0x004da630;
 CARM95_HOOK_FUNCTION(original_BrZbSceneRenderEnd, BrZbSceneRenderEnd)
-void __stdcall BrZbSceneRenderEnd() {
+void __cdecl BrZbSceneRenderEnd() {
     LOG_TRACE("()");
 
 
@@ -280,9 +280,9 @@ void __cdecl BrZsSceneRenderAdd(br_actor *tree) {
     original_BrZsSceneRenderAdd(tree);
 }
 
-static void(__stdcall*original_BrZsSceneRenderEnd)() = (void(__stdcall*)())0x004daa5b;
+static void(__cdecl*original_BrZsSceneRenderEnd)() = (void(__cdecl*)())0x004daa5b;
 CARM95_HOOK_FUNCTION(original_BrZsSceneRenderEnd, BrZsSceneRenderEnd)
-void __stdcall BrZsSceneRenderEnd() {
+void __cdecl BrZsSceneRenderEnd() {
     LOG_TRACE("()");
 
 

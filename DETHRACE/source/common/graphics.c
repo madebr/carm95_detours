@@ -412,18 +412,18 @@ void __cdecl AdjustRenderScreenSize() {
     original_AdjustRenderScreenSize();
 }
 
-static void(__fastcall*original_ScreenSmaller)() = (void(__fastcall*)())0x004b39f4;
+static void(__cdecl*original_ScreenSmaller)() = (void(__cdecl*)())0x004b39f4;
 CARM95_HOOK_FUNCTION(original_ScreenSmaller, ScreenSmaller)
-void __fastcall ScreenSmaller() {
+void __cdecl ScreenSmaller() {
     LOG_TRACE("()");
 
 
     original_ScreenSmaller();
 }
 
-static void(__fastcall*original_ScreenLarger)() = (void(__fastcall*)())0x004b3a40;
+static void(__cdecl*original_ScreenLarger)() = (void(__cdecl*)())0x004b3a40;
 CARM95_HOOK_FUNCTION(original_ScreenLarger, ScreenLarger)
-void __fastcall ScreenLarger() {
+void __cdecl ScreenLarger() {
     LOG_TRACE("()");
 
 
@@ -1134,9 +1134,9 @@ void __cdecl SetFadedPalette(int pDegree) {
     original_SetFadedPalette(pDegree);
 }
 
-static void(__fastcall*original_FadePaletteDown)() = (void(__fastcall*)())0x004b7a98;
+static void(__cdecl*original_FadePaletteDown)() = (void(__cdecl*)())0x004b7a98;
 CARM95_HOOK_FUNCTION(original_FadePaletteDown, FadePaletteDown)
-void __fastcall FadePaletteDown() {
+void __cdecl FadePaletteDown() {
     int i;
     int start_time;
     int the_time;

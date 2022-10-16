@@ -69,7 +69,7 @@ void __cdecl DrawGraphBox(int pCurrent_choice, int pCurrent_mode);
 
 void __cdecl DoGraphicsOptions();
 
-void __fastcall CalibrateJoysticks();
+void __cdecl CalibrateJoysticks();
 
 void __cdecl StripControls(unsigned char *pStr);
 

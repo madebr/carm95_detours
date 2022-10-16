@@ -4,7 +4,7 @@
 #include "br_types.h"
 
 
-br_error __stdcall BrLastErrorGet(void **valuep);
+br_error __cdecl BrLastErrorGet(void **valuep);
 
 void __cdecl BrLastErrorSet(br_error type, void *value);
 

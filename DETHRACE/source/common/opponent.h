@@ -154,7 +154,7 @@ void __cdecl TeleportOpponentToNearestSafeLocation(tOpponent_spec *pOpponent_spe
 
 void __cdecl ChooseNewObjective(tOpponent_spec *pOpponent_spec, int pMust_choose_one);
 
-void ProcessThisOpponent(tOpponent_spec *pOpponent_spec);
+void __cdecl ProcessThisOpponent(tOpponent_spec *pOpponent_spec);
 
 int __cdecl IsNetCarActive(br_vector3 *pPoint);
 
@@ -314,35 +314,35 @@ void __cdecl IncreaseSectionMinSpeed();
 
 void __cdecl DecreaseSectionMinSpeed();
 
-void __fastcall IncreaseSectionMaxSpeed();
+void __cdecl IncreaseSectionMaxSpeed();
 
-void __fastcall DecreaseSectionMaxSpeed();
+void __cdecl DecreaseSectionMaxSpeed();
 
 void __cdecl PullOppoPoint();
 
 void __cdecl ShowNodeInfo();
 
-void __fastcall ShowSectionInfo1();
+void __cdecl ShowSectionInfo1();
 
-void __fastcall ShowSectionInfo2();
+void __cdecl ShowSectionInfo2();
 
 void DeleteOppoPathSection();
 
-void __fastcall DeleteOppoPathNodeAndSections();
+void __cdecl DeleteOppoPathNodeAndSections();
 
 void __cdecl DeleteOppoPathNodeAndJoin();
 
-void __fastcall ReverseSectionDirection();
+void __cdecl ReverseSectionDirection();
 
-void __fastcall CycleSectionType();
+void __cdecl CycleSectionType();
 
-void __fastcall ToggleOneWayNess();
+void __cdecl ToggleOneWayNess();
 
-void __fastcall CopStartPointInfo();
+void __cdecl CopStartPointInfo();
 
 void __cdecl DropCopStartPoint();
 
-void __fastcall DeleteCopStartPoint();
+void __cdecl DeleteCopStartPoint();
 
 void __cdecl CycleCopStartPointType();
 

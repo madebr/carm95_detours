@@ -101,9 +101,9 @@ br_int_32 __cdecl BrTokenFindMany(char *pattern, br_token *tokens, br_int_32 max
     return original_BrTokenFindMany(pattern, tokens, max_tokens);
 }
 
-static br_token(__cdecl*original_BrTokenFindType)(br_token *, char *, br_token *, br_int_32) = (br_token(__cdecl*)(br_token *, char *, br_token *, br_int_32))0x004e6c70;
+static br_token(__stdcall*original_BrTokenFindType)(br_token *, char *, br_token *, br_int_32) = (br_token(__stdcall*)(br_token *, char *, br_token *, br_int_32))0x004e6c70;
 CARM95_HOOK_FUNCTION(original_BrTokenFindType, BrTokenFindType)
-br_token __cdecl BrTokenFindType(br_token *ptype, char *base, br_token *types, br_int_32 ntypes) {
+br_token __stdcall BrTokenFindType(br_token *ptype, char *base, br_token *types, br_int_32 ntypes) {
     br_token_entry *te;
     int l;
     int t;

@@ -5,9 +5,9 @@
 #include "carm95_hooks.h"
 
 
-static char *(__stdcall*original_HostDefaultDevice)() = (char *(__stdcall*)())0x005013c0;
+static char *(__cdecl*original_HostDefaultDevice)() = (char *(__cdecl*)())0x005013c0;
 CARM95_HOOK_FUNCTION(original_HostDefaultDevice, HostDefaultDevice)
-char* __stdcall HostDefaultDevice() {
+char* __cdecl HostDefaultDevice() {
     LOG_TRACE("()");
 
 
