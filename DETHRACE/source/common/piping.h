@@ -266,7 +266,7 @@ int __cdecl UndoPipedSession(tU8 **pPtr);
 
 tU32 __cdecl FindPrevFrameTime(tU8 *pPtr);
 
-void __cdecl ScanBuffer(tU8 **pPtr, tPipe_chunk_type pType, tU32 pDefault_time, int(**pCall_back)(tPipe_chunk *, int, tU32), int(**pTime_check)(tU32));
+void __cdecl ScanBuffer(tU8 **pPtr, tPipe_chunk_type pType, tU32 pDefault_time, int(*pCall_back)(tPipe_chunk *, int, tU32), int(*pTime_check)(tU32));
 
 int __cdecl CheckSound(tPipe_chunk *pChunk_ptr, int pChunk_count, tU32 pTime);
 
