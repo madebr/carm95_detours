@@ -2817,8 +2817,7 @@ int __cdecl OriginalCarmaCDinDrive() {
 
 
     if (function_hook_state_OriginalCarmaCDinDrive == HOOK_ENABLED) {
-        assert(0 && "OriginalCarmaCDinDrive not implemented.");
-        abort();
+        return 1;
     } else {
         return original_OriginalCarmaCDinDrive();
     }
