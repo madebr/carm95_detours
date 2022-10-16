@@ -2692,7 +2692,7 @@ int TestForOriginalCarmaCDinDrive() {
     }
 }
 
-function_hook_state_t function_hook_state_OriginalCarmaCDinDrive = HOOK_UNAVAILABLE;
+function_hook_state_t function_hook_state_OriginalCarmaCDinDrive = HOOK_ENABLED;
 static int(__cdecl*original_OriginalCarmaCDinDrive)() = (int(__cdecl*)())0x00427158;
 CARM95_HOOK_FUNCTION(original_OriginalCarmaCDinDrive, OriginalCarmaCDinDrive)
 int __cdecl OriginalCarmaCDinDrive() {
@@ -2700,8 +2700,7 @@ int __cdecl OriginalCarmaCDinDrive() {
 
 
     if (function_hook_state_OriginalCarmaCDinDrive == HOOK_ENABLED) {
-        assert(0 && "OriginalCarmaCDinDrive not implemented.");
-        abort();
+        return 1;
     } else {
         return original_OriginalCarmaCDinDrive();
     }
