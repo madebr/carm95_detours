@@ -1,33 +1,18 @@
-
 cmake_minimum_required(VERSION 3.15)
 project(carm95hooks C CXX)
+
+if(EXISTS "${CMAKE_BINARY_DIR}/conanbuildinfo.cmake")
+    include("${CMAKE_BINARY_DIR}/conanbuildinfo.cmake")
+    conan_basic_setup(TARGETS)
+endif()
+
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake")
 
 include(TestBigEndian)
 
 test_big_endian(IS_BIG_ENDIAN)
 
-include(FetchContent)
-FetchContent_Declare(
-  Detours
-  GIT_REPOSITORY https://github.com/microsoft/detours.git
-  GIT_TAG        734ac64899c44933151c1335f6ef54a590219221
-)
-FetchContent_Populate(Detours)
-file(GLOB DETOURS_SOURCES "${detours_SOURCE_DIR}/src/*.cpp")
-list(REMOVE_ITEM DETOURS_SOURCES
-    "${detours_SOURCE_DIR}/src/uimports.cpp"
-)
-file(GLOB DETOURS_HEADERS "${detours_SOURCE_DIR}/src/*.h")
-add_library(detours STATIC ${DETOURS_SOURCES} ${DETOURS_HEADERS})
-target_include_directories(detours INTERFACE "$<BUILD_INTERFACE:${detours_SOURCE_DIR}/src>")
-set_target_properties(detours
-    PROPERTIES
-        MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>"
-)
-if(MINGW)
-    target_compile_options(detours PRIVATE -w)
-endif()
-add_library(Detours::Detours ALIAS detours)
+find_package(Detours REQUIRED)
 
 add_library(carm95hooks SHARED
     hookmain.cpp
