@@ -8,7 +8,7 @@
 
 namespace fs = std::filesystem;
 
-int CDECL main()
+int CDECL main(int argc, char* argv[])
 {
 #if 0
     auto workPathDir = fs::current_path();
@@ -56,10 +56,10 @@ int CDECL main()
     si.cb = sizeof(si);
 
     command = victimPath;
-#if defined(ARGUMENTS)
-    command += " ";
-    command += ARGUMENTS;
-#endif
+    for (int i = 1; i < argc; i++) {
+        command += " ";
+        command += argv[i];
+    }
     char* commandBuffer = new char[command.size() + 1];
     command.copy(commandBuffer, command.size());
     commandBuffer[command.size()] = '\0';
