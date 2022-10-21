@@ -4,8 +4,12 @@
 
 #include "carm95_hooks.h"
 
+#include "carm95_webserver.h"
+
+#include <assert.h>
 int * hookvar_gLast_demo  = (void*)0x00512080;
 
+function_hook_state_t function_hook_state_DoDemo = HOOK_UNAVAILABLE;
 static void(__cdecl*original_DoDemo)() = (void(__cdecl*)())0x00461110;
 CARM95_HOOK_FUNCTION(original_DoDemo, DoDemo)
 void __cdecl DoDemo() {
@@ -30,6 +34,11 @@ void __cdecl DoDemo() {
     (void)str;
     (void)song_tag;
 
-    original_DoDemo();
+    if (function_hook_state_DoDemo == HOOK_ENABLED) {
+        assert(0 && "DoDemo not implemented.");
+        abort();
+    } else {
+        original_DoDemo();
+    }
 }
 

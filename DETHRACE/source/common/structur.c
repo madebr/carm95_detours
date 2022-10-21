@@ -4,6 +4,9 @@
 
 #include "carm95_hooks.h"
 
+#include "carm95_webserver.h"
+
+#include <assert.h>
 int * hookvar_gLast_wrong_checkpoint  = (void*)0x00509a60;
  // Suffix added to avoid duplicate symbol
 int * hookvar_gMirror_on__structur  = (void*)0x00509a64;
@@ -13,6 +16,7 @@ int(* hookvar_gOpponent_mix )[10][5] = (void*)0x00509a70;
 tU32 * hookvar_gLast_checkpoint_time  = (void*)0x00509b38;
 tRace_over_reason * hookvar_gRace_over_reason  = (void*)0x00551dbc;
 
+function_hook_state_t function_hook_state_NumberOfOpponentsLeft = HOOK_UNAVAILABLE;
 static int(__cdecl*original_NumberOfOpponentsLeft)() = (int(__cdecl*)())0x00413f90;
 CARM95_HOOK_FUNCTION(original_NumberOfOpponentsLeft, NumberOfOpponentsLeft)
 int __cdecl NumberOfOpponentsLeft() {
@@ -27,9 +31,15 @@ int __cdecl NumberOfOpponentsLeft() {
     (void)result;
     (void)the_car;
 
-    return original_NumberOfOpponentsLeft();
+    if (function_hook_state_NumberOfOpponentsLeft == HOOK_ENABLED) {
+        assert(0 && "NumberOfOpponentsLeft not implemented.");
+        abort();
+    } else {
+        return original_NumberOfOpponentsLeft();
+    }
 }
 
+function_hook_state_t function_hook_state_RaceCompleted = HOOK_UNAVAILABLE;
 static void(__cdecl*original_RaceCompleted)(tRace_over_reason) = (void(__cdecl*)(tRace_over_reason))0x00413ffe;
 CARM95_HOOK_FUNCTION(original_RaceCompleted, RaceCompleted)
 void __cdecl RaceCompleted(tRace_over_reason pReason) {
@@ -37,9 +47,15 @@ void __cdecl RaceCompleted(tRace_over_reason pReason) {
 
     (void)pReason;
 
-    original_RaceCompleted(pReason);
+    if (function_hook_state_RaceCompleted == HOOK_ENABLED) {
+        assert(0 && "RaceCompleted not implemented.");
+        abort();
+    } else {
+        original_RaceCompleted(pReason);
+    }
 }
 
+function_hook_state_t function_hook_state_Checkpoint = HOOK_UNAVAILABLE;
 static void(__cdecl*original_Checkpoint)(int, int) = (void(__cdecl*)(int, int))0x004141ca;
 CARM95_HOOK_FUNCTION(original_Checkpoint, Checkpoint)
 void __cdecl Checkpoint(int pCheckpoint_index, int pDo_sound) {
@@ -48,9 +64,15 @@ void __cdecl Checkpoint(int pCheckpoint_index, int pDo_sound) {
     (void)pCheckpoint_index;
     (void)pDo_sound;
 
-    original_Checkpoint(pCheckpoint_index, pDo_sound);
+    if (function_hook_state_Checkpoint == HOOK_ENABLED) {
+        assert(0 && "Checkpoint not implemented.");
+        abort();
+    } else {
+        original_Checkpoint(pCheckpoint_index, pDo_sound);
+    }
 }
 
+function_hook_state_t function_hook_state_IncrementCheckpoint = HOOK_UNAVAILABLE;
 static void(__cdecl*original_IncrementCheckpoint)() = (void(__cdecl*)())0x00414206;
 CARM95_HOOK_FUNCTION(original_IncrementCheckpoint, IncrementCheckpoint)
 void __cdecl IncrementCheckpoint() {
@@ -59,9 +81,15 @@ void __cdecl IncrementCheckpoint() {
 
     (void)done_voice;
 
-    original_IncrementCheckpoint();
+    if (function_hook_state_IncrementCheckpoint == HOOK_ENABLED) {
+        assert(0 && "IncrementCheckpoint not implemented.");
+        abort();
+    } else {
+        original_IncrementCheckpoint();
+    }
 }
 
+function_hook_state_t function_hook_state_IncrementLap = HOOK_UNAVAILABLE;
 static void(__cdecl*original_IncrementLap)() = (void(__cdecl*)())0x0041433c;
 CARM95_HOOK_FUNCTION(original_IncrementLap, IncrementLap)
 void __cdecl IncrementLap() {
@@ -70,9 +98,15 @@ void __cdecl IncrementLap() {
 
     (void)i;
 
-    original_IncrementLap();
+    if (function_hook_state_IncrementLap == HOOK_ENABLED) {
+        assert(0 && "IncrementLap not implemented.");
+        abort();
+    } else {
+        original_IncrementLap();
+    }
 }
 
+function_hook_state_t function_hook_state_RayHitFace = HOOK_UNAVAILABLE;
 static int(__cdecl*original_RayHitFace)(br_vector3 *, br_vector3 *, br_vector3 *, br_vector3 *, br_vector3 *, br_vector3 *) = (int(__cdecl*)(br_vector3 *, br_vector3 *, br_vector3 *, br_vector3 *, br_vector3 *, br_vector3 *))0x00414835;
 CARM95_HOOK_FUNCTION(original_RayHitFace, RayHitFace)
 int __cdecl RayHitFace(br_vector3 *pV0, br_vector3 *pV1, br_vector3 *pV2, br_vector3 *pNormal, br_vector3 *pStart, br_vector3 *pDir) {
@@ -89,9 +123,15 @@ int __cdecl RayHitFace(br_vector3 *pV0, br_vector3 *pV1, br_vector3 *pV2, br_vec
     (void)the_face;
     (void)rt;
 
-    return original_RayHitFace(pV0, pV1, pV2, pNormal, pStart, pDir);
+    if (function_hook_state_RayHitFace == HOOK_ENABLED) {
+        assert(0 && "RayHitFace not implemented.");
+        abort();
+    } else {
+        return original_RayHitFace(pV0, pV1, pV2, pNormal, pStart, pDir);
+    }
 }
 
+function_hook_state_t function_hook_state_WrongCheckpoint = HOOK_UNAVAILABLE;
 static void(__cdecl*original_WrongCheckpoint)(int) = (void(__cdecl*)(int))0x00414373;
 CARM95_HOOK_FUNCTION(original_WrongCheckpoint, WrongCheckpoint)
 void __cdecl WrongCheckpoint(int pCheckpoint_index) {
@@ -99,9 +139,15 @@ void __cdecl WrongCheckpoint(int pCheckpoint_index) {
 
     (void)pCheckpoint_index;
 
-    original_WrongCheckpoint(pCheckpoint_index);
+    if (function_hook_state_WrongCheckpoint == HOOK_ENABLED) {
+        assert(0 && "WrongCheckpoint not implemented.");
+        abort();
+    } else {
+        original_WrongCheckpoint(pCheckpoint_index);
+    }
 }
 
+function_hook_state_t function_hook_state_CheckCheckpoints = HOOK_UNAVAILABLE;
 static void(__cdecl*original_CheckCheckpoints)() = (void(__cdecl*)())0x00414468;
 CARM95_HOOK_FUNCTION(original_CheckCheckpoints, CheckCheckpoints)
 void __cdecl CheckCheckpoints() {
@@ -126,45 +172,75 @@ void __cdecl CheckCheckpoints() {
     (void)car_index;
     (void)net_player;
 
-    original_CheckCheckpoints();
+    if (function_hook_state_CheckCheckpoints == HOOK_ENABLED) {
+        assert(0 && "CheckCheckpoints not implemented.");
+        abort();
+    } else {
+        original_CheckCheckpoints();
+    }
 }
 
+function_hook_state_t function_hook_state_TotalRepair = HOOK_UNAVAILABLE;
 static void(__cdecl*original_TotalRepair)() = (void(__cdecl*)())0x004148f7;
 CARM95_HOOK_FUNCTION(original_TotalRepair, TotalRepair)
 void __cdecl TotalRepair() {
     LOG_TRACE("()");
 
 
-    original_TotalRepair();
+    if (function_hook_state_TotalRepair == HOOK_ENABLED) {
+        assert(0 && "TotalRepair not implemented.");
+        abort();
+    } else {
+        original_TotalRepair();
+    }
 }
 
+function_hook_state_t function_hook_state_DoLogos = HOOK_UNAVAILABLE;
 static void(__cdecl*original_DoLogos)() = (void(__cdecl*)())0x00414e48;
 CARM95_HOOK_FUNCTION(original_DoLogos, DoLogos)
 void __cdecl DoLogos() {
     LOG_TRACE("()");
 
 
-    original_DoLogos();
+    if (function_hook_state_DoLogos == HOOK_ENABLED) {
+        assert(0 && "DoLogos not implemented.");
+        abort();
+    } else {
+        original_DoLogos();
+    }
 }
 
+function_hook_state_t function_hook_state_DoProgOpeningAnimation = HOOK_UNAVAILABLE;
 static void(__cdecl*original_DoProgOpeningAnimation)() = (void(__cdecl*)())0x00414e71;
 CARM95_HOOK_FUNCTION(original_DoProgOpeningAnimation, DoProgOpeningAnimation)
 void __cdecl DoProgOpeningAnimation() {
     LOG_TRACE("()");
 
 
-    original_DoProgOpeningAnimation();
+    if (function_hook_state_DoProgOpeningAnimation == HOOK_ENABLED) {
+        assert(0 && "DoProgOpeningAnimation not implemented.");
+        abort();
+    } else {
+        original_DoProgOpeningAnimation();
+    }
 }
 
+function_hook_state_t function_hook_state_DoProgramDemo = HOOK_UNAVAILABLE;
 static void(__cdecl*original_DoProgramDemo)() = (void(__cdecl*)())0x00414e94;
 CARM95_HOOK_FUNCTION(original_DoProgramDemo, DoProgramDemo)
 void __cdecl DoProgramDemo() {
     LOG_TRACE("()");
 
 
-    original_DoProgramDemo();
+    if (function_hook_state_DoProgramDemo == HOOK_ENABLED) {
+        assert(0 && "DoProgramDemo not implemented.");
+        abort();
+    } else {
+        original_DoProgramDemo();
+    }
 }
 
+function_hook_state_t function_hook_state_ChooseOpponent = HOOK_UNAVAILABLE;
 static int(__cdecl*original_ChooseOpponent)(int, int *) = (int(__cdecl*)(int, int *))0x00414a47;
 CARM95_HOOK_FUNCTION(original_ChooseOpponent, ChooseOpponent)
 int __cdecl ChooseOpponent(int pNastiness, int *pHad_scum) {
@@ -179,9 +255,15 @@ int __cdecl ChooseOpponent(int pNastiness, int *pHad_scum) {
     (void)count;
     (void)temp_array;
 
-    return original_ChooseOpponent(pNastiness, pHad_scum);
+    if (function_hook_state_ChooseOpponent == HOOK_ENABLED) {
+        assert(0 && "ChooseOpponent not implemented.");
+        abort();
+    } else {
+        return original_ChooseOpponent(pNastiness, pHad_scum);
+    }
 }
 
+function_hook_state_t function_hook_state_SelectOpponents = HOOK_UNAVAILABLE;
 static void(__cdecl*original_SelectOpponents)(tRace_info *) = (void(__cdecl*)(tRace_info *))0x00414925;
 CARM95_HOOK_FUNCTION(original_SelectOpponents, SelectOpponents)
 void __cdecl SelectOpponents(tRace_info *pRace_info) {
@@ -197,9 +279,15 @@ void __cdecl SelectOpponents(tRace_info *pRace_info) {
     (void)nastiness;
     (void)had_scum;
 
-    original_SelectOpponents(pRace_info);
+    if (function_hook_state_SelectOpponents == HOOK_ENABLED) {
+        assert(0 && "SelectOpponents not implemented.");
+        abort();
+    } else {
+        original_SelectOpponents(pRace_info);
+    }
 }
 
+function_hook_state_t function_hook_state_PickNetRace = HOOK_UNAVAILABLE;
 static int(__cdecl*original_PickNetRace)(int, tNet_sequence_type) = (int(__cdecl*)(int, tNet_sequence_type))0x00414b57;
 CARM95_HOOK_FUNCTION(original_PickNetRace, PickNetRace)
 int __cdecl PickNetRace(int pCurrent_race, tNet_sequence_type pNet_race_sequence) {
@@ -218,9 +306,15 @@ int __cdecl PickNetRace(int pCurrent_race, tNet_sequence_type pNet_race_sequence
     (void)most_seldom_seen;
     (void)races_to_pick_from;
 
-    return original_PickNetRace(pCurrent_race, pNet_race_sequence);
+    if (function_hook_state_PickNetRace == HOOK_ENABLED) {
+        assert(0 && "PickNetRace not implemented.");
+        abort();
+    } else {
+        return original_PickNetRace(pCurrent_race, pNet_race_sequence);
+    }
 }
 
+function_hook_state_t function_hook_state_SwapNetCarsLoad = HOOK_UNAVAILABLE;
 static void(__cdecl*original_SwapNetCarsLoad)() = (void(__cdecl*)())0x0041542b;
 CARM95_HOOK_FUNCTION(original_SwapNetCarsLoad, SwapNetCarsLoad)
 void __cdecl SwapNetCarsLoad() {
@@ -231,9 +325,15 @@ void __cdecl SwapNetCarsLoad() {
     (void)i;
     (void)switched_res;
 
-    original_SwapNetCarsLoad();
+    if (function_hook_state_SwapNetCarsLoad == HOOK_ENABLED) {
+        assert(0 && "SwapNetCarsLoad not implemented.");
+        abort();
+    } else {
+        original_SwapNetCarsLoad();
+    }
 }
 
+function_hook_state_t function_hook_state_SwapNetCarsDispose = HOOK_UNAVAILABLE;
 static void(__cdecl*original_SwapNetCarsDispose)() = (void(__cdecl*)())0x0041552d;
 CARM95_HOOK_FUNCTION(original_SwapNetCarsDispose, SwapNetCarsDispose)
 void __cdecl SwapNetCarsDispose() {
@@ -242,9 +342,15 @@ void __cdecl SwapNetCarsDispose() {
 
     (void)i;
 
-    original_SwapNetCarsDispose();
+    if (function_hook_state_SwapNetCarsDispose == HOOK_ENABLED) {
+        assert(0 && "SwapNetCarsDispose not implemented.");
+        abort();
+    } else {
+        original_SwapNetCarsDispose();
+    }
 }
 
+function_hook_state_t function_hook_state_DoGame = HOOK_UNAVAILABLE;
 static void(__cdecl*original_DoGame)() = (void(__cdecl*)())0x00414ebc;
 CARM95_HOOK_FUNCTION(original_DoGame, DoGame)
 void __cdecl DoGame() {
@@ -261,27 +367,45 @@ void __cdecl DoGame() {
     (void)first_summary_done;
     (void)i;
 
-    original_DoGame();
+    if (function_hook_state_DoGame == HOOK_ENABLED) {
+        assert(0 && "DoGame not implemented.");
+        abort();
+    } else {
+        original_DoGame();
+    }
 }
 
+function_hook_state_t function_hook_state_InitialiseProgramState = HOOK_UNAVAILABLE;
 static void(__cdecl*original_InitialiseProgramState)() = (void(__cdecl*)())0x00414ca8;
 CARM95_HOOK_FUNCTION(original_InitialiseProgramState, InitialiseProgramState)
 void __cdecl InitialiseProgramState() {
     LOG_TRACE("()");
 
 
-    original_InitialiseProgramState();
+    if (function_hook_state_InitialiseProgramState == HOOK_ENABLED) {
+        assert(0 && "InitialiseProgramState not implemented.");
+        abort();
+    } else {
+        original_InitialiseProgramState();
+    }
 }
 
+function_hook_state_t function_hook_state_DoProgram = HOOK_UNAVAILABLE;
 static void(__cdecl*original_DoProgram)() = (void(__cdecl*)())0x00414d8a;
 CARM95_HOOK_FUNCTION(original_DoProgram, DoProgram)
 void __cdecl DoProgram() {
     LOG_TRACE("()");
 
 
-    original_DoProgram();
+    if (function_hook_state_DoProgram == HOOK_ENABLED) {
+        assert(0 && "DoProgram not implemented.");
+        abort();
+    } else {
+        original_DoProgram();
+    }
 }
 
+function_hook_state_t function_hook_state_JumpTheStart = HOOK_UNAVAILABLE;
 static void(__cdecl*original_JumpTheStart)() = (void(__cdecl*)())0x004155d4;
 CARM95_HOOK_FUNCTION(original_JumpTheStart, JumpTheStart)
 void __cdecl JumpTheStart() {
@@ -290,24 +414,41 @@ void __cdecl JumpTheStart() {
 
     (void)s;
 
-    original_JumpTheStart();
+    if (function_hook_state_JumpTheStart == HOOK_ENABLED) {
+        assert(0 && "JumpTheStart not implemented.");
+        abort();
+    } else {
+        original_JumpTheStart();
+    }
 }
 
+function_hook_state_t function_hook_state_GoingToInterfaceFromRace = HOOK_UNAVAILABLE;
 static void(__cdecl*original_GoingToInterfaceFromRace)() = (void(__cdecl*)())0x004156c2;
 CARM95_HOOK_FUNCTION(original_GoingToInterfaceFromRace, GoingToInterfaceFromRace)
 void __cdecl GoingToInterfaceFromRace() {
     LOG_TRACE("()");
 
 
-    original_GoingToInterfaceFromRace();
+    if (function_hook_state_GoingToInterfaceFromRace == HOOK_ENABLED) {
+        assert(0 && "GoingToInterfaceFromRace not implemented.");
+        abort();
+    } else {
+        original_GoingToInterfaceFromRace();
+    }
 }
 
+function_hook_state_t function_hook_state_GoingBackToRaceFromInterface = HOOK_UNAVAILABLE;
 static void(__cdecl*original_GoingBackToRaceFromInterface)() = (void(__cdecl*)())0x00415700;
 CARM95_HOOK_FUNCTION(original_GoingBackToRaceFromInterface, GoingBackToRaceFromInterface)
 void __cdecl GoingBackToRaceFromInterface() {
     LOG_TRACE("()");
 
 
-    original_GoingBackToRaceFromInterface();
+    if (function_hook_state_GoingBackToRaceFromInterface == HOOK_ENABLED) {
+        assert(0 && "GoingBackToRaceFromInterface not implemented.");
+        abort();
+    } else {
+        original_GoingBackToRaceFromInterface();
+    }
 }
 

@@ -4,6 +4,9 @@
 
 #include "carm95_hooks.h"
 
+#include "carm95_webserver.h"
+
+#include <assert.h>
 char *(* hookvar_gOil_pixie_names )[1] = (void*)0x00509a38;
 int * hookvar_gNext_oil_pixie  = (void*)0x00509a3c;
 #if 0
@@ -15,6 +18,7 @@ br_scalar * hookvar_gMin_z_diff ;
 br_pixelmap *(* hookvar_gOil_pixies )[1] = (void*)0x00551dc0;
 tOil_spill_info(* hookvar_gOily_spills )[15] = (void*)0x00551dd0;
 
+function_hook_state_t function_hook_state_InitOilSpills = HOOK_UNAVAILABLE;
 static void(__cdecl*original_InitOilSpills)() = (void(__cdecl*)())0x00412510;
 CARM95_HOOK_FUNCTION(original_InitOilSpills, InitOilSpills)
 void __cdecl InitOilSpills() {
@@ -27,9 +31,15 @@ void __cdecl InitOilSpills() {
     (void)the_model;
     (void)the_material;
 
-    original_InitOilSpills();
+    if (function_hook_state_InitOilSpills == HOOK_ENABLED) {
+        assert(0 && "InitOilSpills not implemented.");
+        abort();
+    } else {
+        original_InitOilSpills();
+    }
 }
 
+function_hook_state_t function_hook_state_ResetOilSpills = HOOK_UNAVAILABLE;
 static void(__cdecl*original_ResetOilSpills)() = (void(__cdecl*)())0x00412859;
 CARM95_HOOK_FUNCTION(original_ResetOilSpills, ResetOilSpills)
 void __cdecl ResetOilSpills() {
@@ -38,9 +48,15 @@ void __cdecl ResetOilSpills() {
 
     (void)i;
 
-    original_ResetOilSpills();
+    if (function_hook_state_ResetOilSpills == HOOK_ENABLED) {
+        assert(0 && "ResetOilSpills not implemented.");
+        abort();
+    } else {
+        original_ResetOilSpills();
+    }
 }
 
+function_hook_state_t function_hook_state_QueueOilSpill = HOOK_UNAVAILABLE;
 static void(__cdecl*original_QueueOilSpill)(tCar_spec *) = (void(__cdecl*)(tCar_spec *))0x004128c7;
 CARM95_HOOK_FUNCTION(original_QueueOilSpill, QueueOilSpill)
 void __cdecl QueueOilSpill(tCar_spec *pCar) {
@@ -58,9 +74,15 @@ void __cdecl QueueOilSpill(tCar_spec *pCar) {
     (void)the_time;
     (void)oldest_time;
 
-    original_QueueOilSpill(pCar);
+    if (function_hook_state_QueueOilSpill == HOOK_ENABLED) {
+        assert(0 && "QueueOilSpill not implemented.");
+        abort();
+    } else {
+        original_QueueOilSpill(pCar);
+    }
 }
 
+function_hook_state_t function_hook_state_OKToSpillOil = HOOK_UNAVAILABLE;
 static int(__cdecl*original_OKToSpillOil)(tOil_spill_info *) = (int(__cdecl*)(tOil_spill_info *))0x0041337d;
 CARM95_HOOK_FUNCTION(original_OKToSpillOil, OKToSpillOil)
 int __cdecl OKToSpillOil(tOil_spill_info *pOil) {
@@ -100,9 +122,15 @@ int __cdecl OKToSpillOil(tOil_spill_info *pOil) {
     (void)the_list;
     (void)face_ref;
 
-    return original_OKToSpillOil(pOil);
+    if (function_hook_state_OKToSpillOil == HOOK_ENABLED) {
+        assert(0 && "OKToSpillOil not implemented.");
+        abort();
+    } else {
+        return original_OKToSpillOil(pOil);
+    }
 }
 
+function_hook_state_t function_hook_state_Vector3Interpolate = HOOK_UNAVAILABLE;
 static void(__cdecl*original_Vector3Interpolate)(br_vector3 *, br_vector3 *, br_vector3 *, br_scalar) = (void(__cdecl*)(br_vector3 *, br_vector3 *, br_vector3 *, br_scalar))0x00412b76;
 CARM95_HOOK_FUNCTION(original_Vector3Interpolate, Vector3Interpolate)
 void __cdecl Vector3Interpolate(br_vector3 *pDst, br_vector3 *pFrom, br_vector3 *pTo, br_scalar pP) {
@@ -113,9 +141,15 @@ void __cdecl Vector3Interpolate(br_vector3 *pDst, br_vector3 *pFrom, br_vector3 
     (void)pTo;
     (void)pP;
 
-    original_Vector3Interpolate(pDst, pFrom, pTo, pP);
+    if (function_hook_state_Vector3Interpolate == HOOK_ENABLED) {
+        assert(0 && "Vector3Interpolate not implemented.");
+        abort();
+    } else {
+        original_Vector3Interpolate(pDst, pFrom, pTo, pP);
+    }
 }
 
+function_hook_state_t function_hook_state_EnsureGroundDetailVisible = HOOK_UNAVAILABLE;
 static void(__cdecl*original_EnsureGroundDetailVisible)(br_vector3 *, br_vector3 *, br_vector3 *) = (void(__cdecl*)(br_vector3 *, br_vector3 *, br_vector3 *))0x00412a81;
 CARM95_HOOK_FUNCTION(original_EnsureGroundDetailVisible, EnsureGroundDetailVisible)
 void __cdecl EnsureGroundDetailVisible(br_vector3 *pNew_pos, br_vector3 *pGround_normal, br_vector3 *pOld_pos) {
@@ -133,9 +167,15 @@ void __cdecl EnsureGroundDetailVisible(br_vector3 *pNew_pos, br_vector3 *pGround
     (void)dist;
     (void)to_camera;
 
-    original_EnsureGroundDetailVisible(pNew_pos, pGround_normal, pOld_pos);
+    if (function_hook_state_EnsureGroundDetailVisible == HOOK_ENABLED) {
+        assert(0 && "EnsureGroundDetailVisible not implemented.");
+        abort();
+    } else {
+        original_EnsureGroundDetailVisible(pNew_pos, pGround_normal, pOld_pos);
+    }
 }
 
+function_hook_state_t function_hook_state_MungeOilsHeightAboveGround = HOOK_UNAVAILABLE;
 static void(__cdecl*original_MungeOilsHeightAboveGround)(tOil_spill_info *) = (void(__cdecl*)(tOil_spill_info *))0x00412bf4;
 CARM95_HOOK_FUNCTION(original_MungeOilsHeightAboveGround, MungeOilsHeightAboveGround)
 void __cdecl MungeOilsHeightAboveGround(tOil_spill_info *pOil) {
@@ -143,9 +183,15 @@ void __cdecl MungeOilsHeightAboveGround(tOil_spill_info *pOil) {
 
     (void)pOil;
 
-    original_MungeOilsHeightAboveGround(pOil);
+    if (function_hook_state_MungeOilsHeightAboveGround == HOOK_ENABLED) {
+        assert(0 && "MungeOilsHeightAboveGround not implemented.");
+        abort();
+    } else {
+        original_MungeOilsHeightAboveGround(pOil);
+    }
 }
 
+function_hook_state_t function_hook_state_MungeIndexedOilsHeightAboveGround = HOOK_UNAVAILABLE;
 static void(__cdecl*original_MungeIndexedOilsHeightAboveGround)(int) = (void(__cdecl*)(int))0x00412bce;
 CARM95_HOOK_FUNCTION(original_MungeIndexedOilsHeightAboveGround, MungeIndexedOilsHeightAboveGround)
 void __cdecl MungeIndexedOilsHeightAboveGround(int pIndex) {
@@ -153,9 +199,15 @@ void __cdecl MungeIndexedOilsHeightAboveGround(int pIndex) {
 
     (void)pIndex;
 
-    original_MungeIndexedOilsHeightAboveGround(pIndex);
+    if (function_hook_state_MungeIndexedOilsHeightAboveGround == HOOK_ENABLED) {
+        assert(0 && "MungeIndexedOilsHeightAboveGround not implemented.");
+        abort();
+    } else {
+        original_MungeIndexedOilsHeightAboveGround(pIndex);
+    }
 }
 
+function_hook_state_t function_hook_state_SetInitialOilStuff = HOOK_UNAVAILABLE;
 static void(__cdecl*original_SetInitialOilStuff)(tOil_spill_info *, br_model *) = (void(__cdecl*)(tOil_spill_info *, br_model *))0x004137ad;
 CARM95_HOOK_FUNCTION(original_SetInitialOilStuff, SetInitialOilStuff)
 void __cdecl SetInitialOilStuff(tOil_spill_info *pOil, br_model *pModel) {
@@ -164,9 +216,15 @@ void __cdecl SetInitialOilStuff(tOil_spill_info *pOil, br_model *pModel) {
     (void)pOil;
     (void)pModel;
 
-    original_SetInitialOilStuff(pOil, pModel);
+    if (function_hook_state_SetInitialOilStuff == HOOK_ENABLED) {
+        assert(0 && "SetInitialOilStuff not implemented.");
+        abort();
+    } else {
+        original_SetInitialOilStuff(pOil, pModel);
+    }
 }
 
+function_hook_state_t function_hook_state_ProcessOilSpills = HOOK_UNAVAILABLE;
 static void(__cdecl*original_ProcessOilSpills)(tU32) = (void(__cdecl*)(tU32))0x00412c20;
 CARM95_HOOK_FUNCTION(original_ProcessOilSpills, ProcessOilSpills)
 void __cdecl ProcessOilSpills(tU32 pFrame_period) {
@@ -190,18 +248,30 @@ void __cdecl ProcessOilSpills(tU32 pFrame_period) {
     (void)v;
     (void)message;
 
-    original_ProcessOilSpills(pFrame_period);
+    if (function_hook_state_ProcessOilSpills == HOOK_ENABLED) {
+        assert(0 && "ProcessOilSpills not implemented.");
+        abort();
+    } else {
+        original_ProcessOilSpills(pFrame_period);
+    }
 }
 
+function_hook_state_t function_hook_state_GetOilSpillCount = HOOK_UNAVAILABLE;
 static int(__cdecl*original_GetOilSpillCount)() = (int(__cdecl*)())0x00413852;
 CARM95_HOOK_FUNCTION(original_GetOilSpillCount, GetOilSpillCount)
 int __cdecl GetOilSpillCount() {
     LOG_TRACE("()");
 
 
-    return original_GetOilSpillCount();
+    if (function_hook_state_GetOilSpillCount == HOOK_ENABLED) {
+        assert(0 && "GetOilSpillCount not implemented.");
+        abort();
+    } else {
+        return original_GetOilSpillCount();
+    }
 }
 
+function_hook_state_t function_hook_state_GetOilSpillDetails = HOOK_UNAVAILABLE;
 static void(__cdecl*original_GetOilSpillDetails)(int, br_actor **, br_scalar *) = (void(__cdecl*)(int, br_actor **, br_scalar *))0x00413867;
 CARM95_HOOK_FUNCTION(original_GetOilSpillDetails, GetOilSpillDetails)
 void __cdecl GetOilSpillDetails(int pIndex, br_actor **pActor, br_scalar *pSize) {
@@ -211,9 +281,15 @@ void __cdecl GetOilSpillDetails(int pIndex, br_actor **pActor, br_scalar *pSize)
     (void)pActor;
     (void)pSize;
 
-    original_GetOilSpillDetails(pIndex, pActor, pSize);
+    if (function_hook_state_GetOilSpillDetails == HOOK_ENABLED) {
+        assert(0 && "GetOilSpillDetails not implemented.");
+        abort();
+    } else {
+        original_GetOilSpillDetails(pIndex, pActor, pSize);
+    }
 }
 
+function_hook_state_t function_hook_state_PointInSpill = HOOK_UNAVAILABLE;
 static int(__cdecl*original_PointInSpill)(br_vector3 *, int) = (int(__cdecl*)(br_vector3 *, int))0x00413b72;
 CARM95_HOOK_FUNCTION(original_PointInSpill, PointInSpill)
 int __cdecl PointInSpill(br_vector3 *pV, int pSpill) {
@@ -222,9 +298,15 @@ int __cdecl PointInSpill(br_vector3 *pV, int pSpill) {
     (void)pV;
     (void)pSpill;
 
-    return original_PointInSpill(pV, pSpill);
+    if (function_hook_state_PointInSpill == HOOK_ENABLED) {
+        assert(0 && "PointInSpill not implemented.");
+        abort();
+    } else {
+        return original_PointInSpill(pV, pSpill);
+    }
 }
 
+function_hook_state_t function_hook_state_GetOilFrictionFactors = HOOK_UNAVAILABLE;
 static void(__cdecl*original_GetOilFrictionFactors)(tCar_spec *, br_scalar *, br_scalar *, br_scalar *, br_scalar *) = (void(__cdecl*)(tCar_spec *, br_scalar *, br_scalar *, br_scalar *, br_scalar *))0x004138c7;
 CARM95_HOOK_FUNCTION(original_GetOilFrictionFactors, GetOilFrictionFactors)
 void __cdecl GetOilFrictionFactors(tCar_spec *pCar, br_scalar *pFl_factor, br_scalar *pFr_factor, br_scalar *pRl_factor, br_scalar *pRr_factor) {
@@ -240,9 +322,15 @@ void __cdecl GetOilFrictionFactors(tCar_spec *pCar, br_scalar *pFl_factor, br_sc
     (void)i;
     (void)wheel_world;
 
-    original_GetOilFrictionFactors(pCar, pFl_factor, pFr_factor, pRl_factor, pRr_factor);
+    if (function_hook_state_GetOilFrictionFactors == HOOK_ENABLED) {
+        assert(0 && "GetOilFrictionFactors not implemented.");
+        abort();
+    } else {
+        original_GetOilFrictionFactors(pCar, pFl_factor, pFr_factor, pRl_factor, pRr_factor);
+    }
 }
 
+function_hook_state_t function_hook_state_AdjustOilSpill = HOOK_UNAVAILABLE;
 static void(__cdecl*original_AdjustOilSpill)(int, br_matrix34 *, br_scalar, br_scalar, tU32, tU32, tCar_spec *, br_vector3 *, br_pixelmap *) = (void(__cdecl*)(int, br_matrix34 *, br_scalar, br_scalar, tU32, tU32, tCar_spec *, br_vector3 *, br_pixelmap *))0x00413cb6;
 CARM95_HOOK_FUNCTION(original_AdjustOilSpill, AdjustOilSpill)
 void __cdecl AdjustOilSpill(int pIndex, br_matrix34 *pMat, br_scalar pFull_size, br_scalar pGrow_rate, tU32 pSpill_time, tU32 pStop_time, tCar_spec *pCar, br_vector3 *pOriginal_pos, br_pixelmap *pPixelmap) {
@@ -258,9 +346,15 @@ void __cdecl AdjustOilSpill(int pIndex, br_matrix34 *pMat, br_scalar pFull_size,
     (void)pOriginal_pos;
     (void)pPixelmap;
 
-    original_AdjustOilSpill(pIndex, pMat, pFull_size, pGrow_rate, pSpill_time, pStop_time, pCar, pOriginal_pos, pPixelmap);
+    if (function_hook_state_AdjustOilSpill == HOOK_ENABLED) {
+        assert(0 && "AdjustOilSpill not implemented.");
+        abort();
+    } else {
+        original_AdjustOilSpill(pIndex, pMat, pFull_size, pGrow_rate, pSpill_time, pStop_time, pCar, pOriginal_pos, pPixelmap);
+    }
 }
 
+function_hook_state_t function_hook_state_ReceivedOilSpill = HOOK_UNAVAILABLE;
 static void(__cdecl*original_ReceivedOilSpill)(tNet_contents *) = (void(__cdecl*)(tNet_contents *))0x00413dc4;
 CARM95_HOOK_FUNCTION(original_ReceivedOilSpill, ReceivedOilSpill)
 void __cdecl ReceivedOilSpill(tNet_contents *pContents) {
@@ -280,6 +374,11 @@ void __cdecl ReceivedOilSpill(tNet_contents *pContents) {
     (void)oldest_time;
     (void)car;
 
-    original_ReceivedOilSpill(pContents);
+    if (function_hook_state_ReceivedOilSpill == HOOK_ENABLED) {
+        assert(0 && "ReceivedOilSpill not implemented.");
+        abort();
+    } else {
+        original_ReceivedOilSpill(pContents);
+    }
 }
 

@@ -4,6 +4,9 @@
 
 #include "carm95_hooks.h"
 
+#include "carm95_webserver.h"
+
+#include <assert.h>
 int * hookvar_gDetect_peds  = (void*)0x00511740;
 int * hookvar_gReally_stupid_ped_bug_enable  = (void*)0x00511744;
 int * hookvar_gPed_sound_disable  = (void*)0x00511748;
@@ -76,6 +79,7 @@ tPedestrian_data ** hookvar_gPedestrian_array  = (void*)0x0053791c;
 tU32 * hookvar_gLast_ped_splat_time  = (void*)0x00536b34;
 int * hookvar_gCurrent_ped_multiplier  = (void*)0x00537918;
 
+function_hook_state_t function_hook_state_PedModelUpdate = HOOK_UNAVAILABLE;
 static void(__cdecl*original_PedModelUpdate)(br_model *, br_scalar, br_scalar, br_scalar, br_scalar, br_scalar, br_scalar, br_scalar, br_scalar) = (void(__cdecl*)(br_model *, br_scalar, br_scalar, br_scalar, br_scalar, br_scalar, br_scalar, br_scalar, br_scalar))0x00455fcd;
 CARM95_HOOK_FUNCTION(original_PedModelUpdate, PedModelUpdate)
 void __cdecl PedModelUpdate(br_model *pModel, br_scalar x0, br_scalar y0, br_scalar x1, br_scalar y1, br_scalar x2, br_scalar y2, br_scalar x3, br_scalar y3) {
@@ -91,9 +95,15 @@ void __cdecl PedModelUpdate(br_model *pModel, br_scalar x0, br_scalar y0, br_sca
     (void)x3;
     (void)y3;
 
-    original_PedModelUpdate(pModel, x0, y0, x1, y1, x2, y2, x3, y3);
+    if (function_hook_state_PedModelUpdate == HOOK_ENABLED) {
+        assert(0 && "PedModelUpdate not implemented.");
+        abort();
+    } else {
+        original_PedModelUpdate(pModel, x0, y0, x1, y1, x2, y2, x3, y3);
+    }
 }
 
+function_hook_state_t function_hook_state_ActorIsPedestrian = HOOK_UNAVAILABLE;
 static int(__cdecl*original_ActorIsPedestrian)(br_actor *) = (int(__cdecl*)(br_actor *))0x00455870;
 CARM95_HOOK_FUNCTION(original_ActorIsPedestrian, ActorIsPedestrian)
 int __cdecl ActorIsPedestrian(br_actor *pActor) {
@@ -101,9 +111,15 @@ int __cdecl ActorIsPedestrian(br_actor *pActor) {
 
     (void)pActor;
 
-    return original_ActorIsPedestrian(pActor);
+    if (function_hook_state_ActorIsPedestrian == HOOK_ENABLED) {
+        assert(0 && "ActorIsPedestrian not implemented.");
+        abort();
+    } else {
+        return original_ActorIsPedestrian(pActor);
+    }
 }
 
+function_hook_state_t function_hook_state_PedHeightFromActor = HOOK_UNAVAILABLE;
 static br_scalar(__cdecl*original_PedHeightFromActor)(br_actor *) = (br_scalar(__cdecl*)(br_actor *))0x004558b8;
 CARM95_HOOK_FUNCTION(original_PedHeightFromActor, PedHeightFromActor)
 br_scalar __cdecl PedHeightFromActor(br_actor *pActor) {
@@ -111,9 +127,15 @@ br_scalar __cdecl PedHeightFromActor(br_actor *pActor) {
 
     (void)pActor;
 
-    return original_PedHeightFromActor(pActor);
+    if (function_hook_state_PedHeightFromActor == HOOK_ENABLED) {
+        assert(0 && "PedHeightFromActor not implemented.");
+        abort();
+    } else {
+        return original_PedHeightFromActor(pActor);
+    }
 }
 
+function_hook_state_t function_hook_state_GetPedestrianValue = HOOK_UNAVAILABLE;
 static int(__cdecl*original_GetPedestrianValue)(br_actor *) = (int(__cdecl*)(br_actor *))0x004558fa;
 CARM95_HOOK_FUNCTION(original_GetPedestrianValue, GetPedestrianValue)
 int __cdecl GetPedestrianValue(br_actor *pActor) {
@@ -121,9 +143,15 @@ int __cdecl GetPedestrianValue(br_actor *pActor) {
 
     (void)pActor;
 
-    return original_GetPedestrianValue(pActor);
+    if (function_hook_state_GetPedestrianValue == HOOK_ENABLED) {
+        assert(0 && "GetPedestrianValue not implemented.");
+        abort();
+    } else {
+        return original_GetPedestrianValue(pActor);
+    }
 }
 
+function_hook_state_t function_hook_state_PedestrianActorIsPerson = HOOK_UNAVAILABLE;
 static int(__cdecl*original_PedestrianActorIsPerson)(br_actor *) = (int(__cdecl*)(br_actor *))0x00455913;
 CARM95_HOOK_FUNCTION(original_PedestrianActorIsPerson, PedestrianActorIsPerson)
 int __cdecl PedestrianActorIsPerson(br_actor *pActor) {
@@ -131,9 +159,15 @@ int __cdecl PedestrianActorIsPerson(br_actor *pActor) {
 
     (void)pActor;
 
-    return original_PedestrianActorIsPerson(pActor);
+    if (function_hook_state_PedestrianActorIsPerson == HOOK_ENABLED) {
+        assert(0 && "PedestrianActorIsPerson not implemented.");
+        abort();
+    } else {
+        return original_PedestrianActorIsPerson(pActor);
+    }
 }
 
+function_hook_state_t function_hook_state_GetPedestrianActor = HOOK_UNAVAILABLE;
 static br_actor *(__cdecl*original_GetPedestrianActor)(int) = (br_actor *(__cdecl*)(int))0x00455953;
 CARM95_HOOK_FUNCTION(original_GetPedestrianActor, GetPedestrianActor)
 br_actor* __cdecl GetPedestrianActor(int pIndex) {
@@ -141,9 +175,15 @@ br_actor* __cdecl GetPedestrianActor(int pIndex) {
 
     (void)pIndex;
 
-    return original_GetPedestrianActor(pIndex);
+    if (function_hook_state_GetPedestrianActor == HOOK_ENABLED) {
+        assert(0 && "GetPedestrianActor not implemented.");
+        abort();
+    } else {
+        return original_GetPedestrianActor(pIndex);
+    }
 }
 
+function_hook_state_t function_hook_state_GetPedestrianTexture = HOOK_UNAVAILABLE;
 static br_pixelmap *(__cdecl*original_GetPedestrianTexture)(br_actor *, int *) = (br_pixelmap *(__cdecl*)(br_actor *, int *))0x0045599e;
 CARM95_HOOK_FUNCTION(original_GetPedestrianTexture, GetPedestrianTexture)
 br_pixelmap* __cdecl GetPedestrianTexture(br_actor *pActor, int *pFlipped) {
@@ -152,18 +192,30 @@ br_pixelmap* __cdecl GetPedestrianTexture(br_actor *pActor, int *pFlipped) {
     (void)pActor;
     (void)pFlipped;
 
-    return original_GetPedestrianTexture(pActor, pFlipped);
+    if (function_hook_state_GetPedestrianTexture == HOOK_ENABLED) {
+        assert(0 && "GetPedestrianTexture not implemented.");
+        abort();
+    } else {
+        return original_GetPedestrianTexture(pActor, pFlipped);
+    }
 }
 
+function_hook_state_t function_hook_state_TogglePedestrians = HOOK_UNAVAILABLE;
 static void(__cdecl*original_TogglePedestrians)() = (void(__cdecl*)())0x004559ea;
 CARM95_HOOK_FUNCTION(original_TogglePedestrians, TogglePedestrians)
 void __cdecl TogglePedestrians() {
     LOG_TRACE("()");
 
 
-    original_TogglePedestrians();
+    if (function_hook_state_TogglePedestrians == HOOK_ENABLED) {
+        assert(0 && "TogglePedestrians not implemented.");
+        abort();
+    } else {
+        original_TogglePedestrians();
+    }
 }
 
+function_hook_state_t function_hook_state_InitPedGibs = HOOK_UNAVAILABLE;
 static void(__cdecl*original_InitPedGibs)() = (void(__cdecl*)())0x0045e3ad;
 CARM95_HOOK_FUNCTION(original_InitPedGibs, InitPedGibs)
 void __cdecl InitPedGibs() {
@@ -180,9 +232,15 @@ void __cdecl InitPedGibs() {
     (void)the_pix;
     (void)the_material;
 
-    original_InitPedGibs();
+    if (function_hook_state_InitPedGibs == HOOK_ENABLED) {
+        assert(0 && "InitPedGibs not implemented.");
+        abort();
+    } else {
+        original_InitPedGibs();
+    }
 }
 
+function_hook_state_t function_hook_state_SetPedMaterialForRender = HOOK_UNAVAILABLE;
 static void(__cdecl*original_SetPedMaterialForRender)(br_actor *) = (void(__cdecl*)(br_actor *))0x00455a76;
 CARM95_HOOK_FUNCTION(original_SetPedMaterialForRender, SetPedMaterialForRender)
 void __cdecl SetPedMaterialForRender(br_actor *pActor) {
@@ -194,9 +252,15 @@ void __cdecl SetPedMaterialForRender(br_actor *pActor) {
     (void)ped;
     (void)changed;
 
-    original_SetPedMaterialForRender(pActor);
+    if (function_hook_state_SetPedMaterialForRender == HOOK_ENABLED) {
+        assert(0 && "SetPedMaterialForRender not implemented.");
+        abort();
+    } else {
+        original_SetPedMaterialForRender(pActor);
+    }
 }
 
+function_hook_state_t function_hook_state_PedCallBack = HOOK_UNAVAILABLE;
 static void(__cdecl*original_PedCallBack)(br_actor *, struct br_model *, struct br_material *, void *, br_uint_8, int) = (void(__cdecl*)(br_actor *, struct br_model *, struct br_material *, void *, br_uint_8, int))0x00455b6f;
 CARM95_HOOK_FUNCTION(original_PedCallBack, PedCallBack)
 void __cdecl PedCallBack(br_actor *pActor, struct br_model *pModel, struct br_material *pMaterial, void *pRender_data, br_uint_8 pStyle, int pOn_screen) {
@@ -211,18 +275,30 @@ void __cdecl PedCallBack(br_actor *pActor, struct br_model *pModel, struct br_ma
     (void)pOn_screen;
     (void)ped;
 
-    original_PedCallBack(pActor, pModel, pMaterial, pRender_data, pStyle, pOn_screen);
+    if (function_hook_state_PedCallBack == HOOK_ENABLED) {
+        assert(0 && "PedCallBack not implemented.");
+        abort();
+    } else {
+        original_PedCallBack(pActor, pModel, pMaterial, pRender_data, pStyle, pOn_screen);
+    }
 }
 
+function_hook_state_t function_hook_state_InitPeds = HOOK_UNAVAILABLE;
 static void(__cdecl*original_InitPeds)() = (void(__cdecl*)())0x00455c05;
 CARM95_HOOK_FUNCTION(original_InitPeds, InitPeds)
 void __cdecl InitPeds() {
     LOG_TRACE("()");
 
 
-    original_InitPeds();
+    if (function_hook_state_InitPeds == HOOK_ENABLED) {
+        assert(0 && "InitPeds not implemented.");
+        abort();
+    } else {
+        original_InitPeds();
+    }
 }
 
+function_hook_state_t function_hook_state_MungeModelSize = HOOK_UNAVAILABLE;
 static void(__cdecl*original_MungeModelSize)(br_actor *, br_scalar) = (void(__cdecl*)(br_actor *, br_scalar))0x00455f31;
 CARM95_HOOK_FUNCTION(original_MungeModelSize, MungeModelSize)
 void __cdecl MungeModelSize(br_actor *pActor, br_scalar pScaling_factor) {
@@ -237,9 +313,15 @@ void __cdecl MungeModelSize(br_actor *pActor, br_scalar pScaling_factor) {
     (void)half_width;
     (void)half_height;
 
-    original_MungeModelSize(pActor, pScaling_factor);
+    if (function_hook_state_MungeModelSize == HOOK_ENABLED) {
+        assert(0 && "MungeModelSize not implemented.");
+        abort();
+    } else {
+        original_MungeModelSize(pActor, pScaling_factor);
+    }
 }
 
+function_hook_state_t function_hook_state_BurstPedestrian = HOOK_UNAVAILABLE;
 static int(__cdecl*original_BurstPedestrian)(tPedestrian_data *, float, int) = (int(__cdecl*)(tPedestrian_data *, float, int))0x00457ff5;
 CARM95_HOOK_FUNCTION(original_BurstPedestrian, BurstPedestrian)
 int __cdecl BurstPedestrian(tPedestrian_data *pPedestrian, float pSplattitudinalitude, int pAllow_explosion) {
@@ -275,9 +357,15 @@ int __cdecl BurstPedestrian(tPedestrian_data *pPedestrian, float pSplattitudinal
     (void)max_speed;
     (void)the_time;
 
-    return original_BurstPedestrian(pPedestrian, pSplattitudinalitude, pAllow_explosion);
+    if (function_hook_state_BurstPedestrian == HOOK_ENABLED) {
+        assert(0 && "BurstPedestrian not implemented.");
+        abort();
+    } else {
+        return original_BurstPedestrian(pPedestrian, pSplattitudinalitude, pAllow_explosion);
+    }
 }
 
+function_hook_state_t function_hook_state_ResetAllPedGibs = HOOK_UNAVAILABLE;
 static void(__cdecl*original_ResetAllPedGibs)() = (void(__cdecl*)())0x00455df2;
 CARM95_HOOK_FUNCTION(original_ResetAllPedGibs, ResetAllPedGibs)
 void __cdecl ResetAllPedGibs() {
@@ -288,9 +376,15 @@ void __cdecl ResetAllPedGibs() {
     (void)i;
     (void)the_ped_gib;
 
-    original_ResetAllPedGibs();
+    if (function_hook_state_ResetAllPedGibs == HOOK_ENABLED) {
+        assert(0 && "ResetAllPedGibs not implemented.");
+        abort();
+    } else {
+        original_ResetAllPedGibs();
+    }
 }
 
+function_hook_state_t function_hook_state_AdjustPedGib = HOOK_UNAVAILABLE;
 static void(__cdecl*original_AdjustPedGib)(int, int, int, int, br_matrix34 *) = (void(__cdecl*)(int, int, int, int, br_matrix34 *))0x00455e72;
 CARM95_HOOK_FUNCTION(original_AdjustPedGib, AdjustPedGib)
 void __cdecl AdjustPedGib(int pIndex, int pSize, int pGib_index, int pPed_index, br_matrix34 *pTrans) {
@@ -304,9 +398,15 @@ void __cdecl AdjustPedGib(int pIndex, int pSize, int pGib_index, int pPed_index,
     (void)pTrans;
     (void)the_ped_gib;
 
-    original_AdjustPedGib(pIndex, pSize, pGib_index, pPed_index, pTrans);
+    if (function_hook_state_AdjustPedGib == HOOK_ENABLED) {
+        assert(0 && "AdjustPedGib not implemented.");
+        abort();
+    } else {
+        original_AdjustPedGib(pIndex, pSize, pGib_index, pPed_index, pTrans);
+    }
 }
 
+function_hook_state_t function_hook_state_MungePedGibs = HOOK_UNAVAILABLE;
 static void(__cdecl*original_MungePedGibs)(tU32) = (void(__cdecl*)(tU32))0x00456048;
 CARM95_HOOK_FUNCTION(original_MungePedGibs, MungePedGibs)
 void __cdecl MungePedGibs(tU32 pFrame_period) {
@@ -326,9 +426,15 @@ void __cdecl MungePedGibs(tU32 pFrame_period) {
     (void)the_time;
     (void)pedestrian;
 
-    original_MungePedGibs(pFrame_period);
+    if (function_hook_state_MungePedGibs == HOOK_ENABLED) {
+        assert(0 && "MungePedGibs not implemented.");
+        abort();
+    } else {
+        original_MungePedGibs(pFrame_period);
+    }
 }
 
+function_hook_state_t function_hook_state_KillPedestrian = HOOK_UNAVAILABLE;
 static void(__cdecl*original_KillPedestrian)(tPedestrian_data *) = (void(__cdecl*)(tPedestrian_data *))0x00456e92;
 CARM95_HOOK_FUNCTION(original_KillPedestrian, KillPedestrian)
 void __cdecl KillPedestrian(tPedestrian_data *pPedestrian) {
@@ -336,9 +442,15 @@ void __cdecl KillPedestrian(tPedestrian_data *pPedestrian) {
 
     (void)pPedestrian;
 
-    original_KillPedestrian(pPedestrian);
+    if (function_hook_state_KillPedestrian == HOOK_ENABLED) {
+        assert(0 && "KillPedestrian not implemented.");
+        abort();
+    } else {
+        original_KillPedestrian(pPedestrian);
+    }
 }
 
+function_hook_state_t function_hook_state_CalcPedWidthNHeight = HOOK_UNAVAILABLE;
 static void(__cdecl*original_CalcPedWidthNHeight)(tPedestrian_data *, br_pixelmap *, br_scalar *, br_scalar *) = (void(__cdecl*)(tPedestrian_data *, br_pixelmap *, br_scalar *, br_scalar *))0x00457492;
 CARM95_HOOK_FUNCTION(original_CalcPedWidthNHeight, CalcPedWidthNHeight)
 void __cdecl CalcPedWidthNHeight(tPedestrian_data *pPedestrian, br_pixelmap *pPixelmap, br_scalar *pHeight, br_scalar *pWidth) {
@@ -353,9 +465,15 @@ void __cdecl CalcPedWidthNHeight(tPedestrian_data *pPedestrian, br_pixelmap *pPi
     (void)reference_pixel_bastard;
     (void)scale_to_use;
 
-    original_CalcPedWidthNHeight(pPedestrian, pPixelmap, pHeight, pWidth);
+    if (function_hook_state_CalcPedWidthNHeight == HOOK_ENABLED) {
+        assert(0 && "CalcPedWidthNHeight not implemented.");
+        abort();
+    } else {
+        original_CalcPedWidthNHeight(pPedestrian, pPixelmap, pHeight, pWidth);
+    }
 }
 
+function_hook_state_t function_hook_state_PedestrianNextInstruction = HOOK_UNAVAILABLE;
 static int(__cdecl*original_PedestrianNextInstruction)(tPedestrian_data *, float, int, int) = (int(__cdecl*)(tPedestrian_data *, float, int, int))0x004585f1;
 CARM95_HOOK_FUNCTION(original_PedestrianNextInstruction, PedestrianNextInstruction)
 int __cdecl PedestrianNextInstruction(tPedestrian_data *pPedestrian, float pDanger_level, int pPosition_explicitly, int pMove_pc) {
@@ -388,9 +506,15 @@ int __cdecl PedestrianNextInstruction(tPedestrian_data *pPedestrian, float pDang
     (void)the_marker_ref;
     (void)__block0___scale;
 
-    return original_PedestrianNextInstruction(pPedestrian, pDanger_level, pPosition_explicitly, pMove_pc);
+    if (function_hook_state_PedestrianNextInstruction == HOOK_ENABLED) {
+        assert(0 && "PedestrianNextInstruction not implemented.");
+        abort();
+    } else {
+        return original_PedestrianNextInstruction(pPedestrian, pDanger_level, pPosition_explicitly, pMove_pc);
+    }
 }
 
+function_hook_state_t function_hook_state_MungePedestrianSequence = HOOK_UNAVAILABLE;
 static void(__cdecl*original_MungePedestrianSequence)(tPedestrian_data *, int) = (void(__cdecl*)(tPedestrian_data *, int))0x004566ee;
 CARM95_HOOK_FUNCTION(original_MungePedestrianSequence, MungePedestrianSequence)
 void __cdecl MungePedestrianSequence(tPedestrian_data *pPedestrian, int pAction_changed) {
@@ -413,9 +537,15 @@ void __cdecl MungePedestrianSequence(tPedestrian_data *pPedestrian, int pAction_
     (void)heading_difference;
     (void)sequence_ptr;
 
-    original_MungePedestrianSequence(pPedestrian, pAction_changed);
+    if (function_hook_state_MungePedestrianSequence == HOOK_ENABLED) {
+        assert(0 && "MungePedestrianSequence not implemented.");
+        abort();
+    } else {
+        original_MungePedestrianSequence(pPedestrian, pAction_changed);
+    }
 }
 
+function_hook_state_t function_hook_state_DetachPedFromCar = HOOK_UNAVAILABLE;
 static void(__cdecl*original_DetachPedFromCar)(tPedestrian_data *) = (void(__cdecl*)(tPedestrian_data *))0x004563dc;
 CARM95_HOOK_FUNCTION(original_DetachPedFromCar, DetachPedFromCar)
 void __cdecl DetachPedFromCar(tPedestrian_data *pPedestrian) {
@@ -423,9 +553,15 @@ void __cdecl DetachPedFromCar(tPedestrian_data *pPedestrian) {
 
     (void)pPedestrian;
 
-    original_DetachPedFromCar(pPedestrian);
+    if (function_hook_state_DetachPedFromCar == HOOK_ENABLED) {
+        assert(0 && "DetachPedFromCar not implemented.");
+        abort();
+    } else {
+        original_DetachPedFromCar(pPedestrian);
+    }
 }
 
+function_hook_state_t function_hook_state_SetPedPos = HOOK_UNAVAILABLE;
 static void(__cdecl*original_SetPedPos)(tPedestrian_data *) = (void(__cdecl*)(tPedestrian_data *))0x0045647b;
 CARM95_HOOK_FUNCTION(original_SetPedPos, SetPedPos)
 void __cdecl SetPedPos(tPedestrian_data *pPedestrian) {
@@ -435,9 +571,15 @@ void __cdecl SetPedPos(tPedestrian_data *pPedestrian) {
     (void)pPedestrian;
     (void)temp_v;
 
-    original_SetPedPos(pPedestrian);
+    if (function_hook_state_SetPedPos == HOOK_ENABLED) {
+        assert(0 && "SetPedPos not implemented.");
+        abort();
+    } else {
+        original_SetPedPos(pPedestrian);
+    }
 }
 
+function_hook_state_t function_hook_state_DetachPedActorFromCar = HOOK_UNAVAILABLE;
 static void(__cdecl*original_DetachPedActorFromCar)(br_actor *) = (void(__cdecl*)(br_actor *))0x004563b3;
 CARM95_HOOK_FUNCTION(original_DetachPedActorFromCar, DetachPedActorFromCar)
 void __cdecl DetachPedActorFromCar(br_actor *pActor) {
@@ -445,9 +587,15 @@ void __cdecl DetachPedActorFromCar(br_actor *pActor) {
 
     (void)pActor;
 
-    original_DetachPedActorFromCar(pActor);
+    if (function_hook_state_DetachPedActorFromCar == HOOK_ENABLED) {
+        assert(0 && "DetachPedActorFromCar not implemented.");
+        abort();
+    } else {
+        original_DetachPedActorFromCar(pActor);
+    }
 }
 
+function_hook_state_t function_hook_state_MungePedestrianFrames = HOOK_UNAVAILABLE;
 static void(__cdecl*original_MungePedestrianFrames)(tPedestrian_data *) = (void(__cdecl*)(tPedestrian_data *))0x004568d7;
 CARM95_HOOK_FUNCTION(original_MungePedestrianFrames, MungePedestrianFrames)
 void __cdecl MungePedestrianFrames(tPedestrian_data *pPedestrian) {
@@ -469,9 +617,15 @@ void __cdecl MungePedestrianFrames(tPedestrian_data *pPedestrian) {
     (void)new_frame;
     (void)the_time;
 
-    original_MungePedestrianFrames(pPedestrian);
+    if (function_hook_state_MungePedestrianFrames == HOOK_ENABLED) {
+        assert(0 && "MungePedestrianFrames not implemented.");
+        abort();
+    } else {
+        original_MungePedestrianFrames(pPedestrian);
+    }
 }
 
+function_hook_state_t function_hook_state_MungePedModel = HOOK_UNAVAILABLE;
 static void(__cdecl*original_MungePedModel)(tPedestrian_data *) = (void(__cdecl*)(tPedestrian_data *))0x00456f86;
 CARM95_HOOK_FUNCTION(original_MungePedModel, MungePedModel)
 void __cdecl MungePedModel(tPedestrian_data *pPedestrian) {
@@ -509,9 +663,15 @@ void __cdecl MungePedModel(tPedestrian_data *pPedestrian) {
     (void)murderer;
     (void)old_parent;
 
-    original_MungePedModel(pPedestrian);
+    if (function_hook_state_MungePedModel == HOOK_ENABLED) {
+        assert(0 && "MungePedModel not implemented.");
+        abort();
+    } else {
+        original_MungePedModel(pPedestrian);
+    }
 }
 
+function_hook_state_t function_hook_state_ChangeActionTo = HOOK_UNAVAILABLE;
 static void(__cdecl*original_ChangeActionTo)(tPedestrian_data *, int, int) = (void(__cdecl*)(tPedestrian_data *, int, int))0x0045654d;
 CARM95_HOOK_FUNCTION(original_ChangeActionTo, ChangeActionTo)
 void __cdecl ChangeActionTo(tPedestrian_data *pPedestrian, int pAction_index, int pRedo_frames_etc) {
@@ -527,9 +687,15 @@ void __cdecl ChangeActionTo(tPedestrian_data *pPedestrian, int pAction_index, in
     (void)the_sound;
     (void)the_pitch;
 
-    original_ChangeActionTo(pPedestrian, pAction_index, pRedo_frames_etc);
+    if (function_hook_state_ChangeActionTo == HOOK_ENABLED) {
+        assert(0 && "ChangeActionTo not implemented.");
+        abort();
+    } else {
+        original_ChangeActionTo(pPedestrian, pAction_index, pRedo_frames_etc);
+    }
 }
 
+function_hook_state_t function_hook_state_MungePedestrianAction = HOOK_UNAVAILABLE;
 static int(__cdecl*original_MungePedestrianAction)(tPedestrian_data *, float) = (int(__cdecl*)(tPedestrian_data *, float))0x00459db7;
 CARM95_HOOK_FUNCTION(original_MungePedestrianAction, MungePedestrianAction)
 int __cdecl MungePedestrianAction(tPedestrian_data *pPedestrian, float pDanger_level) {
@@ -552,18 +718,30 @@ int __cdecl MungePedestrianAction(tPedestrian_data *pPedestrian, float pDanger_l
     (void)chance_value;
     (void)most_dangerous;
 
-    return original_MungePedestrianAction(pPedestrian, pDanger_level);
+    if (function_hook_state_MungePedestrianAction == HOOK_ENABLED) {
+        assert(0 && "MungePedestrianAction not implemented.");
+        abort();
+    } else {
+        return original_MungePedestrianAction(pPedestrian, pDanger_level);
+    }
 }
 
+function_hook_state_t function_hook_state_MakeFlagWavingBastardWaveHisFlagWhichIsTheProbablyTheLastThingHeWillEverDo = HOOK_UNAVAILABLE;
 static void(__cdecl*original_MakeFlagWavingBastardWaveHisFlagWhichIsTheProbablyTheLastThingHeWillEverDo)() = (void(__cdecl*)())0x004564ed;
 CARM95_HOOK_FUNCTION(original_MakeFlagWavingBastardWaveHisFlagWhichIsTheProbablyTheLastThingHeWillEverDo, MakeFlagWavingBastardWaveHisFlagWhichIsTheProbablyTheLastThingHeWillEverDo)
 void __cdecl MakeFlagWavingBastardWaveHisFlagWhichIsTheProbablyTheLastThingHeWillEverDo() {
     LOG_TRACE("()");
 
 
-    original_MakeFlagWavingBastardWaveHisFlagWhichIsTheProbablyTheLastThingHeWillEverDo();
+    if (function_hook_state_MakeFlagWavingBastardWaveHisFlagWhichIsTheProbablyTheLastThingHeWillEverDo == HOOK_ENABLED) {
+        assert(0 && "MakeFlagWavingBastardWaveHisFlagWhichIsTheProbablyTheLastThingHeWillEverDo not implemented.");
+        abort();
+    } else {
+        original_MakeFlagWavingBastardWaveHisFlagWhichIsTheProbablyTheLastThingHeWillEverDo();
+    }
 }
 
+function_hook_state_t function_hook_state_MungePedestrianPath = HOOK_UNAVAILABLE;
 static void(__cdecl*original_MungePedestrianPath)(tPedestrian_data *, float, br_vector3 *) = (void(__cdecl*)(tPedestrian_data *, float, br_vector3 *))0x00457548;
 CARM95_HOOK_FUNCTION(original_MungePedestrianPath, MungePedestrianPath)
 void __cdecl MungePedestrianPath(tPedestrian_data *pPedestrian, float pDanger_level, br_vector3 *pDanger_direction) {
@@ -597,9 +775,15 @@ void __cdecl MungePedestrianPath(tPedestrian_data *pPedestrian, float pDanger_le
     (void)damage;
     (void)the_pitch;
 
-    original_MungePedestrianPath(pPedestrian, pDanger_level, pDanger_direction);
+    if (function_hook_state_MungePedestrianPath == HOOK_ENABLED) {
+        assert(0 && "MungePedestrianPath not implemented.");
+        abort();
+    } else {
+        original_MungePedestrianPath(pPedestrian, pDanger_level, pDanger_direction);
+    }
 }
 
+function_hook_state_t function_hook_state_CalcPedestrianDangerLevel = HOOK_UNAVAILABLE;
 static float(__cdecl*original_CalcPedestrianDangerLevel)(tPedestrian_data *, br_vector3 *) = (float(__cdecl*)(tPedestrian_data *, br_vector3 *))0x0045a078;
 CARM95_HOOK_FUNCTION(original_CalcPedestrianDangerLevel, CalcPedestrianDangerLevel)
 float __cdecl CalcPedestrianDangerLevel(tPedestrian_data *pPedestrian, br_vector3 *pDanger_direction) {
@@ -628,9 +812,15 @@ float __cdecl CalcPedestrianDangerLevel(tPedestrian_data *pPedestrian, br_vector
     (void)camera_view_angle;
     (void)car;
 
-    return original_CalcPedestrianDangerLevel(pPedestrian, pDanger_direction);
+    if (function_hook_state_CalcPedestrianDangerLevel == HOOK_ENABLED) {
+        assert(0 && "CalcPedestrianDangerLevel not implemented.");
+        abort();
+    } else {
+        return original_CalcPedestrianDangerLevel(pPedestrian, pDanger_direction);
+    }
 }
 
+function_hook_state_t function_hook_state_MoveToEdgeOfCar = HOOK_UNAVAILABLE;
 static tPed_hit_position(__cdecl*original_MoveToEdgeOfCar)(tPedestrian_data *, tCollision_info *, br_actor *, br_scalar, br_scalar, br_scalar, br_scalar, br_scalar, br_scalar, br_vector3 *, br_vector3 *) = (tPed_hit_position(__cdecl*)(tPedestrian_data *, tCollision_info *, br_actor *, br_scalar, br_scalar, br_scalar, br_scalar, br_scalar, br_scalar, br_vector3 *, br_vector3 *))0x0045bcc5;
 CARM95_HOOK_FUNCTION(original_MoveToEdgeOfCar, MoveToEdgeOfCar)
 tPed_hit_position __cdecl MoveToEdgeOfCar(tPedestrian_data *pPedestrian, tCollision_info *pCar, br_actor *pCar_actor, br_scalar pPed_x, br_scalar pPed_z, br_scalar pCar_bounds_min_x, br_scalar pCar_bounds_max_x, br_scalar pCar_bounds_min_z, br_scalar pCar_bounds_max_z, br_vector3 *pMin_ped_bounds_car, br_vector3 *pMax_ped_bounds_car) {
@@ -674,18 +864,30 @@ tPed_hit_position __cdecl MoveToEdgeOfCar(tPedestrian_data *pPedestrian, tCollis
     (void)z;
     (void)result;
 
-    return original_MoveToEdgeOfCar(pPedestrian, pCar, pCar_actor, pPed_x, pPed_z, pCar_bounds_min_x, pCar_bounds_max_x, pCar_bounds_min_z, pCar_bounds_max_z, pMin_ped_bounds_car, pMax_ped_bounds_car);
+    if (function_hook_state_MoveToEdgeOfCar == HOOK_ENABLED) {
+        assert(0 && "MoveToEdgeOfCar not implemented.");
+        abort();
+    } else {
+        return original_MoveToEdgeOfCar(pPedestrian, pCar, pCar_actor, pPed_x, pPed_z, pCar_bounds_min_x, pCar_bounds_max_x, pCar_bounds_min_z, pCar_bounds_max_z, pMin_ped_bounds_car, pMax_ped_bounds_car);
+    }
 }
 
+function_hook_state_t function_hook_state_CheckLastPed = HOOK_UNAVAILABLE;
 static void(__cdecl*original_CheckLastPed)() = (void(__cdecl*)())0x0045c0db;
 CARM95_HOOK_FUNCTION(original_CheckLastPed, CheckLastPed)
 void __cdecl CheckLastPed() {
     LOG_TRACE("()");
 
 
-    original_CheckLastPed();
+    if (function_hook_state_CheckLastPed == HOOK_ENABLED) {
+        assert(0 && "CheckLastPed not implemented.");
+        abort();
+    } else {
+        original_CheckLastPed();
+    }
 }
 
+function_hook_state_t function_hook_state_BloodyWheels = HOOK_UNAVAILABLE;
 static int(__cdecl*original_BloodyWheels)(tCar_spec *, br_vector3 *, br_scalar, br_vector3 *) = (int(__cdecl*)(tCar_spec *, br_vector3 *, br_scalar, br_vector3 *))0x0045c12c;
 CARM95_HOOK_FUNCTION(original_BloodyWheels, BloodyWheels)
 int __cdecl BloodyWheels(tCar_spec *pCar, br_vector3 *pPed_car, br_scalar pSize, br_vector3 *pPed_glob) {
@@ -708,9 +910,15 @@ int __cdecl BloodyWheels(tCar_spec *pCar, br_vector3 *pPed_car, br_scalar pSize,
     (void)dist_sqr;
     (void)size_sqr;
 
-    return original_BloodyWheels(pCar, pPed_car, pSize, pPed_glob);
+    if (function_hook_state_BloodyWheels == HOOK_ENABLED) {
+        assert(0 && "BloodyWheels not implemented.");
+        abort();
+    } else {
+        return original_BloodyWheels(pCar, pPed_car, pSize, pPed_glob);
+    }
 }
 
+function_hook_state_t function_hook_state_FancyATossOffMate = HOOK_UNAVAILABLE;
 static int(__cdecl*original_FancyATossOffMate)(tPedestrian_data *, tCollision_info *, float) = (int(__cdecl*)(tPedestrian_data *, tCollision_info *, float))0x0045c273;
 CARM95_HOOK_FUNCTION(original_FancyATossOffMate, FancyATossOffMate)
 int __cdecl FancyATossOffMate(tPedestrian_data *pPedestrian, tCollision_info *pCar, float pImpact_speed) {
@@ -720,9 +928,15 @@ int __cdecl FancyATossOffMate(tPedestrian_data *pPedestrian, tCollision_info *pC
     (void)pCar;
     (void)pImpact_speed;
 
-    return original_FancyATossOffMate(pPedestrian, pCar, pImpact_speed);
+    if (function_hook_state_FancyATossOffMate == HOOK_ENABLED) {
+        assert(0 && "FancyATossOffMate not implemented.");
+        abort();
+    } else {
+        return original_FancyATossOffMate(pPedestrian, pCar, pImpact_speed);
+    }
 }
 
+function_hook_state_t function_hook_state_CheckPedestrianDeathScenario = HOOK_UNAVAILABLE;
 static void(__cdecl*original_CheckPedestrianDeathScenario)(tPedestrian_data *) = (void(__cdecl*)(tPedestrian_data *))0x0045a3bd;
 CARM95_HOOK_FUNCTION(original_CheckPedestrianDeathScenario, CheckPedestrianDeathScenario)
 void __cdecl CheckPedestrianDeathScenario(tPedestrian_data *pPedestrian) {
@@ -816,9 +1030,15 @@ void __cdecl CheckPedestrianDeathScenario(tPedestrian_data *pPedestrian) {
     (void)__block1__temp;
     (void)__block2__temp;
 
-    original_CheckPedestrianDeathScenario(pPedestrian);
+    if (function_hook_state_CheckPedestrianDeathScenario == HOOK_ENABLED) {
+        assert(0 && "CheckPedestrianDeathScenario not implemented.");
+        abort();
+    } else {
+        original_CheckPedestrianDeathScenario(pPedestrian);
+    }
 }
 
+function_hook_state_t function_hook_state_SendPedestrian = HOOK_UNAVAILABLE;
 static void(__cdecl*original_SendPedestrian)(tPedestrian_data *, int) = (void(__cdecl*)(tPedestrian_data *, int))0x0045c2f0;
 CARM95_HOOK_FUNCTION(original_SendPedestrian, SendPedestrian)
 void __cdecl SendPedestrian(tPedestrian_data *pPedestrian, int pIndex) {
@@ -833,9 +1053,15 @@ void __cdecl SendPedestrian(tPedestrian_data *pPedestrian, int pIndex) {
     (void)the_message;
     (void)size_decider;
 
-    original_SendPedestrian(pPedestrian, pIndex);
+    if (function_hook_state_SendPedestrian == HOOK_ENABLED) {
+        assert(0 && "SendPedestrian not implemented.");
+        abort();
+    } else {
+        original_SendPedestrian(pPedestrian, pIndex);
+    }
 }
 
+function_hook_state_t function_hook_state_DoPedestrian = HOOK_UNAVAILABLE;
 static void(__cdecl*original_DoPedestrian)(tPedestrian_data *, int) = (void(__cdecl*)(tPedestrian_data *, int))0x004598e2;
 CARM95_HOOK_FUNCTION(original_DoPedestrian, DoPedestrian)
 void __cdecl DoPedestrian(tPedestrian_data *pPedestrian, int pIndex) {
@@ -866,9 +1092,15 @@ void __cdecl DoPedestrian(tPedestrian_data *pPedestrian, int pIndex) {
     (void)danger_direction;
     (void)old_pos;
 
-    original_DoPedestrian(pPedestrian, pIndex);
+    if (function_hook_state_DoPedestrian == HOOK_ENABLED) {
+        assert(0 && "DoPedestrian not implemented.");
+        abort();
+    } else {
+        original_DoPedestrian(pPedestrian, pIndex);
+    }
 }
 
+function_hook_state_t function_hook_state_AdjustPedestrian = HOOK_UNAVAILABLE;
 static void(__cdecl*original_AdjustPedestrian)(int, int, int, int, int, tU16, br_actor *, float, br_scalar, br_vector3 *, br_vector3 *) = (void(__cdecl*)(int, int, int, int, int, tU16, br_actor *, float, br_scalar, br_vector3 *, br_vector3 *))0x00458ec7;
 CARM95_HOOK_FUNCTION(original_AdjustPedestrian, AdjustPedestrian)
 void __cdecl AdjustPedestrian(int pIndex, int pAction_index, int pFrame_index, int pHit_points, int pDone_initial, tU16 pParent, br_actor *pParent_actor, float pSpin_period, br_scalar pJump_magnitude, br_vector3 *pOffset, br_vector3 *pTrans) {
@@ -894,9 +1126,15 @@ void __cdecl AdjustPedestrian(int pIndex, int pAction_index, int pFrame_index, i
     (void)old_pos;
     (void)__block0___scale;
 
-    original_AdjustPedestrian(pIndex, pAction_index, pFrame_index, pHit_points, pDone_initial, pParent, pParent_actor, pSpin_period, pJump_magnitude, pOffset, pTrans);
+    if (function_hook_state_AdjustPedestrian == HOOK_ENABLED) {
+        assert(0 && "AdjustPedestrian not implemented.");
+        abort();
+    } else {
+        original_AdjustPedestrian(pIndex, pAction_index, pFrame_index, pHit_points, pDone_initial, pParent, pParent_actor, pSpin_period, pJump_magnitude, pOffset, pTrans);
+    }
 }
 
+function_hook_state_t function_hook_state_SquirtPathVertex = HOOK_UNAVAILABLE;
 static void(__cdecl*original_SquirtPathVertex)(br_vertex *, br_vector3 *) = (void(__cdecl*)(br_vertex *, br_vector3 *))0x0045c66a;
 CARM95_HOOK_FUNCTION(original_SquirtPathVertex, SquirtPathVertex)
 void __cdecl SquirtPathVertex(br_vertex *pFirst_vertex, br_vector3 *pPoint) {
@@ -905,9 +1143,15 @@ void __cdecl SquirtPathVertex(br_vertex *pFirst_vertex, br_vector3 *pPoint) {
     (void)pFirst_vertex;
     (void)pPoint;
 
-    original_SquirtPathVertex(pFirst_vertex, pPoint);
+    if (function_hook_state_SquirtPathVertex == HOOK_ENABLED) {
+        assert(0 && "SquirtPathVertex not implemented.");
+        abort();
+    } else {
+        original_SquirtPathVertex(pFirst_vertex, pPoint);
+    }
 }
 
+function_hook_state_t function_hook_state_ResetAllPedestrians = HOOK_UNAVAILABLE;
 static void(__cdecl*original_ResetAllPedestrians)() = (void(__cdecl*)())0x00459239;
 CARM95_HOOK_FUNCTION(original_ResetAllPedestrians, ResetAllPedestrians)
 void __cdecl ResetAllPedestrians() {
@@ -918,9 +1162,15 @@ void __cdecl ResetAllPedestrians() {
     (void)i;
     (void)the_pedestrian;
 
-    original_ResetAllPedestrians();
+    if (function_hook_state_ResetAllPedestrians == HOOK_ENABLED) {
+        assert(0 && "ResetAllPedestrians not implemented.");
+        abort();
+    } else {
+        original_ResetAllPedestrians();
+    }
 }
 
+function_hook_state_t function_hook_state_GroundPedestrian = HOOK_UNAVAILABLE;
 static void(__cdecl*original_GroundPedestrian)(tPedestrian_data *) = (void(__cdecl*)(tPedestrian_data *))0x0045c75a;
 CARM95_HOOK_FUNCTION(original_GroundPedestrian, GroundPedestrian)
 void __cdecl GroundPedestrian(tPedestrian_data *pPedestrian) {
@@ -934,9 +1184,15 @@ void __cdecl GroundPedestrian(tPedestrian_data *pPedestrian) {
     (void)cast_point;
     (void)sequence;
 
-    original_GroundPedestrian(pPedestrian);
+    if (function_hook_state_GroundPedestrian == HOOK_ENABLED) {
+        assert(0 && "GroundPedestrian not implemented.");
+        abort();
+    } else {
+        original_GroundPedestrian(pPedestrian);
+    }
 }
 
+function_hook_state_t function_hook_state_RevivePedestrian = HOOK_UNAVAILABLE;
 static void(__cdecl*original_RevivePedestrian)(tPedestrian_data *, int) = (void(__cdecl*)(tPedestrian_data *, int))0x00459282;
 CARM95_HOOK_FUNCTION(original_RevivePedestrian, RevivePedestrian)
 void __cdecl RevivePedestrian(tPedestrian_data *pPedestrian, int pAnimate) {
@@ -945,9 +1201,15 @@ void __cdecl RevivePedestrian(tPedestrian_data *pPedestrian, int pAnimate) {
     (void)pPedestrian;
     (void)pAnimate;
 
-    original_RevivePedestrian(pPedestrian, pAnimate);
+    if (function_hook_state_RevivePedestrian == HOOK_ENABLED) {
+        assert(0 && "RevivePedestrian not implemented.");
+        abort();
+    } else {
+        original_RevivePedestrian(pPedestrian, pAnimate);
+    }
 }
 
+function_hook_state_t function_hook_state_MungePedestrians = HOOK_UNAVAILABLE;
 static void(__cdecl*original_MungePedestrians)(tU32) = (void(__cdecl*)(tU32))0x00459476;
 CARM95_HOOK_FUNCTION(original_MungePedestrians, MungePedestrians)
 void __cdecl MungePedestrians(tU32 pFrame_period) {
@@ -983,9 +1245,15 @@ void __cdecl MungePedestrians(tU32 pFrame_period) {
     (void)z_delta;
     (void)diff;
 
-    original_MungePedestrians(pFrame_period);
+    if (function_hook_state_MungePedestrians == HOOK_ENABLED) {
+        assert(0 && "MungePedestrians not implemented.");
+        abort();
+    } else {
+        original_MungePedestrians(pFrame_period);
+    }
 }
 
+function_hook_state_t function_hook_state_RespawnPedestrians = HOOK_UNAVAILABLE;
 static void(__cdecl*original_RespawnPedestrians)() = (void(__cdecl*)())0x0045c921;
 CARM95_HOOK_FUNCTION(original_RespawnPedestrians, RespawnPedestrians)
 void __cdecl RespawnPedestrians() {
@@ -996,18 +1264,30 @@ void __cdecl RespawnPedestrians() {
     (void)i;
     (void)the_pedestrian;
 
-    original_RespawnPedestrians();
+    if (function_hook_state_RespawnPedestrians == HOOK_ENABLED) {
+        assert(0 && "RespawnPedestrians not implemented.");
+        abort();
+    } else {
+        original_RespawnPedestrians();
+    }
 }
 
+function_hook_state_t function_hook_state_GetPedCount = HOOK_UNAVAILABLE;
 static int(__cdecl*original_GetPedCount)() = (int(__cdecl*)())0x0045c9f6;
 CARM95_HOOK_FUNCTION(original_GetPedCount, GetPedCount)
 int __cdecl GetPedCount() {
     LOG_TRACE("()");
 
 
-    return original_GetPedCount();
+    if (function_hook_state_GetPedCount == HOOK_ENABLED) {
+        assert(0 && "GetPedCount not implemented.");
+        abort();
+    } else {
+        return original_GetPedCount();
+    }
 }
 
+function_hook_state_t function_hook_state_GetPedPosition = HOOK_UNAVAILABLE;
 static int(__cdecl*original_GetPedPosition)(int, br_vector3 *) = (int(__cdecl*)(int, br_vector3 *))0x0045ca0b;
 CARM95_HOOK_FUNCTION(original_GetPedPosition, GetPedPosition)
 int __cdecl GetPedPosition(int pIndex, br_vector3 *pPos) {
@@ -1018,9 +1298,15 @@ int __cdecl GetPedPosition(int pIndex, br_vector3 *pPos) {
     (void)pPos;
     (void)pedestrian;
 
-    return original_GetPedPosition(pIndex, pPos);
+    if (function_hook_state_GetPedPosition == HOOK_ENABLED) {
+        assert(0 && "GetPedPosition not implemented.");
+        abort();
+    } else {
+        return original_GetPedPosition(pIndex, pPos);
+    }
 }
 
+function_hook_state_t function_hook_state_CreatePedestrian = HOOK_UNAVAILABLE;
 static void(__cdecl*original_CreatePedestrian)(FILE *, tPedestrian_instruction *, int, int, int, int) = (void(__cdecl*)(FILE *, tPedestrian_instruction *, int, int, int, int))0x0045cb28;
 CARM95_HOOK_FUNCTION(original_CreatePedestrian, CreatePedestrian)
 void __cdecl CreatePedestrian(FILE *pG, tPedestrian_instruction *pInstructions, int pInstruc_count, int pInit_instruc, int pRef_num, int pForce_read) {
@@ -1083,9 +1369,15 @@ void __cdecl CreatePedestrian(FILE *pG, tPedestrian_instruction *pInstructions, 
     (void)minnest_max;
     (void)maxest_max;
 
-    original_CreatePedestrian(pG, pInstructions, pInstruc_count, pInit_instruc, pRef_num, pForce_read);
+    if (function_hook_state_CreatePedestrian == HOOK_ENABLED) {
+        assert(0 && "CreatePedestrian not implemented.");
+        abort();
+    } else {
+        original_CreatePedestrian(pG, pInstructions, pInstruc_count, pInit_instruc, pRef_num, pForce_read);
+    }
 }
 
+function_hook_state_t function_hook_state_ResetProxRay = HOOK_UNAVAILABLE;
 static void(__cdecl*original_ResetProxRay)() = (void(__cdecl*)())0x0045da5c;
 CARM95_HOOK_FUNCTION(original_ResetProxRay, ResetProxRay)
 void __cdecl ResetProxRay() {
@@ -1094,18 +1386,30 @@ void __cdecl ResetProxRay() {
 
     (void)i;
 
-    original_ResetProxRay();
+    if (function_hook_state_ResetProxRay == HOOK_ENABLED) {
+        assert(0 && "ResetProxRay not implemented.");
+        abort();
+    } else {
+        original_ResetProxRay();
+    }
 }
 
+function_hook_state_t function_hook_state_PedMaterialFromHell = HOOK_UNAVAILABLE;
 static void(__cdecl*original_PedMaterialFromHell)() = (void(__cdecl*)())0x0045da99;
 CARM95_HOOK_FUNCTION(original_PedMaterialFromHell, PedMaterialFromHell)
 void __cdecl PedMaterialFromHell() {
     LOG_TRACE("()");
 
 
-    original_PedMaterialFromHell();
+    if (function_hook_state_PedMaterialFromHell == HOOK_ENABLED) {
+        assert(0 && "PedMaterialFromHell not implemented.");
+        abort();
+    } else {
+        original_PedMaterialFromHell();
+    }
 }
 
+function_hook_state_t function_hook_state_ResetPedMaterial = HOOK_UNAVAILABLE;
 static void(__cdecl*original_ResetPedMaterial)() = (void(__cdecl*)())0x0045daa4;
 CARM95_HOOK_FUNCTION(original_ResetPedMaterial, ResetPedMaterial)
 void __cdecl ResetPedMaterial() {
@@ -1116,9 +1420,15 @@ void __cdecl ResetPedMaterial() {
     (void)i;
     (void)j;
 
-    original_ResetPedMaterial();
+    if (function_hook_state_ResetPedMaterial == HOOK_ENABLED) {
+        assert(0 && "ResetPedMaterial not implemented.");
+        abort();
+    } else {
+        original_ResetPedMaterial();
+    }
 }
 
+function_hook_state_t function_hook_state_LoadInPedestrians = HOOK_UNAVAILABLE;
 static void(__cdecl*original_LoadInPedestrians)(FILE *, int, tPed_subs *) = (void(__cdecl*)(FILE *, int, tPed_subs *))0x0045dab2;
 CARM95_HOOK_FUNCTION(original_LoadInPedestrians, LoadInPedestrians)
 void __cdecl LoadInPedestrians(FILE *pF, int pSubs_count, tPed_subs *pSubs_array) {
@@ -1188,9 +1498,15 @@ void __cdecl LoadInPedestrians(FILE *pF, int pSubs_count, tPed_subs *pSubs_array
     (void)__block1__x_1;
     (void)__block1__x_2;
 
-    original_LoadInPedestrians(pF, pSubs_count, pSubs_array);
+    if (function_hook_state_LoadInPedestrians == HOOK_ENABLED) {
+        assert(0 && "LoadInPedestrians not implemented.");
+        abort();
+    } else {
+        original_LoadInPedestrians(pF, pSubs_count, pSubs_array);
+    }
 }
 
+function_hook_state_t function_hook_state_BuildPedPaths = HOOK_UNAVAILABLE;
 static br_actor *(__cdecl*original_BuildPedPaths)(tPedestrian_instruction *, int, int) = (br_actor *(__cdecl*)(tPedestrian_instruction *, int, int))0x0045e839;
 CARM95_HOOK_FUNCTION(original_BuildPedPaths, BuildPedPaths)
 br_actor* __cdecl BuildPedPaths(tPedestrian_instruction *pInstructions, int pInstruc_count, int pInit_instruc) {
@@ -1218,9 +1534,15 @@ br_actor* __cdecl BuildPedPaths(tPedestrian_instruction *pInstructions, int pIns
     (void)the_model;
     (void)the_actor;
 
-    return original_BuildPedPaths(pInstructions, pInstruc_count, pInit_instruc);
+    if (function_hook_state_BuildPedPaths == HOOK_ENABLED) {
+        assert(0 && "BuildPedPaths not implemented.");
+        abort();
+    } else {
+        return original_BuildPedPaths(pInstructions, pInstruc_count, pInit_instruc);
+    }
 }
 
+function_hook_state_t function_hook_state_WriteOutPeds = HOOK_UNAVAILABLE;
 static void(__cdecl*original_WriteOutPeds)() = (void(__cdecl*)())0x0045ee73;
 CARM95_HOOK_FUNCTION(original_WriteOutPeds, WriteOutPeds)
 void __cdecl WriteOutPeds() {
@@ -1259,9 +1581,15 @@ void __cdecl WriteOutPeds() {
     (void)f;
     (void)the_path;
 
-    original_WriteOutPeds();
+    if (function_hook_state_WriteOutPeds == HOOK_ENABLED) {
+        assert(0 && "WriteOutPeds not implemented.");
+        abort();
+    } else {
+        original_WriteOutPeds();
+    }
 }
 
+function_hook_state_t function_hook_state_AddPed = HOOK_UNAVAILABLE;
 static void(__cdecl*original_AddPed)() = (void(__cdecl*)())0x0045f644;
 CARM95_HOOK_FUNCTION(original_AddPed, AddPed)
 void __cdecl AddPed() {
@@ -1274,9 +1602,15 @@ void __cdecl AddPed() {
     (void)g;
     (void)the_path;
 
-    original_AddPed();
+    if (function_hook_state_AddPed == HOOK_ENABLED) {
+        assert(0 && "AddPed not implemented.");
+        abort();
+    } else {
+        original_AddPed();
+    }
 }
 
+function_hook_state_t function_hook_state_NewPed = HOOK_UNAVAILABLE;
 static void(__cdecl*original_NewPed)(int) = (void(__cdecl*)(int))0x0045f4f1;
 CARM95_HOOK_FUNCTION(original_NewPed, NewPed)
 void __cdecl NewPed(int pRef_num) {
@@ -1286,279 +1620,465 @@ void __cdecl NewPed(int pRef_num) {
     (void)pRef_num;
     (void)s;
 
-    original_NewPed(pRef_num);
+    if (function_hook_state_NewPed == HOOK_ENABLED) {
+        assert(0 && "NewPed not implemented.");
+        abort();
+    } else {
+        original_NewPed(pRef_num);
+    }
 }
 
+function_hook_state_t function_hook_state_RemoveCurrentPedPath = HOOK_UNAVAILABLE;
 static void(__cdecl*original_RemoveCurrentPedPath)() = (void(__cdecl*)())0x0045f409;
 CARM95_HOOK_FUNCTION(original_RemoveCurrentPedPath, RemoveCurrentPedPath)
 void __cdecl RemoveCurrentPedPath() {
     LOG_TRACE("()");
 
 
-    original_RemoveCurrentPedPath();
+    if (function_hook_state_RemoveCurrentPedPath == HOOK_ENABLED) {
+        assert(0 && "RemoveCurrentPedPath not implemented.");
+        abort();
+    } else {
+        original_RemoveCurrentPedPath();
+    }
 }
 
+function_hook_state_t function_hook_state_ScrubPedestrian = HOOK_UNAVAILABLE;
 static void(__cdecl*original_ScrubPedestrian)() = (void(__cdecl*)())0x0045f3cb;
 CARM95_HOOK_FUNCTION(original_ScrubPedestrian, ScrubPedestrian)
 void __cdecl ScrubPedestrian() {
     LOG_TRACE("()");
 
 
-    original_ScrubPedestrian();
+    if (function_hook_state_ScrubPedestrian == HOOK_ENABLED) {
+        assert(0 && "ScrubPedestrian not implemented.");
+        abort();
+    } else {
+        original_ScrubPedestrian();
+    }
 }
 
+function_hook_state_t function_hook_state_TogglePedDetect = HOOK_UNAVAILABLE;
 static void(__cdecl*original_TogglePedDetect)() = (void(__cdecl*)())0x0045f469;
 CARM95_HOOK_FUNCTION(original_TogglePedDetect, TogglePedDetect)
 void __cdecl TogglePedDetect() {
     LOG_TRACE("()");
 
 
-    original_TogglePedDetect();
+    if (function_hook_state_TogglePedDetect == HOOK_ENABLED) {
+        assert(0 && "TogglePedDetect not implemented.");
+        abort();
+    } else {
+        original_TogglePedDetect();
+    }
 }
 
+function_hook_state_t function_hook_state_NewPed0 = HOOK_UNAVAILABLE;
 static void(__cdecl*original_NewPed0)() = (void(__cdecl*)())0x0045f4dc;
 CARM95_HOOK_FUNCTION(original_NewPed0, NewPed0)
 void __cdecl NewPed0() {
     LOG_TRACE("()");
 
 
-    original_NewPed0();
+    if (function_hook_state_NewPed0 == HOOK_ENABLED) {
+        assert(0 && "NewPed0 not implemented.");
+        abort();
+    } else {
+        original_NewPed0();
+    }
 }
 
+function_hook_state_t function_hook_state_NewPed1 = HOOK_UNAVAILABLE;
 static void(__cdecl*original_NewPed1)() = (void(__cdecl*)())0x0045f72e;
 CARM95_HOOK_FUNCTION(original_NewPed1, NewPed1)
 void __cdecl NewPed1() {
     LOG_TRACE("()");
 
 
-    original_NewPed1();
+    if (function_hook_state_NewPed1 == HOOK_ENABLED) {
+        assert(0 && "NewPed1 not implemented.");
+        abort();
+    } else {
+        original_NewPed1();
+    }
 }
 
+function_hook_state_t function_hook_state_NewPed2 = HOOK_UNAVAILABLE;
 static void(__cdecl*original_NewPed2)() = (void(__cdecl*)())0x0045f743;
 CARM95_HOOK_FUNCTION(original_NewPed2, NewPed2)
 void __cdecl NewPed2() {
     LOG_TRACE("()");
 
 
-    original_NewPed2();
+    if (function_hook_state_NewPed2 == HOOK_ENABLED) {
+        assert(0 && "NewPed2 not implemented.");
+        abort();
+    } else {
+        original_NewPed2();
+    }
 }
 
+function_hook_state_t function_hook_state_NewPed3 = HOOK_UNAVAILABLE;
 static void(__cdecl*original_NewPed3)() = (void(__cdecl*)())0x0045f758;
 CARM95_HOOK_FUNCTION(original_NewPed3, NewPed3)
 void __cdecl NewPed3() {
     LOG_TRACE("()");
 
 
-    original_NewPed3();
+    if (function_hook_state_NewPed3 == HOOK_ENABLED) {
+        assert(0 && "NewPed3 not implemented.");
+        abort();
+    } else {
+        original_NewPed3();
+    }
 }
 
+function_hook_state_t function_hook_state_NewPed4 = HOOK_UNAVAILABLE;
 static void(__cdecl*original_NewPed4)() = (void(__cdecl*)())0x0045f76d;
 CARM95_HOOK_FUNCTION(original_NewPed4, NewPed4)
 void __cdecl NewPed4() {
     LOG_TRACE("()");
 
 
-    original_NewPed4();
+    if (function_hook_state_NewPed4 == HOOK_ENABLED) {
+        assert(0 && "NewPed4 not implemented.");
+        abort();
+    } else {
+        original_NewPed4();
+    }
 }
 
+function_hook_state_t function_hook_state_NewPed5 = HOOK_UNAVAILABLE;
 static void(__cdecl*original_NewPed5)() = (void(__cdecl*)())0x0045f782;
 CARM95_HOOK_FUNCTION(original_NewPed5, NewPed5)
 void __cdecl NewPed5() {
     LOG_TRACE("()");
 
 
-    original_NewPed5();
+    if (function_hook_state_NewPed5 == HOOK_ENABLED) {
+        assert(0 && "NewPed5 not implemented.");
+        abort();
+    } else {
+        original_NewPed5();
+    }
 }
 
+function_hook_state_t function_hook_state_NewPed6 = HOOK_UNAVAILABLE;
 static void(__cdecl*original_NewPed6)() = (void(__cdecl*)())0x0045f797;
 CARM95_HOOK_FUNCTION(original_NewPed6, NewPed6)
 void __cdecl NewPed6() {
     LOG_TRACE("()");
 
 
-    original_NewPed6();
+    if (function_hook_state_NewPed6 == HOOK_ENABLED) {
+        assert(0 && "NewPed6 not implemented.");
+        abort();
+    } else {
+        original_NewPed6();
+    }
 }
 
+function_hook_state_t function_hook_state_NewPed7 = HOOK_UNAVAILABLE;
 static void(__cdecl*original_NewPed7)() = (void(__cdecl*)())0x0045f7ac;
 CARM95_HOOK_FUNCTION(original_NewPed7, NewPed7)
 void __cdecl NewPed7() {
     LOG_TRACE("()");
 
 
-    original_NewPed7();
+    if (function_hook_state_NewPed7 == HOOK_ENABLED) {
+        assert(0 && "NewPed7 not implemented.");
+        abort();
+    } else {
+        original_NewPed7();
+    }
 }
 
+function_hook_state_t function_hook_state_NewPed8 = HOOK_UNAVAILABLE;
 static void(__cdecl*original_NewPed8)() = (void(__cdecl*)())0x0045f7c1;
 CARM95_HOOK_FUNCTION(original_NewPed8, NewPed8)
 void __cdecl NewPed8() {
     LOG_TRACE("()");
 
 
-    original_NewPed8();
+    if (function_hook_state_NewPed8 == HOOK_ENABLED) {
+        assert(0 && "NewPed8 not implemented.");
+        abort();
+    } else {
+        original_NewPed8();
+    }
 }
 
+function_hook_state_t function_hook_state_NewPed9 = HOOK_UNAVAILABLE;
 static void(__cdecl*original_NewPed9)() = (void(__cdecl*)())0x0045f7d6;
 CARM95_HOOK_FUNCTION(original_NewPed9, NewPed9)
 void __cdecl NewPed9() {
     LOG_TRACE("()");
 
 
-    original_NewPed9();
+    if (function_hook_state_NewPed9 == HOOK_ENABLED) {
+        assert(0 && "NewPed9 not implemented.");
+        abort();
+    } else {
+        original_NewPed9();
+    }
 }
 
+function_hook_state_t function_hook_state_NewPed0B = HOOK_UNAVAILABLE;
 static void(__cdecl*original_NewPed0B)() = (void(__cdecl*)())0x0045f7eb;
 CARM95_HOOK_FUNCTION(original_NewPed0B, NewPed0B)
 void __cdecl NewPed0B() {
     LOG_TRACE("()");
 
 
-    original_NewPed0B();
+    if (function_hook_state_NewPed0B == HOOK_ENABLED) {
+        assert(0 && "NewPed0B not implemented.");
+        abort();
+    } else {
+        original_NewPed0B();
+    }
 }
 
+function_hook_state_t function_hook_state_NewPed1B = HOOK_UNAVAILABLE;
 static void(__cdecl*original_NewPed1B)() = (void(__cdecl*)())0x0045f800;
 CARM95_HOOK_FUNCTION(original_NewPed1B, NewPed1B)
 void __cdecl NewPed1B() {
     LOG_TRACE("()");
 
 
-    original_NewPed1B();
+    if (function_hook_state_NewPed1B == HOOK_ENABLED) {
+        assert(0 && "NewPed1B not implemented.");
+        abort();
+    } else {
+        original_NewPed1B();
+    }
 }
 
+function_hook_state_t function_hook_state_NewPed2B = HOOK_UNAVAILABLE;
 static void(__cdecl*original_NewPed2B)() = (void(__cdecl*)())0x0045f815;
 CARM95_HOOK_FUNCTION(original_NewPed2B, NewPed2B)
 void __cdecl NewPed2B() {
     LOG_TRACE("()");
 
 
-    original_NewPed2B();
+    if (function_hook_state_NewPed2B == HOOK_ENABLED) {
+        assert(0 && "NewPed2B not implemented.");
+        abort();
+    } else {
+        original_NewPed2B();
+    }
 }
 
+function_hook_state_t function_hook_state_NewPed3B = HOOK_UNAVAILABLE;
 static void(__cdecl*original_NewPed3B)() = (void(__cdecl*)())0x0045f82a;
 CARM95_HOOK_FUNCTION(original_NewPed3B, NewPed3B)
 void __cdecl NewPed3B() {
     LOG_TRACE("()");
 
 
-    original_NewPed3B();
+    if (function_hook_state_NewPed3B == HOOK_ENABLED) {
+        assert(0 && "NewPed3B not implemented.");
+        abort();
+    } else {
+        original_NewPed3B();
+    }
 }
 
+function_hook_state_t function_hook_state_NewPed4B = HOOK_UNAVAILABLE;
 static void(__cdecl*original_NewPed4B)() = (void(__cdecl*)())0x0045f83f;
 CARM95_HOOK_FUNCTION(original_NewPed4B, NewPed4B)
 void __cdecl NewPed4B() {
     LOG_TRACE("()");
 
 
-    original_NewPed4B();
+    if (function_hook_state_NewPed4B == HOOK_ENABLED) {
+        assert(0 && "NewPed4B not implemented.");
+        abort();
+    } else {
+        original_NewPed4B();
+    }
 }
 
+function_hook_state_t function_hook_state_NewPed5B = HOOK_UNAVAILABLE;
 static void(__cdecl*original_NewPed5B)() = (void(__cdecl*)())0x0045f854;
 CARM95_HOOK_FUNCTION(original_NewPed5B, NewPed5B)
 void __cdecl NewPed5B() {
     LOG_TRACE("()");
 
 
-    original_NewPed5B();
+    if (function_hook_state_NewPed5B == HOOK_ENABLED) {
+        assert(0 && "NewPed5B not implemented.");
+        abort();
+    } else {
+        original_NewPed5B();
+    }
 }
 
+function_hook_state_t function_hook_state_NewPed6B = HOOK_UNAVAILABLE;
 static void(__cdecl*original_NewPed6B)() = (void(__cdecl*)())0x0045f869;
 CARM95_HOOK_FUNCTION(original_NewPed6B, NewPed6B)
 void __cdecl NewPed6B() {
     LOG_TRACE("()");
 
 
-    original_NewPed6B();
+    if (function_hook_state_NewPed6B == HOOK_ENABLED) {
+        assert(0 && "NewPed6B not implemented.");
+        abort();
+    } else {
+        original_NewPed6B();
+    }
 }
 
+function_hook_state_t function_hook_state_NewPed7B = HOOK_UNAVAILABLE;
 static void(__cdecl*original_NewPed7B)() = (void(__cdecl*)())0x0045f87e;
 CARM95_HOOK_FUNCTION(original_NewPed7B, NewPed7B)
 void __cdecl NewPed7B() {
     LOG_TRACE("()");
 
 
-    original_NewPed7B();
+    if (function_hook_state_NewPed7B == HOOK_ENABLED) {
+        assert(0 && "NewPed7B not implemented.");
+        abort();
+    } else {
+        original_NewPed7B();
+    }
 }
 
+function_hook_state_t function_hook_state_NewPed8B = HOOK_UNAVAILABLE;
 static void(__cdecl*original_NewPed8B)() = (void(__cdecl*)())0x0045f893;
 CARM95_HOOK_FUNCTION(original_NewPed8B, NewPed8B)
 void __cdecl NewPed8B() {
     LOG_TRACE("()");
 
 
-    original_NewPed8B();
+    if (function_hook_state_NewPed8B == HOOK_ENABLED) {
+        assert(0 && "NewPed8B not implemented.");
+        abort();
+    } else {
+        original_NewPed8B();
+    }
 }
 
+function_hook_state_t function_hook_state_NewPed9B = HOOK_UNAVAILABLE;
 static void(__cdecl*original_NewPed9B)() = (void(__cdecl*)())0x0045f8a8;
 CARM95_HOOK_FUNCTION(original_NewPed9B, NewPed9B)
 void __cdecl NewPed9B() {
     LOG_TRACE("()");
 
 
-    original_NewPed9B();
+    if (function_hook_state_NewPed9B == HOOK_ENABLED) {
+        assert(0 && "NewPed9B not implemented.");
+        abort();
+    } else {
+        original_NewPed9B();
+    }
 }
 
+function_hook_state_t function_hook_state_MungeShowPedPath = HOOK_UNAVAILABLE;
 static void(__cdecl*original_MungeShowPedPath)() = (void(__cdecl*)())0x0045f94b;
 CARM95_HOOK_FUNCTION(original_MungeShowPedPath, MungeShowPedPath)
 void __cdecl MungeShowPedPath() {
     LOG_TRACE("()");
 
 
-    original_MungeShowPedPath();
+    if (function_hook_state_MungeShowPedPath == HOOK_ENABLED) {
+        assert(0 && "MungeShowPedPath not implemented.");
+        abort();
+    } else {
+        original_MungeShowPedPath();
+    }
 }
 
+function_hook_state_t function_hook_state_DropPedPoint2 = HOOK_UNAVAILABLE;
 static void(__cdecl*original_DropPedPoint2)() = (void(__cdecl*)())0x0045f8e5;
 CARM95_HOOK_FUNCTION(original_DropPedPoint2, DropPedPoint2)
 void __cdecl DropPedPoint2() {
     LOG_TRACE("()");
 
 
-    original_DropPedPoint2();
+    if (function_hook_state_DropPedPoint2 == HOOK_ENABLED) {
+        assert(0 && "DropPedPoint2 not implemented.");
+        abort();
+    } else {
+        original_DropPedPoint2();
+    }
 }
 
+function_hook_state_t function_hook_state_DropPedPoint = HOOK_UNAVAILABLE;
 static void(__cdecl*original_DropPedPoint)() = (void(__cdecl*)())0x0045f8bd;
 CARM95_HOOK_FUNCTION(original_DropPedPoint, DropPedPoint)
 void __cdecl DropPedPoint() {
     LOG_TRACE("()");
 
 
-    original_DropPedPoint();
+    if (function_hook_state_DropPedPoint == HOOK_ENABLED) {
+        assert(0 && "DropPedPoint not implemented.");
+        abort();
+    } else {
+        original_DropPedPoint();
+    }
 }
 
+function_hook_state_t function_hook_state_DropInitPedPoint = HOOK_UNAVAILABLE;
 static void(__cdecl*original_DropInitPedPoint)() = (void(__cdecl*)())0x0045f9a4;
 CARM95_HOOK_FUNCTION(original_DropInitPedPoint, DropInitPedPoint)
 void __cdecl DropInitPedPoint() {
     LOG_TRACE("()");
 
 
-    original_DropInitPedPoint();
+    if (function_hook_state_DropInitPedPoint == HOOK_ENABLED) {
+        assert(0 && "DropInitPedPoint not implemented.");
+        abort();
+    } else {
+        original_DropInitPedPoint();
+    }
 }
 
+function_hook_state_t function_hook_state_DropPedPointAir2 = HOOK_UNAVAILABLE;
 static void(__cdecl*original_DropPedPointAir2)() = (void(__cdecl*)())0x0045f9fe;
 CARM95_HOOK_FUNCTION(original_DropPedPointAir2, DropPedPointAir2)
 void __cdecl DropPedPointAir2() {
     LOG_TRACE("()");
 
 
-    original_DropPedPointAir2();
+    if (function_hook_state_DropPedPointAir2 == HOOK_ENABLED) {
+        assert(0 && "DropPedPointAir2 not implemented.");
+        abort();
+    } else {
+        original_DropPedPointAir2();
+    }
 }
 
+function_hook_state_t function_hook_state_DropPedPointAir = HOOK_UNAVAILABLE;
 static void(__cdecl*original_DropPedPointAir)() = (void(__cdecl*)())0x0045f9d6;
 CARM95_HOOK_FUNCTION(original_DropPedPointAir, DropPedPointAir)
 void __cdecl DropPedPointAir() {
     LOG_TRACE("()");
 
 
-    original_DropPedPointAir();
+    if (function_hook_state_DropPedPointAir == HOOK_ENABLED) {
+        assert(0 && "DropPedPointAir not implemented.");
+        abort();
+    } else {
+        original_DropPedPointAir();
+    }
 }
 
+function_hook_state_t function_hook_state_DropInitPedPointAir = HOOK_UNAVAILABLE;
 static void(__cdecl*original_DropInitPedPointAir)() = (void(__cdecl*)())0x0045fa88;
 CARM95_HOOK_FUNCTION(original_DropInitPedPointAir, DropInitPedPointAir)
 void __cdecl DropInitPedPointAir() {
     LOG_TRACE("()");
 
 
-    original_DropInitPedPointAir();
+    if (function_hook_state_DropInitPedPointAir == HOOK_ENABLED) {
+        assert(0 && "DropInitPedPointAir not implemented.");
+        abort();
+    } else {
+        original_DropInitPedPointAir();
+    }
 }
 
+function_hook_state_t function_hook_state_KillActorsModel = HOOK_UNAVAILABLE;
 static br_uint_32(__cdecl*original_KillActorsModel)(br_actor *, void *) = (br_uint_32(__cdecl*)(br_actor *, void *))0x0045ff83;
 CARM95_HOOK_FUNCTION(original_KillActorsModel, KillActorsModel)
 br_uint_32 __cdecl KillActorsModel(br_actor *pActor, void *pArg) {
@@ -1567,18 +2087,30 @@ br_uint_32 __cdecl KillActorsModel(br_actor *pActor, void *pArg) {
     (void)pActor;
     (void)pArg;
 
-    return original_KillActorsModel(pActor, pArg);
+    if (function_hook_state_KillActorsModel == HOOK_ENABLED) {
+        assert(0 && "KillActorsModel not implemented.");
+        abort();
+    } else {
+        return original_KillActorsModel(pActor, pArg);
+    }
 }
 
+function_hook_state_t function_hook_state_DisposePedPaths = HOOK_UNAVAILABLE;
 static void(__cdecl*original_DisposePedPaths)() = (void(__cdecl*)())0x0045fef8;
 CARM95_HOOK_FUNCTION(original_DisposePedPaths, DisposePedPaths)
 void __cdecl DisposePedPaths() {
     LOG_TRACE("()");
 
 
-    original_DisposePedPaths();
+    if (function_hook_state_DisposePedPaths == HOOK_ENABLED) {
+        assert(0 && "DisposePedPaths not implemented.");
+        abort();
+    } else {
+        original_DisposePedPaths();
+    }
 }
 
+function_hook_state_t function_hook_state_GetPedPos = HOOK_UNAVAILABLE;
 static void(__cdecl*original_GetPedPos)(int *, int *) = (void(__cdecl*)(int *, int *))0x0045faba;
 CARM95_HOOK_FUNCTION(original_GetPedPos, GetPedPos)
 void __cdecl GetPedPos(int *pPed_index, int *pPoint_index) {
@@ -1601,9 +2133,15 @@ void __cdecl GetPedPos(int *pPed_index, int *pPoint_index) {
     (void)min_distance;
     (void)the_distance;
 
-    original_GetPedPos(pPed_index, pPoint_index);
+    if (function_hook_state_GetPedPos == HOOK_ENABLED) {
+        assert(0 && "GetPedPos not implemented.");
+        abort();
+    } else {
+        original_GetPedPos(pPed_index, pPoint_index);
+    }
 }
 
+function_hook_state_t function_hook_state_ShowPedPos = HOOK_UNAVAILABLE;
 static void(__cdecl*original_ShowPedPos)() = (void(__cdecl*)())0x0045fc96;
 CARM95_HOOK_FUNCTION(original_ShowPedPos, ShowPedPos)
 void __cdecl ShowPedPos() {
@@ -1616,9 +2154,15 @@ void __cdecl ShowPedPos() {
     (void)min_point;
     (void)s;
 
-    original_ShowPedPos();
+    if (function_hook_state_ShowPedPos == HOOK_ENABLED) {
+        assert(0 && "ShowPedPos not implemented.");
+        abort();
+    } else {
+        original_ShowPedPos();
+    }
 }
 
+function_hook_state_t function_hook_state_ShowPedPaths = HOOK_UNAVAILABLE;
 static void(__cdecl*original_ShowPedPaths)() = (void(__cdecl*)())0x0045fcf5;
 CARM95_HOOK_FUNCTION(original_ShowPedPaths, ShowPedPaths)
 void __cdecl ShowPedPaths() {
@@ -1629,9 +2173,15 @@ void __cdecl ShowPedPaths() {
     (void)i;
     (void)the_model;
 
-    original_ShowPedPaths();
+    if (function_hook_state_ShowPedPaths == HOOK_ENABLED) {
+        assert(0 && "ShowPedPaths not implemented.");
+        abort();
+    } else {
+        original_ShowPedPaths();
+    }
 }
 
+function_hook_state_t function_hook_state_PullPedPoint = HOOK_UNAVAILABLE;
 static void(__cdecl*original_PullPedPoint)() = (void(__cdecl*)())0x0045fe84;
 CARM95_HOOK_FUNCTION(original_PullPedPoint, PullPedPoint)
 void __cdecl PullPedPoint() {
@@ -1642,9 +2192,15 @@ void __cdecl PullPedPoint() {
     (void)the_ped;
     (void)the_point;
 
-    original_PullPedPoint();
+    if (function_hook_state_PullPedPoint == HOOK_ENABLED) {
+        assert(0 && "PullPedPoint not implemented.");
+        abort();
+    } else {
+        original_PullPedPoint();
+    }
 }
 
+function_hook_state_t function_hook_state_PullPedPointAir = HOOK_UNAVAILABLE;
 static void(__cdecl*original_PullPedPointAir)() = (void(__cdecl*)())0x0045ffc0;
 CARM95_HOOK_FUNCTION(original_PullPedPointAir, PullPedPointAir)
 void __cdecl PullPedPointAir() {
@@ -1655,9 +2211,15 @@ void __cdecl PullPedPointAir() {
     (void)the_ped;
     (void)the_point;
 
-    original_PullPedPointAir();
+    if (function_hook_state_PullPedPointAir == HOOK_ENABLED) {
+        assert(0 && "PullPedPointAir not implemented.");
+        abort();
+    } else {
+        original_PullPedPointAir();
+    }
 }
 
+function_hook_state_t function_hook_state_DeletePedPath = HOOK_UNAVAILABLE;
 static void(__cdecl*original_DeletePedPath)() = (void(__cdecl*)())0x00460082;
 CARM95_HOOK_FUNCTION(original_DeletePedPath, DeletePedPath)
 void __cdecl DeletePedPath() {
@@ -1670,18 +2232,30 @@ void __cdecl DeletePedPath() {
     (void)the_point;
     (void)i;
 
-    original_DeletePedPath();
+    if (function_hook_state_DeletePedPath == HOOK_ENABLED) {
+        assert(0 && "DeletePedPath not implemented.");
+        abort();
+    } else {
+        original_DeletePedPath();
+    }
 }
 
+function_hook_state_t function_hook_state_DeletePedPoint = HOOK_UNAVAILABLE;
 static void(__cdecl*original_DeletePedPoint)() = (void(__cdecl*)())0x0046010f;
 CARM95_HOOK_FUNCTION(original_DeletePedPoint, DeletePedPoint)
 void __cdecl DeletePedPoint() {
     LOG_TRACE("()");
 
 
-    original_DeletePedPoint();
+    if (function_hook_state_DeletePedPoint == HOOK_ENABLED) {
+        assert(0 && "DeletePedPoint not implemented.");
+        abort();
+    } else {
+        original_DeletePedPoint();
+    }
 }
 
+function_hook_state_t function_hook_state_DisposePedestrians = HOOK_UNAVAILABLE;
 static void(__cdecl*original_DisposePedestrians)() = (void(__cdecl*)())0x00460169;
 CARM95_HOOK_FUNCTION(original_DisposePedestrians, DisposePedestrians)
 void __cdecl DisposePedestrians() {
@@ -1694,9 +2268,15 @@ void __cdecl DisposePedestrians() {
     (void)j;
     (void)the_pedestrian;
 
-    original_DisposePedestrians();
+    if (function_hook_state_DisposePedestrians == HOOK_ENABLED) {
+        assert(0 && "DisposePedestrians not implemented.");
+        abort();
+    } else {
+        original_DisposePedestrians();
+    }
 }
 
+function_hook_state_t function_hook_state_DoPedReport = HOOK_UNAVAILABLE;
 static void(__cdecl*original_DoPedReport)() = (void(__cdecl*)())0x004603d6;
 CARM95_HOOK_FUNCTION(original_DoPedReport, DoPedReport)
 void __cdecl DoPedReport() {
@@ -1717,9 +2297,15 @@ void __cdecl DoPedReport() {
     (void)count;
     (void)last_ref_num;
 
-    original_DoPedReport();
+    if (function_hook_state_DoPedReport == HOOK_ENABLED) {
+        assert(0 && "DoPedReport not implemented.");
+        abort();
+    } else {
+        original_DoPedReport();
+    }
 }
 
+function_hook_state_t function_hook_state_RenderProximityRays = HOOK_UNAVAILABLE;
 static void(__cdecl*original_RenderProximityRays)(br_pixelmap *, br_pixelmap *, br_actor *, br_matrix34 *, tU32) = (void(__cdecl*)(br_pixelmap *, br_pixelmap *, br_actor *, br_matrix34 *, tU32))0x00460696;
 CARM95_HOOK_FUNCTION(original_RenderProximityRays, RenderProximityRays)
 void __cdecl RenderProximityRays(br_pixelmap *pRender_screen, br_pixelmap *pDepth_buffer, br_actor *pCamera, br_matrix34 *pCamera_to_world, tU32 pTime) {
@@ -1767,9 +2353,15 @@ void __cdecl RenderProximityRays(br_pixelmap *pRender_screen, br_pixelmap *pDept
     (void)t;
     (void)__block0___scale;
 
-    original_RenderProximityRays(pRender_screen, pDepth_buffer, pCamera, pCamera_to_world, pTime);
+    if (function_hook_state_RenderProximityRays == HOOK_ENABLED) {
+        assert(0 && "RenderProximityRays not implemented.");
+        abort();
+    } else {
+        original_RenderProximityRays(pRender_screen, pDepth_buffer, pCamera, pCamera_to_world, pTime);
+    }
 }
 
+function_hook_state_t function_hook_state_AdjustProxRay = HOOK_UNAVAILABLE;
 static void(__cdecl*original_AdjustProxRay)(int, tU16, tU16, tU32) = (void(__cdecl*)(int, tU16, tU16, tU32))0x00460ac5;
 CARM95_HOOK_FUNCTION(original_AdjustProxRay, AdjustProxRay)
 void __cdecl AdjustProxRay(int pRay_index, tU16 pCar_ID, tU16 pPed_index, tU32 pTime) {
@@ -1780,9 +2372,15 @@ void __cdecl AdjustProxRay(int pRay_index, tU16 pCar_ID, tU16 pPed_index, tU32 p
     (void)pPed_index;
     (void)pTime;
 
-    original_AdjustProxRay(pRay_index, pCar_ID, pPed_index, pTime);
+    if (function_hook_state_AdjustProxRay == HOOK_ENABLED) {
+        assert(0 && "AdjustProxRay not implemented.");
+        abort();
+    } else {
+        original_AdjustProxRay(pRay_index, pCar_ID, pPed_index, pTime);
+    }
 }
 
+function_hook_state_t function_hook_state_ReceivedPedestrian = HOOK_UNAVAILABLE;
 static void(__cdecl*original_ReceivedPedestrian)(tNet_contents *, tNet_message *, tU32) = (void(__cdecl*)(tNet_contents *, tNet_message *, tU32))0x00460b66;
 CARM95_HOOK_FUNCTION(original_ReceivedPedestrian, ReceivedPedestrian)
 void __cdecl ReceivedPedestrian(tNet_contents *pContents, tNet_message *pMessage, tU32 pReceive_time) {
@@ -1810,9 +2408,15 @@ void __cdecl ReceivedPedestrian(tNet_contents *pContents, tNet_message *pMessage
     (void)dead;
     (void)the_sequence;
 
-    original_ReceivedPedestrian(pContents, pMessage, pReceive_time);
+    if (function_hook_state_ReceivedPedestrian == HOOK_ENABLED) {
+        assert(0 && "ReceivedPedestrian not implemented.");
+        abort();
+    } else {
+        original_ReceivedPedestrian(pContents, pMessage, pReceive_time);
+    }
 }
 
+function_hook_state_t function_hook_state_SendAllPedestrianPositions = HOOK_UNAVAILABLE;
 static void(__cdecl*original_SendAllPedestrianPositions)(tPlayer_ID) = (void(__cdecl*)(tPlayer_ID))0x0046109c;
 CARM95_HOOK_FUNCTION(original_SendAllPedestrianPositions, SendAllPedestrianPositions)
 void __cdecl SendAllPedestrianPositions(tPlayer_ID pPlayer) {
@@ -1826,6 +2430,11 @@ void __cdecl SendAllPedestrianPositions(tPlayer_ID pPlayer) {
     (void)the_pedestrian;
     (void)the_contents;
 
-    original_SendAllPedestrianPositions(pPlayer);
+    if (function_hook_state_SendAllPedestrianPositions == HOOK_ENABLED) {
+        assert(0 && "SendAllPedestrianPositions not implemented.");
+        abort();
+    } else {
+        original_SendAllPedestrianPositions(pPlayer);
+    }
 }
 

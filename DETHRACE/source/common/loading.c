@@ -4,6 +4,9 @@
 
 #include "carm95_hooks.h"
 
+#include "carm95_webserver.h"
+
+#include <assert.h>
 tHeadup_info(* hookvar_gHeadup_image_info )[31] = (void*)0x0050a3f0;
 #if 0
 char *(* hookvar_gYour_car_names )[2][6];
@@ -35,6 +38,7 @@ int(* hookvar_gDemo_opponents )[5];
 int * hookvar_gDemo_power  = (void*)0x00551da4;
 int * hookvar_gDemo_offensive  = (void*)0x00551dac;
 
+function_hook_state_t function_hook_state_ReadU32 = HOOK_UNAVAILABLE;
 static tU32(__cdecl*original_ReadU32)(FILE *) = (tU32(__cdecl*)(FILE *))0x0041c2b0;
 CARM95_HOOK_FUNCTION(original_ReadU32, ReadU32)
 tU32 __cdecl ReadU32(FILE *pF) {
@@ -44,9 +48,15 @@ tU32 __cdecl ReadU32(FILE *pF) {
     (void)pF;
     (void)raw_long;
 
-    return original_ReadU32(pF);
+    if (function_hook_state_ReadU32 == HOOK_ENABLED) {
+        assert(0 && "ReadU32 not implemented.");
+        abort();
+    } else {
+        return original_ReadU32(pF);
+    }
 }
 
+function_hook_state_t function_hook_state_ReadU16 = HOOK_UNAVAILABLE;
 static tU16(__cdecl*original_ReadU16)(FILE *) = (tU16(__cdecl*)(FILE *))0x0041c2da;
 CARM95_HOOK_FUNCTION(original_ReadU16, ReadU16)
 tU16 __cdecl ReadU16(FILE *pF) {
@@ -56,9 +66,15 @@ tU16 __cdecl ReadU16(FILE *pF) {
     (void)pF;
     (void)raw_short;
 
-    return original_ReadU16(pF);
+    if (function_hook_state_ReadU16 == HOOK_ENABLED) {
+        assert(0 && "ReadU16 not implemented.");
+        abort();
+    } else {
+        return original_ReadU16(pF);
+    }
 }
 
+function_hook_state_t function_hook_state_ReadU8 = HOOK_UNAVAILABLE;
 static tU8(__cdecl*original_ReadU8)(FILE *) = (tU8(__cdecl*)(FILE *))0x0041c305;
 CARM95_HOOK_FUNCTION(original_ReadU8, ReadU8)
 tU8 __cdecl ReadU8(FILE *pF) {
@@ -68,9 +84,15 @@ tU8 __cdecl ReadU8(FILE *pF) {
     (void)pF;
     (void)raw_byte;
 
-    return original_ReadU8(pF);
+    if (function_hook_state_ReadU8 == HOOK_ENABLED) {
+        assert(0 && "ReadU8 not implemented.");
+        abort();
+    } else {
+        return original_ReadU8(pF);
+    }
 }
 
+function_hook_state_t function_hook_state_ReadS32 = HOOK_UNAVAILABLE;
 static tS32(__cdecl*original_ReadS32)(FILE *) = (tS32(__cdecl*)(FILE *))0x0041c32f;
 CARM95_HOOK_FUNCTION(original_ReadS32, ReadS32)
 tS32 __cdecl ReadS32(FILE *pF) {
@@ -80,9 +102,15 @@ tS32 __cdecl ReadS32(FILE *pF) {
     (void)pF;
     (void)raw_long;
 
-    return original_ReadS32(pF);
+    if (function_hook_state_ReadS32 == HOOK_ENABLED) {
+        assert(0 && "ReadS32 not implemented.");
+        abort();
+    } else {
+        return original_ReadS32(pF);
+    }
 }
 
+function_hook_state_t function_hook_state_ReadS16 = HOOK_UNAVAILABLE;
 static tS16(__cdecl*original_ReadS16)(FILE *) = (tS16(__cdecl*)(FILE *))0x0041c359;
 CARM95_HOOK_FUNCTION(original_ReadS16, ReadS16)
 tS16 __cdecl ReadS16(FILE *pF) {
@@ -92,9 +120,15 @@ tS16 __cdecl ReadS16(FILE *pF) {
     (void)pF;
     (void)raw_short;
 
-    return original_ReadS16(pF);
+    if (function_hook_state_ReadS16 == HOOK_ENABLED) {
+        assert(0 && "ReadS16 not implemented.");
+        abort();
+    } else {
+        return original_ReadS16(pF);
+    }
 }
 
+function_hook_state_t function_hook_state_ReadS8 = HOOK_UNAVAILABLE;
 static tS8(__cdecl*original_ReadS8)(FILE *) = (tS8(__cdecl*)(FILE *))0x0041c384;
 CARM95_HOOK_FUNCTION(original_ReadS8, ReadS8)
 tS8 __cdecl ReadS8(FILE *pF) {
@@ -104,9 +138,15 @@ tS8 __cdecl ReadS8(FILE *pF) {
     (void)pF;
     (void)raw_byte;
 
-    return original_ReadS8(pF);
+    if (function_hook_state_ReadS8 == HOOK_ENABLED) {
+        assert(0 && "ReadS8 not implemented.");
+        abort();
+    } else {
+        return original_ReadS8(pF);
+    }
 }
 
+function_hook_state_t function_hook_state_WriteU32L = HOOK_UNAVAILABLE;
 static void(__cdecl*original_WriteU32L)(FILE *, tU32) = (void(__cdecl*)(FILE *, tU32))0x0041c3ae;
 CARM95_HOOK_FUNCTION(original_WriteU32L, WriteU32L)
 void __cdecl WriteU32L(FILE *pF, tU32 pNumber) {
@@ -117,9 +157,15 @@ void __cdecl WriteU32L(FILE *pF, tU32 pNumber) {
     (void)pNumber;
     (void)raw_long;
 
-    original_WriteU32L(pF, pNumber);
+    if (function_hook_state_WriteU32L == HOOK_ENABLED) {
+        assert(0 && "WriteU32L not implemented.");
+        abort();
+    } else {
+        original_WriteU32L(pF, pNumber);
+    }
 }
 
+function_hook_state_t function_hook_state_WriteU16L = HOOK_UNAVAILABLE;
 static void(__cdecl*original_WriteU16L)(FILE *, tU16) = (void(__cdecl*)(FILE *, tU16))0x0041c3d6;
 CARM95_HOOK_FUNCTION(original_WriteU16L, WriteU16L)
 void __cdecl WriteU16L(FILE *pF, tU16 pNumber) {
@@ -130,9 +176,15 @@ void __cdecl WriteU16L(FILE *pF, tU16 pNumber) {
     (void)pNumber;
     (void)raw_short;
 
-    original_WriteU16L(pF, pNumber);
+    if (function_hook_state_WriteU16L == HOOK_ENABLED) {
+        assert(0 && "WriteU16L not implemented.");
+        abort();
+    } else {
+        original_WriteU16L(pF, pNumber);
+    }
 }
 
+function_hook_state_t function_hook_state_WriteU8L = HOOK_UNAVAILABLE;
 static void(__cdecl*original_WriteU8L)(FILE *, tU8) = (void(__cdecl*)(FILE *, tU8))0x0041c400;
 CARM95_HOOK_FUNCTION(original_WriteU8L, WriteU8L)
 void __cdecl WriteU8L(FILE *pF, tU8 pNumber) {
@@ -143,9 +195,15 @@ void __cdecl WriteU8L(FILE *pF, tU8 pNumber) {
     (void)pNumber;
     (void)raw_byte;
 
-    original_WriteU8L(pF, pNumber);
+    if (function_hook_state_WriteU8L == HOOK_ENABLED) {
+        assert(0 && "WriteU8L not implemented.");
+        abort();
+    } else {
+        original_WriteU8L(pF, pNumber);
+    }
 }
 
+function_hook_state_t function_hook_state_WriteS32L = HOOK_UNAVAILABLE;
 static void(__cdecl*original_WriteS32L)(FILE *, tS32) = (void(__cdecl*)(FILE *, tS32))0x0041c428;
 CARM95_HOOK_FUNCTION(original_WriteS32L, WriteS32L)
 void __cdecl WriteS32L(FILE *pF, tS32 pNumber) {
@@ -156,9 +214,15 @@ void __cdecl WriteS32L(FILE *pF, tS32 pNumber) {
     (void)pNumber;
     (void)raw_long;
 
-    original_WriteS32L(pF, pNumber);
+    if (function_hook_state_WriteS32L == HOOK_ENABLED) {
+        assert(0 && "WriteS32L not implemented.");
+        abort();
+    } else {
+        original_WriteS32L(pF, pNumber);
+    }
 }
 
+function_hook_state_t function_hook_state_WriteS16L = HOOK_UNAVAILABLE;
 static void(__cdecl*original_WriteS16L)(FILE *, tS16) = (void(__cdecl*)(FILE *, tS16))0x0041c450;
 CARM95_HOOK_FUNCTION(original_WriteS16L, WriteS16L)
 void __cdecl WriteS16L(FILE *pF, tS16 pNumber) {
@@ -169,9 +233,15 @@ void __cdecl WriteS16L(FILE *pF, tS16 pNumber) {
     (void)pNumber;
     (void)raw_short;
 
-    original_WriteS16L(pF, pNumber);
+    if (function_hook_state_WriteS16L == HOOK_ENABLED) {
+        assert(0 && "WriteS16L not implemented.");
+        abort();
+    } else {
+        original_WriteS16L(pF, pNumber);
+    }
 }
 
+function_hook_state_t function_hook_state_WriteS8L = HOOK_UNAVAILABLE;
 static void(__cdecl*original_WriteS8L)(FILE *, tS8) = (void(__cdecl*)(FILE *, tS8))0x0041c47a;
 CARM95_HOOK_FUNCTION(original_WriteS8L, WriteS8L)
 void __cdecl WriteS8L(FILE *pF, tS8 pNumber) {
@@ -182,9 +252,15 @@ void __cdecl WriteS8L(FILE *pF, tS8 pNumber) {
     (void)pNumber;
     (void)raw_byte;
 
-    original_WriteS8L(pF, pNumber);
+    if (function_hook_state_WriteS8L == HOOK_ENABLED) {
+        assert(0 && "WriteS8L not implemented.");
+        abort();
+    } else {
+        original_WriteS8L(pF, pNumber);
+    }
 }
 
+function_hook_state_t function_hook_state_SkipBytes = HOOK_UNAVAILABLE;
 static void(__cdecl*original_SkipBytes)(FILE *, int) = (void(__cdecl*)(FILE *, int))0x0041c4a2;
 CARM95_HOOK_FUNCTION(original_SkipBytes, SkipBytes)
 void __cdecl SkipBytes(FILE *pF, int pBytes_to_skip) {
@@ -193,9 +269,15 @@ void __cdecl SkipBytes(FILE *pF, int pBytes_to_skip) {
     (void)pF;
     (void)pBytes_to_skip;
 
-    original_SkipBytes(pF, pBytes_to_skip);
+    if (function_hook_state_SkipBytes == HOOK_ENABLED) {
+        assert(0 && "SkipBytes not implemented.");
+        abort();
+    } else {
+        original_SkipBytes(pF, pBytes_to_skip);
+    }
 }
 
+function_hook_state_t function_hook_state_MemReadU32 = HOOK_UNAVAILABLE;
 static tU32(__cdecl*original_MemReadU32)(char **) = (tU32(__cdecl*)(char **))0x0041c4bf;
 CARM95_HOOK_FUNCTION(original_MemReadU32, MemReadU32)
 tU32 __cdecl MemReadU32(char **pPtr) {
@@ -205,9 +287,15 @@ tU32 __cdecl MemReadU32(char **pPtr) {
     (void)pPtr;
     (void)raw_long;
 
-    return original_MemReadU32(pPtr);
+    if (function_hook_state_MemReadU32 == HOOK_ENABLED) {
+        assert(0 && "MemReadU32 not implemented.");
+        abort();
+    } else {
+        return original_MemReadU32(pPtr);
+    }
 }
 
+function_hook_state_t function_hook_state_MemReadU16 = HOOK_UNAVAILABLE;
 static tU16(__cdecl*original_MemReadU16)(char **) = (tU16(__cdecl*)(char **))0x0041c4e5;
 CARM95_HOOK_FUNCTION(original_MemReadU16, MemReadU16)
 tU16 __cdecl MemReadU16(char **pPtr) {
@@ -217,9 +305,15 @@ tU16 __cdecl MemReadU16(char **pPtr) {
     (void)pPtr;
     (void)raw_short;
 
-    return original_MemReadU16(pPtr);
+    if (function_hook_state_MemReadU16 == HOOK_ENABLED) {
+        assert(0 && "MemReadU16 not implemented.");
+        abort();
+    } else {
+        return original_MemReadU16(pPtr);
+    }
 }
 
+function_hook_state_t function_hook_state_MemReadU8 = HOOK_UNAVAILABLE;
 static tU8(__cdecl*original_MemReadU8)(char **) = (tU8(__cdecl*)(char **))0x0041c50e;
 CARM95_HOOK_FUNCTION(original_MemReadU8, MemReadU8)
 tU8 __cdecl MemReadU8(char **pPtr) {
@@ -227,9 +321,15 @@ tU8 __cdecl MemReadU8(char **pPtr) {
 
     (void)pPtr;
 
-    return original_MemReadU8(pPtr);
+    if (function_hook_state_MemReadU8 == HOOK_ENABLED) {
+        assert(0 && "MemReadU8 not implemented.");
+        abort();
+    } else {
+        return original_MemReadU8(pPtr);
+    }
 }
 
+function_hook_state_t function_hook_state_MemReadS32 = HOOK_UNAVAILABLE;
 static tS32(__cdecl*original_MemReadS32)(char **) = (tS32(__cdecl*)(char **))0x0041c533;
 CARM95_HOOK_FUNCTION(original_MemReadS32, MemReadS32)
 tS32 __cdecl MemReadS32(char **pPtr) {
@@ -239,9 +339,15 @@ tS32 __cdecl MemReadS32(char **pPtr) {
     (void)pPtr;
     (void)raw_long;
 
-    return original_MemReadS32(pPtr);
+    if (function_hook_state_MemReadS32 == HOOK_ENABLED) {
+        assert(0 && "MemReadS32 not implemented.");
+        abort();
+    } else {
+        return original_MemReadS32(pPtr);
+    }
 }
 
+function_hook_state_t function_hook_state_MemReadS16 = HOOK_UNAVAILABLE;
 static tS16(__cdecl*original_MemReadS16)(char **) = (tS16(__cdecl*)(char **))0x0041c559;
 CARM95_HOOK_FUNCTION(original_MemReadS16, MemReadS16)
 tS16 __cdecl MemReadS16(char **pPtr) {
@@ -251,9 +357,15 @@ tS16 __cdecl MemReadS16(char **pPtr) {
     (void)pPtr;
     (void)raw_short;
 
-    return original_MemReadS16(pPtr);
+    if (function_hook_state_MemReadS16 == HOOK_ENABLED) {
+        assert(0 && "MemReadS16 not implemented.");
+        abort();
+    } else {
+        return original_MemReadS16(pPtr);
+    }
 }
 
+function_hook_state_t function_hook_state_MemReadS8 = HOOK_UNAVAILABLE;
 static tS8(__cdecl*original_MemReadS8)(char **) = (tS8(__cdecl*)(char **))0x0041c582;
 CARM95_HOOK_FUNCTION(original_MemReadS8, MemReadS8)
 tS8 __cdecl MemReadS8(char **pPtr) {
@@ -263,9 +375,15 @@ tS8 __cdecl MemReadS8(char **pPtr) {
     (void)pPtr;
     (void)raw_byte;
 
-    return original_MemReadS8(pPtr);
+    if (function_hook_state_MemReadS8 == HOOK_ENABLED) {
+        assert(0 && "MemReadS8 not implemented.");
+        abort();
+    } else {
+        return original_MemReadS8(pPtr);
+    }
 }
 
+function_hook_state_t function_hook_state_MemSkipBytes = HOOK_UNAVAILABLE;
 static void(__cdecl*original_MemSkipBytes)(char **, int) = (void(__cdecl*)(char **, int))0x0041c5a7;
 CARM95_HOOK_FUNCTION(original_MemSkipBytes, MemSkipBytes)
 void __cdecl MemSkipBytes(char **pPtr, int pBytes_to_skip) {
@@ -274,9 +392,15 @@ void __cdecl MemSkipBytes(char **pPtr, int pBytes_to_skip) {
     (void)pPtr;
     (void)pBytes_to_skip;
 
-    original_MemSkipBytes(pPtr, pBytes_to_skip);
+    if (function_hook_state_MemSkipBytes == HOOK_ENABLED) {
+        assert(0 && "MemSkipBytes not implemented.");
+        abort();
+    } else {
+        original_MemSkipBytes(pPtr, pBytes_to_skip);
+    }
 }
 
+function_hook_state_t function_hook_state_LoadGeneralParameters = HOOK_UNAVAILABLE;
 static void(__cdecl*original_LoadGeneralParameters)() = (void(__cdecl*)())0x0041c5ba;
 CARM95_HOOK_FUNCTION(original_LoadGeneralParameters, LoadGeneralParameters)
 void __cdecl LoadGeneralParameters() {
@@ -295,18 +419,30 @@ void __cdecl LoadGeneralParameters() {
     (void)s;
     (void)str;
 
-    original_LoadGeneralParameters();
+    if (function_hook_state_LoadGeneralParameters == HOOK_ENABLED) {
+        assert(0 && "LoadGeneralParameters not implemented.");
+        abort();
+    } else {
+        original_LoadGeneralParameters();
+    }
 }
 
+function_hook_state_t function_hook_state_FinishLoadingGeneral = HOOK_UNAVAILABLE;
 static void(__cdecl*original_FinishLoadingGeneral)() = (void(__cdecl*)())0x0041d210;
 CARM95_HOOK_FUNCTION(original_FinishLoadingGeneral, FinishLoadingGeneral)
 void __cdecl FinishLoadingGeneral() {
     LOG_TRACE("()");
 
 
-    original_FinishLoadingGeneral();
+    if (function_hook_state_FinishLoadingGeneral == HOOK_ENABLED) {
+        assert(0 && "FinishLoadingGeneral not implemented.");
+        abort();
+    } else {
+        original_FinishLoadingGeneral();
+    }
 }
 
+function_hook_state_t function_hook_state_LoadPixelmap = HOOK_UNAVAILABLE;
 static br_pixelmap *(__cdecl*original_LoadPixelmap)(char *) = (br_pixelmap *(__cdecl*)(char *))0x0041d22d;
 CARM95_HOOK_FUNCTION(original_LoadPixelmap, LoadPixelmap)
 br_pixelmap* __cdecl LoadPixelmap(char *pName) {
@@ -320,9 +456,15 @@ br_pixelmap* __cdecl LoadPixelmap(char *pName) {
     (void)pm;
     (void)end;
 
-    return original_LoadPixelmap(pName);
+    if (function_hook_state_LoadPixelmap == HOOK_ENABLED) {
+        assert(0 && "LoadPixelmap not implemented.");
+        abort();
+    } else {
+        return original_LoadPixelmap(pName);
+    }
 }
 
+function_hook_state_t function_hook_state_LoadPixelmaps = HOOK_UNAVAILABLE;
 static br_uint_32(__cdecl*original_LoadPixelmaps)(char *, br_pixelmap **, br_uint_16) = (br_uint_32(__cdecl*)(char *, br_pixelmap **, br_uint_16))0x0041d372;
 CARM95_HOOK_FUNCTION(original_LoadPixelmaps, LoadPixelmaps)
 br_uint_32 __cdecl LoadPixelmaps(char *pFile_name, br_pixelmap **pPixelmaps, br_uint_16 pNum) {
@@ -336,9 +478,15 @@ br_uint_32 __cdecl LoadPixelmaps(char *pFile_name, br_pixelmap **pPixelmaps, br_
     (void)path;
     (void)count;
 
-    return original_LoadPixelmaps(pFile_name, pPixelmaps, pNum);
+    if (function_hook_state_LoadPixelmaps == HOOK_ENABLED) {
+        assert(0 && "LoadPixelmaps not implemented.");
+        abort();
+    } else {
+        return original_LoadPixelmaps(pFile_name, pPixelmaps, pNum);
+    }
 }
 
+function_hook_state_t function_hook_state_LoadShadeTable = HOOK_UNAVAILABLE;
 static br_pixelmap *(__cdecl*original_LoadShadeTable)(char *) = (br_pixelmap *(__cdecl*)(char *))0x0041d470;
 CARM95_HOOK_FUNCTION(original_LoadShadeTable, LoadShadeTable)
 br_pixelmap* __cdecl LoadShadeTable(char *pName) {
@@ -348,9 +496,15 @@ br_pixelmap* __cdecl LoadShadeTable(char *pName) {
     (void)pName;
     (void)the_path;
 
-    return original_LoadShadeTable(pName);
+    if (function_hook_state_LoadShadeTable == HOOK_ENABLED) {
+        assert(0 && "LoadShadeTable not implemented.");
+        abort();
+    } else {
+        return original_LoadShadeTable(pName);
+    }
 }
 
+function_hook_state_t function_hook_state_LoadMaterial = HOOK_UNAVAILABLE;
 static br_material *(__cdecl*original_LoadMaterial)(char *) = (br_material *(__cdecl*)(char *))0x0041d4c8;
 CARM95_HOOK_FUNCTION(original_LoadMaterial, LoadMaterial)
 br_material* __cdecl LoadMaterial(char *pName) {
@@ -362,9 +516,15 @@ br_material* __cdecl LoadMaterial(char *pName) {
     (void)the_path;
     (void)result;
 
-    return original_LoadMaterial(pName);
+    if (function_hook_state_LoadMaterial == HOOK_ENABLED) {
+        assert(0 && "LoadMaterial not implemented.");
+        abort();
+    } else {
+        return original_LoadMaterial(pName);
+    }
 }
 
+function_hook_state_t function_hook_state_LoadModel = HOOK_UNAVAILABLE;
 static br_model *(__cdecl*original_LoadModel)(char *) = (br_model *(__cdecl*)(char *))0x0041d525;
 CARM95_HOOK_FUNCTION(original_LoadModel, LoadModel)
 br_model* __cdecl LoadModel(char *pName) {
@@ -376,9 +536,15 @@ br_model* __cdecl LoadModel(char *pName) {
     (void)the_path;
     (void)model;
 
-    return original_LoadModel(pName);
+    if (function_hook_state_LoadModel == HOOK_ENABLED) {
+        assert(0 && "LoadModel not implemented.");
+        abort();
+    } else {
+        return original_LoadModel(pName);
+    }
 }
 
+function_hook_state_t function_hook_state_LoadActor = HOOK_UNAVAILABLE;
 static br_actor *(__cdecl*original_LoadActor)(char *) = (br_actor *(__cdecl*)(char *))0x0041d582;
 CARM95_HOOK_FUNCTION(original_LoadActor, LoadActor)
 br_actor* __cdecl LoadActor(char *pName) {
@@ -388,9 +554,15 @@ br_actor* __cdecl LoadActor(char *pName) {
     (void)pName;
     (void)the_path;
 
-    return original_LoadActor(pName);
+    if (function_hook_state_LoadActor == HOOK_ENABLED) {
+        assert(0 && "LoadActor not implemented.");
+        abort();
+    } else {
+        return original_LoadActor(pName);
+    }
 }
 
+function_hook_state_t function_hook_state_DRLoadPalette = HOOK_UNAVAILABLE;
 static void(__cdecl*original_DRLoadPalette)(char *) = (void(__cdecl*)(char *))0x0041d6d5;
 CARM95_HOOK_FUNCTION(original_DRLoadPalette, DRLoadPalette)
 void __cdecl DRLoadPalette(char *pPath_name) {
@@ -402,9 +574,15 @@ void __cdecl DRLoadPalette(char *pPath_name) {
     (void)palette_array;
     (void)number_of_palettes;
 
-    original_DRLoadPalette(pPath_name);
+    if (function_hook_state_DRLoadPalette == HOOK_ENABLED) {
+        assert(0 && "DRLoadPalette not implemented.");
+        abort();
+    } else {
+        original_DRLoadPalette(pPath_name);
+    }
 }
 
+function_hook_state_t function_hook_state_DRLoadShadeTable = HOOK_UNAVAILABLE;
 static void(__cdecl*original_DRLoadShadeTable)(char *) = (void(__cdecl*)(char *))0x0041d717;
 CARM95_HOOK_FUNCTION(original_DRLoadShadeTable, DRLoadShadeTable)
 void __cdecl DRLoadShadeTable(char *pPath_name) {
@@ -416,9 +594,15 @@ void __cdecl DRLoadShadeTable(char *pPath_name) {
     (void)table_array;
     (void)number_of_tables;
 
-    original_DRLoadShadeTable(pPath_name);
+    if (function_hook_state_DRLoadShadeTable == HOOK_ENABLED) {
+        assert(0 && "DRLoadShadeTable not implemented.");
+        abort();
+    } else {
+        original_DRLoadShadeTable(pPath_name);
+    }
 }
 
+function_hook_state_t function_hook_state_RezeroPixelmaps = HOOK_UNAVAILABLE;
 static void(__cdecl*original_RezeroPixelmaps)(br_pixelmap **, int) = (void(__cdecl*)(br_pixelmap **, int))0x0041d7b6;
 CARM95_HOOK_FUNCTION(original_RezeroPixelmaps, RezeroPixelmaps)
 void __cdecl RezeroPixelmaps(br_pixelmap **pPixelmap_array, int pCount) {
@@ -427,9 +611,15 @@ void __cdecl RezeroPixelmaps(br_pixelmap **pPixelmap_array, int pCount) {
     (void)pPixelmap_array;
     (void)pCount;
 
-    original_RezeroPixelmaps(pPixelmap_array, pCount);
+    if (function_hook_state_RezeroPixelmaps == HOOK_ENABLED) {
+        assert(0 && "RezeroPixelmaps not implemented.");
+        abort();
+    } else {
+        original_RezeroPixelmaps(pPixelmap_array, pCount);
+    }
 }
 
+function_hook_state_t function_hook_state_DRLoadPixelmaps = HOOK_UNAVAILABLE;
 static void(__cdecl*original_DRLoadPixelmaps)(char *) = (void(__cdecl*)(char *))0x0041d759;
 CARM95_HOOK_FUNCTION(original_DRLoadPixelmaps, DRLoadPixelmaps)
 void __cdecl DRLoadPixelmaps(char *pPath_name) {
@@ -441,9 +631,15 @@ void __cdecl DRLoadPixelmaps(char *pPath_name) {
     (void)pixelmap_array;
     (void)number_of_pixelmaps;
 
-    original_DRLoadPixelmaps(pPath_name);
+    if (function_hook_state_DRLoadPixelmaps == HOOK_ENABLED) {
+        assert(0 && "DRLoadPixelmaps not implemented.");
+        abort();
+    } else {
+        original_DRLoadPixelmaps(pPath_name);
+    }
 }
 
+function_hook_state_t function_hook_state_DRLoadMaterials = HOOK_UNAVAILABLE;
 static void(__cdecl*original_DRLoadMaterials)(char *) = (void(__cdecl*)(char *))0x0041d7ed;
 CARM95_HOOK_FUNCTION(original_DRLoadMaterials, DRLoadMaterials)
 void __cdecl DRLoadMaterials(char *pPath_name) {
@@ -455,9 +651,15 @@ void __cdecl DRLoadMaterials(char *pPath_name) {
     (void)material_array;
     (void)number_of_materials;
 
-    original_DRLoadMaterials(pPath_name);
+    if (function_hook_state_DRLoadMaterials == HOOK_ENABLED) {
+        assert(0 && "DRLoadMaterials not implemented.");
+        abort();
+    } else {
+        original_DRLoadMaterials(pPath_name);
+    }
 }
 
+function_hook_state_t function_hook_state_DRLoadModels = HOOK_UNAVAILABLE;
 static void(__cdecl*original_DRLoadModels)(char *) = (void(__cdecl*)(char *))0x0041d82e;
 CARM95_HOOK_FUNCTION(original_DRLoadModels, DRLoadModels)
 void __cdecl DRLoadModels(char *pPath_name) {
@@ -469,9 +671,15 @@ void __cdecl DRLoadModels(char *pPath_name) {
     (void)model_array;
     (void)number_of_models;
 
-    original_DRLoadModels(pPath_name);
+    if (function_hook_state_DRLoadModels == HOOK_ENABLED) {
+        assert(0 && "DRLoadModels not implemented.");
+        abort();
+    } else {
+        original_DRLoadModels(pPath_name);
+    }
 }
 
+function_hook_state_t function_hook_state_DRLoadActors = HOOK_UNAVAILABLE;
 static void(__cdecl*original_DRLoadActors)(char *) = (void(__cdecl*)(char *))0x0041d86f;
 CARM95_HOOK_FUNCTION(original_DRLoadActors, DRLoadActors)
 void __cdecl DRLoadActors(char *pPath_name) {
@@ -485,9 +693,15 @@ void __cdecl DRLoadActors(char *pPath_name) {
     (void)number_of_actors;
     (void)i;
 
-    original_DRLoadActors(pPath_name);
+    if (function_hook_state_DRLoadActors == HOOK_ENABLED) {
+        assert(0 && "DRLoadActors not implemented.");
+        abort();
+    } else {
+        original_DRLoadActors(pPath_name);
+    }
 }
 
+function_hook_state_t function_hook_state_DRLoadLights = HOOK_UNAVAILABLE;
 static void(__cdecl*original_DRLoadLights)(char *) = (void(__cdecl*)(char *))0x0041d8e0;
 CARM95_HOOK_FUNCTION(original_DRLoadLights, DRLoadLights)
 void __cdecl DRLoadLights(char *pPath_name) {
@@ -501,9 +715,15 @@ void __cdecl DRLoadLights(char *pPath_name) {
     (void)number_of_lights;
     (void)i;
 
-    original_DRLoadLights(pPath_name);
+    if (function_hook_state_DRLoadLights == HOOK_ENABLED) {
+        assert(0 && "DRLoadLights not implemented.");
+        abort();
+    } else {
+        original_DRLoadLights(pPath_name);
+    }
 }
 
+function_hook_state_t function_hook_state_LoadInFiles = HOOK_UNAVAILABLE;
 static void(__cdecl*original_LoadInFiles)(char *, char *, void(**)(char *)) = (void(__cdecl*)(char *, char *, void(**)(char *)))0x0041d957;
 CARM95_HOOK_FUNCTION(original_LoadInFiles, LoadInFiles)
 void __cdecl LoadInFiles(char *pThe_base_path, char *pThe_dir_name, void(**pLoad_routine)(char *)) {
@@ -515,9 +735,15 @@ void __cdecl LoadInFiles(char *pThe_base_path, char *pThe_dir_name, void(**pLoad
     (void)pLoad_routine;
     (void)the_path;
 
-    original_LoadInFiles(pThe_base_path, pThe_dir_name, pLoad_routine);
+    if (function_hook_state_LoadInFiles == HOOK_ENABLED) {
+        assert(0 && "LoadInFiles not implemented.");
+        abort();
+    } else {
+        original_LoadInFiles(pThe_base_path, pThe_dir_name, pLoad_routine);
+    }
 }
 
+function_hook_state_t function_hook_state_LoadInRegisteeDir = HOOK_UNAVAILABLE;
 static void(__cdecl*original_LoadInRegisteeDir)(char *) = (void(__cdecl*)(char *))0x0041d5fd;
 CARM95_HOOK_FUNCTION(original_LoadInRegisteeDir, LoadInRegisteeDir)
 void __cdecl LoadInRegisteeDir(char *pThe_dir_path) {
@@ -527,9 +753,15 @@ void __cdecl LoadInRegisteeDir(char *pThe_dir_path) {
     (void)pThe_dir_path;
     (void)the_path;
 
-    original_LoadInRegisteeDir(pThe_dir_path);
+    if (function_hook_state_LoadInRegisteeDir == HOOK_ENABLED) {
+        assert(0 && "LoadInRegisteeDir not implemented.");
+        abort();
+    } else {
+        original_LoadInRegisteeDir(pThe_dir_path);
+    }
 }
 
+function_hook_state_t function_hook_state_LoadInRegistees = HOOK_UNAVAILABLE;
 static void(__cdecl*original_LoadInRegistees)() = (void(__cdecl*)())0x0041d5df;
 CARM95_HOOK_FUNCTION(original_LoadInRegistees, LoadInRegistees)
 void __cdecl LoadInRegistees() {
@@ -538,9 +770,15 @@ void __cdecl LoadInRegistees() {
 
     (void)the_path;
 
-    original_LoadInRegistees();
+    if (function_hook_state_LoadInRegistees == HOOK_ENABLED) {
+        assert(0 && "LoadInRegistees not implemented.");
+        abort();
+    } else {
+        original_LoadInRegistees();
+    }
 }
 
+function_hook_state_t function_hook_state_LoadKeyMapping = HOOK_UNAVAILABLE;
 static void(__cdecl*original_LoadKeyMapping)() = (void(__cdecl*)())0x0041d992;
 CARM95_HOOK_FUNCTION(original_LoadKeyMapping, LoadKeyMapping)
 void __cdecl LoadKeyMapping() {
@@ -553,9 +791,15 @@ void __cdecl LoadKeyMapping() {
     (void)the_path;
     (void)i;
 
-    original_LoadKeyMapping();
+    if (function_hook_state_LoadKeyMapping == HOOK_ENABLED) {
+        assert(0 && "LoadKeyMapping not implemented.");
+        abort();
+    } else {
+        original_LoadKeyMapping();
+    }
 }
 
+function_hook_state_t function_hook_state_LoadInterfaceStuff = HOOK_UNAVAILABLE;
 static void(__cdecl*original_LoadInterfaceStuff)(int) = (void(__cdecl*)(int))0x0041da5c;
 CARM95_HOOK_FUNCTION(original_LoadInterfaceStuff, LoadInterfaceStuff)
 void __cdecl LoadInterfaceStuff(int pWithin_race) {
@@ -567,9 +811,15 @@ void __cdecl LoadInterfaceStuff(int pWithin_race) {
     (void)path;
     (void)i;
 
-    original_LoadInterfaceStuff(pWithin_race);
+    if (function_hook_state_LoadInterfaceStuff == HOOK_ENABLED) {
+        assert(0 && "LoadInterfaceStuff not implemented.");
+        abort();
+    } else {
+        original_LoadInterfaceStuff(pWithin_race);
+    }
 }
 
+function_hook_state_t function_hook_state_UnlockInterfaceStuff = HOOK_UNAVAILABLE;
 static void(__cdecl*original_UnlockInterfaceStuff)() = (void(__cdecl*)())0x0041dbbf;
 CARM95_HOOK_FUNCTION(original_UnlockInterfaceStuff, UnlockInterfaceStuff)
 void __cdecl UnlockInterfaceStuff() {
@@ -578,9 +828,15 @@ void __cdecl UnlockInterfaceStuff() {
 
     (void)i;
 
-    original_UnlockInterfaceStuff();
+    if (function_hook_state_UnlockInterfaceStuff == HOOK_ENABLED) {
+        assert(0 && "UnlockInterfaceStuff not implemented.");
+        abort();
+    } else {
+        original_UnlockInterfaceStuff();
+    }
 }
 
+function_hook_state_t function_hook_state_InitInterfaceLoadState = HOOK_UNAVAILABLE;
 static void(__cdecl*original_InitInterfaceLoadState)() = (void(__cdecl*)())0x0041dcc7;
 CARM95_HOOK_FUNCTION(original_InitInterfaceLoadState, InitInterfaceLoadState)
 void __cdecl InitInterfaceLoadState() {
@@ -589,9 +845,15 @@ void __cdecl InitInterfaceLoadState() {
 
     (void)i;
 
-    original_InitInterfaceLoadState();
+    if (function_hook_state_InitInterfaceLoadState == HOOK_ENABLED) {
+        assert(0 && "InitInterfaceLoadState not implemented.");
+        abort();
+    } else {
+        original_InitInterfaceLoadState();
+    }
 }
 
+function_hook_state_t function_hook_state_ConvertPixTo16BitStripMap = HOOK_UNAVAILABLE;
 tS8* ConvertPixTo16BitStripMap(br_pixelmap *pBr_map) {
     int i;
     int j;
@@ -627,9 +889,15 @@ tS8* ConvertPixTo16BitStripMap(br_pixelmap *pBr_map) {
     (void)byte;
     (void)palette_entry;
 
-    NOT_IMPLEMENTED();
+    if (function_hook_state_ConvertPixTo16BitStripMap == HOOK_ENABLED) {
+        assert(0 && "ConvertPixTo16BitStripMap not implemented.");
+        abort();
+    } else {
+        NOT_IMPLEMENTED();
+    }
 }
 
+function_hook_state_t function_hook_state_ConvertPixToStripMap = HOOK_UNAVAILABLE;
 static tS8 *(__cdecl*original_ConvertPixToStripMap)(br_pixelmap *) = (tS8 *(__cdecl*)(br_pixelmap *))0x0041dd01;
 CARM95_HOOK_FUNCTION(original_ConvertPixToStripMap, ConvertPixToStripMap)
 tS8* __cdecl ConvertPixToStripMap(br_pixelmap *pThe_br_map) {
@@ -663,9 +931,15 @@ tS8* __cdecl ConvertPixToStripMap(br_pixelmap *pThe_br_map) {
     (void)new_line;
     (void)the_byte;
 
-    return original_ConvertPixToStripMap(pThe_br_map);
+    if (function_hook_state_ConvertPixToStripMap == HOOK_ENABLED) {
+        assert(0 && "ConvertPixToStripMap not implemented.");
+        abort();
+    } else {
+        return original_ConvertPixToStripMap(pThe_br_map);
+    }
 }
 
+function_hook_state_t function_hook_state_KillWindscreen = HOOK_UNAVAILABLE;
 static void(__cdecl*original_KillWindscreen)(br_model *, br_material *) = (void(__cdecl*)(br_model *, br_material *))0x0041e4de;
 CARM95_HOOK_FUNCTION(original_KillWindscreen, KillWindscreen)
 void __cdecl KillWindscreen(br_model *pModel, br_material *pMaterial) {
@@ -678,9 +952,15 @@ void __cdecl KillWindscreen(br_model *pModel, br_material *pMaterial) {
     (void)face;
     (void)i;
 
-    original_KillWindscreen(pModel, pMaterial);
+    if (function_hook_state_KillWindscreen == HOOK_ENABLED) {
+        assert(0 && "KillWindscreen not implemented.");
+        abort();
+    } else {
+        original_KillWindscreen(pModel, pMaterial);
+    }
 }
 
+function_hook_state_t function_hook_state_DropOffDyingPeds = HOOK_UNAVAILABLE;
 static void(__cdecl*original_DropOffDyingPeds)(tCar_spec *) = (void(__cdecl*)(tCar_spec *))0x0041e564;
 CARM95_HOOK_FUNCTION(original_DropOffDyingPeds, DropOffDyingPeds)
 void __cdecl DropOffDyingPeds(tCar_spec *pCar) {
@@ -692,9 +972,15 @@ void __cdecl DropOffDyingPeds(tCar_spec *pCar) {
     (void)child;
     (void)next;
 
-    original_DropOffDyingPeds(pCar);
+    if (function_hook_state_DropOffDyingPeds == HOOK_ENABLED) {
+        assert(0 && "DropOffDyingPeds not implemented.");
+        abort();
+    } else {
+        original_DropOffDyingPeds(pCar);
+    }
 }
 
+function_hook_state_t function_hook_state_DisposeCar = HOOK_UNAVAILABLE;
 static void(__cdecl*original_DisposeCar)(tCar_spec *, int) = (void(__cdecl*)(tCar_spec *, int))0x0041dfbd;
 CARM95_HOOK_FUNCTION(original_DisposeCar, DisposeCar)
 void __cdecl DisposeCar(tCar_spec *pCar_spec, int pOwner) {
@@ -707,9 +993,15 @@ void __cdecl DisposeCar(tCar_spec *pCar_spec, int pOwner) {
     (void)i;
     (void)j;
 
-    original_DisposeCar(pCar_spec, pOwner);
+    if (function_hook_state_DisposeCar == HOOK_ENABLED) {
+        assert(0 && "DisposeCar not implemented.");
+        abort();
+    } else {
+        original_DisposeCar(pCar_spec, pOwner);
+    }
 }
 
+function_hook_state_t function_hook_state_AdjustCarCoordinates = HOOK_UNAVAILABLE;
 static void(__cdecl*original_AdjustCarCoordinates)(tCar_spec *) = (void(__cdecl*)(tCar_spec *))0x00422a79;
 CARM95_HOOK_FUNCTION(original_AdjustCarCoordinates, AdjustCarCoordinates)
 void __cdecl AdjustCarCoordinates(tCar_spec *pCar) {
@@ -719,9 +1011,15 @@ void __cdecl AdjustCarCoordinates(tCar_spec *pCar) {
     (void)pCar;
     (void)i;
 
-    original_AdjustCarCoordinates(pCar);
+    if (function_hook_state_AdjustCarCoordinates == HOOK_ENABLED) {
+        assert(0 && "AdjustCarCoordinates not implemented.");
+        abort();
+    } else {
+        original_AdjustCarCoordinates(pCar);
+    }
 }
 
+function_hook_state_t function_hook_state_LoadSpeedo = HOOK_UNAVAILABLE;
 static void(__cdecl*original_LoadSpeedo)(FILE *, int, tCar_spec *) = (void(__cdecl*)(FILE *, int, tCar_spec *))0x00422d43;
 CARM95_HOOK_FUNCTION(original_LoadSpeedo, LoadSpeedo)
 void __cdecl LoadSpeedo(FILE *pF, int pIndex, tCar_spec *pCar_spec) {
@@ -741,9 +1039,15 @@ void __cdecl LoadSpeedo(FILE *pF, int pIndex, tCar_spec *pCar_spec) {
     (void)the_char1;
     (void)the_char2;
 
-    original_LoadSpeedo(pF, pIndex, pCar_spec);
+    if (function_hook_state_LoadSpeedo == HOOK_ENABLED) {
+        assert(0 && "LoadSpeedo not implemented.");
+        abort();
+    } else {
+        original_LoadSpeedo(pF, pIndex, pCar_spec);
+    }
 }
 
+function_hook_state_t function_hook_state_LoadTacho = HOOK_UNAVAILABLE;
 static void(__cdecl*original_LoadTacho)(FILE *, int, tCar_spec *) = (void(__cdecl*)(FILE *, int, tCar_spec *))0x004230de;
 CARM95_HOOK_FUNCTION(original_LoadTacho, LoadTacho)
 void __cdecl LoadTacho(FILE *pF, int pIndex, tCar_spec *pCar_spec) {
@@ -763,9 +1067,15 @@ void __cdecl LoadTacho(FILE *pF, int pIndex, tCar_spec *pCar_spec) {
     (void)the_char1;
     (void)the_char2;
 
-    original_LoadTacho(pF, pIndex, pCar_spec);
+    if (function_hook_state_LoadTacho == HOOK_ENABLED) {
+        assert(0 && "LoadTacho not implemented.");
+        abort();
+    } else {
+        original_LoadTacho(pF, pIndex, pCar_spec);
+    }
 }
 
+function_hook_state_t function_hook_state_LoadHeadups = HOOK_UNAVAILABLE;
 static void(__cdecl*original_LoadHeadups)(FILE *, int, tCar_spec *) = (void(__cdecl*)(FILE *, int, tCar_spec *))0x004233d3;
 CARM95_HOOK_FUNCTION(original_LoadHeadups, LoadHeadups)
 void __cdecl LoadHeadups(FILE *pF, int pIndex, tCar_spec *pCar_spec) {
@@ -783,9 +1093,15 @@ void __cdecl LoadHeadups(FILE *pF, int pIndex, tCar_spec *pCar_spec) {
     (void)j;
     (void)number_of_slots;
 
-    original_LoadHeadups(pF, pIndex, pCar_spec);
+    if (function_hook_state_LoadHeadups == HOOK_ENABLED) {
+        assert(0 && "LoadHeadups not implemented.");
+        abort();
+    } else {
+        original_LoadHeadups(pF, pIndex, pCar_spec);
+    }
 }
 
+function_hook_state_t function_hook_state_ReadNonCarMechanicsData = HOOK_UNAVAILABLE;
 static void(__cdecl*original_ReadNonCarMechanicsData)(FILE *, tNon_car_spec *) = (void(__cdecl*)(FILE *, tNon_car_spec *))0x0041e5d0;
 CARM95_HOOK_FUNCTION(original_ReadNonCarMechanicsData, ReadNonCarMechanicsData)
 void __cdecl ReadNonCarMechanicsData(FILE *pF, tNon_car_spec *non_car) {
@@ -856,9 +1172,15 @@ void __cdecl ReadNonCarMechanicsData(FILE *pF, tNon_car_spec *non_car) {
     (void)__block6__x_1;
     (void)__block6__x_2;
 
-    original_ReadNonCarMechanicsData(pF, non_car);
+    if (function_hook_state_ReadNonCarMechanicsData == HOOK_ENABLED) {
+        assert(0 && "ReadNonCarMechanicsData not implemented.");
+        abort();
+    } else {
+        original_ReadNonCarMechanicsData(pF, non_car);
+    }
 }
 
+function_hook_state_t function_hook_state_ReadMechanicsData = HOOK_UNAVAILABLE;
 static void(__cdecl*original_ReadMechanicsData)(FILE *, tCar_spec *) = (void(__cdecl*)(FILE *, tCar_spec *))0x0041edfb;
 CARM95_HOOK_FUNCTION(original_ReadMechanicsData, ReadMechanicsData)
 void __cdecl ReadMechanicsData(FILE *pF, tCar_spec *c) {
@@ -951,9 +1273,15 @@ void __cdecl ReadMechanicsData(FILE *pF, tCar_spec *c) {
     (void)__block9__x_0;
     (void)__block9__x_1;
 
-    original_ReadMechanicsData(pF, c);
+    if (function_hook_state_ReadMechanicsData == HOOK_ENABLED) {
+        assert(0 && "ReadMechanicsData not implemented.");
+        abort();
+    } else {
+        original_ReadMechanicsData(pF, c);
+    }
 }
 
+function_hook_state_t function_hook_state_LoadGear = HOOK_UNAVAILABLE;
 static void(__cdecl*original_LoadGear)(FILE *, int, tCar_spec *) = (void(__cdecl*)(FILE *, int, tCar_spec *))0x004237be;
 CARM95_HOOK_FUNCTION(original_LoadGear, LoadGear)
 void __cdecl LoadGear(FILE *pF, int pIndex, tCar_spec *pCar_spec) {
@@ -969,9 +1297,15 @@ void __cdecl LoadGear(FILE *pF, int pIndex, tCar_spec *pCar_spec) {
     (void)s;
     (void)str;
 
-    original_LoadGear(pF, pIndex, pCar_spec);
+    if (function_hook_state_LoadGear == HOOK_ENABLED) {
+        assert(0 && "LoadGear not implemented.");
+        abort();
+    } else {
+        original_LoadGear(pF, pIndex, pCar_spec);
+    }
 }
 
+function_hook_state_t function_hook_state_AddRefOffset = HOOK_UNAVAILABLE;
 static void(__cdecl*original_AddRefOffset)(int *) = (void(__cdecl*)(int *))0x0042387c;
 CARM95_HOOK_FUNCTION(original_AddRefOffset, AddRefOffset)
 void __cdecl AddRefOffset(int *pRef_holder) {
@@ -979,9 +1313,15 @@ void __cdecl AddRefOffset(int *pRef_holder) {
 
     (void)pRef_holder;
 
-    original_AddRefOffset(pRef_holder);
+    if (function_hook_state_AddRefOffset == HOOK_ENABLED) {
+        assert(0 && "AddRefOffset not implemented.");
+        abort();
+    } else {
+        original_AddRefOffset(pRef_holder);
+    }
 }
 
+function_hook_state_t function_hook_state_GetDamageProgram = HOOK_UNAVAILABLE;
 static void(__cdecl*original_GetDamageProgram)(FILE *, tCar_spec *, tImpact_location) = (void(__cdecl*)(FILE *, tCar_spec *, tImpact_location))0x0042389d;
 CARM95_HOOK_FUNCTION(original_GetDamageProgram, GetDamageProgram)
 void __cdecl GetDamageProgram(FILE *pF, tCar_spec *pCar_spec, tImpact_location pImpact_location) {
@@ -1007,9 +1347,15 @@ void __cdecl GetDamageProgram(FILE *pF, tCar_spec *pCar_spec, tImpact_location p
     (void)delim;
     (void)str;
 
-    original_GetDamageProgram(pF, pCar_spec, pImpact_location);
+    if (function_hook_state_GetDamageProgram == HOOK_ENABLED) {
+        assert(0 && "GetDamageProgram not implemented.");
+        abort();
+    } else {
+        original_GetDamageProgram(pF, pCar_spec, pImpact_location);
+    }
 }
 
+function_hook_state_t function_hook_state_LinkModel = HOOK_UNAVAILABLE;
 static br_uint_32(__cdecl*original_LinkModel)(br_actor *, tModel_pool *) = (br_uint_32(__cdecl*)(br_actor *, tModel_pool *))0x00423d40;
 CARM95_HOOK_FUNCTION(original_LinkModel, LinkModel)
 br_uint_32 __cdecl LinkModel(br_actor *pActor, tModel_pool *pModel_pool) {
@@ -1020,9 +1366,15 @@ br_uint_32 __cdecl LinkModel(br_actor *pActor, tModel_pool *pModel_pool) {
     (void)pModel_pool;
     (void)i;
 
-    return original_LinkModel(pActor, pModel_pool);
+    if (function_hook_state_LinkModel == HOOK_ENABLED) {
+        assert(0 && "LinkModel not implemented.");
+        abort();
+    } else {
+        return original_LinkModel(pActor, pModel_pool);
+    }
 }
 
+function_hook_state_t function_hook_state_FreeUpBonnetModels = HOOK_UNAVAILABLE;
 void FreeUpBonnetModels(br_model **pModel_array, int pModel_count) {
     int i;
     LOG_TRACE("(%p, %d)", pModel_array, pModel_count);
@@ -1031,9 +1383,15 @@ void FreeUpBonnetModels(br_model **pModel_array, int pModel_count) {
     (void)pModel_count;
     (void)i;
 
-    NOT_IMPLEMENTED();
+    if (function_hook_state_FreeUpBonnetModels == HOOK_ENABLED) {
+        assert(0 && "FreeUpBonnetModels not implemented.");
+        abort();
+    } else {
+        NOT_IMPLEMENTED();
+    }
 }
 
+function_hook_state_t function_hook_state_LinkModelsToActor = HOOK_UNAVAILABLE;
 static void(__cdecl*original_LinkModelsToActor)(br_actor *, br_model **, int) = (void(__cdecl*)(br_actor *, br_model **, int))0x00423d11;
 CARM95_HOOK_FUNCTION(original_LinkModelsToActor, LinkModelsToActor)
 void __cdecl LinkModelsToActor(br_actor *pActor, br_model **pModel_array, int pModel_count) {
@@ -1045,9 +1403,15 @@ void __cdecl LinkModelsToActor(br_actor *pActor, br_model **pModel_array, int pM
     (void)pModel_count;
     (void)model_pool;
 
-    original_LinkModelsToActor(pActor, pModel_array, pModel_count);
+    if (function_hook_state_LinkModelsToActor == HOOK_ENABLED) {
+        assert(0 && "LinkModelsToActor not implemented.");
+        abort();
+    } else {
+        original_LinkModelsToActor(pActor, pModel_array, pModel_count);
+    }
 }
 
+function_hook_state_t function_hook_state_ReadShrapnelMaterials = HOOK_UNAVAILABLE;
 static void(__cdecl*original_ReadShrapnelMaterials)(FILE *, tCollision_info *) = (void(__cdecl*)(FILE *, tCollision_info *))0x0041fde3;
 CARM95_HOOK_FUNCTION(original_ReadShrapnelMaterials, ReadShrapnelMaterials)
 void __cdecl ReadShrapnelMaterials(FILE *pF, tCollision_info *pCar_spec) {
@@ -1062,9 +1426,15 @@ void __cdecl ReadShrapnelMaterials(FILE *pF, tCollision_info *pCar_spec) {
     (void)version;
     (void)i;
 
-    original_ReadShrapnelMaterials(pF, pCar_spec);
+    if (function_hook_state_ReadShrapnelMaterials == HOOK_ENABLED) {
+        assert(0 && "ReadShrapnelMaterials not implemented.");
+        abort();
+    } else {
+        original_ReadShrapnelMaterials(pF, pCar_spec);
+    }
 }
 
+function_hook_state_t function_hook_state_CloneCar = HOOK_UNAVAILABLE;
 static void(__cdecl*original_CloneCar)(tCar_spec **, tCar_spec *) = (void(__cdecl*)(tCar_spec **, tCar_spec *))0x0041fe6a;
 CARM95_HOOK_FUNCTION(original_CloneCar, CloneCar)
 void __cdecl CloneCar(tCar_spec **pOutput_car, tCar_spec *pInput_car) {
@@ -1075,9 +1445,15 @@ void __cdecl CloneCar(tCar_spec **pOutput_car, tCar_spec *pInput_car) {
     (void)pInput_car;
     (void)i;
 
-    original_CloneCar(pOutput_car, pInput_car);
+    if (function_hook_state_CloneCar == HOOK_ENABLED) {
+        assert(0 && "CloneCar not implemented.");
+        abort();
+    } else {
+        original_CloneCar(pOutput_car, pInput_car);
+    }
 }
 
+function_hook_state_t function_hook_state_DisposeClonedCar = HOOK_UNAVAILABLE;
 static void(__cdecl*original_DisposeClonedCar)(tCar_spec *) = (void(__cdecl*)(tCar_spec *))0x0041ff2f;
 CARM95_HOOK_FUNCTION(original_DisposeClonedCar, DisposeClonedCar)
 void __cdecl DisposeClonedCar(tCar_spec *pCar) {
@@ -1085,9 +1461,15 @@ void __cdecl DisposeClonedCar(tCar_spec *pCar) {
 
     (void)pCar;
 
-    original_DisposeClonedCar(pCar);
+    if (function_hook_state_DisposeClonedCar == HOOK_ENABLED) {
+        assert(0 && "DisposeClonedCar not implemented.");
+        abort();
+    } else {
+        original_DisposeClonedCar(pCar);
+    }
 }
 
+function_hook_state_t function_hook_state_RemoveDoubleSided = HOOK_UNAVAILABLE;
 static int(__cdecl*original_RemoveDoubleSided)(br_model *) = (int(__cdecl*)(br_model *))0x0041ff58;
 CARM95_HOOK_FUNCTION(original_RemoveDoubleSided, RemoveDoubleSided)
 int __cdecl RemoveDoubleSided(br_model *pModel) {
@@ -1109,9 +1491,15 @@ int __cdecl RemoveDoubleSided(br_model *pModel) {
     (void)orig_nfaces;
     (void)result;
 
-    return original_RemoveDoubleSided(pModel);
+    if (function_hook_state_RemoveDoubleSided == HOOK_ENABLED) {
+        assert(0 && "RemoveDoubleSided not implemented.");
+        abort();
+    } else {
+        return original_RemoveDoubleSided(pModel);
+    }
 }
 
+function_hook_state_t function_hook_state_MungeWindscreen = HOOK_UNAVAILABLE;
 static void(__cdecl*original_MungeWindscreen)(br_model *) = (void(__cdecl*)(br_model *))0x00423e17;
 CARM95_HOOK_FUNCTION(original_MungeWindscreen, MungeWindscreen)
 void __cdecl MungeWindscreen(br_model *pModel) {
@@ -1123,9 +1511,15 @@ void __cdecl MungeWindscreen(br_model *pModel) {
     (void)face;
     (void)i;
 
-    original_MungeWindscreen(pModel);
+    if (function_hook_state_MungeWindscreen == HOOK_ENABLED) {
+        assert(0 && "MungeWindscreen not implemented.");
+        abort();
+    } else {
+        original_MungeWindscreen(pModel);
+    }
 }
 
+function_hook_state_t function_hook_state_SetModelFlags = HOOK_UNAVAILABLE;
 static void(__cdecl*original_SetModelFlags)(br_model *, int) = (void(__cdecl*)(br_model *, int))0x00423f0b;
 CARM95_HOOK_FUNCTION(original_SetModelFlags, SetModelFlags)
 void __cdecl SetModelFlags(br_model *pModel, int pOwner) {
@@ -1134,9 +1528,15 @@ void __cdecl SetModelFlags(br_model *pModel, int pOwner) {
     (void)pModel;
     (void)pOwner;
 
-    original_SetModelFlags(pModel, pOwner);
+    if (function_hook_state_SetModelFlags == HOOK_ENABLED) {
+        assert(0 && "SetModelFlags not implemented.");
+        abort();
+    } else {
+        original_SetModelFlags(pModel, pOwner);
+    }
 }
 
+function_hook_state_t function_hook_state_LoadCar = HOOK_UNAVAILABLE;
 static void(__cdecl*original_LoadCar)(char *, tDriver, tCar_spec *, int, char *, tBrender_storage *) = (void(__cdecl*)(char *, tDriver, tCar_spec *, int, char *, tBrender_storage *))0x00420144;
 CARM95_HOOK_FUNCTION(original_LoadCar, LoadCar)
 void __cdecl LoadCar(char *pCar_name, tDriver pDriver, tCar_spec *pCar_spec, int pOwner, char *pDriver_name, tBrender_storage *pStorage_space) {
@@ -1201,9 +1601,15 @@ void __cdecl LoadCar(char *pCar_name, tDriver pDriver, tCar_spec *pCar_spec, int
     (void)group;
     (void)vertex_total;
 
-    original_LoadCar(pCar_name, pDriver, pCar_spec, pOwner, pDriver_name, pStorage_space);
+    if (function_hook_state_LoadCar == HOOK_ENABLED) {
+        assert(0 && "LoadCar not implemented.");
+        abort();
+    } else {
+        original_LoadCar(pCar_name, pDriver, pCar_spec, pOwner, pDriver_name, pStorage_space);
+    }
 }
 
+function_hook_state_t function_hook_state_LoadHeadupImages = HOOK_UNAVAILABLE;
 static void(__cdecl*original_LoadHeadupImages)() = (void(__cdecl*)())0x00423fad;
 CARM95_HOOK_FUNCTION(original_LoadHeadupImages, LoadHeadupImages)
 void __cdecl LoadHeadupImages() {
@@ -1214,9 +1620,15 @@ void __cdecl LoadHeadupImages() {
     (void)i;
     (void)the_path;
 
-    original_LoadHeadupImages();
+    if (function_hook_state_LoadHeadupImages == HOOK_ENABLED) {
+        assert(0 && "LoadHeadupImages not implemented.");
+        abort();
+    } else {
+        original_LoadHeadupImages();
+    }
 }
 
+function_hook_state_t function_hook_state_DisposeHeadupImages = HOOK_UNAVAILABLE;
 static void(__cdecl*original_DisposeHeadupImages)() = (void(__cdecl*)())0x0042405e;
 CARM95_HOOK_FUNCTION(original_DisposeHeadupImages, DisposeHeadupImages)
 void __cdecl DisposeHeadupImages() {
@@ -1227,9 +1639,15 @@ void __cdecl DisposeHeadupImages() {
     (void)i;
     (void)the_path;
 
-    original_DisposeHeadupImages();
+    if (function_hook_state_DisposeHeadupImages == HOOK_ENABLED) {
+        assert(0 && "DisposeHeadupImages not implemented.");
+        abort();
+    } else {
+        original_DisposeHeadupImages();
+    }
 }
 
+function_hook_state_t function_hook_state_OpenRaceFile = HOOK_UNAVAILABLE;
 static FILE *(__cdecl*original_OpenRaceFile)() = (FILE *(__cdecl*)())0x004240b1;
 CARM95_HOOK_FUNCTION(original_OpenRaceFile, OpenRaceFile)
 FILE* __cdecl OpenRaceFile() {
@@ -1240,9 +1658,15 @@ FILE* __cdecl OpenRaceFile() {
     (void)f;
     (void)the_path;
 
-    return original_OpenRaceFile();
+    if (function_hook_state_OpenRaceFile == HOOK_ENABLED) {
+        assert(0 && "OpenRaceFile not implemented.");
+        abort();
+    } else {
+        return original_OpenRaceFile();
+    }
 }
 
+function_hook_state_t function_hook_state_SkipRestOfRace = HOOK_UNAVAILABLE;
 static void(__cdecl*original_SkipRestOfRace)(FILE *) = (void(__cdecl*)(FILE *))0x0042434a;
 CARM95_HOOK_FUNCTION(original_SkipRestOfRace, SkipRestOfRace)
 void __cdecl SkipRestOfRace(FILE *pF) {
@@ -1260,9 +1684,15 @@ void __cdecl SkipRestOfRace(FILE *pF) {
     (void)line_count;
     (void)s;
 
-    original_SkipRestOfRace(pF);
+    if (function_hook_state_SkipRestOfRace == HOOK_ENABLED) {
+        assert(0 && "SkipRestOfRace not implemented.");
+        abort();
+    } else {
+        original_SkipRestOfRace(pF);
+    }
 }
 
+function_hook_state_t function_hook_state_LoadRaces = HOOK_UNAVAILABLE;
 static void(__cdecl*original_LoadRaces)(tRace_list_spec *, int *, int) = (void(__cdecl*)(tRace_list_spec *, int *, int))0x00424116;
 CARM95_HOOK_FUNCTION(original_LoadRaces, LoadRaces)
 void __cdecl LoadRaces(tRace_list_spec *pRace_list, int *pCount, int pRace_type_index) {
@@ -1288,9 +1718,15 @@ void __cdecl LoadRaces(tRace_list_spec *pRace_list, int *pCount, int pRace_type_
     (void)s;
     (void)str;
 
-    original_LoadRaces(pRace_list, pCount, pRace_type_index);
+    if (function_hook_state_LoadRaces == HOOK_ENABLED) {
+        assert(0 && "LoadRaces not implemented.");
+        abort();
+    } else {
+        original_LoadRaces(pRace_list, pCount, pRace_type_index);
+    }
 }
 
+function_hook_state_t function_hook_state_UnlockOpponentMugshot = HOOK_UNAVAILABLE;
 static void(__cdecl*original_UnlockOpponentMugshot)(int) = (void(__cdecl*)(int))0x00424466;
 CARM95_HOOK_FUNCTION(original_UnlockOpponentMugshot, UnlockOpponentMugshot)
 void __cdecl UnlockOpponentMugshot(int pIndex) {
@@ -1298,9 +1734,15 @@ void __cdecl UnlockOpponentMugshot(int pIndex) {
 
     (void)pIndex;
 
-    original_UnlockOpponentMugshot(pIndex);
+    if (function_hook_state_UnlockOpponentMugshot == HOOK_ENABLED) {
+        assert(0 && "UnlockOpponentMugshot not implemented.");
+        abort();
+    } else {
+        original_UnlockOpponentMugshot(pIndex);
+    }
 }
 
+function_hook_state_t function_hook_state_LoadOpponentMugShot = HOOK_UNAVAILABLE;
 static void(__cdecl*original_LoadOpponentMugShot)(int) = (void(__cdecl*)(int))0x004244b0;
 CARM95_HOOK_FUNCTION(original_LoadOpponentMugShot, LoadOpponentMugShot)
 void __cdecl LoadOpponentMugShot(int pIndex) {
@@ -1308,9 +1750,15 @@ void __cdecl LoadOpponentMugShot(int pIndex) {
 
     (void)pIndex;
 
-    original_LoadOpponentMugShot(pIndex);
+    if (function_hook_state_LoadOpponentMugShot == HOOK_ENABLED) {
+        assert(0 && "LoadOpponentMugShot not implemented.");
+        abort();
+    } else {
+        original_LoadOpponentMugShot(pIndex);
+    }
 }
 
+function_hook_state_t function_hook_state_DisposeOpponentGridIcon = HOOK_UNAVAILABLE;
 static void(__cdecl*original_DisposeOpponentGridIcon)(tRace_info *, int) = (void(__cdecl*)(tRace_info *, int))0x00424557;
 CARM95_HOOK_FUNCTION(original_DisposeOpponentGridIcon, DisposeOpponentGridIcon)
 void __cdecl DisposeOpponentGridIcon(tRace_info *pRace_info, int pIndex) {
@@ -1319,9 +1767,15 @@ void __cdecl DisposeOpponentGridIcon(tRace_info *pRace_info, int pIndex) {
     (void)pRace_info;
     (void)pIndex;
 
-    original_DisposeOpponentGridIcon(pRace_info, pIndex);
+    if (function_hook_state_DisposeOpponentGridIcon == HOOK_ENABLED) {
+        assert(0 && "DisposeOpponentGridIcon not implemented.");
+        abort();
+    } else {
+        original_DisposeOpponentGridIcon(pRace_info, pIndex);
+    }
 }
 
+function_hook_state_t function_hook_state_LoadOpponentGridIcon = HOOK_UNAVAILABLE;
 static void(__cdecl*original_LoadOpponentGridIcon)(tRace_info *, int) = (void(__cdecl*)(tRace_info *, int))0x004245cf;
 CARM95_HOOK_FUNCTION(original_LoadOpponentGridIcon, LoadOpponentGridIcon)
 void __cdecl LoadOpponentGridIcon(tRace_info *pRace_info, int pIndex) {
@@ -1330,9 +1784,15 @@ void __cdecl LoadOpponentGridIcon(tRace_info *pRace_info, int pIndex) {
     (void)pRace_info;
     (void)pIndex;
 
-    original_LoadOpponentGridIcon(pRace_info, pIndex);
+    if (function_hook_state_LoadOpponentGridIcon == HOOK_ENABLED) {
+        assert(0 && "LoadOpponentGridIcon not implemented.");
+        abort();
+    } else {
+        original_LoadOpponentGridIcon(pRace_info, pIndex);
+    }
 }
 
+function_hook_state_t function_hook_state_LoadRaceInfo = HOOK_UNAVAILABLE;
 static void(__cdecl*original_LoadRaceInfo)(int, tRace_info *) = (void(__cdecl*)(int, tRace_info *))0x0042466e;
 CARM95_HOOK_FUNCTION(original_LoadRaceInfo, LoadRaceInfo)
 void __cdecl LoadRaceInfo(int pRace_index, tRace_info *pRace_info) {
@@ -1367,9 +1827,15 @@ void __cdecl LoadRaceInfo(int pRace_index, tRace_info *pRace_info) {
     (void)temp_float;
     (void)the_chunk;
 
-    original_LoadRaceInfo(pRace_index, pRace_info);
+    if (function_hook_state_LoadRaceInfo == HOOK_ENABLED) {
+        assert(0 && "LoadRaceInfo not implemented.");
+        abort();
+    } else {
+        original_LoadRaceInfo(pRace_index, pRace_info);
+    }
 }
 
+function_hook_state_t function_hook_state_DisposeRaceInfo = HOOK_UNAVAILABLE;
 static void(__cdecl*original_DisposeRaceInfo)(tRace_info *) = (void(__cdecl*)(tRace_info *))0x00424ac0;
 CARM95_HOOK_FUNCTION(original_DisposeRaceInfo, DisposeRaceInfo)
 void __cdecl DisposeRaceInfo(tRace_info *pRace_info) {
@@ -1385,9 +1851,15 @@ void __cdecl DisposeRaceInfo(tRace_info *pRace_info) {
     (void)k;
     (void)the_chunk;
 
-    original_DisposeRaceInfo(pRace_info);
+    if (function_hook_state_DisposeRaceInfo == HOOK_ENABLED) {
+        assert(0 && "DisposeRaceInfo not implemented.");
+        abort();
+    } else {
+        original_DisposeRaceInfo(pRace_info);
+    }
 }
 
+function_hook_state_t function_hook_state_LoadGridIcons = HOOK_UNAVAILABLE;
 static void(__cdecl*original_LoadGridIcons)(tRace_info *) = (void(__cdecl*)(tRace_info *))0x00424c2e;
 CARM95_HOOK_FUNCTION(original_LoadGridIcons, LoadGridIcons)
 void __cdecl LoadGridIcons(tRace_info *pRace_info) {
@@ -1397,9 +1869,15 @@ void __cdecl LoadGridIcons(tRace_info *pRace_info) {
     (void)pRace_info;
     (void)i;
 
-    original_LoadGridIcons(pRace_info);
+    if (function_hook_state_LoadGridIcons == HOOK_ENABLED) {
+        assert(0 && "LoadGridIcons not implemented.");
+        abort();
+    } else {
+        original_LoadGridIcons(pRace_info);
+    }
 }
 
+function_hook_state_t function_hook_state_DisposeGridIcons = HOOK_UNAVAILABLE;
 static void(__cdecl*original_DisposeGridIcons)(tRace_info *) = (void(__cdecl*)(tRace_info *))0x00424cab;
 CARM95_HOOK_FUNCTION(original_DisposeGridIcons, DisposeGridIcons)
 void __cdecl DisposeGridIcons(tRace_info *pRace_info) {
@@ -1409,9 +1887,15 @@ void __cdecl DisposeGridIcons(tRace_info *pRace_info) {
     (void)pRace_info;
     (void)i;
 
-    original_DisposeGridIcons(pRace_info);
+    if (function_hook_state_DisposeGridIcons == HOOK_ENABLED) {
+        assert(0 && "DisposeGridIcons not implemented.");
+        abort();
+    } else {
+        original_DisposeGridIcons(pRace_info);
+    }
 }
 
+function_hook_state_t function_hook_state_LoadOpponents = HOOK_UNAVAILABLE;
 static void(__cdecl*original_LoadOpponents)() = (void(__cdecl*)())0x00424d15;
 CARM95_HOOK_FUNCTION(original_LoadOpponents, LoadOpponents)
 void __cdecl LoadOpponents() {
@@ -1434,9 +1918,15 @@ void __cdecl LoadOpponents() {
     (void)str;
     (void)the_chunk;
 
-    original_LoadOpponents();
+    if (function_hook_state_LoadOpponents == HOOK_ENABLED) {
+        assert(0 && "LoadOpponents not implemented.");
+        abort();
+    } else {
+        original_LoadOpponents();
+    }
 }
 
+function_hook_state_t function_hook_state_LoadBRFont = HOOK_UNAVAILABLE;
 static br_font *(__cdecl*original_LoadBRFont)(char *) = (br_font *(__cdecl*)(char *))0x004252ee;
 CARM95_HOOK_FUNCTION(original_LoadBRFont, LoadBRFont)
 br_font* __cdecl LoadBRFont(char *pName) {
@@ -1454,9 +1944,15 @@ br_font* __cdecl LoadBRFont(char *pName) {
     (void)data_size;
     (void)i;
 
-    return original_LoadBRFont(pName);
+    if (function_hook_state_LoadBRFont == HOOK_ENABLED) {
+        assert(0 && "LoadBRFont not implemented.");
+        abort();
+    } else {
+        return original_LoadBRFont(pName);
+    }
 }
 
+function_hook_state_t function_hook_state_LoadParts = HOOK_UNAVAILABLE;
 static void(__cdecl*original_LoadParts)() = (void(__cdecl*)())0x00425573;
 CARM95_HOOK_FUNCTION(original_LoadParts, LoadParts)
 void __cdecl LoadParts() {
@@ -1467,9 +1963,15 @@ void __cdecl LoadParts() {
     (void)i;
     (void)j;
 
-    original_LoadParts();
+    if (function_hook_state_LoadParts == HOOK_ENABLED) {
+        assert(0 && "LoadParts not implemented.");
+        abort();
+    } else {
+        original_LoadParts();
+    }
 }
 
+function_hook_state_t function_hook_state_UnlockParts = HOOK_UNAVAILABLE;
 static void(__cdecl*original_UnlockParts)() = (void(__cdecl*)())0x004256b1;
 CARM95_HOOK_FUNCTION(original_UnlockParts, UnlockParts)
 void __cdecl UnlockParts() {
@@ -1480,9 +1982,15 @@ void __cdecl UnlockParts() {
     (void)i;
     (void)j;
 
-    original_UnlockParts();
+    if (function_hook_state_UnlockParts == HOOK_ENABLED) {
+        assert(0 && "UnlockParts not implemented.");
+        abort();
+    } else {
+        original_UnlockParts();
+    }
 }
 
+function_hook_state_t function_hook_state_LoadChromeFont = HOOK_UNAVAILABLE;
 static br_pixelmap *(__cdecl*original_LoadChromeFont)() = (br_pixelmap *(__cdecl*)())0x0042575f;
 CARM95_HOOK_FUNCTION(original_LoadChromeFont, LoadChromeFont)
 br_pixelmap* __cdecl LoadChromeFont() {
@@ -1491,9 +1999,15 @@ br_pixelmap* __cdecl LoadChromeFont() {
 
     (void)result;
 
-    return original_LoadChromeFont();
+    if (function_hook_state_LoadChromeFont == HOOK_ENABLED) {
+        assert(0 && "LoadChromeFont not implemented.");
+        abort();
+    } else {
+        return original_LoadChromeFont();
+    }
 }
 
+function_hook_state_t function_hook_state_DisposeChromeFont = HOOK_UNAVAILABLE;
 static void(__cdecl*original_DisposeChromeFont)(br_pixelmap *) = (void(__cdecl*)(br_pixelmap *))0x00425799;
 CARM95_HOOK_FUNCTION(original_DisposeChromeFont, DisposeChromeFont)
 void __cdecl DisposeChromeFont(br_pixelmap *pThe_font) {
@@ -1501,9 +2015,15 @@ void __cdecl DisposeChromeFont(br_pixelmap *pThe_font) {
 
     (void)pThe_font;
 
-    original_DisposeChromeFont(pThe_font);
+    if (function_hook_state_DisposeChromeFont == HOOK_ENABLED) {
+        assert(0 && "DisposeChromeFont not implemented.");
+        abort();
+    } else {
+        original_DisposeChromeFont(pThe_font);
+    }
 }
 
+function_hook_state_t function_hook_state_GetALineAndInterpretCommand = HOOK_UNAVAILABLE;
 static int(__cdecl*original_GetALineAndInterpretCommand)(FILE *, char **, int) = (int(__cdecl*)(FILE *, char **, int))0x004257b0;
 CARM95_HOOK_FUNCTION(original_GetALineAndInterpretCommand, GetALineAndInterpretCommand)
 int __cdecl GetALineAndInterpretCommand(FILE *pF, char **pString_list, int pCount) {
@@ -1519,9 +2039,15 @@ int __cdecl GetALineAndInterpretCommand(FILE *pF, char **pString_list, int pCoun
     (void)s;
     (void)str;
 
-    return original_GetALineAndInterpretCommand(pF, pString_list, pCount);
+    if (function_hook_state_GetALineAndInterpretCommand == HOOK_ENABLED) {
+        assert(0 && "GetALineAndInterpretCommand not implemented.");
+        abort();
+    } else {
+        return original_GetALineAndInterpretCommand(pF, pString_list, pCount);
+    }
 }
 
+function_hook_state_t function_hook_state_GetAnInt = HOOK_UNAVAILABLE;
 static int(__cdecl*original_GetAnInt)(FILE *) = (int(__cdecl*)(FILE *))0x00425878;
 CARM95_HOOK_FUNCTION(original_GetAnInt, GetAnInt)
 int __cdecl GetAnInt(FILE *pF) {
@@ -1535,9 +2061,15 @@ int __cdecl GetAnInt(FILE *pF) {
     (void)str;
     (void)result;
 
-    return original_GetAnInt(pF);
+    if (function_hook_state_GetAnInt == HOOK_ENABLED) {
+        assert(0 && "GetAnInt not implemented.");
+        abort();
+    } else {
+        return original_GetAnInt(pF);
+    }
 }
 
+function_hook_state_t function_hook_state_GetAFloat = HOOK_UNAVAILABLE;
 static float(__cdecl*original_GetAFloat)(FILE *) = (float(__cdecl*)(FILE *))0x004258d0;
 CARM95_HOOK_FUNCTION(original_GetAFloat, GetAFloat)
 float __cdecl GetAFloat(FILE *pF) {
@@ -1551,9 +2083,15 @@ float __cdecl GetAFloat(FILE *pF) {
     (void)str;
     (void)result;
 
-    return original_GetAFloat(pF);
+    if (function_hook_state_GetAFloat == HOOK_ENABLED) {
+        assert(0 && "GetAFloat not implemented.");
+        abort();
+    } else {
+        return original_GetAFloat(pF);
+    }
 }
 
+function_hook_state_t function_hook_state_GetAFloatPercent = HOOK_UNAVAILABLE;
 static float(__cdecl*original_GetAFloatPercent)(FILE *) = (float(__cdecl*)(FILE *))0x00425928;
 CARM95_HOOK_FUNCTION(original_GetAFloatPercent, GetAFloatPercent)
 float __cdecl GetAFloatPercent(FILE *pF) {
@@ -1567,9 +2105,15 @@ float __cdecl GetAFloatPercent(FILE *pF) {
     (void)str;
     (void)result;
 
-    return original_GetAFloatPercent(pF);
+    if (function_hook_state_GetAFloatPercent == HOOK_ENABLED) {
+        assert(0 && "GetAFloatPercent not implemented.");
+        abort();
+    } else {
+        return original_GetAFloatPercent(pF);
+    }
 }
 
+function_hook_state_t function_hook_state_GetPairOfFloats = HOOK_UNAVAILABLE;
 static void(__cdecl*original_GetPairOfFloats)(FILE *, float *, float *) = (void(__cdecl*)(FILE *, float *, float *))0x00425986;
 CARM95_HOOK_FUNCTION(original_GetPairOfFloats, GetPairOfFloats)
 void __cdecl GetPairOfFloats(FILE *pF, float *pF1, float *pF2) {
@@ -1583,9 +2127,15 @@ void __cdecl GetPairOfFloats(FILE *pF, float *pF1, float *pF2) {
     (void)s;
     (void)str;
 
-    original_GetPairOfFloats(pF, pF1, pF2);
+    if (function_hook_state_GetPairOfFloats == HOOK_ENABLED) {
+        assert(0 && "GetPairOfFloats not implemented.");
+        abort();
+    } else {
+        original_GetPairOfFloats(pF, pF1, pF2);
+    }
 }
 
+function_hook_state_t function_hook_state_GetThreeFloats = HOOK_UNAVAILABLE;
 static void(__cdecl*original_GetThreeFloats)(FILE *, float *, float *, float *) = (void(__cdecl*)(FILE *, float *, float *, float *))0x004259fd;
 CARM95_HOOK_FUNCTION(original_GetThreeFloats, GetThreeFloats)
 void __cdecl GetThreeFloats(FILE *pF, float *pF1, float *pF2, float *pF3) {
@@ -1600,9 +2150,15 @@ void __cdecl GetThreeFloats(FILE *pF, float *pF1, float *pF2, float *pF3) {
     (void)s;
     (void)str;
 
-    original_GetThreeFloats(pF, pF1, pF2, pF3);
+    if (function_hook_state_GetThreeFloats == HOOK_ENABLED) {
+        assert(0 && "GetThreeFloats not implemented.");
+        abort();
+    } else {
+        original_GetThreeFloats(pF, pF1, pF2, pF3);
+    }
 }
 
+function_hook_state_t function_hook_state_GetPairOfInts = HOOK_UNAVAILABLE;
 static void(__cdecl*original_GetPairOfInts)(FILE *, int *, int *) = (void(__cdecl*)(FILE *, int *, int *))0x00425a9b;
 CARM95_HOOK_FUNCTION(original_GetPairOfInts, GetPairOfInts)
 void __cdecl GetPairOfInts(FILE *pF, int *pF1, int *pF2) {
@@ -1616,9 +2172,15 @@ void __cdecl GetPairOfInts(FILE *pF, int *pF1, int *pF2) {
     (void)s;
     (void)str;
 
-    original_GetPairOfInts(pF, pF1, pF2);
+    if (function_hook_state_GetPairOfInts == HOOK_ENABLED) {
+        assert(0 && "GetPairOfInts not implemented.");
+        abort();
+    } else {
+        original_GetPairOfInts(pF, pF1, pF2);
+    }
 }
 
+function_hook_state_t function_hook_state_GetThreeInts = HOOK_UNAVAILABLE;
 static void(__cdecl*original_GetThreeInts)(FILE *, int *, int *, int *) = (void(__cdecl*)(FILE *, int *, int *, int *))0x00425b12;
 CARM95_HOOK_FUNCTION(original_GetThreeInts, GetThreeInts)
 void __cdecl GetThreeInts(FILE *pF, int *pF1, int *pF2, int *pF3) {
@@ -1633,9 +2195,15 @@ void __cdecl GetThreeInts(FILE *pF, int *pF1, int *pF2, int *pF3) {
     (void)s;
     (void)str;
 
-    original_GetThreeInts(pF, pF1, pF2, pF3);
+    if (function_hook_state_GetThreeInts == HOOK_ENABLED) {
+        assert(0 && "GetThreeInts not implemented.");
+        abort();
+    } else {
+        original_GetThreeInts(pF, pF1, pF2, pF3);
+    }
 }
 
+function_hook_state_t function_hook_state_GetThreeIntsAndAString = HOOK_UNAVAILABLE;
 static void(__cdecl*original_GetThreeIntsAndAString)(FILE *, int *, int *, int *, char *) = (void(__cdecl*)(FILE *, int *, int *, int *, char *))0x00425bb0;
 CARM95_HOOK_FUNCTION(original_GetThreeIntsAndAString, GetThreeIntsAndAString)
 void __cdecl GetThreeIntsAndAString(FILE *pF, int *pF1, int *pF2, int *pF3, char *pS) {
@@ -1651,9 +2219,15 @@ void __cdecl GetThreeIntsAndAString(FILE *pF, int *pF1, int *pF2, int *pF3, char
     (void)s;
     (void)str;
 
-    original_GetThreeIntsAndAString(pF, pF1, pF2, pF3, pS);
+    if (function_hook_state_GetThreeIntsAndAString == HOOK_ENABLED) {
+        assert(0 && "GetThreeIntsAndAString not implemented.");
+        abort();
+    } else {
+        original_GetThreeIntsAndAString(pF, pF1, pF2, pF3, pS);
+    }
 }
 
+function_hook_state_t function_hook_state_GetFourInts = HOOK_UNAVAILABLE;
 static void(__cdecl*original_GetFourInts)(FILE *, int *, int *, int *, int *) = (void(__cdecl*)(FILE *, int *, int *, int *, int *))0x00425c85;
 CARM95_HOOK_FUNCTION(original_GetFourInts, GetFourInts)
 void __cdecl GetFourInts(FILE *pF, int *pF1, int *pF2, int *pF3, int *pF4) {
@@ -1669,9 +2243,15 @@ void __cdecl GetFourInts(FILE *pF, int *pF1, int *pF2, int *pF3, int *pF4) {
     (void)s;
     (void)str;
 
-    original_GetFourInts(pF, pF1, pF2, pF3, pF4);
+    if (function_hook_state_GetFourInts == HOOK_ENABLED) {
+        assert(0 && "GetFourInts not implemented.");
+        abort();
+    } else {
+        original_GetFourInts(pF, pF1, pF2, pF3, pF4);
+    }
 }
 
+function_hook_state_t function_hook_state_GetAScalar = HOOK_UNAVAILABLE;
 static br_scalar(__cdecl*original_GetAScalar)(FILE *) = (br_scalar(__cdecl*)(FILE *))0x00425d4a;
 CARM95_HOOK_FUNCTION(original_GetAScalar, GetAScalar)
 br_scalar __cdecl GetAScalar(FILE *pF) {
@@ -1679,9 +2259,15 @@ br_scalar __cdecl GetAScalar(FILE *pF) {
 
     (void)pF;
 
-    return original_GetAScalar(pF);
+    if (function_hook_state_GetAScalar == HOOK_ENABLED) {
+        assert(0 && "GetAScalar not implemented.");
+        abort();
+    } else {
+        return original_GetAScalar(pF);
+    }
 }
 
+function_hook_state_t function_hook_state_GetPairOfScalars = HOOK_UNAVAILABLE;
 static void(__cdecl*original_GetPairOfScalars)(FILE *, br_scalar *, br_scalar *) = (void(__cdecl*)(FILE *, br_scalar *, br_scalar *))0x00425d66;
 CARM95_HOOK_FUNCTION(original_GetPairOfScalars, GetPairOfScalars)
 void __cdecl GetPairOfScalars(FILE *pF, br_scalar *pS1, br_scalar *pS2) {
@@ -1695,9 +2281,15 @@ void __cdecl GetPairOfScalars(FILE *pF, br_scalar *pS1, br_scalar *pS2) {
     (void)__block0__x_0;
     (void)__block0__x_1;
 
-    original_GetPairOfScalars(pF, pS1, pS2);
+    if (function_hook_state_GetPairOfScalars == HOOK_ENABLED) {
+        assert(0 && "GetPairOfScalars not implemented.");
+        abort();
+    } else {
+        original_GetPairOfScalars(pF, pS1, pS2);
+    }
 }
 
+function_hook_state_t function_hook_state_GetThreeScalars = HOOK_UNAVAILABLE;
 static void(__cdecl*original_GetThreeScalars)(FILE *, br_scalar *, br_scalar *, br_scalar *) = (void(__cdecl*)(FILE *, br_scalar *, br_scalar *, br_scalar *))0x00425d98;
 CARM95_HOOK_FUNCTION(original_GetThreeScalars, GetThreeScalars)
 void __cdecl GetThreeScalars(FILE *pF, br_scalar *pS1, br_scalar *pS2, br_scalar *pS3) {
@@ -1714,9 +2306,15 @@ void __cdecl GetThreeScalars(FILE *pF, br_scalar *pS1, br_scalar *pS2, br_scalar
     (void)__block0__x_1;
     (void)__block0__x_2;
 
-    original_GetThreeScalars(pF, pS1, pS2, pS3);
+    if (function_hook_state_GetThreeScalars == HOOK_ENABLED) {
+        assert(0 && "GetThreeScalars not implemented.");
+        abort();
+    } else {
+        original_GetThreeScalars(pF, pS1, pS2, pS3);
+    }
 }
 
+function_hook_state_t function_hook_state_GetFourScalars = HOOK_UNAVAILABLE;
 static void(__cdecl*original_GetFourScalars)(FILE *, br_scalar *, br_scalar *, br_scalar *, br_scalar *) = (void(__cdecl*)(FILE *, br_scalar *, br_scalar *, br_scalar *, br_scalar *))0x00425dd6;
 CARM95_HOOK_FUNCTION(original_GetFourScalars, GetFourScalars)
 void __cdecl GetFourScalars(FILE *pF, br_scalar *pF1, br_scalar *pF2, br_scalar *pF3, br_scalar *pF4) {
@@ -1740,9 +2338,15 @@ void __cdecl GetFourScalars(FILE *pF, br_scalar *pF1, br_scalar *pF2, br_scalar 
     (void)f3;
     (void)f4;
 
-    original_GetFourScalars(pF, pF1, pF2, pF3, pF4);
+    if (function_hook_state_GetFourScalars == HOOK_ENABLED) {
+        assert(0 && "GetFourScalars not implemented.");
+        abort();
+    } else {
+        original_GetFourScalars(pF, pF1, pF2, pF3, pF4);
+    }
 }
 
+function_hook_state_t function_hook_state_GetFiveScalars = HOOK_UNAVAILABLE;
 static void(__cdecl*original_GetFiveScalars)(FILE *, br_scalar *, br_scalar *, br_scalar *, br_scalar *, br_scalar *) = (void(__cdecl*)(FILE *, br_scalar *, br_scalar *, br_scalar *, br_scalar *, br_scalar *))0x00425ec1;
 CARM95_HOOK_FUNCTION(original_GetFiveScalars, GetFiveScalars)
 void __cdecl GetFiveScalars(FILE *pF, br_scalar *pF1, br_scalar *pF2, br_scalar *pF3, br_scalar *pF4, br_scalar *pF5) {
@@ -1769,9 +2373,15 @@ void __cdecl GetFiveScalars(FILE *pF, br_scalar *pF1, br_scalar *pF2, br_scalar 
     (void)f4;
     (void)f5;
 
-    original_GetFiveScalars(pF, pF1, pF2, pF3, pF4, pF5);
+    if (function_hook_state_GetFiveScalars == HOOK_ENABLED) {
+        assert(0 && "GetFiveScalars not implemented.");
+        abort();
+    } else {
+        original_GetFiveScalars(pF, pF1, pF2, pF3, pF4, pF5);
+    }
 }
 
+function_hook_state_t function_hook_state_GetNScalars = HOOK_UNAVAILABLE;
 static void(__cdecl*original_GetNScalars)(FILE *, int, br_scalar *) = (void(__cdecl*)(FILE *, int, br_scalar *))0x00425fdb;
 CARM95_HOOK_FUNCTION(original_GetNScalars, GetNScalars)
 void __cdecl GetNScalars(FILE *pF, int pNumber, br_scalar *pScalars) {
@@ -1789,9 +2399,15 @@ void __cdecl GetNScalars(FILE *pF, int pNumber, br_scalar *pScalars) {
     (void)fleurting_point_numero;
     (void)i;
 
-    original_GetNScalars(pF, pNumber, pScalars);
+    if (function_hook_state_GetNScalars == HOOK_ENABLED) {
+        assert(0 && "GetNScalars not implemented.");
+        abort();
+    } else {
+        original_GetNScalars(pF, pNumber, pScalars);
+    }
 }
 
+function_hook_state_t function_hook_state_GetPairOfFloatPercents = HOOK_UNAVAILABLE;
 static void(__cdecl*original_GetPairOfFloatPercents)(FILE *, float *, float *) = (void(__cdecl*)(FILE *, float *, float *))0x0042607b;
 CARM95_HOOK_FUNCTION(original_GetPairOfFloatPercents, GetPairOfFloatPercents)
 void __cdecl GetPairOfFloatPercents(FILE *pF, float *pF1, float *pF2) {
@@ -1805,9 +2421,15 @@ void __cdecl GetPairOfFloatPercents(FILE *pF, float *pF1, float *pF2) {
     (void)s;
     (void)str;
 
-    original_GetPairOfFloatPercents(pF, pF1, pF2);
+    if (function_hook_state_GetPairOfFloatPercents == HOOK_ENABLED) {
+        assert(0 && "GetPairOfFloatPercents not implemented.");
+        abort();
+    } else {
+        original_GetPairOfFloatPercents(pF, pF1, pF2);
+    }
 }
 
+function_hook_state_t function_hook_state_GetThreeFloatPercents = HOOK_UNAVAILABLE;
 static void(__cdecl*original_GetThreeFloatPercents)(FILE *, float *, float *, float *) = (void(__cdecl*)(FILE *, float *, float *, float *))0x00426112;
 CARM95_HOOK_FUNCTION(original_GetThreeFloatPercents, GetThreeFloatPercents)
 void __cdecl GetThreeFloatPercents(FILE *pF, float *pF1, float *pF2, float *pF3) {
@@ -1822,9 +2444,15 @@ void __cdecl GetThreeFloatPercents(FILE *pF, float *pF1, float *pF2, float *pF3)
     (void)s;
     (void)str;
 
-    original_GetThreeFloatPercents(pF, pF1, pF2, pF3);
+    if (function_hook_state_GetThreeFloatPercents == HOOK_ENABLED) {
+        assert(0 && "GetThreeFloatPercents not implemented.");
+        abort();
+    } else {
+        original_GetThreeFloatPercents(pF, pF1, pF2, pF3);
+    }
 }
 
+function_hook_state_t function_hook_state_GetAString = HOOK_UNAVAILABLE;
 static void(__cdecl*original_GetAString)(FILE *, char *) = (void(__cdecl*)(FILE *, char *))0x004261e0;
 CARM95_HOOK_FUNCTION(original_GetAString, GetAString)
 void __cdecl GetAString(FILE *pF, char *pString) {
@@ -1837,18 +2465,30 @@ void __cdecl GetAString(FILE *pF, char *pString) {
     (void)s;
     (void)str;
 
-    original_GetAString(pF, pString);
+    if (function_hook_state_GetAString == HOOK_ENABLED) {
+        assert(0 && "GetAString not implemented.");
+        abort();
+    } else {
+        original_GetAString(pF, pString);
+    }
 }
 
+function_hook_state_t function_hook_state_AboutToLoadFirstCar = HOOK_UNAVAILABLE;
 static void(__cdecl*original_AboutToLoadFirstCar)() = (void(__cdecl*)())0x00426240;
 CARM95_HOOK_FUNCTION(original_AboutToLoadFirstCar, AboutToLoadFirstCar)
 void __cdecl AboutToLoadFirstCar() {
     LOG_TRACE("()");
 
 
-    original_AboutToLoadFirstCar();
+    if (function_hook_state_AboutToLoadFirstCar == HOOK_ENABLED) {
+        assert(0 && "AboutToLoadFirstCar not implemented.");
+        abort();
+    } else {
+        original_AboutToLoadFirstCar();
+    }
 }
 
+function_hook_state_t function_hook_state_LoadOpponentsCars = HOOK_UNAVAILABLE;
 static void(__cdecl*original_LoadOpponentsCars)(tRace_info *) = (void(__cdecl*)(tRace_info *))0x0042625a;
 CARM95_HOOK_FUNCTION(original_LoadOpponentsCars, LoadOpponentsCars)
 void __cdecl LoadOpponentsCars(tRace_info *pRace_info) {
@@ -1858,9 +2498,15 @@ void __cdecl LoadOpponentsCars(tRace_info *pRace_info) {
     (void)pRace_info;
     (void)i;
 
-    original_LoadOpponentsCars(pRace_info);
+    if (function_hook_state_LoadOpponentsCars == HOOK_ENABLED) {
+        assert(0 && "LoadOpponentsCars not implemented.");
+        abort();
+    } else {
+        original_LoadOpponentsCars(pRace_info);
+    }
 }
 
+function_hook_state_t function_hook_state_DisposeOpponentsCars = HOOK_UNAVAILABLE;
 static void(__cdecl*original_DisposeOpponentsCars)(tRace_info *) = (void(__cdecl*)(tRace_info *))0x00426359;
 CARM95_HOOK_FUNCTION(original_DisposeOpponentsCars, DisposeOpponentsCars)
 void __cdecl DisposeOpponentsCars(tRace_info *pRace_info) {
@@ -1870,9 +2516,15 @@ void __cdecl DisposeOpponentsCars(tRace_info *pRace_info) {
     (void)pRace_info;
     (void)i;
 
-    original_DisposeOpponentsCars(pRace_info);
+    if (function_hook_state_DisposeOpponentsCars == HOOK_ENABLED) {
+        assert(0 && "DisposeOpponentsCars not implemented.");
+        abort();
+    } else {
+        original_DisposeOpponentsCars(pRace_info);
+    }
 }
 
+function_hook_state_t function_hook_state_LoadMiscStrings = HOOK_UNAVAILABLE;
 static void(__cdecl*original_LoadMiscStrings)() = (void(__cdecl*)())0x00426410;
 CARM95_HOOK_FUNCTION(original_LoadMiscStrings, LoadMiscStrings)
 void __cdecl LoadMiscStrings() {
@@ -1887,9 +2539,15 @@ void __cdecl LoadMiscStrings() {
     (void)s;
     (void)the_path;
 
-    original_LoadMiscStrings();
+    if (function_hook_state_LoadMiscStrings == HOOK_ENABLED) {
+        assert(0 && "LoadMiscStrings not implemented.");
+        abort();
+    } else {
+        original_LoadMiscStrings();
+    }
 }
 
+function_hook_state_t function_hook_state_FillInRaceInfo = HOOK_UNAVAILABLE;
 static void(__cdecl*original_FillInRaceInfo)(tRace_info *) = (void(__cdecl*)(tRace_info *))0x0042652d;
 CARM95_HOOK_FUNCTION(original_FillInRaceInfo, FillInRaceInfo)
 void __cdecl FillInRaceInfo(tRace_info *pThe_race) {
@@ -1897,9 +2555,15 @@ void __cdecl FillInRaceInfo(tRace_info *pThe_race) {
 
     (void)pThe_race;
 
-    original_FillInRaceInfo(pThe_race);
+    if (function_hook_state_FillInRaceInfo == HOOK_ENABLED) {
+        assert(0 && "FillInRaceInfo not implemented.");
+        abort();
+    } else {
+        original_FillInRaceInfo(pThe_race);
+    }
 }
 
+function_hook_state_t function_hook_state_OldDRfopen = HOOK_UNAVAILABLE;
 static FILE *(__cdecl*original_OldDRfopen)(char *, char *) = (FILE *(__cdecl*)(char *, char *))0x00426654;
 CARM95_HOOK_FUNCTION(original_OldDRfopen, OldDRfopen)
 FILE* __cdecl OldDRfopen(char *pFilename, char *pMode) {
@@ -1930,25 +2594,43 @@ FILE* __cdecl OldDRfopen(char *pFilename, char *pMode) {
     (void)len;
     (void)__block0__ch;
 
-    return original_OldDRfopen(pFilename, pMode);
+    if (function_hook_state_OldDRfopen == HOOK_ENABLED) {
+        assert(0 && "OldDRfopen not implemented.");
+        abort();
+    } else {
+        return original_OldDRfopen(pFilename, pMode);
+    }
 }
 
+function_hook_state_t function_hook_state_AllowOpenToFail = HOOK_UNAVAILABLE;
 static void(__cdecl*original_AllowOpenToFail)() = (void(__cdecl*)())0x00426563;
 CARM95_HOOK_FUNCTION(original_AllowOpenToFail, AllowOpenToFail)
 void __cdecl AllowOpenToFail() {
     LOG_TRACE("()");
 
 
-    original_AllowOpenToFail();
+    if (function_hook_state_AllowOpenToFail == HOOK_ENABLED) {
+        assert(0 && "AllowOpenToFail not implemented.");
+        abort();
+    } else {
+        original_AllowOpenToFail();
+    }
 }
 
+function_hook_state_t function_hook_state_DoNotAllowOpenToFail = HOOK_UNAVAILABLE;
 void DoNotAllowOpenToFail() {
     LOG_TRACE("()");
 
 
-    NOT_IMPLEMENTED();
+    if (function_hook_state_DoNotAllowOpenToFail == HOOK_ENABLED) {
+        assert(0 && "DoNotAllowOpenToFail not implemented.");
+        abort();
+    } else {
+        NOT_IMPLEMENTED();
+    }
 }
 
+function_hook_state_t function_hook_state_DRfopen = HOOK_UNAVAILABLE;
 static FILE *(__cdecl*original_DRfopen)(char *, char *) = (FILE *(__cdecl*)(char *, char *))0x00426583;
 CARM95_HOOK_FUNCTION(original_DRfopen, DRfopen)
 FILE* __cdecl DRfopen(char *pFilename, char *pMode) {
@@ -1963,9 +2645,15 @@ FILE* __cdecl DRfopen(char *pFilename, char *pMode) {
     (void)CD_dir;
     (void)msg;
 
-    return original_DRfopen(pFilename, pMode);
+    if (function_hook_state_DRfopen == HOOK_ENABLED) {
+        assert(0 && "DRfopen not implemented.");
+        abort();
+    } else {
+        return original_DRfopen(pFilename, pMode);
+    }
 }
 
+function_hook_state_t function_hook_state_GetCDPathFromPathsTxtFile = HOOK_UNAVAILABLE;
 static int(__cdecl*original_GetCDPathFromPathsTxtFile)(char *) = (int(__cdecl*)(char *))0x00426cc5;
 CARM95_HOOK_FUNCTION(original_GetCDPathFromPathsTxtFile, GetCDPathFromPathsTxtFile)
 int __cdecl GetCDPathFromPathsTxtFile(char *pPath_name) {
@@ -1981,34 +2669,58 @@ int __cdecl GetCDPathFromPathsTxtFile(char *pPath_name) {
     (void)paths_txt_fp;
     (void)paths_txt;
 
-    return original_GetCDPathFromPathsTxtFile(pPath_name);
+    if (function_hook_state_GetCDPathFromPathsTxtFile == HOOK_ENABLED) {
+        assert(0 && "GetCDPathFromPathsTxtFile not implemented.");
+        abort();
+    } else {
+        return original_GetCDPathFromPathsTxtFile(pPath_name);
+    }
 }
 
+function_hook_state_t function_hook_state_TestForOriginalCarmaCDinDrive = HOOK_UNAVAILABLE;
 int TestForOriginalCarmaCDinDrive() {
     LOG_TRACE("()");
 
 
-    NOT_IMPLEMENTED();
+    if (function_hook_state_TestForOriginalCarmaCDinDrive == HOOK_ENABLED) {
+        assert(0 && "TestForOriginalCarmaCDinDrive not implemented.");
+        abort();
+    } else {
+        NOT_IMPLEMENTED();
+    }
 }
 
+function_hook_state_t function_hook_state_OriginalCarmaCDinDrive = HOOK_UNAVAILABLE;
 static int(__cdecl*original_OriginalCarmaCDinDrive)() = (int(__cdecl*)())0x00427158;
 CARM95_HOOK_FUNCTION(original_OriginalCarmaCDinDrive, OriginalCarmaCDinDrive)
 int __cdecl OriginalCarmaCDinDrive() {
     LOG_TRACE("()");
 
 
-    return original_OriginalCarmaCDinDrive();
+    if (function_hook_state_OriginalCarmaCDinDrive == HOOK_ENABLED) {
+        assert(0 && "OriginalCarmaCDinDrive not implemented.");
+        abort();
+    } else {
+        return original_OriginalCarmaCDinDrive();
+    }
 }
 
+function_hook_state_t function_hook_state_CarmaCDinDriveOrFullGameInstalled = HOOK_UNAVAILABLE;
 static int(__cdecl*original_CarmaCDinDriveOrFullGameInstalled)() = (int(__cdecl*)())0x0042716d;
 CARM95_HOOK_FUNCTION(original_CarmaCDinDriveOrFullGameInstalled, CarmaCDinDriveOrFullGameInstalled)
 int __cdecl CarmaCDinDriveOrFullGameInstalled() {
     LOG_TRACE("()");
 
 
-    return original_CarmaCDinDriveOrFullGameInstalled();
+    if (function_hook_state_CarmaCDinDriveOrFullGameInstalled == HOOK_ENABLED) {
+        assert(0 && "CarmaCDinDriveOrFullGameInstalled not implemented.");
+        abort();
+    } else {
+        return original_CarmaCDinDriveOrFullGameInstalled();
+    }
 }
 
+function_hook_state_t function_hook_state_ReadNetworkSettings = HOOK_UNAVAILABLE;
 static void(__cdecl*original_ReadNetworkSettings)(FILE *, tNet_game_options *) = (void(__cdecl*)(FILE *, tNet_game_options *))0x00427199;
 CARM95_HOOK_FUNCTION(original_ReadNetworkSettings, ReadNetworkSettings)
 void __cdecl ReadNetworkSettings(FILE *pF, tNet_game_options *pOptions) {
@@ -2017,9 +2729,15 @@ void __cdecl ReadNetworkSettings(FILE *pF, tNet_game_options *pOptions) {
     (void)pF;
     (void)pOptions;
 
-    original_ReadNetworkSettings(pF, pOptions);
+    if (function_hook_state_ReadNetworkSettings == HOOK_ENABLED) {
+        assert(0 && "ReadNetworkSettings not implemented.");
+        abort();
+    } else {
+        original_ReadNetworkSettings(pF, pOptions);
+    }
 }
 
+function_hook_state_t function_hook_state_PrintNetOptions = HOOK_UNAVAILABLE;
 static int(__cdecl*original_PrintNetOptions)(FILE *, int) = (int(__cdecl*)(FILE *, int))0x00427269;
 CARM95_HOOK_FUNCTION(original_PrintNetOptions, PrintNetOptions)
 int __cdecl PrintNetOptions(FILE *pF, int pIndex) {
@@ -2028,9 +2746,15 @@ int __cdecl PrintNetOptions(FILE *pF, int pIndex) {
     (void)pF;
     (void)pIndex;
 
-    return original_PrintNetOptions(pF, pIndex);
+    if (function_hook_state_PrintNetOptions == HOOK_ENABLED) {
+        assert(0 && "PrintNetOptions not implemented.");
+        abort();
+    } else {
+        return original_PrintNetOptions(pF, pIndex);
+    }
 }
 
+function_hook_state_t function_hook_state_SaveOptions = HOOK_UNAVAILABLE;
 static int(__cdecl*original_SaveOptions)() = (int(__cdecl*)())0x004273e5;
 CARM95_HOOK_FUNCTION(original_SaveOptions, SaveOptions)
 int __cdecl SaveOptions() {
@@ -2041,9 +2765,15 @@ int __cdecl SaveOptions() {
     (void)the_path;
     (void)f;
 
-    return original_SaveOptions();
+    if (function_hook_state_SaveOptions == HOOK_ENABLED) {
+        assert(0 && "SaveOptions not implemented.");
+        abort();
+    } else {
+        return original_SaveOptions();
+    }
 }
 
+function_hook_state_t function_hook_state_RestoreOptions = HOOK_UNAVAILABLE;
 static int(__cdecl*original_RestoreOptions)() = (int(__cdecl*)())0x004278be;
 CARM95_HOOK_FUNCTION(original_RestoreOptions, RestoreOptions)
 int __cdecl RestoreOptions() {
@@ -2062,9 +2792,15 @@ int __cdecl RestoreOptions() {
     (void)s;
     (void)arg;
 
-    return original_RestoreOptions();
+    if (function_hook_state_RestoreOptions == HOOK_ENABLED) {
+        assert(0 && "RestoreOptions not implemented.");
+        abort();
+    } else {
+        return original_RestoreOptions();
+    }
 }
 
+function_hook_state_t function_hook_state_InitFunkGrooveFlags = HOOK_UNAVAILABLE;
 static void(__cdecl*original_InitFunkGrooveFlags)() = (void(__cdecl*)())0x00427e87;
 CARM95_HOOK_FUNCTION(original_InitFunkGrooveFlags, InitFunkGrooveFlags)
 void __cdecl InitFunkGrooveFlags() {
@@ -2073,6 +2809,11 @@ void __cdecl InitFunkGrooveFlags() {
 
     (void)i;
 
-    original_InitFunkGrooveFlags();
+    if (function_hook_state_InitFunkGrooveFlags == HOOK_ENABLED) {
+        assert(0 && "InitFunkGrooveFlags not implemented.");
+        abort();
+    } else {
+        original_InitFunkGrooveFlags();
+    }
 }
 

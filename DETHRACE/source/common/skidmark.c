@@ -4,6 +4,9 @@
 
 #include "carm95_hooks.h"
 
+#include "carm95_webserver.h"
+
+#include <assert.h>
 #if 0
 char *(* hookvar_gBoring_material_names )[2];
 #endif
@@ -12,6 +15,7 @@ char *(* hookvar_gMaterial_names )[2];
 #endif
 tSkid(* hookvar_gSkids )[100] = (void*)0x00530190;
 
+function_hook_state_t function_hook_state_StretchMark = HOOK_UNAVAILABLE;
 static void(__cdecl*original_StretchMark)(tSkid *, br_vector3 *, br_vector3 *, br_scalar) = (void(__cdecl*)(tSkid *, br_vector3 *, br_vector3 *, br_scalar))0x00401e7c;
 CARM95_HOOK_FUNCTION(original_StretchMark, StretchMark)
 void __cdecl StretchMark(tSkid *pMark, br_vector3 *pFrom, br_vector3 *pTo, br_scalar pTexture_start) {
@@ -30,9 +34,15 @@ void __cdecl StretchMark(tSkid *pMark, br_vector3 *pFrom, br_vector3 *pTo, br_sc
     (void)len;
     (void)model;
 
-    original_StretchMark(pMark, pFrom, pTo, pTexture_start);
+    if (function_hook_state_StretchMark == HOOK_ENABLED) {
+        assert(0 && "StretchMark not implemented.");
+        abort();
+    } else {
+        original_StretchMark(pMark, pFrom, pTo, pTexture_start);
+    }
 }
 
+function_hook_state_t function_hook_state_MaterialFromIndex = HOOK_UNAVAILABLE;
 static br_material *(__cdecl*original_MaterialFromIndex)(int) = (br_material *(__cdecl*)(int))0x00401088;
 CARM95_HOOK_FUNCTION(original_MaterialFromIndex, MaterialFromIndex)
 br_material* __cdecl MaterialFromIndex(int pIndex) {
@@ -40,9 +50,15 @@ br_material* __cdecl MaterialFromIndex(int pIndex) {
 
     (void)pIndex;
 
-    return original_MaterialFromIndex(pIndex);
+    if (function_hook_state_MaterialFromIndex == HOOK_ENABLED) {
+        assert(0 && "MaterialFromIndex not implemented.");
+        abort();
+    } else {
+        return original_MaterialFromIndex(pIndex);
+    }
 }
 
+function_hook_state_t function_hook_state_AdjustSkid = HOOK_UNAVAILABLE;
 static void(__cdecl*original_AdjustSkid)(int, br_matrix34 *, int) = (void(__cdecl*)(int, br_matrix34 *, int))0x00401000;
 CARM95_HOOK_FUNCTION(original_AdjustSkid, AdjustSkid)
 void __cdecl AdjustSkid(int pSkid_num, br_matrix34 *pMatrix, int pMaterial_index) {
@@ -52,9 +68,15 @@ void __cdecl AdjustSkid(int pSkid_num, br_matrix34 *pMatrix, int pMaterial_index
     (void)pMatrix;
     (void)pMaterial_index;
 
-    original_AdjustSkid(pSkid_num, pMatrix, pMaterial_index);
+    if (function_hook_state_AdjustSkid == HOOK_ENABLED) {
+        assert(0 && "AdjustSkid not implemented.");
+        abort();
+    } else {
+        original_AdjustSkid(pSkid_num, pMatrix, pMaterial_index);
+    }
 }
 
+function_hook_state_t function_hook_state_FarFromLine2D = HOOK_UNAVAILABLE;
 static int(__cdecl*original_FarFromLine2D)(br_vector3 *, br_vector3 *, br_vector3 *) = (int(__cdecl*)(br_vector3 *, br_vector3 *, br_vector3 *))0x004020dc;
 CARM95_HOOK_FUNCTION(original_FarFromLine2D, FarFromLine2D)
 int __cdecl FarFromLine2D(br_vector3 *pPt, br_vector3 *pL1, br_vector3 *pL2) {
@@ -72,9 +94,15 @@ int __cdecl FarFromLine2D(br_vector3 *pPt, br_vector3 *pL1, br_vector3 *pL2) {
     (void)line_len;
     (void)cross;
 
-    return original_FarFromLine2D(pPt, pL1, pL2);
+    if (function_hook_state_FarFromLine2D == HOOK_ENABLED) {
+        assert(0 && "FarFromLine2D not implemented.");
+        abort();
+    } else {
+        return original_FarFromLine2D(pPt, pL1, pL2);
+    }
 }
 
+function_hook_state_t function_hook_state_Reflex2D = HOOK_UNAVAILABLE;
 static int(__cdecl*original_Reflex2D)(br_vector3 *, br_vector3 *, br_vector3 *) = (int(__cdecl*)(br_vector3 *, br_vector3 *, br_vector3 *))0x00402179;
 CARM95_HOOK_FUNCTION(original_Reflex2D, Reflex2D)
 int __cdecl Reflex2D(br_vector3 *pPt, br_vector3 *pL1, br_vector3 *pL2) {
@@ -88,9 +116,15 @@ int __cdecl Reflex2D(br_vector3 *pPt, br_vector3 *pL1, br_vector3 *pL2) {
     (void)line;
     (void)to_pt;
 
-    return original_Reflex2D(pPt, pL1, pL2);
+    if (function_hook_state_Reflex2D == HOOK_ENABLED) {
+        assert(0 && "Reflex2D not implemented.");
+        abort();
+    } else {
+        return original_Reflex2D(pPt, pL1, pL2);
+    }
 }
 
+function_hook_state_t function_hook_state_InitSkids = HOOK_UNAVAILABLE;
 static void(__cdecl*original_InitSkids)() = (void(__cdecl*)())0x004010c8;
 CARM95_HOOK_FUNCTION(original_InitSkids, InitSkids)
 void __cdecl InitSkids() {
@@ -107,9 +141,15 @@ void __cdecl InitSkids() {
     (void)square;
     (void)str;
 
-    original_InitSkids();
+    if (function_hook_state_InitSkids == HOOK_ENABLED) {
+        assert(0 && "InitSkids not implemented.");
+        abort();
+    } else {
+        original_InitSkids();
+    }
 }
 
+function_hook_state_t function_hook_state_HideSkid = HOOK_UNAVAILABLE;
 static void(__cdecl*original_HideSkid)(int) = (void(__cdecl*)(int))0x0040148d;
 CARM95_HOOK_FUNCTION(original_HideSkid, HideSkid)
 void __cdecl HideSkid(int pSkid_num) {
@@ -117,9 +157,15 @@ void __cdecl HideSkid(int pSkid_num) {
 
     (void)pSkid_num;
 
-    original_HideSkid(pSkid_num);
+    if (function_hook_state_HideSkid == HOOK_ENABLED) {
+        assert(0 && "HideSkid not implemented.");
+        abort();
+    } else {
+        original_HideSkid(pSkid_num);
+    }
 }
 
+function_hook_state_t function_hook_state_HideSkids = HOOK_UNAVAILABLE;
 static void(__cdecl*original_HideSkids)() = (void(__cdecl*)())0x004014ad;
 CARM95_HOOK_FUNCTION(original_HideSkids, HideSkids)
 void __cdecl HideSkids() {
@@ -128,9 +174,15 @@ void __cdecl HideSkids() {
 
     (void)skid;
 
-    original_HideSkids();
+    if (function_hook_state_HideSkids == HOOK_ENABLED) {
+        assert(0 && "HideSkids not implemented.");
+        abort();
+    } else {
+        original_HideSkids();
+    }
 }
 
+function_hook_state_t function_hook_state_SkidLen = HOOK_UNAVAILABLE;
 static br_scalar(__cdecl*original_SkidLen)(int) = (br_scalar(__cdecl*)(int))0x004021f1;
 CARM95_HOOK_FUNCTION(original_SkidLen, SkidLen)
 br_scalar __cdecl SkidLen(int pSkid) {
@@ -138,9 +190,15 @@ br_scalar __cdecl SkidLen(int pSkid) {
 
     (void)pSkid;
 
-    return original_SkidLen(pSkid);
+    if (function_hook_state_SkidLen == HOOK_ENABLED) {
+        assert(0 && "SkidLen not implemented.");
+        abort();
+    } else {
+        return original_SkidLen(pSkid);
+    }
 }
 
+function_hook_state_t function_hook_state_SkidSection = HOOK_UNAVAILABLE;
 void SkidSection(tCar_spec *pCar, int pWheel_num, br_vector3 *pPos, int pMaterial_index) {
     static tU16 skid;
     br_material *material;
@@ -153,9 +211,15 @@ void SkidSection(tCar_spec *pCar, int pWheel_num, br_vector3 *pPos, int pMateria
     (void)skid;
     (void)material;
 
-    NOT_IMPLEMENTED();
+    if (function_hook_state_SkidSection == HOOK_ENABLED) {
+        assert(0 && "SkidSection not implemented.");
+        abort();
+    } else {
+        NOT_IMPLEMENTED();
+    }
 }
 
+function_hook_state_t function_hook_state_SkidMark = HOOK_UNAVAILABLE;
 static void(__cdecl*original_SkidMark)(tCar_spec *, int) = (void(__cdecl*)(tCar_spec *, int))0x004014e5;
 CARM95_HOOK_FUNCTION(original_SkidMark, SkidMark)
 void __cdecl SkidMark(tCar_spec *pCar, int pWheel_num) {
@@ -182,9 +246,15 @@ void __cdecl SkidMark(tCar_spec *pCar, int pWheel_num) {
     (void)on_ground;
     (void)material;
 
-    original_SkidMark(pCar, pWheel_num);
+    if (function_hook_state_SkidMark == HOOK_ENABLED) {
+        assert(0 && "SkidMark not implemented.");
+        abort();
+    } else {
+        original_SkidMark(pCar, pWheel_num);
+    }
 }
 
+function_hook_state_t function_hook_state_InitCarSkidStuff = HOOK_UNAVAILABLE;
 static void(__cdecl*original_InitCarSkidStuff)(tCar_spec *) = (void(__cdecl*)(tCar_spec *))0x00402282;
 CARM95_HOOK_FUNCTION(original_InitCarSkidStuff, InitCarSkidStuff)
 void __cdecl InitCarSkidStuff(tCar_spec *pCar) {
@@ -194,9 +264,15 @@ void __cdecl InitCarSkidStuff(tCar_spec *pCar) {
     (void)pCar;
     (void)wheel;
 
-    original_InitCarSkidStuff(pCar);
+    if (function_hook_state_InitCarSkidStuff == HOOK_ENABLED) {
+        assert(0 && "InitCarSkidStuff not implemented.");
+        abort();
+    } else {
+        original_InitCarSkidStuff(pCar);
+    }
 }
 
+function_hook_state_t function_hook_state_SkidsPerFrame = HOOK_UNAVAILABLE;
 static void(__cdecl*original_SkidsPerFrame)() = (void(__cdecl*)())0x004022f1;
 CARM95_HOOK_FUNCTION(original_SkidsPerFrame, SkidsPerFrame)
 void __cdecl SkidsPerFrame() {
@@ -205,15 +281,26 @@ void __cdecl SkidsPerFrame() {
 
     (void)skid;
 
-    original_SkidsPerFrame();
+    if (function_hook_state_SkidsPerFrame == HOOK_ENABLED) {
+        assert(0 && "SkidsPerFrame not implemented.");
+        abort();
+    } else {
+        original_SkidsPerFrame();
+    }
 }
 
+function_hook_state_t function_hook_state_RemoveMaterialsFromSkidmarks = HOOK_UNAVAILABLE;
 void RemoveMaterialsFromSkidmarks() {
     int skid;
     LOG_TRACE("()");
 
     (void)skid;
 
-    NOT_IMPLEMENTED();
+    if (function_hook_state_RemoveMaterialsFromSkidmarks == HOOK_ENABLED) {
+        assert(0 && "RemoveMaterialsFromSkidmarks not implemented.");
+        abort();
+    } else {
+        NOT_IMPLEMENTED();
+    }
 }
 

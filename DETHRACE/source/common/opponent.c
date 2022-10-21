@@ -4,6 +4,9 @@
 
 #include "carm95_hooks.h"
 
+#include "carm95_webserver.h"
+
+#include <assert.h>
 br_actor ** hookvar_gOppo_path_actor  = (void*)0x005070d0;
 br_model ** hookvar_gOppo_path_model  = (void*)0x005070d4;
 br_material ** hookvar_gMat_dk_yel  = (void*)0x005070d8;
@@ -80,6 +83,7 @@ tU32 * hookvar_gFrame_period_for_this_munging  = (void*)0x005520e0;
 tU32 * hookvar_gTime_stamp_for_this_munging  = (void*)0x005520e4;
 tS16 * hookvar_gMobile_section  = (void*)0x00530c90;
 
+function_hook_state_t function_hook_state_PointActorAlongThisBloodyVector = HOOK_UNAVAILABLE;
 static void(__cdecl*original_PointActorAlongThisBloodyVector)(br_actor *, br_vector3 *) = (void(__cdecl*)(br_actor *, br_vector3 *))0x00402390;
 CARM95_HOOK_FUNCTION(original_PointActorAlongThisBloodyVector, PointActorAlongThisBloodyVector)
 void __cdecl PointActorAlongThisBloodyVector(br_actor *pThe_actor, br_vector3 *pThe_vector) {
@@ -90,9 +94,15 @@ void __cdecl PointActorAlongThisBloodyVector(br_actor *pThe_actor, br_vector3 *p
     (void)pThe_vector;
     (void)trans;
 
-    original_PointActorAlongThisBloodyVector(pThe_actor, pThe_vector);
+    if (function_hook_state_PointActorAlongThisBloodyVector == HOOK_ENABLED) {
+        assert(0 && "PointActorAlongThisBloodyVector not implemented.");
+        abort();
+    } else {
+        original_PointActorAlongThisBloodyVector(pThe_actor, pThe_vector);
+    }
 }
 
+function_hook_state_t function_hook_state_ProcessCurrentObjective = HOOK_UNAVAILABLE;
 static void(__cdecl*original_ProcessCurrentObjective)(tOpponent_spec *, tProcess_objective_command) = (void(__cdecl*)(tOpponent_spec *, tProcess_objective_command))0x004065e0;
 CARM95_HOOK_FUNCTION(original_ProcessCurrentObjective, ProcessCurrentObjective)
 void __cdecl ProcessCurrentObjective(tOpponent_spec *pOpponent_spec, tProcess_objective_command pCommand) {
@@ -101,9 +111,15 @@ void __cdecl ProcessCurrentObjective(tOpponent_spec *pOpponent_spec, tProcess_ob
     (void)pOpponent_spec;
     (void)pCommand;
 
-    original_ProcessCurrentObjective(pOpponent_spec, pCommand);
+    if (function_hook_state_ProcessCurrentObjective == HOOK_ENABLED) {
+        assert(0 && "ProcessCurrentObjective not implemented.");
+        abort();
+    } else {
+        original_ProcessCurrentObjective(pOpponent_spec, pCommand);
+    }
 }
 
+function_hook_state_t function_hook_state_ReallocExtraPathNodes = HOOK_UNAVAILABLE;
 static tS16(__cdecl*original_ReallocExtraPathNodes)(int) = (tS16(__cdecl*)(int))0x004057a1;
 CARM95_HOOK_FUNCTION(original_ReallocExtraPathNodes, ReallocExtraPathNodes)
 tS16 __cdecl ReallocExtraPathNodes(int pHow_many_then) {
@@ -115,9 +131,15 @@ tS16 __cdecl ReallocExtraPathNodes(int pHow_many_then) {
     (void)new_nodes;
     (void)first_new_node;
 
-    return original_ReallocExtraPathNodes(pHow_many_then);
+    if (function_hook_state_ReallocExtraPathNodes == HOOK_ENABLED) {
+        assert(0 && "ReallocExtraPathNodes not implemented.");
+        abort();
+    } else {
+        return original_ReallocExtraPathNodes(pHow_many_then);
+    }
 }
 
+function_hook_state_t function_hook_state_ReallocExtraPathSections = HOOK_UNAVAILABLE;
 static tS16(__cdecl*original_ReallocExtraPathSections)(int) = (tS16(__cdecl*)(int))0x00405855;
 CARM95_HOOK_FUNCTION(original_ReallocExtraPathSections, ReallocExtraPathSections)
 tS16 __cdecl ReallocExtraPathSections(int pHow_many_then) {
@@ -129,9 +151,15 @@ tS16 __cdecl ReallocExtraPathSections(int pHow_many_then) {
     (void)new_sections;
     (void)first_new_section;
 
-    return original_ReallocExtraPathSections(pHow_many_then);
+    if (function_hook_state_ReallocExtraPathSections == HOOK_ENABLED) {
+        assert(0 && "ReallocExtraPathSections not implemented.");
+        abort();
+    } else {
+        return original_ReallocExtraPathSections(pHow_many_then);
+    }
 }
 
+function_hook_state_t function_hook_state_PointVisibleFromHere = HOOK_UNAVAILABLE;
 static int(__cdecl*original_PointVisibleFromHere)(br_vector3 *, br_vector3 *) = (int(__cdecl*)(br_vector3 *, br_vector3 *))0x004063ac;
 CARM95_HOOK_FUNCTION(original_PointVisibleFromHere, PointVisibleFromHere)
 int __cdecl PointVisibleFromHere(br_vector3 *pFrom, br_vector3 *pTo) {
@@ -150,9 +178,15 @@ int __cdecl PointVisibleFromHere(br_vector3 *pFrom, br_vector3 *pTo) {
     (void)t;
     (void)material;
 
-    return original_PointVisibleFromHere(pFrom, pTo);
+    if (function_hook_state_PointVisibleFromHere == HOOK_ENABLED) {
+        assert(0 && "PointVisibleFromHere not implemented.");
+        abort();
+    } else {
+        return original_PointVisibleFromHere(pFrom, pTo);
+    }
 }
 
+function_hook_state_t function_hook_state_FindNearestPathNode = HOOK_UNAVAILABLE;
 static tS16(__cdecl*original_FindNearestPathNode)(br_vector3 *, br_scalar *) = (tS16(__cdecl*)(br_vector3 *, br_scalar *))0x0040f331;
 CARM95_HOOK_FUNCTION(original_FindNearestPathNode, FindNearestPathNode)
 tS16 __cdecl FindNearestPathNode(br_vector3 *pActor_coords, br_scalar *pDistance) {
@@ -169,9 +203,15 @@ tS16 __cdecl FindNearestPathNode(br_vector3 *pActor_coords, br_scalar *pDistance
     (void)distance;
     (void)actor_to_node;
 
-    return original_FindNearestPathNode(pActor_coords, pDistance);
+    if (function_hook_state_FindNearestPathNode == HOOK_ENABLED) {
+        assert(0 && "FindNearestPathNode not implemented.");
+        abort();
+    } else {
+        return original_FindNearestPathNode(pActor_coords, pDistance);
+    }
 }
 
+function_hook_state_t function_hook_state_FindNearestPathSection = HOOK_UNAVAILABLE;
 static tS16(__cdecl*original_FindNearestPathSection)(br_vector3 *, br_vector3 *, br_vector3 *, br_scalar *) = (tS16(__cdecl*)(br_vector3 *, br_vector3 *, br_vector3 *, br_scalar *))0x0040294b;
 CARM95_HOOK_FUNCTION(original_FindNearestPathSection, FindNearestPathSection)
 tS16 __cdecl FindNearestPathSection(br_vector3 *pActor_coords, br_vector3 *pPath_direction, br_vector3 *pIntersect, br_scalar *pDistance) {
@@ -182,9 +222,15 @@ tS16 __cdecl FindNearestPathSection(br_vector3 *pActor_coords, br_vector3 *pPath
     (void)pIntersect;
     (void)pDistance;
 
-    return original_FindNearestPathSection(pActor_coords, pPath_direction, pIntersect, pDistance);
+    if (function_hook_state_FindNearestPathSection == HOOK_ENABLED) {
+        assert(0 && "FindNearestPathSection not implemented.");
+        abort();
+    } else {
+        return original_FindNearestPathSection(pActor_coords, pPath_direction, pIntersect, pDistance);
+    }
 }
 
+function_hook_state_t function_hook_state_FindNearestGeneralSection = HOOK_UNAVAILABLE;
 static tS16(__cdecl*original_FindNearestGeneralSection)(tCar_spec *, br_vector3 *, br_vector3 *, br_vector3 *, br_scalar *) = (tS16(__cdecl*)(tCar_spec *, br_vector3 *, br_vector3 *, br_vector3 *, br_scalar *))0x00402975;
 CARM95_HOOK_FUNCTION(original_FindNearestGeneralSection, FindNearestGeneralSection)
 tS16 __cdecl FindNearestGeneralSection(tCar_spec *pPursuee, br_vector3 *pActor_coords, br_vector3 *pPath_direction, br_vector3 *pIntersect, br_scalar *pDistance) {
@@ -232,9 +278,15 @@ tS16 __cdecl FindNearestGeneralSection(tCar_spec *pPursuee, br_vector3 *pActor_c
     (void)__block0___scale;
     (void)__block1___scale;
 
-    return original_FindNearestGeneralSection(pPursuee, pActor_coords, pPath_direction, pIntersect, pDistance);
+    if (function_hook_state_FindNearestGeneralSection == HOOK_ENABLED) {
+        assert(0 && "FindNearestGeneralSection not implemented.");
+        abort();
+    } else {
+        return original_FindNearestGeneralSection(pPursuee, pActor_coords, pPath_direction, pIntersect, pDistance);
+    }
 }
 
+function_hook_state_t function_hook_state_DeadStopCar = HOOK_UNAVAILABLE;
 static void(__cdecl*original_DeadStopCar)(tCar_spec *) = (void(__cdecl*)(tCar_spec *))0x00402481;
 CARM95_HOOK_FUNCTION(original_DeadStopCar, DeadStopCar)
 void __cdecl DeadStopCar(tCar_spec *pCar_spec) {
@@ -242,9 +294,15 @@ void __cdecl DeadStopCar(tCar_spec *pCar_spec) {
 
     (void)pCar_spec;
 
-    original_DeadStopCar(pCar_spec);
+    if (function_hook_state_DeadStopCar == HOOK_ENABLED) {
+        assert(0 && "DeadStopCar not implemented.");
+        abort();
+    } else {
+        original_DeadStopCar(pCar_spec);
+    }
 }
 
+function_hook_state_t function_hook_state_TurnOpponentPhysicsOn = HOOK_UNAVAILABLE;
 static void(__cdecl*original_TurnOpponentPhysicsOn)(tOpponent_spec *) = (void(__cdecl*)(tOpponent_spec *))0x00402401;
 CARM95_HOOK_FUNCTION(original_TurnOpponentPhysicsOn, TurnOpponentPhysicsOn)
 void __cdecl TurnOpponentPhysicsOn(tOpponent_spec *pOpponent_spec) {
@@ -252,9 +310,15 @@ void __cdecl TurnOpponentPhysicsOn(tOpponent_spec *pOpponent_spec) {
 
     (void)pOpponent_spec;
 
-    original_TurnOpponentPhysicsOn(pOpponent_spec);
+    if (function_hook_state_TurnOpponentPhysicsOn == HOOK_ENABLED) {
+        assert(0 && "TurnOpponentPhysicsOn not implemented.");
+        abort();
+    } else {
+        original_TurnOpponentPhysicsOn(pOpponent_spec);
+    }
 }
 
+function_hook_state_t function_hook_state_TurnOpponentPhysicsOff = HOOK_UNAVAILABLE;
 static void(__cdecl*original_TurnOpponentPhysicsOff)(tOpponent_spec *) = (void(__cdecl*)(tOpponent_spec *))0x0040243f;
 CARM95_HOOK_FUNCTION(original_TurnOpponentPhysicsOff, TurnOpponentPhysicsOff)
 void __cdecl TurnOpponentPhysicsOff(tOpponent_spec *pOpponent_spec) {
@@ -262,9 +326,15 @@ void __cdecl TurnOpponentPhysicsOff(tOpponent_spec *pOpponent_spec) {
 
     (void)pOpponent_spec;
 
-    original_TurnOpponentPhysicsOff(pOpponent_spec);
+    if (function_hook_state_TurnOpponentPhysicsOff == HOOK_ENABLED) {
+        assert(0 && "TurnOpponentPhysicsOff not implemented.");
+        abort();
+    } else {
+        original_TurnOpponentPhysicsOff(pOpponent_spec);
+    }
 }
 
+function_hook_state_t function_hook_state_NewObjective = HOOK_UNAVAILABLE;
 void(__cdecl*NewObjective)(tOpponent_spec *, tOpponent_objective_type) = (void(__cdecl*)(tOpponent_spec *, tOpponent_objective_type))0x0040694d;
 void NewObjective_do_not_use(tOpponent_spec *pOpponent_spec, tOpponent_objective_type pObjective_type) {
     va_list marker;
@@ -274,9 +344,15 @@ void NewObjective_do_not_use(tOpponent_spec *pOpponent_spec, tOpponent_objective
     (void)pObjective_type;
     (void)marker;
 
-    NOT_IMPLEMENTED();
+    if (function_hook_state_NewObjective == HOOK_ENABLED) {
+        assert(0 && "NewObjective_do_not_use not implemented.");
+        abort();
+    } else {
+        NOT_IMPLEMENTED();
+    }
 }
 
+function_hook_state_t function_hook_state_CalcRaceRoute = HOOK_UNAVAILABLE;
 static void(__cdecl*original_CalcRaceRoute)(tOpponent_spec *) = (void(__cdecl*)(tOpponent_spec *))0x00402512;
 CARM95_HOOK_FUNCTION(original_CalcRaceRoute, CalcRaceRoute)
 void __cdecl CalcRaceRoute(tOpponent_spec *pOpponent_spec) {
@@ -310,9 +386,15 @@ void __cdecl CalcRaceRoute(tOpponent_spec *pOpponent_spec) {
     (void)work_str;
     (void)i;
 
-    original_CalcRaceRoute(pOpponent_spec);
+    if (function_hook_state_CalcRaceRoute == HOOK_ENABLED) {
+        assert(0 && "CalcRaceRoute not implemented.");
+        abort();
+    } else {
+        original_CalcRaceRoute(pOpponent_spec);
+    }
 }
 
+function_hook_state_t function_hook_state_TopUpRandomRoute = HOOK_UNAVAILABLE;
 static void(__cdecl*original_TopUpRandomRoute)(tOpponent_spec *, int) = (void(__cdecl*)(tOpponent_spec *, int))0x00402e11;
 CARM95_HOOK_FUNCTION(original_TopUpRandomRoute, TopUpRandomRoute)
 void __cdecl TopUpRandomRoute(tOpponent_spec *pOpponent_spec, int pSections_to_add) {
@@ -335,9 +417,15 @@ void __cdecl TopUpRandomRoute(tOpponent_spec *pOpponent_spec, int pSections_to_a
     (void)num_of_temp_sections;
     (void)direction;
 
-    original_TopUpRandomRoute(pOpponent_spec, pSections_to_add);
+    if (function_hook_state_TopUpRandomRoute == HOOK_ENABLED) {
+        assert(0 && "TopUpRandomRoute not implemented.");
+        abort();
+    } else {
+        original_TopUpRandomRoute(pOpponent_spec, pSections_to_add);
+    }
 }
 
+function_hook_state_t function_hook_state_SearchForSection = HOOK_UNAVAILABLE;
 static int(__cdecl*original_SearchForSection)(tRoute_section *, tRoute_section *, int *, tS16, int, br_scalar, tOpponent_spec *) = (int(__cdecl*)(tRoute_section *, tRoute_section *, int *, tS16, int, br_scalar, tOpponent_spec *))0x00407f5d;
 CARM95_HOOK_FUNCTION(original_SearchForSection, SearchForSection)
 int __cdecl SearchForSection(tRoute_section *pTemp_store, tRoute_section *pPerm_store, int *pNum_of_perm_store_sections, tS16 pTarget_section, int pDepth, br_scalar pDistance_so_far, tOpponent_spec *pOpponent_spec) {
@@ -369,9 +457,15 @@ int __cdecl SearchForSection(tRoute_section *pTemp_store, tRoute_section *pPerm_
     (void)section_no_index;
     (void)distance_so_far;
 
-    return original_SearchForSection(pTemp_store, pPerm_store, pNum_of_perm_store_sections, pTarget_section, pDepth, pDistance_so_far, pOpponent_spec);
+    if (function_hook_state_SearchForSection == HOOK_ENABLED) {
+        assert(0 && "SearchForSection not implemented.");
+        abort();
+    } else {
+        return original_SearchForSection(pTemp_store, pPerm_store, pNum_of_perm_store_sections, pTarget_section, pDepth, pDistance_so_far, pOpponent_spec);
+    }
 }
 
+function_hook_state_t function_hook_state_CalcGetNearPlayerRoute = HOOK_UNAVAILABLE;
 static void(__cdecl*original_CalcGetNearPlayerRoute)(tOpponent_spec *, tCar_spec *) = (void(__cdecl*)(tOpponent_spec *, tCar_spec *))0x004089bf;
 CARM95_HOOK_FUNCTION(original_CalcGetNearPlayerRoute, CalcGetNearPlayerRoute)
 void __cdecl CalcGetNearPlayerRoute(tOpponent_spec *pOpponent_spec, tCar_spec *pPlayer) {
@@ -410,9 +504,15 @@ void __cdecl CalcGetNearPlayerRoute(tOpponent_spec *pOpponent_spec, tCar_spec *p
     (void)work_str;
     (void)str;
 
-    original_CalcGetNearPlayerRoute(pOpponent_spec, pPlayer);
+    if (function_hook_state_CalcGetNearPlayerRoute == HOOK_ENABLED) {
+        assert(0 && "CalcGetNearPlayerRoute not implemented.");
+        abort();
+    } else {
+        original_CalcGetNearPlayerRoute(pOpponent_spec, pPlayer);
+    }
 }
 
+function_hook_state_t function_hook_state_CalcReturnToStartPointRoute = HOOK_UNAVAILABLE;
 static void(__cdecl*original_CalcReturnToStartPointRoute)(tOpponent_spec *) = (void(__cdecl*)(tOpponent_spec *))0x00407d1e;
 CARM95_HOOK_FUNCTION(original_CalcReturnToStartPointRoute, CalcReturnToStartPointRoute)
 void __cdecl CalcReturnToStartPointRoute(tOpponent_spec *pOpponent_spec) {
@@ -444,9 +544,15 @@ void __cdecl CalcReturnToStartPointRoute(tOpponent_spec *pOpponent_spec) {
     (void)perm_store;
     (void)__block0___scale;
 
-    original_CalcReturnToStartPointRoute(pOpponent_spec);
+    if (function_hook_state_CalcReturnToStartPointRoute == HOOK_ENABLED) {
+        assert(0 && "CalcReturnToStartPointRoute not implemented.");
+        abort();
+    } else {
+        original_CalcReturnToStartPointRoute(pOpponent_spec);
+    }
 }
 
+function_hook_state_t function_hook_state_ClearOpponentsProjectedRoute = HOOK_UNAVAILABLE;
 static void(__cdecl*original_ClearOpponentsProjectedRoute)(tOpponent_spec *) = (void(__cdecl*)(tOpponent_spec *))0x00404684;
 CARM95_HOOK_FUNCTION(original_ClearOpponentsProjectedRoute, ClearOpponentsProjectedRoute)
 void __cdecl ClearOpponentsProjectedRoute(tOpponent_spec *pOpponent_spec) {
@@ -454,9 +560,15 @@ void __cdecl ClearOpponentsProjectedRoute(tOpponent_spec *pOpponent_spec) {
 
     (void)pOpponent_spec;
 
-    original_ClearOpponentsProjectedRoute(pOpponent_spec);
+    if (function_hook_state_ClearOpponentsProjectedRoute == HOOK_ENABLED) {
+        assert(0 && "ClearOpponentsProjectedRoute not implemented.");
+        abort();
+    } else {
+        original_ClearOpponentsProjectedRoute(pOpponent_spec);
+    }
 }
 
+function_hook_state_t function_hook_state_AddToOpponentsProjectedRoute = HOOK_UNAVAILABLE;
 static int(__cdecl*original_AddToOpponentsProjectedRoute)(tOpponent_spec *, tS16, int) = (int(__cdecl*)(tOpponent_spec *, tS16, int))0x004030ef;
 CARM95_HOOK_FUNCTION(original_AddToOpponentsProjectedRoute, AddToOpponentsProjectedRoute)
 int __cdecl AddToOpponentsProjectedRoute(tOpponent_spec *pOpponent_spec, tS16 pSection_no, int pDirection) {
@@ -466,9 +578,15 @@ int __cdecl AddToOpponentsProjectedRoute(tOpponent_spec *pOpponent_spec, tS16 pS
     (void)pSection_no;
     (void)pDirection;
 
-    return original_AddToOpponentsProjectedRoute(pOpponent_spec, pSection_no, pDirection);
+    if (function_hook_state_AddToOpponentsProjectedRoute == HOOK_ENABLED) {
+        assert(0 && "AddToOpponentsProjectedRoute not implemented.");
+        abort();
+    } else {
+        return original_AddToOpponentsProjectedRoute(pOpponent_spec, pSection_no, pDirection);
+    }
 }
 
+function_hook_state_t function_hook_state_ShiftOpponentsProjectedRoute = HOOK_UNAVAILABLE;
 static int(__cdecl*original_ShiftOpponentsProjectedRoute)(tOpponent_spec *, int) = (int(__cdecl*)(tOpponent_spec *, int))0x00404699;
 CARM95_HOOK_FUNCTION(original_ShiftOpponentsProjectedRoute, ShiftOpponentsProjectedRoute)
 int __cdecl ShiftOpponentsProjectedRoute(tOpponent_spec *pOpponent_spec, int pPlaces) {
@@ -479,9 +597,15 @@ int __cdecl ShiftOpponentsProjectedRoute(tOpponent_spec *pOpponent_spec, int pPl
     (void)pPlaces;
     (void)i;
 
-    return original_ShiftOpponentsProjectedRoute(pOpponent_spec, pPlaces);
+    if (function_hook_state_ShiftOpponentsProjectedRoute == HOOK_ENABLED) {
+        assert(0 && "ShiftOpponentsProjectedRoute not implemented.");
+        abort();
+    } else {
+        return original_ShiftOpponentsProjectedRoute(pOpponent_spec, pPlaces);
+    }
 }
 
+function_hook_state_t function_hook_state_StunTheBugger = HOOK_UNAVAILABLE;
 static void(__cdecl*original_StunTheBugger)(tOpponent_spec *, int) = (void(__cdecl*)(tOpponent_spec *, int))0x0040b12d;
 CARM95_HOOK_FUNCTION(original_StunTheBugger, StunTheBugger)
 void __cdecl StunTheBugger(tOpponent_spec *pOpponent_spec, int pMilliseconds) {
@@ -490,9 +614,15 @@ void __cdecl StunTheBugger(tOpponent_spec *pOpponent_spec, int pMilliseconds) {
     (void)pOpponent_spec;
     (void)pMilliseconds;
 
-    original_StunTheBugger(pOpponent_spec, pMilliseconds);
+    if (function_hook_state_StunTheBugger == HOOK_ENABLED) {
+        assert(0 && "StunTheBugger not implemented.");
+        abort();
+    } else {
+        original_StunTheBugger(pOpponent_spec, pMilliseconds);
+    }
 }
 
+function_hook_state_t function_hook_state_UnStunTheBugger = HOOK_UNAVAILABLE;
 static void(__cdecl*original_UnStunTheBugger)(tOpponent_spec *) = (void(__cdecl*)(tOpponent_spec *))0x00405e44;
 CARM95_HOOK_FUNCTION(original_UnStunTheBugger, UnStunTheBugger)
 void __cdecl UnStunTheBugger(tOpponent_spec *pOpponent_spec) {
@@ -500,9 +630,15 @@ void __cdecl UnStunTheBugger(tOpponent_spec *pOpponent_spec) {
 
     (void)pOpponent_spec;
 
-    original_UnStunTheBugger(pOpponent_spec);
+    if (function_hook_state_UnStunTheBugger == HOOK_ENABLED) {
+        assert(0 && "UnStunTheBugger not implemented.");
+        abort();
+    } else {
+        original_UnStunTheBugger(pOpponent_spec);
+    }
 }
 
+function_hook_state_t function_hook_state_ProcessCompleteRace = HOOK_UNAVAILABLE;
 static void(__cdecl*original_ProcessCompleteRace)(tOpponent_spec *, tProcess_objective_command) = (void(__cdecl*)(tOpponent_spec *, tProcess_objective_command))0x00406732;
 CARM95_HOOK_FUNCTION(original_ProcessCompleteRace, ProcessCompleteRace)
 void __cdecl ProcessCompleteRace(tOpponent_spec *pOpponent_spec, tProcess_objective_command pCommand) {
@@ -521,9 +657,15 @@ void __cdecl ProcessCompleteRace(tOpponent_spec *pOpponent_spec, tProcess_object
     (void)res;
     (void)str;
 
-    original_ProcessCompleteRace(pOpponent_spec, pCommand);
+    if (function_hook_state_ProcessCompleteRace == HOOK_ENABLED) {
+        assert(0 && "ProcessCompleteRace not implemented.");
+        abort();
+    } else {
+        original_ProcessCompleteRace(pOpponent_spec, pCommand);
+    }
 }
 
+function_hook_state_t function_hook_state_StartRecordingTrail = HOOK_UNAVAILABLE;
 static void(__cdecl*original_StartRecordingTrail)(tCar_spec *) = (void(__cdecl*)(tCar_spec *))0x00405e59;
 CARM95_HOOK_FUNCTION(original_StartRecordingTrail, StartRecordingTrail)
 void __cdecl StartRecordingTrail(tCar_spec *pPursuee) {
@@ -533,9 +675,15 @@ void __cdecl StartRecordingTrail(tCar_spec *pPursuee) {
     (void)pPursuee;
     (void)i;
 
-    original_StartRecordingTrail(pPursuee);
+    if (function_hook_state_StartRecordingTrail == HOOK_ENABLED) {
+        assert(0 && "StartRecordingTrail not implemented.");
+        abort();
+    } else {
+        original_StartRecordingTrail(pPursuee);
+    }
 }
 
+function_hook_state_t function_hook_state_RecordNextTrailNode = HOOK_UNAVAILABLE;
 static void(__cdecl*original_RecordNextTrailNode)(tCar_spec *) = (void(__cdecl*)(tCar_spec *))0x00405f97;
 CARM95_HOOK_FUNCTION(original_RecordNextTrailNode, RecordNextTrailNode)
 void __cdecl RecordNextTrailNode(tCar_spec *pPursuee) {
@@ -561,9 +709,15 @@ void __cdecl RecordNextTrailNode(tCar_spec *pPursuee) {
     (void)length;
     (void)visible;
 
-    original_RecordNextTrailNode(pPursuee);
+    if (function_hook_state_RecordNextTrailNode == HOOK_ENABLED) {
+        assert(0 && "RecordNextTrailNode not implemented.");
+        abort();
+    } else {
+        original_RecordNextTrailNode(pPursuee);
+    }
 }
 
+function_hook_state_t function_hook_state_FindNearestTrailSection = HOOK_UNAVAILABLE;
 static tS16(__cdecl*original_FindNearestTrailSection)(tOpponent_spec *, tCar_spec *, br_vector3 *, br_vector3 *, br_scalar *) = (tS16(__cdecl*)(tOpponent_spec *, tCar_spec *, br_vector3 *, br_vector3 *, br_scalar *))0x0040769d;
 CARM95_HOOK_FUNCTION(original_FindNearestTrailSection, FindNearestTrailSection)
 tS16 __cdecl FindNearestTrailSection(tOpponent_spec *pOpponent_spec, tCar_spec *pPursuee, br_vector3 *pSection_v, br_vector3 *pIntersect, br_scalar *pDistance) {
@@ -575,9 +729,15 @@ tS16 __cdecl FindNearestTrailSection(tOpponent_spec *pOpponent_spec, tCar_spec *
     (void)pIntersect;
     (void)pDistance;
 
-    return original_FindNearestTrailSection(pOpponent_spec, pPursuee, pSection_v, pIntersect, pDistance);
+    if (function_hook_state_FindNearestTrailSection == HOOK_ENABLED) {
+        assert(0 && "FindNearestTrailSection not implemented.");
+        abort();
+    } else {
+        return original_FindNearestTrailSection(pOpponent_spec, pPursuee, pSection_v, pIntersect, pDistance);
+    }
 }
 
+function_hook_state_t function_hook_state_CalcNextTrailSection = HOOK_UNAVAILABLE;
 static tS16(__cdecl*original_CalcNextTrailSection)(tOpponent_spec *, int) = (tS16(__cdecl*)(tOpponent_spec *, int))0x00403145;
 CARM95_HOOK_FUNCTION(original_CalcNextTrailSection, CalcNextTrailSection)
 tS16 __cdecl CalcNextTrailSection(tOpponent_spec *pOpponent_spec, int pSection) {
@@ -590,9 +750,15 @@ tS16 __cdecl CalcNextTrailSection(tOpponent_spec *pOpponent_spec, int pSection) 
     (void)section_no;
     (void)trail;
 
-    return original_CalcNextTrailSection(pOpponent_spec, pSection);
+    if (function_hook_state_CalcNextTrailSection == HOOK_ENABLED) {
+        assert(0 && "CalcNextTrailSection not implemented.");
+        abort();
+    } else {
+        return original_CalcNextTrailSection(pOpponent_spec, pSection);
+    }
 }
 
+function_hook_state_t function_hook_state_ProcessPursueAndTwat = HOOK_UNAVAILABLE;
 static void(__cdecl*original_ProcessPursueAndTwat)(tOpponent_spec *, tProcess_objective_command) = (void(__cdecl*)(tOpponent_spec *, tProcess_objective_command))0x00406a69;
 CARM95_HOOK_FUNCTION(original_ProcessPursueAndTwat, ProcessPursueAndTwat)
 void __cdecl ProcessPursueAndTwat(tOpponent_spec *pOpponent_spec, tProcess_objective_command pCommand) {
@@ -623,9 +789,15 @@ void __cdecl ProcessPursueAndTwat(tOpponent_spec *pOpponent_spec, tProcess_objec
     (void)str;
     (void)section_no;
 
-    original_ProcessPursueAndTwat(pOpponent_spec, pCommand);
+    if (function_hook_state_ProcessPursueAndTwat == HOOK_ENABLED) {
+        assert(0 && "ProcessPursueAndTwat not implemented.");
+        abort();
+    } else {
+        original_ProcessPursueAndTwat(pOpponent_spec, pCommand);
+    }
 }
 
+function_hook_state_t function_hook_state_ProcessRunAway = HOOK_UNAVAILABLE;
 static void(__cdecl*original_ProcessRunAway)(tOpponent_spec *, tProcess_objective_command) = (void(__cdecl*)(tOpponent_spec *, tProcess_objective_command))0x004076d2;
 CARM95_HOOK_FUNCTION(original_ProcessRunAway, ProcessRunAway)
 void __cdecl ProcessRunAway(tOpponent_spec *pOpponent_spec, tProcess_objective_command pCommand) {
@@ -646,9 +818,15 @@ void __cdecl ProcessRunAway(tOpponent_spec *pOpponent_spec, tProcess_objective_c
     (void)direction_v;
     (void)str;
 
-    original_ProcessRunAway(pOpponent_spec, pCommand);
+    if (function_hook_state_ProcessRunAway == HOOK_ENABLED) {
+        assert(0 && "ProcessRunAway not implemented.");
+        abort();
+    } else {
+        original_ProcessRunAway(pOpponent_spec, pCommand);
+    }
 }
 
+function_hook_state_t function_hook_state_ProcessWaitForSomeHaplessSod = HOOK_UNAVAILABLE;
 static void(__cdecl*original_ProcessWaitForSomeHaplessSod)(tOpponent_spec *, tProcess_objective_command) = (void(__cdecl*)(tOpponent_spec *, tProcess_objective_command))0x004079da;
 CARM95_HOOK_FUNCTION(original_ProcessWaitForSomeHaplessSod, ProcessWaitForSomeHaplessSod)
 void __cdecl ProcessWaitForSomeHaplessSod(tOpponent_spec *pOpponent_spec, tProcess_objective_command pCommand) {
@@ -657,9 +835,15 @@ void __cdecl ProcessWaitForSomeHaplessSod(tOpponent_spec *pOpponent_spec, tProce
     (void)pOpponent_spec;
     (void)pCommand;
 
-    original_ProcessWaitForSomeHaplessSod(pOpponent_spec, pCommand);
+    if (function_hook_state_ProcessWaitForSomeHaplessSod == HOOK_ENABLED) {
+        assert(0 && "ProcessWaitForSomeHaplessSod not implemented.");
+        abort();
+    } else {
+        original_ProcessWaitForSomeHaplessSod(pOpponent_spec, pCommand);
+    }
 }
 
+function_hook_state_t function_hook_state_ProcessReturnToStart = HOOK_UNAVAILABLE;
 static void(__cdecl*original_ProcessReturnToStart)(tOpponent_spec *, tProcess_objective_command) = (void(__cdecl*)(tOpponent_spec *, tProcess_objective_command))0x00407a66;
 CARM95_HOOK_FUNCTION(original_ProcessReturnToStart, ProcessReturnToStart)
 void __cdecl ProcessReturnToStart(tOpponent_spec *pOpponent_spec, tProcess_objective_command pCommand) {
@@ -678,9 +862,15 @@ void __cdecl ProcessReturnToStart(tOpponent_spec *pOpponent_spec, tProcess_objec
     (void)distance;
     (void)res;
 
-    original_ProcessReturnToStart(pOpponent_spec, pCommand);
+    if (function_hook_state_ProcessReturnToStart == HOOK_ENABLED) {
+        assert(0 && "ProcessReturnToStart not implemented.");
+        abort();
+    } else {
+        original_ProcessReturnToStart(pOpponent_spec, pCommand);
+    }
 }
 
+function_hook_state_t function_hook_state_ProcessLevitate = HOOK_UNAVAILABLE;
 static void(__cdecl*original_ProcessLevitate)(tOpponent_spec *, tProcess_objective_command) = (void(__cdecl*)(tOpponent_spec *, tProcess_objective_command))0x00408349;
 CARM95_HOOK_FUNCTION(original_ProcessLevitate, ProcessLevitate)
 void __cdecl ProcessLevitate(tOpponent_spec *pOpponent_spec, tProcess_objective_command pCommand) {
@@ -695,9 +885,15 @@ void __cdecl ProcessLevitate(tOpponent_spec *pOpponent_spec, tProcess_objective_
     (void)terminal_time;
     (void)y;
 
-    original_ProcessLevitate(pOpponent_spec, pCommand);
+    if (function_hook_state_ProcessLevitate == HOOK_ENABLED) {
+        assert(0 && "ProcessLevitate not implemented.");
+        abort();
+    } else {
+        original_ProcessLevitate(pOpponent_spec, pCommand);
+    }
 }
 
+function_hook_state_t function_hook_state_ProcessGetNearPlayer = HOOK_UNAVAILABLE;
 static void(__cdecl*original_ProcessGetNearPlayer)(tOpponent_spec *, tProcess_objective_command) = (void(__cdecl*)(tOpponent_spec *, tProcess_objective_command))0x004086fe;
 CARM95_HOOK_FUNCTION(original_ProcessGetNearPlayer, ProcessGetNearPlayer)
 void __cdecl ProcessGetNearPlayer(tOpponent_spec *pOpponent_spec, tProcess_objective_command pCommand) {
@@ -714,9 +910,15 @@ void __cdecl ProcessGetNearPlayer(tOpponent_spec *pOpponent_spec, tProcess_objec
     (void)res;
     (void)str;
 
-    original_ProcessGetNearPlayer(pOpponent_spec, pCommand);
+    if (function_hook_state_ProcessGetNearPlayer == HOOK_ENABLED) {
+        assert(0 && "ProcessGetNearPlayer not implemented.");
+        abort();
+    } else {
+        original_ProcessGetNearPlayer(pOpponent_spec, pCommand);
+    }
 }
 
+function_hook_state_t function_hook_state_ProcessFrozen = HOOK_UNAVAILABLE;
 static void(__cdecl*original_ProcessFrozen)(tOpponent_spec *, tProcess_objective_command) = (void(__cdecl*)(tOpponent_spec *, tProcess_objective_command))0x00408d47;
 CARM95_HOOK_FUNCTION(original_ProcessFrozen, ProcessFrozen)
 void __cdecl ProcessFrozen(tOpponent_spec *pOpponent_spec, tProcess_objective_command pCommand) {
@@ -725,9 +927,15 @@ void __cdecl ProcessFrozen(tOpponent_spec *pOpponent_spec, tProcess_objective_co
     (void)pOpponent_spec;
     (void)pCommand;
 
-    original_ProcessFrozen(pOpponent_spec, pCommand);
+    if (function_hook_state_ProcessFrozen == HOOK_ENABLED) {
+        assert(0 && "ProcessFrozen not implemented.");
+        abort();
+    } else {
+        original_ProcessFrozen(pOpponent_spec, pCommand);
+    }
 }
 
+function_hook_state_t function_hook_state_HeadOnWithPlayerPossible = HOOK_UNAVAILABLE;
 static int(__cdecl*original_HeadOnWithPlayerPossible)(tOpponent_spec *) = (int(__cdecl*)(tOpponent_spec *))0x00409cd5;
 CARM95_HOOK_FUNCTION(original_HeadOnWithPlayerPossible, HeadOnWithPlayerPossible)
 int __cdecl HeadOnWithPlayerPossible(tOpponent_spec *pOpponent_spec) {
@@ -739,9 +947,15 @@ int __cdecl HeadOnWithPlayerPossible(tOpponent_spec *pOpponent_spec) {
     (void)oppo_to_player_norm;
     (void)__block0___scale;
 
-    return original_HeadOnWithPlayerPossible(pOpponent_spec);
+    if (function_hook_state_HeadOnWithPlayerPossible == HOOK_ENABLED) {
+        assert(0 && "HeadOnWithPlayerPossible not implemented.");
+        abort();
+    } else {
+        return original_HeadOnWithPlayerPossible(pOpponent_spec);
+    }
 }
 
+function_hook_state_t function_hook_state_AlreadyPursuingCar = HOOK_UNAVAILABLE;
 static int(__cdecl*original_AlreadyPursuingCar)(tOpponent_spec *, tCar_spec *) = (int(__cdecl*)(tOpponent_spec *, tCar_spec *))0x00409e29;
 CARM95_HOOK_FUNCTION(original_AlreadyPursuingCar, AlreadyPursuingCar)
 int __cdecl AlreadyPursuingCar(tOpponent_spec *pOpponent_spec, tCar_spec *pPursuee) {
@@ -750,9 +964,15 @@ int __cdecl AlreadyPursuingCar(tOpponent_spec *pOpponent_spec, tCar_spec *pPursu
     (void)pOpponent_spec;
     (void)pPursuee;
 
-    return original_AlreadyPursuingCar(pOpponent_spec, pPursuee);
+    if (function_hook_state_AlreadyPursuingCar == HOOK_ENABLED) {
+        assert(0 && "AlreadyPursuingCar not implemented.");
+        abort();
+    } else {
+        return original_AlreadyPursuingCar(pOpponent_spec, pPursuee);
+    }
 }
 
+function_hook_state_t function_hook_state_LastTwatteeAPlayer = HOOK_UNAVAILABLE;
 static int(__cdecl*original_LastTwatteeAPlayer)(tOpponent_spec *) = (int(__cdecl*)(tOpponent_spec *))0x00409e64;
 CARM95_HOOK_FUNCTION(original_LastTwatteeAPlayer, LastTwatteeAPlayer)
 int __cdecl LastTwatteeAPlayer(tOpponent_spec *pOpponent_spec) {
@@ -760,9 +980,15 @@ int __cdecl LastTwatteeAPlayer(tOpponent_spec *pOpponent_spec) {
 
     (void)pOpponent_spec;
 
-    return original_LastTwatteeAPlayer(pOpponent_spec);
+    if (function_hook_state_LastTwatteeAPlayer == HOOK_ENABLED) {
+        assert(0 && "LastTwatteeAPlayer not implemented.");
+        abort();
+    } else {
+        return original_LastTwatteeAPlayer(pOpponent_spec);
+    }
 }
 
+function_hook_state_t function_hook_state_LastTwatterAPlayer = HOOK_UNAVAILABLE;
 static int(__cdecl*original_LastTwatterAPlayer)(tOpponent_spec *) = (int(__cdecl*)(tOpponent_spec *))0x00409ea9;
 CARM95_HOOK_FUNCTION(original_LastTwatterAPlayer, LastTwatterAPlayer)
 int __cdecl LastTwatterAPlayer(tOpponent_spec *pOpponent_spec) {
@@ -770,9 +996,15 @@ int __cdecl LastTwatterAPlayer(tOpponent_spec *pOpponent_spec) {
 
     (void)pOpponent_spec;
 
-    return original_LastTwatterAPlayer(pOpponent_spec);
+    if (function_hook_state_LastTwatterAPlayer == HOOK_ENABLED) {
+        assert(0 && "LastTwatterAPlayer not implemented.");
+        abort();
+    } else {
+        return original_LastTwatterAPlayer(pOpponent_spec);
+    }
 }
 
+function_hook_state_t function_hook_state_ObjectiveComplete = HOOK_UNAVAILABLE;
 static void(__cdecl*original_ObjectiveComplete)(tOpponent_spec *) = (void(__cdecl*)(tOpponent_spec *))0x00408e2d;
 CARM95_HOOK_FUNCTION(original_ObjectiveComplete, ObjectiveComplete)
 void __cdecl ObjectiveComplete(tOpponent_spec *pOpponent_spec) {
@@ -780,9 +1012,15 @@ void __cdecl ObjectiveComplete(tOpponent_spec *pOpponent_spec) {
 
     (void)pOpponent_spec;
 
-    original_ObjectiveComplete(pOpponent_spec);
+    if (function_hook_state_ObjectiveComplete == HOOK_ENABLED) {
+        assert(0 && "ObjectiveComplete not implemented.");
+        abort();
+    } else {
+        original_ObjectiveComplete(pOpponent_spec);
+    }
 }
 
+function_hook_state_t function_hook_state_TeleportOpponentToNearestSafeLocation = HOOK_UNAVAILABLE;
 static void(__cdecl*original_TeleportOpponentToNearestSafeLocation)(tOpponent_spec *) = (void(__cdecl*)(tOpponent_spec *))0x00404464;
 CARM95_HOOK_FUNCTION(original_TeleportOpponentToNearestSafeLocation, TeleportOpponentToNearestSafeLocation)
 void __cdecl TeleportOpponentToNearestSafeLocation(tOpponent_spec *pOpponent_spec) {
@@ -804,9 +1042,15 @@ void __cdecl TeleportOpponentToNearestSafeLocation(tOpponent_spec *pOpponent_spe
     (void)section_counter;
     (void)found_safe_place;
 
-    original_TeleportOpponentToNearestSafeLocation(pOpponent_spec);
+    if (function_hook_state_TeleportOpponentToNearestSafeLocation == HOOK_ENABLED) {
+        assert(0 && "TeleportOpponentToNearestSafeLocation not implemented.");
+        abort();
+    } else {
+        original_TeleportOpponentToNearestSafeLocation(pOpponent_spec);
+    }
 }
 
+function_hook_state_t function_hook_state_ChooseNewObjective = HOOK_UNAVAILABLE;
 static void(__cdecl*original_ChooseNewObjective)(tOpponent_spec *, int) = (void(__cdecl*)(tOpponent_spec *, int))0x00408ec5;
 CARM95_HOOK_FUNCTION(original_ChooseNewObjective, ChooseNewObjective)
 void __cdecl ChooseNewObjective(tOpponent_spec *pOpponent_spec, int pMust_choose_one) {
@@ -843,9 +1087,15 @@ void __cdecl ChooseNewObjective(tOpponent_spec *pOpponent_spec, int pMust_choose
     (void)percentage;
     (void)general_grudge_increase;
 
-    original_ChooseNewObjective(pOpponent_spec, pMust_choose_one);
+    if (function_hook_state_ChooseNewObjective == HOOK_ENABLED) {
+        assert(0 && "ChooseNewObjective not implemented.");
+        abort();
+    } else {
+        original_ChooseNewObjective(pOpponent_spec, pMust_choose_one);
+    }
 }
 
+function_hook_state_t function_hook_state_ProcessThisOpponent = HOOK_UNAVAILABLE;
 static void(__cdecl*original_ProcessThisOpponent)(tOpponent_spec *) = (void(__cdecl*)(tOpponent_spec *))0x00406458;
 CARM95_HOOK_FUNCTION(original_ProcessThisOpponent, ProcessThisOpponent)
 void __cdecl ProcessThisOpponent(tOpponent_spec *pOpponent_spec) {
@@ -855,9 +1105,15 @@ void __cdecl ProcessThisOpponent(tOpponent_spec *pOpponent_spec) {
     (void)pOpponent_spec;
     (void)i;
 
-    original_ProcessThisOpponent(pOpponent_spec);
+    if (function_hook_state_ProcessThisOpponent == HOOK_ENABLED) {
+        assert(0 && "ProcessThisOpponent not implemented.");
+        abort();
+    } else {
+        original_ProcessThisOpponent(pOpponent_spec);
+    }
 }
 
+function_hook_state_t function_hook_state_IsNetCarActive = HOOK_UNAVAILABLE;
 static int(__cdecl*original_IsNetCarActive)(br_vector3 *) = (int(__cdecl*)(br_vector3 *))0x004034b7;
 CARM95_HOOK_FUNCTION(original_IsNetCarActive, IsNetCarActive)
 int __cdecl IsNetCarActive(br_vector3 *pPoint) {
@@ -867,9 +1123,15 @@ int __cdecl IsNetCarActive(br_vector3 *pPoint) {
     (void)pPoint;
     (void)tv;
 
-    return original_IsNetCarActive(pPoint);
+    if (function_hook_state_IsNetCarActive == HOOK_ENABLED) {
+        assert(0 && "IsNetCarActive not implemented.");
+        abort();
+    } else {
+        return original_IsNetCarActive(pPoint);
+    }
 }
 
+function_hook_state_t function_hook_state_RebuildActiveCarList = HOOK_UNAVAILABLE;
 static void(__cdecl*original_RebuildActiveCarList)() = (void(__cdecl*)())0x004031c3;
 CARM95_HOOK_FUNCTION(original_RebuildActiveCarList, RebuildActiveCarList)
 void __cdecl RebuildActiveCarList() {
@@ -880,18 +1142,30 @@ void __cdecl RebuildActiveCarList() {
     (void)i;
     (void)car_spec;
 
-    original_RebuildActiveCarList();
+    if (function_hook_state_RebuildActiveCarList == HOOK_ENABLED) {
+        assert(0 && "RebuildActiveCarList not implemented.");
+        abort();
+    } else {
+        original_RebuildActiveCarList();
+    }
 }
 
+function_hook_state_t function_hook_state_ForceRebuildActiveCarList = HOOK_UNAVAILABLE;
 static void(__cdecl*original_ForceRebuildActiveCarList)() = (void(__cdecl*)())0x0040319c;
 CARM95_HOOK_FUNCTION(original_ForceRebuildActiveCarList, ForceRebuildActiveCarList)
 void __cdecl ForceRebuildActiveCarList() {
     LOG_TRACE("()");
 
 
-    original_ForceRebuildActiveCarList();
+    if (function_hook_state_ForceRebuildActiveCarList == HOOK_ENABLED) {
+        assert(0 && "ForceRebuildActiveCarList not implemented.");
+        abort();
+    } else {
+        original_ForceRebuildActiveCarList();
+    }
 }
 
+function_hook_state_t function_hook_state_StartToCheat = HOOK_UNAVAILABLE;
 static void(__cdecl*original_StartToCheat)(tOpponent_spec *) = (void(__cdecl*)(tOpponent_spec *))0x00409eee;
 CARM95_HOOK_FUNCTION(original_StartToCheat, StartToCheat)
 void __cdecl StartToCheat(tOpponent_spec *pOpponent_spec) {
@@ -899,9 +1173,15 @@ void __cdecl StartToCheat(tOpponent_spec *pOpponent_spec) {
 
     (void)pOpponent_spec;
 
-    original_StartToCheat(pOpponent_spec);
+    if (function_hook_state_StartToCheat == HOOK_ENABLED) {
+        assert(0 && "StartToCheat not implemented.");
+        abort();
+    } else {
+        original_StartToCheat(pOpponent_spec);
+    }
 }
 
+function_hook_state_t function_hook_state_OiStopCheating = HOOK_UNAVAILABLE;
 static void(__cdecl*original_OiStopCheating)(tOpponent_spec *) = (void(__cdecl*)(tOpponent_spec *))0x00409f78;
 CARM95_HOOK_FUNCTION(original_OiStopCheating, OiStopCheating)
 void __cdecl OiStopCheating(tOpponent_spec *pOpponent_spec) {
@@ -909,9 +1189,15 @@ void __cdecl OiStopCheating(tOpponent_spec *pOpponent_spec) {
 
     (void)pOpponent_spec;
 
-    original_OiStopCheating(pOpponent_spec);
+    if (function_hook_state_OiStopCheating == HOOK_ENABLED) {
+        assert(0 && "OiStopCheating not implemented.");
+        abort();
+    } else {
+        original_OiStopCheating(pOpponent_spec);
+    }
 }
 
+function_hook_state_t function_hook_state_TeleportCopToStart = HOOK_UNAVAILABLE;
 static int(__cdecl*original_TeleportCopToStart)(tOpponent_spec *) = (int(__cdecl*)(tOpponent_spec *))0x00409ff7;
 CARM95_HOOK_FUNCTION(original_TeleportCopToStart, TeleportCopToStart)
 int __cdecl TeleportCopToStart(tOpponent_spec *pOpponent_spec) {
@@ -921,9 +1207,15 @@ int __cdecl TeleportCopToStart(tOpponent_spec *pOpponent_spec) {
     (void)pOpponent_spec;
     (void)wank;
 
-    return original_TeleportCopToStart(pOpponent_spec);
+    if (function_hook_state_TeleportCopToStart == HOOK_ENABLED) {
+        assert(0 && "TeleportCopToStart not implemented.");
+        abort();
+    } else {
+        return original_TeleportCopToStart(pOpponent_spec);
+    }
 }
 
+function_hook_state_t function_hook_state_CalcDistanceFromHome = HOOK_UNAVAILABLE;
 static void(__cdecl*original_CalcDistanceFromHome)(tOpponent_spec *) = (void(__cdecl*)(tOpponent_spec *))0x0040a13d;
 CARM95_HOOK_FUNCTION(original_CalcDistanceFromHome, CalcDistanceFromHome)
 void __cdecl CalcDistanceFromHome(tOpponent_spec *pOpponent_spec) {
@@ -933,9 +1225,15 @@ void __cdecl CalcDistanceFromHome(tOpponent_spec *pOpponent_spec) {
     (void)pOpponent_spec;
     (void)wank;
 
-    original_CalcDistanceFromHome(pOpponent_spec);
+    if (function_hook_state_CalcDistanceFromHome == HOOK_ENABLED) {
+        assert(0 && "CalcDistanceFromHome not implemented.");
+        abort();
+    } else {
+        original_CalcDistanceFromHome(pOpponent_spec);
+    }
 }
 
+function_hook_state_t function_hook_state_MassageOpponentPosition = HOOK_UNAVAILABLE;
 static int(__cdecl*original_MassageOpponentPosition)(tOpponent_spec *, int) = (int(__cdecl*)(tOpponent_spec *, int))0x0040472e;
 CARM95_HOOK_FUNCTION(original_MassageOpponentPosition, MassageOpponentPosition)
 int __cdecl MassageOpponentPosition(tOpponent_spec *pOpponent_spec, int pMassage_count) {
@@ -958,9 +1256,15 @@ int __cdecl MassageOpponentPosition(tOpponent_spec *pOpponent_spec, int pMassage
     (void)__block0___scale;
     (void)__block1___scale;
 
-    return original_MassageOpponentPosition(pOpponent_spec, pMassage_count);
+    if (function_hook_state_MassageOpponentPosition == HOOK_ENABLED) {
+        assert(0 && "MassageOpponentPosition not implemented.");
+        abort();
+    } else {
+        return original_MassageOpponentPosition(pOpponent_spec, pMassage_count);
+    }
 }
 
+function_hook_state_t function_hook_state_RematerialiseOpponentOnThisSection = HOOK_UNAVAILABLE;
 static int(__cdecl*original_RematerialiseOpponentOnThisSection)(tOpponent_spec *, br_scalar, tS16) = (int(__cdecl*)(tOpponent_spec *, br_scalar, tS16))0x004035b1;
 CARM95_HOOK_FUNCTION(original_RematerialiseOpponentOnThisSection, RematerialiseOpponentOnThisSection)
 int __cdecl RematerialiseOpponentOnThisSection(tOpponent_spec *pOpponent_spec, br_scalar pSpeed, tS16 pSection_no) {
@@ -990,9 +1294,15 @@ int __cdecl RematerialiseOpponentOnThisSection(tOpponent_spec *pOpponent_spec, b
     (void)distance_to_end;
     (void)length;
 
-    return original_RematerialiseOpponentOnThisSection(pOpponent_spec, pSpeed, pSection_no);
+    if (function_hook_state_RematerialiseOpponentOnThisSection == HOOK_ENABLED) {
+        assert(0 && "RematerialiseOpponentOnThisSection not implemented.");
+        abort();
+    } else {
+        return original_RematerialiseOpponentOnThisSection(pOpponent_spec, pSpeed, pSection_no);
+    }
 }
 
+function_hook_state_t function_hook_state_RematerialiseOpponentOnNearestSection = HOOK_UNAVAILABLE;
 static int(__cdecl*original_RematerialiseOpponentOnNearestSection)(tOpponent_spec *, br_scalar) = (int(__cdecl*)(tOpponent_spec *, br_scalar))0x004038fe;
 CARM95_HOOK_FUNCTION(original_RematerialiseOpponentOnNearestSection, RematerialiseOpponentOnNearestSection)
 int __cdecl RematerialiseOpponentOnNearestSection(tOpponent_spec *pOpponent_spec, br_scalar pSpeed) {
@@ -1017,9 +1327,15 @@ int __cdecl RematerialiseOpponentOnNearestSection(tOpponent_spec *pOpponent_spec
     (void)distance_to_end;
     (void)section_no;
 
-    return original_RematerialiseOpponentOnNearestSection(pOpponent_spec, pSpeed);
+    if (function_hook_state_RematerialiseOpponentOnNearestSection == HOOK_ENABLED) {
+        assert(0 && "RematerialiseOpponentOnNearestSection not implemented.");
+        abort();
+    } else {
+        return original_RematerialiseOpponentOnNearestSection(pOpponent_spec, pSpeed);
+    }
 }
 
+function_hook_state_t function_hook_state_RematerialiseOpponent = HOOK_UNAVAILABLE;
 static int(__cdecl*original_RematerialiseOpponent)(tOpponent_spec *, br_scalar) = (int(__cdecl*)(tOpponent_spec *, br_scalar))0x00403ad9;
 CARM95_HOOK_FUNCTION(original_RematerialiseOpponent, RematerialiseOpponent)
 int __cdecl RematerialiseOpponent(tOpponent_spec *pOpponent_spec, br_scalar pSpeed) {
@@ -1068,9 +1384,15 @@ int __cdecl RematerialiseOpponent(tOpponent_spec *pOpponent_spec, br_scalar pSpe
     (void)sensible_place;
     (void)__block0___scale;
 
-    return original_RematerialiseOpponent(pOpponent_spec, pSpeed);
+    if (function_hook_state_RematerialiseOpponent == HOOK_ENABLED) {
+        assert(0 && "RematerialiseOpponent not implemented.");
+        abort();
+    } else {
+        return original_RematerialiseOpponent(pOpponent_spec, pSpeed);
+    }
 }
 
+function_hook_state_t function_hook_state_CalcPlayerConspicuousness = HOOK_UNAVAILABLE;
 static void(__cdecl*original_CalcPlayerConspicuousness)(tOpponent_spec *) = (void(__cdecl*)(tOpponent_spec *))0x0040a1ab;
 CARM95_HOOK_FUNCTION(original_CalcPlayerConspicuousness, CalcPlayerConspicuousness)
 void __cdecl CalcPlayerConspicuousness(tOpponent_spec *pOpponent_spec) {
@@ -1082,9 +1404,15 @@ void __cdecl CalcPlayerConspicuousness(tOpponent_spec *pOpponent_spec) {
     (void)pos_in_cop_space;
     (void)inverse_transform;
 
-    original_CalcPlayerConspicuousness(pOpponent_spec);
+    if (function_hook_state_CalcPlayerConspicuousness == HOOK_ENABLED) {
+        assert(0 && "CalcPlayerConspicuousness not implemented.");
+        abort();
+    } else {
+        original_CalcPlayerConspicuousness(pOpponent_spec);
+    }
 }
 
+function_hook_state_t function_hook_state_CalcOpponentConspicuousnessWithAViewToCheatingLikeFuck = HOOK_UNAVAILABLE;
 static void(__cdecl*original_CalcOpponentConspicuousnessWithAViewToCheatingLikeFuck)(tOpponent_spec *) = (void(__cdecl*)(tOpponent_spec *))0x00404a0e;
 CARM95_HOOK_FUNCTION(original_CalcOpponentConspicuousnessWithAViewToCheatingLikeFuck, CalcOpponentConspicuousnessWithAViewToCheatingLikeFuck)
 void __cdecl CalcOpponentConspicuousnessWithAViewToCheatingLikeFuck(tOpponent_spec *pOpponent_spec) {
@@ -1092,9 +1420,15 @@ void __cdecl CalcOpponentConspicuousnessWithAViewToCheatingLikeFuck(tOpponent_sp
 
     (void)pOpponent_spec;
 
-    original_CalcOpponentConspicuousnessWithAViewToCheatingLikeFuck(pOpponent_spec);
+    if (function_hook_state_CalcOpponentConspicuousnessWithAViewToCheatingLikeFuck == HOOK_ENABLED) {
+        assert(0 && "CalcOpponentConspicuousnessWithAViewToCheatingLikeFuck not implemented.");
+        abort();
+    } else {
+        original_CalcOpponentConspicuousnessWithAViewToCheatingLikeFuck(pOpponent_spec);
+    }
 }
 
+function_hook_state_t function_hook_state_ChallengeOccurred = HOOK_UNAVAILABLE;
 static void(__cdecl*original_ChallengeOccurred)(int, int) = (void(__cdecl*)(int, int))0x00404abc;
 CARM95_HOOK_FUNCTION(original_ChallengeOccurred, ChallengeOccurred)
 void __cdecl ChallengeOccurred(int pChallenger_index, int pAccepted) {
@@ -1103,9 +1437,15 @@ void __cdecl ChallengeOccurred(int pChallenger_index, int pAccepted) {
     (void)pChallenger_index;
     (void)pAccepted;
 
-    original_ChallengeOccurred(pChallenger_index, pAccepted);
+    if (function_hook_state_ChallengeOccurred == HOOK_ENABLED) {
+        assert(0 && "ChallengeOccurred not implemented.");
+        abort();
+    } else {
+        original_ChallengeOccurred(pChallenger_index, pAccepted);
+    }
 }
 
+function_hook_state_t function_hook_state_LoadCopCars = HOOK_UNAVAILABLE;
 static void(__cdecl*original_LoadCopCars)() = (void(__cdecl*)())0x00404ad9;
 CARM95_HOOK_FUNCTION(original_LoadCopCars, LoadCopCars)
 void __cdecl LoadCopCars() {
@@ -1114,9 +1454,15 @@ void __cdecl LoadCopCars() {
 
     (void)i;
 
-    original_LoadCopCars();
+    if (function_hook_state_LoadCopCars == HOOK_ENABLED) {
+        assert(0 && "LoadCopCars not implemented.");
+        abort();
+    } else {
+        original_LoadCopCars();
+    }
 }
 
+function_hook_state_t function_hook_state_LoadInOppoPaths = HOOK_UNAVAILABLE;
 static void(__cdecl*original_LoadInOppoPaths)(FILE *) = (void(__cdecl*)(FILE *))0x00404b9b;
 CARM95_HOOK_FUNCTION(original_LoadInOppoPaths, LoadInOppoPaths)
 void __cdecl LoadInOppoPaths(FILE *pF) {
@@ -1168,18 +1514,30 @@ void __cdecl LoadInOppoPaths(FILE *pF) {
     (void)__block0__x_1;
     (void)__block0__x_2;
 
-    original_LoadInOppoPaths(pF);
+    if (function_hook_state_LoadInOppoPaths == HOOK_ENABLED) {
+        assert(0 && "LoadInOppoPaths not implemented.");
+        abort();
+    } else {
+        original_LoadInOppoPaths(pF);
+    }
 }
 
+function_hook_state_t function_hook_state_DisposeOpponentPaths = HOOK_UNAVAILABLE;
 static void(__cdecl*original_DisposeOpponentPaths)() = (void(__cdecl*)())0x00405912;
 CARM95_HOOK_FUNCTION(original_DisposeOpponentPaths, DisposeOpponentPaths)
 void __cdecl DisposeOpponentPaths() {
     LOG_TRACE("()");
 
 
-    original_DisposeOpponentPaths();
+    if (function_hook_state_DisposeOpponentPaths == HOOK_ENABLED) {
+        assert(0 && "DisposeOpponentPaths not implemented.");
+        abort();
+    } else {
+        original_DisposeOpponentPaths();
+    }
 }
 
+function_hook_state_t function_hook_state_MungeOpponents = HOOK_UNAVAILABLE;
 static void(__cdecl*original_MungeOpponents)(tU32) = (void(__cdecl*)(tU32))0x004059a0;
 CARM95_HOOK_FUNCTION(original_MungeOpponents, MungeOpponents)
 void __cdecl MungeOpponents(tU32 pFrame_period) {
@@ -1191,9 +1549,15 @@ void __cdecl MungeOpponents(tU32 pFrame_period) {
     (void)i;
     (void)un_stun_flag;
 
-    original_MungeOpponents(pFrame_period);
+    if (function_hook_state_MungeOpponents == HOOK_ENABLED) {
+        assert(0 && "MungeOpponents not implemented.");
+        abort();
+    } else {
+        original_MungeOpponents(pFrame_period);
+    }
 }
 
+function_hook_state_t function_hook_state_SetInitialCopPositions = HOOK_UNAVAILABLE;
 static void(__cdecl*original_SetInitialCopPositions)() = (void(__cdecl*)())0x0040a3a5;
 CARM95_HOOK_FUNCTION(original_SetInitialCopPositions, SetInitialCopPositions)
 void __cdecl SetInitialCopPositions() {
@@ -1202,9 +1566,15 @@ void __cdecl SetInitialCopPositions() {
 
     (void)i;
 
-    original_SetInitialCopPositions();
+    if (function_hook_state_SetInitialCopPositions == HOOK_ENABLED) {
+        assert(0 && "SetInitialCopPositions not implemented.");
+        abort();
+    } else {
+        original_SetInitialCopPositions();
+    }
 }
 
+function_hook_state_t function_hook_state_InitOpponents = HOOK_UNAVAILABLE;
 static void(__cdecl*original_InitOpponents)(tRace_info *) = (void(__cdecl*)(tRace_info *))0x0040a4ce;
 CARM95_HOOK_FUNCTION(original_InitOpponents, InitOpponents)
 void __cdecl InitOpponents(tRace_info *pRace_info) {
@@ -1226,9 +1596,15 @@ void __cdecl InitOpponents(tRace_info *pRace_info) {
     (void)__block0__car_spec;
     (void)__block0__opponent_spec;
 
-    original_InitOpponents(pRace_info);
+    if (function_hook_state_InitOpponents == HOOK_ENABLED) {
+        assert(0 && "InitOpponents not implemented.");
+        abort();
+    } else {
+        original_InitOpponents(pRace_info);
+    }
 }
 
+function_hook_state_t function_hook_state_DisposeOpponents = HOOK_UNAVAILABLE;
 static void(__cdecl*original_DisposeOpponents)() = (void(__cdecl*)())0x0040b186;
 CARM95_HOOK_FUNCTION(original_DisposeOpponents, DisposeOpponents)
 void __cdecl DisposeOpponents() {
@@ -1237,9 +1613,15 @@ void __cdecl DisposeOpponents() {
 
     (void)i;
 
-    original_DisposeOpponents();
+    if (function_hook_state_DisposeOpponents == HOOK_ENABLED) {
+        assert(0 && "DisposeOpponents not implemented.");
+        abort();
+    } else {
+        original_DisposeOpponents();
+    }
 }
 
+function_hook_state_t function_hook_state_WakeUpOpponentsToTheFactThatTheStartHasBeenJumped = HOOK_UNAVAILABLE;
 static void(__cdecl*original_WakeUpOpponentsToTheFactThatTheStartHasBeenJumped)(int) = (void(__cdecl*)(int))0x0040b20f;
 CARM95_HOOK_FUNCTION(original_WakeUpOpponentsToTheFactThatTheStartHasBeenJumped, WakeUpOpponentsToTheFactThatTheStartHasBeenJumped)
 void __cdecl WakeUpOpponentsToTheFactThatTheStartHasBeenJumped(int pWhat_the_countdown_was) {
@@ -1249,9 +1631,15 @@ void __cdecl WakeUpOpponentsToTheFactThatTheStartHasBeenJumped(int pWhat_the_cou
     (void)pWhat_the_countdown_was;
     (void)i;
 
-    original_WakeUpOpponentsToTheFactThatTheStartHasBeenJumped(pWhat_the_countdown_was);
+    if (function_hook_state_WakeUpOpponentsToTheFactThatTheStartHasBeenJumped == HOOK_ENABLED) {
+        assert(0 && "WakeUpOpponentsToTheFactThatTheStartHasBeenJumped not implemented.");
+        abort();
+    } else {
+        original_WakeUpOpponentsToTheFactThatTheStartHasBeenJumped(pWhat_the_countdown_was);
+    }
 }
 
+function_hook_state_t function_hook_state_ReportMurderToPoliceDepartment = HOOK_UNAVAILABLE;
 static void(__cdecl*original_ReportMurderToPoliceDepartment)(tCar_spec *) = (void(__cdecl*)(tCar_spec *))0x0040b3a5;
 CARM95_HOOK_FUNCTION(original_ReportMurderToPoliceDepartment, ReportMurderToPoliceDepartment)
 void __cdecl ReportMurderToPoliceDepartment(tCar_spec *pCar_spec) {
@@ -1261,9 +1649,15 @@ void __cdecl ReportMurderToPoliceDepartment(tCar_spec *pCar_spec) {
     (void)pCar_spec;
     (void)i;
 
-    original_ReportMurderToPoliceDepartment(pCar_spec);
+    if (function_hook_state_ReportMurderToPoliceDepartment == HOOK_ENABLED) {
+        assert(0 && "ReportMurderToPoliceDepartment not implemented.");
+        abort();
+    } else {
+        original_ReportMurderToPoliceDepartment(pCar_spec);
+    }
 }
 
+function_hook_state_t function_hook_state_GetCarCount = HOOK_UNAVAILABLE;
 static int(__cdecl*original_GetCarCount)(tVehicle_type) = (int(__cdecl*)(tVehicle_type))0x0040b412;
 CARM95_HOOK_FUNCTION(original_GetCarCount, GetCarCount)
 int __cdecl GetCarCount(tVehicle_type pCategory) {
@@ -1271,9 +1665,15 @@ int __cdecl GetCarCount(tVehicle_type pCategory) {
 
     (void)pCategory;
 
-    return original_GetCarCount(pCategory);
+    if (function_hook_state_GetCarCount == HOOK_ENABLED) {
+        assert(0 && "GetCarCount not implemented.");
+        abort();
+    } else {
+        return original_GetCarCount(pCategory);
+    }
 }
 
+function_hook_state_t function_hook_state_GetCarSpec = HOOK_UNAVAILABLE;
 static tCar_spec *(__cdecl*original_GetCarSpec)(tVehicle_type, int) = (tCar_spec *(__cdecl*)(tVehicle_type, int))0x0040b4b1;
 CARM95_HOOK_FUNCTION(original_GetCarSpec, GetCarSpec)
 tCar_spec* __cdecl GetCarSpec(tVehicle_type pCategory, int pIndex) {
@@ -1282,9 +1682,15 @@ tCar_spec* __cdecl GetCarSpec(tVehicle_type pCategory, int pIndex) {
     (void)pCategory;
     (void)pIndex;
 
-    return original_GetCarSpec(pCategory, pIndex);
+    if (function_hook_state_GetCarSpec == HOOK_ENABLED) {
+        assert(0 && "GetCarSpec not implemented.");
+        abort();
+    } else {
+        return original_GetCarSpec(pCategory, pIndex);
+    }
 }
 
+function_hook_state_t function_hook_state_GetDriverName = HOOK_UNAVAILABLE;
 static char *(__cdecl*original_GetDriverName)(tVehicle_type, int) = (char *(__cdecl*)(tVehicle_type, int))0x0040b592;
 CARM95_HOOK_FUNCTION(original_GetDriverName, GetDriverName)
 char* __cdecl GetDriverName(tVehicle_type pCategory, int pIndex) {
@@ -1293,9 +1699,15 @@ char* __cdecl GetDriverName(tVehicle_type pCategory, int pIndex) {
     (void)pCategory;
     (void)pIndex;
 
-    return original_GetDriverName(pCategory, pIndex);
+    if (function_hook_state_GetDriverName == HOOK_ENABLED) {
+        assert(0 && "GetDriverName not implemented.");
+        abort();
+    } else {
+        return original_GetDriverName(pCategory, pIndex);
+    }
 }
 
+function_hook_state_t function_hook_state_GetOpponentSpecFromCarSpec = HOOK_UNAVAILABLE;
 static tOpponent_spec *(__cdecl*original_GetOpponentSpecFromCarSpec)(tCar_spec *) = (tOpponent_spec *(__cdecl*)(tCar_spec *))0x0040b639;
 CARM95_HOOK_FUNCTION(original_GetOpponentSpecFromCarSpec, GetOpponentSpecFromCarSpec)
 tOpponent_spec* __cdecl GetOpponentSpecFromCarSpec(tCar_spec *pCar_spec) {
@@ -1305,9 +1717,15 @@ tOpponent_spec* __cdecl GetOpponentSpecFromCarSpec(tCar_spec *pCar_spec) {
     (void)pCar_spec;
     (void)i;
 
-    return original_GetOpponentSpecFromCarSpec(pCar_spec);
+    if (function_hook_state_GetOpponentSpecFromCarSpec == HOOK_ENABLED) {
+        assert(0 && "GetOpponentSpecFromCarSpec not implemented.");
+        abort();
+    } else {
+        return original_GetOpponentSpecFromCarSpec(pCar_spec);
+    }
 }
 
+function_hook_state_t function_hook_state_GetCarSpecFromGlobalOppoIndex = HOOK_UNAVAILABLE;
 static tCar_spec *(__cdecl*original_GetCarSpecFromGlobalOppoIndex)(int) = (tCar_spec *(__cdecl*)(int))0x0040b74d;
 CARM95_HOOK_FUNCTION(original_GetCarSpecFromGlobalOppoIndex, GetCarSpecFromGlobalOppoIndex)
 tCar_spec* __cdecl GetCarSpecFromGlobalOppoIndex(int pIndex) {
@@ -1317,9 +1735,15 @@ tCar_spec* __cdecl GetCarSpecFromGlobalOppoIndex(int pIndex) {
     (void)pIndex;
     (void)i;
 
-    return original_GetCarSpecFromGlobalOppoIndex(pIndex);
+    if (function_hook_state_GetCarSpecFromGlobalOppoIndex == HOOK_ENABLED) {
+        assert(0 && "GetCarSpecFromGlobalOppoIndex not implemented.");
+        abort();
+    } else {
+        return original_GetCarSpecFromGlobalOppoIndex(pIndex);
+    }
 }
 
+function_hook_state_t function_hook_state_GetOpponentsRealSection = HOOK_UNAVAILABLE;
 static int(__cdecl*original_GetOpponentsRealSection)(tOpponent_spec *, int) = (int(__cdecl*)(tOpponent_spec *, int))0x0040b7b7;
 CARM95_HOOK_FUNCTION(original_GetOpponentsRealSection, GetOpponentsRealSection)
 int __cdecl GetOpponentsRealSection(tOpponent_spec *pOpponent_spec, int pSection_no) {
@@ -1328,9 +1752,15 @@ int __cdecl GetOpponentsRealSection(tOpponent_spec *pOpponent_spec, int pSection
     (void)pOpponent_spec;
     (void)pSection_no;
 
-    return original_GetOpponentsRealSection(pOpponent_spec, pSection_no);
+    if (function_hook_state_GetOpponentsRealSection == HOOK_ENABLED) {
+        assert(0 && "GetOpponentsRealSection not implemented.");
+        abort();
+    } else {
+        return original_GetOpponentsRealSection(pOpponent_spec, pSection_no);
+    }
 }
 
+function_hook_state_t function_hook_state_GetOpponentsFirstSection = HOOK_UNAVAILABLE;
 static int(__cdecl*original_GetOpponentsFirstSection)(tOpponent_spec *) = (int(__cdecl*)(tOpponent_spec *))0x0040b806;
 CARM95_HOOK_FUNCTION(original_GetOpponentsFirstSection, GetOpponentsFirstSection)
 int __cdecl GetOpponentsFirstSection(tOpponent_spec *pOpponent_spec) {
@@ -1338,9 +1768,15 @@ int __cdecl GetOpponentsFirstSection(tOpponent_spec *pOpponent_spec) {
 
     (void)pOpponent_spec;
 
-    return original_GetOpponentsFirstSection(pOpponent_spec);
+    if (function_hook_state_GetOpponentsFirstSection == HOOK_ENABLED) {
+        assert(0 && "GetOpponentsFirstSection not implemented.");
+        abort();
+    } else {
+        return original_GetOpponentsFirstSection(pOpponent_spec);
+    }
 }
 
+function_hook_state_t function_hook_state_GetOpponentsNextSection = HOOK_UNAVAILABLE;
 static int(__cdecl*original_GetOpponentsNextSection)(tOpponent_spec *, tS16) = (int(__cdecl*)(tOpponent_spec *, tS16))0x0040b86e;
 CARM95_HOOK_FUNCTION(original_GetOpponentsNextSection, GetOpponentsNextSection)
 int __cdecl GetOpponentsNextSection(tOpponent_spec *pOpponent_spec, tS16 pCurrent_section) {
@@ -1349,9 +1785,15 @@ int __cdecl GetOpponentsNextSection(tOpponent_spec *pOpponent_spec, tS16 pCurren
     (void)pOpponent_spec;
     (void)pCurrent_section;
 
-    return original_GetOpponentsNextSection(pOpponent_spec, pCurrent_section);
+    if (function_hook_state_GetOpponentsNextSection == HOOK_ENABLED) {
+        assert(0 && "GetOpponentsNextSection not implemented.");
+        abort();
+    } else {
+        return original_GetOpponentsNextSection(pOpponent_spec, pCurrent_section);
+    }
 }
 
+function_hook_state_t function_hook_state_GetOpponentsSectionStartNode = HOOK_UNAVAILABLE;
 static tS16(__cdecl*original_GetOpponentsSectionStartNode)(tOpponent_spec *, tS16) = (tS16(__cdecl*)(tOpponent_spec *, tS16))0x0040b91f;
 CARM95_HOOK_FUNCTION(original_GetOpponentsSectionStartNode, GetOpponentsSectionStartNode)
 tS16 __cdecl GetOpponentsSectionStartNode(tOpponent_spec *pOpponent_spec, tS16 pSection) {
@@ -1364,9 +1806,15 @@ tS16 __cdecl GetOpponentsSectionStartNode(tOpponent_spec *pOpponent_spec, tS16 p
     (void)section_no;
     (void)node_index_index;
 
-    return original_GetOpponentsSectionStartNode(pOpponent_spec, pSection);
+    if (function_hook_state_GetOpponentsSectionStartNode == HOOK_ENABLED) {
+        assert(0 && "GetOpponentsSectionStartNode not implemented.");
+        abort();
+    } else {
+        return original_GetOpponentsSectionStartNode(pOpponent_spec, pSection);
+    }
 }
 
+function_hook_state_t function_hook_state_GetOpponentsSectionFinishNode = HOOK_UNAVAILABLE;
 static tS16(__cdecl*original_GetOpponentsSectionFinishNode)(tOpponent_spec *, tS16) = (tS16(__cdecl*)(tOpponent_spec *, tS16))0x0040b9fb;
 CARM95_HOOK_FUNCTION(original_GetOpponentsSectionFinishNode, GetOpponentsSectionFinishNode)
 tS16 __cdecl GetOpponentsSectionFinishNode(tOpponent_spec *pOpponent_spec, tS16 pSection) {
@@ -1379,9 +1827,15 @@ tS16 __cdecl GetOpponentsSectionFinishNode(tOpponent_spec *pOpponent_spec, tS16 
     (void)section_no;
     (void)node_index_index;
 
-    return original_GetOpponentsSectionFinishNode(pOpponent_spec, pSection);
+    if (function_hook_state_GetOpponentsSectionFinishNode == HOOK_ENABLED) {
+        assert(0 && "GetOpponentsSectionFinishNode not implemented.");
+        abort();
+    } else {
+        return original_GetOpponentsSectionFinishNode(pOpponent_spec, pSection);
+    }
 }
 
+function_hook_state_t function_hook_state_GetOpponentsSectionStartNodePoint = HOOK_UNAVAILABLE;
 static br_vector3 *(__cdecl*original_GetOpponentsSectionStartNodePoint)(tOpponent_spec *, tS16) = (br_vector3 *(__cdecl*)(tOpponent_spec *, tS16))0x0040baa1;
 CARM95_HOOK_FUNCTION(original_GetOpponentsSectionStartNodePoint, GetOpponentsSectionStartNodePoint)
 br_vector3* __cdecl GetOpponentsSectionStartNodePoint(tOpponent_spec *pOpponent_spec, tS16 pSection) {
@@ -1396,9 +1850,15 @@ br_vector3* __cdecl GetOpponentsSectionStartNodePoint(tOpponent_spec *pOpponent_
     (void)node_no;
     (void)node_index_index;
 
-    return original_GetOpponentsSectionStartNodePoint(pOpponent_spec, pSection);
+    if (function_hook_state_GetOpponentsSectionStartNodePoint == HOOK_ENABLED) {
+        assert(0 && "GetOpponentsSectionStartNodePoint not implemented.");
+        abort();
+    } else {
+        return original_GetOpponentsSectionStartNodePoint(pOpponent_spec, pSection);
+    }
 }
 
+function_hook_state_t function_hook_state_GetOpponentsSectionFinishNodePoint = HOOK_UNAVAILABLE;
 static br_vector3 *(__cdecl*original_GetOpponentsSectionFinishNodePoint)(tOpponent_spec *, tS16) = (br_vector3 *(__cdecl*)(tOpponent_spec *, tS16))0x0040bbc3;
 CARM95_HOOK_FUNCTION(original_GetOpponentsSectionFinishNodePoint, GetOpponentsSectionFinishNodePoint)
 br_vector3* __cdecl GetOpponentsSectionFinishNodePoint(tOpponent_spec *pOpponent_spec, tS16 pSection) {
@@ -1413,9 +1873,15 @@ br_vector3* __cdecl GetOpponentsSectionFinishNodePoint(tOpponent_spec *pOpponent
     (void)node_no;
     (void)node_index_index;
 
-    return original_GetOpponentsSectionFinishNodePoint(pOpponent_spec, pSection);
+    if (function_hook_state_GetOpponentsSectionFinishNodePoint == HOOK_ENABLED) {
+        assert(0 && "GetOpponentsSectionFinishNodePoint not implemented.");
+        abort();
+    } else {
+        return original_GetOpponentsSectionFinishNodePoint(pOpponent_spec, pSection);
+    }
 }
 
+function_hook_state_t function_hook_state_GetOpponentsSectionWidth = HOOK_UNAVAILABLE;
 static br_scalar(__cdecl*original_GetOpponentsSectionWidth)(tOpponent_spec *, tS16) = (br_scalar(__cdecl*)(tOpponent_spec *, tS16))0x0040bccd;
 CARM95_HOOK_FUNCTION(original_GetOpponentsSectionWidth, GetOpponentsSectionWidth)
 br_scalar __cdecl GetOpponentsSectionWidth(tOpponent_spec *pOpponent_spec, tS16 pSection) {
@@ -1424,9 +1890,15 @@ br_scalar __cdecl GetOpponentsSectionWidth(tOpponent_spec *pOpponent_spec, tS16 
     (void)pOpponent_spec;
     (void)pSection;
 
-    return original_GetOpponentsSectionWidth(pOpponent_spec, pSection);
+    if (function_hook_state_GetOpponentsSectionWidth == HOOK_ENABLED) {
+        assert(0 && "GetOpponentsSectionWidth not implemented.");
+        abort();
+    } else {
+        return original_GetOpponentsSectionWidth(pOpponent_spec, pSection);
+    }
 }
 
+function_hook_state_t function_hook_state_GetOpponentsSectionMinSpeed = HOOK_UNAVAILABLE;
 static int(__cdecl*original_GetOpponentsSectionMinSpeed)(tOpponent_spec *, tS16, int) = (int(__cdecl*)(tOpponent_spec *, tS16, int))0x0040bd7a;
 CARM95_HOOK_FUNCTION(original_GetOpponentsSectionMinSpeed, GetOpponentsSectionMinSpeed)
 int __cdecl GetOpponentsSectionMinSpeed(tOpponent_spec *pOpponent_spec, tS16 pSection, int pTowards_finish) {
@@ -1440,9 +1912,15 @@ int __cdecl GetOpponentsSectionMinSpeed(tOpponent_spec *pOpponent_spec, tS16 pSe
     (void)section_no;
     (void)direction;
 
-    return original_GetOpponentsSectionMinSpeed(pOpponent_spec, pSection, pTowards_finish);
+    if (function_hook_state_GetOpponentsSectionMinSpeed == HOOK_ENABLED) {
+        assert(0 && "GetOpponentsSectionMinSpeed not implemented.");
+        abort();
+    } else {
+        return original_GetOpponentsSectionMinSpeed(pOpponent_spec, pSection, pTowards_finish);
+    }
 }
 
+function_hook_state_t function_hook_state_GetOpponentsSectionMaxSpeed = HOOK_UNAVAILABLE;
 static int(__cdecl*original_GetOpponentsSectionMaxSpeed)(tOpponent_spec *, tS16, int) = (int(__cdecl*)(tOpponent_spec *, tS16, int))0x0040be6e;
 CARM95_HOOK_FUNCTION(original_GetOpponentsSectionMaxSpeed, GetOpponentsSectionMaxSpeed)
 int __cdecl GetOpponentsSectionMaxSpeed(tOpponent_spec *pOpponent_spec, tS16 pSection, int pTowards_finish) {
@@ -1456,9 +1934,15 @@ int __cdecl GetOpponentsSectionMaxSpeed(tOpponent_spec *pOpponent_spec, tS16 pSe
     (void)section_no;
     (void)direction;
 
-    return original_GetOpponentsSectionMaxSpeed(pOpponent_spec, pSection, pTowards_finish);
+    if (function_hook_state_GetOpponentsSectionMaxSpeed == HOOK_ENABLED) {
+        assert(0 && "GetOpponentsSectionMaxSpeed not implemented.");
+        abort();
+    } else {
+        return original_GetOpponentsSectionMaxSpeed(pOpponent_spec, pSection, pTowards_finish);
+    }
 }
 
+function_hook_state_t function_hook_state_InitOpponentPsyche = HOOK_UNAVAILABLE;
 static void(__cdecl*original_InitOpponentPsyche)(int) = (void(__cdecl*)(int))0x0040bf68;
 CARM95_HOOK_FUNCTION(original_InitOpponentPsyche, InitOpponentPsyche)
 void __cdecl InitOpponentPsyche(int pOpponent_index) {
@@ -1468,9 +1952,15 @@ void __cdecl InitOpponentPsyche(int pOpponent_index) {
     (void)pOpponent_index;
     (void)i;
 
-    original_InitOpponentPsyche(pOpponent_index);
+    if (function_hook_state_InitOpponentPsyche == HOOK_ENABLED) {
+        assert(0 && "InitOpponentPsyche not implemented.");
+        abort();
+    } else {
+        original_InitOpponentPsyche(pOpponent_index);
+    }
 }
 
+function_hook_state_t function_hook_state_ClearTwattageOccurrenceVariables = HOOK_UNAVAILABLE;
 static void(__cdecl*original_ClearTwattageOccurrenceVariables)(tOpponent_spec *) = (void(__cdecl*)(tOpponent_spec *))0x0040bf8d;
 CARM95_HOOK_FUNCTION(original_ClearTwattageOccurrenceVariables, ClearTwattageOccurrenceVariables)
 void __cdecl ClearTwattageOccurrenceVariables(tOpponent_spec *pOpponent_spec) {
@@ -1478,9 +1968,15 @@ void __cdecl ClearTwattageOccurrenceVariables(tOpponent_spec *pOpponent_spec) {
 
     (void)pOpponent_spec;
 
-    original_ClearTwattageOccurrenceVariables(pOpponent_spec);
+    if (function_hook_state_ClearTwattageOccurrenceVariables == HOOK_ENABLED) {
+        assert(0 && "ClearTwattageOccurrenceVariables not implemented.");
+        abort();
+    } else {
+        original_ClearTwattageOccurrenceVariables(pOpponent_spec);
+    }
 }
 
+function_hook_state_t function_hook_state_TwoCarsHitEachOther = HOOK_UNAVAILABLE;
 static void(__cdecl*original_TwoCarsHitEachOther)(tCar_spec *, tCar_spec *) = (void(__cdecl*)(tCar_spec *, tCar_spec *))0x0040bfdf;
 CARM95_HOOK_FUNCTION(original_TwoCarsHitEachOther, TwoCarsHitEachOther)
 void __cdecl TwoCarsHitEachOther(tCar_spec *pA_car, tCar_spec *pAnother_car) {
@@ -1489,9 +1985,15 @@ void __cdecl TwoCarsHitEachOther(tCar_spec *pA_car, tCar_spec *pAnother_car) {
     (void)pA_car;
     (void)pAnother_car;
 
-    original_TwoCarsHitEachOther(pA_car, pAnother_car);
+    if (function_hook_state_TwoCarsHitEachOther == HOOK_ENABLED) {
+        assert(0 && "TwoCarsHitEachOther not implemented.");
+        abort();
+    } else {
+        original_TwoCarsHitEachOther(pA_car, pAnother_car);
+    }
 }
 
+function_hook_state_t function_hook_state_RecordOpponentTwattageOccurrence = HOOK_UNAVAILABLE;
 static void(__cdecl*original_RecordOpponentTwattageOccurrence)(tCar_spec *, tCar_spec *) = (void(__cdecl*)(tCar_spec *, tCar_spec *))0x0040c020;
 CARM95_HOOK_FUNCTION(original_RecordOpponentTwattageOccurrence, RecordOpponentTwattageOccurrence)
 void __cdecl RecordOpponentTwattageOccurrence(tCar_spec *pTwatter, tCar_spec *pTwattee) {
@@ -1518,18 +2020,30 @@ void __cdecl RecordOpponentTwattageOccurrence(tCar_spec *pTwatter, tCar_spec *pT
     (void)twattee_opponent_spec;
     (void)twatter_opponent_spec;
 
-    original_RecordOpponentTwattageOccurrence(pTwatter, pTwattee);
+    if (function_hook_state_RecordOpponentTwattageOccurrence == HOOK_ENABLED) {
+        assert(0 && "RecordOpponentTwattageOccurrence not implemented.");
+        abort();
+    } else {
+        original_RecordOpponentTwattageOccurrence(pTwatter, pTwattee);
+    }
 }
 
+function_hook_state_t function_hook_state_ToggleOpponentTest = HOOK_UNAVAILABLE;
 static void(__cdecl*original_ToggleOpponentTest)() = (void(__cdecl*)())0x0040c537;
 CARM95_HOOK_FUNCTION(original_ToggleOpponentTest, ToggleOpponentTest)
 void __cdecl ToggleOpponentTest() {
     LOG_TRACE("()");
 
 
-    original_ToggleOpponentTest();
+    if (function_hook_state_ToggleOpponentTest == HOOK_ENABLED) {
+        assert(0 && "ToggleOpponentTest not implemented.");
+        abort();
+    } else {
+        original_ToggleOpponentTest();
+    }
 }
 
+function_hook_state_t function_hook_state_ToggleOpponentProcessing = HOOK_UNAVAILABLE;
 static void(__cdecl*original_ToggleOpponentProcessing)() = (void(__cdecl*)())0x0040c568;
 CARM95_HOOK_FUNCTION(original_ToggleOpponentProcessing, ToggleOpponentProcessing)
 void __cdecl ToggleOpponentProcessing() {
@@ -1538,9 +2052,15 @@ void __cdecl ToggleOpponentProcessing() {
 
     (void)i;
 
-    original_ToggleOpponentProcessing();
+    if (function_hook_state_ToggleOpponentProcessing == HOOK_ENABLED) {
+        assert(0 && "ToggleOpponentProcessing not implemented.");
+        abort();
+    } else {
+        original_ToggleOpponentProcessing();
+    }
 }
 
+function_hook_state_t function_hook_state_ToggleMellowOpponents = HOOK_UNAVAILABLE;
 static void(__cdecl*original_ToggleMellowOpponents)() = (void(__cdecl*)())0x0040c6dd;
 CARM95_HOOK_FUNCTION(original_ToggleMellowOpponents, ToggleMellowOpponents)
 void __cdecl ToggleMellowOpponents() {
@@ -1549,9 +2069,15 @@ void __cdecl ToggleMellowOpponents() {
 
     (void)i;
 
-    original_ToggleMellowOpponents();
+    if (function_hook_state_ToggleMellowOpponents == HOOK_ENABLED) {
+        assert(0 && "ToggleMellowOpponents not implemented.");
+        abort();
+    } else {
+        original_ToggleMellowOpponents();
+    }
 }
 
+function_hook_state_t function_hook_state_RepairOpponentsSystems = HOOK_UNAVAILABLE;
 static void(__cdecl*original_RepairOpponentsSystems)() = (void(__cdecl*)())0x0040c795;
 CARM95_HOOK_FUNCTION(original_RepairOpponentsSystems, RepairOpponentsSystems)
 void __cdecl RepairOpponentsSystems() {
@@ -1560,9 +2086,15 @@ void __cdecl RepairOpponentsSystems() {
 
     (void)i;
 
-    original_RepairOpponentsSystems();
+    if (function_hook_state_RepairOpponentsSystems == HOOK_ENABLED) {
+        assert(0 && "RepairOpponentsSystems not implemented.");
+        abort();
+    } else {
+        original_RepairOpponentsSystems();
+    }
 }
 
+function_hook_state_t function_hook_state_CopyVertex__opponent = HOOK_UNAVAILABLE;
 static void(__cdecl*original_CopyVertex__opponent)(br_vertex *, br_vertex *) = (void(__cdecl*)(br_vertex *, br_vertex *))0x0040e205;
 CARM95_HOOK_FUNCTION(original_CopyVertex__opponent, CopyVertex__opponent)
 void __cdecl CopyVertex__opponent(br_vertex *pDest_vertex, br_vertex *pSrc_vertex) {
@@ -1571,9 +2103,15 @@ void __cdecl CopyVertex__opponent(br_vertex *pDest_vertex, br_vertex *pSrc_verte
     (void)pDest_vertex;
     (void)pSrc_vertex;
 
-    original_CopyVertex__opponent(pDest_vertex, pSrc_vertex);
+    if (function_hook_state_CopyVertex__opponent == HOOK_ENABLED) {
+        assert(0 && "CopyVertex__opponent not implemented.");
+        abort();
+    } else {
+        original_CopyVertex__opponent(pDest_vertex, pSrc_vertex);
+    }
 }
 
+function_hook_state_t function_hook_state_CopyFace__opponent = HOOK_UNAVAILABLE;
 static void(__cdecl*original_CopyFace__opponent)(br_face *, br_face *) = (void(__cdecl*)(br_face *, br_face *))0x0040e27a;
 CARM95_HOOK_FUNCTION(original_CopyFace__opponent, CopyFace__opponent)
 void __cdecl CopyFace__opponent(br_face *pDest_face, br_face *pSrc_face) {
@@ -1582,9 +2120,15 @@ void __cdecl CopyFace__opponent(br_face *pDest_face, br_face *pSrc_face) {
     (void)pDest_face;
     (void)pSrc_face;
 
-    original_CopyFace__opponent(pDest_face, pSrc_face);
+    if (function_hook_state_CopyFace__opponent == HOOK_ENABLED) {
+        assert(0 && "CopyFace__opponent not implemented.");
+        abort();
+    } else {
+        original_CopyFace__opponent(pDest_face, pSrc_face);
+    }
 }
 
+function_hook_state_t function_hook_state_DeleteSection = HOOK_UNAVAILABLE;
 static void(__cdecl*original_DeleteSection)(tS16) = (void(__cdecl*)(tS16))0x0040c868;
 CARM95_HOOK_FUNCTION(original_DeleteSection, DeleteSection)
 void __cdecl DeleteSection(tS16 pSection_to_delete) {
@@ -1602,9 +2146,15 @@ void __cdecl DeleteSection(tS16 pSection_to_delete) {
     (void)node_no_index;
     (void)found_it;
 
-    original_DeleteSection(pSection_to_delete);
+    if (function_hook_state_DeleteSection == HOOK_ENABLED) {
+        assert(0 && "DeleteSection not implemented.");
+        abort();
+    } else {
+        original_DeleteSection(pSection_to_delete);
+    }
 }
 
+function_hook_state_t function_hook_state_DeleteNode = HOOK_UNAVAILABLE;
 static void(__cdecl*original_DeleteNode)(tS16, int) = (void(__cdecl*)(tS16, int))0x0040caf4;
 CARM95_HOOK_FUNCTION(original_DeleteNode, DeleteNode)
 void __cdecl DeleteNode(tS16 pNode_to_delete, int pAnd_sections) {
@@ -1621,9 +2171,15 @@ void __cdecl DeleteNode(tS16 pNode_to_delete, int pAnd_sections) {
     (void)section1;
     (void)section2;
 
-    original_DeleteNode(pNode_to_delete, pAnd_sections);
+    if (function_hook_state_DeleteNode == HOOK_ENABLED) {
+        assert(0 && "DeleteNode not implemented.");
+        abort();
+    } else {
+        original_DeleteNode(pNode_to_delete, pAnd_sections);
+    }
 }
 
+function_hook_state_t function_hook_state_DeleteOrphanNodes = HOOK_UNAVAILABLE;
 static void(__cdecl*original_DeleteOrphanNodes)() = (void(__cdecl*)())0x0040ca84;
 CARM95_HOOK_FUNCTION(original_DeleteOrphanNodes, DeleteOrphanNodes)
 void __cdecl DeleteOrphanNodes() {
@@ -1632,9 +2188,15 @@ void __cdecl DeleteOrphanNodes() {
 
     (void)node_no;
 
-    original_DeleteOrphanNodes();
+    if (function_hook_state_DeleteOrphanNodes == HOOK_ENABLED) {
+        assert(0 && "DeleteOrphanNodes not implemented.");
+        abort();
+    } else {
+        original_DeleteOrphanNodes();
+    }
 }
 
+function_hook_state_t function_hook_state_InsertThisNodeInThisSectionHere = HOOK_UNAVAILABLE;
 static void(__cdecl*original_InsertThisNodeInThisSectionHere)(tS16, tS16, br_vector3 *) = (void(__cdecl*)(tS16, tS16, br_vector3 *))0x0040fb06;
 CARM95_HOOK_FUNCTION(original_InsertThisNodeInThisSectionHere, InsertThisNodeInThisSectionHere)
 void __cdecl InsertThisNodeInThisSectionHere(tS16 pInserted_node, tS16 pSection_no, br_vector3 *pWhere) {
@@ -1654,18 +2216,30 @@ void __cdecl InsertThisNodeInThisSectionHere(tS16 pInserted_node, tS16 pSection_
     (void)node2;
     (void)node3;
 
-    original_InsertThisNodeInThisSectionHere(pInserted_node, pSection_no, pWhere);
+    if (function_hook_state_InsertThisNodeInThisSectionHere == HOOK_ENABLED) {
+        assert(0 && "InsertThisNodeInThisSectionHere not implemented.");
+        abort();
+    } else {
+        original_InsertThisNodeInThisSectionHere(pInserted_node, pSection_no, pWhere);
+    }
 }
 
+function_hook_state_t function_hook_state_TrackElasticateyPath = HOOK_UNAVAILABLE;
 static void(__cdecl*original_TrackElasticateyPath)() = (void(__cdecl*)())0x0040ce66;
 CARM95_HOOK_FUNCTION(original_TrackElasticateyPath, TrackElasticateyPath)
 void __cdecl TrackElasticateyPath() {
     LOG_TRACE("()");
 
 
-    original_TrackElasticateyPath();
+    if (function_hook_state_TrackElasticateyPath == HOOK_ENABLED) {
+        assert(0 && "TrackElasticateyPath not implemented.");
+        abort();
+    } else {
+        original_TrackElasticateyPath();
+    }
 }
 
+function_hook_state_t function_hook_state_RecalcNearestPathSectionSpeed = HOOK_UNAVAILABLE;
 static void(__cdecl*original_RecalcNearestPathSectionSpeed)(int, int) = (void(__cdecl*)(int, int))0x004105c6;
 CARM95_HOOK_FUNCTION(original_RecalcNearestPathSectionSpeed, RecalcNearestPathSectionSpeed)
 void __cdecl RecalcNearestPathSectionSpeed(int pMax_not_min, int pAdjustment) {
@@ -1694,9 +2268,15 @@ void __cdecl RecalcNearestPathSectionSpeed(int pMax_not_min, int pAdjustment) {
     (void)new_speed;
     (void)nearest_end;
 
-    original_RecalcNearestPathSectionSpeed(pMax_not_min, pAdjustment);
+    if (function_hook_state_RecalcNearestPathSectionSpeed == HOOK_ENABLED) {
+        assert(0 && "RecalcNearestPathSectionSpeed not implemented.");
+        abort();
+    } else {
+        original_RecalcNearestPathSectionSpeed(pMax_not_min, pAdjustment);
+    }
 }
 
+function_hook_state_t function_hook_state_RecalcNearestPathSectionWidth = HOOK_UNAVAILABLE;
 static void(__cdecl*original_RecalcNearestPathSectionWidth)(br_scalar) = (void(__cdecl*)(br_scalar))0x004103ef;
 CARM95_HOOK_FUNCTION(original_RecalcNearestPathSectionWidth, RecalcNearestPathSectionWidth)
 void __cdecl RecalcNearestPathSectionWidth(br_scalar pAdjustment) {
@@ -1714,9 +2294,15 @@ void __cdecl RecalcNearestPathSectionWidth(br_scalar pAdjustment) {
     (void)distance;
     (void)str;
 
-    original_RecalcNearestPathSectionWidth(pAdjustment);
+    if (function_hook_state_RecalcNearestPathSectionWidth == HOOK_ENABLED) {
+        assert(0 && "RecalcNearestPathSectionWidth not implemented.");
+        abort();
+    } else {
+        original_RecalcNearestPathSectionWidth(pAdjustment);
+    }
 }
 
+function_hook_state_t function_hook_state_CalcNegativeXVector = HOOK_UNAVAILABLE;
 static void(__cdecl*original_CalcNegativeXVector)(br_vector3 *, br_vector3 *, br_vector3 *, br_scalar) = (void(__cdecl*)(br_vector3 *, br_vector3 *, br_vector3 *, br_scalar))0x0040cf4e;
 CARM95_HOOK_FUNCTION(original_CalcNegativeXVector, CalcNegativeXVector)
 void __cdecl CalcNegativeXVector(br_vector3 *pNegative_x_vector, br_vector3 *pStart, br_vector3 *pFinish, br_scalar pLength) {
@@ -1733,9 +2319,15 @@ void __cdecl CalcNegativeXVector(br_vector3 *pNegative_x_vector, br_vector3 *pSt
     (void)path_vector;
     (void)__block0___scale;
 
-    original_CalcNegativeXVector(pNegative_x_vector, pStart, pFinish, pLength);
+    if (function_hook_state_CalcNegativeXVector == HOOK_ENABLED) {
+        assert(0 && "CalcNegativeXVector not implemented.");
+        abort();
+    } else {
+        original_CalcNegativeXVector(pNegative_x_vector, pStart, pFinish, pLength);
+    }
 }
 
+function_hook_state_t function_hook_state_MakeVertexAndOffsetIt = HOOK_UNAVAILABLE;
 static void(__cdecl*original_MakeVertexAndOffsetIt)(br_model *, int, br_scalar, br_scalar, br_scalar, br_vector3 *) = (void(__cdecl*)(br_model *, int, br_scalar, br_scalar, br_scalar, br_vector3 *))0x0040d9d3;
 CARM95_HOOK_FUNCTION(original_MakeVertexAndOffsetIt, MakeVertexAndOffsetIt)
 void __cdecl MakeVertexAndOffsetIt(br_model *pModel, int pVertex_num, br_scalar pX, br_scalar pY, br_scalar pZ, br_vector3 *pOffset) {
@@ -1748,9 +2340,15 @@ void __cdecl MakeVertexAndOffsetIt(br_model *pModel, int pVertex_num, br_scalar 
     (void)pZ;
     (void)pOffset;
 
-    original_MakeVertexAndOffsetIt(pModel, pVertex_num, pX, pY, pZ, pOffset);
+    if (function_hook_state_MakeVertexAndOffsetIt == HOOK_ENABLED) {
+        assert(0 && "MakeVertexAndOffsetIt not implemented.");
+        abort();
+    } else {
+        original_MakeVertexAndOffsetIt(pModel, pVertex_num, pX, pY, pZ, pOffset);
+    }
 }
 
+function_hook_state_t function_hook_state_MakeFaceAndTextureIt = HOOK_UNAVAILABLE;
 static void(__cdecl*original_MakeFaceAndTextureIt)(br_model *, int, int, int, int, br_material *) = (void(__cdecl*)(br_model *, int, int, int, int, br_material *))0x0040da85;
 CARM95_HOOK_FUNCTION(original_MakeFaceAndTextureIt, MakeFaceAndTextureIt)
 void __cdecl MakeFaceAndTextureIt(br_model *pModel, int pFace_num, int pV0, int pV1, int pV2, br_material *pMaterial) {
@@ -1763,9 +2361,15 @@ void __cdecl MakeFaceAndTextureIt(br_model *pModel, int pFace_num, int pV0, int 
     (void)pV2;
     (void)pMaterial;
 
-    original_MakeFaceAndTextureIt(pModel, pFace_num, pV0, pV1, pV2, pMaterial);
+    if (function_hook_state_MakeFaceAndTextureIt == HOOK_ENABLED) {
+        assert(0 && "MakeFaceAndTextureIt not implemented.");
+        abort();
+    } else {
+        original_MakeFaceAndTextureIt(pModel, pFace_num, pV0, pV1, pV2, pMaterial);
+    }
 }
 
+function_hook_state_t function_hook_state_MakeSection = HOOK_UNAVAILABLE;
 static void(__cdecl*original_MakeSection)(br_uint_16, br_uint_16, br_vector3 *, br_vector3 *, br_scalar, br_material *, br_material *, br_material *, br_material *, br_material *, br_material *) = (void(__cdecl*)(br_uint_16, br_uint_16, br_vector3 *, br_vector3 *, br_scalar, br_material *, br_material *, br_material *, br_material *, br_material *, br_material *))0x0040d59f;
 CARM95_HOOK_FUNCTION(original_MakeSection, MakeSection)
 void __cdecl MakeSection(br_uint_16 pFirst_vertex, br_uint_16 pFirst_face, br_vector3 *pStart, br_vector3 *pFinish, br_scalar pWidth, br_material *pMaterial_centre_lt, br_material *pMaterial_centre_dk, br_material *pMaterial_edges_start_lt, br_material *pMaterial_edges_start_dk, br_material *pMaterial_edges_finish_lt, br_material *pMaterial_edges_finish_dk) {
@@ -1799,9 +2403,15 @@ void __cdecl MakeSection(br_uint_16 pFirst_vertex, br_uint_16 pFirst_face, br_ve
     (void)the_material_finish_dk;
     (void)height;
 
-    original_MakeSection(pFirst_vertex, pFirst_face, pStart, pFinish, pWidth, pMaterial_centre_lt, pMaterial_centre_dk, pMaterial_edges_start_lt, pMaterial_edges_start_dk, pMaterial_edges_finish_lt, pMaterial_edges_finish_dk);
+    if (function_hook_state_MakeSection == HOOK_ENABLED) {
+        assert(0 && "MakeSection not implemented.");
+        abort();
+    } else {
+        original_MakeSection(pFirst_vertex, pFirst_face, pStart, pFinish, pWidth, pMaterial_centre_lt, pMaterial_centre_dk, pMaterial_edges_start_lt, pMaterial_edges_start_dk, pMaterial_edges_finish_lt, pMaterial_edges_finish_dk);
+    }
 }
 
+function_hook_state_t function_hook_state_MakeCube = HOOK_UNAVAILABLE;
 static void(__cdecl*original_MakeCube)(br_uint_16, br_uint_16, br_vector3 *, br_material *, br_material *, br_material *) = (void(__cdecl*)(br_uint_16, br_uint_16, br_vector3 *, br_material *, br_material *, br_material *))0x0040daf1;
 CARM95_HOOK_FUNCTION(original_MakeCube, MakeCube)
 void __cdecl MakeCube(br_uint_16 pFirst_vertex, br_uint_16 pFirst_face, br_vector3 *pPoint, br_material *pMaterial_1, br_material *pMaterial_2, br_material *pMaterial_3) {
@@ -1818,9 +2428,15 @@ void __cdecl MakeCube(br_uint_16 pFirst_vertex, br_uint_16 pFirst_face, br_vecto
     (void)offset_v;
     (void)point;
 
-    original_MakeCube(pFirst_vertex, pFirst_face, pPoint, pMaterial_1, pMaterial_2, pMaterial_3);
+    if (function_hook_state_MakeCube == HOOK_ENABLED) {
+        assert(0 && "MakeCube not implemented.");
+        abort();
+    } else {
+        original_MakeCube(pFirst_vertex, pFirst_face, pPoint, pMaterial_1, pMaterial_2, pMaterial_3);
+    }
 }
 
+function_hook_state_t function_hook_state_CalcNumberOfFacesAndVerticesForOppoPathModel = HOOK_UNAVAILABLE;
 static void(__cdecl*original_CalcNumberOfFacesAndVerticesForOppoPathModel)(br_uint_16 *, br_uint_16 *) = (void(__cdecl*)(br_uint_16 *, br_uint_16 *))0x0040e016;
 CARM95_HOOK_FUNCTION(original_CalcNumberOfFacesAndVerticesForOppoPathModel, CalcNumberOfFacesAndVerticesForOppoPathModel)
 void __cdecl CalcNumberOfFacesAndVerticesForOppoPathModel(br_uint_16 *pFace_index_ptr, br_uint_16 *pVertex_index_ptr) {
@@ -1829,9 +2445,15 @@ void __cdecl CalcNumberOfFacesAndVerticesForOppoPathModel(br_uint_16 *pFace_inde
     (void)pFace_index_ptr;
     (void)pVertex_index_ptr;
 
-    original_CalcNumberOfFacesAndVerticesForOppoPathModel(pFace_index_ptr, pVertex_index_ptr);
+    if (function_hook_state_CalcNumberOfFacesAndVerticesForOppoPathModel == HOOK_ENABLED) {
+        assert(0 && "CalcNumberOfFacesAndVerticesForOppoPathModel not implemented.");
+        abort();
+    } else {
+        original_CalcNumberOfFacesAndVerticesForOppoPathModel(pFace_index_ptr, pVertex_index_ptr);
+    }
 }
 
+function_hook_state_t function_hook_state_ReallocModelFacesAndVertices = HOOK_UNAVAILABLE;
 static void(__cdecl*original_ReallocModelFacesAndVertices)(br_model *, int, int) = (void(__cdecl*)(br_model *, int, int))0x0040e057;
 CARM95_HOOK_FUNCTION(original_ReallocModelFacesAndVertices, ReallocModelFacesAndVertices)
 void __cdecl ReallocModelFacesAndVertices(br_model *pModel, int pNum_faces, int pNum_vertices) {
@@ -1847,9 +2469,15 @@ void __cdecl ReallocModelFacesAndVertices(br_model *pModel, int pNum_faces, int 
     (void)new_faces;
     (void)i;
 
-    original_ReallocModelFacesAndVertices(pModel, pNum_faces, pNum_vertices);
+    if (function_hook_state_ReallocModelFacesAndVertices == HOOK_ENABLED) {
+        assert(0 && "ReallocModelFacesAndVertices not implemented.");
+        abort();
+    } else {
+        original_ReallocModelFacesAndVertices(pModel, pNum_faces, pNum_vertices);
+    }
 }
 
+function_hook_state_t function_hook_state_CreateSimpleMaterial = HOOK_UNAVAILABLE;
 static br_material *(__cdecl*original_CreateSimpleMaterial)(int) = (br_material *(__cdecl*)(int))0x0040e3cf;
 CARM95_HOOK_FUNCTION(original_CreateSimpleMaterial, CreateSimpleMaterial)
 br_material* __cdecl CreateSimpleMaterial(int pColour_index) {
@@ -1859,18 +2487,30 @@ br_material* __cdecl CreateSimpleMaterial(int pColour_index) {
     (void)pColour_index;
     (void)return_me;
 
-    return original_CreateSimpleMaterial(pColour_index);
+    if (function_hook_state_CreateSimpleMaterial == HOOK_ENABLED) {
+        assert(0 && "CreateSimpleMaterial not implemented.");
+        abort();
+    } else {
+        return original_CreateSimpleMaterial(pColour_index);
+    }
 }
 
+function_hook_state_t function_hook_state_AllocateMatsForOppoPathModel = HOOK_UNAVAILABLE;
 static void(__cdecl*original_AllocateMatsForOppoPathModel)() = (void(__cdecl*)())0x0040e2d3;
 CARM95_HOOK_FUNCTION(original_AllocateMatsForOppoPathModel, AllocateMatsForOppoPathModel)
 void __cdecl AllocateMatsForOppoPathModel() {
     LOG_TRACE("()");
 
 
-    original_AllocateMatsForOppoPathModel();
+    if (function_hook_state_AllocateMatsForOppoPathModel == HOOK_ENABLED) {
+        assert(0 && "AllocateMatsForOppoPathModel not implemented.");
+        abort();
+    } else {
+        original_AllocateMatsForOppoPathModel();
+    }
 }
 
+function_hook_state_t function_hook_state_RebuildOppoPathModel = HOOK_UNAVAILABLE;
 static void(__cdecl*original_RebuildOppoPathModel)() = (void(__cdecl*)())0x0040d097;
 CARM95_HOOK_FUNCTION(original_RebuildOppoPathModel, RebuildOppoPathModel)
 void __cdecl RebuildOppoPathModel() {
@@ -1905,9 +2545,15 @@ void __cdecl RebuildOppoPathModel() {
     (void)edge_mat_finish_lt;
     (void)edge_mat_finish_dk;
 
-    original_RebuildOppoPathModel();
+    if (function_hook_state_RebuildOppoPathModel == HOOK_ENABLED) {
+        assert(0 && "RebuildOppoPathModel not implemented.");
+        abort();
+    } else {
+        original_RebuildOppoPathModel();
+    }
 }
 
+function_hook_state_t function_hook_state_ConsistencyCheck = HOOK_UNAVAILABLE;
 static int(__cdecl*original_ConsistencyCheck)() = (int(__cdecl*)())0x0040e436;
 CARM95_HOOK_FUNCTION(original_ConsistencyCheck, ConsistencyCheck)
 int __cdecl ConsistencyCheck() {
@@ -1934,9 +2580,15 @@ int __cdecl ConsistencyCheck() {
     (void)nodes_referenced_by_sections_array;
     (void)sections_referenced_by_nodes_array;
 
-    return original_ConsistencyCheck();
+    if (function_hook_state_ConsistencyCheck == HOOK_ENABLED) {
+        assert(0 && "ConsistencyCheck not implemented.");
+        abort();
+    } else {
+        return original_ConsistencyCheck();
+    }
 }
 
+function_hook_state_t function_hook_state_ShowOppoPaths = HOOK_UNAVAILABLE;
 static void(__cdecl*original_ShowOppoPaths)() = (void(__cdecl*)())0x0040ed8e;
 CARM95_HOOK_FUNCTION(original_ShowOppoPaths, ShowOppoPaths)
 void __cdecl ShowOppoPaths() {
@@ -1945,9 +2597,15 @@ void __cdecl ShowOppoPaths() {
 
     (void)str;
 
-    original_ShowOppoPaths();
+    if (function_hook_state_ShowOppoPaths == HOOK_ENABLED) {
+        assert(0 && "ShowOppoPaths not implemented.");
+        abort();
+    } else {
+        original_ShowOppoPaths();
+    }
 }
 
+function_hook_state_t function_hook_state_WriteOutOppoPaths = HOOK_UNAVAILABLE;
 static void(__cdecl*original_WriteOutOppoPaths)() = (void(__cdecl*)())0x0040e9d4;
 CARM95_HOOK_FUNCTION(original_WriteOutOppoPaths, WriteOutOppoPaths)
 void __cdecl WriteOutOppoPaths() {
@@ -1962,9 +2620,15 @@ void __cdecl WriteOutOppoPaths() {
     (void)f;
     (void)i;
 
-    original_WriteOutOppoPaths();
+    if (function_hook_state_WriteOutOppoPaths == HOOK_ENABLED) {
+        assert(0 && "WriteOutOppoPaths not implemented.");
+        abort();
+    } else {
+        original_WriteOutOppoPaths();
+    }
 }
 
+function_hook_state_t function_hook_state_NewNodeOKHere = HOOK_UNAVAILABLE;
 static int(__cdecl*original_NewNodeOKHere)() = (int(__cdecl*)())0x0040f42b;
 CARM95_HOOK_FUNCTION(original_NewNodeOKHere, NewNodeOKHere)
 int __cdecl NewNodeOKHere() {
@@ -1973,18 +2637,30 @@ int __cdecl NewNodeOKHere() {
 
     (void)last_node_to_this;
 
-    return original_NewNodeOKHere();
+    if (function_hook_state_NewNodeOKHere == HOOK_ENABLED) {
+        assert(0 && "NewNodeOKHere not implemented.");
+        abort();
+    } else {
+        return original_NewNodeOKHere();
+    }
 }
 
+function_hook_state_t function_hook_state_ShowHideOppoPaths = HOOK_UNAVAILABLE;
 static void(__cdecl*original_ShowHideOppoPaths)() = (void(__cdecl*)())0x0040ed4b;
 CARM95_HOOK_FUNCTION(original_ShowHideOppoPaths, ShowHideOppoPaths)
 void __cdecl ShowHideOppoPaths() {
     LOG_TRACE("()");
 
 
-    original_ShowHideOppoPaths();
+    if (function_hook_state_ShowHideOppoPaths == HOOK_ENABLED) {
+        assert(0 && "ShowHideOppoPaths not implemented.");
+        abort();
+    } else {
+        original_ShowHideOppoPaths();
+    }
 }
 
+function_hook_state_t function_hook_state_DropElasticateyNode = HOOK_UNAVAILABLE;
 void DropElasticateyNode() {
     char str[256];
     tS16 old_node;
@@ -2007,9 +2683,15 @@ void DropElasticateyNode() {
     (void)section_type;
     (void)original_type;
 
-    NOT_IMPLEMENTED();
+    if (function_hook_state_DropElasticateyNode == HOOK_ENABLED) {
+        assert(0 && "DropElasticateyNode not implemented.");
+        abort();
+    } else {
+        NOT_IMPLEMENTED();
+    }
 }
 
+function_hook_state_t function_hook_state_InsertAndElasticate = HOOK_UNAVAILABLE;
 void InsertAndElasticate() {
     tS16 inserted_node;
     tS16 elasticatey_node;
@@ -2038,9 +2720,15 @@ void InsertAndElasticate() {
     (void)str;
     (void)section_type;
 
-    NOT_IMPLEMENTED();
+    if (function_hook_state_InsertAndElasticate == HOOK_ENABLED) {
+        assert(0 && "InsertAndElasticate not implemented.");
+        abort();
+    } else {
+        NOT_IMPLEMENTED();
+    }
 }
 
+function_hook_state_t function_hook_state_InsertAndDontElasticate = HOOK_UNAVAILABLE;
 void InsertAndDontElasticate() {
     tS16 inserted_node;
     tS16 section_no;
@@ -2061,18 +2749,30 @@ void InsertAndDontElasticate() {
     (void)not_perp;
     (void)str;
 
-    NOT_IMPLEMENTED();
+    if (function_hook_state_InsertAndDontElasticate == HOOK_ENABLED) {
+        assert(0 && "InsertAndDontElasticate not implemented.");
+        abort();
+    } else {
+        NOT_IMPLEMENTED();
+    }
 }
 
+function_hook_state_t function_hook_state_DropDeadEndNode = HOOK_UNAVAILABLE;
 void DropDeadEndNode() {
     char str[256];
     LOG_TRACE("()");
 
     (void)str;
 
-    NOT_IMPLEMENTED();
+    if (function_hook_state_DropDeadEndNode == HOOK_ENABLED) {
+        assert(0 && "DropDeadEndNode not implemented.");
+        abort();
+    } else {
+        NOT_IMPLEMENTED();
+    }
 }
 
+function_hook_state_t function_hook_state_DropNodeOnNodeAndStopElasticating = HOOK_UNAVAILABLE;
 void DropNodeOnNodeAndStopElasticating() {
     int node_no;
     char str[256];
@@ -2083,63 +2783,105 @@ void DropNodeOnNodeAndStopElasticating() {
     (void)str;
     (void)distance;
 
-    NOT_IMPLEMENTED();
+    if (function_hook_state_DropNodeOnNodeAndStopElasticating == HOOK_ENABLED) {
+        assert(0 && "DropNodeOnNodeAndStopElasticating not implemented.");
+        abort();
+    } else {
+        NOT_IMPLEMENTED();
+    }
 }
 
+function_hook_state_t function_hook_state_WidenOppoPathSection = HOOK_UNAVAILABLE;
 static void(__cdecl*original_WidenOppoPathSection)() = (void(__cdecl*)())0x004103c5;
 CARM95_HOOK_FUNCTION(original_WidenOppoPathSection, WidenOppoPathSection)
 void __cdecl WidenOppoPathSection() {
     LOG_TRACE("()");
 
 
-    original_WidenOppoPathSection();
+    if (function_hook_state_WidenOppoPathSection == HOOK_ENABLED) {
+        assert(0 && "WidenOppoPathSection not implemented.");
+        abort();
+    } else {
+        original_WidenOppoPathSection();
+    }
 }
 
+function_hook_state_t function_hook_state_NarrowOppoPathSection = HOOK_UNAVAILABLE;
 static void(__cdecl*original_NarrowOppoPathSection)() = (void(__cdecl*)())0x00410573;
 CARM95_HOOK_FUNCTION(original_NarrowOppoPathSection, NarrowOppoPathSection)
 void __cdecl NarrowOppoPathSection() {
     LOG_TRACE("()");
 
 
-    original_NarrowOppoPathSection();
+    if (function_hook_state_NarrowOppoPathSection == HOOK_ENABLED) {
+        assert(0 && "NarrowOppoPathSection not implemented.");
+        abort();
+    } else {
+        original_NarrowOppoPathSection();
+    }
 }
 
+function_hook_state_t function_hook_state_IncreaseSectionMinSpeed = HOOK_UNAVAILABLE;
 static void(__cdecl*original_IncreaseSectionMinSpeed)() = (void(__cdecl*)())0x0041059d;
 CARM95_HOOK_FUNCTION(original_IncreaseSectionMinSpeed, IncreaseSectionMinSpeed)
 void __cdecl IncreaseSectionMinSpeed() {
     LOG_TRACE("()");
 
 
-    original_IncreaseSectionMinSpeed();
+    if (function_hook_state_IncreaseSectionMinSpeed == HOOK_ENABLED) {
+        assert(0 && "IncreaseSectionMinSpeed not implemented.");
+        abort();
+    } else {
+        original_IncreaseSectionMinSpeed();
+    }
 }
 
+function_hook_state_t function_hook_state_DecreaseSectionMinSpeed = HOOK_UNAVAILABLE;
 static void(__cdecl*original_DecreaseSectionMinSpeed)() = (void(__cdecl*)())0x00410a7f;
 CARM95_HOOK_FUNCTION(original_DecreaseSectionMinSpeed, DecreaseSectionMinSpeed)
 void __cdecl DecreaseSectionMinSpeed() {
     LOG_TRACE("()");
 
 
-    original_DecreaseSectionMinSpeed();
+    if (function_hook_state_DecreaseSectionMinSpeed == HOOK_ENABLED) {
+        assert(0 && "DecreaseSectionMinSpeed not implemented.");
+        abort();
+    } else {
+        original_DecreaseSectionMinSpeed();
+    }
 }
 
+function_hook_state_t function_hook_state_IncreaseSectionMaxSpeed = HOOK_UNAVAILABLE;
 static void(__cdecl*original_IncreaseSectionMaxSpeed)() = (void(__cdecl*)())0x00410aa8;
 CARM95_HOOK_FUNCTION(original_IncreaseSectionMaxSpeed, IncreaseSectionMaxSpeed)
 void __cdecl IncreaseSectionMaxSpeed() {
     LOG_TRACE("()");
 
 
-    original_IncreaseSectionMaxSpeed();
+    if (function_hook_state_IncreaseSectionMaxSpeed == HOOK_ENABLED) {
+        assert(0 && "IncreaseSectionMaxSpeed not implemented.");
+        abort();
+    } else {
+        original_IncreaseSectionMaxSpeed();
+    }
 }
 
+function_hook_state_t function_hook_state_DecreaseSectionMaxSpeed = HOOK_UNAVAILABLE;
 static void(__cdecl*original_DecreaseSectionMaxSpeed)() = (void(__cdecl*)())0x00410ad1;
 CARM95_HOOK_FUNCTION(original_DecreaseSectionMaxSpeed, DecreaseSectionMaxSpeed)
 void __cdecl DecreaseSectionMaxSpeed() {
     LOG_TRACE("()");
 
 
-    original_DecreaseSectionMaxSpeed();
+    if (function_hook_state_DecreaseSectionMaxSpeed == HOOK_ENABLED) {
+        assert(0 && "DecreaseSectionMaxSpeed not implemented.");
+        abort();
+    } else {
+        original_DecreaseSectionMaxSpeed();
+    }
 }
 
+function_hook_state_t function_hook_state_PullOppoPoint = HOOK_UNAVAILABLE;
 static void(__cdecl*original_PullOppoPoint)() = (void(__cdecl*)())0x00410afa;
 CARM95_HOOK_FUNCTION(original_PullOppoPoint, PullOppoPoint)
 void __cdecl PullOppoPoint() {
@@ -2150,9 +2892,15 @@ void __cdecl PullOppoPoint() {
     (void)node_no;
     (void)distance;
 
-    original_PullOppoPoint();
+    if (function_hook_state_PullOppoPoint == HOOK_ENABLED) {
+        assert(0 && "PullOppoPoint not implemented.");
+        abort();
+    } else {
+        original_PullOppoPoint();
+    }
 }
 
+function_hook_state_t function_hook_state_ShowNodeInfo = HOOK_UNAVAILABLE;
 static void(__cdecl*original_ShowNodeInfo)() = (void(__cdecl*)())0x00410bfa;
 CARM95_HOOK_FUNCTION(original_ShowNodeInfo, ShowNodeInfo)
 void __cdecl ShowNodeInfo() {
@@ -2165,9 +2913,15 @@ void __cdecl ShowNodeInfo() {
     (void)str;
     (void)distance;
 
-    original_ShowNodeInfo();
+    if (function_hook_state_ShowNodeInfo == HOOK_ENABLED) {
+        assert(0 && "ShowNodeInfo not implemented.");
+        abort();
+    } else {
+        original_ShowNodeInfo();
+    }
 }
 
+function_hook_state_t function_hook_state_ShowSectionInfo1 = HOOK_UNAVAILABLE;
 static void(__cdecl*original_ShowSectionInfo1)() = (void(__cdecl*)())0x00410d28;
 CARM95_HOOK_FUNCTION(original_ShowSectionInfo1, ShowSectionInfo1)
 void __cdecl ShowSectionInfo1() {
@@ -2184,9 +2938,15 @@ void __cdecl ShowSectionInfo1() {
     (void)direction_v;
     (void)intersect;
 
-    original_ShowSectionInfo1();
+    if (function_hook_state_ShowSectionInfo1 == HOOK_ENABLED) {
+        assert(0 && "ShowSectionInfo1 not implemented.");
+        abort();
+    } else {
+        original_ShowSectionInfo1();
+    }
 }
 
+function_hook_state_t function_hook_state_ShowSectionInfo2 = HOOK_UNAVAILABLE;
 static void(__cdecl*original_ShowSectionInfo2)() = (void(__cdecl*)())0x00410e9b;
 CARM95_HOOK_FUNCTION(original_ShowSectionInfo2, ShowSectionInfo2)
 void __cdecl ShowSectionInfo2() {
@@ -2203,9 +2963,15 @@ void __cdecl ShowSectionInfo2() {
     (void)direction_v;
     (void)intersect;
 
-    original_ShowSectionInfo2();
+    if (function_hook_state_ShowSectionInfo2 == HOOK_ENABLED) {
+        assert(0 && "ShowSectionInfo2 not implemented.");
+        abort();
+    } else {
+        original_ShowSectionInfo2();
+    }
 }
 
+function_hook_state_t function_hook_state_DeleteOppoPathSection = HOOK_UNAVAILABLE;
 void DeleteOppoPathSection() {
     br_scalar distance;
     br_vector3 intersect;
@@ -2218,9 +2984,15 @@ void DeleteOppoPathSection() {
     (void)direction_v;
     (void)section_no;
 
-    NOT_IMPLEMENTED();
+    if (function_hook_state_DeleteOppoPathSection == HOOK_ENABLED) {
+        assert(0 && "DeleteOppoPathSection not implemented.");
+        abort();
+    } else {
+        NOT_IMPLEMENTED();
+    }
 }
 
+function_hook_state_t function_hook_state_DeleteOppoPathNodeAndSections = HOOK_UNAVAILABLE;
 static void(__cdecl*original_DeleteOppoPathNodeAndSections)() = (void(__cdecl*)())0x00411124;
 CARM95_HOOK_FUNCTION(original_DeleteOppoPathNodeAndSections, DeleteOppoPathNodeAndSections)
 void __cdecl DeleteOppoPathNodeAndSections() {
@@ -2231,9 +3003,15 @@ void __cdecl DeleteOppoPathNodeAndSections() {
     (void)distance;
     (void)node_no;
 
-    original_DeleteOppoPathNodeAndSections();
+    if (function_hook_state_DeleteOppoPathNodeAndSections == HOOK_ENABLED) {
+        assert(0 && "DeleteOppoPathNodeAndSections not implemented.");
+        abort();
+    } else {
+        original_DeleteOppoPathNodeAndSections();
+    }
 }
 
+function_hook_state_t function_hook_state_DeleteOppoPathNodeAndJoin = HOOK_UNAVAILABLE;
 static void(__cdecl*original_DeleteOppoPathNodeAndJoin)() = (void(__cdecl*)())0x004112e2;
 CARM95_HOOK_FUNCTION(original_DeleteOppoPathNodeAndJoin, DeleteOppoPathNodeAndJoin)
 void __cdecl DeleteOppoPathNodeAndJoin() {
@@ -2244,9 +3022,15 @@ void __cdecl DeleteOppoPathNodeAndJoin() {
     (void)distance;
     (void)node_no;
 
-    original_DeleteOppoPathNodeAndJoin();
+    if (function_hook_state_DeleteOppoPathNodeAndJoin == HOOK_ENABLED) {
+        assert(0 && "DeleteOppoPathNodeAndJoin not implemented.");
+        abort();
+    } else {
+        original_DeleteOppoPathNodeAndJoin();
+    }
 }
 
+function_hook_state_t function_hook_state_ReverseSectionDirection = HOOK_UNAVAILABLE;
 static void(__cdecl*original_ReverseSectionDirection)() = (void(__cdecl*)())0x004114dd;
 CARM95_HOOK_FUNCTION(original_ReverseSectionDirection, ReverseSectionDirection)
 void __cdecl ReverseSectionDirection() {
@@ -2265,9 +3049,15 @@ void __cdecl ReverseSectionDirection() {
     (void)direction_v;
     (void)section_no;
 
-    original_ReverseSectionDirection();
+    if (function_hook_state_ReverseSectionDirection == HOOK_ENABLED) {
+        assert(0 && "ReverseSectionDirection not implemented.");
+        abort();
+    } else {
+        original_ReverseSectionDirection();
+    }
 }
 
+function_hook_state_t function_hook_state_CycleSectionType = HOOK_UNAVAILABLE;
 static void(__cdecl*original_CycleSectionType)() = (void(__cdecl*)())0x0041169c;
 CARM95_HOOK_FUNCTION(original_CycleSectionType, CycleSectionType)
 void __cdecl CycleSectionType() {
@@ -2284,9 +3074,15 @@ void __cdecl CycleSectionType() {
     (void)section_no;
     (void)str;
 
-    original_CycleSectionType();
+    if (function_hook_state_CycleSectionType == HOOK_ENABLED) {
+        assert(0 && "CycleSectionType not implemented.");
+        abort();
+    } else {
+        original_CycleSectionType();
+    }
 }
 
+function_hook_state_t function_hook_state_ToggleOneWayNess = HOOK_UNAVAILABLE;
 static void(__cdecl*original_ToggleOneWayNess)() = (void(__cdecl*)())0x004117ee;
 CARM95_HOOK_FUNCTION(original_ToggleOneWayNess, ToggleOneWayNess)
 void __cdecl ToggleOneWayNess() {
@@ -2301,9 +3097,15 @@ void __cdecl ToggleOneWayNess() {
     (void)direction_v;
     (void)section_no;
 
-    original_ToggleOneWayNess();
+    if (function_hook_state_ToggleOneWayNess == HOOK_ENABLED) {
+        assert(0 && "ToggleOneWayNess not implemented.");
+        abort();
+    } else {
+        original_ToggleOneWayNess();
+    }
 }
 
+function_hook_state_t function_hook_state_CopStartPointInfo = HOOK_UNAVAILABLE;
 static void(__cdecl*original_CopStartPointInfo)() = (void(__cdecl*)())0x00411947;
 CARM95_HOOK_FUNCTION(original_CopStartPointInfo, CopStartPointInfo)
 void __cdecl CopStartPointInfo() {
@@ -2322,9 +3124,15 @@ void __cdecl CopStartPointInfo() {
     (void)distance;
     (void)car_to_point;
 
-    original_CopStartPointInfo();
+    if (function_hook_state_CopStartPointInfo == HOOK_ENABLED) {
+        assert(0 && "CopStartPointInfo not implemented.");
+        abort();
+    } else {
+        original_CopStartPointInfo();
+    }
 }
 
+function_hook_state_t function_hook_state_DropCopStartPoint = HOOK_UNAVAILABLE;
 static void(__cdecl*original_DropCopStartPoint)() = (void(__cdecl*)())0x00411ae8;
 CARM95_HOOK_FUNCTION(original_DropCopStartPoint, DropCopStartPoint)
 void __cdecl DropCopStartPoint() {
@@ -2333,9 +3141,15 @@ void __cdecl DropCopStartPoint() {
 
     (void)str;
 
-    original_DropCopStartPoint();
+    if (function_hook_state_DropCopStartPoint == HOOK_ENABLED) {
+        assert(0 && "DropCopStartPoint not implemented.");
+        abort();
+    } else {
+        original_DropCopStartPoint();
+    }
 }
 
+function_hook_state_t function_hook_state_DeleteCopStartPoint = HOOK_UNAVAILABLE;
 static void(__cdecl*original_DeleteCopStartPoint)() = (void(__cdecl*)())0x00411c18;
 CARM95_HOOK_FUNCTION(original_DeleteCopStartPoint, DeleteCopStartPoint)
 void __cdecl DeleteCopStartPoint() {
@@ -2354,15 +3168,26 @@ void __cdecl DeleteCopStartPoint() {
     (void)distance;
     (void)car_to_point;
 
-    original_DeleteCopStartPoint();
+    if (function_hook_state_DeleteCopStartPoint == HOOK_ENABLED) {
+        assert(0 && "DeleteCopStartPoint not implemented.");
+        abort();
+    } else {
+        original_DeleteCopStartPoint();
+    }
 }
 
+function_hook_state_t function_hook_state_CycleCopStartPointType = HOOK_UNAVAILABLE;
 static void(__cdecl*original_CycleCopStartPointType)() = (void(__cdecl*)())0x00411e7f;
 CARM95_HOOK_FUNCTION(original_CycleCopStartPointType, CycleCopStartPointType)
 void __cdecl CycleCopStartPointType() {
     LOG_TRACE("()");
 
 
-    original_CycleCopStartPointType();
+    if (function_hook_state_CycleCopStartPointType == HOOK_ENABLED) {
+        assert(0 && "CycleCopStartPointType not implemented.");
+        abort();
+    } else {
+        original_CycleCopStartPointType();
+    }
 }
 

@@ -4,6 +4,9 @@
 
 #include "carm95_hooks.h"
 
+#include "carm95_webserver.h"
+
+#include <assert.h>
 int(* hookvar_gGrid_number_colour )[4] = (void*)0x0050f198;
 int * hookvar_gJust_bought_part  = (void*)0x0050f1a8;
 #if 0
@@ -43,6 +46,7 @@ tInterface_spec ** hookvar_gStart_interface_spec  = (void*)0x00536350;
 int * hookvar_gCurrent_car_index  = (void*)0x00536424;
 int * hookvar_gOur_starting_position  = (void*)0x00536368;
 
+function_hook_state_t function_hook_state_DrawRaceList = HOOK_UNAVAILABLE;
 static void(__cdecl*original_DrawRaceList)(int) = (void(__cdecl*)(int))0x0044e944;
 CARM95_HOOK_FUNCTION(original_DrawRaceList, DrawRaceList)
 void __cdecl DrawRaceList(int pOffset) {
@@ -74,9 +78,15 @@ void __cdecl DrawRaceList(int pOffset) {
     (void)text_x;
     (void)rank_str;
 
-    original_DrawRaceList(pOffset);
+    if (function_hook_state_DrawRaceList == HOOK_ENABLED) {
+        assert(0 && "DrawRaceList not implemented.");
+        abort();
+    } else {
+        original_DrawRaceList(pOffset);
+    }
 }
 
+function_hook_state_t function_hook_state_MoveRaceList = HOOK_UNAVAILABLE;
 static void(__cdecl*original_MoveRaceList)(int, int, tS32) = (void(__cdecl*)(int, int, tS32))0x0044e8c7;
 CARM95_HOOK_FUNCTION(original_MoveRaceList, MoveRaceList)
 void __cdecl MoveRaceList(int pFrom, int pTo, tS32 pTime_to_move) {
@@ -94,9 +104,15 @@ void __cdecl MoveRaceList(int pFrom, int pTo, tS32 pTime_to_move) {
     (void)move_distance;
     (void)pitch;
 
-    original_MoveRaceList(pFrom, pTo, pTime_to_move);
+    if (function_hook_state_MoveRaceList == HOOK_ENABLED) {
+        assert(0 && "MoveRaceList not implemented.");
+        abort();
+    } else {
+        original_MoveRaceList(pFrom, pTo, pTime_to_move);
+    }
 }
 
+function_hook_state_t function_hook_state_UpRace = HOOK_UNAVAILABLE;
 static int(__cdecl*original_UpRace)(int *, int *) = (int(__cdecl*)(int *, int *))0x0044e7f0;
 CARM95_HOOK_FUNCTION(original_UpRace, UpRace)
 int __cdecl UpRace(int *pCurrent_choice, int *pCurrent_mode) {
@@ -105,9 +121,15 @@ int __cdecl UpRace(int *pCurrent_choice, int *pCurrent_mode) {
     (void)pCurrent_choice;
     (void)pCurrent_mode;
 
-    return original_UpRace(pCurrent_choice, pCurrent_mode);
+    if (function_hook_state_UpRace == HOOK_ENABLED) {
+        assert(0 && "UpRace not implemented.");
+        abort();
+    } else {
+        return original_UpRace(pCurrent_choice, pCurrent_mode);
+    }
 }
 
+function_hook_state_t function_hook_state_DownRace = HOOK_UNAVAILABLE;
 static int(__cdecl*original_DownRace)(int *, int *) = (int(__cdecl*)(int *, int *))0x0044ef24;
 CARM95_HOOK_FUNCTION(original_DownRace, DownRace)
 int __cdecl DownRace(int *pCurrent_choice, int *pCurrent_mode) {
@@ -116,9 +138,15 @@ int __cdecl DownRace(int *pCurrent_choice, int *pCurrent_mode) {
     (void)pCurrent_choice;
     (void)pCurrent_mode;
 
-    return original_DownRace(pCurrent_choice, pCurrent_mode);
+    if (function_hook_state_DownRace == HOOK_ENABLED) {
+        assert(0 && "DownRace not implemented.");
+        abort();
+    } else {
+        return original_DownRace(pCurrent_choice, pCurrent_mode);
+    }
 }
 
+function_hook_state_t function_hook_state_ClickOnRace = HOOK_UNAVAILABLE;
 static int(__cdecl*original_ClickOnRace)(int *, int *, int, int) = (int(__cdecl*)(int *, int *, int, int))0x0044f000;
 CARM95_HOOK_FUNCTION(original_ClickOnRace, ClickOnRace)
 int __cdecl ClickOnRace(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY_offset) {
@@ -135,9 +163,15 @@ int __cdecl ClickOnRace(int *pCurrent_choice, int *pCurrent_mode, int pX_offset,
     (void)y_coord;
     (void)race_delta;
 
-    return original_ClickOnRace(pCurrent_choice, pCurrent_mode, pX_offset, pY_offset);
+    if (function_hook_state_ClickOnRace == HOOK_ENABLED) {
+        assert(0 && "ClickOnRace not implemented.");
+        abort();
+    } else {
+        return original_ClickOnRace(pCurrent_choice, pCurrent_mode, pX_offset, pY_offset);
+    }
 }
 
+function_hook_state_t function_hook_state_UpClickRace = HOOK_UNAVAILABLE;
 static int(__cdecl*original_UpClickRace)(int *, int *, int, int) = (int(__cdecl*)(int *, int *, int, int))0x0044f0cd;
 CARM95_HOOK_FUNCTION(original_UpClickRace, UpClickRace)
 int __cdecl UpClickRace(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY_offset) {
@@ -148,9 +182,15 @@ int __cdecl UpClickRace(int *pCurrent_choice, int *pCurrent_mode, int pX_offset,
     (void)pX_offset;
     (void)pY_offset;
 
-    return original_UpClickRace(pCurrent_choice, pCurrent_mode, pX_offset, pY_offset);
+    if (function_hook_state_UpClickRace == HOOK_ENABLED) {
+        assert(0 && "UpClickRace not implemented.");
+        abort();
+    } else {
+        return original_UpClickRace(pCurrent_choice, pCurrent_mode, pX_offset, pY_offset);
+    }
 }
 
+function_hook_state_t function_hook_state_DownClickRace = HOOK_UNAVAILABLE;
 static int(__cdecl*original_DownClickRace)(int *, int *, int, int) = (int(__cdecl*)(int *, int *, int, int))0x0044f0ef;
 CARM95_HOOK_FUNCTION(original_DownClickRace, DownClickRace)
 int __cdecl DownClickRace(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY_offset) {
@@ -161,18 +201,30 @@ int __cdecl DownClickRace(int *pCurrent_choice, int *pCurrent_mode, int pX_offse
     (void)pX_offset;
     (void)pY_offset;
 
-    return original_DownClickRace(pCurrent_choice, pCurrent_mode, pX_offset, pY_offset);
+    if (function_hook_state_DownClickRace == HOOK_ENABLED) {
+        assert(0 && "DownClickRace not implemented.");
+        abort();
+    } else {
+        return original_DownClickRace(pCurrent_choice, pCurrent_mode, pX_offset, pY_offset);
+    }
 }
 
+function_hook_state_t function_hook_state_StartChangeRace = HOOK_UNAVAILABLE;
 static void(__cdecl*original_StartChangeRace)() = (void(__cdecl*)())0x0044f111;
 CARM95_HOOK_FUNCTION(original_StartChangeRace, StartChangeRace)
 void __cdecl StartChangeRace() {
     LOG_TRACE("()");
 
 
-    original_StartChangeRace();
+    if (function_hook_state_StartChangeRace == HOOK_ENABLED) {
+        assert(0 && "StartChangeRace not implemented.");
+        abort();
+    } else {
+        original_StartChangeRace();
+    }
 }
 
+function_hook_state_t function_hook_state_ChangeRace = HOOK_UNAVAILABLE;
 static int(__cdecl*original_ChangeRace)(int *, int, tNet_sequence_type) = (int(__cdecl*)(int *, int, tNet_sequence_type))0x0044f131;
 CARM95_HOOK_FUNCTION(original_ChangeRace, ChangeRace)
 int __cdecl ChangeRace(int *pRace_index, int pNet_mode, tNet_sequence_type pNet_race_sequence) {
@@ -194,18 +246,30 @@ int __cdecl ChangeRace(int *pRace_index, int pNet_mode, tNet_sequence_type pNet_
     (void)interface_spec;
     (void)result;
 
-    return original_ChangeRace(pRace_index, pNet_mode, pNet_race_sequence);
+    if (function_hook_state_ChangeRace == HOOK_ENABLED) {
+        assert(0 && "ChangeRace not implemented.");
+        abort();
+    } else {
+        return original_ChangeRace(pRace_index, pNet_mode, pNet_race_sequence);
+    }
 }
 
+function_hook_state_t function_hook_state_DoChangeRace = HOOK_UNAVAILABLE;
 static void(__cdecl*original_DoChangeRace)() = (void(__cdecl*)())0x00451fe5;
 CARM95_HOOK_FUNCTION(original_DoChangeRace, DoChangeRace)
 void __cdecl DoChangeRace() {
     LOG_TRACE("()");
 
 
-    original_DoChangeRace();
+    if (function_hook_state_DoChangeRace == HOOK_ENABLED) {
+        assert(0 && "DoChangeRace not implemented.");
+        abort();
+    } else {
+        original_DoChangeRace();
+    }
 }
 
+function_hook_state_t function_hook_state_DrawCar = HOOK_UNAVAILABLE;
 static void(__cdecl*original_DrawCar)(int, int) = (void(__cdecl*)(int, int))0x0044f1f2;
 CARM95_HOOK_FUNCTION(original_DrawCar, DrawCar)
 void __cdecl DrawCar(int pCurrent_choice, int pCurrent_mode) {
@@ -220,18 +284,30 @@ void __cdecl DrawCar(int pCurrent_choice, int pCurrent_mode) {
     (void)text_x;
     (void)text_width;
 
-    original_DrawCar(pCurrent_choice, pCurrent_mode);
+    if (function_hook_state_DrawCar == HOOK_ENABLED) {
+        assert(0 && "DrawCar not implemented.");
+        abort();
+    } else {
+        original_DrawCar(pCurrent_choice, pCurrent_mode);
+    }
 }
 
+function_hook_state_t function_hook_state_SetCarFlic = HOOK_UNAVAILABLE;
 static void(__cdecl*original_SetCarFlic)() = (void(__cdecl*)())0x0044f5de;
 CARM95_HOOK_FUNCTION(original_SetCarFlic, SetCarFlic)
 void __cdecl SetCarFlic() {
     LOG_TRACE("()");
 
 
-    original_SetCarFlic();
+    if (function_hook_state_SetCarFlic == HOOK_ENABLED) {
+        assert(0 && "SetCarFlic not implemented.");
+        abort();
+    } else {
+        original_SetCarFlic();
+    }
 }
 
+function_hook_state_t function_hook_state_UpCar = HOOK_UNAVAILABLE;
 static int(__cdecl*original_UpCar)(int *, int *) = (int(__cdecl*)(int *, int *))0x0044f4cc;
 CARM95_HOOK_FUNCTION(original_UpCar, UpCar)
 int __cdecl UpCar(int *pCurrent_choice, int *pCurrent_mode) {
@@ -240,9 +316,15 @@ int __cdecl UpCar(int *pCurrent_choice, int *pCurrent_mode) {
     (void)pCurrent_choice;
     (void)pCurrent_mode;
 
-    return original_UpCar(pCurrent_choice, pCurrent_mode);
+    if (function_hook_state_UpCar == HOOK_ENABLED) {
+        assert(0 && "UpCar not implemented.");
+        abort();
+    } else {
+        return original_UpCar(pCurrent_choice, pCurrent_mode);
+    }
 }
 
+function_hook_state_t function_hook_state_DownCar = HOOK_UNAVAILABLE;
 static int(__cdecl*original_DownCar)(int *, int *) = (int(__cdecl*)(int *, int *))0x0044f62d;
 CARM95_HOOK_FUNCTION(original_DownCar, DownCar)
 int __cdecl DownCar(int *pCurrent_choice, int *pCurrent_mode) {
@@ -251,9 +333,15 @@ int __cdecl DownCar(int *pCurrent_choice, int *pCurrent_mode) {
     (void)pCurrent_choice;
     (void)pCurrent_mode;
 
-    return original_DownCar(pCurrent_choice, pCurrent_mode);
+    if (function_hook_state_DownCar == HOOK_ENABLED) {
+        assert(0 && "DownCar not implemented.");
+        abort();
+    } else {
+        return original_DownCar(pCurrent_choice, pCurrent_mode);
+    }
 }
 
+function_hook_state_t function_hook_state_UpClickCar = HOOK_UNAVAILABLE;
 static int(__cdecl*original_UpClickCar)(int *, int *, int, int) = (int(__cdecl*)(int *, int *, int, int))0x0044f744;
 CARM95_HOOK_FUNCTION(original_UpClickCar, UpClickCar)
 int __cdecl UpClickCar(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY_offset) {
@@ -264,9 +352,15 @@ int __cdecl UpClickCar(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, 
     (void)pX_offset;
     (void)pY_offset;
 
-    return original_UpClickCar(pCurrent_choice, pCurrent_mode, pX_offset, pY_offset);
+    if (function_hook_state_UpClickCar == HOOK_ENABLED) {
+        assert(0 && "UpClickCar not implemented.");
+        abort();
+    } else {
+        return original_UpClickCar(pCurrent_choice, pCurrent_mode, pX_offset, pY_offset);
+    }
 }
 
+function_hook_state_t function_hook_state_DownClickCar = HOOK_UNAVAILABLE;
 static int(__cdecl*original_DownClickCar)(int *, int *, int, int) = (int(__cdecl*)(int *, int *, int, int))0x0044f766;
 CARM95_HOOK_FUNCTION(original_DownClickCar, DownClickCar)
 int __cdecl DownClickCar(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY_offset) {
@@ -277,9 +371,15 @@ int __cdecl DownClickCar(int *pCurrent_choice, int *pCurrent_mode, int pX_offset
     (void)pX_offset;
     (void)pY_offset;
 
-    return original_DownClickCar(pCurrent_choice, pCurrent_mode, pX_offset, pY_offset);
+    if (function_hook_state_DownClickCar == HOOK_ENABLED) {
+        assert(0 && "DownClickCar not implemented.");
+        abort();
+    } else {
+        return original_DownClickCar(pCurrent_choice, pCurrent_mode, pX_offset, pY_offset);
+    }
 }
 
+function_hook_state_t function_hook_state_ChangeCarGoAhead = HOOK_UNAVAILABLE;
 static int(__cdecl*original_ChangeCarGoAhead)(int *, int *) = (int(__cdecl*)(int *, int *))0x0044f788;
 CARM95_HOOK_FUNCTION(original_ChangeCarGoAhead, ChangeCarGoAhead)
 int __cdecl ChangeCarGoAhead(int *pCurrent_choice, int *pCurrent_mode) {
@@ -288,9 +388,15 @@ int __cdecl ChangeCarGoAhead(int *pCurrent_choice, int *pCurrent_mode) {
     (void)pCurrent_choice;
     (void)pCurrent_mode;
 
-    return original_ChangeCarGoAhead(pCurrent_choice, pCurrent_mode);
+    if (function_hook_state_ChangeCarGoAhead == HOOK_ENABLED) {
+        assert(0 && "ChangeCarGoAhead not implemented.");
+        abort();
+    } else {
+        return original_ChangeCarGoAhead(pCurrent_choice, pCurrent_mode);
+    }
 }
 
+function_hook_state_t function_hook_state_ChangeCar = HOOK_UNAVAILABLE;
 static int(__cdecl*original_ChangeCar)(int, int *, tNet_game_details *) = (int(__cdecl*)(int, int *, tNet_game_details *))0x0044f7e6;
 CARM95_HOOK_FUNCTION(original_ChangeCar, ChangeCar)
 int __cdecl ChangeCar(int pNet_mode, int *pCar_index, tNet_game_details *pNet_game) {
@@ -316,18 +422,30 @@ int __cdecl ChangeCar(int pNet_mode, int *pCar_index, tNet_game_details *pNet_ga
     (void)result;
     (void)power_up_levels;
 
-    return original_ChangeCar(pNet_mode, pCar_index, pNet_game);
+    if (function_hook_state_ChangeCar == HOOK_ENABLED) {
+        assert(0 && "ChangeCar not implemented.");
+        abort();
+    } else {
+        return original_ChangeCar(pNet_mode, pCar_index, pNet_game);
+    }
 }
 
+function_hook_state_t function_hook_state_DoChangeCar = HOOK_UNAVAILABLE;
 static void(__cdecl*original_DoChangeCar)() = (void(__cdecl*)())0x00452017;
 CARM95_HOOK_FUNCTION(original_DoChangeCar, DoChangeCar)
 void __cdecl DoChangeCar() {
     LOG_TRACE("()");
 
 
-    original_DoChangeCar();
+    if (function_hook_state_DoChangeCar == HOOK_ENABLED) {
+        assert(0 && "DoChangeCar not implemented.");
+        abort();
+    } else {
+        original_DoChangeCar();
+    }
 }
 
+function_hook_state_t function_hook_state_PartsShopRecommended = HOOK_UNAVAILABLE;
 static int(__cdecl*original_PartsShopRecommended)() = (int(__cdecl*)())0x00450cf3;
 CARM95_HOOK_FUNCTION(original_PartsShopRecommended, PartsShopRecommended)
 int __cdecl PartsShopRecommended() {
@@ -342,9 +460,15 @@ int __cdecl PartsShopRecommended() {
     (void)current_index;
     (void)counter;
 
-    return original_PartsShopRecommended();
+    if (function_hook_state_PartsShopRecommended == HOOK_ENABLED) {
+        assert(0 && "PartsShopRecommended not implemented.");
+        abort();
+    } else {
+        return original_PartsShopRecommended();
+    }
 }
 
+function_hook_state_t function_hook_state_CalcPartPrice = HOOK_UNAVAILABLE;
 static void(__cdecl*original_CalcPartPrice)(int, int, int *, int *) = (void(__cdecl*)(int, int, int *, int *))0x004502ec;
 CARM95_HOOK_FUNCTION(original_CalcPartPrice, CalcPartPrice)
 void __cdecl CalcPartPrice(int pCategory, int pIndex, int *pPrice, int *pCost) {
@@ -357,9 +481,15 @@ void __cdecl CalcPartPrice(int pCategory, int pIndex, int *pPrice, int *pCost) {
     (void)pCost;
     (void)current_value;
 
-    original_CalcPartPrice(pCategory, pIndex, pPrice, pCost);
+    if (function_hook_state_CalcPartPrice == HOOK_ENABLED) {
+        assert(0 && "CalcPartPrice not implemented.");
+        abort();
+    } else {
+        original_CalcPartPrice(pCategory, pIndex, pPrice, pCost);
+    }
 }
 
+function_hook_state_t function_hook_state_BuyPart = HOOK_UNAVAILABLE;
 static int(__cdecl*original_BuyPart)(int, int) = (int(__cdecl*)(int, int))0x004504c4;
 CARM95_HOOK_FUNCTION(original_BuyPart, BuyPart)
 int __cdecl BuyPart(int pCategory, int pIndex) {
@@ -372,9 +502,15 @@ int __cdecl BuyPart(int pCategory, int pIndex) {
     (void)price;
     (void)cost;
 
-    return original_BuyPart(pCategory, pIndex);
+    if (function_hook_state_BuyPart == HOOK_ENABLED) {
+        assert(0 && "BuyPart not implemented.");
+        abort();
+    } else {
+        return original_BuyPart(pCategory, pIndex);
+    }
 }
 
+function_hook_state_t function_hook_state_DoAutoParts = HOOK_UNAVAILABLE;
 static void(__cdecl*original_DoAutoParts)() = (void(__cdecl*)())0x00450bc8;
 CARM95_HOOK_FUNCTION(original_DoAutoParts, DoAutoParts)
 void __cdecl DoAutoParts() {
@@ -393,18 +529,30 @@ void __cdecl DoAutoParts() {
     (void)cost;
     (void)current_level;
 
-    original_DoAutoParts();
+    if (function_hook_state_DoAutoParts == HOOK_ENABLED) {
+        assert(0 && "DoAutoParts not implemented.");
+        abort();
+    } else {
+        original_DoAutoParts();
+    }
 }
 
+function_hook_state_t function_hook_state_DrawPartsLabel = HOOK_UNAVAILABLE;
 static void(__cdecl*original_DrawPartsLabel)() = (void(__cdecl*)())0x0044fdd1;
 CARM95_HOOK_FUNCTION(original_DrawPartsLabel, DrawPartsLabel)
 void __cdecl DrawPartsLabel() {
     LOG_TRACE("()");
 
 
-    original_DrawPartsLabel();
+    if (function_hook_state_DrawPartsLabel == HOOK_ENABLED) {
+        assert(0 && "DrawPartsLabel not implemented.");
+        abort();
+    } else {
+        original_DrawPartsLabel();
+    }
 }
 
+function_hook_state_t function_hook_state_ErasePartsText = HOOK_UNAVAILABLE;
 static void(__cdecl*original_ErasePartsText)(int) = (void(__cdecl*)(int))0x0044fe92;
 CARM95_HOOK_FUNCTION(original_ErasePartsText, ErasePartsText)
 void __cdecl ErasePartsText(int pTotal_as_well) {
@@ -412,9 +560,15 @@ void __cdecl ErasePartsText(int pTotal_as_well) {
 
     (void)pTotal_as_well;
 
-    original_ErasePartsText(pTotal_as_well);
+    if (function_hook_state_ErasePartsText == HOOK_ENABLED) {
+        assert(0 && "ErasePartsText not implemented.");
+        abort();
+    } else {
+        original_ErasePartsText(pTotal_as_well);
+    }
 }
 
+function_hook_state_t function_hook_state_DrawPartsText = HOOK_UNAVAILABLE;
 static void(__cdecl*original_DrawPartsText)() = (void(__cdecl*)())0x0044fffc;
 CARM95_HOOK_FUNCTION(original_DrawPartsText, DrawPartsText)
 void __cdecl DrawPartsText() {
@@ -425,18 +579,30 @@ void __cdecl DrawPartsText() {
     (void)price;
     (void)cost;
 
-    original_DrawPartsText();
+    if (function_hook_state_DrawPartsText == HOOK_ENABLED) {
+        assert(0 && "DrawPartsText not implemented.");
+        abort();
+    } else {
+        original_DrawPartsText();
+    }
 }
 
+function_hook_state_t function_hook_state_SetPartsImage = HOOK_UNAVAILABLE;
 static void(__cdecl*original_SetPartsImage)() = (void(__cdecl*)())0x0044ff71;
 CARM95_HOOK_FUNCTION(original_SetPartsImage, SetPartsImage)
 void __cdecl SetPartsImage() {
     LOG_TRACE("()");
 
 
-    original_SetPartsImage();
+    if (function_hook_state_SetPartsImage == HOOK_ENABLED) {
+        assert(0 && "SetPartsImage not implemented.");
+        abort();
+    } else {
+        original_SetPartsImage();
+    }
 }
 
+function_hook_state_t function_hook_state_GetPartsMax = HOOK_UNAVAILABLE;
 static int(__cdecl*original_GetPartsMax)() = (int(__cdecl*)())0x004506e4;
 CARM95_HOOK_FUNCTION(original_GetPartsMax, GetPartsMax)
 int __cdecl GetPartsMax() {
@@ -445,9 +611,15 @@ int __cdecl GetPartsMax() {
 
     (void)i;
 
-    return original_GetPartsMax();
+    if (function_hook_state_GetPartsMax == HOOK_ENABLED) {
+        assert(0 && "GetPartsMax not implemented.");
+        abort();
+    } else {
+        return original_GetPartsMax();
+    }
 }
 
+function_hook_state_t function_hook_state_CalcPartsIndex = HOOK_UNAVAILABLE;
 static void(__cdecl*original_CalcPartsIndex)() = (void(__cdecl*)())0x0045039b;
 CARM95_HOOK_FUNCTION(original_CalcPartsIndex, CalcPartsIndex)
 void __cdecl CalcPartsIndex() {
@@ -456,9 +628,15 @@ void __cdecl CalcPartsIndex() {
 
     (void)current_index;
 
-    original_CalcPartsIndex();
+    if (function_hook_state_CalcPartsIndex == HOOK_ENABLED) {
+        assert(0 && "CalcPartsIndex not implemented.");
+        abort();
+    } else {
+        original_CalcPartsIndex();
+    }
 }
 
+function_hook_state_t function_hook_state_DoExchangePart = HOOK_UNAVAILABLE;
 static void(__cdecl*original_DoExchangePart)() = (void(__cdecl*)())0x00450429;
 CARM95_HOOK_FUNCTION(original_DoExchangePart, DoExchangePart)
 void __cdecl DoExchangePart() {
@@ -469,9 +647,15 @@ void __cdecl DoExchangePart() {
     (void)price;
     (void)cost;
 
-    original_DoExchangePart();
+    if (function_hook_state_DoExchangePart == HOOK_ENABLED) {
+        assert(0 && "DoExchangePart not implemented.");
+        abort();
+    } else {
+        original_DoExchangePart();
+    }
 }
 
+function_hook_state_t function_hook_state_PartsShopGoAhead = HOOK_UNAVAILABLE;
 static int(__cdecl*original_PartsShopGoAhead)(int *, int *) = (int(__cdecl*)(int *, int *))0x0044fbb7;
 CARM95_HOOK_FUNCTION(original_PartsShopGoAhead, PartsShopGoAhead)
 int __cdecl PartsShopGoAhead(int *pCurrent_choice, int *pCurrent_mode) {
@@ -482,9 +666,15 @@ int __cdecl PartsShopGoAhead(int *pCurrent_choice, int *pCurrent_mode) {
     (void)pCurrent_mode;
     (void)flic_index;
 
-    return original_PartsShopGoAhead(pCurrent_choice, pCurrent_mode);
+    if (function_hook_state_PartsShopGoAhead == HOOK_ENABLED) {
+        assert(0 && "PartsShopGoAhead not implemented.");
+        abort();
+    } else {
+        return original_PartsShopGoAhead(pCurrent_choice, pCurrent_mode);
+    }
 }
 
+function_hook_state_t function_hook_state_UpPart = HOOK_UNAVAILABLE;
 static int(__cdecl*original_UpPart)(int *, int *) = (int(__cdecl*)(int *, int *))0x0045055c;
 CARM95_HOOK_FUNCTION(original_UpPart, UpPart)
 int __cdecl UpPart(int *pCurrent_choice, int *pCurrent_mode) {
@@ -493,9 +683,15 @@ int __cdecl UpPart(int *pCurrent_choice, int *pCurrent_mode) {
     (void)pCurrent_choice;
     (void)pCurrent_mode;
 
-    return original_UpPart(pCurrent_choice, pCurrent_mode);
+    if (function_hook_state_UpPart == HOOK_ENABLED) {
+        assert(0 && "UpPart not implemented.");
+        abort();
+    } else {
+        return original_UpPart(pCurrent_choice, pCurrent_mode);
+    }
 }
 
+function_hook_state_t function_hook_state_DownPart = HOOK_UNAVAILABLE;
 static int(__cdecl*original_DownPart)(int *, int *) = (int(__cdecl*)(int *, int *))0x0045076c;
 CARM95_HOOK_FUNCTION(original_DownPart, DownPart)
 int __cdecl DownPart(int *pCurrent_choice, int *pCurrent_mode) {
@@ -504,9 +700,15 @@ int __cdecl DownPart(int *pCurrent_choice, int *pCurrent_mode) {
     (void)pCurrent_choice;
     (void)pCurrent_mode;
 
-    return original_DownPart(pCurrent_choice, pCurrent_mode);
+    if (function_hook_state_DownPart == HOOK_ENABLED) {
+        assert(0 && "DownPart not implemented.");
+        abort();
+    } else {
+        return original_DownPart(pCurrent_choice, pCurrent_mode);
+    }
 }
 
+function_hook_state_t function_hook_state_UpClickPart = HOOK_UNAVAILABLE;
 static int(__cdecl*original_UpClickPart)(int *, int *, int, int) = (int(__cdecl*)(int *, int *, int, int))0x004508fb;
 CARM95_HOOK_FUNCTION(original_UpClickPart, UpClickPart)
 int __cdecl UpClickPart(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY_offset) {
@@ -517,9 +719,15 @@ int __cdecl UpClickPart(int *pCurrent_choice, int *pCurrent_mode, int pX_offset,
     (void)pX_offset;
     (void)pY_offset;
 
-    return original_UpClickPart(pCurrent_choice, pCurrent_mode, pX_offset, pY_offset);
+    if (function_hook_state_UpClickPart == HOOK_ENABLED) {
+        assert(0 && "UpClickPart not implemented.");
+        abort();
+    } else {
+        return original_UpClickPart(pCurrent_choice, pCurrent_mode, pX_offset, pY_offset);
+    }
 }
 
+function_hook_state_t function_hook_state_DownClickPart = HOOK_UNAVAILABLE;
 static int(__cdecl*original_DownClickPart)(int *, int *, int, int) = (int(__cdecl*)(int *, int *, int, int))0x0045091d;
 CARM95_HOOK_FUNCTION(original_DownClickPart, DownClickPart)
 int __cdecl DownClickPart(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY_offset) {
@@ -530,9 +738,15 @@ int __cdecl DownClickPart(int *pCurrent_choice, int *pCurrent_mode, int pX_offse
     (void)pX_offset;
     (void)pY_offset;
 
-    return original_DownClickPart(pCurrent_choice, pCurrent_mode, pX_offset, pY_offset);
+    if (function_hook_state_DownClickPart == HOOK_ENABLED) {
+        assert(0 && "DownClickPart not implemented.");
+        abort();
+    } else {
+        return original_DownClickPart(pCurrent_choice, pCurrent_mode, pX_offset, pY_offset);
+    }
 }
 
+function_hook_state_t function_hook_state_PartsArrowsOn = HOOK_UNAVAILABLE;
 static int(__cdecl*original_PartsArrowsOn)(int *, int *) = (int(__cdecl*)(int *, int *))0x0045093f;
 CARM95_HOOK_FUNCTION(original_PartsArrowsOn, PartsArrowsOn)
 int __cdecl PartsArrowsOn(int *pCurrent_choice, int *pCurrent_mode) {
@@ -541,9 +755,15 @@ int __cdecl PartsArrowsOn(int *pCurrent_choice, int *pCurrent_mode) {
     (void)pCurrent_choice;
     (void)pCurrent_mode;
 
-    return original_PartsArrowsOn(pCurrent_choice, pCurrent_mode);
+    if (function_hook_state_PartsArrowsOn == HOOK_ENABLED) {
+        assert(0 && "PartsArrowsOn not implemented.");
+        abort();
+    } else {
+        return original_PartsArrowsOn(pCurrent_choice, pCurrent_mode);
+    }
 }
 
+function_hook_state_t function_hook_state_PartsArrowsOff = HOOK_UNAVAILABLE;
 static int(__cdecl*original_PartsArrowsOff)(int *, int *) = (int(__cdecl*)(int *, int *))0x004509de;
 CARM95_HOOK_FUNCTION(original_PartsArrowsOff, PartsArrowsOff)
 int __cdecl PartsArrowsOff(int *pCurrent_choice, int *pCurrent_mode) {
@@ -552,18 +772,30 @@ int __cdecl PartsArrowsOff(int *pCurrent_choice, int *pCurrent_mode) {
     (void)pCurrent_choice;
     (void)pCurrent_mode;
 
-    return original_PartsArrowsOff(pCurrent_choice, pCurrent_mode);
+    if (function_hook_state_PartsArrowsOff == HOOK_ENABLED) {
+        assert(0 && "PartsArrowsOff not implemented.");
+        abort();
+    } else {
+        return original_PartsArrowsOff(pCurrent_choice, pCurrent_mode);
+    }
 }
 
+function_hook_state_t function_hook_state_StartPartsShop = HOOK_UNAVAILABLE;
 static void(__cdecl*original_StartPartsShop)() = (void(__cdecl*)())0x00450a7d;
 CARM95_HOOK_FUNCTION(original_StartPartsShop, StartPartsShop)
 void __cdecl StartPartsShop() {
     LOG_TRACE("()");
 
 
-    original_StartPartsShop();
+    if (function_hook_state_StartPartsShop == HOOK_ENABLED) {
+        assert(0 && "StartPartsShop not implemented.");
+        abort();
+    } else {
+        original_StartPartsShop();
+    }
 }
 
+function_hook_state_t function_hook_state_DonePartsShop = HOOK_UNAVAILABLE;
 static int(__cdecl*original_DonePartsShop)(int, int, int, int, int) = (int(__cdecl*)(int, int, int, int, int))0x00450a92;
 CARM95_HOOK_FUNCTION(original_DonePartsShop, DonePartsShop)
 int __cdecl DonePartsShop(int pCurrent_choice, int pCurrent_mode, int pGo_ahead, int pEscaped, int pTimed_out) {
@@ -575,9 +807,15 @@ int __cdecl DonePartsShop(int pCurrent_choice, int pCurrent_mode, int pGo_ahead,
     (void)pEscaped;
     (void)pTimed_out;
 
-    return original_DonePartsShop(pCurrent_choice, pCurrent_mode, pGo_ahead, pEscaped, pTimed_out);
+    if (function_hook_state_DonePartsShop == HOOK_ENABLED) {
+        assert(0 && "DonePartsShop not implemented.");
+        abort();
+    } else {
+        return original_DonePartsShop(pCurrent_choice, pCurrent_mode, pGo_ahead, pEscaped, pTimed_out);
+    }
 }
 
+function_hook_state_t function_hook_state_DrawPartsShop = HOOK_UNAVAILABLE;
 static void(__cdecl*original_DrawPartsShop)(int, int) = (void(__cdecl*)(int, int))0x00450ac9;
 CARM95_HOOK_FUNCTION(original_DrawPartsShop, DrawPartsShop)
 void __cdecl DrawPartsShop(int pCurrent_choice, int pCurrent_mode) {
@@ -586,9 +824,15 @@ void __cdecl DrawPartsShop(int pCurrent_choice, int pCurrent_mode) {
     (void)pCurrent_choice;
     (void)pCurrent_mode;
 
-    original_DrawPartsShop(pCurrent_choice, pCurrent_mode);
+    if (function_hook_state_DrawPartsShop == HOOK_ENABLED) {
+        assert(0 && "DrawPartsShop not implemented.");
+        abort();
+    } else {
+        original_DrawPartsShop(pCurrent_choice, pCurrent_mode);
+    }
 }
 
+function_hook_state_t function_hook_state_DoPartsShop = HOOK_UNAVAILABLE;
 static void(__cdecl*original_DoPartsShop)(int) = (void(__cdecl*)(int))0x00450e06;
 CARM95_HOOK_FUNCTION(original_DoPartsShop, DoPartsShop)
 void __cdecl DoPartsShop(int pFade_away) {
@@ -608,9 +852,15 @@ void __cdecl DoPartsShop(int pFade_away) {
     (void)interface_spec;
     (void)result;
 
-    original_DoPartsShop(pFade_away);
+    if (function_hook_state_DoPartsShop == HOOK_ENABLED) {
+        assert(0 && "DoPartsShop not implemented.");
+        abort();
+    } else {
+        original_DoPartsShop(pFade_away);
+    }
 }
 
+function_hook_state_t function_hook_state_AutoPartsDone = HOOK_UNAVAILABLE;
 static int(__cdecl*original_AutoPartsDone)(int, int, int, int, int) = (int(__cdecl*)(int, int, int, int, int))0x00450ad9;
 CARM95_HOOK_FUNCTION(original_AutoPartsDone, AutoPartsDone)
 int __cdecl AutoPartsDone(int pCurrent_choice, int pCurrent_mode, int pGo_ahead, int pEscaped, int pTimed_out) {
@@ -622,9 +872,15 @@ int __cdecl AutoPartsDone(int pCurrent_choice, int pCurrent_mode, int pGo_ahead,
     (void)pEscaped;
     (void)pTimed_out;
 
-    return original_AutoPartsDone(pCurrent_choice, pCurrent_mode, pGo_ahead, pEscaped, pTimed_out);
+    if (function_hook_state_AutoPartsDone == HOOK_ENABLED) {
+        assert(0 && "AutoPartsDone not implemented.");
+        abort();
+    } else {
+        return original_AutoPartsDone(pCurrent_choice, pCurrent_mode, pGo_ahead, pEscaped, pTimed_out);
+    }
 }
 
+function_hook_state_t function_hook_state_DoAutoPartsShop = HOOK_UNAVAILABLE;
 static tSO_result(__cdecl*original_DoAutoPartsShop)() = (tSO_result(__cdecl*)())0x00450b05;
 CARM95_HOOK_FUNCTION(original_DoAutoPartsShop, DoAutoPartsShop)
 tSO_result __cdecl DoAutoPartsShop() {
@@ -643,36 +899,60 @@ tSO_result __cdecl DoAutoPartsShop() {
     (void)interface_spec;
     (void)result;
 
-    return original_DoAutoPartsShop();
+    if (function_hook_state_DoAutoPartsShop == HOOK_ENABLED) {
+        assert(0 && "DoAutoPartsShop not implemented.");
+        abort();
+    } else {
+        return original_DoAutoPartsShop();
+    }
 }
 
+function_hook_state_t function_hook_state_SetOpponentFlic = HOOK_UNAVAILABLE;
 static void(__cdecl*original_SetOpponentFlic)() = (void(__cdecl*)())0x004510ba;
 CARM95_HOOK_FUNCTION(original_SetOpponentFlic, SetOpponentFlic)
 void __cdecl SetOpponentFlic() {
     LOG_TRACE("()");
 
 
-    original_SetOpponentFlic();
+    if (function_hook_state_SetOpponentFlic == HOOK_ENABLED) {
+        assert(0 && "SetOpponentFlic not implemented.");
+        abort();
+    } else {
+        original_SetOpponentFlic();
+    }
 }
 
+function_hook_state_t function_hook_state_DrawSceneyMappyInfoVieweyThing = HOOK_UNAVAILABLE;
 static void(__cdecl*original_DrawSceneyMappyInfoVieweyThing)() = (void(__cdecl*)())0x00451002;
 CARM95_HOOK_FUNCTION(original_DrawSceneyMappyInfoVieweyThing, DrawSceneyMappyInfoVieweyThing)
 void __cdecl DrawSceneyMappyInfoVieweyThing() {
     LOG_TRACE("()");
 
 
-    original_DrawSceneyMappyInfoVieweyThing();
+    if (function_hook_state_DrawSceneyMappyInfoVieweyThing == HOOK_ENABLED) {
+        assert(0 && "DrawSceneyMappyInfoVieweyThing not implemented.");
+        abort();
+    } else {
+        original_DrawSceneyMappyInfoVieweyThing();
+    }
 }
 
+function_hook_state_t function_hook_state_DismissSceneyMappyInfoVieweyThing = HOOK_UNAVAILABLE;
 static void(__cdecl*original_DismissSceneyMappyInfoVieweyThing)() = (void(__cdecl*)())0x00450eea;
 CARM95_HOOK_FUNCTION(original_DismissSceneyMappyInfoVieweyThing, DismissSceneyMappyInfoVieweyThing)
 void __cdecl DismissSceneyMappyInfoVieweyThing() {
     LOG_TRACE("()");
 
 
-    original_DismissSceneyMappyInfoVieweyThing();
+    if (function_hook_state_DismissSceneyMappyInfoVieweyThing == HOOK_ENABLED) {
+        assert(0 && "DismissSceneyMappyInfoVieweyThing not implemented.");
+        abort();
+    } else {
+        original_DismissSceneyMappyInfoVieweyThing();
+    }
 }
 
+function_hook_state_t function_hook_state_SelectRaceDone = HOOK_UNAVAILABLE;
 static int(__cdecl*original_SelectRaceDone)(int, int, int, int, int) = (int(__cdecl*)(int, int, int, int, int))0x00450eb9;
 CARM95_HOOK_FUNCTION(original_SelectRaceDone, SelectRaceDone)
 int __cdecl SelectRaceDone(int pCurrent_choice, int pCurrent_mode, int pGo_ahead, int pEscaped, int pTimed_out) {
@@ -684,9 +964,15 @@ int __cdecl SelectRaceDone(int pCurrent_choice, int pCurrent_mode, int pGo_ahead
     (void)pEscaped;
     (void)pTimed_out;
 
-    return original_SelectRaceDone(pCurrent_choice, pCurrent_mode, pGo_ahead, pEscaped, pTimed_out);
+    if (function_hook_state_SelectRaceDone == HOOK_ENABLED) {
+        assert(0 && "SelectRaceDone not implemented.");
+        abort();
+    } else {
+        return original_SelectRaceDone(pCurrent_choice, pCurrent_mode, pGo_ahead, pEscaped, pTimed_out);
+    }
 }
 
+function_hook_state_t function_hook_state_StartRaceGoAhead = HOOK_UNAVAILABLE;
 static int(__cdecl*original_StartRaceGoAhead)(int *, int *) = (int(__cdecl*)(int *, int *))0x00450f2a;
 CARM95_HOOK_FUNCTION(original_StartRaceGoAhead, StartRaceGoAhead)
 int __cdecl StartRaceGoAhead(int *pCurrent_choice, int *pCurrent_mode) {
@@ -695,18 +981,30 @@ int __cdecl StartRaceGoAhead(int *pCurrent_choice, int *pCurrent_mode) {
     (void)pCurrent_choice;
     (void)pCurrent_mode;
 
-    return original_StartRaceGoAhead(pCurrent_choice, pCurrent_mode);
+    if (function_hook_state_StartRaceGoAhead == HOOK_ENABLED) {
+        assert(0 && "StartRaceGoAhead not implemented.");
+        abort();
+    } else {
+        return original_StartRaceGoAhead(pCurrent_choice, pCurrent_mode);
+    }
 }
 
+function_hook_state_t function_hook_state_TryToMoveToArrows = HOOK_UNAVAILABLE;
 int TryToMoveToArrows(int *pCurrent_choice, int *pCurrent_mode) {
     LOG_TRACE("(%p, %p)", pCurrent_choice, pCurrent_mode);
 
     (void)pCurrent_choice;
     (void)pCurrent_mode;
 
-    NOT_IMPLEMENTED();
+    if (function_hook_state_TryToMoveToArrows == HOOK_ENABLED) {
+        assert(0 && "TryToMoveToArrows not implemented.");
+        abort();
+    } else {
+        NOT_IMPLEMENTED();
+    }
 }
 
+function_hook_state_t function_hook_state_UpOpponent = HOOK_UNAVAILABLE;
 static int(__cdecl*original_UpOpponent)(int *, int *) = (int(__cdecl*)(int *, int *))0x00451160;
 CARM95_HOOK_FUNCTION(original_UpOpponent, UpOpponent)
 int __cdecl UpOpponent(int *pCurrent_choice, int *pCurrent_mode) {
@@ -715,9 +1013,15 @@ int __cdecl UpOpponent(int *pCurrent_choice, int *pCurrent_mode) {
     (void)pCurrent_choice;
     (void)pCurrent_mode;
 
-    return original_UpOpponent(pCurrent_choice, pCurrent_mode);
+    if (function_hook_state_UpOpponent == HOOK_ENABLED) {
+        assert(0 && "UpOpponent not implemented.");
+        abort();
+    } else {
+        return original_UpOpponent(pCurrent_choice, pCurrent_mode);
+    }
 }
 
+function_hook_state_t function_hook_state_DownOpponent = HOOK_UNAVAILABLE;
 static int(__cdecl*original_DownOpponent)(int *, int *) = (int(__cdecl*)(int *, int *))0x00451285;
 CARM95_HOOK_FUNCTION(original_DownOpponent, DownOpponent)
 int __cdecl DownOpponent(int *pCurrent_choice, int *pCurrent_mode) {
@@ -726,9 +1030,15 @@ int __cdecl DownOpponent(int *pCurrent_choice, int *pCurrent_mode) {
     (void)pCurrent_choice;
     (void)pCurrent_mode;
 
-    return original_DownOpponent(pCurrent_choice, pCurrent_mode);
+    if (function_hook_state_DownOpponent == HOOK_ENABLED) {
+        assert(0 && "DownOpponent not implemented.");
+        abort();
+    } else {
+        return original_DownOpponent(pCurrent_choice, pCurrent_mode);
+    }
 }
 
+function_hook_state_t function_hook_state_UpClickOpp = HOOK_UNAVAILABLE;
 static int(__cdecl*original_UpClickOpp)(int *, int *, int, int) = (int(__cdecl*)(int *, int *, int, int))0x004513a8;
 CARM95_HOOK_FUNCTION(original_UpClickOpp, UpClickOpp)
 int __cdecl UpClickOpp(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY_offset) {
@@ -739,9 +1049,15 @@ int __cdecl UpClickOpp(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, 
     (void)pX_offset;
     (void)pY_offset;
 
-    return original_UpClickOpp(pCurrent_choice, pCurrent_mode, pX_offset, pY_offset);
+    if (function_hook_state_UpClickOpp == HOOK_ENABLED) {
+        assert(0 && "UpClickOpp not implemented.");
+        abort();
+    } else {
+        return original_UpClickOpp(pCurrent_choice, pCurrent_mode, pX_offset, pY_offset);
+    }
 }
 
+function_hook_state_t function_hook_state_DownClickOpp = HOOK_UNAVAILABLE;
 static int(__cdecl*original_DownClickOpp)(int *, int *, int, int) = (int(__cdecl*)(int *, int *, int, int))0x004513ca;
 CARM95_HOOK_FUNCTION(original_DownClickOpp, DownClickOpp)
 int __cdecl DownClickOpp(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY_offset) {
@@ -752,18 +1068,30 @@ int __cdecl DownClickOpp(int *pCurrent_choice, int *pCurrent_mode, int pX_offset
     (void)pX_offset;
     (void)pY_offset;
 
-    return original_DownClickOpp(pCurrent_choice, pCurrent_mode, pX_offset, pY_offset);
+    if (function_hook_state_DownClickOpp == HOOK_ENABLED) {
+        assert(0 && "DownClickOpp not implemented.");
+        abort();
+    } else {
+        return original_DownClickOpp(pCurrent_choice, pCurrent_mode, pX_offset, pY_offset);
+    }
 }
 
+function_hook_state_t function_hook_state_SelectRaceStart = HOOK_UNAVAILABLE;
 static void(__cdecl*original_SelectRaceStart)() = (void(__cdecl*)())0x004513ec;
 CARM95_HOOK_FUNCTION(original_SelectRaceStart, SelectRaceStart)
 void __cdecl SelectRaceStart() {
     LOG_TRACE("()");
 
 
-    original_SelectRaceStart();
+    if (function_hook_state_SelectRaceStart == HOOK_ENABLED) {
+        assert(0 && "SelectRaceStart not implemented.");
+        abort();
+    } else {
+        original_SelectRaceStart();
+    }
 }
 
+function_hook_state_t function_hook_state_SuggestRace = HOOK_UNAVAILABLE;
 static int(__cdecl*original_SuggestRace)() = (int(__cdecl*)())0x0045140b;
 CARM95_HOOK_FUNCTION(original_SuggestRace, SuggestRace)
 int __cdecl SuggestRace() {
@@ -782,9 +1110,15 @@ int __cdecl SuggestRace() {
     (void)new_suggestion;
     (void)number_of_visits;
 
-    return original_SuggestRace();
+    if (function_hook_state_SuggestRace == HOOK_ENABLED) {
+        assert(0 && "SuggestRace not implemented.");
+        abort();
+    } else {
+        return original_SuggestRace();
+    }
 }
 
+function_hook_state_t function_hook_state_SelectRaceDraw = HOOK_UNAVAILABLE;
 static void(__cdecl*original_SelectRaceDraw)(int, int) = (void(__cdecl*)(int, int))0x00451634;
 CARM95_HOOK_FUNCTION(original_SelectRaceDraw, SelectRaceDraw)
 void __cdecl SelectRaceDraw(int pCurrent_choice, int pCurrent_mode) {
@@ -821,9 +1155,15 @@ void __cdecl SelectRaceDraw(int pCurrent_choice, int pCurrent_mode) {
     (void)__block0__f;
     (void)__block0__i;
 
-    original_SelectRaceDraw(pCurrent_choice, pCurrent_mode);
+    if (function_hook_state_SelectRaceDraw == HOOK_ENABLED) {
+        assert(0 && "SelectRaceDraw not implemented.");
+        abort();
+    } else {
+        original_SelectRaceDraw(pCurrent_choice, pCurrent_mode);
+    }
 }
 
+function_hook_state_t function_hook_state_DoSelectRace = HOOK_UNAVAILABLE;
 static tSO_result(__cdecl*original_DoSelectRace)(int *) = (tSO_result(__cdecl*)(int *))0x00451c8e;
 CARM95_HOOK_FUNCTION(original_DoSelectRace, DoSelectRace)
 tSO_result __cdecl DoSelectRace(int *pSecond_time_around) {
@@ -849,9 +1189,15 @@ tSO_result __cdecl DoSelectRace(int *pSecond_time_around) {
     (void)suggested;
     (void)old_current_race;
 
-    return original_DoSelectRace(pSecond_time_around);
+    if (function_hook_state_DoSelectRace == HOOK_ENABLED) {
+        assert(0 && "DoSelectRace not implemented.");
+        abort();
+    } else {
+        return original_DoSelectRace(pSecond_time_around);
+    }
 }
 
+function_hook_state_t function_hook_state_DrawGridCar = HOOK_UNAVAILABLE;
 static void(__cdecl*original_DrawGridCar)(int, int, br_pixelmap *) = (void(__cdecl*)(int, int, br_pixelmap *))0x00452b89;
 CARM95_HOOK_FUNCTION(original_DrawGridCar, DrawGridCar)
 void __cdecl DrawGridCar(int pX, int pY, br_pixelmap *pImage) {
@@ -861,9 +1207,15 @@ void __cdecl DrawGridCar(int pX, int pY, br_pixelmap *pImage) {
     (void)pY;
     (void)pImage;
 
-    original_DrawGridCar(pX, pY, pImage);
+    if (function_hook_state_DrawGridCar == HOOK_ENABLED) {
+        assert(0 && "DrawGridCar not implemented.");
+        abort();
+    } else {
+        original_DrawGridCar(pX, pY, pImage);
+    }
 }
 
+function_hook_state_t function_hook_state_DrawGrid = HOOK_UNAVAILABLE;
 static void(__cdecl*original_DrawGrid)(int, int) = (void(__cdecl*)(int, int))0x00452077;
 CARM95_HOOK_FUNCTION(original_DrawGrid, DrawGrid)
 void __cdecl DrawGrid(int pOffset, int pDraw_it) {
@@ -908,9 +1260,15 @@ void __cdecl DrawGrid(int pOffset, int pDraw_it) {
     (void)total_str;
     (void)the_time;
 
-    original_DrawGrid(pOffset, pDraw_it);
+    if (function_hook_state_DrawGrid == HOOK_ENABLED) {
+        assert(0 && "DrawGrid not implemented.");
+        abort();
+    } else {
+        original_DrawGrid(pOffset, pDraw_it);
+    }
 }
 
+function_hook_state_t function_hook_state_MoveGrid = HOOK_UNAVAILABLE;
 static void(__cdecl*original_MoveGrid)(int, int, tS32) = (void(__cdecl*)(int, int, tS32))0x004531d4;
 CARM95_HOOK_FUNCTION(original_MoveGrid, MoveGrid)
 void __cdecl MoveGrid(int pFrom, int pTo, tS32 pTime_to_move) {
@@ -928,9 +1286,15 @@ void __cdecl MoveGrid(int pFrom, int pTo, tS32 pTime_to_move) {
     (void)move_distance;
     (void)pitch;
 
-    original_MoveGrid(pFrom, pTo, pTime_to_move);
+    if (function_hook_state_MoveGrid == HOOK_ENABLED) {
+        assert(0 && "MoveGrid not implemented.");
+        abort();
+    } else {
+        original_MoveGrid(pFrom, pTo, pTime_to_move);
+    }
 }
 
+function_hook_state_t function_hook_state_CalcGridOffset = HOOK_UNAVAILABLE;
 static int(__cdecl*original_CalcGridOffset)(int) = (int(__cdecl*)(int))0x00452bf3;
 CARM95_HOOK_FUNCTION(original_CalcGridOffset, CalcGridOffset)
 int __cdecl CalcGridOffset(int pPosition) {
@@ -938,9 +1302,15 @@ int __cdecl CalcGridOffset(int pPosition) {
 
     (void)pPosition;
 
-    return original_CalcGridOffset(pPosition);
+    if (function_hook_state_CalcGridOffset == HOOK_ENABLED) {
+        assert(0 && "CalcGridOffset not implemented.");
+        abort();
+    } else {
+        return original_CalcGridOffset(pPosition);
+    }
 }
 
+function_hook_state_t function_hook_state_GridDraw = HOOK_UNAVAILABLE;
 static void(__cdecl*original_GridDraw)(int, int) = (void(__cdecl*)(int, int))0x00452039;
 CARM95_HOOK_FUNCTION(original_GridDraw, GridDraw)
 void __cdecl GridDraw(int pCurrent_choice, int pCurrent_mode) {
@@ -949,9 +1319,15 @@ void __cdecl GridDraw(int pCurrent_choice, int pCurrent_mode) {
     (void)pCurrent_choice;
     (void)pCurrent_mode;
 
-    original_GridDraw(pCurrent_choice, pCurrent_mode);
+    if (function_hook_state_GridDraw == HOOK_ENABLED) {
+        assert(0 && "GridDraw not implemented.");
+        abort();
+    } else {
+        original_GridDraw(pCurrent_choice, pCurrent_mode);
+    }
 }
 
+function_hook_state_t function_hook_state_ActuallySwapOrder = HOOK_UNAVAILABLE;
 static void(__cdecl*original_ActuallySwapOrder)(int, int) = (void(__cdecl*)(int, int))0x00453255;
 CARM95_HOOK_FUNCTION(original_ActuallySwapOrder, ActuallySwapOrder)
 void __cdecl ActuallySwapOrder(int pFirst_index, int pSecond_index) {
@@ -962,9 +1338,15 @@ void __cdecl ActuallySwapOrder(int pFirst_index, int pSecond_index) {
     (void)pSecond_index;
     (void)temp_opp;
 
-    original_ActuallySwapOrder(pFirst_index, pSecond_index);
+    if (function_hook_state_ActuallySwapOrder == HOOK_ENABLED) {
+        assert(0 && "ActuallySwapOrder not implemented.");
+        abort();
+    } else {
+        original_ActuallySwapOrder(pFirst_index, pSecond_index);
+    }
 }
 
+function_hook_state_t function_hook_state_DoGridTransition = HOOK_UNAVAILABLE;
 static void(__cdecl*original_DoGridTransition)(int, int) = (void(__cdecl*)(int, int))0x004530ca;
 CARM95_HOOK_FUNCTION(original_DoGridTransition, DoGridTransition)
 void __cdecl DoGridTransition(int pFirst_index, int pSecond_index) {
@@ -977,9 +1359,15 @@ void __cdecl DoGridTransition(int pFirst_index, int pSecond_index) {
     (void)start_time;
     (void)the_time;
 
-    original_DoGridTransition(pFirst_index, pSecond_index);
+    if (function_hook_state_DoGridTransition == HOOK_ENABLED) {
+        assert(0 && "DoGridTransition not implemented.");
+        abort();
+    } else {
+        original_DoGridTransition(pFirst_index, pSecond_index);
+    }
 }
 
+function_hook_state_t function_hook_state_ChallengeStart = HOOK_UNAVAILABLE;
 static void(__cdecl*original_ChallengeStart)() = (void(__cdecl*)())0x00452c0c;
 CARM95_HOOK_FUNCTION(original_ChallengeStart, ChallengeStart)
 void __cdecl ChallengeStart() {
@@ -1002,9 +1390,15 @@ void __cdecl ChallengeStart() {
     (void)the_path;
     (void)s;
 
-    original_ChallengeStart();
+    if (function_hook_state_ChallengeStart == HOOK_ENABLED) {
+        assert(0 && "ChallengeStart not implemented.");
+        abort();
+    } else {
+        original_ChallengeStart();
+    }
 }
 
+function_hook_state_t function_hook_state_CheckNextStage = HOOK_UNAVAILABLE;
 static int(__cdecl*original_CheckNextStage)(int *, int *) = (int(__cdecl*)(int *, int *))0x00453021;
 CARM95_HOOK_FUNCTION(original_CheckNextStage, CheckNextStage)
 int __cdecl CheckNextStage(int *pCurrent_choice, int *pCurrent_mode) {
@@ -1013,9 +1407,15 @@ int __cdecl CheckNextStage(int *pCurrent_choice, int *pCurrent_mode) {
     (void)pCurrent_choice;
     (void)pCurrent_mode;
 
-    return original_CheckNextStage(pCurrent_choice, pCurrent_mode);
+    if (function_hook_state_CheckNextStage == HOOK_ENABLED) {
+        assert(0 && "CheckNextStage not implemented.");
+        abort();
+    } else {
+        return original_CheckNextStage(pCurrent_choice, pCurrent_mode);
+    }
 }
 
+function_hook_state_t function_hook_state_ChallengeDone = HOOK_UNAVAILABLE;
 static int(__cdecl*original_ChallengeDone)(int, int, int, int, int) = (int(__cdecl*)(int, int, int, int, int))0x004532f7;
 CARM95_HOOK_FUNCTION(original_ChallengeDone, ChallengeDone)
 int __cdecl ChallengeDone(int pCurrent_choice, int pCurrent_mode, int pGo_ahead, int pEscaped, int pTimed_out) {
@@ -1027,9 +1427,15 @@ int __cdecl ChallengeDone(int pCurrent_choice, int pCurrent_mode, int pGo_ahead,
     (void)pEscaped;
     (void)pTimed_out;
 
-    return original_ChallengeDone(pCurrent_choice, pCurrent_mode, pGo_ahead, pEscaped, pTimed_out);
+    if (function_hook_state_ChallengeDone == HOOK_ENABLED) {
+        assert(0 && "ChallengeDone not implemented.");
+        abort();
+    } else {
+        return original_ChallengeDone(pCurrent_choice, pCurrent_mode, pGo_ahead, pEscaped, pTimed_out);
+    }
 }
 
+function_hook_state_t function_hook_state_DoChallengeScreen = HOOK_UNAVAILABLE;
 static void(__cdecl*original_DoChallengeScreen)() = (void(__cdecl*)())0x00453952;
 CARM95_HOOK_FUNCTION(original_DoChallengeScreen, DoChallengeScreen)
 void __cdecl DoChallengeScreen() {
@@ -1048,9 +1454,15 @@ void __cdecl DoChallengeScreen() {
     (void)interface_spec;
     (void)result;
 
-    original_DoChallengeScreen();
+    if (function_hook_state_DoChallengeScreen == HOOK_ENABLED) {
+        assert(0 && "DoChallengeScreen not implemented.");
+        abort();
+    } else {
+        original_DoChallengeScreen();
+    }
 }
 
+function_hook_state_t function_hook_state_GridDone = HOOK_UNAVAILABLE;
 static int(__cdecl*original_GridDone)(int, int, int, int, int) = (int(__cdecl*)(int, int, int, int, int))0x004533c6;
 CARM95_HOOK_FUNCTION(original_GridDone, GridDone)
 int __cdecl GridDone(int pCurrent_choice, int pCurrent_mode, int pGo_ahead, int pEscaped, int pTimed_out) {
@@ -1062,18 +1474,30 @@ int __cdecl GridDone(int pCurrent_choice, int pCurrent_mode, int pGo_ahead, int 
     (void)pEscaped;
     (void)pTimed_out;
 
-    return original_GridDone(pCurrent_choice, pCurrent_mode, pGo_ahead, pEscaped, pTimed_out);
+    if (function_hook_state_GridDone == HOOK_ENABLED) {
+        assert(0 && "GridDone not implemented.");
+        abort();
+    } else {
+        return original_GridDone(pCurrent_choice, pCurrent_mode, pGo_ahead, pEscaped, pTimed_out);
+    }
 }
 
+function_hook_state_t function_hook_state_GridStart = HOOK_UNAVAILABLE;
 static void(__cdecl*original_GridStart)() = (void(__cdecl*)())0x00453408;
 CARM95_HOOK_FUNCTION(original_GridStart, GridStart)
 void __cdecl GridStart() {
     LOG_TRACE("()");
 
 
-    original_GridStart();
+    if (function_hook_state_GridStart == HOOK_ENABLED) {
+        assert(0 && "GridStart not implemented.");
+        abort();
+    } else {
+        original_GridStart();
+    }
 }
 
+function_hook_state_t function_hook_state_GridMoveLeft = HOOK_UNAVAILABLE;
 static int(__cdecl*original_GridMoveLeft)(int *, int *) = (int(__cdecl*)(int *, int *))0x00453440;
 CARM95_HOOK_FUNCTION(original_GridMoveLeft, GridMoveLeft)
 int __cdecl GridMoveLeft(int *pCurrent_choice, int *pCurrent_mode) {
@@ -1082,9 +1506,15 @@ int __cdecl GridMoveLeft(int *pCurrent_choice, int *pCurrent_mode) {
     (void)pCurrent_choice;
     (void)pCurrent_mode;
 
-    return original_GridMoveLeft(pCurrent_choice, pCurrent_mode);
+    if (function_hook_state_GridMoveLeft == HOOK_ENABLED) {
+        assert(0 && "GridMoveLeft not implemented.");
+        abort();
+    } else {
+        return original_GridMoveLeft(pCurrent_choice, pCurrent_mode);
+    }
 }
 
+function_hook_state_t function_hook_state_GridMoveRight = HOOK_UNAVAILABLE;
 static int(__cdecl*original_GridMoveRight)(int *, int *) = (int(__cdecl*)(int *, int *))0x004534e7;
 CARM95_HOOK_FUNCTION(original_GridMoveRight, GridMoveRight)
 int __cdecl GridMoveRight(int *pCurrent_choice, int *pCurrent_mode) {
@@ -1093,9 +1523,15 @@ int __cdecl GridMoveRight(int *pCurrent_choice, int *pCurrent_mode) {
     (void)pCurrent_choice;
     (void)pCurrent_mode;
 
-    return original_GridMoveRight(pCurrent_choice, pCurrent_mode);
+    if (function_hook_state_GridMoveRight == HOOK_ENABLED) {
+        assert(0 && "GridMoveRight not implemented.");
+        abort();
+    } else {
+        return original_GridMoveRight(pCurrent_choice, pCurrent_mode);
+    }
 }
 
+function_hook_state_t function_hook_state_GridClickCar = HOOK_UNAVAILABLE;
 static int(__cdecl*original_GridClickCar)(int *, int *, int, int) = (int(__cdecl*)(int *, int *, int, int))0x00453578;
 CARM95_HOOK_FUNCTION(original_GridClickCar, GridClickCar)
 int __cdecl GridClickCar(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY_offset) {
@@ -1114,9 +1550,15 @@ int __cdecl GridClickCar(int *pCurrent_choice, int *pCurrent_mode, int pX_offset
     (void)base_pos;
     (void)x_coord;
 
-    return original_GridClickCar(pCurrent_choice, pCurrent_mode, pX_offset, pY_offset);
+    if (function_hook_state_GridClickCar == HOOK_ENABLED) {
+        assert(0 && "GridClickCar not implemented.");
+        abort();
+    } else {
+        return original_GridClickCar(pCurrent_choice, pCurrent_mode, pX_offset, pY_offset);
+    }
 }
 
+function_hook_state_t function_hook_state_GridClickNumbers = HOOK_UNAVAILABLE;
 static int(__cdecl*original_GridClickNumbers)(int *, int *, int, int) = (int(__cdecl*)(int *, int *, int, int))0x00453671;
 CARM95_HOOK_FUNCTION(original_GridClickNumbers, GridClickNumbers)
 int __cdecl GridClickNumbers(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY_offset) {
@@ -1131,9 +1573,15 @@ int __cdecl GridClickNumbers(int *pCurrent_choice, int *pCurrent_mode, int pX_of
     (void)new_pos;
     (void)i;
 
-    return original_GridClickNumbers(pCurrent_choice, pCurrent_mode, pX_offset, pY_offset);
+    if (function_hook_state_GridClickNumbers == HOOK_ENABLED) {
+        assert(0 && "GridClickNumbers not implemented.");
+        abort();
+    } else {
+        return original_GridClickNumbers(pCurrent_choice, pCurrent_mode, pX_offset, pY_offset);
+    }
 }
 
+function_hook_state_t function_hook_state_GridClickLeft = HOOK_UNAVAILABLE;
 static int(__cdecl*original_GridClickLeft)(int *, int *, int, int) = (int(__cdecl*)(int *, int *, int, int))0x00453746;
 CARM95_HOOK_FUNCTION(original_GridClickLeft, GridClickLeft)
 int __cdecl GridClickLeft(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY_offset) {
@@ -1144,9 +1592,15 @@ int __cdecl GridClickLeft(int *pCurrent_choice, int *pCurrent_mode, int pX_offse
     (void)pX_offset;
     (void)pY_offset;
 
-    return original_GridClickLeft(pCurrent_choice, pCurrent_mode, pX_offset, pY_offset);
+    if (function_hook_state_GridClickLeft == HOOK_ENABLED) {
+        assert(0 && "GridClickLeft not implemented.");
+        abort();
+    } else {
+        return original_GridClickLeft(pCurrent_choice, pCurrent_mode, pX_offset, pY_offset);
+    }
 }
 
+function_hook_state_t function_hook_state_GridClickRight = HOOK_UNAVAILABLE;
 static int(__cdecl*original_GridClickRight)(int *, int *, int, int) = (int(__cdecl*)(int *, int *, int, int))0x00453768;
 CARM95_HOOK_FUNCTION(original_GridClickRight, GridClickRight)
 int __cdecl GridClickRight(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY_offset) {
@@ -1157,9 +1611,15 @@ int __cdecl GridClickRight(int *pCurrent_choice, int *pCurrent_mode, int pX_offs
     (void)pX_offset;
     (void)pY_offset;
 
-    return original_GridClickRight(pCurrent_choice, pCurrent_mode, pX_offset, pY_offset);
+    if (function_hook_state_GridClickRight == HOOK_ENABLED) {
+        assert(0 && "GridClickRight not implemented.");
+        abort();
+    } else {
+        return original_GridClickRight(pCurrent_choice, pCurrent_mode, pX_offset, pY_offset);
+    }
 }
 
+function_hook_state_t function_hook_state_CheckChallenge = HOOK_UNAVAILABLE;
 static int(__cdecl*original_CheckChallenge)(int *, int *) = (int(__cdecl*)(int *, int *))0x0045378a;
 CARM95_HOOK_FUNCTION(original_CheckChallenge, CheckChallenge)
 int __cdecl CheckChallenge(int *pCurrent_choice, int *pCurrent_mode) {
@@ -1168,9 +1628,15 @@ int __cdecl CheckChallenge(int *pCurrent_choice, int *pCurrent_mode) {
     (void)pCurrent_choice;
     (void)pCurrent_mode;
 
-    return original_CheckChallenge(pCurrent_choice, pCurrent_mode);
+    if (function_hook_state_CheckChallenge == HOOK_ENABLED) {
+        assert(0 && "CheckChallenge not implemented.");
+        abort();
+    } else {
+        return original_CheckChallenge(pCurrent_choice, pCurrent_mode);
+    }
 }
 
+function_hook_state_t function_hook_state_FindBestPos = HOOK_UNAVAILABLE;
 static int(__cdecl*original_FindBestPos)(int) = (int(__cdecl*)(int))0x00453b41;
 CARM95_HOOK_FUNCTION(original_FindBestPos, FindBestPos)
 int __cdecl FindBestPos(int pOur_rank) {
@@ -1180,9 +1646,15 @@ int __cdecl FindBestPos(int pOur_rank) {
     (void)pOur_rank;
     (void)i;
 
-    return original_FindBestPos(pOur_rank);
+    if (function_hook_state_FindBestPos == HOOK_ENABLED) {
+        assert(0 && "FindBestPos not implemented.");
+        abort();
+    } else {
+        return original_FindBestPos(pOur_rank);
+    }
 }
 
+function_hook_state_t function_hook_state_SortGridFunction = HOOK_UNAVAILABLE;
 static int(__cdecl*original_SortGridFunction)(void *, void *) = (int(__cdecl*)(void *, void *))0x004537d2;
 CARM95_HOOK_FUNCTION(original_SortGridFunction, SortGridFunction)
 int __cdecl SortGridFunction(void *pFirst_one, void *pSecond_one) {
@@ -1191,9 +1663,15 @@ int __cdecl SortGridFunction(void *pFirst_one, void *pSecond_one) {
     (void)pFirst_one;
     (void)pSecond_one;
 
-    return original_SortGridFunction(pFirst_one, pSecond_one);
+    if (function_hook_state_SortGridFunction == HOOK_ENABLED) {
+        assert(0 && "SortGridFunction not implemented.");
+        abort();
+    } else {
+        return original_SortGridFunction(pFirst_one, pSecond_one);
+    }
 }
 
+function_hook_state_t function_hook_state_SortOpponents = HOOK_UNAVAILABLE;
 static void(__cdecl*original_SortOpponents)() = (void(__cdecl*)())0x004539f6;
 CARM95_HOOK_FUNCTION(original_SortOpponents, SortOpponents)
 void __cdecl SortOpponents() {
@@ -1202,9 +1680,15 @@ void __cdecl SortOpponents() {
 
     (void)i;
 
-    original_SortOpponents();
+    if (function_hook_state_SortOpponents == HOOK_ENABLED) {
+        assert(0 && "SortOpponents not implemented.");
+        abort();
+    } else {
+        original_SortOpponents();
+    }
 }
 
+function_hook_state_t function_hook_state_DoGridPosition = HOOK_UNAVAILABLE;
 static tSO_result(__cdecl*original_DoGridPosition)() = (tSO_result(__cdecl*)())0x004537ee;
 CARM95_HOOK_FUNCTION(original_DoGridPosition, DoGridPosition)
 tSO_result __cdecl DoGridPosition() {
@@ -1223,9 +1707,15 @@ tSO_result __cdecl DoGridPosition() {
     (void)interface_spec;
     (void)result;
 
-    return original_DoGridPosition();
+    if (function_hook_state_DoGridPosition == HOOK_ENABLED) {
+        assert(0 && "DoGridPosition not implemented.");
+        abort();
+    } else {
+        return original_DoGridPosition();
+    }
 }
 
+function_hook_state_t function_hook_state_CheckPlayersAreResponding = HOOK_UNAVAILABLE;
 static void(__cdecl*original_CheckPlayersAreResponding)() = (void(__cdecl*)())0x00453ba4;
 CARM95_HOOK_FUNCTION(original_CheckPlayersAreResponding, CheckPlayersAreResponding)
 void __cdecl CheckPlayersAreResponding() {
@@ -1238,18 +1728,30 @@ void __cdecl CheckPlayersAreResponding() {
     (void)time;
     (void)message;
 
-    original_CheckPlayersAreResponding();
+    if (function_hook_state_CheckPlayersAreResponding == HOOK_ENABLED) {
+        assert(0 && "CheckPlayersAreResponding not implemented.");
+        abort();
+    } else {
+        original_CheckPlayersAreResponding();
+    }
 }
 
+function_hook_state_t function_hook_state_NetSynchStartStart = HOOK_UNAVAILABLE;
 static void(__cdecl*original_NetSynchStartStart)() = (void(__cdecl*)())0x00453b94;
 CARM95_HOOK_FUNCTION(original_NetSynchStartStart, NetSynchStartStart)
 void __cdecl NetSynchStartStart() {
     LOG_TRACE("()");
 
 
-    original_NetSynchStartStart();
+    if (function_hook_state_NetSynchStartStart == HOOK_ENABLED) {
+        assert(0 && "NetSynchStartStart not implemented.");
+        abort();
+    } else {
+        original_NetSynchStartStart();
+    }
 }
 
+function_hook_state_t function_hook_state_DrawAnItem__racestrt = HOOK_UNAVAILABLE;
 static void(__cdecl*original_DrawAnItem__racestrt)(int, int, int, char *) = (void(__cdecl*)(int, int, int, char *))0x00453fc0;
 CARM95_HOOK_FUNCTION(original_DrawAnItem__racestrt, DrawAnItem__racestrt)
 void __cdecl DrawAnItem__racestrt(int pX, int pY_index, int pFont_index, char *pText) {
@@ -1260,9 +1762,15 @@ void __cdecl DrawAnItem__racestrt(int pX, int pY_index, int pFont_index, char *p
     (void)pFont_index;
     (void)pText;
 
-    original_DrawAnItem__racestrt(pX, pY_index, pFont_index, pText);
+    if (function_hook_state_DrawAnItem__racestrt == HOOK_ENABLED) {
+        assert(0 && "DrawAnItem__racestrt not implemented.");
+        abort();
+    } else {
+        original_DrawAnItem__racestrt(pX, pY_index, pFont_index, pText);
+    }
 }
 
+function_hook_state_t function_hook_state_NetSynchStartDraw = HOOK_UNAVAILABLE;
 static void(__cdecl*original_NetSynchStartDraw)(int, int) = (void(__cdecl*)(int, int))0x00453c5b;
 CARM95_HOOK_FUNCTION(original_NetSynchStartDraw, NetSynchStartDraw)
 void __cdecl NetSynchStartDraw(int pCurrent_choice, int pCurrent_mode) {
@@ -1277,9 +1785,15 @@ void __cdecl NetSynchStartDraw(int pCurrent_choice, int pCurrent_mode) {
     (void)number_ready;
     (void)s;
 
-    original_NetSynchStartDraw(pCurrent_choice, pCurrent_mode);
+    if (function_hook_state_NetSynchStartDraw == HOOK_ENABLED) {
+        assert(0 && "NetSynchStartDraw not implemented.");
+        abort();
+    } else {
+        original_NetSynchStartDraw(pCurrent_choice, pCurrent_mode);
+    }
 }
 
+function_hook_state_t function_hook_state_NetSynchStartDone = HOOK_UNAVAILABLE;
 static int(__cdecl*original_NetSynchStartDone)(int, int, int, int, int) = (int(__cdecl*)(int, int, int, int, int))0x00454007;
 CARM95_HOOK_FUNCTION(original_NetSynchStartDone, NetSynchStartDone)
 int __cdecl NetSynchStartDone(int pCurrent_choice, int pCurrent_mode, int pGo_ahead, int pEscaped, int pTimed_out) {
@@ -1291,9 +1805,15 @@ int __cdecl NetSynchStartDone(int pCurrent_choice, int pCurrent_mode, int pGo_ah
     (void)pEscaped;
     (void)pTimed_out;
 
-    return original_NetSynchStartDone(pCurrent_choice, pCurrent_mode, pGo_ahead, pEscaped, pTimed_out);
+    if (function_hook_state_NetSynchStartDone == HOOK_ENABLED) {
+        assert(0 && "NetSynchStartDone not implemented.");
+        abort();
+    } else {
+        return original_NetSynchStartDone(pCurrent_choice, pCurrent_mode, pGo_ahead, pEscaped, pTimed_out);
+    }
 }
 
+function_hook_state_t function_hook_state_NetSynchStartGoAhead = HOOK_UNAVAILABLE;
 static int(__cdecl*original_NetSynchStartGoAhead)(int *, int *) = (int(__cdecl*)(int *, int *))0x00454047;
 CARM95_HOOK_FUNCTION(original_NetSynchStartGoAhead, NetSynchStartGoAhead)
 int __cdecl NetSynchStartGoAhead(int *pCurrent_choice, int *pCurrent_mode) {
@@ -1302,9 +1822,15 @@ int __cdecl NetSynchStartGoAhead(int *pCurrent_choice, int *pCurrent_mode) {
     (void)pCurrent_choice;
     (void)pCurrent_mode;
 
-    return original_NetSynchStartGoAhead(pCurrent_choice, pCurrent_mode);
+    if (function_hook_state_NetSynchStartGoAhead == HOOK_ENABLED) {
+        assert(0 && "NetSynchStartGoAhead not implemented.");
+        abort();
+    } else {
+        return original_NetSynchStartGoAhead(pCurrent_choice, pCurrent_mode);
+    }
 }
 
+function_hook_state_t function_hook_state_ExitWhenReady = HOOK_UNAVAILABLE;
 static int(__cdecl*original_ExitWhenReady)(int *, int *) = (int(__cdecl*)(int *, int *))0x0045412d;
 CARM95_HOOK_FUNCTION(original_ExitWhenReady, ExitWhenReady)
 int __cdecl ExitWhenReady(int *pCurrent_choice, int *pCurrent_mode) {
@@ -1313,9 +1839,15 @@ int __cdecl ExitWhenReady(int *pCurrent_choice, int *pCurrent_mode) {
     (void)pCurrent_choice;
     (void)pCurrent_mode;
 
-    return original_ExitWhenReady(pCurrent_choice, pCurrent_mode);
+    if (function_hook_state_ExitWhenReady == HOOK_ENABLED) {
+        assert(0 && "ExitWhenReady not implemented.");
+        abort();
+    } else {
+        return original_ExitWhenReady(pCurrent_choice, pCurrent_mode);
+    }
 }
 
+function_hook_state_t function_hook_state_NetSynchRaceStart2 = HOOK_UNAVAILABLE;
 static tSO_result(__cdecl*original_NetSynchRaceStart2)(tNet_synch_mode) = (tSO_result(__cdecl*)(tNet_synch_mode))0x00454196;
 CARM95_HOOK_FUNCTION(original_NetSynchRaceStart2, NetSynchRaceStart2)
 tSO_result __cdecl NetSynchRaceStart2(tNet_synch_mode pMode) {
@@ -1355,15 +1887,26 @@ tSO_result __cdecl NetSynchRaceStart2(tNet_synch_mode pMode) {
     (void)interface_spec_c;
     (void)result;
 
-    return original_NetSynchRaceStart2(pMode);
+    if (function_hook_state_NetSynchRaceStart2 == HOOK_ENABLED) {
+        assert(0 && "NetSynchRaceStart2 not implemented.");
+        abort();
+    } else {
+        return original_NetSynchRaceStart2(pMode);
+    }
 }
 
+function_hook_state_t function_hook_state_NetSynchRaceStart = HOOK_UNAVAILABLE;
 static tSO_result(__cdecl*original_NetSynchRaceStart)() = (tSO_result(__cdecl*)())0x004542c4;
 CARM95_HOOK_FUNCTION(original_NetSynchRaceStart, NetSynchRaceStart)
 tSO_result __cdecl NetSynchRaceStart() {
     LOG_TRACE("()");
 
 
-    return original_NetSynchRaceStart();
+    if (function_hook_state_NetSynchRaceStart == HOOK_ENABLED) {
+        assert(0 && "NetSynchRaceStart not implemented.");
+        abort();
+    } else {
+        return original_NetSynchRaceStart();
+    }
 }
 

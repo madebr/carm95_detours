@@ -4,7 +4,11 @@
 
 #include "carm95_hooks.h"
 
+#include "carm95_webserver.h"
 
+#include <assert.h>
+
+function_hook_state_t function_hook_state_lexerError = HOOK_UNAVAILABLE;
 void(__cdecl*lexerError)(struct br_lexer *, char *) = (void(__cdecl*)(struct br_lexer *, char *))0x004e6d60;
 void lexerError_do_not_use(struct br_lexer *l, char *string) {
     LOG_TRACE("(%p, \"%s\")", l, string);
@@ -12,9 +16,15 @@ void lexerError_do_not_use(struct br_lexer *l, char *string) {
     (void)l;
     (void)string;
 
-    NOT_IMPLEMENTED();
+    if (function_hook_state_lexerError == HOOK_ENABLED) {
+        assert(0 && "lexerError_do_not_use not implemented.");
+        abort();
+    } else {
+        NOT_IMPLEMENTED();
+    }
 }
 
+function_hook_state_t function_hook_state_BrLexerAllocate = HOOK_UNAVAILABLE;
 static struct br_lexer *(__cdecl*original_BrLexerAllocate)(struct br_lexer_keyword *, int) = (struct br_lexer *(__cdecl*)(struct br_lexer_keyword *, int))0x004e6d00;
 CARM95_HOOK_FUNCTION(original_BrLexerAllocate, BrLexerAllocate)
 struct br_lexer* __cdecl BrLexerAllocate(struct br_lexer_keyword *keywords, int nkeywords) {
@@ -25,9 +35,15 @@ struct br_lexer* __cdecl BrLexerAllocate(struct br_lexer_keyword *keywords, int 
     (void)nkeywords;
     (void)l;
 
-    return original_BrLexerAllocate(keywords, nkeywords);
+    if (function_hook_state_BrLexerAllocate == HOOK_ENABLED) {
+        assert(0 && "BrLexerAllocate not implemented.");
+        abort();
+    } else {
+        return original_BrLexerAllocate(keywords, nkeywords);
+    }
 }
 
+function_hook_state_t function_hook_state_BrLexerCommentSet = HOOK_UNAVAILABLE;
 static char(__cdecl*original_BrLexerCommentSet)(struct br_lexer *, char) = (char(__cdecl*)(struct br_lexer *, char))0x004e6d70;
 CARM95_HOOK_FUNCTION(original_BrLexerCommentSet, BrLexerCommentSet)
 char __cdecl BrLexerCommentSet(struct br_lexer *l, char eol_comment) {
@@ -38,9 +54,15 @@ char __cdecl BrLexerCommentSet(struct br_lexer *l, char eol_comment) {
     (void)eol_comment;
     (void)old;
 
-    return original_BrLexerCommentSet(l, eol_comment);
+    if (function_hook_state_BrLexerCommentSet == HOOK_ENABLED) {
+        assert(0 && "BrLexerCommentSet not implemented.");
+        abort();
+    } else {
+        return original_BrLexerCommentSet(l, eol_comment);
+    }
 }
 
+function_hook_state_t function_hook_state_BrLexerErrorSet = HOOK_UNAVAILABLE;
 static br_lexer_error_cbfn *(__cdecl*original_BrLexerErrorSet)(struct br_lexer *, br_lexer_error_cbfn *) = (br_lexer_error_cbfn *(__cdecl*)(struct br_lexer *, br_lexer_error_cbfn *))0x004e6d80;
 CARM95_HOOK_FUNCTION(original_BrLexerErrorSet, BrLexerErrorSet)
 br_lexer_error_cbfn* __cdecl BrLexerErrorSet(struct br_lexer *l, br_lexer_error_cbfn *error) {
@@ -51,9 +73,15 @@ br_lexer_error_cbfn* __cdecl BrLexerErrorSet(struct br_lexer *l, br_lexer_error_
     (void)error;
     (void)old;
 
-    return original_BrLexerErrorSet(l, error);
+    if (function_hook_state_BrLexerErrorSet == HOOK_ENABLED) {
+        assert(0 && "BrLexerErrorSet not implemented.");
+        abort();
+    } else {
+        return original_BrLexerErrorSet(l, error);
+    }
 }
 
+function_hook_state_t function_hook_state_BrLexerFree = HOOK_UNAVAILABLE;
 static void(__cdecl*original_BrLexerFree)(struct br_lexer *) = (void(__cdecl*)(struct br_lexer *))0x004e6db0;
 CARM95_HOOK_FUNCTION(original_BrLexerFree, BrLexerFree)
 void __cdecl BrLexerFree(struct br_lexer *l) {
@@ -61,9 +89,15 @@ void __cdecl BrLexerFree(struct br_lexer *l) {
 
     (void)l;
 
-    original_BrLexerFree(l);
+    if (function_hook_state_BrLexerFree == HOOK_ENABLED) {
+        assert(0 && "BrLexerFree not implemented.");
+        abort();
+    } else {
+        original_BrLexerFree(l);
+    }
 }
 
+function_hook_state_t function_hook_state_fileGetchar = HOOK_UNAVAILABLE;
 static void(__cdecl*original_fileGetchar)(struct br_lexer_source *) = (void(__cdecl*)(struct br_lexer_source *))0x004e6e60;
 CARM95_HOOK_FUNCTION(original_fileGetchar, fileGetchar)
 void __cdecl fileGetchar(struct br_lexer_source *source) {
@@ -71,9 +105,15 @@ void __cdecl fileGetchar(struct br_lexer_source *source) {
 
     (void)source;
 
-    original_fileGetchar(source);
+    if (function_hook_state_fileGetchar == HOOK_ENABLED) {
+        assert(0 && "fileGetchar not implemented.");
+        abort();
+    } else {
+        original_fileGetchar(source);
+    }
 }
 
+function_hook_state_t function_hook_state_BrLexerPushFile = HOOK_UNAVAILABLE;
 static br_error(__cdecl*original_BrLexerPushFile)(struct br_lexer *, char *) = (br_error(__cdecl*)(struct br_lexer *, char *))0x004e6dc0;
 CARM95_HOOK_FUNCTION(original_BrLexerPushFile, BrLexerPushFile)
 br_error __cdecl BrLexerPushFile(struct br_lexer *l, char *file) {
@@ -88,9 +128,15 @@ br_error __cdecl BrLexerPushFile(struct br_lexer *l, char *file) {
     (void)f;
     (void)mode;
 
-    return original_BrLexerPushFile(l, file);
+    if (function_hook_state_BrLexerPushFile == HOOK_ENABLED) {
+        assert(0 && "BrLexerPushFile not implemented.");
+        abort();
+    } else {
+        return original_BrLexerPushFile(l, file);
+    }
 }
 
+function_hook_state_t function_hook_state_stringGetchar = HOOK_UNAVAILABLE;
 static void(__cdecl*original_stringGetchar)(struct br_lexer_source *) = (void(__cdecl*)(struct br_lexer_source *))0x004e6ed0;
 CARM95_HOOK_FUNCTION(original_stringGetchar, stringGetchar)
 void __cdecl stringGetchar(struct br_lexer_source *source) {
@@ -100,9 +146,15 @@ void __cdecl stringGetchar(struct br_lexer_source *source) {
     (void)source;
     (void)cp;
 
-    original_stringGetchar(source);
+    if (function_hook_state_stringGetchar == HOOK_ENABLED) {
+        assert(0 && "stringGetchar not implemented.");
+        abort();
+    } else {
+        original_stringGetchar(source);
+    }
 }
 
+function_hook_state_t function_hook_state_BrLexerPushString = HOOK_UNAVAILABLE;
 static br_error(__cdecl*original_BrLexerPushString)(struct br_lexer *, char *, char *) = (br_error(__cdecl*)(struct br_lexer *, char *, char *))0x004e6e80;
 CARM95_HOOK_FUNCTION(original_BrLexerPushString, BrLexerPushString)
 br_error __cdecl BrLexerPushString(struct br_lexer *l, char *string, char *name) {
@@ -114,9 +166,15 @@ br_error __cdecl BrLexerPushString(struct br_lexer *l, char *string, char *name)
     (void)name;
     (void)s;
 
-    return original_BrLexerPushString(l, string, name);
+    if (function_hook_state_BrLexerPushString == HOOK_ENABLED) {
+        assert(0 && "BrLexerPushString not implemented.");
+        abort();
+    } else {
+        return original_BrLexerPushString(l, string, name);
+    }
 }
 
+function_hook_state_t function_hook_state_BrLexerPop = HOOK_UNAVAILABLE;
 static struct br_lexer_source *(__cdecl*original_BrLexerPop)(struct br_lexer *) = (struct br_lexer_source *(__cdecl*)(struct br_lexer *))0x004e6f00;
 CARM95_HOOK_FUNCTION(original_BrLexerPop, BrLexerPop)
 struct br_lexer_source* __cdecl BrLexerPop(struct br_lexer *l) {
@@ -126,9 +184,15 @@ struct br_lexer_source* __cdecl BrLexerPop(struct br_lexer *l) {
     (void)l;
     (void)s;
 
-    return original_BrLexerPop(l);
+    if (function_hook_state_BrLexerPop == HOOK_ENABLED) {
+        assert(0 && "BrLexerPop not implemented.");
+        abort();
+    } else {
+        return original_BrLexerPop(l);
+    }
 }
 
+function_hook_state_t function_hook_state_lexerAdvance = HOOK_UNAVAILABLE;
 static void(__stdcall*original_lexerAdvance)(struct br_lexer *) = (void(__stdcall*)(struct br_lexer *))0x004e6f20;
 CARM95_HOOK_FUNCTION(original_lexerAdvance, lexerAdvance)
 void __stdcall lexerAdvance(struct br_lexer *l) {
@@ -140,9 +204,15 @@ void __stdcall lexerAdvance(struct br_lexer *l) {
     (void)n;
     (void)got_point;
 
-    original_lexerAdvance(l);
+    if (function_hook_state_lexerAdvance == HOOK_ENABLED) {
+        assert(0 && "lexerAdvance not implemented.");
+        abort();
+    } else {
+        original_lexerAdvance(l);
+    }
 }
 
+function_hook_state_t function_hook_state_lexerAdvanceDump = HOOK_UNAVAILABLE;
 void lexerAdvanceDump(struct br_lexer *l) {
     char *tname;
     char *tvalue;
@@ -156,9 +226,15 @@ void lexerAdvanceDump(struct br_lexer *l) {
     (void)val;
     (void)tmp;
 
-    NOT_IMPLEMENTED();
+    if (function_hook_state_lexerAdvanceDump == HOOK_ENABLED) {
+        assert(0 && "lexerAdvanceDump not implemented.");
+        abort();
+    } else {
+        NOT_IMPLEMENTED();
+    }
 }
 
+function_hook_state_t function_hook_state_BrLexerDumpSet = HOOK_UNAVAILABLE;
 br_error(__cdecl*BrLexerDumpSet)(struct br_lexer *, br_putline_cbfn *, void *) = (br_error(__cdecl*)(struct br_lexer *, br_putline_cbfn *, void *))0x004e7290;
 br_error BrLexerDumpSet_do_not_use(struct br_lexer *l, br_putline_cbfn *putline, void *putline_arg) {
     LOG_TRACE("(%p, %p, %p)", l, putline, putline_arg);
@@ -167,9 +243,15 @@ br_error BrLexerDumpSet_do_not_use(struct br_lexer *l, br_putline_cbfn *putline,
     (void)putline;
     (void)putline_arg;
 
-    NOT_IMPLEMENTED();
+    if (function_hook_state_BrLexerDumpSet == HOOK_ENABLED) {
+        assert(0 && "BrLexerDumpSet_do_not_use not implemented.");
+        abort();
+    } else {
+        NOT_IMPLEMENTED();
+    }
 }
 
+function_hook_state_t function_hook_state_BrLexerTokenError = HOOK_UNAVAILABLE;
 static void(__cdecl*original_BrLexerTokenError)(struct br_lexer *, br_lexer_token_id) = (void(__cdecl*)(struct br_lexer *, br_lexer_token_id))0x004e72a0;
 CARM95_HOOK_FUNCTION(original_BrLexerTokenError, BrLexerTokenError)
 void __cdecl BrLexerTokenError(struct br_lexer *l, br_lexer_token_id t) {
@@ -182,9 +264,15 @@ void __cdecl BrLexerTokenError(struct br_lexer *l, br_lexer_token_id t) {
     (void)i;
     (void)tmp;
 
-    original_BrLexerTokenError(l, t);
+    if (function_hook_state_BrLexerTokenError == HOOK_ENABLED) {
+        assert(0 && "BrLexerTokenError not implemented.");
+        abort();
+    } else {
+        original_BrLexerTokenError(l, t);
+    }
 }
 
+function_hook_state_t function_hook_state_BrLexerPosition = HOOK_UNAVAILABLE;
 static void(__cdecl*original_BrLexerPosition)(struct br_lexer *, char *, br_size_t) = (void(__cdecl*)(struct br_lexer *, char *, br_size_t))0x004e73e0;
 CARM95_HOOK_FUNCTION(original_BrLexerPosition, BrLexerPosition)
 void __cdecl BrLexerPosition(struct br_lexer *l, char *buf, br_size_t buf_size) {
@@ -194,9 +282,15 @@ void __cdecl BrLexerPosition(struct br_lexer *l, char *buf, br_size_t buf_size) 
     (void)buf;
     (void)buf_size;
 
-    original_BrLexerPosition(l, buf, buf_size);
+    if (function_hook_state_BrLexerPosition == HOOK_ENABLED) {
+        assert(0 && "BrLexerPosition not implemented.");
+        abort();
+    } else {
+        original_BrLexerPosition(l, buf, buf_size);
+    }
 }
 
+function_hook_state_t function_hook_state_BrParseFixed = HOOK_UNAVAILABLE;
 static br_scalar(__cdecl*original_BrParseFixed)(struct br_lexer *) = (br_scalar(__cdecl*)(struct br_lexer *))0x004e7420;
 CARM95_HOOK_FUNCTION(original_BrParseFixed, BrParseFixed)
 br_scalar __cdecl BrParseFixed(struct br_lexer *l) {
@@ -208,9 +302,15 @@ br_scalar __cdecl BrParseFixed(struct br_lexer *l) {
     (void)neg;
     (void)x;
 
-    return original_BrParseFixed(l);
+    if (function_hook_state_BrParseFixed == HOOK_ENABLED) {
+        assert(0 && "BrParseFixed not implemented.");
+        abort();
+    } else {
+        return original_BrParseFixed(l);
+    }
 }
 
+function_hook_state_t function_hook_state_BrParseFloat = HOOK_UNAVAILABLE;
 static br_float(__cdecl*original_BrParseFloat)(struct br_lexer *) = (br_float(__cdecl*)(struct br_lexer *))0x004e74a0;
 CARM95_HOOK_FUNCTION(original_BrParseFloat, BrParseFloat)
 br_float __cdecl BrParseFloat(struct br_lexer *l) {
@@ -222,9 +322,15 @@ br_float __cdecl BrParseFloat(struct br_lexer *l) {
     (void)neg;
     (void)f;
 
-    return original_BrParseFloat(l);
+    if (function_hook_state_BrParseFloat == HOOK_ENABLED) {
+        assert(0 && "BrParseFloat not implemented.");
+        abort();
+    } else {
+        return original_BrParseFloat(l);
+    }
 }
 
+function_hook_state_t function_hook_state_BrParseInteger = HOOK_UNAVAILABLE;
 static br_int_32(__cdecl*original_BrParseInteger)(struct br_lexer *) = (br_int_32(__cdecl*)(struct br_lexer *))0x004e7520;
 CARM95_HOOK_FUNCTION(original_BrParseInteger, BrParseInteger)
 br_int_32 __cdecl BrParseInteger(struct br_lexer *l) {
@@ -236,9 +342,15 @@ br_int_32 __cdecl BrParseInteger(struct br_lexer *l) {
     (void)neg;
     (void)i;
 
-    return original_BrParseInteger(l);
+    if (function_hook_state_BrParseInteger == HOOK_ENABLED) {
+        assert(0 && "BrParseInteger not implemented.");
+        abort();
+    } else {
+        return original_BrParseInteger(l);
+    }
 }
 
+function_hook_state_t function_hook_state_BrParseVectorFixed = HOOK_UNAVAILABLE;
 static br_int_32(__cdecl*original_BrParseVectorFixed)(struct br_lexer *, br_fixed_ls *, br_int_32) = (br_int_32(__cdecl*)(struct br_lexer *, br_fixed_ls *, br_int_32))0x004e7580;
 CARM95_HOOK_FUNCTION(original_BrParseVectorFixed, BrParseVectorFixed)
 br_int_32 __cdecl BrParseVectorFixed(struct br_lexer *l, br_fixed_ls *v, br_int_32 max) {
@@ -250,9 +362,15 @@ br_int_32 __cdecl BrParseVectorFixed(struct br_lexer *l, br_fixed_ls *v, br_int_
     (void)max;
     (void)n;
 
-    return original_BrParseVectorFixed(l, v, max);
+    if (function_hook_state_BrParseVectorFixed == HOOK_ENABLED) {
+        assert(0 && "BrParseVectorFixed not implemented.");
+        abort();
+    } else {
+        return original_BrParseVectorFixed(l, v, max);
+    }
 }
 
+function_hook_state_t function_hook_state_BrParseVectorFloat = HOOK_UNAVAILABLE;
 static br_int_32(__cdecl*original_BrParseVectorFloat)(struct br_lexer *, br_float *, br_int_32) = (br_int_32(__cdecl*)(struct br_lexer *, br_float *, br_int_32))0x004e7610;
 CARM95_HOOK_FUNCTION(original_BrParseVectorFloat, BrParseVectorFloat)
 br_int_32 __cdecl BrParseVectorFloat(struct br_lexer *l, br_float *v, br_int_32 max) {
@@ -264,9 +382,15 @@ br_int_32 __cdecl BrParseVectorFloat(struct br_lexer *l, br_float *v, br_int_32 
     (void)max;
     (void)n;
 
-    return original_BrParseVectorFloat(l, v, max);
+    if (function_hook_state_BrParseVectorFloat == HOOK_ENABLED) {
+        assert(0 && "BrParseVectorFloat not implemented.");
+        abort();
+    } else {
+        return original_BrParseVectorFloat(l, v, max);
+    }
 }
 
+function_hook_state_t function_hook_state_BrParseMatrixFixed = HOOK_UNAVAILABLE;
 static br_int_32(__cdecl*original_BrParseMatrixFixed)(struct br_lexer *, br_fixed_ls *, br_int_32, br_int_32) = (br_int_32(__cdecl*)(struct br_lexer *, br_fixed_ls *, br_int_32, br_int_32))0x004e7730;
 CARM95_HOOK_FUNCTION(original_BrParseMatrixFixed, BrParseMatrixFixed)
 br_int_32 __cdecl BrParseMatrixFixed(struct br_lexer *l, br_fixed_ls *m, br_int_32 width, br_int_32 max_h) {
@@ -279,9 +403,15 @@ br_int_32 __cdecl BrParseMatrixFixed(struct br_lexer *l, br_fixed_ls *m, br_int_
     (void)max_h;
     (void)n;
 
-    return original_BrParseMatrixFixed(l, m, width, max_h);
+    if (function_hook_state_BrParseMatrixFixed == HOOK_ENABLED) {
+        assert(0 && "BrParseMatrixFixed not implemented.");
+        abort();
+    } else {
+        return original_BrParseMatrixFixed(l, m, width, max_h);
+    }
 }
 
+function_hook_state_t function_hook_state_BrParseMatrixFloat = HOOK_UNAVAILABLE;
 static br_int_32(__cdecl*original_BrParseMatrixFloat)(struct br_lexer *, br_float *, br_int_32, br_int_32) = (br_int_32(__cdecl*)(struct br_lexer *, br_float *, br_int_32, br_int_32))0x004e77c0;
 CARM95_HOOK_FUNCTION(original_BrParseMatrixFloat, BrParseMatrixFloat)
 br_int_32 __cdecl BrParseMatrixFloat(struct br_lexer *l, br_float *m, br_int_32 width, br_int_32 max_h) {
@@ -294,6 +424,11 @@ br_int_32 __cdecl BrParseMatrixFloat(struct br_lexer *l, br_float *m, br_int_32 
     (void)max_h;
     (void)n;
 
-    return original_BrParseMatrixFloat(l, m, width, max_h);
+    if (function_hook_state_BrParseMatrixFloat == HOOK_ENABLED) {
+        assert(0 && "BrParseMatrixFloat not implemented.");
+        abort();
+    } else {
+        return original_BrParseMatrixFloat(l, m, width, max_h);
+    }
 }
 

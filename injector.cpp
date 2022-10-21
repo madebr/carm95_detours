@@ -8,7 +8,7 @@
 
 namespace fs = std::filesystem;
 
-int CDECL main(int argc, char* argv[])
+int CDECL main(int argc, char *argv[])
 {
 #if 0
     auto workPathDir = fs::current_path();
@@ -56,6 +56,7 @@ int CDECL main(int argc, char* argv[])
     si.cb = sizeof(si);
 
     command = victimPath;
+
     for (int i = 1; i < argc; i++) {
         command += " ";
         command += argv[i];

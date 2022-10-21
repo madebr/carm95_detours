@@ -2,6 +2,7 @@
 #define S3_SOUND_H
 
 #include <brender/brender.h>
+
 // External typedefs
 
 typedef float tF32;

@@ -4,6 +4,9 @@
 
 #include "carm95_hooks.h"
 
+#include "carm95_webserver.h"
+
+#include <assert.h>
 #if 0
 unsigned char(* hookvar_mouseHandler )[245];
 #endif
@@ -18,22 +21,35 @@ host_real_memory * hookvar_mouseMemory ;
 host_regs * hookvar_regs__readmse ;
 #endif
 
+function_hook_state_t function_hook_state_DOSMouseBegin = HOOK_UNAVAILABLE;
 br_error DOSMouseBegin() {
     host_info hi;
     LOG_TRACE("()");
 
     (void)hi;
 
-    NOT_IMPLEMENTED();
+    if (function_hook_state_DOSMouseBegin == HOOK_ENABLED) {
+        assert(0 && "DOSMouseBegin not implemented.");
+        abort();
+    } else {
+        NOT_IMPLEMENTED();
+    }
 }
 
+function_hook_state_t function_hook_state_DOSMouseEnd = HOOK_UNAVAILABLE;
 void DOSMouseEnd() {
     LOG_TRACE("()");
 
 
-    NOT_IMPLEMENTED();
+    if (function_hook_state_DOSMouseEnd == HOOK_ENABLED) {
+        assert(0 && "DOSMouseEnd not implemented.");
+        abort();
+    } else {
+        NOT_IMPLEMENTED();
+    }
 }
 
+function_hook_state_t function_hook_state_DOSMouseRead = HOOK_UNAVAILABLE;
 br_error DOSMouseRead(br_int_32 *mouse_x, br_int_32 *mouse_y, br_uint_32 *mouse_buttons) {
     br_int_16 mx;
     br_int_16 my;
@@ -49,6 +65,11 @@ br_error DOSMouseRead(br_int_32 *mouse_x, br_int_32 *mouse_y, br_uint_32 *mouse_
     (void)ox;
     (void)oy;
 
-    NOT_IMPLEMENTED();
+    if (function_hook_state_DOSMouseRead == HOOK_ENABLED) {
+        assert(0 && "DOSMouseRead not implemented.");
+        abort();
+    } else {
+        NOT_IMPLEMENTED();
+    }
 }
 

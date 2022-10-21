@@ -4,6 +4,9 @@
 
 #include "carm95_hooks.h"
 
+#include "carm95_webserver.h"
+
+#include <assert.h>
 br_scalar * hookvar_gYon_factor  = (void*)0x00520038;
 br_material *(* hookvar_gMaterial )[2] = (void*)0x00530c80;
 #if 0

@@ -4,38 +4,60 @@
 
 #include "carm95_hooks.h"
 
+#include "carm95_webserver.h"
+
+#include <assert.h>
 br_allocator * hookvar_gAllocator  = (void*)0x00513600;
 int * hookvar_gNon_fatal_allocation_errors  = (void*)0x00513614;
 char *(* hookvar_gMem_names )[247] = (void*)0x00513618;
 br_resource_class(* hookvar_gStainless_classes )[118] = (void*)0x00537960;
 
+function_hook_state_t function_hook_state_SetNonFatalAllocationErrors = HOOK_UNAVAILABLE;
 static void(__cdecl*original_SetNonFatalAllocationErrors)() = (void(__cdecl*)())0x00463d80;
 CARM95_HOOK_FUNCTION(original_SetNonFatalAllocationErrors, SetNonFatalAllocationErrors)
 void __cdecl SetNonFatalAllocationErrors() {
     LOG_TRACE("()");
 
 
-    original_SetNonFatalAllocationErrors();
+    if (function_hook_state_SetNonFatalAllocationErrors == HOOK_ENABLED) {
+        assert(0 && "SetNonFatalAllocationErrors not implemented.");
+        abort();
+    } else {
+        original_SetNonFatalAllocationErrors();
+    }
 }
 
+function_hook_state_t function_hook_state_ResetNonFatalAllocationErrors = HOOK_UNAVAILABLE;
 static void(__cdecl*original_ResetNonFatalAllocationErrors)() = (void(__cdecl*)())0x00463d95;
 CARM95_HOOK_FUNCTION(original_ResetNonFatalAllocationErrors, ResetNonFatalAllocationErrors)
 void __cdecl ResetNonFatalAllocationErrors() {
     LOG_TRACE("()");
 
 
-    original_ResetNonFatalAllocationErrors();
+    if (function_hook_state_ResetNonFatalAllocationErrors == HOOK_ENABLED) {
+        assert(0 && "ResetNonFatalAllocationErrors not implemented.");
+        abort();
+    } else {
+        original_ResetNonFatalAllocationErrors();
+    }
 }
 
+function_hook_state_t function_hook_state_AllocationErrorsAreFatal = HOOK_UNAVAILABLE;
 static int(__cdecl*original_AllocationErrorsAreFatal)() = (int(__cdecl*)())0x00463daa;
 CARM95_HOOK_FUNCTION(original_AllocationErrorsAreFatal, AllocationErrorsAreFatal)
 int __cdecl AllocationErrorsAreFatal() {
     LOG_TRACE("()");
 
 
-    return original_AllocationErrorsAreFatal();
+    if (function_hook_state_AllocationErrorsAreFatal == HOOK_ENABLED) {
+        assert(0 && "AllocationErrorsAreFatal not implemented.");
+        abort();
+    } else {
+        return original_AllocationErrorsAreFatal();
+    }
 }
 
+function_hook_state_t function_hook_state_MAMSInitMem = HOOK_UNAVAILABLE;
 static void(__cdecl*original_MAMSInitMem)() = (void(__cdecl*)())0x00463dd3;
 CARM95_HOOK_FUNCTION(original_MAMSInitMem, MAMSInitMem)
 void __cdecl MAMSInitMem() {
@@ -48,9 +70,15 @@ void __cdecl MAMSInitMem() {
     (void)f;
     (void)the_path;
 
-    original_MAMSInitMem();
+    if (function_hook_state_MAMSInitMem == HOOK_ENABLED) {
+        assert(0 && "MAMSInitMem not implemented.");
+        abort();
+    } else {
+        original_MAMSInitMem();
+    }
 }
 
+function_hook_state_t function_hook_state_PrintMemoryDump = HOOK_UNAVAILABLE;
 static void(__cdecl*original_PrintMemoryDump)(int, char *) = (void(__cdecl*)(int, char *))0x00463de4;
 CARM95_HOOK_FUNCTION(original_PrintMemoryDump, PrintMemoryDump)
 void __cdecl PrintMemoryDump(int pFlags, char *pTitle) {
@@ -59,9 +87,15 @@ void __cdecl PrintMemoryDump(int pFlags, char *pTitle) {
     (void)pFlags;
     (void)pTitle;
 
-    original_PrintMemoryDump(pFlags, pTitle);
+    if (function_hook_state_PrintMemoryDump == HOOK_ENABLED) {
+        assert(0 && "PrintMemoryDump not implemented.");
+        abort();
+    } else {
+        original_PrintMemoryDump(pFlags, pTitle);
+    }
 }
 
+function_hook_state_t function_hook_state_DRStdlibAllocate = HOOK_UNAVAILABLE;
 static void *(__cdecl*original_DRStdlibAllocate)(br_size_t, br_uint_8) = (void *(__cdecl*)(br_size_t, br_uint_8))0x00463def;
 CARM95_HOOK_FUNCTION(original_DRStdlibAllocate, DRStdlibAllocate)
 void* __cdecl DRStdlibAllocate(br_size_t size, br_uint_8 type) {
@@ -76,9 +110,15 @@ void* __cdecl DRStdlibAllocate(br_size_t size, br_uint_8 type) {
     (void)i;
     (void)s;
 
-    return original_DRStdlibAllocate(size, type);
+    if (function_hook_state_DRStdlibAllocate == HOOK_ENABLED) {
+        assert(0 && "DRStdlibAllocate not implemented.");
+        abort();
+    } else {
+        return original_DRStdlibAllocate(size, type);
+    }
 }
 
+function_hook_state_t function_hook_state_DRStdlibFree = HOOK_UNAVAILABLE;
 static void(__cdecl*original_DRStdlibFree)(void *) = (void(__cdecl*)(void *))0x00463ea1;
 CARM95_HOOK_FUNCTION(original_DRStdlibFree, DRStdlibFree)
 void __cdecl DRStdlibFree(void *mem) {
@@ -88,9 +128,15 @@ void __cdecl DRStdlibFree(void *mem) {
     (void)mem;
     (void)i;
 
-    original_DRStdlibFree(mem);
+    if (function_hook_state_DRStdlibFree == HOOK_ENABLED) {
+        assert(0 && "DRStdlibFree not implemented.");
+        abort();
+    } else {
+        original_DRStdlibFree(mem);
+    }
 }
 
+function_hook_state_t function_hook_state_DRStdlibInquire = HOOK_UNAVAILABLE;
 static br_size_t(__cdecl*original_DRStdlibInquire)(br_uint_8) = (br_size_t(__cdecl*)(br_uint_8))0x00463ebb;
 CARM95_HOOK_FUNCTION(original_DRStdlibInquire, DRStdlibInquire)
 br_size_t __cdecl DRStdlibInquire(br_uint_8 type) {
@@ -98,9 +144,15 @@ br_size_t __cdecl DRStdlibInquire(br_uint_8 type) {
 
     (void)type;
 
-    return original_DRStdlibInquire(type);
+    if (function_hook_state_DRStdlibInquire == HOOK_ENABLED) {
+        assert(0 && "DRStdlibInquire not implemented.");
+        abort();
+    } else {
+        return original_DRStdlibInquire(type);
+    }
 }
 
+function_hook_state_t function_hook_state_Claim4ByteAlignment = HOOK_UNAVAILABLE;
 static br_uint_32(__cdecl*original_Claim4ByteAlignment)(br_uint_8) = (br_uint_32(__cdecl*)(br_uint_8))0x00463ecd;
 CARM95_HOOK_FUNCTION(original_Claim4ByteAlignment, Claim4ByteAlignment)
 br_uint_32 __cdecl Claim4ByteAlignment(br_uint_8 type) {
@@ -108,18 +160,30 @@ br_uint_32 __cdecl Claim4ByteAlignment(br_uint_8 type) {
 
     (void)type;
 
-    return original_Claim4ByteAlignment(type);
+    if (function_hook_state_Claim4ByteAlignment == HOOK_ENABLED) {
+        assert(0 && "Claim4ByteAlignment not implemented.");
+        abort();
+    } else {
+        return original_Claim4ByteAlignment(type);
+    }
 }
 
+function_hook_state_t function_hook_state_InstallDRMemCalls = HOOK_UNAVAILABLE;
 static void(__cdecl*original_InstallDRMemCalls)() = (void(__cdecl*)())0x00463ee2;
 CARM95_HOOK_FUNCTION(original_InstallDRMemCalls, InstallDRMemCalls)
 void __cdecl InstallDRMemCalls() {
     LOG_TRACE("()");
 
 
-    original_InstallDRMemCalls();
+    if (function_hook_state_InstallDRMemCalls == HOOK_ENABLED) {
+        assert(0 && "InstallDRMemCalls not implemented.");
+        abort();
+    } else {
+        original_InstallDRMemCalls();
+    }
 }
 
+function_hook_state_t function_hook_state_MAMSUnlock = HOOK_UNAVAILABLE;
 static void(__cdecl*original_MAMSUnlock)(void **) = (void(__cdecl*)(void **))0x00463efa;
 CARM95_HOOK_FUNCTION(original_MAMSUnlock, MAMSUnlock)
 void __cdecl MAMSUnlock(void **pPtr) {
@@ -127,9 +191,15 @@ void __cdecl MAMSUnlock(void **pPtr) {
 
     (void)pPtr;
 
-    original_MAMSUnlock(pPtr);
+    if (function_hook_state_MAMSUnlock == HOOK_ENABLED) {
+        assert(0 && "MAMSUnlock not implemented.");
+        abort();
+    } else {
+        original_MAMSUnlock(pPtr);
+    }
 }
 
+function_hook_state_t function_hook_state_MAMSLock = HOOK_UNAVAILABLE;
 static void(__cdecl*original_MAMSLock)(void **) = (void(__cdecl*)(void **))0x00463f1c;
 CARM95_HOOK_FUNCTION(original_MAMSLock, MAMSLock)
 void __cdecl MAMSLock(void **pPtr) {
@@ -137,9 +207,15 @@ void __cdecl MAMSLock(void **pPtr) {
 
     (void)pPtr;
 
-    original_MAMSLock(pPtr);
+    if (function_hook_state_MAMSLock == HOOK_ENABLED) {
+        assert(0 && "MAMSLock not implemented.");
+        abort();
+    } else {
+        original_MAMSLock(pPtr);
+    }
 }
 
+function_hook_state_t function_hook_state_CreateStainlessClasses = HOOK_UNAVAILABLE;
 static void(__cdecl*original_CreateStainlessClasses)() = (void(__cdecl*)())0x00463f27;
 CARM95_HOOK_FUNCTION(original_CreateStainlessClasses, CreateStainlessClasses)
 void __cdecl CreateStainlessClasses() {
@@ -148,15 +224,26 @@ void __cdecl CreateStainlessClasses() {
 
     (void)i;
 
-    original_CreateStainlessClasses();
+    if (function_hook_state_CreateStainlessClasses == HOOK_ENABLED) {
+        assert(0 && "CreateStainlessClasses not implemented.");
+        abort();
+    } else {
+        original_CreateStainlessClasses();
+    }
 }
 
+function_hook_state_t function_hook_state_CheckMemory = HOOK_UNAVAILABLE;
 static void(__cdecl*original_CheckMemory)() = (void(__cdecl*)())0x00463f97;
 CARM95_HOOK_FUNCTION(original_CheckMemory, CheckMemory)
 void __cdecl CheckMemory() {
     LOG_TRACE("()");
 
 
-    original_CheckMemory();
+    if (function_hook_state_CheckMemory == HOOK_ENABLED) {
+        assert(0 && "CheckMemory not implemented.");
+        abort();
+    } else {
+        original_CheckMemory();
+    }
 }
 

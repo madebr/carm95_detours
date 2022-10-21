@@ -1,5 +1,6 @@
 
 #include "carm95_hooks.h"
+#include "carm95_webserver.h"
 
 #include <windows.h>
 #include <detours.h>
@@ -30,9 +31,16 @@ BOOL WINAPI DllMain(HINSTANCE hinst, DWORD dwReason, LPVOID reserved) {
         AllocConsole();
 
         SetConsoleTitle(TEXT(CONSOLE_TITLE));
-        freopen("CONIN$", "r", stdin);
-        freopen("CONOUT$", "w", stdout);
-        freopen("CONOUT$", "w", stderr);
+#define WRITE_TO_CONSOLE(TEXT) WriteConsole(GetStdHandle(STD_OUTPUT_HANDLE), (TEXT), strlen(TEXT), NULL, NULL)
+        if (freopen("CONIN$", "r", stdin) == NULL) {
+            WRITE_TO_CONSOLE("Failed to re-open stdin\n");
+        }
+        if (freopen("CONOUT$", "w", stdout) == NULL) {
+            WRITE_TO_CONSOLE("Failed to re-open stdout\n");
+        }
+        if (freopen("CONERR$", "w", stderr) == NULL) {
+            WRITE_TO_CONSOLE("Failed to re-open sstderr\n");
+        }
 
         DetourRestoreAfterWith();
 
@@ -54,6 +62,8 @@ BOOL WINAPI DllMain(HINSTANCE hinst, DWORD dwReason, LPVOID reserved) {
         printf("directory: \"%s\"\n", pathBuffer);
         printf("=================================\n");
 
+        start_hook_webserver(8080);
+
 #if defined(HOOK_INIT_FUNCTION)
         HOOK_INIT_FUNCTION();
 #endif
@@ -68,6 +78,8 @@ BOOL WINAPI DllMain(HINSTANCE hinst, DWORD dwReason, LPVOID reserved) {
         DetourUpdateThread(GetCurrentThread());
 
         DetourTransactionCommit();
+
+        stop_hook_webserver();
     }
     return TRUE;
 }

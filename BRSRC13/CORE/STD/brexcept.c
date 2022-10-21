@@ -4,9 +4,13 @@
 
 #include "carm95_hooks.h"
 
+#include "carm95_webserver.h"
+
+#include <assert.h>
 br_exception_handler ** hookvar__BrExceptionHandler  = (void*)0x0053005c;
 void ** hookvar_exceptionValue  = (void*)0x00544d84;
 
+function_hook_state_t function_hook_state__BrExceptionBegin = HOOK_UNAVAILABLE;
 static br_exception_handler *(__cdecl*original__BrExceptionBegin)() = (br_exception_handler *(__cdecl*)())0x00502b90;
 CARM95_HOOK_FUNCTION(original__BrExceptionBegin, _BrExceptionBegin)
 br_exception_handler* __cdecl _BrExceptionBegin() {
@@ -15,9 +19,15 @@ br_exception_handler* __cdecl _BrExceptionBegin() {
 
     (void)h;
 
-    return original__BrExceptionBegin();
+    if (function_hook_state__BrExceptionBegin == HOOK_ENABLED) {
+        assert(0 && "_BrExceptionBegin not implemented.");
+        abort();
+    } else {
+        return original__BrExceptionBegin();
+    }
 }
 
+function_hook_state_t function_hook_state__BrExceptionEnd = HOOK_UNAVAILABLE;
 static void(__cdecl*original__BrExceptionEnd)() = (void(__cdecl*)())0x00502bb0;
 CARM95_HOOK_FUNCTION(original__BrExceptionEnd, _BrExceptionEnd)
 void __cdecl _BrExceptionEnd() {
@@ -26,9 +36,15 @@ void __cdecl _BrExceptionEnd() {
 
     (void)old;
 
-    original__BrExceptionEnd();
+    if (function_hook_state__BrExceptionEnd == HOOK_ENABLED) {
+        assert(0 && "_BrExceptionEnd not implemented.");
+        abort();
+    } else {
+        original__BrExceptionEnd();
+    }
 }
 
+function_hook_state_t function_hook_state__BrExceptionThrow = HOOK_UNAVAILABLE;
 static void(__cdecl*original__BrExceptionThrow)(br_int_32, void *) = (void(__cdecl*)(br_int_32, void *))0x00502be0;
 CARM95_HOOK_FUNCTION(original__BrExceptionThrow, _BrExceptionThrow)
 void __cdecl _BrExceptionThrow(br_int_32 type, void *value) {
@@ -41,9 +57,15 @@ void __cdecl _BrExceptionThrow(br_int_32 type, void *value) {
     (void)h;
     (void)old;
 
-    original__BrExceptionThrow(type, value);
+    if (function_hook_state__BrExceptionThrow == HOOK_ENABLED) {
+        assert(0 && "_BrExceptionThrow not implemented.");
+        abort();
+    } else {
+        original__BrExceptionThrow(type, value);
+    }
 }
 
+function_hook_state_t function_hook_state__BrExceptionValueFetch = HOOK_UNAVAILABLE;
 static br_exception(__cdecl*original__BrExceptionValueFetch)(br_exception, void **) = (br_exception(__cdecl*)(br_exception, void **))0x00502c50;
 CARM95_HOOK_FUNCTION(original__BrExceptionValueFetch, _BrExceptionValueFetch)
 br_exception __cdecl _BrExceptionValueFetch(br_exception type, void **evp) {
@@ -52,15 +74,26 @@ br_exception __cdecl _BrExceptionValueFetch(br_exception type, void **evp) {
     (void)type;
     (void)evp;
 
-    return original__BrExceptionValueFetch(type, evp);
+    if (function_hook_state__BrExceptionValueFetch == HOOK_ENABLED) {
+        assert(0 && "_BrExceptionValueFetch not implemented.");
+        abort();
+    } else {
+        return original__BrExceptionValueFetch(type, evp);
+    }
 }
 
+function_hook_state_t function_hook_state__BrExceptionResource = HOOK_UNAVAILABLE;
 static void *(__cdecl*original__BrExceptionResource)() = (void *(__cdecl*)())0x00502c70;
 CARM95_HOOK_FUNCTION(original__BrExceptionResource, _BrExceptionResource)
 void* __cdecl _BrExceptionResource() {
     LOG_TRACE("()");
 
 
-    return original__BrExceptionResource();
+    if (function_hook_state__BrExceptionResource == HOOK_ENABLED) {
+        assert(0 && "_BrExceptionResource not implemented.");
+        abort();
+    } else {
+        return original__BrExceptionResource();
+    }
 }
 

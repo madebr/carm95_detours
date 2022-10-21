@@ -4,7 +4,11 @@
 
 #include "carm95_hooks.h"
 
+#include "carm95_webserver.h"
 
+#include <assert.h>
+
+function_hook_state_t function_hook_state_BrQuatMul = HOOK_UNAVAILABLE;
 static br_quat *(__cdecl*original_BrQuatMul)(br_quat *, br_quat *, br_quat *) = (br_quat *(__cdecl*)(br_quat *, br_quat *, br_quat *))0x004d53a0;
 CARM95_HOOK_FUNCTION(original_BrQuatMul, BrQuatMul)
 br_quat* __cdecl BrQuatMul(br_quat *q, br_quat *l, br_quat *r) {
@@ -34,9 +38,15 @@ br_quat* __cdecl BrQuatMul(br_quat *q, br_quat *l, br_quat *r) {
     (void)s;
     (void)t;
 
-    return original_BrQuatMul(q, l, r);
+    if (function_hook_state_BrQuatMul == HOOK_ENABLED) {
+        assert(0 && "BrQuatMul not implemented.");
+        abort();
+    } else {
+        return original_BrQuatMul(q, l, r);
+    }
 }
 
+function_hook_state_t function_hook_state_BrQuatNormalise = HOOK_UNAVAILABLE;
 static br_quat *(__cdecl*original_BrQuatNormalise)(br_quat *, br_quat *) = (br_quat *(__cdecl*)(br_quat *, br_quat *))0x004d5490;
 CARM95_HOOK_FUNCTION(original_BrQuatNormalise, BrQuatNormalise)
 br_quat* __cdecl BrQuatNormalise(br_quat *q, br_quat *qq) {
@@ -47,9 +57,15 @@ br_quat* __cdecl BrQuatNormalise(br_quat *q, br_quat *qq) {
     (void)qq;
     (void)s;
 
-    return original_BrQuatNormalise(q, qq);
+    if (function_hook_state_BrQuatNormalise == HOOK_ENABLED) {
+        assert(0 && "BrQuatNormalise not implemented.");
+        abort();
+    } else {
+        return original_BrQuatNormalise(q, qq);
+    }
 }
 
+function_hook_state_t function_hook_state_BrQuatInvert = HOOK_UNAVAILABLE;
 static br_quat *(__cdecl*original_BrQuatInvert)(br_quat *, br_quat *) = (br_quat *(__cdecl*)(br_quat *, br_quat *))0x004d54f0;
 CARM95_HOOK_FUNCTION(original_BrQuatInvert, BrQuatInvert)
 br_quat* __cdecl BrQuatInvert(br_quat *q, br_quat *qq) {
@@ -58,9 +74,15 @@ br_quat* __cdecl BrQuatInvert(br_quat *q, br_quat *qq) {
     (void)q;
     (void)qq;
 
-    return original_BrQuatInvert(q, qq);
+    if (function_hook_state_BrQuatInvert == HOOK_ENABLED) {
+        assert(0 && "BrQuatInvert not implemented.");
+        abort();
+    } else {
+        return original_BrQuatInvert(q, qq);
+    }
 }
 
+function_hook_state_t function_hook_state_BrQuatSlerp = HOOK_UNAVAILABLE;
 static br_quat *(__cdecl*original_BrQuatSlerp)(br_quat *, br_quat *, br_quat *, br_scalar, br_int_16) = (br_quat *(__cdecl*)(br_quat *, br_quat *, br_quat *, br_scalar, br_int_16))0x004d5520;
 CARM95_HOOK_FUNCTION(original_BrQuatSlerp, BrQuatSlerp)
 br_quat* __cdecl BrQuatSlerp(br_quat *q, br_quat *l, br_quat *r, br_scalar a, br_int_16 spins) {
@@ -86,9 +108,15 @@ br_quat* __cdecl BrQuatSlerp(br_quat *q, br_quat *l, br_quat *r, br_scalar a, br
     (void)scale_r;
     (void)t;
 
-    return original_BrQuatSlerp(q, l, r, a, spins);
+    if (function_hook_state_BrQuatSlerp == HOOK_ENABLED) {
+        assert(0 && "BrQuatSlerp not implemented.");
+        abort();
+    } else {
+        return original_BrQuatSlerp(q, l, r, a, spins);
+    }
 }
 
+function_hook_state_t function_hook_state_BrQuatToMatrix34 = HOOK_UNAVAILABLE;
 static br_matrix34 *(__cdecl*original_BrQuatToMatrix34)(br_matrix34 *, br_quat *) = (br_matrix34 *(__cdecl*)(br_matrix34 *, br_quat *))0x004d56e0;
 CARM95_HOOK_FUNCTION(original_BrQuatToMatrix34, BrQuatToMatrix34)
 br_matrix34* __cdecl BrQuatToMatrix34(br_matrix34 *mat, br_quat *q) {
@@ -121,9 +149,15 @@ br_matrix34* __cdecl BrQuatToMatrix34(br_matrix34 *mat, br_quat *q) {
     (void)yz;
     (void)zz;
 
-    return original_BrQuatToMatrix34(mat, q);
+    if (function_hook_state_BrQuatToMatrix34 == HOOK_ENABLED) {
+        assert(0 && "BrQuatToMatrix34 not implemented.");
+        abort();
+    } else {
+        return original_BrQuatToMatrix34(mat, q);
+    }
 }
 
+function_hook_state_t function_hook_state_BrMatrix34ToQuat = HOOK_UNAVAILABLE;
 static br_quat *(__cdecl*original_BrMatrix34ToQuat)(br_quat *, br_matrix34 *) = (br_quat *(__cdecl*)(br_quat *, br_matrix34 *))0x004d57c0;
 CARM95_HOOK_FUNCTION(original_BrMatrix34ToQuat, BrMatrix34ToQuat)
 br_quat* __cdecl BrMatrix34ToQuat(br_quat *q, br_matrix34 *mat) {
@@ -144,9 +178,15 @@ br_quat* __cdecl BrMatrix34ToQuat(br_quat *q, br_matrix34 *mat) {
     (void)k;
     (void)__block0__n;
 
-    return original_BrMatrix34ToQuat(q, mat);
+    if (function_hook_state_BrMatrix34ToQuat == HOOK_ENABLED) {
+        assert(0 && "BrMatrix34ToQuat not implemented.");
+        abort();
+    } else {
+        return original_BrMatrix34ToQuat(q, mat);
+    }
 }
 
+function_hook_state_t function_hook_state_BrQuatToMatrix4 = HOOK_UNAVAILABLE;
 static br_matrix4 *(__cdecl*original_BrQuatToMatrix4)(br_matrix4 *, br_quat *) = (br_matrix4 *(__cdecl*)(br_matrix4 *, br_quat *))0x004d58fb;
 CARM95_HOOK_FUNCTION(original_BrQuatToMatrix4, BrQuatToMatrix4)
 br_matrix4* __cdecl BrQuatToMatrix4(br_matrix4 *mat, br_quat *q) {
@@ -157,9 +197,15 @@ br_matrix4* __cdecl BrQuatToMatrix4(br_matrix4 *mat, br_quat *q) {
     (void)q;
     (void)tmp;
 
-    return original_BrQuatToMatrix4(mat, q);
+    if (function_hook_state_BrQuatToMatrix4 == HOOK_ENABLED) {
+        assert(0 && "BrQuatToMatrix4 not implemented.");
+        abort();
+    } else {
+        return original_BrQuatToMatrix4(mat, q);
+    }
 }
 
+function_hook_state_t function_hook_state_BrMatrix4ToQuat = HOOK_UNAVAILABLE;
 static br_quat *(__cdecl*original_BrMatrix4ToQuat)(br_quat *, br_matrix4 *) = (br_quat *(__cdecl*)(br_quat *, br_matrix4 *))0x004d5930;
 CARM95_HOOK_FUNCTION(original_BrMatrix4ToQuat, BrMatrix4ToQuat)
 br_quat* __cdecl BrMatrix4ToQuat(br_quat *q, br_matrix4 *mat) {
@@ -170,6 +216,11 @@ br_quat* __cdecl BrMatrix4ToQuat(br_quat *q, br_matrix4 *mat) {
     (void)mat;
     (void)tmp;
 
-    return original_BrMatrix4ToQuat(q, mat);
+    if (function_hook_state_BrMatrix4ToQuat == HOOK_ENABLED) {
+        assert(0 && "BrMatrix4ToQuat not implemented.");
+        abort();
+    } else {
+        return original_BrMatrix4ToQuat(q, mat);
+    }
 }
 

@@ -4,11 +4,15 @@
 
 #include "carm95_hooks.h"
 
+#include "carm95_webserver.h"
+
+#include <assert.h>
  // Suffix added to avoid duplicate symbol
 #if 0
 host_regs * hookvar_regs__memmgmt ;
 #endif
 
+function_hook_state_t function_hook_state_HostLock = HOOK_UNAVAILABLE;
 static br_error(__cdecl*original_HostLock)(br_uint_32, br_uint_16, br_size_t) = (br_error(__cdecl*)(br_uint_32, br_uint_16, br_size_t))0x005014f0;
 CARM95_HOOK_FUNCTION(original_HostLock, HostLock)
 br_error __cdecl HostLock(br_uint_32 offset, br_uint_16 sel, br_size_t size) {
@@ -18,9 +22,15 @@ br_error __cdecl HostLock(br_uint_32 offset, br_uint_16 sel, br_size_t size) {
     (void)sel;
     (void)size;
 
-    return original_HostLock(offset, sel, size);
+    if (function_hook_state_HostLock == HOOK_ENABLED) {
+        assert(0 && "HostLock not implemented.");
+        abort();
+    } else {
+        return original_HostLock(offset, sel, size);
+    }
 }
 
+function_hook_state_t function_hook_state_HostUnlock = HOOK_UNAVAILABLE;
 static br_error(__cdecl*original_HostUnlock)(br_uint_32, br_uint_16, br_size_t) = (br_error(__cdecl*)(br_uint_32, br_uint_16, br_size_t))0x00501500;
 CARM95_HOOK_FUNCTION(original_HostUnlock, HostUnlock)
 br_error __cdecl HostUnlock(br_uint_32 offset, br_uint_16 sel, br_size_t size) {
@@ -30,9 +40,15 @@ br_error __cdecl HostUnlock(br_uint_32 offset, br_uint_16 sel, br_size_t size) {
     (void)sel;
     (void)size;
 
-    return original_HostUnlock(offset, sel, size);
+    if (function_hook_state_HostUnlock == HOOK_ENABLED) {
+        assert(0 && "HostUnlock not implemented.");
+        abort();
+    } else {
+        return original_HostUnlock(offset, sel, size);
+    }
 }
 
+function_hook_state_t function_hook_state_HostSelectorAllocate = HOOK_UNAVAILABLE;
 static br_error(__cdecl*original_HostSelectorAllocate)(br_uint_16 *) = (br_error(__cdecl*)(br_uint_16 *))0x00501510;
 CARM95_HOOK_FUNCTION(original_HostSelectorAllocate, HostSelectorAllocate)
 br_error __cdecl HostSelectorAllocate(br_uint_16 *selp) {
@@ -40,9 +56,15 @@ br_error __cdecl HostSelectorAllocate(br_uint_16 *selp) {
 
     (void)selp;
 
-    return original_HostSelectorAllocate(selp);
+    if (function_hook_state_HostSelectorAllocate == HOOK_ENABLED) {
+        assert(0 && "HostSelectorAllocate not implemented.");
+        abort();
+    } else {
+        return original_HostSelectorAllocate(selp);
+    }
 }
 
+function_hook_state_t function_hook_state_HostSelectorAllocateLinear = HOOK_UNAVAILABLE;
 br_error(__stdcall*HostSelectorAllocateLinear)(br_uint_16 *, br_uint_32, br_size_t) = (br_error(__stdcall*)(br_uint_16 *, br_uint_32, br_size_t))0x00501520;
 br_error HostSelectorAllocateLinear_do_not_use(br_uint_16 *selp, br_uint_32 base, br_size_t size) {
     br_uint_16 sel;
@@ -55,9 +77,15 @@ br_error HostSelectorAllocateLinear_do_not_use(br_uint_16 *selp, br_uint_32 base
     (void)sel;
     (void)r;
 
-    NOT_IMPLEMENTED();
+    if (function_hook_state_HostSelectorAllocateLinear == HOOK_ENABLED) {
+        assert(0 && "HostSelectorAllocateLinear_do_not_use not implemented.");
+        abort();
+    } else {
+        NOT_IMPLEMENTED();
+    }
 }
 
+function_hook_state_t function_hook_state_HostSelectorAllocateAlias = HOOK_UNAVAILABLE;
 static br_error(__cdecl*original_HostSelectorAllocateAlias)(br_uint_16 *, br_uint_16) = (br_error(__cdecl*)(br_uint_16 *, br_uint_16))0x00501530;
 CARM95_HOOK_FUNCTION(original_HostSelectorAllocateAlias, HostSelectorAllocateAlias)
 br_error __cdecl HostSelectorAllocateAlias(br_uint_16 *aliasp, br_uint_16 sel) {
@@ -74,9 +102,15 @@ br_error __cdecl HostSelectorAllocateAlias(br_uint_16 *aliasp, br_uint_16 sel) {
     (void)limit;
     (void)r;
 
-    return original_HostSelectorAllocateAlias(aliasp, sel);
+    if (function_hook_state_HostSelectorAllocateAlias == HOOK_ENABLED) {
+        assert(0 && "HostSelectorAllocateAlias not implemented.");
+        abort();
+    } else {
+        return original_HostSelectorAllocateAlias(aliasp, sel);
+    }
 }
 
+function_hook_state_t function_hook_state_HostSelectorAllocatePhysical = HOOK_UNAVAILABLE;
 static br_error(__cdecl*original_HostSelectorAllocatePhysical)(br_uint_16 *, br_uint_32, br_size_t) = (br_error(__cdecl*)(br_uint_16 *, br_uint_32, br_size_t))0x00501540;
 CARM95_HOOK_FUNCTION(original_HostSelectorAllocatePhysical, HostSelectorAllocatePhysical)
 br_error __cdecl HostSelectorAllocatePhysical(br_uint_16 *selp, br_uint_32 phys_addr, br_size_t size) {
@@ -86,9 +120,15 @@ br_error __cdecl HostSelectorAllocatePhysical(br_uint_16 *selp, br_uint_32 phys_
     (void)phys_addr;
     (void)size;
 
-    return original_HostSelectorAllocatePhysical(selp, phys_addr, size);
+    if (function_hook_state_HostSelectorAllocatePhysical == HOOK_ENABLED) {
+        assert(0 && "HostSelectorAllocatePhysical not implemented.");
+        abort();
+    } else {
+        return original_HostSelectorAllocatePhysical(selp, phys_addr, size);
+    }
 }
 
+function_hook_state_t function_hook_state_HostSelectorFree = HOOK_UNAVAILABLE;
 static br_error(__cdecl*original_HostSelectorFree)(br_uint_16) = (br_error(__cdecl*)(br_uint_16))0x00501550;
 CARM95_HOOK_FUNCTION(original_HostSelectorFree, HostSelectorFree)
 br_error __cdecl HostSelectorFree(br_uint_16 sel) {
@@ -98,9 +138,15 @@ br_error __cdecl HostSelectorFree(br_uint_16 sel) {
     (void)sel;
     (void)rsel;
 
-    return original_HostSelectorFree(sel);
+    if (function_hook_state_HostSelectorFree == HOOK_ENABLED) {
+        assert(0 && "HostSelectorFree not implemented.");
+        abort();
+    } else {
+        return original_HostSelectorFree(sel);
+    }
 }
 
+function_hook_state_t function_hook_state_HostSelectorBaseSet = HOOK_UNAVAILABLE;
 static br_error(__cdecl*original_HostSelectorBaseSet)(br_uint_16, br_uint_32) = (br_error(__cdecl*)(br_uint_16, br_uint_32))0x00501580;
 CARM95_HOOK_FUNCTION(original_HostSelectorBaseSet, HostSelectorBaseSet)
 br_error __cdecl HostSelectorBaseSet(br_uint_16 sel, br_uint_32 base) {
@@ -109,9 +155,15 @@ br_error __cdecl HostSelectorBaseSet(br_uint_16 sel, br_uint_32 base) {
     (void)sel;
     (void)base;
 
-    return original_HostSelectorBaseSet(sel, base);
+    if (function_hook_state_HostSelectorBaseSet == HOOK_ENABLED) {
+        assert(0 && "HostSelectorBaseSet not implemented.");
+        abort();
+    } else {
+        return original_HostSelectorBaseSet(sel, base);
+    }
 }
 
+function_hook_state_t function_hook_state_HostSelectorLimitSet = HOOK_UNAVAILABLE;
 static br_error(__cdecl*original_HostSelectorLimitSet)(br_uint_16, br_size_t) = (br_error(__cdecl*)(br_uint_16, br_size_t))0x00501590;
 CARM95_HOOK_FUNCTION(original_HostSelectorLimitSet, HostSelectorLimitSet)
 br_error __cdecl HostSelectorLimitSet(br_uint_16 sel, br_size_t limit) {
@@ -120,9 +172,15 @@ br_error __cdecl HostSelectorLimitSet(br_uint_16 sel, br_size_t limit) {
     (void)sel;
     (void)limit;
 
-    return original_HostSelectorLimitSet(sel, limit);
+    if (function_hook_state_HostSelectorLimitSet == HOOK_ENABLED) {
+        assert(0 && "HostSelectorLimitSet not implemented.");
+        abort();
+    } else {
+        return original_HostSelectorLimitSet(sel, limit);
+    }
 }
 
+function_hook_state_t function_hook_state_HostSelectorBaseQuery = HOOK_UNAVAILABLE;
 static br_error(__cdecl*original_HostSelectorBaseQuery)(br_uint_32 *, br_uint_16) = (br_error(__cdecl*)(br_uint_32 *, br_uint_16))0x005015a0;
 CARM95_HOOK_FUNCTION(original_HostSelectorBaseQuery, HostSelectorBaseQuery)
 br_error __cdecl HostSelectorBaseQuery(br_uint_32 *basep, br_uint_16 sel) {
@@ -133,9 +191,15 @@ br_error __cdecl HostSelectorBaseQuery(br_uint_32 *basep, br_uint_16 sel) {
     (void)sel;
     (void)base;
 
-    return original_HostSelectorBaseQuery(basep, sel);
+    if (function_hook_state_HostSelectorBaseQuery == HOOK_ENABLED) {
+        assert(0 && "HostSelectorBaseQuery not implemented.");
+        abort();
+    } else {
+        return original_HostSelectorBaseQuery(basep, sel);
+    }
 }
 
+function_hook_state_t function_hook_state_HostSelectorLimitQuery = HOOK_UNAVAILABLE;
 static br_error(__cdecl*original_HostSelectorLimitQuery)(br_uint_32 *, br_uint_16) = (br_error(__cdecl*)(br_uint_32 *, br_uint_16))0x005015b0;
 CARM95_HOOK_FUNCTION(original_HostSelectorLimitQuery, HostSelectorLimitQuery)
 br_error __cdecl HostSelectorLimitQuery(br_uint_32 *limitp, br_uint_16 sel) {
@@ -148,6 +212,11 @@ br_error __cdecl HostSelectorLimitQuery(br_uint_32 *limitp, br_uint_16 sel) {
     (void)limit;
     (void)ldt;
 
-    return original_HostSelectorLimitQuery(limitp, sel);
+    if (function_hook_state_HostSelectorLimitQuery == HOOK_ENABLED) {
+        assert(0 && "HostSelectorLimitQuery not implemented.");
+        abort();
+    } else {
+        return original_HostSelectorLimitQuery(limitp, sel);
+    }
 }
 

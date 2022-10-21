@@ -4,6 +4,9 @@
 
 #include "carm95_hooks.h"
 
+#include "carm95_webserver.h"
+
+#include <assert.h>
 int * hookvar_gDoing_physics  = (void*)0x00514cb0;
 br_scalar * hookvar_gDt  = (void*)0x00514cb4;
  // Suffix added to avoid duplicate symbol
@@ -95,6 +98,7 @@ char(* hookvar_gNon_car_spec_list )[100] = (void*)0x00550750;
 tU32 * hookvar_gMechanics_time_sync  = (void*)0x00550670;
 int * hookvar_gNum_cars_and_non_cars  = (void*)0x00550748;
 
+function_hook_state_t function_hook_state_DamageUnit = HOOK_UNAVAILABLE;
 static void(__cdecl*original_DamageUnit)(tCar_spec *, int, int) = (void(__cdecl*)(tCar_spec *, int, int))0x004751c0;
 CARM95_HOOK_FUNCTION(original_DamageUnit, DamageUnit)
 void __cdecl DamageUnit(tCar_spec *pCar, int pUnit_type, int pDamage_amount) {
@@ -106,9 +110,15 @@ void __cdecl DamageUnit(tCar_spec *pCar, int pUnit_type, int pDamage_amount) {
     (void)pDamage_amount;
     (void)the_damage;
 
-    original_DamageUnit(pCar, pUnit_type, pDamage_amount);
+    if (function_hook_state_DamageUnit == HOOK_ENABLED) {
+        assert(0 && "DamageUnit not implemented.");
+        abort();
+    } else {
+        original_DamageUnit(pCar, pUnit_type, pDamage_amount);
+    }
 }
 
+function_hook_state_t function_hook_state_DamageUnitWithSmoke = HOOK_UNAVAILABLE;
 static void(__cdecl*original_DamageUnitWithSmoke)(tCar_spec *, int, int) = (void(__cdecl*)(tCar_spec *, int, int))0x00475239;
 CARM95_HOOK_FUNCTION(original_DamageUnitWithSmoke, DamageUnitWithSmoke)
 void __cdecl DamageUnitWithSmoke(tCar_spec *pCar, int pUnit_type, int pDamage_amount) {
@@ -118,9 +128,15 @@ void __cdecl DamageUnitWithSmoke(tCar_spec *pCar, int pUnit_type, int pDamage_am
     (void)pUnit_type;
     (void)pDamage_amount;
 
-    original_DamageUnitWithSmoke(pCar, pUnit_type, pDamage_amount);
+    if (function_hook_state_DamageUnitWithSmoke == HOOK_ENABLED) {
+        assert(0 && "DamageUnitWithSmoke not implemented.");
+        abort();
+    } else {
+        original_DamageUnitWithSmoke(pCar, pUnit_type, pDamage_amount);
+    }
 }
 
+function_hook_state_t function_hook_state_DamageEngine = HOOK_UNAVAILABLE;
 static void(__cdecl*original_DamageEngine)(int) = (void(__cdecl*)(int))0x00475215;
 CARM95_HOOK_FUNCTION(original_DamageEngine, DamageEngine)
 void __cdecl DamageEngine(int pDamage_amount) {
@@ -128,9 +144,15 @@ void __cdecl DamageEngine(int pDamage_amount) {
 
     (void)pDamage_amount;
 
-    original_DamageEngine(pDamage_amount);
+    if (function_hook_state_DamageEngine == HOOK_ENABLED) {
+        assert(0 && "DamageEngine not implemented.");
+        abort();
+    } else {
+        original_DamageEngine(pDamage_amount);
+    }
 }
 
+function_hook_state_t function_hook_state_DamageTrans = HOOK_UNAVAILABLE;
 static void(__cdecl*original_DamageTrans)(int) = (void(__cdecl*)(int))0x00475264;
 CARM95_HOOK_FUNCTION(original_DamageTrans, DamageTrans)
 void __cdecl DamageTrans(int pDamage_amount) {
@@ -138,9 +160,15 @@ void __cdecl DamageTrans(int pDamage_amount) {
 
     (void)pDamage_amount;
 
-    original_DamageTrans(pDamage_amount);
+    if (function_hook_state_DamageTrans == HOOK_ENABLED) {
+        assert(0 && "DamageTrans not implemented.");
+        abort();
+    } else {
+        original_DamageTrans(pDamage_amount);
+    }
 }
 
+function_hook_state_t function_hook_state_DamageSteering = HOOK_UNAVAILABLE;
 static void(__cdecl*original_DamageSteering)(int) = (void(__cdecl*)(int))0x00475288;
 CARM95_HOOK_FUNCTION(original_DamageSteering, DamageSteering)
 void __cdecl DamageSteering(int pDamage_amount) {
@@ -148,9 +176,15 @@ void __cdecl DamageSteering(int pDamage_amount) {
 
     (void)pDamage_amount;
 
-    original_DamageSteering(pDamage_amount);
+    if (function_hook_state_DamageSteering == HOOK_ENABLED) {
+        assert(0 && "DamageSteering not implemented.");
+        abort();
+    } else {
+        original_DamageSteering(pDamage_amount);
+    }
 }
 
+function_hook_state_t function_hook_state_DamageLFWheel = HOOK_UNAVAILABLE;
 static void(__cdecl*original_DamageLFWheel)(int) = (void(__cdecl*)(int))0x004752ac;
 CARM95_HOOK_FUNCTION(original_DamageLFWheel, DamageLFWheel)
 void __cdecl DamageLFWheel(int pDamage_amount) {
@@ -158,9 +192,15 @@ void __cdecl DamageLFWheel(int pDamage_amount) {
 
     (void)pDamage_amount;
 
-    original_DamageLFWheel(pDamage_amount);
+    if (function_hook_state_DamageLFWheel == HOOK_ENABLED) {
+        assert(0 && "DamageLFWheel not implemented.");
+        abort();
+    } else {
+        original_DamageLFWheel(pDamage_amount);
+    }
 }
 
+function_hook_state_t function_hook_state_DamageLFBrake = HOOK_UNAVAILABLE;
 static void(__cdecl*original_DamageLFBrake)(int) = (void(__cdecl*)(int))0x004752d0;
 CARM95_HOOK_FUNCTION(original_DamageLFBrake, DamageLFBrake)
 void __cdecl DamageLFBrake(int pDamage_amount) {
@@ -168,9 +208,15 @@ void __cdecl DamageLFBrake(int pDamage_amount) {
 
     (void)pDamage_amount;
 
-    original_DamageLFBrake(pDamage_amount);
+    if (function_hook_state_DamageLFBrake == HOOK_ENABLED) {
+        assert(0 && "DamageLFBrake not implemented.");
+        abort();
+    } else {
+        original_DamageLFBrake(pDamage_amount);
+    }
 }
 
+function_hook_state_t function_hook_state_DamageLRBrake = HOOK_UNAVAILABLE;
 static void(__cdecl*original_DamageLRBrake)(int) = (void(__cdecl*)(int))0x004752f4;
 CARM95_HOOK_FUNCTION(original_DamageLRBrake, DamageLRBrake)
 void __cdecl DamageLRBrake(int pDamage_amount) {
@@ -178,9 +224,15 @@ void __cdecl DamageLRBrake(int pDamage_amount) {
 
     (void)pDamage_amount;
 
-    original_DamageLRBrake(pDamage_amount);
+    if (function_hook_state_DamageLRBrake == HOOK_ENABLED) {
+        assert(0 && "DamageLRBrake not implemented.");
+        abort();
+    } else {
+        original_DamageLRBrake(pDamage_amount);
+    }
 }
 
+function_hook_state_t function_hook_state_DamageLRWheel = HOOK_UNAVAILABLE;
 static void(__cdecl*original_DamageLRWheel)(int) = (void(__cdecl*)(int))0x00475318;
 CARM95_HOOK_FUNCTION(original_DamageLRWheel, DamageLRWheel)
 void __cdecl DamageLRWheel(int pDamage_amount) {
@@ -188,9 +240,15 @@ void __cdecl DamageLRWheel(int pDamage_amount) {
 
     (void)pDamage_amount;
 
-    original_DamageLRWheel(pDamage_amount);
+    if (function_hook_state_DamageLRWheel == HOOK_ENABLED) {
+        assert(0 && "DamageLRWheel not implemented.");
+        abort();
+    } else {
+        original_DamageLRWheel(pDamage_amount);
+    }
 }
 
+function_hook_state_t function_hook_state_DamageRFWheel = HOOK_UNAVAILABLE;
 static void(__cdecl*original_DamageRFWheel)(int) = (void(__cdecl*)(int))0x0047533c;
 CARM95_HOOK_FUNCTION(original_DamageRFWheel, DamageRFWheel)
 void __cdecl DamageRFWheel(int pDamage_amount) {
@@ -198,9 +256,15 @@ void __cdecl DamageRFWheel(int pDamage_amount) {
 
     (void)pDamage_amount;
 
-    original_DamageRFWheel(pDamage_amount);
+    if (function_hook_state_DamageRFWheel == HOOK_ENABLED) {
+        assert(0 && "DamageRFWheel not implemented.");
+        abort();
+    } else {
+        original_DamageRFWheel(pDamage_amount);
+    }
 }
 
+function_hook_state_t function_hook_state_DamageRFBrake = HOOK_UNAVAILABLE;
 static void(__cdecl*original_DamageRFBrake)(int) = (void(__cdecl*)(int))0x00475360;
 CARM95_HOOK_FUNCTION(original_DamageRFBrake, DamageRFBrake)
 void __cdecl DamageRFBrake(int pDamage_amount) {
@@ -208,9 +272,15 @@ void __cdecl DamageRFBrake(int pDamage_amount) {
 
     (void)pDamage_amount;
 
-    original_DamageRFBrake(pDamage_amount);
+    if (function_hook_state_DamageRFBrake == HOOK_ENABLED) {
+        assert(0 && "DamageRFBrake not implemented.");
+        abort();
+    } else {
+        original_DamageRFBrake(pDamage_amount);
+    }
 }
 
+function_hook_state_t function_hook_state_DamageRRBrake = HOOK_UNAVAILABLE;
 static void(__cdecl*original_DamageRRBrake)(int) = (void(__cdecl*)(int))0x00475384;
 CARM95_HOOK_FUNCTION(original_DamageRRBrake, DamageRRBrake)
 void __cdecl DamageRRBrake(int pDamage_amount) {
@@ -218,9 +288,15 @@ void __cdecl DamageRRBrake(int pDamage_amount) {
 
     (void)pDamage_amount;
 
-    original_DamageRRBrake(pDamage_amount);
+    if (function_hook_state_DamageRRBrake == HOOK_ENABLED) {
+        assert(0 && "DamageRRBrake not implemented.");
+        abort();
+    } else {
+        original_DamageRRBrake(pDamage_amount);
+    }
 }
 
+function_hook_state_t function_hook_state_DamageRRWheel = HOOK_UNAVAILABLE;
 static void(__cdecl*original_DamageRRWheel)(int) = (void(__cdecl*)(int))0x004753a8;
 CARM95_HOOK_FUNCTION(original_DamageRRWheel, DamageRRWheel)
 void __cdecl DamageRRWheel(int pDamage_amount) {
@@ -228,9 +304,15 @@ void __cdecl DamageRRWheel(int pDamage_amount) {
 
     (void)pDamage_amount;
 
-    original_DamageRRWheel(pDamage_amount);
+    if (function_hook_state_DamageRRWheel == HOOK_ENABLED) {
+        assert(0 && "DamageRRWheel not implemented.");
+        abort();
+    } else {
+        original_DamageRRWheel(pDamage_amount);
+    }
 }
 
+function_hook_state_t function_hook_state_CalculatePlaneNormal = HOOK_UNAVAILABLE;
 void CalculatePlaneNormal(br_vector3 *pP1, br_vector3 *pP2, br_vector3 *pP3, br_vector3 *pNormal) {
     br_vector3 p0;
     br_vector3 p1;
@@ -253,18 +335,30 @@ void CalculatePlaneNormal(br_vector3 *pP1, br_vector3 *pP2, br_vector3 *pP3, br_
     (void)__block1___scale;
     (void)__block2___scale;
 
-    NOT_IMPLEMENTED();
+    if (function_hook_state_CalculatePlaneNormal == HOOK_ENABLED) {
+        assert(0 && "CalculatePlaneNormal not implemented.");
+        abort();
+    } else {
+        NOT_IMPLEMENTED();
+    }
 }
 
+function_hook_state_t function_hook_state_CalculateGroundNormal = HOOK_UNAVAILABLE;
 void CalculateGroundNormal(br_model *pThe_model, int pFace_index) {
     LOG_TRACE("(%p, %d)", pThe_model, pFace_index);
 
     (void)pThe_model;
     (void)pFace_index;
 
-    NOT_IMPLEMENTED();
+    if (function_hook_state_CalculateGroundNormal == HOOK_ENABLED) {
+        assert(0 && "CalculateGroundNormal not implemented.");
+        abort();
+    } else {
+        NOT_IMPLEMENTED();
+    }
 }
 
+function_hook_state_t function_hook_state_ChangeYCoordinate = HOOK_UNAVAILABLE;
 void ChangeYCoordinate(br_scalar pNew_y, tU32 pTime_taken, br_model *pThe_model, int pFace_index) {
     br_scalar y_change;
     br_transform new_transform;
@@ -279,9 +373,15 @@ void ChangeYCoordinate(br_scalar pNew_y, tU32 pTime_taken, br_model *pThe_model,
     (void)new_transform;
     (void)side_window;
 
-    NOT_IMPLEMENTED();
+    if (function_hook_state_ChangeYCoordinate == HOOK_ENABLED) {
+        assert(0 && "ChangeYCoordinate not implemented.");
+        abort();
+    } else {
+        NOT_IMPLEMENTED();
+    }
 }
 
+function_hook_state_t function_hook_state_SwitchCarActor = HOOK_UNAVAILABLE;
 static void(__cdecl*original_SwitchCarActor)(tCar_spec *, int) = (void(__cdecl*)(tCar_spec *, int))0x004753cc;
 CARM95_HOOK_FUNCTION(original_SwitchCarActor, SwitchCarActor)
 void __cdecl SwitchCarActor(tCar_spec *pCar_spec, int pModel_index) {
@@ -292,9 +392,15 @@ void __cdecl SwitchCarActor(tCar_spec *pCar_spec, int pModel_index) {
     (void)pModel_index;
     (void)i;
 
-    original_SwitchCarActor(pCar_spec, pModel_index);
+    if (function_hook_state_SwitchCarActor == HOOK_ENABLED) {
+        assert(0 && "SwitchCarActor not implemented.");
+        abort();
+    } else {
+        original_SwitchCarActor(pCar_spec, pModel_index);
+    }
 }
 
+function_hook_state_t function_hook_state_InitialiseCar2 = HOOK_UNAVAILABLE;
 static void(__cdecl*original_InitialiseCar2)(tCar_spec *, int) = (void(__cdecl*)(tCar_spec *, int))0x0047544b;
 CARM95_HOOK_FUNCTION(original_InitialiseCar2, InitialiseCar2)
 void __cdecl InitialiseCar2(tCar_spec *pCar, int pClear_disabled_flag) {
@@ -335,9 +441,15 @@ void __cdecl InitialiseCar2(tCar_spec *pCar, int pClear_disabled_flag) {
     (void)initial_yaw_matrix;
     (void)safe_position;
 
-    original_InitialiseCar2(pCar, pClear_disabled_flag);
+    if (function_hook_state_InitialiseCar2 == HOOK_ENABLED) {
+        assert(0 && "InitialiseCar2 not implemented.");
+        abort();
+    } else {
+        original_InitialiseCar2(pCar, pClear_disabled_flag);
+    }
 }
 
+function_hook_state_t function_hook_state_InitialiseCar = HOOK_UNAVAILABLE;
 static void(__cdecl*original_InitialiseCar)(tCar_spec *) = (void(__cdecl*)(tCar_spec *))0x00475b63;
 CARM95_HOOK_FUNCTION(original_InitialiseCar, InitialiseCar)
 void __cdecl InitialiseCar(tCar_spec *pCar) {
@@ -345,9 +457,15 @@ void __cdecl InitialiseCar(tCar_spec *pCar) {
 
     (void)pCar;
 
-    original_InitialiseCar(pCar);
+    if (function_hook_state_InitialiseCar == HOOK_ENABLED) {
+        assert(0 && "InitialiseCar not implemented.");
+        abort();
+    } else {
+        original_InitialiseCar(pCar);
+    }
 }
 
+function_hook_state_t function_hook_state_InitialiseCarsEtc = HOOK_UNAVAILABLE;
 static void(__cdecl*original_InitialiseCarsEtc)(tRace_info *) = (void(__cdecl*)(tRace_info *))0x00475b7c;
 CARM95_HOOK_FUNCTION(original_InitialiseCarsEtc, InitialiseCarsEtc)
 void __cdecl InitialiseCarsEtc(tRace_info *pThe_race) {
@@ -365,9 +483,15 @@ void __cdecl InitialiseCarsEtc(tRace_info *pThe_race) {
     (void)car;
     (void)bnds;
 
-    original_InitialiseCarsEtc(pThe_race);
+    if (function_hook_state_InitialiseCarsEtc == HOOK_ENABLED) {
+        assert(0 && "InitialiseCarsEtc not implemented.");
+        abort();
+    } else {
+        original_InitialiseCarsEtc(pThe_race);
+    }
 }
 
+function_hook_state_t function_hook_state_GetAverageGridPosition = HOOK_UNAVAILABLE;
 static void(__cdecl*original_GetAverageGridPosition)(tRace_info *) = (void(__cdecl*)(tRace_info *))0x00475ca4;
 CARM95_HOOK_FUNCTION(original_GetAverageGridPosition, GetAverageGridPosition)
 void __cdecl GetAverageGridPosition(tRace_info *pThe_race) {
@@ -381,9 +505,15 @@ void __cdecl GetAverageGridPosition(tRace_info *pThe_race) {
     (void)total_cars;
     (void)car;
 
-    original_GetAverageGridPosition(pThe_race);
+    if (function_hook_state_GetAverageGridPosition == HOOK_ENABLED) {
+        assert(0 && "GetAverageGridPosition not implemented.");
+        abort();
+    } else {
+        original_GetAverageGridPosition(pThe_race);
+    }
 }
 
+function_hook_state_t function_hook_state_SetInitialPosition = HOOK_UNAVAILABLE;
 static void(__cdecl*original_SetInitialPosition)(tRace_info *, int, int) = (void(__cdecl*)(tRace_info *, int, int))0x00475d7d;
 CARM95_HOOK_FUNCTION(original_SetInitialPosition, SetInitialPosition)
 void __cdecl SetInitialPosition(tRace_info *pThe_race, int pCar_index, int pGrid_index) {
@@ -431,9 +561,15 @@ void __cdecl SetInitialPosition(tRace_info *pThe_race, int pCar_index, int pGrid
     (void)initial_yaw_matrix;
     (void)bnds;
 
-    original_SetInitialPosition(pThe_race, pCar_index, pGrid_index);
+    if (function_hook_state_SetInitialPosition == HOOK_ENABLED) {
+        assert(0 && "SetInitialPosition not implemented.");
+        abort();
+    } else {
+        original_SetInitialPosition(pThe_race, pCar_index, pGrid_index);
+    }
 }
 
+function_hook_state_t function_hook_state_SetInitialPositions = HOOK_UNAVAILABLE;
 static void(__cdecl*original_SetInitialPositions)(tRace_info *) = (void(__cdecl*)(tRace_info *))0x00476279;
 CARM95_HOOK_FUNCTION(original_SetInitialPositions, SetInitialPositions)
 void __cdecl SetInitialPositions(tRace_info *pThe_race) {
@@ -443,9 +579,15 @@ void __cdecl SetInitialPositions(tRace_info *pThe_race) {
     (void)pThe_race;
     (void)i;
 
-    original_SetInitialPositions(pThe_race);
+    if (function_hook_state_SetInitialPositions == HOOK_ENABLED) {
+        assert(0 && "SetInitialPositions not implemented.");
+        abort();
+    } else {
+        original_SetInitialPositions(pThe_race);
+    }
 }
 
+function_hook_state_t function_hook_state_InitialiseNonCar = HOOK_UNAVAILABLE;
 static void(__cdecl*original_InitialiseNonCar)(tNon_car_spec *) = (void(__cdecl*)(tNon_car_spec *))0x004762c1;
 CARM95_HOOK_FUNCTION(original_InitialiseNonCar, InitialiseNonCar)
 void __cdecl InitialiseNonCar(tNon_car_spec *non_car) {
@@ -455,9 +597,15 @@ void __cdecl InitialiseNonCar(tNon_car_spec *non_car) {
     (void)non_car;
     (void)c;
 
-    original_InitialiseNonCar(non_car);
+    if (function_hook_state_InitialiseNonCar == HOOK_ENABLED) {
+        assert(0 && "InitialiseNonCar not implemented.");
+        abort();
+    } else {
+        original_InitialiseNonCar(non_car);
+    }
 }
 
+function_hook_state_t function_hook_state_GetFacesInBox = HOOK_UNAVAILABLE;
 static void(__cdecl*original_GetFacesInBox)(tCollision_info *) = (void(__cdecl*)(tCollision_info *))0x004764ca;
 CARM95_HOOK_FUNCTION(original_GetFacesInBox, GetFacesInBox)
 void __cdecl GetFacesInBox(tCollision_info *c) {
@@ -489,18 +637,30 @@ void __cdecl GetFacesInBox(tCollision_info *c) {
     (void)i;
     (void)current_bounds;
 
-    original_GetFacesInBox(c);
+    if (function_hook_state_GetFacesInBox == HOOK_ENABLED) {
+        assert(0 && "GetFacesInBox not implemented.");
+        abort();
+    } else {
+        original_GetFacesInBox(c);
+    }
 }
 
+function_hook_state_t function_hook_state_IsCarInTheSea = HOOK_UNAVAILABLE;
 static int(__cdecl*original_IsCarInTheSea)() = (int(__cdecl*)())0x00476cf4;
 CARM95_HOOK_FUNCTION(original_IsCarInTheSea, IsCarInTheSea)
 int __cdecl IsCarInTheSea() {
     LOG_TRACE("()");
 
 
-    return original_IsCarInTheSea();
+    if (function_hook_state_IsCarInTheSea == HOOK_ENABLED) {
+        assert(0 && "IsCarInTheSea not implemented.");
+        abort();
+    } else {
+        return original_IsCarInTheSea();
+    }
 }
 
+function_hook_state_t function_hook_state_RememberSafePosition = HOOK_UNAVAILABLE;
 static void(__cdecl*original_RememberSafePosition)(tCar_spec *, tU32) = (void(__cdecl*)(tCar_spec *, tU32))0x004771a2;
 CARM95_HOOK_FUNCTION(original_RememberSafePosition, RememberSafePosition)
 void __cdecl RememberSafePosition(tCar_spec *car, tU32 pTime) {
@@ -517,9 +677,15 @@ void __cdecl RememberSafePosition(tCar_spec *car, tU32 pTime) {
     (void)r;
     (void)ts;
 
-    original_RememberSafePosition(car, pTime);
+    if (function_hook_state_RememberSafePosition == HOOK_ENABLED) {
+        assert(0 && "RememberSafePosition not implemented.");
+        abort();
+    } else {
+        original_RememberSafePosition(car, pTime);
+    }
 }
 
+function_hook_state_t function_hook_state_ControlOurCar = HOOK_UNAVAILABLE;
 static void(__cdecl*original_ControlOurCar)(tU32) = (void(__cdecl*)(tU32))0x00476d09;
 CARM95_HOOK_FUNCTION(original_ControlOurCar, ControlOurCar)
 void __cdecl ControlOurCar(tU32 pTime_difference) {
@@ -539,9 +705,15 @@ void __cdecl ControlOurCar(tU32 pTime_difference) {
     (void)i;
     (void)time;
 
-    original_ControlOurCar(pTime_difference);
+    if (function_hook_state_ControlOurCar == HOOK_ENABLED) {
+        assert(0 && "ControlOurCar not implemented.");
+        abort();
+    } else {
+        original_ControlOurCar(pTime_difference);
+    }
 }
 
+function_hook_state_t function_hook_state_CalcEngineForce = HOOK_UNAVAILABLE;
 static void(__cdecl*original_CalcEngineForce)(tCar_spec *, br_scalar) = (void(__cdecl*)(tCar_spec *, br_scalar))0x00477433;
 CARM95_HOOK_FUNCTION(original_CalcEngineForce, CalcEngineForce)
 void __cdecl CalcEngineForce(tCar_spec *c, br_scalar dt) {
@@ -562,9 +734,15 @@ void __cdecl CalcEngineForce(tCar_spec *c, br_scalar dt) {
     (void)sign;
     (void)temp_for_swap;
 
-    original_CalcEngineForce(c, dt);
+    if (function_hook_state_CalcEngineForce == HOOK_ENABLED) {
+        assert(0 && "CalcEngineForce not implemented.");
+        abort();
+    } else {
+        original_CalcEngineForce(c, dt);
+    }
 }
 
+function_hook_state_t function_hook_state_PrepareCars = HOOK_UNAVAILABLE;
 static void(__cdecl*original_PrepareCars)(tU32) = (void(__cdecl*)(tU32))0x00477b11;
 CARM95_HOOK_FUNCTION(original_PrepareCars, PrepareCars)
 void __cdecl PrepareCars(tU32 pFrame_start_time) {
@@ -578,9 +756,15 @@ void __cdecl PrepareCars(tU32 pFrame_start_time) {
     (void)i;
     (void)last_frame_start;
 
-    original_PrepareCars(pFrame_start_time);
+    if (function_hook_state_PrepareCars == HOOK_ENABLED) {
+        assert(0 && "PrepareCars not implemented.");
+        abort();
+    } else {
+        original_PrepareCars(pFrame_start_time);
+    }
 }
 
+function_hook_state_t function_hook_state_FinishCars = HOOK_UNAVAILABLE;
 static void(__cdecl*original_FinishCars)(tU32, tU32) = (void(__cdecl*)(tU32, tU32))0x00477d38;
 CARM95_HOOK_FUNCTION(original_FinishCars, FinishCars)
 void __cdecl FinishCars(tU32 pLast_frame_time, tU32 pTime) {
@@ -601,9 +785,15 @@ void __cdecl FinishCars(tU32 pLast_frame_time, tU32 pTime) {
     (void)__block0___scale;
     (void)__block1___scale;
 
-    original_FinishCars(pLast_frame_time, pTime);
+    if (function_hook_state_FinishCars == HOOK_ENABLED) {
+        assert(0 && "FinishCars not implemented.");
+        abort();
+    } else {
+        original_FinishCars(pLast_frame_time, pTime);
+    }
 }
 
+function_hook_state_t function_hook_state_InterpolateCars = HOOK_UNAVAILABLE;
 static void(__cdecl*original_InterpolateCars)(tU32, tU32) = (void(__cdecl*)(tU32, tU32))0x00478928;
 CARM95_HOOK_FUNCTION(original_InterpolateCars, InterpolateCars)
 void __cdecl InterpolateCars(tU32 pLast_frame_time, tU32 pTime) {
@@ -618,9 +808,15 @@ void __cdecl InterpolateCars(tU32 pLast_frame_time, tU32 pTime) {
     (void)car;
     (void)i;
 
-    original_InterpolateCars(pLast_frame_time, pTime);
+    if (function_hook_state_InterpolateCars == HOOK_ENABLED) {
+        assert(0 && "InterpolateCars not implemented.");
+        abort();
+    } else {
+        original_InterpolateCars(pLast_frame_time, pTime);
+    }
 }
 
+function_hook_state_t function_hook_state_ResetOldmat = HOOK_UNAVAILABLE;
 static void(__cdecl*original_ResetOldmat)() = (void(__cdecl*)())0x00478a88;
 CARM95_HOOK_FUNCTION(original_ResetOldmat, ResetOldmat)
 void __cdecl ResetOldmat() {
@@ -635,9 +831,15 @@ void __cdecl ResetOldmat() {
     (void)mat;
     (void)normalise_count;
 
-    original_ResetOldmat();
+    if (function_hook_state_ResetOldmat == HOOK_ENABLED) {
+        assert(0 && "ResetOldmat not implemented.");
+        abort();
+    } else {
+        original_ResetOldmat();
+    }
 }
 
+function_hook_state_t function_hook_state_GetNonCars = HOOK_UNAVAILABLE;
 static void(__cdecl*original_GetNonCars)() = (void(__cdecl*)())0x00478b58;
 CARM95_HOOK_FUNCTION(original_GetNonCars, GetNonCars)
 void __cdecl GetNonCars() {
@@ -648,9 +850,15 @@ void __cdecl GetNonCars() {
     (void)i;
     (void)j;
 
-    original_GetNonCars();
+    if (function_hook_state_GetNonCars == HOOK_ENABLED) {
+        assert(0 && "GetNonCars not implemented.");
+        abort();
+    } else {
+        original_GetNonCars();
+    }
 }
 
+function_hook_state_t function_hook_state_GetNetPos = HOOK_UNAVAILABLE;
 static void(__cdecl*original_GetNetPos)(tCar_spec *) = (void(__cdecl*)(tCar_spec *))0x00478bb7;
 CARM95_HOOK_FUNCTION(original_GetNetPos, GetNetPos)
 void __cdecl GetNetPos(tCar_spec *pCar) {
@@ -664,9 +872,15 @@ void __cdecl GetNetPos(tCar_spec *pCar) {
     (void)amount;
     (void)total_deflection;
 
-    original_GetNetPos(pCar);
+    if (function_hook_state_GetNetPos == HOOK_ENABLED) {
+        assert(0 && "GetNetPos not implemented.");
+        abort();
+    } else {
+        original_GetNetPos(pCar);
+    }
 }
 
+function_hook_state_t function_hook_state_ApplyPhysicsToCars = HOOK_UNAVAILABLE;
 static void(__cdecl*original_ApplyPhysicsToCars)(tU32, tU32) = (void(__cdecl*)(tU32, tU32))0x0047839b;
 CARM95_HOOK_FUNCTION(original_ApplyPhysicsToCars, ApplyPhysicsToCars)
 void __cdecl ApplyPhysicsToCars(tU32 last_frame_time, tU32 pTime_difference) {
@@ -697,9 +911,15 @@ void __cdecl ApplyPhysicsToCars(tU32 last_frame_time, tU32 pTime_difference) {
     (void)time_step;
     (void)frame_end_time;
 
-    original_ApplyPhysicsToCars(last_frame_time, pTime_difference);
+    if (function_hook_state_ApplyPhysicsToCars == HOOK_ENABLED) {
+        assert(0 && "ApplyPhysicsToCars not implemented.");
+        abort();
+    } else {
+        original_ApplyPhysicsToCars(last_frame_time, pTime_difference);
+    }
 }
 
+function_hook_state_t function_hook_state_MungeSpecialVolume = HOOK_UNAVAILABLE;
 static void(__cdecl*original_MungeSpecialVolume)(tCollision_info *) = (void(__cdecl*)(tCollision_info *))0x004792d0;
 CARM95_HOOK_FUNCTION(original_MungeSpecialVolume, MungeSpecialVolume)
 void __cdecl MungeSpecialVolume(tCollision_info *pCar) {
@@ -711,9 +931,15 @@ void __cdecl MungeSpecialVolume(tCollision_info *pCar) {
     (void)new_special_volume;
     (void)car;
 
-    original_MungeSpecialVolume(pCar);
+    if (function_hook_state_MungeSpecialVolume == HOOK_ENABLED) {
+        assert(0 && "MungeSpecialVolume not implemented.");
+        abort();
+    } else {
+        original_MungeSpecialVolume(pCar);
+    }
 }
 
+function_hook_state_t function_hook_state_ResetCarSpecialVolume = HOOK_UNAVAILABLE;
 static void(__cdecl*original_ResetCarSpecialVolume)(tCollision_info *) = (void(__cdecl*)(tCollision_info *))0x0047901e;
 CARM95_HOOK_FUNCTION(original_ResetCarSpecialVolume, ResetCarSpecialVolume)
 void __cdecl ResetCarSpecialVolume(tCollision_info *pCar) {
@@ -735,9 +961,15 @@ void __cdecl ResetCarSpecialVolume(tCollision_info *pCar) {
     (void)new_special_volume;
     (void)material;
 
-    original_ResetCarSpecialVolume(pCar);
+    if (function_hook_state_ResetCarSpecialVolume == HOOK_ENABLED) {
+        assert(0 && "ResetCarSpecialVolume not implemented.");
+        abort();
+    } else {
+        original_ResetCarSpecialVolume(pCar);
+    }
 }
 
+function_hook_state_t function_hook_state_TestAutoSpecialVolume = HOOK_UNAVAILABLE;
 static void(__cdecl*original_TestAutoSpecialVolume)(tCollision_info *) = (void(__cdecl*)(tCollision_info *))0x004794d3;
 CARM95_HOOK_FUNCTION(original_TestAutoSpecialVolume, TestAutoSpecialVolume)
 void __cdecl TestAutoSpecialVolume(tCollision_info *pCar) {
@@ -773,9 +1005,15 @@ void __cdecl TestAutoSpecialVolume(tCollision_info *pCar) {
     (void)val;
     (void)i;
 
-    original_TestAutoSpecialVolume(pCar);
+    if (function_hook_state_TestAutoSpecialVolume == HOOK_ENABLED) {
+        assert(0 && "TestAutoSpecialVolume not implemented.");
+        abort();
+    } else {
+        original_TestAutoSpecialVolume(pCar);
+    }
 }
 
+function_hook_state_t function_hook_state_MoveAndCollideCar = HOOK_UNAVAILABLE;
 static void(__cdecl*original_MoveAndCollideCar)(tCar_spec *, br_scalar) = (void(__cdecl*)(tCar_spec *, br_scalar))0x004790fd;
 CARM95_HOOK_FUNCTION(original_MoveAndCollideCar, MoveAndCollideCar)
 void __cdecl MoveAndCollideCar(tCar_spec *car, br_scalar dt) {
@@ -788,9 +1026,15 @@ void __cdecl MoveAndCollideCar(tCar_spec *car, br_scalar dt) {
     (void)car_info;
     (void)wheel;
 
-    original_MoveAndCollideCar(car, dt);
+    if (function_hook_state_MoveAndCollideCar == HOOK_ENABLED) {
+        assert(0 && "MoveAndCollideCar not implemented.");
+        abort();
+    } else {
+        original_MoveAndCollideCar(car, dt);
+    }
 }
 
+function_hook_state_t function_hook_state_MoveAndCollideNonCar = HOOK_UNAVAILABLE;
 static void(__cdecl*original_MoveAndCollideNonCar)(tNon_car_spec *, br_scalar) = (void(__cdecl*)(tNon_car_spec *, br_scalar))0x00479914;
 CARM95_HOOK_FUNCTION(original_MoveAndCollideNonCar, MoveAndCollideNonCar)
 void __cdecl MoveAndCollideNonCar(tNon_car_spec *non_car, br_scalar dt) {
@@ -801,9 +1045,15 @@ void __cdecl MoveAndCollideNonCar(tNon_car_spec *non_car, br_scalar dt) {
     (void)dt;
     (void)car_info;
 
-    original_MoveAndCollideNonCar(non_car, dt);
+    if (function_hook_state_MoveAndCollideNonCar == HOOK_ENABLED) {
+        assert(0 && "MoveAndCollideNonCar not implemented.");
+        abort();
+    } else {
+        original_MoveAndCollideNonCar(non_car, dt);
+    }
 }
 
+function_hook_state_t function_hook_state_CollideCarWithWall = HOOK_UNAVAILABLE;
 static int(__cdecl*original_CollideCarWithWall)(tCollision_info *, br_scalar) = (int(__cdecl*)(tCollision_info *, br_scalar))0x00479a2c;
 CARM95_HOOK_FUNCTION(original_CollideCarWithWall, CollideCarWithWall)
 int __cdecl CollideCarWithWall(tCollision_info *car, br_scalar dt) {
@@ -812,16 +1062,28 @@ int __cdecl CollideCarWithWall(tCollision_info *car, br_scalar dt) {
     (void)car;
     (void)dt;
 
-    return original_CollideCarWithWall(car, dt);
+    if (function_hook_state_CollideCarWithWall == HOOK_ENABLED) {
+        assert(0 && "CollideCarWithWall not implemented.");
+        abort();
+    } else {
+        return original_CollideCarWithWall(car, dt);
+    }
 }
 
+function_hook_state_t function_hook_state_ToggleControls = HOOK_UNAVAILABLE;
 void ToggleControls() {
     LOG_TRACE("()");
 
 
-    NOT_IMPLEMENTED();
+    if (function_hook_state_ToggleControls == HOOK_ENABLED) {
+        assert(0 && "ToggleControls not implemented.");
+        abort();
+    } else {
+        NOT_IMPLEMENTED();
+    }
 }
 
+function_hook_state_t function_hook_state_ControlCar2 = HOOK_UNAVAILABLE;
 static void(__cdecl*original_ControlCar2)(tCar_spec *, br_scalar) = (void(__cdecl*)(tCar_spec *, br_scalar))0x00479c6d;
 CARM95_HOOK_FUNCTION(original_ControlCar2, ControlCar2)
 void __cdecl ControlCar2(tCar_spec *c, br_scalar dt) {
@@ -830,9 +1092,15 @@ void __cdecl ControlCar2(tCar_spec *c, br_scalar dt) {
     (void)c;
     (void)dt;
 
-    original_ControlCar2(c, dt);
+    if (function_hook_state_ControlCar2 == HOOK_ENABLED) {
+        assert(0 && "ControlCar2 not implemented.");
+        abort();
+    } else {
+        original_ControlCar2(c, dt);
+    }
 }
 
+function_hook_state_t function_hook_state_ControlCar3 = HOOK_UNAVAILABLE;
 static void(__cdecl*original_ControlCar3)(tCar_spec *, br_scalar) = (void(__cdecl*)(tCar_spec *, br_scalar))0x00479f4b;
 CARM95_HOOK_FUNCTION(original_ControlCar3, ControlCar3)
 void __cdecl ControlCar3(tCar_spec *c, br_scalar dt) {
@@ -841,9 +1109,15 @@ void __cdecl ControlCar3(tCar_spec *c, br_scalar dt) {
     (void)c;
     (void)dt;
 
-    original_ControlCar3(c, dt);
+    if (function_hook_state_ControlCar3 == HOOK_ENABLED) {
+        assert(0 && "ControlCar3 not implemented.");
+        abort();
+    } else {
+        original_ControlCar3(c, dt);
+    }
 }
 
+function_hook_state_t function_hook_state_ControlCar4 = HOOK_UNAVAILABLE;
 static void(__cdecl*original_ControlCar4)(tCar_spec *, br_scalar) = (void(__cdecl*)(tCar_spec *, br_scalar))0x0047a20e;
 CARM95_HOOK_FUNCTION(original_ControlCar4, ControlCar4)
 void __cdecl ControlCar4(tCar_spec *c, br_scalar dt) {
@@ -854,9 +1128,15 @@ void __cdecl ControlCar4(tCar_spec *c, br_scalar dt) {
     (void)dt;
     (void)ts;
 
-    original_ControlCar4(c, dt);
+    if (function_hook_state_ControlCar4 == HOOK_ENABLED) {
+        assert(0 && "ControlCar4 not implemented.");
+        abort();
+    } else {
+        original_ControlCar4(c, dt);
+    }
 }
 
+function_hook_state_t function_hook_state_ControlCar5 = HOOK_UNAVAILABLE;
 static void(__cdecl*original_ControlCar5)(tCar_spec *, br_scalar) = (void(__cdecl*)(tCar_spec *, br_scalar))0x0047a7b1;
 CARM95_HOOK_FUNCTION(original_ControlCar5, ControlCar5)
 void __cdecl ControlCar5(tCar_spec *c, br_scalar dt) {
@@ -865,9 +1145,15 @@ void __cdecl ControlCar5(tCar_spec *c, br_scalar dt) {
     (void)c;
     (void)dt;
 
-    original_ControlCar5(c, dt);
+    if (function_hook_state_ControlCar5 == HOOK_ENABLED) {
+        assert(0 && "ControlCar5 not implemented.");
+        abort();
+    } else {
+        original_ControlCar5(c, dt);
+    }
 }
 
+function_hook_state_t function_hook_state_ControlCar1 = HOOK_UNAVAILABLE;
 static void(__cdecl*original_ControlCar1)(tCar_spec *, br_scalar) = (void(__cdecl*)(tCar_spec *, br_scalar))0x0047ac31;
 CARM95_HOOK_FUNCTION(original_ControlCar1, ControlCar1)
 void __cdecl ControlCar1(tCar_spec *c, br_scalar dt) {
@@ -876,9 +1162,15 @@ void __cdecl ControlCar1(tCar_spec *c, br_scalar dt) {
     (void)c;
     (void)dt;
 
-    original_ControlCar1(c, dt);
+    if (function_hook_state_ControlCar1 == HOOK_ENABLED) {
+        assert(0 && "ControlCar1 not implemented.");
+        abort();
+    } else {
+        original_ControlCar1(c, dt);
+    }
 }
 
+function_hook_state_t function_hook_state_setrotate = HOOK_UNAVAILABLE;
 void setrotate(struct br_vector3 *wdt, struct br_matrix34 *m) {
     br_euler e;
     LOG_TRACE("(%p, %p)", wdt, m);
@@ -887,9 +1179,15 @@ void setrotate(struct br_vector3 *wdt, struct br_matrix34 *m) {
     (void)m;
     (void)e;
 
-    NOT_IMPLEMENTED();
+    if (function_hook_state_setrotate == HOOK_ENABLED) {
+        assert(0 && "setrotate not implemented.");
+        abort();
+    } else {
+        NOT_IMPLEMENTED();
+    }
 }
 
+function_hook_state_t function_hook_state_RotateCar2 = HOOK_UNAVAILABLE;
 void RotateCar2(tCollision_info *c, br_scalar dt) {
     br_vector3 wdt;
     br_vector3 wdt2;
@@ -906,9 +1204,15 @@ void RotateCar2(tCollision_info *c, br_scalar dt) {
     (void)L2;
     (void)m;
 
-    NOT_IMPLEMENTED();
+    if (function_hook_state_RotateCar2 == HOOK_ENABLED) {
+        assert(0 && "RotateCar2 not implemented.");
+        abort();
+    } else {
+        NOT_IMPLEMENTED();
+    }
 }
 
+function_hook_state_t function_hook_state_RotateCarSecondOrder = HOOK_UNAVAILABLE;
 static void(__cdecl*original_RotateCarSecondOrder)(tCollision_info *, br_scalar) = (void(__cdecl*)(tCollision_info *, br_scalar))0x0047b434;
 CARM95_HOOK_FUNCTION(original_RotateCarSecondOrder, RotateCarSecondOrder)
 void __cdecl RotateCarSecondOrder(tCollision_info *c, br_scalar dt) {
@@ -931,9 +1235,15 @@ void __cdecl RotateCarSecondOrder(tCollision_info *c, br_scalar dt) {
     (void)rad_rate;
     (void)m;
 
-    original_RotateCarSecondOrder(c, dt);
+    if (function_hook_state_RotateCarSecondOrder == HOOK_ENABLED) {
+        assert(0 && "RotateCarSecondOrder not implemented.");
+        abort();
+    } else {
+        original_RotateCarSecondOrder(c, dt);
+    }
 }
 
+function_hook_state_t function_hook_state_RotateCarFirstOrder = HOOK_UNAVAILABLE;
 void RotateCarFirstOrder(tCollision_info *c, br_scalar dt) {
     br_vector3 axis;
     br_vector3 L;
@@ -958,9 +1268,15 @@ void RotateCarFirstOrder(tCollision_info *c, br_scalar dt) {
     (void)e2;
     (void)max_rad;
 
-    NOT_IMPLEMENTED();
+    if (function_hook_state_RotateCarFirstOrder == HOOK_ENABLED) {
+        assert(0 && "RotateCarFirstOrder not implemented.");
+        abort();
+    } else {
+        NOT_IMPLEMENTED();
+    }
 }
 
+function_hook_state_t function_hook_state_SimpleRotate = HOOK_UNAVAILABLE;
 static void(__cdecl*original_SimpleRotate)(tCollision_info *, br_scalar) = (void(__cdecl*)(tCollision_info *, br_scalar))0x0047b23c;
 CARM95_HOOK_FUNCTION(original_SimpleRotate, SimpleRotate)
 void __cdecl SimpleRotate(tCollision_info *c, br_scalar dt) {
@@ -975,9 +1291,15 @@ void __cdecl SimpleRotate(tCollision_info *c, br_scalar dt) {
     (void)rad_rate;
     (void)rad;
 
-    original_SimpleRotate(c, dt);
+    if (function_hook_state_SimpleRotate == HOOK_ENABLED) {
+        assert(0 && "SimpleRotate not implemented.");
+        abort();
+    } else {
+        original_SimpleRotate(c, dt);
+    }
 }
 
+function_hook_state_t function_hook_state_RotateCar = HOOK_UNAVAILABLE;
 static void(__cdecl*original_RotateCar)(tCollision_info *, br_scalar) = (void(__cdecl*)(tCollision_info *, br_scalar))0x0047b2fd;
 CARM95_HOOK_FUNCTION(original_RotateCar, RotateCar)
 void __cdecl RotateCar(tCollision_info *c, br_scalar dt) {
@@ -992,9 +1314,15 @@ void __cdecl RotateCar(tCollision_info *c, br_scalar dt) {
     (void)steps;
     (void)i;
 
-    original_RotateCar(c, dt);
+    if (function_hook_state_RotateCar == HOOK_ENABLED) {
+        assert(0 && "RotateCar not implemented.");
+        abort();
+    } else {
+        original_RotateCar(c, dt);
+    }
 }
 
+function_hook_state_t function_hook_state_SteeringSelfCentre = HOOK_UNAVAILABLE;
 static void(__cdecl*original_SteeringSelfCentre)(tCar_spec *, br_scalar, br_vector3 *) = (void(__cdecl*)(tCar_spec *, br_scalar, br_vector3 *))0x0047ea86;
 CARM95_HOOK_FUNCTION(original_SteeringSelfCentre, SteeringSelfCentre)
 void __cdecl SteeringSelfCentre(tCar_spec *c, br_scalar dt, br_vector3 *n) {
@@ -1008,9 +1336,15 @@ void __cdecl SteeringSelfCentre(tCar_spec *c, br_scalar dt, br_vector3 *n) {
     (void)ts;
     (void)ts2;
 
-    original_SteeringSelfCentre(c, dt, n);
+    if (function_hook_state_SteeringSelfCentre == HOOK_ENABLED) {
+        assert(0 && "SteeringSelfCentre not implemented.");
+        abort();
+    } else {
+        original_SteeringSelfCentre(c, dt, n);
+    }
 }
 
+function_hook_state_t function_hook_state_NonCarCalcForce = HOOK_UNAVAILABLE;
 static void(__cdecl*original_NonCarCalcForce)(tNon_car_spec *, br_scalar) = (void(__cdecl*)(tNon_car_spec *, br_scalar))0x0047b68d;
 CARM95_HOOK_FUNCTION(original_NonCarCalcForce, NonCarCalcForce)
 void __cdecl NonCarCalcForce(tNon_car_spec *nc, br_scalar dt) {
@@ -1029,9 +1363,15 @@ void __cdecl NonCarCalcForce(tNon_car_spec *nc, br_scalar dt) {
     (void)tv;
     (void)v;
 
-    original_NonCarCalcForce(nc, dt);
+    if (function_hook_state_NonCarCalcForce == HOOK_ENABLED) {
+        assert(0 && "NonCarCalcForce not implemented.");
+        abort();
+    } else {
+        original_NonCarCalcForce(nc, dt);
+    }
 }
 
+function_hook_state_t function_hook_state_AddDrag = HOOK_UNAVAILABLE;
 static void(__cdecl*original_AddDrag)(tCar_spec *, br_scalar) = (void(__cdecl*)(tCar_spec *, br_scalar))0x0047ec63;
 CARM95_HOOK_FUNCTION(original_AddDrag, AddDrag)
 void __cdecl AddDrag(tCar_spec *c, br_scalar dt) {
@@ -1048,9 +1388,15 @@ void __cdecl AddDrag(tCar_spec *c, br_scalar dt) {
     (void)vol;
     (void)b;
 
-    original_AddDrag(c, dt);
+    if (function_hook_state_AddDrag == HOOK_ENABLED) {
+        assert(0 && "AddDrag not implemented.");
+        abort();
+    } else {
+        original_AddDrag(c, dt);
+    }
 }
 
+function_hook_state_t function_hook_state_DoBumpiness = HOOK_UNAVAILABLE;
 static void(__cdecl*original_DoBumpiness)(tCar_spec *, br_vector3 *, br_vector3 *, br_scalar *, int) = (void(__cdecl*)(tCar_spec *, br_vector3 *, br_vector3 *, br_scalar *, int))0x0047ede9;
 CARM95_HOOK_FUNCTION(original_DoBumpiness, DoBumpiness)
 void __cdecl DoBumpiness(tCar_spec *c, br_vector3 *wheel_pos, br_vector3 *norm, br_scalar *d, int n) {
@@ -1072,9 +1418,15 @@ void __cdecl DoBumpiness(tCar_spec *c, br_vector3 *wheel_pos, br_vector3 *norm, 
     (void)y;
     (void)mat_list;
 
-    original_DoBumpiness(c, wheel_pos, norm, d, n);
+    if (function_hook_state_DoBumpiness == HOOK_ENABLED) {
+        assert(0 && "DoBumpiness not implemented.");
+        abort();
+    } else {
+        original_DoBumpiness(c, wheel_pos, norm, d, n);
+    }
 }
 
+function_hook_state_t function_hook_state_CalcForce = HOOK_UNAVAILABLE;
 static void(__cdecl*original_CalcForce)(tCar_spec *, br_scalar) = (void(__cdecl*)(tCar_spec *, br_scalar))0x0047ba5d;
 CARM95_HOOK_FUNCTION(original_CalcForce, CalcForce)
 void __cdecl CalcForce(tCar_spec *c, br_scalar dt) {
@@ -1195,9 +1547,15 @@ void __cdecl CalcForce(tCar_spec *c, br_scalar dt) {
     (void)__block2___scale;
     (void)__block3___scale;
 
-    original_CalcForce(c, dt);
+    if (function_hook_state_CalcForce == HOOK_ENABLED) {
+        assert(0 && "CalcForce not implemented.");
+        abort();
+    } else {
+        original_CalcForce(c, dt);
+    }
 }
 
+function_hook_state_t function_hook_state_DoRevs = HOOK_UNAVAILABLE;
 static void(__cdecl*original_DoRevs)(tCar_spec *, br_scalar) = (void(__cdecl*)(tCar_spec *, br_scalar))0x0047ef8e;
 CARM95_HOOK_FUNCTION(original_DoRevs, DoRevs)
 void __cdecl DoRevs(tCar_spec *c, br_scalar dt) {
@@ -1212,9 +1570,15 @@ void __cdecl DoRevs(tCar_spec *c, br_scalar dt) {
     (void)ts;
     (void)revs_increase;
 
-    original_DoRevs(c, dt);
+    if (function_hook_state_DoRevs == HOOK_ENABLED) {
+        assert(0 && "DoRevs not implemented.");
+        abort();
+    } else {
+        original_DoRevs(c, dt);
+    }
 }
 
+function_hook_state_t function_hook_state_ApplyTorque = HOOK_UNAVAILABLE;
 static void(__cdecl*original_ApplyTorque)(tCar_spec *, br_vector3 *) = (void(__cdecl*)(tCar_spec *, br_vector3 *))0x0047f4f2;
 CARM95_HOOK_FUNCTION(original_ApplyTorque, ApplyTorque)
 void __cdecl ApplyTorque(tCar_spec *c, br_vector3 *tdt) {
@@ -1223,9 +1587,15 @@ void __cdecl ApplyTorque(tCar_spec *c, br_vector3 *tdt) {
     (void)c;
     (void)tdt;
 
-    original_ApplyTorque(c, tdt);
+    if (function_hook_state_ApplyTorque == HOOK_ENABLED) {
+        assert(0 && "ApplyTorque not implemented.");
+        abort();
+    } else {
+        original_ApplyTorque(c, tdt);
+    }
 }
 
+function_hook_state_t function_hook_state_TranslateCar = HOOK_UNAVAILABLE;
 static void(__cdecl*original_TranslateCar)(tCollision_info *, br_scalar) = (void(__cdecl*)(tCollision_info *, br_scalar))0x0047f55f;
 CARM95_HOOK_FUNCTION(original_TranslateCar, TranslateCar)
 void __cdecl TranslateCar(tCollision_info *c, br_scalar dt) {
@@ -1236,9 +1606,15 @@ void __cdecl TranslateCar(tCollision_info *c, br_scalar dt) {
     (void)dt;
     (void)t;
 
-    original_TranslateCar(c, dt);
+    if (function_hook_state_TranslateCar == HOOK_ENABLED) {
+        assert(0 && "TranslateCar not implemented.");
+        abort();
+    } else {
+        original_TranslateCar(c, dt);
+    }
 }
 
+function_hook_state_t function_hook_state_CollCheck = HOOK_UNAVAILABLE;
 static int(__cdecl*original_CollCheck)(tCollision_info *, br_scalar) = (int(__cdecl*)(tCollision_info *, br_scalar))0x0047f5d0;
 CARM95_HOOK_FUNCTION(original_CollCheck, CollCheck)
 int __cdecl CollCheck(tCollision_info *c, br_scalar dt) {
@@ -1359,9 +1735,15 @@ int __cdecl CollCheck(tCollision_info *c, br_scalar dt) {
     (void)__block0___scale;
     (void)__block1___scale;
 
-    return original_CollCheck(c, dt);
+    if (function_hook_state_CollCheck == HOOK_ENABLED) {
+        assert(0 && "CollCheck not implemented.");
+        abort();
+    } else {
+        return original_CollCheck(c, dt);
+    }
 }
 
+function_hook_state_t function_hook_state_AddFriction = HOOK_UNAVAILABLE;
 static br_scalar(__cdecl*original_AddFriction)(tCollision_info *, br_vector3 *, br_vector3 *, br_vector3 *, br_scalar, br_vector3 *) = (br_scalar(__cdecl*)(tCollision_info *, br_vector3 *, br_vector3 *, br_vector3 *, br_scalar, br_vector3 *))0x00481cb9;
 CARM95_HOOK_FUNCTION(original_AddFriction, AddFriction)
 br_scalar __cdecl AddFriction(tCollision_info *c, br_vector3 *vel, br_vector3 *normal_force, br_vector3 *pos, br_scalar total_force, br_vector3 *max_friction) {
@@ -1384,9 +1766,15 @@ br_scalar __cdecl AddFriction(tCollision_info *c, br_vector3 *vel, br_vector3 *n
     (void)ts;
     (void)point_vel;
 
-    return original_AddFriction(c, vel, normal_force, pos, total_force, max_friction);
+    if (function_hook_state_AddFriction == HOOK_ENABLED) {
+        assert(0 && "AddFriction not implemented.");
+        abort();
+    } else {
+        return original_AddFriction(c, vel, normal_force, pos, total_force, max_friction);
+    }
 }
 
+function_hook_state_t function_hook_state_AddFrictionCarToCar = HOOK_UNAVAILABLE;
 static void(__cdecl*original_AddFrictionCarToCar)(tCollision_info *, tCollision_info *, br_vector3 *, br_vector3 *, br_vector3 *, br_vector3 *, br_vector3 *, br_scalar, br_vector3 *) = (void(__cdecl*)(tCollision_info *, tCollision_info *, br_vector3 *, br_vector3 *, br_vector3 *, br_vector3 *, br_vector3 *, br_scalar, br_vector3 *))0x0049231c;
 CARM95_HOOK_FUNCTION(original_AddFrictionCarToCar, AddFrictionCarToCar)
 void __cdecl AddFrictionCarToCar(tCollision_info *car1, tCollision_info *car2, br_vector3 *vel1, br_vector3 *vel2, br_vector3 *normal_force1, br_vector3 *pos1, br_vector3 *pos2, br_scalar total_force, br_vector3 *max_friction) {
@@ -1428,9 +1816,15 @@ void __cdecl AddFrictionCarToCar(tCollision_info *car1, tCollision_info *car2, b
     (void)total_friction;
     (void)i;
 
-    original_AddFrictionCarToCar(car1, car2, vel1, vel2, normal_force1, pos1, pos2, total_force, max_friction);
+    if (function_hook_state_AddFrictionCarToCar == HOOK_ENABLED) {
+        assert(0 && "AddFrictionCarToCar not implemented.");
+        abort();
+    } else {
+        original_AddFrictionCarToCar(car1, car2, vel1, vel2, normal_force1, pos1, pos2, total_force, max_friction);
+    }
 }
 
+function_hook_state_t function_hook_state_ScrapeNoise = HOOK_UNAVAILABLE;
 static void(__cdecl*original_ScrapeNoise)(br_scalar, br_vector3 *, int) = (void(__cdecl*)(br_scalar, br_vector3 *, int))0x00482070;
 CARM95_HOOK_FUNCTION(original_ScrapeNoise, ScrapeNoise)
 void __cdecl ScrapeNoise(br_scalar vel, br_vector3 *position, int material) {
@@ -1450,9 +1844,15 @@ void __cdecl ScrapeNoise(br_scalar vel, br_vector3 *position, int material) {
     (void)velocity;
     (void)position_in_br;
 
-    original_ScrapeNoise(vel, position, material);
+    if (function_hook_state_ScrapeNoise == HOOK_ENABLED) {
+        assert(0 && "ScrapeNoise not implemented.");
+        abort();
+    } else {
+        original_ScrapeNoise(vel, position, material);
+    }
 }
 
+function_hook_state_t function_hook_state_SkidNoise = HOOK_UNAVAILABLE;
 static void(__cdecl*original_SkidNoise)(tCar_spec *, int, br_scalar, int) = (void(__cdecl*)(tCar_spec *, int, br_scalar, int))0x0048216d;
 CARM95_HOOK_FUNCTION(original_SkidNoise, SkidNoise)
 void __cdecl SkidNoise(tCar_spec *pC, int pWheel_num, br_scalar pV, int material) {
@@ -1477,9 +1877,15 @@ void __cdecl SkidNoise(tCar_spec *pC, int pWheel_num, br_scalar pV, int material
     (void)last_skid_vol;
     (void)i;
 
-    original_SkidNoise(pC, pWheel_num, pV, material);
+    if (function_hook_state_SkidNoise == HOOK_ENABLED) {
+        assert(0 && "SkidNoise not implemented.");
+        abort();
+    } else {
+        original_SkidNoise(pC, pWheel_num, pV, material);
+    }
 }
 
+function_hook_state_t function_hook_state_StopSkid = HOOK_UNAVAILABLE;
 static void(__cdecl*original_StopSkid)(tCar_spec *) = (void(__cdecl*)(tCar_spec *))0x00482458;
 CARM95_HOOK_FUNCTION(original_StopSkid, StopSkid)
 void __cdecl StopSkid(tCar_spec *pC) {
@@ -1487,9 +1893,15 @@ void __cdecl StopSkid(tCar_spec *pC) {
 
     (void)pC;
 
-    original_StopSkid(pC);
+    if (function_hook_state_StopSkid == HOOK_ENABLED) {
+        assert(0 && "StopSkid not implemented.");
+        abort();
+    } else {
+        original_StopSkid(pC);
+    }
 }
 
+function_hook_state_t function_hook_state_CrashNoise = HOOK_UNAVAILABLE;
 static void(__cdecl*original_CrashNoise)(br_vector3 *, br_vector3 *, int) = (void(__cdecl*)(br_vector3 *, br_vector3 *, int))0x0048249d;
 CARM95_HOOK_FUNCTION(original_CrashNoise, CrashNoise)
 void __cdecl CrashNoise(br_vector3 *pForce, br_vector3 *position, int material) {
@@ -1507,9 +1919,15 @@ void __cdecl CrashNoise(br_vector3 *pForce, br_vector3 *position, int material) 
     (void)vol;
     (void)velocity;
 
-    original_CrashNoise(pForce, position, material);
+    if (function_hook_state_CrashNoise == HOOK_ENABLED) {
+        assert(0 && "CrashNoise not implemented.");
+        abort();
+    } else {
+        original_CrashNoise(pForce, position, material);
+    }
 }
 
+function_hook_state_t function_hook_state_CrushAndDamageCar = HOOK_UNAVAILABLE;
 static void(__cdecl*original_CrushAndDamageCar)(tCar_spec *, br_vector3 *, br_vector3 *, tCar_spec *) = (void(__cdecl*)(tCar_spec *, br_vector3 *, br_vector3 *, tCar_spec *))0x004825a8;
 CARM95_HOOK_FUNCTION(original_CrushAndDamageCar, CrushAndDamageCar)
 void __cdecl CrushAndDamageCar(tCar_spec *c, br_vector3 *pPosition, br_vector3 *pForce_car_space, tCar_spec *car2) {
@@ -1540,9 +1958,15 @@ void __cdecl CrushAndDamageCar(tCar_spec *c, br_vector3 *pPosition, br_vector3 *
     (void)m;
     (void)fudge_multiplier;
 
-    original_CrushAndDamageCar(c, pPosition, pForce_car_space, car2);
+    if (function_hook_state_CrushAndDamageCar == HOOK_ENABLED) {
+        assert(0 && "CrushAndDamageCar not implemented.");
+        abort();
+    } else {
+        original_CrushAndDamageCar(c, pPosition, pForce_car_space, car2);
+    }
 }
 
+function_hook_state_t function_hook_state_ExpandBoundingBox = HOOK_UNAVAILABLE;
 static int(__cdecl*original_ExpandBoundingBox)(tCar_spec *) = (int(__cdecl*)(tCar_spec *))0x00482c00;
 CARM95_HOOK_FUNCTION(original_ExpandBoundingBox, ExpandBoundingBox)
 int __cdecl ExpandBoundingBox(tCar_spec *c) {
@@ -1564,9 +1988,15 @@ int __cdecl ExpandBoundingBox(tCar_spec *c) {
     (void)l;
     (void)mat;
 
-    return original_ExpandBoundingBox(c);
+    if (function_hook_state_ExpandBoundingBox == HOOK_ENABLED) {
+        assert(0 && "ExpandBoundingBox not implemented.");
+        abort();
+    } else {
+        return original_ExpandBoundingBox(c);
+    }
 }
 
+function_hook_state_t function_hook_state_CrushBoundingBox = HOOK_UNAVAILABLE;
 static void(__cdecl*original_CrushBoundingBox)(tCar_spec *, int) = (void(__cdecl*)(tCar_spec *, int))0x00482dee;
 CARM95_HOOK_FUNCTION(original_CrushBoundingBox, CrushBoundingBox)
 void __cdecl CrushBoundingBox(tCar_spec *c, int crush_only) {
@@ -1583,9 +2013,15 @@ void __cdecl CrushBoundingBox(tCar_spec *c, int crush_only) {
     (void)i;
     (void)actor;
 
-    original_CrushBoundingBox(c, crush_only);
+    if (function_hook_state_CrushBoundingBox == HOOK_ENABLED) {
+        assert(0 && "CrushBoundingBox not implemented.");
+        abort();
+    } else {
+        original_CrushBoundingBox(c, crush_only);
+    }
 }
 
+function_hook_state_t function_hook_state_AddCollPoint = HOOK_UNAVAILABLE;
 static void(__cdecl*original_AddCollPoint)(br_scalar, br_vector3 *, br_vector3 *, br_vector3 *, br_vector3 *, br_vector3 *, int, tCollision_info *) = (void(__cdecl*)(br_scalar, br_vector3 *, br_vector3 *, br_vector3 *, br_vector3 *, br_vector3 *, int, tCollision_info *))0x00483152;
 CARM95_HOOK_FUNCTION(original_AddCollPoint, AddCollPoint)
 void __cdecl AddCollPoint(br_scalar dist, br_vector3 *p, br_vector3 *norm, br_vector3 *r, br_vector3 *n, br_vector3 *dir, int num, tCollision_info *c) {
@@ -1606,9 +2042,15 @@ void __cdecl AddCollPoint(br_scalar dist, br_vector3 *p, br_vector3 *norm, br_ve
     (void)i;
     (void)furthest;
 
-    original_AddCollPoint(dist, p, norm, r, n, dir, num, c);
+    if (function_hook_state_AddCollPoint == HOOK_ENABLED) {
+        assert(0 && "AddCollPoint not implemented.");
+        abort();
+    } else {
+        original_AddCollPoint(dist, p, norm, r, n, dir, num, c);
+    }
 }
 
+function_hook_state_t function_hook_state_SinglePointColl = HOOK_UNAVAILABLE;
 static br_scalar(__cdecl*original_SinglePointColl)(br_scalar *, br_matrix4 *, br_scalar *) = (br_scalar(__cdecl*)(br_scalar *, br_matrix4 *, br_scalar *))0x0048326d;
 CARM95_HOOK_FUNCTION(original_SinglePointColl, SinglePointColl)
 br_scalar __cdecl SinglePointColl(br_scalar *f, br_matrix4 *m, br_scalar *d) {
@@ -1618,9 +2060,15 @@ br_scalar __cdecl SinglePointColl(br_scalar *f, br_matrix4 *m, br_scalar *d) {
     (void)m;
     (void)d;
 
-    return original_SinglePointColl(f, m, d);
+    if (function_hook_state_SinglePointColl == HOOK_ENABLED) {
+        assert(0 && "SinglePointColl not implemented.");
+        abort();
+    } else {
+        return original_SinglePointColl(f, m, d);
+    }
 }
 
+function_hook_state_t function_hook_state_TwoPointColl = HOOK_UNAVAILABLE;
 static br_scalar(__cdecl*original_TwoPointColl)(br_scalar *, br_matrix4 *, br_scalar *, br_vector3 *, br_vector3 *) = (br_scalar(__cdecl*)(br_scalar *, br_matrix4 *, br_scalar *, br_vector3 *, br_vector3 *))0x004832b2;
 CARM95_HOOK_FUNCTION(original_TwoPointColl, TwoPointColl)
 br_scalar __cdecl TwoPointColl(br_scalar *f, br_matrix4 *m, br_scalar *d, br_vector3 *tau, br_vector3 *n) {
@@ -1634,9 +2082,15 @@ br_scalar __cdecl TwoPointColl(br_scalar *f, br_matrix4 *m, br_scalar *d, br_vec
     (void)n;
     (void)ts;
 
-    return original_TwoPointColl(f, m, d, tau, n);
+    if (function_hook_state_TwoPointColl == HOOK_ENABLED) {
+        assert(0 && "TwoPointColl not implemented.");
+        abort();
+    } else {
+        return original_TwoPointColl(f, m, d, tau, n);
+    }
 }
 
+function_hook_state_t function_hook_state_DrMatrix4Inverse = HOOK_UNAVAILABLE;
 static br_scalar(__cdecl*original_DrMatrix4Inverse)(br_matrix4 *, br_matrix4 *) = (br_scalar(__cdecl*)(br_matrix4 *, br_matrix4 *))0x0048377f;
 CARM95_HOOK_FUNCTION(original_DrMatrix4Inverse, DrMatrix4Inverse)
 br_scalar __cdecl DrMatrix4Inverse(br_matrix4 *mi, br_matrix4 *mc) {
@@ -1645,9 +2099,15 @@ br_scalar __cdecl DrMatrix4Inverse(br_matrix4 *mi, br_matrix4 *mc) {
     (void)mi;
     (void)mc;
 
-    return original_DrMatrix4Inverse(mi, mc);
+    if (function_hook_state_DrMatrix4Inverse == HOOK_ENABLED) {
+        assert(0 && "DrMatrix4Inverse not implemented.");
+        abort();
+    } else {
+        return original_DrMatrix4Inverse(mi, mc);
+    }
 }
 
+function_hook_state_t function_hook_state_ThreePointColl = HOOK_UNAVAILABLE;
 static br_scalar(__cdecl*original_ThreePointColl)(br_scalar *, br_matrix4 *, br_scalar *) = (br_scalar(__cdecl*)(br_scalar *, br_matrix4 *, br_scalar *))0x004836f1;
 CARM95_HOOK_FUNCTION(original_ThreePointColl, ThreePointColl)
 br_scalar __cdecl ThreePointColl(br_scalar *f, br_matrix4 *m, br_scalar *d) {
@@ -1663,9 +2123,15 @@ br_scalar __cdecl ThreePointColl(br_scalar *f, br_matrix4 *m, br_scalar *d) {
     (void)mi;
     (void)ts;
 
-    return original_ThreePointColl(f, m, d);
+    if (function_hook_state_ThreePointColl == HOOK_ENABLED) {
+        assert(0 && "ThreePointColl not implemented.");
+        abort();
+    } else {
+        return original_ThreePointColl(f, m, d);
+    }
 }
 
+function_hook_state_t function_hook_state_ThreePointCollRec = HOOK_UNAVAILABLE;
 static br_scalar(__cdecl*original_ThreePointCollRec)(br_scalar *, br_matrix4 *, br_scalar *, br_vector3 *, br_vector3 *, tCollision_info *) = (br_scalar(__cdecl*)(br_scalar *, br_matrix4 *, br_scalar *, br_vector3 *, br_vector3 *, tCollision_info *))0x00483425;
 CARM95_HOOK_FUNCTION(original_ThreePointCollRec, ThreePointCollRec)
 br_scalar __cdecl ThreePointCollRec(br_scalar *f, br_matrix4 *m, br_scalar *d, br_vector3 *tau, br_vector3 *n, tCollision_info *c) {
@@ -1684,9 +2150,15 @@ br_scalar __cdecl ThreePointCollRec(br_scalar *f, br_matrix4 *m, br_scalar *d, b
     (void)j;
     (void)ts;
 
-    return original_ThreePointCollRec(f, m, d, tau, n, c);
+    if (function_hook_state_ThreePointCollRec == HOOK_ENABLED) {
+        assert(0 && "ThreePointCollRec not implemented.");
+        abort();
+    } else {
+        return original_ThreePointCollRec(f, m, d, tau, n, c);
+    }
 }
 
+function_hook_state_t function_hook_state_FourPointColl = HOOK_UNAVAILABLE;
 static br_scalar(__cdecl*original_FourPointColl)(br_scalar *, br_matrix4 *, br_scalar *, br_vector3 *, br_vector3 *, tCollision_info *) = (br_scalar(__cdecl*)(br_scalar *, br_matrix4 *, br_scalar *, br_vector3 *, br_vector3 *, tCollision_info *))0x0048379f;
 CARM95_HOOK_FUNCTION(original_FourPointColl, FourPointColl)
 br_scalar __cdecl FourPointColl(br_scalar *f, br_matrix4 *m, br_scalar *d, br_vector3 *tau, br_vector3 *n, tCollision_info *c) {
@@ -1707,9 +2179,15 @@ br_scalar __cdecl FourPointColl(br_scalar *f, br_matrix4 *m, br_scalar *d, br_ve
     (void)l;
     (void)ts;
 
-    return original_FourPointColl(f, m, d, tau, n, c);
+    if (function_hook_state_FourPointColl == HOOK_ENABLED) {
+        assert(0 && "FourPointColl not implemented.");
+        abort();
+    } else {
+        return original_FourPointColl(f, m, d, tau, n, c);
+    }
 }
 
+function_hook_state_t function_hook_state_MultiFindFloorInBoxM = HOOK_UNAVAILABLE;
 static void(__cdecl*original_MultiFindFloorInBoxM)(int, br_vector3 *, br_vector3 *, br_vector3 *, br_scalar *, tCar_spec *, int *) = (void(__cdecl*)(int, br_vector3 *, br_vector3 *, br_vector3 *, br_scalar *, tCar_spec *, int *))0x00483a49;
 CARM95_HOOK_FUNCTION(original_MultiFindFloorInBoxM, MultiFindFloorInBoxM)
 void __cdecl MultiFindFloorInBoxM(int pNum_rays, br_vector3 *a, br_vector3 *b, br_vector3 *nor, br_scalar *d, tCar_spec *c, int *mat_ref) {
@@ -1729,9 +2207,15 @@ void __cdecl MultiFindFloorInBoxM(int pNum_rays, br_vector3 *a, br_vector3 *b, b
     (void)bb;
     (void)i;
 
-    original_MultiFindFloorInBoxM(pNum_rays, a, b, nor, d, c, mat_ref);
+    if (function_hook_state_MultiFindFloorInBoxM == HOOK_ENABLED) {
+        assert(0 && "MultiFindFloorInBoxM not implemented.");
+        abort();
+    } else {
+        original_MultiFindFloorInBoxM(pNum_rays, a, b, nor, d, c, mat_ref);
+    }
 }
 
+function_hook_state_t function_hook_state_MultiFindFloorInBoxBU = HOOK_UNAVAILABLE;
 static void(__cdecl*original_MultiFindFloorInBoxBU)(int, br_vector3 *, br_vector3 *, br_vector3 *, br_scalar *, tCar_spec *, int *) = (void(__cdecl*)(int, br_vector3 *, br_vector3 *, br_vector3 *, br_scalar *, tCar_spec *, int *))0x00483b2a;
 CARM95_HOOK_FUNCTION(original_MultiFindFloorInBoxBU, MultiFindFloorInBoxBU)
 void __cdecl MultiFindFloorInBoxBU(int pNum_rays, br_vector3 *a, br_vector3 *b, br_vector3 *nor, br_scalar *d, tCar_spec *c, int *mat_ref) {
@@ -1757,9 +2241,15 @@ void __cdecl MultiFindFloorInBoxBU(int pNum_rays, br_vector3 *a, br_vector3 *b, 
     (void)dist;
     (void)face_ref;
 
-    original_MultiFindFloorInBoxBU(pNum_rays, a, b, nor, d, c, mat_ref);
+    if (function_hook_state_MultiFindFloorInBoxBU == HOOK_ENABLED) {
+        assert(0 && "MultiFindFloorInBoxBU not implemented.");
+        abort();
+    } else {
+        original_MultiFindFloorInBoxBU(pNum_rays, a, b, nor, d, c, mat_ref);
+    }
 }
 
+function_hook_state_t function_hook_state_findfloor = HOOK_UNAVAILABLE;
 static void(__cdecl*original_findfloor)(br_vector3 *, br_vector3 *, br_vector3 *, br_scalar *) = (void(__cdecl*)(br_vector3 *, br_vector3 *, br_vector3 *, br_scalar *))0x00483c6a;
 CARM95_HOOK_FUNCTION(original_findfloor, findfloor)
 void __cdecl findfloor(br_vector3 *a, br_vector3 *b, br_vector3 *nor, br_scalar *d) {
@@ -1776,9 +2266,15 @@ void __cdecl findfloor(br_vector3 *a, br_vector3 *b, br_vector3 *nor, br_scalar 
     (void)aa;
     (void)bb;
 
-    original_findfloor(a, b, nor, d);
+    if (function_hook_state_findfloor == HOOK_ENABLED) {
+        assert(0 && "findfloor not implemented.");
+        abort();
+    } else {
+        original_findfloor(a, b, nor, d);
+    }
 }
 
+function_hook_state_t function_hook_state_FindFloorInBoxM = HOOK_UNAVAILABLE;
 static int(__cdecl*original_FindFloorInBoxM)(br_vector3 *, br_vector3 *, br_vector3 *, br_scalar *, tCollision_info *) = (int(__cdecl*)(br_vector3 *, br_vector3 *, br_vector3 *, br_scalar *, tCollision_info *))0x00483cec;
 CARM95_HOOK_FUNCTION(original_FindFloorInBoxM, FindFloorInBoxM)
 int __cdecl FindFloorInBoxM(br_vector3 *a, br_vector3 *b, br_vector3 *nor, br_scalar *d, tCollision_info *c) {
@@ -1794,9 +2290,15 @@ int __cdecl FindFloorInBoxM(br_vector3 *a, br_vector3 *b, br_vector3 *nor, br_sc
     (void)aa;
     (void)bb;
 
-    return original_FindFloorInBoxM(a, b, nor, d, c);
+    if (function_hook_state_FindFloorInBoxM == HOOK_ENABLED) {
+        assert(0 && "FindFloorInBoxM not implemented.");
+        abort();
+    } else {
+        return original_FindFloorInBoxM(a, b, nor, d, c);
+    }
 }
 
+function_hook_state_t function_hook_state_FindFloorInBoxBU = HOOK_UNAVAILABLE;
 static int(__cdecl*original_FindFloorInBoxBU)(br_vector3 *, br_vector3 *, br_vector3 *, br_scalar *, tCollision_info *) = (int(__cdecl*)(br_vector3 *, br_vector3 *, br_vector3 *, br_scalar *, tCollision_info *))0x00483d73;
 CARM95_HOOK_FUNCTION(original_FindFloorInBoxBU, FindFloorInBoxBU)
 int __cdecl FindFloorInBoxBU(br_vector3 *a, br_vector3 *b, br_vector3 *nor, br_scalar *d, tCollision_info *c) {
@@ -1818,9 +2320,15 @@ int __cdecl FindFloorInBoxBU(br_vector3 *a, br_vector3 *b, br_vector3 *nor, br_s
     (void)dist;
     (void)face_ref;
 
-    return original_FindFloorInBoxBU(a, b, nor, d, c);
+    if (function_hook_state_FindFloorInBoxBU == HOOK_ENABLED) {
+        assert(0 && "FindFloorInBoxBU not implemented.");
+        abort();
+    } else {
+        return original_FindFloorInBoxBU(a, b, nor, d, c);
+    }
 }
 
+function_hook_state_t function_hook_state_FindFloorInBoxBU2 = HOOK_UNAVAILABLE;
 static int(__cdecl*original_FindFloorInBoxBU2)(br_vector3 *, br_vector3 *, br_vector3 *, br_scalar *, tCollision_info *) = (int(__cdecl*)(br_vector3 *, br_vector3 *, br_vector3 *, br_scalar *, tCollision_info *))0x00483e92;
 CARM95_HOOK_FUNCTION(original_FindFloorInBoxBU2, FindFloorInBoxBU2)
 int __cdecl FindFloorInBoxBU2(br_vector3 *a, br_vector3 *b, br_vector3 *nor, br_scalar *d, tCollision_info *c) {
@@ -1844,9 +2352,15 @@ int __cdecl FindFloorInBoxBU2(br_vector3 *a, br_vector3 *b, br_vector3 *nor, br_
     (void)dist;
     (void)face_ref;
 
-    return original_FindFloorInBoxBU2(a, b, nor, d, c);
+    if (function_hook_state_FindFloorInBoxBU2 == HOOK_ENABLED) {
+        assert(0 && "FindFloorInBoxBU2 not implemented.");
+        abort();
+    } else {
+        return original_FindFloorInBoxBU2(a, b, nor, d, c);
+    }
 }
 
+function_hook_state_t function_hook_state_FindFloorInBoxM2 = HOOK_UNAVAILABLE;
 static int(__cdecl*original_FindFloorInBoxM2)(br_vector3 *, br_vector3 *, br_vector3 *, br_scalar *, tCollision_info *) = (int(__cdecl*)(br_vector3 *, br_vector3 *, br_vector3 *, br_scalar *, tCollision_info *))0x0048405b;
 CARM95_HOOK_FUNCTION(original_FindFloorInBoxM2, FindFloorInBoxM2)
 int __cdecl FindFloorInBoxM2(br_vector3 *a, br_vector3 *b, br_vector3 *nor, br_scalar *d, tCollision_info *c) {
@@ -1862,9 +2376,15 @@ int __cdecl FindFloorInBoxM2(br_vector3 *a, br_vector3 *b, br_vector3 *nor, br_s
     (void)aa;
     (void)bb;
 
-    return original_FindFloorInBoxM2(a, b, nor, d, c);
+    if (function_hook_state_FindFloorInBoxM2 == HOOK_ENABLED) {
+        assert(0 && "FindFloorInBoxM2 not implemented.");
+        abort();
+    } else {
+        return original_FindFloorInBoxM2(a, b, nor, d, c);
+    }
 }
 
+function_hook_state_t function_hook_state_BoxFaceIntersect = HOOK_UNAVAILABLE;
 static int(__cdecl*original_BoxFaceIntersect)(br_bounds *, br_matrix34 *, br_matrix34 *, br_vector3 *, br_vector3 *, br_scalar *, int, tCollision_info *) = (int(__cdecl*)(br_bounds *, br_matrix34 *, br_matrix34 *, br_vector3 *, br_vector3 *, br_scalar *, int, tCollision_info *))0x004840e2;
 CARM95_HOOK_FUNCTION(original_BoxFaceIntersect, BoxFaceIntersect)
 int __cdecl BoxFaceIntersect(br_bounds *pB, br_matrix34 *pM, br_matrix34 *pMold, br_vector3 *pPoint_list, br_vector3 *pNorm_list, br_scalar *pDist_list, int pMax_pnts, tCollision_info *c) {
@@ -1901,9 +2421,15 @@ int __cdecl BoxFaceIntersect(br_bounds *pB, br_matrix34 *pM, br_matrix34 *pMold,
     (void)f_ref;
     (void)face;
 
-    return original_BoxFaceIntersect(pB, pM, pMold, pPoint_list, pNorm_list, pDist_list, pMax_pnts, c);
+    if (function_hook_state_BoxFaceIntersect == HOOK_ENABLED) {
+        assert(0 && "BoxFaceIntersect not implemented.");
+        abort();
+    } else {
+        return original_BoxFaceIntersect(pB, pM, pMold, pPoint_list, pNorm_list, pDist_list, pMax_pnts, c);
+    }
 }
 
+function_hook_state_t function_hook_state_AddEdgeCollPoints = HOOK_UNAVAILABLE;
 static int(__cdecl*original_AddEdgeCollPoints)(br_vector3 *, br_vector3 *, br_bounds *, br_matrix34 *, br_vector3 *, br_vector3 *, int, int, tCollision_info *) = (int(__cdecl*)(br_vector3 *, br_vector3 *, br_bounds *, br_matrix34 *, br_vector3 *, br_vector3 *, int, int, tCollision_info *))0x0048469b;
 CARM95_HOOK_FUNCTION(original_AddEdgeCollPoints, AddEdgeCollPoints)
 int __cdecl AddEdgeCollPoints(br_vector3 *p1, br_vector3 *p2, br_bounds *pB, br_matrix34 *pMold, br_vector3 *pPoint_list, br_vector3 *pNorm_list, int n, int pMax_pnts, tCollision_info *c) {
@@ -1949,9 +2475,15 @@ int __cdecl AddEdgeCollPoints(br_vector3 *p1, br_vector3 *p2, br_bounds *pB, br_
     (void)__block1___scale;
     (void)__block2___scale;
 
-    return original_AddEdgeCollPoints(p1, p2, pB, pMold, pPoint_list, pNorm_list, n, pMax_pnts, c);
+    if (function_hook_state_AddEdgeCollPoints == HOOK_ENABLED) {
+        assert(0 && "AddEdgeCollPoints not implemented.");
+        abort();
+    } else {
+        return original_AddEdgeCollPoints(p1, p2, pB, pMold, pPoint_list, pNorm_list, n, pMax_pnts, c);
+    }
 }
 
+function_hook_state_t function_hook_state_GetPlaneNormal = HOOK_UNAVAILABLE;
 static void(__cdecl*original_GetPlaneNormal)(br_vector3 *, int) = (void(__cdecl*)(br_vector3 *, int))0x004854c1;
 CARM95_HOOK_FUNCTION(original_GetPlaneNormal, GetPlaneNormal)
 void __cdecl GetPlaneNormal(br_vector3 *n, int p) {
@@ -1962,9 +2494,15 @@ void __cdecl GetPlaneNormal(br_vector3 *n, int p) {
     (void)p;
     (void)d;
 
-    original_GetPlaneNormal(n, p);
+    if (function_hook_state_GetPlaneNormal == HOOK_ENABLED) {
+        assert(0 && "GetPlaneNormal not implemented.");
+        abort();
+    } else {
+        original_GetPlaneNormal(n, p);
+    }
 }
 
+function_hook_state_t function_hook_state_GetBoundsEdge = HOOK_UNAVAILABLE;
 static int(__cdecl*original_GetBoundsEdge)(br_vector3 *, br_vector3 *, br_bounds *, int, int, br_vector3 *, br_vector3 *, br_vector3 *, int) = (int(__cdecl*)(br_vector3 *, br_vector3 *, br_bounds *, int, int, br_vector3 *, br_vector3 *, br_vector3 *, int))0x0048551f;
 CARM95_HOOK_FUNCTION(original_GetBoundsEdge, GetBoundsEdge)
 int __cdecl GetBoundsEdge(br_vector3 *pos, br_vector3 *edge, br_bounds *pB, int plane1, int plane2, br_vector3 *a, br_vector3 *b, br_vector3 *c, int flag) {
@@ -1992,9 +2530,15 @@ int __cdecl GetBoundsEdge(br_vector3 *pos, br_vector3 *edge, br_bounds *pB, int 
     (void)p;
     (void)q;
 
-    return original_GetBoundsEdge(pos, edge, pB, plane1, plane2, a, b, c, flag);
+    if (function_hook_state_GetBoundsEdge == HOOK_ENABLED) {
+        assert(0 && "GetBoundsEdge not implemented.");
+        abort();
+    } else {
+        return original_GetBoundsEdge(pos, edge, pB, plane1, plane2, a, b, c, flag);
+    }
 }
 
+function_hook_state_t function_hook_state_oldMoveOurCar = HOOK_UNAVAILABLE;
 void oldMoveOurCar(tU32 pTime_difference) {
     br_vector3 thrust_vector;
     br_matrix34 direction_matrix;
@@ -2022,25 +2566,43 @@ void oldMoveOurCar(tU32 pTime_difference) {
     (void)below_model;
     (void)above_model;
 
-    NOT_IMPLEMENTED();
+    if (function_hook_state_oldMoveOurCar == HOOK_ENABLED) {
+        assert(0 && "oldMoveOurCar not implemented.");
+        abort();
+    } else {
+        NOT_IMPLEMENTED();
+    }
 }
 
+function_hook_state_t function_hook_state_ToggleCollisionDetection = HOOK_UNAVAILABLE;
 void ToggleCollisionDetection() {
     LOG_TRACE("()");
 
 
-    NOT_IMPLEMENTED();
+    if (function_hook_state_ToggleCollisionDetection == HOOK_ENABLED) {
+        assert(0 && "ToggleCollisionDetection not implemented.");
+        abort();
+    } else {
+        NOT_IMPLEMENTED();
+    }
 }
 
+function_hook_state_t function_hook_state_CancelPendingCunningStunt = HOOK_UNAVAILABLE;
 static void(__cdecl*original_CancelPendingCunningStunt)() = (void(__cdecl*)())0x00485d8b;
 CARM95_HOOK_FUNCTION(original_CancelPendingCunningStunt, CancelPendingCunningStunt)
 void __cdecl CancelPendingCunningStunt() {
     LOG_TRACE("()");
 
 
-    original_CancelPendingCunningStunt();
+    if (function_hook_state_CancelPendingCunningStunt == HOOK_ENABLED) {
+        assert(0 && "CancelPendingCunningStunt not implemented.");
+        abort();
+    } else {
+        original_CancelPendingCunningStunt();
+    }
 }
 
+function_hook_state_t function_hook_state_frac = HOOK_UNAVAILABLE;
 static float(__cdecl*original_frac)(float) = (float(__cdecl*)(float))0x00485dc8;
 CARM95_HOOK_FUNCTION(original_frac, frac)
 float __cdecl frac(float pN) {
@@ -2048,9 +2610,15 @@ float __cdecl frac(float pN) {
 
     (void)pN;
 
-    return original_frac(pN);
+    if (function_hook_state_frac == HOOK_ENABLED) {
+        assert(0 && "frac not implemented.");
+        abort();
+    } else {
+        return original_frac(pN);
+    }
 }
 
+function_hook_state_t function_hook_state_SetAmbientPratCam = HOOK_UNAVAILABLE;
 static void(__cdecl*original_SetAmbientPratCam)(tCar_spec *) = (void(__cdecl*)(tCar_spec *))0x00486d06;
 CARM95_HOOK_FUNCTION(original_SetAmbientPratCam, SetAmbientPratCam)
 void __cdecl SetAmbientPratCam(tCar_spec *pCar) {
@@ -2080,9 +2648,15 @@ void __cdecl SetAmbientPratCam(tCar_spec *pCar) {
     (void)the_time;
     (void)last_time_on_ground;
 
-    original_SetAmbientPratCam(pCar);
+    if (function_hook_state_SetAmbientPratCam == HOOK_ENABLED) {
+        assert(0 && "SetAmbientPratCam not implemented.");
+        abort();
+    } else {
+        original_SetAmbientPratCam(pCar);
+    }
 }
 
+function_hook_state_t function_hook_state_MungeCarGraphics = HOOK_UNAVAILABLE;
 static void(__cdecl*original_MungeCarGraphics)(tU32) = (void(__cdecl*)(tU32))0x00485dee;
 CARM95_HOOK_FUNCTION(original_MungeCarGraphics, MungeCarGraphics)
 void __cdecl MungeCarGraphics(tU32 pFrame_period) {
@@ -2148,9 +2722,15 @@ void __cdecl MungeCarGraphics(tU32 pFrame_period) {
     (void)the_time;
     (void)oily_actor;
 
-    original_MungeCarGraphics(pFrame_period);
+    if (function_hook_state_MungeCarGraphics == HOOK_ENABLED) {
+        assert(0 && "MungeCarGraphics not implemented.");
+        abort();
+    } else {
+        original_MungeCarGraphics(pFrame_period);
+    }
 }
 
+function_hook_state_t function_hook_state_ResetCarScreens = HOOK_UNAVAILABLE;
 static void(__cdecl*original_ResetCarScreens)() = (void(__cdecl*)())0x0048701d;
 CARM95_HOOK_FUNCTION(original_ResetCarScreens, ResetCarScreens)
 void __cdecl ResetCarScreens() {
@@ -2165,9 +2745,15 @@ void __cdecl ResetCarScreens() {
     (void)i;
     (void)the_car;
 
-    original_ResetCarScreens();
+    if (function_hook_state_ResetCarScreens == HOOK_ENABLED) {
+        assert(0 && "ResetCarScreens not implemented.");
+        abort();
+    } else {
+        original_ResetCarScreens();
+    }
 }
 
+function_hook_state_t function_hook_state_GetRaceLeader = HOOK_UNAVAILABLE;
 static tCar_spec *(__cdecl*original_GetRaceLeader)() = (tCar_spec *(__cdecl*)())0x00487179;
 CARM95_HOOK_FUNCTION(original_GetRaceLeader, GetRaceLeader)
 tCar_spec* __cdecl GetRaceLeader() {
@@ -2180,9 +2766,15 @@ tCar_spec* __cdecl GetRaceLeader() {
     (void)score;
     (void)car;
 
-    return original_GetRaceLeader();
+    if (function_hook_state_GetRaceLeader == HOOK_ENABLED) {
+        assert(0 && "GetRaceLeader not implemented.");
+        abort();
+    } else {
+        return original_GetRaceLeader();
+    }
 }
 
+function_hook_state_t function_hook_state_AmIGettingBoredWatchingCameraSpin = HOOK_UNAVAILABLE;
 static void(__cdecl*original_AmIGettingBoredWatchingCameraSpin)() = (void(__cdecl*)())0x004876f1;
 CARM95_HOOK_FUNCTION(original_AmIGettingBoredWatchingCameraSpin, AmIGettingBoredWatchingCameraSpin)
 void __cdecl AmIGettingBoredWatchingCameraSpin() {
@@ -2197,18 +2789,30 @@ void __cdecl AmIGettingBoredWatchingCameraSpin() {
     (void)car;
     (void)s;
 
-    original_AmIGettingBoredWatchingCameraSpin();
+    if (function_hook_state_AmIGettingBoredWatchingCameraSpin == HOOK_ENABLED) {
+        assert(0 && "AmIGettingBoredWatchingCameraSpin not implemented.");
+        abort();
+    } else {
+        original_AmIGettingBoredWatchingCameraSpin();
+    }
 }
 
+function_hook_state_t function_hook_state_ViewNetPlayer = HOOK_UNAVAILABLE;
 static void(__cdecl*original_ViewNetPlayer)() = (void(__cdecl*)())0x004870d8;
 CARM95_HOOK_FUNCTION(original_ViewNetPlayer, ViewNetPlayer)
 void __cdecl ViewNetPlayer() {
     LOG_TRACE("()");
 
 
-    original_ViewNetPlayer();
+    if (function_hook_state_ViewNetPlayer == HOOK_ENABLED) {
+        assert(0 && "ViewNetPlayer not implemented.");
+        abort();
+    } else {
+        original_ViewNetPlayer();
+    }
 }
 
+function_hook_state_t function_hook_state_ViewOpponent = HOOK_UNAVAILABLE;
 static void(__cdecl*original_ViewOpponent)() = (void(__cdecl*)())0x00487248;
 CARM95_HOOK_FUNCTION(original_ViewOpponent, ViewOpponent)
 void __cdecl ViewOpponent() {
@@ -2217,27 +2821,45 @@ void __cdecl ViewOpponent() {
 
     (void)n;
 
-    original_ViewOpponent();
+    if (function_hook_state_ViewOpponent == HOOK_ENABLED) {
+        assert(0 && "ViewOpponent not implemented.");
+        abort();
+    } else {
+        original_ViewOpponent();
+    }
 }
 
+function_hook_state_t function_hook_state_ToggleCarToCarCollisions = HOOK_UNAVAILABLE;
 static void(__cdecl*original_ToggleCarToCarCollisions)() = (void(__cdecl*)())0x00487333;
 CARM95_HOOK_FUNCTION(original_ToggleCarToCarCollisions, ToggleCarToCarCollisions)
 void __cdecl ToggleCarToCarCollisions() {
     LOG_TRACE("()");
 
 
-    original_ToggleCarToCarCollisions();
+    if (function_hook_state_ToggleCarToCarCollisions == HOOK_ENABLED) {
+        assert(0 && "ToggleCarToCarCollisions not implemented.");
+        abort();
+    } else {
+        original_ToggleCarToCarCollisions();
+    }
 }
 
+function_hook_state_t function_hook_state_SwapCar = HOOK_UNAVAILABLE;
 static void(__cdecl*original_SwapCar)() = (void(__cdecl*)())0x004873a6;
 CARM95_HOOK_FUNCTION(original_SwapCar, SwapCar)
 void __cdecl SwapCar() {
     LOG_TRACE("()");
 
 
-    original_SwapCar();
+    if (function_hook_state_SwapCar == HOOK_ENABLED) {
+        assert(0 && "SwapCar not implemented.");
+        abort();
+    } else {
+        original_SwapCar();
+    }
 }
 
+function_hook_state_t function_hook_state_AdjustDownForce = HOOK_UNAVAILABLE;
 static void(__cdecl*original_AdjustDownForce)() = (void(__cdecl*)())0x004873b1;
 CARM95_HOOK_FUNCTION(original_AdjustDownForce, AdjustDownForce)
 void __cdecl AdjustDownForce() {
@@ -2248,27 +2870,45 @@ void __cdecl AdjustDownForce() {
     (void)s;
     (void)c;
 
-    original_AdjustDownForce();
+    if (function_hook_state_AdjustDownForce == HOOK_ENABLED) {
+        assert(0 && "AdjustDownForce not implemented.");
+        abort();
+    } else {
+        original_AdjustDownForce();
+    }
 }
 
+function_hook_state_t function_hook_state_FreezeMechanics = HOOK_UNAVAILABLE;
 static void(__cdecl*original_FreezeMechanics)() = (void(__cdecl*)())0x00487464;
 CARM95_HOOK_FUNCTION(original_FreezeMechanics, FreezeMechanics)
 void __cdecl FreezeMechanics() {
     LOG_TRACE("()");
 
 
-    original_FreezeMechanics();
+    if (function_hook_state_FreezeMechanics == HOOK_ENABLED) {
+        assert(0 && "FreezeMechanics not implemented.");
+        abort();
+    } else {
+        original_FreezeMechanics();
+    }
 }
 
+function_hook_state_t function_hook_state_PutOpponentsInNeutral = HOOK_UNAVAILABLE;
 static void(__cdecl*original_PutOpponentsInNeutral)() = (void(__cdecl*)())0x004874d7;
 CARM95_HOOK_FUNCTION(original_PutOpponentsInNeutral, PutOpponentsInNeutral)
 void __cdecl PutOpponentsInNeutral() {
     LOG_TRACE("()");
 
 
-    original_PutOpponentsInNeutral();
+    if (function_hook_state_PutOpponentsInNeutral == HOOK_ENABLED) {
+        assert(0 && "PutOpponentsInNeutral not implemented.");
+        abort();
+    } else {
+        original_PutOpponentsInNeutral();
+    }
 }
 
+function_hook_state_t function_hook_state_SetPanningFieldOfView = HOOK_UNAVAILABLE;
 static void(__cdecl*original_SetPanningFieldOfView)() = (void(__cdecl*)())0x004879d8;
 CARM95_HOOK_FUNCTION(original_SetPanningFieldOfView, SetPanningFieldOfView)
 void __cdecl SetPanningFieldOfView() {
@@ -2277,9 +2917,15 @@ void __cdecl SetPanningFieldOfView() {
 
     (void)camera_ptr;
 
-    original_SetPanningFieldOfView();
+    if (function_hook_state_SetPanningFieldOfView == HOOK_ENABLED) {
+        assert(0 && "SetPanningFieldOfView not implemented.");
+        abort();
+    } else {
+        original_SetPanningFieldOfView();
+    }
 }
 
+function_hook_state_t function_hook_state_CheckDisablePlingMaterials = HOOK_UNAVAILABLE;
 static void(__cdecl*original_CheckDisablePlingMaterials)(tCar_spec *) = (void(__cdecl*)(tCar_spec *))0x00487a3b;
 CARM95_HOOK_FUNCTION(original_CheckDisablePlingMaterials, CheckDisablePlingMaterials)
 void __cdecl CheckDisablePlingMaterials(tCar_spec *pCar) {
@@ -2293,9 +2939,15 @@ void __cdecl CheckDisablePlingMaterials(tCar_spec *pCar) {
     (void)height;
     (void)i;
 
-    original_CheckDisablePlingMaterials(pCar);
+    if (function_hook_state_CheckDisablePlingMaterials == HOOK_ENABLED) {
+        assert(0 && "CheckDisablePlingMaterials not implemented.");
+        abort();
+    } else {
+        original_CheckDisablePlingMaterials(pCar);
+    }
 }
 
+function_hook_state_t function_hook_state_PositionExternalCamera = HOOK_UNAVAILABLE;
 static void(__cdecl*original_PositionExternalCamera)(tCar_spec *, tU32) = (void(__cdecl*)(tCar_spec *, tU32))0x0048754a;
 CARM95_HOOK_FUNCTION(original_PositionExternalCamera, PositionExternalCamera)
 void __cdecl PositionExternalCamera(tCar_spec *c, tU32 pTime) {
@@ -2308,9 +2960,15 @@ void __cdecl PositionExternalCamera(tCar_spec *c, tU32 pTime) {
     (void)old_camera_mode;
     (void)camera_ptr;
 
-    original_PositionExternalCamera(c, pTime);
+    if (function_hook_state_PositionExternalCamera == HOOK_ENABLED) {
+        assert(0 && "PositionExternalCamera not implemented.");
+        abort();
+    } else {
+        original_PositionExternalCamera(c, pTime);
+    }
 }
 
+function_hook_state_t function_hook_state_CameraBugFix = HOOK_UNAVAILABLE;
 static void(__cdecl*original_CameraBugFix)(tCar_spec *, tU32) = (void(__cdecl*)(tCar_spec *, tU32))0x00487b2c;
 CARM95_HOOK_FUNCTION(original_CameraBugFix, CameraBugFix)
 void __cdecl CameraBugFix(tCar_spec *c, tU32 pTime) {
@@ -2325,9 +2983,15 @@ void __cdecl CameraBugFix(tCar_spec *c, tU32 pTime) {
     (void)m2;
     (void)tv;
 
-    original_CameraBugFix(c, pTime);
+    if (function_hook_state_CameraBugFix == HOOK_ENABLED) {
+        assert(0 && "CameraBugFix not implemented.");
+        abort();
+    } else {
+        original_CameraBugFix(c, pTime);
+    }
 }
 
+function_hook_state_t function_hook_state_PossibleRemoveNonCarFromWorld = HOOK_UNAVAILABLE;
 static int(__cdecl*original_PossibleRemoveNonCarFromWorld)(br_actor *) = (int(__cdecl*)(br_actor *))0x0048876d;
 CARM95_HOOK_FUNCTION(original_PossibleRemoveNonCarFromWorld, PossibleRemoveNonCarFromWorld)
 int __cdecl PossibleRemoveNonCarFromWorld(br_actor *pActor) {
@@ -2341,9 +3005,15 @@ int __cdecl PossibleRemoveNonCarFromWorld(br_actor *pActor) {
     (void)cz;
     (void)track_spec;
 
-    return original_PossibleRemoveNonCarFromWorld(pActor);
+    if (function_hook_state_PossibleRemoveNonCarFromWorld == HOOK_ENABLED) {
+        assert(0 && "PossibleRemoveNonCarFromWorld not implemented.");
+        abort();
+    } else {
+        return original_PossibleRemoveNonCarFromWorld(pActor);
+    }
 }
 
+function_hook_state_t function_hook_state_PutNonCarBackInWorld = HOOK_UNAVAILABLE;
 static void(__cdecl*original_PutNonCarBackInWorld)(br_actor *) = (void(__cdecl*)(br_actor *))0x004887e9;
 CARM95_HOOK_FUNCTION(original_PutNonCarBackInWorld, PutNonCarBackInWorld)
 void __cdecl PutNonCarBackInWorld(br_actor *pActor) {
@@ -2357,9 +3027,15 @@ void __cdecl PutNonCarBackInWorld(br_actor *pActor) {
     (void)cz;
     (void)track_spec;
 
-    original_PutNonCarBackInWorld(pActor);
+    if (function_hook_state_PutNonCarBackInWorld == HOOK_ENABLED) {
+        assert(0 && "PutNonCarBackInWorld not implemented.");
+        abort();
+    } else {
+        original_PutNonCarBackInWorld(pActor);
+    }
 }
 
+function_hook_state_t function_hook_state_IncidentCam = HOOK_UNAVAILABLE;
 static int(__cdecl*original_IncidentCam)(tCar_spec *, tU32) = (int(__cdecl*)(tCar_spec *, tU32))0x00487b89;
 CARM95_HOOK_FUNCTION(original_IncidentCam, IncidentCam)
 int __cdecl IncidentCam(tCar_spec *c, tU32 pTime) {
@@ -2410,9 +3086,15 @@ int __cdecl IncidentCam(tCar_spec *c, tU32 pTime) {
     (void)__block1___scale;
     (void)__block2___scale;
 
-    return original_IncidentCam(c, pTime);
+    if (function_hook_state_IncidentCam == HOOK_ENABLED) {
+        assert(0 && "IncidentCam not implemented.");
+        abort();
+    } else {
+        return original_IncidentCam(c, pTime);
+    }
 }
 
+function_hook_state_t function_hook_state_MoveCamToIncident = HOOK_UNAVAILABLE;
 static int(__cdecl*original_MoveCamToIncident)(tCar_spec *, tIncident_type *, float *, tIncident_info *, tU32 *) = (int(__cdecl*)(tCar_spec *, tIncident_type *, float *, tIncident_info *, tU32 *))0x00488849;
 CARM95_HOOK_FUNCTION(original_MoveCamToIncident, MoveCamToIncident)
 int __cdecl MoveCamToIncident(tCar_spec *c, tIncident_type *type, float *severity, tIncident_info *info, tU32 *next_incident_time) {
@@ -2452,9 +3134,15 @@ int __cdecl MoveCamToIncident(tCar_spec *c, tIncident_type *type, float *severit
     (void)test;
     (void)__block0___scale;
 
-    return original_MoveCamToIncident(c, type, severity, info, next_incident_time);
+    if (function_hook_state_MoveCamToIncident == HOOK_ENABLED) {
+        assert(0 && "MoveCamToIncident not implemented.");
+        abort();
+    } else {
+        return original_MoveCamToIncident(c, type, severity, info, next_incident_time);
+    }
 }
 
+function_hook_state_t function_hook_state_PanningExternalCamera = HOOK_UNAVAILABLE;
 static void(__cdecl*original_PanningExternalCamera)(tCar_spec *, tU32) = (void(__cdecl*)(tCar_spec *, tU32))0x00488d45;
 CARM95_HOOK_FUNCTION(original_PanningExternalCamera, PanningExternalCamera)
 void __cdecl PanningExternalCamera(tCar_spec *c, tU32 pTime) {
@@ -2473,9 +3161,15 @@ void __cdecl PanningExternalCamera(tCar_spec *c, tU32 pTime) {
     (void)ts;
     (void)inside_camera_zone;
 
-    original_PanningExternalCamera(c, pTime);
+    if (function_hook_state_PanningExternalCamera == HOOK_ENABLED) {
+        assert(0 && "PanningExternalCamera not implemented.");
+        abort();
+    } else {
+        original_PanningExternalCamera(c, pTime);
+    }
 }
 
+function_hook_state_t function_hook_state_CheckForWall = HOOK_UNAVAILABLE;
 static int(__cdecl*original_CheckForWall)(br_vector3 *, br_vector3 *) = (int(__cdecl*)(br_vector3 *, br_vector3 *))0x00488ed6;
 CARM95_HOOK_FUNCTION(original_CheckForWall, CheckForWall)
 int __cdecl CheckForWall(br_vector3 *start, br_vector3 *end) {
@@ -2492,9 +3186,15 @@ int __cdecl CheckForWall(br_vector3 *start, br_vector3 *end) {
     (void)normal;
     (void)d;
 
-    return original_CheckForWall(start, end);
+    if (function_hook_state_CheckForWall == HOOK_ENABLED) {
+        assert(0 && "CheckForWall not implemented.");
+        abort();
+    } else {
+        return original_CheckForWall(start, end);
+    }
 }
 
+function_hook_state_t function_hook_state_SetUpPanningCamera = HOOK_UNAVAILABLE;
 static void(__cdecl*original_SetUpPanningCamera)(tCar_spec *) = (void(__cdecl*)(tCar_spec *))0x00488f50;
 CARM95_HOOK_FUNCTION(original_SetUpPanningCamera, SetUpPanningCamera)
 void __cdecl SetUpPanningCamera(tCar_spec *c) {
@@ -2536,9 +3236,15 @@ void __cdecl SetUpPanningCamera(tCar_spec *c) {
     (void)left_score;
     (void)right_score;
 
-    original_SetUpPanningCamera(c);
+    if (function_hook_state_SetUpPanningCamera == HOOK_ENABLED) {
+        assert(0 && "SetUpPanningCamera not implemented.");
+        abort();
+    } else {
+        original_SetUpPanningCamera(c);
+    }
 }
 
+function_hook_state_t function_hook_state_SaveCameraPosition = HOOK_UNAVAILABLE;
 static void(__cdecl*original_SaveCameraPosition)(int) = (void(__cdecl*)(int))0x0048949c;
 CARM95_HOOK_FUNCTION(original_SaveCameraPosition, SaveCameraPosition)
 void __cdecl SaveCameraPosition(int i) {
@@ -2546,9 +3252,15 @@ void __cdecl SaveCameraPosition(int i) {
 
     (void)i;
 
-    original_SaveCameraPosition(i);
+    if (function_hook_state_SaveCameraPosition == HOOK_ENABLED) {
+        assert(0 && "SaveCameraPosition not implemented.");
+        abort();
+    } else {
+        original_SaveCameraPosition(i);
+    }
 }
 
+function_hook_state_t function_hook_state_RestoreCameraPosition = HOOK_UNAVAILABLE;
 static void(__cdecl*original_RestoreCameraPosition)(int) = (void(__cdecl*)(int))0x004894f8;
 CARM95_HOOK_FUNCTION(original_RestoreCameraPosition, RestoreCameraPosition)
 void __cdecl RestoreCameraPosition(int i) {
@@ -2556,9 +3268,15 @@ void __cdecl RestoreCameraPosition(int i) {
 
     (void)i;
 
-    original_RestoreCameraPosition(i);
+    if (function_hook_state_RestoreCameraPosition == HOOK_ENABLED) {
+        assert(0 && "RestoreCameraPosition not implemented.");
+        abort();
+    } else {
+        original_RestoreCameraPosition(i);
+    }
 }
 
+function_hook_state_t function_hook_state_NormalPositionExternalCamera = HOOK_UNAVAILABLE;
 static void(__cdecl*original_NormalPositionExternalCamera)(tCar_spec *, tU32) = (void(__cdecl*)(tCar_spec *, tU32))0x00489553;
 CARM95_HOOK_FUNCTION(original_NormalPositionExternalCamera, NormalPositionExternalCamera)
 void __cdecl NormalPositionExternalCamera(tCar_spec *c, tU32 pTime) {
@@ -2615,9 +3333,15 @@ void __cdecl NormalPositionExternalCamera(tCar_spec *c, tU32 pTime) {
     (void)__block0___scale;
     (void)__block1___scale;
 
-    original_NormalPositionExternalCamera(c, pTime);
+    if (function_hook_state_NormalPositionExternalCamera == HOOK_ENABLED) {
+        assert(0 && "NormalPositionExternalCamera not implemented.");
+        abort();
+    } else {
+        original_NormalPositionExternalCamera(c, pTime);
+    }
 }
 
+function_hook_state_t function_hook_state_MoveWithWheels = HOOK_UNAVAILABLE;
 static void(__cdecl*original_MoveWithWheels)(tCar_spec *, br_vector3 *, int) = (void(__cdecl*)(tCar_spec *, br_vector3 *, int))0x00489dc2;
 CARM95_HOOK_FUNCTION(original_MoveWithWheels, MoveWithWheels)
 void __cdecl MoveWithWheels(tCar_spec *c, br_vector3 *vn, int manual_swing) {
@@ -2633,9 +3357,15 @@ void __cdecl MoveWithWheels(tCar_spec *c, br_vector3 *vn, int manual_swing) {
     (void)theta;
     (void)move_with_wheels;
 
-    original_MoveWithWheels(c, vn, manual_swing);
+    if (function_hook_state_MoveWithWheels == HOOK_ENABLED) {
+        assert(0 && "MoveWithWheels not implemented.");
+        abort();
+    } else {
+        original_MoveWithWheels(c, vn, manual_swing);
+    }
 }
 
+function_hook_state_t function_hook_state_SwingCamera = HOOK_UNAVAILABLE;
 static void(__cdecl*original_SwingCamera)(tCar_spec *, br_matrix34 *, br_matrix34 *, br_vector3 *, tU32) = (void(__cdecl*)(tCar_spec *, br_matrix34 *, br_matrix34 *, br_vector3 *, tU32))0x00489f7c;
 CARM95_HOOK_FUNCTION(original_SwingCamera, SwingCamera)
 void __cdecl SwingCamera(tCar_spec *c, br_matrix34 *m1, br_matrix34 *m2, br_vector3 *vn, tU32 pTime) {
@@ -2671,9 +3401,15 @@ void __cdecl SwingCamera(tCar_spec *c, br_matrix34 *m1, br_matrix34 *m2, br_vect
     (void)elapsed_time;
     (void)old_vn;
 
-    original_SwingCamera(c, m1, m2, vn, pTime);
+    if (function_hook_state_SwingCamera == HOOK_ENABLED) {
+        assert(0 && "SwingCamera not implemented.");
+        abort();
+    } else {
+        original_SwingCamera(c, m1, m2, vn, pTime);
+    }
 }
 
+function_hook_state_t function_hook_state_PointCameraAtCar = HOOK_UNAVAILABLE;
 static void(__cdecl*original_PointCameraAtCar)(tCar_spec *, br_matrix34 *, br_matrix34 *) = (void(__cdecl*)(tCar_spec *, br_matrix34 *, br_matrix34 *))0x0048a73b;
 CARM95_HOOK_FUNCTION(original_PointCameraAtCar, PointCameraAtCar)
 void __cdecl PointCameraAtCar(tCar_spec *c, br_matrix34 *m1, br_matrix34 *m2) {
@@ -2705,9 +3441,15 @@ void __cdecl PointCameraAtCar(tCar_spec *c, br_matrix34 *m1, br_matrix34 *m2) {
     (void)swoop;
     (void)__block0___scale;
 
-    original_PointCameraAtCar(c, m1, m2);
+    if (function_hook_state_PointCameraAtCar == HOOK_ENABLED) {
+        assert(0 && "PointCameraAtCar not implemented.");
+        abort();
+    } else {
+        original_PointCameraAtCar(c, m1, m2);
+    }
 }
 
+function_hook_state_t function_hook_state_PointCamera = HOOK_UNAVAILABLE;
 static void(__cdecl*original_PointCamera)(br_vector3 *, br_matrix34 *) = (void(__cdecl*)(br_vector3 *, br_matrix34 *))0x0048aa19;
 CARM95_HOOK_FUNCTION(original_PointCamera, PointCamera)
 void __cdecl PointCamera(br_vector3 *pos, br_matrix34 *m2) {
@@ -2726,9 +3468,15 @@ void __cdecl PointCamera(br_vector3 *pos, br_matrix34 *m2) {
     (void)camera_ptr;
     (void)__block0___scale;
 
-    original_PointCamera(pos, m2);
+    if (function_hook_state_PointCamera == HOOK_ENABLED) {
+        assert(0 && "PointCamera not implemented.");
+        abort();
+    } else {
+        original_PointCamera(pos, m2);
+    }
 }
 
+function_hook_state_t function_hook_state_CollideCamera2 = HOOK_UNAVAILABLE;
 static int(__cdecl*original_CollideCamera2)(br_vector3 *, br_vector3 *, br_vector3 *, int) = (int(__cdecl*)(br_vector3 *, br_vector3 *, br_vector3 *, int))0x0048abbb;
 CARM95_HOOK_FUNCTION(original_CollideCamera2, CollideCamera2)
 int __cdecl CollideCamera2(br_vector3 *car_pos, br_vector3 *cam_pos, br_vector3 *old_camera_pos, int manual_move) {
@@ -2787,9 +3535,15 @@ int __cdecl CollideCamera2(br_vector3 *car_pos, br_vector3 *cam_pos, br_vector3 
     (void)__block0___scale;
     (void)__block1___scale;
 
-    return original_CollideCamera2(car_pos, cam_pos, old_camera_pos, manual_move);
+    if (function_hook_state_CollideCamera2 == HOOK_ENABLED) {
+        assert(0 && "CollideCamera2 not implemented.");
+        abort();
+    } else {
+        return original_CollideCamera2(car_pos, cam_pos, old_camera_pos, manual_move);
+    }
 }
 
+function_hook_state_t function_hook_state_BoundsTest = HOOK_UNAVAILABLE;
 static int(__cdecl*original_BoundsTest)(br_bounds *, br_vector3 *) = (int(__cdecl*)(br_bounds *, br_vector3 *))0x0048ba12;
 CARM95_HOOK_FUNCTION(original_BoundsTest, BoundsTest)
 int __cdecl BoundsTest(br_bounds *bnds, br_vector3 *p) {
@@ -2800,9 +3554,15 @@ int __cdecl BoundsTest(br_bounds *bnds, br_vector3 *p) {
     (void)p;
     (void)j;
 
-    return original_BoundsTest(bnds, p);
+    if (function_hook_state_BoundsTest == HOOK_ENABLED) {
+        assert(0 && "BoundsTest not implemented.");
+        abort();
+    } else {
+        return original_BoundsTest(bnds, p);
+    }
 }
 
+function_hook_state_t function_hook_state_CollideCameraWithOtherCars = HOOK_UNAVAILABLE;
 static int(__cdecl*original_CollideCameraWithOtherCars)(br_vector3 *, br_vector3 *) = (int(__cdecl*)(br_vector3 *, br_vector3 *))0x0048b820;
 CARM95_HOOK_FUNCTION(original_CollideCameraWithOtherCars, CollideCameraWithOtherCars)
 int __cdecl CollideCameraWithOtherCars(br_vector3 *car_pos, br_vector3 *cam_pos) {
@@ -2831,9 +3591,15 @@ int __cdecl CollideCameraWithOtherCars(br_vector3 *car_pos, br_vector3 *cam_pos)
     (void)n;
     (void)bnds;
 
-    return original_CollideCameraWithOtherCars(car_pos, cam_pos);
+    if (function_hook_state_CollideCameraWithOtherCars == HOOK_ENABLED) {
+        assert(0 && "CollideCameraWithOtherCars not implemented.");
+        abort();
+    } else {
+        return original_CollideCameraWithOtherCars(car_pos, cam_pos);
+    }
 }
 
+function_hook_state_t function_hook_state_InitialiseExternalCamera = HOOK_UNAVAILABLE;
 static void(__cdecl*original_InitialiseExternalCamera)() = (void(__cdecl*)())0x0048ba8a;
 CARM95_HOOK_FUNCTION(original_InitialiseExternalCamera, InitialiseExternalCamera)
 void __cdecl InitialiseExternalCamera() {
@@ -2850,18 +3616,30 @@ void __cdecl InitialiseExternalCamera() {
     (void)yaw;
     (void)__block0___scale;
 
-    original_InitialiseExternalCamera();
+    if (function_hook_state_InitialiseExternalCamera == HOOK_ENABLED) {
+        assert(0 && "InitialiseExternalCamera not implemented.");
+        abort();
+    } else {
+        original_InitialiseExternalCamera();
+    }
 }
 
+function_hook_state_t function_hook_state_FreezeCamera = HOOK_UNAVAILABLE;
 static void(__cdecl*original_FreezeCamera)() = (void(__cdecl*)())0x0048bc93;
 CARM95_HOOK_FUNCTION(original_FreezeCamera, FreezeCamera)
 void __cdecl FreezeCamera() {
     LOG_TRACE("()");
 
 
-    original_FreezeCamera();
+    if (function_hook_state_FreezeCamera == HOOK_ENABLED) {
+        assert(0 && "FreezeCamera not implemented.");
+        abort();
+    } else {
+        original_FreezeCamera();
+    }
 }
 
+function_hook_state_t function_hook_state_FlyCar = HOOK_UNAVAILABLE;
 static void(__cdecl*original_FlyCar)(tCar_spec *, br_scalar) = (void(__cdecl*)(tCar_spec *, br_scalar))0x0048bca8;
 CARM95_HOOK_FUNCTION(original_FlyCar, FlyCar)
 void __cdecl FlyCar(tCar_spec *c, br_scalar dt) {
@@ -2906,9 +3684,15 @@ void __cdecl FlyCar(tCar_spec *c, br_scalar dt) {
     (void)__block0__i;
     (void)__block0__theta;
 
-    original_FlyCar(c, dt);
+    if (function_hook_state_FlyCar == HOOK_ENABLED) {
+        assert(0 && "FlyCar not implemented.");
+        abort();
+    } else {
+        original_FlyCar(c, dt);
+    }
 }
 
+function_hook_state_t function_hook_state_DrVector3RotateY = HOOK_UNAVAILABLE;
 static void(__cdecl*original_DrVector3RotateY)(br_vector3 *, br_angle) = (void(__cdecl*)(br_vector3 *, br_angle))0x0048c718;
 CARM95_HOOK_FUNCTION(original_DrVector3RotateY, DrVector3RotateY)
 void __cdecl DrVector3RotateY(br_vector3 *v, br_angle t) {
@@ -2923,9 +3707,15 @@ void __cdecl DrVector3RotateY(br_vector3 *v, br_angle t) {
     (void)s;
     (void)ts;
 
-    original_DrVector3RotateY(v, t);
+    if (function_hook_state_DrVector3RotateY == HOOK_ENABLED) {
+        assert(0 && "DrVector3RotateY not implemented.");
+        abort();
+    } else {
+        original_DrVector3RotateY(v, t);
+    }
 }
 
+function_hook_state_t function_hook_state_CrashCarsTogether = HOOK_UNAVAILABLE;
 static void(__cdecl*original_CrashCarsTogether)(br_scalar) = (void(__cdecl*)(br_scalar))0x0048c795;
 CARM95_HOOK_FUNCTION(original_CrashCarsTogether, CrashCarsTogether)
 void __cdecl CrashCarsTogether(br_scalar dt) {
@@ -2941,9 +3731,15 @@ void __cdecl CrashCarsTogether(br_scalar dt) {
     (void)i;
     (void)collide_list;
 
-    original_CrashCarsTogether(dt);
+    if (function_hook_state_CrashCarsTogether == HOOK_ENABLED) {
+        assert(0 && "CrashCarsTogether not implemented.");
+        abort();
+    } else {
+        original_CrashCarsTogether(dt);
+    }
 }
 
+function_hook_state_t function_hook_state_CrashCarsTogetherSinglePass = HOOK_UNAVAILABLE;
 static int(__cdecl*original_CrashCarsTogetherSinglePass)(br_scalar, int, tCollison_data *) = (int(__cdecl*)(br_scalar, int, tCollison_data *))0x0048c8af;
 CARM95_HOOK_FUNCTION(original_CrashCarsTogetherSinglePass, CrashCarsTogetherSinglePass)
 int __cdecl CrashCarsTogetherSinglePass(br_scalar dt, int pPass, tCollison_data *collide_list) {
@@ -2985,9 +3781,15 @@ int __cdecl CrashCarsTogetherSinglePass(br_scalar dt, int pPass, tCollison_data 
     (void)car_in_middle;
     (void)car_on_wall;
 
-    return original_CrashCarsTogetherSinglePass(dt, pPass, collide_list);
+    if (function_hook_state_CrashCarsTogetherSinglePass == HOOK_ENABLED) {
+        assert(0 && "CrashCarsTogetherSinglePass not implemented.");
+        abort();
+    } else {
+        return original_CrashCarsTogetherSinglePass(dt, pPass, collide_list);
+    }
 }
 
+function_hook_state_t function_hook_state_BringCarToAGrindingHalt = HOOK_UNAVAILABLE;
 static void(__cdecl*original_BringCarToAGrindingHalt)(tCollision_info *) = (void(__cdecl*)(tCollision_info *))0x0048d21b;
 CARM95_HOOK_FUNCTION(original_BringCarToAGrindingHalt, BringCarToAGrindingHalt)
 void __cdecl BringCarToAGrindingHalt(tCollision_info *car) {
@@ -2995,18 +3797,30 @@ void __cdecl BringCarToAGrindingHalt(tCollision_info *car) {
 
     (void)car;
 
-    original_BringCarToAGrindingHalt(car);
+    if (function_hook_state_BringCarToAGrindingHalt == HOOK_ENABLED) {
+        assert(0 && "BringCarToAGrindingHalt not implemented.");
+        abort();
+    } else {
+        original_BringCarToAGrindingHalt(car);
+    }
 }
 
+function_hook_state_t function_hook_state_BoundsOverlapTest__car = HOOK_UNAVAILABLE;
 int BoundsOverlapTest__car(br_bounds *b1, br_bounds *b2) {
     LOG_TRACE("(%p, %p)", b1, b2);
 
     (void)b1;
     (void)b2;
 
-    NOT_IMPLEMENTED();
+    if (function_hook_state_BoundsOverlapTest__car == HOOK_ENABLED) {
+        assert(0 && "BoundsOverlapTest__car not implemented.");
+        abort();
+    } else {
+        NOT_IMPLEMENTED();
+    }
 }
 
+function_hook_state_t function_hook_state_SimpleCarCarCollisionTest = HOOK_UNAVAILABLE;
 static int(__cdecl*original_SimpleCarCarCollisionTest)(tCollision_info *, tCollision_info *) = (int(__cdecl*)(tCollision_info *, tCollision_info *))0x0048d28f;
 CARM95_HOOK_FUNCTION(original_SimpleCarCarCollisionTest, SimpleCarCarCollisionTest)
 int __cdecl SimpleCarCarCollisionTest(tCollision_info *car1, tCollision_info *car2) {
@@ -3015,9 +3829,15 @@ int __cdecl SimpleCarCarCollisionTest(tCollision_info *car1, tCollision_info *ca
     (void)car1;
     (void)car2;
 
-    return original_SimpleCarCarCollisionTest(car1, car2);
+    if (function_hook_state_SimpleCarCarCollisionTest == HOOK_ENABLED) {
+        assert(0 && "SimpleCarCarCollisionTest not implemented.");
+        abort();
+    } else {
+        return original_SimpleCarCarCollisionTest(car1, car2);
+    }
 }
 
+function_hook_state_t function_hook_state_CollideTwoCarsWithWalls = HOOK_UNAVAILABLE;
 static int(__cdecl*original_CollideTwoCarsWithWalls)(tCollision_info *, tCollision_info *, br_scalar) = (int(__cdecl*)(tCollision_info *, tCollision_info *, br_scalar))0x0048d38c;
 CARM95_HOOK_FUNCTION(original_CollideTwoCarsWithWalls, CollideTwoCarsWithWalls)
 int __cdecl CollideTwoCarsWithWalls(tCollision_info *car1, tCollision_info *car2, br_scalar dt) {
@@ -3043,9 +3863,15 @@ int __cdecl CollideTwoCarsWithWalls(tCollision_info *car1, tCollision_info *car2
     (void)im1;
     (void)im2;
 
-    return original_CollideTwoCarsWithWalls(car1, car2, dt);
+    if (function_hook_state_CollideTwoCarsWithWalls == HOOK_ENABLED) {
+        assert(0 && "CollideTwoCarsWithWalls not implemented.");
+        abort();
+    } else {
+        return original_CollideTwoCarsWithWalls(car1, car2, dt);
+    }
 }
 
+function_hook_state_t function_hook_state_CollideTwoCarsRepeatedly = HOOK_UNAVAILABLE;
 static int(__cdecl*original_CollideTwoCarsRepeatedly)(tCollision_info *, tCollision_info *, br_scalar) = (int(__cdecl*)(tCollision_info *, tCollision_info *, br_scalar))0x0048d719;
 CARM95_HOOK_FUNCTION(original_CollideTwoCarsRepeatedly, CollideTwoCarsRepeatedly)
 int __cdecl CollideTwoCarsRepeatedly(tCollision_info *car1, tCollision_info *car2, br_scalar dt) {
@@ -3061,9 +3887,15 @@ int __cdecl CollideTwoCarsRepeatedly(tCollision_info *car1, tCollision_info *car
     (void)collide;
     (void)ts;
 
-    return original_CollideTwoCarsRepeatedly(car1, car2, dt);
+    if (function_hook_state_CollideTwoCarsRepeatedly == HOOK_ENABLED) {
+        assert(0 && "CollideTwoCarsRepeatedly not implemented.");
+        abort();
+    } else {
+        return original_CollideTwoCarsRepeatedly(car1, car2, dt);
+    }
 }
 
+function_hook_state_t function_hook_state_CollideTwoCars = HOOK_UNAVAILABLE;
 static int(__cdecl*original_CollideTwoCars)(tCollision_info *, tCollision_info *, int) = (int(__cdecl*)(tCollision_info *, tCollision_info *, int))0x0048d84a;
 CARM95_HOOK_FUNCTION(original_CollideTwoCars, CollideTwoCars)
 int __cdecl CollideTwoCars(tCollision_info *car1, tCollision_info *car2, int pPass) {
@@ -3139,9 +3971,15 @@ int __cdecl CollideTwoCars(tCollision_info *car1, tCollision_info *car2, int pPa
     (void)oldn2;
     (void)is_old_point_available;
 
-    return original_CollideTwoCars(car1, car2, pPass);
+    if (function_hook_state_CollideTwoCars == HOOK_ENABLED) {
+        assert(0 && "CollideTwoCars not implemented.");
+        abort();
+    } else {
+        return original_CollideTwoCars(car1, car2, pPass);
+    }
 }
 
+function_hook_state_t function_hook_state_GetEdgeEdgeCollisions = HOOK_UNAVAILABLE;
 static int(__cdecl*original_GetEdgeEdgeCollisions)(br_bounds *, br_bounds *, br_matrix34 *, br_matrix34 *, br_matrix34 *, br_matrix34 *, br_matrix34 *, br_vector3 *, br_vector3 *, int) = (int(__cdecl*)(br_bounds *, br_bounds *, br_matrix34 *, br_matrix34 *, br_matrix34 *, br_matrix34 *, br_matrix34 *, br_vector3 *, br_vector3 *, int))0x0048e82a;
 CARM95_HOOK_FUNCTION(original_GetEdgeEdgeCollisions, GetEdgeEdgeCollisions)
 int __cdecl GetEdgeEdgeCollisions(br_bounds *pB1, br_bounds *pB2, br_matrix34 *pM21, br_matrix34 *pM12, br_matrix34 *pMo21, br_matrix34 *pMo12, br_matrix34 *pM1o1, br_vector3 *pPoint_list, br_vector3 *pNorm_list, int pMax) {
@@ -3198,9 +4036,15 @@ int __cdecl GetEdgeEdgeCollisions(br_bounds *pB1, br_bounds *pB2, br_matrix34 *p
     (void)__block0___scale;
     (void)__block1___scale;
 
-    return original_GetEdgeEdgeCollisions(pB1, pB2, pM21, pM12, pMo21, pMo12, pM1o1, pPoint_list, pNorm_list, pMax);
+    if (function_hook_state_GetEdgeEdgeCollisions == HOOK_ENABLED) {
+        assert(0 && "GetEdgeEdgeCollisions not implemented.");
+        abort();
+    } else {
+        return original_GetEdgeEdgeCollisions(pB1, pB2, pM21, pM12, pMo21, pMo12, pM1o1, pPoint_list, pNorm_list, pMax);
+    }
 }
 
+function_hook_state_t function_hook_state_FacePointCarCarCollide = HOOK_UNAVAILABLE;
 static int(__cdecl*original_FacePointCarCarCollide)(tCollision_info *, tCollision_info *, br_matrix34 *, br_matrix34 *, br_matrix34 *, br_vector3 *, br_vector3 *, int, int) = (int(__cdecl*)(tCollision_info *, tCollision_info *, br_matrix34 *, br_matrix34 *, br_matrix34 *, br_vector3 *, br_vector3 *, int, int))0x0048f686;
 CARM95_HOOK_FUNCTION(original_FacePointCarCarCollide, FacePointCarCarCollide)
 int __cdecl FacePointCarCarCollide(tCollision_info *car1, tCollision_info *car2, br_matrix34 *pMms, br_matrix34 *pMoms, br_matrix34 *pMsos, br_vector3 *pPoint_list, br_vector3 *pNorm_list, int pMax, int order) {
@@ -3246,9 +4090,15 @@ int __cdecl FacePointCarCarCollide(tCollision_info *car1, tCollision_info *car2,
     (void)pStat_box;
     (void)pMove_box;
 
-    return original_FacePointCarCarCollide(car1, car2, pMms, pMoms, pMsos, pPoint_list, pNorm_list, pMax, order);
+    if (function_hook_state_FacePointCarCarCollide == HOOK_ENABLED) {
+        assert(0 && "FacePointCarCarCollide not implemented.");
+        abort();
+    } else {
+        return original_FacePointCarCarCollide(car1, car2, pMms, pMoms, pMsos, pPoint_list, pNorm_list, pMax, order);
+    }
 }
 
+function_hook_state_t function_hook_state_MungeCarsMass = HOOK_UNAVAILABLE;
 static void(__cdecl*original_MungeCarsMass)(tCollision_info *, br_scalar) = (void(__cdecl*)(tCollision_info *, br_scalar))0x0048fc1c;
 CARM95_HOOK_FUNCTION(original_MungeCarsMass, MungeCarsMass)
 void __cdecl MungeCarsMass(tCollision_info *pCar, br_scalar pFactor) {
@@ -3257,9 +4107,15 @@ void __cdecl MungeCarsMass(tCollision_info *pCar, br_scalar pFactor) {
     (void)pCar;
     (void)pFactor;
 
-    original_MungeCarsMass(pCar, pFactor);
+    if (function_hook_state_MungeCarsMass == HOOK_ENABLED) {
+        assert(0 && "MungeCarsMass not implemented.");
+        abort();
+    } else {
+        original_MungeCarsMass(pCar, pFactor);
+    }
 }
 
+function_hook_state_t function_hook_state_ModifyCarsMass = HOOK_UNAVAILABLE;
 static void(__cdecl*original_ModifyCarsMass)(tCollision_info *, tCollision_info *) = (void(__cdecl*)(tCollision_info *, tCollision_info *))0x0048fb97;
 CARM95_HOOK_FUNCTION(original_ModifyCarsMass, ModifyCarsMass)
 void __cdecl ModifyCarsMass(tCollision_info *pCar_1, tCollision_info *pCar_2) {
@@ -3268,9 +4124,15 @@ void __cdecl ModifyCarsMass(tCollision_info *pCar_1, tCollision_info *pCar_2) {
     (void)pCar_1;
     (void)pCar_2;
 
-    original_ModifyCarsMass(pCar_1, pCar_2);
+    if (function_hook_state_ModifyCarsMass == HOOK_ENABLED) {
+        assert(0 && "ModifyCarsMass not implemented.");
+        abort();
+    } else {
+        original_ModifyCarsMass(pCar_1, pCar_2);
+    }
 }
 
+function_hook_state_t function_hook_state_ResetCarsMass = HOOK_UNAVAILABLE;
 static void(__cdecl*original_ResetCarsMass)(tCollision_info *, tCollision_info *) = (void(__cdecl*)(tCollision_info *, tCollision_info *))0x0048fc7b;
 CARM95_HOOK_FUNCTION(original_ResetCarsMass, ResetCarsMass)
 void __cdecl ResetCarsMass(tCollision_info *pCar_1, tCollision_info *pCar_2) {
@@ -3279,9 +4141,15 @@ void __cdecl ResetCarsMass(tCollision_info *pCar_1, tCollision_info *pCar_2) {
     (void)pCar_1;
     (void)pCar_2;
 
-    original_ResetCarsMass(pCar_1, pCar_2);
+    if (function_hook_state_ResetCarsMass == HOOK_ENABLED) {
+        assert(0 && "ResetCarsMass not implemented.");
+        abort();
+    } else {
+        original_ResetCarsMass(pCar_1, pCar_2);
+    }
 }
 
+function_hook_state_t function_hook_state_DoCollide = HOOK_UNAVAILABLE;
 static int(__cdecl*original_DoCollide)(tCollision_info *, tCollision_info *, br_vector3 *, br_vector3 *, int, int, br_matrix34 *) = (int(__cdecl*)(tCollision_info *, tCollision_info *, br_vector3 *, br_vector3 *, int, int, br_matrix34 *))0x0048fd16;
 CARM95_HOOK_FUNCTION(original_DoCollide, DoCollide)
 int __cdecl DoCollide(tCollision_info *car1, tCollision_info *car2, br_vector3 *r, br_vector3 *n, int k, int pPass, br_matrix34 *mat1_to_mat2) {
@@ -3369,9 +4237,15 @@ int __cdecl DoCollide(tCollision_info *car1, tCollision_info *car2, br_vector3 *
     (void)factor;
     (void)need_to_fudge;
 
-    return original_DoCollide(car1, car2, r, n, k, pPass, mat1_to_mat2);
+    if (function_hook_state_DoCollide == HOOK_ENABLED) {
+        assert(0 && "DoCollide not implemented.");
+        abort();
+    } else {
+        return original_DoCollide(car1, car2, r, n, k, pPass, mat1_to_mat2);
+    }
 }
 
+function_hook_state_t function_hook_state_TwoPointCollB = HOOK_UNAVAILABLE;
 static br_scalar(__cdecl*original_TwoPointCollB)(br_scalar *, br_matrix4 *, br_scalar *, br_vector3 *, br_vector3 *) = (br_scalar(__cdecl*)(br_scalar *, br_matrix4 *, br_scalar *, br_vector3 *, br_vector3 *))0x004927be;
 CARM95_HOOK_FUNCTION(original_TwoPointCollB, TwoPointCollB)
 br_scalar __cdecl TwoPointCollB(br_scalar *f, br_matrix4 *m, br_scalar *d, br_vector3 *tau, br_vector3 *n) {
@@ -3385,9 +4259,15 @@ br_scalar __cdecl TwoPointCollB(br_scalar *f, br_matrix4 *m, br_scalar *d, br_ve
     (void)n;
     (void)ts;
 
-    return original_TwoPointCollB(f, m, d, tau, n);
+    if (function_hook_state_TwoPointCollB == HOOK_ENABLED) {
+        assert(0 && "TwoPointCollB not implemented.");
+        abort();
+    } else {
+        return original_TwoPointCollB(f, m, d, tau, n);
+    }
 }
 
+function_hook_state_t function_hook_state_ThreePointCollRecB = HOOK_UNAVAILABLE;
 static br_scalar(__cdecl*original_ThreePointCollRecB)(br_scalar *, br_matrix4 *, br_scalar *, br_vector3 *, br_vector3 *) = (br_scalar(__cdecl*)(br_scalar *, br_matrix4 *, br_scalar *, br_vector3 *, br_vector3 *))0x00492961;
 CARM95_HOOK_FUNCTION(original_ThreePointCollRecB, ThreePointCollRecB)
 br_scalar __cdecl ThreePointCollRecB(br_scalar *f, br_matrix4 *m, br_scalar *d, br_vector3 *tau, br_vector3 *n) {
@@ -3405,9 +4285,15 @@ br_scalar __cdecl ThreePointCollRecB(br_scalar *f, br_matrix4 *m, br_scalar *d, 
     (void)j;
     (void)ts;
 
-    return original_ThreePointCollRecB(f, m, d, tau, n);
+    if (function_hook_state_ThreePointCollRecB == HOOK_ENABLED) {
+        assert(0 && "ThreePointCollRecB not implemented.");
+        abort();
+    } else {
+        return original_ThreePointCollRecB(f, m, d, tau, n);
+    }
 }
 
+function_hook_state_t function_hook_state_FourPointCollB = HOOK_UNAVAILABLE;
 static br_scalar(__cdecl*original_FourPointCollB)(br_scalar *, br_matrix4 *, br_scalar *, br_vector3 *, br_vector3 *) = (br_scalar(__cdecl*)(br_scalar *, br_matrix4 *, br_scalar *, br_vector3 *, br_vector3 *))0x00492cdd;
 CARM95_HOOK_FUNCTION(original_FourPointCollB, FourPointCollB)
 br_scalar __cdecl FourPointCollB(br_scalar *f, br_matrix4 *m, br_scalar *d, br_vector3 *tau, br_vector3 *n) {
@@ -3427,9 +4313,15 @@ br_scalar __cdecl FourPointCollB(br_scalar *f, br_matrix4 *m, br_scalar *d, br_v
     (void)l;
     (void)ts;
 
-    return original_FourPointCollB(f, m, d, tau, n);
+    if (function_hook_state_FourPointCollB == HOOK_ENABLED) {
+        assert(0 && "FourPointCollB not implemented.");
+        abort();
+    } else {
+        return original_FourPointCollB(f, m, d, tau, n);
+    }
 }
 
+function_hook_state_t function_hook_state_TestForNan = HOOK_UNAVAILABLE;
 static int(__cdecl*original_TestForNan)(float *) = (int(__cdecl*)(float *))0x00492ff8;
 CARM95_HOOK_FUNCTION(original_TestForNan, TestForNan)
 int __cdecl TestForNan(float *f) {
@@ -3439,9 +4331,15 @@ int __cdecl TestForNan(float *f) {
     (void)f;
     (void)i;
 
-    return original_TestForNan(f);
+    if (function_hook_state_TestForNan == HOOK_ENABLED) {
+        assert(0 && "TestForNan not implemented.");
+        abort();
+    } else {
+        return original_TestForNan(f);
+    }
 }
 
+function_hook_state_t function_hook_state_CheckCameraHither = HOOK_UNAVAILABLE;
 static void(__cdecl*original_CheckCameraHither)() = (void(__cdecl*)())0x00493036;
 CARM95_HOOK_FUNCTION(original_CheckCameraHither, CheckCameraHither)
 void __cdecl CheckCameraHither() {
@@ -3452,9 +4350,15 @@ void __cdecl CheckCameraHither() {
     (void)cam;
     (void)old_hither;
 
-    original_CheckCameraHither();
+    if (function_hook_state_CheckCameraHither == HOOK_ENABLED) {
+        assert(0 && "CheckCameraHither not implemented.");
+        abort();
+    } else {
+        original_CheckCameraHither();
+    }
 }
 
+function_hook_state_t function_hook_state_SetCarSuspGiveAndHeight = HOOK_UNAVAILABLE;
 static void(__cdecl*original_SetCarSuspGiveAndHeight)(tCar_spec *, br_scalar, br_scalar, br_scalar, br_scalar, br_scalar) = (void(__cdecl*)(tCar_spec *, br_scalar, br_scalar, br_scalar, br_scalar, br_scalar))0x00493087;
 CARM95_HOOK_FUNCTION(original_SetCarSuspGiveAndHeight, SetCarSuspGiveAndHeight)
 void __cdecl SetCarSuspGiveAndHeight(tCar_spec *pCar, br_scalar pFront_give_factor, br_scalar pRear_give_factor, br_scalar pDamping_factor, br_scalar pExtra_front_height, br_scalar pExtra_rear_height) {
@@ -3477,9 +4381,15 @@ void __cdecl SetCarSuspGiveAndHeight(tCar_spec *pCar, br_scalar pFront_give_fact
     (void)ratio;
     (void)i;
 
-    original_SetCarSuspGiveAndHeight(pCar, pFront_give_factor, pRear_give_factor, pDamping_factor, pExtra_front_height, pExtra_rear_height);
+    if (function_hook_state_SetCarSuspGiveAndHeight == HOOK_ENABLED) {
+        assert(0 && "SetCarSuspGiveAndHeight not implemented.");
+        abort();
+    } else {
+        original_SetCarSuspGiveAndHeight(pCar, pFront_give_factor, pRear_give_factor, pDamping_factor, pExtra_front_height, pExtra_rear_height);
+    }
 }
 
+function_hook_state_t function_hook_state_TestForCarInSensiblePlace = HOOK_UNAVAILABLE;
 static int(__cdecl*original_TestForCarInSensiblePlace)(tCar_spec *) = (int(__cdecl*)(tCar_spec *))0x0049327e;
 CARM95_HOOK_FUNCTION(original_TestForCarInSensiblePlace, TestForCarInSensiblePlace)
 int __cdecl TestForCarInSensiblePlace(tCar_spec *car) {
@@ -3513,9 +4423,15 @@ int __cdecl TestForCarInSensiblePlace(tCar_spec *car) {
     (void)tv2;
     (void)__block0___scale;
 
-    return original_TestForCarInSensiblePlace(car);
+    if (function_hook_state_TestForCarInSensiblePlace == HOOK_ENABLED) {
+        assert(0 && "TestForCarInSensiblePlace not implemented.");
+        abort();
+    } else {
+        return original_TestForCarInSensiblePlace(car);
+    }
 }
 
+function_hook_state_t function_hook_state_TestOldMats = HOOK_UNAVAILABLE;
 static int(__cdecl*original_TestOldMats)(tCollision_info *, tCollision_info *, int) = (int(__cdecl*)(tCollision_info *, tCollision_info *, int))0x004936e6;
 CARM95_HOOK_FUNCTION(original_TestOldMats, TestOldMats)
 int __cdecl TestOldMats(tCollision_info *c1, tCollision_info *c2, int newmats) {
@@ -3569,9 +4485,15 @@ int __cdecl TestOldMats(tCollision_info *c1, tCollision_info *c2, int newmats) {
     (void)invmat1;
     (void)mat21;
 
-    return original_TestOldMats(c1, c2, newmats);
+    if (function_hook_state_TestOldMats == HOOK_ENABLED) {
+        assert(0 && "TestOldMats not implemented.");
+        abort();
+    } else {
+        return original_TestOldMats(c1, c2, newmats);
+    }
 }
 
+function_hook_state_t function_hook_state_PullActorFromWorld = HOOK_UNAVAILABLE;
 static int(__cdecl*original_PullActorFromWorld)(br_actor *) = (int(__cdecl*)(br_actor *))0x0049393a;
 CARM95_HOOK_FUNCTION(original_PullActorFromWorld, PullActorFromWorld)
 int __cdecl PullActorFromWorld(br_actor *pActor) {
@@ -3579,9 +4501,15 @@ int __cdecl PullActorFromWorld(br_actor *pActor) {
 
     (void)pActor;
 
-    return original_PullActorFromWorld(pActor);
+    if (function_hook_state_PullActorFromWorld == HOOK_ENABLED) {
+        assert(0 && "PullActorFromWorld not implemented.");
+        abort();
+    } else {
+        return original_PullActorFromWorld(pActor);
+    }
 }
 
+function_hook_state_t function_hook_state_DoPullActorFromWorld = HOOK_UNAVAILABLE;
 static int(__cdecl*original_DoPullActorFromWorld)(br_actor *) = (int(__cdecl*)(br_actor *))0x0049396a;
 CARM95_HOOK_FUNCTION(original_DoPullActorFromWorld, DoPullActorFromWorld)
 int __cdecl DoPullActorFromWorld(br_actor *pActor) {
@@ -3597,9 +4525,15 @@ int __cdecl DoPullActorFromWorld(br_actor *pActor) {
     (void)c;
     (void)non_car;
 
-    return original_DoPullActorFromWorld(pActor);
+    if (function_hook_state_DoPullActorFromWorld == HOOK_ENABLED) {
+        assert(0 && "DoPullActorFromWorld not implemented.");
+        abort();
+    } else {
+        return original_DoPullActorFromWorld(pActor);
+    }
 }
 
+function_hook_state_t function_hook_state_CheckForDeAttachmentOfNonCars = HOOK_UNAVAILABLE;
 static void(__cdecl*original_CheckForDeAttachmentOfNonCars)(tU32) = (void(__cdecl*)(tU32))0x00493c46;
 CARM95_HOOK_FUNCTION(original_CheckForDeAttachmentOfNonCars, CheckForDeAttachmentOfNonCars)
 void __cdecl CheckForDeAttachmentOfNonCars(tU32 pTime) {
@@ -3633,9 +4567,15 @@ void __cdecl CheckForDeAttachmentOfNonCars(tU32 pTime) {
     (void)track_spec;
     (void)mat;
 
-    original_CheckForDeAttachmentOfNonCars(pTime);
+    if (function_hook_state_CheckForDeAttachmentOfNonCars == HOOK_ENABLED) {
+        assert(0 && "CheckForDeAttachmentOfNonCars not implemented.");
+        abort();
+    } else {
+        original_CheckForDeAttachmentOfNonCars(pTime);
+    }
 }
 
+function_hook_state_t function_hook_state_AdjustNonCar = HOOK_UNAVAILABLE;
 static void(__cdecl*original_AdjustNonCar)(br_actor *, br_matrix34 *) = (void(__cdecl*)(br_actor *, br_matrix34 *))0x00493ff2;
 CARM95_HOOK_FUNCTION(original_AdjustNonCar, AdjustNonCar)
 void __cdecl AdjustNonCar(br_actor *pActor, br_matrix34 *pMat) {
@@ -3650,9 +4590,15 @@ void __cdecl AdjustNonCar(br_actor *pActor, br_matrix34 *pMat) {
     (void)cz;
     (void)track_spec;
 
-    original_AdjustNonCar(pActor, pMat);
+    if (function_hook_state_AdjustNonCar == HOOK_ENABLED) {
+        assert(0 && "AdjustNonCar not implemented.");
+        abort();
+    } else {
+        original_AdjustNonCar(pActor, pMat);
+    }
 }
 
+function_hook_state_t function_hook_state_PipeSingleNonCar = HOOK_UNAVAILABLE;
 static void(__cdecl*original_PipeSingleNonCar)(tCollision_info *) = (void(__cdecl*)(tCollision_info *))0x004940c2;
 CARM95_HOOK_FUNCTION(original_PipeSingleNonCar, PipeSingleNonCar)
 void __cdecl PipeSingleNonCar(tCollision_info *c) {
@@ -3660,9 +4606,15 @@ void __cdecl PipeSingleNonCar(tCollision_info *c) {
 
     (void)c;
 
-    original_PipeSingleNonCar(c);
+    if (function_hook_state_PipeSingleNonCar == HOOK_ENABLED) {
+        assert(0 && "PipeSingleNonCar not implemented.");
+        abort();
+    } else {
+        original_PipeSingleNonCar(c);
+    }
 }
 
+function_hook_state_t function_hook_state_GetPrecalculatedFacesUnderCar = HOOK_UNAVAILABLE;
 static int(__cdecl*original_GetPrecalculatedFacesUnderCar)(tCar_spec *, tFace_ref **) = (int(__cdecl*)(tCar_spec *, tFace_ref **))0x004941a2;
 CARM95_HOOK_FUNCTION(original_GetPrecalculatedFacesUnderCar, GetPrecalculatedFacesUnderCar)
 int __cdecl GetPrecalculatedFacesUnderCar(tCar_spec *pCar, tFace_ref **pFace_refs) {
@@ -3671,13 +4623,24 @@ int __cdecl GetPrecalculatedFacesUnderCar(tCar_spec *pCar, tFace_ref **pFace_ref
     (void)pCar;
     (void)pFace_refs;
 
-    return original_GetPrecalculatedFacesUnderCar(pCar, pFace_refs);
+    if (function_hook_state_GetPrecalculatedFacesUnderCar == HOOK_ENABLED) {
+        assert(0 && "GetPrecalculatedFacesUnderCar not implemented.");
+        abort();
+    } else {
+        return original_GetPrecalculatedFacesUnderCar(pCar, pFace_refs);
+    }
 }
 
+function_hook_state_t function_hook_state_SomeNearbyMaterial = HOOK_UNAVAILABLE;
 br_material* SomeNearbyMaterial() {
     LOG_TRACE("()");
 
 
-    NOT_IMPLEMENTED();
+    if (function_hook_state_SomeNearbyMaterial == HOOK_ENABLED) {
+        assert(0 && "SomeNearbyMaterial not implemented.");
+        abort();
+    } else {
+        NOT_IMPLEMENTED();
+    }
 }
 

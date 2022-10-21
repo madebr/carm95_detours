@@ -41,6 +41,7 @@
 #define Vector3IsZero(V) Vector3EqualElements((V), 0.f, 0.f, 0.f)
 #define Vector3AddFloats(V1, V2, X, Y, Z) \
     do { (V1)->v[0] = (V2)->v[0] + (X); (V1)->v[1] = (V2)->v[1] + (Y);  (V1)->v[2] = (V2)->v[2] + (Z); } while (0)
+
 #define SwapValuesUsingTemporary(V1, V2, T) \
     do {                                    \
         (T) = (V1);                         \

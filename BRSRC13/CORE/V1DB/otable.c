@@ -4,7 +4,11 @@
 
 #include "carm95_hooks.h"
 
+#include "carm95_webserver.h"
 
+#include <assert.h>
+
+function_hook_state_t function_hook_state_BrZsOrderTableAllocate = HOOK_UNAVAILABLE;
 static br_order_table *(__cdecl*original_BrZsOrderTableAllocate)(br_uint_16, br_uint_32, br_uint_16) = (br_order_table *(__cdecl*)(br_uint_16, br_uint_32, br_uint_16))0x004ddda0;
 CARM95_HOOK_FUNCTION(original_BrZsOrderTableAllocate, BrZsOrderTableAllocate)
 br_order_table* __cdecl BrZsOrderTableAllocate(br_uint_16 size, br_uint_32 flags, br_uint_16 type) {
@@ -16,9 +20,15 @@ br_order_table* __cdecl BrZsOrderTableAllocate(br_uint_16 size, br_uint_32 flags
     (void)type;
     (void)order_table;
 
-    return original_BrZsOrderTableAllocate(size, flags, type);
+    if (function_hook_state_BrZsOrderTableAllocate == HOOK_ENABLED) {
+        assert(0 && "BrZsOrderTableAllocate not implemented.");
+        abort();
+    } else {
+        return original_BrZsOrderTableAllocate(size, flags, type);
+    }
 }
 
+function_hook_state_t function_hook_state_BrZsOrderTableFree = HOOK_UNAVAILABLE;
 static void(__cdecl*original_BrZsOrderTableFree)(br_order_table *) = (void(__cdecl*)(br_order_table *))0x004dde10;
 CARM95_HOOK_FUNCTION(original_BrZsOrderTableFree, BrZsOrderTableFree)
 void __cdecl BrZsOrderTableFree(br_order_table *order_table) {
@@ -26,9 +36,15 @@ void __cdecl BrZsOrderTableFree(br_order_table *order_table) {
 
     (void)order_table;
 
-    original_BrZsOrderTableFree(order_table);
+    if (function_hook_state_BrZsOrderTableFree == HOOK_ENABLED) {
+        assert(0 && "BrZsOrderTableFree not implemented.");
+        abort();
+    } else {
+        original_BrZsOrderTableFree(order_table);
+    }
 }
 
+function_hook_state_t function_hook_state_BrZsActorOrderTableSet = HOOK_UNAVAILABLE;
 static br_order_table *(__cdecl*original_BrZsActorOrderTableSet)(br_actor *, br_order_table *) = (br_order_table *(__cdecl*)(br_actor *, br_order_table *))0x004dde20;
 CARM95_HOOK_FUNCTION(original_BrZsActorOrderTableSet, BrZsActorOrderTableSet)
 br_order_table* __cdecl BrZsActorOrderTableSet(br_actor *actor, br_order_table *order_table) {
@@ -37,9 +53,15 @@ br_order_table* __cdecl BrZsActorOrderTableSet(br_actor *actor, br_order_table *
     (void)actor;
     (void)order_table;
 
-    return original_BrZsActorOrderTableSet(actor, order_table);
+    if (function_hook_state_BrZsActorOrderTableSet == HOOK_ENABLED) {
+        assert(0 && "BrZsActorOrderTableSet not implemented.");
+        abort();
+    } else {
+        return original_BrZsActorOrderTableSet(actor, order_table);
+    }
 }
 
+function_hook_state_t function_hook_state_BrZsActorOrderTableGet = HOOK_UNAVAILABLE;
 static br_order_table *(__cdecl*original_BrZsActorOrderTableGet)(br_actor *) = (br_order_table *(__cdecl*)(br_actor *))0x004dde30;
 CARM95_HOOK_FUNCTION(original_BrZsActorOrderTableGet, BrZsActorOrderTableGet)
 br_order_table* __cdecl BrZsActorOrderTableGet(br_actor *actor) {
@@ -47,9 +69,15 @@ br_order_table* __cdecl BrZsActorOrderTableGet(br_actor *actor) {
 
     (void)actor;
 
-    return original_BrZsActorOrderTableGet(actor);
+    if (function_hook_state_BrZsActorOrderTableGet == HOOK_ENABLED) {
+        assert(0 && "BrZsActorOrderTableGet not implemented.");
+        abort();
+    } else {
+        return original_BrZsActorOrderTableGet(actor);
+    }
 }
 
+function_hook_state_t function_hook_state_BrZsOrderTableClear = HOOK_UNAVAILABLE;
 static br_order_table *(__cdecl*original_BrZsOrderTableClear)(br_order_table *) = (br_order_table *(__cdecl*)(br_order_table *))0x004dde40;
 CARM95_HOOK_FUNCTION(original_BrZsOrderTableClear, BrZsOrderTableClear)
 br_order_table* __cdecl BrZsOrderTableClear(br_order_table *order_table) {
@@ -57,9 +85,15 @@ br_order_table* __cdecl BrZsOrderTableClear(br_order_table *order_table) {
 
     (void)order_table;
 
-    return original_BrZsOrderTableClear(order_table);
+    if (function_hook_state_BrZsOrderTableClear == HOOK_ENABLED) {
+        assert(0 && "BrZsOrderTableClear not implemented.");
+        abort();
+    } else {
+        return original_BrZsOrderTableClear(order_table);
+    }
 }
 
+function_hook_state_t function_hook_state_BrZsOrderTablePrimitiveInsert = HOOK_UNAVAILABLE;
 static void(__cdecl*original_BrZsOrderTablePrimitiveInsert)(br_order_table *, br_primitive *, br_uint_16) = (void(__cdecl*)(br_order_table *, br_primitive *, br_uint_16))0x004dde60;
 CARM95_HOOK_FUNCTION(original_BrZsOrderTablePrimitiveInsert, BrZsOrderTablePrimitiveInsert)
 void __cdecl BrZsOrderTablePrimitiveInsert(br_order_table *order_table, br_primitive *primitive, br_uint_16 bucket) {
@@ -69,9 +103,15 @@ void __cdecl BrZsOrderTablePrimitiveInsert(br_order_table *order_table, br_primi
     (void)primitive;
     (void)bucket;
 
-    original_BrZsOrderTablePrimitiveInsert(order_table, primitive, bucket);
+    if (function_hook_state_BrZsOrderTablePrimitiveInsert == HOOK_ENABLED) {
+        assert(0 && "BrZsOrderTablePrimitiveInsert not implemented.");
+        abort();
+    } else {
+        original_BrZsOrderTablePrimitiveInsert(order_table, primitive, bucket);
+    }
 }
 
+function_hook_state_t function_hook_state_BrZsPrimitiveBucketSelect = HOOK_UNAVAILABLE;
 static br_uint_16(__cdecl*original_BrZsPrimitiveBucketSelect)(br_scalar *, br_uint_16, br_scalar, br_scalar, br_uint_16, br_uint_16) = (br_uint_16(__cdecl*)(br_scalar *, br_uint_16, br_scalar, br_scalar, br_uint_16, br_uint_16))0x004dde90;
 CARM95_HOOK_FUNCTION(original_BrZsPrimitiveBucketSelect, BrZsPrimitiveBucketSelect)
 br_uint_16 __cdecl BrZsPrimitiveBucketSelect(br_scalar *z, br_uint_16 type, br_scalar min_z, br_scalar max_z, br_uint_16 size, br_uint_16 sort_type) {
@@ -92,9 +132,15 @@ br_uint_16 __cdecl BrZsPrimitiveBucketSelect(br_scalar *z, br_uint_16 type, br_s
     (void)range;
     (void)scale;
 
-    return original_BrZsPrimitiveBucketSelect(z, type, min_z, max_z, size, sort_type);
+    if (function_hook_state_BrZsPrimitiveBucketSelect == HOOK_ENABLED) {
+        assert(0 && "BrZsPrimitiveBucketSelect not implemented.");
+        abort();
+    } else {
+        return original_BrZsPrimitiveBucketSelect(z, type, min_z, max_z, size, sort_type);
+    }
 }
 
+function_hook_state_t function_hook_state_BrZsOrderTablePrimaryEnable = HOOK_UNAVAILABLE;
 static void(__cdecl*original_BrZsOrderTablePrimaryEnable)(br_order_table *) = (void(__cdecl*)(br_order_table *))0x004de050;
 CARM95_HOOK_FUNCTION(original_BrZsOrderTablePrimaryEnable, BrZsOrderTablePrimaryEnable)
 void __cdecl BrZsOrderTablePrimaryEnable(br_order_table *order_table) {
@@ -102,18 +148,30 @@ void __cdecl BrZsOrderTablePrimaryEnable(br_order_table *order_table) {
 
     (void)order_table;
 
-    original_BrZsOrderTablePrimaryEnable(order_table);
+    if (function_hook_state_BrZsOrderTablePrimaryEnable == HOOK_ENABLED) {
+        assert(0 && "BrZsOrderTablePrimaryEnable not implemented.");
+        abort();
+    } else {
+        original_BrZsOrderTablePrimaryEnable(order_table);
+    }
 }
 
+function_hook_state_t function_hook_state_BrZsOrderTablePrimaryDisable = HOOK_UNAVAILABLE;
 static void(__cdecl*original_BrZsOrderTablePrimaryDisable)() = (void(__cdecl*)())0x004de070;
 CARM95_HOOK_FUNCTION(original_BrZsOrderTablePrimaryDisable, BrZsOrderTablePrimaryDisable)
 void __cdecl BrZsOrderTablePrimaryDisable() {
     LOG_TRACE("()");
 
 
-    original_BrZsOrderTablePrimaryDisable();
+    if (function_hook_state_BrZsOrderTablePrimaryDisable == HOOK_ENABLED) {
+        assert(0 && "BrZsOrderTablePrimaryDisable not implemented.");
+        abort();
+    } else {
+        original_BrZsOrderTablePrimaryDisable();
+    }
 }
 
+function_hook_state_t function_hook_state_InsertOrderTableList = HOOK_UNAVAILABLE;
 static void(__stdcall*original_InsertOrderTableList)(br_order_table *) = (void(__stdcall*)(br_order_table *))0x004de080;
 CARM95_HOOK_FUNCTION(original_InsertOrderTableList, InsertOrderTableList)
 void __stdcall InsertOrderTableList(br_order_table *order_table) {
@@ -125,9 +183,15 @@ void __stdcall InsertOrderTableList(br_order_table *order_table) {
     (void)previous_table;
     (void)current_table;
 
-    original_InsertOrderTableList(order_table);
+    if (function_hook_state_InsertOrderTableList == HOOK_ENABLED) {
+        assert(0 && "InsertOrderTableList not implemented.");
+        abort();
+    } else {
+        original_InsertOrderTableList(order_table);
+    }
 }
 
+function_hook_state_t function_hook_state_SetOrderTableBounds = HOOK_UNAVAILABLE;
 static void(__stdcall*original_SetOrderTableBounds)(br_bounds *, br_order_table *) = (void(__stdcall*)(br_bounds *, br_order_table *))0x004de0f0;
 CARM95_HOOK_FUNCTION(original_SetOrderTableBounds, SetOrderTableBounds)
 void __stdcall SetOrderTableBounds(br_bounds *bounds, br_order_table *order_table) {
@@ -150,9 +214,15 @@ void __stdcall SetOrderTableBounds(br_bounds *bounds, br_order_table *order_tabl
     (void)min;
     (void)max;
 
-    original_SetOrderTableBounds(bounds, order_table);
+    if (function_hook_state_SetOrderTableBounds == HOOK_ENABLED) {
+        assert(0 && "SetOrderTableBounds not implemented.");
+        abort();
+    } else {
+        original_SetOrderTableBounds(bounds, order_table);
+    }
 }
 
+function_hook_state_t function_hook_state_SetOrderTableRange = HOOK_UNAVAILABLE;
 static void(__stdcall*original_SetOrderTableRange)(br_order_table *) = (void(__stdcall*)(br_order_table *))0x004de200;
 CARM95_HOOK_FUNCTION(original_SetOrderTableRange, SetOrderTableRange)
 void __stdcall SetOrderTableRange(br_order_table *order_table) {
@@ -162,9 +232,15 @@ void __stdcall SetOrderTableRange(br_order_table *order_table) {
     (void)order_table;
     (void)range;
 
-    original_SetOrderTableRange(order_table);
+    if (function_hook_state_SetOrderTableRange == HOOK_ENABLED) {
+        assert(0 && "SetOrderTableRange not implemented.");
+        abort();
+    } else {
+        original_SetOrderTableRange(order_table);
+    }
 }
 
+function_hook_state_t function_hook_state_RenderOrderTableList = HOOK_UNAVAILABLE;
 static void(__cdecl*original_RenderOrderTableList)() = (void(__cdecl*)())0x004de270;
 CARM95_HOOK_FUNCTION(original_RenderOrderTableList, RenderOrderTableList)
 void __cdecl RenderOrderTableList() {
@@ -173,9 +249,15 @@ void __cdecl RenderOrderTableList() {
 
     (void)order_table;
 
-    original_RenderOrderTableList();
+    if (function_hook_state_RenderOrderTableList == HOOK_ENABLED) {
+        assert(0 && "RenderOrderTableList not implemented.");
+        abort();
+    } else {
+        original_RenderOrderTableList();
+    }
 }
 
+function_hook_state_t function_hook_state_RenderPrimaryOrderTable = HOOK_UNAVAILABLE;
 static void(__cdecl*original_RenderPrimaryOrderTable)() = (void(__cdecl*)())0x004de2b0;
 CARM95_HOOK_FUNCTION(original_RenderPrimaryOrderTable, RenderPrimaryOrderTable)
 void __cdecl RenderPrimaryOrderTable() {
@@ -198,6 +280,11 @@ void __cdecl RenderPrimaryOrderTable() {
     (void)bucket;
     (void)order_table;
 
-    original_RenderPrimaryOrderTable();
+    if (function_hook_state_RenderPrimaryOrderTable == HOOK_ENABLED) {
+        assert(0 && "RenderPrimaryOrderTable not implemented.");
+        abort();
+    } else {
+        original_RenderPrimaryOrderTable();
+    }
 }
 
