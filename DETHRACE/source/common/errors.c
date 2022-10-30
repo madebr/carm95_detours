@@ -26,9 +26,12 @@ int * hookvar_gMouse_was_started__errors ;
 char ** hookvar_gPixels_copy__errors ;
 #endif
 
+
+void(__cdecl*FatalError)(int, ...) = (void*)0x00461390;
 function_hook_state_t function_hook_state_FatalError = HOOK_UNAVAILABLE;
+#if 0
 void(__cdecl*FatalError)(int) = (void(__cdecl*)(int))0x00461390;
-void FatalError_do_not_use(int pStr_index) {
+void FatalError_do_not_use(int pStr_index, ...) {
     char the_str[1024];
     char *sub_str;
     char temp_str[1024];
@@ -50,8 +53,11 @@ void FatalError_do_not_use(int pStr_index) {
         NOT_IMPLEMENTED();
     }
 }
+#endif
 
+void(__cdecl*NonFatalError)(int, ...) = (void*)0x004614f1;
 function_hook_state_t function_hook_state_NonFatalError = HOOK_UNAVAILABLE;
+#if 0
 void(__cdecl*NonFatalError)(int) = (void(__cdecl*)(int))0x004614f1;
 void NonFatalError_do_not_use(int pStr_index) {
     char the_str[256];
@@ -75,6 +81,7 @@ void NonFatalError_do_not_use(int pStr_index) {
         NOT_IMPLEMENTED();
     }
 }
+#endif
 
 function_hook_state_t function_hook_state_CloseDiagnostics = HOOK_UNAVAILABLE;
 static void(__cdecl*original_CloseDiagnostics)() = (void(__cdecl*)())0x0046162f;

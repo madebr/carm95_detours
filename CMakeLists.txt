@@ -32,6 +32,8 @@ add_library(carm95hooks SHARED
     include/carm95_webserver.h
     carm95_webserver.c
     carm95_webserver_symbols.c
+    include/carm95_libc.h
+    carm95_libc.c
     dummy.c
     harness_trace.c
     S3/s3sound.c
