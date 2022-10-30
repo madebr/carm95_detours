@@ -196,4 +196,7 @@ void __cdecl SendCurrentPowerups();
 
 void __cdecl LoseAllLocalPowerups(tCar_spec *pCar);
 
+// Added by dethrace
+void GetPowerupMessage(int pN, char* pMessage);
+
 #endif

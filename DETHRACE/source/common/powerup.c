@@ -1716,3 +1716,36 @@ void __cdecl LoseAllLocalPowerups(tCar_spec *pCar) {
     }
 }
 
+// Added by dethrace
+function_hook_state_t function_hook_state_GetPowerupMessage = HOOK_ENABLED;
+static void(__cdecl*original_GetPowerupMessage)(int *, char*) = (void(__cdecl*)(int, char *))0x0042f0cc;
+CARM95_HOOK_FUNCTION(original_GetPowerupMessage, GetPowerupMessage)
+void GetPowerupMessage(int pN, char* pMessage) {
+
+
+    if (function_hook_state_GetPowerupMessage == HOOK_ENABLED) {
+        switch (pN) {
+            case 0:
+                strcpy(pMessage, "Bonus");
+                break;
+            case 1:
+                strcpy(pMessage, "Mega Bonus");
+                break;
+            case 14:
+            case 46:
+                strcpy(pMessage, "Mine");
+                break;
+            case 28:
+            case 29:
+            case 30:
+            case 31:
+                strcpy(pMessage, "Random");
+                break;
+            default:
+                strcpy(pMessage, HV(gPowerup_array)[pN].message);
+                break;
+        }
+    } else {
+        original_GetPowerupMessage(pN, pMessage);
+    }
+}
