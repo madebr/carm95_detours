@@ -20,7 +20,7 @@ extern char *(* hookvar_gLollipop_names )[3]; // addr: 0050C790
 extern char *(* hookvar_gGroove_path_names )[2]; // addr: 0050C7A0
 extern char *(* hookvar_gGroove_object_names )[4]; // addr: 0050C7A8
 extern char *(* hookvar_gDepth_effect_names )[2]; // addr: 0050C7B8
-// extern br_actor ** hookvar_gGroove_by_proxy_actor ;
+extern br_actor ** hookvar_gGroove_by_proxy_actor ; // addr: 0050C7C0
 extern tRotate_mode * hookvar_gCurrent_rotate_mode ; // addr: 0050C7C4
 extern tScale_mode * hookvar_gCurrent_scale_mode ; // addr: 0050C7C8
 extern int * hookvar_gNumber_of_additional_models ; // addr: 0050C7CC
@@ -275,7 +275,7 @@ int __cdecl PointOutOfSight(br_vector3 *pPoint, br_scalar pMax_distance);
 
 void __cdecl PathGrooveBastard(tGroovidelic_spec *pGroove, tU32 pTime, br_matrix34 *pMat, int pInterrupt_it);
 
-void ObjectGrooveBastard(tGroovidelic_spec *pGroove, tU32 pTime, br_matrix34 *pMat, int pInterrupt_it);
+void __cdecl ObjectGrooveBastard(tGroovidelic_spec *pGroove, tU32 pTime, br_matrix34 *pMat, int pInterrupt_it);
 
 void __cdecl GrooveThisDelic(tGroovidelic_spec *pGroove, tU32 pTime, int pInterrupt_it);
 

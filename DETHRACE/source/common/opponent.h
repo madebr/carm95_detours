@@ -296,15 +296,15 @@ int __cdecl NewNodeOKHere();
 
 void __cdecl ShowHideOppoPaths();
 
-void DropElasticateyNode();
+void __cdecl DropElasticateyNode();
 
-void InsertAndElasticate();
+void __cdecl InsertAndElasticate();
 
-void InsertAndDontElasticate();
+void __cdecl InsertAndDontElasticate();
 
-void DropDeadEndNode();
+void __cdecl DropDeadEndNode();
 
-void DropNodeOnNodeAndStopElasticating();
+void __cdecl DropNodeOnNodeAndStopElasticating();
 
 void __cdecl WidenOppoPathSection();
 
@@ -326,7 +326,7 @@ void __cdecl ShowSectionInfo1();
 
 void __cdecl ShowSectionInfo2();
 
-void DeleteOppoPathSection();
+void __cdecl DeleteOppoPathSection();
 
 void __cdecl DeleteOppoPathNodeAndSections();
 

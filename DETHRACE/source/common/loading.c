@@ -1375,7 +1375,9 @@ br_uint_32 __cdecl LinkModel(br_actor *pActor, tModel_pool *pModel_pool) {
 }
 
 function_hook_state_t function_hook_state_FreeUpBonnetModels = HOOK_UNAVAILABLE;
-void FreeUpBonnetModels(br_model **pModel_array, int pModel_count) {
+static void(__cdecl*original_FreeUpBonnetModels)(br_model **, int) = (void(__cdecl*)(br_model **, int))0x00423c66;
+CARM95_HOOK_FUNCTION(original_FreeUpBonnetModels, FreeUpBonnetModels)
+void __cdecl FreeUpBonnetModels(br_model **pModel_array, int pModel_count) {
     int i;
     LOG_TRACE("(%p, %d)", pModel_array, pModel_count);
 
@@ -1387,7 +1389,7 @@ void FreeUpBonnetModels(br_model **pModel_array, int pModel_count) {
         assert(0 && "FreeUpBonnetModels not implemented.");
         abort();
     } else {
-        NOT_IMPLEMENTED();
+        original_FreeUpBonnetModels(pModel_array, pModel_count);
     }
 }
 

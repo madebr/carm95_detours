@@ -23,9 +23,7 @@ char *(* hookvar_gLollipop_names )[3] = (void*)0x0050c790;
 char *(* hookvar_gGroove_path_names )[2] = (void*)0x0050c7a0;
 char *(* hookvar_gGroove_object_names )[4] = (void*)0x0050c7a8;
 char *(* hookvar_gDepth_effect_names )[2] = (void*)0x0050c7b8;
-#if 0
-br_actor ** hookvar_gGroove_by_proxy_actor ;
-#endif
+br_actor ** hookvar_gGroove_by_proxy_actor  = (void*)0x0050c7c0;
 tRotate_mode * hookvar_gCurrent_rotate_mode  = (void*)0x0050c7c4;
 tScale_mode * hookvar_gCurrent_scale_mode  = (void*)0x0050c7c8;
 int * hookvar_gNumber_of_additional_models  = (void*)0x0050c7cc;
@@ -2551,7 +2549,9 @@ void __cdecl PathGrooveBastard(tGroovidelic_spec *pGroove, tU32 pTime, br_matrix
 }
 
 function_hook_state_t function_hook_state_ObjectGrooveBastard = HOOK_UNAVAILABLE;
-void ObjectGrooveBastard(tGroovidelic_spec *pGroove, tU32 pTime, br_matrix34 *pMat, int pInterrupt_it) {
+static void(__cdecl*original_ObjectGrooveBastard)(tGroovidelic_spec *, tU32, br_matrix34 *, int) = (void(__cdecl*)(tGroovidelic_spec *, tU32, br_matrix34 *, int))0x00440abe;
+CARM95_HOOK_FUNCTION(original_ObjectGrooveBastard, ObjectGrooveBastard)
+void __cdecl ObjectGrooveBastard(tGroovidelic_spec *pGroove, tU32 pTime, br_matrix34 *pMat, int pInterrupt_it) {
     int rock_it;
     br_scalar x_size;
     br_scalar y_size;
@@ -2575,7 +2575,7 @@ void ObjectGrooveBastard(tGroovidelic_spec *pGroove, tU32 pTime, br_matrix34 *pM
         assert(0 && "ObjectGrooveBastard not implemented.");
         abort();
     } else {
-        NOT_IMPLEMENTED();
+        original_ObjectGrooveBastard(pGroove, pTime, pMat, pInterrupt_it);
     }
 }
 

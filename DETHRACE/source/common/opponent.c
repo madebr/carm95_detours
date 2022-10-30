@@ -2661,7 +2661,9 @@ void __cdecl ShowHideOppoPaths() {
 }
 
 function_hook_state_t function_hook_state_DropElasticateyNode = HOOK_UNAVAILABLE;
-void DropElasticateyNode() {
+static void(__cdecl*original_DropElasticateyNode)() = (void(__cdecl*)())0x0040ee30;
+CARM95_HOOK_FUNCTION(original_DropElasticateyNode, DropElasticateyNode)
+void __cdecl DropElasticateyNode() {
     char str[256];
     tS16 old_node;
     tS16 new_node;
@@ -2687,12 +2689,14 @@ void DropElasticateyNode() {
         assert(0 && "DropElasticateyNode not implemented.");
         abort();
     } else {
-        NOT_IMPLEMENTED();
+        original_DropElasticateyNode();
     }
 }
 
 function_hook_state_t function_hook_state_InsertAndElasticate = HOOK_UNAVAILABLE;
-void InsertAndElasticate() {
+static void(__cdecl*original_InsertAndElasticate)() = (void(__cdecl*)())0x0040f565;
+CARM95_HOOK_FUNCTION(original_InsertAndElasticate, InsertAndElasticate)
+void __cdecl InsertAndElasticate() {
     tS16 inserted_node;
     tS16 elasticatey_node;
     tS16 section_no;
@@ -2724,12 +2728,14 @@ void InsertAndElasticate() {
         assert(0 && "InsertAndElasticate not implemented.");
         abort();
     } else {
-        NOT_IMPLEMENTED();
+        original_InsertAndElasticate();
     }
 }
 
 function_hook_state_t function_hook_state_InsertAndDontElasticate = HOOK_UNAVAILABLE;
-void InsertAndDontElasticate() {
+static void(__cdecl*original_InsertAndDontElasticate)() = (void(__cdecl*)())0x0040fdf3;
+CARM95_HOOK_FUNCTION(original_InsertAndDontElasticate, InsertAndDontElasticate)
+void __cdecl InsertAndDontElasticate() {
     tS16 inserted_node;
     tS16 section_no;
     br_vector3 direction_v;
@@ -2753,12 +2759,14 @@ void InsertAndDontElasticate() {
         assert(0 && "InsertAndDontElasticate not implemented.");
         abort();
     } else {
-        NOT_IMPLEMENTED();
+        original_InsertAndDontElasticate();
     }
 }
 
 function_hook_state_t function_hook_state_DropDeadEndNode = HOOK_UNAVAILABLE;
-void DropDeadEndNode() {
+static void(__cdecl*original_DropDeadEndNode)() = (void(__cdecl*)())0x004100f3;
+CARM95_HOOK_FUNCTION(original_DropDeadEndNode, DropDeadEndNode)
+void __cdecl DropDeadEndNode() {
     char str[256];
     LOG_TRACE("()");
 
@@ -2768,12 +2776,14 @@ void DropDeadEndNode() {
         assert(0 && "DropDeadEndNode not implemented.");
         abort();
     } else {
-        NOT_IMPLEMENTED();
+        original_DropDeadEndNode();
     }
 }
 
 function_hook_state_t function_hook_state_DropNodeOnNodeAndStopElasticating = HOOK_UNAVAILABLE;
-void DropNodeOnNodeAndStopElasticating() {
+static void(__cdecl*original_DropNodeOnNodeAndStopElasticating)() = (void(__cdecl*)())0x0041020c;
+CARM95_HOOK_FUNCTION(original_DropNodeOnNodeAndStopElasticating, DropNodeOnNodeAndStopElasticating)
+void __cdecl DropNodeOnNodeAndStopElasticating() {
     int node_no;
     char str[256];
     br_scalar distance;
@@ -2787,7 +2797,7 @@ void DropNodeOnNodeAndStopElasticating() {
         assert(0 && "DropNodeOnNodeAndStopElasticating not implemented.");
         abort();
     } else {
-        NOT_IMPLEMENTED();
+        original_DropNodeOnNodeAndStopElasticating();
     }
 }
 
@@ -2972,7 +2982,9 @@ void __cdecl ShowSectionInfo2() {
 }
 
 function_hook_state_t function_hook_state_DeleteOppoPathSection = HOOK_UNAVAILABLE;
-void DeleteOppoPathSection() {
+static void(__cdecl*original_DeleteOppoPathSection)() = (void(__cdecl*)())0x00411124;
+CARM95_HOOK_FUNCTION(original_DeleteOppoPathSection, DeleteOppoPathSection)
+void __cdecl DeleteOppoPathSection() {
     br_scalar distance;
     br_vector3 intersect;
     br_vector3 direction_v;
@@ -2988,12 +3000,12 @@ void DeleteOppoPathSection() {
         assert(0 && "DeleteOppoPathSection not implemented.");
         abort();
     } else {
-        NOT_IMPLEMENTED();
+        original_DeleteOppoPathSection();
     }
 }
 
 function_hook_state_t function_hook_state_DeleteOppoPathNodeAndSections = HOOK_UNAVAILABLE;
-static void(__cdecl*original_DeleteOppoPathNodeAndSections)() = (void(__cdecl*)())0x00411124;
+static void(__cdecl*original_DeleteOppoPathNodeAndSections)() = (void(__cdecl*)())0x00411206;
 CARM95_HOOK_FUNCTION(original_DeleteOppoPathNodeAndSections, DeleteOppoPathNodeAndSections)
 void __cdecl DeleteOppoPathNodeAndSections() {
     br_scalar distance;
