@@ -11,12 +11,12 @@ extern int * hookvar_gError_code ; // addr: 0051D424
 // extern int * hookvar_gMouse_was_started__errors ; // suffix added to avoid duplicate symbol
 // extern char ** hookvar_gPixels_copy__errors ; // suffix added to avoid duplicate symbol
 
-extern void(__cdecl*FatalError)(int);
+extern void(__cdecl*FatalError)(int, ...);
 #if 0
-void FatalError_do_not_use(int pStr_index);
+void FatalError_do_not_use(int pStr_index, ...);
 #endif
 
-extern void(__cdecl*NonFatalError)(int);
+extern void(__cdecl*NonFatalError)(int, ...);
 #if 0
 void NonFatalError_do_not_use(int pStr_index);
 #endif

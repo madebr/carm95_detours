@@ -26,10 +26,11 @@ int * hookvar_gMouse_was_started__errors ;
 char ** hookvar_gPixels_copy__errors ;
 #endif
 
+void(__cdecl*FatalError)(int, ...) = (void*)0x00461390;
 function_hook_state_t function_hook_state_FatalError = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_FatalError)
+#if 0
 void(__cdecl*FatalError)(int) = (void(__cdecl*)(int))0x00461390;
-void FatalError_do_not_use(int pStr_index) {
+void FatalError_do_not_use(int pStr_index, ...) {
     char the_str[1024];
     char *sub_str;
     char temp_str[1024];
@@ -51,9 +52,11 @@ void FatalError_do_not_use(int pStr_index) {
         NOT_IMPLEMENTED();
     }
 }
+#endif
 
+void(__cdecl*NonFatalError)(int, ...) = (void*)0x004614f1;
 function_hook_state_t function_hook_state_NonFatalError = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_NonFatalError)
+#if 0
 void(__cdecl*NonFatalError)(int) = (void(__cdecl*)(int))0x004614f1;
 void NonFatalError_do_not_use(int pStr_index) {
     char the_str[256];
@@ -77,6 +80,7 @@ void NonFatalError_do_not_use(int pStr_index) {
         NOT_IMPLEMENTED();
     }
 }
+#endif
 
 function_hook_state_t function_hook_state_CloseDiagnostics = HOOK_UNAVAILABLE;
 CARM95_WEBSERVER_STATE(function_hook_state_CloseDiagnostics)
@@ -129,7 +133,6 @@ void dr_dprintf(char *fmt_string) {
 #endif
 
 function_hook_state_t function_hook_state_DoErrorInterface = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DoErrorInterface)
 static int(__cdecl*original_DoErrorInterface)(int) = (int(__cdecl*)(int))0x00461650;
 CARM95_HOOK_FUNCTION(original_DoErrorInterface, DoErrorInterface)
 int __cdecl DoErrorInterface(int pMisc_text_index) {
