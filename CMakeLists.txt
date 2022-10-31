@@ -26,7 +26,7 @@ endif()
 
 include("${CMAKE_CURRENT_SOURCE_DIR}/hook_sources.cmake")
 add_library(carm95hooks SHARED
-    hookmain.cpp
+    carm95_main.cpp
     include/carm95_hooks.h
     carm95_hooks.cpp
     include/carm95_webserver.h
@@ -92,13 +92,17 @@ if(HOOK_WEBSERVER)
     target_link_libraries(carm95hooks PRIVATE Ulfius::Ulfius-static)
 endif()
 
-add_executable(carm95_injector injector.cpp)
+add_executable(carm95_injector
+    injector_main.cpp
+    injector_hasher.c
+    injector.h
+)
 target_compile_definitions(carm95_injector PRIVATE
     TARGET="carm95_injector"
     VICTIM="CARM95.EXE"
-
 )
 target_link_libraries(carm95_injector PRIVATE
+    bcrypt
     Detours::Detours
 )
 set_target_properties(carm95_injector
