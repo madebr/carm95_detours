@@ -1,0 +1,30 @@
+name: Workflow
+on:
+  push:
+  pull_request:
+
+jobs:
+
+  ci:
+    strategy:
+      matrix:
+        platform:
+          - { name: MSVC,  os: windows-latest }
+    
+    runs-on: ${{ matrix.platform.os }}
+    name: CI (${{ matrix.platform.name }})
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Ninja
+        uses: ashutoshvarma/setup-ninja@master
+        with:
+          version: 1.10.2
+      - uses: ilammy/msvc-dev-cmd@v1.4.1
+        if: ${{ matrix.platform.name == 'MSVC' }}
+        with:
+          arch: x86
+      - name: Build
+        id: build
+        run: |
+          cmake -S ${{ github.workspace }} -B build
+          cmake --build build
