@@ -25,12 +25,12 @@ class CarmaBypass(ConanFile):
         assert self.settings.build_type == "Release"
 
     def build(self):
-        detours_find_cmake = os.path.join(self.build_folder, "finddetours.cmake")
-        replace_in_file(self, detours_find_cmake, "detours::detours", "Detours::Detours", strict=False)
-        os.rename(detours_find_cmake, os.path.join(self.build_folder, "FindDetours.cmake"))
+        detours_find_cmake = os.path.join(self.build_folder, "Finddetours.cmake")
+        if os.path.exists(detours_find_cmake):
+            os.unlink(detours_find_cmake)
 
         replace_in_file(self, os.path.join(self.build_folder, "FindUlfius.cmake"),
-                        "Ulfius::Ulfius", "Ulfius::Ulfius-static", strict=False)
+                        "Ulfius::Ulfius ", "Ulfius::Ulfius-static ", strict=False)
 
         cmake = CMake(self)
         cmake.definitions["HOOK_WEBSERVER"] = True

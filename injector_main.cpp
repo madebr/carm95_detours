@@ -1,9 +1,18 @@
+#include "injector.h"
+
 #include <windows.h>
 #include <detours.h>
 #include <filesystem>
 #include <cstdio>
 #include <string>
 #include <vector>
+
+#define ASIZE(V) (sizeof(V) / sizeof((V)[0]))
+
+static const char* reference_sha256_hashes[] = {
+    "9028120f4e3fd84b790fed1cbc074d2d7a547fed49cfdaec60a6bb0f28c45de2",
+    "c6040203856b71e6a22d2a29053a1eadd1a2ab41bce97b6031d745079bc07bdf",
+};
 
 namespace fs = std::filesystem;
 
@@ -25,24 +34,40 @@ int CDECL main(int argc, char *argv[])
 
     const auto victimPath = (workPathDir / VICTIM).generic_string();
     if (!fs::is_regular_file(victimPath)) {
-        printf("%s does not exist.\n", victimPath.c_str());
+        fprintf(stderr, "%s does not exist.\n", victimPath.c_str());
         return 1;
     }
+
+    char *sha256 = hook_calculate_sha256(victimPath.c_str());
+    int valid = 0;
+    for (int i = 0; i < ASIZE(reference_sha256_hashes); i++) {
+        if (strcasecmp(sha256, reference_sha256_hashes[i]) == 0) {
+            valid = 1;
+            break;
+        }
+    }
+    if (!valid) {
+        fprintf(stderr, "SHA256 hash of \"%s\" is not in database (%s).\n", victimPath, sha256);
+        return 1;
+    }
+    free(sha256);
 
     std::vector<std::string> pluginPaths;
 
     printf("plugins:\n");
-    for (auto pluginItem : fs::directory_iterator(pluginsDirPath)) {
-        if (!pluginItem.exists() || !pluginItem.is_regular_file()) {
-            continue;
+    if (fs::is_directory(pluginsDirPath)) {
+        for (auto pluginItem: fs::directory_iterator(pluginsDirPath)) {
+            if (!pluginItem.exists() || !pluginItem.is_regular_file()) {
+                continue;
+            }
+            auto pluginPath = pluginItem.path();
+            if (pluginPath.extension() != ".dll") {
+                continue;
+            }
+            auto pluginPathStr = pluginPath.generic_string();
+            pluginPaths.push_back(pluginPathStr);
+            printf("- %s\n", pluginPaths.back().c_str());
         }
-        auto pluginPath = pluginItem.path();
-        if (pluginPath.extension() != ".dll") {
-            continue;
-        }
-        auto pluginPathStr = pluginPath.generic_string();
-        pluginPaths.push_back(pluginPathStr);
-        printf("- %s\n", pluginPaths.back().c_str());
     }
 
     //////////////////////////////////////////////////////////////////////////
