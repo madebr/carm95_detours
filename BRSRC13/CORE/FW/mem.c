@@ -9,6 +9,7 @@
 #include <assert.h>
 
 function_hook_state_t function_hook_state_BrMemAllocate = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMemAllocate)
 static void *(__cdecl*original_BrMemAllocate)(br_size_t, br_uint_8) = (void *(__cdecl*)(br_size_t, br_uint_8))0x004df250;
 CARM95_HOOK_FUNCTION(original_BrMemAllocate, BrMemAllocate)
 void* __cdecl BrMemAllocate(br_size_t size, br_uint_8 type) {
@@ -28,6 +29,7 @@ void* __cdecl BrMemAllocate(br_size_t size, br_uint_8 type) {
 }
 
 function_hook_state_t function_hook_state_BrMemFree = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMemFree)
 static void(__cdecl*original_BrMemFree)(void *) = (void(__cdecl*)(void *))0x004df280;
 CARM95_HOOK_FUNCTION(original_BrMemFree, BrMemFree)
 void __cdecl BrMemFree(void *block) {
@@ -44,6 +46,7 @@ void __cdecl BrMemFree(void *block) {
 }
 
 function_hook_state_t function_hook_state_BrMemInquire = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMemInquire)
 static br_size_t(__cdecl*original_BrMemInquire)(br_uint_8) = (br_size_t(__cdecl*)(br_uint_8))0x004df2a0;
 CARM95_HOOK_FUNCTION(original_BrMemInquire, BrMemInquire)
 br_size_t __cdecl BrMemInquire(br_uint_8 type) {
@@ -62,6 +65,7 @@ br_size_t __cdecl BrMemInquire(br_uint_8 type) {
 }
 
 function_hook_state_t function_hook_state_BrMemAlign = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMemAlign)
 br_int_32 BrMemAlign(br_uint_8 type) {
     br_int_32 i;
     LOG_TRACE("(%u)", type);
@@ -78,6 +82,7 @@ br_int_32 BrMemAlign(br_uint_8 type) {
 }
 
 function_hook_state_t function_hook_state_BrMemCalloc = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMemCalloc)
 static void *(__cdecl*original_BrMemCalloc)(int, br_size_t, br_uint_8) = (void *(__cdecl*)(int, br_size_t, br_uint_8))0x004df2e0;
 CARM95_HOOK_FUNCTION(original_BrMemCalloc, BrMemCalloc)
 void* __cdecl BrMemCalloc(int nelems, br_size_t size, br_uint_8 type) {
@@ -98,6 +103,7 @@ void* __cdecl BrMemCalloc(int nelems, br_size_t size, br_uint_8 type) {
 }
 
 function_hook_state_t function_hook_state_BrMemStrDup = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMemStrDup)
 static char *(__cdecl*original_BrMemStrDup)(char *) = (char *(__cdecl*)(char *))0x004df320;
 CARM95_HOOK_FUNCTION(original_BrMemStrDup, BrMemStrDup)
 char* __cdecl BrMemStrDup(char *str) {

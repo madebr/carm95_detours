@@ -19,6 +19,7 @@ br_pixelmap *(* hookvar_gOil_pixies )[1] = (void*)0x00551dc0;
 tOil_spill_info(* hookvar_gOily_spills )[15] = (void*)0x00551dd0;
 
 function_hook_state_t function_hook_state_InitOilSpills = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_InitOilSpills)
 static void(__cdecl*original_InitOilSpills)() = (void(__cdecl*)())0x00412510;
 CARM95_HOOK_FUNCTION(original_InitOilSpills, InitOilSpills)
 void __cdecl InitOilSpills() {
@@ -40,6 +41,7 @@ void __cdecl InitOilSpills() {
 }
 
 function_hook_state_t function_hook_state_ResetOilSpills = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ResetOilSpills)
 static void(__cdecl*original_ResetOilSpills)() = (void(__cdecl*)())0x00412859;
 CARM95_HOOK_FUNCTION(original_ResetOilSpills, ResetOilSpills)
 void __cdecl ResetOilSpills() {
@@ -57,6 +59,7 @@ void __cdecl ResetOilSpills() {
 }
 
 function_hook_state_t function_hook_state_QueueOilSpill = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_QueueOilSpill)
 static void(__cdecl*original_QueueOilSpill)(tCar_spec *) = (void(__cdecl*)(tCar_spec *))0x004128c7;
 CARM95_HOOK_FUNCTION(original_QueueOilSpill, QueueOilSpill)
 void __cdecl QueueOilSpill(tCar_spec *pCar) {
@@ -83,6 +86,7 @@ void __cdecl QueueOilSpill(tCar_spec *pCar) {
 }
 
 function_hook_state_t function_hook_state_OKToSpillOil = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_OKToSpillOil)
 static int(__cdecl*original_OKToSpillOil)(tOil_spill_info *) = (int(__cdecl*)(tOil_spill_info *))0x0041337d;
 CARM95_HOOK_FUNCTION(original_OKToSpillOil, OKToSpillOil)
 int __cdecl OKToSpillOil(tOil_spill_info *pOil) {
@@ -131,6 +135,7 @@ int __cdecl OKToSpillOil(tOil_spill_info *pOil) {
 }
 
 function_hook_state_t function_hook_state_Vector3Interpolate = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_Vector3Interpolate)
 static void(__cdecl*original_Vector3Interpolate)(br_vector3 *, br_vector3 *, br_vector3 *, br_scalar) = (void(__cdecl*)(br_vector3 *, br_vector3 *, br_vector3 *, br_scalar))0x00412b76;
 CARM95_HOOK_FUNCTION(original_Vector3Interpolate, Vector3Interpolate)
 void __cdecl Vector3Interpolate(br_vector3 *pDst, br_vector3 *pFrom, br_vector3 *pTo, br_scalar pP) {
@@ -150,6 +155,7 @@ void __cdecl Vector3Interpolate(br_vector3 *pDst, br_vector3 *pFrom, br_vector3 
 }
 
 function_hook_state_t function_hook_state_EnsureGroundDetailVisible = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_EnsureGroundDetailVisible)
 static void(__cdecl*original_EnsureGroundDetailVisible)(br_vector3 *, br_vector3 *, br_vector3 *) = (void(__cdecl*)(br_vector3 *, br_vector3 *, br_vector3 *))0x00412a81;
 CARM95_HOOK_FUNCTION(original_EnsureGroundDetailVisible, EnsureGroundDetailVisible)
 void __cdecl EnsureGroundDetailVisible(br_vector3 *pNew_pos, br_vector3 *pGround_normal, br_vector3 *pOld_pos) {
@@ -176,6 +182,7 @@ void __cdecl EnsureGroundDetailVisible(br_vector3 *pNew_pos, br_vector3 *pGround
 }
 
 function_hook_state_t function_hook_state_MungeOilsHeightAboveGround = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_MungeOilsHeightAboveGround)
 static void(__cdecl*original_MungeOilsHeightAboveGround)(tOil_spill_info *) = (void(__cdecl*)(tOil_spill_info *))0x00412bf4;
 CARM95_HOOK_FUNCTION(original_MungeOilsHeightAboveGround, MungeOilsHeightAboveGround)
 void __cdecl MungeOilsHeightAboveGround(tOil_spill_info *pOil) {
@@ -192,6 +199,7 @@ void __cdecl MungeOilsHeightAboveGround(tOil_spill_info *pOil) {
 }
 
 function_hook_state_t function_hook_state_MungeIndexedOilsHeightAboveGround = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_MungeIndexedOilsHeightAboveGround)
 static void(__cdecl*original_MungeIndexedOilsHeightAboveGround)(int) = (void(__cdecl*)(int))0x00412bce;
 CARM95_HOOK_FUNCTION(original_MungeIndexedOilsHeightAboveGround, MungeIndexedOilsHeightAboveGround)
 void __cdecl MungeIndexedOilsHeightAboveGround(int pIndex) {
@@ -208,6 +216,7 @@ void __cdecl MungeIndexedOilsHeightAboveGround(int pIndex) {
 }
 
 function_hook_state_t function_hook_state_SetInitialOilStuff = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_SetInitialOilStuff)
 static void(__cdecl*original_SetInitialOilStuff)(tOil_spill_info *, br_model *) = (void(__cdecl*)(tOil_spill_info *, br_model *))0x004137ad;
 CARM95_HOOK_FUNCTION(original_SetInitialOilStuff, SetInitialOilStuff)
 void __cdecl SetInitialOilStuff(tOil_spill_info *pOil, br_model *pModel) {
@@ -225,6 +234,7 @@ void __cdecl SetInitialOilStuff(tOil_spill_info *pOil, br_model *pModel) {
 }
 
 function_hook_state_t function_hook_state_ProcessOilSpills = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ProcessOilSpills)
 static void(__cdecl*original_ProcessOilSpills)(tU32) = (void(__cdecl*)(tU32))0x00412c20;
 CARM95_HOOK_FUNCTION(original_ProcessOilSpills, ProcessOilSpills)
 void __cdecl ProcessOilSpills(tU32 pFrame_period) {
@@ -257,6 +267,7 @@ void __cdecl ProcessOilSpills(tU32 pFrame_period) {
 }
 
 function_hook_state_t function_hook_state_GetOilSpillCount = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_GetOilSpillCount)
 static int(__cdecl*original_GetOilSpillCount)() = (int(__cdecl*)())0x00413852;
 CARM95_HOOK_FUNCTION(original_GetOilSpillCount, GetOilSpillCount)
 int __cdecl GetOilSpillCount() {
@@ -272,6 +283,7 @@ int __cdecl GetOilSpillCount() {
 }
 
 function_hook_state_t function_hook_state_GetOilSpillDetails = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_GetOilSpillDetails)
 static void(__cdecl*original_GetOilSpillDetails)(int, br_actor **, br_scalar *) = (void(__cdecl*)(int, br_actor **, br_scalar *))0x00413867;
 CARM95_HOOK_FUNCTION(original_GetOilSpillDetails, GetOilSpillDetails)
 void __cdecl GetOilSpillDetails(int pIndex, br_actor **pActor, br_scalar *pSize) {
@@ -290,6 +302,7 @@ void __cdecl GetOilSpillDetails(int pIndex, br_actor **pActor, br_scalar *pSize)
 }
 
 function_hook_state_t function_hook_state_PointInSpill = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_PointInSpill)
 static int(__cdecl*original_PointInSpill)(br_vector3 *, int) = (int(__cdecl*)(br_vector3 *, int))0x00413b72;
 CARM95_HOOK_FUNCTION(original_PointInSpill, PointInSpill)
 int __cdecl PointInSpill(br_vector3 *pV, int pSpill) {
@@ -307,6 +320,7 @@ int __cdecl PointInSpill(br_vector3 *pV, int pSpill) {
 }
 
 function_hook_state_t function_hook_state_GetOilFrictionFactors = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_GetOilFrictionFactors)
 static void(__cdecl*original_GetOilFrictionFactors)(tCar_spec *, br_scalar *, br_scalar *, br_scalar *, br_scalar *) = (void(__cdecl*)(tCar_spec *, br_scalar *, br_scalar *, br_scalar *, br_scalar *))0x004138c7;
 CARM95_HOOK_FUNCTION(original_GetOilFrictionFactors, GetOilFrictionFactors)
 void __cdecl GetOilFrictionFactors(tCar_spec *pCar, br_scalar *pFl_factor, br_scalar *pFr_factor, br_scalar *pRl_factor, br_scalar *pRr_factor) {
@@ -331,6 +345,7 @@ void __cdecl GetOilFrictionFactors(tCar_spec *pCar, br_scalar *pFl_factor, br_sc
 }
 
 function_hook_state_t function_hook_state_AdjustOilSpill = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_AdjustOilSpill)
 static void(__cdecl*original_AdjustOilSpill)(int, br_matrix34 *, br_scalar, br_scalar, tU32, tU32, tCar_spec *, br_vector3 *, br_pixelmap *) = (void(__cdecl*)(int, br_matrix34 *, br_scalar, br_scalar, tU32, tU32, tCar_spec *, br_vector3 *, br_pixelmap *))0x00413cb6;
 CARM95_HOOK_FUNCTION(original_AdjustOilSpill, AdjustOilSpill)
 void __cdecl AdjustOilSpill(int pIndex, br_matrix34 *pMat, br_scalar pFull_size, br_scalar pGrow_rate, tU32 pSpill_time, tU32 pStop_time, tCar_spec *pCar, br_vector3 *pOriginal_pos, br_pixelmap *pPixelmap) {
@@ -355,6 +370,7 @@ void __cdecl AdjustOilSpill(int pIndex, br_matrix34 *pMat, br_scalar pFull_size,
 }
 
 function_hook_state_t function_hook_state_ReceivedOilSpill = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ReceivedOilSpill)
 static void(__cdecl*original_ReceivedOilSpill)(tNet_contents *) = (void(__cdecl*)(tNet_contents *))0x00413dc4;
 CARM95_HOOK_FUNCTION(original_ReceivedOilSpill, ReceivedOilSpill)
 void __cdecl ReceivedOilSpill(tNet_contents *pContents) {

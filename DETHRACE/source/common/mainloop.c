@@ -31,6 +31,7 @@ tU32 * hookvar_gTime_bonus_start  = (void*)0x0053a124;
 int * hookvar_gLast_credit_headup__mainloop  = (void*)0x0053a108;
 
 function_hook_state_t function_hook_state_ToggleInfo = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ToggleInfo)
 static void(__cdecl*original_ToggleInfo)() = (void(__cdecl*)())0x0046fd00;
 CARM95_HOOK_FUNCTION(original_ToggleInfo, ToggleInfo)
 void __cdecl ToggleInfo() {
@@ -46,6 +47,7 @@ void __cdecl ToggleInfo() {
 }
 
 function_hook_state_t function_hook_state_CalculateFrameRate = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_CalculateFrameRate)
 static void(__cdecl*original_CalculateFrameRate)() = (void(__cdecl*)())0x004706fa;
 CARM95_HOOK_FUNCTION(original_CalculateFrameRate, CalculateFrameRate)
 void __cdecl CalculateFrameRate() {
@@ -71,6 +73,7 @@ void __cdecl CalculateFrameRate() {
 }
 
 function_hook_state_t function_hook_state_LoseOldestWastedMassage = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_LoseOldestWastedMassage)
 static void(__cdecl*original_LoseOldestWastedMassage)() = (void(__cdecl*)())0x0046fde6;
 CARM95_HOOK_FUNCTION(original_LoseOldestWastedMassage, LoseOldestWastedMassage)
 void __cdecl LoseOldestWastedMassage() {
@@ -88,6 +91,7 @@ void __cdecl LoseOldestWastedMassage() {
 }
 
 function_hook_state_t function_hook_state_QueueWastedMassage = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_QueueWastedMassage)
 static void(__cdecl*original_QueueWastedMassage)(int) = (void(__cdecl*)(int))0x0046fd9c;
 CARM95_HOOK_FUNCTION(original_QueueWastedMassage, QueueWastedMassage)
 void __cdecl QueueWastedMassage(int pIndex) {
@@ -104,6 +108,7 @@ void __cdecl QueueWastedMassage(int pIndex) {
 }
 
 function_hook_state_t function_hook_state_MungeHeadups = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_MungeHeadups)
 static void(__cdecl*original_MungeHeadups)() = (void(__cdecl*)())0x004707bd;
 CARM95_HOOK_FUNCTION(original_MungeHeadups, MungeHeadups)
 void __cdecl MungeHeadups() {
@@ -147,6 +152,7 @@ void __cdecl MungeHeadups() {
 }
 
 function_hook_state_t function_hook_state_UpdateFramePeriod = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_UpdateFramePeriod)
 static void(__cdecl*original_UpdateFramePeriod)(tU32 *) = (void(__cdecl*)(tU32 *))0x004712bd;
 CARM95_HOOK_FUNCTION(original_UpdateFramePeriod, UpdateFramePeriod)
 void __cdecl UpdateFramePeriod(tU32 *pCamera_period) {
@@ -171,6 +177,7 @@ void __cdecl UpdateFramePeriod(tU32 *pCamera_period) {
 }
 
 function_hook_state_t function_hook_state_GetLastTickCount = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_GetLastTickCount)
 static tU32(__cdecl*original_GetLastTickCount)() = (tU32(__cdecl*)())0x0046fe3a;
 CARM95_HOOK_FUNCTION(original_GetLastTickCount, GetLastTickCount)
 tU32 __cdecl GetLastTickCount() {
@@ -186,6 +193,7 @@ tU32 __cdecl GetLastTickCount() {
 }
 
 function_hook_state_t function_hook_state_CheckTimer = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_CheckTimer)
 static void(__cdecl*original_CheckTimer)() = (void(__cdecl*)())0x00471543;
 CARM95_HOOK_FUNCTION(original_CheckTimer, CheckTimer)
 void __cdecl CheckTimer() {
@@ -209,6 +217,7 @@ void __cdecl CheckTimer() {
 }
 
 function_hook_state_t function_hook_state_MungeRaceFinished = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_MungeRaceFinished)
 static int(__cdecl*original_MungeRaceFinished)() = (int(__cdecl*)())0x00471607;
 CARM95_HOOK_FUNCTION(original_MungeRaceFinished, MungeRaceFinished)
 int __cdecl MungeRaceFinished() {
@@ -224,6 +233,7 @@ int __cdecl MungeRaceFinished() {
 }
 
 function_hook_state_t function_hook_state_MainGameLoop = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_MainGameLoop)
 static tRace_result(__cdecl*original_MainGameLoop)() = (tRace_result(__cdecl*)())0x0046fe77;
 CARM95_HOOK_FUNCTION(original_MainGameLoop, MainGameLoop)
 tRace_result __cdecl MainGameLoop() {
@@ -253,6 +263,7 @@ tRace_result __cdecl MainGameLoop() {
 }
 
 function_hook_state_t function_hook_state_DoRace = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DoRace)
 static tRace_result(__cdecl*original_DoRace)() = (tRace_result(__cdecl*)())0x0046fe4f;
 CARM95_HOOK_FUNCTION(original_DoRace, DoRace)
 tRace_result __cdecl DoRace() {

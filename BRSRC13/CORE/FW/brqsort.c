@@ -9,6 +9,7 @@
 #include <assert.h>
 
 function_hook_state_t function_hook_state_BrQsort = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrQsort)
 static void(__cdecl*original_BrQsort)(void *, unsigned int, unsigned int, br_qsort_cbfn *) = (void(__cdecl*)(void *, unsigned int, unsigned int, br_qsort_cbfn *))0x004e5f80;
 CARM95_HOOK_FUNCTION(original_BrQsort, BrQsort)
 void __cdecl BrQsort(void *basep, unsigned int nelems, unsigned int size, br_qsort_cbfn *comp) {
@@ -46,6 +47,7 @@ void __cdecl BrQsort(void *basep, unsigned int nelems, unsigned int size, br_qso
 }
 
 function_hook_state_t function_hook_state_swap_chars = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_swap_chars)
 void swap_chars(char *a, char *b, unsigned int nbytes) {
     char tmp;
     LOG_TRACE("(\"%s\", \"%s\", %u)", a, b, nbytes);
@@ -64,6 +66,7 @@ void swap_chars(char *a, char *b, unsigned int nbytes) {
 }
 
 function_hook_state_t function_hook_state_swap_ints = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_swap_ints)
 void swap_ints(char *ap, char *bp, unsigned int nints) {
     int *a;
     int *b;
@@ -86,6 +89,7 @@ void swap_ints(char *ap, char *bp, unsigned int nints) {
 }
 
 function_hook_state_t function_hook_state_swap_int_1 = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_swap_int_1)
 void swap_int_1(char *ap, char *bp, unsigned int nints) {
     int *a;
     int *b;

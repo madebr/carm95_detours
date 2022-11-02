@@ -10,6 +10,7 @@
 br_uint_8(* hookvar__CombineTransforms )[7][7] = (void*)0x00523ca0;
 
 function_hook_state_t function_hook_state_BrTransformToMatrix34 = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrTransformToMatrix34)
 static void(__cdecl*original_BrTransformToMatrix34)(br_matrix34 *, br_transform *) = (void(__cdecl*)(br_matrix34 *, br_transform *))0x004d25b0;
 CARM95_HOOK_FUNCTION(original_BrTransformToMatrix34, BrTransformToMatrix34)
 void __cdecl BrTransformToMatrix34(br_matrix34 *mat, br_transform *xform) {
@@ -37,6 +38,7 @@ void __cdecl BrTransformToMatrix34(br_matrix34 *mat, br_transform *xform) {
 }
 
 function_hook_state_t function_hook_state_BrMatrix34PreTransform = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix34PreTransform)
 static void(__cdecl*original_BrMatrix34PreTransform)(br_matrix34 *, br_transform *) = (void(__cdecl*)(br_matrix34 *, br_transform *))0x004d2840;
 CARM95_HOOK_FUNCTION(original_BrMatrix34PreTransform, BrMatrix34PreTransform)
 void __cdecl BrMatrix34PreTransform(br_matrix34 *mat, br_transform *xform) {
@@ -56,6 +58,7 @@ void __cdecl BrMatrix34PreTransform(br_matrix34 *mat, br_transform *xform) {
 }
 
 function_hook_state_t function_hook_state_BrMatrix34PostTransform = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix34PostTransform)
 static void(__cdecl*original_BrMatrix34PostTransform)(br_matrix34 *, br_transform *) = (void(__cdecl*)(br_matrix34 *, br_transform *))0x004d2880;
 CARM95_HOOK_FUNCTION(original_BrMatrix34PostTransform, BrMatrix34PostTransform)
 void __cdecl BrMatrix34PostTransform(br_matrix34 *mat, br_transform *xform) {
@@ -75,6 +78,7 @@ void __cdecl BrMatrix34PostTransform(br_matrix34 *mat, br_transform *xform) {
 }
 
 function_hook_state_t function_hook_state_BrMatrix4PreTransform = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix4PreTransform)
 static void(__cdecl*original_BrMatrix4PreTransform)(br_matrix4 *, br_transform *) = (void(__cdecl*)(br_matrix4 *, br_transform *))0x004d28b1;
 CARM95_HOOK_FUNCTION(original_BrMatrix4PreTransform, BrMatrix4PreTransform)
 void __cdecl BrMatrix4PreTransform(br_matrix4 *mat, br_transform *xform) {
@@ -94,6 +98,7 @@ void __cdecl BrMatrix4PreTransform(br_matrix4 *mat, br_transform *xform) {
 }
 
 function_hook_state_t function_hook_state_BrMatrix34ToTransform = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix34ToTransform)
 static void(__cdecl*original_BrMatrix34ToTransform)(br_transform *, br_matrix34 *) = (void(__cdecl*)(br_transform *, br_matrix34 *))0x004d2900;
 CARM95_HOOK_FUNCTION(original_BrMatrix34ToTransform, BrMatrix34ToTransform)
 void __cdecl BrMatrix34ToTransform(br_transform *xform, br_matrix34 *mat) {
@@ -111,6 +116,7 @@ void __cdecl BrMatrix34ToTransform(br_transform *xform, br_matrix34 *mat) {
 }
 
 function_hook_state_t function_hook_state_BrTransformToTransform = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrTransformToTransform)
 static void(__cdecl*original_BrTransformToTransform)(br_transform *, br_transform *) = (void(__cdecl*)(br_transform *, br_transform *))0x004d2a50;
 CARM95_HOOK_FUNCTION(original_BrTransformToTransform, BrTransformToTransform)
 void __cdecl BrTransformToTransform(br_transform *dest, br_transform *src) {

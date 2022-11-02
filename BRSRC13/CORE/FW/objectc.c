@@ -9,6 +9,7 @@
 #include <assert.h>
 
 function_hook_state_t function_hook_state_BrObjectListAllocate = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrObjectListAllocate)
 static void *(__cdecl*original_BrObjectListAllocate)(void *) = (void *(__cdecl*)(void *))0x004e63a0;
 CARM95_HOOK_FUNCTION(original_BrObjectListAllocate, BrObjectListAllocate)
 void* __cdecl BrObjectListAllocate(void *res) {
@@ -27,6 +28,7 @@ void* __cdecl BrObjectListAllocate(void *res) {
 }
 
 function_hook_state_t function_hook_state__M_br_object_container_addFront = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state__M_br_object_container_addFront)
 static br_error(__cdecl*original__M_br_object_container_addFront)(struct br_object_container *, struct br_object *) = (br_error(__cdecl*)(struct br_object_container *, struct br_object *))0x004e63d0;
 CARM95_HOOK_FUNCTION(original__M_br_object_container_addFront, _M_br_object_container_addFront)
 br_error __cdecl _M_br_object_container_addFront(struct br_object_container *self, struct br_object *ph) {
@@ -48,6 +50,7 @@ br_error __cdecl _M_br_object_container_addFront(struct br_object_container *sel
 }
 
 function_hook_state_t function_hook_state__M_br_object_container_remove = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state__M_br_object_container_remove)
 static br_error(__cdecl*original__M_br_object_container_remove)(struct br_object_container *, struct br_object *) = (br_error(__cdecl*)(struct br_object_container *, struct br_object *))0x004e6420;
 CARM95_HOOK_FUNCTION(original__M_br_object_container_remove, _M_br_object_container_remove)
 br_error __cdecl _M_br_object_container_remove(struct br_object_container *self, struct br_object *h) {
@@ -69,6 +72,7 @@ br_error __cdecl _M_br_object_container_remove(struct br_object_container *self,
 }
 
 function_hook_state_t function_hook_state__M_br_object_container_removeFront = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state__M_br_object_container_removeFront)
 static br_error(__cdecl*original__M_br_object_container_removeFront)(struct br_object_container *, struct br_object **) = (br_error(__cdecl*)(struct br_object_container *, struct br_object **))0x004e6480;
 CARM95_HOOK_FUNCTION(original__M_br_object_container_removeFront, _M_br_object_container_removeFront)
 br_error __cdecl _M_br_object_container_removeFront(struct br_object_container *self, struct br_object **ph) {
@@ -90,6 +94,7 @@ br_error __cdecl _M_br_object_container_removeFront(struct br_object_container *
 }
 
 function_hook_state_t function_hook_state__M_br_object_container_find = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state__M_br_object_container_find)
 static br_error(__cdecl*original__M_br_object_container_find)(br_object_container *, br_object **, br_token, char *, br_token_value *) = (br_error(__cdecl*)(br_object_container *, br_object **, br_token, char *, br_token_value *))0x004e64d0;
 CARM95_HOOK_FUNCTION(original__M_br_object_container_find, _M_br_object_container_find)
 br_error __cdecl _M_br_object_container_find(br_object_container *self, br_object **ph, br_token type, char *pattern, br_token_value *tv) {
@@ -118,6 +123,7 @@ br_error __cdecl _M_br_object_container_find(br_object_container *self, br_objec
 }
 
 function_hook_state_t function_hook_state__M_br_object_container_findMany = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state__M_br_object_container_findMany)
 static br_error(__cdecl*original__M_br_object_container_findMany)(br_object_container *, br_object **, br_int_32, br_int_32 *, br_token, char *, br_token_value *) = (br_error(__cdecl*)(br_object_container *, br_object **, br_int_32, br_int_32 *, br_token, char *, br_token_value *))0x004e65b0;
 CARM95_HOOK_FUNCTION(original__M_br_object_container_findMany, _M_br_object_container_findMany)
 br_error __cdecl _M_br_object_container_findMany(br_object_container *self, br_object **objects, br_int_32 max_objects, br_int_32 *num_objects, br_token type, char *pattern, br_token_value *tv) {
@@ -148,6 +154,7 @@ br_error __cdecl _M_br_object_container_findMany(br_object_container *self, br_o
 }
 
 function_hook_state_t function_hook_state__M_br_object_container_count = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state__M_br_object_container_count)
 static br_error(__cdecl*original__M_br_object_container_count)(br_object_container *, br_uint_32 *, br_token, char *, br_token_value *) = (br_error(__cdecl*)(br_object_container *, br_uint_32 *, br_token, char *, br_token_value *))0x004e66b0;
 CARM95_HOOK_FUNCTION(original__M_br_object_container_count, _M_br_object_container_count)
 br_error __cdecl _M_br_object_container_count(br_object_container *self, br_uint_32 *pcount, br_token type, char *pattern, br_token_value *tv) {
@@ -176,6 +183,7 @@ br_error __cdecl _M_br_object_container_count(br_object_container *self, br_uint
 }
 
 function_hook_state_t function_hook_state__M_br_object_container_tokensMatchBegin = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state__M_br_object_container_tokensMatchBegin)
 static void *(__cdecl*original__M_br_object_container_tokensMatchBegin)(struct br_object_container *, br_token, br_token_value *) = (void *(__cdecl*)(struct br_object_container *, br_token, br_token_value *))0x004e6790;
 CARM95_HOOK_FUNCTION(original__M_br_object_container_tokensMatchBegin, _M_br_object_container_tokensMatchBegin)
 void* __cdecl _M_br_object_container_tokensMatchBegin(struct br_object_container *self, br_token t, br_token_value *tv) {
@@ -198,6 +206,7 @@ void* __cdecl _M_br_object_container_tokensMatchBegin(struct br_object_container
 }
 
 function_hook_state_t function_hook_state__M_br_object_container_tokensMatch = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state__M_br_object_container_tokensMatch)
 static br_boolean(__cdecl*original__M_br_object_container_tokensMatch)(struct br_object_container *, br_object *, void *) = (br_boolean(__cdecl*)(struct br_object_container *, br_object *, void *))0x004e6800;
 CARM95_HOOK_FUNCTION(original__M_br_object_container_tokensMatch, _M_br_object_container_tokensMatch)
 br_boolean __cdecl _M_br_object_container_tokensMatch(struct br_object_container *self, br_object *h, void *arg) {
@@ -222,6 +231,7 @@ br_boolean __cdecl _M_br_object_container_tokensMatch(struct br_object_container
 }
 
 function_hook_state_t function_hook_state__M_br_object_container_tokensMatchEnd = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state__M_br_object_container_tokensMatchEnd)
 static void(__cdecl*original__M_br_object_container_tokensMatchEnd)(struct br_object_container *, void *) = (void(__cdecl*)(struct br_object_container *, void *))0x004e68a0;
 CARM95_HOOK_FUNCTION(original__M_br_object_container_tokensMatchEnd, _M_br_object_container_tokensMatchEnd)
 void __cdecl _M_br_object_container_tokensMatchEnd(struct br_object_container *self, void *arg) {
@@ -239,6 +249,7 @@ void __cdecl _M_br_object_container_tokensMatchEnd(struct br_object_container *s
 }
 
 function_hook_state_t function_hook_state_BrObjectContainerFree = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrObjectContainerFree)
 static br_error(__cdecl*original_BrObjectContainerFree)(br_object_container *, br_token, char *, br_token_value *) = (br_error(__cdecl*)(br_object_container *, br_token, char *, br_token_value *))0x004e68c0;
 CARM95_HOOK_FUNCTION(original_BrObjectContainerFree, BrObjectContainerFree)
 br_error __cdecl BrObjectContainerFree(br_object_container *self, br_token type, char *pattern, br_token_value *tv) {

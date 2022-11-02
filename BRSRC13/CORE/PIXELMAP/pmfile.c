@@ -17,6 +17,7 @@ br_chunks_table_entry(* hookvar_PixelmapLoadEntries )[5] = (void*)0x00521858;
 br_chunks_table * hookvar_PixelmapLoadTable  = (void*)0x00521898;
 
 function_hook_state_t function_hook_state_FopWrite_PIXELMAP = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_FopWrite_PIXELMAP)
 int FopWrite_PIXELMAP(br_datafile *df, br_pixelmap *pixelmap) {
     br_pixelmap pmap;
     LOG_TRACE("(%p, %p)", df, pixelmap);
@@ -34,6 +35,7 @@ int FopWrite_PIXELMAP(br_datafile *df, br_pixelmap *pixelmap) {
 }
 
 function_hook_state_t function_hook_state_FopRead_OLD_PIXELMAP = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_FopRead_OLD_PIXELMAP)
 static int(__stdcall*original_FopRead_OLD_PIXELMAP)(br_datafile *, br_uint_32, br_uint_32, br_uint_32) = (int(__stdcall*)(br_datafile *, br_uint_32, br_uint_32, br_uint_32))0x004ca6a0;
 CARM95_HOOK_FUNCTION(original_FopRead_OLD_PIXELMAP, FopRead_OLD_PIXELMAP)
 int __stdcall FopRead_OLD_PIXELMAP(br_datafile *df, br_uint_32 id, br_uint_32 length, br_uint_32 count) {
@@ -55,6 +57,7 @@ int __stdcall FopRead_OLD_PIXELMAP(br_datafile *df, br_uint_32 id, br_uint_32 le
 }
 
 function_hook_state_t function_hook_state_FopRead_PIXELMAP = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_FopRead_PIXELMAP)
 static int(__stdcall*original_FopRead_PIXELMAP)(br_datafile *, br_uint_32, br_uint_32, br_uint_32) = (int(__stdcall*)(br_datafile *, br_uint_32, br_uint_32, br_uint_32))0x004ca700;
 CARM95_HOOK_FUNCTION(original_FopRead_PIXELMAP, FopRead_PIXELMAP)
 int __stdcall FopRead_PIXELMAP(br_datafile *df, br_uint_32 id, br_uint_32 length, br_uint_32 count) {
@@ -76,6 +79,7 @@ int __stdcall FopRead_PIXELMAP(br_datafile *df, br_uint_32 id, br_uint_32 length
 }
 
 function_hook_state_t function_hook_state_FopWrite_PIXELS = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_FopWrite_PIXELS)
 int FopWrite_PIXELS(br_datafile *df, br_pixelmap *pixelmap) {
     int size;
     int bytes;
@@ -103,6 +107,7 @@ int FopWrite_PIXELS(br_datafile *df, br_pixelmap *pixelmap) {
 }
 
 function_hook_state_t function_hook_state_FopRead_PIXELS = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_FopRead_PIXELS)
 static int(__stdcall*original_FopRead_PIXELS)(br_datafile *, br_uint_32, br_uint_32, br_uint_32) = (int(__stdcall*)(br_datafile *, br_uint_32, br_uint_32, br_uint_32))0x004ca760;
 CARM95_HOOK_FUNCTION(original_FopRead_PIXELS, FopRead_PIXELS)
 int __stdcall FopRead_PIXELS(br_datafile *df, br_uint_32 id, br_uint_32 length, br_uint_32 count) {
@@ -128,6 +133,7 @@ int __stdcall FopRead_PIXELS(br_datafile *df, br_uint_32 id, br_uint_32 length, 
 }
 
 function_hook_state_t function_hook_state_FopWrite_ADD_MAP = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_FopWrite_ADD_MAP)
 int FopWrite_ADD_MAP(br_datafile *df) {
     LOG_TRACE("(%p)", df);
 
@@ -142,6 +148,7 @@ int FopWrite_ADD_MAP(br_datafile *df) {
 }
 
 function_hook_state_t function_hook_state_FopRead_ADD_MAP = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_FopRead_ADD_MAP)
 static int(__stdcall*original_FopRead_ADD_MAP)(br_datafile *, br_uint_32, br_uint_32, br_uint_32) = (int(__stdcall*)(br_datafile *, br_uint_32, br_uint_32, br_uint_32))0x004ca7c0;
 CARM95_HOOK_FUNCTION(original_FopRead_ADD_MAP, FopRead_ADD_MAP)
 int __stdcall FopRead_ADD_MAP(br_datafile *df, br_uint_32 id, br_uint_32 length, br_uint_32 count) {
@@ -165,6 +172,7 @@ int __stdcall FopRead_ADD_MAP(br_datafile *df, br_uint_32 id, br_uint_32 length,
 }
 
 function_hook_state_t function_hook_state_BrPixelmapLoadMany = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrPixelmapLoadMany)
 static br_uint_32(__cdecl*original_BrPixelmapLoadMany)(char *, br_pixelmap **, br_uint_16) = (br_uint_32(__cdecl*)(char *, br_pixelmap **, br_uint_16))0x004ca7f0;
 CARM95_HOOK_FUNCTION(original_BrPixelmapLoadMany, BrPixelmapLoadMany)
 br_uint_32 __cdecl BrPixelmapLoadMany(char *filename, br_pixelmap **pixelmaps, br_uint_16 num) {
@@ -189,6 +197,7 @@ br_uint_32 __cdecl BrPixelmapLoadMany(char *filename, br_pixelmap **pixelmaps, b
 }
 
 function_hook_state_t function_hook_state_WritePixelmap = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_WritePixelmap)
 static int(__stdcall*original_WritePixelmap)(br_pixelmap *, br_datafile *) = (int(__stdcall*)(br_pixelmap *, br_datafile *))0x004caac0;
 CARM95_HOOK_FUNCTION(original_WritePixelmap, WritePixelmap)
 int __stdcall WritePixelmap(br_pixelmap *pp, br_datafile *df) {
@@ -206,6 +215,7 @@ int __stdcall WritePixelmap(br_pixelmap *pp, br_datafile *df) {
 }
 
 function_hook_state_t function_hook_state_BrPixelmapSaveMany = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrPixelmapSaveMany)
 static br_uint_32(__cdecl*original_BrPixelmapSaveMany)(char *, br_pixelmap **, br_uint_16) = (br_uint_32(__cdecl*)(char *, br_pixelmap **, br_uint_16))0x004ca86b;
 CARM95_HOOK_FUNCTION(original_BrPixelmapSaveMany, BrPixelmapSaveMany)
 br_uint_32 __cdecl BrPixelmapSaveMany(char *filename, br_pixelmap **pixelmaps, br_uint_16 num) {
@@ -228,6 +238,7 @@ br_uint_32 __cdecl BrPixelmapSaveMany(char *filename, br_pixelmap **pixelmaps, b
 }
 
 function_hook_state_t function_hook_state_BrPixelmapLoad = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrPixelmapLoad)
 static br_pixelmap *(__cdecl*original_BrPixelmapLoad)(char *) = (br_pixelmap *(__cdecl*)(char *))0x004cac60;
 CARM95_HOOK_FUNCTION(original_BrPixelmapLoad, BrPixelmapLoad)
 br_pixelmap* __cdecl BrPixelmapLoad(char *filename) {
@@ -246,6 +257,7 @@ br_pixelmap* __cdecl BrPixelmapLoad(char *filename) {
 }
 
 function_hook_state_t function_hook_state_BrPixelmapSave = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrPixelmapSave)
 static br_uint_32(__cdecl*original_BrPixelmapSave)(char *, br_pixelmap *) = (br_uint_32(__cdecl*)(char *, br_pixelmap *))0x004cace0;
 CARM95_HOOK_FUNCTION(original_BrPixelmapSave, BrPixelmapSave)
 br_uint_32 __cdecl BrPixelmapSave(char *filename, br_pixelmap *ptr) {

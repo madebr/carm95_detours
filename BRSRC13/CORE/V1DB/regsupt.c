@@ -9,6 +9,7 @@
 #include <assert.h>
 
 function_hook_state_t function_hook_state_BrModelAdd = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrModelAdd)
 static br_model *(__cdecl*original_BrModelAdd)(br_model *) = (br_model *(__cdecl*)(br_model *))0x004d5de0;
 CARM95_HOOK_FUNCTION(original_BrModelAdd, BrModelAdd)
 br_model* __cdecl BrModelAdd(br_model *model) {
@@ -25,6 +26,7 @@ br_model* __cdecl BrModelAdd(br_model *model) {
 }
 
 function_hook_state_t function_hook_state_BrModelRemove = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrModelRemove)
 static br_model *(__cdecl*original_BrModelRemove)(br_model *) = (br_model *(__cdecl*)(br_model *))0x004d5e10;
 CARM95_HOOK_FUNCTION(original_BrModelRemove, BrModelRemove)
 br_model* __cdecl BrModelRemove(br_model *model) {
@@ -41,6 +43,7 @@ br_model* __cdecl BrModelRemove(br_model *model) {
 }
 
 function_hook_state_t function_hook_state_BrModelFind = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrModelFind)
 static br_model *(__cdecl*original_BrModelFind)(char *) = (br_model *(__cdecl*)(char *))0x004d5e28;
 CARM95_HOOK_FUNCTION(original_BrModelFind, BrModelFind)
 br_model* __cdecl BrModelFind(char *pattern) {
@@ -57,6 +60,7 @@ br_model* __cdecl BrModelFind(char *pattern) {
 }
 
 function_hook_state_t function_hook_state_BrModelFindHook = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrModelFindHook)
 static br_model_find_cbfn *(__cdecl*original_BrModelFindHook)(br_model_find_cbfn *) = (br_model_find_cbfn *(__cdecl*)(br_model_find_cbfn *))0x004d5e40;
 CARM95_HOOK_FUNCTION(original_BrModelFindHook, BrModelFindHook)
 br_model_find_cbfn* __cdecl BrModelFindHook(br_model_find_cbfn *hook) {
@@ -75,6 +79,7 @@ br_model_find_cbfn* __cdecl BrModelFindHook(br_model_find_cbfn *hook) {
 }
 
 function_hook_state_t function_hook_state_BrModelAddMany = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrModelAddMany)
 static br_uint_32(__cdecl*original_BrModelAddMany)(br_model **, int) = (br_uint_32(__cdecl*)(br_model **, int))0x004d5e50;
 CARM95_HOOK_FUNCTION(original_BrModelAddMany, BrModelAddMany)
 br_uint_32 __cdecl BrModelAddMany(br_model **items, int n) {
@@ -96,6 +101,7 @@ br_uint_32 __cdecl BrModelAddMany(br_model **items, int n) {
 }
 
 function_hook_state_t function_hook_state_BrModelRemoveMany = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrModelRemoveMany)
 static br_uint_32(__cdecl*original_BrModelRemoveMany)(br_model **, int) = (br_uint_32(__cdecl*)(br_model **, int))0x004d5ea0;
 CARM95_HOOK_FUNCTION(original_BrModelRemoveMany, BrModelRemoveMany)
 br_uint_32 __cdecl BrModelRemoveMany(br_model **items, int n) {
@@ -117,6 +123,7 @@ br_uint_32 __cdecl BrModelRemoveMany(br_model **items, int n) {
 }
 
 function_hook_state_t function_hook_state_BrModelFindMany = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrModelFindMany)
 static br_uint_32(__cdecl*original_BrModelFindMany)(char *, br_model **, int) = (br_uint_32(__cdecl*)(char *, br_model **, int))0x004d5ee0;
 CARM95_HOOK_FUNCTION(original_BrModelFindMany, BrModelFindMany)
 br_uint_32 __cdecl BrModelFindMany(char *pattern, br_model **items, int max) {
@@ -135,6 +142,7 @@ br_uint_32 __cdecl BrModelFindMany(char *pattern, br_model **items, int max) {
 }
 
 function_hook_state_t function_hook_state_BrModelCount = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrModelCount)
 static br_uint_32(__cdecl*original_BrModelCount)(char *) = (br_uint_32(__cdecl*)(char *))0x004d5f00;
 CARM95_HOOK_FUNCTION(original_BrModelCount, BrModelCount)
 br_uint_32 __cdecl BrModelCount(char *pattern) {
@@ -151,6 +159,7 @@ br_uint_32 __cdecl BrModelCount(char *pattern) {
 }
 
 function_hook_state_t function_hook_state_BrModelEnum = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrModelEnum)
 static br_uint_32(__cdecl*original_BrModelEnum)(char *, br_model_enum_cbfn *, void *) = (br_uint_32(__cdecl*)(char *, br_model_enum_cbfn *, void *))0x004d5f10;
 CARM95_HOOK_FUNCTION(original_BrModelEnum, BrModelEnum)
 br_uint_32 __cdecl BrModelEnum(char *pattern, br_model_enum_cbfn *callback, void *arg) {
@@ -169,6 +178,7 @@ br_uint_32 __cdecl BrModelEnum(char *pattern, br_model_enum_cbfn *callback, void
 }
 
 function_hook_state_t function_hook_state_BrMaterialAdd = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMaterialAdd)
 static br_material *(__cdecl*original_BrMaterialAdd)(br_material *) = (br_material *(__cdecl*)(br_material *))0x004d5f30;
 CARM95_HOOK_FUNCTION(original_BrMaterialAdd, BrMaterialAdd)
 br_material* __cdecl BrMaterialAdd(br_material *material) {
@@ -185,6 +195,7 @@ br_material* __cdecl BrMaterialAdd(br_material *material) {
 }
 
 function_hook_state_t function_hook_state_BrMaterialRemove = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMaterialRemove)
 static br_material *(__cdecl*original_BrMaterialRemove)(br_material *) = (br_material *(__cdecl*)(br_material *))0x004d5f60;
 CARM95_HOOK_FUNCTION(original_BrMaterialRemove, BrMaterialRemove)
 br_material* __cdecl BrMaterialRemove(br_material *material) {
@@ -201,6 +212,7 @@ br_material* __cdecl BrMaterialRemove(br_material *material) {
 }
 
 function_hook_state_t function_hook_state_BrMaterialFind = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMaterialFind)
 static br_material *(__cdecl*original_BrMaterialFind)(char *) = (br_material *(__cdecl*)(char *))0x004d5f80;
 CARM95_HOOK_FUNCTION(original_BrMaterialFind, BrMaterialFind)
 br_material* __cdecl BrMaterialFind(char *pattern) {
@@ -217,6 +229,7 @@ br_material* __cdecl BrMaterialFind(char *pattern) {
 }
 
 function_hook_state_t function_hook_state_BrMaterialFindHook = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMaterialFindHook)
 static br_material_find_cbfn *(__cdecl*original_BrMaterialFindHook)(br_material_find_cbfn *) = (br_material_find_cbfn *(__cdecl*)(br_material_find_cbfn *))0x004d5f90;
 CARM95_HOOK_FUNCTION(original_BrMaterialFindHook, BrMaterialFindHook)
 br_material_find_cbfn* __cdecl BrMaterialFindHook(br_material_find_cbfn *hook) {
@@ -235,6 +248,7 @@ br_material_find_cbfn* __cdecl BrMaterialFindHook(br_material_find_cbfn *hook) {
 }
 
 function_hook_state_t function_hook_state_BrMaterialAddMany = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMaterialAddMany)
 static br_uint_32(__cdecl*original_BrMaterialAddMany)(br_material **, int) = (br_uint_32(__cdecl*)(br_material **, int))0x004d5fa0;
 CARM95_HOOK_FUNCTION(original_BrMaterialAddMany, BrMaterialAddMany)
 br_uint_32 __cdecl BrMaterialAddMany(br_material **items, int n) {
@@ -256,6 +270,7 @@ br_uint_32 __cdecl BrMaterialAddMany(br_material **items, int n) {
 }
 
 function_hook_state_t function_hook_state_BrMaterialRemoveMany = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMaterialRemoveMany)
 static br_uint_32(__cdecl*original_BrMaterialRemoveMany)(br_material **, int) = (br_uint_32(__cdecl*)(br_material **, int))0x004d5ff0;
 CARM95_HOOK_FUNCTION(original_BrMaterialRemoveMany, BrMaterialRemoveMany)
 br_uint_32 __cdecl BrMaterialRemoveMany(br_material **items, int n) {
@@ -277,6 +292,7 @@ br_uint_32 __cdecl BrMaterialRemoveMany(br_material **items, int n) {
 }
 
 function_hook_state_t function_hook_state_BrMaterialFindMany = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMaterialFindMany)
 static br_uint_32(__cdecl*original_BrMaterialFindMany)(char *, br_material **, int) = (br_uint_32(__cdecl*)(char *, br_material **, int))0x004d603c;
 CARM95_HOOK_FUNCTION(original_BrMaterialFindMany, BrMaterialFindMany)
 br_uint_32 __cdecl BrMaterialFindMany(char *pattern, br_material **items, int max) {
@@ -295,6 +311,7 @@ br_uint_32 __cdecl BrMaterialFindMany(char *pattern, br_material **items, int ma
 }
 
 function_hook_state_t function_hook_state_BrMaterialCount = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMaterialCount)
 static br_uint_32(__cdecl*original_BrMaterialCount)(char *) = (br_uint_32(__cdecl*)(char *))0x004d6050;
 CARM95_HOOK_FUNCTION(original_BrMaterialCount, BrMaterialCount)
 br_uint_32 __cdecl BrMaterialCount(char *pattern) {
@@ -311,6 +328,7 @@ br_uint_32 __cdecl BrMaterialCount(char *pattern) {
 }
 
 function_hook_state_t function_hook_state_BrMaterialEnum = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMaterialEnum)
 static br_uint_32(__cdecl*original_BrMaterialEnum)(char *, br_material_enum_cbfn *, void *) = (br_uint_32(__cdecl*)(char *, br_material_enum_cbfn *, void *))0x004d6060;
 CARM95_HOOK_FUNCTION(original_BrMaterialEnum, BrMaterialEnum)
 br_uint_32 __cdecl BrMaterialEnum(char *pattern, br_material_enum_cbfn *callback, void *arg) {
@@ -329,6 +347,7 @@ br_uint_32 __cdecl BrMaterialEnum(char *pattern, br_material_enum_cbfn *callback
 }
 
 function_hook_state_t function_hook_state_BrMapAdd = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMapAdd)
 static br_pixelmap *(__cdecl*original_BrMapAdd)(br_pixelmap *) = (br_pixelmap *(__cdecl*)(br_pixelmap *))0x004d6080;
 CARM95_HOOK_FUNCTION(original_BrMapAdd, BrMapAdd)
 br_pixelmap* __cdecl BrMapAdd(br_pixelmap *pixelmap) {
@@ -345,6 +364,7 @@ br_pixelmap* __cdecl BrMapAdd(br_pixelmap *pixelmap) {
 }
 
 function_hook_state_t function_hook_state_BrMapRemove = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMapRemove)
 static br_pixelmap *(__cdecl*original_BrMapRemove)(br_pixelmap *) = (br_pixelmap *(__cdecl*)(br_pixelmap *))0x004d60b0;
 CARM95_HOOK_FUNCTION(original_BrMapRemove, BrMapRemove)
 br_pixelmap* __cdecl BrMapRemove(br_pixelmap *pixelmap) {
@@ -361,6 +381,7 @@ br_pixelmap* __cdecl BrMapRemove(br_pixelmap *pixelmap) {
 }
 
 function_hook_state_t function_hook_state_BrMapFind = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMapFind)
 static br_pixelmap *(__cdecl*original_BrMapFind)(char *) = (br_pixelmap *(__cdecl*)(char *))0x004d60d0;
 CARM95_HOOK_FUNCTION(original_BrMapFind, BrMapFind)
 br_pixelmap* __cdecl BrMapFind(char *pattern) {
@@ -377,6 +398,7 @@ br_pixelmap* __cdecl BrMapFind(char *pattern) {
 }
 
 function_hook_state_t function_hook_state_BrMapFindHook = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMapFindHook)
 static br_map_find_cbfn *(__cdecl*original_BrMapFindHook)(br_map_find_cbfn *) = (br_map_find_cbfn *(__cdecl*)(br_map_find_cbfn *))0x004d60e0;
 CARM95_HOOK_FUNCTION(original_BrMapFindHook, BrMapFindHook)
 br_map_find_cbfn* __cdecl BrMapFindHook(br_map_find_cbfn *hook) {
@@ -395,6 +417,7 @@ br_map_find_cbfn* __cdecl BrMapFindHook(br_map_find_cbfn *hook) {
 }
 
 function_hook_state_t function_hook_state_BrMapAddMany = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMapAddMany)
 static br_uint_32(__cdecl*original_BrMapAddMany)(br_pixelmap **, int) = (br_uint_32(__cdecl*)(br_pixelmap **, int))0x004d60f0;
 CARM95_HOOK_FUNCTION(original_BrMapAddMany, BrMapAddMany)
 br_uint_32 __cdecl BrMapAddMany(br_pixelmap **items, int n) {
@@ -416,6 +439,7 @@ br_uint_32 __cdecl BrMapAddMany(br_pixelmap **items, int n) {
 }
 
 function_hook_state_t function_hook_state_BrMapRemoveMany = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMapRemoveMany)
 static br_uint_32(__cdecl*original_BrMapRemoveMany)(br_pixelmap **, int) = (br_uint_32(__cdecl*)(br_pixelmap **, int))0x004d6140;
 CARM95_HOOK_FUNCTION(original_BrMapRemoveMany, BrMapRemoveMany)
 br_uint_32 __cdecl BrMapRemoveMany(br_pixelmap **items, int n) {
@@ -437,6 +461,7 @@ br_uint_32 __cdecl BrMapRemoveMany(br_pixelmap **items, int n) {
 }
 
 function_hook_state_t function_hook_state_BrMapFindMany = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMapFindMany)
 static br_uint_32(__cdecl*original_BrMapFindMany)(char *, br_pixelmap **, int) = (br_uint_32(__cdecl*)(char *, br_pixelmap **, int))0x004d618c;
 CARM95_HOOK_FUNCTION(original_BrMapFindMany, BrMapFindMany)
 br_uint_32 __cdecl BrMapFindMany(char *pattern, br_pixelmap **items, int max) {
@@ -455,6 +480,7 @@ br_uint_32 __cdecl BrMapFindMany(char *pattern, br_pixelmap **items, int max) {
 }
 
 function_hook_state_t function_hook_state_BrMapCount = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMapCount)
 static br_uint_32(__cdecl*original_BrMapCount)(char *) = (br_uint_32(__cdecl*)(char *))0x004d61a4;
 CARM95_HOOK_FUNCTION(original_BrMapCount, BrMapCount)
 br_uint_32 __cdecl BrMapCount(char *pattern) {
@@ -471,6 +497,7 @@ br_uint_32 __cdecl BrMapCount(char *pattern) {
 }
 
 function_hook_state_t function_hook_state_BrMapEnum = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMapEnum)
 static br_uint_32(__cdecl*original_BrMapEnum)(char *, br_map_enum_cbfn *, void *) = (br_uint_32(__cdecl*)(char *, br_map_enum_cbfn *, void *))0x004d61b0;
 CARM95_HOOK_FUNCTION(original_BrMapEnum, BrMapEnum)
 br_uint_32 __cdecl BrMapEnum(char *pattern, br_map_enum_cbfn *callback, void *arg) {
@@ -489,6 +516,7 @@ br_uint_32 __cdecl BrMapEnum(char *pattern, br_map_enum_cbfn *callback, void *ar
 }
 
 function_hook_state_t function_hook_state_BrTableAdd = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrTableAdd)
 static br_pixelmap *(__cdecl*original_BrTableAdd)(br_pixelmap *) = (br_pixelmap *(__cdecl*)(br_pixelmap *))0x004d61d0;
 CARM95_HOOK_FUNCTION(original_BrTableAdd, BrTableAdd)
 br_pixelmap* __cdecl BrTableAdd(br_pixelmap *pixelmap) {
@@ -505,6 +533,7 @@ br_pixelmap* __cdecl BrTableAdd(br_pixelmap *pixelmap) {
 }
 
 function_hook_state_t function_hook_state_BrTableRemove = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrTableRemove)
 static br_pixelmap *(__cdecl*original_BrTableRemove)(br_pixelmap *) = (br_pixelmap *(__cdecl*)(br_pixelmap *))0x004d6200;
 CARM95_HOOK_FUNCTION(original_BrTableRemove, BrTableRemove)
 br_pixelmap* __cdecl BrTableRemove(br_pixelmap *pixelmap) {
@@ -521,6 +550,7 @@ br_pixelmap* __cdecl BrTableRemove(br_pixelmap *pixelmap) {
 }
 
 function_hook_state_t function_hook_state_BrTableFind = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrTableFind)
 static br_pixelmap *(__cdecl*original_BrTableFind)(char *) = (br_pixelmap *(__cdecl*)(char *))0x004d6220;
 CARM95_HOOK_FUNCTION(original_BrTableFind, BrTableFind)
 br_pixelmap* __cdecl BrTableFind(char *pattern) {
@@ -537,6 +567,7 @@ br_pixelmap* __cdecl BrTableFind(char *pattern) {
 }
 
 function_hook_state_t function_hook_state_BrTableFindHook = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrTableFindHook)
 static br_table_find_cbfn *(__cdecl*original_BrTableFindHook)(br_table_find_cbfn *) = (br_table_find_cbfn *(__cdecl*)(br_table_find_cbfn *))0x004d6230;
 CARM95_HOOK_FUNCTION(original_BrTableFindHook, BrTableFindHook)
 br_table_find_cbfn* __cdecl BrTableFindHook(br_table_find_cbfn *hook) {
@@ -555,6 +586,7 @@ br_table_find_cbfn* __cdecl BrTableFindHook(br_table_find_cbfn *hook) {
 }
 
 function_hook_state_t function_hook_state_BrTableAddMany = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrTableAddMany)
 static br_uint_32(__cdecl*original_BrTableAddMany)(br_pixelmap **, int) = (br_uint_32(__cdecl*)(br_pixelmap **, int))0x004d6240;
 CARM95_HOOK_FUNCTION(original_BrTableAddMany, BrTableAddMany)
 br_uint_32 __cdecl BrTableAddMany(br_pixelmap **items, int n) {
@@ -576,6 +608,7 @@ br_uint_32 __cdecl BrTableAddMany(br_pixelmap **items, int n) {
 }
 
 function_hook_state_t function_hook_state_BrTableRemoveMany = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrTableRemoveMany)
 static br_uint_32(__cdecl*original_BrTableRemoveMany)(br_pixelmap **, int) = (br_uint_32(__cdecl*)(br_pixelmap **, int))0x004d6281;
 CARM95_HOOK_FUNCTION(original_BrTableRemoveMany, BrTableRemoveMany)
 br_uint_32 __cdecl BrTableRemoveMany(br_pixelmap **items, int n) {
@@ -597,6 +630,7 @@ br_uint_32 __cdecl BrTableRemoveMany(br_pixelmap **items, int n) {
 }
 
 function_hook_state_t function_hook_state_BrTableFindMany = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrTableFindMany)
 static br_uint_32(__cdecl*original_BrTableFindMany)(char *, br_pixelmap **, int) = (br_uint_32(__cdecl*)(char *, br_pixelmap **, int))0x004d62c9;
 CARM95_HOOK_FUNCTION(original_BrTableFindMany, BrTableFindMany)
 br_uint_32 __cdecl BrTableFindMany(char *pattern, br_pixelmap **items, int max) {
@@ -615,6 +649,7 @@ br_uint_32 __cdecl BrTableFindMany(char *pattern, br_pixelmap **items, int max) 
 }
 
 function_hook_state_t function_hook_state_BrTableCount = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrTableCount)
 static br_uint_32(__cdecl*original_BrTableCount)(char *) = (br_uint_32(__cdecl*)(char *))0x004d62ea;
 CARM95_HOOK_FUNCTION(original_BrTableCount, BrTableCount)
 br_uint_32 __cdecl BrTableCount(char *pattern) {
@@ -631,6 +666,7 @@ br_uint_32 __cdecl BrTableCount(char *pattern) {
 }
 
 function_hook_state_t function_hook_state_BrTableEnum = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrTableEnum)
 static br_uint_32(__cdecl*original_BrTableEnum)(char *, br_table_enum_cbfn *, void *) = (br_uint_32(__cdecl*)(char *, br_table_enum_cbfn *, void *))0x004d6300;
 CARM95_HOOK_FUNCTION(original_BrTableEnum, BrTableEnum)
 br_uint_32 __cdecl BrTableEnum(char *pattern, br_table_enum_cbfn *callback, void *arg) {

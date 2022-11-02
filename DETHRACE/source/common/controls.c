@@ -27,6 +27,7 @@ int * hookvar_gInstant_handbrake  = (void*)0x00550550;
 int * hookvar_gAuto_repair  = (void*)0x00550554;
 
 function_hook_state_t function_hook_state_AbortRace = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_AbortRace)
 static void(__cdecl*original_AbortRace)() = (void(__cdecl*)())0x004a0c70;
 CARM95_HOOK_FUNCTION(original_AbortRace, AbortRace)
 void __cdecl AbortRace() {
@@ -42,6 +43,7 @@ void __cdecl AbortRace() {
 }
 
 function_hook_state_t function_hook_state_F4Key = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_F4Key)
 static void(__cdecl*original_F4Key)() = (void(__cdecl*)())0x004a0c92;
 CARM95_HOOK_FUNCTION(original_F4Key, F4Key)
 void __cdecl F4Key() {
@@ -61,6 +63,7 @@ void __cdecl F4Key() {
 }
 
 function_hook_state_t function_hook_state_SetFlag = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_SetFlag)
 static void(__cdecl*original_SetFlag)(int) = (void(__cdecl*)(int))0x004a0db7;
 CARM95_HOOK_FUNCTION(original_SetFlag, SetFlag)
 void __cdecl SetFlag(int i) {
@@ -77,6 +80,7 @@ void __cdecl SetFlag(int i) {
 }
 
 function_hook_state_t function_hook_state_FinishLap = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_FinishLap)
 static void(__cdecl*original_FinishLap)(int) = (void(__cdecl*)(int))0x004a0df4;
 CARM95_HOOK_FUNCTION(original_FinishLap, FinishLap)
 void __cdecl FinishLap(int i) {
@@ -93,6 +97,7 @@ void __cdecl FinishLap(int i) {
 }
 
 function_hook_state_t function_hook_state_EnsureSpecialVolumesHidden = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_EnsureSpecialVolumesHidden)
 static void(__cdecl*original_EnsureSpecialVolumesHidden)() = (void(__cdecl*)())0x004a0e04;
 CARM95_HOOK_FUNCTION(original_EnsureSpecialVolumesHidden, EnsureSpecialVolumesHidden)
 void __cdecl EnsureSpecialVolumesHidden() {
@@ -108,6 +113,7 @@ void __cdecl EnsureSpecialVolumesHidden() {
 }
 
 function_hook_state_t function_hook_state_ShowSpecialVolumesIfRequ = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ShowSpecialVolumesIfRequ)
 static void(__cdecl*original_ShowSpecialVolumesIfRequ)() = (void(__cdecl*)())0x004a0e21;
 CARM95_HOOK_FUNCTION(original_ShowSpecialVolumesIfRequ, ShowSpecialVolumesIfRequ)
 void __cdecl ShowSpecialVolumesIfRequ() {
@@ -123,6 +129,7 @@ void __cdecl ShowSpecialVolumesIfRequ() {
 }
 
 function_hook_state_t function_hook_state_DoEditModeKey = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DoEditModeKey)
 static void(__cdecl*original_DoEditModeKey)(int) = (void(__cdecl*)(int))0x004a0e53;
 CARM95_HOOK_FUNCTION(original_DoEditModeKey, DoEditModeKey)
 void __cdecl DoEditModeKey(int pIndex) {
@@ -141,6 +148,7 @@ void __cdecl DoEditModeKey(int pIndex) {
 }
 
 function_hook_state_t function_hook_state_F5Key = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_F5Key)
 static void(__cdecl*original_F5Key)() = (void(__cdecl*)())0x004a0e3e;
 CARM95_HOOK_FUNCTION(original_F5Key, F5Key)
 void __cdecl F5Key() {
@@ -156,6 +164,7 @@ void __cdecl F5Key() {
 }
 
 function_hook_state_t function_hook_state_F6Key = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_F6Key)
 static void(__cdecl*original_F6Key)() = (void(__cdecl*)())0x004a0f3d;
 CARM95_HOOK_FUNCTION(original_F6Key, F6Key)
 void __cdecl F6Key() {
@@ -171,6 +180,7 @@ void __cdecl F6Key() {
 }
 
 function_hook_state_t function_hook_state_F7Key = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_F7Key)
 static void(__cdecl*original_F7Key)() = (void(__cdecl*)())0x004a0f52;
 CARM95_HOOK_FUNCTION(original_F7Key, F7Key)
 void __cdecl F7Key() {
@@ -186,6 +196,7 @@ void __cdecl F7Key() {
 }
 
 function_hook_state_t function_hook_state_F8Key = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_F8Key)
 static void(__cdecl*original_F8Key)() = (void(__cdecl*)())0x004a0f67;
 CARM95_HOOK_FUNCTION(original_F8Key, F8Key)
 void __cdecl F8Key() {
@@ -201,6 +212,7 @@ void __cdecl F8Key() {
 }
 
 function_hook_state_t function_hook_state_F10Key = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_F10Key)
 static void(__cdecl*original_F10Key)() = (void(__cdecl*)())0x004a0f7c;
 CARM95_HOOK_FUNCTION(original_F10Key, F10Key)
 void __cdecl F10Key() {
@@ -216,6 +228,7 @@ void __cdecl F10Key() {
 }
 
 function_hook_state_t function_hook_state_F11Key = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_F11Key)
 static void(__cdecl*original_F11Key)() = (void(__cdecl*)())0x004a0f91;
 CARM95_HOOK_FUNCTION(original_F11Key, F11Key)
 void __cdecl F11Key() {
@@ -231,6 +244,7 @@ void __cdecl F11Key() {
 }
 
 function_hook_state_t function_hook_state_F12Key = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_F12Key)
 static void(__cdecl*original_F12Key)() = (void(__cdecl*)())0x004a0fa6;
 CARM95_HOOK_FUNCTION(original_F12Key, F12Key)
 void __cdecl F12Key() {
@@ -246,6 +260,7 @@ void __cdecl F12Key() {
 }
 
 function_hook_state_t function_hook_state_NumberKey0 = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_NumberKey0)
 static void(__cdecl*original_NumberKey0)() = (void(__cdecl*)())0x004a0fbb;
 CARM95_HOOK_FUNCTION(original_NumberKey0, NumberKey0)
 void __cdecl NumberKey0() {
@@ -261,6 +276,7 @@ void __cdecl NumberKey0() {
 }
 
 function_hook_state_t function_hook_state_NumberKey1 = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_NumberKey1)
 static void(__cdecl*original_NumberKey1)() = (void(__cdecl*)())0x004a0fd0;
 CARM95_HOOK_FUNCTION(original_NumberKey1, NumberKey1)
 void __cdecl NumberKey1() {
@@ -276,6 +292,7 @@ void __cdecl NumberKey1() {
 }
 
 function_hook_state_t function_hook_state_NumberKey2 = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_NumberKey2)
 static void(__cdecl*original_NumberKey2)() = (void(__cdecl*)())0x004a0fe5;
 CARM95_HOOK_FUNCTION(original_NumberKey2, NumberKey2)
 void __cdecl NumberKey2() {
@@ -291,6 +308,7 @@ void __cdecl NumberKey2() {
 }
 
 function_hook_state_t function_hook_state_NumberKey3 = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_NumberKey3)
 static void(__cdecl*original_NumberKey3)() = (void(__cdecl*)())0x004a0ffa;
 CARM95_HOOK_FUNCTION(original_NumberKey3, NumberKey3)
 void __cdecl NumberKey3() {
@@ -306,6 +324,7 @@ void __cdecl NumberKey3() {
 }
 
 function_hook_state_t function_hook_state_NumberKey4 = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_NumberKey4)
 static void(__cdecl*original_NumberKey4)() = (void(__cdecl*)())0x004a100f;
 CARM95_HOOK_FUNCTION(original_NumberKey4, NumberKey4)
 void __cdecl NumberKey4() {
@@ -321,6 +340,7 @@ void __cdecl NumberKey4() {
 }
 
 function_hook_state_t function_hook_state_NumberKey5 = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_NumberKey5)
 static void(__cdecl*original_NumberKey5)() = (void(__cdecl*)())0x004a1024;
 CARM95_HOOK_FUNCTION(original_NumberKey5, NumberKey5)
 void __cdecl NumberKey5() {
@@ -336,6 +356,7 @@ void __cdecl NumberKey5() {
 }
 
 function_hook_state_t function_hook_state_NumberKey6 = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_NumberKey6)
 static void(__cdecl*original_NumberKey6)() = (void(__cdecl*)())0x004a1039;
 CARM95_HOOK_FUNCTION(original_NumberKey6, NumberKey6)
 void __cdecl NumberKey6() {
@@ -351,6 +372,7 @@ void __cdecl NumberKey6() {
 }
 
 function_hook_state_t function_hook_state_NumberKey7 = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_NumberKey7)
 static void(__cdecl*original_NumberKey7)() = (void(__cdecl*)())0x004a104e;
 CARM95_HOOK_FUNCTION(original_NumberKey7, NumberKey7)
 void __cdecl NumberKey7() {
@@ -366,6 +388,7 @@ void __cdecl NumberKey7() {
 }
 
 function_hook_state_t function_hook_state_NumberKey8 = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_NumberKey8)
 static void(__cdecl*original_NumberKey8)() = (void(__cdecl*)())0x004a1063;
 CARM95_HOOK_FUNCTION(original_NumberKey8, NumberKey8)
 void __cdecl NumberKey8() {
@@ -381,6 +404,7 @@ void __cdecl NumberKey8() {
 }
 
 function_hook_state_t function_hook_state_NumberKey9 = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_NumberKey9)
 static void(__cdecl*original_NumberKey9)() = (void(__cdecl*)())0x004a1078;
 CARM95_HOOK_FUNCTION(original_NumberKey9, NumberKey9)
 void __cdecl NumberKey9() {
@@ -396,6 +420,7 @@ void __cdecl NumberKey9() {
 }
 
 function_hook_state_t function_hook_state_LookLeft = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_LookLeft)
 static void(__cdecl*original_LookLeft)() = (void(__cdecl*)())0x004a108d;
 CARM95_HOOK_FUNCTION(original_LookLeft, LookLeft)
 void __cdecl LookLeft() {
@@ -411,6 +436,7 @@ void __cdecl LookLeft() {
 }
 
 function_hook_state_t function_hook_state_LookForward = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_LookForward)
 static void(__cdecl*original_LookForward)() = (void(__cdecl*)())0x004a113a;
 CARM95_HOOK_FUNCTION(original_LookForward, LookForward)
 void __cdecl LookForward() {
@@ -426,6 +452,7 @@ void __cdecl LookForward() {
 }
 
 function_hook_state_t function_hook_state_LookRight = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_LookRight)
 static void(__cdecl*original_LookRight)() = (void(__cdecl*)())0x004a11b2;
 CARM95_HOOK_FUNCTION(original_LookRight, LookRight)
 void __cdecl LookRight() {
@@ -441,6 +468,7 @@ void __cdecl LookRight() {
 }
 
 function_hook_state_t function_hook_state_DamageTest = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DamageTest)
 static void(__cdecl*original_DamageTest)() = (void(__cdecl*)())0x004a125f;
 CARM95_HOOK_FUNCTION(original_DamageTest, DamageTest)
 void __cdecl DamageTest() {
@@ -456,6 +484,7 @@ void __cdecl DamageTest() {
 }
 
 function_hook_state_t function_hook_state_TDamageEngine = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_TDamageEngine)
 static void(__cdecl*original_TDamageEngine)() = (void(__cdecl*)())0x004a126a;
 CARM95_HOOK_FUNCTION(original_TDamageEngine, TDamageEngine)
 void __cdecl TDamageEngine() {
@@ -471,6 +500,7 @@ void __cdecl TDamageEngine() {
 }
 
 function_hook_state_t function_hook_state_TDamageDriver = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_TDamageDriver)
 static void(__cdecl*original_TDamageDriver)() = (void(__cdecl*)())0x004a127f;
 CARM95_HOOK_FUNCTION(original_TDamageDriver, TDamageDriver)
 void __cdecl TDamageDriver() {
@@ -486,6 +516,7 @@ void __cdecl TDamageDriver() {
 }
 
 function_hook_state_t function_hook_state_TDamageTrans = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_TDamageTrans)
 static void(__cdecl*original_TDamageTrans)() = (void(__cdecl*)())0x004a12d4;
 CARM95_HOOK_FUNCTION(original_TDamageTrans, TDamageTrans)
 void __cdecl TDamageTrans() {
@@ -501,6 +532,7 @@ void __cdecl TDamageTrans() {
 }
 
 function_hook_state_t function_hook_state_TDamageSteering = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_TDamageSteering)
 static void(__cdecl*original_TDamageSteering)() = (void(__cdecl*)())0x004a12e9;
 CARM95_HOOK_FUNCTION(original_TDamageSteering, TDamageSteering)
 void __cdecl TDamageSteering() {
@@ -516,6 +548,7 @@ void __cdecl TDamageSteering() {
 }
 
 function_hook_state_t function_hook_state_TDamageLFWheel = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_TDamageLFWheel)
 static void(__cdecl*original_TDamageLFWheel)() = (void(__cdecl*)())0x004a12fe;
 CARM95_HOOK_FUNCTION(original_TDamageLFWheel, TDamageLFWheel)
 void __cdecl TDamageLFWheel() {
@@ -531,6 +564,7 @@ void __cdecl TDamageLFWheel() {
 }
 
 function_hook_state_t function_hook_state_TDamageLFBrake = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_TDamageLFBrake)
 static void(__cdecl*original_TDamageLFBrake)() = (void(__cdecl*)())0x004a1313;
 CARM95_HOOK_FUNCTION(original_TDamageLFBrake, TDamageLFBrake)
 void __cdecl TDamageLFBrake() {
@@ -546,6 +580,7 @@ void __cdecl TDamageLFBrake() {
 }
 
 function_hook_state_t function_hook_state_TDamageLRBrake = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_TDamageLRBrake)
 static void(__cdecl*original_TDamageLRBrake)() = (void(__cdecl*)())0x004a1328;
 CARM95_HOOK_FUNCTION(original_TDamageLRBrake, TDamageLRBrake)
 void __cdecl TDamageLRBrake() {
@@ -561,6 +596,7 @@ void __cdecl TDamageLRBrake() {
 }
 
 function_hook_state_t function_hook_state_TDamageLRWheel = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_TDamageLRWheel)
 static void(__cdecl*original_TDamageLRWheel)() = (void(__cdecl*)())0x004a133d;
 CARM95_HOOK_FUNCTION(original_TDamageLRWheel, TDamageLRWheel)
 void __cdecl TDamageLRWheel() {
@@ -576,6 +612,7 @@ void __cdecl TDamageLRWheel() {
 }
 
 function_hook_state_t function_hook_state_TDamageRFWheel = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_TDamageRFWheel)
 static void(__cdecl*original_TDamageRFWheel)() = (void(__cdecl*)())0x004a1352;
 CARM95_HOOK_FUNCTION(original_TDamageRFWheel, TDamageRFWheel)
 void __cdecl TDamageRFWheel() {
@@ -591,6 +628,7 @@ void __cdecl TDamageRFWheel() {
 }
 
 function_hook_state_t function_hook_state_TDamageRFBrake = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_TDamageRFBrake)
 static void(__cdecl*original_TDamageRFBrake)() = (void(__cdecl*)())0x004a1367;
 CARM95_HOOK_FUNCTION(original_TDamageRFBrake, TDamageRFBrake)
 void __cdecl TDamageRFBrake() {
@@ -606,6 +644,7 @@ void __cdecl TDamageRFBrake() {
 }
 
 function_hook_state_t function_hook_state_TDamageRRBrake = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_TDamageRRBrake)
 static void(__cdecl*original_TDamageRRBrake)() = (void(__cdecl*)())0x004a137c;
 CARM95_HOOK_FUNCTION(original_TDamageRRBrake, TDamageRRBrake)
 void __cdecl TDamageRRBrake() {
@@ -621,6 +660,7 @@ void __cdecl TDamageRRBrake() {
 }
 
 function_hook_state_t function_hook_state_TDamageRRWheel = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_TDamageRRWheel)
 static void(__cdecl*original_TDamageRRWheel)() = (void(__cdecl*)())0x004a1391;
 CARM95_HOOK_FUNCTION(original_TDamageRRWheel, TDamageRRWheel)
 void __cdecl TDamageRRWheel() {
@@ -636,6 +676,7 @@ void __cdecl TDamageRRWheel() {
 }
 
 function_hook_state_t function_hook_state_MoveBonnetForward = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_MoveBonnetForward)
 static void(__cdecl*original_MoveBonnetForward)() = (void(__cdecl*)())0x004a13a6;
 CARM95_HOOK_FUNCTION(original_MoveBonnetForward, MoveBonnetForward)
 void __cdecl MoveBonnetForward() {
@@ -651,6 +692,7 @@ void __cdecl MoveBonnetForward() {
 }
 
 function_hook_state_t function_hook_state_SaveBonnet = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_SaveBonnet)
 static void(__cdecl*original_SaveBonnet)() = (void(__cdecl*)())0x004a13dd;
 CARM95_HOOK_FUNCTION(original_SaveBonnet, SaveBonnet)
 void __cdecl SaveBonnet() {
@@ -670,6 +712,7 @@ void __cdecl SaveBonnet() {
 }
 
 function_hook_state_t function_hook_state_MoveBonnetBackward = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_MoveBonnetBackward)
 static void(__cdecl*original_MoveBonnetBackward)() = (void(__cdecl*)())0x004a142f;
 CARM95_HOOK_FUNCTION(original_MoveBonnetBackward, MoveBonnetBackward)
 void __cdecl MoveBonnetBackward() {
@@ -685,6 +728,7 @@ void __cdecl MoveBonnetBackward() {
 }
 
 function_hook_state_t function_hook_state_MoveBonnetLeft = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_MoveBonnetLeft)
 static void(__cdecl*original_MoveBonnetLeft)() = (void(__cdecl*)())0x004a1466;
 CARM95_HOOK_FUNCTION(original_MoveBonnetLeft, MoveBonnetLeft)
 void __cdecl MoveBonnetLeft() {
@@ -700,6 +744,7 @@ void __cdecl MoveBonnetLeft() {
 }
 
 function_hook_state_t function_hook_state_ShrinkBonnetX = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ShrinkBonnetX)
 static void(__cdecl*original_ShrinkBonnetX)() = (void(__cdecl*)())0x004a149d;
 CARM95_HOOK_FUNCTION(original_ShrinkBonnetX, ShrinkBonnetX)
 void __cdecl ShrinkBonnetX() {
@@ -715,6 +760,7 @@ void __cdecl ShrinkBonnetX() {
 }
 
 function_hook_state_t function_hook_state_SwellBonnetX = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_SwellBonnetX)
 static void(__cdecl*original_SwellBonnetX)() = (void(__cdecl*)())0x004a14d4;
 CARM95_HOOK_FUNCTION(original_SwellBonnetX, SwellBonnetX)
 void __cdecl SwellBonnetX() {
@@ -730,6 +776,7 @@ void __cdecl SwellBonnetX() {
 }
 
 function_hook_state_t function_hook_state_ShrinkBonnetY = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ShrinkBonnetY)
 static void(__cdecl*original_ShrinkBonnetY)() = (void(__cdecl*)())0x004a150b;
 CARM95_HOOK_FUNCTION(original_ShrinkBonnetY, ShrinkBonnetY)
 void __cdecl ShrinkBonnetY() {
@@ -745,6 +792,7 @@ void __cdecl ShrinkBonnetY() {
 }
 
 function_hook_state_t function_hook_state_SwellBonnetY = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_SwellBonnetY)
 static void(__cdecl*original_SwellBonnetY)() = (void(__cdecl*)())0x004a1542;
 CARM95_HOOK_FUNCTION(original_SwellBonnetY, SwellBonnetY)
 void __cdecl SwellBonnetY() {
@@ -760,6 +808,7 @@ void __cdecl SwellBonnetY() {
 }
 
 function_hook_state_t function_hook_state_ShrinkBonnetZ = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ShrinkBonnetZ)
 static void(__cdecl*original_ShrinkBonnetZ)() = (void(__cdecl*)())0x004a1579;
 CARM95_HOOK_FUNCTION(original_ShrinkBonnetZ, ShrinkBonnetZ)
 void __cdecl ShrinkBonnetZ() {
@@ -775,6 +824,7 @@ void __cdecl ShrinkBonnetZ() {
 }
 
 function_hook_state_t function_hook_state_SwellBonnetZ = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_SwellBonnetZ)
 static void(__cdecl*original_SwellBonnetZ)() = (void(__cdecl*)())0x004a15b0;
 CARM95_HOOK_FUNCTION(original_SwellBonnetZ, SwellBonnetZ)
 void __cdecl SwellBonnetZ() {
@@ -790,6 +840,7 @@ void __cdecl SwellBonnetZ() {
 }
 
 function_hook_state_t function_hook_state_MoveBonnetDown = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_MoveBonnetDown)
 static void(__cdecl*original_MoveBonnetDown)() = (void(__cdecl*)())0x004a15e7;
 CARM95_HOOK_FUNCTION(original_MoveBonnetDown, MoveBonnetDown)
 void __cdecl MoveBonnetDown() {
@@ -805,6 +856,7 @@ void __cdecl MoveBonnetDown() {
 }
 
 function_hook_state_t function_hook_state_MoveBonnetRight = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_MoveBonnetRight)
 static void(__cdecl*original_MoveBonnetRight)() = (void(__cdecl*)())0x004a161e;
 CARM95_HOOK_FUNCTION(original_MoveBonnetRight, MoveBonnetRight)
 void __cdecl MoveBonnetRight() {
@@ -820,6 +872,7 @@ void __cdecl MoveBonnetRight() {
 }
 
 function_hook_state_t function_hook_state_MoveBonnetUp = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_MoveBonnetUp)
 static void(__cdecl*original_MoveBonnetUp)() = (void(__cdecl*)())0x004a1655;
 CARM95_HOOK_FUNCTION(original_MoveBonnetUp, MoveBonnetUp)
 void __cdecl MoveBonnetUp() {
@@ -835,6 +888,7 @@ void __cdecl MoveBonnetUp() {
 }
 
 function_hook_state_t function_hook_state_TiltBonnetDownX = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_TiltBonnetDownX)
 static void(__cdecl*original_TiltBonnetDownX)() = (void(__cdecl*)())0x004a168c;
 CARM95_HOOK_FUNCTION(original_TiltBonnetDownX, TiltBonnetDownX)
 void __cdecl TiltBonnetDownX() {
@@ -850,6 +904,7 @@ void __cdecl TiltBonnetDownX() {
 }
 
 function_hook_state_t function_hook_state_TiltBonnetUpX = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_TiltBonnetUpX)
 static void(__cdecl*original_TiltBonnetUpX)() = (void(__cdecl*)())0x004a16b5;
 CARM95_HOOK_FUNCTION(original_TiltBonnetUpX, TiltBonnetUpX)
 void __cdecl TiltBonnetUpX() {
@@ -865,6 +920,7 @@ void __cdecl TiltBonnetUpX() {
 }
 
 function_hook_state_t function_hook_state_TiltBonnetDownY = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_TiltBonnetDownY)
 static void(__cdecl*original_TiltBonnetDownY)() = (void(__cdecl*)())0x004a16e1;
 CARM95_HOOK_FUNCTION(original_TiltBonnetDownY, TiltBonnetDownY)
 void __cdecl TiltBonnetDownY() {
@@ -880,6 +936,7 @@ void __cdecl TiltBonnetDownY() {
 }
 
 function_hook_state_t function_hook_state_TiltBonnetUpY = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_TiltBonnetUpY)
 static void(__cdecl*original_TiltBonnetUpY)() = (void(__cdecl*)())0x004a170a;
 CARM95_HOOK_FUNCTION(original_TiltBonnetUpY, TiltBonnetUpY)
 void __cdecl TiltBonnetUpY() {
@@ -895,6 +952,7 @@ void __cdecl TiltBonnetUpY() {
 }
 
 function_hook_state_t function_hook_state_TiltBonnetDownZ = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_TiltBonnetDownZ)
 static void(__cdecl*original_TiltBonnetDownZ)() = (void(__cdecl*)())0x004a1736;
 CARM95_HOOK_FUNCTION(original_TiltBonnetDownZ, TiltBonnetDownZ)
 void __cdecl TiltBonnetDownZ() {
@@ -910,6 +968,7 @@ void __cdecl TiltBonnetDownZ() {
 }
 
 function_hook_state_t function_hook_state_TiltBonnetUpZ = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_TiltBonnetUpZ)
 static void(__cdecl*original_TiltBonnetUpZ)() = (void(__cdecl*)())0x004a175f;
 CARM95_HOOK_FUNCTION(original_TiltBonnetUpZ, TiltBonnetUpZ)
 void __cdecl TiltBonnetUpZ() {
@@ -925,6 +984,7 @@ void __cdecl TiltBonnetUpZ() {
 }
 
 function_hook_state_t function_hook_state_ToggleCockpit = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ToggleCockpit)
 static void(__cdecl*original_ToggleCockpit)() = (void(__cdecl*)())0x004a178b;
 CARM95_HOOK_FUNCTION(original_ToggleCockpit, ToggleCockpit)
 void __cdecl ToggleCockpit() {
@@ -942,6 +1002,7 @@ void __cdecl ToggleCockpit() {
 }
 
 function_hook_state_t function_hook_state_ToggleMirror = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ToggleMirror)
 static void(__cdecl*original_ToggleMirror)() = (void(__cdecl*)())0x004a1895;
 CARM95_HOOK_FUNCTION(original_ToggleMirror, ToggleMirror)
 void __cdecl ToggleMirror() {
@@ -957,6 +1018,7 @@ void __cdecl ToggleMirror() {
 }
 
 function_hook_state_t function_hook_state_ConcussMe = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ConcussMe)
 static void(__cdecl*original_ConcussMe)() = (void(__cdecl*)())0x004a1919;
 CARM95_HOOK_FUNCTION(original_ConcussMe, ConcussMe)
 void __cdecl ConcussMe() {
@@ -972,6 +1034,7 @@ void __cdecl ConcussMe() {
 }
 
 function_hook_state_t function_hook_state_CheckHelp = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_CheckHelp)
 static void(__cdecl*original_CheckHelp)() = (void(__cdecl*)())0x004a29aa;
 CARM95_HOOK_FUNCTION(original_CheckHelp, CheckHelp)
 void __cdecl CheckHelp() {
@@ -987,6 +1050,7 @@ void __cdecl CheckHelp() {
 }
 
 function_hook_state_t function_hook_state_CheckLoadSave = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_CheckLoadSave)
 static void(__cdecl*original_CheckLoadSave)() = (void(__cdecl*)())0x004a29b5;
 CARM95_HOOK_FUNCTION(original_CheckLoadSave, CheckLoadSave)
 void __cdecl CheckLoadSave() {
@@ -1006,6 +1070,7 @@ void __cdecl CheckLoadSave() {
 }
 
 function_hook_state_t function_hook_state_CheckToggles = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_CheckToggles)
 static void(__cdecl*original_CheckToggles)(int) = (void(__cdecl*)(int))0x004a198a;
 CARM95_HOOK_FUNCTION(original_CheckToggles, CheckToggles)
 void __cdecl CheckToggles(int pRacing) {
@@ -1026,6 +1091,7 @@ void __cdecl CheckToggles(int pRacing) {
 }
 
 function_hook_state_t function_hook_state_CarWorldOffFallenCheckThingy = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_CarWorldOffFallenCheckThingy)
 static int(__cdecl*original_CarWorldOffFallenCheckThingy)(tCar_spec *, int) = (int(__cdecl*)(tCar_spec *, int))0x004a1b4d;
 CARM95_HOOK_FUNCTION(original_CarWorldOffFallenCheckThingy, CarWorldOffFallenCheckThingy)
 int __cdecl CarWorldOffFallenCheckThingy(tCar_spec *pCar, int pCheck_around) {
@@ -1051,6 +1117,7 @@ int __cdecl CarWorldOffFallenCheckThingy(tCar_spec *pCar, int pCheck_around) {
 }
 
 function_hook_state_t function_hook_state_HasCarFallenOffWorld = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_HasCarFallenOffWorld)
 static int(__cdecl*original_HasCarFallenOffWorld)(tCar_spec *) = (int(__cdecl*)(tCar_spec *))0x004a1b2f;
 CARM95_HOOK_FUNCTION(original_HasCarFallenOffWorld, HasCarFallenOffWorld)
 int __cdecl HasCarFallenOffWorld(tCar_spec *pCar) {
@@ -1067,6 +1134,7 @@ int __cdecl HasCarFallenOffWorld(tCar_spec *pCar) {
 }
 
 function_hook_state_t function_hook_state_CheckForBeingOutOfThisWorld = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_CheckForBeingOutOfThisWorld)
 static void(__cdecl*original_CheckForBeingOutOfThisWorld)() = (void(__cdecl*)())0x004a3328;
 CARM95_HOOK_FUNCTION(original_CheckForBeingOutOfThisWorld, CheckForBeingOutOfThisWorld)
 void __cdecl CheckForBeingOutOfThisWorld() {
@@ -1088,6 +1156,7 @@ void __cdecl CheckForBeingOutOfThisWorld() {
 }
 
 function_hook_state_t function_hook_state_CheckHornLocal = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_CheckHornLocal)
 static void(__cdecl*original_CheckHornLocal)(tCar_spec *) = (void(__cdecl*)(tCar_spec *))0x004a34a8;
 CARM95_HOOK_FUNCTION(original_CheckHornLocal, CheckHornLocal)
 void __cdecl CheckHornLocal(tCar_spec *pCar) {
@@ -1104,6 +1173,7 @@ void __cdecl CheckHornLocal(tCar_spec *pCar) {
 }
 
 function_hook_state_t function_hook_state_CheckHorn3D = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_CheckHorn3D)
 static void(__cdecl*original_CheckHorn3D)(tCar_spec *) = (void(__cdecl*)(tCar_spec *))0x004a3582;
 CARM95_HOOK_FUNCTION(original_CheckHorn3D, CheckHorn3D)
 void __cdecl CheckHorn3D(tCar_spec *pCar) {
@@ -1120,6 +1190,7 @@ void __cdecl CheckHorn3D(tCar_spec *pCar) {
 }
 
 function_hook_state_t function_hook_state_CheckHorns = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_CheckHorns)
 static void(__cdecl*original_CheckHorns)() = (void(__cdecl*)())0x004a343d;
 CARM95_HOOK_FUNCTION(original_CheckHorns, CheckHorns)
 void __cdecl CheckHorns() {
@@ -1137,6 +1208,7 @@ void __cdecl CheckHorns() {
 }
 
 function_hook_state_t function_hook_state_SetRecovery = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_SetRecovery)
 static void(__cdecl*original_SetRecovery)() = (void(__cdecl*)())0x004a1d13;
 CARM95_HOOK_FUNCTION(original_SetRecovery, SetRecovery)
 void __cdecl SetRecovery() {
@@ -1152,6 +1224,7 @@ void __cdecl SetRecovery() {
 }
 
 function_hook_state_t function_hook_state_RecoverCar = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_RecoverCar)
 static void(__cdecl*original_RecoverCar)() = (void(__cdecl*)())0x004a20b0;
 CARM95_HOOK_FUNCTION(original_RecoverCar, RecoverCar)
 void __cdecl RecoverCar() {
@@ -1167,6 +1240,7 @@ void __cdecl RecoverCar() {
 }
 
 function_hook_state_t function_hook_state_CheckMapRenderMove = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_CheckMapRenderMove)
 static void(__cdecl*original_CheckMapRenderMove)() = (void(__cdecl*)())0x004a3694;
 CARM95_HOOK_FUNCTION(original_CheckMapRenderMove, CheckMapRenderMove)
 void __cdecl CheckMapRenderMove() {
@@ -1190,6 +1264,7 @@ void __cdecl CheckMapRenderMove() {
 }
 
 function_hook_state_t function_hook_state_ExplodeCar = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ExplodeCar)
 static void(__cdecl*original_ExplodeCar)(tCar_spec *) = (void(__cdecl*)(tCar_spec *))0x004a20e9;
 CARM95_HOOK_FUNCTION(original_ExplodeCar, ExplodeCar)
 void __cdecl ExplodeCar(tCar_spec *pCar) {
@@ -1210,6 +1285,7 @@ void __cdecl ExplodeCar(tCar_spec *pCar) {
 }
 
 function_hook_state_t function_hook_state_CheckRecoveryOfCars = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_CheckRecoveryOfCars)
 static void(__cdecl*original_CheckRecoveryOfCars)(tU32) = (void(__cdecl*)(tU32))0x004a1ec9;
 CARM95_HOOK_FUNCTION(original_CheckRecoveryOfCars, CheckRecoveryOfCars)
 void __cdecl CheckRecoveryOfCars(tU32 pEndFrameTime) {
@@ -1232,6 +1308,7 @@ void __cdecl CheckRecoveryOfCars(tU32 pEndFrameTime) {
 }
 
 function_hook_state_t function_hook_state_LoseSomePSPowerups = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_LoseSomePSPowerups)
 static void(__cdecl*original_LoseSomePSPowerups)(int) = (void(__cdecl*)(int))0x004a39cc;
 CARM95_HOOK_FUNCTION(original_LoseSomePSPowerups, LoseSomePSPowerups)
 void __cdecl LoseSomePSPowerups(int pNumber) {
@@ -1250,6 +1327,7 @@ void __cdecl LoseSomePSPowerups(int pNumber) {
 }
 
 function_hook_state_t function_hook_state_CheckOtherRacingKeys = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_CheckOtherRacingKeys)
 static void(__cdecl*original_CheckOtherRacingKeys)() = (void(__cdecl*)())0x004a2af6;
 CARM95_HOOK_FUNCTION(original_CheckOtherRacingKeys, CheckOtherRacingKeys)
 void __cdecl CheckOtherRacingKeys() {
@@ -1301,6 +1379,7 @@ void __cdecl CheckOtherRacingKeys() {
 }
 
 function_hook_state_t function_hook_state_CheckRecoverCost = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_CheckRecoverCost)
 static int(__cdecl*original_CheckRecoverCost)() = (int(__cdecl*)())0x004a2208;
 CARM95_HOOK_FUNCTION(original_CheckRecoverCost, CheckRecoverCost)
 int __cdecl CheckRecoverCost() {
@@ -1316,6 +1395,7 @@ int __cdecl CheckRecoverCost() {
 }
 
 function_hook_state_t function_hook_state_SortOutRecover = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_SortOutRecover)
 static void(__cdecl*original_SortOutRecover)(tCar_spec *) = (void(__cdecl*)(tCar_spec *))0x004a3a33;
 CARM95_HOOK_FUNCTION(original_SortOutRecover, SortOutRecover)
 void __cdecl SortOutRecover(tCar_spec *pCar) {
@@ -1338,6 +1418,7 @@ void __cdecl SortOutRecover(tCar_spec *pCar) {
 }
 
 function_hook_state_t function_hook_state_SetFlipUpCar = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_SetFlipUpCar)
 static void(__cdecl*original_SetFlipUpCar)(tCar_spec *) = (void(__cdecl*)(tCar_spec *))0x004a22f4;
 CARM95_HOOK_FUNCTION(original_SetFlipUpCar, SetFlipUpCar)
 void __cdecl SetFlipUpCar(tCar_spec *pCar) {
@@ -1354,6 +1435,7 @@ void __cdecl SetFlipUpCar(tCar_spec *pCar) {
 }
 
 function_hook_state_t function_hook_state_FlipUpCar = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_FlipUpCar)
 static void(__cdecl*original_FlipUpCar)(tCar_spec *) = (void(__cdecl*)(tCar_spec *))0x004a234a;
 CARM95_HOOK_FUNCTION(original_FlipUpCar, FlipUpCar)
 void __cdecl FlipUpCar(tCar_spec *car) {
@@ -1390,6 +1472,7 @@ void __cdecl FlipUpCar(tCar_spec *car) {
 }
 
 function_hook_state_t function_hook_state_GetPowerup = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_GetPowerup)
 static void(__cdecl*original_GetPowerup)(int) = (void(__cdecl*)(int))0x004a291d;
 CARM95_HOOK_FUNCTION(original_GetPowerup, GetPowerup)
 void __cdecl GetPowerup(int pNum) {
@@ -1406,6 +1489,7 @@ void __cdecl GetPowerup(int pNum) {
 }
 
 function_hook_state_t function_hook_state_CheckSystemKeys = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_CheckSystemKeys)
 static void(__cdecl*original_CheckSystemKeys)(int) = (void(__cdecl*)(int))0x004a293f;
 CARM95_HOOK_FUNCTION(original_CheckSystemKeys, CheckSystemKeys)
 void __cdecl CheckSystemKeys(int pRacing) {
@@ -1426,6 +1510,7 @@ void __cdecl CheckSystemKeys(int pRacing) {
 }
 
 function_hook_state_t function_hook_state_CheckKevKeys = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_CheckKevKeys)
 static void(__cdecl*original_CheckKevKeys)() = (void(__cdecl*)())0x004a3b39;
 CARM95_HOOK_FUNCTION(original_CheckKevKeys, CheckKevKeys)
 void __cdecl CheckKevKeys() {
@@ -1447,6 +1532,7 @@ void __cdecl CheckKevKeys() {
 }
 
 function_hook_state_t function_hook_state_BrakeInstantly = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrakeInstantly)
 static void(__cdecl*original_BrakeInstantly)() = (void(__cdecl*)())0x004a4159;
 CARM95_HOOK_FUNCTION(original_BrakeInstantly, BrakeInstantly)
 void __cdecl BrakeInstantly() {
@@ -1464,6 +1550,7 @@ void __cdecl BrakeInstantly() {
 }
 
 function_hook_state_t function_hook_state_PollCarControls = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_PollCarControls)
 static void(__cdecl*original_PollCarControls)(tU32) = (void(__cdecl*)(tU32))0x004a3d80;
 CARM95_HOOK_FUNCTION(original_PollCarControls, PollCarControls)
 void __cdecl PollCarControls(tU32 pTime_difference) {
@@ -1496,6 +1583,7 @@ void __cdecl PollCarControls(tU32 pTime_difference) {
 }
 
 function_hook_state_t function_hook_state_PollCameraControls = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_PollCameraControls)
 static void(__cdecl*original_PollCameraControls)(tU32) = (void(__cdecl*)(tU32))0x004a4214;
 CARM95_HOOK_FUNCTION(original_PollCameraControls, PollCameraControls)
 void __cdecl PollCameraControls(tU32 pTime_difference) {
@@ -1526,6 +1614,7 @@ void __cdecl PollCameraControls(tU32 pTime_difference) {
 }
 
 function_hook_state_t function_hook_state_SetFlag2 = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_SetFlag2)
 static void(__cdecl*original_SetFlag2)(int) = (void(__cdecl*)(int))0x004a45e8;
 CARM95_HOOK_FUNCTION(original_SetFlag2, SetFlag2)
 void __cdecl SetFlag2(int i) {
@@ -1542,6 +1631,7 @@ void __cdecl SetFlag2(int i) {
 }
 
 function_hook_state_t function_hook_state_ToggleFlying = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ToggleFlying)
 static void(__cdecl*original_ToggleFlying)() = (void(__cdecl*)())0x004a460c;
 CARM95_HOOK_FUNCTION(original_ToggleFlying, ToggleFlying)
 void __cdecl ToggleFlying() {
@@ -1557,6 +1647,7 @@ void __cdecl ToggleFlying() {
 }
 
 function_hook_state_t function_hook_state_ToggleInvulnerability = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ToggleInvulnerability)
 static void(__cdecl*original_ToggleInvulnerability)() = (void(__cdecl*)())0x004a46a8;
 CARM95_HOOK_FUNCTION(original_ToggleInvulnerability, ToggleInvulnerability)
 void __cdecl ToggleInvulnerability() {
@@ -1572,6 +1663,7 @@ void __cdecl ToggleInvulnerability() {
 }
 
 function_hook_state_t function_hook_state_MoreTime = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_MoreTime)
 static void(__cdecl*original_MoreTime)() = (void(__cdecl*)())0x004a4721;
 CARM95_HOOK_FUNCTION(original_MoreTime, MoreTime)
 void __cdecl MoreTime() {
@@ -1587,6 +1679,7 @@ void __cdecl MoreTime() {
 }
 
 function_hook_state_t function_hook_state_MuchMoreTime = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_MuchMoreTime)
 static void(__cdecl*original_MuchMoreTime)() = (void(__cdecl*)())0x004a4736;
 CARM95_HOOK_FUNCTION(original_MuchMoreTime, MuchMoreTime)
 void __cdecl MuchMoreTime() {
@@ -1602,6 +1695,7 @@ void __cdecl MuchMoreTime() {
 }
 
 function_hook_state_t function_hook_state_ToggleTimerFreeze = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ToggleTimerFreeze)
 static void(__cdecl*original_ToggleTimerFreeze)() = (void(__cdecl*)())0x004a474e;
 CARM95_HOOK_FUNCTION(original_ToggleTimerFreeze, ToggleTimerFreeze)
 void __cdecl ToggleTimerFreeze() {
@@ -1617,6 +1711,7 @@ void __cdecl ToggleTimerFreeze() {
 }
 
 function_hook_state_t function_hook_state_EarnDosh = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_EarnDosh)
 static void(__cdecl*original_EarnDosh)() = (void(__cdecl*)())0x004a47c7;
 CARM95_HOOK_FUNCTION(original_EarnDosh, EarnDosh)
 void __cdecl EarnDosh() {
@@ -1632,6 +1727,7 @@ void __cdecl EarnDosh() {
 }
 
 function_hook_state_t function_hook_state_LoseDosh = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_LoseDosh)
 static void(__cdecl*original_LoseDosh)() = (void(__cdecl*)())0x004a47df;
 CARM95_HOOK_FUNCTION(original_LoseDosh, LoseDosh)
 void __cdecl LoseDosh() {
@@ -1647,6 +1743,7 @@ void __cdecl LoseDosh() {
 }
 
 function_hook_state_t function_hook_state_ToggleMap = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ToggleMap)
 static void(__cdecl*original_ToggleMap)() = (void(__cdecl*)())0x004a47f7;
 CARM95_HOOK_FUNCTION(original_ToggleMap, ToggleMap)
 void __cdecl ToggleMap() {
@@ -1666,6 +1763,7 @@ void __cdecl ToggleMap() {
 }
 
 function_hook_state_t function_hook_state_HornBlowing = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_HornBlowing)
 static int(__cdecl*original_HornBlowing)() = (int(__cdecl*)())0x004a492c;
 CARM95_HOOK_FUNCTION(original_HornBlowing, HornBlowing)
 int __cdecl HornBlowing() {
@@ -1681,6 +1779,7 @@ int __cdecl HornBlowing() {
 }
 
 function_hook_state_t function_hook_state_ToggleArrow = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ToggleArrow)
 static void(__cdecl*original_ToggleArrow)() = (void(__cdecl*)())0x004a4947;
 CARM95_HOOK_FUNCTION(original_ToggleArrow, ToggleArrow)
 void __cdecl ToggleArrow() {
@@ -1698,6 +1797,7 @@ void __cdecl ToggleArrow() {
 }
 
 function_hook_state_t function_hook_state_GetRecoverVoucherCount = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_GetRecoverVoucherCount)
 static int(__cdecl*original_GetRecoverVoucherCount)() = (int(__cdecl*)())0x004a4a23;
 CARM95_HOOK_FUNCTION(original_GetRecoverVoucherCount, GetRecoverVoucherCount)
 int __cdecl GetRecoverVoucherCount() {
@@ -1713,6 +1813,7 @@ int __cdecl GetRecoverVoucherCount() {
 }
 
 function_hook_state_t function_hook_state_AddVouchers = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_AddVouchers)
 static void(__cdecl*original_AddVouchers)(int) = (void(__cdecl*)(int))0x004a4a38;
 CARM95_HOOK_FUNCTION(original_AddVouchers, AddVouchers)
 void __cdecl AddVouchers(int pCount) {
@@ -1729,6 +1830,7 @@ void __cdecl AddVouchers(int pCount) {
 }
 
 function_hook_state_t function_hook_state_ResetRecoveryVouchers = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ResetRecoveryVouchers)
 static void(__cdecl*original_ResetRecoveryVouchers)() = (void(__cdecl*)())0x004a4a4c;
 CARM95_HOOK_FUNCTION(original_ResetRecoveryVouchers, ResetRecoveryVouchers)
 void __cdecl ResetRecoveryVouchers() {
@@ -1744,6 +1846,7 @@ void __cdecl ResetRecoveryVouchers() {
 }
 
 function_hook_state_t function_hook_state_CycleCarTexturingLevel = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_CycleCarTexturingLevel)
 static void(__cdecl*original_CycleCarTexturingLevel)() = (void(__cdecl*)())0x004a4a61;
 CARM95_HOOK_FUNCTION(original_CycleCarTexturingLevel, CycleCarTexturingLevel)
 void __cdecl CycleCarTexturingLevel() {
@@ -1761,6 +1864,7 @@ void __cdecl CycleCarTexturingLevel() {
 }
 
 function_hook_state_t function_hook_state_CycleWallTexturingLevel = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_CycleWallTexturingLevel)
 static void(__cdecl*original_CycleWallTexturingLevel)() = (void(__cdecl*)())0x004a4b28;
 CARM95_HOOK_FUNCTION(original_CycleWallTexturingLevel, CycleWallTexturingLevel)
 void __cdecl CycleWallTexturingLevel() {
@@ -1778,6 +1882,7 @@ void __cdecl CycleWallTexturingLevel() {
 }
 
 function_hook_state_t function_hook_state_CycleRoadTexturingLevel = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_CycleRoadTexturingLevel)
 static void(__cdecl*original_CycleRoadTexturingLevel)() = (void(__cdecl*)())0x004a4bfb;
 CARM95_HOOK_FUNCTION(original_CycleRoadTexturingLevel, CycleRoadTexturingLevel)
 void __cdecl CycleRoadTexturingLevel() {
@@ -1795,6 +1900,7 @@ void __cdecl CycleRoadTexturingLevel() {
 }
 
 function_hook_state_t function_hook_state_CycleYonFactor = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_CycleYonFactor)
 static void(__cdecl*original_CycleYonFactor)() = (void(__cdecl*)())0x004a4ca1;
 CARM95_HOOK_FUNCTION(original_CycleYonFactor, CycleYonFactor)
 void __cdecl CycleYonFactor() {
@@ -1814,6 +1920,7 @@ void __cdecl CycleYonFactor() {
 }
 
 function_hook_state_t function_hook_state_SetSoundDetailLevel = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_SetSoundDetailLevel)
 static void(__cdecl*original_SetSoundDetailLevel)(int) = (void(__cdecl*)(int))0x004a4da4;
 CARM95_HOOK_FUNCTION(original_SetSoundDetailLevel, SetSoundDetailLevel)
 void __cdecl SetSoundDetailLevel(int pLevel) {
@@ -1830,6 +1937,7 @@ void __cdecl SetSoundDetailLevel(int pLevel) {
 }
 
 function_hook_state_t function_hook_state_ReallySetSoundDetailLevel = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ReallySetSoundDetailLevel)
 static void(__cdecl*original_ReallySetSoundDetailLevel)(int) = (void(__cdecl*)(int))0x004a4db7;
 CARM95_HOOK_FUNCTION(original_ReallySetSoundDetailLevel, ReallySetSoundDetailLevel)
 void __cdecl ReallySetSoundDetailLevel(int pLevel) {
@@ -1846,6 +1954,7 @@ void __cdecl ReallySetSoundDetailLevel(int pLevel) {
 }
 
 function_hook_state_t function_hook_state_GetSoundDetailLevel = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_GetSoundDetailLevel)
 static int(__cdecl*original_GetSoundDetailLevel)() = (int(__cdecl*)())0x004a4dde;
 CARM95_HOOK_FUNCTION(original_GetSoundDetailLevel, GetSoundDetailLevel)
 int __cdecl GetSoundDetailLevel() {
@@ -1861,6 +1970,7 @@ int __cdecl GetSoundDetailLevel() {
 }
 
 function_hook_state_t function_hook_state_CycleSoundDetailLevel = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_CycleSoundDetailLevel)
 static void(__cdecl*original_CycleSoundDetailLevel)() = (void(__cdecl*)())0x004a4df3;
 CARM95_HOOK_FUNCTION(original_CycleSoundDetailLevel, CycleSoundDetailLevel)
 void __cdecl CycleSoundDetailLevel() {
@@ -1878,6 +1988,7 @@ void __cdecl CycleSoundDetailLevel() {
 }
 
 function_hook_state_t function_hook_state_CycleCarSimplificationLevel = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_CycleCarSimplificationLevel)
 static void(__cdecl*original_CycleCarSimplificationLevel)() = (void(__cdecl*)())0x004a4ec8;
 CARM95_HOOK_FUNCTION(original_CycleCarSimplificationLevel, CycleCarSimplificationLevel)
 void __cdecl CycleCarSimplificationLevel() {
@@ -1897,6 +2008,7 @@ void __cdecl CycleCarSimplificationLevel() {
 }
 
 function_hook_state_t function_hook_state_ToggleAccessoryRendering = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ToggleAccessoryRendering)
 static void(__cdecl*original_ToggleAccessoryRendering)() = (void(__cdecl*)())0x004a4f58;
 CARM95_HOOK_FUNCTION(original_ToggleAccessoryRendering, ToggleAccessoryRendering)
 void __cdecl ToggleAccessoryRendering() {
@@ -1914,6 +2026,7 @@ void __cdecl ToggleAccessoryRendering() {
 }
 
 function_hook_state_t function_hook_state_ToggleSmoke = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ToggleSmoke)
 static void(__cdecl*original_ToggleSmoke)() = (void(__cdecl*)())0x004a500d;
 CARM95_HOOK_FUNCTION(original_ToggleSmoke, ToggleSmoke)
 void __cdecl ToggleSmoke() {
@@ -1931,6 +2044,7 @@ void __cdecl ToggleSmoke() {
 }
 
 function_hook_state_t function_hook_state_DrawSomeText2 = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DrawSomeText2)
 void DrawSomeText2(tDR_font *pFont) {
     int y;
     int i;
@@ -1951,6 +2065,7 @@ void DrawSomeText2(tDR_font *pFont) {
 }
 
 function_hook_state_t function_hook_state_DrawSomeText = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DrawSomeText)
 static void(__cdecl*original_DrawSomeText)() = (void(__cdecl*)())0x00485d80;
 CARM95_HOOK_FUNCTION(original_DrawSomeText, DrawSomeText)
 void __cdecl DrawSomeText() {
@@ -1966,6 +2081,7 @@ void __cdecl DrawSomeText() {
 }
 
 function_hook_state_t function_hook_state_SaySorryYouLittleBastard = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_SaySorryYouLittleBastard)
 void SaySorryYouLittleBastard() {
     LOG_TRACE("()");
 
@@ -1979,6 +2095,7 @@ void SaySorryYouLittleBastard() {
 }
 
 function_hook_state_t function_hook_state_UserSendMessage = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_UserSendMessage)
 static void(__cdecl*original_UserSendMessage)() = (void(__cdecl*)())0x004a509e;
 CARM95_HOOK_FUNCTION(original_UserSendMessage, UserSendMessage)
 void __cdecl UserSendMessage() {
@@ -1994,6 +2111,7 @@ void __cdecl UserSendMessage() {
 }
 
 function_hook_state_t function_hook_state_EnterUserMessage = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_EnterUserMessage)
 static void(__cdecl*original_EnterUserMessage)() = (void(__cdecl*)())0x004a50cf;
 CARM95_HOOK_FUNCTION(original_EnterUserMessage, EnterUserMessage)
 void __cdecl EnterUserMessage() {
@@ -2025,6 +2143,7 @@ void __cdecl EnterUserMessage() {
 }
 
 function_hook_state_t function_hook_state_DisplayUserMessage = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DisplayUserMessage)
 static void(__cdecl*original_DisplayUserMessage)() = (void(__cdecl*)())0x004a54a9;
 CARM95_HOOK_FUNCTION(original_DisplayUserMessage, DisplayUserMessage)
 void __cdecl DisplayUserMessage() {
@@ -2046,6 +2165,7 @@ void __cdecl DisplayUserMessage() {
 }
 
 function_hook_state_t function_hook_state_InitAbuseomatic = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_InitAbuseomatic)
 static void(__cdecl*original_InitAbuseomatic)() = (void(__cdecl*)())0x004a567a;
 CARM95_HOOK_FUNCTION(original_InitAbuseomatic, InitAbuseomatic)
 void __cdecl InitAbuseomatic() {
@@ -2071,6 +2191,7 @@ void __cdecl InitAbuseomatic() {
 }
 
 function_hook_state_t function_hook_state_DisposeAbuseomatic = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DisposeAbuseomatic)
 static void(__cdecl*original_DisposeAbuseomatic)() = (void(__cdecl*)())0x004a5868;
 CARM95_HOOK_FUNCTION(original_DisposeAbuseomatic, DisposeAbuseomatic)
 void __cdecl DisposeAbuseomatic() {

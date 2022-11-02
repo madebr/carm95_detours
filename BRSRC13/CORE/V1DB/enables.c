@@ -9,6 +9,7 @@
 #include <assert.h>
 
 function_hook_state_t function_hook_state_actorEnable = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_actorEnable)
 void actorEnable(br_v1db_enable *e, br_actor *a) {
     int i;
     LOG_TRACE("(%p, %p)", e, a);
@@ -26,6 +27,7 @@ void actorEnable(br_v1db_enable *e, br_actor *a) {
 }
 
 function_hook_state_t function_hook_state_actorDisable = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_actorDisable)
 void actorDisable(br_v1db_enable *e, br_actor *a) {
     int i;
     LOG_TRACE("(%p, %p)", e, a);
@@ -43,6 +45,7 @@ void actorDisable(br_v1db_enable *e, br_actor *a) {
 }
 
 function_hook_state_t function_hook_state_BrLightEnable = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrLightEnable)
 static void(__cdecl*original_BrLightEnable)(br_actor *) = (void(__cdecl*)(br_actor *))0x004dd030;
 CARM95_HOOK_FUNCTION(original_BrLightEnable, BrLightEnable)
 void __cdecl BrLightEnable(br_actor *l) {
@@ -59,6 +62,7 @@ void __cdecl BrLightEnable(br_actor *l) {
 }
 
 function_hook_state_t function_hook_state_BrLightDisable = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrLightDisable)
 static void(__cdecl*original_BrLightDisable)(br_actor *) = (void(__cdecl*)(br_actor *))0x004dd0e0;
 CARM95_HOOK_FUNCTION(original_BrLightDisable, BrLightDisable)
 void __cdecl BrLightDisable(br_actor *l) {
@@ -75,6 +79,7 @@ void __cdecl BrLightDisable(br_actor *l) {
 }
 
 function_hook_state_t function_hook_state_BrClipPlaneEnable = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrClipPlaneEnable)
 static void(__cdecl*original_BrClipPlaneEnable)(br_actor *) = (void(__cdecl*)(br_actor *))0x004dd130;
 CARM95_HOOK_FUNCTION(original_BrClipPlaneEnable, BrClipPlaneEnable)
 void __cdecl BrClipPlaneEnable(br_actor *c) {
@@ -91,6 +96,7 @@ void __cdecl BrClipPlaneEnable(br_actor *c) {
 }
 
 function_hook_state_t function_hook_state_BrClipPlaneDisable = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrClipPlaneDisable)
 static void(__cdecl*original_BrClipPlaneDisable)(br_actor *) = (void(__cdecl*)(br_actor *))0x004dd1e0;
 CARM95_HOOK_FUNCTION(original_BrClipPlaneDisable, BrClipPlaneDisable)
 void __cdecl BrClipPlaneDisable(br_actor *c) {
@@ -107,6 +113,7 @@ void __cdecl BrClipPlaneDisable(br_actor *c) {
 }
 
 function_hook_state_t function_hook_state_BrHorizonPlaneEnable = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrHorizonPlaneEnable)
 static void(__cdecl*original_BrHorizonPlaneEnable)(br_actor *) = (void(__cdecl*)(br_actor *))0x004dd230;
 CARM95_HOOK_FUNCTION(original_BrHorizonPlaneEnable, BrHorizonPlaneEnable)
 void __cdecl BrHorizonPlaneEnable(br_actor *h) {
@@ -123,6 +130,7 @@ void __cdecl BrHorizonPlaneEnable(br_actor *h) {
 }
 
 function_hook_state_t function_hook_state_BrHorizonPlaneDisable = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrHorizonPlaneDisable)
 static void(__cdecl*original_BrHorizonPlaneDisable)(br_actor *) = (void(__cdecl*)(br_actor *))0x004dd2e0;
 CARM95_HOOK_FUNCTION(original_BrHorizonPlaneDisable, BrHorizonPlaneDisable)
 void __cdecl BrHorizonPlaneDisable(br_actor *h) {
@@ -139,6 +147,7 @@ void __cdecl BrHorizonPlaneDisable(br_actor *h) {
 }
 
 function_hook_state_t function_hook_state_BrEnvironmentSet = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrEnvironmentSet)
 static br_actor *(__cdecl*original_BrEnvironmentSet)(br_actor *) = (br_actor *(__cdecl*)(br_actor *))0x004dd330;
 CARM95_HOOK_FUNCTION(original_BrEnvironmentSet, BrEnvironmentSet)
 br_actor* __cdecl BrEnvironmentSet(br_actor *a) {
@@ -157,6 +166,7 @@ br_actor* __cdecl BrEnvironmentSet(br_actor *a) {
 }
 
 function_hook_state_t function_hook_state_setupView = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_setupView)
 br_boolean setupView(br_matrix34 *view_to_this, br_matrix34 *this_to_view, br_matrix34 *world_to_view, br_int_32 w2vt, br_actor *world, br_actor *a) {
     br_matrix34 this_to_world;
     br_int_32 root_t;
@@ -182,6 +192,7 @@ br_boolean setupView(br_matrix34 *view_to_this, br_matrix34 *this_to_view, br_ma
 }
 
 function_hook_state_t function_hook_state_BrSetupLights = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrSetupLights)
 static void(__stdcall*original_BrSetupLights)(br_actor *, br_matrix34 *, br_int_32) = (void(__stdcall*)(br_actor *, br_matrix34 *, br_int_32))0x004dd340;
 CARM95_HOOK_FUNCTION(original_BrSetupLights, BrSetupLights)
 void __stdcall BrSetupLights(br_actor *world, br_matrix34 *world_to_view, br_int_32 w2vt) {
@@ -218,6 +229,7 @@ void __stdcall BrSetupLights(br_actor *world, br_matrix34 *world_to_view, br_int
 }
 
 function_hook_state_t function_hook_state_BrSetupClipPlanes = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrSetupClipPlanes)
 static void(__stdcall*original_BrSetupClipPlanes)(br_actor *, br_matrix34 *, br_int_32, br_matrix4 *) = (void(__stdcall*)(br_actor *, br_matrix34 *, br_int_32, br_matrix4 *))0x004dd640;
 CARM95_HOOK_FUNCTION(original_BrSetupClipPlanes, BrSetupClipPlanes)
 void __stdcall BrSetupClipPlanes(br_actor *world, br_matrix34 *world_to_view, br_int_32 w2vt, br_matrix4 *view_to_screen) {
@@ -257,6 +269,7 @@ void __stdcall BrSetupClipPlanes(br_actor *world, br_matrix34 *world_to_view, br
 }
 
 function_hook_state_t function_hook_state_BrSetupEnvironment = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrSetupEnvironment)
 static void(__stdcall*original_BrSetupEnvironment)(br_actor *, br_matrix34 *, br_int_32) = (void(__stdcall*)(br_actor *, br_matrix34 *, br_int_32))0x004dd820;
 CARM95_HOOK_FUNCTION(original_BrSetupEnvironment, BrSetupEnvironment)
 void __stdcall BrSetupEnvironment(br_actor *world, br_matrix34 *world_to_view, br_int_32 w2vt) {
@@ -281,6 +294,7 @@ void __stdcall BrSetupEnvironment(br_actor *world, br_matrix34 *world_to_view, b
 }
 
 function_hook_state_t function_hook_state_BrSetupHorizons = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrSetupHorizons)
 void(__stdcall*BrSetupHorizons)(br_actor *, br_matrix34 *, br_int_32) = (void(__stdcall*)(br_actor *, br_matrix34 *, br_int_32))0x004dd930;
 void BrSetupHorizons_do_not_use(br_actor *world, br_matrix34 *world_to_view, br_int_32 w2vt) {
     LOG_TRACE("(%p, %p, %d)", world, world_to_view, w2vt);
@@ -298,6 +312,7 @@ void BrSetupHorizons_do_not_use(br_actor *world, br_matrix34 *world_to_view, br_
 }
 
 function_hook_state_t function_hook_state_BrActorEnableCheck = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrActorEnableCheck)
 static void(__stdcall*original_BrActorEnableCheck)(br_actor *) = (void(__stdcall*)(br_actor *))0x004dd940;
 CARM95_HOOK_FUNCTION(original_BrActorEnableCheck, BrActorEnableCheck)
 void __stdcall BrActorEnableCheck(br_actor *a) {

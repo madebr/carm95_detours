@@ -9,6 +9,7 @@
 #include <assert.h>
 
 function_hook_state_t function_hook_state_BrModelApplyMap = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrModelApplyMap)
 static void(__cdecl*original_BrModelApplyMap)(br_model *, int, br_matrix34 *) = (void(__cdecl*)(br_model *, int, br_matrix34 *))0x004d6320;
 CARM95_HOOK_FUNCTION(original_BrModelApplyMap, BrModelApplyMap)
 void __cdecl BrModelApplyMap(br_model *model, int map_type, br_matrix34 *xform) {
@@ -37,6 +38,7 @@ void __cdecl BrModelApplyMap(br_model *model, int map_type, br_matrix34 *xform) 
 }
 
 function_hook_state_t function_hook_state_BrModelFitMap = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrModelFitMap)
 static br_matrix34 *(__cdecl*original_BrModelFitMap)(br_model *, int, int, br_matrix34 *) = (br_matrix34 *(__cdecl*)(br_model *, int, int, br_matrix34 *))0x004d6500;
 CARM95_HOOK_FUNCTION(original_BrModelFitMap, BrModelFitMap)
 br_matrix34* __cdecl BrModelFitMap(br_model *model, int axis_0, int axis_1, br_matrix34 *transform) {
@@ -66,6 +68,7 @@ br_matrix34* __cdecl BrModelFitMap(br_model *model, int axis_0, int axis_1, br_m
 }
 
 function_hook_state_t function_hook_state_BrModelFree = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrModelFree)
 static void(__cdecl*original_BrModelFree)(br_model *) = (void(__cdecl*)(br_model *))0x004d6680;
 CARM95_HOOK_FUNCTION(original_BrModelFree, BrModelFree)
 void __cdecl BrModelFree(br_model *m) {
@@ -82,6 +85,7 @@ void __cdecl BrModelFree(br_model *m) {
 }
 
 function_hook_state_t function_hook_state_BrModelAllocate = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrModelAllocate)
 static br_model *(__cdecl*original_BrModelAllocate)(char *, int, int) = (br_model *(__cdecl*)(char *, int, int))0x004d6690;
 CARM95_HOOK_FUNCTION(original_BrModelAllocate, BrModelAllocate)
 br_model* __cdecl BrModelAllocate(char *name, int nvertices, int nfaces) {
@@ -102,6 +106,7 @@ br_model* __cdecl BrModelAllocate(char *name, int nvertices, int nfaces) {
 }
 
 function_hook_state_t function_hook_state_BrPrimitiveListAllocate = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrPrimitiveListAllocate)
 br_primitive_list* BrPrimitiveListAllocate(br_uint_32 prim_type, br_uint_16 num_prims) {
     LOG_TRACE("(%u, %u)", prim_type, num_prims);
 
@@ -117,6 +122,7 @@ br_primitive_list* BrPrimitiveListAllocate(br_uint_32 prim_type, br_uint_16 num_
 }
 
 function_hook_state_t function_hook_state_BrModelAddPrimitiveList = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrModelAddPrimitiveList)
 br_uint_32 BrModelAddPrimitiveList(br_model *model, br_primitive_list *primitive_list) {
     LOG_TRACE("(%p, %p)", model, primitive_list);
 

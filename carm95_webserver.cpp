@@ -1,6 +1,5 @@
 
 #include "carm95_webserver.h"
-#include "carm95_webserver_symbols.h"
 
 #include <stdio.h>
 
@@ -9,10 +8,21 @@
 #include <ulfius.h>
 
 #include <string.h>
+#include <vector>
+
+extern "C" {
 
 #define ARRAY_SIZE(A) (sizeof(A)/sizeof(*(A)))
 
+typedef struct webserver_hook_element {
+    const char *name;
+    function_hook_state_t *state;
+    const char *file;
+    int line;
+} webserver_hook_element;
+
 static struct _u_instance ulfius_instance;
+static std::vector<webserver_hook_element> hook_elements;
 
 static json_t* wrap_result_json(int code, const char *message, json_t *obj) {
     json_t *result;
@@ -35,9 +45,10 @@ static json_t* get_symbol_as_json(int index) {
     json_t *symbol_obj;
 
     symbol_obj = json_object();
-    json_object_set(symbol_obj, "name", json_string(symbols[index].name));
-    json_object_set(symbol_obj, "location", json_string(symbols[index].location));
-    json_object_set(symbol_obj, "state", json_integer(*symbols[index].hook_state));
+    json_object_set(symbol_obj, "name", json_string(hook_elements[index].name));
+    json_object_set(symbol_obj, "file", json_string(hook_elements[index].file));
+    json_object_set(symbol_obj, "line", json_integer(hook_elements[index].line));
+    json_object_set(symbol_obj, "state", json_integer(*hook_elements[index].state));
 
     return symbol_obj;
 }
@@ -72,20 +83,19 @@ static int callback_get_info(const struct _u_request *request, struct _u_respons
 
 static int callback_get_hooks(const struct _u_request *request, struct _u_response *response, void *user_data) {
     json_t *data;
-    int i;
 
     (void)request;
     (void)user_data;
 
     data = json_array();
-    for (i = 0; i < ARRAY_SIZE(symbols); i++) {
+    for (size_t i = 0; i < hook_elements.size(); i++) {
         json_array_append(data, get_symbol_as_json(i));
     }
     ulfius_set_json_body_response(response, 200, wrap_result_success_json(data));
     return U_CALLBACK_COMPLETE;
 }
 
-static int string_to_long(const char *s, int *result) {
+static int string_to_long(const char *s, long *result) {
     char *endptr;
 
     if (s == NULL || *s == '\0') {
@@ -99,7 +109,7 @@ static int string_to_long(const char *s, int *result) {
 }
 
 static int callback_get_hook_id(const struct _u_request *request, struct _u_response *response, void *user_data) {
-    int hook_i;
+    long hook_i;
 
     (void)user_data;
 
@@ -108,7 +118,7 @@ static int callback_get_hook_id(const struct _u_request *request, struct _u_resp
         return U_CALLBACK_COMPLETE;
     }
 
-    if (hook_i < 0 || hook_i >= ARRAY_SIZE(symbols)) {
+    if (hook_i < 0 || (size_t)hook_i >= hook_elements.size()) {
         ulfius_set_json_body_response(response, 400, wrap_result_json(1, "Id out of range", NULL));
         return U_CALLBACK_COMPLETE;
     }
@@ -118,7 +128,7 @@ static int callback_get_hook_id(const struct _u_request *request, struct _u_resp
 }
 
 static int callback_post_hook_id(const struct _u_request *request, struct _u_response *response, void *user_data) {
-    int hook_i;
+    long hook_i;
     int new_state;
     json_t *json_req_root;
     json_t *json_req_state;
@@ -131,7 +141,7 @@ static int callback_post_hook_id(const struct _u_request *request, struct _u_res
         return U_CALLBACK_COMPLETE;
     }
 
-    if (hook_i < 0 || hook_i >= ARRAY_SIZE(symbols)) {
+    if (hook_i < 0 || (size_t)hook_i >= hook_elements.size()) {
         ulfius_set_json_body_response(response, 400, wrap_result_json(1, "Out of range", NULL));
         return U_CALLBACK_COMPLETE;
     }
@@ -167,26 +177,28 @@ static int callback_post_hook_id(const struct _u_request *request, struct _u_res
     }
 
     if (new_state == HOOK_UNAVAILABLE) {
-        if (*symbols[hook_i].hook_state != HOOK_UNAVAILABLE) {
+        if (*hook_elements[hook_i].state != HOOK_UNAVAILABLE) {
             ulfius_set_json_body_response(response, 400, wrap_result_json(1, "Can't mark hook as unavailable", NULL));
             return U_CALLBACK_COMPLETE;
         }
     }
 
-    if (*symbols[hook_i].hook_state == HOOK_UNAVAILABLE) {
+    if (*hook_elements[hook_i].state == HOOK_UNAVAILABLE) {
         if (new_state != HOOK_UNAVAILABLE) {
             ulfius_set_json_body_response(response, 400, wrap_result_json(1, "Can't mark unavailable hook as either enabled/disabled", NULL));
             return U_CALLBACK_COMPLETE;
         }
     }
 
-    *symbols[hook_i].hook_state = new_state;
+    *hook_elements[hook_i].state = (function_hook_state_t)new_state;
 
     ulfius_set_json_body_response(response, 200, wrap_result_success_json(json_null()));
     return U_CALLBACK_COMPLETE;
 }
 
 int start_hook_webserver(int port) {
+    fprintf(stderr, "webserver knows about %d states.\n", (int)hook_elements.size());
+
     if (ulfius_global_init() != U_OK) {
         fprintf(stderr, "ulfius_global_init failed.\n");
         return 1;
@@ -230,14 +242,23 @@ void stop_hook_webserver() {
     ulfius_global_close();
 }
 
+void webserver_register_variable(const char *name, function_hook_state_t *state, const char *file, int line) {
+    hook_elements.push_back({name, state, file, line});
+}
+
 #else
 
 int start_hook_webserver(int port) {
     printf("Hook webserver startup skipped => server not built-in\n"):
-    return 1;
+        return 1;
 }
 
 void stop_hook_webserver() {
 }
 
+void webserver_register_variable(const char *name, function_hook_state_t *state, const char *file, int line) {
+}
+
 #endif
+
+}

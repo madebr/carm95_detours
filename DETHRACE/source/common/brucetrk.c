@@ -11,6 +11,7 @@ br_actor ** hookvar_gMr_blendy  = (void*)0x0053e488;
 int * hookvar_gDefault_blend_pc  = (void*)0x00550244;
 
 function_hook_state_t function_hook_state_AllocateActorMatrix = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_AllocateActorMatrix)
 static void(__cdecl*original_AllocateActorMatrix)(tTrack_spec *, br_actor ****) = (void(__cdecl*)(tTrack_spec *, br_actor ****))0x004a8a26;
 CARM95_HOOK_FUNCTION(original_AllocateActorMatrix, AllocateActorMatrix)
 void __cdecl AllocateActorMatrix(tTrack_spec *pTrack_spec, br_actor ****pDst) {
@@ -30,6 +31,7 @@ void __cdecl AllocateActorMatrix(tTrack_spec *pTrack_spec, br_actor ****pDst) {
 }
 
 function_hook_state_t function_hook_state_DisposeActorMatrix = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DisposeActorMatrix)
 static void(__cdecl*original_DisposeActorMatrix)(tTrack_spec *, br_actor ****, int) = (void(__cdecl*)(tTrack_spec *, br_actor ****, int))0x004a8610;
 CARM95_HOOK_FUNCTION(original_DisposeActorMatrix, DisposeActorMatrix)
 void __cdecl DisposeActorMatrix(tTrack_spec *pTrack_spec, br_actor ****pVictim, int pRemove_act_mod) {
@@ -52,6 +54,7 @@ void __cdecl DisposeActorMatrix(tTrack_spec *pTrack_spec, br_actor ****pVictim, 
 }
 
 function_hook_state_t function_hook_state_DisposeColumns = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DisposeColumns)
 static void(__cdecl*original_DisposeColumns)(tTrack_spec *) = (void(__cdecl*)(tTrack_spec *))0x004a8590;
 CARM95_HOOK_FUNCTION(original_DisposeColumns, DisposeColumns)
 void __cdecl DisposeColumns(tTrack_spec *pTrack_spec) {
@@ -68,6 +71,7 @@ void __cdecl DisposeColumns(tTrack_spec *pTrack_spec) {
 }
 
 function_hook_state_t function_hook_state_XZToColumnXZ = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_XZToColumnXZ)
 static void(__cdecl*original_XZToColumnXZ)(tU8 *, tU8 *, br_scalar, br_scalar, tTrack_spec *) = (void(__cdecl*)(tU8 *, tU8 *, br_scalar, br_scalar, tTrack_spec *))0x004a874b;
 CARM95_HOOK_FUNCTION(original_XZToColumnXZ, XZToColumnXZ)
 void __cdecl XZToColumnXZ(tU8 *pColumn_x, tU8 *pColumn_z, br_scalar pX, br_scalar pZ, tTrack_spec *pTrack_spec) {
@@ -92,6 +96,7 @@ void __cdecl XZToColumnXZ(tU8 *pColumn_x, tU8 *pColumn_z, br_scalar pX, br_scala
 }
 
 function_hook_state_t function_hook_state_StripBlendedFaces = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_StripBlendedFaces)
 static void(__cdecl*original_StripBlendedFaces)(br_actor *, br_model *) = (void(__cdecl*)(br_actor *, br_model *))0x004a8d47;
 CARM95_HOOK_FUNCTION(original_StripBlendedFaces, StripBlendedFaces)
 void __cdecl StripBlendedFaces(br_actor *pActor, br_model *pModel) {
@@ -119,6 +124,7 @@ void __cdecl StripBlendedFaces(br_actor *pActor, br_model *pModel) {
 }
 
 function_hook_state_t function_hook_state_FindNonCarsCB = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_FindNonCarsCB)
 static br_uint_32(__cdecl*original_FindNonCarsCB)(br_actor *, tTrack_spec *) = (br_uint_32(__cdecl*)(br_actor *, tTrack_spec *))0x004a90ff;
 CARM95_HOOK_FUNCTION(original_FindNonCarsCB, FindNonCarsCB)
 br_uint_32 __cdecl FindNonCarsCB(br_actor *pActor, tTrack_spec *pTrack_spec) {
@@ -144,6 +150,7 @@ br_uint_32 __cdecl FindNonCarsCB(br_actor *pActor, tTrack_spec *pTrack_spec) {
 }
 
 function_hook_state_t function_hook_state_ProcessModelsCB = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ProcessModelsCB)
 static br_uint_32(__cdecl*original_ProcessModelsCB)(br_actor *, tTrack_spec *) = (br_uint_32(__cdecl*)(br_actor *, tTrack_spec *))0x004a8afc;
 CARM95_HOOK_FUNCTION(original_ProcessModelsCB, ProcessModelsCB)
 br_uint_32 __cdecl ProcessModelsCB(br_actor *pActor, tTrack_spec *pTrack_spec) {
@@ -167,6 +174,7 @@ br_uint_32 __cdecl ProcessModelsCB(br_actor *pActor, tTrack_spec *pTrack_spec) {
 }
 
 function_hook_state_t function_hook_state_ProcessModels = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ProcessModels)
 static void(__cdecl*original_ProcessModels)(tTrack_spec *) = (void(__cdecl*)(tTrack_spec *))0x004a8ad9;
 CARM95_HOOK_FUNCTION(original_ProcessModels, ProcessModels)
 void __cdecl ProcessModels(tTrack_spec *pTrack_spec) {
@@ -183,6 +191,7 @@ void __cdecl ProcessModels(tTrack_spec *pTrack_spec) {
 }
 
 function_hook_state_t function_hook_state_ExtractColumns = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ExtractColumns)
 static void(__cdecl*original_ExtractColumns)(tTrack_spec *) = (void(__cdecl*)(tTrack_spec *))0x004a884d;
 CARM95_HOOK_FUNCTION(original_ExtractColumns, ExtractColumns)
 void __cdecl ExtractColumns(tTrack_spec *pTrack_spec) {
@@ -213,6 +222,7 @@ void __cdecl ExtractColumns(tTrack_spec *pTrack_spec) {
 }
 
 function_hook_state_t function_hook_state_LollipopizeActor4 = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_LollipopizeActor4)
 void LollipopizeActor4(br_actor *pActor, br_matrix34 *pRef_to_world, br_actor *pCamera) {
     LOG_TRACE("(%p, %p, %p)", pActor, pRef_to_world, pCamera);
 
@@ -229,6 +239,7 @@ void LollipopizeActor4(br_actor *pActor, br_matrix34 *pRef_to_world, br_actor *p
 }
 
 function_hook_state_t function_hook_state_LollipopizeChildren = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_LollipopizeChildren)
 br_uint_32 LollipopizeChildren(br_actor *pActor, void *pArg) {
     tMatrix_and_actor *maa;
     LOG_TRACE("(%p, %p)", pActor, pArg);
@@ -246,6 +257,7 @@ br_uint_32 LollipopizeChildren(br_actor *pActor, void *pArg) {
 }
 
 function_hook_state_t function_hook_state_DrawColumns = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DrawColumns)
 static void(__cdecl*original_DrawColumns)(int, tTrack_spec *, int, int, int, int, br_matrix34 *) = (void(__cdecl*)(int, tTrack_spec *, int, int, int, int, br_matrix34 *))0x004a9a01;
 CARM95_HOOK_FUNCTION(original_DrawColumns, DrawColumns)
 void __cdecl DrawColumns(int pDraw_blends, tTrack_spec *pTrack_spec, int pMin_x, int pMax_x, int pMin_z, int pMax_z, br_matrix34 *pCamera_to_world) {
@@ -280,6 +292,7 @@ void __cdecl DrawColumns(int pDraw_blends, tTrack_spec *pTrack_spec, int pMin_x,
 }
 
 function_hook_state_t function_hook_state_RenderTrack = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_RenderTrack)
 static void(__cdecl*original_RenderTrack)(br_actor *, tTrack_spec *, br_actor *, br_matrix34 *, int) = (void(__cdecl*)(br_actor *, tTrack_spec *, br_actor *, br_matrix34 *, int))0x004a944a;
 CARM95_HOOK_FUNCTION(original_RenderTrack, RenderTrack)
 void __cdecl RenderTrack(br_actor *pWorld, tTrack_spec *pTrack_spec, br_actor *pCamera, br_matrix34 *pCamera_to_world, int pRender_blends) {
@@ -322,6 +335,7 @@ void __cdecl RenderTrack(br_actor *pWorld, tTrack_spec *pTrack_spec, br_actor *p
 }
 
 function_hook_state_t function_hook_state_GetYonFactor = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_GetYonFactor)
 static br_scalar(__cdecl*original_GetYonFactor)() = (br_scalar(__cdecl*)())0x004a9e6e;
 CARM95_HOOK_FUNCTION(original_GetYonFactor, GetYonFactor)
 br_scalar __cdecl GetYonFactor() {
@@ -337,6 +351,7 @@ br_scalar __cdecl GetYonFactor() {
 }
 
 function_hook_state_t function_hook_state_SetYonFactor = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_SetYonFactor)
 static void(__cdecl*original_SetYonFactor)(br_scalar) = (void(__cdecl*)(br_scalar))0x004a9e84;
 CARM95_HOOK_FUNCTION(original_SetYonFactor, SetYonFactor)
 void __cdecl SetYonFactor(br_scalar pNew) {

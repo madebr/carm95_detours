@@ -9,6 +9,7 @@
 #include <assert.h>
 
 function_hook_state_t function_hook_state_SetupDefaultMaterial = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_SetupDefaultMaterial)
 static br_material *(__cdecl*original_SetupDefaultMaterial)() = (br_material *(__cdecl*)())0x004de450;
 CARM95_HOOK_FUNCTION(original_SetupDefaultMaterial, SetupDefaultMaterial)
 br_material* __cdecl SetupDefaultMaterial() {

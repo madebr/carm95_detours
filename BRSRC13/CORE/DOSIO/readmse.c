@@ -22,6 +22,7 @@ host_regs * hookvar_regs__readmse ;
 #endif
 
 function_hook_state_t function_hook_state_DOSMouseBegin = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DOSMouseBegin)
 br_error DOSMouseBegin() {
     host_info hi;
     LOG_TRACE("()");
@@ -37,6 +38,7 @@ br_error DOSMouseBegin() {
 }
 
 function_hook_state_t function_hook_state_DOSMouseEnd = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DOSMouseEnd)
 void DOSMouseEnd() {
     LOG_TRACE("()");
 
@@ -50,6 +52,7 @@ void DOSMouseEnd() {
 }
 
 function_hook_state_t function_hook_state_DOSMouseRead = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DOSMouseRead)
 br_error DOSMouseRead(br_int_32 *mouse_x, br_int_32 *mouse_y, br_uint_32 *mouse_buttons) {
     br_int_16 mx;
     br_int_16 my;

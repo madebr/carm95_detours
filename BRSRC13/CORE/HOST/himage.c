@@ -9,6 +9,7 @@
 #include <assert.h>
 
 function_hook_state_t function_hook_state_HostImageLoad = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_HostImageLoad)
 static void *(__cdecl*original_HostImageLoad)(char *) = (void *(__cdecl*)(char *))0x005012d0;
 CARM95_HOOK_FUNCTION(original_HostImageLoad, HostImageLoad)
 void* __cdecl HostImageLoad(char *name) {
@@ -25,6 +26,7 @@ void* __cdecl HostImageLoad(char *name) {
 }
 
 function_hook_state_t function_hook_state_HostImageUnload = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_HostImageUnload)
 void(__cdecl*HostImageUnload)(void *) = (void(__cdecl*)(void *))0x005012e0;
 void HostImageUnload_do_not_use(void *image) {
     LOG_TRACE("(%p)", image);
@@ -40,6 +42,7 @@ void HostImageUnload_do_not_use(void *image) {
 }
 
 function_hook_state_t function_hook_state_HostImageLookupName = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_HostImageLookupName)
 static void *(__cdecl*original_HostImageLookupName)(void *, char *, br_uint_32) = (void *(__cdecl*)(void *, char *, br_uint_32))0x005012f0;
 CARM95_HOOK_FUNCTION(original_HostImageLookupName, HostImageLookupName)
 void* __cdecl HostImageLookupName(void *img, char *name, br_uint_32 hint) {
@@ -58,6 +61,7 @@ void* __cdecl HostImageLookupName(void *img, char *name, br_uint_32 hint) {
 }
 
 function_hook_state_t function_hook_state_HostImageLookupOrdinal = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_HostImageLookupOrdinal)
 void *(__cdecl*HostImageLookupOrdinal)(void *, br_uint_32) = (void *(__cdecl*)(void *, br_uint_32))0x00501310;
 void* HostImageLookupOrdinal_do_not_use(void *img, br_uint_32 ordinal) {
     LOG_TRACE("(%p, %u)", img, ordinal);

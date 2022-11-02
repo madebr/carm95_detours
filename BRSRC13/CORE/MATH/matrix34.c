@@ -17,6 +17,7 @@ br_matrix34 * hookvar_mattmp2__matrix34 ;
 #endif
 
 function_hook_state_t function_hook_state_BrMatrix34Copy = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix34Copy)
 static void(__cdecl*original_BrMatrix34Copy)(br_matrix34 *, br_matrix34 *) = (void(__cdecl*)(br_matrix34 *, br_matrix34 *))0x004d0bd0;
 CARM95_HOOK_FUNCTION(original_BrMatrix34Copy, BrMatrix34Copy)
 void __cdecl BrMatrix34Copy(br_matrix34 *A, br_matrix34 *B) {
@@ -34,6 +35,7 @@ void __cdecl BrMatrix34Copy(br_matrix34 *A, br_matrix34 *B) {
 }
 
 function_hook_state_t function_hook_state_BrMatrix34Mul = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix34Mul)
 static void(__cdecl*original_BrMatrix34Mul)(br_matrix34 *, br_matrix34 *, br_matrix34 *) = (void(__cdecl*)(br_matrix34 *, br_matrix34 *, br_matrix34 *))0x004d0c30;
 CARM95_HOOK_FUNCTION(original_BrMatrix34Mul, BrMatrix34Mul)
 void __cdecl BrMatrix34Mul(br_matrix34 *A, br_matrix34 *B, br_matrix34 *C) {
@@ -52,6 +54,7 @@ void __cdecl BrMatrix34Mul(br_matrix34 *A, br_matrix34 *B, br_matrix34 *C) {
 }
 
 function_hook_state_t function_hook_state_BrMatrix34Identity = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix34Identity)
 static void(__cdecl*original_BrMatrix34Identity)(br_matrix34 *) = (void(__cdecl*)(br_matrix34 *))0x004d0d90;
 CARM95_HOOK_FUNCTION(original_BrMatrix34Identity, BrMatrix34Identity)
 void __cdecl BrMatrix34Identity(br_matrix34 *mat) {
@@ -68,6 +71,7 @@ void __cdecl BrMatrix34Identity(br_matrix34 *mat) {
 }
 
 function_hook_state_t function_hook_state_BrMatrix34RotateX = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix34RotateX)
 static void(__cdecl*original_BrMatrix34RotateX)(br_matrix34 *, br_angle) = (void(__cdecl*)(br_matrix34 *, br_angle))0x004d0dc0;
 CARM95_HOOK_FUNCTION(original_BrMatrix34RotateX, BrMatrix34RotateX)
 void __cdecl BrMatrix34RotateX(br_matrix34 *mat, br_angle rx) {
@@ -89,6 +93,7 @@ void __cdecl BrMatrix34RotateX(br_matrix34 *mat, br_angle rx) {
 }
 
 function_hook_state_t function_hook_state_BrMatrix34RotateY = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix34RotateY)
 static void(__cdecl*original_BrMatrix34RotateY)(br_matrix34 *, br_angle) = (void(__cdecl*)(br_matrix34 *, br_angle))0x004d0e20;
 CARM95_HOOK_FUNCTION(original_BrMatrix34RotateY, BrMatrix34RotateY)
 void __cdecl BrMatrix34RotateY(br_matrix34 *mat, br_angle ry) {
@@ -110,6 +115,7 @@ void __cdecl BrMatrix34RotateY(br_matrix34 *mat, br_angle ry) {
 }
 
 function_hook_state_t function_hook_state_BrMatrix34RotateZ = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix34RotateZ)
 static void(__cdecl*original_BrMatrix34RotateZ)(br_matrix34 *, br_angle) = (void(__cdecl*)(br_matrix34 *, br_angle))0x004d0e80;
 CARM95_HOOK_FUNCTION(original_BrMatrix34RotateZ, BrMatrix34RotateZ)
 void __cdecl BrMatrix34RotateZ(br_matrix34 *mat, br_angle rz) {
@@ -131,6 +137,7 @@ void __cdecl BrMatrix34RotateZ(br_matrix34 *mat, br_angle rz) {
 }
 
 function_hook_state_t function_hook_state_BrMatrix34Rotate = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix34Rotate)
 static void(__cdecl*original_BrMatrix34Rotate)(br_matrix34 *, br_angle, br_vector3 *) = (void(__cdecl*)(br_matrix34 *, br_angle, br_vector3 *))0x004d0ee0;
 CARM95_HOOK_FUNCTION(original_BrMatrix34Rotate, BrMatrix34Rotate)
 void __cdecl BrMatrix34Rotate(br_matrix34 *mat, br_angle r, br_vector3 *a) {
@@ -167,6 +174,7 @@ void __cdecl BrMatrix34Rotate(br_matrix34 *mat, br_angle r, br_vector3 *a) {
 }
 
 function_hook_state_t function_hook_state_BrMatrix34Translate = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix34Translate)
 static void(__cdecl*original_BrMatrix34Translate)(br_matrix34 *, br_scalar, br_scalar, br_scalar) = (void(__cdecl*)(br_matrix34 *, br_scalar, br_scalar, br_scalar))0x004d0fc0;
 CARM95_HOOK_FUNCTION(original_BrMatrix34Translate, BrMatrix34Translate)
 void __cdecl BrMatrix34Translate(br_matrix34 *mat, br_scalar dx, br_scalar dy, br_scalar dz) {
@@ -186,6 +194,7 @@ void __cdecl BrMatrix34Translate(br_matrix34 *mat, br_scalar dx, br_scalar dy, b
 }
 
 function_hook_state_t function_hook_state_BrMatrix34Scale = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix34Scale)
 static void(__cdecl*original_BrMatrix34Scale)(br_matrix34 *, br_scalar, br_scalar, br_scalar) = (void(__cdecl*)(br_matrix34 *, br_scalar, br_scalar, br_scalar))0x004d1000;
 CARM95_HOOK_FUNCTION(original_BrMatrix34Scale, BrMatrix34Scale)
 void __cdecl BrMatrix34Scale(br_matrix34 *mat, br_scalar sx, br_scalar sy, br_scalar sz) {
@@ -205,6 +214,7 @@ void __cdecl BrMatrix34Scale(br_matrix34 *mat, br_scalar sx, br_scalar sy, br_sc
 }
 
 function_hook_state_t function_hook_state_BrMatrix34ShearX = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix34ShearX)
 static void(__cdecl*original_BrMatrix34ShearX)(br_matrix34 *, br_scalar, br_scalar) = (void(__cdecl*)(br_matrix34 *, br_scalar, br_scalar))0x004d1040;
 CARM95_HOOK_FUNCTION(original_BrMatrix34ShearX, BrMatrix34ShearX)
 void __cdecl BrMatrix34ShearX(br_matrix34 *mat, br_scalar sy, br_scalar sz) {
@@ -223,6 +233,7 @@ void __cdecl BrMatrix34ShearX(br_matrix34 *mat, br_scalar sy, br_scalar sz) {
 }
 
 function_hook_state_t function_hook_state_BrMatrix34ShearY = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix34ShearY)
 static void(__cdecl*original_BrMatrix34ShearY)(br_matrix34 *, br_scalar, br_scalar) = (void(__cdecl*)(br_matrix34 *, br_scalar, br_scalar))0x004d1080;
 CARM95_HOOK_FUNCTION(original_BrMatrix34ShearY, BrMatrix34ShearY)
 void __cdecl BrMatrix34ShearY(br_matrix34 *mat, br_scalar sx, br_scalar sz) {
@@ -241,6 +252,7 @@ void __cdecl BrMatrix34ShearY(br_matrix34 *mat, br_scalar sx, br_scalar sz) {
 }
 
 function_hook_state_t function_hook_state_BrMatrix34ShearZ = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix34ShearZ)
 static void(__cdecl*original_BrMatrix34ShearZ)(br_matrix34 *, br_scalar, br_scalar) = (void(__cdecl*)(br_matrix34 *, br_scalar, br_scalar))0x004d10c0;
 CARM95_HOOK_FUNCTION(original_BrMatrix34ShearZ, BrMatrix34ShearZ)
 void __cdecl BrMatrix34ShearZ(br_matrix34 *mat, br_scalar sx, br_scalar sy) {
@@ -259,6 +271,7 @@ void __cdecl BrMatrix34ShearZ(br_matrix34 *mat, br_scalar sx, br_scalar sy) {
 }
 
 function_hook_state_t function_hook_state_BrMatrix34Inverse = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix34Inverse)
 static br_scalar(__cdecl*original_BrMatrix34Inverse)(br_matrix34 *, br_matrix34 *) = (br_scalar(__cdecl*)(br_matrix34 *, br_matrix34 *))0x004d1100;
 CARM95_HOOK_FUNCTION(original_BrMatrix34Inverse, BrMatrix34Inverse)
 br_scalar __cdecl BrMatrix34Inverse(br_matrix34 *B, br_matrix34 *A) {
@@ -292,6 +305,7 @@ br_scalar __cdecl BrMatrix34Inverse(br_matrix34 *B, br_matrix34 *A) {
 }
 
 function_hook_state_t function_hook_state_BrMatrix34LPInverse = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix34LPInverse)
 static void(__cdecl*original_BrMatrix34LPInverse)(br_matrix34 *, br_matrix34 *) = (void(__cdecl*)(br_matrix34 *, br_matrix34 *))0x004d1480;
 CARM95_HOOK_FUNCTION(original_BrMatrix34LPInverse, BrMatrix34LPInverse)
 void __cdecl BrMatrix34LPInverse(br_matrix34 *A, br_matrix34 *B) {
@@ -309,6 +323,7 @@ void __cdecl BrMatrix34LPInverse(br_matrix34 *A, br_matrix34 *B) {
 }
 
 function_hook_state_t function_hook_state_BrMatrix34LPNormalise = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix34LPNormalise)
 static void(__cdecl*original_BrMatrix34LPNormalise)(br_matrix34 *, br_matrix34 *) = (void(__cdecl*)(br_matrix34 *, br_matrix34 *))0x004d1520;
 CARM95_HOOK_FUNCTION(original_BrMatrix34LPNormalise, BrMatrix34LPNormalise)
 void __cdecl BrMatrix34LPNormalise(br_matrix34 *A, br_matrix34 *B) {
@@ -330,6 +345,7 @@ void __cdecl BrMatrix34LPNormalise(br_matrix34 *A, br_matrix34 *B) {
 }
 
 function_hook_state_t function_hook_state_BrMatrix34RollingBall = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix34RollingBall)
 static void(__cdecl*original_BrMatrix34RollingBall)(br_matrix34 *, int, int, int) = (void(__cdecl*)(br_matrix34 *, int, int, int))0x004d1670;
 CARM95_HOOK_FUNCTION(original_BrMatrix34RollingBall, BrMatrix34RollingBall)
 void __cdecl BrMatrix34RollingBall(br_matrix34 *mat, int dx, int dy, int radius) {
@@ -361,6 +377,7 @@ void __cdecl BrMatrix34RollingBall(br_matrix34 *mat, int dx, int dy, int radius)
 }
 
 function_hook_state_t function_hook_state_BrBoundsToMatrix34 = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrBoundsToMatrix34)
 br_matrix34* BrBoundsToMatrix34(br_matrix34 *mat, br_bounds *bounds) {
     int i;
     br_vector3 tr;
@@ -382,6 +399,7 @@ br_matrix34* BrBoundsToMatrix34(br_matrix34 *mat, br_bounds *bounds) {
 }
 
 function_hook_state_t function_hook_state_BrMatrix34Copy4 = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix34Copy4)
 static void(__cdecl*original_BrMatrix34Copy4)(br_matrix34 *, br_matrix4 *) = (void(__cdecl*)(br_matrix34 *, br_matrix4 *))0x004d18c0;
 CARM95_HOOK_FUNCTION(original_BrMatrix34Copy4, BrMatrix34Copy4)
 void __cdecl BrMatrix34Copy4(br_matrix34 *A, br_matrix4 *B) {
@@ -399,6 +417,7 @@ void __cdecl BrMatrix34Copy4(br_matrix34 *A, br_matrix4 *B) {
 }
 
 function_hook_state_t function_hook_state_BrMatrix34TApplyFV = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix34TApplyFV)
 static void(__stdcall*original_BrMatrix34TApplyFV)(br_vector3 *, br_fvector3 *, br_matrix34 *) = (void(__stdcall*)(br_vector3 *, br_fvector3 *, br_matrix34 *))0x004d1920;
 CARM95_HOOK_FUNCTION(original_BrMatrix34TApplyFV, BrMatrix34TApplyFV)
 void __stdcall BrMatrix34TApplyFV(br_vector3 *A, br_fvector3 *B, br_matrix34 *C) {
@@ -417,6 +436,7 @@ void __stdcall BrMatrix34TApplyFV(br_vector3 *A, br_fvector3 *B, br_matrix34 *C)
 }
 
 function_hook_state_t function_hook_state_BrMatrix34Apply = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix34Apply)
 static void(__cdecl*original_BrMatrix34Apply)(br_vector3 *, br_vector4 *, br_matrix34 *) = (void(__cdecl*)(br_vector3 *, br_vector4 *, br_matrix34 *))0x004d1980;
 CARM95_HOOK_FUNCTION(original_BrMatrix34Apply, BrMatrix34Apply)
 void __cdecl BrMatrix34Apply(br_vector3 *A, br_vector4 *B, br_matrix34 *C) {
@@ -435,6 +455,7 @@ void __cdecl BrMatrix34Apply(br_vector3 *A, br_vector4 *B, br_matrix34 *C) {
 }
 
 function_hook_state_t function_hook_state_BrMatrix34ApplyP = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix34ApplyP)
 static void(__cdecl*original_BrMatrix34ApplyP)(br_vector3 *, br_vector3 *, br_matrix34 *) = (void(__cdecl*)(br_vector3 *, br_vector3 *, br_matrix34 *))0x004d1a00;
 CARM95_HOOK_FUNCTION(original_BrMatrix34ApplyP, BrMatrix34ApplyP)
 void __cdecl BrMatrix34ApplyP(br_vector3 *A, br_vector3 *B, br_matrix34 *C) {
@@ -453,6 +474,7 @@ void __cdecl BrMatrix34ApplyP(br_vector3 *A, br_vector3 *B, br_matrix34 *C) {
 }
 
 function_hook_state_t function_hook_state_BrMatrix34ApplyV = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix34ApplyV)
 static void(__cdecl*original_BrMatrix34ApplyV)(br_vector3 *, br_vector3 *, br_matrix34 *) = (void(__cdecl*)(br_vector3 *, br_vector3 *, br_matrix34 *))0x004d1a70;
 CARM95_HOOK_FUNCTION(original_BrMatrix34ApplyV, BrMatrix34ApplyV)
 void __cdecl BrMatrix34ApplyV(br_vector3 *A, br_vector3 *B, br_matrix34 *C) {
@@ -471,6 +493,7 @@ void __cdecl BrMatrix34ApplyV(br_vector3 *A, br_vector3 *B, br_matrix34 *C) {
 }
 
 function_hook_state_t function_hook_state_BrMatrix34TApply = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix34TApply)
 static void(__cdecl*original_BrMatrix34TApply)(br_vector4 *, br_vector4 *, br_matrix34 *) = (void(__cdecl*)(br_vector4 *, br_vector4 *, br_matrix34 *))0x004d1ad0;
 CARM95_HOOK_FUNCTION(original_BrMatrix34TApply, BrMatrix34TApply)
 void __cdecl BrMatrix34TApply(br_vector4 *A, br_vector4 *B, br_matrix34 *C) {
@@ -489,6 +512,7 @@ void __cdecl BrMatrix34TApply(br_vector4 *A, br_vector4 *B, br_matrix34 *C) {
 }
 
 function_hook_state_t function_hook_state_BrMatrix34TApplyP = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix34TApplyP)
 static void(__cdecl*original_BrMatrix34TApplyP)(br_vector3 *, br_vector3 *, br_matrix34 *) = (void(__cdecl*)(br_vector3 *, br_vector3 *, br_matrix34 *))0x004d1b46;
 CARM95_HOOK_FUNCTION(original_BrMatrix34TApplyP, BrMatrix34TApplyP)
 void __cdecl BrMatrix34TApplyP(br_vector3 *A, br_vector3 *B, br_matrix34 *C) {
@@ -507,6 +531,7 @@ void __cdecl BrMatrix34TApplyP(br_vector3 *A, br_vector3 *B, br_matrix34 *C) {
 }
 
 function_hook_state_t function_hook_state_BrMatrix34TApplyV = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix34TApplyV)
 static void(__cdecl*original_BrMatrix34TApplyV)(br_vector3 *, br_vector3 *, br_matrix34 *) = (void(__cdecl*)(br_vector3 *, br_vector3 *, br_matrix34 *))0x004d1bb0;
 CARM95_HOOK_FUNCTION(original_BrMatrix34TApplyV, BrMatrix34TApplyV)
 void __cdecl BrMatrix34TApplyV(br_vector3 *A, br_vector3 *B, br_matrix34 *C) {
@@ -525,6 +550,7 @@ void __cdecl BrMatrix34TApplyV(br_vector3 *A, br_vector3 *B, br_matrix34 *C) {
 }
 
 function_hook_state_t function_hook_state_BrMatrix34Pre = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix34Pre)
 static void(__cdecl*original_BrMatrix34Pre)(br_matrix34 *, br_matrix34 *) = (void(__cdecl*)(br_matrix34 *, br_matrix34 *))0x004d1c10;
 CARM95_HOOK_FUNCTION(original_BrMatrix34Pre, BrMatrix34Pre)
 void __cdecl BrMatrix34Pre(br_matrix34 *mat, br_matrix34 *A) {
@@ -542,6 +568,7 @@ void __cdecl BrMatrix34Pre(br_matrix34 *mat, br_matrix34 *A) {
 }
 
 function_hook_state_t function_hook_state_BrMatrix34Post = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix34Post)
 static void(__cdecl*original_BrMatrix34Post)(br_matrix34 *, br_matrix34 *) = (void(__cdecl*)(br_matrix34 *, br_matrix34 *))0x004d1c40;
 CARM95_HOOK_FUNCTION(original_BrMatrix34Post, BrMatrix34Post)
 void __cdecl BrMatrix34Post(br_matrix34 *mat, br_matrix34 *A) {
@@ -559,6 +586,7 @@ void __cdecl BrMatrix34Post(br_matrix34 *mat, br_matrix34 *A) {
 }
 
 function_hook_state_t function_hook_state_BrMatrix34PreRotateX = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix34PreRotateX)
 static void(__cdecl*original_BrMatrix34PreRotateX)(br_matrix34 *, br_angle) = (void(__cdecl*)(br_matrix34 *, br_angle))0x004d1c70;
 CARM95_HOOK_FUNCTION(original_BrMatrix34PreRotateX, BrMatrix34PreRotateX)
 void __cdecl BrMatrix34PreRotateX(br_matrix34 *mat, br_angle rx) {
@@ -576,6 +604,7 @@ void __cdecl BrMatrix34PreRotateX(br_matrix34 *mat, br_angle rx) {
 }
 
 function_hook_state_t function_hook_state_BrMatrix34PostRotateX = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix34PostRotateX)
 static void(__cdecl*original_BrMatrix34PostRotateX)(br_matrix34 *, br_angle) = (void(__cdecl*)(br_matrix34 *, br_angle))0x004d1d10;
 CARM95_HOOK_FUNCTION(original_BrMatrix34PostRotateX, BrMatrix34PostRotateX)
 void __cdecl BrMatrix34PostRotateX(br_matrix34 *mat, br_angle rx) {
@@ -593,6 +622,7 @@ void __cdecl BrMatrix34PostRotateX(br_matrix34 *mat, br_angle rx) {
 }
 
 function_hook_state_t function_hook_state_BrMatrix34PreRotateY = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix34PreRotateY)
 static void(__cdecl*original_BrMatrix34PreRotateY)(br_matrix34 *, br_angle) = (void(__cdecl*)(br_matrix34 *, br_angle))0x004d1db0;
 CARM95_HOOK_FUNCTION(original_BrMatrix34PreRotateY, BrMatrix34PreRotateY)
 void __cdecl BrMatrix34PreRotateY(br_matrix34 *mat, br_angle ry) {
@@ -610,6 +640,7 @@ void __cdecl BrMatrix34PreRotateY(br_matrix34 *mat, br_angle ry) {
 }
 
 function_hook_state_t function_hook_state_BrMatrix34PostRotateY = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix34PostRotateY)
 static void(__cdecl*original_BrMatrix34PostRotateY)(br_matrix34 *, br_angle) = (void(__cdecl*)(br_matrix34 *, br_angle))0x004d1e50;
 CARM95_HOOK_FUNCTION(original_BrMatrix34PostRotateY, BrMatrix34PostRotateY)
 void __cdecl BrMatrix34PostRotateY(br_matrix34 *mat, br_angle ry) {
@@ -627,6 +658,7 @@ void __cdecl BrMatrix34PostRotateY(br_matrix34 *mat, br_angle ry) {
 }
 
 function_hook_state_t function_hook_state_BrMatrix34PreRotateZ = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix34PreRotateZ)
 static void(__cdecl*original_BrMatrix34PreRotateZ)(br_matrix34 *, br_angle) = (void(__cdecl*)(br_matrix34 *, br_angle))0x004d1ef0;
 CARM95_HOOK_FUNCTION(original_BrMatrix34PreRotateZ, BrMatrix34PreRotateZ)
 void __cdecl BrMatrix34PreRotateZ(br_matrix34 *mat, br_angle rz) {
@@ -644,6 +676,7 @@ void __cdecl BrMatrix34PreRotateZ(br_matrix34 *mat, br_angle rz) {
 }
 
 function_hook_state_t function_hook_state_BrMatrix34PostRotateZ = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix34PostRotateZ)
 static void(__cdecl*original_BrMatrix34PostRotateZ)(br_matrix34 *, br_angle) = (void(__cdecl*)(br_matrix34 *, br_angle))0x004d1f90;
 CARM95_HOOK_FUNCTION(original_BrMatrix34PostRotateZ, BrMatrix34PostRotateZ)
 void __cdecl BrMatrix34PostRotateZ(br_matrix34 *mat, br_angle rz) {
@@ -661,6 +694,7 @@ void __cdecl BrMatrix34PostRotateZ(br_matrix34 *mat, br_angle rz) {
 }
 
 function_hook_state_t function_hook_state_BrMatrix34PreRotate = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix34PreRotate)
 static void(__cdecl*original_BrMatrix34PreRotate)(br_matrix34 *, br_angle, br_vector3 *) = (void(__cdecl*)(br_matrix34 *, br_angle, br_vector3 *))0x004d2030;
 CARM95_HOOK_FUNCTION(original_BrMatrix34PreRotate, BrMatrix34PreRotate)
 void __cdecl BrMatrix34PreRotate(br_matrix34 *mat, br_angle r, br_vector3 *axis) {
@@ -679,6 +713,7 @@ void __cdecl BrMatrix34PreRotate(br_matrix34 *mat, br_angle r, br_vector3 *axis)
 }
 
 function_hook_state_t function_hook_state_BrMatrix34PostRotate = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix34PostRotate)
 static void(__cdecl*original_BrMatrix34PostRotate)(br_matrix34 *, br_angle, br_vector3 *) = (void(__cdecl*)(br_matrix34 *, br_angle, br_vector3 *))0x004d2070;
 CARM95_HOOK_FUNCTION(original_BrMatrix34PostRotate, BrMatrix34PostRotate)
 void __cdecl BrMatrix34PostRotate(br_matrix34 *mat, br_angle r, br_vector3 *axis) {
@@ -697,6 +732,7 @@ void __cdecl BrMatrix34PostRotate(br_matrix34 *mat, br_angle r, br_vector3 *axis
 }
 
 function_hook_state_t function_hook_state_BrMatrix34PreTranslate = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix34PreTranslate)
 static void(__cdecl*original_BrMatrix34PreTranslate)(br_matrix34 *, br_scalar, br_scalar, br_scalar) = (void(__cdecl*)(br_matrix34 *, br_scalar, br_scalar, br_scalar))0x004d20b0;
 CARM95_HOOK_FUNCTION(original_BrMatrix34PreTranslate, BrMatrix34PreTranslate)
 void __cdecl BrMatrix34PreTranslate(br_matrix34 *mat, br_scalar x, br_scalar y, br_scalar z) {
@@ -716,6 +752,7 @@ void __cdecl BrMatrix34PreTranslate(br_matrix34 *mat, br_scalar x, br_scalar y, 
 }
 
 function_hook_state_t function_hook_state_BrMatrix34PostTranslate = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix34PostTranslate)
 static void(__cdecl*original_BrMatrix34PostTranslate)(br_matrix34 *, br_scalar, br_scalar, br_scalar) = (void(__cdecl*)(br_matrix34 *, br_scalar, br_scalar, br_scalar))0x004d2130;
 CARM95_HOOK_FUNCTION(original_BrMatrix34PostTranslate, BrMatrix34PostTranslate)
 void __cdecl BrMatrix34PostTranslate(br_matrix34 *mat, br_scalar x, br_scalar y, br_scalar z) {
@@ -735,6 +772,7 @@ void __cdecl BrMatrix34PostTranslate(br_matrix34 *mat, br_scalar x, br_scalar y,
 }
 
 function_hook_state_t function_hook_state_BrMatrix34PreScale = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix34PreScale)
 static void(__cdecl*original_BrMatrix34PreScale)(br_matrix34 *, br_scalar, br_scalar, br_scalar) = (void(__cdecl*)(br_matrix34 *, br_scalar, br_scalar, br_scalar))0x004d21b0;
 CARM95_HOOK_FUNCTION(original_BrMatrix34PreScale, BrMatrix34PreScale)
 void __cdecl BrMatrix34PreScale(br_matrix34 *mat, br_scalar sx, br_scalar sy, br_scalar sz) {
@@ -754,6 +792,7 @@ void __cdecl BrMatrix34PreScale(br_matrix34 *mat, br_scalar sx, br_scalar sy, br
 }
 
 function_hook_state_t function_hook_state_BrMatrix34PostScale = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix34PostScale)
 static void(__cdecl*original_BrMatrix34PostScale)(br_matrix34 *, br_scalar, br_scalar, br_scalar) = (void(__cdecl*)(br_matrix34 *, br_scalar, br_scalar, br_scalar))0x004d2230;
 CARM95_HOOK_FUNCTION(original_BrMatrix34PostScale, BrMatrix34PostScale)
 void __cdecl BrMatrix34PostScale(br_matrix34 *mat, br_scalar sx, br_scalar sy, br_scalar sz) {
@@ -773,6 +812,7 @@ void __cdecl BrMatrix34PostScale(br_matrix34 *mat, br_scalar sx, br_scalar sy, b
 }
 
 function_hook_state_t function_hook_state_BrMatrix34PreShearX = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix34PreShearX)
 static void(__cdecl*original_BrMatrix34PreShearX)(br_matrix34 *, br_scalar, br_scalar) = (void(__cdecl*)(br_matrix34 *, br_scalar, br_scalar))0x004d22b0;
 CARM95_HOOK_FUNCTION(original_BrMatrix34PreShearX, BrMatrix34PreShearX)
 void __cdecl BrMatrix34PreShearX(br_matrix34 *mat, br_scalar sy, br_scalar sz) {
@@ -791,6 +831,7 @@ void __cdecl BrMatrix34PreShearX(br_matrix34 *mat, br_scalar sy, br_scalar sz) {
 }
 
 function_hook_state_t function_hook_state_BrMatrix34PostShearX = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix34PostShearX)
 static void(__cdecl*original_BrMatrix34PostShearX)(br_matrix34 *, br_scalar, br_scalar) = (void(__cdecl*)(br_matrix34 *, br_scalar, br_scalar))0x004d2330;
 CARM95_HOOK_FUNCTION(original_BrMatrix34PostShearX, BrMatrix34PostShearX)
 void __cdecl BrMatrix34PostShearX(br_matrix34 *mat, br_scalar sy, br_scalar sz) {
@@ -809,6 +850,7 @@ void __cdecl BrMatrix34PostShearX(br_matrix34 *mat, br_scalar sy, br_scalar sz) 
 }
 
 function_hook_state_t function_hook_state_BrMatrix34PreShearY = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix34PreShearY)
 static void(__cdecl*original_BrMatrix34PreShearY)(br_matrix34 *, br_scalar, br_scalar) = (void(__cdecl*)(br_matrix34 *, br_scalar, br_scalar))0x004d23b0;
 CARM95_HOOK_FUNCTION(original_BrMatrix34PreShearY, BrMatrix34PreShearY)
 void __cdecl BrMatrix34PreShearY(br_matrix34 *mat, br_scalar sx, br_scalar sz) {
@@ -827,6 +869,7 @@ void __cdecl BrMatrix34PreShearY(br_matrix34 *mat, br_scalar sx, br_scalar sz) {
 }
 
 function_hook_state_t function_hook_state_BrMatrix34PostShearY = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix34PostShearY)
 static void(__cdecl*original_BrMatrix34PostShearY)(br_matrix34 *, br_scalar, br_scalar) = (void(__cdecl*)(br_matrix34 *, br_scalar, br_scalar))0x004d2430;
 CARM95_HOOK_FUNCTION(original_BrMatrix34PostShearY, BrMatrix34PostShearY)
 void __cdecl BrMatrix34PostShearY(br_matrix34 *mat, br_scalar sx, br_scalar sz) {
@@ -845,6 +888,7 @@ void __cdecl BrMatrix34PostShearY(br_matrix34 *mat, br_scalar sx, br_scalar sz) 
 }
 
 function_hook_state_t function_hook_state_BrMatrix34PreShearZ = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix34PreShearZ)
 static void(__cdecl*original_BrMatrix34PreShearZ)(br_matrix34 *, br_scalar, br_scalar) = (void(__cdecl*)(br_matrix34 *, br_scalar, br_scalar))0x004d24b0;
 CARM95_HOOK_FUNCTION(original_BrMatrix34PreShearZ, BrMatrix34PreShearZ)
 void __cdecl BrMatrix34PreShearZ(br_matrix34 *mat, br_scalar sx, br_scalar sy) {
@@ -863,6 +907,7 @@ void __cdecl BrMatrix34PreShearZ(br_matrix34 *mat, br_scalar sx, br_scalar sy) {
 }
 
 function_hook_state_t function_hook_state_BrMatrix34PostShearZ = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix34PostShearZ)
 static void(__cdecl*original_BrMatrix34PostShearZ)(br_matrix34 *, br_scalar, br_scalar) = (void(__cdecl*)(br_matrix34 *, br_scalar, br_scalar))0x004d2530;
 CARM95_HOOK_FUNCTION(original_BrMatrix34PostShearZ, BrMatrix34PostShearZ)
 void __cdecl BrMatrix34PostShearZ(br_matrix34 *mat, br_scalar sx, br_scalar sy) {

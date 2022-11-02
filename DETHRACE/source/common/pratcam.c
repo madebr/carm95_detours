@@ -23,6 +23,7 @@ int * hookvar_gCurrent_ambient_prat_sequence  = (void*)0x00536338;
 int * hookvar_gCurrent_pratcam_alternative  = (void*)0x005362a8;
 
 function_hook_state_t function_hook_state_PratcamGetCurrent = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_PratcamGetCurrent)
 static int(__cdecl*original_PratcamGetCurrent)() = (int(__cdecl*)())0x0044d0b0;
 CARM95_HOOK_FUNCTION(original_PratcamGetCurrent, PratcamGetCurrent)
 int __cdecl PratcamGetCurrent() {
@@ -38,6 +39,7 @@ int __cdecl PratcamGetCurrent() {
 }
 
 function_hook_state_t function_hook_state_PratcamGetAmbient = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_PratcamGetAmbient)
 static int(__cdecl*original_PratcamGetAmbient)() = (int(__cdecl*)())0x0044d0c5;
 CARM95_HOOK_FUNCTION(original_PratcamGetAmbient, PratcamGetAmbient)
 int __cdecl PratcamGetAmbient() {
@@ -53,6 +55,7 @@ int __cdecl PratcamGetAmbient() {
 }
 
 function_hook_state_t function_hook_state_PratcamGetPending = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_PratcamGetPending)
 static int(__cdecl*original_PratcamGetPending)() = (int(__cdecl*)())0x0044d0da;
 CARM95_HOOK_FUNCTION(original_PratcamGetPending, PratcamGetPending)
 int __cdecl PratcamGetPending() {
@@ -68,6 +71,7 @@ int __cdecl PratcamGetPending() {
 }
 
 function_hook_state_t function_hook_state_TogglePratcam = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_TogglePratcam)
 static void(__cdecl*original_TogglePratcam)() = (void(__cdecl*)())0x0044d0ef;
 CARM95_HOOK_FUNCTION(original_TogglePratcam, TogglePratcam)
 void __cdecl TogglePratcam() {
@@ -87,6 +91,7 @@ void __cdecl TogglePratcam() {
 }
 
 function_hook_state_t function_hook_state_LoadPratcam = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_LoadPratcam)
 static void(__cdecl*original_LoadPratcam)(char *) = (void(__cdecl*)(char *))0x0044d745;
 CARM95_HOOK_FUNCTION(original_LoadPratcam, LoadPratcam)
 void __cdecl LoadPratcam(char *pFolder_name) {
@@ -125,6 +130,7 @@ void __cdecl LoadPratcam(char *pFolder_name) {
 }
 
 function_hook_state_t function_hook_state_NextPratcamChunk = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_NextPratcamChunk)
 static void(__cdecl*original_NextPratcamChunk)() = (void(__cdecl*)())0x0044d2d8;
 CARM95_HOOK_FUNCTION(original_NextPratcamChunk, NextPratcamChunk)
 void __cdecl NextPratcamChunk() {
@@ -148,6 +154,7 @@ void __cdecl NextPratcamChunk() {
 }
 
 function_hook_state_t function_hook_state_NewPratcamSequence = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_NewPratcamSequence)
 static void(__cdecl*original_NewPratcamSequence)(int, int) = (void(__cdecl*)(int, int))0x0044d297;
 CARM95_HOOK_FUNCTION(original_NewPratcamSequence, NewPratcamSequence)
 void __cdecl NewPratcamSequence(int pSequence_index, int pStart_chunk) {
@@ -165,6 +172,7 @@ void __cdecl NewPratcamSequence(int pSequence_index, int pStart_chunk) {
 }
 
 function_hook_state_t function_hook_state_ChangeAmbientPratcamNow = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ChangeAmbientPratcamNow)
 static void(__cdecl*original_ChangeAmbientPratcamNow)(int, int) = (void(__cdecl*)(int, int))0x0044d26a;
 CARM95_HOOK_FUNCTION(original_ChangeAmbientPratcamNow, ChangeAmbientPratcamNow)
 void __cdecl ChangeAmbientPratcamNow(int pIndex, int pStart_chunk) {
@@ -182,6 +190,7 @@ void __cdecl ChangeAmbientPratcamNow(int pIndex, int pStart_chunk) {
 }
 
 function_hook_state_t function_hook_state_ChangeAmbientPratcam = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ChangeAmbientPratcam)
 static void(__cdecl*original_ChangeAmbientPratcam)(int) = (void(__cdecl*)(int))0x0044d1f0;
 CARM95_HOOK_FUNCTION(original_ChangeAmbientPratcam, ChangeAmbientPratcam)
 void __cdecl ChangeAmbientPratcam(int pIndex) {
@@ -198,6 +207,7 @@ void __cdecl ChangeAmbientPratcam(int pIndex) {
 }
 
 function_hook_state_t function_hook_state_PratcamEventNow = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_PratcamEventNow)
 static void(__cdecl*original_PratcamEventNow)(int) = (void(__cdecl*)(int))0x0044d58e;
 CARM95_HOOK_FUNCTION(original_PratcamEventNow, PratcamEventNow)
 void __cdecl PratcamEventNow(int pIndex) {
@@ -214,6 +224,7 @@ void __cdecl PratcamEventNow(int pIndex) {
 }
 
 function_hook_state_t function_hook_state_PratcamEvent = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_PratcamEvent)
 static void(__cdecl*original_PratcamEvent)(int) = (void(__cdecl*)(int))0x0044d517;
 CARM95_HOOK_FUNCTION(original_PratcamEvent, PratcamEvent)
 void __cdecl PratcamEvent(int pIndex) {
@@ -230,6 +241,7 @@ void __cdecl PratcamEvent(int pIndex) {
 }
 
 function_hook_state_t function_hook_state_HighResPratBufferWidth = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_HighResPratBufferWidth)
 int HighResPratBufferWidth() {
     int prat_width;
     LOG_TRACE("()");
@@ -245,6 +257,7 @@ int HighResPratBufferWidth() {
 }
 
 function_hook_state_t function_hook_state_HighResPratBufferHeight = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_HighResPratBufferHeight)
 int HighResPratBufferHeight() {
     int prat_height;
     LOG_TRACE("()");
@@ -260,6 +273,7 @@ int HighResPratBufferHeight() {
 }
 
 function_hook_state_t function_hook_state_InitPratcam = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_InitPratcam)
 static void(__cdecl*original_InitPratcam)() = (void(__cdecl*)())0x0044d5b1;
 CARM95_HOOK_FUNCTION(original_InitPratcam, InitPratcam)
 void __cdecl InitPratcam() {
@@ -277,6 +291,7 @@ void __cdecl InitPratcam() {
 }
 
 function_hook_state_t function_hook_state_DisposePratcam = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DisposePratcam)
 static void(__cdecl*original_DisposePratcam)() = (void(__cdecl*)())0x0044e0dd;
 CARM95_HOOK_FUNCTION(original_DisposePratcam, DisposePratcam)
 void __cdecl DisposePratcam() {
@@ -300,6 +315,7 @@ void __cdecl DisposePratcam() {
 }
 
 function_hook_state_t function_hook_state_DoPratcam = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DoPratcam)
 static void(__cdecl*original_DoPratcam)(tU32) = (void(__cdecl*)(tU32))0x0044e2e6;
 CARM95_HOOK_FUNCTION(original_DoPratcam, DoPratcam)
 void __cdecl DoPratcam(tU32 pThe_time) {
@@ -338,6 +354,7 @@ void __cdecl DoPratcam(tU32 pThe_time) {
 }
 
 function_hook_state_t function_hook_state_TestPratCam = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_TestPratCam)
 static void(__cdecl*original_TestPratCam)(int) = (void(__cdecl*)(int))0x0044e6d5;
 CARM95_HOOK_FUNCTION(original_TestPratCam, TestPratCam)
 void __cdecl TestPratCam(int pIndex) {
@@ -354,6 +371,7 @@ void __cdecl TestPratCam(int pIndex) {
 }
 
 function_hook_state_t function_hook_state_PratCam0 = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_PratCam0)
 static void(__cdecl*original_PratCam0)() = (void(__cdecl*)())0x0044e6c0;
 CARM95_HOOK_FUNCTION(original_PratCam0, PratCam0)
 void __cdecl PratCam0() {
@@ -369,6 +387,7 @@ void __cdecl PratCam0() {
 }
 
 function_hook_state_t function_hook_state_PratCam1 = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_PratCam1)
 static void(__cdecl*original_PratCam1)() = (void(__cdecl*)())0x0044e72e;
 CARM95_HOOK_FUNCTION(original_PratCam1, PratCam1)
 void __cdecl PratCam1() {
@@ -384,6 +403,7 @@ void __cdecl PratCam1() {
 }
 
 function_hook_state_t function_hook_state_PratCam2 = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_PratCam2)
 static void(__cdecl*original_PratCam2)() = (void(__cdecl*)())0x0044e743;
 CARM95_HOOK_FUNCTION(original_PratCam2, PratCam2)
 void __cdecl PratCam2() {
@@ -399,6 +419,7 @@ void __cdecl PratCam2() {
 }
 
 function_hook_state_t function_hook_state_PratCam3 = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_PratCam3)
 static void(__cdecl*original_PratCam3)() = (void(__cdecl*)())0x0044e758;
 CARM95_HOOK_FUNCTION(original_PratCam3, PratCam3)
 void __cdecl PratCam3() {
@@ -414,6 +435,7 @@ void __cdecl PratCam3() {
 }
 
 function_hook_state_t function_hook_state_PratCam4 = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_PratCam4)
 static void(__cdecl*original_PratCam4)() = (void(__cdecl*)())0x0044e76d;
 CARM95_HOOK_FUNCTION(original_PratCam4, PratCam4)
 void __cdecl PratCam4() {
@@ -429,6 +451,7 @@ void __cdecl PratCam4() {
 }
 
 function_hook_state_t function_hook_state_PratCam5 = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_PratCam5)
 static void(__cdecl*original_PratCam5)() = (void(__cdecl*)())0x0044e782;
 CARM95_HOOK_FUNCTION(original_PratCam5, PratCam5)
 void __cdecl PratCam5() {
@@ -444,6 +467,7 @@ void __cdecl PratCam5() {
 }
 
 function_hook_state_t function_hook_state_PratCam6 = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_PratCam6)
 static void(__cdecl*original_PratCam6)() = (void(__cdecl*)())0x0044e797;
 CARM95_HOOK_FUNCTION(original_PratCam6, PratCam6)
 void __cdecl PratCam6() {
@@ -459,6 +483,7 @@ void __cdecl PratCam6() {
 }
 
 function_hook_state_t function_hook_state_PratCam7 = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_PratCam7)
 static void(__cdecl*original_PratCam7)() = (void(__cdecl*)())0x0044e7ac;
 CARM95_HOOK_FUNCTION(original_PratCam7, PratCam7)
 void __cdecl PratCam7() {
@@ -474,6 +499,7 @@ void __cdecl PratCam7() {
 }
 
 function_hook_state_t function_hook_state_PratCam8 = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_PratCam8)
 static void(__cdecl*original_PratCam8)() = (void(__cdecl*)())0x0044e7c1;
 CARM95_HOOK_FUNCTION(original_PratCam8, PratCam8)
 void __cdecl PratCam8() {
@@ -489,6 +515,7 @@ void __cdecl PratCam8() {
 }
 
 function_hook_state_t function_hook_state_PratCam9 = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_PratCam9)
 static void(__cdecl*original_PratCam9)() = (void(__cdecl*)())0x0044e7d6;
 CARM95_HOOK_FUNCTION(original_PratCam9, PratCam9)
 void __cdecl PratCam9() {

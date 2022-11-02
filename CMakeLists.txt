@@ -30,8 +30,7 @@ add_library(carm95hooks SHARED
     include/carm95_hooks.h
     carm95_hooks.cpp
     include/carm95_webserver.h
-    carm95_webserver.c
-    carm95_webserver_symbols.c
+    carm95_webserver.cpp
     include/carm95_libc.h
     carm95_libc.c
     carm95_s3sound.c

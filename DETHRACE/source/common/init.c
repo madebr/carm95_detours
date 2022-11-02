@@ -24,6 +24,7 @@ int * hookvar_gNet_mode_of_last_game  = (void*)0x0054b2a0;
 br_material ** hookvar_gDefault_track_material  = (void*)0x0054b29c;
 
 function_hook_state_t function_hook_state_AllocateSelf = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_AllocateSelf)
 static void(__cdecl*original_AllocateSelf)() = (void(__cdecl*)())0x004bbebf;
 CARM95_HOOK_FUNCTION(original_AllocateSelf, AllocateSelf)
 void __cdecl AllocateSelf() {
@@ -39,6 +40,7 @@ void __cdecl AllocateSelf() {
 }
 
 function_hook_state_t function_hook_state_AllocateCamera = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_AllocateCamera)
 static void(__cdecl*original_AllocateCamera)() = (void(__cdecl*)())0x004bbf22;
 CARM95_HOOK_FUNCTION(original_AllocateCamera, AllocateCamera)
 void __cdecl AllocateCamera() {
@@ -58,6 +60,7 @@ void __cdecl AllocateCamera() {
 }
 
 function_hook_state_t function_hook_state_ReinitialiseForwardCamera = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ReinitialiseForwardCamera)
 static void(__cdecl*original_ReinitialiseForwardCamera)() = (void(__cdecl*)())0x004bb510;
 CARM95_HOOK_FUNCTION(original_ReinitialiseForwardCamera, ReinitialiseForwardCamera)
 void __cdecl ReinitialiseForwardCamera() {
@@ -81,6 +84,7 @@ void __cdecl ReinitialiseForwardCamera() {
 }
 
 function_hook_state_t function_hook_state_AllocateRearviewPixelmap = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_AllocateRearviewPixelmap)
 static void(__cdecl*original_AllocateRearviewPixelmap)() = (void(__cdecl*)())0x004bb741;
 CARM95_HOOK_FUNCTION(original_AllocateRearviewPixelmap, AllocateRearviewPixelmap)
 void __cdecl AllocateRearviewPixelmap() {
@@ -98,6 +102,7 @@ void __cdecl AllocateRearviewPixelmap() {
 }
 
 function_hook_state_t function_hook_state_ReinitialiseRearviewCamera = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ReinitialiseRearviewCamera)
 static void(__cdecl*original_ReinitialiseRearviewCamera)() = (void(__cdecl*)())0x004bb887;
 CARM95_HOOK_FUNCTION(original_ReinitialiseRearviewCamera, ReinitialiseRearviewCamera)
 void __cdecl ReinitialiseRearviewCamera() {
@@ -115,6 +120,7 @@ void __cdecl ReinitialiseRearviewCamera() {
 }
 
 function_hook_state_t function_hook_state_ReinitialiseRenderStuff = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ReinitialiseRenderStuff)
 static void(__cdecl*original_ReinitialiseRenderStuff)() = (void(__cdecl*)())0x004bb916;
 CARM95_HOOK_FUNCTION(original_ReinitialiseRenderStuff, ReinitialiseRenderStuff)
 void __cdecl ReinitialiseRenderStuff() {
@@ -134,6 +140,7 @@ void __cdecl ReinitialiseRenderStuff() {
 }
 
 function_hook_state_t function_hook_state_InstallFindFailedHooks = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_InstallFindFailedHooks)
 void InstallFindFailedHooks() {
     LOG_TRACE("()");
 
@@ -147,6 +154,7 @@ void InstallFindFailedHooks() {
 }
 
 function_hook_state_t function_hook_state_AllocateStandardLamp = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_AllocateStandardLamp)
 static void(__cdecl*original_AllocateStandardLamp)() = (void(__cdecl*)())0x004bbcdb;
 CARM95_HOOK_FUNCTION(original_AllocateStandardLamp, AllocateStandardLamp)
 void __cdecl AllocateStandardLamp() {
@@ -168,6 +176,7 @@ void __cdecl AllocateStandardLamp() {
 }
 
 function_hook_state_t function_hook_state_InitializeBRenderEnvironment = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_InitializeBRenderEnvironment)
 static void(__cdecl*original_InitializeBRenderEnvironment)() = (void(__cdecl*)())0x004bbd6c;
 CARM95_HOOK_FUNCTION(original_InitializeBRenderEnvironment, InitializeBRenderEnvironment)
 void __cdecl InitializeBRenderEnvironment() {
@@ -185,6 +194,7 @@ void __cdecl InitializeBRenderEnvironment() {
 }
 
 function_hook_state_t function_hook_state_InitBRFonts = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_InitBRFonts)
 static void(__cdecl*original_InitBRFonts)() = (void(__cdecl*)())0x004bc12c;
 CARM95_HOOK_FUNCTION(original_InitBRFonts, InitBRFonts)
 void __cdecl InitBRFonts() {
@@ -200,6 +210,7 @@ void __cdecl InitBRFonts() {
 }
 
 function_hook_state_t function_hook_state_AustereWarning = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_AustereWarning)
 static void(__cdecl*original_AustereWarning)() = (void(__cdecl*)())0x004bc16d;
 CARM95_HOOK_FUNCTION(original_AustereWarning, AustereWarning)
 void __cdecl AustereWarning() {
@@ -215,6 +226,7 @@ void __cdecl AustereWarning() {
 }
 
 function_hook_state_t function_hook_state_InitLineStuff = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_InitLineStuff)
 void InitLineStuff() {
     LOG_TRACE("()");
 
@@ -228,6 +240,7 @@ void InitLineStuff() {
 }
 
 function_hook_state_t function_hook_state_InitSmokeStuff = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_InitSmokeStuff)
 void InitSmokeStuff() {
     static br_token_value fadealpha[3];
     tPath_name path;
@@ -245,6 +258,7 @@ void InitSmokeStuff() {
 }
 
 function_hook_state_t function_hook_state_Init2DStuff = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_Init2DStuff)
 void Init2DStuff() {
     br_camera *camera;
     static br_token_value fadealpha[3];
@@ -268,6 +282,7 @@ void Init2DStuff() {
 }
 
 function_hook_state_t function_hook_state_InitialiseApplication = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_InitialiseApplication)
 static void(__cdecl*original_InitialiseApplication)(int, char **) = (void(__cdecl*)(int, char **))0x004bba54;
 CARM95_HOOK_FUNCTION(original_InitialiseApplication, InitialiseApplication)
 void __cdecl InitialiseApplication(int pArgc, char **pArgv) {
@@ -285,6 +300,7 @@ void __cdecl InitialiseApplication(int pArgc, char **pArgv) {
 }
 
 function_hook_state_t function_hook_state_InitialiseDeathRace = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_InitialiseDeathRace)
 void InitialiseDeathRace(int pArgc, char **pArgv) {
     tPath_name the_path;
     LOG_TRACE("(%d, %p)", pArgc, pArgv);
@@ -302,6 +318,7 @@ void InitialiseDeathRace(int pArgc, char **pArgv) {
 }
 
 function_hook_state_t function_hook_state_InitGame = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_InitGame)
 static void(__cdecl*original_InitGame)(int) = (void(__cdecl*)(int))0x004bc22c;
 CARM95_HOOK_FUNCTION(original_InitGame, InitGame)
 void __cdecl InitGame(int pStart_race) {
@@ -320,6 +337,7 @@ void __cdecl InitGame(int pStart_race) {
 }
 
 function_hook_state_t function_hook_state_DisposeGameIfNecessary = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DisposeGameIfNecessary)
 static void(__cdecl*original_DisposeGameIfNecessary)() = (void(__cdecl*)())0x004bc3d0;
 CARM95_HOOK_FUNCTION(original_DisposeGameIfNecessary, DisposeGameIfNecessary)
 void __cdecl DisposeGameIfNecessary() {
@@ -337,6 +355,7 @@ void __cdecl DisposeGameIfNecessary() {
 }
 
 function_hook_state_t function_hook_state_LoadInTrack = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_LoadInTrack)
 static void(__cdecl*original_LoadInTrack)() = (void(__cdecl*)())0x004bc93a;
 CARM95_HOOK_FUNCTION(original_LoadInTrack, LoadInTrack)
 void __cdecl LoadInTrack() {
@@ -352,6 +371,7 @@ void __cdecl LoadInTrack() {
 }
 
 function_hook_state_t function_hook_state_DisposeTrack = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DisposeTrack)
 static void(__cdecl*original_DisposeTrack)() = (void(__cdecl*)())0x004bc493;
 CARM95_HOOK_FUNCTION(original_DisposeTrack, DisposeTrack)
 void __cdecl DisposeTrack() {
@@ -367,6 +387,7 @@ void __cdecl DisposeTrack() {
 }
 
 function_hook_state_t function_hook_state_CopyMaterialColourFromIndex = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_CopyMaterialColourFromIndex)
 void CopyMaterialColourFromIndex(br_material *pMaterial) {
     LOG_TRACE("(%p)", pMaterial);
 
@@ -381,6 +402,7 @@ void CopyMaterialColourFromIndex(br_material *pMaterial) {
 }
 
 function_hook_state_t function_hook_state_InitRace = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_InitRace)
 static void(__cdecl*original_InitRace)() = (void(__cdecl*)())0x004bc4b1;
 CARM95_HOOK_FUNCTION(original_InitRace, InitRace)
 void __cdecl InitRace() {
@@ -396,6 +418,7 @@ void __cdecl InitRace() {
 }
 
 function_hook_state_t function_hook_state_DisposeRace = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DisposeRace)
 static void(__cdecl*original_DisposeRace)() = (void(__cdecl*)())0x004bc968;
 CARM95_HOOK_FUNCTION(original_DisposeRace, DisposeRace)
 void __cdecl DisposeRace() {
@@ -411,6 +434,7 @@ void __cdecl DisposeRace() {
 }
 
 function_hook_state_t function_hook_state_GetScreenSize = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_GetScreenSize)
 static int(__cdecl*original_GetScreenSize)() = (int(__cdecl*)())0x004bca25;
 CARM95_HOOK_FUNCTION(original_GetScreenSize, GetScreenSize)
 int __cdecl GetScreenSize() {
@@ -426,6 +450,7 @@ int __cdecl GetScreenSize() {
 }
 
 function_hook_state_t function_hook_state_SetScreenSize = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_SetScreenSize)
 static void(__cdecl*original_SetScreenSize)(int) = (void(__cdecl*)(int))0x004bca3a;
 CARM95_HOOK_FUNCTION(original_SetScreenSize, SetScreenSize)
 void __cdecl SetScreenSize(int pNew_size) {

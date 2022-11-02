@@ -9,6 +9,7 @@
 #include <assert.h>
 
 function_hook_state_t function_hook_state__BrBeginHook = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state__BrBeginHook)
 void _BrBeginHook() {
     LOG_TRACE("()");
 
@@ -22,6 +23,7 @@ void _BrBeginHook() {
 }
 
 function_hook_state_t function_hook_state__BrEndHook = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state__BrEndHook)
 void _BrEndHook() {
     LOG_TRACE("()");
 

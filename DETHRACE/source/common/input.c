@@ -31,6 +31,7 @@ int(* hookvar_gKey_mapping )[67] = (void*)0x005507e0;
 char(* hookvar_gCurrent_typing )[110] = (void*)0x0053a450;
 
 function_hook_state_t function_hook_state_SetJoystickArrays = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_SetJoystickArrays)
 static void(__cdecl*original_SetJoystickArrays)(int *, int) = (void(__cdecl*)(int *, int))0x00471750;
 CARM95_HOOK_FUNCTION(original_SetJoystickArrays, SetJoystickArrays)
 void __cdecl SetJoystickArrays(int *pKeys, int pMark) {
@@ -62,6 +63,7 @@ void __cdecl SetJoystickArrays(int *pKeys, int pMark) {
 }
 
 function_hook_state_t function_hook_state_PollKeys = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_PollKeys)
 static void(__cdecl*original_PollKeys)() = (void(__cdecl*)())0x00471bbf;
 CARM95_HOOK_FUNCTION(original_PollKeys, PollKeys)
 void __cdecl PollKeys() {
@@ -79,6 +81,7 @@ void __cdecl PollKeys() {
 }
 
 function_hook_state_t function_hook_state_CyclePollKeys = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_CyclePollKeys)
 static void(__cdecl*original_CyclePollKeys)() = (void(__cdecl*)())0x00471c03;
 CARM95_HOOK_FUNCTION(original_CyclePollKeys, CyclePollKeys)
 void __cdecl CyclePollKeys() {
@@ -96,6 +99,7 @@ void __cdecl CyclePollKeys() {
 }
 
 function_hook_state_t function_hook_state_ResetPollKeys = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ResetPollKeys)
 static void(__cdecl*original_ResetPollKeys)() = (void(__cdecl*)())0x00471c75;
 CARM95_HOOK_FUNCTION(original_ResetPollKeys, ResetPollKeys)
 void __cdecl ResetPollKeys() {
@@ -113,6 +117,7 @@ void __cdecl ResetPollKeys() {
 }
 
 function_hook_state_t function_hook_state_CheckKeysForMouldiness = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_CheckKeysForMouldiness)
 static void(__cdecl*original_CheckKeysForMouldiness)() = (void(__cdecl*)())0x00471cdb;
 CARM95_HOOK_FUNCTION(original_CheckKeysForMouldiness, CheckKeysForMouldiness)
 void __cdecl CheckKeysForMouldiness() {
@@ -128,6 +133,7 @@ void __cdecl CheckKeysForMouldiness() {
 }
 
 function_hook_state_t function_hook_state_EitherMouseButtonDown = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_EitherMouseButtonDown)
 static int(__cdecl*original_EitherMouseButtonDown)() = (int(__cdecl*)())0x00471d0b;
 CARM95_HOOK_FUNCTION(original_EitherMouseButtonDown, EitherMouseButtonDown)
 int __cdecl EitherMouseButtonDown() {
@@ -147,6 +153,7 @@ int __cdecl EitherMouseButtonDown() {
 }
 
 function_hook_state_t function_hook_state_PDKeyDown2 = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_PDKeyDown2)
 static tKey_down_result(__cdecl*original_PDKeyDown2)(int) = (tKey_down_result(__cdecl*)(int))0x00471d4e;
 CARM95_HOOK_FUNCTION(original_PDKeyDown2, PDKeyDown2)
 tKey_down_result __cdecl PDKeyDown2(int pKey_index) {
@@ -165,6 +172,7 @@ tKey_down_result __cdecl PDKeyDown2(int pKey_index) {
 }
 
 function_hook_state_t function_hook_state_PDKeyDown = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_PDKeyDown)
 static int(__cdecl*original_PDKeyDown)(int) = (int(__cdecl*)(int))0x00471e2d;
 CARM95_HOOK_FUNCTION(original_PDKeyDown, PDKeyDown)
 int __cdecl PDKeyDown(int pKey_index) {
@@ -183,6 +191,7 @@ int __cdecl PDKeyDown(int pKey_index) {
 }
 
 function_hook_state_t function_hook_state_PDKeyDown3 = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_PDKeyDown3)
 static int(__cdecl*original_PDKeyDown3)(int) = (int(__cdecl*)(int))0x00471ea6;
 CARM95_HOOK_FUNCTION(original_PDKeyDown3, PDKeyDown3)
 int __cdecl PDKeyDown3(int pKey_index) {
@@ -205,6 +214,7 @@ int __cdecl PDKeyDown3(int pKey_index) {
 }
 
 function_hook_state_t function_hook_state_PDAnyKeyDown = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_PDAnyKeyDown)
 static int(__cdecl*original_PDAnyKeyDown)() = (int(__cdecl*)())0x00471f08;
 CARM95_HOOK_FUNCTION(original_PDAnyKeyDown, PDAnyKeyDown)
 int __cdecl PDAnyKeyDown() {
@@ -224,6 +234,7 @@ int __cdecl PDAnyKeyDown() {
 }
 
 function_hook_state_t function_hook_state_AnyKeyDown = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_AnyKeyDown)
 static int(__cdecl*original_AnyKeyDown)() = (int(__cdecl*)())0x00471fe4;
 CARM95_HOOK_FUNCTION(original_AnyKeyDown, AnyKeyDown)
 int __cdecl AnyKeyDown() {
@@ -241,6 +252,7 @@ int __cdecl AnyKeyDown() {
 }
 
 function_hook_state_t function_hook_state_KevKeyService = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_KevKeyService)
 static tU32 *(__cdecl*original_KevKeyService)() = (tU32 *(__cdecl*)())0x0047202c;
 CARM95_HOOK_FUNCTION(original_KevKeyService, KevKeyService)
 tU32* __cdecl KevKeyService() {
@@ -272,6 +284,7 @@ tU32* __cdecl KevKeyService() {
 }
 
 function_hook_state_t function_hook_state_OldKeyIsDown = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_OldKeyIsDown)
 static int(__cdecl*original_OldKeyIsDown)(int) = (int(__cdecl*)(int))0x004721fb;
 CARM95_HOOK_FUNCTION(original_OldKeyIsDown, OldKeyIsDown)
 int __cdecl OldKeyIsDown(int pKey_index) {
@@ -290,6 +303,7 @@ int __cdecl OldKeyIsDown(int pKey_index) {
 }
 
 function_hook_state_t function_hook_state_KeyIsDown = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_KeyIsDown)
 static int(__cdecl*original_KeyIsDown)(int) = (int(__cdecl*)(int))0x00472293;
 CARM95_HOOK_FUNCTION(original_KeyIsDown, KeyIsDown)
 int __cdecl KeyIsDown(int pKey_index) {
@@ -308,6 +322,7 @@ int __cdecl KeyIsDown(int pKey_index) {
 }
 
 function_hook_state_t function_hook_state_WaitForNoKeys = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_WaitForNoKeys)
 static void(__cdecl*original_WaitForNoKeys)() = (void(__cdecl*)())0x0047232b;
 CARM95_HOOK_FUNCTION(original_WaitForNoKeys, WaitForNoKeys)
 void __cdecl WaitForNoKeys() {
@@ -323,6 +338,7 @@ void __cdecl WaitForNoKeys() {
 }
 
 function_hook_state_t function_hook_state_WaitForAKey = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_WaitForAKey)
 static void(__cdecl*original_WaitForAKey)() = (void(__cdecl*)())0x0047235a;
 CARM95_HOOK_FUNCTION(original_WaitForAKey, WaitForAKey)
 void __cdecl WaitForAKey() {
@@ -338,6 +354,7 @@ void __cdecl WaitForAKey() {
 }
 
 function_hook_state_t function_hook_state_CmdKeyDown = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_CmdKeyDown)
 static int(__cdecl*original_CmdKeyDown)(int, int) = (int(__cdecl*)(int, int))0x0047238e;
 CARM95_HOOK_FUNCTION(original_CmdKeyDown, CmdKeyDown)
 int __cdecl CmdKeyDown(int pFKey_ID, int pCmd_key_ID) {
@@ -355,6 +372,7 @@ int __cdecl CmdKeyDown(int pFKey_ID, int pCmd_key_ID) {
 }
 
 function_hook_state_t function_hook_state_GetMousePosition = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_GetMousePosition)
 static void(__cdecl*original_GetMousePosition)(int *, int *) = (void(__cdecl*)(int *, int *))0x004723e4;
 CARM95_HOOK_FUNCTION(original_GetMousePosition, GetMousePosition)
 void __cdecl GetMousePosition(int *pX_coord, int *pY_coord) {
@@ -380,6 +398,7 @@ void __cdecl GetMousePosition(int *pX_coord, int *pY_coord) {
 }
 
 function_hook_state_t function_hook_state_InitRollingLetters = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_InitRollingLetters)
 static void(__cdecl*original_InitRollingLetters)() = (void(__cdecl*)())0x004724d1;
 CARM95_HOOK_FUNCTION(original_InitRollingLetters, InitRollingLetters)
 void __cdecl InitRollingLetters() {
@@ -397,6 +416,7 @@ void __cdecl InitRollingLetters() {
 }
 
 function_hook_state_t function_hook_state_EndRollingLetters = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_EndRollingLetters)
 static void(__cdecl*original_EndRollingLetters)() = (void(__cdecl*)())0x00472543;
 CARM95_HOOK_FUNCTION(original_EndRollingLetters, EndRollingLetters)
 void __cdecl EndRollingLetters() {
@@ -412,6 +432,7 @@ void __cdecl EndRollingLetters() {
 }
 
 function_hook_state_t function_hook_state_AddRollingLetter = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_AddRollingLetter)
 static int(__cdecl*original_AddRollingLetter)(char, int, int, tRolling_type) = (int(__cdecl*)(char, int, int, tRolling_type))0x0047255c;
 CARM95_HOOK_FUNCTION(original_AddRollingLetter, AddRollingLetter)
 int __cdecl AddRollingLetter(char pChar, int pX, int pY, tRolling_type rolling_type) {
@@ -437,6 +458,7 @@ int __cdecl AddRollingLetter(char pChar, int pX, int pY, tRolling_type rolling_t
 }
 
 function_hook_state_t function_hook_state_AddRollingString = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_AddRollingString)
 static void(__cdecl*original_AddRollingString)(char *, int, int, tRolling_type) = (void(__cdecl*)(char *, int, int, tRolling_type))0x004726c3;
 CARM95_HOOK_FUNCTION(original_AddRollingString, AddRollingString)
 void __cdecl AddRollingString(char *pStr, int pX, int pY, tRolling_type rolling_type) {
@@ -458,6 +480,7 @@ void __cdecl AddRollingString(char *pStr, int pX, int pY, tRolling_type rolling_
 }
 
 function_hook_state_t function_hook_state_AddRollingNumber = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_AddRollingNumber)
 static void(__cdecl*original_AddRollingNumber)(tU32, int, int, int) = (void(__cdecl*)(tU32, int, int, int))0x00472729;
 CARM95_HOOK_FUNCTION(original_AddRollingNumber, AddRollingNumber)
 void __cdecl AddRollingNumber(tU32 pNumber, int pWidth, int pX, int pY) {
@@ -479,6 +502,7 @@ void __cdecl AddRollingNumber(tU32 pNumber, int pWidth, int pX, int pY) {
 }
 
 function_hook_state_t function_hook_state_RollLettersIn = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_RollLettersIn)
 static void(__cdecl*original_RollLettersIn)() = (void(__cdecl*)())0x00472766;
 CARM95_HOOK_FUNCTION(original_RollLettersIn, RollLettersIn)
 void __cdecl RollLettersIn() {
@@ -526,6 +550,7 @@ void __cdecl RollLettersIn() {
 }
 
 function_hook_state_t function_hook_state_ChangeCharTo = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ChangeCharTo)
 static int(__cdecl*original_ChangeCharTo)(int, int, char) = (int(__cdecl*)(int, int, char))0x00472be8;
 CARM95_HOOK_FUNCTION(original_ChangeCharTo, ChangeCharTo)
 int __cdecl ChangeCharTo(int pSlot_index, int pChar_index, char pNew_char) {
@@ -556,6 +581,7 @@ int __cdecl ChangeCharTo(int pSlot_index, int pChar_index, char pNew_char) {
 }
 
 function_hook_state_t function_hook_state_ChangeTextTo = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ChangeTextTo)
 static void(__cdecl*original_ChangeTextTo)(int, int, char *, char *) = (void(__cdecl*)(int, int, char *, char *))0x004729df;
 CARM95_HOOK_FUNCTION(original_ChangeTextTo, ChangeTextTo)
 void __cdecl ChangeTextTo(int pXcoord, int pYcoord, char *pNew_str, char *pOld_str) {
@@ -591,6 +617,7 @@ void __cdecl ChangeTextTo(int pXcoord, int pYcoord, char *pNew_str, char *pOld_s
 }
 
 function_hook_state_t function_hook_state_SetRollingCursor = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_SetRollingCursor)
 static void(__cdecl*original_SetRollingCursor)(int) = (void(__cdecl*)(int))0x00472ea8;
 CARM95_HOOK_FUNCTION(original_SetRollingCursor, SetRollingCursor)
 void __cdecl SetRollingCursor(int pSlot_index) {
@@ -607,6 +634,7 @@ void __cdecl SetRollingCursor(int pSlot_index) {
 }
 
 function_hook_state_t function_hook_state_BlankSlot = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BlankSlot)
 static void(__cdecl*original_BlankSlot)(int, int, int) = (void(__cdecl*)(int, int, int))0x00472ba0;
 CARM95_HOOK_FUNCTION(original_BlankSlot, BlankSlot)
 void __cdecl BlankSlot(int pIndex, int pName_length, int pVisible_length) {
@@ -627,6 +655,7 @@ void __cdecl BlankSlot(int pIndex, int pName_length, int pVisible_length) {
 }
 
 function_hook_state_t function_hook_state_DoRLBackspace = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DoRLBackspace)
 static void(__cdecl*original_DoRLBackspace)(int) = (void(__cdecl*)(int))0x00472fb9;
 CARM95_HOOK_FUNCTION(original_DoRLBackspace, DoRLBackspace)
 void __cdecl DoRLBackspace(int pSlot_index) {
@@ -647,6 +676,7 @@ void __cdecl DoRLBackspace(int pSlot_index) {
 }
 
 function_hook_state_t function_hook_state_DoRLDelete = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DoRLDelete)
 static void(__cdecl*original_DoRLDelete)(int) = (void(__cdecl*)(int))0x004730be;
 CARM95_HOOK_FUNCTION(original_DoRLDelete, DoRLDelete)
 void __cdecl DoRLDelete(int pSlot_index) {
@@ -667,6 +697,7 @@ void __cdecl DoRLDelete(int pSlot_index) {
 }
 
 function_hook_state_t function_hook_state_DoRLInsert = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DoRLInsert)
 static void(__cdecl*original_DoRLInsert)(int) = (void(__cdecl*)(int))0x00473189;
 CARM95_HOOK_FUNCTION(original_DoRLInsert, DoRLInsert)
 void __cdecl DoRLInsert(int pSlot_index) {
@@ -683,6 +714,7 @@ void __cdecl DoRLInsert(int pSlot_index) {
 }
 
 function_hook_state_t function_hook_state_DoRLCursorLeft = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DoRLCursorLeft)
 static void(__cdecl*original_DoRLCursorLeft)(int) = (void(__cdecl*)(int))0x004731ba;
 CARM95_HOOK_FUNCTION(original_DoRLCursorLeft, DoRLCursorLeft)
 void __cdecl DoRLCursorLeft(int pSlot_index) {
@@ -699,6 +731,7 @@ void __cdecl DoRLCursorLeft(int pSlot_index) {
 }
 
 function_hook_state_t function_hook_state_DoRLCursorRight = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DoRLCursorRight)
 static void(__cdecl*original_DoRLCursorRight)(int) = (void(__cdecl*)(int))0x00473248;
 CARM95_HOOK_FUNCTION(original_DoRLCursorRight, DoRLCursorRight)
 void __cdecl DoRLCursorRight(int pSlot_index) {
@@ -715,6 +748,7 @@ void __cdecl DoRLCursorRight(int pSlot_index) {
 }
 
 function_hook_state_t function_hook_state_DoRLTypeLetter = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DoRLTypeLetter)
 static void(__cdecl*original_DoRLTypeLetter)(int, int) = (void(__cdecl*)(int, int))0x004732a2;
 CARM95_HOOK_FUNCTION(original_DoRLTypeLetter, DoRLTypeLetter)
 void __cdecl DoRLTypeLetter(int pChar, int pSlot_index) {
@@ -736,6 +770,7 @@ void __cdecl DoRLTypeLetter(int pChar, int pSlot_index) {
 }
 
 function_hook_state_t function_hook_state_StopTyping = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_StopTyping)
 static void(__cdecl*original_StopTyping)(int) = (void(__cdecl*)(int))0x00472d51;
 CARM95_HOOK_FUNCTION(original_StopTyping, StopTyping)
 void __cdecl StopTyping(int pSlot_index) {
@@ -754,6 +789,7 @@ void __cdecl StopTyping(int pSlot_index) {
 }
 
 function_hook_state_t function_hook_state_RevertTyping = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_RevertTyping)
 static void(__cdecl*original_RevertTyping)(int, char *) = (void(__cdecl*)(int, char *))0x00472dca;
 CARM95_HOOK_FUNCTION(original_RevertTyping, RevertTyping)
 void __cdecl RevertTyping(int pSlot_index, char *pRevert_str) {
@@ -773,6 +809,7 @@ void __cdecl RevertTyping(int pSlot_index, char *pRevert_str) {
 }
 
 function_hook_state_t function_hook_state_StartTyping = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_StartTyping)
 static void(__cdecl*original_StartTyping)(int, char *, int) = (void(__cdecl*)(int, char *, int))0x00472e42;
 CARM95_HOOK_FUNCTION(original_StartTyping, StartTyping)
 void __cdecl StartTyping(int pSlot_index, char *pText, int pVisible_length) {
@@ -791,6 +828,7 @@ void __cdecl StartTyping(int pSlot_index, char *pText, int pVisible_length) {
 }
 
 function_hook_state_t function_hook_state_TypeKey = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_TypeKey)
 static void(__cdecl*original_TypeKey)(int, char) = (void(__cdecl*)(int, char))0x00472ecc;
 CARM95_HOOK_FUNCTION(original_TypeKey, TypeKey)
 void __cdecl TypeKey(int pSlot_index, char pKey) {
@@ -808,6 +846,7 @@ void __cdecl TypeKey(int pSlot_index, char pKey) {
 }
 
 function_hook_state_t function_hook_state_SetSlotXY = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_SetSlotXY)
 static void(__cdecl*original_SetSlotXY)(int, int, int) = (void(__cdecl*)(int, int, int))0x0047340f;
 CARM95_HOOK_FUNCTION(original_SetSlotXY, SetSlotXY)
 void __cdecl SetSlotXY(int pSlot_index, int pX_coord, int pY_coord) {
@@ -826,6 +865,7 @@ void __cdecl SetSlotXY(int pSlot_index, int pX_coord, int pY_coord) {
 }
 
 function_hook_state_t function_hook_state_GetTypedName = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_GetTypedName)
 static void(__cdecl*original_GetTypedName)(char *, int) = (void(__cdecl*)(char *, int))0x00473434;
 CARM95_HOOK_FUNCTION(original_GetTypedName, GetTypedName)
 void __cdecl GetTypedName(char *pDestn, int pMax_length) {
@@ -843,6 +883,7 @@ void __cdecl GetTypedName(char *pDestn, int pMax_length) {
 }
 
 function_hook_state_t function_hook_state_KillCursor = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_KillCursor)
 static void(__cdecl*original_KillCursor)(int) = (void(__cdecl*)(int))0x004734aa;
 CARM95_HOOK_FUNCTION(original_KillCursor, KillCursor)
 void __cdecl KillCursor(int pSlot_index) {
@@ -871,6 +912,7 @@ void __cdecl KillCursor(int pSlot_index) {
 }
 
 function_hook_state_t function_hook_state_EdgeTriggerModeOn = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_EdgeTriggerModeOn)
 static void(__cdecl*original_EdgeTriggerModeOn)() = (void(__cdecl*)())0x00473577;
 CARM95_HOOK_FUNCTION(original_EdgeTriggerModeOn, EdgeTriggerModeOn)
 void __cdecl EdgeTriggerModeOn() {
@@ -886,6 +928,7 @@ void __cdecl EdgeTriggerModeOn() {
 }
 
 function_hook_state_t function_hook_state_EdgeTriggerModeOff = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_EdgeTriggerModeOff)
 static void(__cdecl*original_EdgeTriggerModeOff)() = (void(__cdecl*)())0x0047358c;
 CARM95_HOOK_FUNCTION(original_EdgeTriggerModeOff, EdgeTriggerModeOff)
 void __cdecl EdgeTriggerModeOff() {

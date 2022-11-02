@@ -14,6 +14,7 @@ br_image * hookvar_Image_BRHOST1  = (void*)0x0052f008;
 host_info * hookvar_hostInfo  = (void*)0x0052f048;
 
 function_hook_state_t function_hook_state_HostBegin = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_HostBegin)
 static void(__cdecl*original_HostBegin)() = (void(__cdecl*)())0x00501320;
 CARM95_HOOK_FUNCTION(original_HostBegin, HostBegin)
 void __cdecl HostBegin() {
@@ -29,6 +30,7 @@ void __cdecl HostBegin() {
 }
 
 function_hook_state_t function_hook_state_HostEnd = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_HostEnd)
 static void(__stdcall*original_HostEnd)() = (void(__stdcall*)())0x00501340;
 CARM95_HOOK_FUNCTION(original_HostEnd, HostEnd)
 void __stdcall HostEnd() {
@@ -44,6 +46,7 @@ void __stdcall HostEnd() {
 }
 
 function_hook_state_t function_hook_state_HostInfo = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_HostInfo)
 static br_error(__cdecl*original_HostInfo)(host_info *, br_size_t) = (br_error(__cdecl*)(host_info *, br_size_t))0x00501360;
 CARM95_HOOK_FUNCTION(original_HostInfo, HostInfo)
 br_error __cdecl HostInfo(host_info *buffer, br_size_t buffersize) {

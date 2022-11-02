@@ -14,6 +14,7 @@ br_resource_class(* hookvar_resourceClasses__dbsetup )[14];
 br_v1db_state * hookvar_v1db  = (void*)0x00552100;
 
 function_hook_state_t function_hook_state_BrV1dbBegin = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrV1dbBegin)
 static br_error(__cdecl*original_BrV1dbBegin)() = (br_error(__cdecl*)())0x004dc9d0;
 CARM95_HOOK_FUNCTION(original_BrV1dbBegin, BrV1dbBegin)
 br_error __cdecl BrV1dbBegin() {
@@ -35,6 +36,7 @@ br_error __cdecl BrV1dbBegin() {
 }
 
 function_hook_state_t function_hook_state_BrV1dbEnd = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrV1dbEnd)
 static br_error(__cdecl*original_BrV1dbEnd)() = (br_error(__cdecl*)())0x004dcade;
 CARM95_HOOK_FUNCTION(original_BrV1dbEnd, BrV1dbEnd)
 br_error __cdecl BrV1dbEnd() {
@@ -52,6 +54,7 @@ br_error __cdecl BrV1dbEnd() {
 }
 
 function_hook_state_t function_hook_state_updateTable = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_updateTable)
 static br_uint_32(__cdecl*original_updateTable)(br_pixelmap *, void *) = (br_uint_32(__cdecl*)(br_pixelmap *, void *))0x004dcc90;
 CARM95_HOOK_FUNCTION(original_updateTable, updateTable)
 br_uint_32 __cdecl updateTable(br_pixelmap *item, void *arg) {
@@ -69,6 +72,7 @@ br_uint_32 __cdecl updateTable(br_pixelmap *item, void *arg) {
 }
 
 function_hook_state_t function_hook_state_updateMap = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_updateMap)
 static br_uint_32(__cdecl*original_updateMap)(br_pixelmap *, void *) = (br_uint_32(__cdecl*)(br_pixelmap *, void *))0x004dccb0;
 CARM95_HOOK_FUNCTION(original_updateMap, updateMap)
 br_uint_32 __cdecl updateMap(br_pixelmap *item, void *arg) {
@@ -86,6 +90,7 @@ br_uint_32 __cdecl updateMap(br_pixelmap *item, void *arg) {
 }
 
 function_hook_state_t function_hook_state_updateMaterial = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_updateMaterial)
 static br_uint_32(__cdecl*original_updateMaterial)(br_material *, void *) = (br_uint_32(__cdecl*)(br_material *, void *))0x004dccd0;
 CARM95_HOOK_FUNCTION(original_updateMaterial, updateMaterial)
 br_uint_32 __cdecl updateMaterial(br_material *item, void *arg) {
@@ -103,6 +108,7 @@ br_uint_32 __cdecl updateMaterial(br_material *item, void *arg) {
 }
 
 function_hook_state_t function_hook_state_updateModel = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_updateModel)
 br_uint_32 updateModel(br_model *item, void *arg) {
     LOG_TRACE("(%p, %p)", item, arg);
 
@@ -118,6 +124,7 @@ br_uint_32 updateModel(br_model *item, void *arg) {
 }
 
 function_hook_state_t function_hook_state_clearTable = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_clearTable)
 static br_uint_32(__cdecl*original_clearTable)(br_pixelmap *, void *) = (br_uint_32(__cdecl*)(br_pixelmap *, void *))0x004dcda0;
 CARM95_HOOK_FUNCTION(original_clearTable, clearTable)
 br_uint_32 __cdecl clearTable(br_pixelmap *item, void *arg) {
@@ -135,6 +142,7 @@ br_uint_32 __cdecl clearTable(br_pixelmap *item, void *arg) {
 }
 
 function_hook_state_t function_hook_state_clearMap = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_clearMap)
 static br_uint_32(__cdecl*original_clearMap)(br_pixelmap *, void *) = (br_uint_32(__cdecl*)(br_pixelmap *, void *))0x004dcdb0;
 CARM95_HOOK_FUNCTION(original_clearMap, clearMap)
 br_uint_32 __cdecl clearMap(br_pixelmap *item, void *arg) {
@@ -152,6 +160,7 @@ br_uint_32 __cdecl clearMap(br_pixelmap *item, void *arg) {
 }
 
 function_hook_state_t function_hook_state_clearMaterial = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_clearMaterial)
 static br_uint_32(__cdecl*original_clearMaterial)(br_material *, void *) = (br_uint_32(__cdecl*)(br_material *, void *))0x004dcdc0;
 CARM95_HOOK_FUNCTION(original_clearMaterial, clearMaterial)
 br_uint_32 __cdecl clearMaterial(br_material *item, void *arg) {
@@ -169,6 +178,7 @@ br_uint_32 __cdecl clearMaterial(br_material *item, void *arg) {
 }
 
 function_hook_state_t function_hook_state_clearModel = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_clearModel)
 static br_uint_32(__cdecl*original_clearModel)(br_model *, void *) = (br_uint_32(__cdecl*)(br_model *, void *))0x004dcdd0;
 CARM95_HOOK_FUNCTION(original_clearModel, clearModel)
 br_uint_32 __cdecl clearModel(br_model *item, void *arg) {
@@ -186,6 +196,7 @@ br_uint_32 __cdecl clearModel(br_model *item, void *arg) {
 }
 
 function_hook_state_t function_hook_state_BrV1dbRendererBegin = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrV1dbRendererBegin)
 static br_error(__cdecl*original_BrV1dbRendererBegin)(br_device_pixelmap *, br_renderer *) = (br_error(__cdecl*)(br_device_pixelmap *, br_renderer *))0x004dcb20;
 CARM95_HOOK_FUNCTION(original_BrV1dbRendererBegin, BrV1dbRendererBegin)
 br_error __cdecl BrV1dbRendererBegin(br_device_pixelmap *destination, br_renderer *renderer) {
@@ -209,6 +220,7 @@ br_error __cdecl BrV1dbRendererBegin(br_device_pixelmap *destination, br_rendere
 }
 
 function_hook_state_t function_hook_state_BrV1dbRendererQuery = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrV1dbRendererQuery)
 static br_renderer *(__cdecl*original_BrV1dbRendererQuery)() = (br_renderer *(__cdecl*)())0x004dccf0;
 CARM95_HOOK_FUNCTION(original_BrV1dbRendererQuery, BrV1dbRendererQuery)
 br_renderer* __cdecl BrV1dbRendererQuery() {
@@ -224,6 +236,7 @@ br_renderer* __cdecl BrV1dbRendererQuery() {
 }
 
 function_hook_state_t function_hook_state_BrV1dbRendererEnd = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrV1dbRendererEnd)
 static br_error(__cdecl*original_BrV1dbRendererEnd)() = (br_error(__cdecl*)())0x004dcd00;
 CARM95_HOOK_FUNCTION(original_BrV1dbRendererEnd, BrV1dbRendererEnd)
 br_error __cdecl BrV1dbRendererEnd() {
@@ -239,6 +252,7 @@ br_error __cdecl BrV1dbRendererEnd() {
 }
 
 function_hook_state_t function_hook_state_BrZbBegin = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrZbBegin)
 static void(__cdecl*original_BrZbBegin)(br_uint_8, br_uint_8) = (void(__cdecl*)(br_uint_8, br_uint_8))0x004dcde0;
 CARM95_HOOK_FUNCTION(original_BrZbBegin, BrZbBegin)
 void __cdecl BrZbBegin(br_uint_8 colour_type, br_uint_8 depth_type) {
@@ -256,6 +270,7 @@ void __cdecl BrZbBegin(br_uint_8 colour_type, br_uint_8 depth_type) {
 }
 
 function_hook_state_t function_hook_state_BrZsBegin = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrZsBegin)
 static void(__cdecl*original_BrZsBegin)(br_uint_8, void *, br_uint_32) = (void(__cdecl*)(br_uint_8, void *, br_uint_32))0x004dce20;
 CARM95_HOOK_FUNCTION(original_BrZsBegin, BrZsBegin)
 void __cdecl BrZsBegin(br_uint_8 colour_type, void *primitive, br_uint_32 size) {
@@ -274,6 +289,7 @@ void __cdecl BrZsBegin(br_uint_8 colour_type, void *primitive, br_uint_32 size) 
 }
 
 function_hook_state_t function_hook_state_BrZbEnd = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrZbEnd)
 static void(__cdecl*original_BrZbEnd)() = (void(__cdecl*)())0x004dce80;
 CARM95_HOOK_FUNCTION(original_BrZbEnd, BrZbEnd)
 void __cdecl BrZbEnd() {
@@ -289,6 +305,7 @@ void __cdecl BrZbEnd() {
 }
 
 function_hook_state_t function_hook_state_BrZsEnd = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrZsEnd)
 static void(__cdecl*original_BrZsEnd)() = (void(__cdecl*)())0x004dcf30;
 CARM95_HOOK_FUNCTION(original_BrZsEnd, BrZsEnd)
 void __cdecl BrZsEnd() {
@@ -304,6 +321,7 @@ void __cdecl BrZsEnd() {
 }
 
 function_hook_state_t function_hook_state_BrV1dbBeginWrapper_Float = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrV1dbBeginWrapper_Float)
 void BrV1dbBeginWrapper_Float() {
     LOG_TRACE("()");
 
@@ -317,6 +335,7 @@ void BrV1dbBeginWrapper_Float() {
 }
 
 function_hook_state_t function_hook_state_BrV1dbEndWrapper = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrV1dbEndWrapper)
 static void(__cdecl*original_BrV1dbEndWrapper)() = (void(__cdecl*)())0x004dcfea;
 CARM95_HOOK_FUNCTION(original_BrV1dbEndWrapper, BrV1dbEndWrapper)
 void __cdecl BrV1dbEndWrapper() {

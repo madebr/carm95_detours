@@ -17,6 +17,7 @@ tU32 * hookvar_gLast_checkpoint_time  = (void*)0x00509b38;
 tRace_over_reason * hookvar_gRace_over_reason  = (void*)0x00551dbc;
 
 function_hook_state_t function_hook_state_NumberOfOpponentsLeft = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_NumberOfOpponentsLeft)
 static int(__cdecl*original_NumberOfOpponentsLeft)() = (int(__cdecl*)())0x00413f90;
 CARM95_HOOK_FUNCTION(original_NumberOfOpponentsLeft, NumberOfOpponentsLeft)
 int __cdecl NumberOfOpponentsLeft() {
@@ -40,6 +41,7 @@ int __cdecl NumberOfOpponentsLeft() {
 }
 
 function_hook_state_t function_hook_state_RaceCompleted = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_RaceCompleted)
 static void(__cdecl*original_RaceCompleted)(tRace_over_reason) = (void(__cdecl*)(tRace_over_reason))0x00413ffe;
 CARM95_HOOK_FUNCTION(original_RaceCompleted, RaceCompleted)
 void __cdecl RaceCompleted(tRace_over_reason pReason) {
@@ -56,6 +58,7 @@ void __cdecl RaceCompleted(tRace_over_reason pReason) {
 }
 
 function_hook_state_t function_hook_state_Checkpoint = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_Checkpoint)
 static void(__cdecl*original_Checkpoint)(int, int) = (void(__cdecl*)(int, int))0x004141ca;
 CARM95_HOOK_FUNCTION(original_Checkpoint, Checkpoint)
 void __cdecl Checkpoint(int pCheckpoint_index, int pDo_sound) {
@@ -73,6 +76,7 @@ void __cdecl Checkpoint(int pCheckpoint_index, int pDo_sound) {
 }
 
 function_hook_state_t function_hook_state_IncrementCheckpoint = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_IncrementCheckpoint)
 static void(__cdecl*original_IncrementCheckpoint)() = (void(__cdecl*)())0x00414206;
 CARM95_HOOK_FUNCTION(original_IncrementCheckpoint, IncrementCheckpoint)
 void __cdecl IncrementCheckpoint() {
@@ -90,6 +94,7 @@ void __cdecl IncrementCheckpoint() {
 }
 
 function_hook_state_t function_hook_state_IncrementLap = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_IncrementLap)
 static void(__cdecl*original_IncrementLap)() = (void(__cdecl*)())0x0041433c;
 CARM95_HOOK_FUNCTION(original_IncrementLap, IncrementLap)
 void __cdecl IncrementLap() {
@@ -107,6 +112,7 @@ void __cdecl IncrementLap() {
 }
 
 function_hook_state_t function_hook_state_RayHitFace = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_RayHitFace)
 static int(__cdecl*original_RayHitFace)(br_vector3 *, br_vector3 *, br_vector3 *, br_vector3 *, br_vector3 *, br_vector3 *) = (int(__cdecl*)(br_vector3 *, br_vector3 *, br_vector3 *, br_vector3 *, br_vector3 *, br_vector3 *))0x00414835;
 CARM95_HOOK_FUNCTION(original_RayHitFace, RayHitFace)
 int __cdecl RayHitFace(br_vector3 *pV0, br_vector3 *pV1, br_vector3 *pV2, br_vector3 *pNormal, br_vector3 *pStart, br_vector3 *pDir) {
@@ -132,6 +138,7 @@ int __cdecl RayHitFace(br_vector3 *pV0, br_vector3 *pV1, br_vector3 *pV2, br_vec
 }
 
 function_hook_state_t function_hook_state_WrongCheckpoint = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_WrongCheckpoint)
 static void(__cdecl*original_WrongCheckpoint)(int) = (void(__cdecl*)(int))0x00414373;
 CARM95_HOOK_FUNCTION(original_WrongCheckpoint, WrongCheckpoint)
 void __cdecl WrongCheckpoint(int pCheckpoint_index) {
@@ -148,6 +155,7 @@ void __cdecl WrongCheckpoint(int pCheckpoint_index) {
 }
 
 function_hook_state_t function_hook_state_CheckCheckpoints = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_CheckCheckpoints)
 static void(__cdecl*original_CheckCheckpoints)() = (void(__cdecl*)())0x00414468;
 CARM95_HOOK_FUNCTION(original_CheckCheckpoints, CheckCheckpoints)
 void __cdecl CheckCheckpoints() {
@@ -181,6 +189,7 @@ void __cdecl CheckCheckpoints() {
 }
 
 function_hook_state_t function_hook_state_TotalRepair = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_TotalRepair)
 static void(__cdecl*original_TotalRepair)() = (void(__cdecl*)())0x004148f7;
 CARM95_HOOK_FUNCTION(original_TotalRepair, TotalRepair)
 void __cdecl TotalRepair() {
@@ -196,6 +205,7 @@ void __cdecl TotalRepair() {
 }
 
 function_hook_state_t function_hook_state_DoLogos = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DoLogos)
 static void(__cdecl*original_DoLogos)() = (void(__cdecl*)())0x00414e48;
 CARM95_HOOK_FUNCTION(original_DoLogos, DoLogos)
 void __cdecl DoLogos() {
@@ -211,6 +221,7 @@ void __cdecl DoLogos() {
 }
 
 function_hook_state_t function_hook_state_DoProgOpeningAnimation = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DoProgOpeningAnimation)
 static void(__cdecl*original_DoProgOpeningAnimation)() = (void(__cdecl*)())0x00414e71;
 CARM95_HOOK_FUNCTION(original_DoProgOpeningAnimation, DoProgOpeningAnimation)
 void __cdecl DoProgOpeningAnimation() {
@@ -226,6 +237,7 @@ void __cdecl DoProgOpeningAnimation() {
 }
 
 function_hook_state_t function_hook_state_DoProgramDemo = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DoProgramDemo)
 static void(__cdecl*original_DoProgramDemo)() = (void(__cdecl*)())0x00414e94;
 CARM95_HOOK_FUNCTION(original_DoProgramDemo, DoProgramDemo)
 void __cdecl DoProgramDemo() {
@@ -241,6 +253,7 @@ void __cdecl DoProgramDemo() {
 }
 
 function_hook_state_t function_hook_state_ChooseOpponent = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ChooseOpponent)
 static int(__cdecl*original_ChooseOpponent)(int, int *) = (int(__cdecl*)(int, int *))0x00414a47;
 CARM95_HOOK_FUNCTION(original_ChooseOpponent, ChooseOpponent)
 int __cdecl ChooseOpponent(int pNastiness, int *pHad_scum) {
@@ -264,6 +277,7 @@ int __cdecl ChooseOpponent(int pNastiness, int *pHad_scum) {
 }
 
 function_hook_state_t function_hook_state_SelectOpponents = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_SelectOpponents)
 static void(__cdecl*original_SelectOpponents)(tRace_info *) = (void(__cdecl*)(tRace_info *))0x00414925;
 CARM95_HOOK_FUNCTION(original_SelectOpponents, SelectOpponents)
 void __cdecl SelectOpponents(tRace_info *pRace_info) {
@@ -288,6 +302,7 @@ void __cdecl SelectOpponents(tRace_info *pRace_info) {
 }
 
 function_hook_state_t function_hook_state_PickNetRace = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_PickNetRace)
 static int(__cdecl*original_PickNetRace)(int, tNet_sequence_type) = (int(__cdecl*)(int, tNet_sequence_type))0x00414b57;
 CARM95_HOOK_FUNCTION(original_PickNetRace, PickNetRace)
 int __cdecl PickNetRace(int pCurrent_race, tNet_sequence_type pNet_race_sequence) {
@@ -315,6 +330,7 @@ int __cdecl PickNetRace(int pCurrent_race, tNet_sequence_type pNet_race_sequence
 }
 
 function_hook_state_t function_hook_state_SwapNetCarsLoad = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_SwapNetCarsLoad)
 static void(__cdecl*original_SwapNetCarsLoad)() = (void(__cdecl*)())0x0041542b;
 CARM95_HOOK_FUNCTION(original_SwapNetCarsLoad, SwapNetCarsLoad)
 void __cdecl SwapNetCarsLoad() {
@@ -334,6 +350,7 @@ void __cdecl SwapNetCarsLoad() {
 }
 
 function_hook_state_t function_hook_state_SwapNetCarsDispose = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_SwapNetCarsDispose)
 static void(__cdecl*original_SwapNetCarsDispose)() = (void(__cdecl*)())0x0041552d;
 CARM95_HOOK_FUNCTION(original_SwapNetCarsDispose, SwapNetCarsDispose)
 void __cdecl SwapNetCarsDispose() {
@@ -351,6 +368,7 @@ void __cdecl SwapNetCarsDispose() {
 }
 
 function_hook_state_t function_hook_state_DoGame = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DoGame)
 static void(__cdecl*original_DoGame)() = (void(__cdecl*)())0x00414ebc;
 CARM95_HOOK_FUNCTION(original_DoGame, DoGame)
 void __cdecl DoGame() {
@@ -376,6 +394,7 @@ void __cdecl DoGame() {
 }
 
 function_hook_state_t function_hook_state_InitialiseProgramState = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_InitialiseProgramState)
 static void(__cdecl*original_InitialiseProgramState)() = (void(__cdecl*)())0x00414ca8;
 CARM95_HOOK_FUNCTION(original_InitialiseProgramState, InitialiseProgramState)
 void __cdecl InitialiseProgramState() {
@@ -391,6 +410,7 @@ void __cdecl InitialiseProgramState() {
 }
 
 function_hook_state_t function_hook_state_DoProgram = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DoProgram)
 static void(__cdecl*original_DoProgram)() = (void(__cdecl*)())0x00414d8a;
 CARM95_HOOK_FUNCTION(original_DoProgram, DoProgram)
 void __cdecl DoProgram() {
@@ -406,6 +426,7 @@ void __cdecl DoProgram() {
 }
 
 function_hook_state_t function_hook_state_JumpTheStart = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_JumpTheStart)
 static void(__cdecl*original_JumpTheStart)() = (void(__cdecl*)())0x004155d4;
 CARM95_HOOK_FUNCTION(original_JumpTheStart, JumpTheStart)
 void __cdecl JumpTheStart() {
@@ -423,6 +444,7 @@ void __cdecl JumpTheStart() {
 }
 
 function_hook_state_t function_hook_state_GoingToInterfaceFromRace = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_GoingToInterfaceFromRace)
 static void(__cdecl*original_GoingToInterfaceFromRace)() = (void(__cdecl*)())0x004156c2;
 CARM95_HOOK_FUNCTION(original_GoingToInterfaceFromRace, GoingToInterfaceFromRace)
 void __cdecl GoingToInterfaceFromRace() {
@@ -438,6 +460,7 @@ void __cdecl GoingToInterfaceFromRace() {
 }
 
 function_hook_state_t function_hook_state_GoingBackToRaceFromInterface = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_GoingBackToRaceFromInterface)
 static void(__cdecl*original_GoingBackToRaceFromInterface)() = (void(__cdecl*)())0x00415700;
 CARM95_HOOK_FUNCTION(original_GoingBackToRaceFromInterface, GoingBackToRaceFromInterface)
 void __cdecl GoingBackToRaceFromInterface() {

@@ -10,6 +10,7 @@
 int * hookvar_gLast_demo  = (void*)0x00512080;
 
 function_hook_state_t function_hook_state_DoDemo = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DoDemo)
 static void(__cdecl*original_DoDemo)() = (void(__cdecl*)())0x00461110;
 CARM95_HOOK_FUNCTION(original_DoDemo, DoDemo)
 void __cdecl DoDemo() {

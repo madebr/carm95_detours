@@ -112,6 +112,7 @@ int * hookvar_gMirror_on__graphics  = (void*)0x0054ff04;
 br_scalar * hookvar_gYon_squared  = (void*)0x0054ff1c;
 
 function_hook_state_t function_hook_state_TurnOnPaletteConversion = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_TurnOnPaletteConversion)
 static void(__cdecl*original_TurnOnPaletteConversion)() = (void(__cdecl*)())0x004b3020;
 CARM95_HOOK_FUNCTION(original_TurnOnPaletteConversion, TurnOnPaletteConversion)
 void __cdecl TurnOnPaletteConversion() {
@@ -127,6 +128,7 @@ void __cdecl TurnOnPaletteConversion() {
 }
 
 function_hook_state_t function_hook_state_TurnOffPaletteConversion = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_TurnOffPaletteConversion)
 static void(__cdecl*original_TurnOffPaletteConversion)() = (void(__cdecl*)())0x004b3035;
 CARM95_HOOK_FUNCTION(original_TurnOffPaletteConversion, TurnOffPaletteConversion)
 void __cdecl TurnOffPaletteConversion() {
@@ -142,6 +144,7 @@ void __cdecl TurnOffPaletteConversion() {
 }
 
 function_hook_state_t function_hook_state_ResetLollipopQueue = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ResetLollipopQueue)
 static void(__cdecl*original_ResetLollipopQueue)() = (void(__cdecl*)())0x004b304a;
 CARM95_HOOK_FUNCTION(original_ResetLollipopQueue, ResetLollipopQueue)
 void __cdecl ResetLollipopQueue() {
@@ -157,6 +160,7 @@ void __cdecl ResetLollipopQueue() {
 }
 
 function_hook_state_t function_hook_state_AddToLollipopQueue = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_AddToLollipopQueue)
 static int(__cdecl*original_AddToLollipopQueue)(br_actor *, int) = (int(__cdecl*)(br_actor *, int))0x004b305f;
 CARM95_HOOK_FUNCTION(original_AddToLollipopQueue, AddToLollipopQueue)
 int __cdecl AddToLollipopQueue(br_actor *pActor, int pIndex) {
@@ -174,6 +178,7 @@ int __cdecl AddToLollipopQueue(br_actor *pActor, int pIndex) {
 }
 
 function_hook_state_t function_hook_state_RenderLollipops = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_RenderLollipops)
 static void(__cdecl*original_RenderLollipops)() = (void(__cdecl*)())0x004b6ac6;
 CARM95_HOOK_FUNCTION(original_RenderLollipops, RenderLollipops)
 void __cdecl RenderLollipops() {
@@ -197,6 +202,7 @@ void __cdecl RenderLollipops() {
 }
 
 function_hook_state_t function_hook_state_DRDrawLine = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DRDrawLine)
 static void(__cdecl*original_DRDrawLine)(br_pixelmap *, int, int, int, int, int) = (void(__cdecl*)(br_pixelmap *, int, int, int, int, int))0x004b30c6;
 CARM95_HOOK_FUNCTION(original_DRDrawLine, DRDrawLine)
 void __cdecl DRDrawLine(br_pixelmap *pDestn, int pX1, int pY1, int pX2, int pY2, int pColour) {
@@ -236,6 +242,7 @@ void __cdecl DRDrawLine(br_pixelmap *pDestn, int pX1, int pY1, int pX2, int pY2,
 }
 
 function_hook_state_t function_hook_state_DrawDigitAt = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DrawDigitAt)
 static void(__cdecl*original_DrawDigitAt)(br_pixelmap *, int, int, int, int) = (void(__cdecl*)(br_pixelmap *, int, int, int, int))0x004b3180;
 CARM95_HOOK_FUNCTION(original_DrawDigitAt, DrawDigitAt)
 void __cdecl DrawDigitAt(br_pixelmap *gImage, int pX, int pY, int pY_pitch, int pValue) {
@@ -256,6 +263,7 @@ void __cdecl DrawDigitAt(br_pixelmap *gImage, int pX, int pY, int pY_pitch, int 
 }
 
 function_hook_state_t function_hook_state_DrawNumberAt = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DrawNumberAt)
 static void(__cdecl*original_DrawNumberAt)(br_pixelmap *, int, int, int, int, int, int, int) = (void(__cdecl*)(br_pixelmap *, int, int, int, int, int, int, int))0x004b30f4;
 CARM95_HOOK_FUNCTION(original_DrawNumberAt, DrawNumberAt)
 void __cdecl DrawNumberAt(br_pixelmap *gImage, int pX, int pY, int pX_pitch, int pY_pitch, int pValue, int pDigit_count, int pLeading_zeroes) {
@@ -283,6 +291,7 @@ void __cdecl DrawNumberAt(br_pixelmap *gImage, int pX, int pY, int pX_pitch, int
 }
 
 function_hook_state_t function_hook_state_BuildColourTable = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BuildColourTable)
 static void(__cdecl*original_BuildColourTable)(br_pixelmap *) = (void(__cdecl*)(br_pixelmap *))0x004b31bb;
 CARM95_HOOK_FUNCTION(original_BuildColourTable, BuildColourTable)
 void __cdecl BuildColourTable(br_pixelmap *pPalette) {
@@ -315,6 +324,7 @@ void __cdecl BuildColourTable(br_pixelmap *pPalette) {
 }
 
 function_hook_state_t function_hook_state_ClearConcussion = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ClearConcussion)
 static void(__cdecl*original_ClearConcussion)() = (void(__cdecl*)())0x004b32f2;
 CARM95_HOOK_FUNCTION(original_ClearConcussion, ClearConcussion)
 void __cdecl ClearConcussion() {
@@ -330,6 +340,7 @@ void __cdecl ClearConcussion() {
 }
 
 function_hook_state_t function_hook_state_SkipLines = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_SkipLines)
 static tS8 *(__cdecl*original_SkipLines)(tS8 *, int) = (tS8 *(__cdecl*)(tS8 *, int))0x004b3579;
 CARM95_HOOK_FUNCTION(original_SkipLines, SkipLines)
 tS8* __cdecl SkipLines(tS8 *pSource, int pCount) {
@@ -355,6 +366,7 @@ tS8* __cdecl SkipLines(tS8 *pSource, int pCount) {
 }
 
 function_hook_state_t function_hook_state_CopyWords = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_CopyWords)
 void CopyWords(char *pDst, char *pSrc, int pN) {
     tU16 *dst;
     tU16 *src;
@@ -375,6 +387,7 @@ void CopyWords(char *pDst, char *pSrc, int pN) {
 }
 
 function_hook_state_t function_hook_state_Copy8BitStripImageTo16Bit = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_Copy8BitStripImageTo16Bit)
 void Copy8BitStripImageTo16Bit(br_pixelmap *pDest, br_int_16 pDest_x, br_int_16 pOffset_x, br_int_16 pDest_y, br_int_16 pOffset_y, tS8 *pSource, br_int_16 pSource_x, br_int_16 pSource_y, br_uint_16 pWidth, br_uint_16 pHeight) {
     int i;
     int j;
@@ -420,6 +433,7 @@ void Copy8BitStripImageTo16Bit(br_pixelmap *pDest, br_int_16 pDest_x, br_int_16 
 }
 
 function_hook_state_t function_hook_state_CopyStripImage = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_CopyStripImage)
 static void(__cdecl*original_CopyStripImage)(br_pixelmap *, br_int_16, br_int_16, br_int_16, br_int_16, tS8 *, br_int_16, br_int_16, br_uint_16, br_uint_16) = (void(__cdecl*)(br_pixelmap *, br_int_16, br_int_16, br_int_16, br_int_16, tS8 *, br_int_16, br_int_16, br_uint_16, br_uint_16))0x004b3307;
 CARM95_HOOK_FUNCTION(original_CopyStripImage, CopyStripImage)
 void __cdecl CopyStripImage(br_pixelmap *pDest, br_int_16 pDest_x, br_int_16 pOffset_x, br_int_16 pDest_y, br_int_16 pOffset_y, tS8 *pSource, br_int_16 pSource_x, br_int_16 pSource_y, br_uint_16 pWidth, br_uint_16 pHeight) {
@@ -467,6 +481,7 @@ void __cdecl CopyStripImage(br_pixelmap *pDest, br_int_16 pDest_x, br_int_16 pOf
 }
 
 function_hook_state_t function_hook_state_SetBRenderScreenAndBuffers = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_SetBRenderScreenAndBuffers)
 static void(__cdecl*original_SetBRenderScreenAndBuffers)(int, int, int, int) = (void(__cdecl*)(int, int, int, int))0x004b35fb;
 CARM95_HOOK_FUNCTION(original_SetBRenderScreenAndBuffers, SetBRenderScreenAndBuffers)
 void __cdecl SetBRenderScreenAndBuffers(int pX_offset, int pY_offset, int pWidth, int pHeight) {
@@ -486,6 +501,7 @@ void __cdecl SetBRenderScreenAndBuffers(int pX_offset, int pY_offset, int pWidth
 }
 
 function_hook_state_t function_hook_state_SetIntegerMapRenders = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_SetIntegerMapRenders)
 static void(__cdecl*original_SetIntegerMapRenders)() = (void(__cdecl*)())0x004b3810;
 CARM95_HOOK_FUNCTION(original_SetIntegerMapRenders, SetIntegerMapRenders)
 void __cdecl SetIntegerMapRenders() {
@@ -501,6 +517,7 @@ void __cdecl SetIntegerMapRenders() {
 }
 
 function_hook_state_t function_hook_state_AdjustRenderScreenSize = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_AdjustRenderScreenSize)
 static void(__cdecl*original_AdjustRenderScreenSize)() = (void(__cdecl*)())0x004b3895;
 CARM95_HOOK_FUNCTION(original_AdjustRenderScreenSize, AdjustRenderScreenSize)
 void __cdecl AdjustRenderScreenSize() {
@@ -518,6 +535,7 @@ void __cdecl AdjustRenderScreenSize() {
 }
 
 function_hook_state_t function_hook_state_ScreenSmaller = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ScreenSmaller)
 static void(__cdecl*original_ScreenSmaller)() = (void(__cdecl*)())0x004b39f4;
 CARM95_HOOK_FUNCTION(original_ScreenSmaller, ScreenSmaller)
 void __cdecl ScreenSmaller() {
@@ -533,6 +551,7 @@ void __cdecl ScreenSmaller() {
 }
 
 function_hook_state_t function_hook_state_ScreenLarger = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ScreenLarger)
 static void(__cdecl*original_ScreenLarger)() = (void(__cdecl*)())0x004b3a40;
 CARM95_HOOK_FUNCTION(original_ScreenLarger, ScreenLarger)
 void __cdecl ScreenLarger() {
@@ -548,6 +567,7 @@ void __cdecl ScreenLarger() {
 }
 
 function_hook_state_t function_hook_state_DRSetPaletteEntries = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DRSetPaletteEntries)
 static void(__cdecl*original_DRSetPaletteEntries)(br_pixelmap *, int, int) = (void(__cdecl*)(br_pixelmap *, int, int))0x004b3a85;
 CARM95_HOOK_FUNCTION(original_DRSetPaletteEntries, DRSetPaletteEntries)
 void __cdecl DRSetPaletteEntries(br_pixelmap *pPalette, int pFirst_colour, int pCount) {
@@ -566,6 +586,7 @@ void __cdecl DRSetPaletteEntries(br_pixelmap *pPalette, int pFirst_colour, int p
 }
 
 function_hook_state_t function_hook_state_DRSetPalette3 = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DRSetPalette3)
 static void(__cdecl*original_DRSetPalette3)(br_pixelmap *, int) = (void(__cdecl*)(br_pixelmap *, int))0x004b3af8;
 CARM95_HOOK_FUNCTION(original_DRSetPalette3, DRSetPalette3)
 void __cdecl DRSetPalette3(br_pixelmap *pThe_palette, int pSet_current_palette) {
@@ -583,6 +604,7 @@ void __cdecl DRSetPalette3(br_pixelmap *pThe_palette, int pSet_current_palette) 
 }
 
 function_hook_state_t function_hook_state_DRSetPalette2 = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DRSetPalette2)
 static void(__cdecl*original_DRSetPalette2)(br_pixelmap *, int) = (void(__cdecl*)(br_pixelmap *, int))0x004b3b53;
 CARM95_HOOK_FUNCTION(original_DRSetPalette2, DRSetPalette2)
 void __cdecl DRSetPalette2(br_pixelmap *pThe_palette, int pSet_current_palette) {
@@ -600,6 +622,7 @@ void __cdecl DRSetPalette2(br_pixelmap *pThe_palette, int pSet_current_palette) 
 }
 
 function_hook_state_t function_hook_state_DRSetPalette = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DRSetPalette)
 static void(__cdecl*original_DRSetPalette)(br_pixelmap *) = (void(__cdecl*)(br_pixelmap *))0x004b3bba;
 CARM95_HOOK_FUNCTION(original_DRSetPalette, DRSetPalette)
 void __cdecl DRSetPalette(br_pixelmap *pThe_palette) {
@@ -616,6 +639,7 @@ void __cdecl DRSetPalette(br_pixelmap *pThe_palette) {
 }
 
 function_hook_state_t function_hook_state_InitializePalettes = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_InitializePalettes)
 static void(__cdecl*original_InitializePalettes)() = (void(__cdecl*)())0x004b3bd3;
 CARM95_HOOK_FUNCTION(original_InitializePalettes, InitializePalettes)
 void __cdecl InitializePalettes() {
@@ -635,6 +659,7 @@ void __cdecl InitializePalettes() {
 }
 
 function_hook_state_t function_hook_state_SwitchToPalette = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_SwitchToPalette)
 static void(__cdecl*original_SwitchToPalette)(char *) = (void(__cdecl*)(char *))0x004b3d43;
 CARM95_HOOK_FUNCTION(original_SwitchToPalette, SwitchToPalette)
 void __cdecl SwitchToPalette(char *pPal_name) {
@@ -653,6 +678,7 @@ void __cdecl SwitchToPalette(char *pPal_name) {
 }
 
 function_hook_state_t function_hook_state_ClearEntireScreen = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ClearEntireScreen)
 static void(__cdecl*original_ClearEntireScreen)() = (void(__cdecl*)())0x004b3d76;
 CARM95_HOOK_FUNCTION(original_ClearEntireScreen, ClearEntireScreen)
 void __cdecl ClearEntireScreen() {
@@ -668,6 +694,7 @@ void __cdecl ClearEntireScreen() {
 }
 
 function_hook_state_t function_hook_state_ClearWobbles = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ClearWobbles)
 static void(__cdecl*original_ClearWobbles)() = (void(__cdecl*)())0x004b3dde;
 CARM95_HOOK_FUNCTION(original_ClearWobbles, ClearWobbles)
 void __cdecl ClearWobbles() {
@@ -685,6 +712,7 @@ void __cdecl ClearWobbles() {
 }
 
 function_hook_state_t function_hook_state_InitWobbleStuff = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_InitWobbleStuff)
 static void(__cdecl*original_InitWobbleStuff)() = (void(__cdecl*)())0x004b3e1a;
 CARM95_HOOK_FUNCTION(original_InitWobbleStuff, InitWobbleStuff)
 void __cdecl InitWobbleStuff() {
@@ -702,6 +730,7 @@ void __cdecl InitWobbleStuff() {
 }
 
 function_hook_state_t function_hook_state_NewScreenWobble = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_NewScreenWobble)
 static void(__cdecl*original_NewScreenWobble)(double, double, double) = (void(__cdecl*)(double, double, double))0x004b3e75;
 CARM95_HOOK_FUNCTION(original_NewScreenWobble, NewScreenWobble)
 void __cdecl NewScreenWobble(double pAmplitude_x, double pAmplitude_y, double pPeriod) {
@@ -726,6 +755,7 @@ void __cdecl NewScreenWobble(double pAmplitude_x, double pAmplitude_y, double pP
 }
 
 function_hook_state_t function_hook_state_SetScreenWobble = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_SetScreenWobble)
 static void(__cdecl*original_SetScreenWobble)(int, int) = (void(__cdecl*)(int, int))0x004b3f3a;
 CARM95_HOOK_FUNCTION(original_SetScreenWobble, SetScreenWobble)
 void __cdecl SetScreenWobble(int pWobble_x, int pWobble_y) {
@@ -743,6 +773,7 @@ void __cdecl SetScreenWobble(int pWobble_x, int pWobble_y) {
 }
 
 function_hook_state_t function_hook_state_ResetScreenWobble = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ResetScreenWobble)
 static void(__cdecl*original_ResetScreenWobble)() = (void(__cdecl*)())0x004b3f55;
 CARM95_HOOK_FUNCTION(original_ResetScreenWobble, ResetScreenWobble)
 void __cdecl ResetScreenWobble() {
@@ -758,6 +789,7 @@ void __cdecl ResetScreenWobble() {
 }
 
 function_hook_state_t function_hook_state_CalculateWobblitude = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_CalculateWobblitude)
 static void(__cdecl*original_CalculateWobblitude)(tU32) = (void(__cdecl*)(tU32))0x004b6baf;
 CARM95_HOOK_FUNCTION(original_CalculateWobblitude, CalculateWobblitude)
 void __cdecl CalculateWobblitude(tU32 pThe_time) {
@@ -784,6 +816,7 @@ void __cdecl CalculateWobblitude(tU32 pThe_time) {
 }
 
 function_hook_state_t function_hook_state_CalculateConcussion = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_CalculateConcussion)
 static void(__cdecl*original_CalculateConcussion)(tU32) = (void(__cdecl*)(tU32))0x004b6e97;
 CARM95_HOOK_FUNCTION(original_CalculateConcussion, CalculateConcussion)
 void __cdecl CalculateConcussion(tU32 pThe_time) {
@@ -814,6 +847,7 @@ void __cdecl CalculateConcussion(tU32 pThe_time) {
 }
 
 function_hook_state_t function_hook_state_SufferFromConcussion = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_SufferFromConcussion)
 static void(__cdecl*original_SufferFromConcussion)(float) = (void(__cdecl*)(float))0x004b3f6c;
 CARM95_HOOK_FUNCTION(original_SufferFromConcussion, SufferFromConcussion)
 void __cdecl SufferFromConcussion(float pSeriousness) {
@@ -834,6 +868,7 @@ void __cdecl SufferFromConcussion(float pSeriousness) {
 }
 
 function_hook_state_t function_hook_state_ProcessNonTrackActors = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ProcessNonTrackActors)
 static void(__cdecl*original_ProcessNonTrackActors)(br_pixelmap *, br_pixelmap *, br_actor *, br_matrix34 *, br_matrix34 *) = (void(__cdecl*)(br_pixelmap *, br_pixelmap *, br_actor *, br_matrix34 *, br_matrix34 *))0x004b70e5;
 CARM95_HOOK_FUNCTION(original_ProcessNonTrackActors, ProcessNonTrackActors)
 void __cdecl ProcessNonTrackActors(br_pixelmap *pRender_buffer, br_pixelmap *pDepth_buffer, br_actor *pCamera, br_matrix34 *pCamera_to_world, br_matrix34 *pOld_camera_matrix) {
@@ -854,6 +889,7 @@ void __cdecl ProcessNonTrackActors(br_pixelmap *pRender_buffer, br_pixelmap *pDe
 }
 
 function_hook_state_t function_hook_state_OppositeColour = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_OppositeColour)
 static int(__cdecl*original_OppositeColour)(int) = (int(__cdecl*)(int))0x004b764f;
 CARM95_HOOK_FUNCTION(original_OppositeColour, OppositeColour)
 int __cdecl OppositeColour(int pColour) {
@@ -872,6 +908,7 @@ int __cdecl OppositeColour(int pColour) {
 }
 
 function_hook_state_t function_hook_state_DrawMapBlip = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DrawMapBlip)
 static void(__cdecl*original_DrawMapBlip)(tCar_spec *, tU32, br_matrix34 *, br_vector3 *, int) = (void(__cdecl*)(tCar_spec *, tU32, br_matrix34 *, br_vector3 *, int))0x004b70fe;
 CARM95_HOOK_FUNCTION(original_DrawMapBlip, DrawMapBlip)
 void __cdecl DrawMapBlip(tCar_spec *pCar, tU32 pTime, br_matrix34 *pTrans, br_vector3 *pPos, int pColour) {
@@ -936,6 +973,7 @@ void __cdecl DrawMapBlip(tCar_spec *pCar, tU32 pTime, br_matrix34 *pTrans, br_ve
 }
 
 function_hook_state_t function_hook_state_DrawMapSmallBlip = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DrawMapSmallBlip)
 static void(__cdecl*original_DrawMapSmallBlip)(tU32, br_vector3 *, int) = (void(__cdecl*)(tU32, br_vector3 *, int))0x004b76c3;
 CARM95_HOOK_FUNCTION(original_DrawMapSmallBlip, DrawMapSmallBlip)
 void __cdecl DrawMapSmallBlip(tU32 pTime, br_vector3 *pPos, int pColour) {
@@ -960,6 +998,7 @@ void __cdecl DrawMapSmallBlip(tU32 pTime, br_vector3 *pPos, int pColour) {
 }
 
 function_hook_state_t function_hook_state_MungeClipPlane = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_MungeClipPlane)
 static void(__cdecl*original_MungeClipPlane)(br_vector3 *, tCar_spec *, br_vector3 *, br_vector3 *, br_scalar) = (void(__cdecl*)(br_vector3 *, tCar_spec *, br_vector3 *, br_vector3 *, br_scalar))0x004b553b;
 CARM95_HOOK_FUNCTION(original_MungeClipPlane, MungeClipPlane)
 void __cdecl MungeClipPlane(br_vector3 *pLight, tCar_spec *pCar, br_vector3 *p1, br_vector3 *p2, br_scalar pY_offset) {
@@ -994,6 +1033,7 @@ void __cdecl MungeClipPlane(br_vector3 *pLight, tCar_spec *pCar, br_vector3 *p1,
 }
 
 function_hook_state_t function_hook_state_TryThisEdge = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_TryThisEdge)
 static void(__cdecl*original_TryThisEdge)(tCar_spec *, br_vector3 *, int, br_scalar, int, br_scalar, int, int, br_scalar) = (void(__cdecl*)(tCar_spec *, br_vector3 *, int, br_scalar, int, br_scalar, int, int, br_scalar))0x004b547f;
 CARM95_HOOK_FUNCTION(original_TryThisEdge, TryThisEdge)
 void __cdecl TryThisEdge(tCar_spec *pCar, br_vector3 *pLight, int pIndex_1, br_scalar pSign_1, int pIndex_2, br_scalar pSign_2, int pPoint_index_1, int pPoint_index_2, br_scalar pY_offset) {
@@ -1024,6 +1064,7 @@ void __cdecl TryThisEdge(tCar_spec *pCar, br_vector3 *pLight, int pIndex_1, br_s
 }
 
 function_hook_state_t function_hook_state_DistanceFromPlane = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DistanceFromPlane)
 static br_scalar(__cdecl*original_DistanceFromPlane)(br_vector3 *, br_scalar, br_scalar, br_scalar, br_scalar) = (br_scalar(__cdecl*)(br_vector3 *, br_scalar, br_scalar, br_scalar, br_scalar))0x004b400e;
 CARM95_HOOK_FUNCTION(original_DistanceFromPlane, DistanceFromPlane)
 br_scalar __cdecl DistanceFromPlane(br_vector3 *pPos, br_scalar pA, br_scalar pB, br_scalar pC, br_scalar pD) {
@@ -1046,6 +1087,7 @@ br_scalar __cdecl DistanceFromPlane(br_vector3 *pPos, br_scalar pA, br_scalar pB
 }
 
 function_hook_state_t function_hook_state_DisableLights = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DisableLights)
 void DisableLights() {
     int i;
     LOG_TRACE("()");
@@ -1061,6 +1103,7 @@ void DisableLights() {
 }
 
 function_hook_state_t function_hook_state_EnableLights = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_EnableLights)
 void EnableLights() {
     int i;
     LOG_TRACE("()");
@@ -1076,6 +1119,7 @@ void EnableLights() {
 }
 
 function_hook_state_t function_hook_state_ProcessShadow = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ProcessShadow)
 static void(__cdecl*original_ProcessShadow)(tCar_spec *, br_actor *, tTrack_spec *, br_actor *, br_matrix34 *, br_scalar) = (void(__cdecl*)(tCar_spec *, br_actor *, tTrack_spec *, br_actor *, br_matrix34 *, br_scalar))0x004b405c;
 CARM95_HOOK_FUNCTION(original_ProcessShadow, ProcessShadow)
 void __cdecl ProcessShadow(tCar_spec *pCar, br_actor *pWorld, tTrack_spec *pTrack_spec, br_actor *pCamera, br_matrix34 *pCamera_to_world_transform, br_scalar pDistance_factor) {
@@ -1201,6 +1245,7 @@ void __cdecl ProcessShadow(tCar_spec *pCar, br_actor *pWorld, tTrack_spec *pTrac
 }
 
 function_hook_state_t function_hook_state_RenderShadows = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_RenderShadows)
 static void(__cdecl*original_RenderShadows)(br_actor *, tTrack_spec *, br_actor *, br_matrix34 *) = (void(__cdecl*)(br_actor *, tTrack_spec *, br_actor *, br_matrix34 *))0x004b57b6;
 CARM95_HOOK_FUNCTION(original_RenderShadows, RenderShadows)
 void __cdecl RenderShadows(br_actor *pWorld, tTrack_spec *pTrack_spec, br_actor *pCamera, br_matrix34 *pCamera_to_world_transform) {
@@ -1232,6 +1277,7 @@ void __cdecl RenderShadows(br_actor *pWorld, tTrack_spec *pTrack_spec, br_actor 
 }
 
 function_hook_state_t function_hook_state_FlashyMapCheckpoint = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_FlashyMapCheckpoint)
 static void(__cdecl*original_FlashyMapCheckpoint)(int, tU32) = (void(__cdecl*)(int, tU32))0x004b7754;
 CARM95_HOOK_FUNCTION(original_FlashyMapCheckpoint, FlashyMapCheckpoint)
 void __cdecl FlashyMapCheckpoint(int pIndex, tU32 pTime) {
@@ -1255,6 +1301,7 @@ void __cdecl FlashyMapCheckpoint(int pIndex, tU32 pTime) {
 }
 
 function_hook_state_t function_hook_state_ConditionallyFillWithSky = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ConditionallyFillWithSky)
 static int(__cdecl*original_ConditionallyFillWithSky)(br_pixelmap *) = (int(__cdecl*)(br_pixelmap *))0x004b784d;
 CARM95_HOOK_FUNCTION(original_ConditionallyFillWithSky, ConditionallyFillWithSky)
 int __cdecl ConditionallyFillWithSky(br_pixelmap *pPixelmap) {
@@ -1273,6 +1320,7 @@ int __cdecl ConditionallyFillWithSky(br_pixelmap *pPixelmap) {
 }
 
 function_hook_state_t function_hook_state_RenderAFrame = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_RenderAFrame)
 static void(__cdecl*original_RenderAFrame)(int) = (void(__cdecl*)(int))0x004b59ce;
 CARM95_HOOK_FUNCTION(original_RenderAFrame, RenderAFrame)
 void __cdecl RenderAFrame(int pDepth_mask_on) {
@@ -1333,6 +1381,7 @@ void __cdecl RenderAFrame(int pDepth_mask_on) {
 }
 
 function_hook_state_t function_hook_state_InitPaletteAnimate = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_InitPaletteAnimate)
 static void(__cdecl*original_InitPaletteAnimate)() = (void(__cdecl*)())0x004b7932;
 CARM95_HOOK_FUNCTION(original_InitPaletteAnimate, InitPaletteAnimate)
 void __cdecl InitPaletteAnimate() {
@@ -1348,6 +1397,7 @@ void __cdecl InitPaletteAnimate() {
 }
 
 function_hook_state_t function_hook_state_RevertPalette = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_RevertPalette)
 static void(__cdecl*original_RevertPalette)() = (void(__cdecl*)())0x004b7951;
 CARM95_HOOK_FUNCTION(original_RevertPalette, RevertPalette)
 void __cdecl RevertPalette() {
@@ -1363,6 +1413,7 @@ void __cdecl RevertPalette() {
 }
 
 function_hook_state_t function_hook_state_MungePalette = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_MungePalette)
 void MungePalette() {
     tU8 *p;
     tU8 *q;
@@ -1406,6 +1457,7 @@ void MungePalette() {
 }
 
 function_hook_state_t function_hook_state_ResetPalette = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ResetPalette)
 static void(__cdecl*original_ResetPalette)() = (void(__cdecl*)())0x004b7997;
 CARM95_HOOK_FUNCTION(original_ResetPalette, ResetPalette)
 void __cdecl ResetPalette() {
@@ -1421,6 +1473,7 @@ void __cdecl ResetPalette() {
 }
 
 function_hook_state_t function_hook_state_Darken = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_Darken)
 static void(__cdecl*original_Darken)(tU8 *, unsigned int) = (void(__cdecl*)(tU8 *, unsigned int))0x004b7a74;
 CARM95_HOOK_FUNCTION(original_Darken, Darken)
 void __cdecl Darken(tU8 *pPtr, unsigned int pDarken_amount) {
@@ -1440,6 +1493,7 @@ void __cdecl Darken(tU8 *pPtr, unsigned int pDarken_amount) {
 }
 
 function_hook_state_t function_hook_state_SetFadedPalette = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_SetFadedPalette)
 static void(__cdecl*original_SetFadedPalette)(int) = (void(__cdecl*)(int))0x004b79b5;
 CARM95_HOOK_FUNCTION(original_SetFadedPalette, SetFadedPalette)
 void __cdecl SetFadedPalette(int pDegree) {
@@ -1462,6 +1516,7 @@ void __cdecl SetFadedPalette(int pDegree) {
 }
 
 function_hook_state_t function_hook_state_FadePaletteDown = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_FadePaletteDown)
 static void(__cdecl*original_FadePaletteDown)() = (void(__cdecl*)())0x004b7a98;
 CARM95_HOOK_FUNCTION(original_FadePaletteDown, FadePaletteDown)
 void __cdecl FadePaletteDown() {
@@ -1483,6 +1538,7 @@ void __cdecl FadePaletteDown() {
 }
 
 function_hook_state_t function_hook_state_FadePaletteUp = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_FadePaletteUp)
 static void(__cdecl*original_FadePaletteUp)() = (void(__cdecl*)())0x004b7b28;
 CARM95_HOOK_FUNCTION(original_FadePaletteUp, FadePaletteUp)
 void __cdecl FadePaletteUp() {
@@ -1504,6 +1560,7 @@ void __cdecl FadePaletteUp() {
 }
 
 function_hook_state_t function_hook_state_KillSplashScreen = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_KillSplashScreen)
 static void(__cdecl*original_KillSplashScreen)() = (void(__cdecl*)())0x004b7b9c;
 CARM95_HOOK_FUNCTION(original_KillSplashScreen, KillSplashScreen)
 void __cdecl KillSplashScreen() {
@@ -1519,6 +1576,7 @@ void __cdecl KillSplashScreen() {
 }
 
 function_hook_state_t function_hook_state_EnsureRenderPalette = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_EnsureRenderPalette)
 static void(__cdecl*original_EnsureRenderPalette)() = (void(__cdecl*)())0x004b7be4;
 CARM95_HOOK_FUNCTION(original_EnsureRenderPalette, EnsureRenderPalette)
 void __cdecl EnsureRenderPalette() {
@@ -1534,6 +1592,7 @@ void __cdecl EnsureRenderPalette() {
 }
 
 function_hook_state_t function_hook_state_SplashScreenWith = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_SplashScreenWith)
 static void(__cdecl*original_SplashScreenWith)(char *) = (void(__cdecl*)(char *))0x004b7c0b;
 CARM95_HOOK_FUNCTION(original_SplashScreenWith, SplashScreenWith)
 void __cdecl SplashScreenWith(char *pPixmap_name) {
@@ -1552,6 +1611,7 @@ void __cdecl SplashScreenWith(char *pPixmap_name) {
 }
 
 function_hook_state_t function_hook_state_EnsurePaletteUp = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_EnsurePaletteUp)
 static void(__cdecl*original_EnsurePaletteUp)() = (void(__cdecl*)())0x004b7d0c;
 CARM95_HOOK_FUNCTION(original_EnsurePaletteUp, EnsurePaletteUp)
 void __cdecl EnsurePaletteUp() {
@@ -1567,6 +1627,7 @@ void __cdecl EnsurePaletteUp() {
 }
 
 function_hook_state_t function_hook_state_AmbientificateMaterial = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_AmbientificateMaterial)
 static br_uint_32(__cdecl*original_AmbientificateMaterial)(br_material *, void *) = (br_uint_32(__cdecl*)(br_material *, void *))0x004b7d4a;
 CARM95_HOOK_FUNCTION(original_AmbientificateMaterial, AmbientificateMaterial)
 br_uint_32 __cdecl AmbientificateMaterial(br_material *pMat, void *pArg) {
@@ -1586,6 +1647,7 @@ br_uint_32 __cdecl AmbientificateMaterial(br_material *pMat, void *pArg) {
 }
 
 function_hook_state_t function_hook_state_ChangeAmbience = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ChangeAmbience)
 static void(__cdecl*original_ChangeAmbience)(br_scalar) = (void(__cdecl*)(br_scalar))0x004b7d29;
 CARM95_HOOK_FUNCTION(original_ChangeAmbience, ChangeAmbience)
 void __cdecl ChangeAmbience(br_scalar pDelta) {
@@ -1602,6 +1664,7 @@ void __cdecl ChangeAmbience(br_scalar pDelta) {
 }
 
 function_hook_state_t function_hook_state_InitAmbience = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_InitAmbience)
 static void(__cdecl*original_InitAmbience)() = (void(__cdecl*)())0x004b7dae;
 CARM95_HOOK_FUNCTION(original_InitAmbience, InitAmbience)
 void __cdecl InitAmbience() {
@@ -1617,6 +1680,7 @@ void __cdecl InitAmbience() {
 }
 
 function_hook_state_t function_hook_state_DRPixelmapRectangleMaskedCopy = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DRPixelmapRectangleMaskedCopy)
 static void(__cdecl*original_DRPixelmapRectangleMaskedCopy)(br_pixelmap *, br_int_16, br_int_16, br_pixelmap *, br_int_16, br_int_16, br_int_16, br_int_16) = (void(__cdecl*)(br_pixelmap *, br_int_16, br_int_16, br_pixelmap *, br_int_16, br_int_16, br_int_16, br_int_16))0x004b7dd1;
 CARM95_HOOK_FUNCTION(original_DRPixelmapRectangleMaskedCopy, DRPixelmapRectangleMaskedCopy)
 void __cdecl DRPixelmapRectangleMaskedCopy(br_pixelmap *pDest, br_int_16 pDest_x, br_int_16 pDest_y, br_pixelmap *pSource, br_int_16 pSource_x, br_int_16 pSource_y, br_int_16 pWidth, br_int_16 pHeight) {
@@ -1658,6 +1722,7 @@ void __cdecl DRPixelmapRectangleMaskedCopy(br_pixelmap *pDest, br_int_16 pDest_x
 }
 
 function_hook_state_t function_hook_state_DRMaskedStamp = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DRMaskedStamp)
 static void(__cdecl*original_DRMaskedStamp)(br_int_16, br_int_16, br_pixelmap *) = (void(__cdecl*)(br_int_16, br_int_16, br_pixelmap *))0x004b80cc;
 CARM95_HOOK_FUNCTION(original_DRMaskedStamp, DRMaskedStamp)
 void __cdecl DRMaskedStamp(br_int_16 pDest_x, br_int_16 pDest_y, br_pixelmap *pSource) {
@@ -1676,6 +1741,7 @@ void __cdecl DRMaskedStamp(br_int_16 pDest_x, br_int_16 pDest_y, br_pixelmap *pS
 }
 
 function_hook_state_t function_hook_state_DRPixelmapRectangleOnscreenCopy = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DRPixelmapRectangleOnscreenCopy)
 static void(__cdecl*original_DRPixelmapRectangleOnscreenCopy)(br_pixelmap *, br_int_16, br_int_16, br_pixelmap *, br_int_16, br_int_16, br_int_16, br_int_16) = (void(__cdecl*)(br_pixelmap *, br_int_16, br_int_16, br_pixelmap *, br_int_16, br_int_16, br_int_16, br_int_16))0x004b8105;
 CARM95_HOOK_FUNCTION(original_DRPixelmapRectangleOnscreenCopy, DRPixelmapRectangleOnscreenCopy)
 void __cdecl DRPixelmapRectangleOnscreenCopy(br_pixelmap *pDest, br_int_16 pDest_x, br_int_16 pDest_y, br_pixelmap *pSource, br_int_16 pSource_x, br_int_16 pSource_y, br_int_16 pWidth, br_int_16 pHeight) {
@@ -1717,6 +1783,7 @@ void __cdecl DRPixelmapRectangleOnscreenCopy(br_pixelmap *pDest, br_int_16 pDest
 }
 
 function_hook_state_t function_hook_state_DRPixelmapRectangleShearedCopy = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DRPixelmapRectangleShearedCopy)
 static void(__cdecl*original_DRPixelmapRectangleShearedCopy)(br_pixelmap *, br_int_16, br_int_16, br_pixelmap *, br_int_16, br_int_16, br_int_16, br_int_16, tX1616) = (void(__cdecl*)(br_pixelmap *, br_int_16, br_int_16, br_pixelmap *, br_int_16, br_int_16, br_int_16, br_int_16, tX1616))0x004b81e6;
 CARM95_HOOK_FUNCTION(original_DRPixelmapRectangleShearedCopy, DRPixelmapRectangleShearedCopy)
 void __cdecl DRPixelmapRectangleShearedCopy(br_pixelmap *pDest, br_int_16 pDest_x, br_int_16 pDest_y, br_pixelmap *pSource, br_int_16 pSource_x, br_int_16 pSource_y, br_int_16 pWidth, br_int_16 pHeight, tX1616 pShear) {
@@ -1767,6 +1834,7 @@ void __cdecl DRPixelmapRectangleShearedCopy(br_pixelmap *pDest, br_int_16 pDest_
 }
 
 function_hook_state_t function_hook_state_DRPixelmapRectangleVScaledCopy = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DRPixelmapRectangleVScaledCopy)
 static void(__cdecl*original_DRPixelmapRectangleVScaledCopy)(br_pixelmap *, br_int_16, br_int_16, br_pixelmap *, br_int_16, br_int_16, br_int_16, br_int_16) = (void(__cdecl*)(br_pixelmap *, br_int_16, br_int_16, br_pixelmap *, br_int_16, br_int_16, br_int_16, br_int_16))0x004b8535;
 CARM95_HOOK_FUNCTION(original_DRPixelmapRectangleVScaledCopy, DRPixelmapRectangleVScaledCopy)
 void __cdecl DRPixelmapRectangleVScaledCopy(br_pixelmap *pDest, br_int_16 pDest_x, br_int_16 pDest_y, br_pixelmap *pSource, br_int_16 pSource_x, br_int_16 pSource_y, br_int_16 pWidth, br_int_16 pHeight) {
@@ -1812,6 +1880,7 @@ void __cdecl DRPixelmapRectangleVScaledCopy(br_pixelmap *pDest, br_int_16 pDest_
 }
 
 function_hook_state_t function_hook_state_InitTransientBitmaps = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_InitTransientBitmaps)
 static void(__cdecl*original_InitTransientBitmaps)() = (void(__cdecl*)())0x004b8672;
 CARM95_HOOK_FUNCTION(original_InitTransientBitmaps, InitTransientBitmaps)
 void __cdecl InitTransientBitmaps() {
@@ -1829,6 +1898,7 @@ void __cdecl InitTransientBitmaps() {
 }
 
 function_hook_state_t function_hook_state_AllocateTransientBitmap = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_AllocateTransientBitmap)
 static int(__cdecl*original_AllocateTransientBitmap)(int, int, int) = (int(__cdecl*)(int, int, int))0x004b86c0;
 CARM95_HOOK_FUNCTION(original_AllocateTransientBitmap, AllocateTransientBitmap)
 int __cdecl AllocateTransientBitmap(int pWidth, int pHeight, int pUser_data) {
@@ -1849,6 +1919,7 @@ int __cdecl AllocateTransientBitmap(int pWidth, int pHeight, int pUser_data) {
 }
 
 function_hook_state_t function_hook_state_DeallocateTransientBitmap = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DeallocateTransientBitmap)
 static void(__cdecl*original_DeallocateTransientBitmap)(int) = (void(__cdecl*)(int))0x004b8763;
 CARM95_HOOK_FUNCTION(original_DeallocateTransientBitmap, DeallocateTransientBitmap)
 void __cdecl DeallocateTransientBitmap(int pIndex) {
@@ -1865,6 +1936,7 @@ void __cdecl DeallocateTransientBitmap(int pIndex) {
 }
 
 function_hook_state_t function_hook_state_DeallocateAllTransientBitmaps = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DeallocateAllTransientBitmaps)
 static void(__cdecl*original_DeallocateAllTransientBitmaps)() = (void(__cdecl*)())0x004b87ba;
 CARM95_HOOK_FUNCTION(original_DeallocateAllTransientBitmaps, DeallocateAllTransientBitmaps)
 void __cdecl DeallocateAllTransientBitmaps() {
@@ -1882,6 +1954,7 @@ void __cdecl DeallocateAllTransientBitmaps() {
 }
 
 function_hook_state_t function_hook_state_RemoveTransientBitmaps = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_RemoveTransientBitmaps)
 static void(__cdecl*original_RemoveTransientBitmaps)(int) = (void(__cdecl*)(int))0x004b87f2;
 CARM95_HOOK_FUNCTION(original_RemoveTransientBitmaps, RemoveTransientBitmaps)
 void __cdecl RemoveTransientBitmaps(int pGraphically_remove_them) {
@@ -1902,6 +1975,7 @@ void __cdecl RemoveTransientBitmaps(int pGraphically_remove_them) {
 }
 
 function_hook_state_t function_hook_state_SaveTransient = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_SaveTransient)
 static void(__cdecl*original_SaveTransient)(int, int, int) = (void(__cdecl*)(int, int, int))0x004b88f9;
 CARM95_HOOK_FUNCTION(original_SaveTransient, SaveTransient)
 void __cdecl SaveTransient(int pIndex, int pX_coord, int pY_coord) {
@@ -1920,6 +1994,7 @@ void __cdecl SaveTransient(int pIndex, int pX_coord, int pY_coord) {
 }
 
 function_hook_state_t function_hook_state_DrawCursorGiblet = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DrawCursorGiblet)
 static void(__cdecl*original_DrawCursorGiblet)(tCursor_giblet *) = (void(__cdecl*)(tCursor_giblet *))0x004b924e;
 CARM95_HOOK_FUNCTION(original_DrawCursorGiblet, DrawCursorGiblet)
 void __cdecl DrawCursorGiblet(tCursor_giblet *pGib) {
@@ -1938,6 +2013,7 @@ void __cdecl DrawCursorGiblet(tCursor_giblet *pGib) {
 }
 
 function_hook_state_t function_hook_state_ProcessCursorGiblets = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ProcessCursorGiblets)
 static void(__cdecl*original_ProcessCursorGiblets)(int) = (void(__cdecl*)(int))0x004b8ebe;
 CARM95_HOOK_FUNCTION(original_ProcessCursorGiblets, ProcessCursorGiblets)
 void __cdecl ProcessCursorGiblets(int pPeriod) {
@@ -1962,6 +2038,7 @@ void __cdecl ProcessCursorGiblets(int pPeriod) {
 }
 
 function_hook_state_t function_hook_state_NewCursorGiblet = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_NewCursorGiblet)
 static int(__cdecl*original_NewCursorGiblet)(int, int, float, float, tU32) = (int(__cdecl*)(int, int, float, float, tU32))0x004b92e0;
 CARM95_HOOK_FUNCTION(original_NewCursorGiblet, NewCursorGiblet)
 int __cdecl NewCursorGiblet(int pX_coord, int pY_coord, float pX_speed, float pY_speed, tU32 pDrop_time) {
@@ -1990,6 +2067,7 @@ int __cdecl NewCursorGiblet(int pX_coord, int pY_coord, float pX_speed, float pY
 }
 
 function_hook_state_t function_hook_state_DoMouseCursor = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DoMouseCursor)
 static int(__cdecl*original_DoMouseCursor)() = (int(__cdecl*)())0x004b89b4;
 CARM95_HOOK_FUNCTION(original_DoMouseCursor, DoMouseCursor)
 int __cdecl DoMouseCursor() {
@@ -2041,6 +2119,7 @@ int __cdecl DoMouseCursor() {
 }
 
 function_hook_state_t function_hook_state_AllocateCursorTransient = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_AllocateCursorTransient)
 static int(__cdecl*original_AllocateCursorTransient)() = (int(__cdecl*)())0x004b95b6;
 CARM95_HOOK_FUNCTION(original_AllocateCursorTransient, AllocateCursorTransient)
 int __cdecl AllocateCursorTransient() {
@@ -2062,6 +2141,7 @@ int __cdecl AllocateCursorTransient() {
 }
 
 function_hook_state_t function_hook_state_StartMouseCursor = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_StartMouseCursor)
 static void(__cdecl*original_StartMouseCursor)() = (void(__cdecl*)())0x004b9535;
 CARM95_HOOK_FUNCTION(original_StartMouseCursor, StartMouseCursor)
 void __cdecl StartMouseCursor() {
@@ -2079,6 +2159,7 @@ void __cdecl StartMouseCursor() {
 }
 
 function_hook_state_t function_hook_state_EndMouseCursor = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_EndMouseCursor)
 static void(__cdecl*original_EndMouseCursor)() = (void(__cdecl*)())0x004b965f;
 CARM95_HOOK_FUNCTION(original_EndMouseCursor, EndMouseCursor)
 void __cdecl EndMouseCursor() {
@@ -2094,6 +2175,7 @@ void __cdecl EndMouseCursor() {
 }
 
 function_hook_state_t function_hook_state_LoadFont = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_LoadFont)
 static void(__cdecl*original_LoadFont)(int) = (void(__cdecl*)(int))0x004b9683;
 CARM95_HOOK_FUNCTION(original_LoadFont, LoadFont)
 void __cdecl LoadFont(int pFont_ID) {
@@ -2120,6 +2202,7 @@ void __cdecl LoadFont(int pFont_ID) {
 }
 
 function_hook_state_t function_hook_state_DisposeFont = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DisposeFont)
 static void(__cdecl*original_DisposeFont)(int) = (void(__cdecl*)(int))0x004b99cb;
 CARM95_HOOK_FUNCTION(original_DisposeFont, DisposeFont)
 void __cdecl DisposeFont(int pFont_ID) {
@@ -2136,6 +2219,7 @@ void __cdecl DisposeFont(int pFont_ID) {
 }
 
 function_hook_state_t function_hook_state_InitDRFonts = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_InitDRFonts)
 static void(__cdecl*original_InitDRFonts)() = (void(__cdecl*)())0x004b9a79;
 CARM95_HOOK_FUNCTION(original_InitDRFonts, InitDRFonts)
 void __cdecl InitDRFonts() {
@@ -2153,6 +2237,7 @@ void __cdecl InitDRFonts() {
 }
 
 function_hook_state_t function_hook_state_DrawDropImage = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DrawDropImage)
 static void(__cdecl*original_DrawDropImage)(br_pixelmap *, int, int, int, int, int) = (void(__cdecl*)(br_pixelmap *, int, int, int, int, int))0x004b9b73;
 CARM95_HOOK_FUNCTION(original_DrawDropImage, DrawDropImage)
 void __cdecl DrawDropImage(br_pixelmap *pImage, int pLeft, int pTop, int pTop_clip, int pBottom_clip, int pOffset) {
@@ -2182,6 +2267,7 @@ void __cdecl DrawDropImage(br_pixelmap *pImage, int pLeft, int pTop, int pTop_cl
 }
 
 function_hook_state_t function_hook_state_DropInImageFromTop = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DropInImageFromTop)
 static void(__cdecl*original_DropInImageFromTop)(br_pixelmap *, int, int, int, int) = (void(__cdecl*)(br_pixelmap *, int, int, int, int))0x004b9adf;
 CARM95_HOOK_FUNCTION(original_DropInImageFromTop, DropInImageFromTop)
 void __cdecl DropInImageFromTop(br_pixelmap *pImage, int pLeft, int pTop, int pTop_clip, int pBottom_clip) {
@@ -2208,6 +2294,7 @@ void __cdecl DropInImageFromTop(br_pixelmap *pImage, int pLeft, int pTop, int pT
 }
 
 function_hook_state_t function_hook_state_DropOutImageThruBottom = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DropOutImageThruBottom)
 static void(__cdecl*original_DropOutImageThruBottom)(br_pixelmap *, int, int, int, int) = (void(__cdecl*)(br_pixelmap *, int, int, int, int))0x004b9c5d;
 CARM95_HOOK_FUNCTION(original_DropOutImageThruBottom, DropOutImageThruBottom)
 void __cdecl DropOutImageThruBottom(br_pixelmap *pImage, int pLeft, int pTop, int pTop_clip, int pBottom_clip) {
@@ -2234,6 +2321,7 @@ void __cdecl DropOutImageThruBottom(br_pixelmap *pImage, int pLeft, int pTop, in
 }
 
 function_hook_state_t function_hook_state_DropInImageFromBottom = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DropInImageFromBottom)
 static void(__cdecl*original_DropInImageFromBottom)(br_pixelmap *, int, int, int, int) = (void(__cdecl*)(br_pixelmap *, int, int, int, int))0x004b9ce8;
 CARM95_HOOK_FUNCTION(original_DropInImageFromBottom, DropInImageFromBottom)
 void __cdecl DropInImageFromBottom(br_pixelmap *pImage, int pLeft, int pTop, int pTop_clip, int pBottom_clip) {
@@ -2260,6 +2348,7 @@ void __cdecl DropInImageFromBottom(br_pixelmap *pImage, int pLeft, int pTop, int
 }
 
 function_hook_state_t function_hook_state_DropOutImageThruTop = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DropOutImageThruTop)
 static void(__cdecl*original_DropOutImageThruTop)(br_pixelmap *, int, int, int, int) = (void(__cdecl*)(br_pixelmap *, int, int, int, int))0x004b9d75;
 CARM95_HOOK_FUNCTION(original_DropOutImageThruTop, DropOutImageThruTop)
 void __cdecl DropOutImageThruTop(br_pixelmap *pImage, int pLeft, int pTop, int pTop_clip, int pBottom_clip) {
@@ -2286,6 +2375,7 @@ void __cdecl DropOutImageThruTop(br_pixelmap *pImage, int pLeft, int pTop, int p
 }
 
 function_hook_state_t function_hook_state_DrawTellyLine = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DrawTellyLine)
 static void(__cdecl*original_DrawTellyLine)(br_pixelmap *, int, int, int) = (void(__cdecl*)(br_pixelmap *, int, int, int))0x004b9ecd;
 CARM95_HOOK_FUNCTION(original_DrawTellyLine, DrawTellyLine)
 void __cdecl DrawTellyLine(br_pixelmap *pImage, int pLeft, int pTop, int pPercentage) {
@@ -2309,6 +2399,7 @@ void __cdecl DrawTellyLine(br_pixelmap *pImage, int pLeft, int pTop, int pPercen
 }
 
 function_hook_state_t function_hook_state_DrawTellyImage = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DrawTellyImage)
 static void(__cdecl*original_DrawTellyImage)(br_pixelmap *, int, int, int) = (void(__cdecl*)(br_pixelmap *, int, int, int))0x004b9f9e;
 CARM95_HOOK_FUNCTION(original_DrawTellyImage, DrawTellyImage)
 void __cdecl DrawTellyImage(br_pixelmap *pImage, int pLeft, int pTop, int pPercentage) {
@@ -2330,6 +2421,7 @@ void __cdecl DrawTellyImage(br_pixelmap *pImage, int pLeft, int pTop, int pPerce
 }
 
 function_hook_state_t function_hook_state_TellyInImage = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_TellyInImage)
 static void(__cdecl*original_TellyInImage)(br_pixelmap *, int, int) = (void(__cdecl*)(br_pixelmap *, int, int))0x004b9e09;
 CARM95_HOOK_FUNCTION(original_TellyInImage, TellyInImage)
 void __cdecl TellyInImage(br_pixelmap *pImage, int pLeft, int pTop) {
@@ -2352,6 +2444,7 @@ void __cdecl TellyInImage(br_pixelmap *pImage, int pLeft, int pTop) {
 }
 
 function_hook_state_t function_hook_state_TellyOutImage = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_TellyOutImage)
 static void(__cdecl*original_TellyOutImage)(br_pixelmap *, int, int) = (void(__cdecl*)(br_pixelmap *, int, int))0x004ba04e;
 CARM95_HOOK_FUNCTION(original_TellyOutImage, TellyOutImage)
 void __cdecl TellyOutImage(br_pixelmap *pImage, int pLeft, int pTop) {
@@ -2376,6 +2469,7 @@ void __cdecl TellyOutImage(br_pixelmap *pImage, int pLeft, int pTop) {
 }
 
 function_hook_state_t function_hook_state_SetShadowLevel = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_SetShadowLevel)
 static void(__cdecl*original_SetShadowLevel)(tShadow_level) = (void(__cdecl*)(tShadow_level))0x004ba135;
 CARM95_HOOK_FUNCTION(original_SetShadowLevel, SetShadowLevel)
 void __cdecl SetShadowLevel(tShadow_level pLevel) {
@@ -2392,6 +2486,7 @@ void __cdecl SetShadowLevel(tShadow_level pLevel) {
 }
 
 function_hook_state_t function_hook_state_GetShadowLevel = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_GetShadowLevel)
 static tShadow_level(__cdecl*original_GetShadowLevel)() = (tShadow_level(__cdecl*)())0x004ba148;
 CARM95_HOOK_FUNCTION(original_GetShadowLevel, GetShadowLevel)
 tShadow_level __cdecl GetShadowLevel() {
@@ -2407,6 +2502,7 @@ tShadow_level __cdecl GetShadowLevel() {
 }
 
 function_hook_state_t function_hook_state_ToggleShadow = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ToggleShadow)
 static void(__cdecl*original_ToggleShadow)() = (void(__cdecl*)())0x004ba15d;
 CARM95_HOOK_FUNCTION(original_ToggleShadow, ToggleShadow)
 void __cdecl ToggleShadow() {
@@ -2422,6 +2518,7 @@ void __cdecl ToggleShadow() {
 }
 
 function_hook_state_t function_hook_state_InitShadow = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_InitShadow)
 static void(__cdecl*original_InitShadow)() = (void(__cdecl*)())0x004ba24f;
 CARM95_HOOK_FUNCTION(original_InitShadow, InitShadow)
 void __cdecl InitShadow() {
@@ -2441,6 +2538,7 @@ void __cdecl InitShadow() {
 }
 
 function_hook_state_t function_hook_state_SaveShadeTable = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_SaveShadeTable)
 static br_uint_32(__cdecl*original_SaveShadeTable)(br_pixelmap *, void *) = (br_uint_32(__cdecl*)(br_pixelmap *, void *))0x004ba427;
 CARM95_HOOK_FUNCTION(original_SaveShadeTable, SaveShadeTable)
 br_uint_32 __cdecl SaveShadeTable(br_pixelmap *pTable, void *pArg) {
@@ -2458,6 +2556,7 @@ br_uint_32 __cdecl SaveShadeTable(br_pixelmap *pTable, void *pArg) {
 }
 
 function_hook_state_t function_hook_state_SaveShadeTables = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_SaveShadeTables)
 static void(__cdecl*original_SaveShadeTables)() = (void(__cdecl*)())0x004ba49d;
 CARM95_HOOK_FUNCTION(original_SaveShadeTables, SaveShadeTables)
 void __cdecl SaveShadeTables() {
@@ -2473,6 +2572,7 @@ void __cdecl SaveShadeTables() {
 }
 
 function_hook_state_t function_hook_state_DisposeSavedShadeTables = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DisposeSavedShadeTables)
 static void(__cdecl*original_DisposeSavedShadeTables)() = (void(__cdecl*)())0x004ba4cb;
 CARM95_HOOK_FUNCTION(original_DisposeSavedShadeTables, DisposeSavedShadeTables)
 void __cdecl DisposeSavedShadeTables() {
@@ -2490,6 +2590,7 @@ void __cdecl DisposeSavedShadeTables() {
 }
 
 function_hook_state_t function_hook_state_ShadowMode = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ShadowMode)
 static void(__cdecl*original_ShadowMode)() = (void(__cdecl*)())0x004ba50e;
 CARM95_HOOK_FUNCTION(original_ShadowMode, ShadowMode)
 void __cdecl ShadowMode() {
@@ -2505,6 +2606,7 @@ void __cdecl ShadowMode() {
 }
 
 function_hook_state_t function_hook_state_SwitchToRealResolution = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_SwitchToRealResolution)
 static int(__cdecl*original_SwitchToRealResolution)() = (int(__cdecl*)())0x004ba581;
 CARM95_HOOK_FUNCTION(original_SwitchToRealResolution, SwitchToRealResolution)
 int __cdecl SwitchToRealResolution() {
@@ -2520,6 +2622,7 @@ int __cdecl SwitchToRealResolution() {
 }
 
 function_hook_state_t function_hook_state_SwitchToLoresMode = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_SwitchToLoresMode)
 static int(__cdecl*original_SwitchToLoresMode)() = (int(__cdecl*)())0x004ba5e7;
 CARM95_HOOK_FUNCTION(original_SwitchToLoresMode, SwitchToLoresMode)
 int __cdecl SwitchToLoresMode() {
@@ -2535,6 +2638,7 @@ int __cdecl SwitchToLoresMode() {
 }
 
 function_hook_state_t function_hook_state_DRPixelmapDoubledCopy = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DRPixelmapDoubledCopy)
 static void(__cdecl*original_DRPixelmapDoubledCopy)(br_pixelmap *, br_pixelmap *, int, int, int, int) = (void(__cdecl*)(br_pixelmap *, br_pixelmap *, int, int, int, int))0x004ba65a;
 CARM95_HOOK_FUNCTION(original_DRPixelmapDoubledCopy, DRPixelmapDoubledCopy)
 void __cdecl DRPixelmapDoubledCopy(br_pixelmap *pDestn, br_pixelmap *pSource, int pSource_width, int pSource_height, int pX_offset, int pY_offset) {

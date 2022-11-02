@@ -43,6 +43,7 @@ int * hookvar_gCredits_lost_headup ;
 int * hookvar_gCredits_won_headup  = (void*)0x00544e20;
 
 function_hook_state_t function_hook_state_GetTimerString = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_GetTimerString)
 static void(__cdecl*original_GetTimerString)(char *, int) = (void(__cdecl*)(char *, int))0x004c4030;
 CARM95_HOOK_FUNCTION(original_GetTimerString, GetTimerString)
 void __cdecl GetTimerString(char *pStr, int pFudge_colon) {
@@ -60,6 +61,7 @@ void __cdecl GetTimerString(char *pStr, int pFudge_colon) {
 }
 
 function_hook_state_t function_hook_state_InitHeadups = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_InitHeadups)
 static void(__cdecl*original_InitHeadups)() = (void(__cdecl*)())0x004c4053;
 CARM95_HOOK_FUNCTION(original_InitHeadups, InitHeadups)
 void __cdecl InitHeadups() {
@@ -77,6 +79,7 @@ void __cdecl InitHeadups() {
 }
 
 function_hook_state_t function_hook_state_ClearHeadup = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ClearHeadup)
 static void(__cdecl*original_ClearHeadup)(int) = (void(__cdecl*)(int))0x004c40c1;
 CARM95_HOOK_FUNCTION(original_ClearHeadup, ClearHeadup)
 void __cdecl ClearHeadup(int pIndex) {
@@ -93,6 +96,7 @@ void __cdecl ClearHeadup(int pIndex) {
 }
 
 function_hook_state_t function_hook_state_ClearHeadupSlot = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ClearHeadupSlot)
 static void(__cdecl*original_ClearHeadupSlot)(int) = (void(__cdecl*)(int))0x004c40e6;
 CARM95_HOOK_FUNCTION(original_ClearHeadupSlot, ClearHeadupSlot)
 void __cdecl ClearHeadupSlot(int pSlot_index) {
@@ -113,6 +117,7 @@ void __cdecl ClearHeadupSlot(int pSlot_index) {
 }
 
 function_hook_state_t function_hook_state_ClearHeadups = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ClearHeadups)
 static void(__cdecl*original_ClearHeadups)() = (void(__cdecl*)())0x004c414c;
 CARM95_HOOK_FUNCTION(original_ClearHeadups, ClearHeadups)
 void __cdecl ClearHeadups() {
@@ -130,6 +135,7 @@ void __cdecl ClearHeadups() {
 }
 
 function_hook_state_t function_hook_state_HeadupActive = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_HeadupActive)
 static int(__cdecl*original_HeadupActive)(int) = (int(__cdecl*)(int))0x004c421d;
 CARM95_HOOK_FUNCTION(original_HeadupActive, HeadupActive)
 int __cdecl HeadupActive(int pIndex) {
@@ -146,6 +152,7 @@ int __cdecl HeadupActive(int pIndex) {
 }
 
 function_hook_state_t function_hook_state_DRPixelmapText = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DRPixelmapText)
 static void(__cdecl*original_DRPixelmapText)(br_pixelmap *, int, int, tDR_font *, char *, int) = (void(__cdecl*)(br_pixelmap *, int, int, tDR_font *, char *, int))0x004c4256;
 CARM95_HOOK_FUNCTION(original_DRPixelmapText, DRPixelmapText)
 void __cdecl DRPixelmapText(br_pixelmap *pPixelmap, int pX, int pY, tDR_font *pFont, char *pText, int pRight_edge) {
@@ -179,6 +186,7 @@ void __cdecl DRPixelmapText(br_pixelmap *pPixelmap, int pX, int pY, tDR_font *pF
 }
 
 function_hook_state_t function_hook_state_DRPixelmapCleverText2 = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DRPixelmapCleverText2)
 static void(__cdecl*original_DRPixelmapCleverText2)(br_pixelmap *, int, int, tDR_font *, signed char *, int) = (void(__cdecl*)(br_pixelmap *, int, int, tDR_font *, signed char *, int))0x004c43cf;
 CARM95_HOOK_FUNCTION(original_DRPixelmapCleverText2, DRPixelmapCleverText2)
 void __cdecl DRPixelmapCleverText2(br_pixelmap *pPixelmap, int pX, int pY, tDR_font *pFont, signed char *pText, int pRight_edge) {
@@ -214,6 +222,7 @@ void __cdecl DRPixelmapCleverText2(br_pixelmap *pPixelmap, int pX, int pY, tDR_f
 }
 
 function_hook_state_t function_hook_state_DeviouslyDimRectangle = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DeviouslyDimRectangle)
 void DeviouslyDimRectangle(br_pixelmap *pPixelmap, int pLeft, int pTop, int pRight, int pBottom, int pKnock_out_corners) {
     LOG_TRACE("(%p, %d, %d, %d, %d, %d)", pPixelmap, pLeft, pTop, pRight, pBottom, pKnock_out_corners);
 
@@ -233,6 +242,7 @@ void DeviouslyDimRectangle(br_pixelmap *pPixelmap, int pLeft, int pTop, int pRig
 }
 
 function_hook_state_t function_hook_state_DimRectangle = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DimRectangle)
 static void(__cdecl*original_DimRectangle)(br_pixelmap *, int, int, int, int, int) = (void(__cdecl*)(br_pixelmap *, int, int, int, int, int))0x004c4604;
 CARM95_HOOK_FUNCTION(original_DimRectangle, DimRectangle)
 void __cdecl DimRectangle(br_pixelmap *pPixelmap, int pLeft, int pTop, int pRight, int pBottom, int pKnock_out_corners) {
@@ -268,6 +278,7 @@ void __cdecl DimRectangle(br_pixelmap *pPixelmap, int pLeft, int pTop, int pRigh
 }
 
 function_hook_state_t function_hook_state_DimAFewBits = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DimAFewBits)
 static void(__cdecl*original_DimAFewBits)() = (void(__cdecl*)())0x004c479c;
 CARM95_HOOK_FUNCTION(original_DimAFewBits, DimAFewBits)
 void __cdecl DimAFewBits() {
@@ -285,6 +296,7 @@ void __cdecl DimAFewBits() {
 }
 
 function_hook_state_t function_hook_state_KillOldestQueuedHeadup = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_KillOldestQueuedHeadup)
 static void(__cdecl*original_KillOldestQueuedHeadup)() = (void(__cdecl*)())0x004c524c;
 CARM95_HOOK_FUNCTION(original_KillOldestQueuedHeadup, KillOldestQueuedHeadup)
 void __cdecl KillOldestQueuedHeadup() {
@@ -300,6 +312,7 @@ void __cdecl KillOldestQueuedHeadup() {
 }
 
 function_hook_state_t function_hook_state_DubreyBar = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DubreyBar)
 static void(__cdecl*original_DubreyBar)(int, int, int) = (void(__cdecl*)(int, int, int))0x004c5438;
 CARM95_HOOK_FUNCTION(original_DubreyBar, DubreyBar)
 void __cdecl DubreyBar(int pX_index, int pY, int pColour) {
@@ -320,6 +333,7 @@ void __cdecl DubreyBar(int pX_index, int pY, int pColour) {
 }
 
 function_hook_state_t function_hook_state_DoPSPowerHeadup = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DoPSPowerHeadup)
 static void(__cdecl*original_DoPSPowerHeadup)(int, int, char *, int) = (void(__cdecl*)(int, int, char *, int))0x004c530b;
 CARM95_HOOK_FUNCTION(original_DoPSPowerHeadup, DoPSPowerHeadup)
 void __cdecl DoPSPowerHeadup(int pY, int pLevel, char *pName, int pBar_colour) {
@@ -343,6 +357,7 @@ void __cdecl DoPSPowerHeadup(int pY, int pLevel, char *pName, int pBar_colour) {
 }
 
 function_hook_state_t function_hook_state_DoPSPowerupHeadups = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DoPSPowerupHeadups)
 static void(__cdecl*original_DoPSPowerupHeadups)() = (void(__cdecl*)())0x004c5288;
 CARM95_HOOK_FUNCTION(original_DoPSPowerupHeadups, DoPSPowerupHeadups)
 void __cdecl DoPSPowerupHeadups() {
@@ -358,6 +373,7 @@ void __cdecl DoPSPowerupHeadups() {
 }
 
 function_hook_state_t function_hook_state_DoHeadups = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DoHeadups)
 static void(__cdecl*original_DoHeadups)(tU32) = (void(__cdecl*)(tU32))0x004c4906;
 CARM95_HOOK_FUNCTION(original_DoHeadups, DoHeadups)
 void __cdecl DoHeadups(tU32 pThe_time) {
@@ -384,6 +400,7 @@ void __cdecl DoHeadups(tU32 pThe_time) {
 }
 
 function_hook_state_t function_hook_state_FindAHeadupHoleWoofBarkSoundsABitRude = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_FindAHeadupHoleWoofBarkSoundsABitRude)
 static int(__cdecl*original_FindAHeadupHoleWoofBarkSoundsABitRude)(int) = (int(__cdecl*)(int))0x004c5493;
 CARM95_HOOK_FUNCTION(original_FindAHeadupHoleWoofBarkSoundsABitRude, FindAHeadupHoleWoofBarkSoundsABitRude)
 int __cdecl FindAHeadupHoleWoofBarkSoundsABitRude(int pSlot_index) {
@@ -406,6 +423,7 @@ int __cdecl FindAHeadupHoleWoofBarkSoundsABitRude(int pSlot_index) {
 }
 
 function_hook_state_t function_hook_state_DRTextWidth = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DRTextWidth)
 static int(__cdecl*original_DRTextWidth)(tDR_font *, char *) = (int(__cdecl*)(tDR_font *, char *))0x004c5514;
 CARM95_HOOK_FUNCTION(original_DRTextWidth, DRTextWidth)
 int __cdecl DRTextWidth(tDR_font *pFont, char *pText) {
@@ -431,6 +449,7 @@ int __cdecl DRTextWidth(tDR_font *pFont, char *pText) {
 }
 
 function_hook_state_t function_hook_state_DRTextCleverWidth = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DRTextCleverWidth)
 static int(__cdecl*original_DRTextCleverWidth)(tDR_font *, signed char *) = (int(__cdecl*)(tDR_font *, signed char *))0x004c5591;
 CARM95_HOOK_FUNCTION(original_DRTextCleverWidth, DRTextCleverWidth)
 int __cdecl DRTextCleverWidth(tDR_font *pFont, signed char *pText) {
@@ -456,6 +475,7 @@ int __cdecl DRTextCleverWidth(tDR_font *pFont, signed char *pText) {
 }
 
 function_hook_state_t function_hook_state_DRPixelmapCentredText = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DRPixelmapCentredText)
 static void(__cdecl*original_DRPixelmapCentredText)(br_pixelmap *, int, int, tDR_font *, char *) = (void(__cdecl*)(br_pixelmap *, int, int, tDR_font *, char *))0x004c5665;
 CARM95_HOOK_FUNCTION(original_DRPixelmapCentredText, DRPixelmapCentredText)
 void __cdecl DRPixelmapCentredText(br_pixelmap *pPixelmap, int pX, int pY, tDR_font *pFont, char *pText) {
@@ -478,6 +498,7 @@ void __cdecl DRPixelmapCentredText(br_pixelmap *pPixelmap, int pX, int pY, tDR_f
 }
 
 function_hook_state_t function_hook_state_IsHeadupTextClever = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_IsHeadupTextClever)
 static int(__cdecl*original_IsHeadupTextClever)(signed char *) = (int(__cdecl*)(signed char *))0x004c5bd4;
 CARM95_HOOK_FUNCTION(original_IsHeadupTextClever, IsHeadupTextClever)
 int __cdecl IsHeadupTextClever(signed char *pText) {
@@ -494,6 +515,7 @@ int __cdecl IsHeadupTextClever(signed char *pText) {
 }
 
 function_hook_state_t function_hook_state_MungeHeadupWidth = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_MungeHeadupWidth)
 static int(__cdecl*original_MungeHeadupWidth)(tHeadup *) = (int(__cdecl*)(tHeadup *))0x004c5981;
 CARM95_HOOK_FUNCTION(original_MungeHeadupWidth, MungeHeadupWidth)
 int __cdecl MungeHeadupWidth(tHeadup *pHeadup) {
@@ -512,6 +534,7 @@ int __cdecl MungeHeadupWidth(tHeadup *pHeadup) {
 }
 
 function_hook_state_t function_hook_state_NewTextHeadupSlot2 = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_NewTextHeadupSlot2)
 static int(__cdecl*original_NewTextHeadupSlot2)(int, int, int, int, char *, int) = (int(__cdecl*)(int, int, int, int, char *, int))0x004c56b1;
 CARM95_HOOK_FUNCTION(original_NewTextHeadupSlot2, NewTextHeadupSlot2)
 int __cdecl NewTextHeadupSlot2(int pSlot_index, int pFlash_rate, int pLifetime, int pFont_index, char *pText, int pQueue_it) {
@@ -541,6 +564,7 @@ int __cdecl NewTextHeadupSlot2(int pSlot_index, int pFlash_rate, int pLifetime, 
 }
 
 function_hook_state_t function_hook_state_NewTextHeadupSlot = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_NewTextHeadupSlot)
 static int(__cdecl*original_NewTextHeadupSlot)(int, int, int, int, char *) = (int(__cdecl*)(int, int, int, int, char *))0x004c5c1d;
 CARM95_HOOK_FUNCTION(original_NewTextHeadupSlot, NewTextHeadupSlot)
 int __cdecl NewTextHeadupSlot(int pSlot_index, int pFlash_rate, int pLifetime, int pFont_index, char *pText) {
@@ -561,6 +585,7 @@ int __cdecl NewTextHeadupSlot(int pSlot_index, int pFlash_rate, int pLifetime, i
 }
 
 function_hook_state_t function_hook_state_NewImageHeadupSlot = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_NewImageHeadupSlot)
 static int(__cdecl*original_NewImageHeadupSlot)(int, int, int, int) = (int(__cdecl*)(int, int, int, int))0x004c5c4b;
 CARM95_HOOK_FUNCTION(original_NewImageHeadupSlot, NewImageHeadupSlot)
 int __cdecl NewImageHeadupSlot(int pSlot_index, int pFlash_rate, int pLifetime, int pImage_index) {
@@ -586,6 +611,7 @@ int __cdecl NewImageHeadupSlot(int pSlot_index, int pFlash_rate, int pLifetime, 
 }
 
 function_hook_state_t function_hook_state_DoFancyHeadup = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DoFancyHeadup)
 static void(__cdecl*original_DoFancyHeadup)(int) = (void(__cdecl*)(int))0x004c5e50;
 CARM95_HOOK_FUNCTION(original_DoFancyHeadup, DoFancyHeadup)
 void __cdecl DoFancyHeadup(int pIndex) {
@@ -608,6 +634,7 @@ void __cdecl DoFancyHeadup(int pIndex) {
 }
 
 function_hook_state_t function_hook_state_AdjustHeadups = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_AdjustHeadups)
 static void(__cdecl*original_AdjustHeadups)() = (void(__cdecl*)())0x004c5f58;
 CARM95_HOOK_FUNCTION(original_AdjustHeadups, AdjustHeadups)
 void __cdecl AdjustHeadups() {
@@ -631,6 +658,7 @@ void __cdecl AdjustHeadups() {
 }
 
 function_hook_state_t function_hook_state_MoveHeadupTo = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_MoveHeadupTo)
 static void(__cdecl*original_MoveHeadupTo)(int, int, int) = (void(__cdecl*)(int, int, int))0x004c6107;
 CARM95_HOOK_FUNCTION(original_MoveHeadupTo, MoveHeadupTo)
 void __cdecl MoveHeadupTo(int pHeadup_index, int pNew_x, int pNew_y) {
@@ -653,6 +681,7 @@ void __cdecl MoveHeadupTo(int pHeadup_index, int pNew_x, int pNew_y) {
 }
 
 function_hook_state_t function_hook_state_ChangeHeadupText = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ChangeHeadupText)
 static void(__cdecl*original_ChangeHeadupText)(int, char *) = (void(__cdecl*)(int, char *))0x004c6169;
 CARM95_HOOK_FUNCTION(original_ChangeHeadupText, ChangeHeadupText)
 void __cdecl ChangeHeadupText(int pHeadup_index, char *pNew_text) {
@@ -672,6 +701,7 @@ void __cdecl ChangeHeadupText(int pHeadup_index, char *pNew_text) {
 }
 
 function_hook_state_t function_hook_state_ChangeHeadupImage = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ChangeHeadupImage)
 static void(__cdecl*original_ChangeHeadupImage)(int, int) = (void(__cdecl*)(int, int))0x004c61d2;
 CARM95_HOOK_FUNCTION(original_ChangeHeadupImage, ChangeHeadupImage)
 void __cdecl ChangeHeadupImage(int pHeadup_index, int pNew_image) {
@@ -691,6 +721,7 @@ void __cdecl ChangeHeadupImage(int pHeadup_index, int pNew_image) {
 }
 
 function_hook_state_t function_hook_state_ChangeHeadupColour = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ChangeHeadupColour)
 static void(__cdecl*original_ChangeHeadupColour)(int, int) = (void(__cdecl*)(int, int))0x004c629e;
 CARM95_HOOK_FUNCTION(original_ChangeHeadupColour, ChangeHeadupColour)
 void __cdecl ChangeHeadupColour(int pHeadup_index, int pNew_colour) {
@@ -708,6 +739,7 @@ void __cdecl ChangeHeadupColour(int pHeadup_index, int pNew_colour) {
 }
 
 function_hook_state_t function_hook_state_DoDamageScreen = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DoDamageScreen)
 static void(__cdecl*original_DoDamageScreen)(tU32) = (void(__cdecl*)(tU32))0x004c62d8;
 CARM95_HOOK_FUNCTION(original_DoDamageScreen, DoDamageScreen)
 void __cdecl DoDamageScreen(tU32 pThe_time) {
@@ -738,6 +770,7 @@ void __cdecl DoDamageScreen(tU32 pThe_time) {
 }
 
 function_hook_state_t function_hook_state_PoshDrawLine = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_PoshDrawLine)
 static void(__cdecl*original_PoshDrawLine)(float, br_pixelmap *, int, int, int, int, int) = (void(__cdecl*)(float, br_pixelmap *, int, int, int, int, int))0x004c70fd;
 CARM95_HOOK_FUNCTION(original_PoshDrawLine, PoshDrawLine)
 void __cdecl PoshDrawLine(float pAngle, br_pixelmap *pDestn, int pX1, int pY1, int pX2, int pY2, int pColour) {
@@ -760,6 +793,7 @@ void __cdecl PoshDrawLine(float pAngle, br_pixelmap *pDestn, int pX1, int pY1, i
 }
 
 function_hook_state_t function_hook_state_DoInstruments = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DoInstruments)
 static void(__cdecl*original_DoInstruments)(tU32) = (void(__cdecl*)(tU32))0x004c6474;
 CARM95_HOOK_FUNCTION(original_DoInstruments, DoInstruments)
 void __cdecl DoInstruments(tU32 pThe_time) {
@@ -796,6 +830,7 @@ void __cdecl DoInstruments(tU32 pThe_time) {
 }
 
 function_hook_state_t function_hook_state_DoSteeringWheel = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DoSteeringWheel)
 static void(__cdecl*original_DoSteeringWheel)(tU32) = (void(__cdecl*)(tU32))0x004c72e1;
 CARM95_HOOK_FUNCTION(original_DoSteeringWheel, DoSteeringWheel)
 void __cdecl DoSteeringWheel(tU32 pThe_time) {
@@ -816,6 +851,7 @@ void __cdecl DoSteeringWheel(tU32 pThe_time) {
 }
 
 function_hook_state_t function_hook_state_ChangingView = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ChangingView)
 static void(__cdecl*original_ChangingView)() = (void(__cdecl*)())0x004c7455;
 CARM95_HOOK_FUNCTION(original_ChangingView, ChangingView)
 void __cdecl ChangingView() {
@@ -833,6 +869,7 @@ void __cdecl ChangingView() {
 }
 
 function_hook_state_t function_hook_state_EarnCredits2 = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_EarnCredits2)
 static void(__cdecl*original_EarnCredits2)(int, char *) = (void(__cdecl*)(int, char *))0x004c76d8;
 CARM95_HOOK_FUNCTION(original_EarnCredits2, EarnCredits2)
 void __cdecl EarnCredits2(int pAmount, char *pPrefix_text) {
@@ -856,6 +893,7 @@ void __cdecl EarnCredits2(int pAmount, char *pPrefix_text) {
 }
 
 function_hook_state_t function_hook_state_EarnCredits = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_EarnCredits)
 static void(__cdecl*original_EarnCredits)(int) = (void(__cdecl*)(int))0x004c78a8;
 CARM95_HOOK_FUNCTION(original_EarnCredits, EarnCredits)
 void __cdecl EarnCredits(int pAmount) {
@@ -872,6 +910,7 @@ void __cdecl EarnCredits(int pAmount) {
 }
 
 function_hook_state_t function_hook_state_SpendCredits = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_SpendCredits)
 static int(__cdecl*original_SpendCredits)(int) = (int(__cdecl*)(int))0x004c78c4;
 CARM95_HOOK_FUNCTION(original_SpendCredits, SpendCredits)
 int __cdecl SpendCredits(int pAmount) {
@@ -890,6 +929,7 @@ int __cdecl SpendCredits(int pAmount) {
 }
 
 function_hook_state_t function_hook_state_AwardTime = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_AwardTime)
 static void(__cdecl*original_AwardTime)(tU32) = (void(__cdecl*)(tU32))0x004c791e;
 CARM95_HOOK_FUNCTION(original_AwardTime, AwardTime)
 void __cdecl AwardTime(tU32 pTime) {
@@ -914,6 +954,7 @@ void __cdecl AwardTime(tU32 pTime) {
 }
 
 function_hook_state_t function_hook_state_DrawRectangle = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DrawRectangle)
 static void(__cdecl*original_DrawRectangle)(br_pixelmap *, int, int, int, int, int) = (void(__cdecl*)(br_pixelmap *, int, int, int, int, int))0x004c7a61;
 CARM95_HOOK_FUNCTION(original_DrawRectangle, DrawRectangle)
 void __cdecl DrawRectangle(br_pixelmap *pPixelmap, int pLeft, int pTop, int pRight, int pBottom, int pColour) {
@@ -935,6 +976,7 @@ void __cdecl DrawRectangle(br_pixelmap *pPixelmap, int pLeft, int pTop, int pRig
 }
 
 function_hook_state_t function_hook_state_DrawRRectangle = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DrawRRectangle)
 static void(__cdecl*original_DrawRRectangle)(br_pixelmap *, int, int, int, int, int) = (void(__cdecl*)(br_pixelmap *, int, int, int, int, int))0x004c7aec;
 CARM95_HOOK_FUNCTION(original_DrawRRectangle, DrawRRectangle)
 void __cdecl DrawRRectangle(br_pixelmap *pPixelmap, int pLeft, int pTop, int pRight, int pBottom, int pColour) {
@@ -956,6 +998,7 @@ void __cdecl DrawRRectangle(br_pixelmap *pPixelmap, int pLeft, int pTop, int pRi
 }
 
 function_hook_state_t function_hook_state_OoerrIveGotTextInMeBoxMissus = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_OoerrIveGotTextInMeBoxMissus)
 static void(__cdecl*original_OoerrIveGotTextInMeBoxMissus)(int, char *, br_pixelmap *, int, int, int, int, int) = (void(__cdecl*)(int, char *, br_pixelmap *, int, int, int, int, int))0x004c7b7f;
 CARM95_HOOK_FUNCTION(original_OoerrIveGotTextInMeBoxMissus, OoerrIveGotTextInMeBoxMissus)
 void __cdecl OoerrIveGotTextInMeBoxMissus(int pFont_index, char *pText, br_pixelmap *pPixelmap, int pLeft, int pTop, int pRight, int pBottom, int pCentred) {
@@ -1001,6 +1044,7 @@ void __cdecl OoerrIveGotTextInMeBoxMissus(int pFont_index, char *pText, br_pixel
 }
 
 function_hook_state_t function_hook_state_TransBrPixelmapText = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_TransBrPixelmapText)
 static void(__cdecl*original_TransBrPixelmapText)(br_pixelmap *, int, int, br_uint_32, br_font *, signed char *) = (void(__cdecl*)(br_pixelmap *, int, int, br_uint_32, br_font *, signed char *))0x004c7ec5;
 CARM95_HOOK_FUNCTION(original_TransBrPixelmapText, TransBrPixelmapText)
 void __cdecl TransBrPixelmapText(br_pixelmap *pPixelmap, int pX, int pY, br_uint_32 pColour, br_font *pFont, signed char *pText) {
@@ -1026,6 +1070,7 @@ void __cdecl TransBrPixelmapText(br_pixelmap *pPixelmap, int pX, int pY, br_uint
 }
 
 function_hook_state_t function_hook_state_TransDRPixelmapText = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_TransDRPixelmapText)
 static void(__cdecl*original_TransDRPixelmapText)(br_pixelmap *, int, int, tDR_font *, char *, int) = (void(__cdecl*)(br_pixelmap *, int, int, tDR_font *, char *, int))0x004c7f08;
 CARM95_HOOK_FUNCTION(original_TransDRPixelmapText, TransDRPixelmapText)
 void __cdecl TransDRPixelmapText(br_pixelmap *pPixelmap, int pX, int pY, tDR_font *pFont, char *pText, int pRight_edge) {
@@ -1047,6 +1092,7 @@ void __cdecl TransDRPixelmapText(br_pixelmap *pPixelmap, int pX, int pY, tDR_fon
 }
 
 function_hook_state_t function_hook_state_TransDRPixelmapCleverText = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_TransDRPixelmapCleverText)
 static void(__cdecl*original_TransDRPixelmapCleverText)(br_pixelmap *, int, int, tDR_font *, char *, int) = (void(__cdecl*)(br_pixelmap *, int, int, tDR_font *, char *, int))0x004c7fd5;
 CARM95_HOOK_FUNCTION(original_TransDRPixelmapCleverText, TransDRPixelmapCleverText)
 void __cdecl TransDRPixelmapCleverText(br_pixelmap *pPixelmap, int pX, int pY, tDR_font *pFont, char *pText, int pRight_edge) {

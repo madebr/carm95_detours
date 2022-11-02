@@ -39,6 +39,7 @@ int * hookvar_gDone_initial  = (void*)0x00530e04;
 int * hookvar_gTemp_lost  = (void*)0x00530e20;
 
 function_hook_state_t function_hook_state_MungeRankEtc = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_MungeRankEtc)
 static void(__cdecl*original_MungeRankEtc)(tProgram_state *) = (void(__cdecl*)(tProgram_state *))0x00415740;
 CARM95_HOOK_FUNCTION(original_MungeRankEtc, MungeRankEtc)
 void __cdecl MungeRankEtc(tProgram_state *pThe_state) {
@@ -59,6 +60,7 @@ void __cdecl MungeRankEtc(tProgram_state *pThe_state) {
 }
 
 function_hook_state_t function_hook_state_CalcRankIncrease = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_CalcRankIncrease)
 static void(__cdecl*original_CalcRankIncrease)() = (void(__cdecl*)())0x0041631f;
 CARM95_HOOK_FUNCTION(original_CalcRankIncrease, CalcRankIncrease)
 void __cdecl CalcRankIncrease() {
@@ -74,6 +76,7 @@ void __cdecl CalcRankIncrease() {
 }
 
 function_hook_state_t function_hook_state_RaceSummaryDone = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_RaceSummaryDone)
 static int(__cdecl*original_RaceSummaryDone)(int, int, int, int, int) = (int(__cdecl*)(int, int, int, int, int))0x0041587e;
 CARM95_HOOK_FUNCTION(original_RaceSummaryDone, RaceSummaryDone)
 int __cdecl RaceSummaryDone(int pCurrent_choice, int pCurrent_mode, int pGo_ahead, int pEscaped, int pTimed_out) {
@@ -94,6 +97,7 @@ int __cdecl RaceSummaryDone(int pCurrent_choice, int pCurrent_mode, int pGo_ahea
 }
 
 function_hook_state_t function_hook_state_DrawInBox = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DrawInBox)
 static void(__cdecl*original_DrawInBox)(int, int, int, int, int, int, int) = (void(__cdecl*)(int, int, int, int, int, int, int))0x00415e44;
 CARM95_HOOK_FUNCTION(original_DrawInBox, DrawInBox)
 void __cdecl DrawInBox(int pBox_left, int pText_left, int pTop, int pRight, int pBottom, int pColour, int pAmount) {
@@ -116,6 +120,7 @@ void __cdecl DrawInBox(int pBox_left, int pText_left, int pTop, int pRight, int 
 }
 
 function_hook_state_t function_hook_state_DrawChromeNumber = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DrawChromeNumber)
 static void(__cdecl*original_DrawChromeNumber)(int, int, int, int, int) = (void(__cdecl*)(int, int, int, int, int))0x00415ebd;
 CARM95_HOOK_FUNCTION(original_DrawChromeNumber, DrawChromeNumber)
 void __cdecl DrawChromeNumber(int pLeft_1, int pLeft_2, int pPitch, int pTop, int pAmount) {
@@ -136,6 +141,7 @@ void __cdecl DrawChromeNumber(int pLeft_1, int pLeft_2, int pPitch, int pTop, in
 }
 
 function_hook_state_t function_hook_state_DrawSummaryItems = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DrawSummaryItems)
 static void(__cdecl*original_DrawSummaryItems)() = (void(__cdecl*)())0x00415beb;
 CARM95_HOOK_FUNCTION(original_DrawSummaryItems, DrawSummaryItems)
 void __cdecl DrawSummaryItems() {
@@ -151,6 +157,7 @@ void __cdecl DrawSummaryItems() {
 }
 
 function_hook_state_t function_hook_state_RampUpRate = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_RampUpRate)
 static void(__cdecl*original_RampUpRate)(float *, tU32) = (void(__cdecl*)(float *, tU32))0x00415f72;
 CARM95_HOOK_FUNCTION(original_RampUpRate, RampUpRate)
 void __cdecl RampUpRate(float *pRate, tU32 pTime) {
@@ -168,6 +175,7 @@ void __cdecl RampUpRate(float *pRate, tU32 pTime) {
 }
 
 function_hook_state_t function_hook_state_DrawSummary = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DrawSummary)
 static void(__cdecl*original_DrawSummary)(int, int) = (void(__cdecl*)(int, int))0x004158c0;
 CARM95_HOOK_FUNCTION(original_DrawSummary, DrawSummary)
 void __cdecl DrawSummary(int pCurrent_choice, int pCurrent_mode) {
@@ -197,6 +205,7 @@ void __cdecl DrawSummary(int pCurrent_choice, int pCurrent_mode) {
 }
 
 function_hook_state_t function_hook_state_StartSummary = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_StartSummary)
 static void(__cdecl*original_StartSummary)() = (void(__cdecl*)())0x00415ff2;
 CARM95_HOOK_FUNCTION(original_StartSummary, StartSummary)
 void __cdecl StartSummary() {
@@ -212,6 +221,7 @@ void __cdecl StartSummary() {
 }
 
 function_hook_state_t function_hook_state_SetUpTemps = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_SetUpTemps)
 static void(__cdecl*original_SetUpTemps)() = (void(__cdecl*)())0x00416046;
 CARM95_HOOK_FUNCTION(original_SetUpTemps, SetUpTemps)
 void __cdecl SetUpTemps() {
@@ -227,6 +237,7 @@ void __cdecl SetUpTemps() {
 }
 
 function_hook_state_t function_hook_state_Summ1GoAhead = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_Summ1GoAhead)
 static int(__cdecl*original_Summ1GoAhead)(int *, int *) = (int(__cdecl*)(int *, int *))0x0041600c;
 CARM95_HOOK_FUNCTION(original_Summ1GoAhead, Summ1GoAhead)
 int __cdecl Summ1GoAhead(int *pCurrent_choice, int *pCurrent_mode) {
@@ -244,6 +255,7 @@ int __cdecl Summ1GoAhead(int *pCurrent_choice, int *pCurrent_mode) {
 }
 
 function_hook_state_t function_hook_state_SummCheckGameOver = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_SummCheckGameOver)
 static int(__cdecl*original_SummCheckGameOver)(int *, int *) = (int(__cdecl*)(int *, int *))0x0041608d;
 CARM95_HOOK_FUNCTION(original_SummCheckGameOver, SummCheckGameOver)
 int __cdecl SummCheckGameOver(int *pCurrent_choice, int *pCurrent_mode) {
@@ -265,6 +277,7 @@ int __cdecl SummCheckGameOver(int *pCurrent_choice, int *pCurrent_mode) {
 }
 
 function_hook_state_t function_hook_state_DoEndRaceSummary1 = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DoEndRaceSummary1)
 static tSO_result(__cdecl*original_DoEndRaceSummary1)() = (tSO_result(__cdecl*)())0x004161dd;
 CARM95_HOOK_FUNCTION(original_DoEndRaceSummary1, DoEndRaceSummary1)
 tSO_result __cdecl DoEndRaceSummary1() {
@@ -294,6 +307,7 @@ tSO_result __cdecl DoEndRaceSummary1() {
 }
 
 function_hook_state_t function_hook_state_PrepareBoundingRadius__racesumm = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_PrepareBoundingRadius__racesumm)
 static void(__cdecl*original_PrepareBoundingRadius__racesumm)(br_model *) = (void(__cdecl*)(br_model *))0x00417e27;
 CARM95_HOOK_FUNCTION(original_PrepareBoundingRadius__racesumm, PrepareBoundingRadius__racesumm)
 void __cdecl PrepareBoundingRadius__racesumm(br_model *model) {
@@ -318,6 +332,7 @@ void __cdecl PrepareBoundingRadius__racesumm(br_model *model) {
 }
 
 function_hook_state_t function_hook_state_BuildWrecks = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BuildWrecks)
 static void(__cdecl*original_BuildWrecks)() = (void(__cdecl*)())0x00417a91;
 CARM95_HOOK_FUNCTION(original_BuildWrecks, BuildWrecks)
 void __cdecl BuildWrecks() {
@@ -345,6 +360,7 @@ void __cdecl BuildWrecks() {
 }
 
 function_hook_state_t function_hook_state_DisposeWrecks = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DisposeWrecks)
 static void(__cdecl*original_DisposeWrecks)() = (void(__cdecl*)())0x00417eba;
 CARM95_HOOK_FUNCTION(original_DisposeWrecks, DisposeWrecks)
 void __cdecl DisposeWrecks() {
@@ -372,6 +388,7 @@ void __cdecl DisposeWrecks() {
 }
 
 function_hook_state_t function_hook_state_MatrixIsIdentity = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_MatrixIsIdentity)
 static int(__cdecl*original_MatrixIsIdentity)(br_matrix34 *) = (int(__cdecl*)(br_matrix34 *))0x00416f4e;
 CARM95_HOOK_FUNCTION(original_MatrixIsIdentity, MatrixIsIdentity)
 int __cdecl MatrixIsIdentity(br_matrix34 *pMat) {
@@ -388,6 +405,7 @@ int __cdecl MatrixIsIdentity(br_matrix34 *pMat) {
 }
 
 function_hook_state_t function_hook_state_SpinWrecks = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_SpinWrecks)
 static void(__cdecl*original_SpinWrecks)(tU32) = (void(__cdecl*)(tU32))0x00416d47;
 CARM95_HOOK_FUNCTION(original_SpinWrecks, SpinWrecks)
 void __cdecl SpinWrecks(tU32 pFrame_period) {
@@ -410,6 +428,7 @@ void __cdecl SpinWrecks(tU32 pFrame_period) {
 }
 
 function_hook_state_t function_hook_state_ZoomInTo = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ZoomInTo)
 static void(__cdecl*original_ZoomInTo)(int, int *, int *) = (void(__cdecl*)(int, int *, int *))0x0041778f;
 CARM95_HOOK_FUNCTION(original_ZoomInTo, ZoomInTo)
 void __cdecl ZoomInTo(int pIndex, int *pCurrent_choice, int *pCurrent_mode) {
@@ -428,6 +447,7 @@ void __cdecl ZoomInTo(int pIndex, int *pCurrent_choice, int *pCurrent_mode) {
 }
 
 function_hook_state_t function_hook_state_ZoomOutTo = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ZoomOutTo)
 static void(__cdecl*original_ZoomOutTo)(int, int *, int *) = (void(__cdecl*)(int, int *, int *))0x00416413;
 CARM95_HOOK_FUNCTION(original_ZoomOutTo, ZoomOutTo)
 void __cdecl ZoomOutTo(int pIndex, int *pCurrent_choice, int *pCurrent_mode) {
@@ -446,6 +466,7 @@ void __cdecl ZoomOutTo(int pIndex, int *pCurrent_choice, int *pCurrent_mode) {
 }
 
 function_hook_state_t function_hook_state_WreckPick = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_WreckPick)
 static int(__cdecl*original_WreckPick)(br_actor *, br_model *, br_material *, br_vector3 *, br_vector3 *, br_scalar, br_scalar, void *) = (int(__cdecl*)(br_actor *, br_model *, br_material *, br_vector3 *, br_vector3 *, br_scalar, br_scalar, void *))0x0041660d;
 CARM95_HOOK_FUNCTION(original_WreckPick, WreckPick)
 int __cdecl WreckPick(br_actor *pActor, br_model *pModel, br_material *pMaterial, br_vector3 *pRay_pos, br_vector3 *pRay_dir, br_scalar pNear, br_scalar pFar, void *pArg) {
@@ -471,6 +492,7 @@ int __cdecl WreckPick(br_actor *pActor, br_model *pModel, br_material *pMaterial
 }
 
 function_hook_state_t function_hook_state_CastSelectionRay = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_CastSelectionRay)
 static int(__cdecl*original_CastSelectionRay)(int *, int *) = (int(__cdecl*)(int *, int *))0x00416486;
 CARM95_HOOK_FUNCTION(original_CastSelectionRay, CastSelectionRay)
 int __cdecl CastSelectionRay(int *pCurrent_choice, int *pCurrent_mode) {
@@ -498,6 +520,7 @@ int __cdecl CastSelectionRay(int *pCurrent_choice, int *pCurrent_mode) {
 }
 
 function_hook_state_t function_hook_state_DamageScrnExit = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DamageScrnExit)
 static int(__cdecl*original_DamageScrnExit)(int *, int *) = (int(__cdecl*)(int *, int *))0x0041636e;
 CARM95_HOOK_FUNCTION(original_DamageScrnExit, DamageScrnExit)
 int __cdecl DamageScrnExit(int *pCurrent_choice, int *pCurrent_mode) {
@@ -515,6 +538,7 @@ int __cdecl DamageScrnExit(int *pCurrent_choice, int *pCurrent_mode) {
 }
 
 function_hook_state_t function_hook_state_DamageScrnDraw = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DamageScrnDraw)
 static void(__cdecl*original_DamageScrnDraw)(int, int) = (void(__cdecl*)(int, int))0x00416671;
 CARM95_HOOK_FUNCTION(original_DamageScrnDraw, DamageScrnDraw)
 void __cdecl DamageScrnDraw(int pCurrent_choice, int pCurrent_mode) {
@@ -552,6 +576,7 @@ void __cdecl DamageScrnDraw(int pCurrent_choice, int pCurrent_mode) {
 }
 
 function_hook_state_t function_hook_state_DamageScrnLeft = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DamageScrnLeft)
 static int(__cdecl*original_DamageScrnLeft)(int *, int *) = (int(__cdecl*)(int *, int *))0x00417038;
 CARM95_HOOK_FUNCTION(original_DamageScrnLeft, DamageScrnLeft)
 int __cdecl DamageScrnLeft(int *pCurrent_choice, int *pCurrent_mode) {
@@ -571,6 +596,7 @@ int __cdecl DamageScrnLeft(int *pCurrent_choice, int *pCurrent_mode) {
 }
 
 function_hook_state_t function_hook_state_DamageScrnRight = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DamageScrnRight)
 static int(__cdecl*original_DamageScrnRight)(int *, int *) = (int(__cdecl*)(int *, int *))0x00417175;
 CARM95_HOOK_FUNCTION(original_DamageScrnRight, DamageScrnRight)
 int __cdecl DamageScrnRight(int *pCurrent_choice, int *pCurrent_mode) {
@@ -590,6 +616,7 @@ int __cdecl DamageScrnRight(int *pCurrent_choice, int *pCurrent_mode) {
 }
 
 function_hook_state_t function_hook_state_DamageScrnUp = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DamageScrnUp)
 static int(__cdecl*original_DamageScrnUp)(int *, int *) = (int(__cdecl*)(int *, int *))0x004172b9;
 CARM95_HOOK_FUNCTION(original_DamageScrnUp, DamageScrnUp)
 int __cdecl DamageScrnUp(int *pCurrent_choice, int *pCurrent_mode) {
@@ -615,6 +642,7 @@ int __cdecl DamageScrnUp(int *pCurrent_choice, int *pCurrent_mode) {
 }
 
 function_hook_state_t function_hook_state_DamageScrnDown = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DamageScrnDown)
 static int(__cdecl*original_DamageScrnDown)(int *, int *) = (int(__cdecl*)(int *, int *))0x004174a9;
 CARM95_HOOK_FUNCTION(original_DamageScrnDown, DamageScrnDown)
 int __cdecl DamageScrnDown(int *pCurrent_choice, int *pCurrent_mode) {
@@ -640,6 +668,7 @@ int __cdecl DamageScrnDown(int *pCurrent_choice, int *pCurrent_mode) {
 }
 
 function_hook_state_t function_hook_state_DamageScrnGoHead = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DamageScrnGoHead)
 static int(__cdecl*original_DamageScrnGoHead)(int *, int *) = (int(__cdecl*)(int *, int *))0x004176dd;
 CARM95_HOOK_FUNCTION(original_DamageScrnGoHead, DamageScrnGoHead)
 int __cdecl DamageScrnGoHead(int *pCurrent_choice, int *pCurrent_mode) {
@@ -657,6 +686,7 @@ int __cdecl DamageScrnGoHead(int *pCurrent_choice, int *pCurrent_mode) {
 }
 
 function_hook_state_t function_hook_state_ClickDamage = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ClickDamage)
 static int(__cdecl*original_ClickDamage)(int *, int *, int, int) = (int(__cdecl*)(int *, int *, int, int))0x00417839;
 CARM95_HOOK_FUNCTION(original_ClickDamage, ClickDamage)
 int __cdecl ClickDamage(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY_offset) {
@@ -684,6 +714,7 @@ int __cdecl ClickDamage(int *pCurrent_choice, int *pCurrent_mode, int pX_offset,
 }
 
 function_hook_state_t function_hook_state_DamageScrnDone = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DamageScrnDone)
 static int(__cdecl*original_DamageScrnDone)(int, int, int, int, int) = (int(__cdecl*)(int, int, int, int, int))0x0041794f;
 CARM95_HOOK_FUNCTION(original_DamageScrnDone, DamageScrnDone)
 int __cdecl DamageScrnDone(int pCurrent_choice, int pCurrent_mode, int pGo_ahead, int pEscaped, int pTimed_out) {
@@ -704,6 +735,7 @@ int __cdecl DamageScrnDone(int pCurrent_choice, int pCurrent_mode, int pGo_ahead
 }
 
 function_hook_state_t function_hook_state_DoEndRaceSummary2 = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DoEndRaceSummary2)
 static tSO_result(__cdecl*original_DoEndRaceSummary2)() = (tSO_result(__cdecl*)())0x0041797b;
 CARM95_HOOK_FUNCTION(original_DoEndRaceSummary2, DoEndRaceSummary2)
 tSO_result __cdecl DoEndRaceSummary2() {
@@ -731,6 +763,7 @@ tSO_result __cdecl DoEndRaceSummary2() {
 }
 
 function_hook_state_t function_hook_state_DrawAnItem__racesumm = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DrawAnItem__racesumm)
 static void(__cdecl*original_DrawAnItem__racesumm)(int, int, int, char *) = (void(__cdecl*)(int, int, int, char *))0x004183be;
 CARM95_HOOK_FUNCTION(original_DrawAnItem__racesumm, DrawAnItem__racesumm)
 void __cdecl DrawAnItem__racesumm(int pX, int pY_index, int pFont_index, char *pText) {
@@ -750,6 +783,7 @@ void __cdecl DrawAnItem__racesumm(int pX, int pY_index, int pFont_index, char *p
 }
 
 function_hook_state_t function_hook_state_DrawColumnHeading__racesumm = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DrawColumnHeading__racesumm)
 static void(__cdecl*original_DrawColumnHeading__racesumm)(int, int) = (void(__cdecl*)(int, int))0x00418405;
 CARM95_HOOK_FUNCTION(original_DrawColumnHeading__racesumm, DrawColumnHeading__racesumm)
 void __cdecl DrawColumnHeading__racesumm(int pStr_index, int pX) {
@@ -767,6 +801,7 @@ void __cdecl DrawColumnHeading__racesumm(int pStr_index, int pX) {
 }
 
 function_hook_state_t function_hook_state_SortScores = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_SortScores)
 static int(__cdecl*original_SortScores)(void *, void *) = (int(__cdecl*)(void *, void *))0x0041853a;
 CARM95_HOOK_FUNCTION(original_SortScores, SortScores)
 int __cdecl SortScores(void *pFirst_one, void *pSecond_one) {
@@ -784,6 +819,7 @@ int __cdecl SortScores(void *pFirst_one, void *pSecond_one) {
 }
 
 function_hook_state_t function_hook_state_SortGameScores = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_SortGameScores)
 static void(__cdecl*original_SortGameScores)() = (void(__cdecl*)())0x00418515;
 CARM95_HOOK_FUNCTION(original_SortGameScores, SortGameScores)
 void __cdecl SortGameScores() {
@@ -799,6 +835,7 @@ void __cdecl SortGameScores() {
 }
 
 function_hook_state_t function_hook_state_NetSumDraw = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_NetSumDraw)
 static void(__cdecl*original_NetSumDraw)(int, int) = (void(__cdecl*)(int, int))0x0041804b;
 CARM95_HOOK_FUNCTION(original_NetSumDraw, NetSumDraw)
 void __cdecl NetSumDraw(int pCurrent_choice, int pCurrent_mode) {
@@ -822,6 +859,7 @@ void __cdecl NetSumDraw(int pCurrent_choice, int pCurrent_mode) {
 }
 
 function_hook_state_t function_hook_state_DoNetRaceSummary = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DoNetRaceSummary)
 static void(__cdecl*original_DoNetRaceSummary)() = (void(__cdecl*)())0x00418452;
 CARM95_HOOK_FUNCTION(original_DoNetRaceSummary, DoNetRaceSummary)
 void __cdecl DoNetRaceSummary() {
@@ -853,6 +891,7 @@ void __cdecl DoNetRaceSummary() {
 }
 
 function_hook_state_t function_hook_state_DoEndRaceSummary = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DoEndRaceSummary)
 static tSO_result(__cdecl*original_DoEndRaceSummary)(int *, tRace_result) = (tSO_result(__cdecl*)(int *, tRace_result))0x00418590;
 CARM95_HOOK_FUNCTION(original_DoEndRaceSummary, DoEndRaceSummary)
 tSO_result __cdecl DoEndRaceSummary(int *pFirst_summary_done, tRace_result pRace_result) {

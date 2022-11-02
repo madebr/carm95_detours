@@ -12,6 +12,7 @@ tGraf_data ** hookvar_gCurrent_graf_data  = (void*)0x00551d88;
 int * hookvar_gGraf_data_index  = (void*)0x00551d84;
 
 function_hook_state_t function_hook_state_CalcGrafDataIndex = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_CalcGrafDataIndex)
 static void(__cdecl*original_CalcGrafDataIndex)() = (void(__cdecl*)())0x0042f200;
 CARM95_HOOK_FUNCTION(original_CalcGrafDataIndex, CalcGrafDataIndex)
 void __cdecl CalcGrafDataIndex() {

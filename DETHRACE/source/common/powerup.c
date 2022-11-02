@@ -23,6 +23,7 @@ int * hookvar_gNumber_of_icons  = (void*)0x005321e0;
 tPowerup ** hookvar_gPowerup_array  = (void*)0x005321e8;
 
 function_hook_state_t function_hook_state_LosePowerupX = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_LosePowerupX)
 static void(__cdecl*original_LosePowerupX)(tPowerup *, int) = (void(__cdecl*)(tPowerup *, int))0x0042cff6;
 CARM95_HOOK_FUNCTION(original_LosePowerupX, LosePowerupX)
 void __cdecl LosePowerupX(tPowerup *pThe_powerup, int pTell_net_players) {
@@ -44,6 +45,7 @@ void __cdecl LosePowerupX(tPowerup *pThe_powerup, int pTell_net_players) {
 }
 
 function_hook_state_t function_hook_state_LosePowerup = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_LosePowerup)
 static void(__cdecl*original_LosePowerup)(tPowerup *) = (void(__cdecl*)(tPowerup *))0x0042cfdd;
 CARM95_HOOK_FUNCTION(original_LosePowerup, LosePowerup)
 void __cdecl LosePowerup(tPowerup *pThe_powerup) {
@@ -60,6 +62,7 @@ void __cdecl LosePowerup(tPowerup *pThe_powerup) {
 }
 
 function_hook_state_t function_hook_state_LoseAllSimilarPowerups = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_LoseAllSimilarPowerups)
 static void(__cdecl*original_LoseAllSimilarPowerups)(tPowerup *) = (void(__cdecl*)(tPowerup *))0x0042cf5e;
 CARM95_HOOK_FUNCTION(original_LoseAllSimilarPowerups, LoseAllSimilarPowerups)
 void __cdecl LoseAllSimilarPowerups(tPowerup *pThe_powerup) {
@@ -80,6 +83,7 @@ void __cdecl LoseAllSimilarPowerups(tPowerup *pThe_powerup) {
 }
 
 function_hook_state_t function_hook_state_GotPowerupX = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_GotPowerupX)
 static int(__cdecl*original_GotPowerupX)(tCar_spec *, int, int, int, tU32) = (int(__cdecl*)(tCar_spec *, int, int, int, tU32))0x0042ca60;
 CARM95_HOOK_FUNCTION(original_GotPowerupX, GotPowerupX)
 int __cdecl GotPowerupX(tCar_spec *pCar, int pIndex, int pTell_net_players, int pDisplay_headup, tU32 pTime_left) {
@@ -116,6 +120,7 @@ int __cdecl GotPowerupX(tCar_spec *pCar, int pIndex, int pTell_net_players, int 
 }
 
 function_hook_state_t function_hook_state_GotPowerup = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_GotPowerup)
 static int(__cdecl*original_GotPowerup)(tCar_spec *, int) = (int(__cdecl*)(tCar_spec *, int))0x0042d121;
 CARM95_HOOK_FUNCTION(original_GotPowerup, GotPowerup)
 int __cdecl GotPowerup(tCar_spec *pCar, int pIndex) {
@@ -133,6 +138,7 @@ int __cdecl GotPowerup(tCar_spec *pCar, int pIndex) {
 }
 
 function_hook_state_t function_hook_state_LoadPowerups = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_LoadPowerups)
 static void(__cdecl*original_LoadPowerups)() = (void(__cdecl*)())0x0042d147;
 CARM95_HOOK_FUNCTION(original_LoadPowerups, LoadPowerups)
 void __cdecl LoadPowerups() {
@@ -164,6 +170,7 @@ void __cdecl LoadPowerups() {
 }
 
 function_hook_state_t function_hook_state_InitPowerups = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_InitPowerups)
 static void(__cdecl*original_InitPowerups)() = (void(__cdecl*)())0x0042d536;
 CARM95_HOOK_FUNCTION(original_InitPowerups, InitPowerups)
 void __cdecl InitPowerups() {
@@ -183,6 +190,7 @@ void __cdecl InitPowerups() {
 }
 
 function_hook_state_t function_hook_state_CloseDownPowerUps = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_CloseDownPowerUps)
 static void(__cdecl*original_CloseDownPowerUps)() = (void(__cdecl*)())0x0042d594;
 CARM95_HOOK_FUNCTION(original_CloseDownPowerUps, CloseDownPowerUps)
 void __cdecl CloseDownPowerUps() {
@@ -202,6 +210,7 @@ void __cdecl CloseDownPowerUps() {
 }
 
 function_hook_state_t function_hook_state_DrawPowerups = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DrawPowerups)
 static void(__cdecl*original_DrawPowerups)(tU32) = (void(__cdecl*)(tU32))0x0042d5ec;
 CARM95_HOOK_FUNCTION(original_DrawPowerups, DrawPowerups)
 void __cdecl DrawPowerups(tU32 pTime) {
@@ -232,6 +241,7 @@ void __cdecl DrawPowerups(tU32 pTime) {
 }
 
 function_hook_state_t function_hook_state_DoPowerupPeriodics = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DoPowerupPeriodics)
 static void(__cdecl*original_DoPowerupPeriodics)(tU32) = (void(__cdecl*)(tU32))0x0042d8a9;
 CARM95_HOOK_FUNCTION(original_DoPowerupPeriodics, DoPowerupPeriodics)
 void __cdecl DoPowerupPeriodics(tU32 pFrame_period) {
@@ -254,6 +264,7 @@ void __cdecl DoPowerupPeriodics(tU32 pFrame_period) {
 }
 
 function_hook_state_t function_hook_state_GotPowerupN = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_GotPowerupN)
 static void(__cdecl*original_GotPowerupN)(int) = (void(__cdecl*)(int))0x0042d965;
 CARM95_HOOK_FUNCTION(original_GotPowerupN, GotPowerupN)
 void __cdecl GotPowerupN(int pN) {
@@ -272,6 +283,7 @@ void __cdecl GotPowerupN(int pN) {
 }
 
 function_hook_state_t function_hook_state_GotPowerup0 = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_GotPowerup0)
 static void(__cdecl*original_GotPowerup0)() = (void(__cdecl*)())0x0042d9e8;
 CARM95_HOOK_FUNCTION(original_GotPowerup0, GotPowerup0)
 void __cdecl GotPowerup0() {
@@ -287,6 +299,7 @@ void __cdecl GotPowerup0() {
 }
 
 function_hook_state_t function_hook_state_GotPowerup1 = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_GotPowerup1)
 static void(__cdecl*original_GotPowerup1)() = (void(__cdecl*)())0x0042d9fd;
 CARM95_HOOK_FUNCTION(original_GotPowerup1, GotPowerup1)
 void __cdecl GotPowerup1() {
@@ -302,6 +315,7 @@ void __cdecl GotPowerup1() {
 }
 
 function_hook_state_t function_hook_state_GotPowerup2 = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_GotPowerup2)
 static void(__cdecl*original_GotPowerup2)() = (void(__cdecl*)())0x0042da12;
 CARM95_HOOK_FUNCTION(original_GotPowerup2, GotPowerup2)
 void __cdecl GotPowerup2() {
@@ -317,6 +331,7 @@ void __cdecl GotPowerup2() {
 }
 
 function_hook_state_t function_hook_state_GotPowerup3 = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_GotPowerup3)
 static void(__cdecl*original_GotPowerup3)() = (void(__cdecl*)())0x0042da27;
 CARM95_HOOK_FUNCTION(original_GotPowerup3, GotPowerup3)
 void __cdecl GotPowerup3() {
@@ -332,6 +347,7 @@ void __cdecl GotPowerup3() {
 }
 
 function_hook_state_t function_hook_state_GotPowerup4 = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_GotPowerup4)
 static void(__cdecl*original_GotPowerup4)() = (void(__cdecl*)())0x0042da3c;
 CARM95_HOOK_FUNCTION(original_GotPowerup4, GotPowerup4)
 void __cdecl GotPowerup4() {
@@ -347,6 +363,7 @@ void __cdecl GotPowerup4() {
 }
 
 function_hook_state_t function_hook_state_GotPowerup5 = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_GotPowerup5)
 static void(__cdecl*original_GotPowerup5)() = (void(__cdecl*)())0x0042da51;
 CARM95_HOOK_FUNCTION(original_GotPowerup5, GotPowerup5)
 void __cdecl GotPowerup5() {
@@ -362,6 +379,7 @@ void __cdecl GotPowerup5() {
 }
 
 function_hook_state_t function_hook_state_GotPowerup6 = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_GotPowerup6)
 static void(__cdecl*original_GotPowerup6)() = (void(__cdecl*)())0x0042da66;
 CARM95_HOOK_FUNCTION(original_GotPowerup6, GotPowerup6)
 void __cdecl GotPowerup6() {
@@ -377,6 +395,7 @@ void __cdecl GotPowerup6() {
 }
 
 function_hook_state_t function_hook_state_GotPowerup7 = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_GotPowerup7)
 static void(__cdecl*original_GotPowerup7)() = (void(__cdecl*)())0x0042da7b;
 CARM95_HOOK_FUNCTION(original_GotPowerup7, GotPowerup7)
 void __cdecl GotPowerup7() {
@@ -392,6 +411,7 @@ void __cdecl GotPowerup7() {
 }
 
 function_hook_state_t function_hook_state_GotPowerup8 = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_GotPowerup8)
 static void(__cdecl*original_GotPowerup8)() = (void(__cdecl*)())0x0042da90;
 CARM95_HOOK_FUNCTION(original_GotPowerup8, GotPowerup8)
 void __cdecl GotPowerup8() {
@@ -407,6 +427,7 @@ void __cdecl GotPowerup8() {
 }
 
 function_hook_state_t function_hook_state_GotPowerup9 = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_GotPowerup9)
 static void(__cdecl*original_GotPowerup9)() = (void(__cdecl*)())0x0042daa5;
 CARM95_HOOK_FUNCTION(original_GotPowerup9, GotPowerup9)
 void __cdecl GotPowerup9() {
@@ -422,6 +443,7 @@ void __cdecl GotPowerup9() {
 }
 
 function_hook_state_t function_hook_state_GotCredits = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_GotCredits)
 static int(__cdecl*original_GotCredits)(tPowerup *, tCar_spec *) = (int(__cdecl*)(tPowerup *, tCar_spec *))0x0042daba;
 CARM95_HOOK_FUNCTION(original_GotCredits, GotCredits)
 int __cdecl GotCredits(tPowerup *pPowerup, tCar_spec *pCar) {
@@ -443,6 +465,7 @@ int __cdecl GotCredits(tPowerup *pPowerup, tCar_spec *pCar) {
 }
 
 function_hook_state_t function_hook_state_ImprovePSPowerup = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ImprovePSPowerup)
 static void(__cdecl*original_ImprovePSPowerup)(tCar_spec *, int) = (void(__cdecl*)(tCar_spec *, int))0x0042db7a;
 CARM95_HOOK_FUNCTION(original_ImprovePSPowerup, ImprovePSPowerup)
 void __cdecl ImprovePSPowerup(tCar_spec *pCar, int pIndex) {
@@ -462,6 +485,7 @@ void __cdecl ImprovePSPowerup(tCar_spec *pCar, int pIndex) {
 }
 
 function_hook_state_t function_hook_state_GotTimeOrPower = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_GotTimeOrPower)
 static int(__cdecl*original_GotTimeOrPower)(tPowerup *, tCar_spec *) = (int(__cdecl*)(tPowerup *, tCar_spec *))0x0042dbba;
 CARM95_HOOK_FUNCTION(original_GotTimeOrPower, GotTimeOrPower)
 int __cdecl GotTimeOrPower(tPowerup *pPowerup, tCar_spec *pCar) {
@@ -489,6 +513,7 @@ int __cdecl GotTimeOrPower(tPowerup *pPowerup, tCar_spec *pCar) {
 }
 
 function_hook_state_t function_hook_state_SetPedSpeed = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_SetPedSpeed)
 static int(__cdecl*original_SetPedSpeed)(tPowerup *, tCar_spec *) = (int(__cdecl*)(tPowerup *, tCar_spec *))0x0042dd8b;
 CARM95_HOOK_FUNCTION(original_SetPedSpeed, SetPedSpeed)
 int __cdecl SetPedSpeed(tPowerup *pPowerup, tCar_spec *pCar) {
@@ -506,6 +531,7 @@ int __cdecl SetPedSpeed(tPowerup *pPowerup, tCar_spec *pCar) {
 }
 
 function_hook_state_t function_hook_state_SetHades = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_SetHades)
 static int(__cdecl*original_SetHades)(tPowerup *, tCar_spec *) = (int(__cdecl*)(tPowerup *, tCar_spec *))0x0042ddb9;
 CARM95_HOOK_FUNCTION(original_SetHades, SetHades)
 int __cdecl SetHades(tPowerup *pPowerup, tCar_spec *pCar) {
@@ -523,6 +549,7 @@ int __cdecl SetHades(tPowerup *pPowerup, tCar_spec *pCar) {
 }
 
 function_hook_state_t function_hook_state_ResetHades = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ResetHades)
 static void(__cdecl*original_ResetHades)(tPowerup *, tCar_spec *) = (void(__cdecl*)(tPowerup *, tCar_spec *))0x0042dddf;
 CARM95_HOOK_FUNCTION(original_ResetHades, ResetHades)
 void __cdecl ResetHades(tPowerup *pPowerup, tCar_spec *pCar) {
@@ -540,6 +567,7 @@ void __cdecl ResetHades(tPowerup *pPowerup, tCar_spec *pCar) {
 }
 
 function_hook_state_t function_hook_state_SetPedSize = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_SetPedSize)
 static int(__cdecl*original_SetPedSize)(tPowerup *, tCar_spec *) = (int(__cdecl*)(tPowerup *, tCar_spec *))0x0042ddef;
 CARM95_HOOK_FUNCTION(original_SetPedSize, SetPedSize)
 int __cdecl SetPedSize(tPowerup *pPowerup, tCar_spec *pCar) {
@@ -559,6 +587,7 @@ int __cdecl SetPedSize(tPowerup *pPowerup, tCar_spec *pCar) {
 }
 
 function_hook_state_t function_hook_state_SetPedExplode = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_SetPedExplode)
 static int(__cdecl*original_SetPedExplode)(tPowerup *, tCar_spec *) = (int(__cdecl*)(tPowerup *, tCar_spec *))0x0042dec4;
 CARM95_HOOK_FUNCTION(original_SetPedExplode, SetPedExplode)
 int __cdecl SetPedExplode(tPowerup *pPowerup, tCar_spec *pCar) {
@@ -576,6 +605,7 @@ int __cdecl SetPedExplode(tPowerup *pPowerup, tCar_spec *pCar) {
 }
 
 function_hook_state_t function_hook_state_SetInvulnerability = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_SetInvulnerability)
 static int(__cdecl*original_SetInvulnerability)(tPowerup *, tCar_spec *) = (int(__cdecl*)(tPowerup *, tCar_spec *))0x0042deef;
 CARM95_HOOK_FUNCTION(original_SetInvulnerability, SetInvulnerability)
 int __cdecl SetInvulnerability(tPowerup *pPowerup, tCar_spec *pCar) {
@@ -593,6 +623,7 @@ int __cdecl SetInvulnerability(tPowerup *pPowerup, tCar_spec *pCar) {
 }
 
 function_hook_state_t function_hook_state_ResetInvulnerability = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ResetInvulnerability)
 static void(__cdecl*original_ResetInvulnerability)(tPowerup *, tCar_spec *) = (void(__cdecl*)(tPowerup *, tCar_spec *))0x0042df1d;
 CARM95_HOOK_FUNCTION(original_ResetInvulnerability, ResetInvulnerability)
 void __cdecl ResetInvulnerability(tPowerup *pPowerup, tCar_spec *pCar) {
@@ -610,6 +641,7 @@ void __cdecl ResetInvulnerability(tPowerup *pPowerup, tCar_spec *pCar) {
 }
 
 function_hook_state_t function_hook_state_SetFreeRepairs = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_SetFreeRepairs)
 static int(__cdecl*original_SetFreeRepairs)(tPowerup *, tCar_spec *) = (int(__cdecl*)(tPowerup *, tCar_spec *))0x0042df35;
 CARM95_HOOK_FUNCTION(original_SetFreeRepairs, SetFreeRepairs)
 int __cdecl SetFreeRepairs(tPowerup *pPowerup, tCar_spec *pCar) {
@@ -627,6 +659,7 @@ int __cdecl SetFreeRepairs(tPowerup *pPowerup, tCar_spec *pCar) {
 }
 
 function_hook_state_t function_hook_state_ResetFreeRepairs = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ResetFreeRepairs)
 static void(__cdecl*original_ResetFreeRepairs)(tPowerup *, tCar_spec *) = (void(__cdecl*)(tPowerup *, tCar_spec *))0x0042df6d;
 CARM95_HOOK_FUNCTION(original_ResetFreeRepairs, ResetFreeRepairs)
 void __cdecl ResetFreeRepairs(tPowerup *pPowerup, tCar_spec *pCar) {
@@ -644,6 +677,7 @@ void __cdecl ResetFreeRepairs(tPowerup *pPowerup, tCar_spec *pCar) {
 }
 
 function_hook_state_t function_hook_state_SetBlindPedestrians = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_SetBlindPedestrians)
 static int(__cdecl*original_SetBlindPedestrians)(tPowerup *, tCar_spec *) = (int(__cdecl*)(tPowerup *, tCar_spec *))0x0042df8f;
 CARM95_HOOK_FUNCTION(original_SetBlindPedestrians, SetBlindPedestrians)
 int __cdecl SetBlindPedestrians(tPowerup *pPowerup, tCar_spec *pCar) {
@@ -661,6 +695,7 @@ int __cdecl SetBlindPedestrians(tPowerup *pPowerup, tCar_spec *pCar) {
 }
 
 function_hook_state_t function_hook_state_ResetBlindPedestrians = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ResetBlindPedestrians)
 static void(__cdecl*original_ResetBlindPedestrians)(tPowerup *, tCar_spec *) = (void(__cdecl*)(tPowerup *, tCar_spec *))0x0042dfba;
 CARM95_HOOK_FUNCTION(original_ResetBlindPedestrians, ResetBlindPedestrians)
 void __cdecl ResetBlindPedestrians(tPowerup *pPowerup, tCar_spec *pCar) {
@@ -678,6 +713,7 @@ void __cdecl ResetBlindPedestrians(tPowerup *pPowerup, tCar_spec *pCar) {
 }
 
 function_hook_state_t function_hook_state_FreezeTimer = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_FreezeTimer)
 static int(__cdecl*original_FreezeTimer)(tPowerup *, tCar_spec *) = (int(__cdecl*)(tPowerup *, tCar_spec *))0x0042dfcf;
 CARM95_HOOK_FUNCTION(original_FreezeTimer, FreezeTimer)
 int __cdecl FreezeTimer(tPowerup *pPowerup, tCar_spec *pCar) {
@@ -695,6 +731,7 @@ int __cdecl FreezeTimer(tPowerup *pPowerup, tCar_spec *pCar) {
 }
 
 function_hook_state_t function_hook_state_UnfreezeTimer = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_UnfreezeTimer)
 static void(__cdecl*original_UnfreezeTimer)(tPowerup *, tCar_spec *) = (void(__cdecl*)(tPowerup *, tCar_spec *))0x0042e023;
 CARM95_HOOK_FUNCTION(original_UnfreezeTimer, UnfreezeTimer)
 void __cdecl UnfreezeTimer(tPowerup *pPowerup, tCar_spec *pCar) {
@@ -712,6 +749,7 @@ void __cdecl UnfreezeTimer(tPowerup *pPowerup, tCar_spec *pCar) {
 }
 
 function_hook_state_t function_hook_state_DoInstantRepair = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DoInstantRepair)
 static int(__cdecl*original_DoInstantRepair)(tPowerup *, tCar_spec *) = (int(__cdecl*)(tPowerup *, tCar_spec *))0x0042e045;
 CARM95_HOOK_FUNCTION(original_DoInstantRepair, DoInstantRepair)
 int __cdecl DoInstantRepair(tPowerup *pPowerup, tCar_spec *pCar) {
@@ -729,6 +767,7 @@ int __cdecl DoInstantRepair(tPowerup *pPowerup, tCar_spec *pCar) {
 }
 
 function_hook_state_t function_hook_state_ResetPedSpeed = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ResetPedSpeed)
 static void(__cdecl*original_ResetPedSpeed)(tPowerup *, tCar_spec *) = (void(__cdecl*)(tPowerup *, tCar_spec *))0x0042e078;
 CARM95_HOOK_FUNCTION(original_ResetPedSpeed, ResetPedSpeed)
 void __cdecl ResetPedSpeed(tPowerup *pPowerup, tCar_spec *pCar) {
@@ -746,6 +785,7 @@ void __cdecl ResetPedSpeed(tPowerup *pPowerup, tCar_spec *pCar) {
 }
 
 function_hook_state_t function_hook_state_ResetPedSize = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ResetPedSize)
 static void(__cdecl*original_ResetPedSize)(tPowerup *, tCar_spec *) = (void(__cdecl*)(tPowerup *, tCar_spec *))0x0042e08d;
 CARM95_HOOK_FUNCTION(original_ResetPedSize, ResetPedSize)
 void __cdecl ResetPedSize(tPowerup *pPowerup, tCar_spec *pCar) {
@@ -763,6 +803,7 @@ void __cdecl ResetPedSize(tPowerup *pPowerup, tCar_spec *pCar) {
 }
 
 function_hook_state_t function_hook_state_ResetPedExplode = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ResetPedExplode)
 static void(__cdecl*original_ResetPedExplode)(tPowerup *, tCar_spec *) = (void(__cdecl*)(tPowerup *, tCar_spec *))0x0042e0ac;
 CARM95_HOOK_FUNCTION(original_ResetPedExplode, ResetPedExplode)
 void __cdecl ResetPedExplode(tPowerup *pPowerup, tCar_spec *pCar) {
@@ -780,6 +821,7 @@ void __cdecl ResetPedExplode(tPowerup *pPowerup, tCar_spec *pCar) {
 }
 
 function_hook_state_t function_hook_state_SetEngineFactor = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_SetEngineFactor)
 static int(__cdecl*original_SetEngineFactor)(tPowerup *, tCar_spec *) = (int(__cdecl*)(tPowerup *, tCar_spec *))0x0042e0c1;
 CARM95_HOOK_FUNCTION(original_SetEngineFactor, SetEngineFactor)
 int __cdecl SetEngineFactor(tPowerup *pPowerup, tCar_spec *pCar) {
@@ -797,6 +839,7 @@ int __cdecl SetEngineFactor(tPowerup *pPowerup, tCar_spec *pCar) {
 }
 
 function_hook_state_t function_hook_state_SetUnderwater = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_SetUnderwater)
 static int(__cdecl*original_SetUnderwater)(tPowerup *, tCar_spec *) = (int(__cdecl*)(tPowerup *, tCar_spec *))0x0042e143;
 CARM95_HOOK_FUNCTION(original_SetUnderwater, SetUnderwater)
 int __cdecl SetUnderwater(tPowerup *pPowerup, tCar_spec *pCar) {
@@ -814,6 +857,7 @@ int __cdecl SetUnderwater(tPowerup *pPowerup, tCar_spec *pCar) {
 }
 
 function_hook_state_t function_hook_state_TrashBodywork = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_TrashBodywork)
 static int(__cdecl*original_TrashBodywork)(tPowerup *, tCar_spec *) = (int(__cdecl*)(tPowerup *, tCar_spec *))0x0042e171;
 CARM95_HOOK_FUNCTION(original_TrashBodywork, TrashBodywork)
 int __cdecl TrashBodywork(tPowerup *pPowerup, tCar_spec *pCar) {
@@ -835,6 +879,7 @@ int __cdecl TrashBodywork(tPowerup *pPowerup, tCar_spec *pCar) {
 }
 
 function_hook_state_t function_hook_state_TakeDrugs = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_TakeDrugs)
 static int(__cdecl*original_TakeDrugs)(tPowerup *, tCar_spec *) = (int(__cdecl*)(tPowerup *, tCar_spec *))0x0042e26c;
 CARM95_HOOK_FUNCTION(original_TakeDrugs, TakeDrugs)
 int __cdecl TakeDrugs(tPowerup *pPowerup, tCar_spec *pCar) {
@@ -852,6 +897,7 @@ int __cdecl TakeDrugs(tPowerup *pPowerup, tCar_spec *pCar) {
 }
 
 function_hook_state_t function_hook_state_PaletteFuckedUpByDrugs = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_PaletteFuckedUpByDrugs)
 static void(__cdecl*original_PaletteFuckedUpByDrugs)(br_pixelmap *, int) = (void(__cdecl*)(br_pixelmap *, int))0x0042e30a;
 CARM95_HOOK_FUNCTION(original_PaletteFuckedUpByDrugs, PaletteFuckedUpByDrugs)
 void __cdecl PaletteFuckedUpByDrugs(br_pixelmap *pPixelmap, int pOffset) {
@@ -871,6 +917,7 @@ void __cdecl PaletteFuckedUpByDrugs(br_pixelmap *pPixelmap, int pOffset) {
 }
 
 function_hook_state_t function_hook_state_TheEffectsOfDrugs = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_TheEffectsOfDrugs)
 static void(__cdecl*original_TheEffectsOfDrugs)(tPowerup *, tU32) = (void(__cdecl*)(tPowerup *, tU32))0x0042e2dd;
 CARM95_HOOK_FUNCTION(original_TheEffectsOfDrugs, TheEffectsOfDrugs)
 void __cdecl TheEffectsOfDrugs(tPowerup *pPowerup, tU32 pPeriod) {
@@ -888,6 +935,7 @@ void __cdecl TheEffectsOfDrugs(tPowerup *pPowerup, tU32 pPeriod) {
 }
 
 function_hook_state_t function_hook_state_SetOpponentsSpeed = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_SetOpponentsSpeed)
 static int(__cdecl*original_SetOpponentsSpeed)(tPowerup *, tCar_spec *) = (int(__cdecl*)(tPowerup *, tCar_spec *))0x0042e3af;
 CARM95_HOOK_FUNCTION(original_SetOpponentsSpeed, SetOpponentsSpeed)
 int __cdecl SetOpponentsSpeed(tPowerup *pPowerup, tCar_spec *pCar) {
@@ -907,6 +955,7 @@ int __cdecl SetOpponentsSpeed(tPowerup *pPowerup, tCar_spec *pCar) {
 }
 
 function_hook_state_t function_hook_state_SetCopsSpeed = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_SetCopsSpeed)
 static int(__cdecl*original_SetCopsSpeed)(tPowerup *, tCar_spec *) = (int(__cdecl*)(tPowerup *, tCar_spec *))0x0042e445;
 CARM95_HOOK_FUNCTION(original_SetCopsSpeed, SetCopsSpeed)
 int __cdecl SetCopsSpeed(tPowerup *pPowerup, tCar_spec *pCar) {
@@ -924,6 +973,7 @@ int __cdecl SetCopsSpeed(tPowerup *pPowerup, tCar_spec *pCar) {
 }
 
 function_hook_state_t function_hook_state_SetGravity = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_SetGravity)
 static int(__cdecl*original_SetGravity)(tPowerup *, tCar_spec *) = (int(__cdecl*)(tPowerup *, tCar_spec *))0x0042e473;
 CARM95_HOOK_FUNCTION(original_SetGravity, SetGravity)
 int __cdecl SetGravity(tPowerup *pPowerup, tCar_spec *pCar) {
@@ -941,6 +991,7 @@ int __cdecl SetGravity(tPowerup *pPowerup, tCar_spec *pCar) {
 }
 
 function_hook_state_t function_hook_state_SetPinball = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_SetPinball)
 static int(__cdecl*original_SetPinball)(tPowerup *, tCar_spec *) = (int(__cdecl*)(tPowerup *, tCar_spec *))0x0042e4a1;
 CARM95_HOOK_FUNCTION(original_SetPinball, SetPinball)
 int __cdecl SetPinball(tPowerup *pPowerup, tCar_spec *pCar) {
@@ -958,6 +1009,7 @@ int __cdecl SetPinball(tPowerup *pPowerup, tCar_spec *pCar) {
 }
 
 function_hook_state_t function_hook_state_SetWallclimb = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_SetWallclimb)
 static int(__cdecl*original_SetWallclimb)(tPowerup *, tCar_spec *) = (int(__cdecl*)(tPowerup *, tCar_spec *))0x0042e4cf;
 CARM95_HOOK_FUNCTION(original_SetWallclimb, SetWallclimb)
 int __cdecl SetWallclimb(tPowerup *pPowerup, tCar_spec *pCar) {
@@ -975,6 +1027,7 @@ int __cdecl SetWallclimb(tPowerup *pPowerup, tCar_spec *pCar) {
 }
 
 function_hook_state_t function_hook_state_SetBouncey = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_SetBouncey)
 static int(__cdecl*original_SetBouncey)(tPowerup *, tCar_spec *) = (int(__cdecl*)(tPowerup *, tCar_spec *))0x0042e4fd;
 CARM95_HOOK_FUNCTION(original_SetBouncey, SetBouncey)
 int __cdecl SetBouncey(tPowerup *pPowerup, tCar_spec *pCar) {
@@ -992,6 +1045,7 @@ int __cdecl SetBouncey(tPowerup *pPowerup, tCar_spec *pCar) {
 }
 
 function_hook_state_t function_hook_state_SetSuspension = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_SetSuspension)
 static int(__cdecl*original_SetSuspension)(tPowerup *, tCar_spec *) = (int(__cdecl*)(tPowerup *, tCar_spec *))0x0042e554;
 CARM95_HOOK_FUNCTION(original_SetSuspension, SetSuspension)
 int __cdecl SetSuspension(tPowerup *pPowerup, tCar_spec *pCar) {
@@ -1009,6 +1063,7 @@ int __cdecl SetSuspension(tPowerup *pPowerup, tCar_spec *pCar) {
 }
 
 function_hook_state_t function_hook_state_SetTyreGrip = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_SetTyreGrip)
 static int(__cdecl*original_SetTyreGrip)(tPowerup *, tCar_spec *) = (int(__cdecl*)(tPowerup *, tCar_spec *))0x0042e5b2;
 CARM95_HOOK_FUNCTION(original_SetTyreGrip, SetTyreGrip)
 int __cdecl SetTyreGrip(tPowerup *pPowerup, tCar_spec *pCar) {
@@ -1026,6 +1081,7 @@ int __cdecl SetTyreGrip(tPowerup *pPowerup, tCar_spec *pCar) {
 }
 
 function_hook_state_t function_hook_state_SetDamageMultiplier = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_SetDamageMultiplier)
 static int(__cdecl*original_SetDamageMultiplier)(tPowerup *, tCar_spec *) = (int(__cdecl*)(tPowerup *, tCar_spec *))0x0042e5e4;
 CARM95_HOOK_FUNCTION(original_SetDamageMultiplier, SetDamageMultiplier)
 int __cdecl SetDamageMultiplier(tPowerup *pPowerup, tCar_spec *pCar) {
@@ -1043,6 +1099,7 @@ int __cdecl SetDamageMultiplier(tPowerup *pPowerup, tCar_spec *pCar) {
 }
 
 function_hook_state_t function_hook_state_ResetEngineFactor = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ResetEngineFactor)
 static void(__cdecl*original_ResetEngineFactor)(tPowerup *, tCar_spec *) = (void(__cdecl*)(tPowerup *, tCar_spec *))0x0042e616;
 CARM95_HOOK_FUNCTION(original_ResetEngineFactor, ResetEngineFactor)
 void __cdecl ResetEngineFactor(tPowerup *pPowerup, tCar_spec *pCar) {
@@ -1060,6 +1117,7 @@ void __cdecl ResetEngineFactor(tPowerup *pPowerup, tCar_spec *pCar) {
 }
 
 function_hook_state_t function_hook_state_ResetUnderwater = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ResetUnderwater)
 static void(__cdecl*original_ResetUnderwater)(tPowerup *, tCar_spec *) = (void(__cdecl*)(tPowerup *, tCar_spec *))0x0042e65a;
 CARM95_HOOK_FUNCTION(original_ResetUnderwater, ResetUnderwater)
 void __cdecl ResetUnderwater(tPowerup *pPowerup, tCar_spec *pCar) {
@@ -1077,6 +1135,7 @@ void __cdecl ResetUnderwater(tPowerup *pPowerup, tCar_spec *pCar) {
 }
 
 function_hook_state_t function_hook_state_PukeDrugsBackUp = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_PukeDrugsBackUp)
 static void(__cdecl*original_PukeDrugsBackUp)(tPowerup *, tCar_spec *) = (void(__cdecl*)(tPowerup *, tCar_spec *))0x0042e672;
 CARM95_HOOK_FUNCTION(original_PukeDrugsBackUp, PukeDrugsBackUp)
 void __cdecl PukeDrugsBackUp(tPowerup *pPowerup, tCar_spec *pCar) {
@@ -1094,6 +1153,7 @@ void __cdecl PukeDrugsBackUp(tPowerup *pPowerup, tCar_spec *pCar) {
 }
 
 function_hook_state_t function_hook_state_ResetOpponentsSpeed = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ResetOpponentsSpeed)
 static void(__cdecl*original_ResetOpponentsSpeed)(tPowerup *, tCar_spec *) = (void(__cdecl*)(tPowerup *, tCar_spec *))0x0042e6a9;
 CARM95_HOOK_FUNCTION(original_ResetOpponentsSpeed, ResetOpponentsSpeed)
 void __cdecl ResetOpponentsSpeed(tPowerup *pPowerup, tCar_spec *pCar) {
@@ -1113,6 +1173,7 @@ void __cdecl ResetOpponentsSpeed(tPowerup *pPowerup, tCar_spec *pCar) {
 }
 
 function_hook_state_t function_hook_state_ResetCopsSpeed = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ResetCopsSpeed)
 static void(__cdecl*original_ResetCopsSpeed)(tPowerup *, tCar_spec *) = (void(__cdecl*)(tPowerup *, tCar_spec *))0x0042e726;
 CARM95_HOOK_FUNCTION(original_ResetCopsSpeed, ResetCopsSpeed)
 void __cdecl ResetCopsSpeed(tPowerup *pPowerup, tCar_spec *pCar) {
@@ -1130,6 +1191,7 @@ void __cdecl ResetCopsSpeed(tPowerup *pPowerup, tCar_spec *pCar) {
 }
 
 function_hook_state_t function_hook_state_ResetGravity = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ResetGravity)
 static void(__cdecl*original_ResetGravity)(tPowerup *, tCar_spec *) = (void(__cdecl*)(tPowerup *, tCar_spec *))0x0042e73b;
 CARM95_HOOK_FUNCTION(original_ResetGravity, ResetGravity)
 void __cdecl ResetGravity(tPowerup *pPowerup, tCar_spec *pCar) {
@@ -1147,6 +1209,7 @@ void __cdecl ResetGravity(tPowerup *pPowerup, tCar_spec *pCar) {
 }
 
 function_hook_state_t function_hook_state_ResetPinball = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ResetPinball)
 static void(__cdecl*original_ResetPinball)(tPowerup *, tCar_spec *) = (void(__cdecl*)(tPowerup *, tCar_spec *))0x0042e750;
 CARM95_HOOK_FUNCTION(original_ResetPinball, ResetPinball)
 void __cdecl ResetPinball(tPowerup *pPowerup, tCar_spec *pCar) {
@@ -1164,6 +1227,7 @@ void __cdecl ResetPinball(tPowerup *pPowerup, tCar_spec *pCar) {
 }
 
 function_hook_state_t function_hook_state_ResetWallclimb = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ResetWallclimb)
 static void(__cdecl*original_ResetWallclimb)(tPowerup *, tCar_spec *) = (void(__cdecl*)(tPowerup *, tCar_spec *))0x0042e765;
 CARM95_HOOK_FUNCTION(original_ResetWallclimb, ResetWallclimb)
 void __cdecl ResetWallclimb(tPowerup *pPowerup, tCar_spec *pCar) {
@@ -1181,6 +1245,7 @@ void __cdecl ResetWallclimb(tPowerup *pPowerup, tCar_spec *pCar) {
 }
 
 function_hook_state_t function_hook_state_ResetBouncey = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ResetBouncey)
 static void(__cdecl*original_ResetBouncey)(tPowerup *, tCar_spec *) = (void(__cdecl*)(tPowerup *, tCar_spec *))0x0042e77d;
 CARM95_HOOK_FUNCTION(original_ResetBouncey, ResetBouncey)
 void __cdecl ResetBouncey(tPowerup *pPowerup, tCar_spec *pCar) {
@@ -1198,6 +1263,7 @@ void __cdecl ResetBouncey(tPowerup *pPowerup, tCar_spec *pCar) {
 }
 
 function_hook_state_t function_hook_state_ResetSuspension = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ResetSuspension)
 static void(__cdecl*original_ResetSuspension)(tPowerup *, tCar_spec *) = (void(__cdecl*)(tPowerup *, tCar_spec *))0x0042e7a2;
 CARM95_HOOK_FUNCTION(original_ResetSuspension, ResetSuspension)
 void __cdecl ResetSuspension(tPowerup *pPowerup, tCar_spec *pCar) {
@@ -1215,6 +1281,7 @@ void __cdecl ResetSuspension(tPowerup *pPowerup, tCar_spec *pCar) {
 }
 
 function_hook_state_t function_hook_state_ResetDamageMultiplier = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ResetDamageMultiplier)
 static void(__cdecl*original_ResetDamageMultiplier)(tPowerup *, tCar_spec *) = (void(__cdecl*)(tPowerup *, tCar_spec *))0x0042e7cc;
 CARM95_HOOK_FUNCTION(original_ResetDamageMultiplier, ResetDamageMultiplier)
 void __cdecl ResetDamageMultiplier(tPowerup *pPowerup, tCar_spec *pCar) {
@@ -1232,6 +1299,7 @@ void __cdecl ResetDamageMultiplier(tPowerup *pPowerup, tCar_spec *pCar) {
 }
 
 function_hook_state_t function_hook_state_ResetTyreGrip = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ResetTyreGrip)
 static void(__cdecl*original_ResetTyreGrip)(tPowerup *, tCar_spec *) = (void(__cdecl*)(tPowerup *, tCar_spec *))0x0042e7e4;
 CARM95_HOOK_FUNCTION(original_ResetTyreGrip, ResetTyreGrip)
 void __cdecl ResetTyreGrip(tPowerup *pPowerup, tCar_spec *pCar) {
@@ -1249,6 +1317,7 @@ void __cdecl ResetTyreGrip(tPowerup *pPowerup, tCar_spec *pCar) {
 }
 
 function_hook_state_t function_hook_state_PickAtRandom = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_PickAtRandom)
 static int(__cdecl*original_PickAtRandom)(tPowerup *, tCar_spec *) = (int(__cdecl*)(tPowerup *, tCar_spec *))0x0042e7fc;
 CARM95_HOOK_FUNCTION(original_PickAtRandom, PickAtRandom)
 int __cdecl PickAtRandom(tPowerup *pPowerup, tCar_spec *pCar) {
@@ -1266,6 +1335,7 @@ int __cdecl PickAtRandom(tPowerup *pPowerup, tCar_spec *pCar) {
 }
 
 function_hook_state_t function_hook_state_PedestrianRespawn = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_PedestrianRespawn)
 static int(__cdecl*original_PedestrianRespawn)(tPowerup *, tCar_spec *) = (int(__cdecl*)(tPowerup *, tCar_spec *))0x0042e834;
 CARM95_HOOK_FUNCTION(original_PedestrianRespawn, PedestrianRespawn)
 int __cdecl PedestrianRespawn(tPowerup *pPowerup, tCar_spec *pCar) {
@@ -1283,6 +1353,7 @@ int __cdecl PedestrianRespawn(tPowerup *pPowerup, tCar_spec *pCar) {
 }
 
 function_hook_state_t function_hook_state_GotVouchers = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_GotVouchers)
 static int(__cdecl*original_GotVouchers)(tPowerup *, tCar_spec *) = (int(__cdecl*)(tPowerup *, tCar_spec *))0x0042e85a;
 CARM95_HOOK_FUNCTION(original_GotVouchers, GotVouchers)
 int __cdecl GotVouchers(tPowerup *pPowerup, tCar_spec *pCar) {
@@ -1300,6 +1371,7 @@ int __cdecl GotVouchers(tPowerup *pPowerup, tCar_spec *pCar) {
 }
 
 function_hook_state_t function_hook_state_MungeVouchers = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_MungeVouchers)
 static void(__cdecl*original_MungeVouchers)(tPowerup *, tU32) = (void(__cdecl*)(tPowerup *, tU32))0x0042e899;
 CARM95_HOOK_FUNCTION(original_MungeVouchers, MungeVouchers)
 void __cdecl MungeVouchers(tPowerup *pPowerup, tU32 pPeriod) {
@@ -1317,6 +1389,7 @@ void __cdecl MungeVouchers(tPowerup *pPowerup, tU32 pPeriod) {
 }
 
 function_hook_state_t function_hook_state_SetInstantHandbrake = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_SetInstantHandbrake)
 static int(__cdecl*original_SetInstantHandbrake)(tPowerup *, tCar_spec *) = (int(__cdecl*)(tPowerup *, tCar_spec *))0x0042e8af;
 CARM95_HOOK_FUNCTION(original_SetInstantHandbrake, SetInstantHandbrake)
 int __cdecl SetInstantHandbrake(tPowerup *pPowerup, tCar_spec *pCar) {
@@ -1334,6 +1407,7 @@ int __cdecl SetInstantHandbrake(tPowerup *pPowerup, tCar_spec *pCar) {
 }
 
 function_hook_state_t function_hook_state_ResetInstantHandbrake = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ResetInstantHandbrake)
 static void(__cdecl*original_ResetInstantHandbrake)(tPowerup *, tCar_spec *) = (void(__cdecl*)(tPowerup *, tCar_spec *))0x0042e8e7;
 CARM95_HOOK_FUNCTION(original_ResetInstantHandbrake, ResetInstantHandbrake)
 void __cdecl ResetInstantHandbrake(tPowerup *pPowerup, tCar_spec *pCar) {
@@ -1351,6 +1425,7 @@ void __cdecl ResetInstantHandbrake(tPowerup *pPowerup, tCar_spec *pCar) {
 }
 
 function_hook_state_t function_hook_state_DoBouncey = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DoBouncey)
 static void(__cdecl*original_DoBouncey)(tPowerup *, tU32) = (void(__cdecl*)(tPowerup *, tU32))0x0042e909;
 CARM95_HOOK_FUNCTION(original_DoBouncey, DoBouncey)
 void __cdecl DoBouncey(tPowerup *pPowerup, tU32 pPeriod) {
@@ -1368,6 +1443,7 @@ void __cdecl DoBouncey(tPowerup *pPowerup, tU32 pPeriod) {
 }
 
 function_hook_state_t function_hook_state_HitMine = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_HitMine)
 static int(__cdecl*original_HitMine)(tPowerup *, tCar_spec *) = (int(__cdecl*)(tPowerup *, tCar_spec *))0x0042e986;
 CARM95_HOOK_FUNCTION(original_HitMine, HitMine)
 int __cdecl HitMine(tPowerup *pPowerup, tCar_spec *pCar) {
@@ -1389,6 +1465,7 @@ int __cdecl HitMine(tPowerup *pPowerup, tCar_spec *pCar) {
 }
 
 function_hook_state_t function_hook_state_SetMassMultiplier = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_SetMassMultiplier)
 static int(__cdecl*original_SetMassMultiplier)(tPowerup *, tCar_spec *) = (int(__cdecl*)(tPowerup *, tCar_spec *))0x0042eb2f;
 CARM95_HOOK_FUNCTION(original_SetMassMultiplier, SetMassMultiplier)
 int __cdecl SetMassMultiplier(tPowerup *pPowerup, tCar_spec *pCar) {
@@ -1406,6 +1483,7 @@ int __cdecl SetMassMultiplier(tPowerup *pPowerup, tCar_spec *pCar) {
 }
 
 function_hook_state_t function_hook_state_ResetMassMultiplier = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ResetMassMultiplier)
 static void(__cdecl*original_ResetMassMultiplier)(tPowerup *, tCar_spec *) = (void(__cdecl*)(tPowerup *, tCar_spec *))0x0042eb61;
 CARM95_HOOK_FUNCTION(original_ResetMassMultiplier, ResetMassMultiplier)
 void __cdecl ResetMassMultiplier(tPowerup *pPowerup, tCar_spec *pCar) {
@@ -1423,6 +1501,7 @@ void __cdecl ResetMassMultiplier(tPowerup *pPowerup, tCar_spec *pCar) {
 }
 
 function_hook_state_t function_hook_state_ShowPedestrians = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ShowPedestrians)
 static int(__cdecl*original_ShowPedestrians)(tPowerup *, tCar_spec *) = (int(__cdecl*)(tPowerup *, tCar_spec *))0x0042eb79;
 CARM95_HOOK_FUNCTION(original_ShowPedestrians, ShowPedestrians)
 int __cdecl ShowPedestrians(tPowerup *pPowerup, tCar_spec *pCar) {
@@ -1440,6 +1519,7 @@ int __cdecl ShowPedestrians(tPowerup *pPowerup, tCar_spec *pCar) {
 }
 
 function_hook_state_t function_hook_state_HidePedestrians = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_HidePedestrians)
 static void(__cdecl*original_HidePedestrians)(tPowerup *, tCar_spec *) = (void(__cdecl*)(tPowerup *, tCar_spec *))0x0042ebb1;
 CARM95_HOOK_FUNCTION(original_HidePedestrians, HidePedestrians)
 void __cdecl HidePedestrians(tPowerup *pPowerup, tCar_spec *pCar) {
@@ -1457,6 +1537,7 @@ void __cdecl HidePedestrians(tPowerup *pPowerup, tCar_spec *pCar) {
 }
 
 function_hook_state_t function_hook_state_SetProximity = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_SetProximity)
 static int(__cdecl*original_SetProximity)(tPowerup *, tCar_spec *) = (int(__cdecl*)(tPowerup *, tCar_spec *))0x0042ebd3;
 CARM95_HOOK_FUNCTION(original_SetProximity, SetProximity)
 int __cdecl SetProximity(tPowerup *pPowerup, tCar_spec *pCar) {
@@ -1474,6 +1555,7 @@ int __cdecl SetProximity(tPowerup *pPowerup, tCar_spec *pCar) {
 }
 
 function_hook_state_t function_hook_state_ResetProximity = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ResetProximity)
 static void(__cdecl*original_ResetProximity)(tPowerup *, tCar_spec *) = (void(__cdecl*)(tPowerup *, tCar_spec *))0x0042ec0d;
 CARM95_HOOK_FUNCTION(original_ResetProximity, ResetProximity)
 void __cdecl ResetProximity(tPowerup *pPowerup, tCar_spec *pCar) {
@@ -1491,6 +1573,7 @@ void __cdecl ResetProximity(tPowerup *pPowerup, tCar_spec *pCar) {
 }
 
 function_hook_state_t function_hook_state_SetPedHarvest = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_SetPedHarvest)
 static int(__cdecl*original_SetPedHarvest)(tPowerup *, tCar_spec *) = (int(__cdecl*)(tPowerup *, tCar_spec *))0x0042ec25;
 CARM95_HOOK_FUNCTION(original_SetPedHarvest, SetPedHarvest)
 int __cdecl SetPedHarvest(tPowerup *pPowerup, tCar_spec *pCar) {
@@ -1508,6 +1591,7 @@ int __cdecl SetPedHarvest(tPowerup *pPowerup, tCar_spec *pCar) {
 }
 
 function_hook_state_t function_hook_state_ResetPedHarvest = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ResetPedHarvest)
 static void(__cdecl*original_ResetPedHarvest)(tPowerup *, tCar_spec *) = (void(__cdecl*)(tPowerup *, tCar_spec *))0x0042ec50;
 CARM95_HOOK_FUNCTION(original_ResetPedHarvest, ResetPedHarvest)
 void __cdecl ResetPedHarvest(tPowerup *pPowerup, tCar_spec *pCar) {
@@ -1527,6 +1611,7 @@ void __cdecl ResetPedHarvest(tPowerup *pPowerup, tCar_spec *pCar) {
 }
 
 function_hook_state_t function_hook_state_SetVesuvianCorpses = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_SetVesuvianCorpses)
 static int(__cdecl*original_SetVesuvianCorpses)(tPowerup *, tCar_spec *) = (int(__cdecl*)(tPowerup *, tCar_spec *))0x0042ecb8;
 CARM95_HOOK_FUNCTION(original_SetVesuvianCorpses, SetVesuvianCorpses)
 int __cdecl SetVesuvianCorpses(tPowerup *pPowerup, tCar_spec *pCar) {
@@ -1544,6 +1629,7 @@ int __cdecl SetVesuvianCorpses(tPowerup *pPowerup, tCar_spec *pCar) {
 }
 
 function_hook_state_t function_hook_state_ResetVesuvianCorpses = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ResetVesuvianCorpses)
 static void(__cdecl*original_ResetVesuvianCorpses)(tPowerup *, tCar_spec *) = (void(__cdecl*)(tPowerup *, tCar_spec *))0x0042ece3;
 CARM95_HOOK_FUNCTION(original_ResetVesuvianCorpses, ResetVesuvianCorpses)
 void __cdecl ResetVesuvianCorpses(tPowerup *pPowerup, tCar_spec *pCar) {
@@ -1561,6 +1647,7 @@ void __cdecl ResetVesuvianCorpses(tPowerup *pPowerup, tCar_spec *pCar) {
 }
 
 function_hook_state_t function_hook_state_ReceivedPowerup = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ReceivedPowerup)
 static void(__cdecl*original_ReceivedPowerup)(tNet_contents *) = (void(__cdecl*)(tNet_contents *))0x0042ecf8;
 CARM95_HOOK_FUNCTION(original_ReceivedPowerup, ReceivedPowerup)
 void __cdecl ReceivedPowerup(tNet_contents *pContents) {
@@ -1581,6 +1668,7 @@ void __cdecl ReceivedPowerup(tNet_contents *pContents) {
 }
 
 function_hook_state_t function_hook_state_SendCurrentPowerups = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_SendCurrentPowerups)
 static void(__cdecl*original_SendCurrentPowerups)() = (void(__cdecl*)())0x0042eed9;
 CARM95_HOOK_FUNCTION(original_SendCurrentPowerups, SendCurrentPowerups)
 void __cdecl SendCurrentPowerups() {
@@ -1610,6 +1698,7 @@ void __cdecl SendCurrentPowerups() {
 }
 
 function_hook_state_t function_hook_state_LoseAllLocalPowerups = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_LoseAllLocalPowerups)
 static void(__cdecl*original_LoseAllLocalPowerups)(tCar_spec *) = (void(__cdecl*)(tCar_spec *))0x0042f043;
 CARM95_HOOK_FUNCTION(original_LoseAllLocalPowerups, LoseAllLocalPowerups)
 void __cdecl LoseAllLocalPowerups(tCar_spec *pCar) {

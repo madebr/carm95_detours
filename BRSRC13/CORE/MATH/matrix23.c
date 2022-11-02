@@ -17,6 +17,7 @@ br_matrix23 * hookvar_mattmp2__matrix23 ;
 #endif
 
 function_hook_state_t function_hook_state_BrMatrix23Copy = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix23Copy)
 static void(__cdecl*original_BrMatrix23Copy)(br_matrix23 *, br_matrix23 *) = (void(__cdecl*)(br_matrix23 *, br_matrix23 *))0x004d3190;
 CARM95_HOOK_FUNCTION(original_BrMatrix23Copy, BrMatrix23Copy)
 void __cdecl BrMatrix23Copy(br_matrix23 *A, br_matrix23 *B) {
@@ -34,6 +35,7 @@ void __cdecl BrMatrix23Copy(br_matrix23 *A, br_matrix23 *B) {
 }
 
 function_hook_state_t function_hook_state_BrMatrix23Mul = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix23Mul)
 static void(__cdecl*original_BrMatrix23Mul)(br_matrix23 *, br_matrix23 *, br_matrix23 *) = (void(__cdecl*)(br_matrix23 *, br_matrix23 *, br_matrix23 *))0x004d31c0;
 CARM95_HOOK_FUNCTION(original_BrMatrix23Mul, BrMatrix23Mul)
 void __cdecl BrMatrix23Mul(br_matrix23 *A, br_matrix23 *B, br_matrix23 *C) {
@@ -52,6 +54,7 @@ void __cdecl BrMatrix23Mul(br_matrix23 *A, br_matrix23 *B, br_matrix23 *C) {
 }
 
 function_hook_state_t function_hook_state_BrMatrix23Identity = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix23Identity)
 static void(__cdecl*original_BrMatrix23Identity)(br_matrix23 *) = (void(__cdecl*)(br_matrix23 *))0x004d3240;
 CARM95_HOOK_FUNCTION(original_BrMatrix23Identity, BrMatrix23Identity)
 void __cdecl BrMatrix23Identity(br_matrix23 *mat) {
@@ -68,6 +71,7 @@ void __cdecl BrMatrix23Identity(br_matrix23 *mat) {
 }
 
 function_hook_state_t function_hook_state_BrMatrix23Rotate = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix23Rotate)
 static void(__cdecl*original_BrMatrix23Rotate)(br_matrix23 *, br_angle) = (void(__cdecl*)(br_matrix23 *, br_angle))0x004d3260;
 CARM95_HOOK_FUNCTION(original_BrMatrix23Rotate, BrMatrix23Rotate)
 void __cdecl BrMatrix23Rotate(br_matrix23 *mat, br_angle rz) {
@@ -89,6 +93,7 @@ void __cdecl BrMatrix23Rotate(br_matrix23 *mat, br_angle rz) {
 }
 
 function_hook_state_t function_hook_state_BrMatrix23Translate = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix23Translate)
 static void(__cdecl*original_BrMatrix23Translate)(br_matrix23 *, br_scalar, br_scalar) = (void(__cdecl*)(br_matrix23 *, br_scalar, br_scalar))0x004d32a5;
 CARM95_HOOK_FUNCTION(original_BrMatrix23Translate, BrMatrix23Translate)
 void __cdecl BrMatrix23Translate(br_matrix23 *mat, br_scalar dx, br_scalar dy) {
@@ -107,6 +112,7 @@ void __cdecl BrMatrix23Translate(br_matrix23 *mat, br_scalar dx, br_scalar dy) {
 }
 
 function_hook_state_t function_hook_state_BrMatrix23Scale = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix23Scale)
 static void(__cdecl*original_BrMatrix23Scale)(br_matrix23 *, br_scalar, br_scalar) = (void(__cdecl*)(br_matrix23 *, br_scalar, br_scalar))0x004d32da;
 CARM95_HOOK_FUNCTION(original_BrMatrix23Scale, BrMatrix23Scale)
 void __cdecl BrMatrix23Scale(br_matrix23 *mat, br_scalar sx, br_scalar sy) {
@@ -125,6 +131,7 @@ void __cdecl BrMatrix23Scale(br_matrix23 *mat, br_scalar sx, br_scalar sy) {
 }
 
 function_hook_state_t function_hook_state_BrMatrix23ShearX = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix23ShearX)
 static void(__cdecl*original_BrMatrix23ShearX)(br_matrix23 *, br_scalar) = (void(__cdecl*)(br_matrix23 *, br_scalar))0x004d3300;
 CARM95_HOOK_FUNCTION(original_BrMatrix23ShearX, BrMatrix23ShearX)
 void __cdecl BrMatrix23ShearX(br_matrix23 *mat, br_scalar sy) {
@@ -142,6 +149,7 @@ void __cdecl BrMatrix23ShearX(br_matrix23 *mat, br_scalar sy) {
 }
 
 function_hook_state_t function_hook_state_BrMatrix23ShearY = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix23ShearY)
 static void(__cdecl*original_BrMatrix23ShearY)(br_matrix23 *, br_scalar) = (void(__cdecl*)(br_matrix23 *, br_scalar))0x004d3324;
 CARM95_HOOK_FUNCTION(original_BrMatrix23ShearY, BrMatrix23ShearY)
 void __cdecl BrMatrix23ShearY(br_matrix23 *mat, br_scalar sx) {
@@ -159,6 +167,7 @@ void __cdecl BrMatrix23ShearY(br_matrix23 *mat, br_scalar sx) {
 }
 
 function_hook_state_t function_hook_state_BrMatrix23Inverse = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix23Inverse)
 static br_scalar(__cdecl*original_BrMatrix23Inverse)(br_matrix23 *, br_matrix23 *) = (br_scalar(__cdecl*)(br_matrix23 *, br_matrix23 *))0x004d3355;
 CARM95_HOOK_FUNCTION(original_BrMatrix23Inverse, BrMatrix23Inverse)
 br_scalar __cdecl BrMatrix23Inverse(br_matrix23 *B, br_matrix23 *A) {
@@ -184,6 +193,7 @@ br_scalar __cdecl BrMatrix23Inverse(br_matrix23 *B, br_matrix23 *A) {
 }
 
 function_hook_state_t function_hook_state_BrMatrix23LPInverse = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix23LPInverse)
 static void(__cdecl*original_BrMatrix23LPInverse)(br_matrix23 *, br_matrix23 *) = (void(__cdecl*)(br_matrix23 *, br_matrix23 *))0x004d3477;
 CARM95_HOOK_FUNCTION(original_BrMatrix23LPInverse, BrMatrix23LPInverse)
 void __cdecl BrMatrix23LPInverse(br_matrix23 *B, br_matrix23 *A) {
@@ -201,6 +211,7 @@ void __cdecl BrMatrix23LPInverse(br_matrix23 *B, br_matrix23 *A) {
 }
 
 function_hook_state_t function_hook_state_BrMatrix23LPNormalise = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix23LPNormalise)
 static void(__cdecl*original_BrMatrix23LPNormalise)(br_matrix23 *, br_matrix23 *) = (void(__cdecl*)(br_matrix23 *, br_matrix23 *))0x004d34c6;
 CARM95_HOOK_FUNCTION(original_BrMatrix23LPNormalise, BrMatrix23LPNormalise)
 void __cdecl BrMatrix23LPNormalise(br_matrix23 *A, br_matrix23 *B) {
@@ -220,6 +231,7 @@ void __cdecl BrMatrix23LPNormalise(br_matrix23 *A, br_matrix23 *B) {
 }
 
 function_hook_state_t function_hook_state_BrMatrix23ApplyP = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix23ApplyP)
 static void(__cdecl*original_BrMatrix23ApplyP)(br_vector2 *, br_vector2 *, br_matrix23 *) = (void(__cdecl*)(br_vector2 *, br_vector2 *, br_matrix23 *))0x004d3543;
 CARM95_HOOK_FUNCTION(original_BrMatrix23ApplyP, BrMatrix23ApplyP)
 void __cdecl BrMatrix23ApplyP(br_vector2 *A, br_vector2 *B, br_matrix23 *C) {
@@ -238,6 +250,7 @@ void __cdecl BrMatrix23ApplyP(br_vector2 *A, br_vector2 *B, br_matrix23 *C) {
 }
 
 function_hook_state_t function_hook_state_BrMatrix23ApplyV = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix23ApplyV)
 static void(__cdecl*original_BrMatrix23ApplyV)(br_vector2 *, br_vector2 *, br_matrix23 *) = (void(__cdecl*)(br_vector2 *, br_vector2 *, br_matrix23 *))0x004d3581;
 CARM95_HOOK_FUNCTION(original_BrMatrix23ApplyV, BrMatrix23ApplyV)
 void __cdecl BrMatrix23ApplyV(br_vector2 *A, br_vector2 *B, br_matrix23 *C) {
@@ -256,6 +269,7 @@ void __cdecl BrMatrix23ApplyV(br_vector2 *A, br_vector2 *B, br_matrix23 *C) {
 }
 
 function_hook_state_t function_hook_state_BrMatrix23TApplyP = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix23TApplyP)
 static void(__cdecl*original_BrMatrix23TApplyP)(br_vector2 *, br_vector2 *, br_matrix23 *) = (void(__cdecl*)(br_vector2 *, br_vector2 *, br_matrix23 *))0x004d35bb;
 CARM95_HOOK_FUNCTION(original_BrMatrix23TApplyP, BrMatrix23TApplyP)
 void __cdecl BrMatrix23TApplyP(br_vector2 *A, br_vector2 *B, br_matrix23 *C) {
@@ -274,6 +288,7 @@ void __cdecl BrMatrix23TApplyP(br_vector2 *A, br_vector2 *B, br_matrix23 *C) {
 }
 
 function_hook_state_t function_hook_state_BrMatrix23TApplyV = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix23TApplyV)
 static void(__cdecl*original_BrMatrix23TApplyV)(br_vector2 *, br_vector2 *, br_matrix23 *) = (void(__cdecl*)(br_vector2 *, br_vector2 *, br_matrix23 *))0x004d35eb;
 CARM95_HOOK_FUNCTION(original_BrMatrix23TApplyV, BrMatrix23TApplyV)
 void __cdecl BrMatrix23TApplyV(br_vector2 *A, br_vector2 *B, br_matrix23 *C) {
@@ -292,6 +307,7 @@ void __cdecl BrMatrix23TApplyV(br_vector2 *A, br_vector2 *B, br_matrix23 *C) {
 }
 
 function_hook_state_t function_hook_state_BrMatrix23Pre = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix23Pre)
 static void(__cdecl*original_BrMatrix23Pre)(br_matrix23 *, br_matrix23 *) = (void(__cdecl*)(br_matrix23 *, br_matrix23 *))0x004d361b;
 CARM95_HOOK_FUNCTION(original_BrMatrix23Pre, BrMatrix23Pre)
 void __cdecl BrMatrix23Pre(br_matrix23 *mat, br_matrix23 *A) {
@@ -309,6 +325,7 @@ void __cdecl BrMatrix23Pre(br_matrix23 *mat, br_matrix23 *A) {
 }
 
 function_hook_state_t function_hook_state_BrMatrix23Post = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix23Post)
 static void(__cdecl*original_BrMatrix23Post)(br_matrix23 *, br_matrix23 *) = (void(__cdecl*)(br_matrix23 *, br_matrix23 *))0x004d366d;
 CARM95_HOOK_FUNCTION(original_BrMatrix23Post, BrMatrix23Post)
 void __cdecl BrMatrix23Post(br_matrix23 *mat, br_matrix23 *A) {
@@ -326,6 +343,7 @@ void __cdecl BrMatrix23Post(br_matrix23 *mat, br_matrix23 *A) {
 }
 
 function_hook_state_t function_hook_state_BrMatrix23PreRotate = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix23PreRotate)
 static void(__cdecl*original_BrMatrix23PreRotate)(br_matrix23 *, br_angle) = (void(__cdecl*)(br_matrix23 *, br_angle))0x004d36bd;
 CARM95_HOOK_FUNCTION(original_BrMatrix23PreRotate, BrMatrix23PreRotate)
 void __cdecl BrMatrix23PreRotate(br_matrix23 *mat, br_angle rz) {
@@ -343,6 +361,7 @@ void __cdecl BrMatrix23PreRotate(br_matrix23 *mat, br_angle rz) {
 }
 
 function_hook_state_t function_hook_state_BrMatrix23PostRotate = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix23PostRotate)
 static void(__cdecl*original_BrMatrix23PostRotate)(br_matrix23 *, br_angle) = (void(__cdecl*)(br_matrix23 *, br_angle))0x004d375e;
 CARM95_HOOK_FUNCTION(original_BrMatrix23PostRotate, BrMatrix23PostRotate)
 void __cdecl BrMatrix23PostRotate(br_matrix23 *mat, br_angle rz) {
@@ -360,6 +379,7 @@ void __cdecl BrMatrix23PostRotate(br_matrix23 *mat, br_angle rz) {
 }
 
 function_hook_state_t function_hook_state_BrMatrix23PreTranslate = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix23PreTranslate)
 static void(__cdecl*original_BrMatrix23PreTranslate)(br_matrix23 *, br_scalar, br_scalar) = (void(__cdecl*)(br_matrix23 *, br_scalar, br_scalar))0x004d37fe;
 CARM95_HOOK_FUNCTION(original_BrMatrix23PreTranslate, BrMatrix23PreTranslate)
 void __cdecl BrMatrix23PreTranslate(br_matrix23 *mat, br_scalar x, br_scalar y) {
@@ -378,6 +398,7 @@ void __cdecl BrMatrix23PreTranslate(br_matrix23 *mat, br_scalar x, br_scalar y) 
 }
 
 function_hook_state_t function_hook_state_BrMatrix23PostTranslate = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix23PostTranslate)
 static void(__cdecl*original_BrMatrix23PostTranslate)(br_matrix23 *, br_scalar, br_scalar) = (void(__cdecl*)(br_matrix23 *, br_scalar, br_scalar))0x004d387d;
 CARM95_HOOK_FUNCTION(original_BrMatrix23PostTranslate, BrMatrix23PostTranslate)
 void __cdecl BrMatrix23PostTranslate(br_matrix23 *A, br_scalar x, br_scalar y) {
@@ -396,6 +417,7 @@ void __cdecl BrMatrix23PostTranslate(br_matrix23 *A, br_scalar x, br_scalar y) {
 }
 
 function_hook_state_t function_hook_state_BrMatrix23PreScale = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix23PreScale)
 static void(__cdecl*original_BrMatrix23PreScale)(br_matrix23 *, br_scalar, br_scalar) = (void(__cdecl*)(br_matrix23 *, br_scalar, br_scalar))0x004d389b;
 CARM95_HOOK_FUNCTION(original_BrMatrix23PreScale, BrMatrix23PreScale)
 void __cdecl BrMatrix23PreScale(br_matrix23 *mat, br_scalar sx, br_scalar sy) {
@@ -414,6 +436,7 @@ void __cdecl BrMatrix23PreScale(br_matrix23 *mat, br_scalar sx, br_scalar sy) {
 }
 
 function_hook_state_t function_hook_state_BrMatrix23PostScale = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix23PostScale)
 static void(__cdecl*original_BrMatrix23PostScale)(br_matrix23 *, br_scalar, br_scalar) = (void(__cdecl*)(br_matrix23 *, br_scalar, br_scalar))0x004d3920;
 CARM95_HOOK_FUNCTION(original_BrMatrix23PostScale, BrMatrix23PostScale)
 void __cdecl BrMatrix23PostScale(br_matrix23 *mat, br_scalar sx, br_scalar sy) {
@@ -432,6 +455,7 @@ void __cdecl BrMatrix23PostScale(br_matrix23 *mat, br_scalar sx, br_scalar sy) {
 }
 
 function_hook_state_t function_hook_state_BrMatrix23PreShearX = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix23PreShearX)
 static void(__cdecl*original_BrMatrix23PreShearX)(br_matrix23 *, br_scalar) = (void(__cdecl*)(br_matrix23 *, br_scalar))0x004d3996;
 CARM95_HOOK_FUNCTION(original_BrMatrix23PreShearX, BrMatrix23PreShearX)
 void __cdecl BrMatrix23PreShearX(br_matrix23 *mat, br_scalar sy) {
@@ -449,6 +473,7 @@ void __cdecl BrMatrix23PreShearX(br_matrix23 *mat, br_scalar sy) {
 }
 
 function_hook_state_t function_hook_state_BrMatrix23PostShearX = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix23PostShearX)
 static void(__cdecl*original_BrMatrix23PostShearX)(br_matrix23 *, br_scalar) = (void(__cdecl*)(br_matrix23 *, br_scalar))0x004d3a18;
 CARM95_HOOK_FUNCTION(original_BrMatrix23PostShearX, BrMatrix23PostShearX)
 void __cdecl BrMatrix23PostShearX(br_matrix23 *mat, br_scalar sy) {
@@ -466,6 +491,7 @@ void __cdecl BrMatrix23PostShearX(br_matrix23 *mat, br_scalar sy) {
 }
 
 function_hook_state_t function_hook_state_BrMatrix23PreShearY = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix23PreShearY)
 static void(__cdecl*original_BrMatrix23PreShearY)(br_matrix23 *, br_scalar) = (void(__cdecl*)(br_matrix23 *, br_scalar))0x004d3a98;
 CARM95_HOOK_FUNCTION(original_BrMatrix23PreShearY, BrMatrix23PreShearY)
 void __cdecl BrMatrix23PreShearY(br_matrix23 *mat, br_scalar sx) {
@@ -483,6 +509,7 @@ void __cdecl BrMatrix23PreShearY(br_matrix23 *mat, br_scalar sx) {
 }
 
 function_hook_state_t function_hook_state_BrMatrix23PostShearY = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix23PostShearY)
 static void(__cdecl*original_BrMatrix23PostShearY)(br_matrix23 *, br_scalar) = (void(__cdecl*)(br_matrix23 *, br_scalar))0x004d3b1a;
 CARM95_HOOK_FUNCTION(original_BrMatrix23PostShearY, BrMatrix23PostShearY)
 void __cdecl BrMatrix23PostShearY(br_matrix23 *mat, br_scalar sx) {

@@ -9,6 +9,7 @@
 #include <assert.h>
 
 function_hook_state_t function_hook_state_BrTVTemplateAllocate = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrTVTemplateAllocate)
 static br_tv_template *(__cdecl*original_BrTVTemplateAllocate)(void *, br_tv_template_entry *, int) = (br_tv_template *(__cdecl*)(void *, br_tv_template_entry *, int))0x004e3760;
 CARM95_HOOK_FUNCTION(original_BrTVTemplateAllocate, BrTVTemplateAllocate)
 br_tv_template* __cdecl BrTVTemplateAllocate(void *res, br_tv_template_entry *entries, int n_entries) {
@@ -29,6 +30,7 @@ br_tv_template* __cdecl BrTVTemplateAllocate(void *res, br_tv_template_entry *en
 }
 
 function_hook_state_t function_hook_state_BrTVTemplateFree = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrTVTemplateFree)
 static void(__cdecl*original_BrTVTemplateFree)(br_tv_template *) = (void(__cdecl*)(br_tv_template *))0x004e3790;
 CARM95_HOOK_FUNCTION(original_BrTVTemplateFree, BrTVTemplateFree)
 void __cdecl BrTVTemplateFree(br_tv_template *t) {
@@ -45,6 +47,7 @@ void __cdecl BrTVTemplateFree(br_tv_template *t) {
 }
 
 function_hook_state_t function_hook_state_templateResolveNames = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_templateResolveNames)
 void templateResolveNames(br_tv_template *template) {
     br_tv_template_entry *tp;
     int n;
@@ -63,6 +66,7 @@ void templateResolveNames(br_tv_template *template) {
 }
 
 function_hook_state_t function_hook_state_templateMakeMap = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_templateMakeMap)
 static void(__stdcall*original_templateMakeMap)(br_tv_template *) = (void(__stdcall*)(br_tv_template *))0x004e3810;
 CARM95_HOOK_FUNCTION(original_templateMakeMap, templateMakeMap)
 void __stdcall templateMakeMap(br_tv_template *template) {
@@ -93,6 +97,7 @@ void __stdcall templateMakeMap(br_tv_template *template) {
 }
 
 function_hook_state_t function_hook_state_ConvertFloatToFixed = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ConvertFloatToFixed)
 br_fixed_ls* ConvertFloatToFixed(br_fixed_ls **pextra, br_float *src, br_int_32 count, br_size_t *pextra_space) {
     br_fixed_ls *ret;
     LOG_TRACE("(%p, %p, %d, %p)", pextra, src, count, pextra_space);
@@ -112,6 +117,7 @@ br_fixed_ls* ConvertFloatToFixed(br_fixed_ls **pextra, br_float *src, br_int_32 
 }
 
 function_hook_state_t function_hook_state_ConvertFixedToFloat = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ConvertFixedToFloat)
 br_float* ConvertFixedToFloat(br_float **pextra, br_fixed_ls *src, br_int_32 count, br_size_t *pextra_space) {
     br_float *ret;
     LOG_TRACE("(%p, %p, %d, %p)", pextra, src, count, pextra_space);
@@ -131,6 +137,7 @@ br_float* ConvertFixedToFloat(br_float **pextra, br_fixed_ls *src, br_int_32 cou
 }
 
 function_hook_state_t function_hook_state_ConvertLongCopy = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ConvertLongCopy)
 br_uint_32* ConvertLongCopy(br_uint_32 **pextra, br_uint_32 *src, br_int_32 count, br_size_t *pextra_space) {
     br_uint_32 *ret;
     LOG_TRACE("(%p, %p, %d, %p)", pextra, src, count, pextra_space);
@@ -150,6 +157,7 @@ br_uint_32* ConvertLongCopy(br_uint_32 **pextra, br_uint_32 *src, br_int_32 coun
 }
 
 function_hook_state_t function_hook_state_ValueQuery = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ValueQuery)
 br_error ValueQuery(br_token_value *tv, void **pextra, br_size_t *pextra_size, void *block, br_tv_template_entry *tep) {
     void *mem;
     br_uint_32 *lp;
@@ -176,6 +184,7 @@ br_error ValueQuery(br_token_value *tv, void **pextra, br_size_t *pextra_size, v
 }
 
 function_hook_state_t function_hook_state_ValueSet = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ValueSet)
 static br_error(__stdcall*original_ValueSet)(void *, br_token_value *, br_tv_template_entry *) = (br_error(__stdcall*)(void *, br_token_value *, br_tv_template_entry *))0x004e48d0;
 CARM95_HOOK_FUNCTION(original_ValueSet, ValueSet)
 br_error __stdcall ValueSet(void *block, br_token_value *tv, br_tv_template_entry *tep) {
@@ -202,6 +211,7 @@ br_error __stdcall ValueSet(void *block, br_token_value *tv, br_tv_template_entr
 }
 
 function_hook_state_t function_hook_state_ValueExtraSize = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ValueExtraSize)
 static br_size_t(__stdcall*original_ValueExtraSize)(void *, br_tv_template_entry *) = (br_size_t(__stdcall*)(void *, br_tv_template_entry *))0x004e4590;
 CARM95_HOOK_FUNCTION(original_ValueExtraSize, ValueExtraSize)
 br_size_t __stdcall ValueExtraSize(void *block, br_tv_template_entry *tep) {
@@ -227,6 +237,7 @@ br_size_t __stdcall ValueExtraSize(void *block, br_tv_template_entry *tep) {
 }
 
 function_hook_state_t function_hook_state_BrTokenValueQuery = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrTokenValueQuery)
 static br_error(__cdecl*original_BrTokenValueQuery)(br_uint_32 *, br_uint_32 *, br_size_t, br_token, void *, br_tv_template *) = (br_error(__cdecl*)(br_uint_32 *, br_uint_32 *, br_size_t, br_token, void *, br_tv_template *))0x004e37a0;
 CARM95_HOOK_FUNCTION(original_BrTokenValueQuery, BrTokenValueQuery)
 br_error __cdecl BrTokenValueQuery(br_uint_32 *pvalue, br_uint_32 *extra, br_size_t extra_size, br_token t, void *block, br_tv_template *template) {
@@ -256,6 +267,7 @@ br_error __cdecl BrTokenValueQuery(br_uint_32 *pvalue, br_uint_32 *extra, br_siz
 }
 
 function_hook_state_t function_hook_state_BrTokenValueQueryMany = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrTokenValueQueryMany)
 static br_error(__cdecl*original_BrTokenValueQueryMany)(br_token_value *, void *, br_size_t, br_int_32 *, void *, br_tv_template *) = (br_error(__cdecl*)(br_token_value *, void *, br_size_t, br_int_32 *, void *, br_tv_template *))0x004e44c0;
 CARM95_HOOK_FUNCTION(original_BrTokenValueQueryMany, BrTokenValueQueryMany)
 br_error __cdecl BrTokenValueQueryMany(br_token_value *tv, void *extra, br_size_t extra_size, br_int_32 *pcount, void *block, br_tv_template *template) {
@@ -283,6 +295,7 @@ br_error __cdecl BrTokenValueQueryMany(br_token_value *tv, void *extra, br_size_
 }
 
 function_hook_state_t function_hook_state_BrTokenValueQueryManySize = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrTokenValueQueryManySize)
 static br_error(__cdecl*original_BrTokenValueQueryManySize)(br_size_t *, br_token_value *, void *, br_tv_template *) = (br_error(__cdecl*)(br_size_t *, br_token_value *, void *, br_tv_template *))0x004e4530;
 CARM95_HOOK_FUNCTION(original_BrTokenValueQueryManySize, BrTokenValueQueryManySize)
 br_error __cdecl BrTokenValueQueryManySize(br_size_t *psize, br_token_value *tv, void *block, br_tv_template *template) {
@@ -306,6 +319,7 @@ br_error __cdecl BrTokenValueQueryManySize(br_size_t *psize, br_token_value *tv,
 }
 
 function_hook_state_t function_hook_state_BrTokenValueQueryAll = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrTokenValueQueryAll)
 static br_error(__cdecl*original_BrTokenValueQueryAll)(br_token_value *, br_size_t, void *, br_tv_template *) = (br_error(__cdecl*)(br_token_value *, br_size_t, void *, br_tv_template *))0x004e46d0;
 CARM95_HOOK_FUNCTION(original_BrTokenValueQueryAll, BrTokenValueQueryAll)
 br_error __cdecl BrTokenValueQueryAll(br_token_value *buffer, br_size_t buffer_size, void *block, br_tv_template *template) {
@@ -339,6 +353,7 @@ br_error __cdecl BrTokenValueQueryAll(br_token_value *buffer, br_size_t buffer_s
 }
 
 function_hook_state_t function_hook_state_BrTokenValueQueryAllSize = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrTokenValueQueryAllSize)
 static br_error(__cdecl*original_BrTokenValueQueryAllSize)(br_size_t *, void *, br_tv_template *) = (br_error(__cdecl*)(br_size_t *, void *, br_tv_template *))0x004e47b0;
 CARM95_HOOK_FUNCTION(original_BrTokenValueQueryAllSize, BrTokenValueQueryAllSize)
 br_error __cdecl BrTokenValueQueryAllSize(br_size_t *psize, void *block, br_tv_template *template) {
@@ -365,6 +380,7 @@ br_error __cdecl BrTokenValueQueryAllSize(br_size_t *psize, void *block, br_tv_t
 }
 
 function_hook_state_t function_hook_state_BrTokenValueSet = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrTokenValueSet)
 static br_error(__cdecl*original_BrTokenValueSet)(void *, br_uint_32 *, br_token, br_uint_32, br_tv_template *) = (br_error(__cdecl*)(void *, br_uint_32 *, br_token, br_uint_32, br_tv_template *))0x004e4840;
 CARM95_HOOK_FUNCTION(original_BrTokenValueSet, BrTokenValueSet)
 br_error __cdecl BrTokenValueSet(void *mem, br_uint_32 *pcombined_mask, br_token t, br_uint_32 value, br_tv_template *template) {
@@ -391,6 +407,7 @@ br_error __cdecl BrTokenValueSet(void *mem, br_uint_32 *pcombined_mask, br_token
 }
 
 function_hook_state_t function_hook_state_BrTokenValueSetMany = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrTokenValueSetMany)
 static br_error(__cdecl*original_BrTokenValueSetMany)(void *, br_int_32 *, br_uint_32 *, br_token_value *, br_tv_template *) = (br_error(__cdecl*)(void *, br_int_32 *, br_uint_32 *, br_token_value *, br_tv_template *))0x004e4c40;
 CARM95_HOOK_FUNCTION(original_BrTokenValueSetMany, BrTokenValueSetMany)
 br_error __cdecl BrTokenValueSetMany(void *mem, br_int_32 *pcount, br_uint_32 *pcombined_mask, br_token_value *tv, br_tv_template *template) {
@@ -419,6 +436,7 @@ br_error __cdecl BrTokenValueSetMany(void *mem, br_int_32 *pcount, br_uint_32 *p
 }
 
 function_hook_state_t function_hook_state_DumpMatrixInteger = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DumpMatrixInteger)
 void DumpMatrixInteger(br_int_32 *ip, int rows, int cols, char *prefix, char *info_0, char *info_n, br_putline_cbfn *putline, void *arg) {
     int i;
     int j;
@@ -448,6 +466,7 @@ void DumpMatrixInteger(br_int_32 *ip, int rows, int cols, char *prefix, char *in
 }
 
 function_hook_state_t function_hook_state_DumpMatrixFixed = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DumpMatrixFixed)
 void DumpMatrixFixed(br_fixed_ls *xp, int rows, int cols, char *prefix, char *info_0, char *info_n, br_putline_cbfn *putline, void *arg) {
     int i;
     int j;
@@ -477,6 +496,7 @@ void DumpMatrixFixed(br_fixed_ls *xp, int rows, int cols, char *prefix, char *in
 }
 
 function_hook_state_t function_hook_state_DumpMatrixFloat = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DumpMatrixFloat)
 void DumpMatrixFloat(br_float *fp, int rows, int cols, char *prefix, char *info_0, char *info_n, br_putline_cbfn *putline, void *arg) {
     int i;
     int j;
@@ -506,6 +526,7 @@ void DumpMatrixFloat(br_float *fp, int rows, int cols, char *prefix, char *info_
 }
 
 function_hook_state_t function_hook_state_DumpObject = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DumpObject)
 void DumpObject(br_object *h, char *prefix, char *info, br_putline_cbfn *putline, void *arg) {
     char value[128];
     char *dev_ident;
@@ -532,6 +553,7 @@ void DumpObject(br_object *h, char *prefix, char *info, br_putline_cbfn *putline
 }
 
 function_hook_state_t function_hook_state_BrTokenValueDump = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrTokenValueDump)
 void(__cdecl*BrTokenValueDump)(br_token_value *, char *, br_putline_cbfn *, void *) = (void(__cdecl*)(br_token_value *, char *, br_putline_cbfn *, void *))0x004e4ce0;
 void BrTokenValueDump_do_not_use(br_token_value *tv, char *prefix, br_putline_cbfn *putline, void *arg) {
     char *id;
@@ -572,6 +594,7 @@ void BrTokenValueDump_do_not_use(br_token_value *tv, char *prefix, br_putline_cb
 }
 
 function_hook_state_t function_hook_state_BrStringToTokenValue = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrStringToTokenValue)
 static br_error(__cdecl*original_BrStringToTokenValue)(br_token_value *, br_size_t, char *) = (br_error(__cdecl*)(br_token_value *, br_size_t, char *))0x004e4cf0;
 CARM95_HOOK_FUNCTION(original_BrStringToTokenValue, BrStringToTokenValue)
 br_error __cdecl BrStringToTokenValue(br_token_value *buffer, br_size_t buffer_size, char *str) {
@@ -596,6 +619,7 @@ br_error __cdecl BrStringToTokenValue(br_token_value *buffer, br_size_t buffer_s
 }
 
 function_hook_state_t function_hook_state_parseTokenValue = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_parseTokenValue)
 br_error parseTokenValue(br_lexer *l, br_token_value *tv, br_size_t size) {
     int len;
     char name[40];
@@ -636,6 +660,7 @@ br_error parseTokenValue(br_lexer *l, br_token_value *tv, br_size_t size) {
 }
 
 function_hook_state_t function_hook_state_BrTokenValueCompare = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrTokenValueCompare)
 static br_boolean(__cdecl*original_BrTokenValueCompare)(br_token_value *, br_token_value *) = (br_boolean(__cdecl*)(br_token_value *, br_token_value *))0x004e5130;
 CARM95_HOOK_FUNCTION(original_BrTokenValueCompare, BrTokenValueCompare)
 br_boolean __cdecl BrTokenValueCompare(br_token_value *tv1, br_token_value *tv2) {
@@ -655,6 +680,7 @@ br_boolean __cdecl BrTokenValueCompare(br_token_value *tv1, br_token_value *tv2)
 }
 
 function_hook_state_t function_hook_state_BrTokenValueDup = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrTokenValueDup)
 static br_error(__stdcall*original_BrTokenValueDup)(br_token_value **, br_token_value *) = (br_error(__stdcall*)(br_token_value **, br_token_value *))0x004e5390;
 CARM95_HOOK_FUNCTION(original_BrTokenValueDup, BrTokenValueDup)
 br_error __stdcall BrTokenValueDup(br_token_value **dstp, br_token_value *src) {

@@ -55,6 +55,7 @@ int * hookvar_gTime_for_next_one ;
 int * hookvar_gReceived_game_scores  = (void*)0x005514d4;
 
 function_hook_state_t function_hook_state_NetInitialise = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_NetInitialise)
 static int(__cdecl*original_NetInitialise)() = (int(__cdecl*)())0x004463c0;
 CARM95_HOOK_FUNCTION(original_NetInitialise, NetInitialise)
 int __cdecl NetInitialise() {
@@ -72,6 +73,7 @@ int __cdecl NetInitialise() {
 }
 
 function_hook_state_t function_hook_state_NetShutdown = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_NetShutdown)
 static int(__cdecl*original_NetShutdown)() = (int(__cdecl*)())0x0044657f;
 CARM95_HOOK_FUNCTION(original_NetShutdown, NetShutdown)
 int __cdecl NetShutdown() {
@@ -91,6 +93,7 @@ int __cdecl NetShutdown() {
 }
 
 function_hook_state_t function_hook_state_ShutdownNetIfRequired = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ShutdownNetIfRequired)
 static void(__cdecl*original_ShutdownNetIfRequired)() = (void(__cdecl*)())0x004465d1;
 CARM95_HOOK_FUNCTION(original_ShutdownNetIfRequired, ShutdownNetIfRequired)
 void __cdecl ShutdownNetIfRequired() {
@@ -106,6 +109,7 @@ void __cdecl ShutdownNetIfRequired() {
 }
 
 function_hook_state_t function_hook_state_DisableNetService = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DisableNetService)
 static void(__cdecl*original_DisableNetService)() = (void(__cdecl*)())0x004465f8;
 CARM95_HOOK_FUNCTION(original_DisableNetService, DisableNetService)
 void __cdecl DisableNetService() {
@@ -121,6 +125,7 @@ void __cdecl DisableNetService() {
 }
 
 function_hook_state_t function_hook_state_ReenableNetService = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ReenableNetService)
 static void(__cdecl*original_ReenableNetService)() = (void(__cdecl*)())0x0044660d;
 CARM95_HOOK_FUNCTION(original_ReenableNetService, ReenableNetService)
 void __cdecl ReenableNetService() {
@@ -136,6 +141,7 @@ void __cdecl ReenableNetService() {
 }
 
 function_hook_state_t function_hook_state_PermitNetServiceReentrancy = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_PermitNetServiceReentrancy)
 static int(__cdecl*original_PermitNetServiceReentrancy)() = (int(__cdecl*)())0x00446622;
 CARM95_HOOK_FUNCTION(original_PermitNetServiceReentrancy, PermitNetServiceReentrancy)
 int __cdecl PermitNetServiceReentrancy() {
@@ -151,6 +157,7 @@ int __cdecl PermitNetServiceReentrancy() {
 }
 
 function_hook_state_t function_hook_state_HaltNetServiceReentrancy = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_HaltNetServiceReentrancy)
 static void(__cdecl*original_HaltNetServiceReentrancy)() = (void(__cdecl*)())0x0044665a;
 CARM95_HOOK_FUNCTION(original_HaltNetServiceReentrancy, HaltNetServiceReentrancy)
 void __cdecl HaltNetServiceReentrancy() {
@@ -166,6 +173,7 @@ void __cdecl HaltNetServiceReentrancy() {
 }
 
 function_hook_state_t function_hook_state_NetSendHeadupToAllPlayers = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_NetSendHeadupToAllPlayers)
 static void(__cdecl*original_NetSendHeadupToAllPlayers)(char *) = (void(__cdecl*)(char *))0x0044666f;
 CARM95_HOOK_FUNCTION(original_NetSendHeadupToAllPlayers, NetSendHeadupToAllPlayers)
 void __cdecl NetSendHeadupToAllPlayers(char *pMessage) {
@@ -184,6 +192,7 @@ void __cdecl NetSendHeadupToAllPlayers(char *pMessage) {
 }
 
 function_hook_state_t function_hook_state_NetSendHeadupToEverybody = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_NetSendHeadupToEverybody)
 static void(__cdecl*original_NetSendHeadupToEverybody)(char *) = (void(__cdecl*)(char *))0x004466c1;
 CARM95_HOOK_FUNCTION(original_NetSendHeadupToEverybody, NetSendHeadupToEverybody)
 void __cdecl NetSendHeadupToEverybody(char *pMessage) {
@@ -202,6 +211,7 @@ void __cdecl NetSendHeadupToEverybody(char *pMessage) {
 }
 
 function_hook_state_t function_hook_state_NetSendHeadupToPlayer = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_NetSendHeadupToPlayer)
 static void(__cdecl*original_NetSendHeadupToPlayer)(char *, tPlayer_ID) = (void(__cdecl*)(char *, tPlayer_ID))0x00446737;
 CARM95_HOOK_FUNCTION(original_NetSendHeadupToPlayer, NetSendHeadupToPlayer)
 void __cdecl NetSendHeadupToPlayer(char *pMessage, tPlayer_ID pPlayer) {
@@ -221,6 +231,7 @@ void __cdecl NetSendHeadupToPlayer(char *pMessage, tPlayer_ID pPlayer) {
 }
 
 function_hook_state_t function_hook_state_InitialisePlayerStati = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_InitialisePlayerStati)
 static void(__cdecl*original_InitialisePlayerStati)() = (void(__cdecl*)())0x0044754e;
 CARM95_HOOK_FUNCTION(original_InitialisePlayerStati, InitialisePlayerStati)
 void __cdecl InitialisePlayerStati() {
@@ -238,6 +249,7 @@ void __cdecl InitialisePlayerStati() {
 }
 
 function_hook_state_t function_hook_state_LeaveTempGame = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_LeaveTempGame)
 static void(__cdecl*original_LeaveTempGame)() = (void(__cdecl*)())0x00446847;
 CARM95_HOOK_FUNCTION(original_LeaveTempGame, LeaveTempGame)
 void __cdecl LeaveTempGame() {
@@ -253,6 +265,7 @@ void __cdecl LeaveTempGame() {
 }
 
 function_hook_state_t function_hook_state_DisposeCurrentJoinPollGame = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DisposeCurrentJoinPollGame)
 static void(__cdecl*original_DisposeCurrentJoinPollGame)() = (void(__cdecl*)())0x00446881;
 CARM95_HOOK_FUNCTION(original_DisposeCurrentJoinPollGame, DisposeCurrentJoinPollGame)
 void __cdecl DisposeCurrentJoinPollGame() {
@@ -268,6 +281,7 @@ void __cdecl DisposeCurrentJoinPollGame() {
 }
 
 function_hook_state_t function_hook_state_DoNextJoinPoll = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DoNextJoinPoll)
 static void(__cdecl*original_DoNextJoinPoll)() = (void(__cdecl*)())0x0044a179;
 CARM95_HOOK_FUNCTION(original_DoNextJoinPoll, DoNextJoinPoll)
 void __cdecl DoNextJoinPoll() {
@@ -285,6 +299,7 @@ void __cdecl DoNextJoinPoll() {
 }
 
 function_hook_state_t function_hook_state_NetStartProducingJoinList = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_NetStartProducingJoinList)
 static void(__cdecl*original_NetStartProducingJoinList)(void(**)(tNet_game_details *)) = (void(__cdecl*)(void(**)(tNet_game_details *)))0x004467d9;
 CARM95_HOOK_FUNCTION(original_NetStartProducingJoinList, NetStartProducingJoinList)
 void __cdecl NetStartProducingJoinList(void(**pAdd_proc)(tNet_game_details *)) {
@@ -301,6 +316,7 @@ void __cdecl NetStartProducingJoinList(void(**pAdd_proc)(tNet_game_details *)) {
 }
 
 function_hook_state_t function_hook_state_NetEndJoinList = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_NetEndJoinList)
 static void(__cdecl*original_NetEndJoinList)() = (void(__cdecl*)())0x00446823;
 CARM95_HOOK_FUNCTION(original_NetEndJoinList, NetEndJoinList)
 void __cdecl NetEndJoinList() {
@@ -316,6 +332,7 @@ void __cdecl NetEndJoinList() {
 }
 
 function_hook_state_t function_hook_state_NetDisposePIDGameInfo = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_NetDisposePIDGameInfo)
 static void(__cdecl*original_NetDisposePIDGameInfo)(tNet_game_details *) = (void(__cdecl*)(tNet_game_details *))0x004468b1;
 CARM95_HOOK_FUNCTION(original_NetDisposePIDGameInfo, NetDisposePIDGameInfo)
 void __cdecl NetDisposePIDGameInfo(tNet_game_details *pDetails) {
@@ -332,6 +349,7 @@ void __cdecl NetDisposePIDGameInfo(tNet_game_details *pDetails) {
 }
 
 function_hook_state_t function_hook_state_NetDisposeGameDetails = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_NetDisposeGameDetails)
 static void(__cdecl*original_NetDisposeGameDetails)(tNet_game_details *) = (void(__cdecl*)(tNet_game_details *))0x004468d2;
 CARM95_HOOK_FUNCTION(original_NetDisposeGameDetails, NetDisposeGameDetails)
 void __cdecl NetDisposeGameDetails(tNet_game_details *pDetails) {
@@ -348,6 +366,7 @@ void __cdecl NetDisposeGameDetails(tNet_game_details *pDetails) {
 }
 
 function_hook_state_t function_hook_state_NetAllocatePIDGameDetails = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_NetAllocatePIDGameDetails)
 static tNet_game_details *(__cdecl*original_NetAllocatePIDGameDetails)() = (tNet_game_details *(__cdecl*)())0x0044759d;
 CARM95_HOOK_FUNCTION(original_NetAllocatePIDGameDetails, NetAllocatePIDGameDetails)
 tNet_game_details* __cdecl NetAllocatePIDGameDetails() {
@@ -365,6 +384,7 @@ tNet_game_details* __cdecl NetAllocatePIDGameDetails() {
 }
 
 function_hook_state_t function_hook_state_NetLeaveGameLowLevel = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_NetLeaveGameLowLevel)
 static void(__cdecl*original_NetLeaveGameLowLevel)(tNet_game_details *) = (void(__cdecl*)(tNet_game_details *))0x004468f3;
 CARM95_HOOK_FUNCTION(original_NetLeaveGameLowLevel, NetLeaveGameLowLevel)
 void __cdecl NetLeaveGameLowLevel(tNet_game_details *pDetails) {
@@ -381,6 +401,7 @@ void __cdecl NetLeaveGameLowLevel(tNet_game_details *pDetails) {
 }
 
 function_hook_state_t function_hook_state_NetLeaveGame = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_NetLeaveGame)
 static void(__cdecl*original_NetLeaveGame)(tNet_game_details *) = (void(__cdecl*)(tNet_game_details *))0x0044692a;
 CARM95_HOOK_FUNCTION(original_NetLeaveGame, NetLeaveGame)
 void __cdecl NetLeaveGame(tNet_game_details *pNet_game) {
@@ -407,6 +428,7 @@ void __cdecl NetLeaveGame(tNet_game_details *pNet_game) {
 }
 
 function_hook_state_t function_hook_state_NetSetPlayerSystemInfo = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_NetSetPlayerSystemInfo)
 static void(__cdecl*original_NetSetPlayerSystemInfo)(tNet_game_player_info *, void *) = (void(__cdecl*)(tNet_game_player_info *, void *))0x00446b3b;
 CARM95_HOOK_FUNCTION(original_NetSetPlayerSystemInfo, NetSetPlayerSystemInfo)
 void __cdecl NetSetPlayerSystemInfo(tNet_game_player_info *pPlayer, void *pSender_address) {
@@ -424,6 +446,7 @@ void __cdecl NetSetPlayerSystemInfo(tNet_game_player_info *pPlayer, void *pSende
 }
 
 function_hook_state_t function_hook_state_NetDisposePlayer = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_NetDisposePlayer)
 static void(__cdecl*original_NetDisposePlayer)(tNet_game_player_info *) = (void(__cdecl*)(tNet_game_player_info *))0x00446b56;
 CARM95_HOOK_FUNCTION(original_NetDisposePlayer, NetDisposePlayer)
 void __cdecl NetDisposePlayer(tNet_game_player_info *pPlayer) {
@@ -440,6 +463,7 @@ void __cdecl NetDisposePlayer(tNet_game_player_info *pPlayer) {
 }
 
 function_hook_state_t function_hook_state_FillInThisPlayer = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_FillInThisPlayer)
 static void(__cdecl*original_FillInThisPlayer)(tNet_game_details *, tNet_game_player_info *, int, int) = (void(__cdecl*)(tNet_game_details *, tNet_game_player_info *, int, int))0x004475c5;
 CARM95_HOOK_FUNCTION(original_FillInThisPlayer, FillInThisPlayer)
 void __cdecl FillInThisPlayer(tNet_game_details *pGame, tNet_game_player_info *pPlayer, int pCar_index, int pHost) {
@@ -459,6 +483,7 @@ void __cdecl FillInThisPlayer(tNet_game_details *pGame, tNet_game_player_info *p
 }
 
 function_hook_state_t function_hook_state_LoadCarN = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_LoadCarN)
 static void(__cdecl*original_LoadCarN)(int, tNet_game_player_info *) = (void(__cdecl*)(int, tNet_game_player_info *))0x0044725a;
 CARM95_HOOK_FUNCTION(original_LoadCarN, LoadCarN)
 void __cdecl LoadCarN(int pIndex, tNet_game_player_info *pPlayer) {
@@ -478,6 +503,7 @@ void __cdecl LoadCarN(int pIndex, tNet_game_player_info *pPlayer) {
 }
 
 function_hook_state_t function_hook_state_DisposeCarN = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DisposeCarN)
 static void(__cdecl*original_DisposeCarN)(int) = (void(__cdecl*)(int))0x00446b6d;
 CARM95_HOOK_FUNCTION(original_DisposeCarN, DisposeCarN)
 void __cdecl DisposeCarN(int pIndex) {
@@ -498,6 +524,7 @@ void __cdecl DisposeCarN(int pIndex) {
 }
 
 function_hook_state_t function_hook_state_PlayerHasLeft = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_PlayerHasLeft)
 static void(__cdecl*original_PlayerHasLeft)(int) = (void(__cdecl*)(int))0x0044731b;
 CARM95_HOOK_FUNCTION(original_PlayerHasLeft, PlayerHasLeft)
 void __cdecl PlayerHasLeft(int pIndex) {
@@ -514,6 +541,7 @@ void __cdecl PlayerHasLeft(int pIndex) {
 }
 
 function_hook_state_t function_hook_state_NetPlayersChanged = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_NetPlayersChanged)
 static void(__cdecl*original_NetPlayersChanged)(int, tNet_game_player_info *) = (void(__cdecl*)(int, tNet_game_player_info *))0x00446ca1;
 CARM95_HOOK_FUNCTION(original_NetPlayersChanged, NetPlayersChanged)
 void __cdecl NetPlayersChanged(int pNew_count, tNet_game_player_info *pNew_players) {
@@ -545,6 +573,7 @@ void __cdecl NetPlayersChanged(int pNew_count, tNet_game_player_info *pNew_playe
 }
 
 function_hook_state_t function_hook_state_NetHostGame = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_NetHostGame)
 static tNet_game_details *(__cdecl*original_NetHostGame)(tNet_game_type, tNet_game_options *, int, char *, int) = (tNet_game_details *(__cdecl*)(tNet_game_type, tNet_game_options *, int, char *, int))0x004473b1;
 CARM95_HOOK_FUNCTION(original_NetHostGame, NetHostGame)
 tNet_game_details* __cdecl NetHostGame(tNet_game_type pGame_type, tNet_game_options *pOptions, int pStart_rank, char *pHost_name, int pCar_index) {
@@ -571,6 +600,7 @@ tNet_game_details* __cdecl NetHostGame(tNet_game_type pGame_type, tNet_game_opti
 }
 
 function_hook_state_t function_hook_state_NetInitClient = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_NetInitClient)
 static int(__cdecl*original_NetInitClient)(tNet_game_details *) = (int(__cdecl*)(tNet_game_details *))0x004476bd;
 CARM95_HOOK_FUNCTION(original_NetInitClient, NetInitClient)
 int __cdecl NetInitClient(tNet_game_details *pDetails) {
@@ -587,6 +617,7 @@ int __cdecl NetInitClient(tNet_game_details *pDetails) {
 }
 
 function_hook_state_t function_hook_state_NetJoinGameLowLevel = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_NetJoinGameLowLevel)
 static int(__cdecl*original_NetJoinGameLowLevel)(tNet_game_details *, char *) = (int(__cdecl*)(tNet_game_details *, char *))0x00447883;
 CARM95_HOOK_FUNCTION(original_NetJoinGameLowLevel, NetJoinGameLowLevel)
 int __cdecl NetJoinGameLowLevel(tNet_game_details *pDetails, char *pPlayer_name) {
@@ -604,6 +635,7 @@ int __cdecl NetJoinGameLowLevel(tNet_game_details *pDetails, char *pPlayer_name)
 }
 
 function_hook_state_t function_hook_state_NetJoinGame = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_NetJoinGame)
 static int(__cdecl*original_NetJoinGame)(tNet_game_details *, char *, int) = (int(__cdecl*)(tNet_game_details *, char *, int))0x004476d9;
 CARM95_HOOK_FUNCTION(original_NetJoinGame, NetJoinGame)
 int __cdecl NetJoinGame(tNet_game_details *pDetails, char *pPlayer_name, int pCar_index) {
@@ -628,6 +660,7 @@ int __cdecl NetJoinGame(tNet_game_details *pDetails, char *pPlayer_name, int pCa
 }
 
 function_hook_state_t function_hook_state_NetObtainSystemUserName = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_NetObtainSystemUserName)
 static void(__cdecl*original_NetObtainSystemUserName)(char *, int) = (void(__cdecl*)(char *, int))0x004478a3;
 CARM95_HOOK_FUNCTION(original_NetObtainSystemUserName, NetObtainSystemUserName)
 void __cdecl NetObtainSystemUserName(char *pName, int pMax_length) {
@@ -645,6 +678,7 @@ void __cdecl NetObtainSystemUserName(char *pName, int pMax_length) {
 }
 
 function_hook_state_t function_hook_state_NetExtractGameID = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_NetExtractGameID)
 static tU32(__cdecl*original_NetExtractGameID)(tNet_game_details *) = (tU32(__cdecl*)(tNet_game_details *))0x004478c5;
 CARM95_HOOK_FUNCTION(original_NetExtractGameID, NetExtractGameID)
 tU32 __cdecl NetExtractGameID(tNet_game_details *pDetails) {
@@ -661,6 +695,7 @@ tU32 __cdecl NetExtractGameID(tNet_game_details *pDetails) {
 }
 
 function_hook_state_t function_hook_state_NetExtractPlayerID = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_NetExtractPlayerID)
 static tPlayer_ID(__cdecl*original_NetExtractPlayerID)(tNet_game_details *) = (tPlayer_ID(__cdecl*)(tNet_game_details *))0x004478e1;
 CARM95_HOOK_FUNCTION(original_NetExtractPlayerID, NetExtractPlayerID)
 tPlayer_ID __cdecl NetExtractPlayerID(tNet_game_details *pDetails) {
@@ -677,6 +712,7 @@ tPlayer_ID __cdecl NetExtractPlayerID(tNet_game_details *pDetails) {
 }
 
 function_hook_state_t function_hook_state_NetSendMessageToAddress = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_NetSendMessageToAddress)
 static int(__cdecl*original_NetSendMessageToAddress)(tNet_game_details *, tNet_message *, void *) = (int(__cdecl*)(tNet_game_details *, tNet_message *, void *))0x004478fd;
 CARM95_HOOK_FUNCTION(original_NetSendMessageToAddress, NetSendMessageToAddress)
 int __cdecl NetSendMessageToAddress(tNet_game_details *pDetails, tNet_message *pMessage, void *pAddress) {
@@ -695,6 +731,7 @@ int __cdecl NetSendMessageToAddress(tNet_game_details *pDetails, tNet_message *p
 }
 
 function_hook_state_t function_hook_state_NetSendMessageToPlayer = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_NetSendMessageToPlayer)
 static int(__cdecl*original_NetSendMessageToPlayer)(tNet_game_details *, tNet_message *, tPlayer_ID) = (int(__cdecl*)(tNet_game_details *, tNet_message *, tPlayer_ID))0x0044796c;
 CARM95_HOOK_FUNCTION(original_NetSendMessageToPlayer, NetSendMessageToPlayer)
 int __cdecl NetSendMessageToPlayer(tNet_game_details *pDetails, tNet_message *pMessage, tPlayer_ID pPlayer) {
@@ -715,6 +752,7 @@ int __cdecl NetSendMessageToPlayer(tNet_game_details *pDetails, tNet_message *pM
 }
 
 function_hook_state_t function_hook_state_NetSendMessageToHost = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_NetSendMessageToHost)
 static int(__cdecl*original_NetSendMessageToHost)(tNet_game_details *, tNet_message *) = (int(__cdecl*)(tNet_game_details *, tNet_message *))0x00447a10;
 CARM95_HOOK_FUNCTION(original_NetSendMessageToHost, NetSendMessageToHost)
 int __cdecl NetSendMessageToHost(tNet_game_details *pDetails, tNet_message *pMessage) {
@@ -732,6 +770,7 @@ int __cdecl NetSendMessageToHost(tNet_game_details *pDetails, tNet_message *pMes
 }
 
 function_hook_state_t function_hook_state_NetReplyToMessage = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_NetReplyToMessage)
 static int(__cdecl*original_NetReplyToMessage)(tNet_game_details *, tNet_message *, tNet_message *) = (int(__cdecl*)(tNet_game_details *, tNet_message *, tNet_message *))0x00447a72;
 CARM95_HOOK_FUNCTION(original_NetReplyToMessage, NetReplyToMessage)
 int __cdecl NetReplyToMessage(tNet_game_details *pDetails, tNet_message *pIncoming_message, tNet_message *pReply_message) {
@@ -750,6 +789,7 @@ int __cdecl NetReplyToMessage(tNet_game_details *pDetails, tNet_message *pIncomi
 }
 
 function_hook_state_t function_hook_state_NetSendMessageToAllPlayers = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_NetSendMessageToAllPlayers)
 static int(__cdecl*original_NetSendMessageToAllPlayers)(tNet_game_details *, tNet_message *) = (int(__cdecl*)(tNet_game_details *, tNet_message *))0x00447a99;
 CARM95_HOOK_FUNCTION(original_NetSendMessageToAllPlayers, NetSendMessageToAllPlayers)
 int __cdecl NetSendMessageToAllPlayers(tNet_game_details *pDetails, tNet_message *pMessage) {
@@ -767,6 +807,7 @@ int __cdecl NetSendMessageToAllPlayers(tNet_game_details *pDetails, tNet_message
 }
 
 function_hook_state_t function_hook_state_NetGetContentsSize = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_NetGetContentsSize)
 static tU32(__cdecl*original_NetGetContentsSize)(tNet_message_type, tS32) = (tU32(__cdecl*)(tNet_message_type, tS32))0x00447adb;
 CARM95_HOOK_FUNCTION(original_NetGetContentsSize, NetGetContentsSize)
 tU32 __cdecl NetGetContentsSize(tNet_message_type pType, tS32 pSize_decider) {
@@ -788,6 +829,7 @@ tU32 __cdecl NetGetContentsSize(tNet_message_type pType, tS32 pSize_decider) {
 }
 
 function_hook_state_t function_hook_state_NetGetMessageSize = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_NetGetMessageSize)
 static tU32(__cdecl*original_NetGetMessageSize)(tNet_message_type, tS32) = (tU32(__cdecl*)(tNet_message_type, tS32))0x00447dd9;
 CARM95_HOOK_FUNCTION(original_NetGetMessageSize, NetGetMessageSize)
 tU32 __cdecl NetGetMessageSize(tNet_message_type pType, tS32 pSize_decider) {
@@ -805,6 +847,7 @@ tU32 __cdecl NetGetMessageSize(tNet_message_type pType, tS32 pSize_decider) {
 }
 
 function_hook_state_t function_hook_state_NetCalcSizeDecider = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_NetCalcSizeDecider)
 static tS32(__cdecl*original_NetCalcSizeDecider)(tNet_contents *) = (tS32(__cdecl*)(tNet_contents *))0x00447dfc;
 CARM95_HOOK_FUNCTION(original_NetCalcSizeDecider, NetCalcSizeDecider)
 tS32 __cdecl NetCalcSizeDecider(tNet_contents *pContents) {
@@ -823,6 +866,7 @@ tS32 __cdecl NetCalcSizeDecider(tNet_contents *pContents) {
 }
 
 function_hook_state_t function_hook_state_NetBuildMessage = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_NetBuildMessage)
 static tNet_message *(__cdecl*original_NetBuildMessage)(tNet_message_type, tS32) = (tNet_message *(__cdecl*)(tNet_message_type, tS32))0x00447e7f;
 CARM95_HOOK_FUNCTION(original_NetBuildMessage, NetBuildMessage)
 tNet_message* __cdecl NetBuildMessage(tNet_message_type pType, tS32 pSize_decider) {
@@ -844,6 +888,7 @@ tNet_message* __cdecl NetBuildMessage(tNet_message_type pType, tS32 pSize_decide
 }
 
 function_hook_state_t function_hook_state_NetGetToHostContents = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_NetGetToHostContents)
 static tNet_contents *(__cdecl*original_NetGetToHostContents)(tNet_message_type, tS32) = (tNet_contents *(__cdecl*)(tNet_message_type, tS32))0x00447ee4;
 CARM95_HOOK_FUNCTION(original_NetGetToHostContents, NetGetToHostContents)
 tNet_contents* __cdecl NetGetToHostContents(tNet_message_type pType, tS32 pSize_decider) {
@@ -865,6 +910,7 @@ tNet_contents* __cdecl NetGetToHostContents(tNet_message_type pType, tS32 pSize_
 }
 
 function_hook_state_t function_hook_state_NetGetBroadcastContents = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_NetGetBroadcastContents)
 static tNet_contents *(__cdecl*original_NetGetBroadcastContents)(tNet_message_type, tS32) = (tNet_contents *(__cdecl*)(tNet_message_type, tS32))0x00447fcc;
 CARM95_HOOK_FUNCTION(original_NetGetBroadcastContents, NetGetBroadcastContents)
 tNet_contents* __cdecl NetGetBroadcastContents(tNet_message_type pType, tS32 pSize_decider) {
@@ -886,6 +932,7 @@ tNet_contents* __cdecl NetGetBroadcastContents(tNet_message_type pType, tS32 pSi
 }
 
 function_hook_state_t function_hook_state_NetSendMessageStacks = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_NetSendMessageStacks)
 static void(__cdecl*original_NetSendMessageStacks)() = (void(__cdecl*)())0x004480b4;
 CARM95_HOOK_FUNCTION(original_NetSendMessageStacks, NetSendMessageStacks)
 void __cdecl NetSendMessageStacks() {
@@ -901,6 +948,7 @@ void __cdecl NetSendMessageStacks() {
 }
 
 function_hook_state_t function_hook_state_NetAllocateMessage = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_NetAllocateMessage)
 static tNet_message *(__cdecl*original_NetAllocateMessage)(int) = (tNet_message *(__cdecl*)(int))0x0044811f;
 CARM95_HOOK_FUNCTION(original_NetAllocateMessage, NetAllocateMessage)
 tNet_message* __cdecl NetAllocateMessage(int pSize) {
@@ -935,6 +983,7 @@ tNet_message* __cdecl NetAllocateMessage(int pSize) {
 }
 
 function_hook_state_t function_hook_state_NetFreeExcessMemory = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_NetFreeExcessMemory)
 static void(__cdecl*original_NetFreeExcessMemory)() = (void(__cdecl*)())0x004483eb;
 CARM95_HOOK_FUNCTION(original_NetFreeExcessMemory, NetFreeExcessMemory)
 void __cdecl NetFreeExcessMemory() {
@@ -952,6 +1001,7 @@ void __cdecl NetFreeExcessMemory() {
 }
 
 function_hook_state_t function_hook_state_NetDisposeMessage = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_NetDisposeMessage)
 static int(__cdecl*original_NetDisposeMessage)(tNet_game_details *, tNet_message *) = (int(__cdecl*)(tNet_game_details *, tNet_message *))0x00448445;
 CARM95_HOOK_FUNCTION(original_NetDisposeMessage, NetDisposeMessage)
 int __cdecl NetDisposeMessage(tNet_game_details *pDetails, tNet_message *pMessage) {
@@ -969,6 +1019,7 @@ int __cdecl NetDisposeMessage(tNet_game_details *pDetails, tNet_message *pMessag
 }
 
 function_hook_state_t function_hook_state_NetGetNextMessage = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_NetGetNextMessage)
 static tNet_message *(__cdecl*original_NetGetNextMessage)(tNet_game_details *, void **) = (tNet_message *(__cdecl*)(tNet_game_details *, void **))0x00448475;
 CARM95_HOOK_FUNCTION(original_NetGetNextMessage, NetGetNextMessage)
 tNet_message* __cdecl NetGetNextMessage(tNet_game_details *pDetails, void **pSender_address) {
@@ -986,6 +1037,7 @@ tNet_message* __cdecl NetGetNextMessage(tNet_game_details *pDetails, void **pSen
 }
 
 function_hook_state_t function_hook_state_ReceivedSendMeDetails = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ReceivedSendMeDetails)
 static void(__cdecl*original_ReceivedSendMeDetails)(tNet_contents *, void *) = (void(__cdecl*)(tNet_contents *, void *))0x0044929e;
 CARM95_HOOK_FUNCTION(original_ReceivedSendMeDetails, ReceivedSendMeDetails)
 void __cdecl ReceivedSendMeDetails(tNet_contents *pContents, void *pSender_address) {
@@ -1005,6 +1057,7 @@ void __cdecl ReceivedSendMeDetails(tNet_contents *pContents, void *pSender_addre
 }
 
 function_hook_state_t function_hook_state_ReceivedDetails = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ReceivedDetails)
 static void(__cdecl*original_ReceivedDetails)(tNet_contents *) = (void(__cdecl*)(tNet_contents *))0x004492f6;
 CARM95_HOOK_FUNCTION(original_ReceivedDetails, ReceivedDetails)
 void __cdecl ReceivedDetails(tNet_contents *pContents) {
@@ -1021,6 +1074,7 @@ void __cdecl ReceivedDetails(tNet_contents *pContents) {
 }
 
 function_hook_state_t function_hook_state_SendOutPlayerList = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_SendOutPlayerList)
 static void(__cdecl*original_SendOutPlayerList)() = (void(__cdecl*)())0x004495e0;
 CARM95_HOOK_FUNCTION(original_SendOutPlayerList, SendOutPlayerList)
 void __cdecl SendOutPlayerList() {
@@ -1040,6 +1094,7 @@ void __cdecl SendOutPlayerList() {
 }
 
 function_hook_state_t function_hook_state_ReceivedJoin = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ReceivedJoin)
 static void(__cdecl*original_ReceivedJoin)(tNet_contents *, void *) = (void(__cdecl*)(tNet_contents *, void *))0x00449330;
 CARM95_HOOK_FUNCTION(original_ReceivedJoin, ReceivedJoin)
 void __cdecl ReceivedJoin(tNet_contents *pContents, void *pSender_address) {
@@ -1067,6 +1122,7 @@ void __cdecl ReceivedJoin(tNet_contents *pContents, void *pSender_address) {
 }
 
 function_hook_state_t function_hook_state_KickPlayerOut = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_KickPlayerOut)
 static void(__cdecl*original_KickPlayerOut)(tPlayer_ID) = (void(__cdecl*)(tPlayer_ID))0x004496f8;
 CARM95_HOOK_FUNCTION(original_KickPlayerOut, KickPlayerOut)
 void __cdecl KickPlayerOut(tPlayer_ID pID) {
@@ -1091,6 +1147,7 @@ void __cdecl KickPlayerOut(tPlayer_ID pID) {
 }
 
 function_hook_state_t function_hook_state_ReceivedLeave = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ReceivedLeave)
 static void(__cdecl*original_ReceivedLeave)(tNet_contents *, tNet_message *) = (void(__cdecl*)(tNet_contents *, tNet_message *))0x004496de;
 CARM95_HOOK_FUNCTION(original_ReceivedLeave, ReceivedLeave)
 void __cdecl ReceivedLeave(tNet_contents *pContents, tNet_message *pMessage) {
@@ -1108,6 +1165,7 @@ void __cdecl ReceivedLeave(tNet_contents *pContents, tNet_message *pMessage) {
 }
 
 function_hook_state_t function_hook_state_NetFullScreenMessage = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_NetFullScreenMessage)
 static void(__cdecl*original_NetFullScreenMessage)(int, int) = (void(__cdecl*)(int, int))0x00448495;
 CARM95_HOOK_FUNCTION(original_NetFullScreenMessage, NetFullScreenMessage)
 void __cdecl NetFullScreenMessage(int pStr_index, int pLeave_it_up_there) {
@@ -1137,6 +1195,7 @@ void __cdecl NetFullScreenMessage(int pStr_index, int pLeave_it_up_there) {
 }
 
 function_hook_state_t function_hook_state_HostHasBittenTheDust = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_HostHasBittenTheDust)
 static void(__cdecl*original_HostHasBittenTheDust)(int) = (void(__cdecl*)(int))0x0044989e;
 CARM95_HOOK_FUNCTION(original_HostHasBittenTheDust, HostHasBittenTheDust)
 void __cdecl HostHasBittenTheDust(int pMessage_index) {
@@ -1153,6 +1212,7 @@ void __cdecl HostHasBittenTheDust(int pMessage_index) {
 }
 
 function_hook_state_t function_hook_state_ReceivedHosticide = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ReceivedHosticide)
 static void(__cdecl*original_ReceivedHosticide)(tNet_contents *) = (void(__cdecl*)(tNet_contents *))0x00449889;
 CARM95_HOOK_FUNCTION(original_ReceivedHosticide, ReceivedHosticide)
 void __cdecl ReceivedHosticide(tNet_contents *pContents) {
@@ -1169,6 +1229,7 @@ void __cdecl ReceivedHosticide(tNet_contents *pContents) {
 }
 
 function_hook_state_t function_hook_state_ConfirmReceipt = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ConfirmReceipt)
 void ConfirmReceipt() {
     tNet_message *the_message;
     LOG_TRACE("()");
@@ -1184,6 +1245,7 @@ void ConfirmReceipt() {
 }
 
 function_hook_state_t function_hook_state_ReceivedNewPlayerList = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ReceivedNewPlayerList)
 static void(__cdecl*original_ReceivedNewPlayerList)(tNet_contents *, tNet_message *) = (void(__cdecl*)(tNet_contents *, tNet_message *))0x004498d8;
 CARM95_HOOK_FUNCTION(original_ReceivedNewPlayerList, ReceivedNewPlayerList)
 void __cdecl ReceivedNewPlayerList(tNet_contents *pContents, tNet_message *pM) {
@@ -1203,6 +1265,7 @@ void __cdecl ReceivedNewPlayerList(tNet_contents *pContents, tNet_message *pM) {
 }
 
 function_hook_state_t function_hook_state_ReceivedRaceOver = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ReceivedRaceOver)
 static void(__cdecl*original_ReceivedRaceOver)(tNet_contents *) = (void(__cdecl*)(tNet_contents *))0x00449afb;
 CARM95_HOOK_FUNCTION(original_ReceivedRaceOver, ReceivedRaceOver)
 void __cdecl ReceivedRaceOver(tNet_contents *pContents) {
@@ -1219,6 +1282,7 @@ void __cdecl ReceivedRaceOver(tNet_contents *pContents) {
 }
 
 function_hook_state_t function_hook_state_ReceivedStatusReport = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ReceivedStatusReport)
 static void(__cdecl*original_ReceivedStatusReport)(tNet_contents *, tNet_message *) = (void(__cdecl*)(tNet_contents *, tNet_message *))0x00449b46;
 CARM95_HOOK_FUNCTION(original_ReceivedStatusReport, ReceivedStatusReport)
 void __cdecl ReceivedStatusReport(tNet_contents *pContents, tNet_message *pMessage) {
@@ -1238,6 +1302,7 @@ void __cdecl ReceivedStatusReport(tNet_contents *pContents, tNet_message *pMessa
 }
 
 function_hook_state_t function_hook_state_ReceivedStartRace = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ReceivedStartRace)
 static void(__cdecl*original_ReceivedStartRace)(tNet_contents *) = (void(__cdecl*)(tNet_contents *))0x00449c42;
 CARM95_HOOK_FUNCTION(original_ReceivedStartRace, ReceivedStartRace)
 void __cdecl ReceivedStartRace(tNet_contents *pContents) {
@@ -1258,6 +1323,7 @@ void __cdecl ReceivedStartRace(tNet_contents *pContents) {
 }
 
 function_hook_state_t function_hook_state_ReceivedGuaranteeReply = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ReceivedGuaranteeReply)
 static void(__cdecl*original_ReceivedGuaranteeReply)(tNet_contents *) = (void(__cdecl*)(tNet_contents *))0x00448695;
 CARM95_HOOK_FUNCTION(original_ReceivedGuaranteeReply, ReceivedGuaranteeReply)
 void __cdecl ReceivedGuaranteeReply(tNet_contents *pContents) {
@@ -1276,6 +1342,7 @@ void __cdecl ReceivedGuaranteeReply(tNet_contents *pContents) {
 }
 
 function_hook_state_t function_hook_state_ReceivedHeadup = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ReceivedHeadup)
 static void(__cdecl*original_ReceivedHeadup)(tNet_contents *) = (void(__cdecl*)(tNet_contents *))0x004486fb;
 CARM95_HOOK_FUNCTION(original_ReceivedHeadup, ReceivedHeadup)
 void __cdecl ReceivedHeadup(tNet_contents *pContents) {
@@ -1292,6 +1359,7 @@ void __cdecl ReceivedHeadup(tNet_contents *pContents) {
 }
 
 function_hook_state_t function_hook_state_ReceivedHostQuery = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ReceivedHostQuery)
 static void(__cdecl*original_ReceivedHostQuery)(tNet_contents *, tNet_message *) = (void(__cdecl*)(tNet_contents *, tNet_message *))0x0044872d;
 CARM95_HOOK_FUNCTION(original_ReceivedHostQuery, ReceivedHostQuery)
 void __cdecl ReceivedHostQuery(tNet_contents *pContents, tNet_message *pMessage) {
@@ -1311,6 +1379,7 @@ void __cdecl ReceivedHostQuery(tNet_contents *pContents, tNet_message *pMessage)
 }
 
 function_hook_state_t function_hook_state_ReceivedHostReply = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ReceivedHostReply)
 static void(__cdecl*original_ReceivedHostReply)(tNet_contents *) = (void(__cdecl*)(tNet_contents *))0x0044879d;
 CARM95_HOOK_FUNCTION(original_ReceivedHostReply, ReceivedHostReply)
 void __cdecl ReceivedHostReply(tNet_contents *pContents) {
@@ -1329,6 +1398,7 @@ void __cdecl ReceivedHostReply(tNet_contents *pContents) {
 }
 
 function_hook_state_t function_hook_state_SendGuaranteeReply = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_SendGuaranteeReply)
 static void(__cdecl*original_SendGuaranteeReply)(tNet_message *, void *) = (void(__cdecl*)(tNet_message *, void *))0x0044882b;
 CARM95_HOOK_FUNCTION(original_SendGuaranteeReply, SendGuaranteeReply)
 void __cdecl SendGuaranteeReply(tNet_message *pMessage, void *pSender_address) {
@@ -1348,6 +1418,7 @@ void __cdecl SendGuaranteeReply(tNet_message *pMessage, void *pSender_address) {
 }
 
 function_hook_state_t function_hook_state_PlayerIsInList = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_PlayerIsInList)
 static int(__cdecl*original_PlayerIsInList)(tPlayer_ID) = (int(__cdecl*)(tPlayer_ID))0x00449f18;
 CARM95_HOOK_FUNCTION(original_PlayerIsInList, PlayerIsInList)
 int __cdecl PlayerIsInList(tPlayer_ID pID) {
@@ -1366,6 +1437,7 @@ int __cdecl PlayerIsInList(tPlayer_ID pID) {
 }
 
 function_hook_state_t function_hook_state_ReceivedTimeSync = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ReceivedTimeSync)
 static void(__cdecl*original_ReceivedTimeSync)(tNet_contents *, tNet_message *, tU32) = (void(__cdecl*)(tNet_contents *, tNet_message *, tU32))0x00448874;
 CARM95_HOOK_FUNCTION(original_ReceivedTimeSync, ReceivedTimeSync)
 void __cdecl ReceivedTimeSync(tNet_contents *pContents, tNet_message *pMessage, tU32 pReceive_time) {
@@ -1384,6 +1456,7 @@ void __cdecl ReceivedTimeSync(tNet_contents *pContents, tNet_message *pMessage, 
 }
 
 function_hook_state_t function_hook_state_ReceivedConfirm = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ReceivedConfirm)
 static void(__cdecl*original_ReceivedConfirm)(tNet_contents *) = (void(__cdecl*)(tNet_contents *))0x004488b4;
 CARM95_HOOK_FUNCTION(original_ReceivedConfirm, ReceivedConfirm)
 void __cdecl ReceivedConfirm(tNet_contents *pContents) {
@@ -1402,6 +1475,7 @@ void __cdecl ReceivedConfirm(tNet_contents *pContents) {
 }
 
 function_hook_state_t function_hook_state_ReceivedDisableCar = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ReceivedDisableCar)
 static void(__cdecl*original_ReceivedDisableCar)(tNet_contents *) = (void(__cdecl*)(tNet_contents *))0x00448914;
 CARM95_HOOK_FUNCTION(original_ReceivedDisableCar, ReceivedDisableCar)
 void __cdecl ReceivedDisableCar(tNet_contents *pContents) {
@@ -1418,6 +1492,7 @@ void __cdecl ReceivedDisableCar(tNet_contents *pContents) {
 }
 
 function_hook_state_t function_hook_state_ReceivedEnableCar = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ReceivedEnableCar)
 static void(__cdecl*original_ReceivedEnableCar)(tNet_contents *) = (void(__cdecl*)(tNet_contents *))0x0044891f;
 CARM95_HOOK_FUNCTION(original_ReceivedEnableCar, ReceivedEnableCar)
 void __cdecl ReceivedEnableCar(tNet_contents *pContents) {
@@ -1434,6 +1509,7 @@ void __cdecl ReceivedEnableCar(tNet_contents *pContents) {
 }
 
 function_hook_state_t function_hook_state_ReceivedScores = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ReceivedScores)
 static void(__cdecl*original_ReceivedScores)(tNet_contents *) = (void(__cdecl*)(tNet_contents *))0x0044892a;
 CARM95_HOOK_FUNCTION(original_ReceivedScores, ReceivedScores)
 void __cdecl ReceivedScores(tNet_contents *pContents) {
@@ -1452,6 +1528,7 @@ void __cdecl ReceivedScores(tNet_contents *pContents) {
 }
 
 function_hook_state_t function_hook_state_ReceivedWasted = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ReceivedWasted)
 static void(__cdecl*original_ReceivedWasted)(tNet_contents *) = (void(__cdecl*)(tNet_contents *))0x00448981;
 CARM95_HOOK_FUNCTION(original_ReceivedWasted, ReceivedWasted)
 void __cdecl ReceivedWasted(tNet_contents *pContents) {
@@ -1486,6 +1563,7 @@ void __cdecl ReceivedWasted(tNet_contents *pContents) {
 }
 
 function_hook_state_t function_hook_state_ReceivedCarDetailsReq = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ReceivedCarDetailsReq)
 static void(__cdecl*original_ReceivedCarDetailsReq)(tNet_contents *, void *) = (void(__cdecl*)(tNet_contents *, void *))0x00448ca9;
 CARM95_HOOK_FUNCTION(original_ReceivedCarDetailsReq, ReceivedCarDetailsReq)
 void __cdecl ReceivedCarDetailsReq(tNet_contents *pContents, void *pSender_address) {
@@ -1507,6 +1585,7 @@ void __cdecl ReceivedCarDetailsReq(tNet_contents *pContents, void *pSender_addre
 }
 
 function_hook_state_t function_hook_state_ReceivedCarDetails = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ReceivedCarDetails)
 static void(__cdecl*original_ReceivedCarDetails)(tNet_contents *) = (void(__cdecl*)(tNet_contents *))0x00448d70;
 CARM95_HOOK_FUNCTION(original_ReceivedCarDetails, ReceivedCarDetails)
 void __cdecl ReceivedCarDetails(tNet_contents *pContents) {
@@ -1527,6 +1606,7 @@ void __cdecl ReceivedCarDetails(tNet_contents *pContents) {
 }
 
 function_hook_state_t function_hook_state_ReceivedGameScores = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ReceivedGameScores)
 static void(__cdecl*original_ReceivedGameScores)(tNet_contents *) = (void(__cdecl*)(tNet_contents *))0x00448e41;
 CARM95_HOOK_FUNCTION(original_ReceivedGameScores, ReceivedGameScores)
 void __cdecl ReceivedGameScores(tNet_contents *pContents) {
@@ -1545,6 +1625,7 @@ void __cdecl ReceivedGameScores(tNet_contents *pContents) {
 }
 
 function_hook_state_t function_hook_state_ReceivedMessage = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ReceivedMessage)
 static void(__cdecl*original_ReceivedMessage)(tNet_message *, void *, tU32) = (void(__cdecl*)(tNet_message *, void *, tU32))0x00448eca;
 CARM95_HOOK_FUNCTION(original_ReceivedMessage, ReceivedMessage)
 void __cdecl ReceivedMessage(tNet_message *pMessage, void *pSender_address, tU32 pReceive_time) {
@@ -1567,6 +1648,7 @@ void __cdecl ReceivedMessage(tNet_message *pMessage, void *pSender_address, tU32
 }
 
 function_hook_state_t function_hook_state_NetReceiveAndProcessMessages = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_NetReceiveAndProcessMessages)
 static void(__cdecl*original_NetReceiveAndProcessMessages)() = (void(__cdecl*)())0x00449f82;
 CARM95_HOOK_FUNCTION(original_NetReceiveAndProcessMessages, NetReceiveAndProcessMessages)
 void __cdecl NetReceiveAndProcessMessages() {
@@ -1590,6 +1672,7 @@ void __cdecl NetReceiveAndProcessMessages() {
 }
 
 function_hook_state_t function_hook_state_BroadcastStatus = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BroadcastStatus)
 static void(__cdecl*original_BroadcastStatus)() = (void(__cdecl*)())0x0044a046;
 CARM95_HOOK_FUNCTION(original_BroadcastStatus, BroadcastStatus)
 void __cdecl BroadcastStatus() {
@@ -1607,6 +1690,7 @@ void __cdecl BroadcastStatus() {
 }
 
 function_hook_state_t function_hook_state_CheckForDisappearees = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_CheckForDisappearees)
 static void(__cdecl*original_CheckForDisappearees)() = (void(__cdecl*)())0x0044a2a3;
 CARM95_HOOK_FUNCTION(original_CheckForDisappearees, CheckForDisappearees)
 void __cdecl CheckForDisappearees() {
@@ -1632,6 +1716,7 @@ void __cdecl CheckForDisappearees() {
 }
 
 function_hook_state_t function_hook_state_CheckForPendingStartRace = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_CheckForPendingStartRace)
 static void(__cdecl*original_CheckForPendingStartRace)() = (void(__cdecl*)())0x0044a478;
 CARM95_HOOK_FUNCTION(original_CheckForPendingStartRace, CheckForPendingStartRace)
 void __cdecl CheckForPendingStartRace() {
@@ -1649,6 +1734,7 @@ void __cdecl CheckForPendingStartRace() {
 }
 
 function_hook_state_t function_hook_state_NetService = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_NetService)
 static void(__cdecl*original_NetService)(int) = (void(__cdecl*)(int))0x0044a08a;
 CARM95_HOOK_FUNCTION(original_NetService, NetService)
 void __cdecl NetService(int pIn_race) {
@@ -1669,6 +1755,7 @@ void __cdecl NetService(int pIn_race) {
 }
 
 function_hook_state_t function_hook_state_NetFinishRace = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_NetFinishRace)
 static void(__cdecl*original_NetFinishRace)(tNet_game_details *, tRace_over_reason) = (void(__cdecl*)(tNet_game_details *, tRace_over_reason))0x0044a4e1;
 CARM95_HOOK_FUNCTION(original_NetFinishRace, NetFinishRace)
 void __cdecl NetFinishRace(tNet_game_details *pDetails, tRace_over_reason pReason) {
@@ -1688,6 +1775,7 @@ void __cdecl NetFinishRace(tNet_game_details *pDetails, tRace_over_reason pReaso
 }
 
 function_hook_state_t function_hook_state_NetPlayerStatusChanged = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_NetPlayerStatusChanged)
 static void(__cdecl*original_NetPlayerStatusChanged)(tPlayer_status) = (void(__cdecl*)(tPlayer_status))0x0044a525;
 CARM95_HOOK_FUNCTION(original_NetPlayerStatusChanged, NetPlayerStatusChanged)
 void __cdecl NetPlayerStatusChanged(tPlayer_status pNew_status) {
@@ -1704,6 +1792,7 @@ void __cdecl NetPlayerStatusChanged(tPlayer_status pNew_status) {
 }
 
 function_hook_state_t function_hook_state_NetGetPlayerStatus = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_NetGetPlayerStatus)
 static tPlayer_status(__cdecl*original_NetGetPlayerStatus)() = (tPlayer_status(__cdecl*)())0x0044a5d0;
 CARM95_HOOK_FUNCTION(original_NetGetPlayerStatus, NetGetPlayerStatus)
 tPlayer_status __cdecl NetGetPlayerStatus() {
@@ -1719,6 +1808,7 @@ tPlayer_status __cdecl NetGetPlayerStatus() {
 }
 
 function_hook_state_t function_hook_state_NetGuaranteedSendMessageToAllPlayers = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_NetGuaranteedSendMessageToAllPlayers)
 static int(__cdecl*original_NetGuaranteedSendMessageToAllPlayers)(tNet_game_details *, tNet_message *, int(**)(tU32, tNet_message *)) = (int(__cdecl*)(tNet_game_details *, tNet_message *, int(**)(tU32, tNet_message *)))0x0044a5ef;
 CARM95_HOOK_FUNCTION(original_NetGuaranteedSendMessageToAllPlayers, NetGuaranteedSendMessageToAllPlayers)
 int __cdecl NetGuaranteedSendMessageToAllPlayers(tNet_game_details *pDetails, tNet_message *pMessage, int(**pNotifyFail)(tU32, tNet_message *)) {
@@ -1741,6 +1831,7 @@ int __cdecl NetGuaranteedSendMessageToAllPlayers(tNet_game_details *pDetails, tN
 }
 
 function_hook_state_t function_hook_state_NetGuaranteedSendMessageToEverybody = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_NetGuaranteedSendMessageToEverybody)
 static int(__cdecl*original_NetGuaranteedSendMessageToEverybody)(tNet_game_details *, tNet_message *, int(**)(tU32, tNet_message *)) = (int(__cdecl*)(tNet_game_details *, tNet_message *, int(**)(tU32, tNet_message *)))0x0044a689;
 CARM95_HOOK_FUNCTION(original_NetGuaranteedSendMessageToEverybody, NetGuaranteedSendMessageToEverybody)
 int __cdecl NetGuaranteedSendMessageToEverybody(tNet_game_details *pDetails, tNet_message *pMessage, int(**pNotifyFail)(tU32, tNet_message *)) {
@@ -1759,6 +1850,7 @@ int __cdecl NetGuaranteedSendMessageToEverybody(tNet_game_details *pDetails, tNe
 }
 
 function_hook_state_t function_hook_state_NetGuaranteedSendMessageToHost = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_NetGuaranteedSendMessageToHost)
 static int(__cdecl*original_NetGuaranteedSendMessageToHost)(tNet_game_details *, tNet_message *, int(**)(tU32, tNet_message *)) = (int(__cdecl*)(tNet_game_details *, tNet_message *, int(**)(tU32, tNet_message *)))0x0044a6f9;
 CARM95_HOOK_FUNCTION(original_NetGuaranteedSendMessageToHost, NetGuaranteedSendMessageToHost)
 int __cdecl NetGuaranteedSendMessageToHost(tNet_game_details *pDetails, tNet_message *pMessage, int(**pNotifyFail)(tU32, tNet_message *)) {
@@ -1777,6 +1869,7 @@ int __cdecl NetGuaranteedSendMessageToHost(tNet_game_details *pDetails, tNet_mes
 }
 
 function_hook_state_t function_hook_state_NetGuaranteedSendMessageToPlayer = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_NetGuaranteedSendMessageToPlayer)
 static int(__cdecl*original_NetGuaranteedSendMessageToPlayer)(tNet_game_details *, tNet_message *, tPlayer_ID, int(**)(tU32, tNet_message *)) = (int(__cdecl*)(tNet_game_details *, tNet_message *, tPlayer_ID, int(**)(tU32, tNet_message *)))0x0044a721;
 CARM95_HOOK_FUNCTION(original_NetGuaranteedSendMessageToPlayer, NetGuaranteedSendMessageToPlayer)
 int __cdecl NetGuaranteedSendMessageToPlayer(tNet_game_details *pDetails, tNet_message *pMessage, tPlayer_ID pPlayer, int(**pNotifyFail)(tU32, tNet_message *)) {
@@ -1798,6 +1891,7 @@ int __cdecl NetGuaranteedSendMessageToPlayer(tNet_game_details *pDetails, tNet_m
 }
 
 function_hook_state_t function_hook_state_NetGuaranteedSendMessageToAddress = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_NetGuaranteedSendMessageToAddress)
 static int(__cdecl*original_NetGuaranteedSendMessageToAddress)(tNet_game_details *, tNet_message *, void *, int(**)(tU32, tNet_message *)) = (int(__cdecl*)(tNet_game_details *, tNet_message *, void *, int(**)(tU32, tNet_message *)))0x0044a80f;
 CARM95_HOOK_FUNCTION(original_NetGuaranteedSendMessageToAddress, NetGuaranteedSendMessageToAddress)
 int __cdecl NetGuaranteedSendMessageToAddress(tNet_game_details *pDetails, tNet_message *pMessage, void *pAddress, int(**pNotifyFail)(tU32, tNet_message *)) {
@@ -1819,6 +1913,7 @@ int __cdecl NetGuaranteedSendMessageToAddress(tNet_game_details *pDetails, tNet_
 }
 
 function_hook_state_t function_hook_state_ResendGuaranteedMessages = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_ResendGuaranteedMessages)
 static void(__cdecl*original_ResendGuaranteedMessages)() = (void(__cdecl*)())0x0044a9f1;
 CARM95_HOOK_FUNCTION(original_ResendGuaranteedMessages, ResendGuaranteedMessages)
 void __cdecl ResendGuaranteedMessages() {
@@ -1840,6 +1935,7 @@ void __cdecl ResendGuaranteedMessages() {
 }
 
 function_hook_state_t function_hook_state_SampleFailNotifier = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_SampleFailNotifier)
 static int(__cdecl*original_SampleFailNotifier)(tU32, tNet_message *) = (int(__cdecl*)(tU32, tNet_message *))0x0044ad06;
 CARM95_HOOK_FUNCTION(original_SampleFailNotifier, SampleFailNotifier)
 int __cdecl SampleFailNotifier(tU32 pAge, tNet_message *pMessage) {
@@ -1857,6 +1953,7 @@ int __cdecl SampleFailNotifier(tU32 pAge, tNet_message *pMessage) {
 }
 
 function_hook_state_t function_hook_state_NetWaitForGuaranteeReplies = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_NetWaitForGuaranteeReplies)
 static void(__cdecl*original_NetWaitForGuaranteeReplies)() = (void(__cdecl*)())0x0044ad2f;
 CARM95_HOOK_FUNCTION(original_NetWaitForGuaranteeReplies, NetWaitForGuaranteeReplies)
 void __cdecl NetWaitForGuaranteeReplies() {
@@ -1874,6 +1971,7 @@ void __cdecl NetWaitForGuaranteeReplies() {
 }
 
 function_hook_state_t function_hook_state_NetPlayerFromID = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_NetPlayerFromID)
 static tNet_game_player_info *(__cdecl*original_NetPlayerFromID)(tPlayer_ID) = (tNet_game_player_info *(__cdecl*)(tPlayer_ID))0x0044ad74;
 CARM95_HOOK_FUNCTION(original_NetPlayerFromID, NetPlayerFromID)
 tNet_game_player_info* __cdecl NetPlayerFromID(tPlayer_ID pPlayer) {
@@ -1892,6 +1990,7 @@ tNet_game_player_info* __cdecl NetPlayerFromID(tPlayer_ID pPlayer) {
 }
 
 function_hook_state_t function_hook_state_NetCarFromPlayerID = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_NetCarFromPlayerID)
 static tCar_spec *(__cdecl*original_NetCarFromPlayerID)(tPlayer_ID) = (tCar_spec *(__cdecl*)(tPlayer_ID))0x0044add4;
 CARM95_HOOK_FUNCTION(original_NetCarFromPlayerID, NetCarFromPlayerID)
 tCar_spec* __cdecl NetCarFromPlayerID(tPlayer_ID pPlayer) {
@@ -1912,6 +2011,7 @@ tCar_spec* __cdecl NetCarFromPlayerID(tPlayer_ID pPlayer) {
 }
 
 function_hook_state_t function_hook_state_NetPlayerFromCar = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_NetPlayerFromCar)
 static tNet_game_player_info *(__cdecl*original_NetPlayerFromCar)(tCar_spec *) = (tNet_game_player_info *(__cdecl*)(tCar_spec *))0x0044ae15;
 CARM95_HOOK_FUNCTION(original_NetPlayerFromCar, NetPlayerFromCar)
 tNet_game_player_info* __cdecl NetPlayerFromCar(tCar_spec *pCar) {
@@ -1930,6 +2030,7 @@ tNet_game_player_info* __cdecl NetPlayerFromCar(tCar_spec *pCar) {
 }
 
 function_hook_state_t function_hook_state_DoCheckSum = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_DoCheckSum)
 tU32 DoCheckSum(tNet_message *pMessage) {
     int i;
     int j;
@@ -1954,6 +2055,7 @@ tU32 DoCheckSum(tNet_message *pMessage) {
 }
 
 function_hook_state_t function_hook_state_GetCheckSum = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_GetCheckSum)
 static void(__cdecl*original_GetCheckSum)(tNet_message *) = (void(__cdecl*)(tNet_message *))0x0044ae74;
 CARM95_HOOK_FUNCTION(original_GetCheckSum, GetCheckSum)
 void __cdecl GetCheckSum(tNet_message *pMessage) {
@@ -1970,6 +2072,7 @@ void __cdecl GetCheckSum(tNet_message *pMessage) {
 }
 
 function_hook_state_t function_hook_state_CheckCheckSum = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_CheckCheckSum)
 static void(__cdecl*original_CheckCheckSum)(tNet_message *) = (void(__cdecl*)(tNet_message *))0x0044ae7f;
 CARM95_HOOK_FUNCTION(original_CheckCheckSum, CheckCheckSum)
 void __cdecl CheckCheckSum(tNet_message *pMessage) {

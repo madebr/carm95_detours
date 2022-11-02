@@ -9,6 +9,7 @@
 #include <assert.h>
 
 function_hook_state_t function_hook_state_BrSprintf = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrSprintf)
 br_int_32(__cdecl*BrSprintf)(char *, char *) = (br_int_32(__cdecl*)(char *, char *))0x004e6300;
 br_int_32 BrSprintf_do_not_use(char *buf, char *fmt) {
     int n;
@@ -29,6 +30,7 @@ br_int_32 BrSprintf_do_not_use(char *buf, char *fmt) {
 }
 
 function_hook_state_t function_hook_state_BrSprintfN = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrSprintfN)
 br_int_32(__cdecl*BrSprintfN)(char *, br_size_t, char *) = (br_int_32(__cdecl*)(char *, br_size_t, char *))0x004e6320;
 br_int_32 BrSprintfN_do_not_use(char *buf, br_size_t buf_size, char *fmt) {
     int n;
@@ -50,6 +52,7 @@ br_int_32 BrSprintfN_do_not_use(char *buf, br_size_t buf_size, char *fmt) {
 }
 
 function_hook_state_t function_hook_state_BrLogPrintf = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrLogPrintf)
 int(__cdecl*BrLogPrintf)(char *) = (int(__cdecl*)(char *))0x004e6340;
 int BrLogPrintf_do_not_use(char *fmt) {
     int n;
@@ -69,6 +72,7 @@ int BrLogPrintf_do_not_use(char *fmt) {
 }
 
 function_hook_state_t function_hook_state_BrSScanf = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrSScanf)
 br_int_32(__cdecl*BrSScanf)(char *, char *) = (br_int_32(__cdecl*)(char *, char *))0x004e6370;
 br_int_32 BrSScanf_do_not_use(char *str, char *fmt) {
     int n;

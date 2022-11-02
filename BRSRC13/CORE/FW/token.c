@@ -11,6 +11,7 @@ br_token_entry(* hookvar_predefinedTokens )[457] = (void*)0x005289c0;
 struct token_type(* hookvar_tokenTypes )[37] = (void*)0x0052b210;
 
 function_hook_state_t function_hook_state_BrTokenBegin = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrTokenBegin)
 static void(__cdecl*original_BrTokenBegin)() = (void(__cdecl*)())0x004e6980;
 CARM95_HOOK_FUNCTION(original_BrTokenBegin, BrTokenBegin)
 void __cdecl BrTokenBegin() {
@@ -28,6 +29,7 @@ void __cdecl BrTokenBegin() {
 }
 
 function_hook_state_t function_hook_state_BrTokenCreate = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrTokenCreate)
 static br_token(__cdecl*original_BrTokenCreate)(char *, br_token) = (br_token(__cdecl*)(char *, br_token))0x004e69c0;
 CARM95_HOOK_FUNCTION(original_BrTokenCreate, BrTokenCreate)
 br_token __cdecl BrTokenCreate(char *identifier, br_token type) {
@@ -51,6 +53,7 @@ br_token __cdecl BrTokenCreate(char *identifier, br_token type) {
 }
 
 function_hook_state_t function_hook_state_BrTokenIdentifier = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrTokenIdentifier)
 static char *(__cdecl*original_BrTokenIdentifier)(br_token) = (char *(__cdecl*)(br_token))0x004e6b30;
 CARM95_HOOK_FUNCTION(original_BrTokenIdentifier, BrTokenIdentifier)
 char* __cdecl BrTokenIdentifier(br_token t) {
@@ -69,6 +72,7 @@ char* __cdecl BrTokenIdentifier(br_token t) {
 }
 
 function_hook_state_t function_hook_state_BrTokenType = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrTokenType)
 static br_token(__cdecl*original_BrTokenType)(br_token) = (br_token(__cdecl*)(br_token))0x004e6b60;
 CARM95_HOOK_FUNCTION(original_BrTokenType, BrTokenType)
 br_token __cdecl BrTokenType(br_token t) {
@@ -87,6 +91,7 @@ br_token __cdecl BrTokenType(br_token t) {
 }
 
 function_hook_state_t function_hook_state_BrTokenCount = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrTokenCount)
 static br_int_32(__cdecl*original_BrTokenCount)(char *) = (br_int_32(__cdecl*)(char *))0x004e6b90;
 CARM95_HOOK_FUNCTION(original_BrTokenCount, BrTokenCount)
 br_int_32 __cdecl BrTokenCount(char *pattern) {
@@ -107,6 +112,7 @@ br_int_32 __cdecl BrTokenCount(char *pattern) {
 }
 
 function_hook_state_t function_hook_state_BrTokenFind = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrTokenFind)
 static br_token(__cdecl*original_BrTokenFind)(char *) = (br_token(__cdecl*)(char *))0x004e6be0;
 CARM95_HOOK_FUNCTION(original_BrTokenFind, BrTokenFind)
 br_token __cdecl BrTokenFind(char *pattern) {
@@ -125,6 +131,7 @@ br_token __cdecl BrTokenFind(char *pattern) {
 }
 
 function_hook_state_t function_hook_state_BrTokenFindMany = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrTokenFindMany)
 static br_int_32(__cdecl*original_BrTokenFindMany)(char *, br_token *, br_int_32) = (br_int_32(__cdecl*)(char *, br_token *, br_int_32))0x004e6c20;
 CARM95_HOOK_FUNCTION(original_BrTokenFindMany, BrTokenFindMany)
 br_int_32 __cdecl BrTokenFindMany(char *pattern, br_token *tokens, br_int_32 max_tokens) {
@@ -147,6 +154,7 @@ br_int_32 __cdecl BrTokenFindMany(char *pattern, br_token *tokens, br_int_32 max
 }
 
 function_hook_state_t function_hook_state_BrTokenFindType = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrTokenFindType)
 static br_token(__stdcall*original_BrTokenFindType)(br_token *, char *, br_token *, br_int_32) = (br_token(__stdcall*)(br_token *, char *, br_token *, br_int_32))0x004e6c70;
 CARM95_HOOK_FUNCTION(original_BrTokenFindType, BrTokenFindType)
 br_token __stdcall BrTokenFindType(br_token *ptype, char *base, br_token *types, br_int_32 ntypes) {

@@ -9,6 +9,7 @@
 #include <assert.h>
 
 function_hook_state_t function_hook_state_BrMaterialUpdate = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMaterialUpdate)
 static void(__cdecl*original_BrMaterialUpdate)(br_material *, br_uint_16) = (void(__cdecl*)(br_material *, br_uint_16))0x004d9150;
 CARM95_HOOK_FUNCTION(original_BrMaterialUpdate, BrMaterialUpdate)
 void __cdecl BrMaterialUpdate(br_material *mat, br_uint_16 flags) {
@@ -34,6 +35,7 @@ void __cdecl BrMaterialUpdate(br_material *mat, br_uint_16 flags) {
 }
 
 function_hook_state_t function_hook_state_BrMaterialClear = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(function_hook_state_BrMaterialClear)
 static void(__stdcall*original_BrMaterialClear)(br_material *) = (void(__stdcall*)(br_material *))0x004d9700;
 CARM95_HOOK_FUNCTION(original_BrMaterialClear, BrMaterialClear)
 void __stdcall BrMaterialClear(br_material *mat) {
