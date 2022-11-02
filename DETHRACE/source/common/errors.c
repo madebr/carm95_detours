@@ -110,20 +110,23 @@ void __cdecl OpenDiagnostics() {
     }
 }
 
-function_hook_state_t function_hook_state_dprintf = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_dprintf)
-void dprintf(char *fmt_string) {
+void(__cdecl*dr_dprintf)(char*, ...) = (void*)0x00461645;
+function_hook_state_t function_hook_state_dr_dprintf = HOOK_UNAVAILABLE;
+#if 0
+CARM95_WEBSERVER_STATE(function_hook_state_dr_dprintf)
+void dr_dprintf(char *fmt_string) {
     LOG_TRACE("(\"%s\")", fmt_string);
 
     (void)fmt_string;
 
-    if (function_hook_state_dprintf == HOOK_ENABLED) {
+    if (function_hook_state_dr_dprintf == HOOK_ENABLED) {
         assert(0 && "dprintf not implemented.");
         abort();
     } else {
         NOT_IMPLEMENTED();
     }
 }
+#endif
 
 function_hook_state_t function_hook_state_DoErrorInterface = HOOK_UNAVAILABLE;
 CARM95_WEBSERVER_STATE(function_hook_state_DoErrorInterface)

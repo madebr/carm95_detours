@@ -25,7 +25,10 @@ void __cdecl CloseDiagnostics();
 
 void __cdecl OpenDiagnostics();
 
-void dprintf(char *fmt_string);
+extern void(__cdecl*dr_dprintf)(char *fmt_string, ...);
+#if 0
+void dr_dprintf(char *fmt_string);
+#endif
 
 int __cdecl DoErrorInterface(int pMisc_text_index);
 
