@@ -41,13 +41,13 @@ int CDECL main(int argc, char *argv[])
     char *sha256 = hook_calculate_sha256(victimPath.c_str());
     int valid = 0;
     for (int i = 0; i < ASIZE(reference_sha256_hashes); i++) {
-        if (strcasecmp(sha256, reference_sha256_hashes[i]) == 0) {
+        if (stricmp(sha256, reference_sha256_hashes[i]) == 0) {
             valid = 1;
             break;
         }
     }
     if (!valid) {
-        fprintf(stderr, "SHA256 hash of \"%s\" is not in database (%s).\n", victimPath, sha256);
+        fprintf(stderr, "SHA256 hash of \"%s\" is not in database (%s).\n", victimPath.c_str(), sha256);
         return 1;
     }
     free(sha256);

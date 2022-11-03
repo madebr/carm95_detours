@@ -106,7 +106,7 @@ class HookClientCmd(cmd.Cmd):
         needle = needle.lower()
         for hook_i, hook_data in enumerate(self.client.hooks):
             if needle in hook_data["name"].lower():
-                self.stdout.write(f"{hook_i:>5} | {self.state2shortstr[hook_data['state']]:>3} | {hook_data['name']:<74} | {hook_data['location']}\n")
+                self.stdout.write(f"{hook_i:>5} | {self.state2shortstr[hook_data['state']]:>3} | {hook_data['name']:<74} | {hook_data['file']}\n")
         return False
 
     def _str_to_state(self, s: str) -> int:
@@ -188,7 +188,7 @@ class HookClientCmd(cmd.Cmd):
 
 def main() -> int:
     parser = argparse.ArgumentParser(allow_abbrev=False)
-    parser.add_argument("url", default="http://localhost:8888", help="url of the REST hook server")
+    parser.add_argument("url", default="http://localhost:8080", nargs="?", help="url of the REST hook server")
     args = parser.parse_args()
 
     client = HookClient(url=args.url)

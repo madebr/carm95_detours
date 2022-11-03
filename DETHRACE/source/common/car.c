@@ -4837,9 +4837,9 @@ int __cdecl FindFloorInBoxBU(br_vector3 *a, br_vector3 *b, br_vector3 *nor, br_s
     (void)face_ref;
 
     if (function_hook_state_FindFloorInBoxBU == HOOK_ENABLED) {
-#if defined(DETHRACE_FIX_BUGS)
+//#if defined(DETHRACE_FIX_BUGS)
         j = 0; // added to keep compiler happy
-#endif
+//#endif
         *d = 2.0;
         for (i = c->box_face_start; i < c->box_face_end; i++) {
             face_ref = &HV(gFace_list__car)[i];
@@ -4892,9 +4892,9 @@ int __cdecl FindFloorInBoxBU2(br_vector3 *a, br_vector3 *b, br_vector3 *nor, br_
     (void)face_ref;
 
     if (function_hook_state_FindFloorInBoxBU2 == HOOK_ENABLED) {
-#if defined(DETHRACE_FIX_BUGS)
+//#if defined(DETHRACE_FIX_BUGS)
         j = 0; // added to keep compiler happy
-#endif
+//#endif
         *d = 2.0;
         for (i = c->box_face_start; i < c->box_face_end; i++) {
             face_ref = &HV(gFace_list__car)[i];
@@ -6258,7 +6258,8 @@ void __cdecl PositionExternalCamera(tCar_spec *c, tU32 pTime) {
             }
             if (c->car_master_actor->t.t.mat.m[3][0] <= 500.0) {
                 if (HV(gAction_replay_mode) && HV(gAction_replay_camera_mode)) {
-                    LOG_PANIC("%d, %d", HV(gAction_replay_mode), HV(gAction_replay_camera_mode));
+                    // Hit when going into replay mode!!!
+                    // LOG_PANIC("%d, %d", HV(gAction_replay_mode), HV(gAction_replay_camera_mode));
                     if (HV(gAction_replay_camera_mode) == eAction_replay_action && (CheckDisablePlingMaterials(c), IncidentCam(c, pTime))) {
                         SetPanningFieldOfView();
                         EnablePlingMaterials();
@@ -7133,9 +7134,9 @@ int __cdecl CollideCamera2(br_vector3 *car_pos, br_vector3 *cam_pos, br_vector3 
     (void)__block1___scale;
 
     if (function_hook_state_CollideCamera2 == HOOK_ENABLED) {
-#ifdef DETHRACE_FIX_BUGS
+//#ifdef DETHRACE_FIX_BUGS
         ts2 = 0.f;
-#endif
+//#endif
         hither = ((br_camera*)HV(gCamera)->type_data)->hither_z * 3.0;
         HV(gCamera_has_collided) = 0;
         for (i = 0; i < 1; i++) {
@@ -8206,10 +8207,10 @@ int __cdecl CollideTwoCars(tCollision_info *car1, tCollision_info *car2, int pPa
     (void)is_old_point_available;
 
     if (function_hook_state_CollideTwoCars == HOOK_ENABLED) {
-#ifdef DETHRACE_FIX_BUGS
+//#ifdef DETHRACE_FIX_BUGS
         // this variable is used uninitialized
     add_point = 0;
-#endif
+//#endif
 
         if (!HV(gCar_car_collisions)) {
             return 0;
