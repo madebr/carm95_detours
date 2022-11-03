@@ -26,42 +26,42 @@ typedef struct tS3_vector3 {
     tF32 z;
 } tS3_vector3;
 
-int S3Init(char* path, int low_memory_mode);
+int __cdecl S3Init(char* path, int low_memory_mode);
 
-void S3Disable();
-void S3Enable();
+void __cdecl S3Disable();
+void __cdecl S3Enable();
 
-void S3Set3DSoundEnvironment(float a1, float a2, float a3);
-tS3_sound_source_ptr S3CreateSoundSourceBR(br_vector3* pPosition, br_vector3* pVelocity, tS3_outlet_ptr pBound_outlet);
-int S3BindAmbientSoundToOutlet(tS3_outlet_ptr pOutlet, int pSound, tS3_sound_source_ptr source, float pMax_distance, int pPeriod, int pRepeats, int pVolume, int pPitch, int pSpeed);
+void __cdecl S3Set3DSoundEnvironment(float a1, float a2, float a3);
+tS3_sound_source_ptr __cdecl S3CreateSoundSourceBR(br_vector3* pPosition, br_vector3* pVelocity, tS3_outlet_ptr pBound_outlet);
+int __cdecl S3BindAmbientSoundToOutlet(tS3_outlet_ptr pOutlet, int pSound, tS3_sound_source_ptr source, float pMax_distance, int pPeriod, int pRepeats, int pVolume, int pPitch, int pSpeed);
 
-tS3_sound_tag S3StartSound3D(tS3_outlet_ptr pOutlet, tS3_sound_id pSound, tS3_vector3* pInitial_position, tS3_vector3* pInitial_velocity, tS3_repeats pRepeats, tS3_volume pVolume, tS3_pitch pPitch, tS3_speed pSpeed);
+tS3_sound_tag __cdecl S3StartSound3D(tS3_outlet_ptr pOutlet, tS3_sound_id pSound, tS3_vector3* pInitial_position, tS3_vector3* pInitial_velocity, tS3_repeats pRepeats, tS3_volume pVolume, tS3_pitch pPitch, tS3_speed pSpeed);
 
-tS3_outlet_ptr S3CreateOutlet(int unk1, int pChannel_count);
-void S3DisposeOutlet(tS3_outlet_ptr outlet);
-int S3DisposeDescriptor(tS3_sound_id id);
-int S3DisposeSoundSource(tS3_sound_source_ptr src);
+tS3_outlet_ptr __cdecl S3CreateOutlet(int unk1, int pChannel_count);
+void __cdecl S3DisposeOutlet(tS3_outlet_ptr outlet);
+int __cdecl S3DisposeDescriptor(tS3_sound_id id);
+int __cdecl S3DisposeSoundSource(tS3_sound_source_ptr src);
 
-int S3SetTagVolume(tS3_sound_tag pTag, tS3_volume pVolume);
+int __cdecl S3SetTagVolume(tS3_sound_tag pTag, tS3_volume pVolume);
 
-void S3Service(int inside_cockpit, int unk1);
+void __cdecl S3Service(int inside_cockpit, int unk1);
 
-int S3LoadSample(tS3_sound_id id);
-tS3_sound_tag S3StartSound(tS3_outlet_ptr pOutlet, tS3_sound_id pSound);
-tS3_sound_tag S3StartSound2(tS3_outlet_ptr pOutlet, tS3_sound_id pSound, tS3_repeats pRepeats, tS3_volume pLVolume, tS3_volume pRVolume, tS3_pitch pPitch, tS3_speed pSpeed);
-void S3StopAllOutletSounds();
-int S3SoundStillPlaying(tS3_sound_tag pSound);
-int S3StopSound(tS3_sound_tag pSound_tag);
-int S3StopOutletSound(tS3_outlet_ptr pOutlet);
-int S3SetOutletVolume(tS3_outlet_ptr pOutlet, tS3_volume pVolume);
-void S3UpdateSoundSource(tS3_outlet_ptr outlet, tS3_sound_tag tag, tS3_sound_source_ptr src, float pMax_distance_squared, int pPeriod, tS3_repeats pAmbient_repeats, tS3_volume pVolume, int pPitch, tS3_speed pSpeed);
+int __cdecl S3LoadSample(tS3_sound_id id);
+tS3_sound_tag __cdecl S3StartSound(tS3_outlet_ptr pOutlet, tS3_sound_id pSound);
+tS3_sound_tag __cdecl S3StartSound2(tS3_outlet_ptr pOutlet, tS3_sound_id pSound, tS3_repeats pRepeats, tS3_volume pLVolume, tS3_volume pRVolume, tS3_pitch pPitch, tS3_speed pSpeed);
+void __cdecl S3StopAllOutletSounds();
+int __cdecl S3SoundStillPlaying(tS3_sound_tag pSound);
+int __cdecl S3StopSound(tS3_sound_tag pSound_tag);
+int __cdecl S3StopOutletSound(tS3_outlet_ptr pOutlet);
+int __cdecl S3SetOutletVolume(tS3_outlet_ptr pOutlet, tS3_volume pVolume);
+void __cdecl S3UpdateSoundSource(tS3_outlet_ptr outlet, tS3_sound_tag tag, tS3_sound_source_ptr src, float pMax_distance_squared, int pPeriod, tS3_repeats pAmbient_repeats, tS3_volume pVolume, int pPitch, tS3_speed pSpeed);
 
-void S3BindListenerPositionBRender(br_vector3* pos);
-void S3BindListenerVelocityBRender(br_vector3* vel);
-void S3BindListenerLeftBRender(br_vector3* left);
+void __cdecl S3BindListenerPositionBRender(br_vector3* pos);
+void __cdecl S3BindListenerVelocityBRender(br_vector3* vel);
+void __cdecl S3BindListenerLeftBRender(br_vector3* left);
 
-int S3IsCDAPlaying2();
+int __cdecl S3IsCDAPlaying2();
 
-int S3SetEffects(tS3_sample_filter* filter1, tS3_sample_filter* filter2);
+int __cdecl S3SetEffects(tS3_sample_filter* filter1, tS3_sample_filter* filter2);
 
 #endif
