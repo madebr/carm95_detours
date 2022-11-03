@@ -7194,7 +7194,7 @@ int __cdecl CollideCamera2(br_vector3 *car_pos, br_vector3 *cam_pos, br_vector3 
                             + tv.v[0] * tv.v[0]
                             - HV(gMin_camera_car_distance) * HV(gMin_camera_car_distance);
                     ts2 = l * l - alpha * d * 4.0;
-                    if (alpha >= 0 && d != 0.0) {
+                    if (ts2 >= 0 && d != 0.0) {
                         sa = (sqrt(ts2) - l) / (d * 2.0);
                         tv2.v[0] = tv2.v[0] * sa;
                         tv2.v[1] = tv2.v[1] * sa;
