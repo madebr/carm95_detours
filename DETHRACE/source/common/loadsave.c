@@ -156,9 +156,9 @@ void __cdecl LoadStart() {
 
 function_hook_state_t function_hook_state_DoLoadGame = HOOK_UNAVAILABLE;
 CARM95_WEBSERVER_STATE(DoLoadGame, function_hook_state_DoLoadGame)
-static int(__cdecl*original_DoLoadGame)(int) = (int(__cdecl*)(int))0x0044bf62;
+static int(__cdecl*original_DoLoadGame)() = (int(__cdecl*)())0x0044bf62;
 CARM95_HOOK_FUNCTION(original_DoLoadGame, DoLoadGame)
-int __cdecl DoLoadGame(int pSave_allowed) {
+int __cdecl DoLoadGame() {
     static tFlicette flicker_on[9];
     static tFlicette flicker_off[9];
     static tFlicette push[9];
@@ -166,9 +166,8 @@ int __cdecl DoLoadGame(int pSave_allowed) {
     static tRectile recopy_areas[24];
     static tInterface_spec interface_spec;
     int result;
-    LOG_TRACE("(%d)", pSave_allowed);
+    LOG_TRACE("()");
 
-    (void)pSave_allowed;
     (void)flicker_on;
     (void)flicker_off;
     (void)push;
@@ -181,7 +180,7 @@ int __cdecl DoLoadGame(int pSave_allowed) {
         assert(0 && "DoLoadGame not implemented.");
         abort();
     } else {
-        return original_DoLoadGame(pSave_allowed);
+        return original_DoLoadGame();
     }
 }
 

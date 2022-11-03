@@ -22,7 +22,7 @@ void __cdecl StartRollingSaveNamesIn();
 
 void __cdecl LoadStart();
 
-int __cdecl DoLoadGame(int pSave_allowed);
+int __cdecl DoLoadGame();
 
 void __cdecl CorrectSaveByteOrdering(int pIndex);
 
