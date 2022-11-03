@@ -11,7 +11,7 @@ br_exception_handler ** hookvar__BrExceptionHandler  = (void*)0x0053005c;
 void ** hookvar_exceptionValue  = (void*)0x00544d84;
 
 function_hook_state_t function_hook_state__BrExceptionBegin = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state__BrExceptionBegin)
+CARM95_WEBSERVER_STATE(_BrExceptionBegin, function_hook_state__BrExceptionBegin)
 static br_exception_handler *(__cdecl*original__BrExceptionBegin)() = (br_exception_handler *(__cdecl*)())0x00502b90;
 CARM95_HOOK_FUNCTION(original__BrExceptionBegin, _BrExceptionBegin)
 br_exception_handler* __cdecl _BrExceptionBegin() {
@@ -29,7 +29,7 @@ br_exception_handler* __cdecl _BrExceptionBegin() {
 }
 
 function_hook_state_t function_hook_state__BrExceptionEnd = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state__BrExceptionEnd)
+CARM95_WEBSERVER_STATE(_BrExceptionEnd, function_hook_state__BrExceptionEnd)
 static void(__cdecl*original__BrExceptionEnd)() = (void(__cdecl*)())0x00502bb0;
 CARM95_HOOK_FUNCTION(original__BrExceptionEnd, _BrExceptionEnd)
 void __cdecl _BrExceptionEnd() {
@@ -47,7 +47,7 @@ void __cdecl _BrExceptionEnd() {
 }
 
 function_hook_state_t function_hook_state__BrExceptionThrow = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state__BrExceptionThrow)
+CARM95_WEBSERVER_STATE(_BrExceptionThrow, function_hook_state__BrExceptionThrow)
 static void(__cdecl*original__BrExceptionThrow)(br_int_32, void *) = (void(__cdecl*)(br_int_32, void *))0x00502be0;
 CARM95_HOOK_FUNCTION(original__BrExceptionThrow, _BrExceptionThrow)
 void __cdecl _BrExceptionThrow(br_int_32 type, void *value) {
@@ -69,7 +69,7 @@ void __cdecl _BrExceptionThrow(br_int_32 type, void *value) {
 }
 
 function_hook_state_t function_hook_state__BrExceptionValueFetch = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state__BrExceptionValueFetch)
+CARM95_WEBSERVER_STATE(_BrExceptionValueFetch, function_hook_state__BrExceptionValueFetch)
 static br_exception(__cdecl*original__BrExceptionValueFetch)(br_exception, void **) = (br_exception(__cdecl*)(br_exception, void **))0x00502c50;
 CARM95_HOOK_FUNCTION(original__BrExceptionValueFetch, _BrExceptionValueFetch)
 br_exception __cdecl _BrExceptionValueFetch(br_exception type, void **evp) {
@@ -87,7 +87,7 @@ br_exception __cdecl _BrExceptionValueFetch(br_exception type, void **evp) {
 }
 
 function_hook_state_t function_hook_state__BrExceptionResource = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state__BrExceptionResource)
+CARM95_WEBSERVER_STATE(_BrExceptionResource, function_hook_state__BrExceptionResource)
 static void *(__cdecl*original__BrExceptionResource)() = (void *(__cdecl*)())0x00502c70;
 CARM95_HOOK_FUNCTION(original__BrExceptionResource, _BrExceptionResource)
 void* __cdecl _BrExceptionResource() {

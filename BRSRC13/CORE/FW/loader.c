@@ -9,7 +9,7 @@
 #include <assert.h>
 
 function_hook_state_t function_hook_state_ImageLoad = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_ImageLoad)
+CARM95_WEBSERVER_STATE(ImageLoad, function_hook_state_ImageLoad)
 static br_image *(__stdcall*original_ImageLoad)(char *) = (br_image *(__stdcall*)(char *))0x004e8bb0;
 CARM95_HOOK_FUNCTION(original_ImageLoad, ImageLoad)
 br_image* __stdcall ImageLoad(char *name) {

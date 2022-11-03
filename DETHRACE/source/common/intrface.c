@@ -16,7 +16,7 @@ int * hookvar_gAlways_typing  = (void*)0x0053a4d0;
 int * hookvar_gDisabled_count  = (void*)0x0053a4cc;
 
 function_hook_state_t function_hook_state_SetAlwaysTyping = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_SetAlwaysTyping)
+CARM95_WEBSERVER_STATE(SetAlwaysTyping, function_hook_state_SetAlwaysTyping)
 static void(__cdecl*original_SetAlwaysTyping)() = (void(__cdecl*)())0x004735b0;
 CARM95_HOOK_FUNCTION(original_SetAlwaysTyping, SetAlwaysTyping)
 void __cdecl SetAlwaysTyping() {
@@ -32,7 +32,7 @@ void __cdecl SetAlwaysTyping() {
 }
 
 function_hook_state_t function_hook_state_ClearAlwaysTyping = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_ClearAlwaysTyping)
+CARM95_WEBSERVER_STATE(ClearAlwaysTyping, function_hook_state_ClearAlwaysTyping)
 static void(__cdecl*original_ClearAlwaysTyping)() = (void(__cdecl*)())0x004735c5;
 CARM95_HOOK_FUNCTION(original_ClearAlwaysTyping, ClearAlwaysTyping)
 void __cdecl ClearAlwaysTyping() {
@@ -48,7 +48,7 @@ void __cdecl ClearAlwaysTyping() {
 }
 
 function_hook_state_t function_hook_state_ChoiceDisabled = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_ChoiceDisabled)
+CARM95_WEBSERVER_STATE(ChoiceDisabled, function_hook_state_ChoiceDisabled)
 static int(__cdecl*original_ChoiceDisabled)(int) = (int(__cdecl*)(int))0x00475027;
 CARM95_HOOK_FUNCTION(original_ChoiceDisabled, ChoiceDisabled)
 int __cdecl ChoiceDisabled(int pChoice) {
@@ -67,7 +67,7 @@ int __cdecl ChoiceDisabled(int pChoice) {
 }
 
 function_hook_state_t function_hook_state_ResetInterfaceTimeout = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_ResetInterfaceTimeout)
+CARM95_WEBSERVER_STATE(ResetInterfaceTimeout, function_hook_state_ResetInterfaceTimeout)
 static void(__cdecl*original_ResetInterfaceTimeout)() = (void(__cdecl*)())0x004735da;
 CARM95_HOOK_FUNCTION(original_ResetInterfaceTimeout, ResetInterfaceTimeout)
 void __cdecl ResetInterfaceTimeout() {
@@ -83,7 +83,7 @@ void __cdecl ResetInterfaceTimeout() {
 }
 
 function_hook_state_t function_hook_state_ChangeSelection = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_ChangeSelection)
+CARM95_WEBSERVER_STATE(ChangeSelection, function_hook_state_ChangeSelection)
 static void(__cdecl*original_ChangeSelection)(tInterface_spec *, int *, int *, int, int) = (void(__cdecl*)(tInterface_spec *, int *, int *, int, int))0x00474d84;
 CARM95_HOOK_FUNCTION(original_ChangeSelection, ChangeSelection)
 void __cdecl ChangeSelection(tInterface_spec *pSpec, int *pOld_selection, int *pNew_selection, int pMode, int pSkip_disabled) {
@@ -106,7 +106,7 @@ void __cdecl ChangeSelection(tInterface_spec *pSpec, int *pOld_selection, int *p
 }
 
 function_hook_state_t function_hook_state_RecopyAreas = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_RecopyAreas)
+CARM95_WEBSERVER_STATE(RecopyAreas, function_hook_state_RecopyAreas)
 static void(__cdecl*original_RecopyAreas)(tInterface_spec *, br_pixelmap **) = (void(__cdecl*)(tInterface_spec *, br_pixelmap **))0x0047507b;
 CARM95_HOOK_FUNCTION(original_RecopyAreas, RecopyAreas)
 void __cdecl RecopyAreas(tInterface_spec *pSpec, br_pixelmap **pCopy_areas) {
@@ -126,7 +126,7 @@ void __cdecl RecopyAreas(tInterface_spec *pSpec, br_pixelmap **pCopy_areas) {
 }
 
 function_hook_state_t function_hook_state_DisableChoice = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DisableChoice)
+CARM95_WEBSERVER_STATE(DisableChoice, function_hook_state_DisableChoice)
 static void(__cdecl*original_DisableChoice)(int) = (void(__cdecl*)(int))0x004735ef;
 CARM95_HOOK_FUNCTION(original_DisableChoice, DisableChoice)
 void __cdecl DisableChoice(int pChoice) {
@@ -145,7 +145,7 @@ void __cdecl DisableChoice(int pChoice) {
 }
 
 function_hook_state_t function_hook_state_EnableChoice = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_EnableChoice)
+CARM95_WEBSERVER_STATE(EnableChoice, function_hook_state_EnableChoice)
 static void(__cdecl*original_EnableChoice)(int) = (void(__cdecl*)(int))0x0047364d;
 CARM95_HOOK_FUNCTION(original_EnableChoice, EnableChoice)
 void __cdecl EnableChoice(int pChoice) {
@@ -164,7 +164,7 @@ void __cdecl EnableChoice(int pChoice) {
 }
 
 function_hook_state_t function_hook_state_DoInterfaceScreen = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DoInterfaceScreen)
+CARM95_WEBSERVER_STATE(DoInterfaceScreen, function_hook_state_DoInterfaceScreen)
 static int(__cdecl*original_DoInterfaceScreen)(tInterface_spec *, int, int) = (int(__cdecl*)(tInterface_spec *, int, int))0x004736cc;
 CARM95_HOOK_FUNCTION(original_DoInterfaceScreen, DoInterfaceScreen)
 int __cdecl DoInterfaceScreen(tInterface_spec *pSpec, int pOptions, int pCurrent_choice) {
@@ -243,7 +243,7 @@ int __cdecl DoInterfaceScreen(tInterface_spec *pSpec, int pOptions, int pCurrent
 }
 
 function_hook_state_t function_hook_state_ChangeSelectionTo = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_ChangeSelectionTo)
+CARM95_WEBSERVER_STATE(ChangeSelectionTo, function_hook_state_ChangeSelectionTo)
 static void(__cdecl*original_ChangeSelectionTo)(int, int) = (void(__cdecl*)(int, int))0x00475175;
 CARM95_HOOK_FUNCTION(original_ChangeSelectionTo, ChangeSelectionTo)
 void __cdecl ChangeSelectionTo(int pNew_choice, int pNew_mode) {

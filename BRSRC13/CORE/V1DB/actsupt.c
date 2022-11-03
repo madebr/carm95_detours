@@ -9,7 +9,7 @@
 #include <assert.h>
 
 function_hook_state_t function_hook_state_BrActorEnum = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrActorEnum)
+CARM95_WEBSERVER_STATE(BrActorEnum, function_hook_state_BrActorEnum)
 static br_uint_32(__cdecl*original_BrActorEnum)(br_actor *, br_actor_enum_cbfn *, void *) = (br_uint_32(__cdecl*)(br_actor *, br_actor_enum_cbfn *, void *))0x004d6710;
 CARM95_HOOK_FUNCTION(original_BrActorEnum, BrActorEnum)
 br_uint_32 __cdecl BrActorEnum(br_actor *parent, br_actor_enum_cbfn *callback, void *arg) {
@@ -34,7 +34,7 @@ br_uint_32 __cdecl BrActorEnum(br_actor *parent, br_actor_enum_cbfn *callback, v
 }
 
 function_hook_state_t function_hook_state_BrActorSearchMany = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrActorSearchMany)
+CARM95_WEBSERVER_STATE(BrActorSearchMany, function_hook_state_BrActorSearchMany)
 static br_uint_32(__cdecl*original_BrActorSearchMany)(br_actor *, char *, br_actor **, int) = (br_uint_32(__cdecl*)(br_actor *, char *, br_actor **, int))0x004d6740;
 CARM95_HOOK_FUNCTION(original_BrActorSearchMany, BrActorSearchMany)
 br_uint_32 __cdecl BrActorSearchMany(br_actor *root, char *pattern, br_actor **actors, int max) {
@@ -62,7 +62,7 @@ br_uint_32 __cdecl BrActorSearchMany(br_actor *root, char *pattern, br_actor **a
 }
 
 function_hook_state_t function_hook_state_BrActorSearch = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrActorSearch)
+CARM95_WEBSERVER_STATE(BrActorSearch, function_hook_state_BrActorSearch)
 static br_actor *(__cdecl*original_BrActorSearch)(br_actor *, char *) = (br_actor *(__cdecl*)(br_actor *, char *))0x004d67ef;
 CARM95_HOOK_FUNCTION(original_BrActorSearch, BrActorSearch)
 br_actor* __cdecl BrActorSearch(br_actor *root, char *pattern) {
@@ -82,7 +82,7 @@ br_actor* __cdecl BrActorSearch(br_actor *root, char *pattern) {
 }
 
 function_hook_state_t function_hook_state_RenumberActor = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_RenumberActor)
+CARM95_WEBSERVER_STATE(RenumberActor, function_hook_state_RenumberActor)
 static void(__stdcall*original_RenumberActor)(br_actor *, int) = (void(__stdcall*)(br_actor *, int))0x004d6880;
 CARM95_HOOK_FUNCTION(original_RenumberActor, RenumberActor)
 void __stdcall RenumberActor(br_actor *a, int d) {
@@ -102,7 +102,7 @@ void __stdcall RenumberActor(br_actor *a, int d) {
 }
 
 function_hook_state_t function_hook_state_BrActorAdd = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrActorAdd)
+CARM95_WEBSERVER_STATE(BrActorAdd, function_hook_state_BrActorAdd)
 static br_actor *(__cdecl*original_BrActorAdd)(br_actor *, br_actor *) = (br_actor *(__cdecl*)(br_actor *, br_actor *))0x004d6820;
 CARM95_HOOK_FUNCTION(original_BrActorAdd, BrActorAdd)
 br_actor* __cdecl BrActorAdd(br_actor *parent, br_actor *a) {
@@ -122,7 +122,7 @@ br_actor* __cdecl BrActorAdd(br_actor *parent, br_actor *a) {
 }
 
 function_hook_state_t function_hook_state_BrActorRemove = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrActorRemove)
+CARM95_WEBSERVER_STATE(BrActorRemove, function_hook_state_BrActorRemove)
 static br_actor *(__cdecl*original_BrActorRemove)(br_actor *) = (br_actor *(__cdecl*)(br_actor *))0x004d68b0;
 CARM95_HOOK_FUNCTION(original_BrActorRemove, BrActorRemove)
 br_actor* __cdecl BrActorRemove(br_actor *a) {
@@ -141,7 +141,7 @@ br_actor* __cdecl BrActorRemove(br_actor *a) {
 }
 
 function_hook_state_t function_hook_state_BrActorRelink = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrActorRelink)
+CARM95_WEBSERVER_STATE(BrActorRelink, function_hook_state_BrActorRelink)
 static void(__cdecl*original_BrActorRelink)(br_actor *, br_actor *) = (void(__cdecl*)(br_actor *, br_actor *))0x00434aa0;
 CARM95_HOOK_FUNCTION(original_BrActorRelink, BrActorRelink)
 void __cdecl BrActorRelink(br_actor *parent, br_actor *a) {
@@ -161,7 +161,7 @@ void __cdecl BrActorRelink(br_actor *parent, br_actor *a) {
 }
 
 function_hook_state_t function_hook_state_BrActorAllocate = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrActorAllocate)
+CARM95_WEBSERVER_STATE(BrActorAllocate, function_hook_state_BrActorAllocate)
 static br_actor *(__cdecl*original_BrActorAllocate)(br_uint_8, void *) = (br_actor *(__cdecl*)(br_uint_8, void *))0x004d69d0;
 CARM95_HOOK_FUNCTION(original_BrActorAllocate, BrActorAllocate)
 br_actor* __cdecl BrActorAllocate(br_uint_8 type, void *type_data) {
@@ -189,7 +189,7 @@ br_actor* __cdecl BrActorAllocate(br_uint_8 type, void *type_data) {
 }
 
 function_hook_state_t function_hook_state_InternalActorFree = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_InternalActorFree)
+CARM95_WEBSERVER_STATE(InternalActorFree, function_hook_state_InternalActorFree)
 static void(__stdcall*original_InternalActorFree)(br_actor *) = (void(__stdcall*)(br_actor *))0x004d6b30;
 CARM95_HOOK_FUNCTION(original_InternalActorFree, InternalActorFree)
 void __stdcall InternalActorFree(br_actor *a) {
@@ -206,7 +206,7 @@ void __stdcall InternalActorFree(br_actor *a) {
 }
 
 function_hook_state_t function_hook_state_BrActorFree = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrActorFree)
+CARM95_WEBSERVER_STATE(BrActorFree, function_hook_state_BrActorFree)
 static void(__cdecl*original_BrActorFree)(br_actor *) = (void(__cdecl*)(br_actor *))0x004d6af0;
 CARM95_HOOK_FUNCTION(original_BrActorFree, BrActorFree)
 void __cdecl BrActorFree(br_actor *a) {
@@ -223,7 +223,7 @@ void __cdecl BrActorFree(br_actor *a) {
 }
 
 function_hook_state_t function_hook_state_ActorToRoot = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_ActorToRoot)
+CARM95_WEBSERVER_STATE(ActorToRoot, function_hook_state_ActorToRoot)
 static br_boolean(__stdcall*original_ActorToRoot)(br_actor *, br_actor *, br_matrix34 *) = (br_boolean(__stdcall*)(br_actor *, br_actor *, br_matrix34 *))0x004d6b68;
 CARM95_HOOK_FUNCTION(original_ActorToRoot, ActorToRoot)
 br_boolean __stdcall ActorToRoot(br_actor *a, br_actor *world, br_matrix34 *m) {
@@ -242,7 +242,7 @@ br_boolean __stdcall ActorToRoot(br_actor *a, br_actor *world, br_matrix34 *m) {
 }
 
 function_hook_state_t function_hook_state_ActorToRootTyped = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_ActorToRootTyped)
+CARM95_WEBSERVER_STATE(ActorToRootTyped, function_hook_state_ActorToRootTyped)
 static br_boolean(__stdcall*original_ActorToRootTyped)(br_actor *, br_actor *, br_matrix34 *, br_int_32 *) = (br_boolean(__stdcall*)(br_actor *, br_actor *, br_matrix34 *, br_int_32 *))0x004d6be0;
 CARM95_HOOK_FUNCTION(original_ActorToRootTyped, ActorToRootTyped)
 br_boolean __stdcall ActorToRootTyped(br_actor *a, br_actor *world, br_matrix34 *m, br_int_32 *type) {
@@ -264,7 +264,7 @@ br_boolean __stdcall ActorToRootTyped(br_actor *a, br_actor *world, br_matrix34 
 }
 
 function_hook_state_t function_hook_state_Matrix4PerspectiveNew = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_Matrix4PerspectiveNew)
+CARM95_WEBSERVER_STATE(Matrix4PerspectiveNew, function_hook_state_Matrix4PerspectiveNew)
 static void(__stdcall*original_Matrix4PerspectiveNew)(br_matrix4 *, br_angle, br_scalar, br_scalar, br_scalar, br_scalar, br_scalar) = (void(__stdcall*)(br_matrix4 *, br_angle, br_scalar, br_scalar, br_scalar, br_scalar, br_scalar))0x004d6c80;
 CARM95_HOOK_FUNCTION(original_Matrix4PerspectiveNew, Matrix4PerspectiveNew)
 void __stdcall Matrix4PerspectiveNew(br_matrix4 *mat, br_angle field_of_view, br_scalar aspect, br_scalar hither, br_scalar yon, br_scalar origin_x, br_scalar origin_y) {
@@ -289,7 +289,7 @@ void __stdcall Matrix4PerspectiveNew(br_matrix4 *mat, br_angle field_of_view, br
 }
 
 function_hook_state_t function_hook_state_CameraToScreenMatrix4 = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_CameraToScreenMatrix4)
+CARM95_WEBSERVER_STATE(CameraToScreenMatrix4, function_hook_state_CameraToScreenMatrix4)
 static br_token(__stdcall*original_CameraToScreenMatrix4)(br_matrix4 *, br_actor *) = (br_token(__stdcall*)(br_matrix4 *, br_actor *))0x004d6d30;
 CARM95_HOOK_FUNCTION(original_CameraToScreenMatrix4, CameraToScreenMatrix4)
 br_token __stdcall CameraToScreenMatrix4(br_matrix4 *mat, br_actor *camera) {
@@ -311,7 +311,7 @@ br_token __stdcall CameraToScreenMatrix4(br_matrix4 *mat, br_actor *camera) {
 }
 
 function_hook_state_t function_hook_state_BrActorToActorMatrix34 = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrActorToActorMatrix34)
+CARM95_WEBSERVER_STATE(BrActorToActorMatrix34, function_hook_state_BrActorToActorMatrix34)
 static br_uint_16(__cdecl*original_BrActorToActorMatrix34)(br_matrix34 *, br_actor *, br_actor *) = (br_uint_16(__cdecl*)(br_matrix34 *, br_actor *, br_actor *))0x004345e0;
 CARM95_HOOK_FUNCTION(original_BrActorToActorMatrix34, BrActorToActorMatrix34)
 br_uint_16 __cdecl BrActorToActorMatrix34(br_matrix34 *m, br_actor *a, br_actor *b) {
@@ -340,7 +340,7 @@ br_uint_16 __cdecl BrActorToActorMatrix34(br_matrix34 *m, br_actor *a, br_actor 
 }
 
 function_hook_state_t function_hook_state_BrActorToScreenMatrix4 = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrActorToScreenMatrix4)
+CARM95_WEBSERVER_STATE(BrActorToScreenMatrix4, function_hook_state_BrActorToScreenMatrix4)
 static void(__cdecl*original_BrActorToScreenMatrix4)(br_matrix4 *, br_actor *, br_actor *) = (void(__cdecl*)(br_matrix4 *, br_actor *, br_actor *))0x004d7273;
 CARM95_HOOK_FUNCTION(original_BrActorToScreenMatrix4, BrActorToScreenMatrix4)
 void __cdecl BrActorToScreenMatrix4(br_matrix4 *m, br_actor *a, br_actor *camera) {
@@ -361,7 +361,7 @@ void __cdecl BrActorToScreenMatrix4(br_matrix4 *m, br_actor *a, br_actor *camera
 }
 
 function_hook_state_t function_hook_state_BrMatrix34ApplyBounds = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix34ApplyBounds)
+CARM95_WEBSERVER_STATE(BrMatrix34ApplyBounds, function_hook_state_BrMatrix34ApplyBounds)
 void BrMatrix34ApplyBounds(br_bounds *d, br_bounds *s, br_matrix34 *m) {
     int i;
     int j;
@@ -386,7 +386,7 @@ void BrMatrix34ApplyBounds(br_bounds *d, br_bounds *s, br_matrix34 *m) {
 }
 
 function_hook_state_t function_hook_state_ActorToBounds = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_ActorToBounds)
+CARM95_WEBSERVER_STATE(ActorToBounds, function_hook_state_ActorToBounds)
 static void(__stdcall*original_ActorToBounds)(br_bounds *, br_actor *, br_model *) = (void(__stdcall*)(br_bounds *, br_actor *, br_model *))0x004d7370;
 CARM95_HOOK_FUNCTION(original_ActorToBounds, ActorToBounds)
 void __stdcall ActorToBounds(br_bounds *dest, br_actor *ap, br_model *model) {
@@ -413,7 +413,7 @@ void __stdcall ActorToBounds(br_bounds *dest, br_actor *ap, br_model *model) {
 }
 
 function_hook_state_t function_hook_state_BrActorToBounds = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrActorToBounds)
+CARM95_WEBSERVER_STATE(BrActorToBounds, function_hook_state_BrActorToBounds)
 static br_bounds *(__cdecl*original_BrActorToBounds)(br_bounds *, br_actor *) = (br_bounds *(__cdecl*)(br_bounds *, br_actor *))0x004d72c0;
 CARM95_HOOK_FUNCTION(original_BrActorToBounds, BrActorToBounds)
 br_bounds* __cdecl BrActorToBounds(br_bounds *b, br_actor *ap) {

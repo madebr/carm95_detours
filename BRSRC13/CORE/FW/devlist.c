@@ -9,7 +9,7 @@
 #include <assert.h>
 
 function_hook_state_t function_hook_state_AddRequestedDrivers = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_AddRequestedDrivers)
+CARM95_WEBSERVER_STATE(AddRequestedDrivers, function_hook_state_AddRequestedDrivers)
 br_error AddRequestedDrivers() {
     char devstr[256];
     static br_boolean bAlreadyDone;
@@ -27,7 +27,7 @@ br_error AddRequestedDrivers() {
 }
 
 function_hook_state_t function_hook_state_devAdd = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_devAdd)
+CARM95_WEBSERVER_STATE(devAdd, function_hook_state_devAdd)
 static br_error(__stdcall*original_devAdd)(br_device **, br_device_begin_fn *, char *, br_image *) = (br_error(__stdcall*)(br_device **, br_device_begin_fn *, char *, br_image *))0x004e78e0;
 CARM95_HOOK_FUNCTION(original_devAdd, devAdd)
 br_error __stdcall devAdd(br_device **pdev, br_device_begin_fn *dev_begin, char *args, br_image *image) {
@@ -53,7 +53,7 @@ br_error __stdcall devAdd(br_device **pdev, br_device_begin_fn *dev_begin, char 
 }
 
 function_hook_state_t function_hook_state_BrDevAdd = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrDevAdd)
+CARM95_WEBSERVER_STATE(BrDevAdd, function_hook_state_BrDevAdd)
 static br_error(__cdecl*original_BrDevAdd)(br_device **, char *, char *) = (br_error(__cdecl*)(br_device **, char *, char *))0x004e7880;
 CARM95_HOOK_FUNCTION(original_BrDevAdd, BrDevAdd)
 br_error __cdecl BrDevAdd(br_device **pdev, char *image, char *args) {
@@ -76,7 +76,7 @@ br_error __cdecl BrDevAdd(br_device **pdev, char *image, char *args) {
 }
 
 function_hook_state_t function_hook_state_BrDevAddStatic = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrDevAddStatic)
+CARM95_WEBSERVER_STATE(BrDevAddStatic, function_hook_state_BrDevAddStatic)
 static br_error(__cdecl*original_BrDevAddStatic)(br_device **, br_device_begin_fn *, char *) = (br_error(__cdecl*)(br_device **, br_device_begin_fn *, char *))0x004e7a00;
 CARM95_HOOK_FUNCTION(original_BrDevAddStatic, BrDevAddStatic)
 br_error __cdecl BrDevAddStatic(br_device **pdev, br_device_begin_fn *dev_begin, char *args) {
@@ -95,7 +95,7 @@ br_error __cdecl BrDevAddStatic(br_device **pdev, br_device_begin_fn *dev_begin,
 }
 
 function_hook_state_t function_hook_state_BrDevCheckAdd = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrDevCheckAdd)
+CARM95_WEBSERVER_STATE(BrDevCheckAdd, function_hook_state_BrDevCheckAdd)
 static br_error(__cdecl*original_BrDevCheckAdd)(br_device **, char *, char *) = (br_error(__cdecl*)(br_device **, char *, char *))0x004e7a20;
 CARM95_HOOK_FUNCTION(original_BrDevCheckAdd, BrDevCheckAdd)
 br_error __cdecl BrDevCheckAdd(br_device **pdev, char *name, char *args) {
@@ -114,7 +114,7 @@ br_error __cdecl BrDevCheckAdd(br_device **pdev, char *name, char *args) {
 }
 
 function_hook_state_t function_hook_state_BrDevAddConfig = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrDevAddConfig)
+CARM95_WEBSERVER_STATE(BrDevAddConfig, function_hook_state_BrDevAddConfig)
 br_error BrDevAddConfig(char *config) {
     char *end;
     char *dev;
@@ -139,7 +139,7 @@ br_error BrDevAddConfig(char *config) {
 }
 
 function_hook_state_t function_hook_state_BrDevRemove = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrDevRemove)
+CARM95_WEBSERVER_STATE(BrDevRemove, function_hook_state_BrDevRemove)
 static br_error(__cdecl*original_BrDevRemove)(br_device *) = (br_error(__cdecl*)(br_device *))0x004e7c60;
 CARM95_HOOK_FUNCTION(original_BrDevRemove, BrDevRemove)
 br_error __cdecl BrDevRemove(br_device *dev) {
@@ -158,7 +158,7 @@ br_error __cdecl BrDevRemove(br_device *dev) {
 }
 
 function_hook_state_t function_hook_state_BrDevFind = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrDevFind)
+CARM95_WEBSERVER_STATE(BrDevFind, function_hook_state_BrDevFind)
 static br_error(__stdcall*original_BrDevFind)(struct br_device **, char *) = (br_error(__stdcall*)(struct br_device **, char *))0x004e7cd0;
 CARM95_HOOK_FUNCTION(original_BrDevFind, BrDevFind)
 br_error __stdcall BrDevFind(struct br_device **pdev, char *pattern) {
@@ -180,7 +180,7 @@ br_error __stdcall BrDevFind(struct br_device **pdev, char *pattern) {
 }
 
 function_hook_state_t function_hook_state_BrDevFindMany = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrDevFindMany)
+CARM95_WEBSERVER_STATE(BrDevFindMany, function_hook_state_BrDevFindMany)
 static br_error(__stdcall*original_BrDevFindMany)(struct br_device **, br_int_32 *, br_int_32, char *) = (br_error(__stdcall*)(struct br_device **, br_int_32 *, br_int_32, char *))0x004e7d90;
 CARM95_HOOK_FUNCTION(original_BrDevFindMany, BrDevFindMany)
 br_error __stdcall BrDevFindMany(struct br_device **devices, br_int_32 *ndevices, br_int_32 max_devices, char *pattern) {
@@ -204,7 +204,7 @@ br_error __stdcall BrDevFindMany(struct br_device **devices, br_int_32 *ndevices
 }
 
 function_hook_state_t function_hook_state_BrDevCount = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrDevCount)
+CARM95_WEBSERVER_STATE(BrDevCount, function_hook_state_BrDevCount)
 static br_error(__stdcall*original_BrDevCount)(br_int_32 *, char *) = (br_error(__stdcall*)(br_int_32 *, char *))0x004e7e70;
 CARM95_HOOK_FUNCTION(original_BrDevCount, BrDevCount)
 br_error __stdcall BrDevCount(br_int_32 *ndevices, char *pattern) {
@@ -226,7 +226,7 @@ br_error __stdcall BrDevCount(br_int_32 *ndevices, char *pattern) {
 }
 
 function_hook_state_t function_hook_state_BrDevContainedFind = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrDevContainedFind)
+CARM95_WEBSERVER_STATE(BrDevContainedFind, function_hook_state_BrDevContainedFind)
 static br_error(__cdecl*original_BrDevContainedFind)(struct br_object **, br_token, char *, br_token_value *) = (br_error(__cdecl*)(struct br_object **, br_token, char *, br_token_value *))0x004e7f20;
 CARM95_HOOK_FUNCTION(original_BrDevContainedFind, BrDevContainedFind)
 br_error __cdecl BrDevContainedFind(struct br_object **ph, br_token type, char *pattern, br_token_value *tv) {
@@ -248,7 +248,7 @@ br_error __cdecl BrDevContainedFind(struct br_object **ph, br_token type, char *
 }
 
 function_hook_state_t function_hook_state_BrDevContainedFindMany = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrDevContainedFindMany)
+CARM95_WEBSERVER_STATE(BrDevContainedFindMany, function_hook_state_BrDevContainedFindMany)
 static br_error(__cdecl*original_BrDevContainedFindMany)(struct br_object **, br_int_32, br_int_32 *, br_token, char *, br_token_value *) = (br_error(__cdecl*)(struct br_object **, br_int_32, br_int_32 *, br_token, char *, br_token_value *))0x004e7fe0;
 CARM95_HOOK_FUNCTION(original_BrDevContainedFindMany, BrDevContainedFindMany)
 br_error __cdecl BrDevContainedFindMany(struct br_object **objects, br_int_32 max_objects, br_int_32 *pnum_objects, br_token type, char *pattern, br_token_value *tv) {
@@ -278,7 +278,7 @@ br_error __cdecl BrDevContainedFindMany(struct br_object **objects, br_int_32 ma
 }
 
 function_hook_state_t function_hook_state_BrDevContainedCount = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrDevContainedCount)
+CARM95_WEBSERVER_STATE(BrDevContainedCount, function_hook_state_BrDevContainedCount)
 static br_error(__cdecl*original_BrDevContainedCount)(br_int_32 *, br_token, char *, br_token_value *) = (br_error(__cdecl*)(br_int_32 *, br_token, char *, br_token_value *))0x004e80c0;
 CARM95_HOOK_FUNCTION(original_BrDevContainedCount, BrDevContainedCount)
 br_error __cdecl BrDevContainedCount(br_int_32 *pcount, br_token type, char *pattern, br_token_value *tv) {

@@ -9,7 +9,7 @@
 #include <assert.h>
 
 function_hook_state_t function_hook_state_BrZsOrderTableAllocate = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrZsOrderTableAllocate)
+CARM95_WEBSERVER_STATE(BrZsOrderTableAllocate, function_hook_state_BrZsOrderTableAllocate)
 static br_order_table *(__cdecl*original_BrZsOrderTableAllocate)(br_uint_16, br_uint_32, br_uint_16) = (br_order_table *(__cdecl*)(br_uint_16, br_uint_32, br_uint_16))0x004ddda0;
 CARM95_HOOK_FUNCTION(original_BrZsOrderTableAllocate, BrZsOrderTableAllocate)
 br_order_table* __cdecl BrZsOrderTableAllocate(br_uint_16 size, br_uint_32 flags, br_uint_16 type) {
@@ -30,7 +30,7 @@ br_order_table* __cdecl BrZsOrderTableAllocate(br_uint_16 size, br_uint_32 flags
 }
 
 function_hook_state_t function_hook_state_BrZsOrderTableFree = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrZsOrderTableFree)
+CARM95_WEBSERVER_STATE(BrZsOrderTableFree, function_hook_state_BrZsOrderTableFree)
 static void(__cdecl*original_BrZsOrderTableFree)(br_order_table *) = (void(__cdecl*)(br_order_table *))0x004dde10;
 CARM95_HOOK_FUNCTION(original_BrZsOrderTableFree, BrZsOrderTableFree)
 void __cdecl BrZsOrderTableFree(br_order_table *order_table) {
@@ -47,7 +47,7 @@ void __cdecl BrZsOrderTableFree(br_order_table *order_table) {
 }
 
 function_hook_state_t function_hook_state_BrZsActorOrderTableSet = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrZsActorOrderTableSet)
+CARM95_WEBSERVER_STATE(BrZsActorOrderTableSet, function_hook_state_BrZsActorOrderTableSet)
 static br_order_table *(__cdecl*original_BrZsActorOrderTableSet)(br_actor *, br_order_table *) = (br_order_table *(__cdecl*)(br_actor *, br_order_table *))0x004dde20;
 CARM95_HOOK_FUNCTION(original_BrZsActorOrderTableSet, BrZsActorOrderTableSet)
 br_order_table* __cdecl BrZsActorOrderTableSet(br_actor *actor, br_order_table *order_table) {
@@ -65,7 +65,7 @@ br_order_table* __cdecl BrZsActorOrderTableSet(br_actor *actor, br_order_table *
 }
 
 function_hook_state_t function_hook_state_BrZsActorOrderTableGet = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrZsActorOrderTableGet)
+CARM95_WEBSERVER_STATE(BrZsActorOrderTableGet, function_hook_state_BrZsActorOrderTableGet)
 static br_order_table *(__cdecl*original_BrZsActorOrderTableGet)(br_actor *) = (br_order_table *(__cdecl*)(br_actor *))0x004dde30;
 CARM95_HOOK_FUNCTION(original_BrZsActorOrderTableGet, BrZsActorOrderTableGet)
 br_order_table* __cdecl BrZsActorOrderTableGet(br_actor *actor) {
@@ -82,7 +82,7 @@ br_order_table* __cdecl BrZsActorOrderTableGet(br_actor *actor) {
 }
 
 function_hook_state_t function_hook_state_BrZsOrderTableClear = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrZsOrderTableClear)
+CARM95_WEBSERVER_STATE(BrZsOrderTableClear, function_hook_state_BrZsOrderTableClear)
 static br_order_table *(__cdecl*original_BrZsOrderTableClear)(br_order_table *) = (br_order_table *(__cdecl*)(br_order_table *))0x004dde40;
 CARM95_HOOK_FUNCTION(original_BrZsOrderTableClear, BrZsOrderTableClear)
 br_order_table* __cdecl BrZsOrderTableClear(br_order_table *order_table) {
@@ -99,7 +99,7 @@ br_order_table* __cdecl BrZsOrderTableClear(br_order_table *order_table) {
 }
 
 function_hook_state_t function_hook_state_BrZsOrderTablePrimitiveInsert = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrZsOrderTablePrimitiveInsert)
+CARM95_WEBSERVER_STATE(BrZsOrderTablePrimitiveInsert, function_hook_state_BrZsOrderTablePrimitiveInsert)
 static void(__cdecl*original_BrZsOrderTablePrimitiveInsert)(br_order_table *, br_primitive *, br_uint_16) = (void(__cdecl*)(br_order_table *, br_primitive *, br_uint_16))0x004dde60;
 CARM95_HOOK_FUNCTION(original_BrZsOrderTablePrimitiveInsert, BrZsOrderTablePrimitiveInsert)
 void __cdecl BrZsOrderTablePrimitiveInsert(br_order_table *order_table, br_primitive *primitive, br_uint_16 bucket) {
@@ -118,7 +118,7 @@ void __cdecl BrZsOrderTablePrimitiveInsert(br_order_table *order_table, br_primi
 }
 
 function_hook_state_t function_hook_state_BrZsPrimitiveBucketSelect = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrZsPrimitiveBucketSelect)
+CARM95_WEBSERVER_STATE(BrZsPrimitiveBucketSelect, function_hook_state_BrZsPrimitiveBucketSelect)
 static br_uint_16(__cdecl*original_BrZsPrimitiveBucketSelect)(br_scalar *, br_uint_16, br_scalar, br_scalar, br_uint_16, br_uint_16) = (br_uint_16(__cdecl*)(br_scalar *, br_uint_16, br_scalar, br_scalar, br_uint_16, br_uint_16))0x004dde90;
 CARM95_HOOK_FUNCTION(original_BrZsPrimitiveBucketSelect, BrZsPrimitiveBucketSelect)
 br_uint_16 __cdecl BrZsPrimitiveBucketSelect(br_scalar *z, br_uint_16 type, br_scalar min_z, br_scalar max_z, br_uint_16 size, br_uint_16 sort_type) {
@@ -148,7 +148,7 @@ br_uint_16 __cdecl BrZsPrimitiveBucketSelect(br_scalar *z, br_uint_16 type, br_s
 }
 
 function_hook_state_t function_hook_state_BrZsOrderTablePrimaryEnable = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrZsOrderTablePrimaryEnable)
+CARM95_WEBSERVER_STATE(BrZsOrderTablePrimaryEnable, function_hook_state_BrZsOrderTablePrimaryEnable)
 static void(__cdecl*original_BrZsOrderTablePrimaryEnable)(br_order_table *) = (void(__cdecl*)(br_order_table *))0x004de050;
 CARM95_HOOK_FUNCTION(original_BrZsOrderTablePrimaryEnable, BrZsOrderTablePrimaryEnable)
 void __cdecl BrZsOrderTablePrimaryEnable(br_order_table *order_table) {
@@ -165,7 +165,7 @@ void __cdecl BrZsOrderTablePrimaryEnable(br_order_table *order_table) {
 }
 
 function_hook_state_t function_hook_state_BrZsOrderTablePrimaryDisable = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrZsOrderTablePrimaryDisable)
+CARM95_WEBSERVER_STATE(BrZsOrderTablePrimaryDisable, function_hook_state_BrZsOrderTablePrimaryDisable)
 static void(__cdecl*original_BrZsOrderTablePrimaryDisable)() = (void(__cdecl*)())0x004de070;
 CARM95_HOOK_FUNCTION(original_BrZsOrderTablePrimaryDisable, BrZsOrderTablePrimaryDisable)
 void __cdecl BrZsOrderTablePrimaryDisable() {
@@ -181,7 +181,7 @@ void __cdecl BrZsOrderTablePrimaryDisable() {
 }
 
 function_hook_state_t function_hook_state_InsertOrderTableList = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_InsertOrderTableList)
+CARM95_WEBSERVER_STATE(InsertOrderTableList, function_hook_state_InsertOrderTableList)
 static void(__stdcall*original_InsertOrderTableList)(br_order_table *) = (void(__stdcall*)(br_order_table *))0x004de080;
 CARM95_HOOK_FUNCTION(original_InsertOrderTableList, InsertOrderTableList)
 void __stdcall InsertOrderTableList(br_order_table *order_table) {
@@ -202,7 +202,7 @@ void __stdcall InsertOrderTableList(br_order_table *order_table) {
 }
 
 function_hook_state_t function_hook_state_SetOrderTableBounds = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_SetOrderTableBounds)
+CARM95_WEBSERVER_STATE(SetOrderTableBounds, function_hook_state_SetOrderTableBounds)
 static void(__stdcall*original_SetOrderTableBounds)(br_bounds *, br_order_table *) = (void(__stdcall*)(br_bounds *, br_order_table *))0x004de0f0;
 CARM95_HOOK_FUNCTION(original_SetOrderTableBounds, SetOrderTableBounds)
 void __stdcall SetOrderTableBounds(br_bounds *bounds, br_order_table *order_table) {
@@ -234,7 +234,7 @@ void __stdcall SetOrderTableBounds(br_bounds *bounds, br_order_table *order_tabl
 }
 
 function_hook_state_t function_hook_state_SetOrderTableRange = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_SetOrderTableRange)
+CARM95_WEBSERVER_STATE(SetOrderTableRange, function_hook_state_SetOrderTableRange)
 static void(__stdcall*original_SetOrderTableRange)(br_order_table *) = (void(__stdcall*)(br_order_table *))0x004de200;
 CARM95_HOOK_FUNCTION(original_SetOrderTableRange, SetOrderTableRange)
 void __stdcall SetOrderTableRange(br_order_table *order_table) {
@@ -253,7 +253,7 @@ void __stdcall SetOrderTableRange(br_order_table *order_table) {
 }
 
 function_hook_state_t function_hook_state_RenderOrderTableList = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_RenderOrderTableList)
+CARM95_WEBSERVER_STATE(RenderOrderTableList, function_hook_state_RenderOrderTableList)
 static void(__cdecl*original_RenderOrderTableList)() = (void(__cdecl*)())0x004de270;
 CARM95_HOOK_FUNCTION(original_RenderOrderTableList, RenderOrderTableList)
 void __cdecl RenderOrderTableList() {
@@ -271,7 +271,7 @@ void __cdecl RenderOrderTableList() {
 }
 
 function_hook_state_t function_hook_state_RenderPrimaryOrderTable = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_RenderPrimaryOrderTable)
+CARM95_WEBSERVER_STATE(RenderPrimaryOrderTable, function_hook_state_RenderPrimaryOrderTable)
 static void(__cdecl*original_RenderPrimaryOrderTable)() = (void(__cdecl*)())0x004de2b0;
 CARM95_HOOK_FUNCTION(original_RenderPrimaryOrderTable, RenderPrimaryOrderTable)
 void __cdecl RenderPrimaryOrderTable() {

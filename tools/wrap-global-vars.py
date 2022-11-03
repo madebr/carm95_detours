@@ -10,11 +10,11 @@ txt = open(sys.argv[1], "r").read()
 
 def repl(m: re.Match) -> str:
     dflt = m.group(0)
-    if txt[m.start() - 1] not in "!*&[()-+ \t":
+    if txt[m.start() - 1] not in "!*&[() \t":
         return dflt
     if txt[m.start()-3:m.start()] == "HV(":
         return dflt
-    if txt[m.end()] not in ".,-[]+); \t\r\n":
+    if txt[m.end()] not in ".,-[]+); \t":
         return dflt
     return f"HV({dflt})"
 

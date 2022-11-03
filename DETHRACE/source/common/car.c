@@ -99,7 +99,7 @@ tU32 * hookvar_gMechanics_time_sync  = (void*)0x00550670;
 int * hookvar_gNum_cars_and_non_cars  = (void*)0x00550748;
 
 function_hook_state_t function_hook_state_DamageUnit = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DamageUnit)
+CARM95_WEBSERVER_STATE(DamageUnit, function_hook_state_DamageUnit)
 static void(__cdecl*original_DamageUnit)(tCar_spec *, int, int) = (void(__cdecl*)(tCar_spec *, int, int))0x004751c0;
 CARM95_HOOK_FUNCTION(original_DamageUnit, DamageUnit)
 void __cdecl DamageUnit(tCar_spec *pCar, int pUnit_type, int pDamage_amount) {
@@ -120,7 +120,7 @@ void __cdecl DamageUnit(tCar_spec *pCar, int pUnit_type, int pDamage_amount) {
 }
 
 function_hook_state_t function_hook_state_DamageUnitWithSmoke = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DamageUnitWithSmoke)
+CARM95_WEBSERVER_STATE(DamageUnitWithSmoke, function_hook_state_DamageUnitWithSmoke)
 static void(__cdecl*original_DamageUnitWithSmoke)(tCar_spec *, int, int) = (void(__cdecl*)(tCar_spec *, int, int))0x00475239;
 CARM95_HOOK_FUNCTION(original_DamageUnitWithSmoke, DamageUnitWithSmoke)
 void __cdecl DamageUnitWithSmoke(tCar_spec *pCar, int pUnit_type, int pDamage_amount) {
@@ -139,7 +139,7 @@ void __cdecl DamageUnitWithSmoke(tCar_spec *pCar, int pUnit_type, int pDamage_am
 }
 
 function_hook_state_t function_hook_state_DamageEngine = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DamageEngine)
+CARM95_WEBSERVER_STATE(DamageEngine, function_hook_state_DamageEngine)
 static void(__cdecl*original_DamageEngine)(int) = (void(__cdecl*)(int))0x00475215;
 CARM95_HOOK_FUNCTION(original_DamageEngine, DamageEngine)
 void __cdecl DamageEngine(int pDamage_amount) {
@@ -156,7 +156,7 @@ void __cdecl DamageEngine(int pDamage_amount) {
 }
 
 function_hook_state_t function_hook_state_DamageTrans = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DamageTrans)
+CARM95_WEBSERVER_STATE(DamageTrans, function_hook_state_DamageTrans)
 static void(__cdecl*original_DamageTrans)(int) = (void(__cdecl*)(int))0x00475264;
 CARM95_HOOK_FUNCTION(original_DamageTrans, DamageTrans)
 void __cdecl DamageTrans(int pDamage_amount) {
@@ -173,7 +173,7 @@ void __cdecl DamageTrans(int pDamage_amount) {
 }
 
 function_hook_state_t function_hook_state_DamageSteering = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DamageSteering)
+CARM95_WEBSERVER_STATE(DamageSteering, function_hook_state_DamageSteering)
 static void(__cdecl*original_DamageSteering)(int) = (void(__cdecl*)(int))0x00475288;
 CARM95_HOOK_FUNCTION(original_DamageSteering, DamageSteering)
 void __cdecl DamageSteering(int pDamage_amount) {
@@ -190,7 +190,7 @@ void __cdecl DamageSteering(int pDamage_amount) {
 }
 
 function_hook_state_t function_hook_state_DamageLFWheel = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DamageLFWheel)
+CARM95_WEBSERVER_STATE(DamageLFWheel, function_hook_state_DamageLFWheel)
 static void(__cdecl*original_DamageLFWheel)(int) = (void(__cdecl*)(int))0x004752ac;
 CARM95_HOOK_FUNCTION(original_DamageLFWheel, DamageLFWheel)
 void __cdecl DamageLFWheel(int pDamage_amount) {
@@ -207,7 +207,7 @@ void __cdecl DamageLFWheel(int pDamage_amount) {
 }
 
 function_hook_state_t function_hook_state_DamageLFBrake = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DamageLFBrake)
+CARM95_WEBSERVER_STATE(DamageLFBrake, function_hook_state_DamageLFBrake)
 static void(__cdecl*original_DamageLFBrake)(int) = (void(__cdecl*)(int))0x004752d0;
 CARM95_HOOK_FUNCTION(original_DamageLFBrake, DamageLFBrake)
 void __cdecl DamageLFBrake(int pDamage_amount) {
@@ -224,7 +224,7 @@ void __cdecl DamageLFBrake(int pDamage_amount) {
 }
 
 function_hook_state_t function_hook_state_DamageLRBrake = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DamageLRBrake)
+CARM95_WEBSERVER_STATE(DamageLRBrake, function_hook_state_DamageLRBrake)
 static void(__cdecl*original_DamageLRBrake)(int) = (void(__cdecl*)(int))0x004752f4;
 CARM95_HOOK_FUNCTION(original_DamageLRBrake, DamageLRBrake)
 void __cdecl DamageLRBrake(int pDamage_amount) {
@@ -241,7 +241,7 @@ void __cdecl DamageLRBrake(int pDamage_amount) {
 }
 
 function_hook_state_t function_hook_state_DamageLRWheel = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DamageLRWheel)
+CARM95_WEBSERVER_STATE(DamageLRWheel, function_hook_state_DamageLRWheel)
 static void(__cdecl*original_DamageLRWheel)(int) = (void(__cdecl*)(int))0x00475318;
 CARM95_HOOK_FUNCTION(original_DamageLRWheel, DamageLRWheel)
 void __cdecl DamageLRWheel(int pDamage_amount) {
@@ -258,7 +258,7 @@ void __cdecl DamageLRWheel(int pDamage_amount) {
 }
 
 function_hook_state_t function_hook_state_DamageRFWheel = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DamageRFWheel)
+CARM95_WEBSERVER_STATE(DamageRFWheel, function_hook_state_DamageRFWheel)
 static void(__cdecl*original_DamageRFWheel)(int) = (void(__cdecl*)(int))0x0047533c;
 CARM95_HOOK_FUNCTION(original_DamageRFWheel, DamageRFWheel)
 void __cdecl DamageRFWheel(int pDamage_amount) {
@@ -275,7 +275,7 @@ void __cdecl DamageRFWheel(int pDamage_amount) {
 }
 
 function_hook_state_t function_hook_state_DamageRFBrake = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DamageRFBrake)
+CARM95_WEBSERVER_STATE(DamageRFBrake, function_hook_state_DamageRFBrake)
 static void(__cdecl*original_DamageRFBrake)(int) = (void(__cdecl*)(int))0x00475360;
 CARM95_HOOK_FUNCTION(original_DamageRFBrake, DamageRFBrake)
 void __cdecl DamageRFBrake(int pDamage_amount) {
@@ -292,7 +292,7 @@ void __cdecl DamageRFBrake(int pDamage_amount) {
 }
 
 function_hook_state_t function_hook_state_DamageRRBrake = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DamageRRBrake)
+CARM95_WEBSERVER_STATE(DamageRRBrake, function_hook_state_DamageRRBrake)
 static void(__cdecl*original_DamageRRBrake)(int) = (void(__cdecl*)(int))0x00475384;
 CARM95_HOOK_FUNCTION(original_DamageRRBrake, DamageRRBrake)
 void __cdecl DamageRRBrake(int pDamage_amount) {
@@ -309,7 +309,7 @@ void __cdecl DamageRRBrake(int pDamage_amount) {
 }
 
 function_hook_state_t function_hook_state_DamageRRWheel = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DamageRRWheel)
+CARM95_WEBSERVER_STATE(DamageRRWheel, function_hook_state_DamageRRWheel)
 static void(__cdecl*original_DamageRRWheel)(int) = (void(__cdecl*)(int))0x004753a8;
 CARM95_HOOK_FUNCTION(original_DamageRRWheel, DamageRRWheel)
 void __cdecl DamageRRWheel(int pDamage_amount) {
@@ -326,7 +326,7 @@ void __cdecl DamageRRWheel(int pDamage_amount) {
 }
 
 function_hook_state_t function_hook_state_CalculatePlaneNormal = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_CalculatePlaneNormal)
+CARM95_WEBSERVER_STATE(CalculatePlaneNormal, function_hook_state_CalculatePlaneNormal)
 void CalculatePlaneNormal(br_vector3 *pP1, br_vector3 *pP2, br_vector3 *pP3, br_vector3 *pNormal) {
     br_vector3 p0;
     br_vector3 p1;
@@ -358,7 +358,7 @@ void CalculatePlaneNormal(br_vector3 *pP1, br_vector3 *pP2, br_vector3 *pP3, br_
 }
 
 function_hook_state_t function_hook_state_CalculateGroundNormal = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_CalculateGroundNormal)
+CARM95_WEBSERVER_STATE(CalculateGroundNormal, function_hook_state_CalculateGroundNormal)
 void CalculateGroundNormal(br_model *pThe_model, int pFace_index) {
     LOG_TRACE("(%p, %d)", pThe_model, pFace_index);
 
@@ -374,7 +374,7 @@ void CalculateGroundNormal(br_model *pThe_model, int pFace_index) {
 }
 
 function_hook_state_t function_hook_state_ChangeYCoordinate = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_ChangeYCoordinate)
+CARM95_WEBSERVER_STATE(ChangeYCoordinate, function_hook_state_ChangeYCoordinate)
 void ChangeYCoordinate(br_scalar pNew_y, tU32 pTime_taken, br_model *pThe_model, int pFace_index) {
     br_scalar y_change;
     br_transform new_transform;
@@ -398,7 +398,7 @@ void ChangeYCoordinate(br_scalar pNew_y, tU32 pTime_taken, br_model *pThe_model,
 }
 
 function_hook_state_t function_hook_state_SwitchCarActor = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_SwitchCarActor)
+CARM95_WEBSERVER_STATE(SwitchCarActor, function_hook_state_SwitchCarActor)
 static void(__cdecl*original_SwitchCarActor)(tCar_spec *, int) = (void(__cdecl*)(tCar_spec *, int))0x004753cc;
 CARM95_HOOK_FUNCTION(original_SwitchCarActor, SwitchCarActor)
 void __cdecl SwitchCarActor(tCar_spec *pCar_spec, int pModel_index) {
@@ -418,7 +418,7 @@ void __cdecl SwitchCarActor(tCar_spec *pCar_spec, int pModel_index) {
 }
 
 function_hook_state_t function_hook_state_InitialiseCar2 = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_InitialiseCar2)
+CARM95_WEBSERVER_STATE(InitialiseCar2, function_hook_state_InitialiseCar2)
 static void(__cdecl*original_InitialiseCar2)(tCar_spec *, int) = (void(__cdecl*)(tCar_spec *, int))0x0047544b;
 CARM95_HOOK_FUNCTION(original_InitialiseCar2, InitialiseCar2)
 void __cdecl InitialiseCar2(tCar_spec *pCar, int pClear_disabled_flag) {
@@ -468,7 +468,7 @@ void __cdecl InitialiseCar2(tCar_spec *pCar, int pClear_disabled_flag) {
 }
 
 function_hook_state_t function_hook_state_InitialiseCar = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_InitialiseCar)
+CARM95_WEBSERVER_STATE(InitialiseCar, function_hook_state_InitialiseCar)
 static void(__cdecl*original_InitialiseCar)(tCar_spec *) = (void(__cdecl*)(tCar_spec *))0x00475b63;
 CARM95_HOOK_FUNCTION(original_InitialiseCar, InitialiseCar)
 void __cdecl InitialiseCar(tCar_spec *pCar) {
@@ -485,7 +485,7 @@ void __cdecl InitialiseCar(tCar_spec *pCar) {
 }
 
 function_hook_state_t function_hook_state_InitialiseCarsEtc = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_InitialiseCarsEtc)
+CARM95_WEBSERVER_STATE(InitialiseCarsEtc, function_hook_state_InitialiseCarsEtc)
 static void(__cdecl*original_InitialiseCarsEtc)(tRace_info *) = (void(__cdecl*)(tRace_info *))0x00475b7c;
 CARM95_HOOK_FUNCTION(original_InitialiseCarsEtc, InitialiseCarsEtc)
 void __cdecl InitialiseCarsEtc(tRace_info *pThe_race) {
@@ -512,7 +512,7 @@ void __cdecl InitialiseCarsEtc(tRace_info *pThe_race) {
 }
 
 function_hook_state_t function_hook_state_GetAverageGridPosition = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_GetAverageGridPosition)
+CARM95_WEBSERVER_STATE(GetAverageGridPosition, function_hook_state_GetAverageGridPosition)
 static void(__cdecl*original_GetAverageGridPosition)(tRace_info *) = (void(__cdecl*)(tRace_info *))0x00475ca4;
 CARM95_HOOK_FUNCTION(original_GetAverageGridPosition, GetAverageGridPosition)
 void __cdecl GetAverageGridPosition(tRace_info *pThe_race) {
@@ -535,7 +535,7 @@ void __cdecl GetAverageGridPosition(tRace_info *pThe_race) {
 }
 
 function_hook_state_t function_hook_state_SetInitialPosition = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_SetInitialPosition)
+CARM95_WEBSERVER_STATE(SetInitialPosition, function_hook_state_SetInitialPosition)
 static void(__cdecl*original_SetInitialPosition)(tRace_info *, int, int) = (void(__cdecl*)(tRace_info *, int, int))0x00475d7d;
 CARM95_HOOK_FUNCTION(original_SetInitialPosition, SetInitialPosition)
 void __cdecl SetInitialPosition(tRace_info *pThe_race, int pCar_index, int pGrid_index) {
@@ -592,7 +592,7 @@ void __cdecl SetInitialPosition(tRace_info *pThe_race, int pCar_index, int pGrid
 }
 
 function_hook_state_t function_hook_state_SetInitialPositions = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_SetInitialPositions)
+CARM95_WEBSERVER_STATE(SetInitialPositions, function_hook_state_SetInitialPositions)
 static void(__cdecl*original_SetInitialPositions)(tRace_info *) = (void(__cdecl*)(tRace_info *))0x00476279;
 CARM95_HOOK_FUNCTION(original_SetInitialPositions, SetInitialPositions)
 void __cdecl SetInitialPositions(tRace_info *pThe_race) {
@@ -611,7 +611,7 @@ void __cdecl SetInitialPositions(tRace_info *pThe_race) {
 }
 
 function_hook_state_t function_hook_state_InitialiseNonCar = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_InitialiseNonCar)
+CARM95_WEBSERVER_STATE(InitialiseNonCar, function_hook_state_InitialiseNonCar)
 static void(__cdecl*original_InitialiseNonCar)(tNon_car_spec *) = (void(__cdecl*)(tNon_car_spec *))0x004762c1;
 CARM95_HOOK_FUNCTION(original_InitialiseNonCar, InitialiseNonCar)
 void __cdecl InitialiseNonCar(tNon_car_spec *non_car) {
@@ -630,7 +630,7 @@ void __cdecl InitialiseNonCar(tNon_car_spec *non_car) {
 }
 
 function_hook_state_t function_hook_state_GetFacesInBox = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_GetFacesInBox)
+CARM95_WEBSERVER_STATE(GetFacesInBox, function_hook_state_GetFacesInBox)
 static void(__cdecl*original_GetFacesInBox)(tCollision_info *) = (void(__cdecl*)(tCollision_info *))0x004764ca;
 CARM95_HOOK_FUNCTION(original_GetFacesInBox, GetFacesInBox)
 void __cdecl GetFacesInBox(tCollision_info *c) {
@@ -671,7 +671,7 @@ void __cdecl GetFacesInBox(tCollision_info *c) {
 }
 
 function_hook_state_t function_hook_state_IsCarInTheSea = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_IsCarInTheSea)
+CARM95_WEBSERVER_STATE(IsCarInTheSea, function_hook_state_IsCarInTheSea)
 static int(__cdecl*original_IsCarInTheSea)() = (int(__cdecl*)())0x00476cf4;
 CARM95_HOOK_FUNCTION(original_IsCarInTheSea, IsCarInTheSea)
 int __cdecl IsCarInTheSea() {
@@ -687,7 +687,7 @@ int __cdecl IsCarInTheSea() {
 }
 
 function_hook_state_t function_hook_state_RememberSafePosition = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_RememberSafePosition)
+CARM95_WEBSERVER_STATE(RememberSafePosition, function_hook_state_RememberSafePosition)
 static void(__cdecl*original_RememberSafePosition)(tCar_spec *, tU32) = (void(__cdecl*)(tCar_spec *, tU32))0x004771a2;
 CARM95_HOOK_FUNCTION(original_RememberSafePosition, RememberSafePosition)
 void __cdecl RememberSafePosition(tCar_spec *car, tU32 pTime) {
@@ -713,7 +713,7 @@ void __cdecl RememberSafePosition(tCar_spec *car, tU32 pTime) {
 }
 
 function_hook_state_t function_hook_state_ControlOurCar = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_ControlOurCar)
+CARM95_WEBSERVER_STATE(ControlOurCar, function_hook_state_ControlOurCar)
 static void(__cdecl*original_ControlOurCar)(tU32) = (void(__cdecl*)(tU32))0x00476d09;
 CARM95_HOOK_FUNCTION(original_ControlOurCar, ControlOurCar)
 void __cdecl ControlOurCar(tU32 pTime_difference) {
@@ -742,7 +742,7 @@ void __cdecl ControlOurCar(tU32 pTime_difference) {
 }
 
 function_hook_state_t function_hook_state_CalcEngineForce = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_CalcEngineForce)
+CARM95_WEBSERVER_STATE(CalcEngineForce, function_hook_state_CalcEngineForce)
 static void(__cdecl*original_CalcEngineForce)(tCar_spec *, br_scalar) = (void(__cdecl*)(tCar_spec *, br_scalar))0x00477433;
 CARM95_HOOK_FUNCTION(original_CalcEngineForce, CalcEngineForce)
 void __cdecl CalcEngineForce(tCar_spec *c, br_scalar dt) {
@@ -772,7 +772,7 @@ void __cdecl CalcEngineForce(tCar_spec *c, br_scalar dt) {
 }
 
 function_hook_state_t function_hook_state_PrepareCars = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PrepareCars)
+CARM95_WEBSERVER_STATE(PrepareCars, function_hook_state_PrepareCars)
 static void(__cdecl*original_PrepareCars)(tU32) = (void(__cdecl*)(tU32))0x00477b11;
 CARM95_HOOK_FUNCTION(original_PrepareCars, PrepareCars)
 void __cdecl PrepareCars(tU32 pFrame_start_time) {
@@ -795,7 +795,7 @@ void __cdecl PrepareCars(tU32 pFrame_start_time) {
 }
 
 function_hook_state_t function_hook_state_FinishCars = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_FinishCars)
+CARM95_WEBSERVER_STATE(FinishCars, function_hook_state_FinishCars)
 static void(__cdecl*original_FinishCars)(tU32, tU32) = (void(__cdecl*)(tU32, tU32))0x00477d38;
 CARM95_HOOK_FUNCTION(original_FinishCars, FinishCars)
 void __cdecl FinishCars(tU32 pLast_frame_time, tU32 pTime) {
@@ -825,7 +825,7 @@ void __cdecl FinishCars(tU32 pLast_frame_time, tU32 pTime) {
 }
 
 function_hook_state_t function_hook_state_InterpolateCars = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_InterpolateCars)
+CARM95_WEBSERVER_STATE(InterpolateCars, function_hook_state_InterpolateCars)
 static void(__cdecl*original_InterpolateCars)(tU32, tU32) = (void(__cdecl*)(tU32, tU32))0x00478928;
 CARM95_HOOK_FUNCTION(original_InterpolateCars, InterpolateCars)
 void __cdecl InterpolateCars(tU32 pLast_frame_time, tU32 pTime) {
@@ -849,7 +849,7 @@ void __cdecl InterpolateCars(tU32 pLast_frame_time, tU32 pTime) {
 }
 
 function_hook_state_t function_hook_state_ResetOldmat = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_ResetOldmat)
+CARM95_WEBSERVER_STATE(ResetOldmat, function_hook_state_ResetOldmat)
 static void(__cdecl*original_ResetOldmat)() = (void(__cdecl*)())0x00478a88;
 CARM95_HOOK_FUNCTION(original_ResetOldmat, ResetOldmat)
 void __cdecl ResetOldmat() {
@@ -873,7 +873,7 @@ void __cdecl ResetOldmat() {
 }
 
 function_hook_state_t function_hook_state_GetNonCars = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_GetNonCars)
+CARM95_WEBSERVER_STATE(GetNonCars, function_hook_state_GetNonCars)
 static void(__cdecl*original_GetNonCars)() = (void(__cdecl*)())0x00478b58;
 CARM95_HOOK_FUNCTION(original_GetNonCars, GetNonCars)
 void __cdecl GetNonCars() {
@@ -893,7 +893,7 @@ void __cdecl GetNonCars() {
 }
 
 function_hook_state_t function_hook_state_GetNetPos = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_GetNetPos)
+CARM95_WEBSERVER_STATE(GetNetPos, function_hook_state_GetNetPos)
 static void(__cdecl*original_GetNetPos)(tCar_spec *) = (void(__cdecl*)(tCar_spec *))0x00478bb7;
 CARM95_HOOK_FUNCTION(original_GetNetPos, GetNetPos)
 void __cdecl GetNetPos(tCar_spec *pCar) {
@@ -916,7 +916,7 @@ void __cdecl GetNetPos(tCar_spec *pCar) {
 }
 
 function_hook_state_t function_hook_state_ApplyPhysicsToCars = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_ApplyPhysicsToCars)
+CARM95_WEBSERVER_STATE(ApplyPhysicsToCars, function_hook_state_ApplyPhysicsToCars)
 static void(__cdecl*original_ApplyPhysicsToCars)(tU32, tU32) = (void(__cdecl*)(tU32, tU32))0x0047839b;
 CARM95_HOOK_FUNCTION(original_ApplyPhysicsToCars, ApplyPhysicsToCars)
 void __cdecl ApplyPhysicsToCars(tU32 last_frame_time, tU32 pTime_difference) {
@@ -956,7 +956,7 @@ void __cdecl ApplyPhysicsToCars(tU32 last_frame_time, tU32 pTime_difference) {
 }
 
 function_hook_state_t function_hook_state_MungeSpecialVolume = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_MungeSpecialVolume)
+CARM95_WEBSERVER_STATE(MungeSpecialVolume, function_hook_state_MungeSpecialVolume)
 static void(__cdecl*original_MungeSpecialVolume)(tCollision_info *) = (void(__cdecl*)(tCollision_info *))0x004792d0;
 CARM95_HOOK_FUNCTION(original_MungeSpecialVolume, MungeSpecialVolume)
 void __cdecl MungeSpecialVolume(tCollision_info *pCar) {
@@ -977,7 +977,7 @@ void __cdecl MungeSpecialVolume(tCollision_info *pCar) {
 }
 
 function_hook_state_t function_hook_state_ResetCarSpecialVolume = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_ResetCarSpecialVolume)
+CARM95_WEBSERVER_STATE(ResetCarSpecialVolume, function_hook_state_ResetCarSpecialVolume)
 static void(__cdecl*original_ResetCarSpecialVolume)(tCollision_info *) = (void(__cdecl*)(tCollision_info *))0x0047901e;
 CARM95_HOOK_FUNCTION(original_ResetCarSpecialVolume, ResetCarSpecialVolume)
 void __cdecl ResetCarSpecialVolume(tCollision_info *pCar) {
@@ -1008,7 +1008,7 @@ void __cdecl ResetCarSpecialVolume(tCollision_info *pCar) {
 }
 
 function_hook_state_t function_hook_state_TestAutoSpecialVolume = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_TestAutoSpecialVolume)
+CARM95_WEBSERVER_STATE(TestAutoSpecialVolume, function_hook_state_TestAutoSpecialVolume)
 static void(__cdecl*original_TestAutoSpecialVolume)(tCollision_info *) = (void(__cdecl*)(tCollision_info *))0x004794d3;
 CARM95_HOOK_FUNCTION(original_TestAutoSpecialVolume, TestAutoSpecialVolume)
 void __cdecl TestAutoSpecialVolume(tCollision_info *pCar) {
@@ -1053,7 +1053,7 @@ void __cdecl TestAutoSpecialVolume(tCollision_info *pCar) {
 }
 
 function_hook_state_t function_hook_state_MoveAndCollideCar = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_MoveAndCollideCar)
+CARM95_WEBSERVER_STATE(MoveAndCollideCar, function_hook_state_MoveAndCollideCar)
 static void(__cdecl*original_MoveAndCollideCar)(tCar_spec *, br_scalar) = (void(__cdecl*)(tCar_spec *, br_scalar))0x004790fd;
 CARM95_HOOK_FUNCTION(original_MoveAndCollideCar, MoveAndCollideCar)
 void __cdecl MoveAndCollideCar(tCar_spec *car, br_scalar dt) {
@@ -1075,7 +1075,7 @@ void __cdecl MoveAndCollideCar(tCar_spec *car, br_scalar dt) {
 }
 
 function_hook_state_t function_hook_state_MoveAndCollideNonCar = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_MoveAndCollideNonCar)
+CARM95_WEBSERVER_STATE(MoveAndCollideNonCar, function_hook_state_MoveAndCollideNonCar)
 static void(__cdecl*original_MoveAndCollideNonCar)(tNon_car_spec *, br_scalar) = (void(__cdecl*)(tNon_car_spec *, br_scalar))0x00479914;
 CARM95_HOOK_FUNCTION(original_MoveAndCollideNonCar, MoveAndCollideNonCar)
 void __cdecl MoveAndCollideNonCar(tNon_car_spec *non_car, br_scalar dt) {
@@ -1095,7 +1095,7 @@ void __cdecl MoveAndCollideNonCar(tNon_car_spec *non_car, br_scalar dt) {
 }
 
 function_hook_state_t function_hook_state_CollideCarWithWall = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_CollideCarWithWall)
+CARM95_WEBSERVER_STATE(CollideCarWithWall, function_hook_state_CollideCarWithWall)
 static int(__cdecl*original_CollideCarWithWall)(tCollision_info *, br_scalar) = (int(__cdecl*)(tCollision_info *, br_scalar))0x00479a2c;
 CARM95_HOOK_FUNCTION(original_CollideCarWithWall, CollideCarWithWall)
 int __cdecl CollideCarWithWall(tCollision_info *car, br_scalar dt) {
@@ -1113,7 +1113,7 @@ int __cdecl CollideCarWithWall(tCollision_info *car, br_scalar dt) {
 }
 
 function_hook_state_t function_hook_state_ToggleControls = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_ToggleControls)
+CARM95_WEBSERVER_STATE(ToggleControls, function_hook_state_ToggleControls)
 void ToggleControls() {
     LOG_TRACE("()");
 
@@ -1127,7 +1127,7 @@ void ToggleControls() {
 }
 
 function_hook_state_t function_hook_state_ControlCar2 = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_ControlCar2)
+CARM95_WEBSERVER_STATE(ControlCar2, function_hook_state_ControlCar2)
 static void(__cdecl*original_ControlCar2)(tCar_spec *, br_scalar) = (void(__cdecl*)(tCar_spec *, br_scalar))0x00479c6d;
 CARM95_HOOK_FUNCTION(original_ControlCar2, ControlCar2)
 void __cdecl ControlCar2(tCar_spec *c, br_scalar dt) {
@@ -1145,7 +1145,7 @@ void __cdecl ControlCar2(tCar_spec *c, br_scalar dt) {
 }
 
 function_hook_state_t function_hook_state_ControlCar3 = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_ControlCar3)
+CARM95_WEBSERVER_STATE(ControlCar3, function_hook_state_ControlCar3)
 static void(__cdecl*original_ControlCar3)(tCar_spec *, br_scalar) = (void(__cdecl*)(tCar_spec *, br_scalar))0x00479f4b;
 CARM95_HOOK_FUNCTION(original_ControlCar3, ControlCar3)
 void __cdecl ControlCar3(tCar_spec *c, br_scalar dt) {
@@ -1163,7 +1163,7 @@ void __cdecl ControlCar3(tCar_spec *c, br_scalar dt) {
 }
 
 function_hook_state_t function_hook_state_ControlCar4 = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_ControlCar4)
+CARM95_WEBSERVER_STATE(ControlCar4, function_hook_state_ControlCar4)
 static void(__cdecl*original_ControlCar4)(tCar_spec *, br_scalar) = (void(__cdecl*)(tCar_spec *, br_scalar))0x0047a20e;
 CARM95_HOOK_FUNCTION(original_ControlCar4, ControlCar4)
 void __cdecl ControlCar4(tCar_spec *c, br_scalar dt) {
@@ -1183,7 +1183,7 @@ void __cdecl ControlCar4(tCar_spec *c, br_scalar dt) {
 }
 
 function_hook_state_t function_hook_state_ControlCar5 = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_ControlCar5)
+CARM95_WEBSERVER_STATE(ControlCar5, function_hook_state_ControlCar5)
 static void(__cdecl*original_ControlCar5)(tCar_spec *, br_scalar) = (void(__cdecl*)(tCar_spec *, br_scalar))0x0047a7b1;
 CARM95_HOOK_FUNCTION(original_ControlCar5, ControlCar5)
 void __cdecl ControlCar5(tCar_spec *c, br_scalar dt) {
@@ -1201,7 +1201,7 @@ void __cdecl ControlCar5(tCar_spec *c, br_scalar dt) {
 }
 
 function_hook_state_t function_hook_state_ControlCar1 = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_ControlCar1)
+CARM95_WEBSERVER_STATE(ControlCar1, function_hook_state_ControlCar1)
 static void(__cdecl*original_ControlCar1)(tCar_spec *, br_scalar) = (void(__cdecl*)(tCar_spec *, br_scalar))0x0047ac31;
 CARM95_HOOK_FUNCTION(original_ControlCar1, ControlCar1)
 void __cdecl ControlCar1(tCar_spec *c, br_scalar dt) {
@@ -1219,7 +1219,7 @@ void __cdecl ControlCar1(tCar_spec *c, br_scalar dt) {
 }
 
 function_hook_state_t function_hook_state_setrotate = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_setrotate)
+CARM95_WEBSERVER_STATE(setrotate, function_hook_state_setrotate)
 void setrotate(struct br_vector3 *wdt, struct br_matrix34 *m) {
     br_euler e;
     LOG_TRACE("(%p, %p)", wdt, m);
@@ -1237,7 +1237,7 @@ void setrotate(struct br_vector3 *wdt, struct br_matrix34 *m) {
 }
 
 function_hook_state_t function_hook_state_RotateCar2 = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_RotateCar2)
+CARM95_WEBSERVER_STATE(RotateCar2, function_hook_state_RotateCar2)
 void RotateCar2(tCollision_info *c, br_scalar dt) {
     br_vector3 wdt;
     br_vector3 wdt2;
@@ -1263,7 +1263,7 @@ void RotateCar2(tCollision_info *c, br_scalar dt) {
 }
 
 function_hook_state_t function_hook_state_RotateCarSecondOrder = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_RotateCarSecondOrder)
+CARM95_WEBSERVER_STATE(RotateCarSecondOrder, function_hook_state_RotateCarSecondOrder)
 static void(__cdecl*original_RotateCarSecondOrder)(tCollision_info *, br_scalar) = (void(__cdecl*)(tCollision_info *, br_scalar))0x0047b434;
 CARM95_HOOK_FUNCTION(original_RotateCarSecondOrder, RotateCarSecondOrder)
 void __cdecl RotateCarSecondOrder(tCollision_info *c, br_scalar dt) {
@@ -1295,7 +1295,7 @@ void __cdecl RotateCarSecondOrder(tCollision_info *c, br_scalar dt) {
 }
 
 function_hook_state_t function_hook_state_RotateCarFirstOrder = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_RotateCarFirstOrder)
+CARM95_WEBSERVER_STATE(RotateCarFirstOrder, function_hook_state_RotateCarFirstOrder)
 void RotateCarFirstOrder(tCollision_info *c, br_scalar dt) {
     br_vector3 axis;
     br_vector3 L;
@@ -1329,7 +1329,7 @@ void RotateCarFirstOrder(tCollision_info *c, br_scalar dt) {
 }
 
 function_hook_state_t function_hook_state_SimpleRotate = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_SimpleRotate)
+CARM95_WEBSERVER_STATE(SimpleRotate, function_hook_state_SimpleRotate)
 static void(__cdecl*original_SimpleRotate)(tCollision_info *, br_scalar) = (void(__cdecl*)(tCollision_info *, br_scalar))0x0047b23c;
 CARM95_HOOK_FUNCTION(original_SimpleRotate, SimpleRotate)
 void __cdecl SimpleRotate(tCollision_info *c, br_scalar dt) {
@@ -1353,7 +1353,7 @@ void __cdecl SimpleRotate(tCollision_info *c, br_scalar dt) {
 }
 
 function_hook_state_t function_hook_state_RotateCar = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_RotateCar)
+CARM95_WEBSERVER_STATE(RotateCar, function_hook_state_RotateCar)
 static void(__cdecl*original_RotateCar)(tCollision_info *, br_scalar) = (void(__cdecl*)(tCollision_info *, br_scalar))0x0047b2fd;
 CARM95_HOOK_FUNCTION(original_RotateCar, RotateCar)
 void __cdecl RotateCar(tCollision_info *c, br_scalar dt) {
@@ -1377,7 +1377,7 @@ void __cdecl RotateCar(tCollision_info *c, br_scalar dt) {
 }
 
 function_hook_state_t function_hook_state_SteeringSelfCentre = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_SteeringSelfCentre)
+CARM95_WEBSERVER_STATE(SteeringSelfCentre, function_hook_state_SteeringSelfCentre)
 static void(__cdecl*original_SteeringSelfCentre)(tCar_spec *, br_scalar, br_vector3 *) = (void(__cdecl*)(tCar_spec *, br_scalar, br_vector3 *))0x0047ea86;
 CARM95_HOOK_FUNCTION(original_SteeringSelfCentre, SteeringSelfCentre)
 void __cdecl SteeringSelfCentre(tCar_spec *c, br_scalar dt, br_vector3 *n) {
@@ -1400,7 +1400,7 @@ void __cdecl SteeringSelfCentre(tCar_spec *c, br_scalar dt, br_vector3 *n) {
 }
 
 function_hook_state_t function_hook_state_NonCarCalcForce = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_NonCarCalcForce)
+CARM95_WEBSERVER_STATE(NonCarCalcForce, function_hook_state_NonCarCalcForce)
 static void(__cdecl*original_NonCarCalcForce)(tNon_car_spec *, br_scalar) = (void(__cdecl*)(tNon_car_spec *, br_scalar))0x0047b68d;
 CARM95_HOOK_FUNCTION(original_NonCarCalcForce, NonCarCalcForce)
 void __cdecl NonCarCalcForce(tNon_car_spec *nc, br_scalar dt) {
@@ -1428,7 +1428,7 @@ void __cdecl NonCarCalcForce(tNon_car_spec *nc, br_scalar dt) {
 }
 
 function_hook_state_t function_hook_state_AddDrag = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_AddDrag)
+CARM95_WEBSERVER_STATE(AddDrag, function_hook_state_AddDrag)
 static void(__cdecl*original_AddDrag)(tCar_spec *, br_scalar) = (void(__cdecl*)(tCar_spec *, br_scalar))0x0047ec63;
 CARM95_HOOK_FUNCTION(original_AddDrag, AddDrag)
 void __cdecl AddDrag(tCar_spec *c, br_scalar dt) {
@@ -1454,7 +1454,7 @@ void __cdecl AddDrag(tCar_spec *c, br_scalar dt) {
 }
 
 function_hook_state_t function_hook_state_DoBumpiness = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DoBumpiness)
+CARM95_WEBSERVER_STATE(DoBumpiness, function_hook_state_DoBumpiness)
 static void(__cdecl*original_DoBumpiness)(tCar_spec *, br_vector3 *, br_vector3 *, br_scalar *, int) = (void(__cdecl*)(tCar_spec *, br_vector3 *, br_vector3 *, br_scalar *, int))0x0047ede9;
 CARM95_HOOK_FUNCTION(original_DoBumpiness, DoBumpiness)
 void __cdecl DoBumpiness(tCar_spec *c, br_vector3 *wheel_pos, br_vector3 *norm, br_scalar *d, int n) {
@@ -1485,7 +1485,7 @@ void __cdecl DoBumpiness(tCar_spec *c, br_vector3 *wheel_pos, br_vector3 *norm, 
 }
 
 function_hook_state_t function_hook_state_CalcForce = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_CalcForce)
+CARM95_WEBSERVER_STATE(CalcForce, function_hook_state_CalcForce)
 static void(__cdecl*original_CalcForce)(tCar_spec *, br_scalar) = (void(__cdecl*)(tCar_spec *, br_scalar))0x0047ba5d;
 CARM95_HOOK_FUNCTION(original_CalcForce, CalcForce)
 void __cdecl CalcForce(tCar_spec *c, br_scalar dt) {
@@ -1615,7 +1615,7 @@ void __cdecl CalcForce(tCar_spec *c, br_scalar dt) {
 }
 
 function_hook_state_t function_hook_state_DoRevs = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DoRevs)
+CARM95_WEBSERVER_STATE(DoRevs, function_hook_state_DoRevs)
 static void(__cdecl*original_DoRevs)(tCar_spec *, br_scalar) = (void(__cdecl*)(tCar_spec *, br_scalar))0x0047ef8e;
 CARM95_HOOK_FUNCTION(original_DoRevs, DoRevs)
 void __cdecl DoRevs(tCar_spec *c, br_scalar dt) {
@@ -1639,7 +1639,7 @@ void __cdecl DoRevs(tCar_spec *c, br_scalar dt) {
 }
 
 function_hook_state_t function_hook_state_ApplyTorque = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_ApplyTorque)
+CARM95_WEBSERVER_STATE(ApplyTorque, function_hook_state_ApplyTorque)
 static void(__cdecl*original_ApplyTorque)(tCar_spec *, br_vector3 *) = (void(__cdecl*)(tCar_spec *, br_vector3 *))0x0047f4f2;
 CARM95_HOOK_FUNCTION(original_ApplyTorque, ApplyTorque)
 void __cdecl ApplyTorque(tCar_spec *c, br_vector3 *tdt) {
@@ -1657,7 +1657,7 @@ void __cdecl ApplyTorque(tCar_spec *c, br_vector3 *tdt) {
 }
 
 function_hook_state_t function_hook_state_TranslateCar = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_TranslateCar)
+CARM95_WEBSERVER_STATE(TranslateCar, function_hook_state_TranslateCar)
 static void(__cdecl*original_TranslateCar)(tCollision_info *, br_scalar) = (void(__cdecl*)(tCollision_info *, br_scalar))0x0047f55f;
 CARM95_HOOK_FUNCTION(original_TranslateCar, TranslateCar)
 void __cdecl TranslateCar(tCollision_info *c, br_scalar dt) {
@@ -1677,7 +1677,7 @@ void __cdecl TranslateCar(tCollision_info *c, br_scalar dt) {
 }
 
 function_hook_state_t function_hook_state_CollCheck = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_CollCheck)
+CARM95_WEBSERVER_STATE(CollCheck, function_hook_state_CollCheck)
 static int(__cdecl*original_CollCheck)(tCollision_info *, br_scalar) = (int(__cdecl*)(tCollision_info *, br_scalar))0x0047f5d0;
 CARM95_HOOK_FUNCTION(original_CollCheck, CollCheck)
 int __cdecl CollCheck(tCollision_info *c, br_scalar dt) {
@@ -1807,7 +1807,7 @@ int __cdecl CollCheck(tCollision_info *c, br_scalar dt) {
 }
 
 function_hook_state_t function_hook_state_AddFriction = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_AddFriction)
+CARM95_WEBSERVER_STATE(AddFriction, function_hook_state_AddFriction)
 static br_scalar(__cdecl*original_AddFriction)(tCollision_info *, br_vector3 *, br_vector3 *, br_vector3 *, br_scalar, br_vector3 *) = (br_scalar(__cdecl*)(tCollision_info *, br_vector3 *, br_vector3 *, br_vector3 *, br_scalar, br_vector3 *))0x00481cb9;
 CARM95_HOOK_FUNCTION(original_AddFriction, AddFriction)
 br_scalar __cdecl AddFriction(tCollision_info *c, br_vector3 *vel, br_vector3 *normal_force, br_vector3 *pos, br_scalar total_force, br_vector3 *max_friction) {
@@ -1839,7 +1839,7 @@ br_scalar __cdecl AddFriction(tCollision_info *c, br_vector3 *vel, br_vector3 *n
 }
 
 function_hook_state_t function_hook_state_AddFrictionCarToCar = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_AddFrictionCarToCar)
+CARM95_WEBSERVER_STATE(AddFrictionCarToCar, function_hook_state_AddFrictionCarToCar)
 static void(__cdecl*original_AddFrictionCarToCar)(tCollision_info *, tCollision_info *, br_vector3 *, br_vector3 *, br_vector3 *, br_vector3 *, br_vector3 *, br_scalar, br_vector3 *) = (void(__cdecl*)(tCollision_info *, tCollision_info *, br_vector3 *, br_vector3 *, br_vector3 *, br_vector3 *, br_vector3 *, br_scalar, br_vector3 *))0x0049231c;
 CARM95_HOOK_FUNCTION(original_AddFrictionCarToCar, AddFrictionCarToCar)
 void __cdecl AddFrictionCarToCar(tCollision_info *car1, tCollision_info *car2, br_vector3 *vel1, br_vector3 *vel2, br_vector3 *normal_force1, br_vector3 *pos1, br_vector3 *pos2, br_scalar total_force, br_vector3 *max_friction) {
@@ -1890,7 +1890,7 @@ void __cdecl AddFrictionCarToCar(tCollision_info *car1, tCollision_info *car2, b
 }
 
 function_hook_state_t function_hook_state_ScrapeNoise = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_ScrapeNoise)
+CARM95_WEBSERVER_STATE(ScrapeNoise, function_hook_state_ScrapeNoise)
 static void(__cdecl*original_ScrapeNoise)(br_scalar, br_vector3 *, int) = (void(__cdecl*)(br_scalar, br_vector3 *, int))0x00482070;
 CARM95_HOOK_FUNCTION(original_ScrapeNoise, ScrapeNoise)
 void __cdecl ScrapeNoise(br_scalar vel, br_vector3 *position, int material) {
@@ -1919,7 +1919,7 @@ void __cdecl ScrapeNoise(br_scalar vel, br_vector3 *position, int material) {
 }
 
 function_hook_state_t function_hook_state_SkidNoise = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_SkidNoise)
+CARM95_WEBSERVER_STATE(SkidNoise, function_hook_state_SkidNoise)
 static void(__cdecl*original_SkidNoise)(tCar_spec *, int, br_scalar, int) = (void(__cdecl*)(tCar_spec *, int, br_scalar, int))0x0048216d;
 CARM95_HOOK_FUNCTION(original_SkidNoise, SkidNoise)
 void __cdecl SkidNoise(tCar_spec *pC, int pWheel_num, br_scalar pV, int material) {
@@ -1953,7 +1953,7 @@ void __cdecl SkidNoise(tCar_spec *pC, int pWheel_num, br_scalar pV, int material
 }
 
 function_hook_state_t function_hook_state_StopSkid = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_StopSkid)
+CARM95_WEBSERVER_STATE(StopSkid, function_hook_state_StopSkid)
 static void(__cdecl*original_StopSkid)(tCar_spec *) = (void(__cdecl*)(tCar_spec *))0x00482458;
 CARM95_HOOK_FUNCTION(original_StopSkid, StopSkid)
 void __cdecl StopSkid(tCar_spec *pC) {
@@ -1970,7 +1970,7 @@ void __cdecl StopSkid(tCar_spec *pC) {
 }
 
 function_hook_state_t function_hook_state_CrashNoise = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_CrashNoise)
+CARM95_WEBSERVER_STATE(CrashNoise, function_hook_state_CrashNoise)
 static void(__cdecl*original_CrashNoise)(br_vector3 *, br_vector3 *, int) = (void(__cdecl*)(br_vector3 *, br_vector3 *, int))0x0048249d;
 CARM95_HOOK_FUNCTION(original_CrashNoise, CrashNoise)
 void __cdecl CrashNoise(br_vector3 *pForce, br_vector3 *position, int material) {
@@ -1997,7 +1997,7 @@ void __cdecl CrashNoise(br_vector3 *pForce, br_vector3 *position, int material) 
 }
 
 function_hook_state_t function_hook_state_CrushAndDamageCar = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_CrushAndDamageCar)
+CARM95_WEBSERVER_STATE(CrushAndDamageCar, function_hook_state_CrushAndDamageCar)
 static void(__cdecl*original_CrushAndDamageCar)(tCar_spec *, br_vector3 *, br_vector3 *, tCar_spec *) = (void(__cdecl*)(tCar_spec *, br_vector3 *, br_vector3 *, tCar_spec *))0x004825a8;
 CARM95_HOOK_FUNCTION(original_CrushAndDamageCar, CrushAndDamageCar)
 void __cdecl CrushAndDamageCar(tCar_spec *c, br_vector3 *pPosition, br_vector3 *pForce_car_space, tCar_spec *car2) {
@@ -2037,7 +2037,7 @@ void __cdecl CrushAndDamageCar(tCar_spec *c, br_vector3 *pPosition, br_vector3 *
 }
 
 function_hook_state_t function_hook_state_ExpandBoundingBox = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_ExpandBoundingBox)
+CARM95_WEBSERVER_STATE(ExpandBoundingBox, function_hook_state_ExpandBoundingBox)
 static int(__cdecl*original_ExpandBoundingBox)(tCar_spec *) = (int(__cdecl*)(tCar_spec *))0x00482c00;
 CARM95_HOOK_FUNCTION(original_ExpandBoundingBox, ExpandBoundingBox)
 int __cdecl ExpandBoundingBox(tCar_spec *c) {
@@ -2068,7 +2068,7 @@ int __cdecl ExpandBoundingBox(tCar_spec *c) {
 }
 
 function_hook_state_t function_hook_state_CrushBoundingBox = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_CrushBoundingBox)
+CARM95_WEBSERVER_STATE(CrushBoundingBox, function_hook_state_CrushBoundingBox)
 static void(__cdecl*original_CrushBoundingBox)(tCar_spec *, int) = (void(__cdecl*)(tCar_spec *, int))0x00482dee;
 CARM95_HOOK_FUNCTION(original_CrushBoundingBox, CrushBoundingBox)
 void __cdecl CrushBoundingBox(tCar_spec *c, int crush_only) {
@@ -2094,7 +2094,7 @@ void __cdecl CrushBoundingBox(tCar_spec *c, int crush_only) {
 }
 
 function_hook_state_t function_hook_state_AddCollPoint = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_AddCollPoint)
+CARM95_WEBSERVER_STATE(AddCollPoint, function_hook_state_AddCollPoint)
 static void(__cdecl*original_AddCollPoint)(br_scalar, br_vector3 *, br_vector3 *, br_vector3 *, br_vector3 *, br_vector3 *, int, tCollision_info *) = (void(__cdecl*)(br_scalar, br_vector3 *, br_vector3 *, br_vector3 *, br_vector3 *, br_vector3 *, int, tCollision_info *))0x00483152;
 CARM95_HOOK_FUNCTION(original_AddCollPoint, AddCollPoint)
 void __cdecl AddCollPoint(br_scalar dist, br_vector3 *p, br_vector3 *norm, br_vector3 *r, br_vector3 *n, br_vector3 *dir, int num, tCollision_info *c) {
@@ -2124,7 +2124,7 @@ void __cdecl AddCollPoint(br_scalar dist, br_vector3 *p, br_vector3 *norm, br_ve
 }
 
 function_hook_state_t function_hook_state_SinglePointColl = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_SinglePointColl)
+CARM95_WEBSERVER_STATE(SinglePointColl, function_hook_state_SinglePointColl)
 static br_scalar(__cdecl*original_SinglePointColl)(br_scalar *, br_matrix4 *, br_scalar *) = (br_scalar(__cdecl*)(br_scalar *, br_matrix4 *, br_scalar *))0x0048326d;
 CARM95_HOOK_FUNCTION(original_SinglePointColl, SinglePointColl)
 br_scalar __cdecl SinglePointColl(br_scalar *f, br_matrix4 *m, br_scalar *d) {
@@ -2143,7 +2143,7 @@ br_scalar __cdecl SinglePointColl(br_scalar *f, br_matrix4 *m, br_scalar *d) {
 }
 
 function_hook_state_t function_hook_state_TwoPointColl = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_TwoPointColl)
+CARM95_WEBSERVER_STATE(TwoPointColl, function_hook_state_TwoPointColl)
 static br_scalar(__cdecl*original_TwoPointColl)(br_scalar *, br_matrix4 *, br_scalar *, br_vector3 *, br_vector3 *) = (br_scalar(__cdecl*)(br_scalar *, br_matrix4 *, br_scalar *, br_vector3 *, br_vector3 *))0x004832b2;
 CARM95_HOOK_FUNCTION(original_TwoPointColl, TwoPointColl)
 br_scalar __cdecl TwoPointColl(br_scalar *f, br_matrix4 *m, br_scalar *d, br_vector3 *tau, br_vector3 *n) {
@@ -2166,7 +2166,7 @@ br_scalar __cdecl TwoPointColl(br_scalar *f, br_matrix4 *m, br_scalar *d, br_vec
 }
 
 function_hook_state_t function_hook_state_DrMatrix4Inverse = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DrMatrix4Inverse)
+CARM95_WEBSERVER_STATE(DrMatrix4Inverse, function_hook_state_DrMatrix4Inverse)
 static br_scalar(__cdecl*original_DrMatrix4Inverse)(br_matrix4 *, br_matrix4 *) = (br_scalar(__cdecl*)(br_matrix4 *, br_matrix4 *))0x0048377f;
 CARM95_HOOK_FUNCTION(original_DrMatrix4Inverse, DrMatrix4Inverse)
 br_scalar __cdecl DrMatrix4Inverse(br_matrix4 *mi, br_matrix4 *mc) {
@@ -2184,7 +2184,7 @@ br_scalar __cdecl DrMatrix4Inverse(br_matrix4 *mi, br_matrix4 *mc) {
 }
 
 function_hook_state_t function_hook_state_ThreePointColl = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_ThreePointColl)
+CARM95_WEBSERVER_STATE(ThreePointColl, function_hook_state_ThreePointColl)
 static br_scalar(__cdecl*original_ThreePointColl)(br_scalar *, br_matrix4 *, br_scalar *) = (br_scalar(__cdecl*)(br_scalar *, br_matrix4 *, br_scalar *))0x004836f1;
 CARM95_HOOK_FUNCTION(original_ThreePointColl, ThreePointColl)
 br_scalar __cdecl ThreePointColl(br_scalar *f, br_matrix4 *m, br_scalar *d) {
@@ -2209,7 +2209,7 @@ br_scalar __cdecl ThreePointColl(br_scalar *f, br_matrix4 *m, br_scalar *d) {
 }
 
 function_hook_state_t function_hook_state_ThreePointCollRec = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_ThreePointCollRec)
+CARM95_WEBSERVER_STATE(ThreePointCollRec, function_hook_state_ThreePointCollRec)
 static br_scalar(__cdecl*original_ThreePointCollRec)(br_scalar *, br_matrix4 *, br_scalar *, br_vector3 *, br_vector3 *, tCollision_info *) = (br_scalar(__cdecl*)(br_scalar *, br_matrix4 *, br_scalar *, br_vector3 *, br_vector3 *, tCollision_info *))0x00483425;
 CARM95_HOOK_FUNCTION(original_ThreePointCollRec, ThreePointCollRec)
 br_scalar __cdecl ThreePointCollRec(br_scalar *f, br_matrix4 *m, br_scalar *d, br_vector3 *tau, br_vector3 *n, tCollision_info *c) {
@@ -2237,7 +2237,7 @@ br_scalar __cdecl ThreePointCollRec(br_scalar *f, br_matrix4 *m, br_scalar *d, b
 }
 
 function_hook_state_t function_hook_state_FourPointColl = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_FourPointColl)
+CARM95_WEBSERVER_STATE(FourPointColl, function_hook_state_FourPointColl)
 static br_scalar(__cdecl*original_FourPointColl)(br_scalar *, br_matrix4 *, br_scalar *, br_vector3 *, br_vector3 *, tCollision_info *) = (br_scalar(__cdecl*)(br_scalar *, br_matrix4 *, br_scalar *, br_vector3 *, br_vector3 *, tCollision_info *))0x0048379f;
 CARM95_HOOK_FUNCTION(original_FourPointColl, FourPointColl)
 br_scalar __cdecl FourPointColl(br_scalar *f, br_matrix4 *m, br_scalar *d, br_vector3 *tau, br_vector3 *n, tCollision_info *c) {
@@ -2267,7 +2267,7 @@ br_scalar __cdecl FourPointColl(br_scalar *f, br_matrix4 *m, br_scalar *d, br_ve
 }
 
 function_hook_state_t function_hook_state_MultiFindFloorInBoxM = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_MultiFindFloorInBoxM)
+CARM95_WEBSERVER_STATE(MultiFindFloorInBoxM, function_hook_state_MultiFindFloorInBoxM)
 static void(__cdecl*original_MultiFindFloorInBoxM)(int, br_vector3 *, br_vector3 *, br_vector3 *, br_scalar *, tCar_spec *, int *) = (void(__cdecl*)(int, br_vector3 *, br_vector3 *, br_vector3 *, br_scalar *, tCar_spec *, int *))0x00483a49;
 CARM95_HOOK_FUNCTION(original_MultiFindFloorInBoxM, MultiFindFloorInBoxM)
 void __cdecl MultiFindFloorInBoxM(int pNum_rays, br_vector3 *a, br_vector3 *b, br_vector3 *nor, br_scalar *d, tCar_spec *c, int *mat_ref) {
@@ -2296,7 +2296,7 @@ void __cdecl MultiFindFloorInBoxM(int pNum_rays, br_vector3 *a, br_vector3 *b, b
 }
 
 function_hook_state_t function_hook_state_MultiFindFloorInBoxBU = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_MultiFindFloorInBoxBU)
+CARM95_WEBSERVER_STATE(MultiFindFloorInBoxBU, function_hook_state_MultiFindFloorInBoxBU)
 static void(__cdecl*original_MultiFindFloorInBoxBU)(int, br_vector3 *, br_vector3 *, br_vector3 *, br_scalar *, tCar_spec *, int *) = (void(__cdecl*)(int, br_vector3 *, br_vector3 *, br_vector3 *, br_scalar *, tCar_spec *, int *))0x00483b2a;
 CARM95_HOOK_FUNCTION(original_MultiFindFloorInBoxBU, MultiFindFloorInBoxBU)
 void __cdecl MultiFindFloorInBoxBU(int pNum_rays, br_vector3 *a, br_vector3 *b, br_vector3 *nor, br_scalar *d, tCar_spec *c, int *mat_ref) {
@@ -2331,7 +2331,7 @@ void __cdecl MultiFindFloorInBoxBU(int pNum_rays, br_vector3 *a, br_vector3 *b, 
 }
 
 function_hook_state_t function_hook_state_findfloor = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_findfloor)
+CARM95_WEBSERVER_STATE(findfloor, function_hook_state_findfloor)
 static void(__cdecl*original_findfloor)(br_vector3 *, br_vector3 *, br_vector3 *, br_scalar *) = (void(__cdecl*)(br_vector3 *, br_vector3 *, br_vector3 *, br_scalar *))0x00483c6a;
 CARM95_HOOK_FUNCTION(original_findfloor, findfloor)
 void __cdecl findfloor(br_vector3 *a, br_vector3 *b, br_vector3 *nor, br_scalar *d) {
@@ -2357,7 +2357,7 @@ void __cdecl findfloor(br_vector3 *a, br_vector3 *b, br_vector3 *nor, br_scalar 
 }
 
 function_hook_state_t function_hook_state_FindFloorInBoxM = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_FindFloorInBoxM)
+CARM95_WEBSERVER_STATE(FindFloorInBoxM, function_hook_state_FindFloorInBoxM)
 static int(__cdecl*original_FindFloorInBoxM)(br_vector3 *, br_vector3 *, br_vector3 *, br_scalar *, tCollision_info *) = (int(__cdecl*)(br_vector3 *, br_vector3 *, br_vector3 *, br_scalar *, tCollision_info *))0x00483cec;
 CARM95_HOOK_FUNCTION(original_FindFloorInBoxM, FindFloorInBoxM)
 int __cdecl FindFloorInBoxM(br_vector3 *a, br_vector3 *b, br_vector3 *nor, br_scalar *d, tCollision_info *c) {
@@ -2382,7 +2382,7 @@ int __cdecl FindFloorInBoxM(br_vector3 *a, br_vector3 *b, br_vector3 *nor, br_sc
 }
 
 function_hook_state_t function_hook_state_FindFloorInBoxBU = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_FindFloorInBoxBU)
+CARM95_WEBSERVER_STATE(FindFloorInBoxBU, function_hook_state_FindFloorInBoxBU)
 static int(__cdecl*original_FindFloorInBoxBU)(br_vector3 *, br_vector3 *, br_vector3 *, br_scalar *, tCollision_info *) = (int(__cdecl*)(br_vector3 *, br_vector3 *, br_vector3 *, br_scalar *, tCollision_info *))0x00483d73;
 CARM95_HOOK_FUNCTION(original_FindFloorInBoxBU, FindFloorInBoxBU)
 int __cdecl FindFloorInBoxBU(br_vector3 *a, br_vector3 *b, br_vector3 *nor, br_scalar *d, tCollision_info *c) {
@@ -2413,7 +2413,7 @@ int __cdecl FindFloorInBoxBU(br_vector3 *a, br_vector3 *b, br_vector3 *nor, br_s
 }
 
 function_hook_state_t function_hook_state_FindFloorInBoxBU2 = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_FindFloorInBoxBU2)
+CARM95_WEBSERVER_STATE(FindFloorInBoxBU2, function_hook_state_FindFloorInBoxBU2)
 static int(__cdecl*original_FindFloorInBoxBU2)(br_vector3 *, br_vector3 *, br_vector3 *, br_scalar *, tCollision_info *) = (int(__cdecl*)(br_vector3 *, br_vector3 *, br_vector3 *, br_scalar *, tCollision_info *))0x00483e92;
 CARM95_HOOK_FUNCTION(original_FindFloorInBoxBU2, FindFloorInBoxBU2)
 int __cdecl FindFloorInBoxBU2(br_vector3 *a, br_vector3 *b, br_vector3 *nor, br_scalar *d, tCollision_info *c) {
@@ -2446,7 +2446,7 @@ int __cdecl FindFloorInBoxBU2(br_vector3 *a, br_vector3 *b, br_vector3 *nor, br_
 }
 
 function_hook_state_t function_hook_state_FindFloorInBoxM2 = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_FindFloorInBoxM2)
+CARM95_WEBSERVER_STATE(FindFloorInBoxM2, function_hook_state_FindFloorInBoxM2)
 static int(__cdecl*original_FindFloorInBoxM2)(br_vector3 *, br_vector3 *, br_vector3 *, br_scalar *, tCollision_info *) = (int(__cdecl*)(br_vector3 *, br_vector3 *, br_vector3 *, br_scalar *, tCollision_info *))0x0048405b;
 CARM95_HOOK_FUNCTION(original_FindFloorInBoxM2, FindFloorInBoxM2)
 int __cdecl FindFloorInBoxM2(br_vector3 *a, br_vector3 *b, br_vector3 *nor, br_scalar *d, tCollision_info *c) {
@@ -2471,7 +2471,7 @@ int __cdecl FindFloorInBoxM2(br_vector3 *a, br_vector3 *b, br_vector3 *nor, br_s
 }
 
 function_hook_state_t function_hook_state_BoxFaceIntersect = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BoxFaceIntersect)
+CARM95_WEBSERVER_STATE(BoxFaceIntersect, function_hook_state_BoxFaceIntersect)
 static int(__cdecl*original_BoxFaceIntersect)(br_bounds *, br_matrix34 *, br_matrix34 *, br_vector3 *, br_vector3 *, br_scalar *, int, tCollision_info *) = (int(__cdecl*)(br_bounds *, br_matrix34 *, br_matrix34 *, br_vector3 *, br_vector3 *, br_scalar *, int, tCollision_info *))0x004840e2;
 CARM95_HOOK_FUNCTION(original_BoxFaceIntersect, BoxFaceIntersect)
 int __cdecl BoxFaceIntersect(br_bounds *pB, br_matrix34 *pM, br_matrix34 *pMold, br_vector3 *pPoint_list, br_vector3 *pNorm_list, br_scalar *pDist_list, int pMax_pnts, tCollision_info *c) {
@@ -2517,7 +2517,7 @@ int __cdecl BoxFaceIntersect(br_bounds *pB, br_matrix34 *pM, br_matrix34 *pMold,
 }
 
 function_hook_state_t function_hook_state_AddEdgeCollPoints = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_AddEdgeCollPoints)
+CARM95_WEBSERVER_STATE(AddEdgeCollPoints, function_hook_state_AddEdgeCollPoints)
 static int(__cdecl*original_AddEdgeCollPoints)(br_vector3 *, br_vector3 *, br_bounds *, br_matrix34 *, br_vector3 *, br_vector3 *, int, int, tCollision_info *) = (int(__cdecl*)(br_vector3 *, br_vector3 *, br_bounds *, br_matrix34 *, br_vector3 *, br_vector3 *, int, int, tCollision_info *))0x0048469b;
 CARM95_HOOK_FUNCTION(original_AddEdgeCollPoints, AddEdgeCollPoints)
 int __cdecl AddEdgeCollPoints(br_vector3 *p1, br_vector3 *p2, br_bounds *pB, br_matrix34 *pMold, br_vector3 *pPoint_list, br_vector3 *pNorm_list, int n, int pMax_pnts, tCollision_info *c) {
@@ -2572,7 +2572,7 @@ int __cdecl AddEdgeCollPoints(br_vector3 *p1, br_vector3 *p2, br_bounds *pB, br_
 }
 
 function_hook_state_t function_hook_state_GetPlaneNormal = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_GetPlaneNormal)
+CARM95_WEBSERVER_STATE(GetPlaneNormal, function_hook_state_GetPlaneNormal)
 static void(__cdecl*original_GetPlaneNormal)(br_vector3 *, int) = (void(__cdecl*)(br_vector3 *, int))0x004854c1;
 CARM95_HOOK_FUNCTION(original_GetPlaneNormal, GetPlaneNormal)
 void __cdecl GetPlaneNormal(br_vector3 *n, int p) {
@@ -2592,7 +2592,7 @@ void __cdecl GetPlaneNormal(br_vector3 *n, int p) {
 }
 
 function_hook_state_t function_hook_state_GetBoundsEdge = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_GetBoundsEdge)
+CARM95_WEBSERVER_STATE(GetBoundsEdge, function_hook_state_GetBoundsEdge)
 static int(__cdecl*original_GetBoundsEdge)(br_vector3 *, br_vector3 *, br_bounds *, int, int, br_vector3 *, br_vector3 *, br_vector3 *, int) = (int(__cdecl*)(br_vector3 *, br_vector3 *, br_bounds *, int, int, br_vector3 *, br_vector3 *, br_vector3 *, int))0x0048551f;
 CARM95_HOOK_FUNCTION(original_GetBoundsEdge, GetBoundsEdge)
 int __cdecl GetBoundsEdge(br_vector3 *pos, br_vector3 *edge, br_bounds *pB, int plane1, int plane2, br_vector3 *a, br_vector3 *b, br_vector3 *c, int flag) {
@@ -2629,7 +2629,7 @@ int __cdecl GetBoundsEdge(br_vector3 *pos, br_vector3 *edge, br_bounds *pB, int 
 }
 
 function_hook_state_t function_hook_state_oldMoveOurCar = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_oldMoveOurCar)
+CARM95_WEBSERVER_STATE(oldMoveOurCar, function_hook_state_oldMoveOurCar)
 void oldMoveOurCar(tU32 pTime_difference) {
     br_vector3 thrust_vector;
     br_matrix34 direction_matrix;
@@ -2666,7 +2666,7 @@ void oldMoveOurCar(tU32 pTime_difference) {
 }
 
 function_hook_state_t function_hook_state_ToggleCollisionDetection = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_ToggleCollisionDetection)
+CARM95_WEBSERVER_STATE(ToggleCollisionDetection, function_hook_state_ToggleCollisionDetection)
 void ToggleCollisionDetection() {
     LOG_TRACE("()");
 
@@ -2680,7 +2680,7 @@ void ToggleCollisionDetection() {
 }
 
 function_hook_state_t function_hook_state_CancelPendingCunningStunt = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_CancelPendingCunningStunt)
+CARM95_WEBSERVER_STATE(CancelPendingCunningStunt, function_hook_state_CancelPendingCunningStunt)
 static void(__cdecl*original_CancelPendingCunningStunt)() = (void(__cdecl*)())0x00485d8b;
 CARM95_HOOK_FUNCTION(original_CancelPendingCunningStunt, CancelPendingCunningStunt)
 void __cdecl CancelPendingCunningStunt() {
@@ -2696,7 +2696,7 @@ void __cdecl CancelPendingCunningStunt() {
 }
 
 function_hook_state_t function_hook_state_frac = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_frac)
+CARM95_WEBSERVER_STATE(frac, function_hook_state_frac)
 static float(__cdecl*original_frac)(float) = (float(__cdecl*)(float))0x00485dc8;
 CARM95_HOOK_FUNCTION(original_frac, frac)
 float __cdecl frac(float pN) {
@@ -2713,7 +2713,7 @@ float __cdecl frac(float pN) {
 }
 
 function_hook_state_t function_hook_state_SetAmbientPratCam = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_SetAmbientPratCam)
+CARM95_WEBSERVER_STATE(SetAmbientPratCam, function_hook_state_SetAmbientPratCam)
 static void(__cdecl*original_SetAmbientPratCam)(tCar_spec *) = (void(__cdecl*)(tCar_spec *))0x00486d06;
 CARM95_HOOK_FUNCTION(original_SetAmbientPratCam, SetAmbientPratCam)
 void __cdecl SetAmbientPratCam(tCar_spec *pCar) {
@@ -2752,7 +2752,7 @@ void __cdecl SetAmbientPratCam(tCar_spec *pCar) {
 }
 
 function_hook_state_t function_hook_state_MungeCarGraphics = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_MungeCarGraphics)
+CARM95_WEBSERVER_STATE(MungeCarGraphics, function_hook_state_MungeCarGraphics)
 static void(__cdecl*original_MungeCarGraphics)(tU32) = (void(__cdecl*)(tU32))0x00485dee;
 CARM95_HOOK_FUNCTION(original_MungeCarGraphics, MungeCarGraphics)
 void __cdecl MungeCarGraphics(tU32 pFrame_period) {
@@ -2827,7 +2827,7 @@ void __cdecl MungeCarGraphics(tU32 pFrame_period) {
 }
 
 function_hook_state_t function_hook_state_ResetCarScreens = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_ResetCarScreens)
+CARM95_WEBSERVER_STATE(ResetCarScreens, function_hook_state_ResetCarScreens)
 static void(__cdecl*original_ResetCarScreens)() = (void(__cdecl*)())0x0048701d;
 CARM95_HOOK_FUNCTION(original_ResetCarScreens, ResetCarScreens)
 void __cdecl ResetCarScreens() {
@@ -2851,7 +2851,7 @@ void __cdecl ResetCarScreens() {
 }
 
 function_hook_state_t function_hook_state_GetRaceLeader = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_GetRaceLeader)
+CARM95_WEBSERVER_STATE(GetRaceLeader, function_hook_state_GetRaceLeader)
 static tCar_spec *(__cdecl*original_GetRaceLeader)() = (tCar_spec *(__cdecl*)())0x00487179;
 CARM95_HOOK_FUNCTION(original_GetRaceLeader, GetRaceLeader)
 tCar_spec* __cdecl GetRaceLeader() {
@@ -2873,7 +2873,7 @@ tCar_spec* __cdecl GetRaceLeader() {
 }
 
 function_hook_state_t function_hook_state_AmIGettingBoredWatchingCameraSpin = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_AmIGettingBoredWatchingCameraSpin)
+CARM95_WEBSERVER_STATE(AmIGettingBoredWatchingCameraSpin, function_hook_state_AmIGettingBoredWatchingCameraSpin)
 static void(__cdecl*original_AmIGettingBoredWatchingCameraSpin)() = (void(__cdecl*)())0x004876f1;
 CARM95_HOOK_FUNCTION(original_AmIGettingBoredWatchingCameraSpin, AmIGettingBoredWatchingCameraSpin)
 void __cdecl AmIGettingBoredWatchingCameraSpin() {
@@ -2897,7 +2897,7 @@ void __cdecl AmIGettingBoredWatchingCameraSpin() {
 }
 
 function_hook_state_t function_hook_state_ViewNetPlayer = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_ViewNetPlayer)
+CARM95_WEBSERVER_STATE(ViewNetPlayer, function_hook_state_ViewNetPlayer)
 static void(__cdecl*original_ViewNetPlayer)() = (void(__cdecl*)())0x004870d8;
 CARM95_HOOK_FUNCTION(original_ViewNetPlayer, ViewNetPlayer)
 void __cdecl ViewNetPlayer() {
@@ -2913,7 +2913,7 @@ void __cdecl ViewNetPlayer() {
 }
 
 function_hook_state_t function_hook_state_ViewOpponent = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_ViewOpponent)
+CARM95_WEBSERVER_STATE(ViewOpponent, function_hook_state_ViewOpponent)
 static void(__cdecl*original_ViewOpponent)() = (void(__cdecl*)())0x00487248;
 CARM95_HOOK_FUNCTION(original_ViewOpponent, ViewOpponent)
 void __cdecl ViewOpponent() {
@@ -2931,7 +2931,7 @@ void __cdecl ViewOpponent() {
 }
 
 function_hook_state_t function_hook_state_ToggleCarToCarCollisions = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_ToggleCarToCarCollisions)
+CARM95_WEBSERVER_STATE(ToggleCarToCarCollisions, function_hook_state_ToggleCarToCarCollisions)
 static void(__cdecl*original_ToggleCarToCarCollisions)() = (void(__cdecl*)())0x00487333;
 CARM95_HOOK_FUNCTION(original_ToggleCarToCarCollisions, ToggleCarToCarCollisions)
 void __cdecl ToggleCarToCarCollisions() {
@@ -2947,7 +2947,7 @@ void __cdecl ToggleCarToCarCollisions() {
 }
 
 function_hook_state_t function_hook_state_SwapCar = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_SwapCar)
+CARM95_WEBSERVER_STATE(SwapCar, function_hook_state_SwapCar)
 static void(__cdecl*original_SwapCar)() = (void(__cdecl*)())0x004873a6;
 CARM95_HOOK_FUNCTION(original_SwapCar, SwapCar)
 void __cdecl SwapCar() {
@@ -2963,7 +2963,7 @@ void __cdecl SwapCar() {
 }
 
 function_hook_state_t function_hook_state_AdjustDownForce = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_AdjustDownForce)
+CARM95_WEBSERVER_STATE(AdjustDownForce, function_hook_state_AdjustDownForce)
 static void(__cdecl*original_AdjustDownForce)() = (void(__cdecl*)())0x004873b1;
 CARM95_HOOK_FUNCTION(original_AdjustDownForce, AdjustDownForce)
 void __cdecl AdjustDownForce() {
@@ -2983,7 +2983,7 @@ void __cdecl AdjustDownForce() {
 }
 
 function_hook_state_t function_hook_state_FreezeMechanics = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_FreezeMechanics)
+CARM95_WEBSERVER_STATE(FreezeMechanics, function_hook_state_FreezeMechanics)
 static void(__cdecl*original_FreezeMechanics)() = (void(__cdecl*)())0x00487464;
 CARM95_HOOK_FUNCTION(original_FreezeMechanics, FreezeMechanics)
 void __cdecl FreezeMechanics() {
@@ -2999,7 +2999,7 @@ void __cdecl FreezeMechanics() {
 }
 
 function_hook_state_t function_hook_state_PutOpponentsInNeutral = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PutOpponentsInNeutral)
+CARM95_WEBSERVER_STATE(PutOpponentsInNeutral, function_hook_state_PutOpponentsInNeutral)
 static void(__cdecl*original_PutOpponentsInNeutral)() = (void(__cdecl*)())0x004874d7;
 CARM95_HOOK_FUNCTION(original_PutOpponentsInNeutral, PutOpponentsInNeutral)
 void __cdecl PutOpponentsInNeutral() {
@@ -3015,7 +3015,7 @@ void __cdecl PutOpponentsInNeutral() {
 }
 
 function_hook_state_t function_hook_state_SetPanningFieldOfView = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_SetPanningFieldOfView)
+CARM95_WEBSERVER_STATE(SetPanningFieldOfView, function_hook_state_SetPanningFieldOfView)
 static void(__cdecl*original_SetPanningFieldOfView)() = (void(__cdecl*)())0x004879d8;
 CARM95_HOOK_FUNCTION(original_SetPanningFieldOfView, SetPanningFieldOfView)
 void __cdecl SetPanningFieldOfView() {
@@ -3033,7 +3033,7 @@ void __cdecl SetPanningFieldOfView() {
 }
 
 function_hook_state_t function_hook_state_CheckDisablePlingMaterials = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_CheckDisablePlingMaterials)
+CARM95_WEBSERVER_STATE(CheckDisablePlingMaterials, function_hook_state_CheckDisablePlingMaterials)
 static void(__cdecl*original_CheckDisablePlingMaterials)(tCar_spec *) = (void(__cdecl*)(tCar_spec *))0x00487a3b;
 CARM95_HOOK_FUNCTION(original_CheckDisablePlingMaterials, CheckDisablePlingMaterials)
 void __cdecl CheckDisablePlingMaterials(tCar_spec *pCar) {
@@ -3056,7 +3056,7 @@ void __cdecl CheckDisablePlingMaterials(tCar_spec *pCar) {
 }
 
 function_hook_state_t function_hook_state_PositionExternalCamera = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PositionExternalCamera)
+CARM95_WEBSERVER_STATE(PositionExternalCamera, function_hook_state_PositionExternalCamera)
 static void(__cdecl*original_PositionExternalCamera)(tCar_spec *, tU32) = (void(__cdecl*)(tCar_spec *, tU32))0x0048754a;
 CARM95_HOOK_FUNCTION(original_PositionExternalCamera, PositionExternalCamera)
 void __cdecl PositionExternalCamera(tCar_spec *c, tU32 pTime) {
@@ -3078,7 +3078,7 @@ void __cdecl PositionExternalCamera(tCar_spec *c, tU32 pTime) {
 }
 
 function_hook_state_t function_hook_state_CameraBugFix = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_CameraBugFix)
+CARM95_WEBSERVER_STATE(CameraBugFix, function_hook_state_CameraBugFix)
 static void(__cdecl*original_CameraBugFix)(tCar_spec *, tU32) = (void(__cdecl*)(tCar_spec *, tU32))0x00487b2c;
 CARM95_HOOK_FUNCTION(original_CameraBugFix, CameraBugFix)
 void __cdecl CameraBugFix(tCar_spec *c, tU32 pTime) {
@@ -3102,7 +3102,7 @@ void __cdecl CameraBugFix(tCar_spec *c, tU32 pTime) {
 }
 
 function_hook_state_t function_hook_state_PossibleRemoveNonCarFromWorld = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PossibleRemoveNonCarFromWorld)
+CARM95_WEBSERVER_STATE(PossibleRemoveNonCarFromWorld, function_hook_state_PossibleRemoveNonCarFromWorld)
 static int(__cdecl*original_PossibleRemoveNonCarFromWorld)(br_actor *) = (int(__cdecl*)(br_actor *))0x0048876d;
 CARM95_HOOK_FUNCTION(original_PossibleRemoveNonCarFromWorld, PossibleRemoveNonCarFromWorld)
 int __cdecl PossibleRemoveNonCarFromWorld(br_actor *pActor) {
@@ -3125,7 +3125,7 @@ int __cdecl PossibleRemoveNonCarFromWorld(br_actor *pActor) {
 }
 
 function_hook_state_t function_hook_state_PutNonCarBackInWorld = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PutNonCarBackInWorld)
+CARM95_WEBSERVER_STATE(PutNonCarBackInWorld, function_hook_state_PutNonCarBackInWorld)
 static void(__cdecl*original_PutNonCarBackInWorld)(br_actor *) = (void(__cdecl*)(br_actor *))0x004887e9;
 CARM95_HOOK_FUNCTION(original_PutNonCarBackInWorld, PutNonCarBackInWorld)
 void __cdecl PutNonCarBackInWorld(br_actor *pActor) {
@@ -3148,7 +3148,7 @@ void __cdecl PutNonCarBackInWorld(br_actor *pActor) {
 }
 
 function_hook_state_t function_hook_state_IncidentCam = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_IncidentCam)
+CARM95_WEBSERVER_STATE(IncidentCam, function_hook_state_IncidentCam)
 static int(__cdecl*original_IncidentCam)(tCar_spec *, tU32) = (int(__cdecl*)(tCar_spec *, tU32))0x00487b89;
 CARM95_HOOK_FUNCTION(original_IncidentCam, IncidentCam)
 int __cdecl IncidentCam(tCar_spec *c, tU32 pTime) {
@@ -3208,7 +3208,7 @@ int __cdecl IncidentCam(tCar_spec *c, tU32 pTime) {
 }
 
 function_hook_state_t function_hook_state_MoveCamToIncident = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_MoveCamToIncident)
+CARM95_WEBSERVER_STATE(MoveCamToIncident, function_hook_state_MoveCamToIncident)
 static int(__cdecl*original_MoveCamToIncident)(tCar_spec *, tIncident_type *, float *, tIncident_info *, tU32 *) = (int(__cdecl*)(tCar_spec *, tIncident_type *, float *, tIncident_info *, tU32 *))0x00488849;
 CARM95_HOOK_FUNCTION(original_MoveCamToIncident, MoveCamToIncident)
 int __cdecl MoveCamToIncident(tCar_spec *c, tIncident_type *type, float *severity, tIncident_info *info, tU32 *next_incident_time) {
@@ -3257,7 +3257,7 @@ int __cdecl MoveCamToIncident(tCar_spec *c, tIncident_type *type, float *severit
 }
 
 function_hook_state_t function_hook_state_PanningExternalCamera = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PanningExternalCamera)
+CARM95_WEBSERVER_STATE(PanningExternalCamera, function_hook_state_PanningExternalCamera)
 static void(__cdecl*original_PanningExternalCamera)(tCar_spec *, tU32) = (void(__cdecl*)(tCar_spec *, tU32))0x00488d45;
 CARM95_HOOK_FUNCTION(original_PanningExternalCamera, PanningExternalCamera)
 void __cdecl PanningExternalCamera(tCar_spec *c, tU32 pTime) {
@@ -3285,7 +3285,7 @@ void __cdecl PanningExternalCamera(tCar_spec *c, tU32 pTime) {
 }
 
 function_hook_state_t function_hook_state_CheckForWall = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_CheckForWall)
+CARM95_WEBSERVER_STATE(CheckForWall, function_hook_state_CheckForWall)
 static int(__cdecl*original_CheckForWall)(br_vector3 *, br_vector3 *) = (int(__cdecl*)(br_vector3 *, br_vector3 *))0x00488ed6;
 CARM95_HOOK_FUNCTION(original_CheckForWall, CheckForWall)
 int __cdecl CheckForWall(br_vector3 *start, br_vector3 *end) {
@@ -3311,7 +3311,7 @@ int __cdecl CheckForWall(br_vector3 *start, br_vector3 *end) {
 }
 
 function_hook_state_t function_hook_state_SetUpPanningCamera = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_SetUpPanningCamera)
+CARM95_WEBSERVER_STATE(SetUpPanningCamera, function_hook_state_SetUpPanningCamera)
 static void(__cdecl*original_SetUpPanningCamera)(tCar_spec *) = (void(__cdecl*)(tCar_spec *))0x00488f50;
 CARM95_HOOK_FUNCTION(original_SetUpPanningCamera, SetUpPanningCamera)
 void __cdecl SetUpPanningCamera(tCar_spec *c) {
@@ -3362,7 +3362,7 @@ void __cdecl SetUpPanningCamera(tCar_spec *c) {
 }
 
 function_hook_state_t function_hook_state_SaveCameraPosition = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_SaveCameraPosition)
+CARM95_WEBSERVER_STATE(SaveCameraPosition, function_hook_state_SaveCameraPosition)
 static void(__cdecl*original_SaveCameraPosition)(int) = (void(__cdecl*)(int))0x0048949c;
 CARM95_HOOK_FUNCTION(original_SaveCameraPosition, SaveCameraPosition)
 void __cdecl SaveCameraPosition(int i) {
@@ -3379,7 +3379,7 @@ void __cdecl SaveCameraPosition(int i) {
 }
 
 function_hook_state_t function_hook_state_RestoreCameraPosition = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_RestoreCameraPosition)
+CARM95_WEBSERVER_STATE(RestoreCameraPosition, function_hook_state_RestoreCameraPosition)
 static void(__cdecl*original_RestoreCameraPosition)(int) = (void(__cdecl*)(int))0x004894f8;
 CARM95_HOOK_FUNCTION(original_RestoreCameraPosition, RestoreCameraPosition)
 void __cdecl RestoreCameraPosition(int i) {
@@ -3396,7 +3396,7 @@ void __cdecl RestoreCameraPosition(int i) {
 }
 
 function_hook_state_t function_hook_state_NormalPositionExternalCamera = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_NormalPositionExternalCamera)
+CARM95_WEBSERVER_STATE(NormalPositionExternalCamera, function_hook_state_NormalPositionExternalCamera)
 static void(__cdecl*original_NormalPositionExternalCamera)(tCar_spec *, tU32) = (void(__cdecl*)(tCar_spec *, tU32))0x00489553;
 CARM95_HOOK_FUNCTION(original_NormalPositionExternalCamera, NormalPositionExternalCamera)
 void __cdecl NormalPositionExternalCamera(tCar_spec *c, tU32 pTime) {
@@ -3462,7 +3462,7 @@ void __cdecl NormalPositionExternalCamera(tCar_spec *c, tU32 pTime) {
 }
 
 function_hook_state_t function_hook_state_MoveWithWheels = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_MoveWithWheels)
+CARM95_WEBSERVER_STATE(MoveWithWheels, function_hook_state_MoveWithWheels)
 static void(__cdecl*original_MoveWithWheels)(tCar_spec *, br_vector3 *, int) = (void(__cdecl*)(tCar_spec *, br_vector3 *, int))0x00489dc2;
 CARM95_HOOK_FUNCTION(original_MoveWithWheels, MoveWithWheels)
 void __cdecl MoveWithWheels(tCar_spec *c, br_vector3 *vn, int manual_swing) {
@@ -3487,7 +3487,7 @@ void __cdecl MoveWithWheels(tCar_spec *c, br_vector3 *vn, int manual_swing) {
 }
 
 function_hook_state_t function_hook_state_SwingCamera = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_SwingCamera)
+CARM95_WEBSERVER_STATE(SwingCamera, function_hook_state_SwingCamera)
 static void(__cdecl*original_SwingCamera)(tCar_spec *, br_matrix34 *, br_matrix34 *, br_vector3 *, tU32) = (void(__cdecl*)(tCar_spec *, br_matrix34 *, br_matrix34 *, br_vector3 *, tU32))0x00489f7c;
 CARM95_HOOK_FUNCTION(original_SwingCamera, SwingCamera)
 void __cdecl SwingCamera(tCar_spec *c, br_matrix34 *m1, br_matrix34 *m2, br_vector3 *vn, tU32 pTime) {
@@ -3532,7 +3532,7 @@ void __cdecl SwingCamera(tCar_spec *c, br_matrix34 *m1, br_matrix34 *m2, br_vect
 }
 
 function_hook_state_t function_hook_state_PointCameraAtCar = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PointCameraAtCar)
+CARM95_WEBSERVER_STATE(PointCameraAtCar, function_hook_state_PointCameraAtCar)
 static void(__cdecl*original_PointCameraAtCar)(tCar_spec *, br_matrix34 *, br_matrix34 *) = (void(__cdecl*)(tCar_spec *, br_matrix34 *, br_matrix34 *))0x0048a73b;
 CARM95_HOOK_FUNCTION(original_PointCameraAtCar, PointCameraAtCar)
 void __cdecl PointCameraAtCar(tCar_spec *c, br_matrix34 *m1, br_matrix34 *m2) {
@@ -3573,7 +3573,7 @@ void __cdecl PointCameraAtCar(tCar_spec *c, br_matrix34 *m1, br_matrix34 *m2) {
 }
 
 function_hook_state_t function_hook_state_PointCamera = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PointCamera)
+CARM95_WEBSERVER_STATE(PointCamera, function_hook_state_PointCamera)
 static void(__cdecl*original_PointCamera)(br_vector3 *, br_matrix34 *) = (void(__cdecl*)(br_vector3 *, br_matrix34 *))0x0048aa19;
 CARM95_HOOK_FUNCTION(original_PointCamera, PointCamera)
 void __cdecl PointCamera(br_vector3 *pos, br_matrix34 *m2) {
@@ -3601,7 +3601,7 @@ void __cdecl PointCamera(br_vector3 *pos, br_matrix34 *m2) {
 }
 
 function_hook_state_t function_hook_state_CollideCamera2 = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_CollideCamera2)
+CARM95_WEBSERVER_STATE(CollideCamera2, function_hook_state_CollideCamera2)
 static int(__cdecl*original_CollideCamera2)(br_vector3 *, br_vector3 *, br_vector3 *, int) = (int(__cdecl*)(br_vector3 *, br_vector3 *, br_vector3 *, int))0x0048abbb;
 CARM95_HOOK_FUNCTION(original_CollideCamera2, CollideCamera2)
 int __cdecl CollideCamera2(br_vector3 *car_pos, br_vector3 *cam_pos, br_vector3 *old_camera_pos, int manual_move) {
@@ -3669,7 +3669,7 @@ int __cdecl CollideCamera2(br_vector3 *car_pos, br_vector3 *cam_pos, br_vector3 
 }
 
 function_hook_state_t function_hook_state_BoundsTest = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BoundsTest)
+CARM95_WEBSERVER_STATE(BoundsTest, function_hook_state_BoundsTest)
 static int(__cdecl*original_BoundsTest)(br_bounds *, br_vector3 *) = (int(__cdecl*)(br_bounds *, br_vector3 *))0x0048ba12;
 CARM95_HOOK_FUNCTION(original_BoundsTest, BoundsTest)
 int __cdecl BoundsTest(br_bounds *bnds, br_vector3 *p) {
@@ -3689,7 +3689,7 @@ int __cdecl BoundsTest(br_bounds *bnds, br_vector3 *p) {
 }
 
 function_hook_state_t function_hook_state_CollideCameraWithOtherCars = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_CollideCameraWithOtherCars)
+CARM95_WEBSERVER_STATE(CollideCameraWithOtherCars, function_hook_state_CollideCameraWithOtherCars)
 static int(__cdecl*original_CollideCameraWithOtherCars)(br_vector3 *, br_vector3 *) = (int(__cdecl*)(br_vector3 *, br_vector3 *))0x0048b820;
 CARM95_HOOK_FUNCTION(original_CollideCameraWithOtherCars, CollideCameraWithOtherCars)
 int __cdecl CollideCameraWithOtherCars(br_vector3 *car_pos, br_vector3 *cam_pos) {
@@ -3727,7 +3727,7 @@ int __cdecl CollideCameraWithOtherCars(br_vector3 *car_pos, br_vector3 *cam_pos)
 }
 
 function_hook_state_t function_hook_state_InitialiseExternalCamera = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_InitialiseExternalCamera)
+CARM95_WEBSERVER_STATE(InitialiseExternalCamera, function_hook_state_InitialiseExternalCamera)
 static void(__cdecl*original_InitialiseExternalCamera)() = (void(__cdecl*)())0x0048ba8a;
 CARM95_HOOK_FUNCTION(original_InitialiseExternalCamera, InitialiseExternalCamera)
 void __cdecl InitialiseExternalCamera() {
@@ -3753,7 +3753,7 @@ void __cdecl InitialiseExternalCamera() {
 }
 
 function_hook_state_t function_hook_state_FreezeCamera = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_FreezeCamera)
+CARM95_WEBSERVER_STATE(FreezeCamera, function_hook_state_FreezeCamera)
 static void(__cdecl*original_FreezeCamera)() = (void(__cdecl*)())0x0048bc93;
 CARM95_HOOK_FUNCTION(original_FreezeCamera, FreezeCamera)
 void __cdecl FreezeCamera() {
@@ -3769,7 +3769,7 @@ void __cdecl FreezeCamera() {
 }
 
 function_hook_state_t function_hook_state_FlyCar = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_FlyCar)
+CARM95_WEBSERVER_STATE(FlyCar, function_hook_state_FlyCar)
 static void(__cdecl*original_FlyCar)(tCar_spec *, br_scalar) = (void(__cdecl*)(tCar_spec *, br_scalar))0x0048bca8;
 CARM95_HOOK_FUNCTION(original_FlyCar, FlyCar)
 void __cdecl FlyCar(tCar_spec *c, br_scalar dt) {
@@ -3823,7 +3823,7 @@ void __cdecl FlyCar(tCar_spec *c, br_scalar dt) {
 }
 
 function_hook_state_t function_hook_state_DrVector3RotateY = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DrVector3RotateY)
+CARM95_WEBSERVER_STATE(DrVector3RotateY, function_hook_state_DrVector3RotateY)
 static void(__cdecl*original_DrVector3RotateY)(br_vector3 *, br_angle) = (void(__cdecl*)(br_vector3 *, br_angle))0x0048c718;
 CARM95_HOOK_FUNCTION(original_DrVector3RotateY, DrVector3RotateY)
 void __cdecl DrVector3RotateY(br_vector3 *v, br_angle t) {
@@ -3847,7 +3847,7 @@ void __cdecl DrVector3RotateY(br_vector3 *v, br_angle t) {
 }
 
 function_hook_state_t function_hook_state_CrashCarsTogether = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_CrashCarsTogether)
+CARM95_WEBSERVER_STATE(CrashCarsTogether, function_hook_state_CrashCarsTogether)
 static void(__cdecl*original_CrashCarsTogether)(br_scalar) = (void(__cdecl*)(br_scalar))0x0048c795;
 CARM95_HOOK_FUNCTION(original_CrashCarsTogether, CrashCarsTogether)
 void __cdecl CrashCarsTogether(br_scalar dt) {
@@ -3872,7 +3872,7 @@ void __cdecl CrashCarsTogether(br_scalar dt) {
 }
 
 function_hook_state_t function_hook_state_CrashCarsTogetherSinglePass = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_CrashCarsTogetherSinglePass)
+CARM95_WEBSERVER_STATE(CrashCarsTogetherSinglePass, function_hook_state_CrashCarsTogetherSinglePass)
 static int(__cdecl*original_CrashCarsTogetherSinglePass)(br_scalar, int, tCollison_data *) = (int(__cdecl*)(br_scalar, int, tCollison_data *))0x0048c8af;
 CARM95_HOOK_FUNCTION(original_CrashCarsTogetherSinglePass, CrashCarsTogetherSinglePass)
 int __cdecl CrashCarsTogetherSinglePass(br_scalar dt, int pPass, tCollison_data *collide_list) {
@@ -3923,7 +3923,7 @@ int __cdecl CrashCarsTogetherSinglePass(br_scalar dt, int pPass, tCollison_data 
 }
 
 function_hook_state_t function_hook_state_BringCarToAGrindingHalt = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BringCarToAGrindingHalt)
+CARM95_WEBSERVER_STATE(BringCarToAGrindingHalt, function_hook_state_BringCarToAGrindingHalt)
 static void(__cdecl*original_BringCarToAGrindingHalt)(tCollision_info *) = (void(__cdecl*)(tCollision_info *))0x0048d21b;
 CARM95_HOOK_FUNCTION(original_BringCarToAGrindingHalt, BringCarToAGrindingHalt)
 void __cdecl BringCarToAGrindingHalt(tCollision_info *car) {
@@ -3940,7 +3940,7 @@ void __cdecl BringCarToAGrindingHalt(tCollision_info *car) {
 }
 
 function_hook_state_t function_hook_state_BoundsOverlapTest__car = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BoundsOverlapTest__car)
+CARM95_WEBSERVER_STATE(BoundsOverlapTest__car, function_hook_state_BoundsOverlapTest__car)
 int BoundsOverlapTest__car(br_bounds *b1, br_bounds *b2) {
     LOG_TRACE("(%p, %p)", b1, b2);
 
@@ -3956,7 +3956,7 @@ int BoundsOverlapTest__car(br_bounds *b1, br_bounds *b2) {
 }
 
 function_hook_state_t function_hook_state_SimpleCarCarCollisionTest = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_SimpleCarCarCollisionTest)
+CARM95_WEBSERVER_STATE(SimpleCarCarCollisionTest, function_hook_state_SimpleCarCarCollisionTest)
 static int(__cdecl*original_SimpleCarCarCollisionTest)(tCollision_info *, tCollision_info *) = (int(__cdecl*)(tCollision_info *, tCollision_info *))0x0048d28f;
 CARM95_HOOK_FUNCTION(original_SimpleCarCarCollisionTest, SimpleCarCarCollisionTest)
 int __cdecl SimpleCarCarCollisionTest(tCollision_info *car1, tCollision_info *car2) {
@@ -3974,7 +3974,7 @@ int __cdecl SimpleCarCarCollisionTest(tCollision_info *car1, tCollision_info *ca
 }
 
 function_hook_state_t function_hook_state_CollideTwoCarsWithWalls = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_CollideTwoCarsWithWalls)
+CARM95_WEBSERVER_STATE(CollideTwoCarsWithWalls, function_hook_state_CollideTwoCarsWithWalls)
 static int(__cdecl*original_CollideTwoCarsWithWalls)(tCollision_info *, tCollision_info *, br_scalar) = (int(__cdecl*)(tCollision_info *, tCollision_info *, br_scalar))0x0048d38c;
 CARM95_HOOK_FUNCTION(original_CollideTwoCarsWithWalls, CollideTwoCarsWithWalls)
 int __cdecl CollideTwoCarsWithWalls(tCollision_info *car1, tCollision_info *car2, br_scalar dt) {
@@ -4009,7 +4009,7 @@ int __cdecl CollideTwoCarsWithWalls(tCollision_info *car1, tCollision_info *car2
 }
 
 function_hook_state_t function_hook_state_CollideTwoCarsRepeatedly = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_CollideTwoCarsRepeatedly)
+CARM95_WEBSERVER_STATE(CollideTwoCarsRepeatedly, function_hook_state_CollideTwoCarsRepeatedly)
 static int(__cdecl*original_CollideTwoCarsRepeatedly)(tCollision_info *, tCollision_info *, br_scalar) = (int(__cdecl*)(tCollision_info *, tCollision_info *, br_scalar))0x0048d719;
 CARM95_HOOK_FUNCTION(original_CollideTwoCarsRepeatedly, CollideTwoCarsRepeatedly)
 int __cdecl CollideTwoCarsRepeatedly(tCollision_info *car1, tCollision_info *car2, br_scalar dt) {
@@ -4034,7 +4034,7 @@ int __cdecl CollideTwoCarsRepeatedly(tCollision_info *car1, tCollision_info *car
 }
 
 function_hook_state_t function_hook_state_CollideTwoCars = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_CollideTwoCars)
+CARM95_WEBSERVER_STATE(CollideTwoCars, function_hook_state_CollideTwoCars)
 static int(__cdecl*original_CollideTwoCars)(tCollision_info *, tCollision_info *, int) = (int(__cdecl*)(tCollision_info *, tCollision_info *, int))0x0048d84a;
 CARM95_HOOK_FUNCTION(original_CollideTwoCars, CollideTwoCars)
 int __cdecl CollideTwoCars(tCollision_info *car1, tCollision_info *car2, int pPass) {
@@ -4119,7 +4119,7 @@ int __cdecl CollideTwoCars(tCollision_info *car1, tCollision_info *car2, int pPa
 }
 
 function_hook_state_t function_hook_state_GetEdgeEdgeCollisions = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_GetEdgeEdgeCollisions)
+CARM95_WEBSERVER_STATE(GetEdgeEdgeCollisions, function_hook_state_GetEdgeEdgeCollisions)
 static int(__cdecl*original_GetEdgeEdgeCollisions)(br_bounds *, br_bounds *, br_matrix34 *, br_matrix34 *, br_matrix34 *, br_matrix34 *, br_matrix34 *, br_vector3 *, br_vector3 *, int) = (int(__cdecl*)(br_bounds *, br_bounds *, br_matrix34 *, br_matrix34 *, br_matrix34 *, br_matrix34 *, br_matrix34 *, br_vector3 *, br_vector3 *, int))0x0048e82a;
 CARM95_HOOK_FUNCTION(original_GetEdgeEdgeCollisions, GetEdgeEdgeCollisions)
 int __cdecl GetEdgeEdgeCollisions(br_bounds *pB1, br_bounds *pB2, br_matrix34 *pM21, br_matrix34 *pM12, br_matrix34 *pMo21, br_matrix34 *pMo12, br_matrix34 *pM1o1, br_vector3 *pPoint_list, br_vector3 *pNorm_list, int pMax) {
@@ -4185,7 +4185,7 @@ int __cdecl GetEdgeEdgeCollisions(br_bounds *pB1, br_bounds *pB2, br_matrix34 *p
 }
 
 function_hook_state_t function_hook_state_FacePointCarCarCollide = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_FacePointCarCarCollide)
+CARM95_WEBSERVER_STATE(FacePointCarCarCollide, function_hook_state_FacePointCarCarCollide)
 static int(__cdecl*original_FacePointCarCarCollide)(tCollision_info *, tCollision_info *, br_matrix34 *, br_matrix34 *, br_matrix34 *, br_vector3 *, br_vector3 *, int, int) = (int(__cdecl*)(tCollision_info *, tCollision_info *, br_matrix34 *, br_matrix34 *, br_matrix34 *, br_vector3 *, br_vector3 *, int, int))0x0048f686;
 CARM95_HOOK_FUNCTION(original_FacePointCarCarCollide, FacePointCarCarCollide)
 int __cdecl FacePointCarCarCollide(tCollision_info *car1, tCollision_info *car2, br_matrix34 *pMms, br_matrix34 *pMoms, br_matrix34 *pMsos, br_vector3 *pPoint_list, br_vector3 *pNorm_list, int pMax, int order) {
@@ -4240,7 +4240,7 @@ int __cdecl FacePointCarCarCollide(tCollision_info *car1, tCollision_info *car2,
 }
 
 function_hook_state_t function_hook_state_MungeCarsMass = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_MungeCarsMass)
+CARM95_WEBSERVER_STATE(MungeCarsMass, function_hook_state_MungeCarsMass)
 static void(__cdecl*original_MungeCarsMass)(tCollision_info *, br_scalar) = (void(__cdecl*)(tCollision_info *, br_scalar))0x0048fc1c;
 CARM95_HOOK_FUNCTION(original_MungeCarsMass, MungeCarsMass)
 void __cdecl MungeCarsMass(tCollision_info *pCar, br_scalar pFactor) {
@@ -4258,7 +4258,7 @@ void __cdecl MungeCarsMass(tCollision_info *pCar, br_scalar pFactor) {
 }
 
 function_hook_state_t function_hook_state_ModifyCarsMass = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_ModifyCarsMass)
+CARM95_WEBSERVER_STATE(ModifyCarsMass, function_hook_state_ModifyCarsMass)
 static void(__cdecl*original_ModifyCarsMass)(tCollision_info *, tCollision_info *) = (void(__cdecl*)(tCollision_info *, tCollision_info *))0x0048fb97;
 CARM95_HOOK_FUNCTION(original_ModifyCarsMass, ModifyCarsMass)
 void __cdecl ModifyCarsMass(tCollision_info *pCar_1, tCollision_info *pCar_2) {
@@ -4276,7 +4276,7 @@ void __cdecl ModifyCarsMass(tCollision_info *pCar_1, tCollision_info *pCar_2) {
 }
 
 function_hook_state_t function_hook_state_ResetCarsMass = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_ResetCarsMass)
+CARM95_WEBSERVER_STATE(ResetCarsMass, function_hook_state_ResetCarsMass)
 static void(__cdecl*original_ResetCarsMass)(tCollision_info *, tCollision_info *) = (void(__cdecl*)(tCollision_info *, tCollision_info *))0x0048fc7b;
 CARM95_HOOK_FUNCTION(original_ResetCarsMass, ResetCarsMass)
 void __cdecl ResetCarsMass(tCollision_info *pCar_1, tCollision_info *pCar_2) {
@@ -4294,7 +4294,7 @@ void __cdecl ResetCarsMass(tCollision_info *pCar_1, tCollision_info *pCar_2) {
 }
 
 function_hook_state_t function_hook_state_DoCollide = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DoCollide)
+CARM95_WEBSERVER_STATE(DoCollide, function_hook_state_DoCollide)
 static int(__cdecl*original_DoCollide)(tCollision_info *, tCollision_info *, br_vector3 *, br_vector3 *, int, int, br_matrix34 *) = (int(__cdecl*)(tCollision_info *, tCollision_info *, br_vector3 *, br_vector3 *, int, int, br_matrix34 *))0x0048fd16;
 CARM95_HOOK_FUNCTION(original_DoCollide, DoCollide)
 int __cdecl DoCollide(tCollision_info *car1, tCollision_info *car2, br_vector3 *r, br_vector3 *n, int k, int pPass, br_matrix34 *mat1_to_mat2) {
@@ -4391,7 +4391,7 @@ int __cdecl DoCollide(tCollision_info *car1, tCollision_info *car2, br_vector3 *
 }
 
 function_hook_state_t function_hook_state_TwoPointCollB = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_TwoPointCollB)
+CARM95_WEBSERVER_STATE(TwoPointCollB, function_hook_state_TwoPointCollB)
 static br_scalar(__cdecl*original_TwoPointCollB)(br_scalar *, br_matrix4 *, br_scalar *, br_vector3 *, br_vector3 *) = (br_scalar(__cdecl*)(br_scalar *, br_matrix4 *, br_scalar *, br_vector3 *, br_vector3 *))0x004927be;
 CARM95_HOOK_FUNCTION(original_TwoPointCollB, TwoPointCollB)
 br_scalar __cdecl TwoPointCollB(br_scalar *f, br_matrix4 *m, br_scalar *d, br_vector3 *tau, br_vector3 *n) {
@@ -4414,7 +4414,7 @@ br_scalar __cdecl TwoPointCollB(br_scalar *f, br_matrix4 *m, br_scalar *d, br_ve
 }
 
 function_hook_state_t function_hook_state_ThreePointCollRecB = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_ThreePointCollRecB)
+CARM95_WEBSERVER_STATE(ThreePointCollRecB, function_hook_state_ThreePointCollRecB)
 static br_scalar(__cdecl*original_ThreePointCollRecB)(br_scalar *, br_matrix4 *, br_scalar *, br_vector3 *, br_vector3 *) = (br_scalar(__cdecl*)(br_scalar *, br_matrix4 *, br_scalar *, br_vector3 *, br_vector3 *))0x00492961;
 CARM95_HOOK_FUNCTION(original_ThreePointCollRecB, ThreePointCollRecB)
 br_scalar __cdecl ThreePointCollRecB(br_scalar *f, br_matrix4 *m, br_scalar *d, br_vector3 *tau, br_vector3 *n) {
@@ -4441,7 +4441,7 @@ br_scalar __cdecl ThreePointCollRecB(br_scalar *f, br_matrix4 *m, br_scalar *d, 
 }
 
 function_hook_state_t function_hook_state_FourPointCollB = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_FourPointCollB)
+CARM95_WEBSERVER_STATE(FourPointCollB, function_hook_state_FourPointCollB)
 static br_scalar(__cdecl*original_FourPointCollB)(br_scalar *, br_matrix4 *, br_scalar *, br_vector3 *, br_vector3 *) = (br_scalar(__cdecl*)(br_scalar *, br_matrix4 *, br_scalar *, br_vector3 *, br_vector3 *))0x00492cdd;
 CARM95_HOOK_FUNCTION(original_FourPointCollB, FourPointCollB)
 br_scalar __cdecl FourPointCollB(br_scalar *f, br_matrix4 *m, br_scalar *d, br_vector3 *tau, br_vector3 *n) {
@@ -4470,7 +4470,7 @@ br_scalar __cdecl FourPointCollB(br_scalar *f, br_matrix4 *m, br_scalar *d, br_v
 }
 
 function_hook_state_t function_hook_state_TestForNan = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_TestForNan)
+CARM95_WEBSERVER_STATE(TestForNan, function_hook_state_TestForNan)
 static int(__cdecl*original_TestForNan)(float *) = (int(__cdecl*)(float *))0x00492ff8;
 CARM95_HOOK_FUNCTION(original_TestForNan, TestForNan)
 int __cdecl TestForNan(float *f) {
@@ -4489,7 +4489,7 @@ int __cdecl TestForNan(float *f) {
 }
 
 function_hook_state_t function_hook_state_CheckCameraHither = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_CheckCameraHither)
+CARM95_WEBSERVER_STATE(CheckCameraHither, function_hook_state_CheckCameraHither)
 static void(__cdecl*original_CheckCameraHither)() = (void(__cdecl*)())0x00493036;
 CARM95_HOOK_FUNCTION(original_CheckCameraHither, CheckCameraHither)
 void __cdecl CheckCameraHither() {
@@ -4509,7 +4509,7 @@ void __cdecl CheckCameraHither() {
 }
 
 function_hook_state_t function_hook_state_SetCarSuspGiveAndHeight = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_SetCarSuspGiveAndHeight)
+CARM95_WEBSERVER_STATE(SetCarSuspGiveAndHeight, function_hook_state_SetCarSuspGiveAndHeight)
 static void(__cdecl*original_SetCarSuspGiveAndHeight)(tCar_spec *, br_scalar, br_scalar, br_scalar, br_scalar, br_scalar) = (void(__cdecl*)(tCar_spec *, br_scalar, br_scalar, br_scalar, br_scalar, br_scalar))0x00493087;
 CARM95_HOOK_FUNCTION(original_SetCarSuspGiveAndHeight, SetCarSuspGiveAndHeight)
 void __cdecl SetCarSuspGiveAndHeight(tCar_spec *pCar, br_scalar pFront_give_factor, br_scalar pRear_give_factor, br_scalar pDamping_factor, br_scalar pExtra_front_height, br_scalar pExtra_rear_height) {
@@ -4541,7 +4541,7 @@ void __cdecl SetCarSuspGiveAndHeight(tCar_spec *pCar, br_scalar pFront_give_fact
 }
 
 function_hook_state_t function_hook_state_TestForCarInSensiblePlace = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_TestForCarInSensiblePlace)
+CARM95_WEBSERVER_STATE(TestForCarInSensiblePlace, function_hook_state_TestForCarInSensiblePlace)
 static int(__cdecl*original_TestForCarInSensiblePlace)(tCar_spec *) = (int(__cdecl*)(tCar_spec *))0x0049327e;
 CARM95_HOOK_FUNCTION(original_TestForCarInSensiblePlace, TestForCarInSensiblePlace)
 int __cdecl TestForCarInSensiblePlace(tCar_spec *car) {
@@ -4584,7 +4584,7 @@ int __cdecl TestForCarInSensiblePlace(tCar_spec *car) {
 }
 
 function_hook_state_t function_hook_state_TestOldMats = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_TestOldMats)
+CARM95_WEBSERVER_STATE(TestOldMats, function_hook_state_TestOldMats)
 static int(__cdecl*original_TestOldMats)(tCollision_info *, tCollision_info *, int) = (int(__cdecl*)(tCollision_info *, tCollision_info *, int))0x004936e6;
 CARM95_HOOK_FUNCTION(original_TestOldMats, TestOldMats)
 int __cdecl TestOldMats(tCollision_info *c1, tCollision_info *c2, int newmats) {
@@ -4647,7 +4647,7 @@ int __cdecl TestOldMats(tCollision_info *c1, tCollision_info *c2, int newmats) {
 }
 
 function_hook_state_t function_hook_state_PullActorFromWorld = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PullActorFromWorld)
+CARM95_WEBSERVER_STATE(PullActorFromWorld, function_hook_state_PullActorFromWorld)
 static int(__cdecl*original_PullActorFromWorld)(br_actor *) = (int(__cdecl*)(br_actor *))0x0049393a;
 CARM95_HOOK_FUNCTION(original_PullActorFromWorld, PullActorFromWorld)
 int __cdecl PullActorFromWorld(br_actor *pActor) {
@@ -4664,7 +4664,7 @@ int __cdecl PullActorFromWorld(br_actor *pActor) {
 }
 
 function_hook_state_t function_hook_state_DoPullActorFromWorld = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DoPullActorFromWorld)
+CARM95_WEBSERVER_STATE(DoPullActorFromWorld, function_hook_state_DoPullActorFromWorld)
 static int(__cdecl*original_DoPullActorFromWorld)(br_actor *) = (int(__cdecl*)(br_actor *))0x0049396a;
 CARM95_HOOK_FUNCTION(original_DoPullActorFromWorld, DoPullActorFromWorld)
 int __cdecl DoPullActorFromWorld(br_actor *pActor) {
@@ -4689,7 +4689,7 @@ int __cdecl DoPullActorFromWorld(br_actor *pActor) {
 }
 
 function_hook_state_t function_hook_state_CheckForDeAttachmentOfNonCars = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_CheckForDeAttachmentOfNonCars)
+CARM95_WEBSERVER_STATE(CheckForDeAttachmentOfNonCars, function_hook_state_CheckForDeAttachmentOfNonCars)
 static void(__cdecl*original_CheckForDeAttachmentOfNonCars)(tU32) = (void(__cdecl*)(tU32))0x00493c46;
 CARM95_HOOK_FUNCTION(original_CheckForDeAttachmentOfNonCars, CheckForDeAttachmentOfNonCars)
 void __cdecl CheckForDeAttachmentOfNonCars(tU32 pTime) {
@@ -4732,7 +4732,7 @@ void __cdecl CheckForDeAttachmentOfNonCars(tU32 pTime) {
 }
 
 function_hook_state_t function_hook_state_AdjustNonCar = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_AdjustNonCar)
+CARM95_WEBSERVER_STATE(AdjustNonCar, function_hook_state_AdjustNonCar)
 static void(__cdecl*original_AdjustNonCar)(br_actor *, br_matrix34 *) = (void(__cdecl*)(br_actor *, br_matrix34 *))0x00493ff2;
 CARM95_HOOK_FUNCTION(original_AdjustNonCar, AdjustNonCar)
 void __cdecl AdjustNonCar(br_actor *pActor, br_matrix34 *pMat) {
@@ -4756,7 +4756,7 @@ void __cdecl AdjustNonCar(br_actor *pActor, br_matrix34 *pMat) {
 }
 
 function_hook_state_t function_hook_state_PipeSingleNonCar = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PipeSingleNonCar)
+CARM95_WEBSERVER_STATE(PipeSingleNonCar, function_hook_state_PipeSingleNonCar)
 static void(__cdecl*original_PipeSingleNonCar)(tCollision_info *) = (void(__cdecl*)(tCollision_info *))0x004940c2;
 CARM95_HOOK_FUNCTION(original_PipeSingleNonCar, PipeSingleNonCar)
 void __cdecl PipeSingleNonCar(tCollision_info *c) {
@@ -4773,7 +4773,7 @@ void __cdecl PipeSingleNonCar(tCollision_info *c) {
 }
 
 function_hook_state_t function_hook_state_GetPrecalculatedFacesUnderCar = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_GetPrecalculatedFacesUnderCar)
+CARM95_WEBSERVER_STATE(GetPrecalculatedFacesUnderCar, function_hook_state_GetPrecalculatedFacesUnderCar)
 static int(__cdecl*original_GetPrecalculatedFacesUnderCar)(tCar_spec *, tFace_ref **) = (int(__cdecl*)(tCar_spec *, tFace_ref **))0x004941a2;
 CARM95_HOOK_FUNCTION(original_GetPrecalculatedFacesUnderCar, GetPrecalculatedFacesUnderCar)
 int __cdecl GetPrecalculatedFacesUnderCar(tCar_spec *pCar, tFace_ref **pFace_refs) {
@@ -4791,7 +4791,7 @@ int __cdecl GetPrecalculatedFacesUnderCar(tCar_spec *pCar, tFace_ref **pFace_ref
 }
 
 function_hook_state_t function_hook_state_SomeNearbyMaterial = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_SomeNearbyMaterial)
+CARM95_WEBSERVER_STATE(SomeNearbyMaterial, function_hook_state_SomeNearbyMaterial)
 br_material* SomeNearbyMaterial() {
     LOG_TRACE("()");
 

@@ -18,7 +18,7 @@ br_resource_class(* hookvar_resourceClasses__pmsetup )[2];
 #endif
 
 function_hook_state_t function_hook_state_BrPixelmapBegin = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrPixelmapBegin)
+CARM95_WEBSERVER_STATE(BrPixelmapBegin, function_hook_state_BrPixelmapBegin)
 static void(__cdecl*original_BrPixelmapBegin)() = (void(__cdecl*)())0x004d03f0;
 CARM95_HOOK_FUNCTION(original_BrPixelmapBegin, BrPixelmapBegin)
 void __cdecl BrPixelmapBegin() {
@@ -36,7 +36,7 @@ void __cdecl BrPixelmapBegin() {
 }
 
 function_hook_state_t function_hook_state_BrPixelmapEnd = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrPixelmapEnd)
+CARM95_WEBSERVER_STATE(BrPixelmapEnd, function_hook_state_BrPixelmapEnd)
 static void(__cdecl*original_BrPixelmapEnd)() = (void(__cdecl*)())0x004d0440;
 CARM95_HOOK_FUNCTION(original_BrPixelmapEnd, BrPixelmapEnd)
 void __cdecl BrPixelmapEnd() {

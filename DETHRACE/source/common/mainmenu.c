@@ -19,7 +19,7 @@ int * hookvar_gReplace_background  = (void*)0x0053626c;
 char ** hookvar_gPixels_copy__mainmenu  = (void*)0x00536258;
 
 function_hook_state_t function_hook_state_MainMenuDone1 = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_MainMenuDone1)
+CARM95_WEBSERVER_STATE(MainMenuDone1, function_hook_state_MainMenuDone1)
 static int(__cdecl*original_MainMenuDone1)(int, int, int, int, int) = (int(__cdecl*)(int, int, int, int, int))0x0044ae90;
 CARM95_HOOK_FUNCTION(original_MainMenuDone1, MainMenuDone1)
 int __cdecl MainMenuDone1(int pCurrent_choice, int pCurrent_mode, int pGo_ahead, int pEscaped, int pTimed_out) {
@@ -40,7 +40,7 @@ int __cdecl MainMenuDone1(int pCurrent_choice, int pCurrent_mode, int pGo_ahead,
 }
 
 function_hook_state_t function_hook_state_MainMenuDone2 = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_MainMenuDone2)
+CARM95_WEBSERVER_STATE(MainMenuDone2, function_hook_state_MainMenuDone2)
 static int(__cdecl*original_MainMenuDone2)(int, int, int, int, int) = (int(__cdecl*)(int, int, int, int, int))0x0044af61;
 CARM95_HOOK_FUNCTION(original_MainMenuDone2, MainMenuDone2)
 int __cdecl MainMenuDone2(int pCurrent_choice, int pCurrent_mode, int pGo_ahead, int pEscaped, int pTimed_out) {
@@ -61,7 +61,7 @@ int __cdecl MainMenuDone2(int pCurrent_choice, int pCurrent_mode, int pGo_ahead,
 }
 
 function_hook_state_t function_hook_state_StartMainMenu = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_StartMainMenu)
+CARM95_WEBSERVER_STATE(StartMainMenu, function_hook_state_StartMainMenu)
 static void(__cdecl*original_StartMainMenu)() = (void(__cdecl*)())0x0044b018;
 CARM95_HOOK_FUNCTION(original_StartMainMenu, StartMainMenu)
 void __cdecl StartMainMenu() {
@@ -77,7 +77,7 @@ void __cdecl StartMainMenu() {
 }
 
 function_hook_state_t function_hook_state_DoMainMenuInterface = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DoMainMenuInterface)
+CARM95_WEBSERVER_STATE(DoMainMenuInterface, function_hook_state_DoMainMenuInterface)
 static int(__cdecl*original_DoMainMenuInterface)(tU32, int) = (int(__cdecl*)(tU32, int))0x0044b7cc;
 CARM95_HOOK_FUNCTION(original_DoMainMenuInterface, DoMainMenuInterface)
 int __cdecl DoMainMenuInterface(tU32 pTime_out, int pContinue_allowed) {
@@ -117,7 +117,7 @@ int __cdecl DoMainMenuInterface(tU32 pTime_out, int pContinue_allowed) {
 }
 
 function_hook_state_t function_hook_state_GetMainMenuOption = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_GetMainMenuOption)
+CARM95_WEBSERVER_STATE(GetMainMenuOption, function_hook_state_GetMainMenuOption)
 static tMM_result(__cdecl*original_GetMainMenuOption)(tU32, int) = (tMM_result(__cdecl*)(tU32, int))0x0044b6bc;
 CARM95_HOOK_FUNCTION(original_GetMainMenuOption, GetMainMenuOption)
 tMM_result __cdecl GetMainMenuOption(tU32 pTime_out, int pContinue_allowed) {
@@ -137,7 +137,7 @@ tMM_result __cdecl GetMainMenuOption(tU32 pTime_out, int pContinue_allowed) {
 }
 
 function_hook_state_t function_hook_state_QuitVerifyStart = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_QuitVerifyStart)
+CARM95_WEBSERVER_STATE(QuitVerifyStart, function_hook_state_QuitVerifyStart)
 static void(__cdecl*original_QuitVerifyStart)() = (void(__cdecl*)())0x0044b101;
 CARM95_HOOK_FUNCTION(original_QuitVerifyStart, QuitVerifyStart)
 void __cdecl QuitVerifyStart() {
@@ -153,7 +153,7 @@ void __cdecl QuitVerifyStart() {
 }
 
 function_hook_state_t function_hook_state_QuitVerifyDone = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_QuitVerifyDone)
+CARM95_WEBSERVER_STATE(QuitVerifyDone, function_hook_state_QuitVerifyDone)
 static int(__cdecl*original_QuitVerifyDone)(int, int, int, int, int) = (int(__cdecl*)(int, int, int, int, int))0x0044b192;
 CARM95_HOOK_FUNCTION(original_QuitVerifyDone, QuitVerifyDone)
 int __cdecl QuitVerifyDone(int pCurrent_choice, int pCurrent_mode, int pGo_ahead, int pEscaped, int pTimed_out) {
@@ -174,7 +174,7 @@ int __cdecl QuitVerifyDone(int pCurrent_choice, int pCurrent_mode, int pGo_ahead
 }
 
 function_hook_state_t function_hook_state_DoVerifyQuit = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DoVerifyQuit)
+CARM95_WEBSERVER_STATE(DoVerifyQuit, function_hook_state_DoVerifyQuit)
 static int(__cdecl*original_DoVerifyQuit)(int) = (int(__cdecl*)(int))0x0044b25a;
 CARM95_HOOK_FUNCTION(original_DoVerifyQuit, DoVerifyQuit)
 int __cdecl DoVerifyQuit(int pReplace_background) {
@@ -207,7 +207,7 @@ int __cdecl DoVerifyQuit(int pReplace_background) {
 }
 
 function_hook_state_t function_hook_state_DoMainMenu = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DoMainMenu)
+CARM95_WEBSERVER_STATE(DoMainMenu, function_hook_state_DoMainMenu)
 static tMM_result(__cdecl*original_DoMainMenu)(tU32, int, int) = (tMM_result(__cdecl*)(tU32, int, int))0x0044b51b;
 CARM95_HOOK_FUNCTION(original_DoMainMenu, DoMainMenu)
 tMM_result __cdecl DoMainMenu(tU32 pTime_out, int pSave_allowed, int pContinue_allowed) {
@@ -228,7 +228,7 @@ tMM_result __cdecl DoMainMenu(tU32 pTime_out, int pSave_allowed, int pContinue_a
 }
 
 function_hook_state_t function_hook_state_DoMainMenuScreen = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DoMainMenuScreen)
+CARM95_WEBSERVER_STATE(DoMainMenuScreen, function_hook_state_DoMainMenuScreen)
 static void(__cdecl*original_DoMainMenuScreen)(tU32, int, int) = (void(__cdecl*)(tU32, int, int))0x0044b3c3;
 CARM95_HOOK_FUNCTION(original_DoMainMenuScreen, DoMainMenuScreen)
 void __cdecl DoMainMenuScreen(tU32 pTime_out, int pSave_allowed, int pContinue_allowed) {

@@ -23,7 +23,7 @@ br_pixelmap ** hookvar_gSource_for_16bit_palette ;
 #endif
 
 function_hook_state_t function_hook_state_CheckQuit = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_CheckQuit)
+CARM95_WEBSERVER_STATE(CheckQuit, function_hook_state_CheckQuit)
 static int(__cdecl*original_CheckQuit)() = (int(__cdecl*)())0x004c1590;
 CARM95_HOOK_FUNCTION(original_CheckQuit, CheckQuit)
 int __cdecl CheckQuit() {
@@ -41,7 +41,7 @@ int __cdecl CheckQuit() {
 }
 
 function_hook_state_t function_hook_state_sqr = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_sqr)
+CARM95_WEBSERVER_STATE(sqr, function_hook_state_sqr)
 static double(__cdecl*original_sqr)(double) = (double(__cdecl*)(double))0x004c161d;
 CARM95_HOOK_FUNCTION(original_sqr, sqr)
 double __cdecl sqr(double pN) {
@@ -58,7 +58,7 @@ double __cdecl sqr(double pN) {
 }
 
 function_hook_state_t function_hook_state_EncodeLine = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_EncodeLine)
+CARM95_WEBSERVER_STATE(EncodeLine, function_hook_state_EncodeLine)
 static void(__cdecl*original_EncodeLine)(char *) = (void(__cdecl*)(char *))0x004c1ab1;
 CARM95_HOOK_FUNCTION(original_EncodeLine, EncodeLine)
 void __cdecl EncodeLine(char *pS) {
@@ -91,7 +91,7 @@ void __cdecl EncodeLine(char *pS) {
 }
 
 function_hook_state_t function_hook_state_IRandomBetween = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_IRandomBetween)
+CARM95_WEBSERVER_STATE(IRandomBetween, function_hook_state_IRandomBetween)
 static int(__cdecl*original_IRandomBetween)(int, int) = (int(__cdecl*)(int, int))0x004c1633;
 CARM95_HOOK_FUNCTION(original_IRandomBetween, IRandomBetween)
 int __cdecl IRandomBetween(int pA, int pB) {
@@ -113,7 +113,7 @@ int __cdecl IRandomBetween(int pA, int pB) {
 }
 
 function_hook_state_t function_hook_state_PercentageChance = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PercentageChance)
+CARM95_WEBSERVER_STATE(PercentageChance, function_hook_state_PercentageChance)
 static int(__cdecl*original_PercentageChance)(int) = (int(__cdecl*)(int))0x004c166c;
 CARM95_HOOK_FUNCTION(original_PercentageChance, PercentageChance)
 int __cdecl PercentageChance(int pC) {
@@ -130,7 +130,7 @@ int __cdecl PercentageChance(int pC) {
 }
 
 function_hook_state_t function_hook_state_IRandomPosNeg = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_IRandomPosNeg)
+CARM95_WEBSERVER_STATE(IRandomPosNeg, function_hook_state_IRandomPosNeg)
 static int(__cdecl*original_IRandomPosNeg)(int) = (int(__cdecl*)(int))0x004c169d;
 CARM95_HOOK_FUNCTION(original_IRandomPosNeg, IRandomPosNeg)
 int __cdecl IRandomPosNeg(int pN) {
@@ -147,7 +147,7 @@ int __cdecl IRandomPosNeg(int pN) {
 }
 
 function_hook_state_t function_hook_state_FRandomBetween = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_FRandomBetween)
+CARM95_WEBSERVER_STATE(FRandomBetween, function_hook_state_FRandomBetween)
 static float(__cdecl*original_FRandomBetween)(float, float) = (float(__cdecl*)(float, float))0x004c16bf;
 CARM95_HOOK_FUNCTION(original_FRandomBetween, FRandomBetween)
 float __cdecl FRandomBetween(float pA, float pB) {
@@ -165,7 +165,7 @@ float __cdecl FRandomBetween(float pA, float pB) {
 }
 
 function_hook_state_t function_hook_state_FRandomPosNeg = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_FRandomPosNeg)
+CARM95_WEBSERVER_STATE(FRandomPosNeg, function_hook_state_FRandomPosNeg)
 static float(__cdecl*original_FRandomPosNeg)(float) = (float(__cdecl*)(float))0x004c16ee;
 CARM95_HOOK_FUNCTION(original_FRandomPosNeg, FRandomPosNeg)
 float __cdecl FRandomPosNeg(float pN) {
@@ -182,7 +182,7 @@ float __cdecl FRandomPosNeg(float pN) {
 }
 
 function_hook_state_t function_hook_state_SRandomBetween = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_SRandomBetween)
+CARM95_WEBSERVER_STATE(SRandomBetween, function_hook_state_SRandomBetween)
 static br_scalar(__cdecl*original_SRandomBetween)(br_scalar, br_scalar) = (br_scalar(__cdecl*)(br_scalar, br_scalar))0x004c1715;
 CARM95_HOOK_FUNCTION(original_SRandomBetween, SRandomBetween)
 br_scalar __cdecl SRandomBetween(br_scalar pA, br_scalar pB) {
@@ -200,7 +200,7 @@ br_scalar __cdecl SRandomBetween(br_scalar pA, br_scalar pB) {
 }
 
 function_hook_state_t function_hook_state_SRandomPosNeg = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_SRandomPosNeg)
+CARM95_WEBSERVER_STATE(SRandomPosNeg, function_hook_state_SRandomPosNeg)
 static br_scalar(__cdecl*original_SRandomPosNeg)(br_scalar) = (br_scalar(__cdecl*)(br_scalar))0x004c1735;
 CARM95_HOOK_FUNCTION(original_SRandomPosNeg, SRandomPosNeg)
 br_scalar __cdecl SRandomPosNeg(br_scalar pN) {
@@ -217,7 +217,7 @@ br_scalar __cdecl SRandomPosNeg(br_scalar pN) {
 }
 
 function_hook_state_t function_hook_state_GetALineWithNoPossibleService = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_GetALineWithNoPossibleService)
+CARM95_WEBSERVER_STATE(GetALineWithNoPossibleService, function_hook_state_GetALineWithNoPossibleService)
 static char *(__cdecl*original_GetALineWithNoPossibleService)(FILE *, unsigned char *) = (char *(__cdecl*)(FILE *, unsigned char *))0x004c175c;
 CARM95_HOOK_FUNCTION(original_GetALineWithNoPossibleService, GetALineWithNoPossibleService)
 char* __cdecl GetALineWithNoPossibleService(FILE *pF, unsigned char *pS) {
@@ -245,7 +245,7 @@ char* __cdecl GetALineWithNoPossibleService(FILE *pF, unsigned char *pS) {
 }
 
 function_hook_state_t function_hook_state_GetALineAndDontArgue = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_GetALineAndDontArgue)
+CARM95_WEBSERVER_STATE(GetALineAndDontArgue, function_hook_state_GetALineAndDontArgue)
 static char *(__cdecl*original_GetALineAndDontArgue)(FILE *, char *) = (char *(__cdecl*)(FILE *, char *))0x004c1d44;
 CARM95_HOOK_FUNCTION(original_GetALineAndDontArgue, GetALineAndDontArgue)
 char* __cdecl GetALineAndDontArgue(FILE *pF, char *pS) {
@@ -263,7 +263,7 @@ char* __cdecl GetALineAndDontArgue(FILE *pF, char *pS) {
 }
 
 function_hook_state_t function_hook_state_PathCat = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PathCat)
+CARM95_WEBSERVER_STATE(PathCat, function_hook_state_PathCat)
 static void(__cdecl*original_PathCat)(char *, char *, char *) = (void(__cdecl*)(char *, char *, char *))0x004c1d69;
 CARM95_HOOK_FUNCTION(original_PathCat, PathCat)
 void __cdecl PathCat(char *pDestn_str, char *pStr_1, char *pStr_2) {
@@ -282,7 +282,7 @@ void __cdecl PathCat(char *pDestn_str, char *pStr_1, char *pStr_2) {
 }
 
 function_hook_state_t function_hook_state_Chance = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_Chance)
+CARM95_WEBSERVER_STATE(Chance, function_hook_state_Chance)
 static int(__cdecl*original_Chance)(float, int) = (int(__cdecl*)(float, int))0x004c1e16;
 CARM95_HOOK_FUNCTION(original_Chance, Chance)
 int __cdecl Chance(float pChance_per_second, int pPeriod) {
@@ -300,7 +300,7 @@ int __cdecl Chance(float pChance_per_second, int pPeriod) {
 }
 
 function_hook_state_t function_hook_state_tandeg = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_tandeg)
+CARM95_WEBSERVER_STATE(tandeg, function_hook_state_tandeg)
 static float(__cdecl*original_tandeg)(float) = (float(__cdecl*)(float))0x004c1e63;
 CARM95_HOOK_FUNCTION(original_tandeg, tandeg)
 float __cdecl tandeg(float pAngle) {
@@ -317,7 +317,7 @@ float __cdecl tandeg(float pAngle) {
 }
 
 function_hook_state_t function_hook_state_GetFileLength = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_GetFileLength)
+CARM95_WEBSERVER_STATE(GetFileLength, function_hook_state_GetFileLength)
 static tU32(__cdecl*original_GetFileLength)(FILE *) = (tU32(__cdecl*)(FILE *))0x004c1e94;
 CARM95_HOOK_FUNCTION(original_GetFileLength, GetFileLength)
 tU32 __cdecl GetFileLength(FILE *pF) {
@@ -336,7 +336,7 @@ tU32 __cdecl GetFileLength(FILE *pF) {
 }
 
 function_hook_state_t function_hook_state_BooleanTo1Or0 = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BooleanTo1Or0)
+CARM95_WEBSERVER_STATE(BooleanTo1Or0, function_hook_state_BooleanTo1Or0)
 static int(__cdecl*original_BooleanTo1Or0)(int) = (int(__cdecl*)(int))0x004c1ed5;
 CARM95_HOOK_FUNCTION(original_BooleanTo1Or0, BooleanTo1Or0)
 int __cdecl BooleanTo1Or0(int pB) {
@@ -353,7 +353,7 @@ int __cdecl BooleanTo1Or0(int pB) {
 }
 
 function_hook_state_t function_hook_state_DRPixelmapAllocate = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DRPixelmapAllocate)
+CARM95_WEBSERVER_STATE(DRPixelmapAllocate, function_hook_state_DRPixelmapAllocate)
 static br_pixelmap *(__cdecl*original_DRPixelmapAllocate)(br_uint_8, br_uint_16, br_uint_16, void *, int) = (br_pixelmap *(__cdecl*)(br_uint_8, br_uint_16, br_uint_16, void *, int))0x004c1efb;
 CARM95_HOOK_FUNCTION(original_DRPixelmapAllocate, DRPixelmapAllocate)
 br_pixelmap* __cdecl DRPixelmapAllocate(br_uint_8 pType, br_uint_16 pW, br_uint_16 pH, void *pPixels, int pFlags) {
@@ -376,7 +376,7 @@ br_pixelmap* __cdecl DRPixelmapAllocate(br_uint_8 pType, br_uint_16 pW, br_uint_
 }
 
 function_hook_state_t function_hook_state_DRPixelmapAllocateSub = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DRPixelmapAllocateSub)
+CARM95_WEBSERVER_STATE(DRPixelmapAllocateSub, function_hook_state_DRPixelmapAllocateSub)
 static br_pixelmap *(__cdecl*original_DRPixelmapAllocateSub)(br_pixelmap *, br_uint_16, br_uint_16, br_uint_16, br_uint_16) = (br_pixelmap *(__cdecl*)(br_pixelmap *, br_uint_16, br_uint_16, br_uint_16, br_uint_16))0x004c1f56;
 CARM95_HOOK_FUNCTION(original_DRPixelmapAllocateSub, DRPixelmapAllocateSub)
 br_pixelmap* __cdecl DRPixelmapAllocateSub(br_pixelmap *pPm, br_uint_16 pX, br_uint_16 pY, br_uint_16 pW, br_uint_16 pH) {
@@ -399,7 +399,7 @@ br_pixelmap* __cdecl DRPixelmapAllocateSub(br_pixelmap *pPm, br_uint_16 pX, br_u
 }
 
 function_hook_state_t function_hook_state_DRPixelmapMatchSized = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DRPixelmapMatchSized)
+CARM95_WEBSERVER_STATE(DRPixelmapMatchSized, function_hook_state_DRPixelmapMatchSized)
 br_pixelmap* DRPixelmapMatchSized(br_pixelmap *pSrc, tU8 pMatch_type, tS32 pWidth, tS32 pHeight) {
     br_pixelmap *result;
     LOG_TRACE("(%p, %u, %d, %d)", pSrc, pMatch_type, pWidth, pHeight);
@@ -419,7 +419,7 @@ br_pixelmap* DRPixelmapMatchSized(br_pixelmap *pSrc, tU8 pMatch_type, tS32 pWidt
 }
 
 function_hook_state_t function_hook_state_CopyDoubled8BitTo16BitRectangle = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_CopyDoubled8BitTo16BitRectangle)
+CARM95_WEBSERVER_STATE(CopyDoubled8BitTo16BitRectangle, function_hook_state_CopyDoubled8BitTo16BitRectangle)
 void CopyDoubled8BitTo16BitRectangle(br_pixelmap *pDst, br_pixelmap *pSrc, int pSrc_width, int pSrc_height, int pDst_x, int pDst_y, br_pixelmap *pPalette) {
     int x;
     int y;
@@ -452,7 +452,7 @@ void CopyDoubled8BitTo16BitRectangle(br_pixelmap *pDst, br_pixelmap *pSrc, int p
 }
 
 function_hook_state_t function_hook_state_Scale8BitPixelmap = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_Scale8BitPixelmap)
+CARM95_WEBSERVER_STATE(Scale8BitPixelmap, function_hook_state_Scale8BitPixelmap)
 br_pixelmap* Scale8BitPixelmap(br_pixelmap *pSrc, int pWidth, int pHeight) {
     br_pixelmap *result;
     int x;
@@ -479,7 +479,7 @@ br_pixelmap* Scale8BitPixelmap(br_pixelmap *pSrc, int pWidth, int pHeight) {
 }
 
 function_hook_state_t function_hook_state_Tile8BitPixelmap = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_Tile8BitPixelmap)
+CARM95_WEBSERVER_STATE(Tile8BitPixelmap, function_hook_state_Tile8BitPixelmap)
 br_pixelmap* Tile8BitPixelmap(br_pixelmap *pSrc, int pN) {
     br_pixelmap *result;
     int new_width;
@@ -511,7 +511,7 @@ br_pixelmap* Tile8BitPixelmap(br_pixelmap *pSrc, int pN) {
 }
 
 function_hook_state_t function_hook_state_FindExceptionInList = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_FindExceptionInList)
+CARM95_WEBSERVER_STATE(FindExceptionInList, function_hook_state_FindExceptionInList)
 tException_list FindExceptionInList(char *pName, tException_list pList) {
     LOG_TRACE("(\"%s\", %p)", pName, pList);
 
@@ -527,7 +527,7 @@ tException_list FindExceptionInList(char *pName, tException_list pList) {
 }
 
 function_hook_state_t function_hook_state_PurifiedPixelmap = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PurifiedPixelmap)
+CARM95_WEBSERVER_STATE(PurifiedPixelmap, function_hook_state_PurifiedPixelmap)
 br_pixelmap* PurifiedPixelmap(br_pixelmap *pSrc) {
     br_pixelmap *intermediate;
     br_pixelmap *result;
@@ -552,7 +552,7 @@ br_pixelmap* PurifiedPixelmap(br_pixelmap *pSrc) {
 }
 
 function_hook_state_t function_hook_state_DRPixelmapLoad = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DRPixelmapLoad)
+CARM95_WEBSERVER_STATE(DRPixelmapLoad, function_hook_state_DRPixelmapLoad)
 static br_pixelmap *(__cdecl*original_DRPixelmapLoad)(char *) = (br_pixelmap *(__cdecl*)(char *))0x004c1fbb;
 CARM95_HOOK_FUNCTION(original_DRPixelmapLoad, DRPixelmapLoad)
 br_pixelmap* __cdecl DRPixelmapLoad(char *pFile_name) {
@@ -571,7 +571,7 @@ br_pixelmap* __cdecl DRPixelmapLoad(char *pFile_name) {
 }
 
 function_hook_state_t function_hook_state_DRPixelmapLoadMany = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DRPixelmapLoadMany)
+CARM95_WEBSERVER_STATE(DRPixelmapLoadMany, function_hook_state_DRPixelmapLoadMany)
 static br_uint_32(__cdecl*original_DRPixelmapLoadMany)(char *, br_pixelmap **, br_uint_16) = (br_uint_32(__cdecl*)(char *, br_pixelmap **, br_uint_16))0x004c2010;
 CARM95_HOOK_FUNCTION(original_DRPixelmapLoadMany, DRPixelmapLoadMany)
 br_uint_32 __cdecl DRPixelmapLoadMany(char *pFile_name, br_pixelmap **pPixelmaps, br_uint_16 pNum) {
@@ -596,7 +596,7 @@ br_uint_32 __cdecl DRPixelmapLoadMany(char *pFile_name, br_pixelmap **pPixelmaps
 }
 
 function_hook_state_t function_hook_state_WaitFor = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_WaitFor)
+CARM95_WEBSERVER_STATE(WaitFor, function_hook_state_WaitFor)
 static void(__cdecl*original_WaitFor)(tU32) = (void(__cdecl*)(tU32))0x004c209b;
 CARM95_HOOK_FUNCTION(original_WaitFor, WaitFor)
 void __cdecl WaitFor(tU32 pDelay) {
@@ -615,7 +615,7 @@ void __cdecl WaitFor(tU32 pDelay) {
 }
 
 function_hook_state_t function_hook_state_DRActorEnumRecurse = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DRActorEnumRecurse)
+CARM95_WEBSERVER_STATE(DRActorEnumRecurse, function_hook_state_DRActorEnumRecurse)
 static br_uint_32(__cdecl*original_DRActorEnumRecurse)(br_actor *, br_actor_enum_cbfn *, void *) = (br_uint_32(__cdecl*)(br_actor *, br_actor_enum_cbfn *, void *))0x004c20ce;
 CARM95_HOOK_FUNCTION(original_DRActorEnumRecurse, DRActorEnumRecurse)
 br_uint_32 __cdecl DRActorEnumRecurse(br_actor *pActor, br_actor_enum_cbfn *callback, void *arg) {
@@ -636,7 +636,7 @@ br_uint_32 __cdecl DRActorEnumRecurse(br_actor *pActor, br_actor_enum_cbfn *call
 }
 
 function_hook_state_t function_hook_state_CompareActorID = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_CompareActorID)
+CARM95_WEBSERVER_STATE(CompareActorID, function_hook_state_CompareActorID)
 static br_uint_32(__cdecl*original_CompareActorID)(br_actor *, void *) = (br_uint_32(__cdecl*)(br_actor *, void *))0x004c2174;
 CARM95_HOOK_FUNCTION(original_CompareActorID, CompareActorID)
 br_uint_32 __cdecl CompareActorID(br_actor *pActor, void *pArg) {
@@ -654,7 +654,7 @@ br_uint_32 __cdecl CompareActorID(br_actor *pActor, void *pArg) {
 }
 
 function_hook_state_t function_hook_state_DRActorFindRecurse = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DRActorFindRecurse)
+CARM95_WEBSERVER_STATE(DRActorFindRecurse, function_hook_state_DRActorFindRecurse)
 static br_actor *(__cdecl*original_DRActorFindRecurse)(br_actor *, char *) = (br_actor *(__cdecl*)(br_actor *, char *))0x004c214f;
 CARM95_HOOK_FUNCTION(original_DRActorFindRecurse, DRActorFindRecurse)
 br_actor* __cdecl DRActorFindRecurse(br_actor *pSearch_root, char *pName) {
@@ -672,7 +672,7 @@ br_actor* __cdecl DRActorFindRecurse(br_actor *pSearch_root, char *pName) {
 }
 
 function_hook_state_t function_hook_state_DRActorEnumRecurseWithMat = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DRActorEnumRecurseWithMat)
+CARM95_WEBSERVER_STATE(DRActorEnumRecurseWithMat, function_hook_state_DRActorEnumRecurseWithMat)
 static br_uint_32(__cdecl*original_DRActorEnumRecurseWithMat)(br_actor *, br_material *, br_uint_32(**)(br_actor *, br_material *, void *), void *) = (br_uint_32(__cdecl*)(br_actor *, br_material *, br_uint_32(**)(br_actor *, br_material *, void *), void *))0x004c21e9;
 CARM95_HOOK_FUNCTION(original_DRActorEnumRecurseWithMat, DRActorEnumRecurseWithMat)
 br_uint_32 __cdecl DRActorEnumRecurseWithMat(br_actor *pActor, br_material *pMat, br_uint_32(**pCall_back)(br_actor *, br_material *, void *), void *pArg) {
@@ -694,7 +694,7 @@ br_uint_32 __cdecl DRActorEnumRecurseWithMat(br_actor *pActor, br_material *pMat
 }
 
 function_hook_state_t function_hook_state_DRActorEnumRecurseWithTrans = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DRActorEnumRecurseWithTrans)
+CARM95_WEBSERVER_STATE(DRActorEnumRecurseWithTrans, function_hook_state_DRActorEnumRecurseWithTrans)
 static br_uint_32(__cdecl*original_DRActorEnumRecurseWithTrans)(br_actor *, br_matrix34 *, br_uint_32(**)(br_actor *, br_matrix34 *, void *), void *) = (br_uint_32(__cdecl*)(br_actor *, br_matrix34 *, br_uint_32(**)(br_actor *, br_matrix34 *, void *), void *))0x004c2288;
 CARM95_HOOK_FUNCTION(original_DRActorEnumRecurseWithTrans, DRActorEnumRecurseWithTrans)
 br_uint_32 __cdecl DRActorEnumRecurseWithTrans(br_actor *pActor, br_matrix34 *pMatrix, br_uint_32(**pCall_back)(br_actor *, br_matrix34 *, void *), void *pArg) {
@@ -718,7 +718,7 @@ br_uint_32 __cdecl DRActorEnumRecurseWithTrans(br_actor *pActor, br_matrix34 *pM
 }
 
 function_hook_state_t function_hook_state_sign = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_sign)
+CARM95_WEBSERVER_STATE(sign, function_hook_state_sign)
 static int(__cdecl*original_sign)(int) = (int(__cdecl*)(int))0x004c234a;
 CARM95_HOOK_FUNCTION(original_sign, sign)
 int __cdecl sign(int pNumber) {
@@ -735,7 +735,7 @@ int __cdecl sign(int pNumber) {
 }
 
 function_hook_state_t function_hook_state_fsign = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_fsign)
+CARM95_WEBSERVER_STATE(fsign, function_hook_state_fsign)
 static float(__cdecl*original_fsign)(float) = (float(__cdecl*)(float))0x004c2384;
 CARM95_HOOK_FUNCTION(original_fsign, fsign)
 float __cdecl fsign(float pNumber) {
@@ -752,7 +752,7 @@ float __cdecl fsign(float pNumber) {
 }
 
 function_hook_state_t function_hook_state_OpenUniqueFileB = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_OpenUniqueFileB)
+CARM95_WEBSERVER_STATE(OpenUniqueFileB, function_hook_state_OpenUniqueFileB)
 static FILE *(__cdecl*original_OpenUniqueFileB)(char *, char *) = (FILE *(__cdecl*)(char *, char *))0x004c23e7;
 CARM95_HOOK_FUNCTION(original_OpenUniqueFileB, OpenUniqueFileB)
 FILE* __cdecl OpenUniqueFileB(char *pPrefix, char *pExtension) {
@@ -776,7 +776,7 @@ FILE* __cdecl OpenUniqueFileB(char *pPrefix, char *pExtension) {
 }
 
 function_hook_state_t function_hook_state_PrintScreenFile = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PrintScreenFile)
+CARM95_WEBSERVER_STATE(PrintScreenFile, function_hook_state_PrintScreenFile)
 static void(__cdecl*original_PrintScreenFile)(FILE *) = (void(__cdecl*)(FILE *))0x004c24c8;
 CARM95_HOOK_FUNCTION(original_PrintScreenFile, PrintScreenFile)
 void __cdecl PrintScreenFile(FILE *pF) {
@@ -803,7 +803,7 @@ void __cdecl PrintScreenFile(FILE *pF) {
 }
 
 function_hook_state_t function_hook_state_PrintScreenFile16 = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PrintScreenFile16)
+CARM95_WEBSERVER_STATE(PrintScreenFile16, function_hook_state_PrintScreenFile16)
 void PrintScreenFile16(FILE *pF) {
     int i;
     int j;
@@ -830,7 +830,7 @@ void PrintScreenFile16(FILE *pF) {
 }
 
 function_hook_state_t function_hook_state_PrintScreen = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PrintScreen)
+CARM95_WEBSERVER_STATE(PrintScreen, function_hook_state_PrintScreen)
 static void(__cdecl*original_PrintScreen)() = (void(__cdecl*)())0x004c272c;
 CARM95_HOOK_FUNCTION(original_PrintScreen, PrintScreen)
 void __cdecl PrintScreen() {
@@ -848,7 +848,7 @@ void __cdecl PrintScreen() {
 }
 
 function_hook_state_t function_hook_state_GetTotalTime = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_GetTotalTime)
+CARM95_WEBSERVER_STATE(GetTotalTime, function_hook_state_GetTotalTime)
 static tU32(__cdecl*original_GetTotalTime)() = (tU32(__cdecl*)())0x004c2771;
 CARM95_HOOK_FUNCTION(original_GetTotalTime, GetTotalTime)
 tU32 __cdecl GetTotalTime() {
@@ -864,7 +864,7 @@ tU32 __cdecl GetTotalTime() {
 }
 
 function_hook_state_t function_hook_state_GetRaceTime = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_GetRaceTime)
+CARM95_WEBSERVER_STATE(GetRaceTime, function_hook_state_GetRaceTime)
 static tU32(__cdecl*original_GetRaceTime)() = (tU32(__cdecl*)())0x004c27bf;
 CARM95_HOOK_FUNCTION(original_GetRaceTime, GetRaceTime)
 tU32 __cdecl GetRaceTime() {
@@ -880,7 +880,7 @@ tU32 __cdecl GetRaceTime() {
 }
 
 function_hook_state_t function_hook_state_AddLostTime = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_AddLostTime)
+CARM95_WEBSERVER_STATE(AddLostTime, function_hook_state_AddLostTime)
 static void(__cdecl*original_AddLostTime)(tU32) = (void(__cdecl*)(tU32))0x004c27da;
 CARM95_HOOK_FUNCTION(original_AddLostTime, AddLostTime)
 void __cdecl AddLostTime(tU32 pLost_time) {
@@ -897,7 +897,7 @@ void __cdecl AddLostTime(tU32 pLost_time) {
 }
 
 function_hook_state_t function_hook_state_TimerString = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_TimerString)
+CARM95_WEBSERVER_STATE(TimerString, function_hook_state_TimerString)
 static void(__cdecl*original_TimerString)(tU32, char *, int, int) = (void(__cdecl*)(tU32, char *, int, int))0x004c27ee;
 CARM95_HOOK_FUNCTION(original_TimerString, TimerString)
 void __cdecl TimerString(tU32 pTime, char *pStr, int pFudge_colon, int pForce_colon) {
@@ -919,7 +919,7 @@ void __cdecl TimerString(tU32 pTime, char *pStr, int pFudge_colon, int pForce_co
 }
 
 function_hook_state_t function_hook_state_GetMiscString = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_GetMiscString)
+CARM95_WEBSERVER_STATE(GetMiscString, function_hook_state_GetMiscString)
 static char *(__cdecl*original_GetMiscString)(int) = (char *(__cdecl*)(int))0x004c289f;
 CARM95_HOOK_FUNCTION(original_GetMiscString, GetMiscString)
 char* __cdecl GetMiscString(int pIndex) {
@@ -936,7 +936,7 @@ char* __cdecl GetMiscString(int pIndex) {
 }
 
 function_hook_state_t function_hook_state_GetCopyOfMiscString = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_GetCopyOfMiscString)
+CARM95_WEBSERVER_STATE(GetCopyOfMiscString, function_hook_state_GetCopyOfMiscString)
 static void(__cdecl*original_GetCopyOfMiscString)(int, char *) = (void(__cdecl*)(int, char *))0x004c28b9;
 CARM95_HOOK_FUNCTION(original_GetCopyOfMiscString, GetCopyOfMiscString)
 void __cdecl GetCopyOfMiscString(int pIndex, char *pStr) {
@@ -954,7 +954,7 @@ void __cdecl GetCopyOfMiscString(int pIndex, char *pStr) {
 }
 
 function_hook_state_t function_hook_state_Flash = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_Flash)
+CARM95_WEBSERVER_STATE(Flash, function_hook_state_Flash)
 static int(__cdecl*original_Flash)(tU32, tU32 *, int *) = (int(__cdecl*)(tU32, tU32 *, int *))0x004c28f0;
 CARM95_HOOK_FUNCTION(original_Flash, Flash)
 int __cdecl Flash(tU32 pPeriod, tU32 *pLast_change, int *pCurrent_state) {
@@ -975,7 +975,7 @@ int __cdecl Flash(tU32 pPeriod, tU32 *pLast_change, int *pCurrent_state) {
 }
 
 function_hook_state_t function_hook_state_MaterialCopy = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_MaterialCopy)
+CARM95_WEBSERVER_STATE(MaterialCopy, function_hook_state_MaterialCopy)
 static void(__cdecl*original_MaterialCopy)(br_material *, br_material *) = (void(__cdecl*)(br_material *, br_material *))0x004c294c;
 CARM95_HOOK_FUNCTION(original_MaterialCopy, MaterialCopy)
 void __cdecl MaterialCopy(br_material *pDst, br_material *pSrc) {
@@ -993,7 +993,7 @@ void __cdecl MaterialCopy(br_material *pDst, br_material *pSrc) {
 }
 
 function_hook_state_t function_hook_state_RGBDifferenceSqr = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_RGBDifferenceSqr)
+CARM95_WEBSERVER_STATE(RGBDifferenceSqr, function_hook_state_RGBDifferenceSqr)
 static double(__cdecl*original_RGBDifferenceSqr)(tRGB_colour *, tRGB_colour *) = (double(__cdecl*)(tRGB_colour *, tRGB_colour *))0x004c2f71;
 CARM95_HOOK_FUNCTION(original_RGBDifferenceSqr, RGBDifferenceSqr)
 double __cdecl RGBDifferenceSqr(tRGB_colour *pColour_1, tRGB_colour *pColour_2) {
@@ -1011,7 +1011,7 @@ double __cdecl RGBDifferenceSqr(tRGB_colour *pColour_1, tRGB_colour *pColour_2) 
 }
 
 function_hook_state_t function_hook_state_FindBestMatch = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_FindBestMatch)
+CARM95_WEBSERVER_STATE(FindBestMatch, function_hook_state_FindBestMatch)
 static int(__cdecl*original_FindBestMatch)(tRGB_colour *, br_pixelmap *) = (int(__cdecl*)(tRGB_colour *, br_pixelmap *))0x004c2eb8;
 CARM95_HOOK_FUNCTION(original_FindBestMatch, FindBestMatch)
 int __cdecl FindBestMatch(tRGB_colour *pRGB_colour, br_pixelmap *pPalette) {
@@ -1041,7 +1041,7 @@ int __cdecl FindBestMatch(tRGB_colour *pRGB_colour, br_pixelmap *pPalette) {
 }
 
 function_hook_state_t function_hook_state_BuildShadeTablePath = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BuildShadeTablePath)
+CARM95_WEBSERVER_STATE(BuildShadeTablePath, function_hook_state_BuildShadeTablePath)
 static void(__cdecl*original_BuildShadeTablePath)(char *, int, int, int) = (void(__cdecl*)(char *, int, int, int))0x004c2a2e;
 CARM95_HOOK_FUNCTION(original_BuildShadeTablePath, BuildShadeTablePath)
 void __cdecl BuildShadeTablePath(char *pThe_path, int pR, int pG, int pB) {
@@ -1063,7 +1063,7 @@ void __cdecl BuildShadeTablePath(char *pThe_path, int pR, int pG, int pB) {
 }
 
 function_hook_state_t function_hook_state_LoadGeneratedShadeTable = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_LoadGeneratedShadeTable)
+CARM95_WEBSERVER_STATE(LoadGeneratedShadeTable, function_hook_state_LoadGeneratedShadeTable)
 static br_pixelmap *(__cdecl*original_LoadGeneratedShadeTable)(int, int, int) = (br_pixelmap *(__cdecl*)(int, int, int))0x004c29ee;
 CARM95_HOOK_FUNCTION(original_LoadGeneratedShadeTable, LoadGeneratedShadeTable)
 br_pixelmap* __cdecl LoadGeneratedShadeTable(int pR, int pG, int pB) {
@@ -1084,7 +1084,7 @@ br_pixelmap* __cdecl LoadGeneratedShadeTable(int pR, int pG, int pB) {
 }
 
 function_hook_state_t function_hook_state_SaveGeneratedShadeTable = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_SaveGeneratedShadeTable)
+CARM95_WEBSERVER_STATE(SaveGeneratedShadeTable, function_hook_state_SaveGeneratedShadeTable)
 static void(__cdecl*original_SaveGeneratedShadeTable)(br_pixelmap *, int, int, int) = (void(__cdecl*)(br_pixelmap *, int, int, int))0x004c2b03;
 CARM95_HOOK_FUNCTION(original_SaveGeneratedShadeTable, SaveGeneratedShadeTable)
 void __cdecl SaveGeneratedShadeTable(br_pixelmap *pThe_table, int pR, int pG, int pB) {
@@ -1106,7 +1106,7 @@ void __cdecl SaveGeneratedShadeTable(br_pixelmap *pThe_table, int pR, int pG, in
 }
 
 function_hook_state_t function_hook_state_GenerateShadeTable = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_GenerateShadeTable)
+CARM95_WEBSERVER_STATE(GenerateShadeTable, function_hook_state_GenerateShadeTable)
 static br_pixelmap *(__cdecl*original_GenerateShadeTable)(int, br_pixelmap *, int, int, int, float, float, float) = (br_pixelmap *(__cdecl*)(int, br_pixelmap *, int, int, int, float, float, float))0x004c2b42;
 CARM95_HOOK_FUNCTION(original_GenerateShadeTable, GenerateShadeTable)
 br_pixelmap* __cdecl GenerateShadeTable(int pHeight, br_pixelmap *pPalette, int pRed_mix, int pGreen_mix, int pBlue_mix, float pQuarter, float pHalf, float pThree_quarter) {
@@ -1130,7 +1130,7 @@ br_pixelmap* __cdecl GenerateShadeTable(int pHeight, br_pixelmap *pPalette, int 
 }
 
 function_hook_state_t function_hook_state_GenerateDarkenedShadeTable = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_GenerateDarkenedShadeTable)
+CARM95_WEBSERVER_STATE(GenerateDarkenedShadeTable, function_hook_state_GenerateDarkenedShadeTable)
 static br_pixelmap *(__cdecl*original_GenerateDarkenedShadeTable)(int, br_pixelmap *, int, int, int, float, float, float, br_scalar) = (br_pixelmap *(__cdecl*)(int, br_pixelmap *, int, int, int, float, float, float, br_scalar))0x004c2b84;
 CARM95_HOOK_FUNCTION(original_GenerateDarkenedShadeTable, GenerateDarkenedShadeTable)
 br_pixelmap* __cdecl GenerateDarkenedShadeTable(int pHeight, br_pixelmap *pPalette, int pRed_mix, int pGreen_mix, int pBlue_mix, float pQuarter, float pHalf, float pThree_quarter, br_scalar pDarken) {
@@ -1181,7 +1181,7 @@ br_pixelmap* __cdecl GenerateDarkenedShadeTable(int pHeight, br_pixelmap *pPalet
 }
 
 function_hook_state_t function_hook_state_PossibleService = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PossibleService)
+CARM95_WEBSERVER_STATE(PossibleService, function_hook_state_PossibleService)
 static void(__cdecl*original_PossibleService)() = (void(__cdecl*)())0x004c2fdb;
 CARM95_HOOK_FUNCTION(original_PossibleService, PossibleService)
 void __cdecl PossibleService() {
@@ -1201,7 +1201,7 @@ void __cdecl PossibleService() {
 }
 
 function_hook_state_t function_hook_state_DRMatrix34TApplyP = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DRMatrix34TApplyP)
+CARM95_WEBSERVER_STATE(DRMatrix34TApplyP, function_hook_state_DRMatrix34TApplyP)
 static void(__cdecl*original_DRMatrix34TApplyP)(br_vector3 *, br_vector3 *, br_matrix34 *) = (void(__cdecl*)(br_vector3 *, br_vector3 *, br_matrix34 *))0x004c302d;
 CARM95_HOOK_FUNCTION(original_DRMatrix34TApplyP, DRMatrix34TApplyP)
 void __cdecl DRMatrix34TApplyP(br_vector3 *pA, br_vector3 *pB, br_matrix34 *pC) {
@@ -1226,7 +1226,7 @@ void __cdecl DRMatrix34TApplyP(br_vector3 *pA, br_vector3 *pB, br_matrix34 *pC) 
 }
 
 function_hook_state_t function_hook_state_PaletteEntry16Bit = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PaletteEntry16Bit)
+CARM95_WEBSERVER_STATE(PaletteEntry16Bit, function_hook_state_PaletteEntry16Bit)
 tU16 PaletteEntry16Bit(br_pixelmap *pPal, int pEntry) {
     tU32 *src_entry;
     int red;
@@ -1250,7 +1250,7 @@ tU16 PaletteEntry16Bit(br_pixelmap *pPal, int pEntry) {
 }
 
 function_hook_state_t function_hook_state_PaletteOf16Bits = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PaletteOf16Bits)
+CARM95_WEBSERVER_STATE(PaletteOf16Bits, function_hook_state_PaletteOf16Bits)
 br_pixelmap* PaletteOf16Bits(br_pixelmap *pSrc) {
     tU16 *dst_entry;
     int value;
@@ -1269,7 +1269,7 @@ br_pixelmap* PaletteOf16Bits(br_pixelmap *pSrc) {
 }
 
 function_hook_state_t function_hook_state_Copy8BitTo16Bit = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_Copy8BitTo16Bit)
+CARM95_WEBSERVER_STATE(Copy8BitTo16Bit, function_hook_state_Copy8BitTo16Bit)
 void Copy8BitTo16Bit(br_pixelmap *pDst, br_pixelmap *pSrc, br_pixelmap *pPalette) {
     int x;
     int y;
@@ -1296,7 +1296,7 @@ void Copy8BitTo16Bit(br_pixelmap *pDst, br_pixelmap *pSrc, br_pixelmap *pPalette
 }
 
 function_hook_state_t function_hook_state_Copy8BitTo16BitRectangle = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_Copy8BitTo16BitRectangle)
+CARM95_WEBSERVER_STATE(Copy8BitTo16BitRectangle, function_hook_state_Copy8BitTo16BitRectangle)
 void Copy8BitTo16BitRectangle(br_pixelmap *pDst, tS16 pDst_x, tS16 pDst_y, br_pixelmap *pSrc, tS16 pSrc_x, tS16 pSrc_y, tS16 pWidth, tS16 pHeight, br_pixelmap *pPalette) {
     int x;
     int y;
@@ -1329,7 +1329,7 @@ void Copy8BitTo16BitRectangle(br_pixelmap *pDst, tS16 pDst_x, tS16 pDst_y, br_pi
 }
 
 function_hook_state_t function_hook_state_Copy8BitTo16BitRectangleWithTransparency = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_Copy8BitTo16BitRectangleWithTransparency)
+CARM95_WEBSERVER_STATE(Copy8BitTo16BitRectangleWithTransparency, function_hook_state_Copy8BitTo16BitRectangleWithTransparency)
 void Copy8BitTo16BitRectangleWithTransparency(br_pixelmap *pDst, tS16 pDst_x, tS16 pDst_y, br_pixelmap *pSrc, tS16 pSrc_x, tS16 pSrc_y, tS16 pWidth, tS16 pHeight, br_pixelmap *pPalette) {
     int x;
     int y;
@@ -1362,7 +1362,7 @@ void Copy8BitTo16BitRectangleWithTransparency(br_pixelmap *pDst, tS16 pDst_x, tS
 }
 
 function_hook_state_t function_hook_state_Copy8BitToOnscreen16BitRectangleWithTransparency = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_Copy8BitToOnscreen16BitRectangleWithTransparency)
+CARM95_WEBSERVER_STATE(Copy8BitToOnscreen16BitRectangleWithTransparency, function_hook_state_Copy8BitToOnscreen16BitRectangleWithTransparency)
 void Copy8BitToOnscreen16BitRectangleWithTransparency(br_pixelmap *pDst, tS16 pDst_x, tS16 pDst_y, br_pixelmap *pSrc, tS16 pSrc_x, tS16 pSrc_y, tS16 pWidth, tS16 pHeight, br_pixelmap *pPalette) {
     int x;
     int y;
@@ -1395,7 +1395,7 @@ void Copy8BitToOnscreen16BitRectangleWithTransparency(br_pixelmap *pDst, tS16 pD
 }
 
 function_hook_state_t function_hook_state_Copy8BitRectangleTo16BitRhombusWithTransparency = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_Copy8BitRectangleTo16BitRhombusWithTransparency)
+CARM95_WEBSERVER_STATE(Copy8BitRectangleTo16BitRhombusWithTransparency, function_hook_state_Copy8BitRectangleTo16BitRhombusWithTransparency)
 void Copy8BitRectangleTo16BitRhombusWithTransparency(br_pixelmap *pDst, tS16 pDst_x, tS16 pDst_y, br_pixelmap *pSrc, tS16 pSrc_x, tS16 pSrc_y, tS16 pWidth, tS16 pHeight, tX1616 pShear, br_pixelmap *pPalette) {
     int x;
     int y;
@@ -1437,7 +1437,7 @@ void Copy8BitRectangleTo16BitRhombusWithTransparency(br_pixelmap *pDst, tS16 pDs
 }
 
 function_hook_state_t function_hook_state_DRPixelmapRectangleCopy = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DRPixelmapRectangleCopy)
+CARM95_WEBSERVER_STATE(DRPixelmapRectangleCopy, function_hook_state_DRPixelmapRectangleCopy)
 static void(__cdecl*original_DRPixelmapRectangleCopy)(br_pixelmap *, br_int_16, br_int_16, br_pixelmap *, br_int_16, br_int_16, br_uint_16, br_uint_16) = (void(__cdecl*)(br_pixelmap *, br_int_16, br_int_16, br_pixelmap *, br_int_16, br_int_16, br_uint_16, br_uint_16))0x004c30d1;
 CARM95_HOOK_FUNCTION(original_DRPixelmapRectangleCopy, DRPixelmapRectangleCopy)
 void __cdecl DRPixelmapRectangleCopy(br_pixelmap *dst, br_int_16 dx, br_int_16 dy, br_pixelmap *src, br_int_16 sx, br_int_16 sy, br_uint_16 w, br_uint_16 h) {
@@ -1461,7 +1461,7 @@ void __cdecl DRPixelmapRectangleCopy(br_pixelmap *dst, br_int_16 dx, br_int_16 d
 }
 
 function_hook_state_t function_hook_state_DRPixelmapCopy = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DRPixelmapCopy)
+CARM95_WEBSERVER_STATE(DRPixelmapCopy, function_hook_state_DRPixelmapCopy)
 void DRPixelmapCopy(br_pixelmap *dst, br_pixelmap *src) {
     LOG_TRACE("(%p, %p)", dst, src);
 
@@ -1477,7 +1477,7 @@ void DRPixelmapCopy(br_pixelmap *dst, br_pixelmap *src) {
 }
 
 function_hook_state_t function_hook_state_DRPixelmapRectangleFill = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DRPixelmapRectangleFill)
+CARM95_WEBSERVER_STATE(DRPixelmapRectangleFill, function_hook_state_DRPixelmapRectangleFill)
 static void(__cdecl*original_DRPixelmapRectangleFill)(br_pixelmap *, br_int_16, br_int_16, br_uint_16, br_uint_16, br_uint_32) = (void(__cdecl*)(br_pixelmap *, br_int_16, br_int_16, br_uint_16, br_uint_16, br_uint_32))0x004c3112;
 CARM95_HOOK_FUNCTION(original_DRPixelmapRectangleFill, DRPixelmapRectangleFill)
 void __cdecl DRPixelmapRectangleFill(br_pixelmap *dst, br_int_16 x, br_int_16 y, br_uint_16 w, br_uint_16 h, br_uint_32 colour) {
@@ -1499,7 +1499,7 @@ void __cdecl DRPixelmapRectangleFill(br_pixelmap *dst, br_int_16 x, br_int_16 y,
 }
 
 function_hook_state_t function_hook_state_NormalSideOfPlane = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_NormalSideOfPlane)
+CARM95_WEBSERVER_STATE(NormalSideOfPlane, function_hook_state_NormalSideOfPlane)
 static int(__cdecl*original_NormalSideOfPlane)(br_vector3 *, br_vector3 *, br_scalar) = (int(__cdecl*)(br_vector3 *, br_vector3 *, br_scalar))0x004c3149;
 CARM95_HOOK_FUNCTION(original_NormalSideOfPlane, NormalSideOfPlane)
 int __cdecl NormalSideOfPlane(br_vector3 *pPoint, br_vector3 *pNormal, br_scalar pD) {
@@ -1522,7 +1522,7 @@ int __cdecl NormalSideOfPlane(br_vector3 *pPoint, br_vector3 *pNormal, br_scalar
 }
 
 function_hook_state_t function_hook_state_DRMaterialClone = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DRMaterialClone)
+CARM95_WEBSERVER_STATE(DRMaterialClone, function_hook_state_DRMaterialClone)
 static br_material *(__cdecl*original_DRMaterialClone)(br_material *) = (br_material *(__cdecl*)(br_material *))0x004c31d1;
 CARM95_HOOK_FUNCTION(original_DRMaterialClone, DRMaterialClone)
 br_material* __cdecl DRMaterialClone(br_material *pMaterial) {
@@ -1545,7 +1545,7 @@ br_material* __cdecl DRMaterialClone(br_material *pMaterial) {
 }
 
 function_hook_state_t function_hook_state_StripCR = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_StripCR)
+CARM95_WEBSERVER_STATE(StripCR, function_hook_state_StripCR)
 static void(__cdecl*original_StripCR)(char *) = (void(__cdecl*)(char *))0x004c331e;
 CARM95_HOOK_FUNCTION(original_StripCR, StripCR)
 void __cdecl StripCR(char *s) {
@@ -1564,7 +1564,7 @@ void __cdecl StripCR(char *s) {
 }
 
 function_hook_state_t function_hook_state_SubsStringJob = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_SubsStringJob)
+CARM95_WEBSERVER_STATE(SubsStringJob, function_hook_state_SubsStringJob)
 void(__cdecl*SubsStringJob)(char *) = (void(__cdecl*)(char *))0x004c336e;
 void SubsStringJob_do_not_use(char *pStr) {
     char *sub_str;
@@ -1588,7 +1588,7 @@ void SubsStringJob_do_not_use(char *pStr) {
 }
 
 function_hook_state_t function_hook_state_DecodeLine2 = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DecodeLine2)
+CARM95_WEBSERVER_STATE(DecodeLine2, function_hook_state_DecodeLine2)
 static void(__cdecl*original_DecodeLine2)(char *) = (void(__cdecl*)(char *))0x004c3468;
 CARM95_HOOK_FUNCTION(original_DecodeLine2, DecodeLine2)
 void __cdecl DecodeLine2(char *pS) {
@@ -1615,7 +1615,7 @@ void __cdecl DecodeLine2(char *pS) {
 }
 
 function_hook_state_t function_hook_state_EncodeLine2 = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_EncodeLine2)
+CARM95_WEBSERVER_STATE(EncodeLine2, function_hook_state_EncodeLine2)
 static void(__cdecl*original_EncodeLine2)(char *) = (void(__cdecl*)(char *))0x004c368f;
 CARM95_HOOK_FUNCTION(original_EncodeLine2, EncodeLine2)
 void __cdecl EncodeLine2(char *pS) {
@@ -1644,7 +1644,7 @@ void __cdecl EncodeLine2(char *pS) {
 }
 
 function_hook_state_t function_hook_state_EncodeFile = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_EncodeFile)
+CARM95_WEBSERVER_STATE(EncodeFile, function_hook_state_EncodeFile)
 static void(__cdecl*original_EncodeFile)(char *) = (void(__cdecl*)(char *))0x004c37f5;
 CARM95_HOOK_FUNCTION(original_EncodeFile, EncodeFile)
 void __cdecl EncodeFile(char *pThe_path) {
@@ -1681,7 +1681,7 @@ void __cdecl EncodeFile(char *pThe_path) {
 }
 
 function_hook_state_t function_hook_state_EncodeFileWrapper = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_EncodeFileWrapper)
+CARM95_WEBSERVER_STATE(EncodeFileWrapper, function_hook_state_EncodeFileWrapper)
 static void(__cdecl*original_EncodeFileWrapper)(char *) = (void(__cdecl*)(char *))0x004c3b44;
 CARM95_HOOK_FUNCTION(original_EncodeFileWrapper, EncodeFileWrapper)
 void __cdecl EncodeFileWrapper(char *pThe_path) {
@@ -1700,7 +1700,7 @@ void __cdecl EncodeFileWrapper(char *pThe_path) {
 }
 
 function_hook_state_t function_hook_state_EncodeAllFilesInDirectory = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_EncodeAllFilesInDirectory)
+CARM95_WEBSERVER_STATE(EncodeAllFilesInDirectory, function_hook_state_EncodeAllFilesInDirectory)
 static void(__cdecl*original_EncodeAllFilesInDirectory)(char *) = (void(__cdecl*)(char *))0x004c3cf5;
 CARM95_HOOK_FUNCTION(original_EncodeAllFilesInDirectory, EncodeAllFilesInDirectory)
 void __cdecl EncodeAllFilesInDirectory(char *pThe_path) {
@@ -1719,7 +1719,7 @@ void __cdecl EncodeAllFilesInDirectory(char *pThe_path) {
 }
 
 function_hook_state_t function_hook_state_SkipNLines = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_SkipNLines)
+CARM95_WEBSERVER_STATE(SkipNLines, function_hook_state_SkipNLines)
 static void(__cdecl*original_SkipNLines)(FILE *) = (void(__cdecl*)(FILE *))0x004c3d32;
 CARM95_HOOK_FUNCTION(original_SkipNLines, SkipNLines)
 void __cdecl SkipNLines(FILE *pF) {
@@ -1742,7 +1742,7 @@ void __cdecl SkipNLines(FILE *pF) {
 }
 
 function_hook_state_t function_hook_state_DRStricmp = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DRStricmp)
+CARM95_WEBSERVER_STATE(DRStricmp, function_hook_state_DRStricmp)
 static int(__cdecl*original_DRStricmp)(char *, char *) = (int(__cdecl*)(char *, char *))0x004c3d94;
 CARM95_HOOK_FUNCTION(original_DRStricmp, DRStricmp)
 int __cdecl DRStricmp(char *p1, char *p2) {
@@ -1762,7 +1762,7 @@ int __cdecl DRStricmp(char *p1, char *p2) {
 }
 
 function_hook_state_t function_hook_state_GlorifyMaterial = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_GlorifyMaterial)
+CARM95_WEBSERVER_STATE(GlorifyMaterial, function_hook_state_GlorifyMaterial)
 void GlorifyMaterial(br_material **pArray, int pCount) {
     int i;
     int c;
@@ -1786,7 +1786,7 @@ void GlorifyMaterial(br_material **pArray, int pCount) {
 }
 
 function_hook_state_t function_hook_state_WhitenVertexRGB = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_WhitenVertexRGB)
+CARM95_WEBSERVER_STATE(WhitenVertexRGB, function_hook_state_WhitenVertexRGB)
 void WhitenVertexRGB(br_model **pArray, int pN) {
     int m;
     int v;
@@ -1808,7 +1808,7 @@ void WhitenVertexRGB(br_model **pArray, int pN) {
 }
 
 function_hook_state_t function_hook_state_NobbleNonzeroBlacks = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_NobbleNonzeroBlacks)
+CARM95_WEBSERVER_STATE(NobbleNonzeroBlacks, function_hook_state_NobbleNonzeroBlacks)
 void NobbleNonzeroBlacks(br_pixelmap *pPalette) {
     tU32 red;
     tU32 green;
@@ -1835,7 +1835,7 @@ void NobbleNonzeroBlacks(br_pixelmap *pPalette) {
 }
 
 function_hook_state_t function_hook_state_PDCheckDriveExists = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PDCheckDriveExists)
+CARM95_WEBSERVER_STATE(PDCheckDriveExists, function_hook_state_PDCheckDriveExists)
 static int(__cdecl*original_PDCheckDriveExists)(char *) = (int(__cdecl*)(char *))0x004c3e0c;
 CARM95_HOOK_FUNCTION(original_PDCheckDriveExists, PDCheckDriveExists)
 int __cdecl PDCheckDriveExists(char *pThe_path) {
@@ -1852,7 +1852,7 @@ int __cdecl PDCheckDriveExists(char *pThe_path) {
 }
 
 function_hook_state_t function_hook_state_OpacityInPrims = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_OpacityInPrims)
+CARM95_WEBSERVER_STATE(OpacityInPrims, function_hook_state_OpacityInPrims)
 static int(__cdecl*original_OpacityInPrims)(br_token_value *) = (int(__cdecl*)(br_token_value *))0x004c3e79;
 CARM95_HOOK_FUNCTION(original_OpacityInPrims, OpacityInPrims)
 int __cdecl OpacityInPrims(br_token_value *pPrims) {
@@ -1869,7 +1869,7 @@ int __cdecl OpacityInPrims(br_token_value *pPrims) {
 }
 
 function_hook_state_t function_hook_state_AlreadyBlended = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_AlreadyBlended)
+CARM95_WEBSERVER_STATE(AlreadyBlended, function_hook_state_AlreadyBlended)
 static int(__cdecl*original_AlreadyBlended)(br_material *) = (int(__cdecl*)(br_material *))0x004c3e2c;
 CARM95_HOOK_FUNCTION(original_AlreadyBlended, AlreadyBlended)
 int __cdecl AlreadyBlended(br_material *pMaterial) {
@@ -1886,7 +1886,7 @@ int __cdecl AlreadyBlended(br_material *pMaterial) {
 }
 
 function_hook_state_t function_hook_state_BlendifyMaterialTablishly = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BlendifyMaterialTablishly)
+CARM95_WEBSERVER_STATE(BlendifyMaterialTablishly, function_hook_state_BlendifyMaterialTablishly)
 static void(__cdecl*original_BlendifyMaterialTablishly)(br_material *, int) = (void(__cdecl*)(br_material *, int))0x004c3f0d;
 CARM95_HOOK_FUNCTION(original_BlendifyMaterialTablishly, BlendifyMaterialTablishly)
 void __cdecl BlendifyMaterialTablishly(br_material *pMaterial, int pPercent) {
@@ -1906,7 +1906,7 @@ void __cdecl BlendifyMaterialTablishly(br_material *pMaterial, int pPercent) {
 }
 
 function_hook_state_t function_hook_state_BlendifyMaterialPrimitively = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BlendifyMaterialPrimitively)
+CARM95_WEBSERVER_STATE(BlendifyMaterialPrimitively, function_hook_state_BlendifyMaterialPrimitively)
 static void(__cdecl*original_BlendifyMaterialPrimitively)(br_material *, int) = (void(__cdecl*)(br_material *, int))0x004c3fb5;
 CARM95_HOOK_FUNCTION(original_BlendifyMaterialPrimitively, BlendifyMaterialPrimitively)
 void __cdecl BlendifyMaterialPrimitively(br_material *pMaterial, int pPercent) {
@@ -1930,7 +1930,7 @@ void __cdecl BlendifyMaterialPrimitively(br_material *pMaterial, int pPercent) {
 }
 
 function_hook_state_t function_hook_state_BlendifyMaterial = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BlendifyMaterial)
+CARM95_WEBSERVER_STATE(BlendifyMaterial, function_hook_state_BlendifyMaterial)
 static void(__cdecl*original_BlendifyMaterial)(br_material *, int) = (void(__cdecl*)(br_material *, int))0x004c3eca;
 CARM95_HOOK_FUNCTION(original_BlendifyMaterial, BlendifyMaterial)
 void __cdecl BlendifyMaterial(br_material *pMaterial, int pPercent) {

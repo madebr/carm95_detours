@@ -10,7 +10,7 @@
 br_pixelmap ** hookvar_last_begin_screen  = (void*)0x00541b08;
 
 function_hook_state_t function_hook_state_BrDevLastBeginQuery = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrDevLastBeginQuery)
+CARM95_WEBSERVER_STATE(BrDevLastBeginQuery, function_hook_state_BrDevLastBeginQuery)
 static br_pixelmap *(__cdecl*original_BrDevLastBeginQuery)() = (br_pixelmap *(__cdecl*)())0x004dff60;
 CARM95_HOOK_FUNCTION(original_BrDevLastBeginQuery, BrDevLastBeginQuery)
 br_pixelmap* __cdecl BrDevLastBeginQuery() {
@@ -26,7 +26,7 @@ br_pixelmap* __cdecl BrDevLastBeginQuery() {
 }
 
 function_hook_state_t function_hook_state_BrDevLastBeginSet = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrDevLastBeginSet)
+CARM95_WEBSERVER_STATE(BrDevLastBeginSet, function_hook_state_BrDevLastBeginSet)
 static void(__stdcall*original_BrDevLastBeginSet)(br_pixelmap *) = (void(__stdcall*)(br_pixelmap *))0x004dff70;
 CARM95_HOOK_FUNCTION(original_BrDevLastBeginSet, BrDevLastBeginSet)
 void __stdcall BrDevLastBeginSet(br_pixelmap *pm) {
@@ -43,7 +43,7 @@ void __stdcall BrDevLastBeginSet(br_pixelmap *pm) {
 }
 
 function_hook_state_t function_hook_state_BrDevBeginVar = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrDevBeginVar)
+CARM95_WEBSERVER_STATE(BrDevBeginVar, function_hook_state_BrDevBeginVar)
 br_error(__stdcall*BrDevBeginVar)(br_pixelmap **, char *) = (br_error(__stdcall*)(br_pixelmap **, char *))0x004dff80;
 br_error BrDevBeginVar_do_not_use(br_pixelmap **ppm, char *setup_string) {
     va_list vl;
@@ -68,7 +68,7 @@ br_error BrDevBeginVar_do_not_use(br_pixelmap **ppm, char *setup_string) {
 }
 
 function_hook_state_t function_hook_state_BrDevBegin = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrDevBegin)
+CARM95_WEBSERVER_STATE(BrDevBegin, function_hook_state_BrDevBegin)
 static br_error(__cdecl*original_BrDevBegin)(br_pixelmap **, char *) = (br_error(__cdecl*)(br_pixelmap **, char *))0x004e0140;
 CARM95_HOOK_FUNCTION(original_BrDevBegin, BrDevBegin)
 br_error __cdecl BrDevBegin(br_pixelmap **ppm, char *setup_string) {
@@ -86,7 +86,7 @@ br_error __cdecl BrDevBegin(br_pixelmap **ppm, char *setup_string) {
 }
 
 function_hook_state_t function_hook_state_BrDevBeginTV = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrDevBeginTV)
+CARM95_WEBSERVER_STATE(BrDevBeginTV, function_hook_state_BrDevBeginTV)
 br_error BrDevBeginTV(br_pixelmap **ppm, char *setup_string, br_token_value *setup_tv) {
     char str[512];
     char *args;
@@ -135,7 +135,7 @@ br_error BrDevBeginTV(br_pixelmap **ppm, char *setup_string, br_token_value *set
 }
 
 function_hook_state_t function_hook_state_BrDevBeginOld = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrDevBeginOld)
+CARM95_WEBSERVER_STATE(BrDevBeginOld, function_hook_state_BrDevBeginOld)
 br_pixelmap* BrDevBeginOld(char *setup_string) {
     br_pixelmap *s;
     LOG_TRACE("(\"%s\")", setup_string);
@@ -152,7 +152,7 @@ br_pixelmap* BrDevBeginOld(char *setup_string) {
 }
 
 function_hook_state_t function_hook_state_BrDevEndOld = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrDevEndOld)
+CARM95_WEBSERVER_STATE(BrDevEndOld, function_hook_state_BrDevEndOld)
 static void(__cdecl*original_BrDevEndOld)() = (void(__cdecl*)())0x004e0360;
 CARM95_HOOK_FUNCTION(original_BrDevEndOld, BrDevEndOld)
 void __cdecl BrDevEndOld() {
@@ -168,7 +168,7 @@ void __cdecl BrDevEndOld() {
 }
 
 function_hook_state_t function_hook_state_BrDevPaletteSetOld = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrDevPaletteSetOld)
+CARM95_WEBSERVER_STATE(BrDevPaletteSetOld, function_hook_state_BrDevPaletteSetOld)
 static void(__cdecl*original_BrDevPaletteSetOld)(br_pixelmap *) = (void(__cdecl*)(br_pixelmap *))0x004e0380;
 CARM95_HOOK_FUNCTION(original_BrDevPaletteSetOld, BrDevPaletteSetOld)
 void __cdecl BrDevPaletteSetOld(br_pixelmap *pm) {
@@ -185,7 +185,7 @@ void __cdecl BrDevPaletteSetOld(br_pixelmap *pm) {
 }
 
 function_hook_state_t function_hook_state_BrDevPaletteSetEntryOld = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrDevPaletteSetEntryOld)
+CARM95_WEBSERVER_STATE(BrDevPaletteSetEntryOld, function_hook_state_BrDevPaletteSetEntryOld)
 static void(__cdecl*original_BrDevPaletteSetEntryOld)(int, br_colour) = (void(__cdecl*)(int, br_colour))0x004e03a0;
 CARM95_HOOK_FUNCTION(original_BrDevPaletteSetEntryOld, BrDevPaletteSetEntryOld)
 void __cdecl BrDevPaletteSetEntryOld(int i, br_colour colour) {
@@ -203,7 +203,7 @@ void __cdecl BrDevPaletteSetEntryOld(int i, br_colour colour) {
 }
 
 function_hook_state_t function_hook_state_BrRendererFacilityFind = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrRendererFacilityFind)
+CARM95_WEBSERVER_STATE(BrRendererFacilityFind, function_hook_state_BrRendererFacilityFind)
 static br_error(__cdecl*original_BrRendererFacilityFind)(br_renderer_facility **, br_device_pixelmap *, br_token) = (br_error(__cdecl*)(br_renderer_facility **, br_device_pixelmap *, br_token))0x004e03c0;
 CARM95_HOOK_FUNCTION(original_BrRendererFacilityFind, BrRendererFacilityFind)
 br_error __cdecl BrRendererFacilityFind(br_renderer_facility **prf, br_device_pixelmap *destination, br_token scalar_type) {
@@ -234,7 +234,7 @@ br_error __cdecl BrRendererFacilityFind(br_renderer_facility **prf, br_device_pi
 }
 
 function_hook_state_t function_hook_state_BrPrimitiveLibraryFind = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrPrimitiveLibraryFind)
+CARM95_WEBSERVER_STATE(BrPrimitiveLibraryFind, function_hook_state_BrPrimitiveLibraryFind)
 static br_error(__cdecl*original_BrPrimitiveLibraryFind)(br_primitive_library **, br_device_pixelmap *, br_token) = (br_error(__cdecl*)(br_primitive_library **, br_device_pixelmap *, br_token))0x004e0580;
 CARM95_HOOK_FUNCTION(original_BrPrimitiveLibraryFind, BrPrimitiveLibraryFind)
 br_error __cdecl BrPrimitiveLibraryFind(br_primitive_library **ppl, br_device_pixelmap *destination, br_token scalar_type) {
@@ -265,7 +265,7 @@ br_error __cdecl BrPrimitiveLibraryFind(br_primitive_library **ppl, br_device_pi
 }
 
 function_hook_state_t function_hook_state_BrGeometryFormatFind = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrGeometryFormatFind)
+CARM95_WEBSERVER_STATE(BrGeometryFormatFind, function_hook_state_BrGeometryFormatFind)
 static br_error(__cdecl*original_BrGeometryFormatFind)(br_geometry **, br_renderer *, br_renderer_facility *, br_token, br_token) = (br_error(__cdecl*)(br_geometry **, br_renderer *, br_renderer_facility *, br_token, br_token))0x004e0740;
 CARM95_HOOK_FUNCTION(original_BrGeometryFormatFind, BrGeometryFormatFind)
 br_error __cdecl BrGeometryFormatFind(br_geometry **pgf, br_renderer *renderer, br_renderer_facility *renderer_facility, br_token scalar_type, br_token format_type) {

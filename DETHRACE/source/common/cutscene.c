@@ -12,7 +12,7 @@ tS32 * hookvar_gLast_demo_end_anim ;
 #endif
 
 function_hook_state_t function_hook_state_radmalloc = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_radmalloc)
+CARM95_WEBSERVER_STATE(radmalloc, function_hook_state_radmalloc)
 void* radmalloc(unsigned long numbytes) {
     unsigned char *temp;
     unsigned char i;
@@ -31,7 +31,7 @@ void* radmalloc(unsigned long numbytes) {
 }
 
 function_hook_state_t function_hook_state_radfree = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_radfree)
+CARM95_WEBSERVER_STATE(radfree, function_hook_state_radfree)
 void radfree(void *ptr) {
     LOG_TRACE("(%p)", ptr);
 
@@ -46,7 +46,7 @@ void radfree(void *ptr) {
 }
 
 function_hook_state_t function_hook_state_ShowCutScene = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_ShowCutScene)
+CARM95_WEBSERVER_STATE(ShowCutScene, function_hook_state_ShowCutScene)
 static void(__cdecl*original_ShowCutScene)(int, int, int, br_scalar) = (void(__cdecl*)(int, int, int, br_scalar))0x004a58c0;
 CARM95_HOOK_FUNCTION(original_ShowCutScene, ShowCutScene)
 void __cdecl ShowCutScene(int pIndex, int pWait_end, int pSound_ID, br_scalar pDelay) {
@@ -66,7 +66,7 @@ void __cdecl ShowCutScene(int pIndex, int pWait_end, int pSound_ID, br_scalar pD
 }
 
 function_hook_state_t function_hook_state_DoSCILogo = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DoSCILogo)
+CARM95_WEBSERVER_STATE(DoSCILogo, function_hook_state_DoSCILogo)
 static void(__cdecl*original_DoSCILogo)() = (void(__cdecl*)())0x004a5974;
 CARM95_HOOK_FUNCTION(original_DoSCILogo, DoSCILogo)
 void __cdecl DoSCILogo() {
@@ -82,7 +82,7 @@ void __cdecl DoSCILogo() {
 }
 
 function_hook_state_t function_hook_state_DoStainlessLogo = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DoStainlessLogo)
+CARM95_WEBSERVER_STATE(DoStainlessLogo, function_hook_state_DoStainlessLogo)
 static void(__cdecl*original_DoStainlessLogo)() = (void(__cdecl*)())0x004a597f;
 CARM95_HOOK_FUNCTION(original_DoStainlessLogo, DoStainlessLogo)
 void __cdecl DoStainlessLogo() {
@@ -98,7 +98,7 @@ void __cdecl DoStainlessLogo() {
 }
 
 function_hook_state_t function_hook_state_PlaySmackerFile = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PlaySmackerFile)
+CARM95_WEBSERVER_STATE(PlaySmackerFile, function_hook_state_PlaySmackerFile)
 static void(__cdecl*original_PlaySmackerFile)(char *) = (void(__cdecl*)(char *))0x004a598a;
 CARM95_HOOK_FUNCTION(original_PlaySmackerFile, PlaySmackerFile)
 void __cdecl PlaySmackerFile(char *pSmack_name) {
@@ -131,7 +131,7 @@ void __cdecl PlaySmackerFile(char *pSmack_name) {
 }
 
 function_hook_state_t function_hook_state_DoOpeningAnimation = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DoOpeningAnimation)
+CARM95_WEBSERVER_STATE(DoOpeningAnimation, function_hook_state_DoOpeningAnimation)
 static void(__cdecl*original_DoOpeningAnimation)() = (void(__cdecl*)())0x004a5d73;
 CARM95_HOOK_FUNCTION(original_DoOpeningAnimation, DoOpeningAnimation)
 void __cdecl DoOpeningAnimation() {
@@ -147,7 +147,7 @@ void __cdecl DoOpeningAnimation() {
 }
 
 function_hook_state_t function_hook_state_DoNewGameAnimation = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DoNewGameAnimation)
+CARM95_WEBSERVER_STATE(DoNewGameAnimation, function_hook_state_DoNewGameAnimation)
 static void(__cdecl*original_DoNewGameAnimation)() = (void(__cdecl*)())0x004a5de6;
 CARM95_HOOK_FUNCTION(original_DoNewGameAnimation, DoNewGameAnimation)
 void __cdecl DoNewGameAnimation() {
@@ -163,7 +163,7 @@ void __cdecl DoNewGameAnimation() {
 }
 
 function_hook_state_t function_hook_state_DoGoToRaceAnimation = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DoGoToRaceAnimation)
+CARM95_WEBSERVER_STATE(DoGoToRaceAnimation, function_hook_state_DoGoToRaceAnimation)
 static void(__cdecl*original_DoGoToRaceAnimation)() = (void(__cdecl*)())0x004a5d9d;
 CARM95_HOOK_FUNCTION(original_DoGoToRaceAnimation, DoGoToRaceAnimation)
 void __cdecl DoGoToRaceAnimation() {
@@ -179,7 +179,7 @@ void __cdecl DoGoToRaceAnimation() {
 }
 
 function_hook_state_t function_hook_state_DoEndRaceAnimation = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DoEndRaceAnimation)
+CARM95_WEBSERVER_STATE(DoEndRaceAnimation, function_hook_state_DoEndRaceAnimation)
 static void(__cdecl*original_DoEndRaceAnimation)() = (void(__cdecl*)())0x004a5df1;
 CARM95_HOOK_FUNCTION(original_DoEndRaceAnimation, DoEndRaceAnimation)
 void __cdecl DoEndRaceAnimation() {
@@ -199,7 +199,7 @@ void __cdecl DoEndRaceAnimation() {
 }
 
 function_hook_state_t function_hook_state_DoGameOverAnimation = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DoGameOverAnimation)
+CARM95_WEBSERVER_STATE(DoGameOverAnimation, function_hook_state_DoGameOverAnimation)
 static void(__cdecl*original_DoGameOverAnimation)() = (void(__cdecl*)())0x004a5ed6;
 CARM95_HOOK_FUNCTION(original_DoGameOverAnimation, DoGameOverAnimation)
 void __cdecl DoGameOverAnimation() {
@@ -215,7 +215,7 @@ void __cdecl DoGameOverAnimation() {
 }
 
 function_hook_state_t function_hook_state_DoGameCompletedAnimation = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DoGameCompletedAnimation)
+CARM95_WEBSERVER_STATE(DoGameCompletedAnimation, function_hook_state_DoGameCompletedAnimation)
 static void(__cdecl*original_DoGameCompletedAnimation)() = (void(__cdecl*)())0x004a5ef8;
 CARM95_HOOK_FUNCTION(original_DoGameCompletedAnimation, DoGameCompletedAnimation)
 void __cdecl DoGameCompletedAnimation() {
@@ -231,7 +231,7 @@ void __cdecl DoGameCompletedAnimation() {
 }
 
 function_hook_state_t function_hook_state_StartLoadingScreen = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_StartLoadingScreen)
+CARM95_WEBSERVER_STATE(StartLoadingScreen, function_hook_state_StartLoadingScreen)
 static void(__cdecl*original_StartLoadingScreen)() = (void(__cdecl*)())0x004a5f1a;
 CARM95_HOOK_FUNCTION(original_StartLoadingScreen, StartLoadingScreen)
 void __cdecl StartLoadingScreen() {

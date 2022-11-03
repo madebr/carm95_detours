@@ -13,7 +13,7 @@ br_allocator ** hookvar__BrDefaultAllocator ;
 #endif
 
 function_hook_state_t function_hook_state_BrStdlibAllocate = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrStdlibAllocate)
+CARM95_WEBSERVER_STATE(BrStdlibAllocate, function_hook_state_BrStdlibAllocate)
 void* BrStdlibAllocate(br_size_t size, br_uint_8 type) {
     void *m;
     LOG_TRACE("(%u, %u)", size, type);
@@ -31,7 +31,7 @@ void* BrStdlibAllocate(br_size_t size, br_uint_8 type) {
 }
 
 function_hook_state_t function_hook_state_BrStdlibFree = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrStdlibFree)
+CARM95_WEBSERVER_STATE(BrStdlibFree, function_hook_state_BrStdlibFree)
 void BrStdlibFree(void *mem) {
     LOG_TRACE("(%p)", mem);
 
@@ -46,7 +46,7 @@ void BrStdlibFree(void *mem) {
 }
 
 function_hook_state_t function_hook_state_BrStdlibInquire = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrStdlibInquire)
+CARM95_WEBSERVER_STATE(BrStdlibInquire, function_hook_state_BrStdlibInquire)
 br_size_t BrStdlibInquire(br_uint_8 type) {
     LOG_TRACE("(%u)", type);
 
@@ -61,7 +61,7 @@ br_size_t BrStdlibInquire(br_uint_8 type) {
 }
 
 function_hook_state_t function_hook_state_BrStdlibAlign = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrStdlibAlign)
+CARM95_WEBSERVER_STATE(BrStdlibAlign, function_hook_state_BrStdlibAlign)
 br_uint_32 BrStdlibAlign(br_uint_8 type) {
     LOG_TRACE("(%u)", type);
 

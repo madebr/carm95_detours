@@ -33,7 +33,7 @@ int * hookvar_gPaused  = (void*)0x00531dc8;
 tAction_replay_camera_type * hookvar_gAction_replay_camera_mode  = (void*)0x00551db4;
 
 function_hook_state_t function_hook_state_ReplayIsPaused = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_ReplayIsPaused)
+CARM95_WEBSERVER_STATE(ReplayIsPaused, function_hook_state_ReplayIsPaused)
 static int(__cdecl*original_ReplayIsPaused)() = (int(__cdecl*)())0x0041adc0;
 CARM95_HOOK_FUNCTION(original_ReplayIsPaused, ReplayIsPaused)
 int __cdecl ReplayIsPaused() {
@@ -49,7 +49,7 @@ int __cdecl ReplayIsPaused() {
 }
 
 function_hook_state_t function_hook_state_GetReplayRate = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_GetReplayRate)
+CARM95_WEBSERVER_STATE(GetReplayRate, function_hook_state_GetReplayRate)
 static float(__cdecl*original_GetReplayRate)() = (float(__cdecl*)())0x0041adf3;
 CARM95_HOOK_FUNCTION(original_GetReplayRate, GetReplayRate)
 float __cdecl GetReplayRate() {
@@ -65,7 +65,7 @@ float __cdecl GetReplayRate() {
 }
 
 function_hook_state_t function_hook_state_GetReplayDirection = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_GetReplayDirection)
+CARM95_WEBSERVER_STATE(GetReplayDirection, function_hook_state_GetReplayDirection)
 static int(__stdcall*original_GetReplayDirection)() = (int(__stdcall*)())0x0041ae09;
 CARM95_HOOK_FUNCTION(original_GetReplayDirection, GetReplayDirection)
 int __stdcall GetReplayDirection() {
@@ -81,7 +81,7 @@ int __stdcall GetReplayDirection() {
 }
 
 function_hook_state_t function_hook_state_StopSaving = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_StopSaving)
+CARM95_WEBSERVER_STATE(StopSaving, function_hook_state_StopSaving)
 static void(__cdecl*original_StopSaving)() = (void(__cdecl*)())0x0041b5a0;
 CARM95_HOOK_FUNCTION(original_StopSaving, StopSaving)
 void __cdecl StopSaving() {
@@ -97,7 +97,7 @@ void __cdecl StopSaving() {
 }
 
 function_hook_state_t function_hook_state_ActualActionReplayHeadups = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_ActualActionReplayHeadups)
+CARM95_WEBSERVER_STATE(ActualActionReplayHeadups, function_hook_state_ActualActionReplayHeadups)
 static void(__cdecl*original_ActualActionReplayHeadups)(int) = (void(__cdecl*)(int))0x0041ae48;
 CARM95_HOOK_FUNCTION(original_ActualActionReplayHeadups, ActualActionReplayHeadups)
 void __cdecl ActualActionReplayHeadups(int pSpecial_zappy_bastard) {
@@ -126,7 +126,7 @@ void __cdecl ActualActionReplayHeadups(int pSpecial_zappy_bastard) {
 }
 
 function_hook_state_t function_hook_state_DoActionReplayPostSwap = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DoActionReplayPostSwap)
+CARM95_WEBSERVER_STATE(DoActionReplayPostSwap, function_hook_state_DoActionReplayPostSwap)
 static void(__cdecl*original_DoActionReplayPostSwap)() = (void(__cdecl*)())0x0041ae1e;
 CARM95_HOOK_FUNCTION(original_DoActionReplayPostSwap, DoActionReplayPostSwap)
 void __cdecl DoActionReplayPostSwap() {
@@ -142,7 +142,7 @@ void __cdecl DoActionReplayPostSwap() {
 }
 
 function_hook_state_t function_hook_state_DoZappyActionReplayHeadups = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DoZappyActionReplayHeadups)
+CARM95_WEBSERVER_STATE(DoZappyActionReplayHeadups, function_hook_state_DoZappyActionReplayHeadups)
 static void(__cdecl*original_DoZappyActionReplayHeadups)(int) = (void(__cdecl*)(int))0x0041b5bf;
 CARM95_HOOK_FUNCTION(original_DoZappyActionReplayHeadups, DoZappyActionReplayHeadups)
 void __cdecl DoZappyActionReplayHeadups(int pSpecial_zappy_bastard) {
@@ -161,7 +161,7 @@ void __cdecl DoZappyActionReplayHeadups(int pSpecial_zappy_bastard) {
 }
 
 function_hook_state_t function_hook_state_DoActionReplayHeadups = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DoActionReplayHeadups)
+CARM95_WEBSERVER_STATE(DoActionReplayHeadups, function_hook_state_DoActionReplayHeadups)
 static void(__cdecl*original_DoActionReplayHeadups)() = (void(__cdecl*)())0x0041ae33;
 CARM95_HOOK_FUNCTION(original_DoActionReplayHeadups, DoActionReplayHeadups)
 void __cdecl DoActionReplayHeadups() {
@@ -177,7 +177,7 @@ void __cdecl DoActionReplayHeadups() {
 }
 
 function_hook_state_t function_hook_state_MoveReplayBuffer = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_MoveReplayBuffer)
+CARM95_WEBSERVER_STATE(MoveReplayBuffer, function_hook_state_MoveReplayBuffer)
 static void(__cdecl*original_MoveReplayBuffer)(tS32) = (void(__cdecl*)(tS32))0x0041b41e;
 CARM95_HOOK_FUNCTION(original_MoveReplayBuffer, MoveReplayBuffer)
 void __cdecl MoveReplayBuffer(tS32 pMove_amount) {
@@ -206,7 +206,7 @@ void __cdecl MoveReplayBuffer(tS32 pMove_amount) {
 }
 
 function_hook_state_t function_hook_state_MoveToEndOfReplay = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_MoveToEndOfReplay)
+CARM95_WEBSERVER_STATE(MoveToEndOfReplay, function_hook_state_MoveToEndOfReplay)
 static void(__cdecl*original_MoveToEndOfReplay)() = (void(__cdecl*)())0x0041b3df;
 CARM95_HOOK_FUNCTION(original_MoveToEndOfReplay, MoveToEndOfReplay)
 void __cdecl MoveToEndOfReplay() {
@@ -224,7 +224,7 @@ void __cdecl MoveToEndOfReplay() {
 }
 
 function_hook_state_t function_hook_state_MoveToStartOfReplay = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_MoveToStartOfReplay)
+CARM95_WEBSERVER_STATE(MoveToStartOfReplay, function_hook_state_MoveToStartOfReplay)
 static void(__cdecl*original_MoveToStartOfReplay)() = (void(__cdecl*)())0x0041b622;
 CARM95_HOOK_FUNCTION(original_MoveToStartOfReplay, MoveToStartOfReplay)
 void __cdecl MoveToStartOfReplay() {
@@ -242,7 +242,7 @@ void __cdecl MoveToStartOfReplay() {
 }
 
 function_hook_state_t function_hook_state_ToggleReplay = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_ToggleReplay)
+CARM95_WEBSERVER_STATE(ToggleReplay, function_hook_state_ToggleReplay)
 static void(__cdecl*original_ToggleReplay)() = (void(__cdecl*)())0x0041b661;
 CARM95_HOOK_FUNCTION(original_ToggleReplay, ToggleReplay)
 void __cdecl ToggleReplay() {
@@ -258,7 +258,7 @@ void __cdecl ToggleReplay() {
 }
 
 function_hook_state_t function_hook_state_ReverseSound = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_ReverseSound)
+CARM95_WEBSERVER_STATE(ReverseSound, function_hook_state_ReverseSound)
 static void(__cdecl*original_ReverseSound)(tS3_effect_tag, tS3_sound_tag) = (void(__cdecl*)(tS3_effect_tag, tS3_sound_tag))0x0041b7fe;
 CARM95_HOOK_FUNCTION(original_ReverseSound, ReverseSound)
 void __cdecl ReverseSound(tS3_effect_tag pEffect_index, tS3_sound_tag pSound_tag) {
@@ -276,7 +276,7 @@ void __cdecl ReverseSound(tS3_effect_tag pEffect_index, tS3_sound_tag pSound_tag
 }
 
 function_hook_state_t function_hook_state_FindUniqueFile = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_FindUniqueFile)
+CARM95_WEBSERVER_STATE(FindUniqueFile, function_hook_state_FindUniqueFile)
 static int(__cdecl*original_FindUniqueFile)() = (int(__cdecl*)())0x0041b819;
 CARM95_HOOK_FUNCTION(original_FindUniqueFile, FindUniqueFile)
 int __cdecl FindUniqueFile() {
@@ -298,7 +298,7 @@ int __cdecl FindUniqueFile() {
 }
 
 function_hook_state_t function_hook_state_PollActionReplayControls = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PollActionReplayControls)
+CARM95_WEBSERVER_STATE(PollActionReplayControls, function_hook_state_PollActionReplayControls)
 static void(__cdecl*original_PollActionReplayControls)(tU32) = (void(__cdecl*)(tU32))0x0041b925;
 CARM95_HOOK_FUNCTION(original_PollActionReplayControls, PollActionReplayControls)
 void __cdecl PollActionReplayControls(tU32 pFrame_period) {
@@ -333,7 +333,7 @@ void __cdecl PollActionReplayControls(tU32 pFrame_period) {
 }
 
 function_hook_state_t function_hook_state_CheckReplayTurnOn = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_CheckReplayTurnOn)
+CARM95_WEBSERVER_STATE(CheckReplayTurnOn, function_hook_state_CheckReplayTurnOn)
 static void(__cdecl*original_CheckReplayTurnOn)() = (void(__cdecl*)())0x0041c03b;
 CARM95_HOOK_FUNCTION(original_CheckReplayTurnOn, CheckReplayTurnOn)
 void __cdecl CheckReplayTurnOn() {
@@ -349,7 +349,7 @@ void __cdecl CheckReplayTurnOn() {
 }
 
 function_hook_state_t function_hook_state_InitializeActionReplay = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_InitializeActionReplay)
+CARM95_WEBSERVER_STATE(InitializeActionReplay, function_hook_state_InitializeActionReplay)
 static void(__cdecl*original_InitializeActionReplay)() = (void(__cdecl*)())0x0041c093;
 CARM95_HOOK_FUNCTION(original_InitializeActionReplay, InitializeActionReplay)
 void __cdecl InitializeActionReplay() {
@@ -367,7 +367,7 @@ void __cdecl InitializeActionReplay() {
 }
 
 function_hook_state_t function_hook_state_DoActionReplay = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DoActionReplay)
+CARM95_WEBSERVER_STATE(DoActionReplay, function_hook_state_DoActionReplay)
 static void(__cdecl*original_DoActionReplay)(tU32) = (void(__cdecl*)(tU32))0x0041c0e6;
 CARM95_HOOK_FUNCTION(original_DoActionReplay, DoActionReplay)
 void __cdecl DoActionReplay(tU32 pFrame_period) {
@@ -384,7 +384,7 @@ void __cdecl DoActionReplay(tU32 pFrame_period) {
 }
 
 function_hook_state_t function_hook_state_SynchronizeActionReplay = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_SynchronizeActionReplay)
+CARM95_WEBSERVER_STATE(SynchronizeActionReplay, function_hook_state_SynchronizeActionReplay)
 static void(__cdecl*original_SynchronizeActionReplay)() = (void(__cdecl*)())0x0041c11c;
 CARM95_HOOK_FUNCTION(original_SynchronizeActionReplay, SynchronizeActionReplay)
 void __cdecl SynchronizeActionReplay() {

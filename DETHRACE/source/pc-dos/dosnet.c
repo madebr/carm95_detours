@@ -77,7 +77,7 @@ tU16 * hookvar_gSend_selector ;
 #endif
 
 function_hook_state_t function_hook_state_ClearupPDNetworkStuff = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_ClearupPDNetworkStuff)
+CARM95_WEBSERVER_STATE(ClearupPDNetworkStuff, function_hook_state_ClearupPDNetworkStuff)
 void ClearupPDNetworkStuff() {
     LOG_TRACE("()");
 
@@ -91,7 +91,7 @@ void ClearupPDNetworkStuff() {
 }
 
 function_hook_state_t function_hook_state_MATTMessageCheck = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_MATTMessageCheck)
+CARM95_WEBSERVER_STATE(MATTMessageCheck, function_hook_state_MATTMessageCheck)
 void MATTMessageCheck(char *pFunction_name, tNet_message *pMessage, int pAlleged_size) {
     LOG_TRACE("(\"%s\", %p, %d)", pFunction_name, pMessage, pAlleged_size);
 
@@ -108,7 +108,7 @@ void MATTMessageCheck(char *pFunction_name, tNet_message *pMessage, int pAlleged
 }
 
 function_hook_state_t function_hook_state_GetProfileText = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_GetProfileText)
+CARM95_WEBSERVER_STATE(GetProfileText, function_hook_state_GetProfileText)
 int GetProfileText(char *pDest, int pDest_len, char *pFname, char *pKeyname) {
     FILE *fp;
     char in_buf[256];
@@ -136,7 +136,7 @@ int GetProfileText(char *pDest, int pDest_len, char *pFname, char *pKeyname) {
 }
 
 function_hook_state_t function_hook_state_GetSocketNumberFromProfileFile = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_GetSocketNumberFromProfileFile)
+CARM95_WEBSERVER_STATE(GetSocketNumberFromProfileFile, function_hook_state_GetSocketNumberFromProfileFile)
 int GetSocketNumberFromProfileFile() {
     char str[256];
     int sscanf_res;
@@ -156,7 +156,7 @@ int GetSocketNumberFromProfileFile() {
 }
 
 function_hook_state_t function_hook_state_EthernetAddressToU32 = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_EthernetAddressToU32)
+CARM95_WEBSERVER_STATE(EthernetAddressToU32, function_hook_state_EthernetAddressToU32)
 tU32 EthernetAddressToU32(_IPX_LOCAL_TARGET *pAddr_ipx) {
     LOG_TRACE("(%p)", pAddr_ipx);
 
@@ -171,7 +171,7 @@ tU32 EthernetAddressToU32(_IPX_LOCAL_TARGET *pAddr_ipx) {
 }
 
 function_hook_state_t function_hook_state_NetNowIPXLocalTarget2String = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_NetNowIPXLocalTarget2String)
+CARM95_WEBSERVER_STATE(NetNowIPXLocalTarget2String, function_hook_state_NetNowIPXLocalTarget2String)
 void NetNowIPXLocalTarget2String(char *pString, _IPX_LOCAL_TARGET *pSock_addr_ipx) {
     LOG_TRACE("(\"%s\", %p)", pString, pSock_addr_ipx);
 
@@ -187,7 +187,7 @@ void NetNowIPXLocalTarget2String(char *pString, _IPX_LOCAL_TARGET *pSock_addr_ip
 }
 
 function_hook_state_t function_hook_state_GetMessageTypeFromMessage = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_GetMessageTypeFromMessage)
+CARM95_WEBSERVER_STATE(GetMessageTypeFromMessage, function_hook_state_GetMessageTypeFromMessage)
 static int(__cdecl*original_GetMessageTypeFromMessage)(char *) = (int(__cdecl*)(char *))0x00455050;
 CARM95_HOOK_FUNCTION(original_GetMessageTypeFromMessage, GetMessageTypeFromMessage)
 int __cdecl GetMessageTypeFromMessage(char *pMessage_str) {
@@ -208,7 +208,7 @@ int __cdecl GetMessageTypeFromMessage(char *pMessage_str) {
 }
 
 function_hook_state_t function_hook_state_SameEthernetAddress = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_SameEthernetAddress)
+CARM95_WEBSERVER_STATE(SameEthernetAddress, function_hook_state_SameEthernetAddress)
 static int(__cdecl*original_SameEthernetAddress)(_IPX_LOCAL_TARGET *, _IPX_LOCAL_TARGET *) = (int(__cdecl*)(_IPX_LOCAL_TARGET *, _IPX_LOCAL_TARGET *))0x00455119;
 CARM95_HOOK_FUNCTION(original_SameEthernetAddress, SameEthernetAddress)
 int __cdecl SameEthernetAddress(_IPX_LOCAL_TARGET *pAddr_ipx1, _IPX_LOCAL_TARGET *pAddr_ipx2) {
@@ -226,7 +226,7 @@ int __cdecl SameEthernetAddress(_IPX_LOCAL_TARGET *pAddr_ipx1, _IPX_LOCAL_TARGET
 }
 
 function_hook_state_t function_hook_state_GetIPXAddrFromPlayerID = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_GetIPXAddrFromPlayerID)
+CARM95_WEBSERVER_STATE(GetIPXAddrFromPlayerID, function_hook_state_GetIPXAddrFromPlayerID)
 _IPX_LOCAL_TARGET* GetIPXAddrFromPlayerID(tPlayer_ID pPlayer_id) {
     int i;
     tU8 *nodenum;
@@ -245,7 +245,7 @@ _IPX_LOCAL_TARGET* GetIPXAddrFromPlayerID(tPlayer_ID pPlayer_id) {
 }
 
 function_hook_state_t function_hook_state_MakeMessageToSend = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_MakeMessageToSend)
+CARM95_WEBSERVER_STATE(MakeMessageToSend, function_hook_state_MakeMessageToSend)
 static void(__cdecl*original_MakeMessageToSend)(int) = (void(__cdecl*)(int))0x00454c4c;
 CARM95_HOOK_FUNCTION(original_MakeMessageToSend, MakeMessageToSend)
 void __cdecl MakeMessageToSend(int pMessage_type) {
@@ -262,7 +262,7 @@ void __cdecl MakeMessageToSend(int pMessage_type) {
 }
 
 function_hook_state_t function_hook_state_ReceiveHostResponses = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_ReceiveHostResponses)
+CARM95_WEBSERVER_STATE(ReceiveHostResponses, function_hook_state_ReceiveHostResponses)
 static int(__cdecl*original_ReceiveHostResponses)() = (int(__cdecl*)())0x00454d4d;
 CARM95_HOOK_FUNCTION(original_ReceiveHostResponses, ReceiveHostResponses)
 int __cdecl ReceiveHostResponses() {
@@ -284,7 +284,7 @@ int __cdecl ReceiveHostResponses() {
 }
 
 function_hook_state_t function_hook_state_BroadcastMessage = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BroadcastMessage)
+CARM95_WEBSERVER_STATE(BroadcastMessage, function_hook_state_BroadcastMessage)
 static int(__cdecl*original_BroadcastMessage)() = (int(__cdecl*)())0x00454c72;
 CARM95_HOOK_FUNCTION(original_BroadcastMessage, BroadcastMessage)
 int __cdecl BroadcastMessage() {
@@ -308,7 +308,7 @@ int __cdecl BroadcastMessage() {
 }
 
 function_hook_state_t function_hook_state_hmiIPXCloseSocket = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_hmiIPXCloseSocket)
+CARM95_WEBSERVER_STATE(hmiIPXCloseSocket, function_hook_state_hmiIPXCloseSocket)
 BOOL hmiIPXCloseSocket(W32 wSocket) {
     union REGS regs;
     struct SREGS sregs;
@@ -327,7 +327,7 @@ BOOL hmiIPXCloseSocket(W32 wSocket) {
 }
 
 function_hook_state_t function_hook_state_hmiIPXListenForPacket = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_hmiIPXListenForPacket)
+CARM95_WEBSERVER_STATE(hmiIPXListenForPacket, function_hook_state_hmiIPXListenForPacket)
 void hmiIPXListenForPacket(_IPX_ECB *pECB_ptr, tU32 pOffset) {
     struct SREGS sregs;
     union REGS regs;
@@ -351,7 +351,7 @@ void hmiIPXListenForPacket(_IPX_ECB *pECB_ptr, tU32 pOffset) {
 }
 
 function_hook_state_t function_hook_state_hmiIPXPostListen = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_hmiIPXPostListen)
+CARM95_WEBSERVER_STATE(hmiIPXPostListen, function_hook_state_hmiIPXPostListen)
 BOOL hmiIPXPostListen(_IPX_ECB *pECB_ptr, tU32 pOffset) {
     LOG_TRACE("(%p, %u)", pECB_ptr, pOffset);
 
@@ -367,7 +367,7 @@ BOOL hmiIPXPostListen(_IPX_ECB *pECB_ptr, tU32 pOffset) {
 }
 
 function_hook_state_t function_hook_state_hmiIPXGetData = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_hmiIPXGetData)
+CARM95_WEBSERVER_STATE(hmiIPXGetData, function_hook_state_hmiIPXGetData)
 BOOL hmiIPXGetData(PSTR pData, tU32 wDSize) {
     tU32 packets_checked;
     tU32 full_packet_ooer_missus;
@@ -391,7 +391,7 @@ BOOL hmiIPXGetData(PSTR pData, tU32 wDSize) {
 }
 
 function_hook_state_t function_hook_state_hmiIPXSendPacket = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_hmiIPXSendPacket)
+CARM95_WEBSERVER_STATE(hmiIPXSendPacket, function_hook_state_hmiIPXSendPacket)
 void hmiIPXSendPacket(_IPX_ECB *sECB, _IPX_ECB **pPacket, PSTR pHeader, W32 wSize) {
     struct SREGS sregs;
     union REGS regs;
@@ -419,7 +419,7 @@ void hmiIPXSendPacket(_IPX_ECB *sECB, _IPX_ECB **pPacket, PSTR pHeader, W32 wSiz
 }
 
 function_hook_state_t function_hook_state_hmiIPXSendDataDirect = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_hmiIPXSendDataDirect)
+CARM95_WEBSERVER_STATE(hmiIPXSendDataDirect, function_hook_state_hmiIPXSendDataDirect)
 BOOL hmiIPXSendDataDirect(PSTR pHeader, W32 wHSize, PSTR pData, W32 wDSize, _NETNOW_NODE_ADDR *sNode) {
     W32 wIndex;
     _IPX_ELEMENT *sElement;
@@ -444,7 +444,7 @@ BOOL hmiIPXSendDataDirect(PSTR pHeader, W32 wHSize, PSTR pData, W32 wDSize, _NET
 }
 
 function_hook_state_t function_hook_state_hmiIPXGetInternetworkAddr = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_hmiIPXGetInternetworkAddr)
+CARM95_WEBSERVER_STATE(hmiIPXGetInternetworkAddr, function_hook_state_hmiIPXGetInternetworkAddr)
 void hmiIPXGetInternetworkAddr(_IPX_INTERNET_ADDR *sInterworkAddr) {
     struct SREGS sregs;
     union REGS regs;
@@ -463,7 +463,7 @@ void hmiIPXGetInternetworkAddr(_IPX_INTERNET_ADDR *sInterworkAddr) {
 }
 
 function_hook_state_t function_hook_state_hmiIPXGetLocalTarget = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_hmiIPXGetLocalTarget)
+CARM95_WEBSERVER_STATE(hmiIPXGetLocalTarget, function_hook_state_hmiIPXGetLocalTarget)
 void hmiIPXGetLocalTarget(_IPX_LOCAL_TARGET *sNetworkAddr) {
     struct SREGS sregs;
     union REGS regs;
@@ -482,7 +482,7 @@ void hmiIPXGetLocalTarget(_IPX_LOCAL_TARGET *sNetworkAddr) {
 }
 
 function_hook_state_t function_hook_state_AllocateRealMem = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_AllocateRealMem)
+CARM95_WEBSERVER_STATE(AllocateRealMem, function_hook_state_AllocateRealMem)
 BOOL AllocateRealMem(W32 wSize, PSTR *pPtr, W32 *pSegment, tU16 *pSelector) {
     union REGS regs;
     struct SREGS sregs;
@@ -512,7 +512,7 @@ BOOL AllocateRealMem(W32 wSize, PSTR *pPtr, W32 *pSegment, tU16 *pSelector) {
 }
 
 function_hook_state_t function_hook_state_FreeRealMem = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_FreeRealMem)
+CARM95_WEBSERVER_STATE(FreeRealMem, function_hook_state_FreeRealMem)
 BOOL FreeRealMem(tU16 pSelector) {
     union REGS regs;
     struct SREGS sregs;
@@ -539,7 +539,7 @@ BOOL FreeRealMem(tU16 pSelector) {
 }
 
 function_hook_state_t function_hook_state_hmiIPXInstalled = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_hmiIPXInstalled)
+CARM95_WEBSERVER_STATE(hmiIPXInstalled, function_hook_state_hmiIPXInstalled)
 BOOL hmiIPXInstalled() {
     struct SREGS sregs;
     union REGS regs;
@@ -557,7 +557,7 @@ BOOL hmiIPXInstalled() {
 }
 
 function_hook_state_t function_hook_state_hmiIPXOpenSocket = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_hmiIPXOpenSocket)
+CARM95_WEBSERVER_STATE(hmiIPXOpenSocket, function_hook_state_hmiIPXOpenSocket)
 BOOL hmiIPXOpenSocket(W32 wSocket) {
     struct SREGS sregs;
     union REGS regs;
@@ -576,7 +576,7 @@ BOOL hmiIPXOpenSocket(W32 wSocket) {
 }
 
 function_hook_state_t function_hook_state_GetLargestPacketSizeOoErBetterInsertLinfordChristieJokeHere = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_GetLargestPacketSizeOoErBetterInsertLinfordChristieJokeHere)
+CARM95_WEBSERVER_STATE(GetLargestPacketSizeOoErBetterInsertLinfordChristieJokeHere, function_hook_state_GetLargestPacketSizeOoErBetterInsertLinfordChristieJokeHere)
 void GetLargestPacketSizeOoErBetterInsertLinfordChristieJokeHere() {
     struct SREGS sregs;
     union REGS regs;
@@ -594,7 +594,7 @@ void GetLargestPacketSizeOoErBetterInsertLinfordChristieJokeHere() {
 }
 
 function_hook_state_t function_hook_state_hmiIPXInitSystem = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_hmiIPXInitSystem)
+CARM95_WEBSERVER_STATE(hmiIPXInitSystem, function_hook_state_hmiIPXInitSystem)
 BOOL hmiIPXInitSystem(W32 wSocket) {
     W32 wNIndex;
     W32 wIndex;
@@ -619,7 +619,7 @@ BOOL hmiIPXInitSystem(W32 wSocket) {
 }
 
 function_hook_state_t function_hook_state_GetIPXToStickItsEarToTheGround = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_GetIPXToStickItsEarToTheGround)
+CARM95_WEBSERVER_STATE(GetIPXToStickItsEarToTheGround, function_hook_state_GetIPXToStickItsEarToTheGround)
 void GetIPXToStickItsEarToTheGround() {
     int i;
     LOG_TRACE("()");
@@ -635,7 +635,7 @@ void GetIPXToStickItsEarToTheGround() {
 }
 
 function_hook_state_t function_hook_state_PDNetInitialise = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PDNetInitialise)
+CARM95_WEBSERVER_STATE(PDNetInitialise, function_hook_state_PDNetInitialise)
 static int(__cdecl*original_PDNetInitialise)() = (int(__cdecl*)())0x004543f8;
 CARM95_HOOK_FUNCTION(original_PDNetInitialise, PDNetInitialise)
 int __cdecl PDNetInitialise() {
@@ -667,7 +667,7 @@ int __cdecl PDNetInitialise() {
 }
 
 function_hook_state_t function_hook_state_PDNetShutdown = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PDNetShutdown)
+CARM95_WEBSERVER_STATE(PDNetShutdown, function_hook_state_PDNetShutdown)
 static int(__cdecl*original_PDNetShutdown)() = (int(__cdecl*)())0x004549f2;
 CARM95_HOOK_FUNCTION(original_PDNetShutdown, PDNetShutdown)
 int __cdecl PDNetShutdown() {
@@ -683,7 +683,7 @@ int __cdecl PDNetShutdown() {
 }
 
 function_hook_state_t function_hook_state_PDNetStartProducingJoinList = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PDNetStartProducingJoinList)
+CARM95_WEBSERVER_STATE(PDNetStartProducingJoinList, function_hook_state_PDNetStartProducingJoinList)
 static void(__cdecl*original_PDNetStartProducingJoinList)() = (void(__cdecl*)())0x00454a33;
 CARM95_HOOK_FUNCTION(original_PDNetStartProducingJoinList, PDNetStartProducingJoinList)
 void __cdecl PDNetStartProducingJoinList() {
@@ -699,7 +699,7 @@ void __cdecl PDNetStartProducingJoinList() {
 }
 
 function_hook_state_t function_hook_state_PDNetEndJoinList = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PDNetEndJoinList)
+CARM95_WEBSERVER_STATE(PDNetEndJoinList, function_hook_state_PDNetEndJoinList)
 static void(__cdecl*original_PDNetEndJoinList)() = (void(__cdecl*)())0x00454a86;
 CARM95_HOOK_FUNCTION(original_PDNetEndJoinList, PDNetEndJoinList)
 void __cdecl PDNetEndJoinList() {
@@ -715,7 +715,7 @@ void __cdecl PDNetEndJoinList() {
 }
 
 function_hook_state_t function_hook_state_PDNetGetNextJoinGame = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PDNetGetNextJoinGame)
+CARM95_WEBSERVER_STATE(PDNetGetNextJoinGame, function_hook_state_PDNetGetNextJoinGame)
 static int(__cdecl*original_PDNetGetNextJoinGame)(tNet_game_details *, int) = (int(__cdecl*)(tNet_game_details *, int))0x00454ac3;
 CARM95_HOOK_FUNCTION(original_PDNetGetNextJoinGame, PDNetGetNextJoinGame)
 int __cdecl PDNetGetNextJoinGame(tNet_game_details *pGame, int pIndex) {
@@ -743,7 +743,7 @@ int __cdecl PDNetGetNextJoinGame(tNet_game_details *pGame, int pIndex) {
 }
 
 function_hook_state_t function_hook_state_PDNetDisposeGameDetails = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PDNetDisposeGameDetails)
+CARM95_WEBSERVER_STATE(PDNetDisposeGameDetails, function_hook_state_PDNetDisposeGameDetails)
 static void(__cdecl*original_PDNetDisposeGameDetails)(tNet_game_details *) = (void(__cdecl*)(tNet_game_details *))0x00455161;
 CARM95_HOOK_FUNCTION(original_PDNetDisposeGameDetails, PDNetDisposeGameDetails)
 void __cdecl PDNetDisposeGameDetails(tNet_game_details *pDetails) {
@@ -760,7 +760,7 @@ void __cdecl PDNetDisposeGameDetails(tNet_game_details *pDetails) {
 }
 
 function_hook_state_t function_hook_state_PDNetHostGame = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PDNetHostGame)
+CARM95_WEBSERVER_STATE(PDNetHostGame, function_hook_state_PDNetHostGame)
 static int(__cdecl*original_PDNetHostGame)(tNet_game_details *, char *, void **) = (int(__cdecl*)(tNet_game_details *, char *, void **))0x00455179;
 CARM95_HOOK_FUNCTION(original_PDNetHostGame, PDNetHostGame)
 int __cdecl PDNetHostGame(tNet_game_details *pDetails, char *pHost_name, void **pHost_address) {
@@ -779,7 +779,7 @@ int __cdecl PDNetHostGame(tNet_game_details *pDetails, char *pHost_name, void **
 }
 
 function_hook_state_t function_hook_state_PDNetJoinGame = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PDNetJoinGame)
+CARM95_WEBSERVER_STATE(PDNetJoinGame, function_hook_state_PDNetJoinGame)
 static int(__cdecl*original_PDNetJoinGame)(tNet_game_details *, char *) = (int(__cdecl*)(tNet_game_details *, char *))0x004551a4;
 CARM95_HOOK_FUNCTION(original_PDNetJoinGame, PDNetJoinGame)
 int __cdecl PDNetJoinGame(tNet_game_details *pDetails, char *pPlayer_name) {
@@ -797,7 +797,7 @@ int __cdecl PDNetJoinGame(tNet_game_details *pDetails, char *pPlayer_name) {
 }
 
 function_hook_state_t function_hook_state_PDNetLeaveGame = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PDNetLeaveGame)
+CARM95_WEBSERVER_STATE(PDNetLeaveGame, function_hook_state_PDNetLeaveGame)
 static void(__cdecl*original_PDNetLeaveGame)(tNet_game_details *) = (void(__cdecl*)(tNet_game_details *))0x004551c3;
 CARM95_HOOK_FUNCTION(original_PDNetLeaveGame, PDNetLeaveGame)
 void __cdecl PDNetLeaveGame(tNet_game_details *pDetails) {
@@ -814,7 +814,7 @@ void __cdecl PDNetLeaveGame(tNet_game_details *pDetails) {
 }
 
 function_hook_state_t function_hook_state_PDNetHostFinishGame = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PDNetHostFinishGame)
+CARM95_WEBSERVER_STATE(PDNetHostFinishGame, function_hook_state_PDNetHostFinishGame)
 static void(__cdecl*original_PDNetHostFinishGame)(tNet_game_details *) = (void(__cdecl*)(tNet_game_details *))0x004551db;
 CARM95_HOOK_FUNCTION(original_PDNetHostFinishGame, PDNetHostFinishGame)
 void __cdecl PDNetHostFinishGame(tNet_game_details *pDetails) {
@@ -831,7 +831,7 @@ void __cdecl PDNetHostFinishGame(tNet_game_details *pDetails) {
 }
 
 function_hook_state_t function_hook_state_PDNetExtractGameID = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PDNetExtractGameID)
+CARM95_WEBSERVER_STATE(PDNetExtractGameID, function_hook_state_PDNetExtractGameID)
 static tU32(__cdecl*original_PDNetExtractGameID)(tNet_game_details *) = (tU32(__cdecl*)(tNet_game_details *))0x004551f3;
 CARM95_HOOK_FUNCTION(original_PDNetExtractGameID, PDNetExtractGameID)
 tU32 __cdecl PDNetExtractGameID(tNet_game_details *pDetails) {
@@ -848,7 +848,7 @@ tU32 __cdecl PDNetExtractGameID(tNet_game_details *pDetails) {
 }
 
 function_hook_state_t function_hook_state_PDNetExtractPlayerID = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PDNetExtractPlayerID)
+CARM95_WEBSERVER_STATE(PDNetExtractPlayerID, function_hook_state_PDNetExtractPlayerID)
 static tPlayer_ID(__cdecl*original_PDNetExtractPlayerID)(tNet_game_details *) = (tPlayer_ID(__cdecl*)(tNet_game_details *))0x00455277;
 CARM95_HOOK_FUNCTION(original_PDNetExtractPlayerID, PDNetExtractPlayerID)
 tPlayer_ID __cdecl PDNetExtractPlayerID(tNet_game_details *pDetails) {
@@ -865,7 +865,7 @@ tPlayer_ID __cdecl PDNetExtractPlayerID(tNet_game_details *pDetails) {
 }
 
 function_hook_state_t function_hook_state_PDNetObtainSystemUserName = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PDNetObtainSystemUserName)
+CARM95_WEBSERVER_STATE(PDNetObtainSystemUserName, function_hook_state_PDNetObtainSystemUserName)
 static void(__cdecl*original_PDNetObtainSystemUserName)(char *, int) = (void(__cdecl*)(char *, int))0x004552be;
 CARM95_HOOK_FUNCTION(original_PDNetObtainSystemUserName, PDNetObtainSystemUserName)
 void __cdecl PDNetObtainSystemUserName(char *pName, int pMax_length) {
@@ -883,7 +883,7 @@ void __cdecl PDNetObtainSystemUserName(char *pName, int pMax_length) {
 }
 
 function_hook_state_t function_hook_state_PDNetSendMessageToPlayer = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PDNetSendMessageToPlayer)
+CARM95_WEBSERVER_STATE(PDNetSendMessageToPlayer, function_hook_state_PDNetSendMessageToPlayer)
 static int(__cdecl*original_PDNetSendMessageToPlayer)(tNet_game_details *, tNet_message *, tPlayer_ID) = (int(__cdecl*)(tNet_game_details *, tNet_message *, tPlayer_ID))0x00455349;
 CARM95_HOOK_FUNCTION(original_PDNetSendMessageToPlayer, PDNetSendMessageToPlayer)
 int __cdecl PDNetSendMessageToPlayer(tNet_game_details *pDetails, tNet_message *pMessage, tPlayer_ID pPlayer) {
@@ -906,7 +906,7 @@ int __cdecl PDNetSendMessageToPlayer(tNet_game_details *pDetails, tNet_message *
 }
 
 function_hook_state_t function_hook_state_PDNetSendMessageToAllPlayers = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PDNetSendMessageToAllPlayers)
+CARM95_WEBSERVER_STATE(PDNetSendMessageToAllPlayers, function_hook_state_PDNetSendMessageToAllPlayers)
 static int(__cdecl*original_PDNetSendMessageToAllPlayers)(tNet_game_details *, tNet_message *) = (int(__cdecl*)(tNet_game_details *, tNet_message *))0x004553de;
 CARM95_HOOK_FUNCTION(original_PDNetSendMessageToAllPlayers, PDNetSendMessageToAllPlayers)
 int __cdecl PDNetSendMessageToAllPlayers(tNet_game_details *pDetails, tNet_message *pMessage) {
@@ -928,7 +928,7 @@ int __cdecl PDNetSendMessageToAllPlayers(tNet_game_details *pDetails, tNet_messa
 }
 
 function_hook_state_t function_hook_state_PDNetGetNextMessage = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PDNetGetNextMessage)
+CARM95_WEBSERVER_STATE(PDNetGetNextMessage, function_hook_state_PDNetGetNextMessage)
 static tNet_message *(__cdecl*original_PDNetGetNextMessage)(tNet_game_details *, void **) = (tNet_message *(__cdecl*)(tNet_game_details *, void **))0x00455495;
 CARM95_HOOK_FUNCTION(original_PDNetGetNextMessage, PDNetGetNextMessage)
 tNet_message* __cdecl PDNetGetNextMessage(tNet_game_details *pDetails, void **pSender_address) {
@@ -952,7 +952,7 @@ tNet_message* __cdecl PDNetGetNextMessage(tNet_game_details *pDetails, void **pS
 }
 
 function_hook_state_t function_hook_state_PDNetAllocateMessage = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PDNetAllocateMessage)
+CARM95_WEBSERVER_STATE(PDNetAllocateMessage, function_hook_state_PDNetAllocateMessage)
 static tNet_message *(__cdecl*original_PDNetAllocateMessage)(tU32, tS32) = (tNet_message *(__cdecl*)(tU32, tS32))0x00455730;
 CARM95_HOOK_FUNCTION(original_PDNetAllocateMessage, PDNetAllocateMessage)
 tNet_message* __cdecl PDNetAllocateMessage(tU32 pSize, tS32 pSize_decider) {
@@ -970,7 +970,7 @@ tNet_message* __cdecl PDNetAllocateMessage(tU32 pSize, tS32 pSize_decider) {
 }
 
 function_hook_state_t function_hook_state_PDNetDisposeMessage = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PDNetDisposeMessage)
+CARM95_WEBSERVER_STATE(PDNetDisposeMessage, function_hook_state_PDNetDisposeMessage)
 void PDNetDisposeMessage(tNet_game_details *pDetails, tNet_message *pMessage) {
     LOG_TRACE("(%p, %p)", pDetails, pMessage);
 
@@ -986,7 +986,7 @@ void PDNetDisposeMessage(tNet_game_details *pDetails, tNet_message *pMessage) {
 }
 
 function_hook_state_t function_hook_state_PDNetSetPlayerSystemInfo = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PDNetSetPlayerSystemInfo)
+CARM95_WEBSERVER_STATE(PDNetSetPlayerSystemInfo, function_hook_state_PDNetSetPlayerSystemInfo)
 static void(__cdecl*original_PDNetSetPlayerSystemInfo)(tNet_game_player_info *, void *) = (void(__cdecl*)(tNet_game_player_info *, void *))0x0045576c;
 CARM95_HOOK_FUNCTION(original_PDNetSetPlayerSystemInfo, PDNetSetPlayerSystemInfo)
 void __cdecl PDNetSetPlayerSystemInfo(tNet_game_player_info *pPlayer, void *pSender_address) {
@@ -1004,7 +1004,7 @@ void __cdecl PDNetSetPlayerSystemInfo(tNet_game_player_info *pPlayer, void *pSen
 }
 
 function_hook_state_t function_hook_state_PDNetDisposePlayer = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PDNetDisposePlayer)
+CARM95_WEBSERVER_STATE(PDNetDisposePlayer, function_hook_state_PDNetDisposePlayer)
 static void(__cdecl*original_PDNetDisposePlayer)(tNet_game_player_info *) = (void(__cdecl*)(tNet_game_player_info *))0x004557a2;
 CARM95_HOOK_FUNCTION(original_PDNetDisposePlayer, PDNetDisposePlayer)
 void __cdecl PDNetDisposePlayer(tNet_game_player_info *pPlayer) {
@@ -1021,7 +1021,7 @@ void __cdecl PDNetDisposePlayer(tNet_game_player_info *pPlayer) {
 }
 
 function_hook_state_t function_hook_state_PDNetSendMessageToAddress = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PDNetSendMessageToAddress)
+CARM95_WEBSERVER_STATE(PDNetSendMessageToAddress, function_hook_state_PDNetSendMessageToAddress)
 static int(__cdecl*original_PDNetSendMessageToAddress)(tNet_game_details *, tNet_message *, void *) = (int(__cdecl*)(tNet_game_details *, tNet_message *, void *))0x004557ba;
 CARM95_HOOK_FUNCTION(original_PDNetSendMessageToAddress, PDNetSendMessageToAddress)
 int __cdecl PDNetSendMessageToAddress(tNet_game_details *pDetails, tNet_message *pMessage, void *pAddress) {
@@ -1042,7 +1042,7 @@ int __cdecl PDNetSendMessageToAddress(tNet_game_details *pDetails, tNet_message 
 }
 
 function_hook_state_t function_hook_state_PDNetInitClient = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PDNetInitClient)
+CARM95_WEBSERVER_STATE(PDNetInitClient, function_hook_state_PDNetInitClient)
 static int(__cdecl*original_PDNetInitClient)(tNet_game_details *) = (int(__cdecl*)(tNet_game_details *))0x00455838;
 CARM95_HOOK_FUNCTION(original_PDNetInitClient, PDNetInitClient)
 int __cdecl PDNetInitClient(tNet_game_details *pDetails) {
@@ -1059,7 +1059,7 @@ int __cdecl PDNetInitClient(tNet_game_details *pDetails) {
 }
 
 function_hook_state_t function_hook_state_PDNetGetHeaderSize = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PDNetGetHeaderSize)
+CARM95_WEBSERVER_STATE(PDNetGetHeaderSize, function_hook_state_PDNetGetHeaderSize)
 static int(__cdecl*original_PDNetGetHeaderSize)() = (int(__cdecl*)())0x00455857;
 CARM95_HOOK_FUNCTION(original_PDNetGetHeaderSize, PDNetGetHeaderSize)
 int __cdecl PDNetGetHeaderSize() {

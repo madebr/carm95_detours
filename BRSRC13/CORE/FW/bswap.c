@@ -9,7 +9,7 @@
 #include <assert.h>
 
 function_hook_state_t function_hook_state_BrSwap32 = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrSwap32)
+CARM95_WEBSERVER_STATE(BrSwap32, function_hook_state_BrSwap32)
 static br_uint_32(__cdecl*original_BrSwap32)(br_uint_32) = (br_uint_32(__cdecl*)(br_uint_32))0x004df980;
 CARM95_HOOK_FUNCTION(original_BrSwap32, BrSwap32)
 br_uint_32 __cdecl BrSwap32(br_uint_32 l) {
@@ -31,7 +31,7 @@ br_uint_32 __cdecl BrSwap32(br_uint_32 l) {
 }
 
 function_hook_state_t function_hook_state_BrSwap16 = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrSwap16)
+CARM95_WEBSERVER_STATE(BrSwap16, function_hook_state_BrSwap16)
 static br_uint_16(__cdecl*original_BrSwap16)(br_uint_16) = (br_uint_16(__cdecl*)(br_uint_16))0x004df9d0;
 CARM95_HOOK_FUNCTION(original_BrSwap16, BrSwap16)
 br_uint_16 __cdecl BrSwap16(br_uint_16 s) {
@@ -53,7 +53,7 @@ br_uint_16 __cdecl BrSwap16(br_uint_16 s) {
 }
 
 function_hook_state_t function_hook_state_BrSwapFloat = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrSwapFloat)
+CARM95_WEBSERVER_STATE(BrSwapFloat, function_hook_state_BrSwapFloat)
 static br_float(__cdecl*original_BrSwapFloat)(br_float) = (br_float(__cdecl*)(br_float))0x004dfa00;
 CARM95_HOOK_FUNCTION(original_BrSwapFloat, BrSwapFloat)
 br_float __cdecl BrSwapFloat(br_float f) {
@@ -75,7 +75,7 @@ br_float __cdecl BrSwapFloat(br_float f) {
 }
 
 function_hook_state_t function_hook_state_BrSwapBlock = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrSwapBlock)
+CARM95_WEBSERVER_STATE(BrSwapBlock, function_hook_state_BrSwapBlock)
 static void *(__cdecl*original_BrSwapBlock)(void *, int, int) = (void *(__cdecl*)(void *, int, int))0x004dfa50;
 CARM95_HOOK_FUNCTION(original_BrSwapBlock, BrSwapBlock)
 void* __cdecl BrSwapBlock(void *block, int count, int size) {

@@ -10,7 +10,7 @@
 struct order_info(* hookvar_OrderAxes )[32] = (void*)0x00523cd8;
 
 function_hook_state_t function_hook_state_BrEulerToMatrix34 = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrEulerToMatrix34)
+CARM95_WEBSERVER_STATE(BrEulerToMatrix34, function_hook_state_BrEulerToMatrix34)
 static br_matrix34 *(__cdecl*original_BrEulerToMatrix34)(br_matrix34 *, br_euler *) = (br_matrix34 *(__cdecl*)(br_matrix34 *, br_euler *))0x004d4c70;
 CARM95_HOOK_FUNCTION(original_BrEulerToMatrix34, BrEulerToMatrix34)
 br_matrix34* __cdecl BrEulerToMatrix34(br_matrix34 *mat, br_euler *euler) {
@@ -62,7 +62,7 @@ br_matrix34* __cdecl BrEulerToMatrix34(br_matrix34 *mat, br_euler *euler) {
 }
 
 function_hook_state_t function_hook_state_BrMatrix34ToEuler = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix34ToEuler)
+CARM95_WEBSERVER_STATE(BrMatrix34ToEuler, function_hook_state_BrMatrix34ToEuler)
 static br_euler *(__cdecl*original_BrMatrix34ToEuler)(br_euler *, br_matrix34 *) = (br_euler *(__cdecl*)(br_euler *, br_matrix34 *))0x004d4ee0;
 CARM95_HOOK_FUNCTION(original_BrMatrix34ToEuler, BrMatrix34ToEuler)
 br_euler* __cdecl BrMatrix34ToEuler(br_euler *euler, br_matrix34 *mat) {
@@ -94,7 +94,7 @@ br_euler* __cdecl BrMatrix34ToEuler(br_euler *euler, br_matrix34 *mat) {
 }
 
 function_hook_state_t function_hook_state_BrEulerToMatrix4 = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrEulerToMatrix4)
+CARM95_WEBSERVER_STATE(BrEulerToMatrix4, function_hook_state_BrEulerToMatrix4)
 static br_matrix4 *(__cdecl*original_BrEulerToMatrix4)(br_matrix4 *, br_euler *) = (br_matrix4 *(__cdecl*)(br_matrix4 *, br_euler *))0x004d5150;
 CARM95_HOOK_FUNCTION(original_BrEulerToMatrix4, BrEulerToMatrix4)
 br_matrix4* __cdecl BrEulerToMatrix4(br_matrix4 *mat, br_euler *euler) {
@@ -114,7 +114,7 @@ br_matrix4* __cdecl BrEulerToMatrix4(br_matrix4 *mat, br_euler *euler) {
 }
 
 function_hook_state_t function_hook_state_BrMatrix4ToEuler = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix4ToEuler)
+CARM95_WEBSERVER_STATE(BrMatrix4ToEuler, function_hook_state_BrMatrix4ToEuler)
 static br_euler *(__cdecl*original_BrMatrix4ToEuler)(br_euler *, br_matrix4 *) = (br_euler *(__cdecl*)(br_euler *, br_matrix4 *))0x004d5180;
 CARM95_HOOK_FUNCTION(original_BrMatrix4ToEuler, BrMatrix4ToEuler)
 br_euler* __cdecl BrMatrix4ToEuler(br_euler *dest, br_matrix4 *mat) {
@@ -134,7 +134,7 @@ br_euler* __cdecl BrMatrix4ToEuler(br_euler *dest, br_matrix4 *mat) {
 }
 
 function_hook_state_t function_hook_state_BrEulerToQuat = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrEulerToQuat)
+CARM95_WEBSERVER_STATE(BrEulerToQuat, function_hook_state_BrEulerToQuat)
 static br_quat *(__cdecl*original_BrEulerToQuat)(br_quat *, br_euler *) = (br_quat *(__cdecl*)(br_quat *, br_euler *))0x004d51b0;
 CARM95_HOOK_FUNCTION(original_BrEulerToQuat, BrEulerToQuat)
 br_quat* __cdecl BrEulerToQuat(br_quat *q, br_euler *euler) {
@@ -186,7 +186,7 @@ br_quat* __cdecl BrEulerToQuat(br_quat *q, br_euler *euler) {
 }
 
 function_hook_state_t function_hook_state_BrQuatToEuler = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrQuatToEuler)
+CARM95_WEBSERVER_STATE(BrQuatToEuler, function_hook_state_BrQuatToEuler)
 static br_euler *(__cdecl*original_BrQuatToEuler)(br_euler *, br_quat *) = (br_euler *(__cdecl*)(br_euler *, br_quat *))0x004d5370;
 CARM95_HOOK_FUNCTION(original_BrQuatToEuler, BrQuatToEuler)
 br_euler* __cdecl BrQuatToEuler(br_euler *euler, br_quat *q) {

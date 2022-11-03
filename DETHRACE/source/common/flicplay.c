@@ -47,7 +47,7 @@ void ** hookvar_gPalette_pixels  = (void*)0x0053d068;
 tFlic_descriptor ** hookvar_gFirst_flic  = (void*)0x0053d0ac;
 
 function_hook_state_t function_hook_state_EnableTranslationText = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_EnableTranslationText)
+CARM95_WEBSERVER_STATE(EnableTranslationText, function_hook_state_EnableTranslationText)
 static void(__cdecl*original_EnableTranslationText)() = (void(__cdecl*)())0x00495990;
 CARM95_HOOK_FUNCTION(original_EnableTranslationText, EnableTranslationText)
 void __cdecl EnableTranslationText() {
@@ -63,7 +63,7 @@ void __cdecl EnableTranslationText() {
 }
 
 function_hook_state_t function_hook_state_DisableTranslationText = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DisableTranslationText)
+CARM95_WEBSERVER_STATE(DisableTranslationText, function_hook_state_DisableTranslationText)
 static void(__cdecl*original_DisableTranslationText)() = (void(__cdecl*)())0x004959a5;
 CARM95_HOOK_FUNCTION(original_DisableTranslationText, DisableTranslationText)
 void __cdecl DisableTranslationText() {
@@ -79,7 +79,7 @@ void __cdecl DisableTranslationText() {
 }
 
 function_hook_state_t function_hook_state_SetFlicSound = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_SetFlicSound)
+CARM95_WEBSERVER_STATE(SetFlicSound, function_hook_state_SetFlicSound)
 static void(__cdecl*original_SetFlicSound)(int, tU32) = (void(__cdecl*)(int, tU32))0x004959ba;
 CARM95_HOOK_FUNCTION(original_SetFlicSound, SetFlicSound)
 void __cdecl SetFlicSound(int pSound_ID, tU32 pSound_time) {
@@ -97,7 +97,7 @@ void __cdecl SetFlicSound(int pSound_ID, tU32 pSound_time) {
 }
 
 function_hook_state_t function_hook_state_TranslationMode = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_TranslationMode)
+CARM95_WEBSERVER_STATE(TranslationMode, function_hook_state_TranslationMode)
 static int(__cdecl*original_TranslationMode)() = (int(__cdecl*)())0x004959d5;
 CARM95_HOOK_FUNCTION(original_TranslationMode, TranslationMode)
 int __cdecl TranslationMode() {
@@ -113,7 +113,7 @@ int __cdecl TranslationMode() {
 }
 
 function_hook_state_t function_hook_state_DontLetFlicFuckWithPalettes = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DontLetFlicFuckWithPalettes)
+CARM95_WEBSERVER_STATE(DontLetFlicFuckWithPalettes, function_hook_state_DontLetFlicFuckWithPalettes)
 static void(__cdecl*original_DontLetFlicFuckWithPalettes)() = (void(__cdecl*)())0x004959ea;
 CARM95_HOOK_FUNCTION(original_DontLetFlicFuckWithPalettes, DontLetFlicFuckWithPalettes)
 void __cdecl DontLetFlicFuckWithPalettes() {
@@ -129,7 +129,7 @@ void __cdecl DontLetFlicFuckWithPalettes() {
 }
 
 function_hook_state_t function_hook_state_LetFlicFuckWithPalettes = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_LetFlicFuckWithPalettes)
+CARM95_WEBSERVER_STATE(LetFlicFuckWithPalettes, function_hook_state_LetFlicFuckWithPalettes)
 static void(__cdecl*original_LetFlicFuckWithPalettes)() = (void(__cdecl*)())0x004959ff;
 CARM95_HOOK_FUNCTION(original_LetFlicFuckWithPalettes, LetFlicFuckWithPalettes)
 void __cdecl LetFlicFuckWithPalettes() {
@@ -145,7 +145,7 @@ void __cdecl LetFlicFuckWithPalettes() {
 }
 
 function_hook_state_t function_hook_state_PlayFlicsInDarkness = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PlayFlicsInDarkness)
+CARM95_WEBSERVER_STATE(PlayFlicsInDarkness, function_hook_state_PlayFlicsInDarkness)
 static void(__cdecl*original_PlayFlicsInDarkness)() = (void(__cdecl*)())0x00495a14;
 CARM95_HOOK_FUNCTION(original_PlayFlicsInDarkness, PlayFlicsInDarkness)
 void __cdecl PlayFlicsInDarkness() {
@@ -161,7 +161,7 @@ void __cdecl PlayFlicsInDarkness() {
 }
 
 function_hook_state_t function_hook_state_ReilluminateFlics = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_ReilluminateFlics)
+CARM95_WEBSERVER_STATE(ReilluminateFlics, function_hook_state_ReilluminateFlics)
 static void(__cdecl*original_ReilluminateFlics)() = (void(__cdecl*)())0x00495a29;
 CARM95_HOOK_FUNCTION(original_ReilluminateFlics, ReilluminateFlics)
 void __cdecl ReilluminateFlics() {
@@ -177,7 +177,7 @@ void __cdecl ReilluminateFlics() {
 }
 
 function_hook_state_t function_hook_state_TurnFlicTransparencyOn = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_TurnFlicTransparencyOn)
+CARM95_WEBSERVER_STATE(TurnFlicTransparencyOn, function_hook_state_TurnFlicTransparencyOn)
 static void(__cdecl*original_TurnFlicTransparencyOn)() = (void(__cdecl*)())0x00495a43;
 CARM95_HOOK_FUNCTION(original_TurnFlicTransparencyOn, TurnFlicTransparencyOn)
 void __cdecl TurnFlicTransparencyOn() {
@@ -193,7 +193,7 @@ void __cdecl TurnFlicTransparencyOn() {
 }
 
 function_hook_state_t function_hook_state_TurnFlicTransparencyOff = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_TurnFlicTransparencyOff)
+CARM95_WEBSERVER_STATE(TurnFlicTransparencyOff, function_hook_state_TurnFlicTransparencyOff)
 static void(__cdecl*original_TurnFlicTransparencyOff)() = (void(__cdecl*)())0x00495a58;
 CARM95_HOOK_FUNCTION(original_TurnFlicTransparencyOff, TurnFlicTransparencyOff)
 void __cdecl TurnFlicTransparencyOff() {
@@ -209,7 +209,7 @@ void __cdecl TurnFlicTransparencyOff() {
 }
 
 function_hook_state_t function_hook_state_PlayFlicsFromDisk = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PlayFlicsFromDisk)
+CARM95_WEBSERVER_STATE(PlayFlicsFromDisk, function_hook_state_PlayFlicsFromDisk)
 static void(__cdecl*original_PlayFlicsFromDisk)() = (void(__cdecl*)())0x00495a6d;
 CARM95_HOOK_FUNCTION(original_PlayFlicsFromDisk, PlayFlicsFromDisk)
 void __cdecl PlayFlicsFromDisk() {
@@ -225,7 +225,7 @@ void __cdecl PlayFlicsFromDisk() {
 }
 
 function_hook_state_t function_hook_state_PlayFlicsFromMemory = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PlayFlicsFromMemory)
+CARM95_WEBSERVER_STATE(PlayFlicsFromMemory, function_hook_state_PlayFlicsFromMemory)
 static void(__cdecl*original_PlayFlicsFromMemory)() = (void(__cdecl*)())0x00495a82;
 CARM95_HOOK_FUNCTION(original_PlayFlicsFromMemory, PlayFlicsFromMemory)
 void __cdecl PlayFlicsFromMemory() {
@@ -241,7 +241,7 @@ void __cdecl PlayFlicsFromMemory() {
 }
 
 function_hook_state_t function_hook_state_FlicsPlayedFromDisk = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_FlicsPlayedFromDisk)
+CARM95_WEBSERVER_STATE(FlicsPlayedFromDisk, function_hook_state_FlicsPlayedFromDisk)
 static int(__cdecl*original_FlicsPlayedFromDisk)() = (int(__cdecl*)())0x00495a97;
 CARM95_HOOK_FUNCTION(original_FlicsPlayedFromDisk, FlicsPlayedFromDisk)
 int __cdecl FlicsPlayedFromDisk() {
@@ -257,7 +257,7 @@ int __cdecl FlicsPlayedFromDisk() {
 }
 
 function_hook_state_t function_hook_state_TurnOffPanelFlics = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_TurnOffPanelFlics)
+CARM95_WEBSERVER_STATE(TurnOffPanelFlics, function_hook_state_TurnOffPanelFlics)
 static void(__cdecl*original_TurnOffPanelFlics)() = (void(__cdecl*)())0x00495aac;
 CARM95_HOOK_FUNCTION(original_TurnOffPanelFlics, TurnOffPanelFlics)
 void __cdecl TurnOffPanelFlics() {
@@ -273,7 +273,7 @@ void __cdecl TurnOffPanelFlics() {
 }
 
 function_hook_state_t function_hook_state_TurnOnPanelFlics = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_TurnOnPanelFlics)
+CARM95_WEBSERVER_STATE(TurnOnPanelFlics, function_hook_state_TurnOnPanelFlics)
 static void(__cdecl*original_TurnOnPanelFlics)() = (void(__cdecl*)())0x00495ac1;
 CARM95_HOOK_FUNCTION(original_TurnOnPanelFlics, TurnOnPanelFlics)
 void __cdecl TurnOnPanelFlics() {
@@ -289,7 +289,7 @@ void __cdecl TurnOnPanelFlics() {
 }
 
 function_hook_state_t function_hook_state_GetPanelFlicFrameIndex = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_GetPanelFlicFrameIndex)
+CARM95_WEBSERVER_STATE(GetPanelFlicFrameIndex, function_hook_state_GetPanelFlicFrameIndex)
 static int(__cdecl*original_GetPanelFlicFrameIndex)(int) = (int(__cdecl*)(int))0x00495ad6;
 CARM95_HOOK_FUNCTION(original_GetPanelFlicFrameIndex, GetPanelFlicFrameIndex)
 int __cdecl GetPanelFlicFrameIndex(int pIndex) {
@@ -306,7 +306,7 @@ int __cdecl GetPanelFlicFrameIndex(int pIndex) {
 }
 
 function_hook_state_t function_hook_state_FlicPaletteAllocate = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_FlicPaletteAllocate)
+CARM95_WEBSERVER_STATE(FlicPaletteAllocate, function_hook_state_FlicPaletteAllocate)
 static void(__cdecl*original_FlicPaletteAllocate)() = (void(__cdecl*)())0x00495af9;
 CARM95_HOOK_FUNCTION(original_FlicPaletteAllocate, FlicPaletteAllocate)
 void __cdecl FlicPaletteAllocate() {
@@ -322,7 +322,7 @@ void __cdecl FlicPaletteAllocate() {
 }
 
 function_hook_state_t function_hook_state_AssertFlicPixelmap = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_AssertFlicPixelmap)
+CARM95_WEBSERVER_STATE(AssertFlicPixelmap, function_hook_state_AssertFlicPixelmap)
 static void(__cdecl*original_AssertFlicPixelmap)(tFlic_descriptor_ptr, br_pixelmap *) = (void(__cdecl*)(tFlic_descriptor_ptr, br_pixelmap *))0x00495b39;
 CARM95_HOOK_FUNCTION(original_AssertFlicPixelmap, AssertFlicPixelmap)
 void __cdecl AssertFlicPixelmap(tFlic_descriptor_ptr pFlic_info, br_pixelmap *pDest_pixelmap) {
@@ -340,7 +340,7 @@ void __cdecl AssertFlicPixelmap(tFlic_descriptor_ptr pFlic_info, br_pixelmap *pD
 }
 
 function_hook_state_t function_hook_state_StartFlic = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_StartFlic)
+CARM95_WEBSERVER_STATE(StartFlic, function_hook_state_StartFlic)
 static int(__cdecl*original_StartFlic)(char *, int, tFlic_descriptor_ptr, tU32, tS8 *, br_pixelmap *, int, int, int) = (int(__cdecl*)(char *, int, tFlic_descriptor_ptr, tU32, tS8 *, br_pixelmap *, int, int, int))0x00495b77;
 CARM95_HOOK_FUNCTION(original_StartFlic, StartFlic)
 int __cdecl StartFlic(char *pFile_name, int pIndex, tFlic_descriptor_ptr pFlic_info, tU32 pSize, tS8 *pData_ptr, br_pixelmap *pDest_pixelmap, int pX_offset, int pY_offset, int pFrame_rate) {
@@ -373,7 +373,7 @@ int __cdecl StartFlic(char *pFile_name, int pIndex, tFlic_descriptor_ptr pFlic_i
 }
 
 function_hook_state_t function_hook_state_FreeFlicPaletteAllocate = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_FreeFlicPaletteAllocate)
+CARM95_WEBSERVER_STATE(FreeFlicPaletteAllocate, function_hook_state_FreeFlicPaletteAllocate)
 static void(__cdecl*original_FreeFlicPaletteAllocate)() = (void(__cdecl*)())0x00495f27;
 CARM95_HOOK_FUNCTION(original_FreeFlicPaletteAllocate, FreeFlicPaletteAllocate)
 void __cdecl FreeFlicPaletteAllocate() {
@@ -389,7 +389,7 @@ void __cdecl FreeFlicPaletteAllocate() {
 }
 
 function_hook_state_t function_hook_state_EndFlic = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_EndFlic)
+CARM95_WEBSERVER_STATE(EndFlic, function_hook_state_EndFlic)
 static int(__cdecl*original_EndFlic)(tFlic_descriptor_ptr) = (int(__cdecl*)(tFlic_descriptor_ptr))0x00495f71;
 CARM95_HOOK_FUNCTION(original_EndFlic, EndFlic)
 int __cdecl EndFlic(tFlic_descriptor_ptr pFlic_info) {
@@ -406,7 +406,7 @@ int __cdecl EndFlic(tFlic_descriptor_ptr pFlic_info) {
 }
 
 function_hook_state_t function_hook_state_DoColourMap = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DoColourMap)
+CARM95_WEBSERVER_STATE(DoColourMap, function_hook_state_DoColourMap)
 static void(__cdecl*original_DoColourMap)(tFlic_descriptor_ptr, tU32) = (void(__cdecl*)(tFlic_descriptor_ptr, tU32))0x0049639a;
 CARM95_HOOK_FUNCTION(original_DoColourMap, DoColourMap)
 void __cdecl DoColourMap(tFlic_descriptor_ptr pFlic_info, tU32 chunk_length) {
@@ -444,7 +444,7 @@ void __cdecl DoColourMap(tFlic_descriptor_ptr pFlic_info, tU32 chunk_length) {
 }
 
 function_hook_state_t function_hook_state_DoDifferenceX = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DoDifferenceX)
+CARM95_WEBSERVER_STATE(DoDifferenceX, function_hook_state_DoDifferenceX)
 static void(__cdecl*original_DoDifferenceX)(tFlic_descriptor *, tU32) = (void(__cdecl*)(tFlic_descriptor *, tU32))0x004964e3;
 CARM95_HOOK_FUNCTION(original_DoDifferenceX, DoDifferenceX)
 void __cdecl DoDifferenceX(tFlic_descriptor *pFlic_info, tU32 chunk_length) {
@@ -486,7 +486,7 @@ void __cdecl DoDifferenceX(tFlic_descriptor *pFlic_info, tU32 chunk_length) {
 }
 
 function_hook_state_t function_hook_state_DoDifferenceTrans = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DoDifferenceTrans)
+CARM95_WEBSERVER_STATE(DoDifferenceTrans, function_hook_state_DoDifferenceTrans)
 static void(__cdecl*original_DoDifferenceTrans)(tFlic_descriptor *, tU32) = (void(__cdecl*)(tFlic_descriptor *, tU32))0x0049663f;
 CARM95_HOOK_FUNCTION(original_DoDifferenceTrans, DoDifferenceTrans)
 void __cdecl DoDifferenceTrans(tFlic_descriptor *pFlic_info, tU32 chunk_length) {
@@ -528,7 +528,7 @@ void __cdecl DoDifferenceTrans(tFlic_descriptor *pFlic_info, tU32 chunk_length) 
 }
 
 function_hook_state_t function_hook_state_DoColour256 = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DoColour256)
+CARM95_WEBSERVER_STATE(DoColour256, function_hook_state_DoColour256)
 static void(__cdecl*original_DoColour256)(tFlic_descriptor *, tU32) = (void(__cdecl*)(tFlic_descriptor *, tU32))0x004967ce;
 CARM95_HOOK_FUNCTION(original_DoColour256, DoColour256)
 void __cdecl DoColour256(tFlic_descriptor *pFlic_info, tU32 chunk_length) {
@@ -566,7 +566,7 @@ void __cdecl DoColour256(tFlic_descriptor *pFlic_info, tU32 chunk_length) {
 }
 
 function_hook_state_t function_hook_state_DoDeltaTrans = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DoDeltaTrans)
+CARM95_WEBSERVER_STATE(DoDeltaTrans, function_hook_state_DoDeltaTrans)
 static void(__cdecl*original_DoDeltaTrans)(tFlic_descriptor *, tU32) = (void(__cdecl*)(tFlic_descriptor *, tU32))0x00496902;
 CARM95_HOOK_FUNCTION(original_DoDeltaTrans, DoDeltaTrans)
 void __cdecl DoDeltaTrans(tFlic_descriptor *pFlic_info, tU32 chunk_length) {
@@ -610,7 +610,7 @@ void __cdecl DoDeltaTrans(tFlic_descriptor *pFlic_info, tU32 chunk_length) {
 }
 
 function_hook_state_t function_hook_state_DoDeltaX = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DoDeltaX)
+CARM95_WEBSERVER_STATE(DoDeltaX, function_hook_state_DoDeltaX)
 static void(__cdecl*original_DoDeltaX)(tFlic_descriptor *, tU32) = (void(__cdecl*)(tFlic_descriptor *, tU32))0x00496b49;
 CARM95_HOOK_FUNCTION(original_DoDeltaX, DoDeltaX)
 void __cdecl DoDeltaX(tFlic_descriptor *pFlic_info, tU32 chunk_length) {
@@ -650,7 +650,7 @@ void __cdecl DoDeltaX(tFlic_descriptor *pFlic_info, tU32 chunk_length) {
 }
 
 function_hook_state_t function_hook_state_DoBlack = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DoBlack)
+CARM95_WEBSERVER_STATE(DoBlack, function_hook_state_DoBlack)
 static void(__cdecl*original_DoBlack)(tFlic_descriptor *, tU32) = (void(__cdecl*)(tFlic_descriptor *, tU32))0x00496cb0;
 CARM95_HOOK_FUNCTION(original_DoBlack, DoBlack)
 void __cdecl DoBlack(tFlic_descriptor *pFlic_info, tU32 chunk_length) {
@@ -680,7 +680,7 @@ void __cdecl DoBlack(tFlic_descriptor *pFlic_info, tU32 chunk_length) {
 }
 
 function_hook_state_t function_hook_state_DoRunLengthX = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DoRunLengthX)
+CARM95_WEBSERVER_STATE(DoRunLengthX, function_hook_state_DoRunLengthX)
 static void(__cdecl*original_DoRunLengthX)(tFlic_descriptor *, tU32) = (void(__cdecl*)(tFlic_descriptor *, tU32))0x00496d3c;
 CARM95_HOOK_FUNCTION(original_DoRunLengthX, DoRunLengthX)
 void __cdecl DoRunLengthX(tFlic_descriptor *pFlic_info, tU32 chunk_length) {
@@ -716,7 +716,7 @@ void __cdecl DoRunLengthX(tFlic_descriptor *pFlic_info, tU32 chunk_length) {
 }
 
 function_hook_state_t function_hook_state_DoRunLengthTrans = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DoRunLengthTrans)
+CARM95_WEBSERVER_STATE(DoRunLengthTrans, function_hook_state_DoRunLengthTrans)
 static void(__cdecl*original_DoRunLengthTrans)(tFlic_descriptor *, tU32) = (void(__cdecl*)(tFlic_descriptor *, tU32))0x00496e53;
 CARM95_HOOK_FUNCTION(original_DoRunLengthTrans, DoRunLengthTrans)
 void __cdecl DoRunLengthTrans(tFlic_descriptor *pFlic_info, tU32 chunk_length) {
@@ -752,7 +752,7 @@ void __cdecl DoRunLengthTrans(tFlic_descriptor *pFlic_info, tU32 chunk_length) {
 }
 
 function_hook_state_t function_hook_state_DoUncompressed = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DoUncompressed)
+CARM95_WEBSERVER_STATE(DoUncompressed, function_hook_state_DoUncompressed)
 static void(__cdecl*original_DoUncompressed)(tFlic_descriptor *, tU32) = (void(__cdecl*)(tFlic_descriptor *, tU32))0x00496f9d;
 CARM95_HOOK_FUNCTION(original_DoUncompressed, DoUncompressed)
 void __cdecl DoUncompressed(tFlic_descriptor *pFlic_info, tU32 chunk_length) {
@@ -782,7 +782,7 @@ void __cdecl DoUncompressed(tFlic_descriptor *pFlic_info, tU32 chunk_length) {
 }
 
 function_hook_state_t function_hook_state_DoUncompressedTrans = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DoUncompressedTrans)
+CARM95_WEBSERVER_STATE(DoUncompressedTrans, function_hook_state_DoUncompressedTrans)
 static void(__cdecl*original_DoUncompressedTrans)(tFlic_descriptor *, tU32) = (void(__cdecl*)(tFlic_descriptor *, tU32))0x00497031;
 CARM95_HOOK_FUNCTION(original_DoUncompressedTrans, DoUncompressedTrans)
 void __cdecl DoUncompressedTrans(tFlic_descriptor *pFlic_info, tU32 chunk_length) {
@@ -814,7 +814,7 @@ void __cdecl DoUncompressedTrans(tFlic_descriptor *pFlic_info, tU32 chunk_length
 }
 
 function_hook_state_t function_hook_state_DoMini = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DoMini)
+CARM95_WEBSERVER_STATE(DoMini, function_hook_state_DoMini)
 static void(__cdecl*original_DoMini)(tFlic_descriptor *, tU32) = (void(__cdecl*)(tFlic_descriptor *, tU32))0x004970dc;
 CARM95_HOOK_FUNCTION(original_DoMini, DoMini)
 void __cdecl DoMini(tFlic_descriptor *pFlic_info, tU32 chunk_length) {
@@ -832,7 +832,7 @@ void __cdecl DoMini(tFlic_descriptor *pFlic_info, tU32 chunk_length) {
 }
 
 function_hook_state_t function_hook_state_DrawTranslations = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DrawTranslations)
+CARM95_WEBSERVER_STATE(DrawTranslations, function_hook_state_DrawTranslations)
 static void(__cdecl*original_DrawTranslations)(tFlic_descriptor *, int) = (void(__cdecl*)(tFlic_descriptor *, int))0x004970fa;
 CARM95_HOOK_FUNCTION(original_DrawTranslations, DrawTranslations)
 void __cdecl DrawTranslations(tFlic_descriptor *pFlic_info, int pLast_frame) {
@@ -860,7 +860,7 @@ void __cdecl DrawTranslations(tFlic_descriptor *pFlic_info, int pLast_frame) {
 }
 
 function_hook_state_t function_hook_state_PlayNextFlicFrame2 = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PlayNextFlicFrame2)
+CARM95_WEBSERVER_STATE(PlayNextFlicFrame2, function_hook_state_PlayNextFlicFrame2)
 static int(__cdecl*original_PlayNextFlicFrame2)(tFlic_descriptor *, int) = (int(__cdecl*)(tFlic_descriptor *, int))0x00495ff5;
 CARM95_HOOK_FUNCTION(original_PlayNextFlicFrame2, PlayNextFlicFrame2)
 int __cdecl PlayNextFlicFrame2(tFlic_descriptor *pFlic_info, int pPanel_flic) {
@@ -896,7 +896,7 @@ int __cdecl PlayNextFlicFrame2(tFlic_descriptor *pFlic_info, int pPanel_flic) {
 }
 
 function_hook_state_t function_hook_state_PlayNextFlicFrame = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PlayNextFlicFrame)
+CARM95_WEBSERVER_STATE(PlayNextFlicFrame, function_hook_state_PlayNextFlicFrame)
 static int(__cdecl*original_PlayNextFlicFrame)(tFlic_descriptor *) = (int(__cdecl*)(tFlic_descriptor *))0x00495fd7;
 CARM95_HOOK_FUNCTION(original_PlayNextFlicFrame, PlayNextFlicFrame)
 int __cdecl PlayNextFlicFrame(tFlic_descriptor *pFlic_info) {
@@ -913,7 +913,7 @@ int __cdecl PlayNextFlicFrame(tFlic_descriptor *pFlic_info) {
 }
 
 function_hook_state_t function_hook_state_PlayFlic = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PlayFlic)
+CARM95_WEBSERVER_STATE(PlayFlic, function_hook_state_PlayFlic)
 static int(__cdecl*original_PlayFlic)(int, tU32, tS8 *, br_pixelmap *, int, int, void(**)(), int, int) = (int(__cdecl*)(int, tU32, tS8 *, br_pixelmap *, int, int, void(**)(), int, int))0x00497278;
 CARM95_HOOK_FUNCTION(original_PlayFlic, PlayFlic)
 int __cdecl PlayFlic(int pIndex, tU32 pSize, tS8 *pData_ptr, br_pixelmap *pDest_pixelmap, int pX_offset, int pY_offset, void(**DoPerFrame)(), int pInterruptable, int pFrame_rate) {
@@ -948,7 +948,7 @@ int __cdecl PlayFlic(int pIndex, tU32 pSize, tS8 *pData_ptr, br_pixelmap *pDest_
 }
 
 function_hook_state_t function_hook_state_SwapScreen = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_SwapScreen)
+CARM95_WEBSERVER_STATE(SwapScreen, function_hook_state_SwapScreen)
 static void(__cdecl*original_SwapScreen)() = (void(__cdecl*)())0x00497444;
 CARM95_HOOK_FUNCTION(original_SwapScreen, SwapScreen)
 void __cdecl SwapScreen() {
@@ -964,7 +964,7 @@ void __cdecl SwapScreen() {
 }
 
 function_hook_state_t function_hook_state_ShowFlic = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_ShowFlic)
+CARM95_WEBSERVER_STATE(ShowFlic, function_hook_state_ShowFlic)
 static void(__cdecl*original_ShowFlic)(int) = (void(__cdecl*)(int))0x004973a3;
 CARM95_HOOK_FUNCTION(original_ShowFlic, ShowFlic)
 void __cdecl ShowFlic(int pIndex) {
@@ -981,7 +981,7 @@ void __cdecl ShowFlic(int pIndex) {
 }
 
 function_hook_state_t function_hook_state_InitFlics = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_InitFlics)
+CARM95_WEBSERVER_STATE(InitFlics, function_hook_state_InitFlics)
 static void(__cdecl*original_InitFlics)() = (void(__cdecl*)())0x00497459;
 CARM95_HOOK_FUNCTION(original_InitFlics, InitFlics)
 void __cdecl InitFlics() {
@@ -999,7 +999,7 @@ void __cdecl InitFlics() {
 }
 
 function_hook_state_t function_hook_state_LoadFlic = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_LoadFlic)
+CARM95_WEBSERVER_STATE(LoadFlic, function_hook_state_LoadFlic)
 static int(__cdecl*original_LoadFlic)(int) = (int(__cdecl*)(int))0x00497499;
 CARM95_HOOK_FUNCTION(original_LoadFlic, LoadFlic)
 int __cdecl LoadFlic(int pIndex) {
@@ -1022,7 +1022,7 @@ int __cdecl LoadFlic(int pIndex) {
 }
 
 function_hook_state_t function_hook_state_UnlockFlic = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_UnlockFlic)
+CARM95_WEBSERVER_STATE(UnlockFlic, function_hook_state_UnlockFlic)
 static void(__cdecl*original_UnlockFlic)(int) = (void(__cdecl*)(int))0x00497683;
 CARM95_HOOK_FUNCTION(original_UnlockFlic, UnlockFlic)
 void __cdecl UnlockFlic(int pIndex) {
@@ -1039,7 +1039,7 @@ void __cdecl UnlockFlic(int pIndex) {
 }
 
 function_hook_state_t function_hook_state_LoadFlicData = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_LoadFlicData)
+CARM95_WEBSERVER_STATE(LoadFlicData, function_hook_state_LoadFlicData)
 static int(__cdecl*original_LoadFlicData)(char *, tU8 **, tU32 *) = (int(__cdecl*)(char *, tU8 **, tU32 *))0x004976cb;
 CARM95_HOOK_FUNCTION(original_LoadFlicData, LoadFlicData)
 int __cdecl LoadFlicData(char *pName, tU8 **pData, tU32 *pData_length) {
@@ -1062,7 +1062,7 @@ int __cdecl LoadFlicData(char *pName, tU8 **pData, tU32 *pData_length) {
 }
 
 function_hook_state_t function_hook_state_FreeFlic = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_FreeFlic)
+CARM95_WEBSERVER_STATE(FreeFlic, function_hook_state_FreeFlic)
 static void(__cdecl*original_FreeFlic)(int) = (void(__cdecl*)(int))0x004977de;
 CARM95_HOOK_FUNCTION(original_FreeFlic, FreeFlic)
 void __cdecl FreeFlic(int pIndex) {
@@ -1079,7 +1079,7 @@ void __cdecl FreeFlic(int pIndex) {
 }
 
 function_hook_state_t function_hook_state_ForceRunFlic = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_ForceRunFlic)
+CARM95_WEBSERVER_STATE(ForceRunFlic, function_hook_state_ForceRunFlic)
 static void(__cdecl*original_ForceRunFlic)(int) = (void(__cdecl*)(int))0x00497908;
 CARM95_HOOK_FUNCTION(original_ForceRunFlic, ForceRunFlic)
 void __cdecl ForceRunFlic(int pIndex) {
@@ -1096,7 +1096,7 @@ void __cdecl ForceRunFlic(int pIndex) {
 }
 
 function_hook_state_t function_hook_state_RunFlicAt = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_RunFlicAt)
+CARM95_WEBSERVER_STATE(RunFlicAt, function_hook_state_RunFlicAt)
 static void(__cdecl*original_RunFlicAt)(int, int, int) = (void(__cdecl*)(int, int, int))0x00497829;
 CARM95_HOOK_FUNCTION(original_RunFlicAt, RunFlicAt)
 void __cdecl RunFlicAt(int pIndex, int pX, int pY) {
@@ -1115,7 +1115,7 @@ void __cdecl RunFlicAt(int pIndex, int pX, int pY) {
 }
 
 function_hook_state_t function_hook_state_RunFlic = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_RunFlic)
+CARM95_WEBSERVER_STATE(RunFlic, function_hook_state_RunFlic)
 static void(__cdecl*original_RunFlic)(int) = (void(__cdecl*)(int))0x0049788b;
 CARM95_HOOK_FUNCTION(original_RunFlic, RunFlic)
 void __cdecl RunFlic(int pIndex) {
@@ -1132,7 +1132,7 @@ void __cdecl RunFlic(int pIndex) {
 }
 
 function_hook_state_t function_hook_state_PreloadBunchOfFlics = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PreloadBunchOfFlics)
+CARM95_WEBSERVER_STATE(PreloadBunchOfFlics, function_hook_state_PreloadBunchOfFlics)
 static void(__cdecl*original_PreloadBunchOfFlics)(int) = (void(__cdecl*)(int))0x00497937;
 CARM95_HOOK_FUNCTION(original_PreloadBunchOfFlics, PreloadBunchOfFlics)
 void __cdecl PreloadBunchOfFlics(int pBunch_index) {
@@ -1151,7 +1151,7 @@ void __cdecl PreloadBunchOfFlics(int pBunch_index) {
 }
 
 function_hook_state_t function_hook_state_UnlockBunchOfFlics = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_UnlockBunchOfFlics)
+CARM95_WEBSERVER_STATE(UnlockBunchOfFlics, function_hook_state_UnlockBunchOfFlics)
 static void(__cdecl*original_UnlockBunchOfFlics)(int) = (void(__cdecl*)(int))0x00497986;
 CARM95_HOOK_FUNCTION(original_UnlockBunchOfFlics, UnlockBunchOfFlics)
 void __cdecl UnlockBunchOfFlics(int pBunch_index) {
@@ -1170,7 +1170,7 @@ void __cdecl UnlockBunchOfFlics(int pBunch_index) {
 }
 
 function_hook_state_t function_hook_state_FlushAllFlics = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_FlushAllFlics)
+CARM95_WEBSERVER_STATE(FlushAllFlics, function_hook_state_FlushAllFlics)
 static void(__cdecl*original_FlushAllFlics)(int) = (void(__cdecl*)(int))0x004979d5;
 CARM95_HOOK_FUNCTION(original_FlushAllFlics, FlushAllFlics)
 void __cdecl FlushAllFlics(int pBunch_index) {
@@ -1189,7 +1189,7 @@ void __cdecl FlushAllFlics(int pBunch_index) {
 }
 
 function_hook_state_t function_hook_state_InitFlicQueue = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_InitFlicQueue)
+CARM95_WEBSERVER_STATE(InitFlicQueue, function_hook_state_InitFlicQueue)
 static void(__cdecl*original_InitFlicQueue)() = (void(__cdecl*)())0x00497a10;
 CARM95_HOOK_FUNCTION(original_InitFlicQueue, InitFlicQueue)
 void __cdecl InitFlicQueue() {
@@ -1205,7 +1205,7 @@ void __cdecl InitFlicQueue() {
 }
 
 function_hook_state_t function_hook_state_FlicQueueFinished = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_FlicQueueFinished)
+CARM95_WEBSERVER_STATE(FlicQueueFinished, function_hook_state_FlicQueueFinished)
 static int(__cdecl*original_FlicQueueFinished)() = (int(__cdecl*)())0x00497a25;
 CARM95_HOOK_FUNCTION(original_FlicQueueFinished, FlicQueueFinished)
 int __cdecl FlicQueueFinished() {
@@ -1223,7 +1223,7 @@ int __cdecl FlicQueueFinished() {
 }
 
 function_hook_state_t function_hook_state_ProcessFlicQueue = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_ProcessFlicQueue)
+CARM95_WEBSERVER_STATE(ProcessFlicQueue, function_hook_state_ProcessFlicQueue)
 static void(__cdecl*original_ProcessFlicQueue)(tU32) = (void(__cdecl*)(tU32))0x00497a71;
 CARM95_HOOK_FUNCTION(original_ProcessFlicQueue, ProcessFlicQueue)
 void __cdecl ProcessFlicQueue(tU32 pInterval) {
@@ -1250,7 +1250,7 @@ void __cdecl ProcessFlicQueue(tU32 pInterval) {
 }
 
 function_hook_state_t function_hook_state_FlushFlicQueue = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_FlushFlicQueue)
+CARM95_WEBSERVER_STATE(FlushFlicQueue, function_hook_state_FlushFlicQueue)
 static void(__cdecl*original_FlushFlicQueue)() = (void(__cdecl*)())0x00497b5d;
 CARM95_HOOK_FUNCTION(original_FlushFlicQueue, FlushFlicQueue)
 void __cdecl FlushFlicQueue() {
@@ -1270,7 +1270,7 @@ void __cdecl FlushFlicQueue() {
 }
 
 function_hook_state_t function_hook_state_AddToFlicQueue = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_AddToFlicQueue)
+CARM95_WEBSERVER_STATE(AddToFlicQueue, function_hook_state_AddToFlicQueue)
 static void(__cdecl*original_AddToFlicQueue)(int, int, int, int) = (void(__cdecl*)(int, int, int, int))0x00497bec;
 CARM95_HOOK_FUNCTION(original_AddToFlicQueue, AddToFlicQueue)
 void __cdecl AddToFlicQueue(int pIndex, int pX, int pY, int pMust_finish) {
@@ -1298,7 +1298,7 @@ void __cdecl AddToFlicQueue(int pIndex, int pX, int pY, int pMust_finish) {
 }
 
 function_hook_state_t function_hook_state_InitialiseFlicPanel = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_InitialiseFlicPanel)
+CARM95_WEBSERVER_STATE(InitialiseFlicPanel, function_hook_state_InitialiseFlicPanel)
 static void(__cdecl*original_InitialiseFlicPanel)(int, int, int, int, int) = (void(__cdecl*)(int, int, int, int, int))0x00497dcd;
 CARM95_HOOK_FUNCTION(original_InitialiseFlicPanel, InitialiseFlicPanel)
 void __cdecl InitialiseFlicPanel(int pIndex, int pLeft, int pTop, int pWidth, int pHeight) {
@@ -1321,7 +1321,7 @@ void __cdecl InitialiseFlicPanel(int pIndex, int pLeft, int pTop, int pWidth, in
 }
 
 function_hook_state_t function_hook_state_DisposeFlicPanel = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DisposeFlicPanel)
+CARM95_WEBSERVER_STATE(DisposeFlicPanel, function_hook_state_DisposeFlicPanel)
 static void(__cdecl*original_DisposeFlicPanel)(int) = (void(__cdecl*)(int))0x00497e80;
 CARM95_HOOK_FUNCTION(original_DisposeFlicPanel, DisposeFlicPanel)
 void __cdecl DisposeFlicPanel(int pIndex) {
@@ -1338,7 +1338,7 @@ void __cdecl DisposeFlicPanel(int pIndex) {
 }
 
 function_hook_state_t function_hook_state_ServicePanelFlics = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_ServicePanelFlics)
+CARM95_WEBSERVER_STATE(ServicePanelFlics, function_hook_state_ServicePanelFlics)
 static void(__cdecl*original_ServicePanelFlics)(int) = (void(__cdecl*)(int))0x00497edd;
 CARM95_HOOK_FUNCTION(original_ServicePanelFlics, ServicePanelFlics)
 void __cdecl ServicePanelFlics(int pCopy_to_buffer) {
@@ -1369,7 +1369,7 @@ void __cdecl ServicePanelFlics(int pCopy_to_buffer) {
 }
 
 function_hook_state_t function_hook_state_ChangePanelFlic = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_ChangePanelFlic)
+CARM95_WEBSERVER_STATE(ChangePanelFlic, function_hook_state_ChangePanelFlic)
 static void(__cdecl*original_ChangePanelFlic)(int, tU8 *, tU32) = (void(__cdecl*)(int, tU8 *, tU32))0x004980ec;
 CARM95_HOOK_FUNCTION(original_ChangePanelFlic, ChangePanelFlic)
 void __cdecl ChangePanelFlic(int pIndex, tU8 *pData, tU32 pData_length) {
@@ -1388,7 +1388,7 @@ void __cdecl ChangePanelFlic(int pIndex, tU8 *pData, tU32 pData_length) {
 }
 
 function_hook_state_t function_hook_state_GetPanelPixelmap = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_GetPanelPixelmap)
+CARM95_WEBSERVER_STATE(GetPanelPixelmap, function_hook_state_GetPanelPixelmap)
 static br_pixelmap *(__cdecl*original_GetPanelPixelmap)(int) = (br_pixelmap *(__cdecl*)(int))0x004981b5;
 CARM95_HOOK_FUNCTION(original_GetPanelPixelmap, GetPanelPixelmap)
 br_pixelmap* __cdecl GetPanelPixelmap(int pIndex) {
@@ -1405,7 +1405,7 @@ br_pixelmap* __cdecl GetPanelPixelmap(int pIndex) {
 }
 
 function_hook_state_t function_hook_state_LoadInterfaceStrings = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_LoadInterfaceStrings)
+CARM95_WEBSERVER_STATE(LoadInterfaceStrings, function_hook_state_LoadInterfaceStrings)
 static void(__cdecl*original_LoadInterfaceStrings)() = (void(__cdecl*)())0x004981cf;
 CARM95_HOOK_FUNCTION(original_LoadInterfaceStrings, LoadInterfaceStrings)
 void __cdecl LoadInterfaceStrings() {
@@ -1441,7 +1441,7 @@ void __cdecl LoadInterfaceStrings() {
 }
 
 function_hook_state_t function_hook_state_FlushInterfaceFonts = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_FlushInterfaceFonts)
+CARM95_WEBSERVER_STATE(FlushInterfaceFonts, function_hook_state_FlushInterfaceFonts)
 static void(__cdecl*original_FlushInterfaceFonts)() = (void(__cdecl*)())0x00498961;
 CARM95_HOOK_FUNCTION(original_FlushInterfaceFonts, FlushInterfaceFonts)
 void __cdecl FlushInterfaceFonts() {
@@ -1457,7 +1457,7 @@ void __cdecl FlushInterfaceFonts() {
 }
 
 function_hook_state_t function_hook_state_SuspendPendingFlic = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_SuspendPendingFlic)
+CARM95_WEBSERVER_STATE(SuspendPendingFlic, function_hook_state_SuspendPendingFlic)
 static void(__cdecl*original_SuspendPendingFlic)() = (void(__cdecl*)())0x004989bc;
 CARM95_HOOK_FUNCTION(original_SuspendPendingFlic, SuspendPendingFlic)
 void __cdecl SuspendPendingFlic() {
@@ -1473,7 +1473,7 @@ void __cdecl SuspendPendingFlic() {
 }
 
 function_hook_state_t function_hook_state_ResumePendingFlic = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_ResumePendingFlic)
+CARM95_WEBSERVER_STATE(ResumePendingFlic, function_hook_state_ResumePendingFlic)
 static void(__cdecl*original_ResumePendingFlic)() = (void(__cdecl*)())0x004989db;
 CARM95_HOOK_FUNCTION(original_ResumePendingFlic, ResumePendingFlic)
 void __cdecl ResumePendingFlic() {

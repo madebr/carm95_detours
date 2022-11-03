@@ -84,7 +84,7 @@ tU32 * hookvar_gTime_stamp_for_this_munging  = (void*)0x005520e4;
 tS16 * hookvar_gMobile_section  = (void*)0x00530c90;
 
 function_hook_state_t function_hook_state_PointActorAlongThisBloodyVector = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PointActorAlongThisBloodyVector)
+CARM95_WEBSERVER_STATE(PointActorAlongThisBloodyVector, function_hook_state_PointActorAlongThisBloodyVector)
 static void(__cdecl*original_PointActorAlongThisBloodyVector)(br_actor *, br_vector3 *) = (void(__cdecl*)(br_actor *, br_vector3 *))0x00402390;
 CARM95_HOOK_FUNCTION(original_PointActorAlongThisBloodyVector, PointActorAlongThisBloodyVector)
 void __cdecl PointActorAlongThisBloodyVector(br_actor *pThe_actor, br_vector3 *pThe_vector) {
@@ -104,7 +104,7 @@ void __cdecl PointActorAlongThisBloodyVector(br_actor *pThe_actor, br_vector3 *p
 }
 
 function_hook_state_t function_hook_state_ProcessCurrentObjective = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_ProcessCurrentObjective)
+CARM95_WEBSERVER_STATE(ProcessCurrentObjective, function_hook_state_ProcessCurrentObjective)
 static void(__cdecl*original_ProcessCurrentObjective)(tOpponent_spec *, tProcess_objective_command) = (void(__cdecl*)(tOpponent_spec *, tProcess_objective_command))0x004065e0;
 CARM95_HOOK_FUNCTION(original_ProcessCurrentObjective, ProcessCurrentObjective)
 void __cdecl ProcessCurrentObjective(tOpponent_spec *pOpponent_spec, tProcess_objective_command pCommand) {
@@ -122,7 +122,7 @@ void __cdecl ProcessCurrentObjective(tOpponent_spec *pOpponent_spec, tProcess_ob
 }
 
 function_hook_state_t function_hook_state_ReallocExtraPathNodes = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_ReallocExtraPathNodes)
+CARM95_WEBSERVER_STATE(ReallocExtraPathNodes, function_hook_state_ReallocExtraPathNodes)
 static tS16(__cdecl*original_ReallocExtraPathNodes)(int) = (tS16(__cdecl*)(int))0x004057a1;
 CARM95_HOOK_FUNCTION(original_ReallocExtraPathNodes, ReallocExtraPathNodes)
 tS16 __cdecl ReallocExtraPathNodes(int pHow_many_then) {
@@ -143,7 +143,7 @@ tS16 __cdecl ReallocExtraPathNodes(int pHow_many_then) {
 }
 
 function_hook_state_t function_hook_state_ReallocExtraPathSections = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_ReallocExtraPathSections)
+CARM95_WEBSERVER_STATE(ReallocExtraPathSections, function_hook_state_ReallocExtraPathSections)
 static tS16(__cdecl*original_ReallocExtraPathSections)(int) = (tS16(__cdecl*)(int))0x00405855;
 CARM95_HOOK_FUNCTION(original_ReallocExtraPathSections, ReallocExtraPathSections)
 tS16 __cdecl ReallocExtraPathSections(int pHow_many_then) {
@@ -164,7 +164,7 @@ tS16 __cdecl ReallocExtraPathSections(int pHow_many_then) {
 }
 
 function_hook_state_t function_hook_state_PointVisibleFromHere = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PointVisibleFromHere)
+CARM95_WEBSERVER_STATE(PointVisibleFromHere, function_hook_state_PointVisibleFromHere)
 static int(__cdecl*original_PointVisibleFromHere)(br_vector3 *, br_vector3 *) = (int(__cdecl*)(br_vector3 *, br_vector3 *))0x004063ac;
 CARM95_HOOK_FUNCTION(original_PointVisibleFromHere, PointVisibleFromHere)
 int __cdecl PointVisibleFromHere(br_vector3 *pFrom, br_vector3 *pTo) {
@@ -192,7 +192,7 @@ int __cdecl PointVisibleFromHere(br_vector3 *pFrom, br_vector3 *pTo) {
 }
 
 function_hook_state_t function_hook_state_FindNearestPathNode = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_FindNearestPathNode)
+CARM95_WEBSERVER_STATE(FindNearestPathNode, function_hook_state_FindNearestPathNode)
 static tS16(__cdecl*original_FindNearestPathNode)(br_vector3 *, br_scalar *) = (tS16(__cdecl*)(br_vector3 *, br_scalar *))0x0040f331;
 CARM95_HOOK_FUNCTION(original_FindNearestPathNode, FindNearestPathNode)
 tS16 __cdecl FindNearestPathNode(br_vector3 *pActor_coords, br_scalar *pDistance) {
@@ -218,7 +218,7 @@ tS16 __cdecl FindNearestPathNode(br_vector3 *pActor_coords, br_scalar *pDistance
 }
 
 function_hook_state_t function_hook_state_FindNearestPathSection = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_FindNearestPathSection)
+CARM95_WEBSERVER_STATE(FindNearestPathSection, function_hook_state_FindNearestPathSection)
 static tS16(__cdecl*original_FindNearestPathSection)(br_vector3 *, br_vector3 *, br_vector3 *, br_scalar *) = (tS16(__cdecl*)(br_vector3 *, br_vector3 *, br_vector3 *, br_scalar *))0x0040294b;
 CARM95_HOOK_FUNCTION(original_FindNearestPathSection, FindNearestPathSection)
 tS16 __cdecl FindNearestPathSection(br_vector3 *pActor_coords, br_vector3 *pPath_direction, br_vector3 *pIntersect, br_scalar *pDistance) {
@@ -238,7 +238,7 @@ tS16 __cdecl FindNearestPathSection(br_vector3 *pActor_coords, br_vector3 *pPath
 }
 
 function_hook_state_t function_hook_state_FindNearestGeneralSection = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_FindNearestGeneralSection)
+CARM95_WEBSERVER_STATE(FindNearestGeneralSection, function_hook_state_FindNearestGeneralSection)
 static tS16(__cdecl*original_FindNearestGeneralSection)(tCar_spec *, br_vector3 *, br_vector3 *, br_vector3 *, br_scalar *) = (tS16(__cdecl*)(tCar_spec *, br_vector3 *, br_vector3 *, br_vector3 *, br_scalar *))0x00402975;
 CARM95_HOOK_FUNCTION(original_FindNearestGeneralSection, FindNearestGeneralSection)
 tS16 __cdecl FindNearestGeneralSection(tCar_spec *pPursuee, br_vector3 *pActor_coords, br_vector3 *pPath_direction, br_vector3 *pIntersect, br_scalar *pDistance) {
@@ -295,7 +295,7 @@ tS16 __cdecl FindNearestGeneralSection(tCar_spec *pPursuee, br_vector3 *pActor_c
 }
 
 function_hook_state_t function_hook_state_DeadStopCar = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DeadStopCar)
+CARM95_WEBSERVER_STATE(DeadStopCar, function_hook_state_DeadStopCar)
 static void(__cdecl*original_DeadStopCar)(tCar_spec *) = (void(__cdecl*)(tCar_spec *))0x00402481;
 CARM95_HOOK_FUNCTION(original_DeadStopCar, DeadStopCar)
 void __cdecl DeadStopCar(tCar_spec *pCar_spec) {
@@ -312,7 +312,7 @@ void __cdecl DeadStopCar(tCar_spec *pCar_spec) {
 }
 
 function_hook_state_t function_hook_state_TurnOpponentPhysicsOn = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_TurnOpponentPhysicsOn)
+CARM95_WEBSERVER_STATE(TurnOpponentPhysicsOn, function_hook_state_TurnOpponentPhysicsOn)
 static void(__cdecl*original_TurnOpponentPhysicsOn)(tOpponent_spec *) = (void(__cdecl*)(tOpponent_spec *))0x00402401;
 CARM95_HOOK_FUNCTION(original_TurnOpponentPhysicsOn, TurnOpponentPhysicsOn)
 void __cdecl TurnOpponentPhysicsOn(tOpponent_spec *pOpponent_spec) {
@@ -329,7 +329,7 @@ void __cdecl TurnOpponentPhysicsOn(tOpponent_spec *pOpponent_spec) {
 }
 
 function_hook_state_t function_hook_state_TurnOpponentPhysicsOff = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_TurnOpponentPhysicsOff)
+CARM95_WEBSERVER_STATE(TurnOpponentPhysicsOff, function_hook_state_TurnOpponentPhysicsOff)
 static void(__cdecl*original_TurnOpponentPhysicsOff)(tOpponent_spec *) = (void(__cdecl*)(tOpponent_spec *))0x0040243f;
 CARM95_HOOK_FUNCTION(original_TurnOpponentPhysicsOff, TurnOpponentPhysicsOff)
 void __cdecl TurnOpponentPhysicsOff(tOpponent_spec *pOpponent_spec) {
@@ -346,7 +346,7 @@ void __cdecl TurnOpponentPhysicsOff(tOpponent_spec *pOpponent_spec) {
 }
 
 function_hook_state_t function_hook_state_NewObjective = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_NewObjective)
+CARM95_WEBSERVER_STATE(NewObjective, function_hook_state_NewObjective)
 void(__cdecl*NewObjective)(tOpponent_spec *, tOpponent_objective_type) = (void(__cdecl*)(tOpponent_spec *, tOpponent_objective_type))0x0040694d;
 void NewObjective_do_not_use(tOpponent_spec *pOpponent_spec, tOpponent_objective_type pObjective_type) {
     va_list marker;
@@ -365,7 +365,7 @@ void NewObjective_do_not_use(tOpponent_spec *pOpponent_spec, tOpponent_objective
 }
 
 function_hook_state_t function_hook_state_CalcRaceRoute = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_CalcRaceRoute)
+CARM95_WEBSERVER_STATE(CalcRaceRoute, function_hook_state_CalcRaceRoute)
 static void(__cdecl*original_CalcRaceRoute)(tOpponent_spec *) = (void(__cdecl*)(tOpponent_spec *))0x00402512;
 CARM95_HOOK_FUNCTION(original_CalcRaceRoute, CalcRaceRoute)
 void __cdecl CalcRaceRoute(tOpponent_spec *pOpponent_spec) {
@@ -408,7 +408,7 @@ void __cdecl CalcRaceRoute(tOpponent_spec *pOpponent_spec) {
 }
 
 function_hook_state_t function_hook_state_TopUpRandomRoute = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_TopUpRandomRoute)
+CARM95_WEBSERVER_STATE(TopUpRandomRoute, function_hook_state_TopUpRandomRoute)
 static void(__cdecl*original_TopUpRandomRoute)(tOpponent_spec *, int) = (void(__cdecl*)(tOpponent_spec *, int))0x00402e11;
 CARM95_HOOK_FUNCTION(original_TopUpRandomRoute, TopUpRandomRoute)
 void __cdecl TopUpRandomRoute(tOpponent_spec *pOpponent_spec, int pSections_to_add) {
@@ -440,7 +440,7 @@ void __cdecl TopUpRandomRoute(tOpponent_spec *pOpponent_spec, int pSections_to_a
 }
 
 function_hook_state_t function_hook_state_SearchForSection = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_SearchForSection)
+CARM95_WEBSERVER_STATE(SearchForSection, function_hook_state_SearchForSection)
 static int(__cdecl*original_SearchForSection)(tRoute_section *, tRoute_section *, int *, tS16, int, br_scalar, tOpponent_spec *) = (int(__cdecl*)(tRoute_section *, tRoute_section *, int *, tS16, int, br_scalar, tOpponent_spec *))0x00407f5d;
 CARM95_HOOK_FUNCTION(original_SearchForSection, SearchForSection)
 int __cdecl SearchForSection(tRoute_section *pTemp_store, tRoute_section *pPerm_store, int *pNum_of_perm_store_sections, tS16 pTarget_section, int pDepth, br_scalar pDistance_so_far, tOpponent_spec *pOpponent_spec) {
@@ -481,7 +481,7 @@ int __cdecl SearchForSection(tRoute_section *pTemp_store, tRoute_section *pPerm_
 }
 
 function_hook_state_t function_hook_state_CalcGetNearPlayerRoute = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_CalcGetNearPlayerRoute)
+CARM95_WEBSERVER_STATE(CalcGetNearPlayerRoute, function_hook_state_CalcGetNearPlayerRoute)
 static void(__cdecl*original_CalcGetNearPlayerRoute)(tOpponent_spec *, tCar_spec *) = (void(__cdecl*)(tOpponent_spec *, tCar_spec *))0x004089bf;
 CARM95_HOOK_FUNCTION(original_CalcGetNearPlayerRoute, CalcGetNearPlayerRoute)
 void __cdecl CalcGetNearPlayerRoute(tOpponent_spec *pOpponent_spec, tCar_spec *pPlayer) {
@@ -529,7 +529,7 @@ void __cdecl CalcGetNearPlayerRoute(tOpponent_spec *pOpponent_spec, tCar_spec *p
 }
 
 function_hook_state_t function_hook_state_CalcReturnToStartPointRoute = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_CalcReturnToStartPointRoute)
+CARM95_WEBSERVER_STATE(CalcReturnToStartPointRoute, function_hook_state_CalcReturnToStartPointRoute)
 static void(__cdecl*original_CalcReturnToStartPointRoute)(tOpponent_spec *) = (void(__cdecl*)(tOpponent_spec *))0x00407d1e;
 CARM95_HOOK_FUNCTION(original_CalcReturnToStartPointRoute, CalcReturnToStartPointRoute)
 void __cdecl CalcReturnToStartPointRoute(tOpponent_spec *pOpponent_spec) {
@@ -570,7 +570,7 @@ void __cdecl CalcReturnToStartPointRoute(tOpponent_spec *pOpponent_spec) {
 }
 
 function_hook_state_t function_hook_state_ClearOpponentsProjectedRoute = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_ClearOpponentsProjectedRoute)
+CARM95_WEBSERVER_STATE(ClearOpponentsProjectedRoute, function_hook_state_ClearOpponentsProjectedRoute)
 static void(__cdecl*original_ClearOpponentsProjectedRoute)(tOpponent_spec *) = (void(__cdecl*)(tOpponent_spec *))0x00404684;
 CARM95_HOOK_FUNCTION(original_ClearOpponentsProjectedRoute, ClearOpponentsProjectedRoute)
 void __cdecl ClearOpponentsProjectedRoute(tOpponent_spec *pOpponent_spec) {
@@ -587,7 +587,7 @@ void __cdecl ClearOpponentsProjectedRoute(tOpponent_spec *pOpponent_spec) {
 }
 
 function_hook_state_t function_hook_state_AddToOpponentsProjectedRoute = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_AddToOpponentsProjectedRoute)
+CARM95_WEBSERVER_STATE(AddToOpponentsProjectedRoute, function_hook_state_AddToOpponentsProjectedRoute)
 static int(__cdecl*original_AddToOpponentsProjectedRoute)(tOpponent_spec *, tS16, int) = (int(__cdecl*)(tOpponent_spec *, tS16, int))0x004030ef;
 CARM95_HOOK_FUNCTION(original_AddToOpponentsProjectedRoute, AddToOpponentsProjectedRoute)
 int __cdecl AddToOpponentsProjectedRoute(tOpponent_spec *pOpponent_spec, tS16 pSection_no, int pDirection) {
@@ -606,7 +606,7 @@ int __cdecl AddToOpponentsProjectedRoute(tOpponent_spec *pOpponent_spec, tS16 pS
 }
 
 function_hook_state_t function_hook_state_ShiftOpponentsProjectedRoute = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_ShiftOpponentsProjectedRoute)
+CARM95_WEBSERVER_STATE(ShiftOpponentsProjectedRoute, function_hook_state_ShiftOpponentsProjectedRoute)
 static int(__cdecl*original_ShiftOpponentsProjectedRoute)(tOpponent_spec *, int) = (int(__cdecl*)(tOpponent_spec *, int))0x00404699;
 CARM95_HOOK_FUNCTION(original_ShiftOpponentsProjectedRoute, ShiftOpponentsProjectedRoute)
 int __cdecl ShiftOpponentsProjectedRoute(tOpponent_spec *pOpponent_spec, int pPlaces) {
@@ -626,7 +626,7 @@ int __cdecl ShiftOpponentsProjectedRoute(tOpponent_spec *pOpponent_spec, int pPl
 }
 
 function_hook_state_t function_hook_state_StunTheBugger = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_StunTheBugger)
+CARM95_WEBSERVER_STATE(StunTheBugger, function_hook_state_StunTheBugger)
 static void(__cdecl*original_StunTheBugger)(tOpponent_spec *, int) = (void(__cdecl*)(tOpponent_spec *, int))0x0040b12d;
 CARM95_HOOK_FUNCTION(original_StunTheBugger, StunTheBugger)
 void __cdecl StunTheBugger(tOpponent_spec *pOpponent_spec, int pMilliseconds) {
@@ -644,7 +644,7 @@ void __cdecl StunTheBugger(tOpponent_spec *pOpponent_spec, int pMilliseconds) {
 }
 
 function_hook_state_t function_hook_state_UnStunTheBugger = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_UnStunTheBugger)
+CARM95_WEBSERVER_STATE(UnStunTheBugger, function_hook_state_UnStunTheBugger)
 static void(__cdecl*original_UnStunTheBugger)(tOpponent_spec *) = (void(__cdecl*)(tOpponent_spec *))0x00405e44;
 CARM95_HOOK_FUNCTION(original_UnStunTheBugger, UnStunTheBugger)
 void __cdecl UnStunTheBugger(tOpponent_spec *pOpponent_spec) {
@@ -661,7 +661,7 @@ void __cdecl UnStunTheBugger(tOpponent_spec *pOpponent_spec) {
 }
 
 function_hook_state_t function_hook_state_ProcessCompleteRace = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_ProcessCompleteRace)
+CARM95_WEBSERVER_STATE(ProcessCompleteRace, function_hook_state_ProcessCompleteRace)
 static void(__cdecl*original_ProcessCompleteRace)(tOpponent_spec *, tProcess_objective_command) = (void(__cdecl*)(tOpponent_spec *, tProcess_objective_command))0x00406732;
 CARM95_HOOK_FUNCTION(original_ProcessCompleteRace, ProcessCompleteRace)
 void __cdecl ProcessCompleteRace(tOpponent_spec *pOpponent_spec, tProcess_objective_command pCommand) {
@@ -689,7 +689,7 @@ void __cdecl ProcessCompleteRace(tOpponent_spec *pOpponent_spec, tProcess_object
 }
 
 function_hook_state_t function_hook_state_StartRecordingTrail = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_StartRecordingTrail)
+CARM95_WEBSERVER_STATE(StartRecordingTrail, function_hook_state_StartRecordingTrail)
 static void(__cdecl*original_StartRecordingTrail)(tCar_spec *) = (void(__cdecl*)(tCar_spec *))0x00405e59;
 CARM95_HOOK_FUNCTION(original_StartRecordingTrail, StartRecordingTrail)
 void __cdecl StartRecordingTrail(tCar_spec *pPursuee) {
@@ -708,7 +708,7 @@ void __cdecl StartRecordingTrail(tCar_spec *pPursuee) {
 }
 
 function_hook_state_t function_hook_state_RecordNextTrailNode = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_RecordNextTrailNode)
+CARM95_WEBSERVER_STATE(RecordNextTrailNode, function_hook_state_RecordNextTrailNode)
 static void(__cdecl*original_RecordNextTrailNode)(tCar_spec *) = (void(__cdecl*)(tCar_spec *))0x00405f97;
 CARM95_HOOK_FUNCTION(original_RecordNextTrailNode, RecordNextTrailNode)
 void __cdecl RecordNextTrailNode(tCar_spec *pPursuee) {
@@ -743,7 +743,7 @@ void __cdecl RecordNextTrailNode(tCar_spec *pPursuee) {
 }
 
 function_hook_state_t function_hook_state_FindNearestTrailSection = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_FindNearestTrailSection)
+CARM95_WEBSERVER_STATE(FindNearestTrailSection, function_hook_state_FindNearestTrailSection)
 static tS16(__cdecl*original_FindNearestTrailSection)(tOpponent_spec *, tCar_spec *, br_vector3 *, br_vector3 *, br_scalar *) = (tS16(__cdecl*)(tOpponent_spec *, tCar_spec *, br_vector3 *, br_vector3 *, br_scalar *))0x0040769d;
 CARM95_HOOK_FUNCTION(original_FindNearestTrailSection, FindNearestTrailSection)
 tS16 __cdecl FindNearestTrailSection(tOpponent_spec *pOpponent_spec, tCar_spec *pPursuee, br_vector3 *pSection_v, br_vector3 *pIntersect, br_scalar *pDistance) {
@@ -764,7 +764,7 @@ tS16 __cdecl FindNearestTrailSection(tOpponent_spec *pOpponent_spec, tCar_spec *
 }
 
 function_hook_state_t function_hook_state_CalcNextTrailSection = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_CalcNextTrailSection)
+CARM95_WEBSERVER_STATE(CalcNextTrailSection, function_hook_state_CalcNextTrailSection)
 static tS16(__cdecl*original_CalcNextTrailSection)(tOpponent_spec *, int) = (tS16(__cdecl*)(tOpponent_spec *, int))0x00403145;
 CARM95_HOOK_FUNCTION(original_CalcNextTrailSection, CalcNextTrailSection)
 tS16 __cdecl CalcNextTrailSection(tOpponent_spec *pOpponent_spec, int pSection) {
@@ -786,7 +786,7 @@ tS16 __cdecl CalcNextTrailSection(tOpponent_spec *pOpponent_spec, int pSection) 
 }
 
 function_hook_state_t function_hook_state_ProcessPursueAndTwat = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_ProcessPursueAndTwat)
+CARM95_WEBSERVER_STATE(ProcessPursueAndTwat, function_hook_state_ProcessPursueAndTwat)
 static void(__cdecl*original_ProcessPursueAndTwat)(tOpponent_spec *, tProcess_objective_command) = (void(__cdecl*)(tOpponent_spec *, tProcess_objective_command))0x00406a69;
 CARM95_HOOK_FUNCTION(original_ProcessPursueAndTwat, ProcessPursueAndTwat)
 void __cdecl ProcessPursueAndTwat(tOpponent_spec *pOpponent_spec, tProcess_objective_command pCommand) {
@@ -826,7 +826,7 @@ void __cdecl ProcessPursueAndTwat(tOpponent_spec *pOpponent_spec, tProcess_objec
 }
 
 function_hook_state_t function_hook_state_ProcessRunAway = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_ProcessRunAway)
+CARM95_WEBSERVER_STATE(ProcessRunAway, function_hook_state_ProcessRunAway)
 static void(__cdecl*original_ProcessRunAway)(tOpponent_spec *, tProcess_objective_command) = (void(__cdecl*)(tOpponent_spec *, tProcess_objective_command))0x004076d2;
 CARM95_HOOK_FUNCTION(original_ProcessRunAway, ProcessRunAway)
 void __cdecl ProcessRunAway(tOpponent_spec *pOpponent_spec, tProcess_objective_command pCommand) {
@@ -856,7 +856,7 @@ void __cdecl ProcessRunAway(tOpponent_spec *pOpponent_spec, tProcess_objective_c
 }
 
 function_hook_state_t function_hook_state_ProcessWaitForSomeHaplessSod = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_ProcessWaitForSomeHaplessSod)
+CARM95_WEBSERVER_STATE(ProcessWaitForSomeHaplessSod, function_hook_state_ProcessWaitForSomeHaplessSod)
 static void(__cdecl*original_ProcessWaitForSomeHaplessSod)(tOpponent_spec *, tProcess_objective_command) = (void(__cdecl*)(tOpponent_spec *, tProcess_objective_command))0x004079da;
 CARM95_HOOK_FUNCTION(original_ProcessWaitForSomeHaplessSod, ProcessWaitForSomeHaplessSod)
 void __cdecl ProcessWaitForSomeHaplessSod(tOpponent_spec *pOpponent_spec, tProcess_objective_command pCommand) {
@@ -874,7 +874,7 @@ void __cdecl ProcessWaitForSomeHaplessSod(tOpponent_spec *pOpponent_spec, tProce
 }
 
 function_hook_state_t function_hook_state_ProcessReturnToStart = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_ProcessReturnToStart)
+CARM95_WEBSERVER_STATE(ProcessReturnToStart, function_hook_state_ProcessReturnToStart)
 static void(__cdecl*original_ProcessReturnToStart)(tOpponent_spec *, tProcess_objective_command) = (void(__cdecl*)(tOpponent_spec *, tProcess_objective_command))0x00407a66;
 CARM95_HOOK_FUNCTION(original_ProcessReturnToStart, ProcessReturnToStart)
 void __cdecl ProcessReturnToStart(tOpponent_spec *pOpponent_spec, tProcess_objective_command pCommand) {
@@ -902,7 +902,7 @@ void __cdecl ProcessReturnToStart(tOpponent_spec *pOpponent_spec, tProcess_objec
 }
 
 function_hook_state_t function_hook_state_ProcessLevitate = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_ProcessLevitate)
+CARM95_WEBSERVER_STATE(ProcessLevitate, function_hook_state_ProcessLevitate)
 static void(__cdecl*original_ProcessLevitate)(tOpponent_spec *, tProcess_objective_command) = (void(__cdecl*)(tOpponent_spec *, tProcess_objective_command))0x00408349;
 CARM95_HOOK_FUNCTION(original_ProcessLevitate, ProcessLevitate)
 void __cdecl ProcessLevitate(tOpponent_spec *pOpponent_spec, tProcess_objective_command pCommand) {
@@ -926,7 +926,7 @@ void __cdecl ProcessLevitate(tOpponent_spec *pOpponent_spec, tProcess_objective_
 }
 
 function_hook_state_t function_hook_state_ProcessGetNearPlayer = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_ProcessGetNearPlayer)
+CARM95_WEBSERVER_STATE(ProcessGetNearPlayer, function_hook_state_ProcessGetNearPlayer)
 static void(__cdecl*original_ProcessGetNearPlayer)(tOpponent_spec *, tProcess_objective_command) = (void(__cdecl*)(tOpponent_spec *, tProcess_objective_command))0x004086fe;
 CARM95_HOOK_FUNCTION(original_ProcessGetNearPlayer, ProcessGetNearPlayer)
 void __cdecl ProcessGetNearPlayer(tOpponent_spec *pOpponent_spec, tProcess_objective_command pCommand) {
@@ -952,7 +952,7 @@ void __cdecl ProcessGetNearPlayer(tOpponent_spec *pOpponent_spec, tProcess_objec
 }
 
 function_hook_state_t function_hook_state_ProcessFrozen = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_ProcessFrozen)
+CARM95_WEBSERVER_STATE(ProcessFrozen, function_hook_state_ProcessFrozen)
 static void(__cdecl*original_ProcessFrozen)(tOpponent_spec *, tProcess_objective_command) = (void(__cdecl*)(tOpponent_spec *, tProcess_objective_command))0x00408d47;
 CARM95_HOOK_FUNCTION(original_ProcessFrozen, ProcessFrozen)
 void __cdecl ProcessFrozen(tOpponent_spec *pOpponent_spec, tProcess_objective_command pCommand) {
@@ -970,7 +970,7 @@ void __cdecl ProcessFrozen(tOpponent_spec *pOpponent_spec, tProcess_objective_co
 }
 
 function_hook_state_t function_hook_state_HeadOnWithPlayerPossible = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_HeadOnWithPlayerPossible)
+CARM95_WEBSERVER_STATE(HeadOnWithPlayerPossible, function_hook_state_HeadOnWithPlayerPossible)
 static int(__cdecl*original_HeadOnWithPlayerPossible)(tOpponent_spec *) = (int(__cdecl*)(tOpponent_spec *))0x00409cd5;
 CARM95_HOOK_FUNCTION(original_HeadOnWithPlayerPossible, HeadOnWithPlayerPossible)
 int __cdecl HeadOnWithPlayerPossible(tOpponent_spec *pOpponent_spec) {
@@ -991,7 +991,7 @@ int __cdecl HeadOnWithPlayerPossible(tOpponent_spec *pOpponent_spec) {
 }
 
 function_hook_state_t function_hook_state_AlreadyPursuingCar = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_AlreadyPursuingCar)
+CARM95_WEBSERVER_STATE(AlreadyPursuingCar, function_hook_state_AlreadyPursuingCar)
 static int(__cdecl*original_AlreadyPursuingCar)(tOpponent_spec *, tCar_spec *) = (int(__cdecl*)(tOpponent_spec *, tCar_spec *))0x00409e29;
 CARM95_HOOK_FUNCTION(original_AlreadyPursuingCar, AlreadyPursuingCar)
 int __cdecl AlreadyPursuingCar(tOpponent_spec *pOpponent_spec, tCar_spec *pPursuee) {
@@ -1009,7 +1009,7 @@ int __cdecl AlreadyPursuingCar(tOpponent_spec *pOpponent_spec, tCar_spec *pPursu
 }
 
 function_hook_state_t function_hook_state_LastTwatteeAPlayer = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_LastTwatteeAPlayer)
+CARM95_WEBSERVER_STATE(LastTwatteeAPlayer, function_hook_state_LastTwatteeAPlayer)
 static int(__cdecl*original_LastTwatteeAPlayer)(tOpponent_spec *) = (int(__cdecl*)(tOpponent_spec *))0x00409e64;
 CARM95_HOOK_FUNCTION(original_LastTwatteeAPlayer, LastTwatteeAPlayer)
 int __cdecl LastTwatteeAPlayer(tOpponent_spec *pOpponent_spec) {
@@ -1026,7 +1026,7 @@ int __cdecl LastTwatteeAPlayer(tOpponent_spec *pOpponent_spec) {
 }
 
 function_hook_state_t function_hook_state_LastTwatterAPlayer = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_LastTwatterAPlayer)
+CARM95_WEBSERVER_STATE(LastTwatterAPlayer, function_hook_state_LastTwatterAPlayer)
 static int(__cdecl*original_LastTwatterAPlayer)(tOpponent_spec *) = (int(__cdecl*)(tOpponent_spec *))0x00409ea9;
 CARM95_HOOK_FUNCTION(original_LastTwatterAPlayer, LastTwatterAPlayer)
 int __cdecl LastTwatterAPlayer(tOpponent_spec *pOpponent_spec) {
@@ -1043,7 +1043,7 @@ int __cdecl LastTwatterAPlayer(tOpponent_spec *pOpponent_spec) {
 }
 
 function_hook_state_t function_hook_state_ObjectiveComplete = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_ObjectiveComplete)
+CARM95_WEBSERVER_STATE(ObjectiveComplete, function_hook_state_ObjectiveComplete)
 static void(__cdecl*original_ObjectiveComplete)(tOpponent_spec *) = (void(__cdecl*)(tOpponent_spec *))0x00408e2d;
 CARM95_HOOK_FUNCTION(original_ObjectiveComplete, ObjectiveComplete)
 void __cdecl ObjectiveComplete(tOpponent_spec *pOpponent_spec) {
@@ -1060,7 +1060,7 @@ void __cdecl ObjectiveComplete(tOpponent_spec *pOpponent_spec) {
 }
 
 function_hook_state_t function_hook_state_TeleportOpponentToNearestSafeLocation = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_TeleportOpponentToNearestSafeLocation)
+CARM95_WEBSERVER_STATE(TeleportOpponentToNearestSafeLocation, function_hook_state_TeleportOpponentToNearestSafeLocation)
 static void(__cdecl*original_TeleportOpponentToNearestSafeLocation)(tOpponent_spec *) = (void(__cdecl*)(tOpponent_spec *))0x00404464;
 CARM95_HOOK_FUNCTION(original_TeleportOpponentToNearestSafeLocation, TeleportOpponentToNearestSafeLocation)
 void __cdecl TeleportOpponentToNearestSafeLocation(tOpponent_spec *pOpponent_spec) {
@@ -1091,7 +1091,7 @@ void __cdecl TeleportOpponentToNearestSafeLocation(tOpponent_spec *pOpponent_spe
 }
 
 function_hook_state_t function_hook_state_ChooseNewObjective = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_ChooseNewObjective)
+CARM95_WEBSERVER_STATE(ChooseNewObjective, function_hook_state_ChooseNewObjective)
 static void(__cdecl*original_ChooseNewObjective)(tOpponent_spec *, int) = (void(__cdecl*)(tOpponent_spec *, int))0x00408ec5;
 CARM95_HOOK_FUNCTION(original_ChooseNewObjective, ChooseNewObjective)
 void __cdecl ChooseNewObjective(tOpponent_spec *pOpponent_spec, int pMust_choose_one) {
@@ -1137,7 +1137,7 @@ void __cdecl ChooseNewObjective(tOpponent_spec *pOpponent_spec, int pMust_choose
 }
 
 function_hook_state_t function_hook_state_ProcessThisOpponent = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_ProcessThisOpponent)
+CARM95_WEBSERVER_STATE(ProcessThisOpponent, function_hook_state_ProcessThisOpponent)
 static void(__cdecl*original_ProcessThisOpponent)(tOpponent_spec *) = (void(__cdecl*)(tOpponent_spec *))0x00406458;
 CARM95_HOOK_FUNCTION(original_ProcessThisOpponent, ProcessThisOpponent)
 void __cdecl ProcessThisOpponent(tOpponent_spec *pOpponent_spec) {
@@ -1156,7 +1156,7 @@ void __cdecl ProcessThisOpponent(tOpponent_spec *pOpponent_spec) {
 }
 
 function_hook_state_t function_hook_state_IsNetCarActive = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_IsNetCarActive)
+CARM95_WEBSERVER_STATE(IsNetCarActive, function_hook_state_IsNetCarActive)
 static int(__cdecl*original_IsNetCarActive)(br_vector3 *) = (int(__cdecl*)(br_vector3 *))0x004034b7;
 CARM95_HOOK_FUNCTION(original_IsNetCarActive, IsNetCarActive)
 int __cdecl IsNetCarActive(br_vector3 *pPoint) {
@@ -1175,7 +1175,7 @@ int __cdecl IsNetCarActive(br_vector3 *pPoint) {
 }
 
 function_hook_state_t function_hook_state_RebuildActiveCarList = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_RebuildActiveCarList)
+CARM95_WEBSERVER_STATE(RebuildActiveCarList, function_hook_state_RebuildActiveCarList)
 static void(__cdecl*original_RebuildActiveCarList)() = (void(__cdecl*)())0x004031c3;
 CARM95_HOOK_FUNCTION(original_RebuildActiveCarList, RebuildActiveCarList)
 void __cdecl RebuildActiveCarList() {
@@ -1195,7 +1195,7 @@ void __cdecl RebuildActiveCarList() {
 }
 
 function_hook_state_t function_hook_state_ForceRebuildActiveCarList = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_ForceRebuildActiveCarList)
+CARM95_WEBSERVER_STATE(ForceRebuildActiveCarList, function_hook_state_ForceRebuildActiveCarList)
 static void(__cdecl*original_ForceRebuildActiveCarList)() = (void(__cdecl*)())0x0040319c;
 CARM95_HOOK_FUNCTION(original_ForceRebuildActiveCarList, ForceRebuildActiveCarList)
 void __cdecl ForceRebuildActiveCarList() {
@@ -1211,7 +1211,7 @@ void __cdecl ForceRebuildActiveCarList() {
 }
 
 function_hook_state_t function_hook_state_StartToCheat = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_StartToCheat)
+CARM95_WEBSERVER_STATE(StartToCheat, function_hook_state_StartToCheat)
 static void(__cdecl*original_StartToCheat)(tOpponent_spec *) = (void(__cdecl*)(tOpponent_spec *))0x00409eee;
 CARM95_HOOK_FUNCTION(original_StartToCheat, StartToCheat)
 void __cdecl StartToCheat(tOpponent_spec *pOpponent_spec) {
@@ -1228,7 +1228,7 @@ void __cdecl StartToCheat(tOpponent_spec *pOpponent_spec) {
 }
 
 function_hook_state_t function_hook_state_OiStopCheating = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_OiStopCheating)
+CARM95_WEBSERVER_STATE(OiStopCheating, function_hook_state_OiStopCheating)
 static void(__cdecl*original_OiStopCheating)(tOpponent_spec *) = (void(__cdecl*)(tOpponent_spec *))0x00409f78;
 CARM95_HOOK_FUNCTION(original_OiStopCheating, OiStopCheating)
 void __cdecl OiStopCheating(tOpponent_spec *pOpponent_spec) {
@@ -1245,7 +1245,7 @@ void __cdecl OiStopCheating(tOpponent_spec *pOpponent_spec) {
 }
 
 function_hook_state_t function_hook_state_TeleportCopToStart = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_TeleportCopToStart)
+CARM95_WEBSERVER_STATE(TeleportCopToStart, function_hook_state_TeleportCopToStart)
 static int(__cdecl*original_TeleportCopToStart)(tOpponent_spec *) = (int(__cdecl*)(tOpponent_spec *))0x00409ff7;
 CARM95_HOOK_FUNCTION(original_TeleportCopToStart, TeleportCopToStart)
 int __cdecl TeleportCopToStart(tOpponent_spec *pOpponent_spec) {
@@ -1264,7 +1264,7 @@ int __cdecl TeleportCopToStart(tOpponent_spec *pOpponent_spec) {
 }
 
 function_hook_state_t function_hook_state_CalcDistanceFromHome = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_CalcDistanceFromHome)
+CARM95_WEBSERVER_STATE(CalcDistanceFromHome, function_hook_state_CalcDistanceFromHome)
 static void(__cdecl*original_CalcDistanceFromHome)(tOpponent_spec *) = (void(__cdecl*)(tOpponent_spec *))0x0040a13d;
 CARM95_HOOK_FUNCTION(original_CalcDistanceFromHome, CalcDistanceFromHome)
 void __cdecl CalcDistanceFromHome(tOpponent_spec *pOpponent_spec) {
@@ -1283,7 +1283,7 @@ void __cdecl CalcDistanceFromHome(tOpponent_spec *pOpponent_spec) {
 }
 
 function_hook_state_t function_hook_state_MassageOpponentPosition = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_MassageOpponentPosition)
+CARM95_WEBSERVER_STATE(MassageOpponentPosition, function_hook_state_MassageOpponentPosition)
 static int(__cdecl*original_MassageOpponentPosition)(tOpponent_spec *, int) = (int(__cdecl*)(tOpponent_spec *, int))0x0040472e;
 CARM95_HOOK_FUNCTION(original_MassageOpponentPosition, MassageOpponentPosition)
 int __cdecl MassageOpponentPosition(tOpponent_spec *pOpponent_spec, int pMassage_count) {
@@ -1315,7 +1315,7 @@ int __cdecl MassageOpponentPosition(tOpponent_spec *pOpponent_spec, int pMassage
 }
 
 function_hook_state_t function_hook_state_RematerialiseOpponentOnThisSection = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_RematerialiseOpponentOnThisSection)
+CARM95_WEBSERVER_STATE(RematerialiseOpponentOnThisSection, function_hook_state_RematerialiseOpponentOnThisSection)
 static int(__cdecl*original_RematerialiseOpponentOnThisSection)(tOpponent_spec *, br_scalar, tS16) = (int(__cdecl*)(tOpponent_spec *, br_scalar, tS16))0x004035b1;
 CARM95_HOOK_FUNCTION(original_RematerialiseOpponentOnThisSection, RematerialiseOpponentOnThisSection)
 int __cdecl RematerialiseOpponentOnThisSection(tOpponent_spec *pOpponent_spec, br_scalar pSpeed, tS16 pSection_no) {
@@ -1354,7 +1354,7 @@ int __cdecl RematerialiseOpponentOnThisSection(tOpponent_spec *pOpponent_spec, b
 }
 
 function_hook_state_t function_hook_state_RematerialiseOpponentOnNearestSection = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_RematerialiseOpponentOnNearestSection)
+CARM95_WEBSERVER_STATE(RematerialiseOpponentOnNearestSection, function_hook_state_RematerialiseOpponentOnNearestSection)
 static int(__cdecl*original_RematerialiseOpponentOnNearestSection)(tOpponent_spec *, br_scalar) = (int(__cdecl*)(tOpponent_spec *, br_scalar))0x004038fe;
 CARM95_HOOK_FUNCTION(original_RematerialiseOpponentOnNearestSection, RematerialiseOpponentOnNearestSection)
 int __cdecl RematerialiseOpponentOnNearestSection(tOpponent_spec *pOpponent_spec, br_scalar pSpeed) {
@@ -1388,7 +1388,7 @@ int __cdecl RematerialiseOpponentOnNearestSection(tOpponent_spec *pOpponent_spec
 }
 
 function_hook_state_t function_hook_state_RematerialiseOpponent = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_RematerialiseOpponent)
+CARM95_WEBSERVER_STATE(RematerialiseOpponent, function_hook_state_RematerialiseOpponent)
 static int(__cdecl*original_RematerialiseOpponent)(tOpponent_spec *, br_scalar) = (int(__cdecl*)(tOpponent_spec *, br_scalar))0x00403ad9;
 CARM95_HOOK_FUNCTION(original_RematerialiseOpponent, RematerialiseOpponent)
 int __cdecl RematerialiseOpponent(tOpponent_spec *pOpponent_spec, br_scalar pSpeed) {
@@ -1446,7 +1446,7 @@ int __cdecl RematerialiseOpponent(tOpponent_spec *pOpponent_spec, br_scalar pSpe
 }
 
 function_hook_state_t function_hook_state_CalcPlayerConspicuousness = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_CalcPlayerConspicuousness)
+CARM95_WEBSERVER_STATE(CalcPlayerConspicuousness, function_hook_state_CalcPlayerConspicuousness)
 static void(__cdecl*original_CalcPlayerConspicuousness)(tOpponent_spec *) = (void(__cdecl*)(tOpponent_spec *))0x0040a1ab;
 CARM95_HOOK_FUNCTION(original_CalcPlayerConspicuousness, CalcPlayerConspicuousness)
 void __cdecl CalcPlayerConspicuousness(tOpponent_spec *pOpponent_spec) {
@@ -1467,7 +1467,7 @@ void __cdecl CalcPlayerConspicuousness(tOpponent_spec *pOpponent_spec) {
 }
 
 function_hook_state_t function_hook_state_CalcOpponentConspicuousnessWithAViewToCheatingLikeFuck = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_CalcOpponentConspicuousnessWithAViewToCheatingLikeFuck)
+CARM95_WEBSERVER_STATE(CalcOpponentConspicuousnessWithAViewToCheatingLikeFuck, function_hook_state_CalcOpponentConspicuousnessWithAViewToCheatingLikeFuck)
 static void(__cdecl*original_CalcOpponentConspicuousnessWithAViewToCheatingLikeFuck)(tOpponent_spec *) = (void(__cdecl*)(tOpponent_spec *))0x00404a0e;
 CARM95_HOOK_FUNCTION(original_CalcOpponentConspicuousnessWithAViewToCheatingLikeFuck, CalcOpponentConspicuousnessWithAViewToCheatingLikeFuck)
 void __cdecl CalcOpponentConspicuousnessWithAViewToCheatingLikeFuck(tOpponent_spec *pOpponent_spec) {
@@ -1484,7 +1484,7 @@ void __cdecl CalcOpponentConspicuousnessWithAViewToCheatingLikeFuck(tOpponent_sp
 }
 
 function_hook_state_t function_hook_state_ChallengeOccurred = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_ChallengeOccurred)
+CARM95_WEBSERVER_STATE(ChallengeOccurred, function_hook_state_ChallengeOccurred)
 static void(__cdecl*original_ChallengeOccurred)(int, int) = (void(__cdecl*)(int, int))0x00404abc;
 CARM95_HOOK_FUNCTION(original_ChallengeOccurred, ChallengeOccurred)
 void __cdecl ChallengeOccurred(int pChallenger_index, int pAccepted) {
@@ -1502,7 +1502,7 @@ void __cdecl ChallengeOccurred(int pChallenger_index, int pAccepted) {
 }
 
 function_hook_state_t function_hook_state_LoadCopCars = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_LoadCopCars)
+CARM95_WEBSERVER_STATE(LoadCopCars, function_hook_state_LoadCopCars)
 static void(__cdecl*original_LoadCopCars)() = (void(__cdecl*)())0x00404ad9;
 CARM95_HOOK_FUNCTION(original_LoadCopCars, LoadCopCars)
 void __cdecl LoadCopCars() {
@@ -1520,7 +1520,7 @@ void __cdecl LoadCopCars() {
 }
 
 function_hook_state_t function_hook_state_LoadInOppoPaths = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_LoadInOppoPaths)
+CARM95_WEBSERVER_STATE(LoadInOppoPaths, function_hook_state_LoadInOppoPaths)
 static void(__cdecl*original_LoadInOppoPaths)(FILE *) = (void(__cdecl*)(FILE *))0x00404b9b;
 CARM95_HOOK_FUNCTION(original_LoadInOppoPaths, LoadInOppoPaths)
 void __cdecl LoadInOppoPaths(FILE *pF) {
@@ -1581,7 +1581,7 @@ void __cdecl LoadInOppoPaths(FILE *pF) {
 }
 
 function_hook_state_t function_hook_state_DisposeOpponentPaths = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DisposeOpponentPaths)
+CARM95_WEBSERVER_STATE(DisposeOpponentPaths, function_hook_state_DisposeOpponentPaths)
 static void(__cdecl*original_DisposeOpponentPaths)() = (void(__cdecl*)())0x00405912;
 CARM95_HOOK_FUNCTION(original_DisposeOpponentPaths, DisposeOpponentPaths)
 void __cdecl DisposeOpponentPaths() {
@@ -1597,7 +1597,7 @@ void __cdecl DisposeOpponentPaths() {
 }
 
 function_hook_state_t function_hook_state_MungeOpponents = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_MungeOpponents)
+CARM95_WEBSERVER_STATE(MungeOpponents, function_hook_state_MungeOpponents)
 static void(__cdecl*original_MungeOpponents)(tU32) = (void(__cdecl*)(tU32))0x004059a0;
 CARM95_HOOK_FUNCTION(original_MungeOpponents, MungeOpponents)
 void __cdecl MungeOpponents(tU32 pFrame_period) {
@@ -1618,7 +1618,7 @@ void __cdecl MungeOpponents(tU32 pFrame_period) {
 }
 
 function_hook_state_t function_hook_state_SetInitialCopPositions = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_SetInitialCopPositions)
+CARM95_WEBSERVER_STATE(SetInitialCopPositions, function_hook_state_SetInitialCopPositions)
 static void(__cdecl*original_SetInitialCopPositions)() = (void(__cdecl*)())0x0040a3a5;
 CARM95_HOOK_FUNCTION(original_SetInitialCopPositions, SetInitialCopPositions)
 void __cdecl SetInitialCopPositions() {
@@ -1636,7 +1636,7 @@ void __cdecl SetInitialCopPositions() {
 }
 
 function_hook_state_t function_hook_state_InitOpponents = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_InitOpponents)
+CARM95_WEBSERVER_STATE(InitOpponents, function_hook_state_InitOpponents)
 static void(__cdecl*original_InitOpponents)(tRace_info *) = (void(__cdecl*)(tRace_info *))0x0040a4ce;
 CARM95_HOOK_FUNCTION(original_InitOpponents, InitOpponents)
 void __cdecl InitOpponents(tRace_info *pRace_info) {
@@ -1667,7 +1667,7 @@ void __cdecl InitOpponents(tRace_info *pRace_info) {
 }
 
 function_hook_state_t function_hook_state_DisposeOpponents = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DisposeOpponents)
+CARM95_WEBSERVER_STATE(DisposeOpponents, function_hook_state_DisposeOpponents)
 static void(__cdecl*original_DisposeOpponents)() = (void(__cdecl*)())0x0040b186;
 CARM95_HOOK_FUNCTION(original_DisposeOpponents, DisposeOpponents)
 void __cdecl DisposeOpponents() {
@@ -1685,7 +1685,7 @@ void __cdecl DisposeOpponents() {
 }
 
 function_hook_state_t function_hook_state_WakeUpOpponentsToTheFactThatTheStartHasBeenJumped = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_WakeUpOpponentsToTheFactThatTheStartHasBeenJumped)
+CARM95_WEBSERVER_STATE(WakeUpOpponentsToTheFactThatTheStartHasBeenJumped, function_hook_state_WakeUpOpponentsToTheFactThatTheStartHasBeenJumped)
 static void(__cdecl*original_WakeUpOpponentsToTheFactThatTheStartHasBeenJumped)(int) = (void(__cdecl*)(int))0x0040b20f;
 CARM95_HOOK_FUNCTION(original_WakeUpOpponentsToTheFactThatTheStartHasBeenJumped, WakeUpOpponentsToTheFactThatTheStartHasBeenJumped)
 void __cdecl WakeUpOpponentsToTheFactThatTheStartHasBeenJumped(int pWhat_the_countdown_was) {
@@ -1704,7 +1704,7 @@ void __cdecl WakeUpOpponentsToTheFactThatTheStartHasBeenJumped(int pWhat_the_cou
 }
 
 function_hook_state_t function_hook_state_ReportMurderToPoliceDepartment = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_ReportMurderToPoliceDepartment)
+CARM95_WEBSERVER_STATE(ReportMurderToPoliceDepartment, function_hook_state_ReportMurderToPoliceDepartment)
 static void(__cdecl*original_ReportMurderToPoliceDepartment)(tCar_spec *) = (void(__cdecl*)(tCar_spec *))0x0040b3a5;
 CARM95_HOOK_FUNCTION(original_ReportMurderToPoliceDepartment, ReportMurderToPoliceDepartment)
 void __cdecl ReportMurderToPoliceDepartment(tCar_spec *pCar_spec) {
@@ -1723,7 +1723,7 @@ void __cdecl ReportMurderToPoliceDepartment(tCar_spec *pCar_spec) {
 }
 
 function_hook_state_t function_hook_state_GetCarCount = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_GetCarCount)
+CARM95_WEBSERVER_STATE(GetCarCount, function_hook_state_GetCarCount)
 static int(__cdecl*original_GetCarCount)(tVehicle_type) = (int(__cdecl*)(tVehicle_type))0x0040b412;
 CARM95_HOOK_FUNCTION(original_GetCarCount, GetCarCount)
 int __cdecl GetCarCount(tVehicle_type pCategory) {
@@ -1740,7 +1740,7 @@ int __cdecl GetCarCount(tVehicle_type pCategory) {
 }
 
 function_hook_state_t function_hook_state_GetCarSpec = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_GetCarSpec)
+CARM95_WEBSERVER_STATE(GetCarSpec, function_hook_state_GetCarSpec)
 static tCar_spec *(__cdecl*original_GetCarSpec)(tVehicle_type, int) = (tCar_spec *(__cdecl*)(tVehicle_type, int))0x0040b4b1;
 CARM95_HOOK_FUNCTION(original_GetCarSpec, GetCarSpec)
 tCar_spec* __cdecl GetCarSpec(tVehicle_type pCategory, int pIndex) {
@@ -1758,7 +1758,7 @@ tCar_spec* __cdecl GetCarSpec(tVehicle_type pCategory, int pIndex) {
 }
 
 function_hook_state_t function_hook_state_GetDriverName = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_GetDriverName)
+CARM95_WEBSERVER_STATE(GetDriverName, function_hook_state_GetDriverName)
 static char *(__cdecl*original_GetDriverName)(tVehicle_type, int) = (char *(__cdecl*)(tVehicle_type, int))0x0040b592;
 CARM95_HOOK_FUNCTION(original_GetDriverName, GetDriverName)
 char* __cdecl GetDriverName(tVehicle_type pCategory, int pIndex) {
@@ -1776,7 +1776,7 @@ char* __cdecl GetDriverName(tVehicle_type pCategory, int pIndex) {
 }
 
 function_hook_state_t function_hook_state_GetOpponentSpecFromCarSpec = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_GetOpponentSpecFromCarSpec)
+CARM95_WEBSERVER_STATE(GetOpponentSpecFromCarSpec, function_hook_state_GetOpponentSpecFromCarSpec)
 static tOpponent_spec *(__cdecl*original_GetOpponentSpecFromCarSpec)(tCar_spec *) = (tOpponent_spec *(__cdecl*)(tCar_spec *))0x0040b639;
 CARM95_HOOK_FUNCTION(original_GetOpponentSpecFromCarSpec, GetOpponentSpecFromCarSpec)
 tOpponent_spec* __cdecl GetOpponentSpecFromCarSpec(tCar_spec *pCar_spec) {
@@ -1795,7 +1795,7 @@ tOpponent_spec* __cdecl GetOpponentSpecFromCarSpec(tCar_spec *pCar_spec) {
 }
 
 function_hook_state_t function_hook_state_GetCarSpecFromGlobalOppoIndex = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_GetCarSpecFromGlobalOppoIndex)
+CARM95_WEBSERVER_STATE(GetCarSpecFromGlobalOppoIndex, function_hook_state_GetCarSpecFromGlobalOppoIndex)
 static tCar_spec *(__cdecl*original_GetCarSpecFromGlobalOppoIndex)(int) = (tCar_spec *(__cdecl*)(int))0x0040b74d;
 CARM95_HOOK_FUNCTION(original_GetCarSpecFromGlobalOppoIndex, GetCarSpecFromGlobalOppoIndex)
 tCar_spec* __cdecl GetCarSpecFromGlobalOppoIndex(int pIndex) {
@@ -1814,7 +1814,7 @@ tCar_spec* __cdecl GetCarSpecFromGlobalOppoIndex(int pIndex) {
 }
 
 function_hook_state_t function_hook_state_GetOpponentsRealSection = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_GetOpponentsRealSection)
+CARM95_WEBSERVER_STATE(GetOpponentsRealSection, function_hook_state_GetOpponentsRealSection)
 static int(__cdecl*original_GetOpponentsRealSection)(tOpponent_spec *, int) = (int(__cdecl*)(tOpponent_spec *, int))0x0040b7b7;
 CARM95_HOOK_FUNCTION(original_GetOpponentsRealSection, GetOpponentsRealSection)
 int __cdecl GetOpponentsRealSection(tOpponent_spec *pOpponent_spec, int pSection_no) {
@@ -1832,7 +1832,7 @@ int __cdecl GetOpponentsRealSection(tOpponent_spec *pOpponent_spec, int pSection
 }
 
 function_hook_state_t function_hook_state_GetOpponentsFirstSection = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_GetOpponentsFirstSection)
+CARM95_WEBSERVER_STATE(GetOpponentsFirstSection, function_hook_state_GetOpponentsFirstSection)
 static int(__cdecl*original_GetOpponentsFirstSection)(tOpponent_spec *) = (int(__cdecl*)(tOpponent_spec *))0x0040b806;
 CARM95_HOOK_FUNCTION(original_GetOpponentsFirstSection, GetOpponentsFirstSection)
 int __cdecl GetOpponentsFirstSection(tOpponent_spec *pOpponent_spec) {
@@ -1849,7 +1849,7 @@ int __cdecl GetOpponentsFirstSection(tOpponent_spec *pOpponent_spec) {
 }
 
 function_hook_state_t function_hook_state_GetOpponentsNextSection = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_GetOpponentsNextSection)
+CARM95_WEBSERVER_STATE(GetOpponentsNextSection, function_hook_state_GetOpponentsNextSection)
 static int(__cdecl*original_GetOpponentsNextSection)(tOpponent_spec *, tS16) = (int(__cdecl*)(tOpponent_spec *, tS16))0x0040b86e;
 CARM95_HOOK_FUNCTION(original_GetOpponentsNextSection, GetOpponentsNextSection)
 int __cdecl GetOpponentsNextSection(tOpponent_spec *pOpponent_spec, tS16 pCurrent_section) {
@@ -1867,7 +1867,7 @@ int __cdecl GetOpponentsNextSection(tOpponent_spec *pOpponent_spec, tS16 pCurren
 }
 
 function_hook_state_t function_hook_state_GetOpponentsSectionStartNode = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_GetOpponentsSectionStartNode)
+CARM95_WEBSERVER_STATE(GetOpponentsSectionStartNode, function_hook_state_GetOpponentsSectionStartNode)
 static tS16(__cdecl*original_GetOpponentsSectionStartNode)(tOpponent_spec *, tS16) = (tS16(__cdecl*)(tOpponent_spec *, tS16))0x0040b91f;
 CARM95_HOOK_FUNCTION(original_GetOpponentsSectionStartNode, GetOpponentsSectionStartNode)
 tS16 __cdecl GetOpponentsSectionStartNode(tOpponent_spec *pOpponent_spec, tS16 pSection) {
@@ -1889,7 +1889,7 @@ tS16 __cdecl GetOpponentsSectionStartNode(tOpponent_spec *pOpponent_spec, tS16 p
 }
 
 function_hook_state_t function_hook_state_GetOpponentsSectionFinishNode = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_GetOpponentsSectionFinishNode)
+CARM95_WEBSERVER_STATE(GetOpponentsSectionFinishNode, function_hook_state_GetOpponentsSectionFinishNode)
 static tS16(__cdecl*original_GetOpponentsSectionFinishNode)(tOpponent_spec *, tS16) = (tS16(__cdecl*)(tOpponent_spec *, tS16))0x0040b9fb;
 CARM95_HOOK_FUNCTION(original_GetOpponentsSectionFinishNode, GetOpponentsSectionFinishNode)
 tS16 __cdecl GetOpponentsSectionFinishNode(tOpponent_spec *pOpponent_spec, tS16 pSection) {
@@ -1911,7 +1911,7 @@ tS16 __cdecl GetOpponentsSectionFinishNode(tOpponent_spec *pOpponent_spec, tS16 
 }
 
 function_hook_state_t function_hook_state_GetOpponentsSectionStartNodePoint = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_GetOpponentsSectionStartNodePoint)
+CARM95_WEBSERVER_STATE(GetOpponentsSectionStartNodePoint, function_hook_state_GetOpponentsSectionStartNodePoint)
 static br_vector3 *(__cdecl*original_GetOpponentsSectionStartNodePoint)(tOpponent_spec *, tS16) = (br_vector3 *(__cdecl*)(tOpponent_spec *, tS16))0x0040baa1;
 CARM95_HOOK_FUNCTION(original_GetOpponentsSectionStartNodePoint, GetOpponentsSectionStartNodePoint)
 br_vector3* __cdecl GetOpponentsSectionStartNodePoint(tOpponent_spec *pOpponent_spec, tS16 pSection) {
@@ -1935,7 +1935,7 @@ br_vector3* __cdecl GetOpponentsSectionStartNodePoint(tOpponent_spec *pOpponent_
 }
 
 function_hook_state_t function_hook_state_GetOpponentsSectionFinishNodePoint = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_GetOpponentsSectionFinishNodePoint)
+CARM95_WEBSERVER_STATE(GetOpponentsSectionFinishNodePoint, function_hook_state_GetOpponentsSectionFinishNodePoint)
 static br_vector3 *(__cdecl*original_GetOpponentsSectionFinishNodePoint)(tOpponent_spec *, tS16) = (br_vector3 *(__cdecl*)(tOpponent_spec *, tS16))0x0040bbc3;
 CARM95_HOOK_FUNCTION(original_GetOpponentsSectionFinishNodePoint, GetOpponentsSectionFinishNodePoint)
 br_vector3* __cdecl GetOpponentsSectionFinishNodePoint(tOpponent_spec *pOpponent_spec, tS16 pSection) {
@@ -1959,7 +1959,7 @@ br_vector3* __cdecl GetOpponentsSectionFinishNodePoint(tOpponent_spec *pOpponent
 }
 
 function_hook_state_t function_hook_state_GetOpponentsSectionWidth = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_GetOpponentsSectionWidth)
+CARM95_WEBSERVER_STATE(GetOpponentsSectionWidth, function_hook_state_GetOpponentsSectionWidth)
 static br_scalar(__cdecl*original_GetOpponentsSectionWidth)(tOpponent_spec *, tS16) = (br_scalar(__cdecl*)(tOpponent_spec *, tS16))0x0040bccd;
 CARM95_HOOK_FUNCTION(original_GetOpponentsSectionWidth, GetOpponentsSectionWidth)
 br_scalar __cdecl GetOpponentsSectionWidth(tOpponent_spec *pOpponent_spec, tS16 pSection) {
@@ -1977,7 +1977,7 @@ br_scalar __cdecl GetOpponentsSectionWidth(tOpponent_spec *pOpponent_spec, tS16 
 }
 
 function_hook_state_t function_hook_state_GetOpponentsSectionMinSpeed = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_GetOpponentsSectionMinSpeed)
+CARM95_WEBSERVER_STATE(GetOpponentsSectionMinSpeed, function_hook_state_GetOpponentsSectionMinSpeed)
 static int(__cdecl*original_GetOpponentsSectionMinSpeed)(tOpponent_spec *, tS16, int) = (int(__cdecl*)(tOpponent_spec *, tS16, int))0x0040bd7a;
 CARM95_HOOK_FUNCTION(original_GetOpponentsSectionMinSpeed, GetOpponentsSectionMinSpeed)
 int __cdecl GetOpponentsSectionMinSpeed(tOpponent_spec *pOpponent_spec, tS16 pSection, int pTowards_finish) {
@@ -2000,7 +2000,7 @@ int __cdecl GetOpponentsSectionMinSpeed(tOpponent_spec *pOpponent_spec, tS16 pSe
 }
 
 function_hook_state_t function_hook_state_GetOpponentsSectionMaxSpeed = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_GetOpponentsSectionMaxSpeed)
+CARM95_WEBSERVER_STATE(GetOpponentsSectionMaxSpeed, function_hook_state_GetOpponentsSectionMaxSpeed)
 static int(__cdecl*original_GetOpponentsSectionMaxSpeed)(tOpponent_spec *, tS16, int) = (int(__cdecl*)(tOpponent_spec *, tS16, int))0x0040be6e;
 CARM95_HOOK_FUNCTION(original_GetOpponentsSectionMaxSpeed, GetOpponentsSectionMaxSpeed)
 int __cdecl GetOpponentsSectionMaxSpeed(tOpponent_spec *pOpponent_spec, tS16 pSection, int pTowards_finish) {
@@ -2023,7 +2023,7 @@ int __cdecl GetOpponentsSectionMaxSpeed(tOpponent_spec *pOpponent_spec, tS16 pSe
 }
 
 function_hook_state_t function_hook_state_InitOpponentPsyche = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_InitOpponentPsyche)
+CARM95_WEBSERVER_STATE(InitOpponentPsyche, function_hook_state_InitOpponentPsyche)
 static void(__cdecl*original_InitOpponentPsyche)(int) = (void(__cdecl*)(int))0x0040bf68;
 CARM95_HOOK_FUNCTION(original_InitOpponentPsyche, InitOpponentPsyche)
 void __cdecl InitOpponentPsyche(int pOpponent_index) {
@@ -2042,7 +2042,7 @@ void __cdecl InitOpponentPsyche(int pOpponent_index) {
 }
 
 function_hook_state_t function_hook_state_ClearTwattageOccurrenceVariables = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_ClearTwattageOccurrenceVariables)
+CARM95_WEBSERVER_STATE(ClearTwattageOccurrenceVariables, function_hook_state_ClearTwattageOccurrenceVariables)
 static void(__cdecl*original_ClearTwattageOccurrenceVariables)(tOpponent_spec *) = (void(__cdecl*)(tOpponent_spec *))0x0040bf8d;
 CARM95_HOOK_FUNCTION(original_ClearTwattageOccurrenceVariables, ClearTwattageOccurrenceVariables)
 void __cdecl ClearTwattageOccurrenceVariables(tOpponent_spec *pOpponent_spec) {
@@ -2059,7 +2059,7 @@ void __cdecl ClearTwattageOccurrenceVariables(tOpponent_spec *pOpponent_spec) {
 }
 
 function_hook_state_t function_hook_state_TwoCarsHitEachOther = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_TwoCarsHitEachOther)
+CARM95_WEBSERVER_STATE(TwoCarsHitEachOther, function_hook_state_TwoCarsHitEachOther)
 static void(__cdecl*original_TwoCarsHitEachOther)(tCar_spec *, tCar_spec *) = (void(__cdecl*)(tCar_spec *, tCar_spec *))0x0040bfdf;
 CARM95_HOOK_FUNCTION(original_TwoCarsHitEachOther, TwoCarsHitEachOther)
 void __cdecl TwoCarsHitEachOther(tCar_spec *pA_car, tCar_spec *pAnother_car) {
@@ -2077,7 +2077,7 @@ void __cdecl TwoCarsHitEachOther(tCar_spec *pA_car, tCar_spec *pAnother_car) {
 }
 
 function_hook_state_t function_hook_state_RecordOpponentTwattageOccurrence = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_RecordOpponentTwattageOccurrence)
+CARM95_WEBSERVER_STATE(RecordOpponentTwattageOccurrence, function_hook_state_RecordOpponentTwattageOccurrence)
 static void(__cdecl*original_RecordOpponentTwattageOccurrence)(tCar_spec *, tCar_spec *) = (void(__cdecl*)(tCar_spec *, tCar_spec *))0x0040c020;
 CARM95_HOOK_FUNCTION(original_RecordOpponentTwattageOccurrence, RecordOpponentTwattageOccurrence)
 void __cdecl RecordOpponentTwattageOccurrence(tCar_spec *pTwatter, tCar_spec *pTwattee) {
@@ -2113,7 +2113,7 @@ void __cdecl RecordOpponentTwattageOccurrence(tCar_spec *pTwatter, tCar_spec *pT
 }
 
 function_hook_state_t function_hook_state_ToggleOpponentTest = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_ToggleOpponentTest)
+CARM95_WEBSERVER_STATE(ToggleOpponentTest, function_hook_state_ToggleOpponentTest)
 static void(__cdecl*original_ToggleOpponentTest)() = (void(__cdecl*)())0x0040c537;
 CARM95_HOOK_FUNCTION(original_ToggleOpponentTest, ToggleOpponentTest)
 void __cdecl ToggleOpponentTest() {
@@ -2129,7 +2129,7 @@ void __cdecl ToggleOpponentTest() {
 }
 
 function_hook_state_t function_hook_state_ToggleOpponentProcessing = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_ToggleOpponentProcessing)
+CARM95_WEBSERVER_STATE(ToggleOpponentProcessing, function_hook_state_ToggleOpponentProcessing)
 static void(__cdecl*original_ToggleOpponentProcessing)() = (void(__cdecl*)())0x0040c568;
 CARM95_HOOK_FUNCTION(original_ToggleOpponentProcessing, ToggleOpponentProcessing)
 void __cdecl ToggleOpponentProcessing() {
@@ -2147,7 +2147,7 @@ void __cdecl ToggleOpponentProcessing() {
 }
 
 function_hook_state_t function_hook_state_ToggleMellowOpponents = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_ToggleMellowOpponents)
+CARM95_WEBSERVER_STATE(ToggleMellowOpponents, function_hook_state_ToggleMellowOpponents)
 static void(__cdecl*original_ToggleMellowOpponents)() = (void(__cdecl*)())0x0040c6dd;
 CARM95_HOOK_FUNCTION(original_ToggleMellowOpponents, ToggleMellowOpponents)
 void __cdecl ToggleMellowOpponents() {
@@ -2165,7 +2165,7 @@ void __cdecl ToggleMellowOpponents() {
 }
 
 function_hook_state_t function_hook_state_RepairOpponentsSystems = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_RepairOpponentsSystems)
+CARM95_WEBSERVER_STATE(RepairOpponentsSystems, function_hook_state_RepairOpponentsSystems)
 static void(__cdecl*original_RepairOpponentsSystems)() = (void(__cdecl*)())0x0040c795;
 CARM95_HOOK_FUNCTION(original_RepairOpponentsSystems, RepairOpponentsSystems)
 void __cdecl RepairOpponentsSystems() {
@@ -2183,7 +2183,7 @@ void __cdecl RepairOpponentsSystems() {
 }
 
 function_hook_state_t function_hook_state_CopyVertex__opponent = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_CopyVertex__opponent)
+CARM95_WEBSERVER_STATE(CopyVertex__opponent, function_hook_state_CopyVertex__opponent)
 static void(__cdecl*original_CopyVertex__opponent)(br_vertex *, br_vertex *) = (void(__cdecl*)(br_vertex *, br_vertex *))0x0040e205;
 CARM95_HOOK_FUNCTION(original_CopyVertex__opponent, CopyVertex__opponent)
 void __cdecl CopyVertex__opponent(br_vertex *pDest_vertex, br_vertex *pSrc_vertex) {
@@ -2201,7 +2201,7 @@ void __cdecl CopyVertex__opponent(br_vertex *pDest_vertex, br_vertex *pSrc_verte
 }
 
 function_hook_state_t function_hook_state_CopyFace__opponent = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_CopyFace__opponent)
+CARM95_WEBSERVER_STATE(CopyFace__opponent, function_hook_state_CopyFace__opponent)
 static void(__cdecl*original_CopyFace__opponent)(br_face *, br_face *) = (void(__cdecl*)(br_face *, br_face *))0x0040e27a;
 CARM95_HOOK_FUNCTION(original_CopyFace__opponent, CopyFace__opponent)
 void __cdecl CopyFace__opponent(br_face *pDest_face, br_face *pSrc_face) {
@@ -2219,7 +2219,7 @@ void __cdecl CopyFace__opponent(br_face *pDest_face, br_face *pSrc_face) {
 }
 
 function_hook_state_t function_hook_state_DeleteSection = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DeleteSection)
+CARM95_WEBSERVER_STATE(DeleteSection, function_hook_state_DeleteSection)
 static void(__cdecl*original_DeleteSection)(tS16) = (void(__cdecl*)(tS16))0x0040c868;
 CARM95_HOOK_FUNCTION(original_DeleteSection, DeleteSection)
 void __cdecl DeleteSection(tS16 pSection_to_delete) {
@@ -2246,7 +2246,7 @@ void __cdecl DeleteSection(tS16 pSection_to_delete) {
 }
 
 function_hook_state_t function_hook_state_DeleteNode = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DeleteNode)
+CARM95_WEBSERVER_STATE(DeleteNode, function_hook_state_DeleteNode)
 static void(__cdecl*original_DeleteNode)(tS16, int) = (void(__cdecl*)(tS16, int))0x0040caf4;
 CARM95_HOOK_FUNCTION(original_DeleteNode, DeleteNode)
 void __cdecl DeleteNode(tS16 pNode_to_delete, int pAnd_sections) {
@@ -2272,7 +2272,7 @@ void __cdecl DeleteNode(tS16 pNode_to_delete, int pAnd_sections) {
 }
 
 function_hook_state_t function_hook_state_DeleteOrphanNodes = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DeleteOrphanNodes)
+CARM95_WEBSERVER_STATE(DeleteOrphanNodes, function_hook_state_DeleteOrphanNodes)
 static void(__cdecl*original_DeleteOrphanNodes)() = (void(__cdecl*)())0x0040ca84;
 CARM95_HOOK_FUNCTION(original_DeleteOrphanNodes, DeleteOrphanNodes)
 void __cdecl DeleteOrphanNodes() {
@@ -2290,7 +2290,7 @@ void __cdecl DeleteOrphanNodes() {
 }
 
 function_hook_state_t function_hook_state_InsertThisNodeInThisSectionHere = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_InsertThisNodeInThisSectionHere)
+CARM95_WEBSERVER_STATE(InsertThisNodeInThisSectionHere, function_hook_state_InsertThisNodeInThisSectionHere)
 static void(__cdecl*original_InsertThisNodeInThisSectionHere)(tS16, tS16, br_vector3 *) = (void(__cdecl*)(tS16, tS16, br_vector3 *))0x0040fb06;
 CARM95_HOOK_FUNCTION(original_InsertThisNodeInThisSectionHere, InsertThisNodeInThisSectionHere)
 void __cdecl InsertThisNodeInThisSectionHere(tS16 pInserted_node, tS16 pSection_no, br_vector3 *pWhere) {
@@ -2319,7 +2319,7 @@ void __cdecl InsertThisNodeInThisSectionHere(tS16 pInserted_node, tS16 pSection_
 }
 
 function_hook_state_t function_hook_state_TrackElasticateyPath = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_TrackElasticateyPath)
+CARM95_WEBSERVER_STATE(TrackElasticateyPath, function_hook_state_TrackElasticateyPath)
 static void(__cdecl*original_TrackElasticateyPath)() = (void(__cdecl*)())0x0040ce66;
 CARM95_HOOK_FUNCTION(original_TrackElasticateyPath, TrackElasticateyPath)
 void __cdecl TrackElasticateyPath() {
@@ -2335,7 +2335,7 @@ void __cdecl TrackElasticateyPath() {
 }
 
 function_hook_state_t function_hook_state_RecalcNearestPathSectionSpeed = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_RecalcNearestPathSectionSpeed)
+CARM95_WEBSERVER_STATE(RecalcNearestPathSectionSpeed, function_hook_state_RecalcNearestPathSectionSpeed)
 static void(__cdecl*original_RecalcNearestPathSectionSpeed)(int, int) = (void(__cdecl*)(int, int))0x004105c6;
 CARM95_HOOK_FUNCTION(original_RecalcNearestPathSectionSpeed, RecalcNearestPathSectionSpeed)
 void __cdecl RecalcNearestPathSectionSpeed(int pMax_not_min, int pAdjustment) {
@@ -2373,7 +2373,7 @@ void __cdecl RecalcNearestPathSectionSpeed(int pMax_not_min, int pAdjustment) {
 }
 
 function_hook_state_t function_hook_state_RecalcNearestPathSectionWidth = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_RecalcNearestPathSectionWidth)
+CARM95_WEBSERVER_STATE(RecalcNearestPathSectionWidth, function_hook_state_RecalcNearestPathSectionWidth)
 static void(__cdecl*original_RecalcNearestPathSectionWidth)(br_scalar) = (void(__cdecl*)(br_scalar))0x004103ef;
 CARM95_HOOK_FUNCTION(original_RecalcNearestPathSectionWidth, RecalcNearestPathSectionWidth)
 void __cdecl RecalcNearestPathSectionWidth(br_scalar pAdjustment) {
@@ -2400,7 +2400,7 @@ void __cdecl RecalcNearestPathSectionWidth(br_scalar pAdjustment) {
 }
 
 function_hook_state_t function_hook_state_CalcNegativeXVector = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_CalcNegativeXVector)
+CARM95_WEBSERVER_STATE(CalcNegativeXVector, function_hook_state_CalcNegativeXVector)
 static void(__cdecl*original_CalcNegativeXVector)(br_vector3 *, br_vector3 *, br_vector3 *, br_scalar) = (void(__cdecl*)(br_vector3 *, br_vector3 *, br_vector3 *, br_scalar))0x0040cf4e;
 CARM95_HOOK_FUNCTION(original_CalcNegativeXVector, CalcNegativeXVector)
 void __cdecl CalcNegativeXVector(br_vector3 *pNegative_x_vector, br_vector3 *pStart, br_vector3 *pFinish, br_scalar pLength) {
@@ -2426,7 +2426,7 @@ void __cdecl CalcNegativeXVector(br_vector3 *pNegative_x_vector, br_vector3 *pSt
 }
 
 function_hook_state_t function_hook_state_MakeVertexAndOffsetIt = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_MakeVertexAndOffsetIt)
+CARM95_WEBSERVER_STATE(MakeVertexAndOffsetIt, function_hook_state_MakeVertexAndOffsetIt)
 static void(__cdecl*original_MakeVertexAndOffsetIt)(br_model *, int, br_scalar, br_scalar, br_scalar, br_vector3 *) = (void(__cdecl*)(br_model *, int, br_scalar, br_scalar, br_scalar, br_vector3 *))0x0040d9d3;
 CARM95_HOOK_FUNCTION(original_MakeVertexAndOffsetIt, MakeVertexAndOffsetIt)
 void __cdecl MakeVertexAndOffsetIt(br_model *pModel, int pVertex_num, br_scalar pX, br_scalar pY, br_scalar pZ, br_vector3 *pOffset) {
@@ -2448,7 +2448,7 @@ void __cdecl MakeVertexAndOffsetIt(br_model *pModel, int pVertex_num, br_scalar 
 }
 
 function_hook_state_t function_hook_state_MakeFaceAndTextureIt = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_MakeFaceAndTextureIt)
+CARM95_WEBSERVER_STATE(MakeFaceAndTextureIt, function_hook_state_MakeFaceAndTextureIt)
 static void(__cdecl*original_MakeFaceAndTextureIt)(br_model *, int, int, int, int, br_material *) = (void(__cdecl*)(br_model *, int, int, int, int, br_material *))0x0040da85;
 CARM95_HOOK_FUNCTION(original_MakeFaceAndTextureIt, MakeFaceAndTextureIt)
 void __cdecl MakeFaceAndTextureIt(br_model *pModel, int pFace_num, int pV0, int pV1, int pV2, br_material *pMaterial) {
@@ -2470,7 +2470,7 @@ void __cdecl MakeFaceAndTextureIt(br_model *pModel, int pFace_num, int pV0, int 
 }
 
 function_hook_state_t function_hook_state_MakeSection = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_MakeSection)
+CARM95_WEBSERVER_STATE(MakeSection, function_hook_state_MakeSection)
 static void(__cdecl*original_MakeSection)(br_uint_16, br_uint_16, br_vector3 *, br_vector3 *, br_scalar, br_material *, br_material *, br_material *, br_material *, br_material *, br_material *) = (void(__cdecl*)(br_uint_16, br_uint_16, br_vector3 *, br_vector3 *, br_scalar, br_material *, br_material *, br_material *, br_material *, br_material *, br_material *))0x0040d59f;
 CARM95_HOOK_FUNCTION(original_MakeSection, MakeSection)
 void __cdecl MakeSection(br_uint_16 pFirst_vertex, br_uint_16 pFirst_face, br_vector3 *pStart, br_vector3 *pFinish, br_scalar pWidth, br_material *pMaterial_centre_lt, br_material *pMaterial_centre_dk, br_material *pMaterial_edges_start_lt, br_material *pMaterial_edges_start_dk, br_material *pMaterial_edges_finish_lt, br_material *pMaterial_edges_finish_dk) {
@@ -2513,7 +2513,7 @@ void __cdecl MakeSection(br_uint_16 pFirst_vertex, br_uint_16 pFirst_face, br_ve
 }
 
 function_hook_state_t function_hook_state_MakeCube = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_MakeCube)
+CARM95_WEBSERVER_STATE(MakeCube, function_hook_state_MakeCube)
 static void(__cdecl*original_MakeCube)(br_uint_16, br_uint_16, br_vector3 *, br_material *, br_material *, br_material *) = (void(__cdecl*)(br_uint_16, br_uint_16, br_vector3 *, br_material *, br_material *, br_material *))0x0040daf1;
 CARM95_HOOK_FUNCTION(original_MakeCube, MakeCube)
 void __cdecl MakeCube(br_uint_16 pFirst_vertex, br_uint_16 pFirst_face, br_vector3 *pPoint, br_material *pMaterial_1, br_material *pMaterial_2, br_material *pMaterial_3) {
@@ -2539,7 +2539,7 @@ void __cdecl MakeCube(br_uint_16 pFirst_vertex, br_uint_16 pFirst_face, br_vecto
 }
 
 function_hook_state_t function_hook_state_CalcNumberOfFacesAndVerticesForOppoPathModel = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_CalcNumberOfFacesAndVerticesForOppoPathModel)
+CARM95_WEBSERVER_STATE(CalcNumberOfFacesAndVerticesForOppoPathModel, function_hook_state_CalcNumberOfFacesAndVerticesForOppoPathModel)
 static void(__cdecl*original_CalcNumberOfFacesAndVerticesForOppoPathModel)(br_uint_16 *, br_uint_16 *) = (void(__cdecl*)(br_uint_16 *, br_uint_16 *))0x0040e016;
 CARM95_HOOK_FUNCTION(original_CalcNumberOfFacesAndVerticesForOppoPathModel, CalcNumberOfFacesAndVerticesForOppoPathModel)
 void __cdecl CalcNumberOfFacesAndVerticesForOppoPathModel(br_uint_16 *pFace_index_ptr, br_uint_16 *pVertex_index_ptr) {
@@ -2557,7 +2557,7 @@ void __cdecl CalcNumberOfFacesAndVerticesForOppoPathModel(br_uint_16 *pFace_inde
 }
 
 function_hook_state_t function_hook_state_ReallocModelFacesAndVertices = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_ReallocModelFacesAndVertices)
+CARM95_WEBSERVER_STATE(ReallocModelFacesAndVertices, function_hook_state_ReallocModelFacesAndVertices)
 static void(__cdecl*original_ReallocModelFacesAndVertices)(br_model *, int, int) = (void(__cdecl*)(br_model *, int, int))0x0040e057;
 CARM95_HOOK_FUNCTION(original_ReallocModelFacesAndVertices, ReallocModelFacesAndVertices)
 void __cdecl ReallocModelFacesAndVertices(br_model *pModel, int pNum_faces, int pNum_vertices) {
@@ -2582,7 +2582,7 @@ void __cdecl ReallocModelFacesAndVertices(br_model *pModel, int pNum_faces, int 
 }
 
 function_hook_state_t function_hook_state_CreateSimpleMaterial = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_CreateSimpleMaterial)
+CARM95_WEBSERVER_STATE(CreateSimpleMaterial, function_hook_state_CreateSimpleMaterial)
 static br_material *(__cdecl*original_CreateSimpleMaterial)(int) = (br_material *(__cdecl*)(int))0x0040e3cf;
 CARM95_HOOK_FUNCTION(original_CreateSimpleMaterial, CreateSimpleMaterial)
 br_material* __cdecl CreateSimpleMaterial(int pColour_index) {
@@ -2601,7 +2601,7 @@ br_material* __cdecl CreateSimpleMaterial(int pColour_index) {
 }
 
 function_hook_state_t function_hook_state_AllocateMatsForOppoPathModel = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_AllocateMatsForOppoPathModel)
+CARM95_WEBSERVER_STATE(AllocateMatsForOppoPathModel, function_hook_state_AllocateMatsForOppoPathModel)
 static void(__cdecl*original_AllocateMatsForOppoPathModel)() = (void(__cdecl*)())0x0040e2d3;
 CARM95_HOOK_FUNCTION(original_AllocateMatsForOppoPathModel, AllocateMatsForOppoPathModel)
 void __cdecl AllocateMatsForOppoPathModel() {
@@ -2617,7 +2617,7 @@ void __cdecl AllocateMatsForOppoPathModel() {
 }
 
 function_hook_state_t function_hook_state_RebuildOppoPathModel = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_RebuildOppoPathModel)
+CARM95_WEBSERVER_STATE(RebuildOppoPathModel, function_hook_state_RebuildOppoPathModel)
 static void(__cdecl*original_RebuildOppoPathModel)() = (void(__cdecl*)())0x0040d097;
 CARM95_HOOK_FUNCTION(original_RebuildOppoPathModel, RebuildOppoPathModel)
 void __cdecl RebuildOppoPathModel() {
@@ -2661,7 +2661,7 @@ void __cdecl RebuildOppoPathModel() {
 }
 
 function_hook_state_t function_hook_state_ConsistencyCheck = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_ConsistencyCheck)
+CARM95_WEBSERVER_STATE(ConsistencyCheck, function_hook_state_ConsistencyCheck)
 static int(__cdecl*original_ConsistencyCheck)() = (int(__cdecl*)())0x0040e436;
 CARM95_HOOK_FUNCTION(original_ConsistencyCheck, ConsistencyCheck)
 int __cdecl ConsistencyCheck() {
@@ -2697,7 +2697,7 @@ int __cdecl ConsistencyCheck() {
 }
 
 function_hook_state_t function_hook_state_ShowOppoPaths = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_ShowOppoPaths)
+CARM95_WEBSERVER_STATE(ShowOppoPaths, function_hook_state_ShowOppoPaths)
 static void(__cdecl*original_ShowOppoPaths)() = (void(__cdecl*)())0x0040ed8e;
 CARM95_HOOK_FUNCTION(original_ShowOppoPaths, ShowOppoPaths)
 void __cdecl ShowOppoPaths() {
@@ -2715,7 +2715,7 @@ void __cdecl ShowOppoPaths() {
 }
 
 function_hook_state_t function_hook_state_WriteOutOppoPaths = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_WriteOutOppoPaths)
+CARM95_WEBSERVER_STATE(WriteOutOppoPaths, function_hook_state_WriteOutOppoPaths)
 static void(__cdecl*original_WriteOutOppoPaths)() = (void(__cdecl*)())0x0040e9d4;
 CARM95_HOOK_FUNCTION(original_WriteOutOppoPaths, WriteOutOppoPaths)
 void __cdecl WriteOutOppoPaths() {
@@ -2739,7 +2739,7 @@ void __cdecl WriteOutOppoPaths() {
 }
 
 function_hook_state_t function_hook_state_NewNodeOKHere = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_NewNodeOKHere)
+CARM95_WEBSERVER_STATE(NewNodeOKHere, function_hook_state_NewNodeOKHere)
 static int(__cdecl*original_NewNodeOKHere)() = (int(__cdecl*)())0x0040f42b;
 CARM95_HOOK_FUNCTION(original_NewNodeOKHere, NewNodeOKHere)
 int __cdecl NewNodeOKHere() {
@@ -2757,7 +2757,7 @@ int __cdecl NewNodeOKHere() {
 }
 
 function_hook_state_t function_hook_state_ShowHideOppoPaths = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_ShowHideOppoPaths)
+CARM95_WEBSERVER_STATE(ShowHideOppoPaths, function_hook_state_ShowHideOppoPaths)
 static void(__cdecl*original_ShowHideOppoPaths)() = (void(__cdecl*)())0x0040ed4b;
 CARM95_HOOK_FUNCTION(original_ShowHideOppoPaths, ShowHideOppoPaths)
 void __cdecl ShowHideOppoPaths() {
@@ -2773,7 +2773,7 @@ void __cdecl ShowHideOppoPaths() {
 }
 
 function_hook_state_t function_hook_state_DropElasticateyNode = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DropElasticateyNode)
+CARM95_WEBSERVER_STATE(DropElasticateyNode, function_hook_state_DropElasticateyNode)
 static void(__cdecl*original_DropElasticateyNode)() = (void(__cdecl*)())0x0040ee30;
 CARM95_HOOK_FUNCTION(original_DropElasticateyNode, DropElasticateyNode)
 void __cdecl DropElasticateyNode() {
@@ -2807,7 +2807,7 @@ void __cdecl DropElasticateyNode() {
 }
 
 function_hook_state_t function_hook_state_InsertAndElasticate = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_InsertAndElasticate)
+CARM95_WEBSERVER_STATE(InsertAndElasticate, function_hook_state_InsertAndElasticate)
 static void(__cdecl*original_InsertAndElasticate)() = (void(__cdecl*)())0x0040f565;
 CARM95_HOOK_FUNCTION(original_InsertAndElasticate, InsertAndElasticate)
 void __cdecl InsertAndElasticate() {
@@ -2847,7 +2847,7 @@ void __cdecl InsertAndElasticate() {
 }
 
 function_hook_state_t function_hook_state_InsertAndDontElasticate = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_InsertAndDontElasticate)
+CARM95_WEBSERVER_STATE(InsertAndDontElasticate, function_hook_state_InsertAndDontElasticate)
 static void(__cdecl*original_InsertAndDontElasticate)() = (void(__cdecl*)())0x0040fdf3;
 CARM95_HOOK_FUNCTION(original_InsertAndDontElasticate, InsertAndDontElasticate)
 void __cdecl InsertAndDontElasticate() {
@@ -2879,7 +2879,7 @@ void __cdecl InsertAndDontElasticate() {
 }
 
 function_hook_state_t function_hook_state_DropDeadEndNode = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DropDeadEndNode)
+CARM95_WEBSERVER_STATE(DropDeadEndNode, function_hook_state_DropDeadEndNode)
 static void(__cdecl*original_DropDeadEndNode)() = (void(__cdecl*)())0x004100f3;
 CARM95_HOOK_FUNCTION(original_DropDeadEndNode, DropDeadEndNode)
 void __cdecl DropDeadEndNode() {
@@ -2897,7 +2897,7 @@ void __cdecl DropDeadEndNode() {
 }
 
 function_hook_state_t function_hook_state_DropNodeOnNodeAndStopElasticating = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DropNodeOnNodeAndStopElasticating)
+CARM95_WEBSERVER_STATE(DropNodeOnNodeAndStopElasticating, function_hook_state_DropNodeOnNodeAndStopElasticating)
 static void(__cdecl*original_DropNodeOnNodeAndStopElasticating)() = (void(__cdecl*)())0x0041020c;
 CARM95_HOOK_FUNCTION(original_DropNodeOnNodeAndStopElasticating, DropNodeOnNodeAndStopElasticating)
 void __cdecl DropNodeOnNodeAndStopElasticating() {
@@ -2919,7 +2919,7 @@ void __cdecl DropNodeOnNodeAndStopElasticating() {
 }
 
 function_hook_state_t function_hook_state_WidenOppoPathSection = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_WidenOppoPathSection)
+CARM95_WEBSERVER_STATE(WidenOppoPathSection, function_hook_state_WidenOppoPathSection)
 static void(__cdecl*original_WidenOppoPathSection)() = (void(__cdecl*)())0x004103c5;
 CARM95_HOOK_FUNCTION(original_WidenOppoPathSection, WidenOppoPathSection)
 void __cdecl WidenOppoPathSection() {
@@ -2935,7 +2935,7 @@ void __cdecl WidenOppoPathSection() {
 }
 
 function_hook_state_t function_hook_state_NarrowOppoPathSection = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_NarrowOppoPathSection)
+CARM95_WEBSERVER_STATE(NarrowOppoPathSection, function_hook_state_NarrowOppoPathSection)
 static void(__cdecl*original_NarrowOppoPathSection)() = (void(__cdecl*)())0x00410573;
 CARM95_HOOK_FUNCTION(original_NarrowOppoPathSection, NarrowOppoPathSection)
 void __cdecl NarrowOppoPathSection() {
@@ -2951,7 +2951,7 @@ void __cdecl NarrowOppoPathSection() {
 }
 
 function_hook_state_t function_hook_state_IncreaseSectionMinSpeed = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_IncreaseSectionMinSpeed)
+CARM95_WEBSERVER_STATE(IncreaseSectionMinSpeed, function_hook_state_IncreaseSectionMinSpeed)
 static void(__cdecl*original_IncreaseSectionMinSpeed)() = (void(__cdecl*)())0x0041059d;
 CARM95_HOOK_FUNCTION(original_IncreaseSectionMinSpeed, IncreaseSectionMinSpeed)
 void __cdecl IncreaseSectionMinSpeed() {
@@ -2967,7 +2967,7 @@ void __cdecl IncreaseSectionMinSpeed() {
 }
 
 function_hook_state_t function_hook_state_DecreaseSectionMinSpeed = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DecreaseSectionMinSpeed)
+CARM95_WEBSERVER_STATE(DecreaseSectionMinSpeed, function_hook_state_DecreaseSectionMinSpeed)
 static void(__cdecl*original_DecreaseSectionMinSpeed)() = (void(__cdecl*)())0x00410a7f;
 CARM95_HOOK_FUNCTION(original_DecreaseSectionMinSpeed, DecreaseSectionMinSpeed)
 void __cdecl DecreaseSectionMinSpeed() {
@@ -2983,7 +2983,7 @@ void __cdecl DecreaseSectionMinSpeed() {
 }
 
 function_hook_state_t function_hook_state_IncreaseSectionMaxSpeed = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_IncreaseSectionMaxSpeed)
+CARM95_WEBSERVER_STATE(IncreaseSectionMaxSpeed, function_hook_state_IncreaseSectionMaxSpeed)
 static void(__cdecl*original_IncreaseSectionMaxSpeed)() = (void(__cdecl*)())0x00410aa8;
 CARM95_HOOK_FUNCTION(original_IncreaseSectionMaxSpeed, IncreaseSectionMaxSpeed)
 void __cdecl IncreaseSectionMaxSpeed() {
@@ -2999,7 +2999,7 @@ void __cdecl IncreaseSectionMaxSpeed() {
 }
 
 function_hook_state_t function_hook_state_DecreaseSectionMaxSpeed = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DecreaseSectionMaxSpeed)
+CARM95_WEBSERVER_STATE(DecreaseSectionMaxSpeed, function_hook_state_DecreaseSectionMaxSpeed)
 static void(__cdecl*original_DecreaseSectionMaxSpeed)() = (void(__cdecl*)())0x00410ad1;
 CARM95_HOOK_FUNCTION(original_DecreaseSectionMaxSpeed, DecreaseSectionMaxSpeed)
 void __cdecl DecreaseSectionMaxSpeed() {
@@ -3015,7 +3015,7 @@ void __cdecl DecreaseSectionMaxSpeed() {
 }
 
 function_hook_state_t function_hook_state_PullOppoPoint = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PullOppoPoint)
+CARM95_WEBSERVER_STATE(PullOppoPoint, function_hook_state_PullOppoPoint)
 static void(__cdecl*original_PullOppoPoint)() = (void(__cdecl*)())0x00410afa;
 CARM95_HOOK_FUNCTION(original_PullOppoPoint, PullOppoPoint)
 void __cdecl PullOppoPoint() {
@@ -3035,7 +3035,7 @@ void __cdecl PullOppoPoint() {
 }
 
 function_hook_state_t function_hook_state_ShowNodeInfo = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_ShowNodeInfo)
+CARM95_WEBSERVER_STATE(ShowNodeInfo, function_hook_state_ShowNodeInfo)
 static void(__cdecl*original_ShowNodeInfo)() = (void(__cdecl*)())0x00410bfa;
 CARM95_HOOK_FUNCTION(original_ShowNodeInfo, ShowNodeInfo)
 void __cdecl ShowNodeInfo() {
@@ -3057,7 +3057,7 @@ void __cdecl ShowNodeInfo() {
 }
 
 function_hook_state_t function_hook_state_ShowSectionInfo1 = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_ShowSectionInfo1)
+CARM95_WEBSERVER_STATE(ShowSectionInfo1, function_hook_state_ShowSectionInfo1)
 static void(__cdecl*original_ShowSectionInfo1)() = (void(__cdecl*)())0x00410d28;
 CARM95_HOOK_FUNCTION(original_ShowSectionInfo1, ShowSectionInfo1)
 void __cdecl ShowSectionInfo1() {
@@ -3083,7 +3083,7 @@ void __cdecl ShowSectionInfo1() {
 }
 
 function_hook_state_t function_hook_state_ShowSectionInfo2 = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_ShowSectionInfo2)
+CARM95_WEBSERVER_STATE(ShowSectionInfo2, function_hook_state_ShowSectionInfo2)
 static void(__cdecl*original_ShowSectionInfo2)() = (void(__cdecl*)())0x00410e9b;
 CARM95_HOOK_FUNCTION(original_ShowSectionInfo2, ShowSectionInfo2)
 void __cdecl ShowSectionInfo2() {
@@ -3109,7 +3109,7 @@ void __cdecl ShowSectionInfo2() {
 }
 
 function_hook_state_t function_hook_state_DeleteOppoPathSection = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DeleteOppoPathSection)
+CARM95_WEBSERVER_STATE(DeleteOppoPathSection, function_hook_state_DeleteOppoPathSection)
 static void(__cdecl*original_DeleteOppoPathSection)() = (void(__cdecl*)())0x00411124;
 CARM95_HOOK_FUNCTION(original_DeleteOppoPathSection, DeleteOppoPathSection)
 void __cdecl DeleteOppoPathSection() {
@@ -3133,7 +3133,7 @@ void __cdecl DeleteOppoPathSection() {
 }
 
 function_hook_state_t function_hook_state_DeleteOppoPathNodeAndSections = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DeleteOppoPathNodeAndSections)
+CARM95_WEBSERVER_STATE(DeleteOppoPathNodeAndSections, function_hook_state_DeleteOppoPathNodeAndSections)
 static void(__cdecl*original_DeleteOppoPathNodeAndSections)() = (void(__cdecl*)())0x00411206;
 CARM95_HOOK_FUNCTION(original_DeleteOppoPathNodeAndSections, DeleteOppoPathNodeAndSections)
 void __cdecl DeleteOppoPathNodeAndSections() {
@@ -3153,7 +3153,7 @@ void __cdecl DeleteOppoPathNodeAndSections() {
 }
 
 function_hook_state_t function_hook_state_DeleteOppoPathNodeAndJoin = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DeleteOppoPathNodeAndJoin)
+CARM95_WEBSERVER_STATE(DeleteOppoPathNodeAndJoin, function_hook_state_DeleteOppoPathNodeAndJoin)
 static void(__cdecl*original_DeleteOppoPathNodeAndJoin)() = (void(__cdecl*)())0x004112e2;
 CARM95_HOOK_FUNCTION(original_DeleteOppoPathNodeAndJoin, DeleteOppoPathNodeAndJoin)
 void __cdecl DeleteOppoPathNodeAndJoin() {
@@ -3173,7 +3173,7 @@ void __cdecl DeleteOppoPathNodeAndJoin() {
 }
 
 function_hook_state_t function_hook_state_ReverseSectionDirection = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_ReverseSectionDirection)
+CARM95_WEBSERVER_STATE(ReverseSectionDirection, function_hook_state_ReverseSectionDirection)
 static void(__cdecl*original_ReverseSectionDirection)() = (void(__cdecl*)())0x004114dd;
 CARM95_HOOK_FUNCTION(original_ReverseSectionDirection, ReverseSectionDirection)
 void __cdecl ReverseSectionDirection() {
@@ -3201,7 +3201,7 @@ void __cdecl ReverseSectionDirection() {
 }
 
 function_hook_state_t function_hook_state_CycleSectionType = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_CycleSectionType)
+CARM95_WEBSERVER_STATE(CycleSectionType, function_hook_state_CycleSectionType)
 static void(__cdecl*original_CycleSectionType)() = (void(__cdecl*)())0x0041169c;
 CARM95_HOOK_FUNCTION(original_CycleSectionType, CycleSectionType)
 void __cdecl CycleSectionType() {
@@ -3227,7 +3227,7 @@ void __cdecl CycleSectionType() {
 }
 
 function_hook_state_t function_hook_state_ToggleOneWayNess = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_ToggleOneWayNess)
+CARM95_WEBSERVER_STATE(ToggleOneWayNess, function_hook_state_ToggleOneWayNess)
 static void(__cdecl*original_ToggleOneWayNess)() = (void(__cdecl*)())0x004117ee;
 CARM95_HOOK_FUNCTION(original_ToggleOneWayNess, ToggleOneWayNess)
 void __cdecl ToggleOneWayNess() {
@@ -3251,7 +3251,7 @@ void __cdecl ToggleOneWayNess() {
 }
 
 function_hook_state_t function_hook_state_CopStartPointInfo = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_CopStartPointInfo)
+CARM95_WEBSERVER_STATE(CopStartPointInfo, function_hook_state_CopStartPointInfo)
 static void(__cdecl*original_CopStartPointInfo)() = (void(__cdecl*)())0x00411947;
 CARM95_HOOK_FUNCTION(original_CopStartPointInfo, CopStartPointInfo)
 void __cdecl CopStartPointInfo() {
@@ -3279,7 +3279,7 @@ void __cdecl CopStartPointInfo() {
 }
 
 function_hook_state_t function_hook_state_DropCopStartPoint = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DropCopStartPoint)
+CARM95_WEBSERVER_STATE(DropCopStartPoint, function_hook_state_DropCopStartPoint)
 static void(__cdecl*original_DropCopStartPoint)() = (void(__cdecl*)())0x00411ae8;
 CARM95_HOOK_FUNCTION(original_DropCopStartPoint, DropCopStartPoint)
 void __cdecl DropCopStartPoint() {
@@ -3297,7 +3297,7 @@ void __cdecl DropCopStartPoint() {
 }
 
 function_hook_state_t function_hook_state_DeleteCopStartPoint = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DeleteCopStartPoint)
+CARM95_WEBSERVER_STATE(DeleteCopStartPoint, function_hook_state_DeleteCopStartPoint)
 static void(__cdecl*original_DeleteCopStartPoint)() = (void(__cdecl*)())0x00411c18;
 CARM95_HOOK_FUNCTION(original_DeleteCopStartPoint, DeleteCopStartPoint)
 void __cdecl DeleteCopStartPoint() {
@@ -3325,7 +3325,7 @@ void __cdecl DeleteCopStartPoint() {
 }
 
 function_hook_state_t function_hook_state_CycleCopStartPointType = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_CycleCopStartPointType)
+CARM95_WEBSERVER_STATE(CycleCopStartPointType, function_hook_state_CycleCopStartPointType)
 static void(__cdecl*original_CycleCopStartPointType)() = (void(__cdecl*)())0x00411e7f;
 CARM95_HOOK_FUNCTION(original_CycleCopStartPointType, CycleCopStartPointType)
 void __cdecl CycleCopStartPointType() {

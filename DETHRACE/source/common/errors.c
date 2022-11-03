@@ -27,7 +27,7 @@ char ** hookvar_gPixels_copy__errors ;
 #endif
 
 function_hook_state_t function_hook_state_FatalError = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_FatalError)
+CARM95_WEBSERVER_STATE(FatalError, function_hook_state_FatalError)
 void(__cdecl*FatalError)(int) = (void(__cdecl*)(int))0x00461390;
 void FatalError_do_not_use(int pStr_index) {
     char the_str[1024];
@@ -53,7 +53,7 @@ void FatalError_do_not_use(int pStr_index) {
 }
 
 function_hook_state_t function_hook_state_NonFatalError = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_NonFatalError)
+CARM95_WEBSERVER_STATE(NonFatalError, function_hook_state_NonFatalError)
 void(__cdecl*NonFatalError)(int) = (void(__cdecl*)(int))0x004614f1;
 void NonFatalError_do_not_use(int pStr_index) {
     char the_str[256];
@@ -79,7 +79,7 @@ void NonFatalError_do_not_use(int pStr_index) {
 }
 
 function_hook_state_t function_hook_state_CloseDiagnostics = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_CloseDiagnostics)
+CARM95_WEBSERVER_STATE(CloseDiagnostics, function_hook_state_CloseDiagnostics)
 static void(__cdecl*original_CloseDiagnostics)() = (void(__cdecl*)())0x0046162f;
 CARM95_HOOK_FUNCTION(original_CloseDiagnostics, CloseDiagnostics)
 void __cdecl CloseDiagnostics() {
@@ -95,7 +95,7 @@ void __cdecl CloseDiagnostics() {
 }
 
 function_hook_state_t function_hook_state_OpenDiagnostics = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_OpenDiagnostics)
+CARM95_WEBSERVER_STATE(OpenDiagnostics, function_hook_state_OpenDiagnostics)
 static void(__cdecl*original_OpenDiagnostics)() = (void(__cdecl*)())0x0046163a;
 CARM95_HOOK_FUNCTION(original_OpenDiagnostics, OpenDiagnostics)
 void __cdecl OpenDiagnostics() {
@@ -110,26 +110,23 @@ void __cdecl OpenDiagnostics() {
     }
 }
 
-void(__cdecl*dr_dprintf)(char*, ...) = (void*)0x00461645;
-function_hook_state_t function_hook_state_dr_dprintf = HOOK_UNAVAILABLE;
-#if 0
-CARM95_WEBSERVER_STATE(function_hook_state_dr_dprintf)
-void dr_dprintf(char *fmt_string) {
+function_hook_state_t function_hook_state_dprintf = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(dprintf, function_hook_state_dprintf)
+void dprintf(char *fmt_string) {
     LOG_TRACE("(\"%s\")", fmt_string);
 
     (void)fmt_string;
 
-    if (function_hook_state_dr_dprintf == HOOK_ENABLED) {
+    if (function_hook_state_dprintf == HOOK_ENABLED) {
         assert(0 && "dprintf not implemented.");
         abort();
     } else {
         NOT_IMPLEMENTED();
     }
 }
-#endif
 
 function_hook_state_t function_hook_state_DoErrorInterface = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DoErrorInterface)
+CARM95_WEBSERVER_STATE(DoErrorInterface, function_hook_state_DoErrorInterface)
 static int(__cdecl*original_DoErrorInterface)(int) = (int(__cdecl*)(int))0x00461650;
 CARM95_HOOK_FUNCTION(original_DoErrorInterface, DoErrorInterface)
 int __cdecl DoErrorInterface(int pMisc_text_index) {

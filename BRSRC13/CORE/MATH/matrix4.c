@@ -9,7 +9,7 @@
 #include <assert.h>
 
 function_hook_state_t function_hook_state_BrMatrix4Copy = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix4Copy)
+CARM95_WEBSERVER_STATE(BrMatrix4Copy, function_hook_state_BrMatrix4Copy)
 static void(__cdecl*original_BrMatrix4Copy)(br_matrix4 *, br_matrix4 *) = (void(__cdecl*)(br_matrix4 *, br_matrix4 *))0x004d3ba0;
 CARM95_HOOK_FUNCTION(original_BrMatrix4Copy, BrMatrix4Copy)
 void __cdecl BrMatrix4Copy(br_matrix4 *A, br_matrix4 *B) {
@@ -27,7 +27,7 @@ void __cdecl BrMatrix4Copy(br_matrix4 *A, br_matrix4 *B) {
 }
 
 function_hook_state_t function_hook_state_BrMatrix4Mul = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix4Mul)
+CARM95_WEBSERVER_STATE(BrMatrix4Mul, function_hook_state_BrMatrix4Mul)
 static void(__cdecl*original_BrMatrix4Mul)(br_matrix4 *, br_matrix4 *, br_matrix4 *) = (void(__cdecl*)(br_matrix4 *, br_matrix4 *, br_matrix4 *))0x004d3c10;
 CARM95_HOOK_FUNCTION(original_BrMatrix4Mul, BrMatrix4Mul)
 void __cdecl BrMatrix4Mul(br_matrix4 *A, br_matrix4 *B, br_matrix4 *C) {
@@ -46,7 +46,7 @@ void __cdecl BrMatrix4Mul(br_matrix4 *A, br_matrix4 *B, br_matrix4 *C) {
 }
 
 function_hook_state_t function_hook_state_BrMatrix4Identity = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix4Identity)
+CARM95_WEBSERVER_STATE(BrMatrix4Identity, function_hook_state_BrMatrix4Identity)
 static void(__cdecl*original_BrMatrix4Identity)(br_matrix4 *) = (void(__cdecl*)(br_matrix4 *))0x004d3e64;
 CARM95_HOOK_FUNCTION(original_BrMatrix4Identity, BrMatrix4Identity)
 void __cdecl BrMatrix4Identity(br_matrix4 *mat) {
@@ -63,7 +63,7 @@ void __cdecl BrMatrix4Identity(br_matrix4 *mat) {
 }
 
 function_hook_state_t function_hook_state_BrMatrix4Scale = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix4Scale)
+CARM95_WEBSERVER_STATE(BrMatrix4Scale, function_hook_state_BrMatrix4Scale)
 static void(__cdecl*original_BrMatrix4Scale)(br_matrix4 *, br_scalar, br_scalar, br_scalar) = (void(__cdecl*)(br_matrix4 *, br_scalar, br_scalar, br_scalar))0x004d3eb0;
 CARM95_HOOK_FUNCTION(original_BrMatrix4Scale, BrMatrix4Scale)
 void __cdecl BrMatrix4Scale(br_matrix4 *mat, br_scalar sx, br_scalar sy, br_scalar sz) {
@@ -83,7 +83,7 @@ void __cdecl BrMatrix4Scale(br_matrix4 *mat, br_scalar sx, br_scalar sy, br_scal
 }
 
 function_hook_state_t function_hook_state_BrMatrix4Inverse = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix4Inverse)
+CARM95_WEBSERVER_STATE(BrMatrix4Inverse, function_hook_state_BrMatrix4Inverse)
 static br_scalar(__cdecl*original_BrMatrix4Inverse)(br_matrix4 *, br_matrix4 *) = (br_scalar(__cdecl*)(br_matrix4 *, br_matrix4 *))0x004d3f00;
 CARM95_HOOK_FUNCTION(original_BrMatrix4Inverse, BrMatrix4Inverse)
 br_scalar __cdecl BrMatrix4Inverse(br_matrix4 *A, br_matrix4 *B) {
@@ -109,7 +109,7 @@ br_scalar __cdecl BrMatrix4Inverse(br_matrix4 *A, br_matrix4 *B) {
 }
 
 function_hook_state_t function_hook_state_Determinant3 = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_Determinant3)
+CARM95_WEBSERVER_STATE(Determinant3, function_hook_state_Determinant3)
 static br_scalar(__stdcall*original_Determinant3)(br_scalar, br_scalar, br_scalar, br_scalar, br_scalar, br_scalar, br_scalar, br_scalar, br_scalar) = (br_scalar(__stdcall*)(br_scalar, br_scalar, br_scalar, br_scalar, br_scalar, br_scalar, br_scalar, br_scalar, br_scalar))0x004d4590;
 CARM95_HOOK_FUNCTION(original_Determinant3, Determinant3)
 br_scalar __stdcall Determinant3(br_scalar a1, br_scalar a2, br_scalar a3, br_scalar b1, br_scalar b2, br_scalar b3, br_scalar c1, br_scalar c2, br_scalar c3) {
@@ -134,7 +134,7 @@ br_scalar __stdcall Determinant3(br_scalar a1, br_scalar a2, br_scalar a3, br_sc
 }
 
 function_hook_state_t function_hook_state_BrMatrix4Determinant = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix4Determinant)
+CARM95_WEBSERVER_STATE(BrMatrix4Determinant, function_hook_state_BrMatrix4Determinant)
 static br_scalar(__cdecl*original_BrMatrix4Determinant)(br_matrix4 *) = (br_scalar(__cdecl*)(br_matrix4 *))0x004d3f80;
 CARM95_HOOK_FUNCTION(original_BrMatrix4Determinant, BrMatrix4Determinant)
 br_scalar __cdecl BrMatrix4Determinant(br_matrix4 *mat) {
@@ -183,7 +183,7 @@ br_scalar __cdecl BrMatrix4Determinant(br_matrix4 *mat) {
 }
 
 function_hook_state_t function_hook_state_BrMatrix4Adjoint = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix4Adjoint)
+CARM95_WEBSERVER_STATE(BrMatrix4Adjoint, function_hook_state_BrMatrix4Adjoint)
 static void(__cdecl*original_BrMatrix4Adjoint)(br_matrix4 *, br_matrix4 *) = (void(__cdecl*)(br_matrix4 *, br_matrix4 *))0x004d4120;
 CARM95_HOOK_FUNCTION(original_BrMatrix4Adjoint, BrMatrix4Adjoint)
 void __cdecl BrMatrix4Adjoint(br_matrix4 *A, br_matrix4 *B) {
@@ -233,7 +233,7 @@ void __cdecl BrMatrix4Adjoint(br_matrix4 *A, br_matrix4 *B) {
 }
 
 function_hook_state_t function_hook_state_BrMatrix4Perspective = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix4Perspective)
+CARM95_WEBSERVER_STATE(BrMatrix4Perspective, function_hook_state_BrMatrix4Perspective)
 static void(__cdecl*original_BrMatrix4Perspective)(br_matrix4 *, br_angle, br_scalar, br_scalar, br_scalar) = (void(__cdecl*)(br_matrix4 *, br_angle, br_scalar, br_scalar, br_scalar))0x004d45f0;
 CARM95_HOOK_FUNCTION(original_BrMatrix4Perspective, BrMatrix4Perspective)
 void __cdecl BrMatrix4Perspective(br_matrix4 *mat, br_angle field_of_view, br_scalar aspect, br_scalar hither, br_scalar yon) {
@@ -256,7 +256,7 @@ void __cdecl BrMatrix4Perspective(br_matrix4 *mat, br_angle field_of_view, br_sc
 }
 
 function_hook_state_t function_hook_state_BrMatrix4Apply = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix4Apply)
+CARM95_WEBSERVER_STATE(BrMatrix4Apply, function_hook_state_BrMatrix4Apply)
 static void(__cdecl*original_BrMatrix4Apply)(br_vector4 *, br_vector4 *, br_matrix4 *) = (void(__cdecl*)(br_vector4 *, br_vector4 *, br_matrix4 *))0x004d467f;
 CARM95_HOOK_FUNCTION(original_BrMatrix4Apply, BrMatrix4Apply)
 void __cdecl BrMatrix4Apply(br_vector4 *A, br_vector4 *B, br_matrix4 *C) {
@@ -275,7 +275,7 @@ void __cdecl BrMatrix4Apply(br_vector4 *A, br_vector4 *B, br_matrix4 *C) {
 }
 
 function_hook_state_t function_hook_state_BrMatrix4ApplyP = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix4ApplyP)
+CARM95_WEBSERVER_STATE(BrMatrix4ApplyP, function_hook_state_BrMatrix4ApplyP)
 static void(__cdecl*original_BrMatrix4ApplyP)(br_vector4 *, br_vector3 *, br_matrix4 *) = (void(__cdecl*)(br_vector4 *, br_vector3 *, br_matrix4 *))0x004d4720;
 CARM95_HOOK_FUNCTION(original_BrMatrix4ApplyP, BrMatrix4ApplyP)
 void __cdecl BrMatrix4ApplyP(br_vector4 *A, br_vector3 *B, br_matrix4 *C) {
@@ -294,7 +294,7 @@ void __cdecl BrMatrix4ApplyP(br_vector4 *A, br_vector3 *B, br_matrix4 *C) {
 }
 
 function_hook_state_t function_hook_state_BrMatrix4ApplyV = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix4ApplyV)
+CARM95_WEBSERVER_STATE(BrMatrix4ApplyV, function_hook_state_BrMatrix4ApplyV)
 static void(__cdecl*original_BrMatrix4ApplyV)(br_vector4 *, br_vector3 *, br_matrix4 *) = (void(__cdecl*)(br_vector4 *, br_vector3 *, br_matrix4 *))0x004d479f;
 CARM95_HOOK_FUNCTION(original_BrMatrix4ApplyV, BrMatrix4ApplyV)
 void __cdecl BrMatrix4ApplyV(br_vector4 *A, br_vector3 *B, br_matrix4 *C) {
@@ -313,7 +313,7 @@ void __cdecl BrMatrix4ApplyV(br_vector4 *A, br_vector3 *B, br_matrix4 *C) {
 }
 
 function_hook_state_t function_hook_state_BrMatrix4TApply = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix4TApply)
+CARM95_WEBSERVER_STATE(BrMatrix4TApply, function_hook_state_BrMatrix4TApply)
 static void(__cdecl*original_BrMatrix4TApply)(br_vector4 *, br_vector4 *, br_matrix4 *) = (void(__cdecl*)(br_vector4 *, br_vector4 *, br_matrix4 *))0x004d4820;
 CARM95_HOOK_FUNCTION(original_BrMatrix4TApply, BrMatrix4TApply)
 void __cdecl BrMatrix4TApply(br_vector4 *A, br_vector4 *B, br_matrix4 *C) {
@@ -332,7 +332,7 @@ void __cdecl BrMatrix4TApply(br_vector4 *A, br_vector4 *B, br_matrix4 *C) {
 }
 
 function_hook_state_t function_hook_state_BrMatrix4TApplyP = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix4TApplyP)
+CARM95_WEBSERVER_STATE(BrMatrix4TApplyP, function_hook_state_BrMatrix4TApplyP)
 static void(__cdecl*original_BrMatrix4TApplyP)(br_vector4 *, br_vector3 *, br_matrix4 *) = (void(__cdecl*)(br_vector4 *, br_vector3 *, br_matrix4 *))0x004d48bb;
 CARM95_HOOK_FUNCTION(original_BrMatrix4TApplyP, BrMatrix4TApplyP)
 void __cdecl BrMatrix4TApplyP(br_vector4 *A, br_vector3 *B, br_matrix4 *C) {
@@ -351,7 +351,7 @@ void __cdecl BrMatrix4TApplyP(br_vector4 *A, br_vector3 *B, br_matrix4 *C) {
 }
 
 function_hook_state_t function_hook_state_BrMatrix4TApplyV = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix4TApplyV)
+CARM95_WEBSERVER_STATE(BrMatrix4TApplyV, function_hook_state_BrMatrix4TApplyV)
 static void(__cdecl*original_BrMatrix4TApplyV)(br_vector4 *, br_vector3 *, br_matrix4 *) = (void(__cdecl*)(br_vector4 *, br_vector3 *, br_matrix4 *))0x004d493f;
 CARM95_HOOK_FUNCTION(original_BrMatrix4TApplyV, BrMatrix4TApplyV)
 void __cdecl BrMatrix4TApplyV(br_vector4 *A, br_vector3 *B, br_matrix4 *C) {
@@ -370,7 +370,7 @@ void __cdecl BrMatrix4TApplyV(br_vector4 *A, br_vector3 *B, br_matrix4 *C) {
 }
 
 function_hook_state_t function_hook_state_BrMatrix4Copy34 = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix4Copy34)
+CARM95_WEBSERVER_STATE(BrMatrix4Copy34, function_hook_state_BrMatrix4Copy34)
 static void(__cdecl*original_BrMatrix4Copy34)(br_matrix4 *, br_matrix34 *) = (void(__cdecl*)(br_matrix4 *, br_matrix34 *))0x004d49c0;
 CARM95_HOOK_FUNCTION(original_BrMatrix4Copy34, BrMatrix4Copy34)
 void __cdecl BrMatrix4Copy34(br_matrix4 *A, br_matrix34 *B) {
@@ -388,7 +388,7 @@ void __cdecl BrMatrix4Copy34(br_matrix4 *A, br_matrix34 *B) {
 }
 
 function_hook_state_t function_hook_state_BrMatrix4Mul34 = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix4Mul34)
+CARM95_WEBSERVER_STATE(BrMatrix4Mul34, function_hook_state_BrMatrix4Mul34)
 static void(__cdecl*original_BrMatrix4Mul34)(br_matrix4 *, br_matrix34 *, br_matrix4 *) = (void(__cdecl*)(br_matrix4 *, br_matrix34 *, br_matrix4 *))0x004d4a30;
 CARM95_HOOK_FUNCTION(original_BrMatrix4Mul34, BrMatrix4Mul34)
 void __cdecl BrMatrix4Mul34(br_matrix4 *A, br_matrix34 *B, br_matrix4 *C) {
@@ -407,7 +407,7 @@ void __cdecl BrMatrix4Mul34(br_matrix4 *A, br_matrix34 *B, br_matrix4 *C) {
 }
 
 function_hook_state_t function_hook_state_BrMatrix4Pre34 = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix4Pre34)
+CARM95_WEBSERVER_STATE(BrMatrix4Pre34, function_hook_state_BrMatrix4Pre34)
 static void(__cdecl*original_BrMatrix4Pre34)(br_matrix4 *, br_matrix34 *) = (void(__cdecl*)(br_matrix4 *, br_matrix34 *))0x004d4bf0;
 CARM95_HOOK_FUNCTION(original_BrMatrix4Pre34, BrMatrix4Pre34)
 void __cdecl BrMatrix4Pre34(br_matrix4 *A, br_matrix34 *B) {
@@ -427,7 +427,7 @@ void __cdecl BrMatrix4Pre34(br_matrix4 *A, br_matrix34 *B) {
 }
 
 function_hook_state_t function_hook_state_BrMatrix4ShearZ = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix4ShearZ)
+CARM95_WEBSERVER_STATE(BrMatrix4ShearZ, function_hook_state_BrMatrix4ShearZ)
 static void(__cdecl*original_BrMatrix4ShearZ)(br_matrix4 *, br_scalar, br_scalar) = (void(__cdecl*)(br_matrix4 *, br_scalar, br_scalar))0x004d4c20;
 CARM95_HOOK_FUNCTION(original_BrMatrix4ShearZ, BrMatrix4ShearZ)
 void __cdecl BrMatrix4ShearZ(br_matrix4 *mat, br_scalar sx, br_scalar sy) {

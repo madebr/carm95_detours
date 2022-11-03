@@ -11,7 +11,7 @@ br_diaghandler * hookvar_BrStdioDiagHandler  = (void*)0x00530168;
 br_diaghandler ** hookvar__BrDefaultDiagHandler  = (void*)0x00530174;
 
 function_hook_state_t function_hook_state_BrStdioWarning = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrStdioWarning)
+CARM95_WEBSERVER_STATE(BrStdioWarning, function_hook_state_BrStdioWarning)
 static void(__cdecl*original_BrStdioWarning)(char *) = (void(__cdecl*)(char *))0x00503090;
 CARM95_HOOK_FUNCTION(original_BrStdioWarning, BrStdioWarning)
 void __cdecl BrStdioWarning(char *message) {
@@ -28,7 +28,7 @@ void __cdecl BrStdioWarning(char *message) {
 }
 
 function_hook_state_t function_hook_state_BrStdioFailure = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrStdioFailure)
+CARM95_WEBSERVER_STATE(BrStdioFailure, function_hook_state_BrStdioFailure)
 static void(__cdecl*original_BrStdioFailure)(char *) = (void(__cdecl*)(char *))0x005030d0;
 CARM95_HOOK_FUNCTION(original_BrStdioFailure, BrStdioFailure)
 void __cdecl BrStdioFailure(char *message) {

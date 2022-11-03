@@ -12,7 +12,7 @@ char(* hookvar__diag_scratch )[128];
 #endif
 
 function_hook_state_t function_hook_state_BrFailure = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrFailure)
+CARM95_WEBSERVER_STATE(BrFailure, function_hook_state_BrFailure)
 void(__cdecl*BrFailure)(char *) = (void(__cdecl*)(char *))0x004df0b0;
 void BrFailure_do_not_use(char *s) {
     va_list args;
@@ -32,7 +32,7 @@ void BrFailure_do_not_use(char *s) {
 }
 
 function_hook_state_t function_hook_state_BrWarning = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrWarning)
+CARM95_WEBSERVER_STATE(BrWarning, function_hook_state_BrWarning)
 void(__cdecl*BrWarning)(char *) = (void(__cdecl*)(char *))0x004df100;
 void BrWarning_do_not_use(char *s) {
     va_list args;
@@ -52,7 +52,7 @@ void BrWarning_do_not_use(char *s) {
 }
 
 function_hook_state_t function_hook_state_BrFatal = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrFatal)
+CARM95_WEBSERVER_STATE(BrFatal, function_hook_state_BrFatal)
 void(__cdecl*BrFatal)(char *, int, char *) = (void(__cdecl*)(char *, int, char *))0x004df150;
 void BrFatal_do_not_use(char *name, int line, char *s) {
     va_list args;
@@ -74,7 +74,7 @@ void BrFatal_do_not_use(char *name, int line, char *s) {
 }
 
 function_hook_state_t function_hook_state__BrAssert = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state__BrAssert)
+CARM95_WEBSERVER_STATE(_BrAssert, function_hook_state__BrAssert)
 static void(__cdecl*original__BrAssert)(char *, char *, unsigned int) = (void(__cdecl*)(char *, char *, unsigned int))0x004df1b0;
 CARM95_HOOK_FUNCTION(original__BrAssert, _BrAssert)
 void __cdecl _BrAssert(char *condition, char *file, unsigned int line) {
@@ -93,7 +93,7 @@ void __cdecl _BrAssert(char *condition, char *file, unsigned int line) {
 }
 
 function_hook_state_t function_hook_state__BrUAssert = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state__BrUAssert)
+CARM95_WEBSERVER_STATE(_BrUAssert, function_hook_state__BrUAssert)
 static void(__cdecl*original__BrUAssert)(char *, char *, unsigned int) = (void(__cdecl*)(char *, char *, unsigned int))0x004df200;
 CARM95_HOOK_FUNCTION(original__BrUAssert, _BrUAssert)
 void __cdecl _BrUAssert(char *condition, char *file, unsigned int line) {

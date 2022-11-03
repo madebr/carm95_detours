@@ -57,7 +57,7 @@ br_vector3 * hookvar_gNew_ground_normal__oppocar ;
 #endif
 
 function_hook_state_t function_hook_state_MakeCarStationary = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_MakeCarStationary)
+CARM95_WEBSERVER_STATE(MakeCarStationary, function_hook_state_MakeCarStationary)
 void MakeCarStationary(tCar_spec *pCar_spec) {
     LOG_TRACE("(%p)", pCar_spec);
 
@@ -72,7 +72,7 @@ void MakeCarStationary(tCar_spec *pCar_spec) {
 }
 
 function_hook_state_t function_hook_state_MoveThisCar = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_MoveThisCar)
+CARM95_WEBSERVER_STATE(MoveThisCar, function_hook_state_MoveThisCar)
 void MoveThisCar(tU32 pTime_difference, tCar_spec *car) {
     br_scalar dt;
     br_scalar ts;

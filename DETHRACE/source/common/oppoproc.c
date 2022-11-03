@@ -9,7 +9,7 @@
 #include <assert.h>
 
 function_hook_state_t function_hook_state_StraightestArcForCorner2D = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_StraightestArcForCorner2D)
+CARM95_WEBSERVER_STATE(StraightestArcForCorner2D, function_hook_state_StraightestArcForCorner2D)
 int StraightestArcForCorner2D(br_vector2 *pCent, br_scalar *pRadius, br_scalar *pEntry_length, int *pLeft_not_right, br_vector2 *p1, br_vector2 *p2, br_vector2 *p3, br_scalar pWidth12, br_scalar pWidth23) {
     br_vector2 rel1;
     br_vector2 rel3;
@@ -52,7 +52,7 @@ int StraightestArcForCorner2D(br_vector2 *pCent, br_scalar *pRadius, br_scalar *
 }
 
 function_hook_state_t function_hook_state_CornerFudge = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_CornerFudge)
+CARM95_WEBSERVER_STATE(CornerFudge, function_hook_state_CornerFudge)
 static br_scalar(__cdecl*original_CornerFudge)(tCar_spec *) = (br_scalar(__cdecl*)(tCar_spec *))0x004a003e;
 CARM95_HOOK_FUNCTION(original_CornerFudge, CornerFudge)
 br_scalar __cdecl CornerFudge(tCar_spec *pCar_spec) {
@@ -69,7 +69,7 @@ br_scalar __cdecl CornerFudge(tCar_spec *pCar_spec) {
 }
 
 function_hook_state_t function_hook_state_MaxCurvatureForCarSpeed = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_MaxCurvatureForCarSpeed)
+CARM95_WEBSERVER_STATE(MaxCurvatureForCarSpeed, function_hook_state_MaxCurvatureForCarSpeed)
 static br_scalar(__cdecl*original_MaxCurvatureForCarSpeed)(tCar_spec *, br_scalar) = (br_scalar(__cdecl*)(tCar_spec *, br_scalar))0x004a0054;
 CARM95_HOOK_FUNCTION(original_MaxCurvatureForCarSpeed, MaxCurvatureForCarSpeed)
 br_scalar __cdecl MaxCurvatureForCarSpeed(tCar_spec *pCar, br_scalar pSpeed) {
@@ -89,7 +89,7 @@ br_scalar __cdecl MaxCurvatureForCarSpeed(tCar_spec *pCar, br_scalar pSpeed) {
 }
 
 function_hook_state_t function_hook_state_Vector2Cross = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_Vector2Cross)
+CARM95_WEBSERVER_STATE(Vector2Cross, function_hook_state_Vector2Cross)
 br_scalar Vector2Cross(br_vector2 *pA, br_vector2 *pB) {
     LOG_TRACE("(%p, %p)", pA, pB);
 
@@ -105,7 +105,7 @@ br_scalar Vector2Cross(br_vector2 *pA, br_vector2 *pB) {
 }
 
 function_hook_state_t function_hook_state_EndOfPath = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_EndOfPath)
+CARM95_WEBSERVER_STATE(EndOfPath, function_hook_state_EndOfPath)
 tFollow_path_result EndOfPath(tOpponent_spec *pOpponent_spec) {
     tCar_spec *car_spec;
     LOG_TRACE("(%p)", pOpponent_spec);
@@ -122,7 +122,7 @@ tFollow_path_result EndOfPath(tOpponent_spec *pOpponent_spec) {
 }
 
 function_hook_state_t function_hook_state_RoughlyColinear = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_RoughlyColinear)
+CARM95_WEBSERVER_STATE(RoughlyColinear, function_hook_state_RoughlyColinear)
 int RoughlyColinear(br_vector2 *p1, br_vector2 *p2, br_vector2 *p3) {
     br_vector2 rel1;
     br_vector2 rel2;
@@ -151,7 +151,7 @@ int RoughlyColinear(br_vector2 *p1, br_vector2 *p2, br_vector2 *p3) {
 }
 
 function_hook_state_t function_hook_state_GetStraight = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_GetStraight)
+CARM95_WEBSERVER_STATE(GetStraight, function_hook_state_GetStraight)
 int GetStraight(br_vector2 *pStart, br_vector2 *pFinish, br_scalar *pWidth, int section1, tOpponent_spec *pOpponent_spec, tFollow_path_data *data) {
     int section;
     br_vector2 next;
@@ -177,7 +177,7 @@ int GetStraight(br_vector2 *pStart, br_vector2 *pFinish, br_scalar *pWidth, int 
 }
 
 function_hook_state_t function_hook_state_ProcessFollowPath = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_ProcessFollowPath)
+CARM95_WEBSERVER_STATE(ProcessFollowPath, function_hook_state_ProcessFollowPath)
 static tFollow_path_result(__cdecl*original_ProcessFollowPath)(tOpponent_spec *, tProcess_objective_command, int, int, int) = (tFollow_path_result(__cdecl*)(tOpponent_spec *, tProcess_objective_command, int, int, int))0x0049e3a0;
 CARM95_HOOK_FUNCTION(original_ProcessFollowPath, ProcessFollowPath)
 tFollow_path_result __cdecl ProcessFollowPath(tOpponent_spec *pOpponent_spec, tProcess_objective_command pCommand, int pPursuit_mode, int pIgnore_end, int pNever_struggle) {
@@ -358,7 +358,7 @@ tFollow_path_result __cdecl ProcessFollowPath(tOpponent_spec *pOpponent_spec, tP
 }
 
 function_hook_state_t function_hook_state_FollowCheatyPath = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_FollowCheatyPath)
+CARM95_WEBSERVER_STATE(FollowCheatyPath, function_hook_state_FollowCheatyPath)
 static tFollow_path_result(__cdecl*original_FollowCheatyPath)(tOpponent_spec *) = (tFollow_path_result(__cdecl*)(tOpponent_spec *))0x004a00a4;
 CARM95_HOOK_FUNCTION(original_FollowCheatyPath, FollowCheatyPath)
 tFollow_path_result __cdecl FollowCheatyPath(tOpponent_spec *pOpponent_spec) {

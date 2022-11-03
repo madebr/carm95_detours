@@ -17,7 +17,7 @@ br_matrix34 * hookvar_mattmp1__trig  = (void*)0x0053e4e8;
 br_matrix34 * hookvar_mattmp2__trig  = (void*)0x0053e518;
 
 function_hook_state_t function_hook_state_FastFloatSin = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_FastFloatSin)
+CARM95_WEBSERVER_STATE(FastFloatSin, function_hook_state_FastFloatSin)
 static float(__cdecl*original_FastFloatSin)(int) = (float(__cdecl*)(int))0x004aa0d0;
 CARM95_HOOK_FUNCTION(original_FastFloatSin, FastFloatSin)
 float __cdecl FastFloatSin(int pAngle_in_degrees) {
@@ -34,7 +34,7 @@ float __cdecl FastFloatSin(int pAngle_in_degrees) {
 }
 
 function_hook_state_t function_hook_state_FastFloatCos = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_FastFloatCos)
+CARM95_WEBSERVER_STATE(FastFloatCos, function_hook_state_FastFloatCos)
 static float(__cdecl*original_FastFloatCos)(int) = (float(__cdecl*)(int))0x004aa18c;
 CARM95_HOOK_FUNCTION(original_FastFloatCos, FastFloatCos)
 float __cdecl FastFloatCos(int pAngle_in_degrees) {
@@ -51,7 +51,7 @@ float __cdecl FastFloatCos(int pAngle_in_degrees) {
 }
 
 function_hook_state_t function_hook_state_FastFloatTan = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_FastFloatTan)
+CARM95_WEBSERVER_STATE(FastFloatTan, function_hook_state_FastFloatTan)
 static float(__cdecl*original_FastFloatTan)(int) = (float(__cdecl*)(int))0x004aa248;
 CARM95_HOOK_FUNCTION(original_FastFloatTan, FastFloatTan)
 float __cdecl FastFloatTan(int pAngle_in_degrees) {
@@ -68,7 +68,7 @@ float __cdecl FastFloatTan(int pAngle_in_degrees) {
 }
 
 function_hook_state_t function_hook_state_FastScalarSin = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_FastScalarSin)
+CARM95_WEBSERVER_STATE(FastScalarSin, function_hook_state_FastScalarSin)
 static br_scalar(__cdecl*original_FastScalarSin)(int) = (br_scalar(__cdecl*)(int))0x004aa279;
 CARM95_HOOK_FUNCTION(original_FastScalarSin, FastScalarSin)
 br_scalar __cdecl FastScalarSin(int pAngle_in_degrees) {
@@ -85,7 +85,7 @@ br_scalar __cdecl FastScalarSin(int pAngle_in_degrees) {
 }
 
 function_hook_state_t function_hook_state_FastScalarCos = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_FastScalarCos)
+CARM95_WEBSERVER_STATE(FastScalarCos, function_hook_state_FastScalarCos)
 static br_scalar(__cdecl*original_FastScalarCos)(int) = (br_scalar(__cdecl*)(int))0x004aa295;
 CARM95_HOOK_FUNCTION(original_FastScalarCos, FastScalarCos)
 br_scalar __cdecl FastScalarCos(int pAngle_in_degrees) {
@@ -102,7 +102,7 @@ br_scalar __cdecl FastScalarCos(int pAngle_in_degrees) {
 }
 
 function_hook_state_t function_hook_state_FastScalarTan = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_FastScalarTan)
+CARM95_WEBSERVER_STATE(FastScalarTan, function_hook_state_FastScalarTan)
 static br_scalar(__cdecl*original_FastScalarTan)(int) = (br_scalar(__cdecl*)(int))0x004aa2b1;
 CARM95_HOOK_FUNCTION(original_FastScalarTan, FastScalarTan)
 br_scalar __cdecl FastScalarTan(int pAngle_in_degrees) {
@@ -119,7 +119,7 @@ br_scalar __cdecl FastScalarTan(int pAngle_in_degrees) {
 }
 
 function_hook_state_t function_hook_state_FastScalarSinAngle = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_FastScalarSinAngle)
+CARM95_WEBSERVER_STATE(FastScalarSinAngle, function_hook_state_FastScalarSinAngle)
 static br_scalar(__cdecl*original_FastScalarSinAngle)(br_angle) = (br_scalar(__cdecl*)(br_angle))0x004aa2e2;
 CARM95_HOOK_FUNCTION(original_FastScalarSinAngle, FastScalarSinAngle)
 br_scalar __cdecl FastScalarSinAngle(br_angle pBR_angle) {
@@ -136,7 +136,7 @@ br_scalar __cdecl FastScalarSinAngle(br_angle pBR_angle) {
 }
 
 function_hook_state_t function_hook_state_FastScalarCosAngle = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_FastScalarCosAngle)
+CARM95_WEBSERVER_STATE(FastScalarCosAngle, function_hook_state_FastScalarCosAngle)
 static br_scalar(__cdecl*original_FastScalarCosAngle)(br_angle) = (br_scalar(__cdecl*)(br_angle))0x004aa317;
 CARM95_HOOK_FUNCTION(original_FastScalarCosAngle, FastScalarCosAngle)
 br_scalar __cdecl FastScalarCosAngle(br_angle pBR_angle) {
@@ -153,7 +153,7 @@ br_scalar __cdecl FastScalarCosAngle(br_angle pBR_angle) {
 }
 
 function_hook_state_t function_hook_state_FastScalarTanAngle = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_FastScalarTanAngle)
+CARM95_WEBSERVER_STATE(FastScalarTanAngle, function_hook_state_FastScalarTanAngle)
 static br_scalar(__cdecl*original_FastScalarTanAngle)(br_angle) = (br_scalar(__cdecl*)(br_angle))0x004aa34c;
 CARM95_HOOK_FUNCTION(original_FastScalarTanAngle, FastScalarTanAngle)
 br_scalar __cdecl FastScalarTanAngle(br_angle pBR_angle) {
@@ -172,7 +172,7 @@ br_scalar __cdecl FastScalarTanAngle(br_angle pBR_angle) {
 }
 
 function_hook_state_t function_hook_state_FastFloatArcSin = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_FastFloatArcSin)
+CARM95_WEBSERVER_STATE(FastFloatArcSin, function_hook_state_FastFloatArcSin)
 static float(__cdecl*original_FastFloatArcSin)(float) = (float(__cdecl*)(float))0x004aa399;
 CARM95_HOOK_FUNCTION(original_FastFloatArcSin, FastFloatArcSin)
 float __cdecl FastFloatArcSin(float pValue) {
@@ -195,7 +195,7 @@ float __cdecl FastFloatArcSin(float pValue) {
 }
 
 function_hook_state_t function_hook_state_FastFloatArcCos = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_FastFloatArcCos)
+CARM95_WEBSERVER_STATE(FastFloatArcCos, function_hook_state_FastFloatArcCos)
 static float(__cdecl*original_FastFloatArcCos)(float) = (float(__cdecl*)(float))0x004aa460;
 CARM95_HOOK_FUNCTION(original_FastFloatArcCos, FastFloatArcCos)
 float __cdecl FastFloatArcCos(float pValue) {
@@ -212,7 +212,7 @@ float __cdecl FastFloatArcCos(float pValue) {
 }
 
 function_hook_state_t function_hook_state_FastScalarArcSin = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_FastScalarArcSin)
+CARM95_WEBSERVER_STATE(FastScalarArcSin, function_hook_state_FastScalarArcSin)
 static br_scalar(__cdecl*original_FastScalarArcSin)(br_scalar) = (br_scalar(__cdecl*)(br_scalar))0x004aa482;
 CARM95_HOOK_FUNCTION(original_FastScalarArcSin, FastScalarArcSin)
 br_scalar __cdecl FastScalarArcSin(br_scalar pValue) {
@@ -229,7 +229,7 @@ br_scalar __cdecl FastScalarArcSin(br_scalar pValue) {
 }
 
 function_hook_state_t function_hook_state_FastScalarArcCos = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_FastScalarArcCos)
+CARM95_WEBSERVER_STATE(FastScalarArcCos, function_hook_state_FastScalarArcCos)
 static br_scalar(__cdecl*original_FastScalarArcCos)(br_scalar) = (br_scalar(__cdecl*)(br_scalar))0x004aa49e;
 CARM95_HOOK_FUNCTION(original_FastScalarArcCos, FastScalarArcCos)
 br_scalar __cdecl FastScalarArcCos(br_scalar pValue) {
@@ -246,7 +246,7 @@ br_scalar __cdecl FastScalarArcCos(br_scalar pValue) {
 }
 
 function_hook_state_t function_hook_state_FastFloatArcTan2 = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_FastFloatArcTan2)
+CARM95_WEBSERVER_STATE(FastFloatArcTan2, function_hook_state_FastFloatArcTan2)
 static float(__cdecl*original_FastFloatArcTan2)(float, float) = (float(__cdecl*)(float, float))0x004aa4c0;
 CARM95_HOOK_FUNCTION(original_FastFloatArcTan2, FastFloatArcTan2)
 float __cdecl FastFloatArcTan2(float pY, float pX) {
@@ -268,7 +268,7 @@ float __cdecl FastFloatArcTan2(float pY, float pX) {
 }
 
 function_hook_state_t function_hook_state_FastScalarArcTan2 = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_FastScalarArcTan2)
+CARM95_WEBSERVER_STATE(FastScalarArcTan2, function_hook_state_FastScalarArcTan2)
 static br_scalar(__cdecl*original_FastScalarArcTan2)(br_scalar, br_scalar) = (br_scalar(__cdecl*)(br_scalar, br_scalar))0x004aa69f;
 CARM95_HOOK_FUNCTION(original_FastScalarArcTan2, FastScalarArcTan2)
 br_scalar __cdecl FastScalarArcTan2(br_scalar pY, br_scalar pX) {
@@ -290,7 +290,7 @@ br_scalar __cdecl FastScalarArcTan2(br_scalar pY, br_scalar pX) {
 }
 
 function_hook_state_t function_hook_state_FastFloatArcTan2Angle = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_FastFloatArcTan2Angle)
+CARM95_WEBSERVER_STATE(FastFloatArcTan2Angle, function_hook_state_FastFloatArcTan2Angle)
 static br_angle(__cdecl*original_FastFloatArcTan2Angle)(float, float) = (br_angle(__cdecl*)(float, float))0x004aa6c2;
 CARM95_HOOK_FUNCTION(original_FastFloatArcTan2Angle, FastFloatArcTan2Angle)
 br_angle __cdecl FastFloatArcTan2Angle(float pY, float pX) {
@@ -312,7 +312,7 @@ br_angle __cdecl FastFloatArcTan2Angle(float pY, float pX) {
 }
 
 function_hook_state_t function_hook_state_FastScalarArcTan2Angle = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_FastScalarArcTan2Angle)
+CARM95_WEBSERVER_STATE(FastScalarArcTan2Angle, function_hook_state_FastScalarArcTan2Angle)
 static br_angle(__cdecl*original_FastScalarArcTan2Angle)(br_scalar, br_scalar) = (br_angle(__cdecl*)(br_scalar, br_scalar))0x004aa8c2;
 CARM95_HOOK_FUNCTION(original_FastScalarArcTan2Angle, FastScalarArcTan2Angle)
 br_angle __cdecl FastScalarArcTan2Angle(br_scalar pY, br_scalar pX) {
@@ -334,7 +334,7 @@ br_angle __cdecl FastScalarArcTan2Angle(br_scalar pY, br_scalar pX) {
 }
 
 function_hook_state_t function_hook_state_DRMatrix34RotateX = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DRMatrix34RotateX)
+CARM95_WEBSERVER_STATE(DRMatrix34RotateX, function_hook_state_DRMatrix34RotateX)
 static void(__cdecl*original_DRMatrix34RotateX)(br_matrix34 *, br_angle) = (void(__cdecl*)(br_matrix34 *, br_angle))0x004aa8e5;
 CARM95_HOOK_FUNCTION(original_DRMatrix34RotateX, DRMatrix34RotateX)
 void __cdecl DRMatrix34RotateX(br_matrix34 *mat, br_angle rx) {
@@ -356,7 +356,7 @@ void __cdecl DRMatrix34RotateX(br_matrix34 *mat, br_angle rx) {
 }
 
 function_hook_state_t function_hook_state_DRMatrix34RotateY = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DRMatrix34RotateY)
+CARM95_WEBSERVER_STATE(DRMatrix34RotateY, function_hook_state_DRMatrix34RotateY)
 static void(__cdecl*original_DRMatrix34RotateY)(br_matrix34 *, br_angle) = (void(__cdecl*)(br_matrix34 *, br_angle))0x004aa986;
 CARM95_HOOK_FUNCTION(original_DRMatrix34RotateY, DRMatrix34RotateY)
 void __cdecl DRMatrix34RotateY(br_matrix34 *mat, br_angle ry) {
@@ -378,7 +378,7 @@ void __cdecl DRMatrix34RotateY(br_matrix34 *mat, br_angle ry) {
 }
 
 function_hook_state_t function_hook_state_DRMatrix34RotateZ = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DRMatrix34RotateZ)
+CARM95_WEBSERVER_STATE(DRMatrix34RotateZ, function_hook_state_DRMatrix34RotateZ)
 static void(__cdecl*original_DRMatrix34RotateZ)(br_matrix34 *, br_angle) = (void(__cdecl*)(br_matrix34 *, br_angle))0x004aaa27;
 CARM95_HOOK_FUNCTION(original_DRMatrix34RotateZ, DRMatrix34RotateZ)
 void __cdecl DRMatrix34RotateZ(br_matrix34 *mat, br_angle rz) {
@@ -400,7 +400,7 @@ void __cdecl DRMatrix34RotateZ(br_matrix34 *mat, br_angle rz) {
 }
 
 function_hook_state_t function_hook_state_DRMatrix34Rotate = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DRMatrix34Rotate)
+CARM95_WEBSERVER_STATE(DRMatrix34Rotate, function_hook_state_DRMatrix34Rotate)
 static void(__cdecl*original_DRMatrix34Rotate)(br_matrix34 *, br_angle, br_vector3 *) = (void(__cdecl*)(br_matrix34 *, br_angle, br_vector3 *))0x004aaac8;
 CARM95_HOOK_FUNCTION(original_DRMatrix34Rotate, DRMatrix34Rotate)
 void __cdecl DRMatrix34Rotate(br_matrix34 *mat, br_angle r, br_vector3 *a) {
@@ -437,7 +437,7 @@ void __cdecl DRMatrix34Rotate(br_matrix34 *mat, br_angle r, br_vector3 *a) {
 }
 
 function_hook_state_t function_hook_state_DRMatrix34PreRotateX = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DRMatrix34PreRotateX)
+CARM95_WEBSERVER_STATE(DRMatrix34PreRotateX, function_hook_state_DRMatrix34PreRotateX)
 static void(__cdecl*original_DRMatrix34PreRotateX)(br_matrix34 *, br_angle) = (void(__cdecl*)(br_matrix34 *, br_angle))0x004aabfe;
 CARM95_HOOK_FUNCTION(original_DRMatrix34PreRotateX, DRMatrix34PreRotateX)
 void __cdecl DRMatrix34PreRotateX(br_matrix34 *mat, br_angle rx) {
@@ -455,7 +455,7 @@ void __cdecl DRMatrix34PreRotateX(br_matrix34 *mat, br_angle rx) {
 }
 
 function_hook_state_t function_hook_state_DRMatrix34PostRotateX = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DRMatrix34PostRotateX)
+CARM95_WEBSERVER_STATE(DRMatrix34PostRotateX, function_hook_state_DRMatrix34PostRotateX)
 static void(__cdecl*original_DRMatrix34PostRotateX)(br_matrix34 *, br_angle) = (void(__cdecl*)(br_matrix34 *, br_angle))0x004aac41;
 CARM95_HOOK_FUNCTION(original_DRMatrix34PostRotateX, DRMatrix34PostRotateX)
 void __cdecl DRMatrix34PostRotateX(br_matrix34 *mat, br_angle rx) {
@@ -473,7 +473,7 @@ void __cdecl DRMatrix34PostRotateX(br_matrix34 *mat, br_angle rx) {
 }
 
 function_hook_state_t function_hook_state_DRMatrix34PreRotateY = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DRMatrix34PreRotateY)
+CARM95_WEBSERVER_STATE(DRMatrix34PreRotateY, function_hook_state_DRMatrix34PreRotateY)
 static void(__cdecl*original_DRMatrix34PreRotateY)(br_matrix34 *, br_angle) = (void(__cdecl*)(br_matrix34 *, br_angle))0x004aac84;
 CARM95_HOOK_FUNCTION(original_DRMatrix34PreRotateY, DRMatrix34PreRotateY)
 void __cdecl DRMatrix34PreRotateY(br_matrix34 *mat, br_angle ry) {
@@ -491,7 +491,7 @@ void __cdecl DRMatrix34PreRotateY(br_matrix34 *mat, br_angle ry) {
 }
 
 function_hook_state_t function_hook_state_DRMatrix34PostRotateY = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DRMatrix34PostRotateY)
+CARM95_WEBSERVER_STATE(DRMatrix34PostRotateY, function_hook_state_DRMatrix34PostRotateY)
 static void(__cdecl*original_DRMatrix34PostRotateY)(br_matrix34 *, br_angle) = (void(__cdecl*)(br_matrix34 *, br_angle))0x004aacc7;
 CARM95_HOOK_FUNCTION(original_DRMatrix34PostRotateY, DRMatrix34PostRotateY)
 void __cdecl DRMatrix34PostRotateY(br_matrix34 *mat, br_angle ry) {
@@ -509,7 +509,7 @@ void __cdecl DRMatrix34PostRotateY(br_matrix34 *mat, br_angle ry) {
 }
 
 function_hook_state_t function_hook_state_DRMatrix34PreRotateZ = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DRMatrix34PreRotateZ)
+CARM95_WEBSERVER_STATE(DRMatrix34PreRotateZ, function_hook_state_DRMatrix34PreRotateZ)
 static void(__cdecl*original_DRMatrix34PreRotateZ)(br_matrix34 *, br_angle) = (void(__cdecl*)(br_matrix34 *, br_angle))0x004aad0a;
 CARM95_HOOK_FUNCTION(original_DRMatrix34PreRotateZ, DRMatrix34PreRotateZ)
 void __cdecl DRMatrix34PreRotateZ(br_matrix34 *mat, br_angle rz) {
@@ -527,7 +527,7 @@ void __cdecl DRMatrix34PreRotateZ(br_matrix34 *mat, br_angle rz) {
 }
 
 function_hook_state_t function_hook_state_DRMatrix34PostRotateZ = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DRMatrix34PostRotateZ)
+CARM95_WEBSERVER_STATE(DRMatrix34PostRotateZ, function_hook_state_DRMatrix34PostRotateZ)
 static void(__cdecl*original_DRMatrix34PostRotateZ)(br_matrix34 *, br_angle) = (void(__cdecl*)(br_matrix34 *, br_angle))0x004aad4d;
 CARM95_HOOK_FUNCTION(original_DRMatrix34PostRotateZ, DRMatrix34PostRotateZ)
 void __cdecl DRMatrix34PostRotateZ(br_matrix34 *mat, br_angle rz) {
@@ -545,7 +545,7 @@ void __cdecl DRMatrix34PostRotateZ(br_matrix34 *mat, br_angle rz) {
 }
 
 function_hook_state_t function_hook_state_DRMatrix34PreRotate = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DRMatrix34PreRotate)
+CARM95_WEBSERVER_STATE(DRMatrix34PreRotate, function_hook_state_DRMatrix34PreRotate)
 static void(__cdecl*original_DRMatrix34PreRotate)(br_matrix34 *, br_angle, br_vector3 *) = (void(__cdecl*)(br_matrix34 *, br_angle, br_vector3 *))0x004aad90;
 CARM95_HOOK_FUNCTION(original_DRMatrix34PreRotate, DRMatrix34PreRotate)
 void __cdecl DRMatrix34PreRotate(br_matrix34 *mat, br_angle r, br_vector3 *axis) {
@@ -564,7 +564,7 @@ void __cdecl DRMatrix34PreRotate(br_matrix34 *mat, br_angle r, br_vector3 *axis)
 }
 
 function_hook_state_t function_hook_state_DRMatrix34PostRotate = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DRMatrix34PostRotate)
+CARM95_WEBSERVER_STATE(DRMatrix34PostRotate, function_hook_state_DRMatrix34PostRotate)
 static void(__cdecl*original_DRMatrix34PostRotate)(br_matrix34 *, br_angle, br_vector3 *) = (void(__cdecl*)(br_matrix34 *, br_angle, br_vector3 *))0x004aadd7;
 CARM95_HOOK_FUNCTION(original_DRMatrix34PostRotate, DRMatrix34PostRotate)
 void __cdecl DRMatrix34PostRotate(br_matrix34 *mat, br_angle r, br_vector3 *axis) {
@@ -583,7 +583,7 @@ void __cdecl DRMatrix34PostRotate(br_matrix34 *mat, br_angle r, br_vector3 *axis
 }
 
 function_hook_state_t function_hook_state_DRMatrix23Rotate = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DRMatrix23Rotate)
+CARM95_WEBSERVER_STATE(DRMatrix23Rotate, function_hook_state_DRMatrix23Rotate)
 static void(__cdecl*original_DRMatrix23Rotate)(br_matrix23 *, br_angle) = (void(__cdecl*)(br_matrix23 *, br_angle))0x004aae1e;
 CARM95_HOOK_FUNCTION(original_DRMatrix23Rotate, DRMatrix23Rotate)
 void __cdecl DRMatrix23Rotate(br_matrix23 *mat, br_angle rz) {
@@ -605,7 +605,7 @@ void __cdecl DRMatrix23Rotate(br_matrix23 *mat, br_angle rz) {
 }
 
 function_hook_state_t function_hook_state_DRMatrix23PreRotate = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DRMatrix23PreRotate)
+CARM95_WEBSERVER_STATE(DRMatrix23PreRotate, function_hook_state_DRMatrix23PreRotate)
 static void(__cdecl*original_DRMatrix23PreRotate)(br_matrix23 *, br_angle) = (void(__cdecl*)(br_matrix23 *, br_angle))0x004aae83;
 CARM95_HOOK_FUNCTION(original_DRMatrix23PreRotate, DRMatrix23PreRotate)
 void __cdecl DRMatrix23PreRotate(br_matrix23 *mat, br_angle rz) {
@@ -623,7 +623,7 @@ void __cdecl DRMatrix23PreRotate(br_matrix23 *mat, br_angle rz) {
 }
 
 function_hook_state_t function_hook_state_DRMatrix23PostRotate = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DRMatrix23PostRotate)
+CARM95_WEBSERVER_STATE(DRMatrix23PostRotate, function_hook_state_DRMatrix23PostRotate)
 static void(__cdecl*original_DRMatrix23PostRotate)(br_matrix23 *, br_angle) = (void(__cdecl*)(br_matrix23 *, br_angle))0x004aaec6;
 CARM95_HOOK_FUNCTION(original_DRMatrix23PostRotate, DRMatrix23PostRotate)
 void __cdecl DRMatrix23PostRotate(br_matrix23 *mat, br_angle rz) {

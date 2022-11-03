@@ -84,7 +84,7 @@ void(*** hookvar_gPrev_keyboard_handler )();
 tU8(* hookvar_gScan_code )[123][2] = (void*)0x00550360;
 
 function_hook_state_t function_hook_state_KeyboardHandler = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_KeyboardHandler)
+CARM95_WEBSERVER_STATE(KeyboardHandler, function_hook_state_KeyboardHandler)
 void KeyboardHandler() {
     tU8 scan_code;
     tU8 up;
@@ -104,7 +104,7 @@ void KeyboardHandler() {
 }
 
 function_hook_state_t function_hook_state_KeyDown = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_KeyDown)
+CARM95_WEBSERVER_STATE(KeyDown, function_hook_state_KeyDown)
 int KeyDown(tU8 pScan_code) {
     LOG_TRACE("(%u)", pScan_code);
 
@@ -119,7 +119,7 @@ int KeyDown(tU8 pScan_code) {
 }
 
 function_hook_state_t function_hook_state_KeyTranslation = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_KeyTranslation)
+CARM95_WEBSERVER_STATE(KeyTranslation, function_hook_state_KeyTranslation)
 void KeyTranslation(tU8 pKey_index, tU8 pScan_code_1, tU8 pScan_code_2) {
     LOG_TRACE("(%u, %u, %u)", pKey_index, pScan_code_1, pScan_code_2);
 
@@ -136,7 +136,7 @@ void KeyTranslation(tU8 pKey_index, tU8 pScan_code_1, tU8 pScan_code_2) {
 }
 
 function_hook_state_t function_hook_state_KeyBegin = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_KeyBegin)
+CARM95_WEBSERVER_STATE(KeyBegin, function_hook_state_KeyBegin)
 static void(__cdecl*original_KeyBegin)() = (void(__cdecl*)())0x004a6b34;
 CARM95_HOOK_FUNCTION(original_KeyBegin, KeyBegin)
 void __cdecl KeyBegin() {
@@ -152,7 +152,7 @@ void __cdecl KeyBegin() {
 }
 
 function_hook_state_t function_hook_state_KeyEnd = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_KeyEnd)
+CARM95_WEBSERVER_STATE(KeyEnd, function_hook_state_KeyEnd)
 void KeyEnd() {
     LOG_TRACE("()");
 
@@ -166,7 +166,7 @@ void KeyEnd() {
 }
 
 function_hook_state_t function_hook_state_KeyDown22 = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_KeyDown22)
+CARM95_WEBSERVER_STATE(KeyDown22, function_hook_state_KeyDown22)
 int KeyDown22(int pKey_index) {
     LOG_TRACE("(%d)", pKey_index);
 
@@ -181,7 +181,7 @@ int KeyDown22(int pKey_index) {
 }
 
 function_hook_state_t function_hook_state_PDSetKeyArray = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PDSetKeyArray)
+CARM95_WEBSERVER_STATE(PDSetKeyArray, function_hook_state_PDSetKeyArray)
 static void(__cdecl*original_PDSetKeyArray)(int *, int) = (void(__cdecl*)(int *, int))0x004a7d4c;
 CARM95_HOOK_FUNCTION(original_PDSetKeyArray, PDSetKeyArray)
 void __cdecl PDSetKeyArray(int *pKeys, int pMark) {
@@ -205,7 +205,7 @@ void __cdecl PDSetKeyArray(int *pKeys, int pMark) {
 }
 
 function_hook_state_t function_hook_state_PDGetASCIIFromKey = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PDGetASCIIFromKey)
+CARM95_WEBSERVER_STATE(PDGetASCIIFromKey, function_hook_state_PDGetASCIIFromKey)
 static int(__cdecl*original_PDGetASCIIFromKey)(int) = (int(__cdecl*)(int))0x004a7a49;
 CARM95_HOOK_FUNCTION(original_PDGetASCIIFromKey, PDGetASCIIFromKey)
 int __cdecl PDGetASCIIFromKey(int pKey) {
@@ -222,7 +222,7 @@ int __cdecl PDGetASCIIFromKey(int pKey) {
 }
 
 function_hook_state_t function_hook_state_PDFatalError = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PDFatalError)
+CARM95_WEBSERVER_STATE(PDFatalError, function_hook_state_PDFatalError)
 static void(__cdecl*original_PDFatalError)(char *) = (void(__cdecl*)(char *))0x004a633f;
 CARM95_HOOK_FUNCTION(original_PDFatalError, PDFatalError)
 void __cdecl PDFatalError(char *pThe_str) {
@@ -241,7 +241,7 @@ void __cdecl PDFatalError(char *pThe_str) {
 }
 
 function_hook_state_t function_hook_state_PDNonFatalError = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PDNonFatalError)
+CARM95_WEBSERVER_STATE(PDNonFatalError, function_hook_state_PDNonFatalError)
 static void(__cdecl*original_PDNonFatalError)(char *) = (void(__cdecl*)(char *))0x004a63aa;
 CARM95_HOOK_FUNCTION(original_PDNonFatalError, PDNonFatalError)
 void __cdecl PDNonFatalError(char *pThe_str) {
@@ -258,7 +258,7 @@ void __cdecl PDNonFatalError(char *pThe_str) {
 }
 
 function_hook_state_t function_hook_state_PDInitialiseSystem = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PDInitialiseSystem)
+CARM95_WEBSERVER_STATE(PDInitialiseSystem, function_hook_state_PDInitialiseSystem)
 static void(__cdecl*original_PDInitialiseSystem)() = (void(__cdecl*)())0x004a692c;
 CARM95_HOOK_FUNCTION(original_PDInitialiseSystem, PDInitialiseSystem)
 void __cdecl PDInitialiseSystem() {
@@ -280,7 +280,7 @@ void __cdecl PDInitialiseSystem() {
 }
 
 function_hook_state_t function_hook_state_PDShutdownSystem = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PDShutdownSystem)
+CARM95_WEBSERVER_STATE(PDShutdownSystem, function_hook_state_PDShutdownSystem)
 static void(__stdcall*original_PDShutdownSystem)() = (void(__stdcall*)())0x004a6f6d;
 CARM95_HOOK_FUNCTION(original_PDShutdownSystem, PDShutdownSystem)
 void __stdcall PDShutdownSystem() {
@@ -296,7 +296,7 @@ void __stdcall PDShutdownSystem() {
 }
 
 function_hook_state_t function_hook_state_PDSaveOriginalPalette = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PDSaveOriginalPalette)
+CARM95_WEBSERVER_STATE(PDSaveOriginalPalette, function_hook_state_PDSaveOriginalPalette)
 static void(__cdecl*original_PDSaveOriginalPalette)() = (void(__cdecl*)())0x004a7097;
 CARM95_HOOK_FUNCTION(original_PDSaveOriginalPalette, PDSaveOriginalPalette)
 void __cdecl PDSaveOriginalPalette() {
@@ -312,7 +312,7 @@ void __cdecl PDSaveOriginalPalette() {
 }
 
 function_hook_state_t function_hook_state_PDRevertPalette = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PDRevertPalette)
+CARM95_WEBSERVER_STATE(PDRevertPalette, function_hook_state_PDRevertPalette)
 static void(__cdecl*original_PDRevertPalette)() = (void(__cdecl*)())0x004a70a2;
 CARM95_HOOK_FUNCTION(original_PDRevertPalette, PDRevertPalette)
 void __cdecl PDRevertPalette() {
@@ -328,7 +328,7 @@ void __cdecl PDRevertPalette() {
 }
 
 function_hook_state_t function_hook_state_PDInitScreenVars = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PDInitScreenVars)
+CARM95_WEBSERVER_STATE(PDInitScreenVars, function_hook_state_PDInitScreenVars)
 static int(__cdecl*original_PDInitScreenVars)(int, char **) = (int(__cdecl*)(int, char **))0x004a70ad;
 CARM95_HOOK_FUNCTION(original_PDInitScreenVars, PDInitScreenVars)
 int __cdecl PDInitScreenVars(int pArgc, char **pArgv) {
@@ -346,7 +346,7 @@ int __cdecl PDInitScreenVars(int pArgc, char **pArgv) {
 }
 
 function_hook_state_t function_hook_state_PDInitScreen = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PDInitScreen)
+CARM95_WEBSERVER_STATE(PDInitScreen, function_hook_state_PDInitScreen)
 static void(__cdecl*original_PDInitScreen)() = (void(__cdecl*)())0x004a70d6;
 CARM95_HOOK_FUNCTION(original_PDInitScreen, PDInitScreen)
 void __cdecl PDInitScreen() {
@@ -362,7 +362,7 @@ void __cdecl PDInitScreen() {
 }
 
 function_hook_state_t function_hook_state_PDLockRealBackScreen = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PDLockRealBackScreen)
+CARM95_WEBSERVER_STATE(PDLockRealBackScreen, function_hook_state_PDLockRealBackScreen)
 static void(__cdecl*original_PDLockRealBackScreen)() = (void(__cdecl*)())0x004a7217;
 CARM95_HOOK_FUNCTION(original_PDLockRealBackScreen, PDLockRealBackScreen)
 void __cdecl PDLockRealBackScreen() {
@@ -378,7 +378,7 @@ void __cdecl PDLockRealBackScreen() {
 }
 
 function_hook_state_t function_hook_state_PDUnlockRealBackScreen = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PDUnlockRealBackScreen)
+CARM95_WEBSERVER_STATE(PDUnlockRealBackScreen, function_hook_state_PDUnlockRealBackScreen)
 static void(__cdecl*original_PDUnlockRealBackScreen)() = (void(__cdecl*)())0x004a727d;
 CARM95_HOOK_FUNCTION(original_PDUnlockRealBackScreen, PDUnlockRealBackScreen)
 void __cdecl PDUnlockRealBackScreen() {
@@ -394,7 +394,7 @@ void __cdecl PDUnlockRealBackScreen() {
 }
 
 function_hook_state_t function_hook_state_PDAllocateScreenAndBack = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PDAllocateScreenAndBack)
+CARM95_WEBSERVER_STATE(PDAllocateScreenAndBack, function_hook_state_PDAllocateScreenAndBack)
 static void(__cdecl*original_PDAllocateScreenAndBack)() = (void(__cdecl*)())0x004a728d;
 CARM95_HOOK_FUNCTION(original_PDAllocateScreenAndBack, PDAllocateScreenAndBack)
 void __cdecl PDAllocateScreenAndBack() {
@@ -410,7 +410,7 @@ void __cdecl PDAllocateScreenAndBack() {
 }
 
 function_hook_state_t function_hook_state_Copy8BitTo16BitPixelmap = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_Copy8BitTo16BitPixelmap)
+CARM95_WEBSERVER_STATE(Copy8BitTo16BitPixelmap, function_hook_state_Copy8BitTo16BitPixelmap)
 void Copy8BitTo16BitPixelmap(br_pixelmap *pDst, br_pixelmap *pSrc, br_pixelmap *pPalette) {
     int x;
     int y;
@@ -445,7 +445,7 @@ void Copy8BitTo16BitPixelmap(br_pixelmap *pDst, br_pixelmap *pSrc, br_pixelmap *
 }
 
 function_hook_state_t function_hook_state_Double8BitTo16BitPixelmap = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_Double8BitTo16BitPixelmap)
+CARM95_WEBSERVER_STATE(Double8BitTo16BitPixelmap, function_hook_state_Double8BitTo16BitPixelmap)
 void Double8BitTo16BitPixelmap(br_pixelmap *pDst, br_pixelmap *pSrc, br_pixelmap *pPalette, tU16 pOff, tU16 pSrc_width, tU16 pSrc_height) {
     int x;
     int y;
@@ -487,7 +487,7 @@ void Double8BitTo16BitPixelmap(br_pixelmap *pDst, br_pixelmap *pSrc, br_pixelmap
 }
 
 function_hook_state_t function_hook_state_PDInterfacePixelmap = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PDInterfacePixelmap)
+CARM95_WEBSERVER_STATE(PDInterfacePixelmap, function_hook_state_PDInterfacePixelmap)
 br_pixelmap* PDInterfacePixelmap() {
     LOG_TRACE("()");
 
@@ -501,7 +501,7 @@ br_pixelmap* PDInterfacePixelmap() {
 }
 
 function_hook_state_t function_hook_state_SwapBackScreen = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_SwapBackScreen)
+CARM95_WEBSERVER_STATE(SwapBackScreen, function_hook_state_SwapBackScreen)
 void SwapBackScreen() {
     LOG_TRACE("()");
 
@@ -515,7 +515,7 @@ void SwapBackScreen() {
 }
 
 function_hook_state_t function_hook_state_ReallyCopyBackScreen = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_ReallyCopyBackScreen)
+CARM95_WEBSERVER_STATE(ReallyCopyBackScreen, function_hook_state_ReallyCopyBackScreen)
 void ReallyCopyBackScreen(int pRendering_area_only, int pClear_top_and_bottom) {
     LOG_TRACE("(%d, %d)", pRendering_area_only, pClear_top_and_bottom);
 
@@ -531,7 +531,7 @@ void ReallyCopyBackScreen(int pRendering_area_only, int pClear_top_and_bottom) {
 }
 
 function_hook_state_t function_hook_state_CopyBackScreen = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_CopyBackScreen)
+CARM95_WEBSERVER_STATE(CopyBackScreen, function_hook_state_CopyBackScreen)
 void CopyBackScreen(int pRendering_area_only) {
     LOG_TRACE("(%d)", pRendering_area_only);
 
@@ -546,7 +546,7 @@ void CopyBackScreen(int pRendering_area_only) {
 }
 
 function_hook_state_t function_hook_state_PDScreenBufferSwap = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PDScreenBufferSwap)
+CARM95_WEBSERVER_STATE(PDScreenBufferSwap, function_hook_state_PDScreenBufferSwap)
 static void(__cdecl*original_PDScreenBufferSwap)(int) = (void(__cdecl*)(int))0x004a758e;
 CARM95_HOOK_FUNCTION(original_PDScreenBufferSwap, PDScreenBufferSwap)
 void __cdecl PDScreenBufferSwap(int pRendering_area_only) {
@@ -563,7 +563,7 @@ void __cdecl PDScreenBufferSwap(int pRendering_area_only) {
 }
 
 function_hook_state_t function_hook_state_PDPixelmapToScreenRectangleCopy = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PDPixelmapToScreenRectangleCopy)
+CARM95_WEBSERVER_STATE(PDPixelmapToScreenRectangleCopy, function_hook_state_PDPixelmapToScreenRectangleCopy)
 static void(__cdecl*original_PDPixelmapToScreenRectangleCopy)(br_pixelmap *, br_int_16, br_int_16, br_pixelmap *, br_int_16, br_int_16, br_uint_16, br_uint_16) = (void(__cdecl*)(br_pixelmap *, br_int_16, br_int_16, br_pixelmap *, br_int_16, br_int_16, br_uint_16, br_uint_16))0x004a763e;
 CARM95_HOOK_FUNCTION(original_PDPixelmapToScreenRectangleCopy, PDPixelmapToScreenRectangleCopy)
 void __cdecl PDPixelmapToScreenRectangleCopy(br_pixelmap *dst, br_int_16 dx, br_int_16 dy, br_pixelmap *src, br_int_16 sx, br_int_16 sy, br_uint_16 w, br_uint_16 h) {
@@ -587,7 +587,7 @@ void __cdecl PDPixelmapToScreenRectangleCopy(br_pixelmap *dst, br_int_16 dx, br_
 }
 
 function_hook_state_t function_hook_state_PDPixelmapHLineOnScreen = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PDPixelmapHLineOnScreen)
+CARM95_WEBSERVER_STATE(PDPixelmapHLineOnScreen, function_hook_state_PDPixelmapHLineOnScreen)
 static void(__cdecl*original_PDPixelmapHLineOnScreen)(br_pixelmap *, br_int_16, br_int_16, br_int_16, br_int_16, br_uint_32) = (void(__cdecl*)(br_pixelmap *, br_int_16, br_int_16, br_int_16, br_int_16, br_uint_32))0x004a768b;
 CARM95_HOOK_FUNCTION(original_PDPixelmapHLineOnScreen, PDPixelmapHLineOnScreen)
 void __cdecl PDPixelmapHLineOnScreen(br_pixelmap *dst, br_int_16 x1, br_int_16 y1, br_int_16 x2, br_int_16 y2, br_uint_32 colour) {
@@ -609,7 +609,7 @@ void __cdecl PDPixelmapHLineOnScreen(br_pixelmap *dst, br_int_16 x1, br_int_16 y
 }
 
 function_hook_state_t function_hook_state_PDPixelmapVLineOnScreen = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PDPixelmapVLineOnScreen)
+CARM95_WEBSERVER_STATE(PDPixelmapVLineOnScreen, function_hook_state_PDPixelmapVLineOnScreen)
 static void(__cdecl*original_PDPixelmapVLineOnScreen)(br_pixelmap *, br_int_16, br_int_16, br_int_16, br_int_16, br_uint_32) = (void(__cdecl*)(br_pixelmap *, br_int_16, br_int_16, br_int_16, br_int_16, br_uint_32))0x004a76ba;
 CARM95_HOOK_FUNCTION(original_PDPixelmapVLineOnScreen, PDPixelmapVLineOnScreen)
 void __cdecl PDPixelmapVLineOnScreen(br_pixelmap *dst, br_int_16 x1, br_int_16 y1, br_int_16 x2, br_int_16 y2, br_uint_32 colour) {
@@ -631,7 +631,7 @@ void __cdecl PDPixelmapVLineOnScreen(br_pixelmap *dst, br_int_16 x1, br_int_16 y
 }
 
 function_hook_state_t function_hook_state_PDInstallErrorHandlers = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PDInstallErrorHandlers)
+CARM95_WEBSERVER_STATE(PDInstallErrorHandlers, function_hook_state_PDInstallErrorHandlers)
 static void(__cdecl*original_PDInstallErrorHandlers)() = (void(__cdecl*)())0x004a7766;
 CARM95_HOOK_FUNCTION(original_PDInstallErrorHandlers, PDInstallErrorHandlers)
 void __cdecl PDInstallErrorHandlers() {
@@ -647,7 +647,7 @@ void __cdecl PDInstallErrorHandlers() {
 }
 
 function_hook_state_t function_hook_state_PDSetFileVariables = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PDSetFileVariables)
+CARM95_WEBSERVER_STATE(PDSetFileVariables, function_hook_state_PDSetFileVariables)
 static void(__cdecl*original_PDSetFileVariables)() = (void(__cdecl*)())0x004a779c;
 CARM95_HOOK_FUNCTION(original_PDSetFileVariables, PDSetFileVariables)
 void __cdecl PDSetFileVariables() {
@@ -663,7 +663,7 @@ void __cdecl PDSetFileVariables() {
 }
 
 function_hook_state_t function_hook_state_PDBuildAppPath = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PDBuildAppPath)
+CARM95_WEBSERVER_STATE(PDBuildAppPath, function_hook_state_PDBuildAppPath)
 static void(__cdecl*original_PDBuildAppPath)(char *) = (void(__cdecl*)(char *))0x004a77b3;
 CARM95_HOOK_FUNCTION(original_PDBuildAppPath, PDBuildAppPath)
 void __cdecl PDBuildAppPath(char *pThe_path) {
@@ -682,7 +682,7 @@ void __cdecl PDBuildAppPath(char *pThe_path) {
 }
 
 function_hook_state_t function_hook_state_PDForEveryFile = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PDForEveryFile)
+CARM95_WEBSERVER_STATE(PDForEveryFile, function_hook_state_PDForEveryFile)
 static void(__cdecl*original_PDForEveryFile)(char *, void(**)(char *)) = (void(__cdecl*)(char *, void(**)(char *)))0x004a7807;
 CARM95_HOOK_FUNCTION(original_PDForEveryFile, PDForEveryFile)
 void __cdecl PDForEveryFile(char *pThe_path, void(**pAction_routine)(char *)) {
@@ -706,7 +706,7 @@ void __cdecl PDForEveryFile(char *pThe_path, void(**pAction_routine)(char *)) {
 }
 
 function_hook_state_t function_hook_state_PDSetPalette = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PDSetPalette)
+CARM95_WEBSERVER_STATE(PDSetPalette, function_hook_state_PDSetPalette)
 static void(__cdecl*original_PDSetPalette)(br_pixelmap *) = (void(__cdecl*)(br_pixelmap *))0x004a7903;
 CARM95_HOOK_FUNCTION(original_PDSetPalette, PDSetPalette)
 void __cdecl PDSetPalette(br_pixelmap *pThe_palette) {
@@ -723,7 +723,7 @@ void __cdecl PDSetPalette(br_pixelmap *pThe_palette) {
 }
 
 function_hook_state_t function_hook_state_PDSetPaletteEntries = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PDSetPaletteEntries)
+CARM95_WEBSERVER_STATE(PDSetPaletteEntries, function_hook_state_PDSetPaletteEntries)
 static void(__cdecl*original_PDSetPaletteEntries)(br_pixelmap *, int, int) = (void(__cdecl*)(br_pixelmap *, int, int))0x004a79d0;
 CARM95_HOOK_FUNCTION(original_PDSetPaletteEntries, PDSetPaletteEntries)
 void __cdecl PDSetPaletteEntries(br_pixelmap *pPalette, int pFirst_colour, int pCount) {
@@ -746,7 +746,7 @@ void __cdecl PDSetPaletteEntries(br_pixelmap *pPalette, int pFirst_colour, int p
 }
 
 function_hook_state_t function_hook_state_PDSwitchToRealResolution = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PDSwitchToRealResolution)
+CARM95_WEBSERVER_STATE(PDSwitchToRealResolution, function_hook_state_PDSwitchToRealResolution)
 static void(__cdecl*original_PDSwitchToRealResolution)() = (void(__cdecl*)())0x004a71ce;
 CARM95_HOOK_FUNCTION(original_PDSwitchToRealResolution, PDSwitchToRealResolution)
 void __cdecl PDSwitchToRealResolution() {
@@ -762,7 +762,7 @@ void __cdecl PDSwitchToRealResolution() {
 }
 
 function_hook_state_t function_hook_state_PDSwitchToLoresMode = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PDSwitchToLoresMode)
+CARM95_WEBSERVER_STATE(PDSwitchToLoresMode, function_hook_state_PDSwitchToLoresMode)
 static void(__cdecl*original_PDSwitchToLoresMode)() = (void(__cdecl*)())0x004a71f1;
 CARM95_HOOK_FUNCTION(original_PDSwitchToLoresMode, PDSwitchToLoresMode)
 void __cdecl PDSwitchToLoresMode() {
@@ -778,7 +778,7 @@ void __cdecl PDSwitchToLoresMode() {
 }
 
 function_hook_state_t function_hook_state_PDMouseButtons = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PDMouseButtons)
+CARM95_WEBSERVER_STATE(PDMouseButtons, function_hook_state_PDMouseButtons)
 static void(__cdecl*original_PDMouseButtons)(int *, int *) = (void(__cdecl*)(int *, int *))0x004a79f2;
 CARM95_HOOK_FUNCTION(original_PDMouseButtons, PDMouseButtons)
 void __cdecl PDMouseButtons(int *pButton_1, int *pButton_2) {
@@ -802,7 +802,7 @@ void __cdecl PDMouseButtons(int *pButton_1, int *pButton_2) {
 }
 
 function_hook_state_t function_hook_state_PDGetMousePosition = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PDGetMousePosition)
+CARM95_WEBSERVER_STATE(PDGetMousePosition, function_hook_state_PDGetMousePosition)
 static void(__cdecl*original_PDGetMousePosition)(int *, int *) = (void(__cdecl*)(int *, int *))0x004a7a11;
 CARM95_HOOK_FUNCTION(original_PDGetMousePosition, PDGetMousePosition)
 void __cdecl PDGetMousePosition(int *pX_coord, int *pY_coord) {
@@ -834,7 +834,7 @@ void __cdecl PDGetMousePosition(int *pX_coord, int *pY_coord) {
 }
 
 function_hook_state_t function_hook_state_PDGetTotalTime = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PDGetTotalTime)
+CARM95_WEBSERVER_STATE(PDGetTotalTime, function_hook_state_PDGetTotalTime)
 static int(__cdecl*original_PDGetTotalTime)() = (int(__cdecl*)())0x004a83c5;
 CARM95_HOOK_FUNCTION(original_PDGetTotalTime, PDGetTotalTime)
 int __cdecl PDGetTotalTime() {
@@ -850,7 +850,7 @@ int __cdecl PDGetTotalTime() {
 }
 
 function_hook_state_t function_hook_state_PDServiceSystem = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PDServiceSystem)
+CARM95_WEBSERVER_STATE(PDServiceSystem, function_hook_state_PDServiceSystem)
 static int(__cdecl*original_PDServiceSystem)(tU32) = (int(__cdecl*)(tU32))0x004a7b63;
 CARM95_HOOK_FUNCTION(original_PDServiceSystem, PDServiceSystem)
 int __cdecl PDServiceSystem(tU32 pTime_since_last_call) {
@@ -867,7 +867,7 @@ int __cdecl PDServiceSystem(tU32 pTime_since_last_call) {
 }
 
 function_hook_state_t function_hook_state_LargestBlockAvail = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_LargestBlockAvail)
+CARM95_WEBSERVER_STATE(LargestBlockAvail, function_hook_state_LargestBlockAvail)
 tU32 LargestBlockAvail() {
     union REGS regs;
     struct SREGS sregs;
@@ -889,7 +889,7 @@ tU32 LargestBlockAvail() {
 }
 
 function_hook_state_t function_hook_state_PDGrabLargestMammaryWeCanPlayWith = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PDGrabLargestMammaryWeCanPlayWith)
+CARM95_WEBSERVER_STATE(PDGrabLargestMammaryWeCanPlayWith, function_hook_state_PDGrabLargestMammaryWeCanPlayWith)
 void* PDGrabLargestMammaryWeCanPlayWith(tU32 pMaximum_required, tU32 *pAmount_allocated) {
     void *result;
     LOG_TRACE("(%u, %p)", pMaximum_required, pAmount_allocated);
@@ -907,7 +907,7 @@ void* PDGrabLargestMammaryWeCanPlayWith(tU32 pMaximum_required, tU32 *pAmount_al
 }
 
 function_hook_state_t function_hook_state_PDAllocateActionReplayBuffer = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PDAllocateActionReplayBuffer)
+CARM95_WEBSERVER_STATE(PDAllocateActionReplayBuffer, function_hook_state_PDAllocateActionReplayBuffer)
 static void(__cdecl*original_PDAllocateActionReplayBuffer)(char **, tU32 *) = (void(__cdecl*)(char **, tU32 *))0x004a68e2;
 CARM95_HOOK_FUNCTION(original_PDAllocateActionReplayBuffer, PDAllocateActionReplayBuffer)
 void __cdecl PDAllocateActionReplayBuffer(char **pBuffer, tU32 *pBuffer_size) {
@@ -929,7 +929,7 @@ void __cdecl PDAllocateActionReplayBuffer(char **pBuffer, tU32 *pBuffer_size) {
 }
 
 function_hook_state_t function_hook_state_PDDisposeActionReplayBuffer = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PDDisposeActionReplayBuffer)
+CARM95_WEBSERVER_STATE(PDDisposeActionReplayBuffer, function_hook_state_PDDisposeActionReplayBuffer)
 static void(__cdecl*original_PDDisposeActionReplayBuffer)(char *) = (void(__cdecl*)(char *))0x004a6906;
 CARM95_HOOK_FUNCTION(original_PDDisposeActionReplayBuffer, PDDisposeActionReplayBuffer)
 void __cdecl PDDisposeActionReplayBuffer(char *pBuffer) {
@@ -946,7 +946,7 @@ void __cdecl PDDisposeActionReplayBuffer(char *pBuffer) {
 }
 
 function_hook_state_t function_hook_state_Usage = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_Usage)
+CARM95_WEBSERVER_STATE(Usage, function_hook_state_Usage)
 void Usage(char *pProgpath) {
     char basename[9];
     LOG_TRACE("(\"%s\")", pProgpath);
@@ -963,7 +963,7 @@ void Usage(char *pProgpath) {
 }
 
 function_hook_state_t function_hook_state_main = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_main)
+CARM95_WEBSERVER_STATE(main, function_hook_state_main)
 int main(int pArgc, char **pArgv) {
     int arg;
     int i;
@@ -985,7 +985,7 @@ int main(int pArgc, char **pArgv) {
 }
 
 function_hook_state_t function_hook_state_OurGetChar = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_OurGetChar)
+CARM95_WEBSERVER_STATE(OurGetChar, function_hook_state_OurGetChar)
 int OurGetChar() {
     int key;
     LOG_TRACE("()");
@@ -1001,7 +1001,7 @@ int OurGetChar() {
 }
 
 function_hook_state_t function_hook_state_PDGetGorePassword = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PDGetGorePassword)
+CARM95_WEBSERVER_STATE(PDGetGorePassword, function_hook_state_PDGetGorePassword)
 int PDGetGorePassword() {
     int ch;
     int len;
@@ -1023,7 +1023,7 @@ int PDGetGorePassword() {
 }
 
 function_hook_state_t function_hook_state_PDDisplayGoreworthiness = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PDDisplayGoreworthiness)
+CARM95_WEBSERVER_STATE(PDDisplayGoreworthiness, function_hook_state_PDDisplayGoreworthiness)
 void PDDisplayGoreworthiness(int pGory) {
     tU32 delay_start;
     LOG_TRACE("(%d)", pGory);
@@ -1040,7 +1040,7 @@ void PDDisplayGoreworthiness(int pGory) {
 }
 
 function_hook_state_t function_hook_state_PDEnterDebugger = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PDEnterDebugger)
+CARM95_WEBSERVER_STATE(PDEnterDebugger, function_hook_state_PDEnterDebugger)
 static void(__cdecl*original_PDEnterDebugger)(char *) = (void(__cdecl*)(char *))0x004a60e3;
 CARM95_HOOK_FUNCTION(original_PDEnterDebugger, PDEnterDebugger)
 void __cdecl PDEnterDebugger(char *pStr) {
@@ -1059,7 +1059,7 @@ void __cdecl PDEnterDebugger(char *pStr) {
 }
 
 function_hook_state_t function_hook_state_PDEndItAllAndReRunTheBastard = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PDEndItAllAndReRunTheBastard)
+CARM95_WEBSERVER_STATE(PDEndItAllAndReRunTheBastard, function_hook_state_PDEndItAllAndReRunTheBastard)
 void PDEndItAllAndReRunTheBastard() {
     LOG_TRACE("()");
 
@@ -1111,7 +1111,7 @@ int LoopLimitTooLow(tU32 limit) {
 #endif
 
 function_hook_state_t function_hook_state_UpperLoopLimit = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_UpperLoopLimit)
+CARM95_WEBSERVER_STATE(UpperLoopLimit, function_hook_state_UpperLoopLimit)
 tS32 UpperLoopLimit() {
     tU32 limit;
     LOG_TRACE("()");
@@ -1127,7 +1127,7 @@ tS32 UpperLoopLimit() {
 }
 
 function_hook_state_t function_hook_state_InitJoysticks = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_InitJoysticks)
+CARM95_WEBSERVER_STATE(InitJoysticks, function_hook_state_InitJoysticks)
 int InitJoysticks() {
     LOG_TRACE("()");
 
@@ -1141,7 +1141,7 @@ int InitJoysticks() {
 }
 
 function_hook_state_t function_hook_state_ReadJoystickAxis = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_ReadJoystickAxis)
+CARM95_WEBSERVER_STATE(ReadJoystickAxis, function_hook_state_ReadJoystickAxis)
 tU32 ReadJoystickAxis(int pBit) {
     tU32 val;
     tU32 count;
@@ -1160,7 +1160,7 @@ tU32 ReadJoystickAxis(int pBit) {
 }
 
 function_hook_state_t function_hook_state_PDReadJoySticks = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PDReadJoySticks)
+CARM95_WEBSERVER_STATE(PDReadJoySticks, function_hook_state_PDReadJoySticks)
 void PDReadJoySticks() {
     tU32 temp1x;
     tU32 temp1y;
@@ -1182,7 +1182,7 @@ void PDReadJoySticks() {
 }
 
 function_hook_state_t function_hook_state_PDGetJoy1X = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PDGetJoy1X)
+CARM95_WEBSERVER_STATE(PDGetJoy1X, function_hook_state_PDGetJoy1X)
 tS32 PDGetJoy1X() {
     tS32 joy;
     LOG_TRACE("()");
@@ -1198,7 +1198,7 @@ tS32 PDGetJoy1X() {
 }
 
 function_hook_state_t function_hook_state_PDGetJoy1Y = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PDGetJoy1Y)
+CARM95_WEBSERVER_STATE(PDGetJoy1Y, function_hook_state_PDGetJoy1Y)
 tS32 PDGetJoy1Y() {
     tS32 joy;
     LOG_TRACE("()");
@@ -1214,7 +1214,7 @@ tS32 PDGetJoy1Y() {
 }
 
 function_hook_state_t function_hook_state_PDGetJoy2X = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PDGetJoy2X)
+CARM95_WEBSERVER_STATE(PDGetJoy2X, function_hook_state_PDGetJoy2X)
 tS32 PDGetJoy2X() {
     tS32 joy;
     LOG_TRACE("()");
@@ -1230,7 +1230,7 @@ tS32 PDGetJoy2X() {
 }
 
 function_hook_state_t function_hook_state_PDGetJoy2Y = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PDGetJoy2Y)
+CARM95_WEBSERVER_STATE(PDGetJoy2Y, function_hook_state_PDGetJoy2Y)
 tS32 PDGetJoy2Y() {
     tS32 joy;
     LOG_TRACE("()");
@@ -1246,7 +1246,7 @@ tS32 PDGetJoy2Y() {
 }
 
 function_hook_state_t function_hook_state_PDGetJoy1Button1 = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PDGetJoy1Button1)
+CARM95_WEBSERVER_STATE(PDGetJoy1Button1, function_hook_state_PDGetJoy1Button1)
 int PDGetJoy1Button1() {
     LOG_TRACE("()");
 
@@ -1260,7 +1260,7 @@ int PDGetJoy1Button1() {
 }
 
 function_hook_state_t function_hook_state_PDGetJoy1Button2 = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PDGetJoy1Button2)
+CARM95_WEBSERVER_STATE(PDGetJoy1Button2, function_hook_state_PDGetJoy1Button2)
 int PDGetJoy1Button2() {
     LOG_TRACE("()");
 
@@ -1274,7 +1274,7 @@ int PDGetJoy1Button2() {
 }
 
 function_hook_state_t function_hook_state_PDGetJoy1Button3 = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PDGetJoy1Button3)
+CARM95_WEBSERVER_STATE(PDGetJoy1Button3, function_hook_state_PDGetJoy1Button3)
 int PDGetJoy1Button3() {
     LOG_TRACE("()");
 
@@ -1288,7 +1288,7 @@ int PDGetJoy1Button3() {
 }
 
 function_hook_state_t function_hook_state_PDGetJoy1Button4 = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PDGetJoy1Button4)
+CARM95_WEBSERVER_STATE(PDGetJoy1Button4, function_hook_state_PDGetJoy1Button4)
 int PDGetJoy1Button4() {
     LOG_TRACE("()");
 
@@ -1302,7 +1302,7 @@ int PDGetJoy1Button4() {
 }
 
 function_hook_state_t function_hook_state_PDGetJoy2Button1 = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PDGetJoy2Button1)
+CARM95_WEBSERVER_STATE(PDGetJoy2Button1, function_hook_state_PDGetJoy2Button1)
 int PDGetJoy2Button1() {
     LOG_TRACE("()");
 
@@ -1316,7 +1316,7 @@ int PDGetJoy2Button1() {
 }
 
 function_hook_state_t function_hook_state_PDGetJoy2Button2 = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PDGetJoy2Button2)
+CARM95_WEBSERVER_STATE(PDGetJoy2Button2, function_hook_state_PDGetJoy2Button2)
 int PDGetJoy2Button2() {
     LOG_TRACE("()");
 
@@ -1330,7 +1330,7 @@ int PDGetJoy2Button2() {
 }
 
 function_hook_state_t function_hook_state_PDGetJoy2Button3 = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PDGetJoy2Button3)
+CARM95_WEBSERVER_STATE(PDGetJoy2Button3, function_hook_state_PDGetJoy2Button3)
 int PDGetJoy2Button3() {
     LOG_TRACE("()");
 
@@ -1344,7 +1344,7 @@ int PDGetJoy2Button3() {
 }
 
 function_hook_state_t function_hook_state_PDGetJoy2Button4 = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PDGetJoy2Button4)
+CARM95_WEBSERVER_STATE(PDGetJoy2Button4, function_hook_state_PDGetJoy2Button4)
 int PDGetJoy2Button4() {
     LOG_TRACE("()");
 
@@ -1358,7 +1358,7 @@ int PDGetJoy2Button4() {
 }
 
 function_hook_state_t function_hook_state_PDFileUnlock = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PDFileUnlock)
+CARM95_WEBSERVER_STATE(PDFileUnlock, function_hook_state_PDFileUnlock)
 static int(__cdecl*original_PDFileUnlock)(char *) = (int(__cdecl*)(char *))0x004a83e6;
 CARM95_HOOK_FUNCTION(original_PDFileUnlock, PDFileUnlock)
 int __cdecl PDFileUnlock(char *pThe_path) {
@@ -1377,7 +1377,7 @@ int __cdecl PDFileUnlock(char *pThe_path) {
 }
 
 function_hook_state_t function_hook_state_CriticalISR = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_CriticalISR)
+CARM95_WEBSERVER_STATE(CriticalISR, function_hook_state_CriticalISR)
 void CriticalISR(union INTPACK pRegs) {
     LOG_TRACE("()");
 
@@ -1392,7 +1392,7 @@ void CriticalISR(union INTPACK pRegs) {
 }
 
 function_hook_state_t function_hook_state_PDCheckDriveExists2 = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PDCheckDriveExists2)
+CARM95_WEBSERVER_STATE(PDCheckDriveExists2, function_hook_state_PDCheckDriveExists2)
 static int(__cdecl*original_PDCheckDriveExists2)(char *, char *, tU32) = (int(__cdecl*)(char *, char *, tU32))0x004a8429;
 CARM95_HOOK_FUNCTION(original_PDCheckDriveExists2, PDCheckDriveExists2)
 int __cdecl PDCheckDriveExists2(char *pThe_path, char *pFile_name, tU32 pMin_size) {
@@ -1421,7 +1421,7 @@ int __cdecl PDCheckDriveExists2(char *pThe_path, char *pFile_name, tU32 pMin_siz
 }
 
 function_hook_state_t function_hook_state_PDDoWeLeadAnAustereExistance = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PDDoWeLeadAnAustereExistance)
+CARM95_WEBSERVER_STATE(PDDoWeLeadAnAustereExistance, function_hook_state_PDDoWeLeadAnAustereExistance)
 static int(__cdecl*original_PDDoWeLeadAnAustereExistance)() = (int(__cdecl*)())0x004a856f;
 CARM95_HOOK_FUNCTION(original_PDDoWeLeadAnAustereExistance, PDDoWeLeadAnAustereExistance)
 int __cdecl PDDoWeLeadAnAustereExistance() {

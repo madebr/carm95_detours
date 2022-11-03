@@ -20,7 +20,7 @@ br_image * hookvar_Image_BRCORE1  = (void*)0x00526900;
 br_framework_state * hookvar_fw  = (void*)0x00552610;
 
 function_hook_state_t function_hook_state_BrFwBegin = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrFwBegin)
+CARM95_WEBSERVER_STATE(BrFwBegin, function_hook_state_BrFwBegin)
 static br_error(__cdecl*original_BrFwBegin)() = (br_error(__cdecl*)())0x004dfc20;
 CARM95_HOOK_FUNCTION(original_BrFwBegin, BrFwBegin)
 br_error __cdecl BrFwBegin() {
@@ -38,7 +38,7 @@ br_error __cdecl BrFwBegin() {
 }
 
 function_hook_state_t function_hook_state_BrFwEnd = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrFwEnd)
+CARM95_WEBSERVER_STATE(BrFwEnd, function_hook_state_BrFwEnd)
 static br_error(__cdecl*original_BrFwEnd)() = (br_error(__cdecl*)())0x004dfd20;
 CARM95_HOOK_FUNCTION(original_BrFwEnd, BrFwEnd)
 br_error __cdecl BrFwEnd() {
@@ -54,7 +54,7 @@ br_error __cdecl BrFwEnd() {
 }
 
 function_hook_state_t function_hook_state_BrDiagHandlerSet = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrDiagHandlerSet)
+CARM95_WEBSERVER_STATE(BrDiagHandlerSet, function_hook_state_BrDiagHandlerSet)
 static br_diaghandler *(__cdecl*original_BrDiagHandlerSet)(br_diaghandler *) = (br_diaghandler *(__cdecl*)(br_diaghandler *))0x004dfd70;
 CARM95_HOOK_FUNCTION(original_BrDiagHandlerSet, BrDiagHandlerSet)
 br_diaghandler* __cdecl BrDiagHandlerSet(br_diaghandler *newdh) {
@@ -73,7 +73,7 @@ br_diaghandler* __cdecl BrDiagHandlerSet(br_diaghandler *newdh) {
 }
 
 function_hook_state_t function_hook_state_BrFilesystemSet = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrFilesystemSet)
+CARM95_WEBSERVER_STATE(BrFilesystemSet, function_hook_state_BrFilesystemSet)
 static br_filesystem *(__cdecl*original_BrFilesystemSet)(br_filesystem *) = (br_filesystem *(__cdecl*)(br_filesystem *))0x004dfda0;
 CARM95_HOOK_FUNCTION(original_BrFilesystemSet, BrFilesystemSet)
 br_filesystem* __cdecl BrFilesystemSet(br_filesystem *newfs) {
@@ -92,7 +92,7 @@ br_filesystem* __cdecl BrFilesystemSet(br_filesystem *newfs) {
 }
 
 function_hook_state_t function_hook_state_BrAllocatorSet = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrAllocatorSet)
+CARM95_WEBSERVER_STATE(BrAllocatorSet, function_hook_state_BrAllocatorSet)
 static br_allocator *(__cdecl*original_BrAllocatorSet)(br_allocator *) = (br_allocator *(__cdecl*)(br_allocator *))0x004dfdd0;
 CARM95_HOOK_FUNCTION(original_BrAllocatorSet, BrAllocatorSet)
 br_allocator* __cdecl BrAllocatorSet(br_allocator *newal) {

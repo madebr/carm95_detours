@@ -24,7 +24,7 @@ br_pixelmap ** hookvar_gDials_pix  = (void*)0x0053d1d8;
 int * hookvar_gCurrent_key  = (void*)0x0053d4e8;
 
 function_hook_state_t function_hook_state_DrawDial = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DrawDial)
+CARM95_WEBSERVER_STATE(DrawDial, function_hook_state_DrawDial)
 void DrawDial(int pWhich_one, int pWhich_stage) {
     LOG_TRACE("(%d, %d)", pWhich_one, pWhich_stage);
 
@@ -40,7 +40,7 @@ void DrawDial(int pWhich_one, int pWhich_stage) {
 }
 
 function_hook_state_t function_hook_state_MoveDialFromTo = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_MoveDialFromTo)
+CARM95_WEBSERVER_STATE(MoveDialFromTo, function_hook_state_MoveDialFromTo)
 void MoveDialFromTo(int pWhich_one, int pOld_stage, int pNew_stage) {
     tS32 time_diff;
     tU32 start_time;
@@ -61,7 +61,7 @@ void MoveDialFromTo(int pWhich_one, int pOld_stage, int pNew_stage) {
 }
 
 function_hook_state_t function_hook_state_SoundOptionsStart = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_SoundOptionsStart)
+CARM95_WEBSERVER_STATE(SoundOptionsStart, function_hook_state_SoundOptionsStart)
 void SoundOptionsStart() {
     LOG_TRACE("()");
 
@@ -75,7 +75,7 @@ void SoundOptionsStart() {
 }
 
 function_hook_state_t function_hook_state_SoundOptionsDone = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_SoundOptionsDone)
+CARM95_WEBSERVER_STATE(SoundOptionsDone, function_hook_state_SoundOptionsDone)
 int SoundOptionsDone(int pCurrent_choice, int pCurrent_mode, int pGo_ahead, int pEscaped, int pTimed_out) {
     LOG_TRACE("(%d, %d, %d, %d, %d)", pCurrent_choice, pCurrent_mode, pGo_ahead, pEscaped, pTimed_out);
 
@@ -94,7 +94,7 @@ int SoundOptionsDone(int pCurrent_choice, int pCurrent_mode, int pGo_ahead, int 
 }
 
 function_hook_state_t function_hook_state_SoundOptionsLeft = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_SoundOptionsLeft)
+CARM95_WEBSERVER_STATE(SoundOptionsLeft, function_hook_state_SoundOptionsLeft)
 int SoundOptionsLeft(int *pCurrent_choice, int *pCurrent_mode) {
     int old_value;
     int *the_value;
@@ -114,7 +114,7 @@ int SoundOptionsLeft(int *pCurrent_choice, int *pCurrent_mode) {
 }
 
 function_hook_state_t function_hook_state_SoundOptionsRight = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_SoundOptionsRight)
+CARM95_WEBSERVER_STATE(SoundOptionsRight, function_hook_state_SoundOptionsRight)
 int SoundOptionsRight(int *pCurrent_choice, int *pCurrent_mode) {
     int old_value;
     int *the_value;
@@ -134,7 +134,7 @@ int SoundOptionsRight(int *pCurrent_choice, int *pCurrent_mode) {
 }
 
 function_hook_state_t function_hook_state_SoundClick = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_SoundClick)
+CARM95_WEBSERVER_STATE(SoundClick, function_hook_state_SoundClick)
 int SoundClick(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY_offset) {
     float x_delta;
     float y_delta;
@@ -162,7 +162,7 @@ int SoundClick(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY_o
 }
 
 function_hook_state_t function_hook_state_DoSoundOptions = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DoSoundOptions)
+CARM95_WEBSERVER_STATE(DoSoundOptions, function_hook_state_DoSoundOptions)
 static void(__cdecl*original_DoSoundOptions)() = (void(__cdecl*)())0x0049b7bf;
 CARM95_HOOK_FUNCTION(original_DoSoundOptions, DoSoundOptions)
 void __cdecl DoSoundOptions() {
@@ -190,7 +190,7 @@ void __cdecl DoSoundOptions() {
 }
 
 function_hook_state_t function_hook_state_GetGraphicsOptions = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_GetGraphicsOptions)
+CARM95_WEBSERVER_STATE(GetGraphicsOptions, function_hook_state_GetGraphicsOptions)
 static void(__cdecl*original_GetGraphicsOptions)() = (void(__cdecl*)())0x0049b87f;
 CARM95_HOOK_FUNCTION(original_GetGraphicsOptions, GetGraphicsOptions)
 void __cdecl GetGraphicsOptions() {
@@ -210,7 +210,7 @@ void __cdecl GetGraphicsOptions() {
 }
 
 function_hook_state_t function_hook_state_SetGraphicsOptions = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_SetGraphicsOptions)
+CARM95_WEBSERVER_STATE(SetGraphicsOptions, function_hook_state_SetGraphicsOptions)
 static void(__cdecl*original_SetGraphicsOptions)() = (void(__cdecl*)())0x0049bb74;
 CARM95_HOOK_FUNCTION(original_SetGraphicsOptions, SetGraphicsOptions)
 void __cdecl SetGraphicsOptions() {
@@ -226,7 +226,7 @@ void __cdecl SetGraphicsOptions() {
 }
 
 function_hook_state_t function_hook_state_PlayRadioOn2 = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PlayRadioOn2)
+CARM95_WEBSERVER_STATE(PlayRadioOn2, function_hook_state_PlayRadioOn2)
 static void(__cdecl*original_PlayRadioOn2)(int, int) = (void(__cdecl*)(int, int))0x00499efe;
 CARM95_HOOK_FUNCTION(original_PlayRadioOn2, PlayRadioOn2)
 void __cdecl PlayRadioOn2(int pIndex, int pValue) {
@@ -244,7 +244,7 @@ void __cdecl PlayRadioOn2(int pIndex, int pValue) {
 }
 
 function_hook_state_t function_hook_state_PlayRadioOff2 = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PlayRadioOff2)
+CARM95_WEBSERVER_STATE(PlayRadioOff2, function_hook_state_PlayRadioOff2)
 static void(__cdecl*original_PlayRadioOff2)(int, int) = (void(__cdecl*)(int, int))0x0049a05d;
 CARM95_HOOK_FUNCTION(original_PlayRadioOff2, PlayRadioOff2)
 void __cdecl PlayRadioOff2(int pIndex, int pValue) {
@@ -262,7 +262,7 @@ void __cdecl PlayRadioOff2(int pIndex, int pValue) {
 }
 
 function_hook_state_t function_hook_state_PlayRadioOn__options = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PlayRadioOn__options)
+CARM95_WEBSERVER_STATE(PlayRadioOn__options, function_hook_state_PlayRadioOn__options)
 static void(__cdecl*original_PlayRadioOn__options)(int, int) = (void(__cdecl*)(int, int))0x00499feb;
 CARM95_HOOK_FUNCTION(original_PlayRadioOn__options, PlayRadioOn__options)
 void __cdecl PlayRadioOn__options(int pIndex, int pValue) {
@@ -280,7 +280,7 @@ void __cdecl PlayRadioOn__options(int pIndex, int pValue) {
 }
 
 function_hook_state_t function_hook_state_PlayRadioOff__options = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PlayRadioOff__options)
+CARM95_WEBSERVER_STATE(PlayRadioOff__options, function_hook_state_PlayRadioOff__options)
 static void(__cdecl*original_PlayRadioOff__options)(int, int) = (void(__cdecl*)(int, int))0x0049a024;
 CARM95_HOOK_FUNCTION(original_PlayRadioOff__options, PlayRadioOff__options)
 void __cdecl PlayRadioOff__options(int pIndex, int pValue) {
@@ -298,7 +298,7 @@ void __cdecl PlayRadioOff__options(int pIndex, int pValue) {
 }
 
 function_hook_state_t function_hook_state_DrawInitialRadios = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DrawInitialRadios)
+CARM95_WEBSERVER_STATE(DrawInitialRadios, function_hook_state_DrawInitialRadios)
 static void(__cdecl*original_DrawInitialRadios)() = (void(__cdecl*)())0x00499e9b;
 CARM95_HOOK_FUNCTION(original_DrawInitialRadios, DrawInitialRadios)
 void __cdecl DrawInitialRadios() {
@@ -316,7 +316,7 @@ void __cdecl DrawInitialRadios() {
 }
 
 function_hook_state_t function_hook_state_RadioChanged = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_RadioChanged)
+CARM95_WEBSERVER_STATE(RadioChanged, function_hook_state_RadioChanged)
 static void(__cdecl*original_RadioChanged)(int, int) = (void(__cdecl*)(int, int))0x00499fa8;
 CARM95_HOOK_FUNCTION(original_RadioChanged, RadioChanged)
 void __cdecl RadioChanged(int pIndex, int pNew_value) {
@@ -334,7 +334,7 @@ void __cdecl RadioChanged(int pIndex, int pNew_value) {
 }
 
 function_hook_state_t function_hook_state_GraphOptLeft = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_GraphOptLeft)
+CARM95_WEBSERVER_STATE(GraphOptLeft, function_hook_state_GraphOptLeft)
 static int(__cdecl*original_GraphOptLeft)(int *, int *) = (int(__cdecl*)(int *, int *))0x00499f34;
 CARM95_HOOK_FUNCTION(original_GraphOptLeft, GraphOptLeft)
 int __cdecl GraphOptLeft(int *pCurrent_choice, int *pCurrent_mode) {
@@ -354,7 +354,7 @@ int __cdecl GraphOptLeft(int *pCurrent_choice, int *pCurrent_mode) {
 }
 
 function_hook_state_t function_hook_state_GraphOptRight = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_GraphOptRight)
+CARM95_WEBSERVER_STATE(GraphOptRight, function_hook_state_GraphOptRight)
 static int(__cdecl*original_GraphOptRight)(int *, int *) = (int(__cdecl*)(int *, int *))0x0049a093;
 CARM95_HOOK_FUNCTION(original_GraphOptRight, GraphOptRight)
 int __cdecl GraphOptRight(int *pCurrent_choice, int *pCurrent_mode) {
@@ -374,7 +374,7 @@ int __cdecl GraphOptRight(int *pCurrent_choice, int *pCurrent_mode) {
 }
 
 function_hook_state_t function_hook_state_GraphOptUp = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_GraphOptUp)
+CARM95_WEBSERVER_STATE(GraphOptUp, function_hook_state_GraphOptUp)
 static int(__cdecl*original_GraphOptUp)(int *, int *) = (int(__cdecl*)(int *, int *))0x0049a109;
 CARM95_HOOK_FUNCTION(original_GraphOptUp, GraphOptUp)
 int __cdecl GraphOptUp(int *pCurrent_choice, int *pCurrent_mode) {
@@ -392,7 +392,7 @@ int __cdecl GraphOptUp(int *pCurrent_choice, int *pCurrent_mode) {
 }
 
 function_hook_state_t function_hook_state_GraphOptDown = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_GraphOptDown)
+CARM95_WEBSERVER_STATE(GraphOptDown, function_hook_state_GraphOptDown)
 static int(__cdecl*original_GraphOptDown)(int *, int *) = (int(__cdecl*)(int *, int *))0x0049a19b;
 CARM95_HOOK_FUNCTION(original_GraphOptDown, GraphOptDown)
 int __cdecl GraphOptDown(int *pCurrent_choice, int *pCurrent_mode) {
@@ -410,7 +410,7 @@ int __cdecl GraphOptDown(int *pCurrent_choice, int *pCurrent_mode) {
 }
 
 function_hook_state_t function_hook_state_RadioClick = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_RadioClick)
+CARM95_WEBSERVER_STATE(RadioClick, function_hook_state_RadioClick)
 static int(__cdecl*original_RadioClick)(int *, int *, int, int) = (int(__cdecl*)(int *, int *, int, int))0x0049a22d;
 CARM95_HOOK_FUNCTION(original_RadioClick, RadioClick)
 int __cdecl RadioClick(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY_offset) {
@@ -432,7 +432,7 @@ int __cdecl RadioClick(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, 
 }
 
 function_hook_state_t function_hook_state_GraphOptGoAhead = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_GraphOptGoAhead)
+CARM95_WEBSERVER_STATE(GraphOptGoAhead, function_hook_state_GraphOptGoAhead)
 static int(__cdecl*original_GraphOptGoAhead)(int *, int *) = (int(__cdecl*)(int *, int *))0x0049a2d1;
 CARM95_HOOK_FUNCTION(original_GraphOptGoAhead, GraphOptGoAhead)
 int __cdecl GraphOptGoAhead(int *pCurrent_choice, int *pCurrent_mode) {
@@ -450,7 +450,7 @@ int __cdecl GraphOptGoAhead(int *pCurrent_choice, int *pCurrent_mode) {
 }
 
 function_hook_state_t function_hook_state_PlotAGraphBox__options = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PlotAGraphBox__options)
+CARM95_WEBSERVER_STATE(PlotAGraphBox__options, function_hook_state_PlotAGraphBox__options)
 static void(__cdecl*original_PlotAGraphBox__options)(int, int) = (void(__cdecl*)(int, int))0x0049a34d;
 CARM95_HOOK_FUNCTION(original_PlotAGraphBox__options, PlotAGraphBox__options)
 void __cdecl PlotAGraphBox__options(int pIndex, int pColour_value) {
@@ -468,7 +468,7 @@ void __cdecl PlotAGraphBox__options(int pIndex, int pColour_value) {
 }
 
 function_hook_state_t function_hook_state_DrawAGraphBox__options = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DrawAGraphBox__options)
+CARM95_WEBSERVER_STATE(DrawAGraphBox__options, function_hook_state_DrawAGraphBox__options)
 static void(__cdecl*original_DrawAGraphBox__options)(int) = (void(__cdecl*)(int))0x0049a334;
 CARM95_HOOK_FUNCTION(original_DrawAGraphBox__options, DrawAGraphBox__options)
 void __cdecl DrawAGraphBox__options(int pIndex) {
@@ -485,7 +485,7 @@ void __cdecl DrawAGraphBox__options(int pIndex) {
 }
 
 function_hook_state_t function_hook_state_EraseAGraphBox__options = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_EraseAGraphBox__options)
+CARM95_WEBSERVER_STATE(EraseAGraphBox__options, function_hook_state_EraseAGraphBox__options)
 static void(__cdecl*original_EraseAGraphBox__options)(int) = (void(__cdecl*)(int))0x0049a3e1;
 CARM95_HOOK_FUNCTION(original_EraseAGraphBox__options, EraseAGraphBox__options)
 void __cdecl EraseAGraphBox__options(int pIndex) {
@@ -502,7 +502,7 @@ void __cdecl EraseAGraphBox__options(int pIndex) {
 }
 
 function_hook_state_t function_hook_state_DrawGraphBox = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DrawGraphBox)
+CARM95_WEBSERVER_STATE(DrawGraphBox, function_hook_state_DrawGraphBox)
 static void(__cdecl*original_DrawGraphBox)(int, int) = (void(__cdecl*)(int, int))0x0049a2f3;
 CARM95_HOOK_FUNCTION(original_DrawGraphBox, DrawGraphBox)
 void __cdecl DrawGraphBox(int pCurrent_choice, int pCurrent_mode) {
@@ -520,7 +520,7 @@ void __cdecl DrawGraphBox(int pCurrent_choice, int pCurrent_mode) {
 }
 
 function_hook_state_t function_hook_state_DoGraphicsOptions = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DoGraphicsOptions)
+CARM95_WEBSERVER_STATE(DoGraphicsOptions, function_hook_state_DoGraphicsOptions)
 static void(__cdecl*original_DoGraphicsOptions)() = (void(__cdecl*)())0x0049b805;
 CARM95_HOOK_FUNCTION(original_DoGraphicsOptions, DoGraphicsOptions)
 void __cdecl DoGraphicsOptions() {
@@ -546,7 +546,7 @@ void __cdecl DoGraphicsOptions() {
 }
 
 function_hook_state_t function_hook_state_CalibrateJoysticks = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_CalibrateJoysticks)
+CARM95_WEBSERVER_STATE(CalibrateJoysticks, function_hook_state_CalibrateJoysticks)
 static void(__cdecl*original_CalibrateJoysticks)() = (void(__cdecl*)())0x0049bf81;
 CARM95_HOOK_FUNCTION(original_CalibrateJoysticks, CalibrateJoysticks)
 void __cdecl CalibrateJoysticks() {
@@ -596,7 +596,7 @@ void __cdecl CalibrateJoysticks() {
 }
 
 function_hook_state_t function_hook_state_StripControls = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_StripControls)
+CARM95_WEBSERVER_STATE(StripControls, function_hook_state_StripControls)
 static void(__cdecl*original_StripControls)(unsigned char *) = (void(__cdecl*)(unsigned char *))0x0049c0b4;
 CARM95_HOOK_FUNCTION(original_StripControls, StripControls)
 void __cdecl StripControls(unsigned char *pStr) {
@@ -617,7 +617,7 @@ void __cdecl StripControls(unsigned char *pStr) {
 }
 
 function_hook_state_t function_hook_state_LoadKeyNames = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_LoadKeyNames)
+CARM95_WEBSERVER_STATE(LoadKeyNames, function_hook_state_LoadKeyNames)
 static void(__cdecl*original_LoadKeyNames)() = (void(__cdecl*)())0x0049bf9b;
 CARM95_HOOK_FUNCTION(original_LoadKeyNames, LoadKeyNames)
 void __cdecl LoadKeyNames() {
@@ -641,7 +641,7 @@ void __cdecl LoadKeyNames() {
 }
 
 function_hook_state_t function_hook_state_DisposeKeyNames = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DisposeKeyNames)
+CARM95_WEBSERVER_STATE(DisposeKeyNames, function_hook_state_DisposeKeyNames)
 static void(__cdecl*original_DisposeKeyNames)() = (void(__cdecl*)())0x0049c133;
 CARM95_HOOK_FUNCTION(original_DisposeKeyNames, DisposeKeyNames)
 void __cdecl DisposeKeyNames() {
@@ -659,7 +659,7 @@ void __cdecl DisposeKeyNames() {
 }
 
 function_hook_state_t function_hook_state_SaveOrigKeyMapping = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_SaveOrigKeyMapping)
+CARM95_WEBSERVER_STATE(SaveOrigKeyMapping, function_hook_state_SaveOrigKeyMapping)
 static void(__cdecl*original_SaveOrigKeyMapping)() = (void(__cdecl*)())0x0049ab5e;
 CARM95_HOOK_FUNCTION(original_SaveOrigKeyMapping, SaveOrigKeyMapping)
 void __cdecl SaveOrigKeyMapping() {
@@ -675,7 +675,7 @@ void __cdecl SaveOrigKeyMapping() {
 }
 
 function_hook_state_t function_hook_state_GetKeyCoords = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_GetKeyCoords)
+CARM95_WEBSERVER_STATE(GetKeyCoords, function_hook_state_GetKeyCoords)
 static void(__cdecl*original_GetKeyCoords)(int, int *, int *, int *, int *) = (void(__cdecl*)(int, int *, int *, int *, int *))0x0049a8e2;
 CARM95_HOOK_FUNCTION(original_GetKeyCoords, GetKeyCoords)
 void __cdecl GetKeyCoords(int pIndex, int *pY, int *pName_x, int *pKey_x, int *pEnd_box) {
@@ -698,7 +698,7 @@ void __cdecl GetKeyCoords(int pIndex, int *pY, int *pName_x, int *pKey_x, int *p
 }
 
 function_hook_state_t function_hook_state_SetKeysToDefault = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_SetKeysToDefault)
+CARM95_WEBSERVER_STATE(SetKeysToDefault, function_hook_state_SetKeysToDefault)
 static void(__cdecl*original_SetKeysToDefault)() = (void(__cdecl*)())0x0049b3f3;
 CARM95_HOOK_FUNCTION(original_SetKeysToDefault, SetKeysToDefault)
 void __cdecl SetKeysToDefault() {
@@ -720,7 +720,7 @@ void __cdecl SetKeysToDefault() {
 }
 
 function_hook_state_t function_hook_state_SaveKeyMapping = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_SaveKeyMapping)
+CARM95_WEBSERVER_STATE(SaveKeyMapping, function_hook_state_SaveKeyMapping)
 static void(__cdecl*original_SaveKeyMapping)() = (void(__cdecl*)())0x0049ab7a;
 CARM95_HOOK_FUNCTION(original_SaveKeyMapping, SaveKeyMapping)
 void __cdecl SaveKeyMapping() {
@@ -742,7 +742,7 @@ void __cdecl SaveKeyMapping() {
 }
 
 function_hook_state_t function_hook_state_ChangeKeyMapIndex = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_ChangeKeyMapIndex)
+CARM95_WEBSERVER_STATE(ChangeKeyMapIndex, function_hook_state_ChangeKeyMapIndex)
 static void(__cdecl*original_ChangeKeyMapIndex)(int) = (void(__cdecl*)(int))0x0049ab3c;
 CARM95_HOOK_FUNCTION(original_ChangeKeyMapIndex, ChangeKeyMapIndex)
 void __cdecl ChangeKeyMapIndex(int pNew_one) {
@@ -759,7 +759,7 @@ void __cdecl ChangeKeyMapIndex(int pNew_one) {
 }
 
 function_hook_state_t function_hook_state_DrawKeyAssignments = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DrawKeyAssignments)
+CARM95_WEBSERVER_STATE(DrawKeyAssignments, function_hook_state_DrawKeyAssignments)
 static void(__cdecl*original_DrawKeyAssignments)(int, int) = (void(__cdecl*)(int, int))0x0049a3fa;
 CARM95_HOOK_FUNCTION(original_DrawKeyAssignments, DrawKeyAssignments)
 void __cdecl DrawKeyAssignments(int pCurrent_choice, int pCurrent_mode) {
@@ -799,7 +799,7 @@ void __cdecl DrawKeyAssignments(int pCurrent_choice, int pCurrent_mode) {
 }
 
 function_hook_state_t function_hook_state_KeyAssignLeft = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_KeyAssignLeft)
+CARM95_WEBSERVER_STATE(KeyAssignLeft, function_hook_state_KeyAssignLeft)
 static int(__cdecl*original_KeyAssignLeft)(int *, int *) = (int(__cdecl*)(int *, int *))0x0049aa3a;
 CARM95_HOOK_FUNCTION(original_KeyAssignLeft, KeyAssignLeft)
 int __cdecl KeyAssignLeft(int *pCurrent_choice, int *pCurrent_mode) {
@@ -819,7 +819,7 @@ int __cdecl KeyAssignLeft(int *pCurrent_choice, int *pCurrent_mode) {
 }
 
 function_hook_state_t function_hook_state_KeyAssignRight = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_KeyAssignRight)
+CARM95_WEBSERVER_STATE(KeyAssignRight, function_hook_state_KeyAssignRight)
 static int(__cdecl*original_KeyAssignRight)(int *, int *) = (int(__cdecl*)(int *, int *))0x0049ac6f;
 CARM95_HOOK_FUNCTION(original_KeyAssignRight, KeyAssignRight)
 int __cdecl KeyAssignRight(int *pCurrent_choice, int *pCurrent_mode) {
@@ -839,7 +839,7 @@ int __cdecl KeyAssignRight(int *pCurrent_choice, int *pCurrent_mode) {
 }
 
 function_hook_state_t function_hook_state_KeyAssignUp = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_KeyAssignUp)
+CARM95_WEBSERVER_STATE(KeyAssignUp, function_hook_state_KeyAssignUp)
 static int(__cdecl*original_KeyAssignUp)(int *, int *) = (int(__cdecl*)(int *, int *))0x0049ad71;
 CARM95_HOOK_FUNCTION(original_KeyAssignUp, KeyAssignUp)
 int __cdecl KeyAssignUp(int *pCurrent_choice, int *pCurrent_mode) {
@@ -857,7 +857,7 @@ int __cdecl KeyAssignUp(int *pCurrent_choice, int *pCurrent_mode) {
 }
 
 function_hook_state_t function_hook_state_KeyAssignDown = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_KeyAssignDown)
+CARM95_WEBSERVER_STATE(KeyAssignDown, function_hook_state_KeyAssignDown)
 static int(__cdecl*original_KeyAssignDown)(int *, int *) = (int(__cdecl*)(int *, int *))0x0049ae9b;
 CARM95_HOOK_FUNCTION(original_KeyAssignDown, KeyAssignDown)
 int __cdecl KeyAssignDown(int *pCurrent_choice, int *pCurrent_mode) {
@@ -875,7 +875,7 @@ int __cdecl KeyAssignDown(int *pCurrent_choice, int *pCurrent_mode) {
 }
 
 function_hook_state_t function_hook_state_KeyAssignGoAhead = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_KeyAssignGoAhead)
+CARM95_WEBSERVER_STATE(KeyAssignGoAhead, function_hook_state_KeyAssignGoAhead)
 static int(__cdecl*original_KeyAssignGoAhead)(int *, int *) = (int(__cdecl*)(int *, int *))0x0049afa5;
 CARM95_HOOK_FUNCTION(original_KeyAssignGoAhead, KeyAssignGoAhead)
 int __cdecl KeyAssignGoAhead(int *pCurrent_choice, int *pCurrent_mode) {
@@ -913,7 +913,7 @@ int __cdecl KeyAssignGoAhead(int *pCurrent_choice, int *pCurrent_mode) {
 }
 
 function_hook_state_t function_hook_state_MouseyClickBastard = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_MouseyClickBastard)
+CARM95_WEBSERVER_STATE(MouseyClickBastard, function_hook_state_MouseyClickBastard)
 static int(__cdecl*original_MouseyClickBastard)(int *, int *, int, int) = (int(__cdecl*)(int *, int *, int, int))0x0049b4bd;
 CARM95_HOOK_FUNCTION(original_MouseyClickBastard, MouseyClickBastard)
 int __cdecl MouseyClickBastard(int *pCurrent_choice, int *pCurrent_mode, int pX_offset, int pY_offset) {
@@ -939,7 +939,7 @@ int __cdecl MouseyClickBastard(int *pCurrent_choice, int *pCurrent_mode, int pX_
 }
 
 function_hook_state_t function_hook_state_DrawInitialKMRadios = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DrawInitialKMRadios)
+CARM95_WEBSERVER_STATE(DrawInitialKMRadios, function_hook_state_DrawInitialKMRadios)
 static void(__cdecl*original_DrawInitialKMRadios)() = (void(__cdecl*)())0x0049b56c;
 CARM95_HOOK_FUNCTION(original_DrawInitialKMRadios, DrawInitialKMRadios)
 void __cdecl DrawInitialKMRadios() {
@@ -957,7 +957,7 @@ void __cdecl DrawInitialKMRadios() {
 }
 
 function_hook_state_t function_hook_state_DoControlOptions = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DoControlOptions)
+CARM95_WEBSERVER_STATE(DoControlOptions, function_hook_state_DoControlOptions)
 static void(__cdecl*original_DoControlOptions)() = (void(__cdecl*)())0x0049be2c;
 CARM95_HOOK_FUNCTION(original_DoControlOptions, DoControlOptions)
 void __cdecl DoControlOptions() {
@@ -995,7 +995,7 @@ void __cdecl DoControlOptions() {
 }
 
 function_hook_state_t function_hook_state_LoadSoundOptionsData = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_LoadSoundOptionsData)
+CARM95_WEBSERVER_STATE(LoadSoundOptionsData, function_hook_state_LoadSoundOptionsData)
 static void(__cdecl*original_LoadSoundOptionsData)() = (void(__cdecl*)())0x0049b5b2;
 CARM95_HOOK_FUNCTION(original_LoadSoundOptionsData, LoadSoundOptionsData)
 void __cdecl LoadSoundOptionsData() {
@@ -1011,7 +1011,7 @@ void __cdecl LoadSoundOptionsData() {
 }
 
 function_hook_state_t function_hook_state_FreeSoundOptionsData = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_FreeSoundOptionsData)
+CARM95_WEBSERVER_STATE(FreeSoundOptionsData, function_hook_state_FreeSoundOptionsData)
 static void(__cdecl*original_FreeSoundOptionsData)() = (void(__cdecl*)())0x0049b5e6;
 CARM95_HOOK_FUNCTION(original_FreeSoundOptionsData, FreeSoundOptionsData)
 void __cdecl FreeSoundOptionsData() {
@@ -1027,7 +1027,7 @@ void __cdecl FreeSoundOptionsData() {
 }
 
 function_hook_state_t function_hook_state_DrawDisabledOptions = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DrawDisabledOptions)
+CARM95_WEBSERVER_STATE(DrawDisabledOptions, function_hook_state_DrawDisabledOptions)
 static void(__cdecl*original_DrawDisabledOptions)() = (void(__cdecl*)())0x0049b5ff;
 CARM95_HOOK_FUNCTION(original_DrawDisabledOptions, DrawDisabledOptions)
 void __cdecl DrawDisabledOptions() {
@@ -1045,7 +1045,7 @@ void __cdecl DrawDisabledOptions() {
 }
 
 function_hook_state_t function_hook_state_DoOptions = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DoOptions)
+CARM95_WEBSERVER_STATE(DoOptions, function_hook_state_DoOptions)
 static void(__cdecl*original_DoOptions)() = (void(__cdecl*)())0x0049b705;
 CARM95_HOOK_FUNCTION(original_DoOptions, DoOptions)
 void __cdecl DoOptions() {

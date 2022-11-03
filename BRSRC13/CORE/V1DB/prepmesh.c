@@ -22,7 +22,7 @@ struct pm_temp_edge ** hookvar_pm_edge_table ;
 #endif
 
 function_hook_state_t function_hook_state_addEdge = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_addEdge)
+CARM95_WEBSERVER_STATE(addEdge, function_hook_state_addEdge)
 int addEdge(br_uint_16 first, br_uint_16 last) {
     struct pm_temp_edge *tep;
     LOG_TRACE("(%u, %u)", first, last);
@@ -40,7 +40,7 @@ int addEdge(br_uint_16 first, br_uint_16 last) {
 }
 
 function_hook_state_t function_hook_state_prepareEdges = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_prepareEdges)
+CARM95_WEBSERVER_STATE(prepareEdges, function_hook_state_prepareEdges)
 void prepareEdges(struct v11group *group, br_model *model) {
     br_size_t scratch_size;
     br_face *mfp;
@@ -64,7 +64,7 @@ void prepareEdges(struct v11group *group, br_model *model) {
 }
 
 function_hook_state_t function_hook_state_BrPrepareEdges = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrPrepareEdges)
+CARM95_WEBSERVER_STATE(BrPrepareEdges, function_hook_state_BrPrepareEdges)
 void BrPrepareEdges(br_model *model) {
     int g;
     struct v11model *v11m;
@@ -83,7 +83,7 @@ void BrPrepareEdges(br_model *model) {
 }
 
 function_hook_state_t function_hook_state_FacesCompare = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_FacesCompare)
+CARM95_WEBSERVER_STATE(FacesCompare, function_hook_state_FacesCompare)
 static int(__cdecl*original_FacesCompare)(void *, void *) = (int(__cdecl*)(void *, void *))0x004d8a40;
 CARM95_HOOK_FUNCTION(original_FacesCompare, FacesCompare)
 int __cdecl FacesCompare(void *p1, void *p2) {
@@ -105,7 +105,7 @@ int __cdecl FacesCompare(void *p1, void *p2) {
 }
 
 function_hook_state_t function_hook_state_TVCompare_XYZ = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_TVCompare_XYZ)
+CARM95_WEBSERVER_STATE(TVCompare_XYZ, function_hook_state_TVCompare_XYZ)
 static int(__cdecl*original_TVCompare_XYZ)(void *, void *) = (int(__cdecl*)(void *, void *))0x004d8a70;
 CARM95_HOOK_FUNCTION(original_TVCompare_XYZ, TVCompare_XYZ)
 int __cdecl TVCompare_XYZ(void *p1, void *p2) {
@@ -133,7 +133,7 @@ int __cdecl TVCompare_XYZ(void *p1, void *p2) {
 }
 
 function_hook_state_t function_hook_state_TVCompare_MXYZUVN = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_TVCompare_MXYZUVN)
+CARM95_WEBSERVER_STATE(TVCompare_MXYZUVN, function_hook_state_TVCompare_MXYZUVN)
 static int(__cdecl*original_TVCompare_MXYZUVN)(void *, void *) = (int(__cdecl*)(void *, void *))0x004d8af0;
 CARM95_HOOK_FUNCTION(original_TVCompare_MXYZUVN, TVCompare_MXYZUVN)
 int __cdecl TVCompare_MXYZUVN(void *p1, void *p2) {
@@ -161,7 +161,7 @@ int __cdecl TVCompare_MXYZUVN(void *p1, void *p2) {
 }
 
 function_hook_state_t function_hook_state_TVCompare_MVN = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_TVCompare_MVN)
+CARM95_WEBSERVER_STATE(TVCompare_MVN, function_hook_state_TVCompare_MVN)
 static int(__cdecl*original_TVCompare_MVN)(void *, void *) = (int(__cdecl*)(void *, void *))0x004d8c50;
 CARM95_HOOK_FUNCTION(original_TVCompare_MVN, TVCompare_MVN)
 int __cdecl TVCompare_MVN(void *p1, void *p2) {
@@ -185,7 +185,7 @@ int __cdecl TVCompare_MVN(void *p1, void *p2) {
 }
 
 function_hook_state_t function_hook_state_BrScalarToFractionClamp = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrScalarToFractionClamp)
+CARM95_WEBSERVER_STATE(BrScalarToFractionClamp, function_hook_state_BrScalarToFractionClamp)
 static br_fraction(__stdcall*original_BrScalarToFractionClamp)(br_scalar) = (br_fraction(__stdcall*)(br_scalar))0x004d7807;
 CARM95_HOOK_FUNCTION(original_BrScalarToFractionClamp, BrScalarToFractionClamp)
 br_fraction __stdcall BrScalarToFractionClamp(br_scalar s) {
@@ -202,7 +202,7 @@ br_fraction __stdcall BrScalarToFractionClamp(br_scalar s) {
 }
 
 function_hook_state_t function_hook_state_PrepareFaceNormals = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PrepareFaceNormals)
+CARM95_WEBSERVER_STATE(PrepareFaceNormals, function_hook_state_PrepareFaceNormals)
 void PrepareFaceNormals(br_model *model) {
     br_vertex *vertices;
     br_vector4 v4;
@@ -225,7 +225,7 @@ void PrepareFaceNormals(br_model *model) {
 }
 
 function_hook_state_t function_hook_state_Smoothing = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_Smoothing)
+CARM95_WEBSERVER_STATE(Smoothing, function_hook_state_Smoothing)
 static void(__stdcall*original_Smoothing)(br_model *, br_scalar, struct prep_vertex **, struct prep_vertex **) = (void(__stdcall*)(br_model *, br_scalar, struct prep_vertex **, struct prep_vertex **))0x004d8d00;
 CARM95_HOOK_FUNCTION(original_Smoothing, Smoothing)
 void __stdcall Smoothing(br_model *model, br_scalar crease_limit, struct prep_vertex **start, struct prep_vertex **end) {
@@ -249,7 +249,7 @@ void __stdcall Smoothing(br_model *model, br_scalar crease_limit, struct prep_ve
 }
 
 function_hook_state_t function_hook_state_SmoothingCreased = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_SmoothingCreased)
+CARM95_WEBSERVER_STATE(SmoothingCreased, function_hook_state_SmoothingCreased)
 static void(__stdcall*original_SmoothingCreased)(br_model *, br_scalar, struct prep_vertex **, struct prep_vertex **) = (void(__stdcall*)(br_model *, br_scalar, struct prep_vertex **, struct prep_vertex **))0x004d8db0;
 CARM95_HOOK_FUNCTION(original_SmoothingCreased, SmoothingCreased)
 void __stdcall SmoothingCreased(br_model *model, br_scalar crease_limit, struct prep_vertex **start, struct prep_vertex **end) {
@@ -275,7 +275,7 @@ void __stdcall SmoothingCreased(br_model *model, br_scalar crease_limit, struct 
 }
 
 function_hook_state_t function_hook_state_CopyVertex__prepmesh = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_CopyVertex__prepmesh)
+CARM95_WEBSERVER_STATE(CopyVertex__prepmesh, function_hook_state_CopyVertex__prepmesh)
 void CopyVertex__prepmesh(struct v11group *group, int v, struct prep_vertex *src, br_model *model) {
     br_vertex *srcv;
     br_vector3 n;
@@ -299,7 +299,7 @@ void CopyVertex__prepmesh(struct v11group *group, int v, struct prep_vertex *src
 }
 
 function_hook_state_t function_hook_state_CopyFace__prepmesh = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_CopyFace__prepmesh)
+CARM95_WEBSERVER_STATE(CopyFace__prepmesh, function_hook_state_CopyFace__prepmesh)
 void CopyFace__prepmesh(struct v11group *group, int f, br_face *src, br_model *model) {
     LOG_TRACE("(%p, %d, %p, %p)", group, f, src, model);
 
@@ -317,7 +317,7 @@ void CopyFace__prepmesh(struct v11group *group, int f, br_face *src, br_model *m
 }
 
 function_hook_state_t function_hook_state_PrepareGroups = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PrepareGroups)
+CARM95_WEBSERVER_STATE(PrepareGroups, function_hook_state_PrepareGroups)
 static void(__stdcall*original_PrepareGroups)(br_model *) = (void(__stdcall*)(br_model *))0x004d83c0;
 CARM95_HOOK_FUNCTION(original_PrepareGroups, PrepareGroups)
 void __stdcall PrepareGroups(br_model *model) {
@@ -394,7 +394,7 @@ void __stdcall PrepareGroups(br_model *model) {
 }
 
 function_hook_state_t function_hook_state_PrepareBoundingRadius__prepmesh = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PrepareBoundingRadius__prepmesh)
+CARM95_WEBSERVER_STATE(PrepareBoundingRadius__prepmesh, function_hook_state_PrepareBoundingRadius__prepmesh)
 void PrepareBoundingRadius__prepmesh(br_model *model) {
     float d;
     float max;
@@ -417,7 +417,7 @@ void PrepareBoundingRadius__prepmesh(br_model *model) {
 }
 
 function_hook_state_t function_hook_state_PrepareBoundingBox = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PrepareBoundingBox)
+CARM95_WEBSERVER_STATE(PrepareBoundingBox, function_hook_state_PrepareBoundingBox)
 void PrepareBoundingBox(br_model *model) {
     int axis;
     int v;
@@ -440,7 +440,7 @@ void PrepareBoundingBox(br_model *model) {
 }
 
 function_hook_state_t function_hook_state_RegenerateFaceNormals = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_RegenerateFaceNormals)
+CARM95_WEBSERVER_STATE(RegenerateFaceNormals, function_hook_state_RegenerateFaceNormals)
 static void(__stdcall*original_RegenerateFaceNormals)(struct v11model *) = (void(__stdcall*)(struct v11model *))0x004d7840;
 CARM95_HOOK_FUNCTION(original_RegenerateFaceNormals, RegenerateFaceNormals)
 void __stdcall RegenerateFaceNormals(struct v11model *v11m) {
@@ -463,7 +463,7 @@ void __stdcall RegenerateFaceNormals(struct v11model *v11m) {
 }
 
 function_hook_state_t function_hook_state_RegenerateVertexNormals = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_RegenerateVertexNormals)
+CARM95_WEBSERVER_STATE(RegenerateVertexNormals, function_hook_state_RegenerateVertexNormals)
 static void(__stdcall*original_RegenerateVertexNormals)(struct v11model *) = (void(__stdcall*)(struct v11model *))0x004d78e0;
 CARM95_HOOK_FUNCTION(original_RegenerateVertexNormals, RegenerateVertexNormals)
 void __stdcall RegenerateVertexNormals(struct v11model *v11m) {
@@ -494,7 +494,7 @@ void __stdcall RegenerateVertexNormals(struct v11model *v11m) {
 }
 
 function_hook_state_t function_hook_state_BrModelUpdate = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrModelUpdate)
+CARM95_WEBSERVER_STATE(BrModelUpdate, function_hook_state_BrModelUpdate)
 static void(__cdecl*original_BrModelUpdate)(br_model *, br_uint_16) = (void(__cdecl*)(br_model *, br_uint_16))0x004d7af0;
 CARM95_HOOK_FUNCTION(original_BrModelUpdate, BrModelUpdate)
 void __cdecl BrModelUpdate(br_model *model, br_uint_16 flags) {
@@ -536,7 +536,7 @@ void __cdecl BrModelUpdate(br_model *model, br_uint_16 flags) {
 }
 
 function_hook_state_t function_hook_state_BrModelClear = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrModelClear)
+CARM95_WEBSERVER_STATE(BrModelClear, function_hook_state_BrModelClear)
 static void(__stdcall*original_BrModelClear)(struct br_model *) = (void(__stdcall*)(struct br_model *))0x004d90a0;
 CARM95_HOOK_FUNCTION(original_BrModelClear, BrModelClear)
 void __stdcall BrModelClear(struct br_model *model) {

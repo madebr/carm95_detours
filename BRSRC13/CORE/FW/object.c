@@ -9,7 +9,7 @@
 #include <assert.h>
 
 function_hook_state_t function_hook_state__M_br_object_query = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state__M_br_object_query)
+CARM95_WEBSERVER_STATE(_M_br_object_query, function_hook_state__M_br_object_query)
 static br_error(__cdecl*original__M_br_object_query)(br_object *, br_uint_32 *, br_token) = (br_error(__cdecl*)(br_object *, br_uint_32 *, br_token))0x004e3630;
 CARM95_HOOK_FUNCTION(original__M_br_object_query, _M_br_object_query)
 br_error __cdecl _M_br_object_query(br_object *self, br_uint_32 *pvalue, br_token t) {
@@ -28,7 +28,7 @@ br_error __cdecl _M_br_object_query(br_object *self, br_uint_32 *pvalue, br_toke
 }
 
 function_hook_state_t function_hook_state__M_br_object_queryBuffer = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state__M_br_object_queryBuffer)
+CARM95_WEBSERVER_STATE(_M_br_object_queryBuffer, function_hook_state__M_br_object_queryBuffer)
 static br_error(__cdecl*original__M_br_object_queryBuffer)(br_object *, br_uint_32 *, br_uint_32 *, br_size_t, br_token) = (br_error(__cdecl*)(br_object *, br_uint_32 *, br_uint_32 *, br_size_t, br_token))0x004e3660;
 CARM95_HOOK_FUNCTION(original__M_br_object_queryBuffer, _M_br_object_queryBuffer)
 br_error __cdecl _M_br_object_queryBuffer(br_object *self, br_uint_32 *pvalue, br_uint_32 *buffer, br_size_t buffer_size, br_token t) {
@@ -49,7 +49,7 @@ br_error __cdecl _M_br_object_queryBuffer(br_object *self, br_uint_32 *pvalue, b
 }
 
 function_hook_state_t function_hook_state__M_br_object_queryMany = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state__M_br_object_queryMany)
+CARM95_WEBSERVER_STATE(_M_br_object_queryMany, function_hook_state__M_br_object_queryMany)
 static br_error(__cdecl*original__M_br_object_queryMany)(br_object *, br_token_value *, void *, br_size_t, br_int_32 *) = (br_error(__cdecl*)(br_object *, br_token_value *, void *, br_size_t, br_int_32 *))0x004e3690;
 CARM95_HOOK_FUNCTION(original__M_br_object_queryMany, _M_br_object_queryMany)
 br_error __cdecl _M_br_object_queryMany(br_object *self, br_token_value *tv, void *extra, br_size_t extra_size, br_int_32 *pcount) {
@@ -70,7 +70,7 @@ br_error __cdecl _M_br_object_queryMany(br_object *self, br_token_value *tv, voi
 }
 
 function_hook_state_t function_hook_state__M_br_object_queryManySize = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state__M_br_object_queryManySize)
+CARM95_WEBSERVER_STATE(_M_br_object_queryManySize, function_hook_state__M_br_object_queryManySize)
 static br_error(__cdecl*original__M_br_object_queryManySize)(br_object *, br_size_t *, br_token_value *) = (br_error(__cdecl*)(br_object *, br_size_t *, br_token_value *))0x004e36c0;
 CARM95_HOOK_FUNCTION(original__M_br_object_queryManySize, _M_br_object_queryManySize)
 br_error __cdecl _M_br_object_queryManySize(br_object *self, br_size_t *pextra_size, br_token_value *tv) {
@@ -89,7 +89,7 @@ br_error __cdecl _M_br_object_queryManySize(br_object *self, br_size_t *pextra_s
 }
 
 function_hook_state_t function_hook_state__M_br_object_queryAll = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state__M_br_object_queryAll)
+CARM95_WEBSERVER_STATE(_M_br_object_queryAll, function_hook_state__M_br_object_queryAll)
 static br_error(__cdecl*original__M_br_object_queryAll)(br_object *, br_token_value *, br_size_t) = (br_error(__cdecl*)(br_object *, br_token_value *, br_size_t))0x004e36f0;
 CARM95_HOOK_FUNCTION(original__M_br_object_queryAll, _M_br_object_queryAll)
 br_error __cdecl _M_br_object_queryAll(br_object *self, br_token_value *buffer, br_size_t buffer_size) {
@@ -108,7 +108,7 @@ br_error __cdecl _M_br_object_queryAll(br_object *self, br_token_value *buffer, 
 }
 
 function_hook_state_t function_hook_state__M_br_object_queryAllSize = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state__M_br_object_queryAllSize)
+CARM95_WEBSERVER_STATE(_M_br_object_queryAllSize, function_hook_state__M_br_object_queryAllSize)
 static br_error(__cdecl*original__M_br_object_queryAllSize)(br_object *, br_size_t *) = (br_error(__cdecl*)(br_object *, br_size_t *))0x004e3720;
 CARM95_HOOK_FUNCTION(original__M_br_object_queryAllSize, _M_br_object_queryAllSize)
 br_error __cdecl _M_br_object_queryAllSize(br_object *self, br_size_t *psize) {
@@ -126,7 +126,7 @@ br_error __cdecl _M_br_object_queryAllSize(br_object *self, br_size_t *psize) {
 }
 
 function_hook_state_t function_hook_state__BrObjectFree = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state__BrObjectFree)
+CARM95_WEBSERVER_STATE(_BrObjectFree, function_hook_state__BrObjectFree)
 static void(__cdecl*original__BrObjectFree)(void *, br_uint_8, br_size_t) = (void(__cdecl*)(void *, br_uint_8, br_size_t))0x004e3740;
 CARM95_HOOK_FUNCTION(original__BrObjectFree, _BrObjectFree)
 void __cdecl _BrObjectFree(void *res, br_uint_8 res_class, br_size_t size) {

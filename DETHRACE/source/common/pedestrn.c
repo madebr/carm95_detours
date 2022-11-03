@@ -80,7 +80,7 @@ tU32 * hookvar_gLast_ped_splat_time  = (void*)0x00536b34;
 int * hookvar_gCurrent_ped_multiplier  = (void*)0x00537918;
 
 function_hook_state_t function_hook_state_PedModelUpdate = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PedModelUpdate)
+CARM95_WEBSERVER_STATE(PedModelUpdate, function_hook_state_PedModelUpdate)
 static void(__cdecl*original_PedModelUpdate)(br_model *, br_scalar, br_scalar, br_scalar, br_scalar, br_scalar, br_scalar, br_scalar, br_scalar) = (void(__cdecl*)(br_model *, br_scalar, br_scalar, br_scalar, br_scalar, br_scalar, br_scalar, br_scalar, br_scalar))0x00455fcd;
 CARM95_HOOK_FUNCTION(original_PedModelUpdate, PedModelUpdate)
 void __cdecl PedModelUpdate(br_model *pModel, br_scalar x0, br_scalar y0, br_scalar x1, br_scalar y1, br_scalar x2, br_scalar y2, br_scalar x3, br_scalar y3) {
@@ -105,7 +105,7 @@ void __cdecl PedModelUpdate(br_model *pModel, br_scalar x0, br_scalar y0, br_sca
 }
 
 function_hook_state_t function_hook_state_ActorIsPedestrian = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_ActorIsPedestrian)
+CARM95_WEBSERVER_STATE(ActorIsPedestrian, function_hook_state_ActorIsPedestrian)
 static int(__cdecl*original_ActorIsPedestrian)(br_actor *) = (int(__cdecl*)(br_actor *))0x00455870;
 CARM95_HOOK_FUNCTION(original_ActorIsPedestrian, ActorIsPedestrian)
 int __cdecl ActorIsPedestrian(br_actor *pActor) {
@@ -122,7 +122,7 @@ int __cdecl ActorIsPedestrian(br_actor *pActor) {
 }
 
 function_hook_state_t function_hook_state_PedHeightFromActor = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PedHeightFromActor)
+CARM95_WEBSERVER_STATE(PedHeightFromActor, function_hook_state_PedHeightFromActor)
 static br_scalar(__cdecl*original_PedHeightFromActor)(br_actor *) = (br_scalar(__cdecl*)(br_actor *))0x004558b8;
 CARM95_HOOK_FUNCTION(original_PedHeightFromActor, PedHeightFromActor)
 br_scalar __cdecl PedHeightFromActor(br_actor *pActor) {
@@ -139,7 +139,7 @@ br_scalar __cdecl PedHeightFromActor(br_actor *pActor) {
 }
 
 function_hook_state_t function_hook_state_GetPedestrianValue = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_GetPedestrianValue)
+CARM95_WEBSERVER_STATE(GetPedestrianValue, function_hook_state_GetPedestrianValue)
 static int(__cdecl*original_GetPedestrianValue)(br_actor *) = (int(__cdecl*)(br_actor *))0x004558fa;
 CARM95_HOOK_FUNCTION(original_GetPedestrianValue, GetPedestrianValue)
 int __cdecl GetPedestrianValue(br_actor *pActor) {
@@ -156,7 +156,7 @@ int __cdecl GetPedestrianValue(br_actor *pActor) {
 }
 
 function_hook_state_t function_hook_state_PedestrianActorIsPerson = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PedestrianActorIsPerson)
+CARM95_WEBSERVER_STATE(PedestrianActorIsPerson, function_hook_state_PedestrianActorIsPerson)
 static int(__cdecl*original_PedestrianActorIsPerson)(br_actor *) = (int(__cdecl*)(br_actor *))0x00455913;
 CARM95_HOOK_FUNCTION(original_PedestrianActorIsPerson, PedestrianActorIsPerson)
 int __cdecl PedestrianActorIsPerson(br_actor *pActor) {
@@ -173,7 +173,7 @@ int __cdecl PedestrianActorIsPerson(br_actor *pActor) {
 }
 
 function_hook_state_t function_hook_state_GetPedestrianActor = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_GetPedestrianActor)
+CARM95_WEBSERVER_STATE(GetPedestrianActor, function_hook_state_GetPedestrianActor)
 static br_actor *(__cdecl*original_GetPedestrianActor)(int) = (br_actor *(__cdecl*)(int))0x00455953;
 CARM95_HOOK_FUNCTION(original_GetPedestrianActor, GetPedestrianActor)
 br_actor* __cdecl GetPedestrianActor(int pIndex) {
@@ -190,7 +190,7 @@ br_actor* __cdecl GetPedestrianActor(int pIndex) {
 }
 
 function_hook_state_t function_hook_state_GetPedestrianTexture = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_GetPedestrianTexture)
+CARM95_WEBSERVER_STATE(GetPedestrianTexture, function_hook_state_GetPedestrianTexture)
 static br_pixelmap *(__cdecl*original_GetPedestrianTexture)(br_actor *, int *) = (br_pixelmap *(__cdecl*)(br_actor *, int *))0x0045599e;
 CARM95_HOOK_FUNCTION(original_GetPedestrianTexture, GetPedestrianTexture)
 br_pixelmap* __cdecl GetPedestrianTexture(br_actor *pActor, int *pFlipped) {
@@ -208,7 +208,7 @@ br_pixelmap* __cdecl GetPedestrianTexture(br_actor *pActor, int *pFlipped) {
 }
 
 function_hook_state_t function_hook_state_TogglePedestrians = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_TogglePedestrians)
+CARM95_WEBSERVER_STATE(TogglePedestrians, function_hook_state_TogglePedestrians)
 static void(__cdecl*original_TogglePedestrians)() = (void(__cdecl*)())0x004559ea;
 CARM95_HOOK_FUNCTION(original_TogglePedestrians, TogglePedestrians)
 void __cdecl TogglePedestrians() {
@@ -224,7 +224,7 @@ void __cdecl TogglePedestrians() {
 }
 
 function_hook_state_t function_hook_state_InitPedGibs = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_InitPedGibs)
+CARM95_WEBSERVER_STATE(InitPedGibs, function_hook_state_InitPedGibs)
 static void(__cdecl*original_InitPedGibs)() = (void(__cdecl*)())0x0045e3ad;
 CARM95_HOOK_FUNCTION(original_InitPedGibs, InitPedGibs)
 void __cdecl InitPedGibs() {
@@ -250,7 +250,7 @@ void __cdecl InitPedGibs() {
 }
 
 function_hook_state_t function_hook_state_SetPedMaterialForRender = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_SetPedMaterialForRender)
+CARM95_WEBSERVER_STATE(SetPedMaterialForRender, function_hook_state_SetPedMaterialForRender)
 static void(__cdecl*original_SetPedMaterialForRender)(br_actor *) = (void(__cdecl*)(br_actor *))0x00455a76;
 CARM95_HOOK_FUNCTION(original_SetPedMaterialForRender, SetPedMaterialForRender)
 void __cdecl SetPedMaterialForRender(br_actor *pActor) {
@@ -271,7 +271,7 @@ void __cdecl SetPedMaterialForRender(br_actor *pActor) {
 }
 
 function_hook_state_t function_hook_state_PedCallBack = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PedCallBack)
+CARM95_WEBSERVER_STATE(PedCallBack, function_hook_state_PedCallBack)
 static void(__cdecl*original_PedCallBack)(br_actor *, struct br_model *, struct br_material *, void *, br_uint_8, int) = (void(__cdecl*)(br_actor *, struct br_model *, struct br_material *, void *, br_uint_8, int))0x00455b6f;
 CARM95_HOOK_FUNCTION(original_PedCallBack, PedCallBack)
 void __cdecl PedCallBack(br_actor *pActor, struct br_model *pModel, struct br_material *pMaterial, void *pRender_data, br_uint_8 pStyle, int pOn_screen) {
@@ -295,7 +295,7 @@ void __cdecl PedCallBack(br_actor *pActor, struct br_model *pModel, struct br_ma
 }
 
 function_hook_state_t function_hook_state_InitPeds = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_InitPeds)
+CARM95_WEBSERVER_STATE(InitPeds, function_hook_state_InitPeds)
 static void(__cdecl*original_InitPeds)() = (void(__cdecl*)())0x00455c05;
 CARM95_HOOK_FUNCTION(original_InitPeds, InitPeds)
 void __cdecl InitPeds() {
@@ -311,7 +311,7 @@ void __cdecl InitPeds() {
 }
 
 function_hook_state_t function_hook_state_MungeModelSize = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_MungeModelSize)
+CARM95_WEBSERVER_STATE(MungeModelSize, function_hook_state_MungeModelSize)
 static void(__cdecl*original_MungeModelSize)(br_actor *, br_scalar) = (void(__cdecl*)(br_actor *, br_scalar))0x00455f31;
 CARM95_HOOK_FUNCTION(original_MungeModelSize, MungeModelSize)
 void __cdecl MungeModelSize(br_actor *pActor, br_scalar pScaling_factor) {
@@ -335,7 +335,7 @@ void __cdecl MungeModelSize(br_actor *pActor, br_scalar pScaling_factor) {
 }
 
 function_hook_state_t function_hook_state_BurstPedestrian = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BurstPedestrian)
+CARM95_WEBSERVER_STATE(BurstPedestrian, function_hook_state_BurstPedestrian)
 static int(__cdecl*original_BurstPedestrian)(tPedestrian_data *, float, int) = (int(__cdecl*)(tPedestrian_data *, float, int))0x00457ff5;
 CARM95_HOOK_FUNCTION(original_BurstPedestrian, BurstPedestrian)
 int __cdecl BurstPedestrian(tPedestrian_data *pPedestrian, float pSplattitudinalitude, int pAllow_explosion) {
@@ -380,7 +380,7 @@ int __cdecl BurstPedestrian(tPedestrian_data *pPedestrian, float pSplattitudinal
 }
 
 function_hook_state_t function_hook_state_ResetAllPedGibs = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_ResetAllPedGibs)
+CARM95_WEBSERVER_STATE(ResetAllPedGibs, function_hook_state_ResetAllPedGibs)
 static void(__cdecl*original_ResetAllPedGibs)() = (void(__cdecl*)())0x00455df2;
 CARM95_HOOK_FUNCTION(original_ResetAllPedGibs, ResetAllPedGibs)
 void __cdecl ResetAllPedGibs() {
@@ -400,7 +400,7 @@ void __cdecl ResetAllPedGibs() {
 }
 
 function_hook_state_t function_hook_state_AdjustPedGib = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_AdjustPedGib)
+CARM95_WEBSERVER_STATE(AdjustPedGib, function_hook_state_AdjustPedGib)
 static void(__cdecl*original_AdjustPedGib)(int, int, int, int, br_matrix34 *) = (void(__cdecl*)(int, int, int, int, br_matrix34 *))0x00455e72;
 CARM95_HOOK_FUNCTION(original_AdjustPedGib, AdjustPedGib)
 void __cdecl AdjustPedGib(int pIndex, int pSize, int pGib_index, int pPed_index, br_matrix34 *pTrans) {
@@ -423,7 +423,7 @@ void __cdecl AdjustPedGib(int pIndex, int pSize, int pGib_index, int pPed_index,
 }
 
 function_hook_state_t function_hook_state_MungePedGibs = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_MungePedGibs)
+CARM95_WEBSERVER_STATE(MungePedGibs, function_hook_state_MungePedGibs)
 static void(__cdecl*original_MungePedGibs)(tU32) = (void(__cdecl*)(tU32))0x00456048;
 CARM95_HOOK_FUNCTION(original_MungePedGibs, MungePedGibs)
 void __cdecl MungePedGibs(tU32 pFrame_period) {
@@ -452,7 +452,7 @@ void __cdecl MungePedGibs(tU32 pFrame_period) {
 }
 
 function_hook_state_t function_hook_state_KillPedestrian = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_KillPedestrian)
+CARM95_WEBSERVER_STATE(KillPedestrian, function_hook_state_KillPedestrian)
 static void(__cdecl*original_KillPedestrian)(tPedestrian_data *) = (void(__cdecl*)(tPedestrian_data *))0x00456e92;
 CARM95_HOOK_FUNCTION(original_KillPedestrian, KillPedestrian)
 void __cdecl KillPedestrian(tPedestrian_data *pPedestrian) {
@@ -469,7 +469,7 @@ void __cdecl KillPedestrian(tPedestrian_data *pPedestrian) {
 }
 
 function_hook_state_t function_hook_state_CalcPedWidthNHeight = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_CalcPedWidthNHeight)
+CARM95_WEBSERVER_STATE(CalcPedWidthNHeight, function_hook_state_CalcPedWidthNHeight)
 static void(__cdecl*original_CalcPedWidthNHeight)(tPedestrian_data *, br_pixelmap *, br_scalar *, br_scalar *) = (void(__cdecl*)(tPedestrian_data *, br_pixelmap *, br_scalar *, br_scalar *))0x00457492;
 CARM95_HOOK_FUNCTION(original_CalcPedWidthNHeight, CalcPedWidthNHeight)
 void __cdecl CalcPedWidthNHeight(tPedestrian_data *pPedestrian, br_pixelmap *pPixelmap, br_scalar *pHeight, br_scalar *pWidth) {
@@ -493,7 +493,7 @@ void __cdecl CalcPedWidthNHeight(tPedestrian_data *pPedestrian, br_pixelmap *pPi
 }
 
 function_hook_state_t function_hook_state_PedestrianNextInstruction = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PedestrianNextInstruction)
+CARM95_WEBSERVER_STATE(PedestrianNextInstruction, function_hook_state_PedestrianNextInstruction)
 static int(__cdecl*original_PedestrianNextInstruction)(tPedestrian_data *, float, int, int) = (int(__cdecl*)(tPedestrian_data *, float, int, int))0x004585f1;
 CARM95_HOOK_FUNCTION(original_PedestrianNextInstruction, PedestrianNextInstruction)
 int __cdecl PedestrianNextInstruction(tPedestrian_data *pPedestrian, float pDanger_level, int pPosition_explicitly, int pMove_pc) {
@@ -535,7 +535,7 @@ int __cdecl PedestrianNextInstruction(tPedestrian_data *pPedestrian, float pDang
 }
 
 function_hook_state_t function_hook_state_MungePedestrianSequence = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_MungePedestrianSequence)
+CARM95_WEBSERVER_STATE(MungePedestrianSequence, function_hook_state_MungePedestrianSequence)
 static void(__cdecl*original_MungePedestrianSequence)(tPedestrian_data *, int) = (void(__cdecl*)(tPedestrian_data *, int))0x004566ee;
 CARM95_HOOK_FUNCTION(original_MungePedestrianSequence, MungePedestrianSequence)
 void __cdecl MungePedestrianSequence(tPedestrian_data *pPedestrian, int pAction_changed) {
@@ -567,7 +567,7 @@ void __cdecl MungePedestrianSequence(tPedestrian_data *pPedestrian, int pAction_
 }
 
 function_hook_state_t function_hook_state_DetachPedFromCar = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DetachPedFromCar)
+CARM95_WEBSERVER_STATE(DetachPedFromCar, function_hook_state_DetachPedFromCar)
 static void(__cdecl*original_DetachPedFromCar)(tPedestrian_data *) = (void(__cdecl*)(tPedestrian_data *))0x004563dc;
 CARM95_HOOK_FUNCTION(original_DetachPedFromCar, DetachPedFromCar)
 void __cdecl DetachPedFromCar(tPedestrian_data *pPedestrian) {
@@ -584,7 +584,7 @@ void __cdecl DetachPedFromCar(tPedestrian_data *pPedestrian) {
 }
 
 function_hook_state_t function_hook_state_SetPedPos = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_SetPedPos)
+CARM95_WEBSERVER_STATE(SetPedPos, function_hook_state_SetPedPos)
 static void(__cdecl*original_SetPedPos)(tPedestrian_data *) = (void(__cdecl*)(tPedestrian_data *))0x0045647b;
 CARM95_HOOK_FUNCTION(original_SetPedPos, SetPedPos)
 void __cdecl SetPedPos(tPedestrian_data *pPedestrian) {
@@ -603,7 +603,7 @@ void __cdecl SetPedPos(tPedestrian_data *pPedestrian) {
 }
 
 function_hook_state_t function_hook_state_DetachPedActorFromCar = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DetachPedActorFromCar)
+CARM95_WEBSERVER_STATE(DetachPedActorFromCar, function_hook_state_DetachPedActorFromCar)
 static void(__cdecl*original_DetachPedActorFromCar)(br_actor *) = (void(__cdecl*)(br_actor *))0x004563b3;
 CARM95_HOOK_FUNCTION(original_DetachPedActorFromCar, DetachPedActorFromCar)
 void __cdecl DetachPedActorFromCar(br_actor *pActor) {
@@ -620,7 +620,7 @@ void __cdecl DetachPedActorFromCar(br_actor *pActor) {
 }
 
 function_hook_state_t function_hook_state_MungePedestrianFrames = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_MungePedestrianFrames)
+CARM95_WEBSERVER_STATE(MungePedestrianFrames, function_hook_state_MungePedestrianFrames)
 static void(__cdecl*original_MungePedestrianFrames)(tPedestrian_data *) = (void(__cdecl*)(tPedestrian_data *))0x004568d7;
 CARM95_HOOK_FUNCTION(original_MungePedestrianFrames, MungePedestrianFrames)
 void __cdecl MungePedestrianFrames(tPedestrian_data *pPedestrian) {
@@ -651,7 +651,7 @@ void __cdecl MungePedestrianFrames(tPedestrian_data *pPedestrian) {
 }
 
 function_hook_state_t function_hook_state_MungePedModel = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_MungePedModel)
+CARM95_WEBSERVER_STATE(MungePedModel, function_hook_state_MungePedModel)
 static void(__cdecl*original_MungePedModel)(tPedestrian_data *) = (void(__cdecl*)(tPedestrian_data *))0x00456f86;
 CARM95_HOOK_FUNCTION(original_MungePedModel, MungePedModel)
 void __cdecl MungePedModel(tPedestrian_data *pPedestrian) {
@@ -698,7 +698,7 @@ void __cdecl MungePedModel(tPedestrian_data *pPedestrian) {
 }
 
 function_hook_state_t function_hook_state_ChangeActionTo = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_ChangeActionTo)
+CARM95_WEBSERVER_STATE(ChangeActionTo, function_hook_state_ChangeActionTo)
 static void(__cdecl*original_ChangeActionTo)(tPedestrian_data *, int, int) = (void(__cdecl*)(tPedestrian_data *, int, int))0x0045654d;
 CARM95_HOOK_FUNCTION(original_ChangeActionTo, ChangeActionTo)
 void __cdecl ChangeActionTo(tPedestrian_data *pPedestrian, int pAction_index, int pRedo_frames_etc) {
@@ -723,7 +723,7 @@ void __cdecl ChangeActionTo(tPedestrian_data *pPedestrian, int pAction_index, in
 }
 
 function_hook_state_t function_hook_state_MungePedestrianAction = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_MungePedestrianAction)
+CARM95_WEBSERVER_STATE(MungePedestrianAction, function_hook_state_MungePedestrianAction)
 static int(__cdecl*original_MungePedestrianAction)(tPedestrian_data *, float) = (int(__cdecl*)(tPedestrian_data *, float))0x00459db7;
 CARM95_HOOK_FUNCTION(original_MungePedestrianAction, MungePedestrianAction)
 int __cdecl MungePedestrianAction(tPedestrian_data *pPedestrian, float pDanger_level) {
@@ -755,7 +755,7 @@ int __cdecl MungePedestrianAction(tPedestrian_data *pPedestrian, float pDanger_l
 }
 
 function_hook_state_t function_hook_state_MakeFlagWavingBastardWaveHisFlagWhichIsTheProbablyTheLastThingHeWillEverDo = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_MakeFlagWavingBastardWaveHisFlagWhichIsTheProbablyTheLastThingHeWillEverDo)
+CARM95_WEBSERVER_STATE(MakeFlagWavingBastardWaveHisFlagWhichIsTheProbablyTheLastThingHeWillEverDo, function_hook_state_MakeFlagWavingBastardWaveHisFlagWhichIsTheProbablyTheLastThingHeWillEverDo)
 static void(__cdecl*original_MakeFlagWavingBastardWaveHisFlagWhichIsTheProbablyTheLastThingHeWillEverDo)() = (void(__cdecl*)())0x004564ed;
 CARM95_HOOK_FUNCTION(original_MakeFlagWavingBastardWaveHisFlagWhichIsTheProbablyTheLastThingHeWillEverDo, MakeFlagWavingBastardWaveHisFlagWhichIsTheProbablyTheLastThingHeWillEverDo)
 void __cdecl MakeFlagWavingBastardWaveHisFlagWhichIsTheProbablyTheLastThingHeWillEverDo() {
@@ -771,7 +771,7 @@ void __cdecl MakeFlagWavingBastardWaveHisFlagWhichIsTheProbablyTheLastThingHeWil
 }
 
 function_hook_state_t function_hook_state_MungePedestrianPath = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_MungePedestrianPath)
+CARM95_WEBSERVER_STATE(MungePedestrianPath, function_hook_state_MungePedestrianPath)
 static void(__cdecl*original_MungePedestrianPath)(tPedestrian_data *, float, br_vector3 *) = (void(__cdecl*)(tPedestrian_data *, float, br_vector3 *))0x00457548;
 CARM95_HOOK_FUNCTION(original_MungePedestrianPath, MungePedestrianPath)
 void __cdecl MungePedestrianPath(tPedestrian_data *pPedestrian, float pDanger_level, br_vector3 *pDanger_direction) {
@@ -814,7 +814,7 @@ void __cdecl MungePedestrianPath(tPedestrian_data *pPedestrian, float pDanger_le
 }
 
 function_hook_state_t function_hook_state_CalcPedestrianDangerLevel = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_CalcPedestrianDangerLevel)
+CARM95_WEBSERVER_STATE(CalcPedestrianDangerLevel, function_hook_state_CalcPedestrianDangerLevel)
 static float(__cdecl*original_CalcPedestrianDangerLevel)(tPedestrian_data *, br_vector3 *) = (float(__cdecl*)(tPedestrian_data *, br_vector3 *))0x0045a078;
 CARM95_HOOK_FUNCTION(original_CalcPedestrianDangerLevel, CalcPedestrianDangerLevel)
 float __cdecl CalcPedestrianDangerLevel(tPedestrian_data *pPedestrian, br_vector3 *pDanger_direction) {
@@ -852,7 +852,7 @@ float __cdecl CalcPedestrianDangerLevel(tPedestrian_data *pPedestrian, br_vector
 }
 
 function_hook_state_t function_hook_state_MoveToEdgeOfCar = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_MoveToEdgeOfCar)
+CARM95_WEBSERVER_STATE(MoveToEdgeOfCar, function_hook_state_MoveToEdgeOfCar)
 static tPed_hit_position(__cdecl*original_MoveToEdgeOfCar)(tPedestrian_data *, tCollision_info *, br_actor *, br_scalar, br_scalar, br_scalar, br_scalar, br_scalar, br_scalar, br_vector3 *, br_vector3 *) = (tPed_hit_position(__cdecl*)(tPedestrian_data *, tCollision_info *, br_actor *, br_scalar, br_scalar, br_scalar, br_scalar, br_scalar, br_scalar, br_vector3 *, br_vector3 *))0x0045bcc5;
 CARM95_HOOK_FUNCTION(original_MoveToEdgeOfCar, MoveToEdgeOfCar)
 tPed_hit_position __cdecl MoveToEdgeOfCar(tPedestrian_data *pPedestrian, tCollision_info *pCar, br_actor *pCar_actor, br_scalar pPed_x, br_scalar pPed_z, br_scalar pCar_bounds_min_x, br_scalar pCar_bounds_max_x, br_scalar pCar_bounds_min_z, br_scalar pCar_bounds_max_z, br_vector3 *pMin_ped_bounds_car, br_vector3 *pMax_ped_bounds_car) {
@@ -905,7 +905,7 @@ tPed_hit_position __cdecl MoveToEdgeOfCar(tPedestrian_data *pPedestrian, tCollis
 }
 
 function_hook_state_t function_hook_state_CheckLastPed = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_CheckLastPed)
+CARM95_WEBSERVER_STATE(CheckLastPed, function_hook_state_CheckLastPed)
 static void(__cdecl*original_CheckLastPed)() = (void(__cdecl*)())0x0045c0db;
 CARM95_HOOK_FUNCTION(original_CheckLastPed, CheckLastPed)
 void __cdecl CheckLastPed() {
@@ -921,7 +921,7 @@ void __cdecl CheckLastPed() {
 }
 
 function_hook_state_t function_hook_state_BloodyWheels = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BloodyWheels)
+CARM95_WEBSERVER_STATE(BloodyWheels, function_hook_state_BloodyWheels)
 static int(__cdecl*original_BloodyWheels)(tCar_spec *, br_vector3 *, br_scalar, br_vector3 *) = (int(__cdecl*)(tCar_spec *, br_vector3 *, br_scalar, br_vector3 *))0x0045c12c;
 CARM95_HOOK_FUNCTION(original_BloodyWheels, BloodyWheels)
 int __cdecl BloodyWheels(tCar_spec *pCar, br_vector3 *pPed_car, br_scalar pSize, br_vector3 *pPed_glob) {
@@ -953,7 +953,7 @@ int __cdecl BloodyWheels(tCar_spec *pCar, br_vector3 *pPed_car, br_scalar pSize,
 }
 
 function_hook_state_t function_hook_state_FancyATossOffMate = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_FancyATossOffMate)
+CARM95_WEBSERVER_STATE(FancyATossOffMate, function_hook_state_FancyATossOffMate)
 static int(__cdecl*original_FancyATossOffMate)(tPedestrian_data *, tCollision_info *, float) = (int(__cdecl*)(tPedestrian_data *, tCollision_info *, float))0x0045c273;
 CARM95_HOOK_FUNCTION(original_FancyATossOffMate, FancyATossOffMate)
 int __cdecl FancyATossOffMate(tPedestrian_data *pPedestrian, tCollision_info *pCar, float pImpact_speed) {
@@ -972,7 +972,7 @@ int __cdecl FancyATossOffMate(tPedestrian_data *pPedestrian, tCollision_info *pC
 }
 
 function_hook_state_t function_hook_state_CheckPedestrianDeathScenario = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_CheckPedestrianDeathScenario)
+CARM95_WEBSERVER_STATE(CheckPedestrianDeathScenario, function_hook_state_CheckPedestrianDeathScenario)
 static void(__cdecl*original_CheckPedestrianDeathScenario)(tPedestrian_data *) = (void(__cdecl*)(tPedestrian_data *))0x0045a3bd;
 CARM95_HOOK_FUNCTION(original_CheckPedestrianDeathScenario, CheckPedestrianDeathScenario)
 void __cdecl CheckPedestrianDeathScenario(tPedestrian_data *pPedestrian) {
@@ -1075,7 +1075,7 @@ void __cdecl CheckPedestrianDeathScenario(tPedestrian_data *pPedestrian) {
 }
 
 function_hook_state_t function_hook_state_SendPedestrian = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_SendPedestrian)
+CARM95_WEBSERVER_STATE(SendPedestrian, function_hook_state_SendPedestrian)
 static void(__cdecl*original_SendPedestrian)(tPedestrian_data *, int) = (void(__cdecl*)(tPedestrian_data *, int))0x0045c2f0;
 CARM95_HOOK_FUNCTION(original_SendPedestrian, SendPedestrian)
 void __cdecl SendPedestrian(tPedestrian_data *pPedestrian, int pIndex) {
@@ -1099,7 +1099,7 @@ void __cdecl SendPedestrian(tPedestrian_data *pPedestrian, int pIndex) {
 }
 
 function_hook_state_t function_hook_state_DoPedestrian = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DoPedestrian)
+CARM95_WEBSERVER_STATE(DoPedestrian, function_hook_state_DoPedestrian)
 static void(__cdecl*original_DoPedestrian)(tPedestrian_data *, int) = (void(__cdecl*)(tPedestrian_data *, int))0x004598e2;
 CARM95_HOOK_FUNCTION(original_DoPedestrian, DoPedestrian)
 void __cdecl DoPedestrian(tPedestrian_data *pPedestrian, int pIndex) {
@@ -1139,7 +1139,7 @@ void __cdecl DoPedestrian(tPedestrian_data *pPedestrian, int pIndex) {
 }
 
 function_hook_state_t function_hook_state_AdjustPedestrian = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_AdjustPedestrian)
+CARM95_WEBSERVER_STATE(AdjustPedestrian, function_hook_state_AdjustPedestrian)
 static void(__cdecl*original_AdjustPedestrian)(int, int, int, int, int, tU16, br_actor *, float, br_scalar, br_vector3 *, br_vector3 *) = (void(__cdecl*)(int, int, int, int, int, tU16, br_actor *, float, br_scalar, br_vector3 *, br_vector3 *))0x00458ec7;
 CARM95_HOOK_FUNCTION(original_AdjustPedestrian, AdjustPedestrian)
 void __cdecl AdjustPedestrian(int pIndex, int pAction_index, int pFrame_index, int pHit_points, int pDone_initial, tU16 pParent, br_actor *pParent_actor, float pSpin_period, br_scalar pJump_magnitude, br_vector3 *pOffset, br_vector3 *pTrans) {
@@ -1174,7 +1174,7 @@ void __cdecl AdjustPedestrian(int pIndex, int pAction_index, int pFrame_index, i
 }
 
 function_hook_state_t function_hook_state_SquirtPathVertex = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_SquirtPathVertex)
+CARM95_WEBSERVER_STATE(SquirtPathVertex, function_hook_state_SquirtPathVertex)
 static void(__cdecl*original_SquirtPathVertex)(br_vertex *, br_vector3 *) = (void(__cdecl*)(br_vertex *, br_vector3 *))0x0045c66a;
 CARM95_HOOK_FUNCTION(original_SquirtPathVertex, SquirtPathVertex)
 void __cdecl SquirtPathVertex(br_vertex *pFirst_vertex, br_vector3 *pPoint) {
@@ -1192,7 +1192,7 @@ void __cdecl SquirtPathVertex(br_vertex *pFirst_vertex, br_vector3 *pPoint) {
 }
 
 function_hook_state_t function_hook_state_ResetAllPedestrians = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_ResetAllPedestrians)
+CARM95_WEBSERVER_STATE(ResetAllPedestrians, function_hook_state_ResetAllPedestrians)
 static void(__cdecl*original_ResetAllPedestrians)() = (void(__cdecl*)())0x00459239;
 CARM95_HOOK_FUNCTION(original_ResetAllPedestrians, ResetAllPedestrians)
 void __cdecl ResetAllPedestrians() {
@@ -1212,7 +1212,7 @@ void __cdecl ResetAllPedestrians() {
 }
 
 function_hook_state_t function_hook_state_GroundPedestrian = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_GroundPedestrian)
+CARM95_WEBSERVER_STATE(GroundPedestrian, function_hook_state_GroundPedestrian)
 static void(__cdecl*original_GroundPedestrian)(tPedestrian_data *) = (void(__cdecl*)(tPedestrian_data *))0x0045c75a;
 CARM95_HOOK_FUNCTION(original_GroundPedestrian, GroundPedestrian)
 void __cdecl GroundPedestrian(tPedestrian_data *pPedestrian) {
@@ -1235,7 +1235,7 @@ void __cdecl GroundPedestrian(tPedestrian_data *pPedestrian) {
 }
 
 function_hook_state_t function_hook_state_RevivePedestrian = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_RevivePedestrian)
+CARM95_WEBSERVER_STATE(RevivePedestrian, function_hook_state_RevivePedestrian)
 static void(__cdecl*original_RevivePedestrian)(tPedestrian_data *, int) = (void(__cdecl*)(tPedestrian_data *, int))0x00459282;
 CARM95_HOOK_FUNCTION(original_RevivePedestrian, RevivePedestrian)
 void __cdecl RevivePedestrian(tPedestrian_data *pPedestrian, int pAnimate) {
@@ -1253,7 +1253,7 @@ void __cdecl RevivePedestrian(tPedestrian_data *pPedestrian, int pAnimate) {
 }
 
 function_hook_state_t function_hook_state_MungePedestrians = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_MungePedestrians)
+CARM95_WEBSERVER_STATE(MungePedestrians, function_hook_state_MungePedestrians)
 static void(__cdecl*original_MungePedestrians)(tU32) = (void(__cdecl*)(tU32))0x00459476;
 CARM95_HOOK_FUNCTION(original_MungePedestrians, MungePedestrians)
 void __cdecl MungePedestrians(tU32 pFrame_period) {
@@ -1298,7 +1298,7 @@ void __cdecl MungePedestrians(tU32 pFrame_period) {
 }
 
 function_hook_state_t function_hook_state_RespawnPedestrians = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_RespawnPedestrians)
+CARM95_WEBSERVER_STATE(RespawnPedestrians, function_hook_state_RespawnPedestrians)
 static void(__cdecl*original_RespawnPedestrians)() = (void(__cdecl*)())0x0045c921;
 CARM95_HOOK_FUNCTION(original_RespawnPedestrians, RespawnPedestrians)
 void __cdecl RespawnPedestrians() {
@@ -1318,7 +1318,7 @@ void __cdecl RespawnPedestrians() {
 }
 
 function_hook_state_t function_hook_state_GetPedCount = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_GetPedCount)
+CARM95_WEBSERVER_STATE(GetPedCount, function_hook_state_GetPedCount)
 static int(__cdecl*original_GetPedCount)() = (int(__cdecl*)())0x0045c9f6;
 CARM95_HOOK_FUNCTION(original_GetPedCount, GetPedCount)
 int __cdecl GetPedCount() {
@@ -1334,7 +1334,7 @@ int __cdecl GetPedCount() {
 }
 
 function_hook_state_t function_hook_state_GetPedPosition = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_GetPedPosition)
+CARM95_WEBSERVER_STATE(GetPedPosition, function_hook_state_GetPedPosition)
 static int(__cdecl*original_GetPedPosition)(int, br_vector3 *) = (int(__cdecl*)(int, br_vector3 *))0x0045ca0b;
 CARM95_HOOK_FUNCTION(original_GetPedPosition, GetPedPosition)
 int __cdecl GetPedPosition(int pIndex, br_vector3 *pPos) {
@@ -1354,7 +1354,7 @@ int __cdecl GetPedPosition(int pIndex, br_vector3 *pPos) {
 }
 
 function_hook_state_t function_hook_state_CreatePedestrian = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_CreatePedestrian)
+CARM95_WEBSERVER_STATE(CreatePedestrian, function_hook_state_CreatePedestrian)
 static void(__cdecl*original_CreatePedestrian)(FILE *, tPedestrian_instruction *, int, int, int, int) = (void(__cdecl*)(FILE *, tPedestrian_instruction *, int, int, int, int))0x0045cb28;
 CARM95_HOOK_FUNCTION(original_CreatePedestrian, CreatePedestrian)
 void __cdecl CreatePedestrian(FILE *pG, tPedestrian_instruction *pInstructions, int pInstruc_count, int pInit_instruc, int pRef_num, int pForce_read) {
@@ -1426,7 +1426,7 @@ void __cdecl CreatePedestrian(FILE *pG, tPedestrian_instruction *pInstructions, 
 }
 
 function_hook_state_t function_hook_state_ResetProxRay = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_ResetProxRay)
+CARM95_WEBSERVER_STATE(ResetProxRay, function_hook_state_ResetProxRay)
 static void(__cdecl*original_ResetProxRay)() = (void(__cdecl*)())0x0045da5c;
 CARM95_HOOK_FUNCTION(original_ResetProxRay, ResetProxRay)
 void __cdecl ResetProxRay() {
@@ -1444,7 +1444,7 @@ void __cdecl ResetProxRay() {
 }
 
 function_hook_state_t function_hook_state_PedMaterialFromHell = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PedMaterialFromHell)
+CARM95_WEBSERVER_STATE(PedMaterialFromHell, function_hook_state_PedMaterialFromHell)
 static void(__cdecl*original_PedMaterialFromHell)() = (void(__cdecl*)())0x0045da99;
 CARM95_HOOK_FUNCTION(original_PedMaterialFromHell, PedMaterialFromHell)
 void __cdecl PedMaterialFromHell() {
@@ -1460,7 +1460,7 @@ void __cdecl PedMaterialFromHell() {
 }
 
 function_hook_state_t function_hook_state_ResetPedMaterial = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_ResetPedMaterial)
+CARM95_WEBSERVER_STATE(ResetPedMaterial, function_hook_state_ResetPedMaterial)
 static void(__cdecl*original_ResetPedMaterial)() = (void(__cdecl*)())0x0045daa4;
 CARM95_HOOK_FUNCTION(original_ResetPedMaterial, ResetPedMaterial)
 void __cdecl ResetPedMaterial() {
@@ -1480,7 +1480,7 @@ void __cdecl ResetPedMaterial() {
 }
 
 function_hook_state_t function_hook_state_LoadInPedestrians = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_LoadInPedestrians)
+CARM95_WEBSERVER_STATE(LoadInPedestrians, function_hook_state_LoadInPedestrians)
 static void(__cdecl*original_LoadInPedestrians)(FILE *, int, tPed_subs *) = (void(__cdecl*)(FILE *, int, tPed_subs *))0x0045dab2;
 CARM95_HOOK_FUNCTION(original_LoadInPedestrians, LoadInPedestrians)
 void __cdecl LoadInPedestrians(FILE *pF, int pSubs_count, tPed_subs *pSubs_array) {
@@ -1559,7 +1559,7 @@ void __cdecl LoadInPedestrians(FILE *pF, int pSubs_count, tPed_subs *pSubs_array
 }
 
 function_hook_state_t function_hook_state_BuildPedPaths = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BuildPedPaths)
+CARM95_WEBSERVER_STATE(BuildPedPaths, function_hook_state_BuildPedPaths)
 static br_actor *(__cdecl*original_BuildPedPaths)(tPedestrian_instruction *, int, int) = (br_actor *(__cdecl*)(tPedestrian_instruction *, int, int))0x0045e839;
 CARM95_HOOK_FUNCTION(original_BuildPedPaths, BuildPedPaths)
 br_actor* __cdecl BuildPedPaths(tPedestrian_instruction *pInstructions, int pInstruc_count, int pInit_instruc) {
@@ -1596,7 +1596,7 @@ br_actor* __cdecl BuildPedPaths(tPedestrian_instruction *pInstructions, int pIns
 }
 
 function_hook_state_t function_hook_state_WriteOutPeds = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_WriteOutPeds)
+CARM95_WEBSERVER_STATE(WriteOutPeds, function_hook_state_WriteOutPeds)
 static void(__cdecl*original_WriteOutPeds)() = (void(__cdecl*)())0x0045ee73;
 CARM95_HOOK_FUNCTION(original_WriteOutPeds, WriteOutPeds)
 void __cdecl WriteOutPeds() {
@@ -1644,7 +1644,7 @@ void __cdecl WriteOutPeds() {
 }
 
 function_hook_state_t function_hook_state_AddPed = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_AddPed)
+CARM95_WEBSERVER_STATE(AddPed, function_hook_state_AddPed)
 static void(__cdecl*original_AddPed)() = (void(__cdecl*)())0x0045f644;
 CARM95_HOOK_FUNCTION(original_AddPed, AddPed)
 void __cdecl AddPed() {
@@ -1666,7 +1666,7 @@ void __cdecl AddPed() {
 }
 
 function_hook_state_t function_hook_state_NewPed = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_NewPed)
+CARM95_WEBSERVER_STATE(NewPed, function_hook_state_NewPed)
 static void(__cdecl*original_NewPed)(int) = (void(__cdecl*)(int))0x0045f4f1;
 CARM95_HOOK_FUNCTION(original_NewPed, NewPed)
 void __cdecl NewPed(int pRef_num) {
@@ -1685,7 +1685,7 @@ void __cdecl NewPed(int pRef_num) {
 }
 
 function_hook_state_t function_hook_state_RemoveCurrentPedPath = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_RemoveCurrentPedPath)
+CARM95_WEBSERVER_STATE(RemoveCurrentPedPath, function_hook_state_RemoveCurrentPedPath)
 static void(__cdecl*original_RemoveCurrentPedPath)() = (void(__cdecl*)())0x0045f409;
 CARM95_HOOK_FUNCTION(original_RemoveCurrentPedPath, RemoveCurrentPedPath)
 void __cdecl RemoveCurrentPedPath() {
@@ -1701,7 +1701,7 @@ void __cdecl RemoveCurrentPedPath() {
 }
 
 function_hook_state_t function_hook_state_ScrubPedestrian = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_ScrubPedestrian)
+CARM95_WEBSERVER_STATE(ScrubPedestrian, function_hook_state_ScrubPedestrian)
 static void(__cdecl*original_ScrubPedestrian)() = (void(__cdecl*)())0x0045f3cb;
 CARM95_HOOK_FUNCTION(original_ScrubPedestrian, ScrubPedestrian)
 void __cdecl ScrubPedestrian() {
@@ -1717,7 +1717,7 @@ void __cdecl ScrubPedestrian() {
 }
 
 function_hook_state_t function_hook_state_TogglePedDetect = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_TogglePedDetect)
+CARM95_WEBSERVER_STATE(TogglePedDetect, function_hook_state_TogglePedDetect)
 static void(__cdecl*original_TogglePedDetect)() = (void(__cdecl*)())0x0045f469;
 CARM95_HOOK_FUNCTION(original_TogglePedDetect, TogglePedDetect)
 void __cdecl TogglePedDetect() {
@@ -1733,7 +1733,7 @@ void __cdecl TogglePedDetect() {
 }
 
 function_hook_state_t function_hook_state_NewPed0 = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_NewPed0)
+CARM95_WEBSERVER_STATE(NewPed0, function_hook_state_NewPed0)
 static void(__cdecl*original_NewPed0)() = (void(__cdecl*)())0x0045f4dc;
 CARM95_HOOK_FUNCTION(original_NewPed0, NewPed0)
 void __cdecl NewPed0() {
@@ -1749,7 +1749,7 @@ void __cdecl NewPed0() {
 }
 
 function_hook_state_t function_hook_state_NewPed1 = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_NewPed1)
+CARM95_WEBSERVER_STATE(NewPed1, function_hook_state_NewPed1)
 static void(__cdecl*original_NewPed1)() = (void(__cdecl*)())0x0045f72e;
 CARM95_HOOK_FUNCTION(original_NewPed1, NewPed1)
 void __cdecl NewPed1() {
@@ -1765,7 +1765,7 @@ void __cdecl NewPed1() {
 }
 
 function_hook_state_t function_hook_state_NewPed2 = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_NewPed2)
+CARM95_WEBSERVER_STATE(NewPed2, function_hook_state_NewPed2)
 static void(__cdecl*original_NewPed2)() = (void(__cdecl*)())0x0045f743;
 CARM95_HOOK_FUNCTION(original_NewPed2, NewPed2)
 void __cdecl NewPed2() {
@@ -1781,7 +1781,7 @@ void __cdecl NewPed2() {
 }
 
 function_hook_state_t function_hook_state_NewPed3 = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_NewPed3)
+CARM95_WEBSERVER_STATE(NewPed3, function_hook_state_NewPed3)
 static void(__cdecl*original_NewPed3)() = (void(__cdecl*)())0x0045f758;
 CARM95_HOOK_FUNCTION(original_NewPed3, NewPed3)
 void __cdecl NewPed3() {
@@ -1797,7 +1797,7 @@ void __cdecl NewPed3() {
 }
 
 function_hook_state_t function_hook_state_NewPed4 = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_NewPed4)
+CARM95_WEBSERVER_STATE(NewPed4, function_hook_state_NewPed4)
 static void(__cdecl*original_NewPed4)() = (void(__cdecl*)())0x0045f76d;
 CARM95_HOOK_FUNCTION(original_NewPed4, NewPed4)
 void __cdecl NewPed4() {
@@ -1813,7 +1813,7 @@ void __cdecl NewPed4() {
 }
 
 function_hook_state_t function_hook_state_NewPed5 = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_NewPed5)
+CARM95_WEBSERVER_STATE(NewPed5, function_hook_state_NewPed5)
 static void(__cdecl*original_NewPed5)() = (void(__cdecl*)())0x0045f782;
 CARM95_HOOK_FUNCTION(original_NewPed5, NewPed5)
 void __cdecl NewPed5() {
@@ -1829,7 +1829,7 @@ void __cdecl NewPed5() {
 }
 
 function_hook_state_t function_hook_state_NewPed6 = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_NewPed6)
+CARM95_WEBSERVER_STATE(NewPed6, function_hook_state_NewPed6)
 static void(__cdecl*original_NewPed6)() = (void(__cdecl*)())0x0045f797;
 CARM95_HOOK_FUNCTION(original_NewPed6, NewPed6)
 void __cdecl NewPed6() {
@@ -1845,7 +1845,7 @@ void __cdecl NewPed6() {
 }
 
 function_hook_state_t function_hook_state_NewPed7 = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_NewPed7)
+CARM95_WEBSERVER_STATE(NewPed7, function_hook_state_NewPed7)
 static void(__cdecl*original_NewPed7)() = (void(__cdecl*)())0x0045f7ac;
 CARM95_HOOK_FUNCTION(original_NewPed7, NewPed7)
 void __cdecl NewPed7() {
@@ -1861,7 +1861,7 @@ void __cdecl NewPed7() {
 }
 
 function_hook_state_t function_hook_state_NewPed8 = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_NewPed8)
+CARM95_WEBSERVER_STATE(NewPed8, function_hook_state_NewPed8)
 static void(__cdecl*original_NewPed8)() = (void(__cdecl*)())0x0045f7c1;
 CARM95_HOOK_FUNCTION(original_NewPed8, NewPed8)
 void __cdecl NewPed8() {
@@ -1877,7 +1877,7 @@ void __cdecl NewPed8() {
 }
 
 function_hook_state_t function_hook_state_NewPed9 = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_NewPed9)
+CARM95_WEBSERVER_STATE(NewPed9, function_hook_state_NewPed9)
 static void(__cdecl*original_NewPed9)() = (void(__cdecl*)())0x0045f7d6;
 CARM95_HOOK_FUNCTION(original_NewPed9, NewPed9)
 void __cdecl NewPed9() {
@@ -1893,7 +1893,7 @@ void __cdecl NewPed9() {
 }
 
 function_hook_state_t function_hook_state_NewPed0B = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_NewPed0B)
+CARM95_WEBSERVER_STATE(NewPed0B, function_hook_state_NewPed0B)
 static void(__cdecl*original_NewPed0B)() = (void(__cdecl*)())0x0045f7eb;
 CARM95_HOOK_FUNCTION(original_NewPed0B, NewPed0B)
 void __cdecl NewPed0B() {
@@ -1909,7 +1909,7 @@ void __cdecl NewPed0B() {
 }
 
 function_hook_state_t function_hook_state_NewPed1B = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_NewPed1B)
+CARM95_WEBSERVER_STATE(NewPed1B, function_hook_state_NewPed1B)
 static void(__cdecl*original_NewPed1B)() = (void(__cdecl*)())0x0045f800;
 CARM95_HOOK_FUNCTION(original_NewPed1B, NewPed1B)
 void __cdecl NewPed1B() {
@@ -1925,7 +1925,7 @@ void __cdecl NewPed1B() {
 }
 
 function_hook_state_t function_hook_state_NewPed2B = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_NewPed2B)
+CARM95_WEBSERVER_STATE(NewPed2B, function_hook_state_NewPed2B)
 static void(__cdecl*original_NewPed2B)() = (void(__cdecl*)())0x0045f815;
 CARM95_HOOK_FUNCTION(original_NewPed2B, NewPed2B)
 void __cdecl NewPed2B() {
@@ -1941,7 +1941,7 @@ void __cdecl NewPed2B() {
 }
 
 function_hook_state_t function_hook_state_NewPed3B = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_NewPed3B)
+CARM95_WEBSERVER_STATE(NewPed3B, function_hook_state_NewPed3B)
 static void(__cdecl*original_NewPed3B)() = (void(__cdecl*)())0x0045f82a;
 CARM95_HOOK_FUNCTION(original_NewPed3B, NewPed3B)
 void __cdecl NewPed3B() {
@@ -1957,7 +1957,7 @@ void __cdecl NewPed3B() {
 }
 
 function_hook_state_t function_hook_state_NewPed4B = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_NewPed4B)
+CARM95_WEBSERVER_STATE(NewPed4B, function_hook_state_NewPed4B)
 static void(__cdecl*original_NewPed4B)() = (void(__cdecl*)())0x0045f83f;
 CARM95_HOOK_FUNCTION(original_NewPed4B, NewPed4B)
 void __cdecl NewPed4B() {
@@ -1973,7 +1973,7 @@ void __cdecl NewPed4B() {
 }
 
 function_hook_state_t function_hook_state_NewPed5B = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_NewPed5B)
+CARM95_WEBSERVER_STATE(NewPed5B, function_hook_state_NewPed5B)
 static void(__cdecl*original_NewPed5B)() = (void(__cdecl*)())0x0045f854;
 CARM95_HOOK_FUNCTION(original_NewPed5B, NewPed5B)
 void __cdecl NewPed5B() {
@@ -1989,7 +1989,7 @@ void __cdecl NewPed5B() {
 }
 
 function_hook_state_t function_hook_state_NewPed6B = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_NewPed6B)
+CARM95_WEBSERVER_STATE(NewPed6B, function_hook_state_NewPed6B)
 static void(__cdecl*original_NewPed6B)() = (void(__cdecl*)())0x0045f869;
 CARM95_HOOK_FUNCTION(original_NewPed6B, NewPed6B)
 void __cdecl NewPed6B() {
@@ -2005,7 +2005,7 @@ void __cdecl NewPed6B() {
 }
 
 function_hook_state_t function_hook_state_NewPed7B = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_NewPed7B)
+CARM95_WEBSERVER_STATE(NewPed7B, function_hook_state_NewPed7B)
 static void(__cdecl*original_NewPed7B)() = (void(__cdecl*)())0x0045f87e;
 CARM95_HOOK_FUNCTION(original_NewPed7B, NewPed7B)
 void __cdecl NewPed7B() {
@@ -2021,7 +2021,7 @@ void __cdecl NewPed7B() {
 }
 
 function_hook_state_t function_hook_state_NewPed8B = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_NewPed8B)
+CARM95_WEBSERVER_STATE(NewPed8B, function_hook_state_NewPed8B)
 static void(__cdecl*original_NewPed8B)() = (void(__cdecl*)())0x0045f893;
 CARM95_HOOK_FUNCTION(original_NewPed8B, NewPed8B)
 void __cdecl NewPed8B() {
@@ -2037,7 +2037,7 @@ void __cdecl NewPed8B() {
 }
 
 function_hook_state_t function_hook_state_NewPed9B = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_NewPed9B)
+CARM95_WEBSERVER_STATE(NewPed9B, function_hook_state_NewPed9B)
 static void(__cdecl*original_NewPed9B)() = (void(__cdecl*)())0x0045f8a8;
 CARM95_HOOK_FUNCTION(original_NewPed9B, NewPed9B)
 void __cdecl NewPed9B() {
@@ -2053,7 +2053,7 @@ void __cdecl NewPed9B() {
 }
 
 function_hook_state_t function_hook_state_MungeShowPedPath = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_MungeShowPedPath)
+CARM95_WEBSERVER_STATE(MungeShowPedPath, function_hook_state_MungeShowPedPath)
 static void(__cdecl*original_MungeShowPedPath)() = (void(__cdecl*)())0x0045f94b;
 CARM95_HOOK_FUNCTION(original_MungeShowPedPath, MungeShowPedPath)
 void __cdecl MungeShowPedPath() {
@@ -2069,7 +2069,7 @@ void __cdecl MungeShowPedPath() {
 }
 
 function_hook_state_t function_hook_state_DropPedPoint2 = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DropPedPoint2)
+CARM95_WEBSERVER_STATE(DropPedPoint2, function_hook_state_DropPedPoint2)
 static void(__cdecl*original_DropPedPoint2)() = (void(__cdecl*)())0x0045f8e5;
 CARM95_HOOK_FUNCTION(original_DropPedPoint2, DropPedPoint2)
 void __cdecl DropPedPoint2() {
@@ -2085,7 +2085,7 @@ void __cdecl DropPedPoint2() {
 }
 
 function_hook_state_t function_hook_state_DropPedPoint = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DropPedPoint)
+CARM95_WEBSERVER_STATE(DropPedPoint, function_hook_state_DropPedPoint)
 static void(__cdecl*original_DropPedPoint)() = (void(__cdecl*)())0x0045f8bd;
 CARM95_HOOK_FUNCTION(original_DropPedPoint, DropPedPoint)
 void __cdecl DropPedPoint() {
@@ -2101,7 +2101,7 @@ void __cdecl DropPedPoint() {
 }
 
 function_hook_state_t function_hook_state_DropInitPedPoint = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DropInitPedPoint)
+CARM95_WEBSERVER_STATE(DropInitPedPoint, function_hook_state_DropInitPedPoint)
 static void(__cdecl*original_DropInitPedPoint)() = (void(__cdecl*)())0x0045f9a4;
 CARM95_HOOK_FUNCTION(original_DropInitPedPoint, DropInitPedPoint)
 void __cdecl DropInitPedPoint() {
@@ -2117,7 +2117,7 @@ void __cdecl DropInitPedPoint() {
 }
 
 function_hook_state_t function_hook_state_DropPedPointAir2 = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DropPedPointAir2)
+CARM95_WEBSERVER_STATE(DropPedPointAir2, function_hook_state_DropPedPointAir2)
 static void(__cdecl*original_DropPedPointAir2)() = (void(__cdecl*)())0x0045f9fe;
 CARM95_HOOK_FUNCTION(original_DropPedPointAir2, DropPedPointAir2)
 void __cdecl DropPedPointAir2() {
@@ -2133,7 +2133,7 @@ void __cdecl DropPedPointAir2() {
 }
 
 function_hook_state_t function_hook_state_DropPedPointAir = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DropPedPointAir)
+CARM95_WEBSERVER_STATE(DropPedPointAir, function_hook_state_DropPedPointAir)
 static void(__cdecl*original_DropPedPointAir)() = (void(__cdecl*)())0x0045f9d6;
 CARM95_HOOK_FUNCTION(original_DropPedPointAir, DropPedPointAir)
 void __cdecl DropPedPointAir() {
@@ -2149,7 +2149,7 @@ void __cdecl DropPedPointAir() {
 }
 
 function_hook_state_t function_hook_state_DropInitPedPointAir = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DropInitPedPointAir)
+CARM95_WEBSERVER_STATE(DropInitPedPointAir, function_hook_state_DropInitPedPointAir)
 static void(__cdecl*original_DropInitPedPointAir)() = (void(__cdecl*)())0x0045fa88;
 CARM95_HOOK_FUNCTION(original_DropInitPedPointAir, DropInitPedPointAir)
 void __cdecl DropInitPedPointAir() {
@@ -2165,7 +2165,7 @@ void __cdecl DropInitPedPointAir() {
 }
 
 function_hook_state_t function_hook_state_KillActorsModel = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_KillActorsModel)
+CARM95_WEBSERVER_STATE(KillActorsModel, function_hook_state_KillActorsModel)
 static br_uint_32(__cdecl*original_KillActorsModel)(br_actor *, void *) = (br_uint_32(__cdecl*)(br_actor *, void *))0x0045ff83;
 CARM95_HOOK_FUNCTION(original_KillActorsModel, KillActorsModel)
 br_uint_32 __cdecl KillActorsModel(br_actor *pActor, void *pArg) {
@@ -2183,7 +2183,7 @@ br_uint_32 __cdecl KillActorsModel(br_actor *pActor, void *pArg) {
 }
 
 function_hook_state_t function_hook_state_DisposePedPaths = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DisposePedPaths)
+CARM95_WEBSERVER_STATE(DisposePedPaths, function_hook_state_DisposePedPaths)
 static void(__cdecl*original_DisposePedPaths)() = (void(__cdecl*)())0x0045fef8;
 CARM95_HOOK_FUNCTION(original_DisposePedPaths, DisposePedPaths)
 void __cdecl DisposePedPaths() {
@@ -2199,7 +2199,7 @@ void __cdecl DisposePedPaths() {
 }
 
 function_hook_state_t function_hook_state_GetPedPos = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_GetPedPos)
+CARM95_WEBSERVER_STATE(GetPedPos, function_hook_state_GetPedPos)
 static void(__cdecl*original_GetPedPos)(int *, int *) = (void(__cdecl*)(int *, int *))0x0045faba;
 CARM95_HOOK_FUNCTION(original_GetPedPos, GetPedPos)
 void __cdecl GetPedPos(int *pPed_index, int *pPoint_index) {
@@ -2231,7 +2231,7 @@ void __cdecl GetPedPos(int *pPed_index, int *pPoint_index) {
 }
 
 function_hook_state_t function_hook_state_ShowPedPos = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_ShowPedPos)
+CARM95_WEBSERVER_STATE(ShowPedPos, function_hook_state_ShowPedPos)
 static void(__cdecl*original_ShowPedPos)() = (void(__cdecl*)())0x0045fc96;
 CARM95_HOOK_FUNCTION(original_ShowPedPos, ShowPedPos)
 void __cdecl ShowPedPos() {
@@ -2253,7 +2253,7 @@ void __cdecl ShowPedPos() {
 }
 
 function_hook_state_t function_hook_state_ShowPedPaths = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_ShowPedPaths)
+CARM95_WEBSERVER_STATE(ShowPedPaths, function_hook_state_ShowPedPaths)
 static void(__cdecl*original_ShowPedPaths)() = (void(__cdecl*)())0x0045fcf5;
 CARM95_HOOK_FUNCTION(original_ShowPedPaths, ShowPedPaths)
 void __cdecl ShowPedPaths() {
@@ -2273,7 +2273,7 @@ void __cdecl ShowPedPaths() {
 }
 
 function_hook_state_t function_hook_state_PullPedPoint = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PullPedPoint)
+CARM95_WEBSERVER_STATE(PullPedPoint, function_hook_state_PullPedPoint)
 static void(__cdecl*original_PullPedPoint)() = (void(__cdecl*)())0x0045fe84;
 CARM95_HOOK_FUNCTION(original_PullPedPoint, PullPedPoint)
 void __cdecl PullPedPoint() {
@@ -2293,7 +2293,7 @@ void __cdecl PullPedPoint() {
 }
 
 function_hook_state_t function_hook_state_PullPedPointAir = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_PullPedPointAir)
+CARM95_WEBSERVER_STATE(PullPedPointAir, function_hook_state_PullPedPointAir)
 static void(__cdecl*original_PullPedPointAir)() = (void(__cdecl*)())0x0045ffc0;
 CARM95_HOOK_FUNCTION(original_PullPedPointAir, PullPedPointAir)
 void __cdecl PullPedPointAir() {
@@ -2313,7 +2313,7 @@ void __cdecl PullPedPointAir() {
 }
 
 function_hook_state_t function_hook_state_DeletePedPath = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DeletePedPath)
+CARM95_WEBSERVER_STATE(DeletePedPath, function_hook_state_DeletePedPath)
 static void(__cdecl*original_DeletePedPath)() = (void(__cdecl*)())0x00460082;
 CARM95_HOOK_FUNCTION(original_DeletePedPath, DeletePedPath)
 void __cdecl DeletePedPath() {
@@ -2335,7 +2335,7 @@ void __cdecl DeletePedPath() {
 }
 
 function_hook_state_t function_hook_state_DeletePedPoint = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DeletePedPoint)
+CARM95_WEBSERVER_STATE(DeletePedPoint, function_hook_state_DeletePedPoint)
 static void(__cdecl*original_DeletePedPoint)() = (void(__cdecl*)())0x0046010f;
 CARM95_HOOK_FUNCTION(original_DeletePedPoint, DeletePedPoint)
 void __cdecl DeletePedPoint() {
@@ -2351,7 +2351,7 @@ void __cdecl DeletePedPoint() {
 }
 
 function_hook_state_t function_hook_state_DisposePedestrians = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DisposePedestrians)
+CARM95_WEBSERVER_STATE(DisposePedestrians, function_hook_state_DisposePedestrians)
 static void(__cdecl*original_DisposePedestrians)() = (void(__cdecl*)())0x00460169;
 CARM95_HOOK_FUNCTION(original_DisposePedestrians, DisposePedestrians)
 void __cdecl DisposePedestrians() {
@@ -2373,7 +2373,7 @@ void __cdecl DisposePedestrians() {
 }
 
 function_hook_state_t function_hook_state_DoPedReport = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DoPedReport)
+CARM95_WEBSERVER_STATE(DoPedReport, function_hook_state_DoPedReport)
 static void(__cdecl*original_DoPedReport)() = (void(__cdecl*)())0x004603d6;
 CARM95_HOOK_FUNCTION(original_DoPedReport, DoPedReport)
 void __cdecl DoPedReport() {
@@ -2403,7 +2403,7 @@ void __cdecl DoPedReport() {
 }
 
 function_hook_state_t function_hook_state_RenderProximityRays = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_RenderProximityRays)
+CARM95_WEBSERVER_STATE(RenderProximityRays, function_hook_state_RenderProximityRays)
 static void(__cdecl*original_RenderProximityRays)(br_pixelmap *, br_pixelmap *, br_actor *, br_matrix34 *, tU32) = (void(__cdecl*)(br_pixelmap *, br_pixelmap *, br_actor *, br_matrix34 *, tU32))0x00460696;
 CARM95_HOOK_FUNCTION(original_RenderProximityRays, RenderProximityRays)
 void __cdecl RenderProximityRays(br_pixelmap *pRender_screen, br_pixelmap *pDepth_buffer, br_actor *pCamera, br_matrix34 *pCamera_to_world, tU32 pTime) {
@@ -2460,7 +2460,7 @@ void __cdecl RenderProximityRays(br_pixelmap *pRender_screen, br_pixelmap *pDept
 }
 
 function_hook_state_t function_hook_state_AdjustProxRay = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_AdjustProxRay)
+CARM95_WEBSERVER_STATE(AdjustProxRay, function_hook_state_AdjustProxRay)
 static void(__cdecl*original_AdjustProxRay)(int, tU16, tU16, tU32) = (void(__cdecl*)(int, tU16, tU16, tU32))0x00460ac5;
 CARM95_HOOK_FUNCTION(original_AdjustProxRay, AdjustProxRay)
 void __cdecl AdjustProxRay(int pRay_index, tU16 pCar_ID, tU16 pPed_index, tU32 pTime) {
@@ -2480,7 +2480,7 @@ void __cdecl AdjustProxRay(int pRay_index, tU16 pCar_ID, tU16 pPed_index, tU32 p
 }
 
 function_hook_state_t function_hook_state_ReceivedPedestrian = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_ReceivedPedestrian)
+CARM95_WEBSERVER_STATE(ReceivedPedestrian, function_hook_state_ReceivedPedestrian)
 static void(__cdecl*original_ReceivedPedestrian)(tNet_contents *, tNet_message *, tU32) = (void(__cdecl*)(tNet_contents *, tNet_message *, tU32))0x00460b66;
 CARM95_HOOK_FUNCTION(original_ReceivedPedestrian, ReceivedPedestrian)
 void __cdecl ReceivedPedestrian(tNet_contents *pContents, tNet_message *pMessage, tU32 pReceive_time) {
@@ -2517,7 +2517,7 @@ void __cdecl ReceivedPedestrian(tNet_contents *pContents, tNet_message *pMessage
 }
 
 function_hook_state_t function_hook_state_SendAllPedestrianPositions = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_SendAllPedestrianPositions)
+CARM95_WEBSERVER_STATE(SendAllPedestrianPositions, function_hook_state_SendAllPedestrianPositions)
 static void(__cdecl*original_SendAllPedestrianPositions)(tPlayer_ID) = (void(__cdecl*)(tPlayer_ID))0x0046109c;
 CARM95_HOOK_FUNCTION(original_SendAllPedestrianPositions, SendAllPedestrianPositions)
 void __cdecl SendAllPedestrianPositions(tPlayer_ID pPlayer) {

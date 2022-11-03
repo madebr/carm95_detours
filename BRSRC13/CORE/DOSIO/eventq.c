@@ -15,7 +15,7 @@ host_real_memory * hookvar__DOSEventMemory ;
 #endif
 
 function_hook_state_t function_hook_state_DOSEventBegin = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DOSEventBegin)
+CARM95_WEBSERVER_STATE(DOSEventBegin, function_hook_state_DOSEventBegin)
 br_error DOSEventBegin() {
     host_info hi;
     int s;
@@ -33,7 +33,7 @@ br_error DOSEventBegin() {
 }
 
 function_hook_state_t function_hook_state_DOSEventEnd = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DOSEventEnd)
+CARM95_WEBSERVER_STATE(DOSEventEnd, function_hook_state_DOSEventEnd)
 void DOSEventEnd() {
     LOG_TRACE("()");
 
@@ -47,7 +47,7 @@ void DOSEventEnd() {
 }
 
 function_hook_state_t function_hook_state_DOSEventWait = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DOSEventWait)
+CARM95_WEBSERVER_STATE(DOSEventWait, function_hook_state_DOSEventWait)
 br_boolean DOSEventWait(dosio_event *event, br_boolean block) {
     int t;
     LOG_TRACE("(%p, %d)", event, block);

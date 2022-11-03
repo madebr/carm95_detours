@@ -9,7 +9,7 @@
 #include <assert.h>
 
 function_hook_state_t function_hook_state_BrFloatFloor = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrFloatFloor)
+CARM95_WEBSERVER_STATE(BrFloatFloor, function_hook_state_BrFloatFloor)
 static float(__cdecl*original_BrFloatFloor)(float) = (float(__cdecl*)(float))0x00502b20;
 CARM95_HOOK_FUNCTION(original_BrFloatFloor, BrFloatFloor)
 float __cdecl BrFloatFloor(float f) {
@@ -26,7 +26,7 @@ float __cdecl BrFloatFloor(float f) {
 }
 
 function_hook_state_t function_hook_state_BrFloatCeil = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrFloatCeil)
+CARM95_WEBSERVER_STATE(BrFloatCeil, function_hook_state_BrFloatCeil)
 static float(__cdecl*original_BrFloatCeil)(float) = (float(__cdecl*)(float))0x00502b40;
 CARM95_HOOK_FUNCTION(original_BrFloatCeil, BrFloatCeil)
 float __cdecl BrFloatCeil(float f) {
@@ -43,7 +43,7 @@ float __cdecl BrFloatCeil(float f) {
 }
 
 function_hook_state_t function_hook_state_BrFloatSqrt = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrFloatSqrt)
+CARM95_WEBSERVER_STATE(BrFloatSqrt, function_hook_state_BrFloatSqrt)
 static float(__cdecl*original_BrFloatSqrt)(float) = (float(__cdecl*)(float))0x00502b60;
 CARM95_HOOK_FUNCTION(original_BrFloatSqrt, BrFloatSqrt)
 float __cdecl BrFloatSqrt(float f) {
@@ -60,7 +60,7 @@ float __cdecl BrFloatSqrt(float f) {
 }
 
 function_hook_state_t function_hook_state_BrFloatPow = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrFloatPow)
+CARM95_WEBSERVER_STATE(BrFloatPow, function_hook_state_BrFloatPow)
 static float(__stdcall*original_BrFloatPow)(float, float) = (float(__stdcall*)(float, float))0x00502b70;
 CARM95_HOOK_FUNCTION(original_BrFloatPow, BrFloatPow)
 float __stdcall BrFloatPow(float a, float b) {
@@ -78,7 +78,7 @@ float __stdcall BrFloatPow(float a, float b) {
 }
 
 function_hook_state_t function_hook_state_BrFloatAtan2 = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrFloatAtan2)
+CARM95_WEBSERVER_STATE(BrFloatAtan2, function_hook_state_BrFloatAtan2)
 static float(__cdecl*original_BrFloatAtan2)(float, float) = (float(__cdecl*)(float, float))0x00502b80;
 CARM95_HOOK_FUNCTION(original_BrFloatAtan2, BrFloatAtan2)
 float __cdecl BrFloatAtan2(float x, float y) {

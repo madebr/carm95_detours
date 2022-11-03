@@ -41,7 +41,7 @@ int CDECL main(int argc, char *argv[])
     char *sha256 = hook_calculate_sha256(victimPath.c_str());
     int valid = 0;
     for (int i = 0; i < ASIZE(reference_sha256_hashes); i++) {
-        if (strcasecmp(sha256, reference_sha256_hashes[i]) == 0) {
+        if (stricmp(sha256, reference_sha256_hashes[i]) == 0) {
             valid = 1;
             break;
         }

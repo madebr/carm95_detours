@@ -63,7 +63,7 @@ br_vector3 * hookvar_gOld_camera_position  = (void*)0x00550a40;
 br_vector3 * hookvar_gCamera_velocity  = (void*)0x00550a50;
 
 function_hook_state_t function_hook_state_UsePathFileToDetermineIfFullInstallation = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_UsePathFileToDetermineIfFullInstallation)
+CARM95_WEBSERVER_STATE(UsePathFileToDetermineIfFullInstallation, function_hook_state_UsePathFileToDetermineIfFullInstallation)
 static void(__cdecl*original_UsePathFileToDetermineIfFullInstallation)() = (void(__cdecl*)())0x00463fb0;
 CARM95_HOOK_FUNCTION(original_UsePathFileToDetermineIfFullInstallation, UsePathFileToDetermineIfFullInstallation)
 void __cdecl UsePathFileToDetermineIfFullInstallation() {
@@ -89,7 +89,7 @@ void __cdecl UsePathFileToDetermineIfFullInstallation() {
 }
 
 function_hook_state_t function_hook_state_InitSound = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_InitSound)
+CARM95_WEBSERVER_STATE(InitSound, function_hook_state_InitSound)
 static void(__cdecl*original_InitSound)() = (void(__cdecl*)())0x00464117;
 CARM95_HOOK_FUNCTION(original_InitSound, InitSound)
 void __cdecl InitSound() {
@@ -115,7 +115,7 @@ void __cdecl InitSound() {
 }
 
 function_hook_state_t function_hook_state_DRS3StartSound = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DRS3StartSound)
+CARM95_WEBSERVER_STATE(DRS3StartSound, function_hook_state_DRS3StartSound)
 static tS3_sound_tag(__cdecl*original_DRS3StartSound)(tS3_outlet_ptr, tS3_sound_id) = (tS3_sound_tag(__cdecl*)(tS3_outlet_ptr, tS3_sound_id))0x0046458b;
 CARM95_HOOK_FUNCTION(original_DRS3StartSound, DRS3StartSound)
 tS3_sound_tag __cdecl DRS3StartSound(tS3_outlet_ptr pOutlet, tS3_sound_id pSound) {
@@ -133,7 +133,7 @@ tS3_sound_tag __cdecl DRS3StartSound(tS3_outlet_ptr pOutlet, tS3_sound_id pSound
 }
 
 function_hook_state_t function_hook_state_DRS3StartSoundNoPiping = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DRS3StartSoundNoPiping)
+CARM95_WEBSERVER_STATE(DRS3StartSoundNoPiping, function_hook_state_DRS3StartSoundNoPiping)
 static tS3_sound_tag(__cdecl*original_DRS3StartSoundNoPiping)(tS3_outlet_ptr, tS3_sound_id) = (tS3_sound_tag(__cdecl*)(tS3_outlet_ptr, tS3_sound_id))0x0046461d;
 CARM95_HOOK_FUNCTION(original_DRS3StartSoundNoPiping, DRS3StartSoundNoPiping)
 tS3_sound_tag __cdecl DRS3StartSoundNoPiping(tS3_outlet_ptr pOutlet, tS3_sound_id pSound) {
@@ -151,7 +151,7 @@ tS3_sound_tag __cdecl DRS3StartSoundNoPiping(tS3_outlet_ptr pOutlet, tS3_sound_i
 }
 
 function_hook_state_t function_hook_state_DRS3StartSound2 = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DRS3StartSound2)
+CARM95_WEBSERVER_STATE(DRS3StartSound2, function_hook_state_DRS3StartSound2)
 static tS3_sound_tag(__cdecl*original_DRS3StartSound2)(tS3_outlet_ptr, tS3_sound_id, tS3_repeats, tS3_volume, tS3_volume, tS3_pitch, tS3_speed) = (tS3_sound_tag(__cdecl*)(tS3_outlet_ptr, tS3_sound_id, tS3_repeats, tS3_volume, tS3_volume, tS3_pitch, tS3_speed))0x00464656;
 CARM95_HOOK_FUNCTION(original_DRS3StartSound2, DRS3StartSound2)
 tS3_sound_tag __cdecl DRS3StartSound2(tS3_outlet_ptr pOutlet, tS3_sound_id pSound, tS3_repeats pRepeats, tS3_volume pLVolume, tS3_volume pRVolume, tS3_pitch pPitch, tS3_speed pSpeed) {
@@ -174,7 +174,7 @@ tS3_sound_tag __cdecl DRS3StartSound2(tS3_outlet_ptr pOutlet, tS3_sound_id pSoun
 }
 
 function_hook_state_t function_hook_state_DRS3ChangeVolume = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DRS3ChangeVolume)
+CARM95_WEBSERVER_STATE(DRS3ChangeVolume, function_hook_state_DRS3ChangeVolume)
 static int(__cdecl*original_DRS3ChangeVolume)(tS3_sound_tag, tS3_volume) = (int(__cdecl*)(tS3_sound_tag, tS3_volume))0x00464724;
 CARM95_HOOK_FUNCTION(original_DRS3ChangeVolume, DRS3ChangeVolume)
 int __cdecl DRS3ChangeVolume(tS3_sound_tag pSound_tag, tS3_volume pNew_volume) {
@@ -192,7 +192,7 @@ int __cdecl DRS3ChangeVolume(tS3_sound_tag pSound_tag, tS3_volume pNew_volume) {
 }
 
 function_hook_state_t function_hook_state_DRS3ChangeLRVolume = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DRS3ChangeLRVolume)
+CARM95_WEBSERVER_STATE(DRS3ChangeLRVolume, function_hook_state_DRS3ChangeLRVolume)
 static int(__cdecl*original_DRS3ChangeLRVolume)(tS3_sound_tag, tS3_volume, tS3_volume) = (int(__cdecl*)(tS3_sound_tag, tS3_volume, tS3_volume))0x0046475d;
 CARM95_HOOK_FUNCTION(original_DRS3ChangeLRVolume, DRS3ChangeLRVolume)
 int __cdecl DRS3ChangeLRVolume(tS3_sound_tag pSound_tag, tS3_volume pNew_Lvolume, tS3_volume pNew_Rvolume) {
@@ -211,7 +211,7 @@ int __cdecl DRS3ChangeLRVolume(tS3_sound_tag pSound_tag, tS3_volume pNew_Lvolume
 }
 
 function_hook_state_t function_hook_state_DRS3ChangePitch = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DRS3ChangePitch)
+CARM95_WEBSERVER_STATE(DRS3ChangePitch, function_hook_state_DRS3ChangePitch)
 static int(__cdecl*original_DRS3ChangePitch)(tS3_sound_tag, tS3_pitch) = (int(__cdecl*)(tS3_sound_tag, tS3_pitch))0x0046479a;
 CARM95_HOOK_FUNCTION(original_DRS3ChangePitch, DRS3ChangePitch)
 int __cdecl DRS3ChangePitch(tS3_sound_tag pTag, tS3_pitch pNew_pitch) {
@@ -229,7 +229,7 @@ int __cdecl DRS3ChangePitch(tS3_sound_tag pTag, tS3_pitch pNew_pitch) {
 }
 
 function_hook_state_t function_hook_state_DRS3ChangeSpeed = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DRS3ChangeSpeed)
+CARM95_WEBSERVER_STATE(DRS3ChangeSpeed, function_hook_state_DRS3ChangeSpeed)
 static int(__cdecl*original_DRS3ChangeSpeed)(tS3_sound_tag, tS3_pitch) = (int(__cdecl*)(tS3_sound_tag, tS3_pitch))0x004647d3;
 CARM95_HOOK_FUNCTION(original_DRS3ChangeSpeed, DRS3ChangeSpeed)
 int __cdecl DRS3ChangeSpeed(tS3_sound_tag pTag, tS3_pitch pNew_speed) {
@@ -247,7 +247,7 @@ int __cdecl DRS3ChangeSpeed(tS3_sound_tag pTag, tS3_pitch pNew_speed) {
 }
 
 function_hook_state_t function_hook_state_DRS3ChangePitchSpeed = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DRS3ChangePitchSpeed)
+CARM95_WEBSERVER_STATE(DRS3ChangePitchSpeed, function_hook_state_DRS3ChangePitchSpeed)
 static int(__cdecl*original_DRS3ChangePitchSpeed)(tS3_sound_tag, tS3_pitch) = (int(__cdecl*)(tS3_sound_tag, tS3_pitch))0x0046480c;
 CARM95_HOOK_FUNCTION(original_DRS3ChangePitchSpeed, DRS3ChangePitchSpeed)
 int __cdecl DRS3ChangePitchSpeed(tS3_sound_tag pTag, tS3_pitch pNew_pitch) {
@@ -265,7 +265,7 @@ int __cdecl DRS3ChangePitchSpeed(tS3_sound_tag pTag, tS3_pitch pNew_pitch) {
 }
 
 function_hook_state_t function_hook_state_DRS3StopSound = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DRS3StopSound)
+CARM95_WEBSERVER_STATE(DRS3StopSound, function_hook_state_DRS3StopSound)
 static int(__cdecl*original_DRS3StopSound)(tS3_sound_tag) = (int(__cdecl*)(tS3_sound_tag))0x00464845;
 CARM95_HOOK_FUNCTION(original_DRS3StopSound, DRS3StopSound)
 int __cdecl DRS3StopSound(tS3_sound_tag pSound_tag) {
@@ -282,7 +282,7 @@ int __cdecl DRS3StopSound(tS3_sound_tag pSound_tag) {
 }
 
 function_hook_state_t function_hook_state_DRS3LoadSound = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DRS3LoadSound)
+CARM95_WEBSERVER_STATE(DRS3LoadSound, function_hook_state_DRS3LoadSound)
 static int(__cdecl*original_DRS3LoadSound)(tS3_sound_id) = (int(__cdecl*)(tS3_sound_id))0x0046487a;
 CARM95_HOOK_FUNCTION(original_DRS3LoadSound, DRS3LoadSound)
 int __cdecl DRS3LoadSound(tS3_sound_id pThe_sound) {
@@ -299,7 +299,7 @@ int __cdecl DRS3LoadSound(tS3_sound_id pThe_sound) {
 }
 
 function_hook_state_t function_hook_state_DRS3ReleaseSound = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DRS3ReleaseSound)
+CARM95_WEBSERVER_STATE(DRS3ReleaseSound, function_hook_state_DRS3ReleaseSound)
 static int(__cdecl*original_DRS3ReleaseSound)(tS3_sound_id) = (int(__cdecl*)(tS3_sound_id))0x004648af;
 CARM95_HOOK_FUNCTION(original_DRS3ReleaseSound, DRS3ReleaseSound)
 int __cdecl DRS3ReleaseSound(tS3_sound_id pThe_sound) {
@@ -316,7 +316,7 @@ int __cdecl DRS3ReleaseSound(tS3_sound_id pThe_sound) {
 }
 
 function_hook_state_t function_hook_state_DRS3Service = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DRS3Service)
+CARM95_WEBSERVER_STATE(DRS3Service, function_hook_state_DRS3Service)
 void DRS3Service() {
     LOG_TRACE("()");
 
@@ -330,7 +330,7 @@ void DRS3Service() {
 }
 
 function_hook_state_t function_hook_state_DRS3OutletSoundsPlaying = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DRS3OutletSoundsPlaying)
+CARM95_WEBSERVER_STATE(DRS3OutletSoundsPlaying, function_hook_state_DRS3OutletSoundsPlaying)
 static int(__cdecl*original_DRS3OutletSoundsPlaying)(tS3_outlet_ptr) = (int(__cdecl*)(tS3_outlet_ptr))0x0046493a;
 CARM95_HOOK_FUNCTION(original_DRS3OutletSoundsPlaying, DRS3OutletSoundsPlaying)
 int __cdecl DRS3OutletSoundsPlaying(tS3_outlet_ptr pOutlet) {
@@ -347,7 +347,7 @@ int __cdecl DRS3OutletSoundsPlaying(tS3_outlet_ptr pOutlet) {
 }
 
 function_hook_state_t function_hook_state_DRS3SoundStillPlaying = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DRS3SoundStillPlaying)
+CARM95_WEBSERVER_STATE(DRS3SoundStillPlaying, function_hook_state_DRS3SoundStillPlaying)
 static int(__cdecl*original_DRS3SoundStillPlaying)(tS3_sound_tag) = (int(__cdecl*)(tS3_sound_tag))0x0046496f;
 CARM95_HOOK_FUNCTION(original_DRS3SoundStillPlaying, DRS3SoundStillPlaying)
 int __cdecl DRS3SoundStillPlaying(tS3_sound_tag pSound_tag) {
@@ -364,7 +364,7 @@ int __cdecl DRS3SoundStillPlaying(tS3_sound_tag pSound_tag) {
 }
 
 function_hook_state_t function_hook_state_DRS3ShutDown = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DRS3ShutDown)
+CARM95_WEBSERVER_STATE(DRS3ShutDown, function_hook_state_DRS3ShutDown)
 static void(__cdecl*original_DRS3ShutDown)() = (void(__cdecl*)())0x004649a4;
 CARM95_HOOK_FUNCTION(original_DRS3ShutDown, DRS3ShutDown)
 void __cdecl DRS3ShutDown() {
@@ -380,7 +380,7 @@ void __cdecl DRS3ShutDown() {
 }
 
 function_hook_state_t function_hook_state_DRS3SetOutletVolume = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DRS3SetOutletVolume)
+CARM95_WEBSERVER_STATE(DRS3SetOutletVolume, function_hook_state_DRS3SetOutletVolume)
 static int(__cdecl*original_DRS3SetOutletVolume)(tS3_outlet_ptr, tS3_volume) = (int(__cdecl*)(tS3_outlet_ptr, tS3_volume))0x004649cb;
 CARM95_HOOK_FUNCTION(original_DRS3SetOutletVolume, DRS3SetOutletVolume)
 int __cdecl DRS3SetOutletVolume(tS3_outlet_ptr pOutlet, tS3_volume pVolume) {
@@ -398,7 +398,7 @@ int __cdecl DRS3SetOutletVolume(tS3_outlet_ptr pOutlet, tS3_volume pVolume) {
 }
 
 function_hook_state_t function_hook_state_DRS3OverallVolume = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DRS3OverallVolume)
+CARM95_WEBSERVER_STATE(DRS3OverallVolume, function_hook_state_DRS3OverallVolume)
 static int(__cdecl*original_DRS3OverallVolume)(tS3_volume) = (int(__cdecl*)(tS3_volume))0x00464a04;
 CARM95_HOOK_FUNCTION(original_DRS3OverallVolume, DRS3OverallVolume)
 int __cdecl DRS3OverallVolume(tS3_volume pVolume) {
@@ -415,7 +415,7 @@ int __cdecl DRS3OverallVolume(tS3_volume pVolume) {
 }
 
 function_hook_state_t function_hook_state_DRS3StopOutletSound = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DRS3StopOutletSound)
+CARM95_WEBSERVER_STATE(DRS3StopOutletSound, function_hook_state_DRS3StopOutletSound)
 static int(__cdecl*original_DRS3StopOutletSound)(tS3_outlet_ptr) = (int(__cdecl*)(tS3_outlet_ptr))0x00464a39;
 CARM95_HOOK_FUNCTION(original_DRS3StopOutletSound, DRS3StopOutletSound)
 int __cdecl DRS3StopOutletSound(tS3_outlet_ptr pOutlet) {
@@ -432,7 +432,7 @@ int __cdecl DRS3StopOutletSound(tS3_outlet_ptr pOutlet) {
 }
 
 function_hook_state_t function_hook_state_DRS3StopAllOutletSounds = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DRS3StopAllOutletSounds)
+CARM95_WEBSERVER_STATE(DRS3StopAllOutletSounds, function_hook_state_DRS3StopAllOutletSounds)
 static int(__cdecl*original_DRS3StopAllOutletSounds)() = (int(__cdecl*)())0x00464a6e;
 CARM95_HOOK_FUNCTION(original_DRS3StopAllOutletSounds, DRS3StopAllOutletSounds)
 int __cdecl DRS3StopAllOutletSounds() {
@@ -448,7 +448,7 @@ int __cdecl DRS3StopAllOutletSounds() {
 }
 
 function_hook_state_t function_hook_state_ToggleSoundEnable = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_ToggleSoundEnable)
+CARM95_WEBSERVER_STATE(ToggleSoundEnable, function_hook_state_ToggleSoundEnable)
 static void(__cdecl*original_ToggleSoundEnable)() = (void(__cdecl*)())0x00464a9c;
 CARM95_HOOK_FUNCTION(original_ToggleSoundEnable, ToggleSoundEnable)
 void __cdecl ToggleSoundEnable() {
@@ -464,7 +464,7 @@ void __cdecl ToggleSoundEnable() {
 }
 
 function_hook_state_t function_hook_state_SoundService = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_SoundService)
+CARM95_WEBSERVER_STATE(SoundService, function_hook_state_SoundService)
 static void(__cdecl*original_SoundService)() = (void(__cdecl*)())0x00464adc;
 CARM95_HOOK_FUNCTION(original_SoundService, SoundService)
 void __cdecl SoundService() {
@@ -484,7 +484,7 @@ void __cdecl SoundService() {
 }
 
 function_hook_state_t function_hook_state_InitSoundSources = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_InitSoundSources)
+CARM95_WEBSERVER_STATE(InitSoundSources, function_hook_state_InitSoundSources)
 static void(__cdecl*original_InitSoundSources)() = (void(__cdecl*)())0x00464b51;
 CARM95_HOOK_FUNCTION(original_InitSoundSources, InitSoundSources)
 void __cdecl InitSoundSources() {
@@ -510,7 +510,7 @@ void __cdecl InitSoundSources() {
 }
 
 function_hook_state_t function_hook_state_DisposeSoundSources = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DisposeSoundSources)
+CARM95_WEBSERVER_STATE(DisposeSoundSources, function_hook_state_DisposeSoundSources)
 static void(__cdecl*original_DisposeSoundSources)() = (void(__cdecl*)())0x00464d79;
 CARM95_HOOK_FUNCTION(original_DisposeSoundSources, DisposeSoundSources)
 void __cdecl DisposeSoundSources() {
@@ -536,7 +536,7 @@ void __cdecl DisposeSoundSources() {
 }
 
 function_hook_state_t function_hook_state_DRS3StartSound3D = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DRS3StartSound3D)
+CARM95_WEBSERVER_STATE(DRS3StartSound3D, function_hook_state_DRS3StartSound3D)
 static tS3_sound_tag(__cdecl*original_DRS3StartSound3D)(tS3_outlet_ptr, tS3_sound_id, br_vector3 *, br_vector3 *, tS3_repeats, tS3_volume, tS3_pitch, tS3_speed) = (tS3_sound_tag(__cdecl*)(tS3_outlet_ptr, tS3_sound_id, br_vector3 *, br_vector3 *, tS3_repeats, tS3_volume, tS3_pitch, tS3_speed))0x00464f39;
 CARM95_HOOK_FUNCTION(original_DRS3StartSound3D, DRS3StartSound3D)
 tS3_sound_tag __cdecl DRS3StartSound3D(tS3_outlet_ptr pOutlet, tS3_sound_id pSound, br_vector3 *pInitial_position, br_vector3 *pInitial_velocity, tS3_repeats pRepeats, tS3_volume pVolume, tS3_pitch pPitch, tS3_speed pSpeed) {
@@ -562,7 +562,7 @@ tS3_sound_tag __cdecl DRS3StartSound3D(tS3_outlet_ptr pOutlet, tS3_sound_id pSou
 }
 
 function_hook_state_t function_hook_state_DRS3StartSoundFromSource3 = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DRS3StartSoundFromSource3)
+CARM95_WEBSERVER_STATE(DRS3StartSoundFromSource3, function_hook_state_DRS3StartSoundFromSource3)
 static tS3_sound_tag(__cdecl*original_DRS3StartSoundFromSource3)(tS3_sound_source_ptr, tS3_sound_id, tS3_repeats, tS3_volume, tS3_pitch, tS3_speed) = (tS3_sound_tag(__cdecl*)(tS3_sound_source_ptr, tS3_sound_id, tS3_repeats, tS3_volume, tS3_pitch, tS3_speed))0x00464ffc;
 CARM95_HOOK_FUNCTION(original_DRS3StartSoundFromSource3, DRS3StartSoundFromSource3)
 tS3_sound_tag __cdecl DRS3StartSoundFromSource3(tS3_sound_source_ptr pSource, tS3_sound_id pSound, tS3_repeats pRepeats, tS3_volume pVolume, tS3_pitch pPitch, tS3_speed pSpeed) {
@@ -586,7 +586,7 @@ tS3_sound_tag __cdecl DRS3StartSoundFromSource3(tS3_sound_source_ptr pSource, tS
 }
 
 function_hook_state_t function_hook_state_DRS3StartSoundFromSource = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DRS3StartSoundFromSource)
+CARM95_WEBSERVER_STATE(DRS3StartSoundFromSource, function_hook_state_DRS3StartSoundFromSource)
 static tS3_sound_tag(__cdecl*original_DRS3StartSoundFromSource)(tS3_sound_source_ptr, tS3_sound_id) = (tS3_sound_tag(__cdecl*)(tS3_sound_source_ptr, tS3_sound_id))0x0046504e;
 CARM95_HOOK_FUNCTION(original_DRS3StartSoundFromSource, DRS3StartSoundFromSource)
 tS3_sound_tag __cdecl DRS3StartSoundFromSource(tS3_sound_source_ptr pSource, tS3_sound_id pSound) {
@@ -606,7 +606,7 @@ tS3_sound_tag __cdecl DRS3StartSoundFromSource(tS3_sound_source_ptr pSource, tS3
 }
 
 function_hook_state_t function_hook_state_MungeEngineNoise = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_MungeEngineNoise)
+CARM95_WEBSERVER_STATE(MungeEngineNoise, function_hook_state_MungeEngineNoise)
 static void(__cdecl*original_MungeEngineNoise)() = (void(__cdecl*)())0x00465090;
 CARM95_HOOK_FUNCTION(original_MungeEngineNoise, MungeEngineNoise)
 void __cdecl MungeEngineNoise() {
@@ -640,7 +640,7 @@ void __cdecl MungeEngineNoise() {
 }
 
 function_hook_state_t function_hook_state_SetSoundVolumes = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_SetSoundVolumes)
+CARM95_WEBSERVER_STATE(SetSoundVolumes, function_hook_state_SetSoundVolumes)
 static void(__cdecl*original_SetSoundVolumes)() = (void(__cdecl*)())0x004655d8;
 CARM95_HOOK_FUNCTION(original_SetSoundVolumes, SetSoundVolumes)
 void __cdecl SetSoundVolumes() {
@@ -656,7 +656,7 @@ void __cdecl SetSoundVolumes() {
 }
 
 function_hook_state_t function_hook_state_GetOutletFromIndex = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_GetOutletFromIndex)
+CARM95_WEBSERVER_STATE(GetOutletFromIndex, function_hook_state_GetOutletFromIndex)
 static tS3_outlet_ptr(__cdecl*original_GetOutletFromIndex)(int) = (tS3_outlet_ptr(__cdecl*)(int))0x004656b1;
 CARM95_HOOK_FUNCTION(original_GetOutletFromIndex, GetOutletFromIndex)
 tS3_outlet_ptr __cdecl GetOutletFromIndex(int pIndex) {
@@ -673,7 +673,7 @@ tS3_outlet_ptr __cdecl GetOutletFromIndex(int pIndex) {
 }
 
 function_hook_state_t function_hook_state_GetIndexFromOutlet = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_GetIndexFromOutlet)
+CARM95_WEBSERVER_STATE(GetIndexFromOutlet, function_hook_state_GetIndexFromOutlet)
 static int(__cdecl*original_GetIndexFromOutlet)(tS3_outlet_ptr) = (int(__cdecl*)(tS3_outlet_ptr))0x004656cb;
 CARM95_HOOK_FUNCTION(original_GetIndexFromOutlet, GetIndexFromOutlet)
 int __cdecl GetIndexFromOutlet(tS3_outlet_ptr pOutlet) {
@@ -692,7 +692,7 @@ int __cdecl GetIndexFromOutlet(tS3_outlet_ptr pOutlet) {
 }
 
 function_hook_state_t function_hook_state_DRS3StartCDA = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DRS3StartCDA)
+CARM95_WEBSERVER_STATE(DRS3StartCDA, function_hook_state_DRS3StartCDA)
 static int(__cdecl*original_DRS3StartCDA)(tS3_sound_id) = (int(__cdecl*)(tS3_sound_id))0x00465719;
 CARM95_HOOK_FUNCTION(original_DRS3StartCDA, DRS3StartCDA)
 int __cdecl DRS3StartCDA(tS3_sound_id pCDA_id) {
@@ -709,7 +709,7 @@ int __cdecl DRS3StartCDA(tS3_sound_id pCDA_id) {
 }
 
 function_hook_state_t function_hook_state_DRS3StopCDA = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DRS3StopCDA)
+CARM95_WEBSERVER_STATE(DRS3StopCDA, function_hook_state_DRS3StopCDA)
 static int(__cdecl*original_DRS3StopCDA)() = (int(__cdecl*)())0x00465848;
 CARM95_HOOK_FUNCTION(original_DRS3StopCDA, DRS3StopCDA)
 int __cdecl DRS3StopCDA() {
@@ -725,7 +725,7 @@ int __cdecl DRS3StopCDA() {
 }
 
 function_hook_state_t function_hook_state_StartMusic = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_StartMusic)
+CARM95_WEBSERVER_STATE(StartMusic, function_hook_state_StartMusic)
 static void(__cdecl*original_StartMusic)() = (void(__cdecl*)())0x00465899;
 CARM95_HOOK_FUNCTION(original_StartMusic, StartMusic)
 void __cdecl StartMusic() {
@@ -741,7 +741,7 @@ void __cdecl StartMusic() {
 }
 
 function_hook_state_t function_hook_state_StopMusic = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_StopMusic)
+CARM95_WEBSERVER_STATE(StopMusic, function_hook_state_StopMusic)
 static void(__cdecl*original_StopMusic)() = (void(__cdecl*)())0x004658c3;
 CARM95_HOOK_FUNCTION(original_StopMusic, StopMusic)
 void __cdecl StopMusic() {

@@ -9,7 +9,7 @@
 #include <assert.h>
 
 function_hook_state_t function_hook_state_HostDefaultDevice = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_HostDefaultDevice)
+CARM95_WEBSERVER_STATE(HostDefaultDevice, function_hook_state_HostDefaultDevice)
 static char *(__cdecl*original_HostDefaultDevice)() = (char *(__cdecl*)())0x005013c0;
 CARM95_HOOK_FUNCTION(original_HostDefaultDevice, HostDefaultDevice)
 char* __cdecl HostDefaultDevice() {
@@ -25,7 +25,7 @@ char* __cdecl HostDefaultDevice() {
 }
 
 function_hook_state_t function_hook_state_HostIniSectionExists = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_HostIniSectionExists)
+CARM95_WEBSERVER_STATE(HostIniSectionExists, function_hook_state_HostIniSectionExists)
 static br_boolean(__cdecl*original_HostIniSectionExists)(char *, char *) = (br_boolean(__cdecl*)(char *, char *))0x005013d0;
 CARM95_HOOK_FUNCTION(original_HostIniSectionExists, HostIniSectionExists)
 br_boolean __cdecl HostIniSectionExists(char *ini_file, char *section_name) {
@@ -43,7 +43,7 @@ br_boolean __cdecl HostIniSectionExists(char *ini_file, char *section_name) {
 }
 
 function_hook_state_t function_hook_state_HostIniQuery = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_HostIniQuery)
+CARM95_WEBSERVER_STATE(HostIniQuery, function_hook_state_HostIniQuery)
 static br_error(__cdecl*original_HostIniQuery)(char *, char *, char *, char *, int, br_uint_16 *) = (br_error(__cdecl*)(char *, char *, char *, char *, int, br_uint_16 *))0x00501400;
 CARM95_HOOK_FUNCTION(original_HostIniQuery, HostIniQuery)
 br_error __cdecl HostIniQuery(char *ini_file, char *section_name, char *entry, char *Buffer, int max, br_uint_16 *size) {
@@ -65,7 +65,7 @@ br_error __cdecl HostIniQuery(char *ini_file, char *section_name, char *entry, c
 }
 
 function_hook_state_t function_hook_state_HostRegistryQuery = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_HostRegistryQuery)
+CARM95_WEBSERVER_STATE(HostRegistryQuery, function_hook_state_HostRegistryQuery)
 static br_error(__cdecl*original_HostRegistryQuery)(void *, char *, char *, char *, br_uint_16, br_uint_16 *) = (br_error(__cdecl*)(void *, char *, char *, char *, br_uint_16, br_uint_16 *))0x00501430;
 CARM95_HOOK_FUNCTION(original_HostRegistryQuery, HostRegistryQuery)
 br_error __cdecl HostRegistryQuery(void *hKey, char *Path, char *entry, char *Buffer, br_uint_16 max, br_uint_16 *size) {

@@ -9,7 +9,7 @@
 #include <assert.h>
 
 function_hook_state_t function_hook_state_BrLogWrite = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrLogWrite)
+CARM95_WEBSERVER_STATE(BrLogWrite, function_hook_state_BrLogWrite)
 static int(__cdecl*original_BrLogWrite)(void *, br_size_t, br_size_t) = (int(__cdecl*)(void *, br_size_t, br_size_t))0x00503120;
 CARM95_HOOK_FUNCTION(original_BrLogWrite, BrLogWrite)
 int __cdecl BrLogWrite(void *buffer, br_size_t s, br_size_t n) {

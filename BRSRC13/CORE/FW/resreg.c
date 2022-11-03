@@ -9,7 +9,7 @@
 #include <assert.h>
 
 function_hook_state_t function_hook_state_BrResClassAdd = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrResClassAdd)
+CARM95_WEBSERVER_STATE(BrResClassAdd, function_hook_state_BrResClassAdd)
 static br_resource_class *(__cdecl*original_BrResClassAdd)(br_resource_class *) = (br_resource_class *(__cdecl*)(br_resource_class *))0x004dfe00;
 CARM95_HOOK_FUNCTION(original_BrResClassAdd, BrResClassAdd)
 br_resource_class* __cdecl BrResClassAdd(br_resource_class *rclass) {
@@ -28,7 +28,7 @@ br_resource_class* __cdecl BrResClassAdd(br_resource_class *rclass) {
 }
 
 function_hook_state_t function_hook_state_BrResClassRemove = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrResClassRemove)
+CARM95_WEBSERVER_STATE(BrResClassRemove, function_hook_state_BrResClassRemove)
 static br_resource_class *(__cdecl*original_BrResClassRemove)(br_resource_class *) = (br_resource_class *(__cdecl*)(br_resource_class *))0x004dfe30;
 CARM95_HOOK_FUNCTION(original_BrResClassRemove, BrResClassRemove)
 br_resource_class* __cdecl BrResClassRemove(br_resource_class *rclass) {
@@ -47,7 +47,7 @@ br_resource_class* __cdecl BrResClassRemove(br_resource_class *rclass) {
 }
 
 function_hook_state_t function_hook_state_BrResClassFind = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrResClassFind)
+CARM95_WEBSERVER_STATE(BrResClassFind, function_hook_state_BrResClassFind)
 static br_resource_class *(__cdecl*original_BrResClassFind)(char *) = (br_resource_class *(__cdecl*)(char *))0x004dfe60;
 CARM95_HOOK_FUNCTION(original_BrResClassFind, BrResClassFind)
 br_resource_class* __cdecl BrResClassFind(char *pattern) {
@@ -64,7 +64,7 @@ br_resource_class* __cdecl BrResClassFind(char *pattern) {
 }
 
 function_hook_state_t function_hook_state_BrResClassFindHook = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrResClassFindHook)
+CARM95_WEBSERVER_STATE(BrResClassFindHook, function_hook_state_BrResClassFindHook)
 static br_resclass_find_cbfn *(__cdecl*original_BrResClassFindHook)(br_resclass_find_cbfn *) = (br_resclass_find_cbfn *(__cdecl*)(br_resclass_find_cbfn *))0x004dfe70;
 CARM95_HOOK_FUNCTION(original_BrResClassFindHook, BrResClassFindHook)
 br_resclass_find_cbfn* __cdecl BrResClassFindHook(br_resclass_find_cbfn *hook) {
@@ -83,7 +83,7 @@ br_resclass_find_cbfn* __cdecl BrResClassFindHook(br_resclass_find_cbfn *hook) {
 }
 
 function_hook_state_t function_hook_state_BrResClassAddMany = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrResClassAddMany)
+CARM95_WEBSERVER_STATE(BrResClassAddMany, function_hook_state_BrResClassAddMany)
 static br_uint_32(__cdecl*original_BrResClassAddMany)(br_resource_class **, int) = (br_uint_32(__cdecl*)(br_resource_class **, int))0x004dfe80;
 CARM95_HOOK_FUNCTION(original_BrResClassAddMany, BrResClassAddMany)
 br_uint_32 __cdecl BrResClassAddMany(br_resource_class **items, int n) {
@@ -103,7 +103,7 @@ br_uint_32 __cdecl BrResClassAddMany(br_resource_class **items, int n) {
 }
 
 function_hook_state_t function_hook_state_BrResClassRemoveMany = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrResClassRemoveMany)
+CARM95_WEBSERVER_STATE(BrResClassRemoveMany, function_hook_state_BrResClassRemoveMany)
 static br_uint_32(__cdecl*original_BrResClassRemoveMany)(br_resource_class **, int) = (br_uint_32(__cdecl*)(br_resource_class **, int))0x004dfec0;
 CARM95_HOOK_FUNCTION(original_BrResClassRemoveMany, BrResClassRemoveMany)
 br_uint_32 __cdecl BrResClassRemoveMany(br_resource_class **items, int n) {
@@ -125,7 +125,7 @@ br_uint_32 __cdecl BrResClassRemoveMany(br_resource_class **items, int n) {
 }
 
 function_hook_state_t function_hook_state_BrResClassFindMany = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrResClassFindMany)
+CARM95_WEBSERVER_STATE(BrResClassFindMany, function_hook_state_BrResClassFindMany)
 static br_uint_32(__cdecl*original_BrResClassFindMany)(char *, br_resource_class **, int) = (br_uint_32(__cdecl*)(char *, br_resource_class **, int))0x004dff10;
 CARM95_HOOK_FUNCTION(original_BrResClassFindMany, BrResClassFindMany)
 br_uint_32 __cdecl BrResClassFindMany(char *pattern, br_resource_class **items, int max) {
@@ -144,7 +144,7 @@ br_uint_32 __cdecl BrResClassFindMany(char *pattern, br_resource_class **items, 
 }
 
 function_hook_state_t function_hook_state_BrResClassCount = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrResClassCount)
+CARM95_WEBSERVER_STATE(BrResClassCount, function_hook_state_BrResClassCount)
 static br_uint_32(__cdecl*original_BrResClassCount)(char *) = (br_uint_32(__cdecl*)(char *))0x004dff30;
 CARM95_HOOK_FUNCTION(original_BrResClassCount, BrResClassCount)
 br_uint_32 __cdecl BrResClassCount(char *pattern) {
@@ -161,7 +161,7 @@ br_uint_32 __cdecl BrResClassCount(char *pattern) {
 }
 
 function_hook_state_t function_hook_state_BrResClassEnum = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrResClassEnum)
+CARM95_WEBSERVER_STATE(BrResClassEnum, function_hook_state_BrResClassEnum)
 static br_uint_32(__cdecl*original_BrResClassEnum)(char *, br_resclass_enum_cbfn *, void *) = (br_uint_32(__cdecl*)(char *, br_resclass_enum_cbfn *, void *))0x004dff40;
 CARM95_HOOK_FUNCTION(original_BrResClassEnum, BrResClassEnum)
 br_uint_32 __cdecl BrResClassEnum(char *pattern, br_resclass_enum_cbfn *callback, void *arg) {

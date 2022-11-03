@@ -13,7 +13,7 @@ struct br_tv_template_entry(* hookvar_devicePixelmapTemplateEntries )[4] = (void
 struct br_device_pixelmap_dispatch * hookvar_devicePixelmapDispatch  = (void*)0x00505760;
 
 function_hook_state_t function_hook_state_DevicePixelmapMemAllocate = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_DevicePixelmapMemAllocate)
+CARM95_WEBSERVER_STATE(DevicePixelmapMemAllocate, function_hook_state_DevicePixelmapMemAllocate)
 static br_device_pixelmap *(__stdcall*original_DevicePixelmapMemAllocate)(br_uint_8, br_uint_16, br_uint_16, void *, int) = (br_device_pixelmap *(__stdcall*)(br_uint_8, br_uint_16, br_uint_16, void *, int))0x004caf10;
 CARM95_HOOK_FUNCTION(original_DevicePixelmapMemAllocate, DevicePixelmapMemAllocate)
 br_device_pixelmap* __stdcall DevicePixelmapMemAllocate(br_uint_8 type, br_uint_16 w, br_uint_16 h, void *pixels, int flags) {
@@ -38,7 +38,7 @@ br_device_pixelmap* __stdcall DevicePixelmapMemAllocate(br_uint_8 type, br_uint_
 }
 
 function_hook_state_t function_hook_state__CheckDispatch = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state__CheckDispatch)
+CARM95_WEBSERVER_STATE(_CheckDispatch, function_hook_state__CheckDispatch)
 void _CheckDispatch(br_device_pixelmap *pm) {
     LOG_TRACE("(%p)", pm);
 
@@ -53,7 +53,7 @@ void _CheckDispatch(br_device_pixelmap *pm) {
 }
 
 function_hook_state_t function_hook_state__M_br_device_pixelmap_mem_allocateSub = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state__M_br_device_pixelmap_mem_allocateSub)
+CARM95_WEBSERVER_STATE(_M_br_device_pixelmap_mem_allocateSub, function_hook_state__M_br_device_pixelmap_mem_allocateSub)
 static br_error(__cdecl*original__M_br_device_pixelmap_mem_allocateSub)(br_device_pixelmap *, br_device_pixelmap **, br_rectangle *) = (br_error(__cdecl*)(br_device_pixelmap *, br_device_pixelmap **, br_rectangle *))0x004cb040;
 CARM95_HOOK_FUNCTION(original__M_br_device_pixelmap_mem_allocateSub, _M_br_device_pixelmap_mem_allocateSub)
 br_error __cdecl _M_br_device_pixelmap_mem_allocateSub(br_device_pixelmap *self, br_device_pixelmap **newpm, br_rectangle *rect) {
@@ -76,7 +76,7 @@ br_error __cdecl _M_br_device_pixelmap_mem_allocateSub(br_device_pixelmap *self,
 }
 
 function_hook_state_t function_hook_state__M_br_device_pixelmap_mem_free = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state__M_br_device_pixelmap_mem_free)
+CARM95_WEBSERVER_STATE(_M_br_device_pixelmap_mem_free, function_hook_state__M_br_device_pixelmap_mem_free)
 static void(__cdecl*original__M_br_device_pixelmap_mem_free)(br_device_pixelmap *) = (void(__cdecl*)(br_device_pixelmap *))0x004cb0e0;
 CARM95_HOOK_FUNCTION(original__M_br_device_pixelmap_mem_free, _M_br_device_pixelmap_mem_free)
 void __cdecl _M_br_device_pixelmap_mem_free(br_device_pixelmap *self) {
@@ -93,7 +93,7 @@ void __cdecl _M_br_device_pixelmap_mem_free(br_device_pixelmap *self) {
 }
 
 function_hook_state_t function_hook_state__M_br_device_pixelmap_mem_identifier = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state__M_br_device_pixelmap_mem_identifier)
+CARM95_WEBSERVER_STATE(_M_br_device_pixelmap_mem_identifier, function_hook_state__M_br_device_pixelmap_mem_identifier)
 static char *(__cdecl*original__M_br_device_pixelmap_mem_identifier)(br_device_pixelmap *) = (char *(__cdecl*)(br_device_pixelmap *))0x004cb0f0;
 CARM95_HOOK_FUNCTION(original__M_br_device_pixelmap_mem_identifier, _M_br_device_pixelmap_mem_identifier)
 char* __cdecl _M_br_device_pixelmap_mem_identifier(br_device_pixelmap *self) {
@@ -110,7 +110,7 @@ char* __cdecl _M_br_device_pixelmap_mem_identifier(br_device_pixelmap *self) {
 }
 
 function_hook_state_t function_hook_state__M_br_device_pixelmap_mem_type = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state__M_br_device_pixelmap_mem_type)
+CARM95_WEBSERVER_STATE(_M_br_device_pixelmap_mem_type, function_hook_state__M_br_device_pixelmap_mem_type)
 static br_token(__cdecl*original__M_br_device_pixelmap_mem_type)(br_device_pixelmap *) = (br_token(__cdecl*)(br_device_pixelmap *))0x004cb100;
 CARM95_HOOK_FUNCTION(original__M_br_device_pixelmap_mem_type, _M_br_device_pixelmap_mem_type)
 br_token __cdecl _M_br_device_pixelmap_mem_type(br_device_pixelmap *self) {
@@ -127,7 +127,7 @@ br_token __cdecl _M_br_device_pixelmap_mem_type(br_device_pixelmap *self) {
 }
 
 function_hook_state_t function_hook_state__M_br_device_pixelmap_mem_isType = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state__M_br_device_pixelmap_mem_isType)
+CARM95_WEBSERVER_STATE(_M_br_device_pixelmap_mem_isType, function_hook_state__M_br_device_pixelmap_mem_isType)
 static br_boolean(__cdecl*original__M_br_device_pixelmap_mem_isType)(br_device_pixelmap *, br_token) = (br_boolean(__cdecl*)(br_device_pixelmap *, br_token))0x004cb110;
 CARM95_HOOK_FUNCTION(original__M_br_device_pixelmap_mem_isType, _M_br_device_pixelmap_mem_isType)
 br_boolean __cdecl _M_br_device_pixelmap_mem_isType(br_device_pixelmap *self, br_token t) {
@@ -145,7 +145,7 @@ br_boolean __cdecl _M_br_device_pixelmap_mem_isType(br_device_pixelmap *self, br
 }
 
 function_hook_state_t function_hook_state__M_br_device_pixelmap_mem_device = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state__M_br_device_pixelmap_mem_device)
+CARM95_WEBSERVER_STATE(_M_br_device_pixelmap_mem_device, function_hook_state__M_br_device_pixelmap_mem_device)
 struct br_device *(__cdecl*_M_br_device_pixelmap_mem_device)(br_device_pixelmap *) = (struct br_device *(__cdecl*)(br_device_pixelmap *))0x004cb130;
 struct br_device* _M_br_device_pixelmap_mem_device_do_not_use(br_device_pixelmap *self) {
     LOG_TRACE("(%p)", self);
@@ -161,7 +161,7 @@ struct br_device* _M_br_device_pixelmap_mem_device_do_not_use(br_device_pixelmap
 }
 
 function_hook_state_t function_hook_state__M_br_device_pixelmap_mem_space = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state__M_br_device_pixelmap_mem_space)
+CARM95_WEBSERVER_STATE(_M_br_device_pixelmap_mem_space, function_hook_state__M_br_device_pixelmap_mem_space)
 static br_int_32(__cdecl*original__M_br_device_pixelmap_mem_space)(br_device_pixelmap *) = (br_int_32(__cdecl*)(br_device_pixelmap *))0x004cb140;
 CARM95_HOOK_FUNCTION(original__M_br_device_pixelmap_mem_space, _M_br_device_pixelmap_mem_space)
 br_int_32 __cdecl _M_br_device_pixelmap_mem_space(br_device_pixelmap *self) {
@@ -178,7 +178,7 @@ br_int_32 __cdecl _M_br_device_pixelmap_mem_space(br_device_pixelmap *self) {
 }
 
 function_hook_state_t function_hook_state__M_br_device_pixelmap_mem_queryTemplate = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state__M_br_device_pixelmap_mem_queryTemplate)
+CARM95_WEBSERVER_STATE(_M_br_device_pixelmap_mem_queryTemplate, function_hook_state__M_br_device_pixelmap_mem_queryTemplate)
 static struct br_tv_template *(__cdecl*original__M_br_device_pixelmap_mem_queryTemplate)(br_device_pixelmap *) = (struct br_tv_template *(__cdecl*)(br_device_pixelmap *))0x004cb150;
 CARM95_HOOK_FUNCTION(original__M_br_device_pixelmap_mem_queryTemplate, _M_br_device_pixelmap_mem_queryTemplate)
 struct br_tv_template* __cdecl _M_br_device_pixelmap_mem_queryTemplate(br_device_pixelmap *self) {
@@ -195,7 +195,7 @@ struct br_tv_template* __cdecl _M_br_device_pixelmap_mem_queryTemplate(br_device
 }
 
 function_hook_state_t function_hook_state__M_br_device_pixelmap_mem_validSource = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state__M_br_device_pixelmap_mem_validSource)
+CARM95_WEBSERVER_STATE(_M_br_device_pixelmap_mem_validSource, function_hook_state__M_br_device_pixelmap_mem_validSource)
 br_error(__cdecl*_M_br_device_pixelmap_mem_validSource)(br_device_pixelmap *, br_object *) = (br_error(__cdecl*)(br_device_pixelmap *, br_object *))0x004cb180;
 br_error _M_br_device_pixelmap_mem_validSource_do_not_use(br_device_pixelmap *self, br_object *h) {
     LOG_TRACE("(%p, %p)", self, h);
@@ -212,7 +212,7 @@ br_error _M_br_device_pixelmap_mem_validSource_do_not_use(br_device_pixelmap *se
 }
 
 function_hook_state_t function_hook_state__M_br_device_pixelmap_mem_resize = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state__M_br_device_pixelmap_mem_resize)
+CARM95_WEBSERVER_STATE(_M_br_device_pixelmap_mem_resize, function_hook_state__M_br_device_pixelmap_mem_resize)
 static br_error(__cdecl*original__M_br_device_pixelmap_mem_resize)(br_device_pixelmap *, br_int_32, br_int_32) = (br_error(__cdecl*)(br_device_pixelmap *, br_int_32, br_int_32))0x004cb190;
 CARM95_HOOK_FUNCTION(original__M_br_device_pixelmap_mem_resize, _M_br_device_pixelmap_mem_resize)
 br_error __cdecl _M_br_device_pixelmap_mem_resize(br_device_pixelmap *self, br_int_32 width, br_int_32 height) {
@@ -237,7 +237,7 @@ br_error __cdecl _M_br_device_pixelmap_mem_resize(br_device_pixelmap *self, br_i
 }
 
 function_hook_state_t function_hook_state__M_br_device_pixelmap_mem_match = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state__M_br_device_pixelmap_mem_match)
+CARM95_WEBSERVER_STATE(_M_br_device_pixelmap_mem_match, function_hook_state__M_br_device_pixelmap_mem_match)
 static br_error(__cdecl*original__M_br_device_pixelmap_mem_match)(br_device_pixelmap *, br_device_pixelmap **, br_token_value *) = (br_error(__cdecl*)(br_device_pixelmap *, br_device_pixelmap **, br_token_value *))0x004cb290;
 CARM95_HOOK_FUNCTION(original__M_br_device_pixelmap_mem_match, _M_br_device_pixelmap_mem_match)
 br_error __cdecl _M_br_device_pixelmap_mem_match(br_device_pixelmap *self, br_device_pixelmap **newpm, br_token_value *tv) {
@@ -266,7 +266,7 @@ br_error __cdecl _M_br_device_pixelmap_mem_match(br_device_pixelmap *self, br_de
 }
 
 function_hook_state_t function_hook_state__M_br_device_pixelmap_mem_copyTo = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state__M_br_device_pixelmap_mem_copyTo)
+CARM95_WEBSERVER_STATE(_M_br_device_pixelmap_mem_copyTo, function_hook_state__M_br_device_pixelmap_mem_copyTo)
 static br_error(__cdecl*original__M_br_device_pixelmap_mem_copyTo)(br_device_pixelmap *, br_device_pixelmap *) = (br_error(__cdecl*)(br_device_pixelmap *, br_device_pixelmap *))0x004cb500;
 CARM95_HOOK_FUNCTION(original__M_br_device_pixelmap_mem_copyTo, _M_br_device_pixelmap_mem_copyTo)
 br_error __cdecl _M_br_device_pixelmap_mem_copyTo(br_device_pixelmap *self, br_device_pixelmap *src) {
@@ -292,7 +292,7 @@ br_error __cdecl _M_br_device_pixelmap_mem_copyTo(br_device_pixelmap *self, br_d
 }
 
 function_hook_state_t function_hook_state__M_br_device_pixelmap_mem_copyFrom = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state__M_br_device_pixelmap_mem_copyFrom)
+CARM95_WEBSERVER_STATE(_M_br_device_pixelmap_mem_copyFrom, function_hook_state__M_br_device_pixelmap_mem_copyFrom)
 static br_error(__cdecl*original__M_br_device_pixelmap_mem_copyFrom)(br_device_pixelmap *, br_device_pixelmap *) = (br_error(__cdecl*)(br_device_pixelmap *, br_device_pixelmap *))0x004cb6f0;
 CARM95_HOOK_FUNCTION(original__M_br_device_pixelmap_mem_copyFrom, _M_br_device_pixelmap_mem_copyFrom)
 br_error __cdecl _M_br_device_pixelmap_mem_copyFrom(br_device_pixelmap *self, br_device_pixelmap *dest) {
@@ -318,7 +318,7 @@ br_error __cdecl _M_br_device_pixelmap_mem_copyFrom(br_device_pixelmap *self, br
 }
 
 function_hook_state_t function_hook_state__M_br_device_pixelmap_mem_fill = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state__M_br_device_pixelmap_mem_fill)
+CARM95_WEBSERVER_STATE(_M_br_device_pixelmap_mem_fill, function_hook_state__M_br_device_pixelmap_mem_fill)
 static br_error(__cdecl*original__M_br_device_pixelmap_mem_fill)(br_device_pixelmap *, br_uint_32) = (br_error(__cdecl*)(br_device_pixelmap *, br_uint_32))0x004cb8d0;
 CARM95_HOOK_FUNCTION(original__M_br_device_pixelmap_mem_fill, _M_br_device_pixelmap_mem_fill)
 br_error __cdecl _M_br_device_pixelmap_mem_fill(br_device_pixelmap *self, br_uint_32 colour) {
@@ -342,7 +342,7 @@ br_error __cdecl _M_br_device_pixelmap_mem_fill(br_device_pixelmap *self, br_uin
 }
 
 function_hook_state_t function_hook_state__M_br_device_pixelmap_mem_doubleBuffer = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state__M_br_device_pixelmap_mem_doubleBuffer)
+CARM95_WEBSERVER_STATE(_M_br_device_pixelmap_mem_doubleBuffer, function_hook_state__M_br_device_pixelmap_mem_doubleBuffer)
 static br_error(__cdecl*original__M_br_device_pixelmap_mem_doubleBuffer)(br_device_pixelmap *, br_device_pixelmap *) = (br_error(__cdecl*)(br_device_pixelmap *, br_device_pixelmap *))0x004cba30;
 CARM95_HOOK_FUNCTION(original__M_br_device_pixelmap_mem_doubleBuffer, _M_br_device_pixelmap_mem_doubleBuffer)
 br_error __cdecl _M_br_device_pixelmap_mem_doubleBuffer(br_device_pixelmap *self, br_device_pixelmap *src) {
@@ -360,7 +360,7 @@ br_error __cdecl _M_br_device_pixelmap_mem_doubleBuffer(br_device_pixelmap *self
 }
 
 function_hook_state_t function_hook_state__M_br_device_pixelmap_mem_copyDirty = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state__M_br_device_pixelmap_mem_copyDirty)
+CARM95_WEBSERVER_STATE(_M_br_device_pixelmap_mem_copyDirty, function_hook_state__M_br_device_pixelmap_mem_copyDirty)
 static br_error(__cdecl*original__M_br_device_pixelmap_mem_copyDirty)(br_device_pixelmap *, br_device_pixelmap *, br_rectangle *, br_int_32) = (br_error(__cdecl*)(br_device_pixelmap *, br_device_pixelmap *, br_rectangle *, br_int_32))0x004cba40;
 CARM95_HOOK_FUNCTION(original__M_br_device_pixelmap_mem_copyDirty, _M_br_device_pixelmap_mem_copyDirty)
 br_error __cdecl _M_br_device_pixelmap_mem_copyDirty(br_device_pixelmap *self, br_device_pixelmap *src, br_rectangle *dirty, br_int_32 num_rects) {
@@ -380,7 +380,7 @@ br_error __cdecl _M_br_device_pixelmap_mem_copyDirty(br_device_pixelmap *self, b
 }
 
 function_hook_state_t function_hook_state__M_br_device_pixelmap_mem_copyToDirty = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state__M_br_device_pixelmap_mem_copyToDirty)
+CARM95_WEBSERVER_STATE(_M_br_device_pixelmap_mem_copyToDirty, function_hook_state__M_br_device_pixelmap_mem_copyToDirty)
 static br_error(__cdecl*original__M_br_device_pixelmap_mem_copyToDirty)(br_device_pixelmap *, br_device_pixelmap *, br_rectangle *, br_int_32) = (br_error(__cdecl*)(br_device_pixelmap *, br_device_pixelmap *, br_rectangle *, br_int_32))0x004cba50;
 CARM95_HOOK_FUNCTION(original__M_br_device_pixelmap_mem_copyToDirty, _M_br_device_pixelmap_mem_copyToDirty)
 br_error __cdecl _M_br_device_pixelmap_mem_copyToDirty(br_device_pixelmap *self, br_device_pixelmap *src, br_rectangle *dirty, br_int_32 num_rects) {
@@ -400,7 +400,7 @@ br_error __cdecl _M_br_device_pixelmap_mem_copyToDirty(br_device_pixelmap *self,
 }
 
 function_hook_state_t function_hook_state__M_br_device_pixelmap_mem_copyFromDirty = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state__M_br_device_pixelmap_mem_copyFromDirty)
+CARM95_WEBSERVER_STATE(_M_br_device_pixelmap_mem_copyFromDirty, function_hook_state__M_br_device_pixelmap_mem_copyFromDirty)
 static br_error(__cdecl*original__M_br_device_pixelmap_mem_copyFromDirty)(br_device_pixelmap *, br_device_pixelmap *, br_rectangle *, br_int_32) = (br_error(__cdecl*)(br_device_pixelmap *, br_device_pixelmap *, br_rectangle *, br_int_32))0x004cba60;
 CARM95_HOOK_FUNCTION(original__M_br_device_pixelmap_mem_copyFromDirty, _M_br_device_pixelmap_mem_copyFromDirty)
 br_error __cdecl _M_br_device_pixelmap_mem_copyFromDirty(br_device_pixelmap *self, br_device_pixelmap *src, br_rectangle *dirty, br_int_32 num_rects) {
@@ -420,7 +420,7 @@ br_error __cdecl _M_br_device_pixelmap_mem_copyFromDirty(br_device_pixelmap *sel
 }
 
 function_hook_state_t function_hook_state__M_br_device_pixelmap_mem_fillDirty = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state__M_br_device_pixelmap_mem_fillDirty)
+CARM95_WEBSERVER_STATE(_M_br_device_pixelmap_mem_fillDirty, function_hook_state__M_br_device_pixelmap_mem_fillDirty)
 static br_error(__cdecl*original__M_br_device_pixelmap_mem_fillDirty)(br_device_pixelmap *, br_uint_32, br_rectangle *, br_int_32) = (br_error(__cdecl*)(br_device_pixelmap *, br_uint_32, br_rectangle *, br_int_32))0x004cba70;
 CARM95_HOOK_FUNCTION(original__M_br_device_pixelmap_mem_fillDirty, _M_br_device_pixelmap_mem_fillDirty)
 br_error __cdecl _M_br_device_pixelmap_mem_fillDirty(br_device_pixelmap *self, br_uint_32 colour, br_rectangle *dirty, br_int_32 num_rects) {
@@ -440,7 +440,7 @@ br_error __cdecl _M_br_device_pixelmap_mem_fillDirty(br_device_pixelmap *self, b
 }
 
 function_hook_state_t function_hook_state__M_br_device_pixelmap_mem_doubleBufferDirty = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state__M_br_device_pixelmap_mem_doubleBufferDirty)
+CARM95_WEBSERVER_STATE(_M_br_device_pixelmap_mem_doubleBufferDirty, function_hook_state__M_br_device_pixelmap_mem_doubleBufferDirty)
 static br_error(__cdecl*original__M_br_device_pixelmap_mem_doubleBufferDirty)(br_device_pixelmap *, br_device_pixelmap *, br_rectangle *, br_int_32) = (br_error(__cdecl*)(br_device_pixelmap *, br_device_pixelmap *, br_rectangle *, br_int_32))0x004cba80;
 CARM95_HOOK_FUNCTION(original__M_br_device_pixelmap_mem_doubleBufferDirty, _M_br_device_pixelmap_mem_doubleBufferDirty)
 br_error __cdecl _M_br_device_pixelmap_mem_doubleBufferDirty(br_device_pixelmap *self, br_device_pixelmap *src, br_rectangle *dirty, br_int_32 num_rects) {
@@ -460,7 +460,7 @@ br_error __cdecl _M_br_device_pixelmap_mem_doubleBufferDirty(br_device_pixelmap 
 }
 
 function_hook_state_t function_hook_state__M_br_device_pixelmap_mem_rectangleCopyTo = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state__M_br_device_pixelmap_mem_rectangleCopyTo)
+CARM95_WEBSERVER_STATE(_M_br_device_pixelmap_mem_rectangleCopyTo, function_hook_state__M_br_device_pixelmap_mem_rectangleCopyTo)
 static br_error(__cdecl*original__M_br_device_pixelmap_mem_rectangleCopyTo)(br_device_pixelmap *, br_point *, br_device_pixelmap *, br_rectangle *) = (br_error(__cdecl*)(br_device_pixelmap *, br_point *, br_device_pixelmap *, br_rectangle *))0x004cba90;
 CARM95_HOOK_FUNCTION(original__M_br_device_pixelmap_mem_rectangleCopyTo, _M_br_device_pixelmap_mem_rectangleCopyTo)
 br_error __cdecl _M_br_device_pixelmap_mem_rectangleCopyTo(br_device_pixelmap *self, br_point *p, br_device_pixelmap *src, br_rectangle *r) {
@@ -492,7 +492,7 @@ br_error __cdecl _M_br_device_pixelmap_mem_rectangleCopyTo(br_device_pixelmap *s
 }
 
 function_hook_state_t function_hook_state__M_br_device_pixelmap_mem_rectangleCopyFrom = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state__M_br_device_pixelmap_mem_rectangleCopyFrom)
+CARM95_WEBSERVER_STATE(_M_br_device_pixelmap_mem_rectangleCopyFrom, function_hook_state__M_br_device_pixelmap_mem_rectangleCopyFrom)
 static br_error(__cdecl*original__M_br_device_pixelmap_mem_rectangleCopyFrom)(br_device_pixelmap *, br_point *, br_device_pixelmap *, br_rectangle *) = (br_error(__cdecl*)(br_device_pixelmap *, br_point *, br_device_pixelmap *, br_rectangle *))0x004cbd50;
 CARM95_HOOK_FUNCTION(original__M_br_device_pixelmap_mem_rectangleCopyFrom, _M_br_device_pixelmap_mem_rectangleCopyFrom)
 br_error __cdecl _M_br_device_pixelmap_mem_rectangleCopyFrom(br_device_pixelmap *self, br_point *p, br_device_pixelmap *dest, br_rectangle *r) {
@@ -524,7 +524,7 @@ br_error __cdecl _M_br_device_pixelmap_mem_rectangleCopyFrom(br_device_pixelmap 
 }
 
 function_hook_state_t function_hook_state__M_br_device_pixelmap_mem_rectangleStretchCopyTo = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state__M_br_device_pixelmap_mem_rectangleStretchCopyTo)
+CARM95_WEBSERVER_STATE(_M_br_device_pixelmap_mem_rectangleStretchCopyTo, function_hook_state__M_br_device_pixelmap_mem_rectangleStretchCopyTo)
 static br_error(__cdecl*original__M_br_device_pixelmap_mem_rectangleStretchCopyTo)(br_device_pixelmap *, br_rectangle *, br_device_pixelmap *, br_rectangle *) = (br_error(__cdecl*)(br_device_pixelmap *, br_rectangle *, br_device_pixelmap *, br_rectangle *))0x004cc010;
 CARM95_HOOK_FUNCTION(original__M_br_device_pixelmap_mem_rectangleStretchCopyTo, _M_br_device_pixelmap_mem_rectangleStretchCopyTo)
 br_error __cdecl _M_br_device_pixelmap_mem_rectangleStretchCopyTo(br_device_pixelmap *self, br_rectangle *destinationRectangle, br_device_pixelmap *src, br_rectangle *sourceRectangle) {
@@ -544,7 +544,7 @@ br_error __cdecl _M_br_device_pixelmap_mem_rectangleStretchCopyTo(br_device_pixe
 }
 
 function_hook_state_t function_hook_state__M_br_device_pixelmap_mem_rectangleStretchCopyFrom = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state__M_br_device_pixelmap_mem_rectangleStretchCopyFrom)
+CARM95_WEBSERVER_STATE(_M_br_device_pixelmap_mem_rectangleStretchCopyFrom, function_hook_state__M_br_device_pixelmap_mem_rectangleStretchCopyFrom)
 static br_error(__cdecl*original__M_br_device_pixelmap_mem_rectangleStretchCopyFrom)(br_device_pixelmap *, br_rectangle *, br_device_pixelmap *, br_rectangle *) = (br_error(__cdecl*)(br_device_pixelmap *, br_rectangle *, br_device_pixelmap *, br_rectangle *))0x004cc020;
 CARM95_HOOK_FUNCTION(original__M_br_device_pixelmap_mem_rectangleStretchCopyFrom, _M_br_device_pixelmap_mem_rectangleStretchCopyFrom)
 br_error __cdecl _M_br_device_pixelmap_mem_rectangleStretchCopyFrom(br_device_pixelmap *self, br_rectangle *d, br_device_pixelmap *src, br_rectangle *s) {
@@ -564,7 +564,7 @@ br_error __cdecl _M_br_device_pixelmap_mem_rectangleStretchCopyFrom(br_device_pi
 }
 
 function_hook_state_t function_hook_state__M_br_device_pixelmap_mem_rectangleFill = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state__M_br_device_pixelmap_mem_rectangleFill)
+CARM95_WEBSERVER_STATE(_M_br_device_pixelmap_mem_rectangleFill, function_hook_state__M_br_device_pixelmap_mem_rectangleFill)
 static br_error(__cdecl*original__M_br_device_pixelmap_mem_rectangleFill)(br_device_pixelmap *, br_rectangle *, br_uint_32) = (br_error(__cdecl*)(br_device_pixelmap *, br_rectangle *, br_uint_32))0x004cc030;
 CARM95_HOOK_FUNCTION(original__M_br_device_pixelmap_mem_rectangleFill, _M_br_device_pixelmap_mem_rectangleFill)
 br_error __cdecl _M_br_device_pixelmap_mem_rectangleFill(br_device_pixelmap *self, br_rectangle *rect, br_uint_32 colour) {
@@ -589,7 +589,7 @@ br_error __cdecl _M_br_device_pixelmap_mem_rectangleFill(br_device_pixelmap *sel
 }
 
 function_hook_state_t function_hook_state__M_br_device_pixelmap_mem_pixelSet = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state__M_br_device_pixelmap_mem_pixelSet)
+CARM95_WEBSERVER_STATE(_M_br_device_pixelmap_mem_pixelSet, function_hook_state__M_br_device_pixelmap_mem_pixelSet)
 static br_error(__cdecl*original__M_br_device_pixelmap_mem_pixelSet)(br_device_pixelmap *, br_point *, br_uint_32) = (br_error(__cdecl*)(br_device_pixelmap *, br_point *, br_uint_32))0x004cc200;
 CARM95_HOOK_FUNCTION(original__M_br_device_pixelmap_mem_pixelSet, _M_br_device_pixelmap_mem_pixelSet)
 br_error __cdecl _M_br_device_pixelmap_mem_pixelSet(br_device_pixelmap *self, br_point *p, br_uint_32 colour) {
@@ -612,7 +612,7 @@ br_error __cdecl _M_br_device_pixelmap_mem_pixelSet(br_device_pixelmap *self, br
 }
 
 function_hook_state_t function_hook_state__M_br_device_pixelmap_mem_line = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state__M_br_device_pixelmap_mem_line)
+CARM95_WEBSERVER_STATE(_M_br_device_pixelmap_mem_line, function_hook_state__M_br_device_pixelmap_mem_line)
 static br_error(__cdecl*original__M_br_device_pixelmap_mem_line)(br_device_pixelmap *, br_point *, br_point *, br_uint_32) = (br_error(__cdecl*)(br_device_pixelmap *, br_point *, br_point *, br_uint_32))0x004cc290;
 CARM95_HOOK_FUNCTION(original__M_br_device_pixelmap_mem_line, _M_br_device_pixelmap_mem_line)
 br_error __cdecl _M_br_device_pixelmap_mem_line(br_device_pixelmap *self, br_point *s, br_point *e, br_uint_32 colour) {
@@ -674,7 +674,7 @@ br_error __cdecl _M_br_device_pixelmap_mem_line(br_device_pixelmap *self, br_poi
 }
 
 function_hook_state_t function_hook_state__M_br_device_pixelmap_mem_copyBits = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state__M_br_device_pixelmap_mem_copyBits)
+CARM95_WEBSERVER_STATE(_M_br_device_pixelmap_mem_copyBits, function_hook_state__M_br_device_pixelmap_mem_copyBits)
 static br_error(__cdecl*original__M_br_device_pixelmap_mem_copyBits)(br_device_pixelmap *, br_point *, br_uint_8 *, br_uint_16, br_rectangle *, br_uint_32) = (br_error(__cdecl*)(br_device_pixelmap *, br_point *, br_uint_8 *, br_uint_16, br_rectangle *, br_uint_32))0x004cd850;
 CARM95_HOOK_FUNCTION(original__M_br_device_pixelmap_mem_copyBits, _M_br_device_pixelmap_mem_copyBits)
 br_error __cdecl _M_br_device_pixelmap_mem_copyBits(br_device_pixelmap *self, br_point *point, br_uint_8 *src, br_uint_16 s_stride, br_rectangle *bit_rect, br_uint_32 colour) {
@@ -704,7 +704,7 @@ br_error __cdecl _M_br_device_pixelmap_mem_copyBits(br_device_pixelmap *self, br
 }
 
 function_hook_state_t function_hook_state__M_br_device_pixelmap_mem_pixelQuery = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state__M_br_device_pixelmap_mem_pixelQuery)
+CARM95_WEBSERVER_STATE(_M_br_device_pixelmap_mem_pixelQuery, function_hook_state__M_br_device_pixelmap_mem_pixelQuery)
 static br_error(__cdecl*original__M_br_device_pixelmap_mem_pixelQuery)(br_device_pixelmap *, br_uint_32 *, br_point *) = (br_error(__cdecl*)(br_device_pixelmap *, br_uint_32 *, br_point *))0x004cd920;
 CARM95_HOOK_FUNCTION(original__M_br_device_pixelmap_mem_pixelQuery, _M_br_device_pixelmap_mem_pixelQuery)
 br_error __cdecl _M_br_device_pixelmap_mem_pixelQuery(br_device_pixelmap *self, br_uint_32 *pcolour, br_point *p) {
@@ -727,7 +727,7 @@ br_error __cdecl _M_br_device_pixelmap_mem_pixelQuery(br_device_pixelmap *self, 
 }
 
 function_hook_state_t function_hook_state__M_br_device_pixelmap_mem_pixelAddressQuery = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state__M_br_device_pixelmap_mem_pixelAddressQuery)
+CARM95_WEBSERVER_STATE(_M_br_device_pixelmap_mem_pixelAddressQuery, function_hook_state__M_br_device_pixelmap_mem_pixelAddressQuery)
 static br_error(__cdecl*original__M_br_device_pixelmap_mem_pixelAddressQuery)(br_device_pixelmap *, void **, br_uint_32 *, br_point *) = (br_error(__cdecl*)(br_device_pixelmap *, void **, br_uint_32 *, br_point *))0x004cd9b0;
 CARM95_HOOK_FUNCTION(original__M_br_device_pixelmap_mem_pixelAddressQuery, _M_br_device_pixelmap_mem_pixelAddressQuery)
 br_error __cdecl _M_br_device_pixelmap_mem_pixelAddressQuery(br_device_pixelmap *self, void **pptr, br_uint_32 *pqual, br_point *p) {
@@ -751,7 +751,7 @@ br_error __cdecl _M_br_device_pixelmap_mem_pixelAddressQuery(br_device_pixelmap 
 }
 
 function_hook_state_t function_hook_state__M_br_device_pixelmap_mem_pixelAddressSet = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state__M_br_device_pixelmap_mem_pixelAddressSet)
+CARM95_WEBSERVER_STATE(_M_br_device_pixelmap_mem_pixelAddressSet, function_hook_state__M_br_device_pixelmap_mem_pixelAddressSet)
 static br_error(__cdecl*original__M_br_device_pixelmap_mem_pixelAddressSet)(br_device_pixelmap *, void *, br_uint_32 *) = (br_error(__cdecl*)(br_device_pixelmap *, void *, br_uint_32 *))0x004cda40;
 CARM95_HOOK_FUNCTION(original__M_br_device_pixelmap_mem_pixelAddressSet, _M_br_device_pixelmap_mem_pixelAddressSet)
 br_error __cdecl _M_br_device_pixelmap_mem_pixelAddressSet(br_device_pixelmap *self, void *ptr, br_uint_32 *qual) {
@@ -770,7 +770,7 @@ br_error __cdecl _M_br_device_pixelmap_mem_pixelAddressSet(br_device_pixelmap *s
 }
 
 function_hook_state_t function_hook_state__M_br_device_pixelmap_mem_originSet = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state__M_br_device_pixelmap_mem_originSet)
+CARM95_WEBSERVER_STATE(_M_br_device_pixelmap_mem_originSet, function_hook_state__M_br_device_pixelmap_mem_originSet)
 static br_error(__cdecl*original__M_br_device_pixelmap_mem_originSet)(br_device_pixelmap *, br_point *) = (br_error(__cdecl*)(br_device_pixelmap *, br_point *))0x004cda60;
 CARM95_HOOK_FUNCTION(original__M_br_device_pixelmap_mem_originSet, _M_br_device_pixelmap_mem_originSet)
 br_error __cdecl _M_br_device_pixelmap_mem_originSet(br_device_pixelmap *self, br_point *p) {
@@ -788,7 +788,7 @@ br_error __cdecl _M_br_device_pixelmap_mem_originSet(br_device_pixelmap *self, b
 }
 
 function_hook_state_t function_hook_state__M_br_device_pixelmap_mem_rowSize = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state__M_br_device_pixelmap_mem_rowSize)
+CARM95_WEBSERVER_STATE(_M_br_device_pixelmap_mem_rowSize, function_hook_state__M_br_device_pixelmap_mem_rowSize)
 br_error(__cdecl*_M_br_device_pixelmap_mem_rowSize)(br_device_pixelmap *, br_size_t *) = (br_error(__cdecl*)(br_device_pixelmap *, br_size_t *))0x004cda80;
 br_error _M_br_device_pixelmap_mem_rowSize_do_not_use(br_device_pixelmap *self, br_size_t *sizep) {
     LOG_TRACE("(%p, %p)", self, sizep);
@@ -805,7 +805,7 @@ br_error _M_br_device_pixelmap_mem_rowSize_do_not_use(br_device_pixelmap *self, 
 }
 
 function_hook_state_t function_hook_state__M_br_device_pixelmap_mem_rowQuery = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state__M_br_device_pixelmap_mem_rowQuery)
+CARM95_WEBSERVER_STATE(_M_br_device_pixelmap_mem_rowQuery, function_hook_state__M_br_device_pixelmap_mem_rowQuery)
 br_error(__cdecl*_M_br_device_pixelmap_mem_rowQuery)(br_device_pixelmap *, void *, br_size_t, br_int_32) = (br_error(__cdecl*)(br_device_pixelmap *, void *, br_size_t, br_int_32))0x004cdaa0;
 br_error _M_br_device_pixelmap_mem_rowQuery_do_not_use(br_device_pixelmap *self, void *buffer, br_size_t buffer_size, br_int_32 row) {
     LOG_TRACE("(%p, %p, %u, %d)", self, buffer, buffer_size, row);
@@ -824,7 +824,7 @@ br_error _M_br_device_pixelmap_mem_rowQuery_do_not_use(br_device_pixelmap *self,
 }
 
 function_hook_state_t function_hook_state__M_br_device_pixelmap_mem_rowSet = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state__M_br_device_pixelmap_mem_rowSet)
+CARM95_WEBSERVER_STATE(_M_br_device_pixelmap_mem_rowSet, function_hook_state__M_br_device_pixelmap_mem_rowSet)
 br_error(__cdecl*_M_br_device_pixelmap_mem_rowSet)(br_device_pixelmap *, void *, br_size_t, br_int_32) = (br_error(__cdecl*)(br_device_pixelmap *, void *, br_size_t, br_int_32))0x004cda90;
 br_error _M_br_device_pixelmap_mem_rowSet_do_not_use(br_device_pixelmap *self, void *buffer, br_size_t buffer_size, br_int_32 row) {
     LOG_TRACE("(%p, %p, %u, %d)", self, buffer, buffer_size, row);
@@ -843,7 +843,7 @@ br_error _M_br_device_pixelmap_mem_rowSet_do_not_use(br_device_pixelmap *self, v
 }
 
 function_hook_state_t function_hook_state__M_br_device_pixelmap_mem_flush = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state__M_br_device_pixelmap_mem_flush)
+CARM95_WEBSERVER_STATE(_M_br_device_pixelmap_mem_flush, function_hook_state__M_br_device_pixelmap_mem_flush)
 br_error(__cdecl*_M_br_device_pixelmap_mem_flush)(struct br_device_pixelmap *) = (br_error(__cdecl*)(struct br_device_pixelmap *))0x004cdab0;
 br_error _M_br_device_pixelmap_mem_flush_do_not_use(struct br_device_pixelmap *self) {
     LOG_TRACE("(%p)", self);
@@ -859,7 +859,7 @@ br_error _M_br_device_pixelmap_mem_flush_do_not_use(struct br_device_pixelmap *s
 }
 
 function_hook_state_t function_hook_state__M_br_device_pixelmap_mem_synchronise = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state__M_br_device_pixelmap_mem_synchronise)
+CARM95_WEBSERVER_STATE(_M_br_device_pixelmap_mem_synchronise, function_hook_state__M_br_device_pixelmap_mem_synchronise)
 br_error(__cdecl*_M_br_device_pixelmap_mem_synchronise)(struct br_device_pixelmap *, br_token, br_boolean) = (br_error(__cdecl*)(struct br_device_pixelmap *, br_token, br_boolean))0x004cdac0;
 br_error _M_br_device_pixelmap_mem_synchronise_do_not_use(struct br_device_pixelmap *self, br_token sync_type, br_boolean block) {
     LOG_TRACE("(%p, %d, %d)", self, sync_type, block);
@@ -877,7 +877,7 @@ br_error _M_br_device_pixelmap_mem_synchronise_do_not_use(struct br_device_pixel
 }
 
 function_hook_state_t function_hook_state__M_br_device_pixelmap_mem_directLock = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state__M_br_device_pixelmap_mem_directLock)
+CARM95_WEBSERVER_STATE(_M_br_device_pixelmap_mem_directLock, function_hook_state__M_br_device_pixelmap_mem_directLock)
 br_error(__cdecl*_M_br_device_pixelmap_mem_directLock)(struct br_device_pixelmap *, br_boolean) = (br_error(__cdecl*)(struct br_device_pixelmap *, br_boolean))0x004cdad0;
 br_error _M_br_device_pixelmap_mem_directLock_do_not_use(struct br_device_pixelmap *self, br_boolean block) {
     LOG_TRACE("(%p, %d)", self, block);
@@ -894,7 +894,7 @@ br_error _M_br_device_pixelmap_mem_directLock_do_not_use(struct br_device_pixelm
 }
 
 function_hook_state_t function_hook_state__M_br_device_pixelmap_mem_directUnlock = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state__M_br_device_pixelmap_mem_directUnlock)
+CARM95_WEBSERVER_STATE(_M_br_device_pixelmap_mem_directUnlock, function_hook_state__M_br_device_pixelmap_mem_directUnlock)
 br_error(__cdecl*_M_br_device_pixelmap_mem_directUnlock)(struct br_device_pixelmap *) = (br_error(__cdecl*)(struct br_device_pixelmap *))0x004cdae0;
 br_error _M_br_device_pixelmap_mem_directUnlock_do_not_use(struct br_device_pixelmap *self) {
     LOG_TRACE("(%p)", self);

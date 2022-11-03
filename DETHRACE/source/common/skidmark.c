@@ -16,7 +16,7 @@ char *(* hookvar_gMaterial_names )[2];
 tSkid(* hookvar_gSkids )[100] = (void*)0x00530190;
 
 function_hook_state_t function_hook_state_StretchMark = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_StretchMark)
+CARM95_WEBSERVER_STATE(StretchMark, function_hook_state_StretchMark)
 static void(__cdecl*original_StretchMark)(tSkid *, br_vector3 *, br_vector3 *, br_scalar) = (void(__cdecl*)(tSkid *, br_vector3 *, br_vector3 *, br_scalar))0x00401e7c;
 CARM95_HOOK_FUNCTION(original_StretchMark, StretchMark)
 void __cdecl StretchMark(tSkid *pMark, br_vector3 *pFrom, br_vector3 *pTo, br_scalar pTexture_start) {
@@ -44,7 +44,7 @@ void __cdecl StretchMark(tSkid *pMark, br_vector3 *pFrom, br_vector3 *pTo, br_sc
 }
 
 function_hook_state_t function_hook_state_MaterialFromIndex = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_MaterialFromIndex)
+CARM95_WEBSERVER_STATE(MaterialFromIndex, function_hook_state_MaterialFromIndex)
 static br_material *(__cdecl*original_MaterialFromIndex)(int) = (br_material *(__cdecl*)(int))0x00401088;
 CARM95_HOOK_FUNCTION(original_MaterialFromIndex, MaterialFromIndex)
 br_material* __cdecl MaterialFromIndex(int pIndex) {
@@ -61,7 +61,7 @@ br_material* __cdecl MaterialFromIndex(int pIndex) {
 }
 
 function_hook_state_t function_hook_state_AdjustSkid = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_AdjustSkid)
+CARM95_WEBSERVER_STATE(AdjustSkid, function_hook_state_AdjustSkid)
 static void(__cdecl*original_AdjustSkid)(int, br_matrix34 *, int) = (void(__cdecl*)(int, br_matrix34 *, int))0x00401000;
 CARM95_HOOK_FUNCTION(original_AdjustSkid, AdjustSkid)
 void __cdecl AdjustSkid(int pSkid_num, br_matrix34 *pMatrix, int pMaterial_index) {
@@ -80,7 +80,7 @@ void __cdecl AdjustSkid(int pSkid_num, br_matrix34 *pMatrix, int pMaterial_index
 }
 
 function_hook_state_t function_hook_state_FarFromLine2D = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_FarFromLine2D)
+CARM95_WEBSERVER_STATE(FarFromLine2D, function_hook_state_FarFromLine2D)
 static int(__cdecl*original_FarFromLine2D)(br_vector3 *, br_vector3 *, br_vector3 *) = (int(__cdecl*)(br_vector3 *, br_vector3 *, br_vector3 *))0x004020dc;
 CARM95_HOOK_FUNCTION(original_FarFromLine2D, FarFromLine2D)
 int __cdecl FarFromLine2D(br_vector3 *pPt, br_vector3 *pL1, br_vector3 *pL2) {
@@ -107,7 +107,7 @@ int __cdecl FarFromLine2D(br_vector3 *pPt, br_vector3 *pL1, br_vector3 *pL2) {
 }
 
 function_hook_state_t function_hook_state_Reflex2D = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_Reflex2D)
+CARM95_WEBSERVER_STATE(Reflex2D, function_hook_state_Reflex2D)
 static int(__cdecl*original_Reflex2D)(br_vector3 *, br_vector3 *, br_vector3 *) = (int(__cdecl*)(br_vector3 *, br_vector3 *, br_vector3 *))0x00402179;
 CARM95_HOOK_FUNCTION(original_Reflex2D, Reflex2D)
 int __cdecl Reflex2D(br_vector3 *pPt, br_vector3 *pL1, br_vector3 *pL2) {
@@ -130,7 +130,7 @@ int __cdecl Reflex2D(br_vector3 *pPt, br_vector3 *pL1, br_vector3 *pL2) {
 }
 
 function_hook_state_t function_hook_state_InitSkids = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_InitSkids)
+CARM95_WEBSERVER_STATE(InitSkids, function_hook_state_InitSkids)
 static void(__cdecl*original_InitSkids)() = (void(__cdecl*)())0x004010c8;
 CARM95_HOOK_FUNCTION(original_InitSkids, InitSkids)
 void __cdecl InitSkids() {
@@ -156,7 +156,7 @@ void __cdecl InitSkids() {
 }
 
 function_hook_state_t function_hook_state_HideSkid = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_HideSkid)
+CARM95_WEBSERVER_STATE(HideSkid, function_hook_state_HideSkid)
 static void(__cdecl*original_HideSkid)(int) = (void(__cdecl*)(int))0x0040148d;
 CARM95_HOOK_FUNCTION(original_HideSkid, HideSkid)
 void __cdecl HideSkid(int pSkid_num) {
@@ -173,7 +173,7 @@ void __cdecl HideSkid(int pSkid_num) {
 }
 
 function_hook_state_t function_hook_state_HideSkids = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_HideSkids)
+CARM95_WEBSERVER_STATE(HideSkids, function_hook_state_HideSkids)
 static void(__cdecl*original_HideSkids)() = (void(__cdecl*)())0x004014ad;
 CARM95_HOOK_FUNCTION(original_HideSkids, HideSkids)
 void __cdecl HideSkids() {
@@ -191,7 +191,7 @@ void __cdecl HideSkids() {
 }
 
 function_hook_state_t function_hook_state_SkidLen = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_SkidLen)
+CARM95_WEBSERVER_STATE(SkidLen, function_hook_state_SkidLen)
 static br_scalar(__cdecl*original_SkidLen)(int) = (br_scalar(__cdecl*)(int))0x004021f1;
 CARM95_HOOK_FUNCTION(original_SkidLen, SkidLen)
 br_scalar __cdecl SkidLen(int pSkid) {
@@ -208,7 +208,7 @@ br_scalar __cdecl SkidLen(int pSkid) {
 }
 
 function_hook_state_t function_hook_state_SkidSection = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_SkidSection)
+CARM95_WEBSERVER_STATE(SkidSection, function_hook_state_SkidSection)
 void SkidSection(tCar_spec *pCar, int pWheel_num, br_vector3 *pPos, int pMaterial_index) {
     static tU16 skid;
     br_material *material;
@@ -230,7 +230,7 @@ void SkidSection(tCar_spec *pCar, int pWheel_num, br_vector3 *pPos, int pMateria
 }
 
 function_hook_state_t function_hook_state_SkidMark = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_SkidMark)
+CARM95_WEBSERVER_STATE(SkidMark, function_hook_state_SkidMark)
 static void(__cdecl*original_SkidMark)(tCar_spec *, int) = (void(__cdecl*)(tCar_spec *, int))0x004014e5;
 CARM95_HOOK_FUNCTION(original_SkidMark, SkidMark)
 void __cdecl SkidMark(tCar_spec *pCar, int pWheel_num) {
@@ -266,7 +266,7 @@ void __cdecl SkidMark(tCar_spec *pCar, int pWheel_num) {
 }
 
 function_hook_state_t function_hook_state_InitCarSkidStuff = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_InitCarSkidStuff)
+CARM95_WEBSERVER_STATE(InitCarSkidStuff, function_hook_state_InitCarSkidStuff)
 static void(__cdecl*original_InitCarSkidStuff)(tCar_spec *) = (void(__cdecl*)(tCar_spec *))0x00402282;
 CARM95_HOOK_FUNCTION(original_InitCarSkidStuff, InitCarSkidStuff)
 void __cdecl InitCarSkidStuff(tCar_spec *pCar) {
@@ -285,7 +285,7 @@ void __cdecl InitCarSkidStuff(tCar_spec *pCar) {
 }
 
 function_hook_state_t function_hook_state_SkidsPerFrame = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_SkidsPerFrame)
+CARM95_WEBSERVER_STATE(SkidsPerFrame, function_hook_state_SkidsPerFrame)
 static void(__cdecl*original_SkidsPerFrame)() = (void(__cdecl*)())0x004022f1;
 CARM95_HOOK_FUNCTION(original_SkidsPerFrame, SkidsPerFrame)
 void __cdecl SkidsPerFrame() {
@@ -303,7 +303,7 @@ void __cdecl SkidsPerFrame() {
 }
 
 function_hook_state_t function_hook_state_RemoveMaterialsFromSkidmarks = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_RemoveMaterialsFromSkidmarks)
+CARM95_WEBSERVER_STATE(RemoveMaterialsFromSkidmarks, function_hook_state_RemoveMaterialsFromSkidmarks)
 void RemoveMaterialsFromSkidmarks() {
     int skid;
     LOG_TRACE("()");

@@ -9,7 +9,7 @@
 #include <assert.h>
 
 function_hook_state_t function_hook_state_HostInterruptHook = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_HostInterruptHook)
+CARM95_WEBSERVER_STATE(HostInterruptHook, function_hook_state_HostInterruptHook)
 static br_error(__cdecl*original_HostInterruptHook)(host_interrupt_hook *, br_uint_8, br_uint_32, br_uint_16) = (br_error(__cdecl*)(host_interrupt_hook *, br_uint_8, br_uint_32, br_uint_16))0x00501a70;
 CARM95_HOOK_FUNCTION(original_HostInterruptHook, HostInterruptHook)
 br_error __cdecl HostInterruptHook(host_interrupt_hook *h, br_uint_8 vector, br_uint_32 off, br_uint_16 sel) {
@@ -31,7 +31,7 @@ br_error __cdecl HostInterruptHook(host_interrupt_hook *h, br_uint_8 vector, br_
 }
 
 function_hook_state_t function_hook_state_HostInterruptUnhook = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_HostInterruptUnhook)
+CARM95_WEBSERVER_STATE(HostInterruptUnhook, function_hook_state_HostInterruptUnhook)
 static br_error(__cdecl*original_HostInterruptUnhook)(host_interrupt_hook *) = (br_error(__cdecl*)(host_interrupt_hook *))0x00501ae0;
 CARM95_HOOK_FUNCTION(original_HostInterruptUnhook, HostInterruptUnhook)
 br_error __cdecl HostInterruptUnhook(host_interrupt_hook *h) {
@@ -50,7 +50,7 @@ br_error __cdecl HostInterruptUnhook(host_interrupt_hook *h) {
 }
 
 function_hook_state_t function_hook_state_HostExceptionHook = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_HostExceptionHook)
+CARM95_WEBSERVER_STATE(HostExceptionHook, function_hook_state_HostExceptionHook)
 static br_error(__cdecl*original_HostExceptionHook)(host_exception_hook *, br_uint_8, br_uint_32, br_uint_16) = (br_error(__cdecl*)(host_exception_hook *, br_uint_8, br_uint_32, br_uint_16))0x00501b20;
 CARM95_HOOK_FUNCTION(original_HostExceptionHook, HostExceptionHook)
 br_error __cdecl HostExceptionHook(host_exception_hook *h, br_uint_8 exception, br_uint_32 off, br_uint_16 sel) {
@@ -72,7 +72,7 @@ br_error __cdecl HostExceptionHook(host_exception_hook *h, br_uint_8 exception, 
 }
 
 function_hook_state_t function_hook_state_HostExceptionUnhook = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_HostExceptionUnhook)
+CARM95_WEBSERVER_STATE(HostExceptionUnhook, function_hook_state_HostExceptionUnhook)
 static br_error(__cdecl*original_HostExceptionUnhook)(host_exception_hook *) = (br_error(__cdecl*)(host_exception_hook *))0x00501b90;
 CARM95_HOOK_FUNCTION(original_HostExceptionUnhook, HostExceptionUnhook)
 br_error __cdecl HostExceptionUnhook(host_exception_hook *h) {

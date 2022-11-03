@@ -9,7 +9,7 @@
 #include <assert.h>
 
 function_hook_state_t function_hook_state_BrMapUpdate = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrMapUpdate)
+CARM95_WEBSERVER_STATE(BrMapUpdate, function_hook_state_BrMapUpdate)
 static void(__cdecl*original_BrMapUpdate)(br_pixelmap *, br_uint_16) = (void(__cdecl*)(br_pixelmap *, br_uint_16))0x004dc8b0;
 CARM95_HOOK_FUNCTION(original_BrMapUpdate, BrMapUpdate)
 void __cdecl BrMapUpdate(br_pixelmap *map, br_uint_16 flags) {
@@ -27,7 +27,7 @@ void __cdecl BrMapUpdate(br_pixelmap *map, br_uint_16 flags) {
 }
 
 function_hook_state_t function_hook_state_BrBufferUpdate = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrBufferUpdate)
+CARM95_WEBSERVER_STATE(BrBufferUpdate, function_hook_state_BrBufferUpdate)
 static void(__stdcall*original_BrBufferUpdate)(br_pixelmap *, br_token, br_uint_16) = (void(__stdcall*)(br_pixelmap *, br_token, br_uint_16))0x004dc930;
 CARM95_HOOK_FUNCTION(original_BrBufferUpdate, BrBufferUpdate)
 void __stdcall BrBufferUpdate(br_pixelmap *pm, br_token use, br_uint_16 flags) {
@@ -48,7 +48,7 @@ void __stdcall BrBufferUpdate(br_pixelmap *pm, br_token use, br_uint_16 flags) {
 }
 
 function_hook_state_t function_hook_state_BrBufferClear = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrBufferClear)
+CARM95_WEBSERVER_STATE(BrBufferClear, function_hook_state_BrBufferClear)
 static void(__stdcall*original_BrBufferClear)(br_pixelmap *) = (void(__stdcall*)(br_pixelmap *))0x004dc9b0;
 CARM95_HOOK_FUNCTION(original_BrBufferClear, BrBufferClear)
 void __stdcall BrBufferClear(br_pixelmap *pm) {

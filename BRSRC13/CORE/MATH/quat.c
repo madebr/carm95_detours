@@ -9,7 +9,7 @@
 #include <assert.h>
 
 function_hook_state_t function_hook_state_BrQuatMul = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrQuatMul)
+CARM95_WEBSERVER_STATE(BrQuatMul, function_hook_state_BrQuatMul)
 static br_quat *(__cdecl*original_BrQuatMul)(br_quat *, br_quat *, br_quat *) = (br_quat *(__cdecl*)(br_quat *, br_quat *, br_quat *))0x004d53a0;
 CARM95_HOOK_FUNCTION(original_BrQuatMul, BrQuatMul)
 br_quat* __cdecl BrQuatMul(br_quat *q, br_quat *l, br_quat *r) {
@@ -48,7 +48,7 @@ br_quat* __cdecl BrQuatMul(br_quat *q, br_quat *l, br_quat *r) {
 }
 
 function_hook_state_t function_hook_state_BrQuatNormalise = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrQuatNormalise)
+CARM95_WEBSERVER_STATE(BrQuatNormalise, function_hook_state_BrQuatNormalise)
 static br_quat *(__cdecl*original_BrQuatNormalise)(br_quat *, br_quat *) = (br_quat *(__cdecl*)(br_quat *, br_quat *))0x004d5490;
 CARM95_HOOK_FUNCTION(original_BrQuatNormalise, BrQuatNormalise)
 br_quat* __cdecl BrQuatNormalise(br_quat *q, br_quat *qq) {
@@ -68,7 +68,7 @@ br_quat* __cdecl BrQuatNormalise(br_quat *q, br_quat *qq) {
 }
 
 function_hook_state_t function_hook_state_BrQuatInvert = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrQuatInvert)
+CARM95_WEBSERVER_STATE(BrQuatInvert, function_hook_state_BrQuatInvert)
 static br_quat *(__cdecl*original_BrQuatInvert)(br_quat *, br_quat *) = (br_quat *(__cdecl*)(br_quat *, br_quat *))0x004d54f0;
 CARM95_HOOK_FUNCTION(original_BrQuatInvert, BrQuatInvert)
 br_quat* __cdecl BrQuatInvert(br_quat *q, br_quat *qq) {
@@ -86,7 +86,7 @@ br_quat* __cdecl BrQuatInvert(br_quat *q, br_quat *qq) {
 }
 
 function_hook_state_t function_hook_state_BrQuatSlerp = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrQuatSlerp)
+CARM95_WEBSERVER_STATE(BrQuatSlerp, function_hook_state_BrQuatSlerp)
 static br_quat *(__cdecl*original_BrQuatSlerp)(br_quat *, br_quat *, br_quat *, br_scalar, br_int_16) = (br_quat *(__cdecl*)(br_quat *, br_quat *, br_quat *, br_scalar, br_int_16))0x004d5520;
 CARM95_HOOK_FUNCTION(original_BrQuatSlerp, BrQuatSlerp)
 br_quat* __cdecl BrQuatSlerp(br_quat *q, br_quat *l, br_quat *r, br_scalar a, br_int_16 spins) {
@@ -121,7 +121,7 @@ br_quat* __cdecl BrQuatSlerp(br_quat *q, br_quat *l, br_quat *r, br_scalar a, br
 }
 
 function_hook_state_t function_hook_state_BrQuatToMatrix34 = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrQuatToMatrix34)
+CARM95_WEBSERVER_STATE(BrQuatToMatrix34, function_hook_state_BrQuatToMatrix34)
 static br_matrix34 *(__cdecl*original_BrQuatToMatrix34)(br_matrix34 *, br_quat *) = (br_matrix34 *(__cdecl*)(br_matrix34 *, br_quat *))0x004d56e0;
 CARM95_HOOK_FUNCTION(original_BrQuatToMatrix34, BrQuatToMatrix34)
 br_matrix34* __cdecl BrQuatToMatrix34(br_matrix34 *mat, br_quat *q) {
@@ -163,7 +163,7 @@ br_matrix34* __cdecl BrQuatToMatrix34(br_matrix34 *mat, br_quat *q) {
 }
 
 function_hook_state_t function_hook_state_BrMatrix34ToQuat = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix34ToQuat)
+CARM95_WEBSERVER_STATE(BrMatrix34ToQuat, function_hook_state_BrMatrix34ToQuat)
 static br_quat *(__cdecl*original_BrMatrix34ToQuat)(br_quat *, br_matrix34 *) = (br_quat *(__cdecl*)(br_quat *, br_matrix34 *))0x004d57c0;
 CARM95_HOOK_FUNCTION(original_BrMatrix34ToQuat, BrMatrix34ToQuat)
 br_quat* __cdecl BrMatrix34ToQuat(br_quat *q, br_matrix34 *mat) {
@@ -193,7 +193,7 @@ br_quat* __cdecl BrMatrix34ToQuat(br_quat *q, br_matrix34 *mat) {
 }
 
 function_hook_state_t function_hook_state_BrQuatToMatrix4 = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrQuatToMatrix4)
+CARM95_WEBSERVER_STATE(BrQuatToMatrix4, function_hook_state_BrQuatToMatrix4)
 static br_matrix4 *(__cdecl*original_BrQuatToMatrix4)(br_matrix4 *, br_quat *) = (br_matrix4 *(__cdecl*)(br_matrix4 *, br_quat *))0x004d58fb;
 CARM95_HOOK_FUNCTION(original_BrQuatToMatrix4, BrQuatToMatrix4)
 br_matrix4* __cdecl BrQuatToMatrix4(br_matrix4 *mat, br_quat *q) {
@@ -213,7 +213,7 @@ br_matrix4* __cdecl BrQuatToMatrix4(br_matrix4 *mat, br_quat *q) {
 }
 
 function_hook_state_t function_hook_state_BrMatrix4ToQuat = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrMatrix4ToQuat)
+CARM95_WEBSERVER_STATE(BrMatrix4ToQuat, function_hook_state_BrMatrix4ToQuat)
 static br_quat *(__cdecl*original_BrMatrix4ToQuat)(br_quat *, br_matrix4 *) = (br_quat *(__cdecl*)(br_quat *, br_matrix4 *))0x004d5930;
 CARM95_HOOK_FUNCTION(original_BrMatrix4ToQuat, BrMatrix4ToQuat)
 br_quat* __cdecl BrMatrix4ToQuat(br_quat *q, br_matrix4 *mat) {

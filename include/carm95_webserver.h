@@ -22,9 +22,9 @@ int start_hook_webserver(int port);
 void stop_hook_webserver(void);
 void webserver_register_variable(const char *name, function_hook_state_t *state, const char *file, int line);
 
-#define CARM95_WEBSERVER_STATE(VARIABLE)                                            \
+#define CARM95_WEBSERVER_STATE(FUNCTION, VARIABLE)                                  \
     HOOK_FUNCTION_STARTUP(VARIABLE) {                                               \
-        webserver_register_variable(#VARIABLE, &(VARIABLE), __FILE__, __LINE__);    \
+        webserver_register_variable(#FUNCTION, &(VARIABLE), __FILE__, __LINE__);    \
     }
 
 #ifdef __cplusplus

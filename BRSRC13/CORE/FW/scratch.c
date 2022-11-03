@@ -12,7 +12,7 @@ char(* hookvar_scratchString )[512];
 #endif
 
 function_hook_state_t function_hook_state_BrScratchAllocate = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrScratchAllocate)
+CARM95_WEBSERVER_STATE(BrScratchAllocate, function_hook_state_BrScratchAllocate)
 static void *(__cdecl*original_BrScratchAllocate)(br_size_t) = (void *(__cdecl*)(br_size_t))0x004e0930;
 CARM95_HOOK_FUNCTION(original_BrScratchAllocate, BrScratchAllocate)
 void* __cdecl BrScratchAllocate(br_size_t size) {
@@ -29,7 +29,7 @@ void* __cdecl BrScratchAllocate(br_size_t size) {
 }
 
 function_hook_state_t function_hook_state_BrScratchFree = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrScratchFree)
+CARM95_WEBSERVER_STATE(BrScratchFree, function_hook_state_BrScratchFree)
 static void(__cdecl*original_BrScratchFree)(void *) = (void(__cdecl*)(void *))0x004e09a0;
 CARM95_HOOK_FUNCTION(original_BrScratchFree, BrScratchFree)
 void __cdecl BrScratchFree(void *scratch) {
@@ -46,7 +46,7 @@ void __cdecl BrScratchFree(void *scratch) {
 }
 
 function_hook_state_t function_hook_state_BrScratchFlush = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrScratchFlush)
+CARM95_WEBSERVER_STATE(BrScratchFlush, function_hook_state_BrScratchFlush)
 static void(__cdecl*original_BrScratchFlush)() = (void(__cdecl*)())0x004e09b0;
 CARM95_HOOK_FUNCTION(original_BrScratchFlush, BrScratchFlush)
 void __cdecl BrScratchFlush() {
@@ -62,7 +62,7 @@ void __cdecl BrScratchFlush() {
 }
 
 function_hook_state_t function_hook_state_BrScratchInquire = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrScratchInquire)
+CARM95_WEBSERVER_STATE(BrScratchInquire, function_hook_state_BrScratchInquire)
 static br_size_t(__cdecl*original_BrScratchInquire)() = (br_size_t(__cdecl*)())0x004e09f0;
 CARM95_HOOK_FUNCTION(original_BrScratchInquire, BrScratchInquire)
 br_size_t __cdecl BrScratchInquire() {
@@ -78,7 +78,7 @@ br_size_t __cdecl BrScratchInquire() {
 }
 
 function_hook_state_t function_hook_state_BrScratchString = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrScratchString)
+CARM95_WEBSERVER_STATE(BrScratchString, function_hook_state_BrScratchString)
 static char *(__cdecl*original_BrScratchString)() = (char *(__cdecl*)())0x004e0a00;
 CARM95_HOOK_FUNCTION(original_BrScratchString, BrScratchString)
 char* __cdecl BrScratchString() {
@@ -94,7 +94,7 @@ char* __cdecl BrScratchString() {
 }
 
 function_hook_state_t function_hook_state_BrScratchStringSize = HOOK_UNAVAILABLE;
-CARM95_WEBSERVER_STATE(function_hook_state_BrScratchStringSize)
+CARM95_WEBSERVER_STATE(BrScratchStringSize, function_hook_state_BrScratchStringSize)
 static br_size_t(__cdecl*original_BrScratchStringSize)() = (br_size_t(__cdecl*)())0x004e0a10;
 CARM95_HOOK_FUNCTION(original_BrScratchStringSize, BrScratchStringSize)
 br_size_t __cdecl BrScratchStringSize() {
