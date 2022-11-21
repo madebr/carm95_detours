@@ -4,12 +4,17 @@
 
 #include "carm95_hooks.h"
 
+#include "carm95_webserver.h"
+
+#include <assert.h>
 float(* hookvar_gWobble_spam_y )[8] = (void*)0x00521370;
 float(* hookvar_gWobble_spam_z )[8] = (void*)0x00521390;
 br_scalar * hookvar_gWheel_circ_to_width  = (void*)0x005213b0;
 tU8(* hookvar_gSmoke_damage_step )[12] = (void*)0x005213b8;
 int(* hookvar_gSteal_ranks )[5] = (void*)0x005213c4;
 
+function_hook_state_t function_hook_state_ReadCrushData = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(ReadCrushData, function_hook_state_ReadCrushData)
 static int(__cdecl*original_ReadCrushData)(FILE *, tCrush_data *) = (int(__cdecl*)(FILE *, tCrush_data *))0x004bca50;
 CARM95_HOOK_FUNCTION(original_ReadCrushData, ReadCrushData)
 int __cdecl ReadCrushData(FILE *pF, tCrush_data *pCrush_data) {
@@ -56,9 +61,16 @@ int __cdecl ReadCrushData(FILE *pF, tCrush_data *pCrush_data) {
     (void)__block3__x_1;
     (void)__block3__x_2;
 
-    return original_ReadCrushData(pF, pCrush_data);
+    if (function_hook_state_ReadCrushData == HOOK_ENABLED) {
+        assert(0 && "ReadCrushData not implemented.");
+        abort();
+    } else {
+        return original_ReadCrushData(pF, pCrush_data);
+    }
 }
 
+function_hook_state_t function_hook_state_SkipCrushData = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(SkipCrushData, function_hook_state_SkipCrushData)
 static float(__cdecl*original_SkipCrushData)(FILE *) = (float(__cdecl*)(FILE *))0x004bcd40;
 CARM95_HOOK_FUNCTION(original_SkipCrushData, SkipCrushData)
 float __cdecl SkipCrushData(FILE *pF) {
@@ -78,9 +90,16 @@ float __cdecl SkipCrushData(FILE *pF) {
     (void)s;
     (void)softness;
 
-    return original_SkipCrushData(pF);
+    if (function_hook_state_SkipCrushData == HOOK_ENABLED) {
+        assert(0 && "SkipCrushData not implemented.");
+        abort();
+    } else {
+        return original_SkipCrushData(pF);
+    }
 }
 
+function_hook_state_t function_hook_state_WriteCrushData = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(WriteCrushData, function_hook_state_WriteCrushData)
 static int(__cdecl*original_WriteCrushData)(FILE *, tCrush_data *) = (int(__cdecl*)(FILE *, tCrush_data *))0x004bce73;
 CARM95_HOOK_FUNCTION(original_WriteCrushData, WriteCrushData)
 int __cdecl WriteCrushData(FILE *pF, tCrush_data *pCrush_data) {
@@ -99,9 +118,16 @@ int __cdecl WriteCrushData(FILE *pF, tCrush_data *pCrush_data) {
     (void)the_spec;
     (void)the_neighbour;
 
-    return original_WriteCrushData(pF, pCrush_data);
+    if (function_hook_state_WriteCrushData == HOOK_ENABLED) {
+        assert(0 && "WriteCrushData not implemented.");
+        abort();
+    } else {
+        return original_WriteCrushData(pF, pCrush_data);
+    }
 }
 
+function_hook_state_t function_hook_state_DisposeCrushData = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(DisposeCrushData, function_hook_state_DisposeCrushData)
 static void(__cdecl*original_DisposeCrushData)(tCrush_data *) = (void(__cdecl*)(tCrush_data *))0x004bd0f7;
 CARM95_HOOK_FUNCTION(original_DisposeCrushData, DisposeCrushData)
 void __cdecl DisposeCrushData(tCrush_data *pCrush_data) {
@@ -111,9 +137,16 @@ void __cdecl DisposeCrushData(tCrush_data *pCrush_data) {
     (void)pCrush_data;
     (void)i;
 
-    original_DisposeCrushData(pCrush_data);
+    if (function_hook_state_DisposeCrushData == HOOK_ENABLED) {
+        assert(0 && "DisposeCrushData not implemented.");
+        abort();
+    } else {
+        original_DisposeCrushData(pCrush_data);
+    }
 }
 
+function_hook_state_t function_hook_state_CrushModelPoint = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(CrushModelPoint, function_hook_state_CrushModelPoint)
 static void(__cdecl*original_CrushModelPoint)(tCar_spec *, int, br_model *, int, br_vector3 *, br_scalar, tCrush_data *) = (void(__cdecl*)(tCar_spec *, int, br_model *, int, br_vector3 *, br_scalar, tCrush_data *))0x004bd17b;
 CARM95_HOOK_FUNCTION(original_CrushModelPoint, CrushModelPoint)
 void __cdecl CrushModelPoint(tCar_spec *pCar, int pModel_index, br_model *pModel, int pCrush_point_index, br_vector3 *pEnergy_vector, br_scalar total_energy, tCrush_data *pCrush_data) {
@@ -175,9 +208,16 @@ void __cdecl CrushModelPoint(tCar_spec *pCar, int pModel_index, br_model *pModel
     (void)pipe_array;
     (void)car;
 
-    original_CrushModelPoint(pCar, pModel_index, pModel, pCrush_point_index, pEnergy_vector, total_energy, pCrush_data);
+    if (function_hook_state_CrushModelPoint == HOOK_ENABLED) {
+        assert(0 && "CrushModelPoint not implemented.");
+        abort();
+    } else {
+        original_CrushModelPoint(pCar, pModel_index, pModel, pCrush_point_index, pEnergy_vector, total_energy, pCrush_data);
+    }
 }
 
+function_hook_state_t function_hook_state_CrushModel = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(CrushModel, function_hook_state_CrushModel)
 static void(__cdecl*original_CrushModel)(tCar_spec *, int, br_actor *, br_vector3 *, br_vector3 *, tCrush_data *) = (void(__cdecl*)(tCar_spec *, int, br_actor *, br_vector3 *, br_vector3 *, tCrush_data *))0x004bd8da;
 CARM95_HOOK_FUNCTION(original_CrushModel, CrushModel)
 void __cdecl CrushModel(tCar_spec *pCar, int pModel_index, br_actor *pActor, br_vector3 *pImpact_point, br_vector3 *pEnergy_vector, tCrush_data *pCrush_data) {
@@ -212,9 +252,16 @@ void __cdecl CrushModel(tCar_spec *pCar, int pModel_index, br_actor *pActor, br_
     (void)the_vertex;
     (void)inverse_transform;
 
-    original_CrushModel(pCar, pModel_index, pActor, pImpact_point, pEnergy_vector, pCrush_data);
+    if (function_hook_state_CrushModel == HOOK_ENABLED) {
+        assert(0 && "CrushModel not implemented.");
+        abort();
+    } else {
+        original_CrushModel(pCar, pModel_index, pActor, pImpact_point, pEnergy_vector, pCrush_data);
+    }
 }
 
+function_hook_state_t function_hook_state_JitModelUpdate = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(JitModelUpdate, function_hook_state_JitModelUpdate)
 static void(__cdecl*original_JitModelUpdate)(br_actor *, br_model *, br_material *, void *, br_uint_8, int) = (void(__cdecl*)(br_actor *, br_model *, br_material *, void *, br_uint_8, int))0x004bdad9;
 CARM95_HOOK_FUNCTION(original_JitModelUpdate, JitModelUpdate)
 void __cdecl JitModelUpdate(br_actor *actor, br_model *model, br_material *material, void *render_data, br_uint_8 style, int on_screen) {
@@ -227,9 +274,16 @@ void __cdecl JitModelUpdate(br_actor *actor, br_model *model, br_material *mater
     (void)style;
     (void)on_screen;
 
-    original_JitModelUpdate(actor, model, material, render_data, style, on_screen);
+    if (function_hook_state_JitModelUpdate == HOOK_ENABLED) {
+        assert(0 && "JitModelUpdate not implemented.");
+        abort();
+    } else {
+        original_JitModelUpdate(actor, model, material, render_data, style, on_screen);
+    }
 }
 
+function_hook_state_t function_hook_state_SetModelForUpdate = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(SetModelForUpdate, function_hook_state_SetModelForUpdate)
 static void(__cdecl*original_SetModelForUpdate)(br_model *, tCar_spec *, int) = (void(__cdecl*)(br_model *, tCar_spec *, int))0x004bdb2f;
 CARM95_HOOK_FUNCTION(original_SetModelForUpdate, SetModelForUpdate)
 void __cdecl SetModelForUpdate(br_model *pModel, tCar_spec *pCar, int crush_only) {
@@ -239,9 +293,16 @@ void __cdecl SetModelForUpdate(br_model *pModel, tCar_spec *pCar, int crush_only
     (void)pCar;
     (void)crush_only;
 
-    original_SetModelForUpdate(pModel, pCar, crush_only);
+    if (function_hook_state_SetModelForUpdate == HOOK_ENABLED) {
+        assert(0 && "SetModelForUpdate not implemented.");
+        abort();
+    } else {
+        original_SetModelForUpdate(pModel, pCar, crush_only);
+    }
 }
 
+function_hook_state_t function_hook_state_TotallySpamTheModel = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(TotallySpamTheModel, function_hook_state_TotallySpamTheModel)
 static void(__cdecl*original_TotallySpamTheModel)(tCar_spec *, int, br_actor *, tCrush_data *, br_scalar) = (void(__cdecl*)(tCar_spec *, int, br_actor *, tCrush_data *, br_scalar))0x004bdbc1;
 CARM95_HOOK_FUNCTION(original_TotallySpamTheModel, TotallySpamTheModel)
 void __cdecl TotallySpamTheModel(tCar_spec *pCar, int pModel_index, br_actor *pActor, tCrush_data *pCrush_data, br_scalar pMagnitude) {
@@ -267,9 +328,16 @@ void __cdecl TotallySpamTheModel(tCar_spec *pCar, int pModel_index, br_actor *pA
     (void)vertices;
     (void)__block0___scale;
 
-    original_TotallySpamTheModel(pCar, pModel_index, pActor, pCrush_data, pMagnitude);
+    if (function_hook_state_TotallySpamTheModel == HOOK_ENABLED) {
+        assert(0 && "TotallySpamTheModel not implemented.");
+        abort();
+    } else {
+        original_TotallySpamTheModel(pCar, pModel_index, pActor, pCrush_data, pMagnitude);
+    }
 }
 
+function_hook_state_t function_hook_state_RepairModel = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(RepairModel, function_hook_state_RepairModel)
 static br_scalar(__cdecl*original_RepairModel)(tCar_spec *, int, br_actor *, br_vertex *, br_scalar, br_scalar *) = (br_scalar(__cdecl*)(tCar_spec *, int, br_actor *, br_vertex *, br_scalar, br_scalar *))0x004bde6c;
 CARM95_HOOK_FUNCTION(original_RepairModel, RepairModel)
 br_scalar __cdecl RepairModel(tCar_spec *pCar, int pModel_index, br_actor *pActor, br_vertex *pUndamaged_vertices, br_scalar pAmount, br_scalar *pTotal_deflection) {
@@ -298,9 +366,16 @@ br_scalar __cdecl RepairModel(tCar_spec *pCar, int pModel_index, br_actor *pActo
     (void)deviation;
     (void)pipe_array;
 
-    return original_RepairModel(pCar, pModel_index, pActor, pUndamaged_vertices, pAmount, pTotal_deflection);
+    if (function_hook_state_RepairModel == HOOK_ENABLED) {
+        assert(0 && "RepairModel not implemented.");
+        abort();
+    } else {
+        return original_RepairModel(pCar, pModel_index, pActor, pUndamaged_vertices, pAmount, pTotal_deflection);
+    }
 }
 
+function_hook_state_t function_hook_state_RepairCar2 = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(RepairCar2, function_hook_state_RepairCar2)
 static float(__cdecl*original_RepairCar2)(tCar_spec *, tU32, br_scalar *) = (float(__cdecl*)(tCar_spec *, tU32, br_scalar *))0x004bdd3b;
 CARM95_HOOK_FUNCTION(original_RepairCar2, RepairCar2)
 float __cdecl RepairCar2(tCar_spec *pCar, tU32 pFrame_period, br_scalar *pTotal_deflection) {
@@ -318,9 +393,16 @@ float __cdecl RepairCar2(tCar_spec *pCar, tU32 pFrame_period, br_scalar *pTotal_
     (void)amount;
     (void)dummy;
 
-    return original_RepairCar2(pCar, pFrame_period, pTotal_deflection);
+    if (function_hook_state_RepairCar2 == HOOK_ENABLED) {
+        assert(0 && "RepairCar2 not implemented.");
+        abort();
+    } else {
+        return original_RepairCar2(pCar, pFrame_period, pTotal_deflection);
+    }
 }
 
+function_hook_state_t function_hook_state_RepairCar = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(RepairCar, function_hook_state_RepairCar)
 static float(__cdecl*original_RepairCar)(tU16, tU32, br_scalar *) = (float(__cdecl*)(tU16, tU32, br_scalar *))0x004be159;
 CARM95_HOOK_FUNCTION(original_RepairCar, RepairCar)
 float __cdecl RepairCar(tU16 pCar_ID, tU32 pFrame_period, br_scalar *pTotal_deflection) {
@@ -330,9 +412,16 @@ float __cdecl RepairCar(tU16 pCar_ID, tU32 pFrame_period, br_scalar *pTotal_defl
     (void)pFrame_period;
     (void)pTotal_deflection;
 
-    return original_RepairCar(pCar_ID, pFrame_period, pTotal_deflection);
+    if (function_hook_state_RepairCar == HOOK_ENABLED) {
+        assert(0 && "RepairCar not implemented.");
+        abort();
+    } else {
+        return original_RepairCar(pCar_ID, pFrame_period, pTotal_deflection);
+    }
 }
 
+function_hook_state_t function_hook_state_TotallyRepairACar = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(TotallyRepairACar, function_hook_state_TotallyRepairACar)
 static void(__cdecl*original_TotallyRepairACar)(tCar_spec *) = (void(__cdecl*)(tCar_spec *))0x004be1ca;
 CARM95_HOOK_FUNCTION(original_TotallyRepairACar, TotallyRepairACar)
 void __cdecl TotallyRepairACar(tCar_spec *pCar) {
@@ -354,27 +443,48 @@ void __cdecl TotallyRepairACar(tCar_spec *pCar) {
     (void)pipe_array;
     (void)storage_bounds;
 
-    original_TotallyRepairACar(pCar);
+    if (function_hook_state_TotallyRepairACar == HOOK_ENABLED) {
+        assert(0 && "TotallyRepairACar not implemented.");
+        abort();
+    } else {
+        original_TotallyRepairACar(pCar);
+    }
 }
 
+function_hook_state_t function_hook_state_TotallyRepairCar = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(TotallyRepairCar, function_hook_state_TotallyRepairCar)
 static void(__cdecl*original_TotallyRepairCar)() = (void(__cdecl*)())0x004be52a;
 CARM95_HOOK_FUNCTION(original_TotallyRepairCar, TotallyRepairCar)
 void __cdecl TotallyRepairCar() {
     LOG_TRACE("()");
 
 
-    original_TotallyRepairCar();
+    if (function_hook_state_TotallyRepairCar == HOOK_ENABLED) {
+        assert(0 && "TotallyRepairCar not implemented.");
+        abort();
+    } else {
+        original_TotallyRepairCar();
+    }
 }
 
+function_hook_state_t function_hook_state_CheckLastCar = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(CheckLastCar, function_hook_state_CheckLastCar)
 static void(__cdecl*original_CheckLastCar)() = (void(__cdecl*)())0x004be5b5;
 CARM95_HOOK_FUNCTION(original_CheckLastCar, CheckLastCar)
 void __cdecl CheckLastCar() {
     LOG_TRACE("()");
 
 
-    original_CheckLastCar();
+    if (function_hook_state_CheckLastCar == HOOK_ENABLED) {
+        assert(0 && "CheckLastCar not implemented.");
+        abort();
+    } else {
+        original_CheckLastCar();
+    }
 }
 
+function_hook_state_t function_hook_state_KnackerThisCar = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(KnackerThisCar, function_hook_state_KnackerThisCar)
 static void(__cdecl*original_KnackerThisCar)(tCar_spec *) = (void(__cdecl*)(tCar_spec *))0x004be555;
 CARM95_HOOK_FUNCTION(original_KnackerThisCar, KnackerThisCar)
 void __cdecl KnackerThisCar(tCar_spec *pCar) {
@@ -382,17 +492,31 @@ void __cdecl KnackerThisCar(tCar_spec *pCar) {
 
     (void)pCar;
 
-    original_KnackerThisCar(pCar);
+    if (function_hook_state_KnackerThisCar == HOOK_ENABLED) {
+        assert(0 && "KnackerThisCar not implemented.");
+        abort();
+    } else {
+        original_KnackerThisCar(pCar);
+    }
 }
 
+function_hook_state_t function_hook_state_SetKnackeredFlag = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(SetKnackeredFlag, function_hook_state_SetKnackeredFlag)
 void SetKnackeredFlag(tCar_spec *pCar) {
     LOG_TRACE("(%p)", pCar);
 
     (void)pCar;
 
-    NOT_IMPLEMENTED();
+    if (function_hook_state_SetKnackeredFlag == HOOK_ENABLED) {
+        assert(0 && "SetKnackeredFlag not implemented.");
+        abort();
+    } else {
+        NOT_IMPLEMENTED();
+    }
 }
 
+function_hook_state_t function_hook_state_DamageUnit2 = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(DamageUnit2, function_hook_state_DamageUnit2)
 static void(__cdecl*original_DamageUnit2)(tCar_spec *, int, int) = (void(__cdecl*)(tCar_spec *, int, int))0x004be737;
 CARM95_HOOK_FUNCTION(original_DamageUnit2, DamageUnit2)
 void __cdecl DamageUnit2(tCar_spec *pCar, int pUnit_type, int pDamage_amount) {
@@ -406,9 +530,16 @@ void __cdecl DamageUnit2(tCar_spec *pCar, int pUnit_type, int pDamage_amount) {
     (void)the_damage;
     (void)last_level;
 
-    original_DamageUnit2(pCar, pUnit_type, pDamage_amount);
+    if (function_hook_state_DamageUnit2 == HOOK_ENABLED) {
+        assert(0 && "DamageUnit2 not implemented.");
+        abort();
+    } else {
+        original_DamageUnit2(pCar, pUnit_type, pDamage_amount);
+    }
 }
 
+function_hook_state_t function_hook_state_RecordLastDamage = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(RecordLastDamage, function_hook_state_RecordLastDamage)
 static void(__cdecl*original_RecordLastDamage)(tCar_spec *) = (void(__cdecl*)(tCar_spec *))0x004be86b;
 CARM95_HOOK_FUNCTION(original_RecordLastDamage, RecordLastDamage)
 void __cdecl RecordLastDamage(tCar_spec *pCar) {
@@ -418,9 +549,16 @@ void __cdecl RecordLastDamage(tCar_spec *pCar) {
     (void)pCar;
     (void)i;
 
-    original_RecordLastDamage(pCar);
+    if (function_hook_state_RecordLastDamage == HOOK_ENABLED) {
+        assert(0 && "RecordLastDamage not implemented.");
+        abort();
+    } else {
+        original_RecordLastDamage(pCar);
+    }
 }
 
+function_hook_state_t function_hook_state_DoDamage = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(DoDamage, function_hook_state_DoDamage)
 static void(__cdecl*original_DoDamage)(tCar_spec *, tDamage_type, float, float) = (void(__cdecl*)(tCar_spec *, tDamage_type, float, float))0x004bf3b9;
 CARM95_HOOK_FUNCTION(original_DoDamage, DoDamage)
 void __cdecl DoDamage(tCar_spec *pCar, tDamage_type pDamage_type, float pMagnitude, float pNastiness) {
@@ -431,9 +569,16 @@ void __cdecl DoDamage(tCar_spec *pCar, tDamage_type pDamage_type, float pMagnitu
     (void)pMagnitude;
     (void)pNastiness;
 
-    original_DoDamage(pCar, pDamage_type, pMagnitude, pNastiness);
+    if (function_hook_state_DoDamage == HOOK_ENABLED) {
+        assert(0 && "DoDamage not implemented.");
+        abort();
+    } else {
+        original_DoDamage(pCar, pDamage_type, pMagnitude, pNastiness);
+    }
 }
 
+function_hook_state_t function_hook_state_CheckPiledriverBonus = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(CheckPiledriverBonus, function_hook_state_CheckPiledriverBonus)
 static void(__cdecl*original_CheckPiledriverBonus)(tCar_spec *, br_vector3 *, br_vector3 *) = (void(__cdecl*)(tCar_spec *, br_vector3 *, br_vector3 *))0x004bf4b2;
 CARM95_HOOK_FUNCTION(original_CheckPiledriverBonus, CheckPiledriverBonus)
 void __cdecl CheckPiledriverBonus(tCar_spec *pCar, br_vector3 *pImpact_point, br_vector3 *pEnergy) {
@@ -459,9 +604,16 @@ void __cdecl CheckPiledriverBonus(tCar_spec *pCar, br_vector3 *pImpact_point, br
     (void)__block1___scale;
     (void)__block2___scale;
 
-    original_CheckPiledriverBonus(pCar, pImpact_point, pEnergy);
+    if (function_hook_state_CheckPiledriverBonus == HOOK_ENABLED) {
+        assert(0 && "CheckPiledriverBonus not implemented.");
+        abort();
+    } else {
+        original_CheckPiledriverBonus(pCar, pImpact_point, pEnergy);
+    }
 }
 
+function_hook_state_t function_hook_state_CalcModifiedLocation = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(CalcModifiedLocation, function_hook_state_CalcModifiedLocation)
 static tImpact_location(__cdecl*original_CalcModifiedLocation)(tCar_spec *) = (tImpact_location(__cdecl*)(tCar_spec *))0x004c13e0;
 CARM95_HOOK_FUNCTION(original_CalcModifiedLocation, CalcModifiedLocation)
 tImpact_location __cdecl CalcModifiedLocation(tCar_spec *pCar) {
@@ -469,9 +621,16 @@ tImpact_location __cdecl CalcModifiedLocation(tCar_spec *pCar) {
 
     (void)pCar;
 
-    return original_CalcModifiedLocation(pCar);
+    if (function_hook_state_CalcModifiedLocation == HOOK_ENABLED) {
+        assert(0 && "CalcModifiedLocation not implemented.");
+        abort();
+    } else {
+        return original_CalcModifiedLocation(pCar);
+    }
 }
 
+function_hook_state_t function_hook_state_DoPratcamHit = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(DoPratcamHit, function_hook_state_DoPratcamHit)
 static void(__cdecl*original_DoPratcamHit)(br_vector3 *) = (void(__cdecl*)(br_vector3 *))0x004be97b;
 CARM95_HOOK_FUNCTION(original_DoPratcamHit, DoPratcamHit)
 void __cdecl DoPratcamHit(br_vector3 *pHit_vector) {
@@ -483,9 +642,16 @@ void __cdecl DoPratcamHit(br_vector3 *pHit_vector) {
     (void)strength_modifier;
     (void)strength;
 
-    original_DoPratcamHit(pHit_vector);
+    if (function_hook_state_DoPratcamHit == HOOK_ENABLED) {
+        assert(0 && "DoPratcamHit not implemented.");
+        abort();
+    } else {
+        original_DoPratcamHit(pHit_vector);
+    }
 }
 
+function_hook_state_t function_hook_state_DamageSystems = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(DamageSystems, function_hook_state_DamageSystems)
 static void(__cdecl*original_DamageSystems)(tCar_spec *, br_vector3 *, br_vector3 *, int) = (void(__cdecl*)(tCar_spec *, br_vector3 *, br_vector3 *, int))0x004beaa3;
 CARM95_HOOK_FUNCTION(original_DamageSystems, DamageSystems)
 void __cdecl DamageSystems(tCar_spec *pCar, br_vector3 *pImpact_point, br_vector3 *pEnergy_vector, int pWas_hitting_a_car) {
@@ -546,9 +712,16 @@ void __cdecl DamageSystems(tCar_spec *pCar, br_vector3 *pImpact_point, br_vector
     (void)the_effect;
     (void)modified_location;
 
-    original_DamageSystems(pCar, pImpact_point, pEnergy_vector, pWas_hitting_a_car);
+    if (function_hook_state_DamageSystems == HOOK_ENABLED) {
+        assert(0 && "DamageSystems not implemented.");
+        abort();
+    } else {
+        original_DamageSystems(pCar, pImpact_point, pEnergy_vector, pWas_hitting_a_car);
+    }
 }
 
+function_hook_state_t function_hook_state_GetDirection = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(GetDirection, function_hook_state_GetDirection)
 static tImpact_location(__cdecl*original_GetDirection)(br_vector3 *) = (tImpact_location(__cdecl*)(br_vector3 *))0x004c1486;
 CARM95_HOOK_FUNCTION(original_GetDirection, GetDirection)
 tImpact_location __cdecl GetDirection(br_vector3 *pVelocity) {
@@ -562,9 +735,16 @@ tImpact_location __cdecl GetDirection(br_vector3 *pVelocity) {
     (void)mag_y;
     (void)mag_z;
 
-    return original_GetDirection(pVelocity);
+    if (function_hook_state_GetDirection == HOOK_ENABLED) {
+        assert(0 && "GetDirection not implemented.");
+        abort();
+    } else {
+        return original_GetDirection(pVelocity);
+    }
 }
 
+function_hook_state_t function_hook_state_SetSmokeLastDamageLevel = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(SetSmokeLastDamageLevel, function_hook_state_SetSmokeLastDamageLevel)
 static void(__cdecl*original_SetSmokeLastDamageLevel)(tCar_spec *) = (void(__cdecl*)(tCar_spec *))0x004bf768;
 CARM95_HOOK_FUNCTION(original_SetSmokeLastDamageLevel, SetSmokeLastDamageLevel)
 void __cdecl SetSmokeLastDamageLevel(tCar_spec *pCar) {
@@ -574,9 +754,16 @@ void __cdecl SetSmokeLastDamageLevel(tCar_spec *pCar) {
     (void)pCar;
     (void)i;
 
-    original_SetSmokeLastDamageLevel(pCar);
+    if (function_hook_state_SetSmokeLastDamageLevel == HOOK_ENABLED) {
+        assert(0 && "SetSmokeLastDamageLevel not implemented.");
+        abort();
+    } else {
+        original_SetSmokeLastDamageLevel(pCar);
+    }
 }
 
+function_hook_state_t function_hook_state_SortOutSmoke = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(SortOutSmoke, function_hook_state_SortOutSmoke)
 static void(__cdecl*original_SortOutSmoke)(tCar_spec *) = (void(__cdecl*)(tCar_spec *))0x004bf7c2;
 CARM95_HOOK_FUNCTION(original_SortOutSmoke, SortOutSmoke)
 void __cdecl SortOutSmoke(tCar_spec *pCar) {
@@ -596,9 +783,16 @@ void __cdecl SortOutSmoke(tCar_spec *pCar) {
     (void)pass;
     (void)repeat;
 
-    original_SortOutSmoke(pCar);
+    if (function_hook_state_SortOutSmoke == HOOK_ENABLED) {
+        assert(0 && "SortOutSmoke not implemented.");
+        abort();
+    } else {
+        original_SortOutSmoke(pCar);
+    }
 }
 
+function_hook_state_t function_hook_state_StealCar = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(StealCar, function_hook_state_StealCar)
 static void(__cdecl*original_StealCar)(tCar_spec *) = (void(__cdecl*)(tCar_spec *))0x004bf923;
 CARM95_HOOK_FUNCTION(original_StealCar, StealCar)
 void __cdecl StealCar(tCar_spec *pCar) {
@@ -606,9 +800,16 @@ void __cdecl StealCar(tCar_spec *pCar) {
 
     (void)pCar;
 
-    original_StealCar(pCar);
+    if (function_hook_state_StealCar == HOOK_ENABLED) {
+        assert(0 && "StealCar not implemented.");
+        abort();
+    } else {
+        original_StealCar(pCar);
+    }
 }
 
+function_hook_state_t function_hook_state_DoCrashEarnings = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(DoCrashEarnings, function_hook_state_DoCrashEarnings)
 static int(__cdecl*original_DoCrashEarnings)(tCar_spec *, tCar_spec *) = (int(__cdecl*)(tCar_spec *, tCar_spec *))0x004bfdb3;
 CARM95_HOOK_FUNCTION(original_DoCrashEarnings, DoCrashEarnings)
 int __cdecl DoCrashEarnings(tCar_spec *pCar1, tCar_spec *pCar2) {
@@ -687,9 +888,16 @@ int __cdecl DoCrashEarnings(tCar_spec *pCar1, tCar_spec *pCar2) {
     (void)car_2_offset;
     (void)message;
 
-    return original_DoCrashEarnings(pCar1, pCar2);
+    if (function_hook_state_DoCrashEarnings == HOOK_ENABLED) {
+        assert(0 && "DoCrashEarnings not implemented.");
+        abort();
+    } else {
+        return original_DoCrashEarnings(pCar1, pCar2);
+    }
 }
 
+function_hook_state_t function_hook_state_DoWheelDamage = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(DoWheelDamage, function_hook_state_DoWheelDamage)
 static void(__cdecl*original_DoWheelDamage)(tU32) = (void(__cdecl*)(tU32))0x004bf96c;
 CARM95_HOOK_FUNCTION(original_DoWheelDamage, DoWheelDamage)
 void __cdecl DoWheelDamage(tU32 pFrame_period) {
@@ -719,9 +927,16 @@ void __cdecl DoWheelDamage(tU32 pFrame_period) {
     (void)wonky_vector;
     (void)kev_index;
 
-    original_DoWheelDamage(pFrame_period);
+    if (function_hook_state_DoWheelDamage == HOOK_ENABLED) {
+        assert(0 && "DoWheelDamage not implemented.");
+        abort();
+    } else {
+        original_DoWheelDamage(pFrame_period);
+    }
 }
 
+function_hook_state_t function_hook_state_CrashEarnings = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(CrashEarnings, function_hook_state_CrashEarnings)
 static void(__cdecl*original_CrashEarnings)(tCar_spec *, tCar_spec *) = (void(__cdecl*)(tCar_spec *, tCar_spec *))0x004bfd78;
 CARM95_HOOK_FUNCTION(original_CrashEarnings, CrashEarnings)
 void __cdecl CrashEarnings(tCar_spec *pCar1, tCar_spec *pCar2) {
@@ -730,6 +945,11 @@ void __cdecl CrashEarnings(tCar_spec *pCar1, tCar_spec *pCar2) {
     (void)pCar1;
     (void)pCar2;
 
-    original_CrashEarnings(pCar1, pCar2);
+    if (function_hook_state_CrashEarnings == HOOK_ENABLED) {
+        assert(0 && "CrashEarnings not implemented.");
+        abort();
+    } else {
+        original_CrashEarnings(pCar1, pCar2);
+    }
 }
 

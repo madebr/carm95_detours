@@ -4,6 +4,9 @@
 
 #include "carm95_hooks.h"
 
+#include "carm95_webserver.h"
+
+#include <assert.h>
 int * hookvar_gLast_fancy_index  = (void*)0x00521678;
  // Suffix added to avoid duplicate symbol
 int * hookvar_gLast_credit_headup__displays  = (void*)0x0052167c;
@@ -39,6 +42,8 @@ int * hookvar_gCredits_lost_headup ;
 #endif
 int * hookvar_gCredits_won_headup  = (void*)0x00544e20;
 
+function_hook_state_t function_hook_state_GetTimerString = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(GetTimerString, function_hook_state_GetTimerString)
 static void(__cdecl*original_GetTimerString)(char *, int) = (void(__cdecl*)(char *, int))0x004c4030;
 CARM95_HOOK_FUNCTION(original_GetTimerString, GetTimerString)
 void __cdecl GetTimerString(char *pStr, int pFudge_colon) {
@@ -47,9 +52,16 @@ void __cdecl GetTimerString(char *pStr, int pFudge_colon) {
     (void)pStr;
     (void)pFudge_colon;
 
-    original_GetTimerString(pStr, pFudge_colon);
+    if (function_hook_state_GetTimerString == HOOK_ENABLED) {
+        assert(0 && "GetTimerString not implemented.");
+        abort();
+    } else {
+        original_GetTimerString(pStr, pFudge_colon);
+    }
 }
 
+function_hook_state_t function_hook_state_InitHeadups = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(InitHeadups, function_hook_state_InitHeadups)
 static void(__cdecl*original_InitHeadups)() = (void(__cdecl*)())0x004c4053;
 CARM95_HOOK_FUNCTION(original_InitHeadups, InitHeadups)
 void __cdecl InitHeadups() {
@@ -58,9 +70,16 @@ void __cdecl InitHeadups() {
 
     (void)i;
 
-    original_InitHeadups();
+    if (function_hook_state_InitHeadups == HOOK_ENABLED) {
+        assert(0 && "InitHeadups not implemented.");
+        abort();
+    } else {
+        original_InitHeadups();
+    }
 }
 
+function_hook_state_t function_hook_state_ClearHeadup = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(ClearHeadup, function_hook_state_ClearHeadup)
 static void(__cdecl*original_ClearHeadup)(int) = (void(__cdecl*)(int))0x004c40c1;
 CARM95_HOOK_FUNCTION(original_ClearHeadup, ClearHeadup)
 void __cdecl ClearHeadup(int pIndex) {
@@ -68,9 +87,16 @@ void __cdecl ClearHeadup(int pIndex) {
 
     (void)pIndex;
 
-    original_ClearHeadup(pIndex);
+    if (function_hook_state_ClearHeadup == HOOK_ENABLED) {
+        assert(0 && "ClearHeadup not implemented.");
+        abort();
+    } else {
+        original_ClearHeadup(pIndex);
+    }
 }
 
+function_hook_state_t function_hook_state_ClearHeadupSlot = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(ClearHeadupSlot, function_hook_state_ClearHeadupSlot)
 static void(__cdecl*original_ClearHeadupSlot)(int) = (void(__cdecl*)(int))0x004c40e6;
 CARM95_HOOK_FUNCTION(original_ClearHeadupSlot, ClearHeadupSlot)
 void __cdecl ClearHeadupSlot(int pSlot_index) {
@@ -82,9 +108,16 @@ void __cdecl ClearHeadupSlot(int pSlot_index) {
     (void)i;
     (void)the_headup;
 
-    original_ClearHeadupSlot(pSlot_index);
+    if (function_hook_state_ClearHeadupSlot == HOOK_ENABLED) {
+        assert(0 && "ClearHeadupSlot not implemented.");
+        abort();
+    } else {
+        original_ClearHeadupSlot(pSlot_index);
+    }
 }
 
+function_hook_state_t function_hook_state_ClearHeadups = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(ClearHeadups, function_hook_state_ClearHeadups)
 static void(__cdecl*original_ClearHeadups)() = (void(__cdecl*)())0x004c414c;
 CARM95_HOOK_FUNCTION(original_ClearHeadups, ClearHeadups)
 void __cdecl ClearHeadups() {
@@ -93,9 +126,16 @@ void __cdecl ClearHeadups() {
 
     (void)i;
 
-    original_ClearHeadups();
+    if (function_hook_state_ClearHeadups == HOOK_ENABLED) {
+        assert(0 && "ClearHeadups not implemented.");
+        abort();
+    } else {
+        original_ClearHeadups();
+    }
 }
 
+function_hook_state_t function_hook_state_HeadupActive = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(HeadupActive, function_hook_state_HeadupActive)
 static int(__cdecl*original_HeadupActive)(int) = (int(__cdecl*)(int))0x004c421d;
 CARM95_HOOK_FUNCTION(original_HeadupActive, HeadupActive)
 int __cdecl HeadupActive(int pIndex) {
@@ -103,9 +143,16 @@ int __cdecl HeadupActive(int pIndex) {
 
     (void)pIndex;
 
-    return original_HeadupActive(pIndex);
+    if (function_hook_state_HeadupActive == HOOK_ENABLED) {
+        assert(0 && "HeadupActive not implemented.");
+        abort();
+    } else {
+        return original_HeadupActive(pIndex);
+    }
 }
 
+function_hook_state_t function_hook_state_DRPixelmapText = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(DRPixelmapText, function_hook_state_DRPixelmapText)
 static void(__cdecl*original_DRPixelmapText)(br_pixelmap *, int, int, tDR_font *, char *, int) = (void(__cdecl*)(br_pixelmap *, int, int, tDR_font *, char *, int))0x004c4256;
 CARM95_HOOK_FUNCTION(original_DRPixelmapText, DRPixelmapText)
 void __cdecl DRPixelmapText(br_pixelmap *pPixelmap, int pX, int pY, tDR_font *pFont, char *pText, int pRight_edge) {
@@ -130,9 +177,16 @@ void __cdecl DRPixelmapText(br_pixelmap *pPixelmap, int pX, int pY, tDR_font *pF
     (void)ch_width;
     (void)ch;
 
-    original_DRPixelmapText(pPixelmap, pX, pY, pFont, pText, pRight_edge);
+    if (function_hook_state_DRPixelmapText == HOOK_ENABLED) {
+        assert(0 && "DRPixelmapText not implemented.");
+        abort();
+    } else {
+        original_DRPixelmapText(pPixelmap, pX, pY, pFont, pText, pRight_edge);
+    }
 }
 
+function_hook_state_t function_hook_state_DRPixelmapCleverText2 = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(DRPixelmapCleverText2, function_hook_state_DRPixelmapCleverText2)
 static void(__cdecl*original_DRPixelmapCleverText2)(br_pixelmap *, int, int, tDR_font *, signed char *, int) = (void(__cdecl*)(br_pixelmap *, int, int, tDR_font *, signed char *, int))0x004c43cf;
 CARM95_HOOK_FUNCTION(original_DRPixelmapCleverText2, DRPixelmapCleverText2)
 void __cdecl DRPixelmapCleverText2(br_pixelmap *pPixelmap, int pX, int pY, tDR_font *pFont, signed char *pText, int pRight_edge) {
@@ -159,9 +213,16 @@ void __cdecl DRPixelmapCleverText2(br_pixelmap *pPixelmap, int pX, int pY, tDR_f
     (void)ch;
     (void)new_font;
 
-    original_DRPixelmapCleverText2(pPixelmap, pX, pY, pFont, pText, pRight_edge);
+    if (function_hook_state_DRPixelmapCleverText2 == HOOK_ENABLED) {
+        assert(0 && "DRPixelmapCleverText2 not implemented.");
+        abort();
+    } else {
+        original_DRPixelmapCleverText2(pPixelmap, pX, pY, pFont, pText, pRight_edge);
+    }
 }
 
+function_hook_state_t function_hook_state_DeviouslyDimRectangle = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(DeviouslyDimRectangle, function_hook_state_DeviouslyDimRectangle)
 void DeviouslyDimRectangle(br_pixelmap *pPixelmap, int pLeft, int pTop, int pRight, int pBottom, int pKnock_out_corners) {
     LOG_TRACE("(%p, %d, %d, %d, %d, %d)", pPixelmap, pLeft, pTop, pRight, pBottom, pKnock_out_corners);
 
@@ -172,9 +233,16 @@ void DeviouslyDimRectangle(br_pixelmap *pPixelmap, int pLeft, int pTop, int pRig
     (void)pBottom;
     (void)pKnock_out_corners;
 
-    NOT_IMPLEMENTED();
+    if (function_hook_state_DeviouslyDimRectangle == HOOK_ENABLED) {
+        assert(0 && "DeviouslyDimRectangle not implemented.");
+        abort();
+    } else {
+        NOT_IMPLEMENTED();
+    }
 }
 
+function_hook_state_t function_hook_state_DimRectangle = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(DimRectangle, function_hook_state_DimRectangle)
 static void(__cdecl*original_DimRectangle)(br_pixelmap *, int, int, int, int, int) = (void(__cdecl*)(br_pixelmap *, int, int, int, int, int))0x004c4604;
 CARM95_HOOK_FUNCTION(original_DimRectangle, DimRectangle)
 void __cdecl DimRectangle(br_pixelmap *pPixelmap, int pLeft, int pTop, int pRight, int pBottom, int pKnock_out_corners) {
@@ -201,9 +269,16 @@ void __cdecl DimRectangle(br_pixelmap *pPixelmap, int pLeft, int pTop, int pRigh
     (void)line_skip;
     (void)width;
 
-    original_DimRectangle(pPixelmap, pLeft, pTop, pRight, pBottom, pKnock_out_corners);
+    if (function_hook_state_DimRectangle == HOOK_ENABLED) {
+        assert(0 && "DimRectangle not implemented.");
+        abort();
+    } else {
+        original_DimRectangle(pPixelmap, pLeft, pTop, pRight, pBottom, pKnock_out_corners);
+    }
 }
 
+function_hook_state_t function_hook_state_DimAFewBits = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(DimAFewBits, function_hook_state_DimAFewBits)
 static void(__cdecl*original_DimAFewBits)() = (void(__cdecl*)())0x004c479c;
 CARM95_HOOK_FUNCTION(original_DimAFewBits, DimAFewBits)
 void __cdecl DimAFewBits() {
@@ -212,18 +287,32 @@ void __cdecl DimAFewBits() {
 
     (void)i;
 
-    original_DimAFewBits();
+    if (function_hook_state_DimAFewBits == HOOK_ENABLED) {
+        assert(0 && "DimAFewBits not implemented.");
+        abort();
+    } else {
+        original_DimAFewBits();
+    }
 }
 
+function_hook_state_t function_hook_state_KillOldestQueuedHeadup = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(KillOldestQueuedHeadup, function_hook_state_KillOldestQueuedHeadup)
 static void(__cdecl*original_KillOldestQueuedHeadup)() = (void(__cdecl*)())0x004c524c;
 CARM95_HOOK_FUNCTION(original_KillOldestQueuedHeadup, KillOldestQueuedHeadup)
 void __cdecl KillOldestQueuedHeadup() {
     LOG_TRACE("()");
 
 
-    original_KillOldestQueuedHeadup();
+    if (function_hook_state_KillOldestQueuedHeadup == HOOK_ENABLED) {
+        assert(0 && "KillOldestQueuedHeadup not implemented.");
+        abort();
+    } else {
+        original_KillOldestQueuedHeadup();
+    }
 }
 
+function_hook_state_t function_hook_state_DubreyBar = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(DubreyBar, function_hook_state_DubreyBar)
 static void(__cdecl*original_DubreyBar)(int, int, int) = (void(__cdecl*)(int, int, int))0x004c5438;
 CARM95_HOOK_FUNCTION(original_DubreyBar, DubreyBar)
 void __cdecl DubreyBar(int pX_index, int pY, int pColour) {
@@ -235,9 +324,16 @@ void __cdecl DubreyBar(int pX_index, int pY, int pColour) {
     (void)pColour;
     (void)x;
 
-    original_DubreyBar(pX_index, pY, pColour);
+    if (function_hook_state_DubreyBar == HOOK_ENABLED) {
+        assert(0 && "DubreyBar not implemented.");
+        abort();
+    } else {
+        original_DubreyBar(pX_index, pY, pColour);
+    }
 }
 
+function_hook_state_t function_hook_state_DoPSPowerHeadup = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(DoPSPowerHeadup, function_hook_state_DoPSPowerHeadup)
 static void(__cdecl*original_DoPSPowerHeadup)(int, int, char *, int) = (void(__cdecl*)(int, int, char *, int))0x004c530b;
 CARM95_HOOK_FUNCTION(original_DoPSPowerHeadup, DoPSPowerHeadup)
 void __cdecl DoPSPowerHeadup(int pY, int pLevel, char *pName, int pBar_colour) {
@@ -252,18 +348,32 @@ void __cdecl DoPSPowerHeadup(int pY, int pLevel, char *pName, int pBar_colour) {
     (void)s;
     (void)i;
 
-    original_DoPSPowerHeadup(pY, pLevel, pName, pBar_colour);
+    if (function_hook_state_DoPSPowerHeadup == HOOK_ENABLED) {
+        assert(0 && "DoPSPowerHeadup not implemented.");
+        abort();
+    } else {
+        original_DoPSPowerHeadup(pY, pLevel, pName, pBar_colour);
+    }
 }
 
+function_hook_state_t function_hook_state_DoPSPowerupHeadups = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(DoPSPowerupHeadups, function_hook_state_DoPSPowerupHeadups)
 static void(__cdecl*original_DoPSPowerupHeadups)() = (void(__cdecl*)())0x004c5288;
 CARM95_HOOK_FUNCTION(original_DoPSPowerupHeadups, DoPSPowerupHeadups)
 void __cdecl DoPSPowerupHeadups() {
     LOG_TRACE("()");
 
 
-    original_DoPSPowerupHeadups();
+    if (function_hook_state_DoPSPowerupHeadups == HOOK_ENABLED) {
+        assert(0 && "DoPSPowerupHeadups not implemented.");
+        abort();
+    } else {
+        original_DoPSPowerupHeadups();
+    }
 }
 
+function_hook_state_t function_hook_state_DoHeadups = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(DoHeadups, function_hook_state_DoHeadups)
 static void(__cdecl*original_DoHeadups)(tU32) = (void(__cdecl*)(tU32))0x004c4906;
 CARM95_HOOK_FUNCTION(original_DoHeadups, DoHeadups)
 void __cdecl DoHeadups(tU32 pThe_time) {
@@ -281,9 +391,16 @@ void __cdecl DoHeadups(tU32 pThe_time) {
     (void)the_headup;
     (void)time_factor;
 
-    original_DoHeadups(pThe_time);
+    if (function_hook_state_DoHeadups == HOOK_ENABLED) {
+        assert(0 && "DoHeadups not implemented.");
+        abort();
+    } else {
+        original_DoHeadups(pThe_time);
+    }
 }
 
+function_hook_state_t function_hook_state_FindAHeadupHoleWoofBarkSoundsABitRude = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(FindAHeadupHoleWoofBarkSoundsABitRude, function_hook_state_FindAHeadupHoleWoofBarkSoundsABitRude)
 static int(__cdecl*original_FindAHeadupHoleWoofBarkSoundsABitRude)(int) = (int(__cdecl*)(int))0x004c5493;
 CARM95_HOOK_FUNCTION(original_FindAHeadupHoleWoofBarkSoundsABitRude, FindAHeadupHoleWoofBarkSoundsABitRude)
 int __cdecl FindAHeadupHoleWoofBarkSoundsABitRude(int pSlot_index) {
@@ -297,9 +414,16 @@ int __cdecl FindAHeadupHoleWoofBarkSoundsABitRude(int pSlot_index) {
     (void)empty_one;
     (void)the_headup;
 
-    return original_FindAHeadupHoleWoofBarkSoundsABitRude(pSlot_index);
+    if (function_hook_state_FindAHeadupHoleWoofBarkSoundsABitRude == HOOK_ENABLED) {
+        assert(0 && "FindAHeadupHoleWoofBarkSoundsABitRude not implemented.");
+        abort();
+    } else {
+        return original_FindAHeadupHoleWoofBarkSoundsABitRude(pSlot_index);
+    }
 }
 
+function_hook_state_t function_hook_state_DRTextWidth = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(DRTextWidth, function_hook_state_DRTextWidth)
 static int(__cdecl*original_DRTextWidth)(tDR_font *, char *) = (int(__cdecl*)(tDR_font *, char *))0x004c5514;
 CARM95_HOOK_FUNCTION(original_DRTextWidth, DRTextWidth)
 int __cdecl DRTextWidth(tDR_font *pFont, char *pText) {
@@ -316,9 +440,16 @@ int __cdecl DRTextWidth(tDR_font *pFont, char *pText) {
     (void)result;
     (void)c;
 
-    return original_DRTextWidth(pFont, pText);
+    if (function_hook_state_DRTextWidth == HOOK_ENABLED) {
+        assert(0 && "DRTextWidth not implemented.");
+        abort();
+    } else {
+        return original_DRTextWidth(pFont, pText);
+    }
 }
 
+function_hook_state_t function_hook_state_DRTextCleverWidth = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(DRTextCleverWidth, function_hook_state_DRTextCleverWidth)
 static int(__cdecl*original_DRTextCleverWidth)(tDR_font *, signed char *) = (int(__cdecl*)(tDR_font *, signed char *))0x004c5591;
 CARM95_HOOK_FUNCTION(original_DRTextCleverWidth, DRTextCleverWidth)
 int __cdecl DRTextCleverWidth(tDR_font *pFont, signed char *pText) {
@@ -335,9 +466,16 @@ int __cdecl DRTextCleverWidth(tDR_font *pFont, signed char *pText) {
     (void)result;
     (void)c;
 
-    return original_DRTextCleverWidth(pFont, pText);
+    if (function_hook_state_DRTextCleverWidth == HOOK_ENABLED) {
+        assert(0 && "DRTextCleverWidth not implemented.");
+        abort();
+    } else {
+        return original_DRTextCleverWidth(pFont, pText);
+    }
 }
 
+function_hook_state_t function_hook_state_DRPixelmapCentredText = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(DRPixelmapCentredText, function_hook_state_DRPixelmapCentredText)
 static void(__cdecl*original_DRPixelmapCentredText)(br_pixelmap *, int, int, tDR_font *, char *) = (void(__cdecl*)(br_pixelmap *, int, int, tDR_font *, char *))0x004c5665;
 CARM95_HOOK_FUNCTION(original_DRPixelmapCentredText, DRPixelmapCentredText)
 void __cdecl DRPixelmapCentredText(br_pixelmap *pPixelmap, int pX, int pY, tDR_font *pFont, char *pText) {
@@ -351,9 +489,16 @@ void __cdecl DRPixelmapCentredText(br_pixelmap *pPixelmap, int pX, int pY, tDR_f
     (void)pText;
     (void)width_over_2;
 
-    original_DRPixelmapCentredText(pPixelmap, pX, pY, pFont, pText);
+    if (function_hook_state_DRPixelmapCentredText == HOOK_ENABLED) {
+        assert(0 && "DRPixelmapCentredText not implemented.");
+        abort();
+    } else {
+        original_DRPixelmapCentredText(pPixelmap, pX, pY, pFont, pText);
+    }
 }
 
+function_hook_state_t function_hook_state_IsHeadupTextClever = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(IsHeadupTextClever, function_hook_state_IsHeadupTextClever)
 static int(__cdecl*original_IsHeadupTextClever)(signed char *) = (int(__cdecl*)(signed char *))0x004c5bd4;
 CARM95_HOOK_FUNCTION(original_IsHeadupTextClever, IsHeadupTextClever)
 int __cdecl IsHeadupTextClever(signed char *pText) {
@@ -361,9 +506,16 @@ int __cdecl IsHeadupTextClever(signed char *pText) {
 
     (void)pText;
 
-    return original_IsHeadupTextClever(pText);
+    if (function_hook_state_IsHeadupTextClever == HOOK_ENABLED) {
+        assert(0 && "IsHeadupTextClever not implemented.");
+        abort();
+    } else {
+        return original_IsHeadupTextClever(pText);
+    }
 }
 
+function_hook_state_t function_hook_state_MungeHeadupWidth = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(MungeHeadupWidth, function_hook_state_MungeHeadupWidth)
 static int(__cdecl*original_MungeHeadupWidth)(tHeadup *) = (int(__cdecl*)(tHeadup *))0x004c5981;
 CARM95_HOOK_FUNCTION(original_MungeHeadupWidth, MungeHeadupWidth)
 int __cdecl MungeHeadupWidth(tHeadup *pHeadup) {
@@ -373,9 +525,16 @@ int __cdecl MungeHeadupWidth(tHeadup *pHeadup) {
     (void)pHeadup;
     (void)width;
 
-    return original_MungeHeadupWidth(pHeadup);
+    if (function_hook_state_MungeHeadupWidth == HOOK_ENABLED) {
+        assert(0 && "MungeHeadupWidth not implemented.");
+        abort();
+    } else {
+        return original_MungeHeadupWidth(pHeadup);
+    }
 }
 
+function_hook_state_t function_hook_state_NewTextHeadupSlot2 = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(NewTextHeadupSlot2, function_hook_state_NewTextHeadupSlot2)
 static int(__cdecl*original_NewTextHeadupSlot2)(int, int, int, int, char *, int) = (int(__cdecl*)(int, int, int, int, char *, int))0x004c56b1;
 CARM95_HOOK_FUNCTION(original_NewTextHeadupSlot2, NewTextHeadupSlot2)
 int __cdecl NewTextHeadupSlot2(int pSlot_index, int pFlash_rate, int pLifetime, int pFont_index, char *pText, int pQueue_it) {
@@ -396,9 +555,16 @@ int __cdecl NewTextHeadupSlot2(int pSlot_index, int pFlash_rate, int pLifetime, 
     (void)headup_slot;
     (void)time;
 
-    return original_NewTextHeadupSlot2(pSlot_index, pFlash_rate, pLifetime, pFont_index, pText, pQueue_it);
+    if (function_hook_state_NewTextHeadupSlot2 == HOOK_ENABLED) {
+        assert(0 && "NewTextHeadupSlot2 not implemented.");
+        abort();
+    } else {
+        return original_NewTextHeadupSlot2(pSlot_index, pFlash_rate, pLifetime, pFont_index, pText, pQueue_it);
+    }
 }
 
+function_hook_state_t function_hook_state_NewTextHeadupSlot = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(NewTextHeadupSlot, function_hook_state_NewTextHeadupSlot)
 static int(__cdecl*original_NewTextHeadupSlot)(int, int, int, int, char *) = (int(__cdecl*)(int, int, int, int, char *))0x004c5c1d;
 CARM95_HOOK_FUNCTION(original_NewTextHeadupSlot, NewTextHeadupSlot)
 int __cdecl NewTextHeadupSlot(int pSlot_index, int pFlash_rate, int pLifetime, int pFont_index, char *pText) {
@@ -410,9 +576,16 @@ int __cdecl NewTextHeadupSlot(int pSlot_index, int pFlash_rate, int pLifetime, i
     (void)pFont_index;
     (void)pText;
 
-    return original_NewTextHeadupSlot(pSlot_index, pFlash_rate, pLifetime, pFont_index, pText);
+    if (function_hook_state_NewTextHeadupSlot == HOOK_ENABLED) {
+        assert(0 && "NewTextHeadupSlot not implemented.");
+        abort();
+    } else {
+        return original_NewTextHeadupSlot(pSlot_index, pFlash_rate, pLifetime, pFont_index, pText);
+    }
 }
 
+function_hook_state_t function_hook_state_NewImageHeadupSlot = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(NewImageHeadupSlot, function_hook_state_NewImageHeadupSlot)
 static int(__cdecl*original_NewImageHeadupSlot)(int, int, int, int) = (int(__cdecl*)(int, int, int, int))0x004c5c4b;
 CARM95_HOOK_FUNCTION(original_NewImageHeadupSlot, NewImageHeadupSlot)
 int __cdecl NewImageHeadupSlot(int pSlot_index, int pFlash_rate, int pLifetime, int pImage_index) {
@@ -429,9 +602,16 @@ int __cdecl NewImageHeadupSlot(int pSlot_index, int pFlash_rate, int pLifetime, 
     (void)the_headup;
     (void)headup_slot;
 
-    return original_NewImageHeadupSlot(pSlot_index, pFlash_rate, pLifetime, pImage_index);
+    if (function_hook_state_NewImageHeadupSlot == HOOK_ENABLED) {
+        assert(0 && "NewImageHeadupSlot not implemented.");
+        abort();
+    } else {
+        return original_NewImageHeadupSlot(pSlot_index, pFlash_rate, pLifetime, pImage_index);
+    }
 }
 
+function_hook_state_t function_hook_state_DoFancyHeadup = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(DoFancyHeadup, function_hook_state_DoFancyHeadup)
 static void(__cdecl*original_DoFancyHeadup)(int) = (void(__cdecl*)(int))0x004c5e50;
 CARM95_HOOK_FUNCTION(original_DoFancyHeadup, DoFancyHeadup)
 void __cdecl DoFancyHeadup(int pIndex) {
@@ -445,9 +625,16 @@ void __cdecl DoFancyHeadup(int pIndex) {
     (void)the_headup;
     (void)temp_ref;
 
-    original_DoFancyHeadup(pIndex);
+    if (function_hook_state_DoFancyHeadup == HOOK_ENABLED) {
+        assert(0 && "DoFancyHeadup not implemented.");
+        abort();
+    } else {
+        original_DoFancyHeadup(pIndex);
+    }
 }
 
+function_hook_state_t function_hook_state_AdjustHeadups = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(AdjustHeadups, function_hook_state_AdjustHeadups)
 static void(__cdecl*original_AdjustHeadups)() = (void(__cdecl*)())0x004c5f58;
 CARM95_HOOK_FUNCTION(original_AdjustHeadups, AdjustHeadups)
 void __cdecl AdjustHeadups() {
@@ -462,9 +649,16 @@ void __cdecl AdjustHeadups() {
     (void)delta_y;
     (void)the_headup;
 
-    original_AdjustHeadups();
+    if (function_hook_state_AdjustHeadups == HOOK_ENABLED) {
+        assert(0 && "AdjustHeadups not implemented.");
+        abort();
+    } else {
+        original_AdjustHeadups();
+    }
 }
 
+function_hook_state_t function_hook_state_MoveHeadupTo = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(MoveHeadupTo, function_hook_state_MoveHeadupTo)
 static void(__cdecl*original_MoveHeadupTo)(int, int, int) = (void(__cdecl*)(int, int, int))0x004c6107;
 CARM95_HOOK_FUNCTION(original_MoveHeadupTo, MoveHeadupTo)
 void __cdecl MoveHeadupTo(int pHeadup_index, int pNew_x, int pNew_y) {
@@ -478,9 +672,16 @@ void __cdecl MoveHeadupTo(int pHeadup_index, int pNew_x, int pNew_y) {
     (void)delta_x;
     (void)the_headup;
 
-    original_MoveHeadupTo(pHeadup_index, pNew_x, pNew_y);
+    if (function_hook_state_MoveHeadupTo == HOOK_ENABLED) {
+        assert(0 && "MoveHeadupTo not implemented.");
+        abort();
+    } else {
+        original_MoveHeadupTo(pHeadup_index, pNew_x, pNew_y);
+    }
 }
 
+function_hook_state_t function_hook_state_ChangeHeadupText = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(ChangeHeadupText, function_hook_state_ChangeHeadupText)
 static void(__cdecl*original_ChangeHeadupText)(int, char *) = (void(__cdecl*)(int, char *))0x004c6169;
 CARM95_HOOK_FUNCTION(original_ChangeHeadupText, ChangeHeadupText)
 void __cdecl ChangeHeadupText(int pHeadup_index, char *pNew_text) {
@@ -491,9 +692,16 @@ void __cdecl ChangeHeadupText(int pHeadup_index, char *pNew_text) {
     (void)pNew_text;
     (void)the_headup;
 
-    original_ChangeHeadupText(pHeadup_index, pNew_text);
+    if (function_hook_state_ChangeHeadupText == HOOK_ENABLED) {
+        assert(0 && "ChangeHeadupText not implemented.");
+        abort();
+    } else {
+        original_ChangeHeadupText(pHeadup_index, pNew_text);
+    }
 }
 
+function_hook_state_t function_hook_state_ChangeHeadupImage = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(ChangeHeadupImage, function_hook_state_ChangeHeadupImage)
 static void(__cdecl*original_ChangeHeadupImage)(int, int) = (void(__cdecl*)(int, int))0x004c61d2;
 CARM95_HOOK_FUNCTION(original_ChangeHeadupImage, ChangeHeadupImage)
 void __cdecl ChangeHeadupImage(int pHeadup_index, int pNew_image) {
@@ -504,9 +712,16 @@ void __cdecl ChangeHeadupImage(int pHeadup_index, int pNew_image) {
     (void)pNew_image;
     (void)the_headup;
 
-    original_ChangeHeadupImage(pHeadup_index, pNew_image);
+    if (function_hook_state_ChangeHeadupImage == HOOK_ENABLED) {
+        assert(0 && "ChangeHeadupImage not implemented.");
+        abort();
+    } else {
+        original_ChangeHeadupImage(pHeadup_index, pNew_image);
+    }
 }
 
+function_hook_state_t function_hook_state_ChangeHeadupColour = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(ChangeHeadupColour, function_hook_state_ChangeHeadupColour)
 static void(__cdecl*original_ChangeHeadupColour)(int, int) = (void(__cdecl*)(int, int))0x004c629e;
 CARM95_HOOK_FUNCTION(original_ChangeHeadupColour, ChangeHeadupColour)
 void __cdecl ChangeHeadupColour(int pHeadup_index, int pNew_colour) {
@@ -515,9 +730,16 @@ void __cdecl ChangeHeadupColour(int pHeadup_index, int pNew_colour) {
     (void)pHeadup_index;
     (void)pNew_colour;
 
-    original_ChangeHeadupColour(pHeadup_index, pNew_colour);
+    if (function_hook_state_ChangeHeadupColour == HOOK_ENABLED) {
+        assert(0 && "ChangeHeadupColour not implemented.");
+        abort();
+    } else {
+        original_ChangeHeadupColour(pHeadup_index, pNew_colour);
+    }
 }
 
+function_hook_state_t function_hook_state_DoDamageScreen = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(DoDamageScreen, function_hook_state_DoDamageScreen)
 static void(__cdecl*original_DoDamageScreen)(tU32) = (void(__cdecl*)(tU32))0x004c62d8;
 CARM95_HOOK_FUNCTION(original_DoDamageScreen, DoDamageScreen)
 void __cdecl DoDamageScreen(tU32 pThe_time) {
@@ -539,9 +761,16 @@ void __cdecl DoDamageScreen(tU32 pThe_time) {
     (void)the_image;
     (void)the_damage;
 
-    original_DoDamageScreen(pThe_time);
+    if (function_hook_state_DoDamageScreen == HOOK_ENABLED) {
+        assert(0 && "DoDamageScreen not implemented.");
+        abort();
+    } else {
+        original_DoDamageScreen(pThe_time);
+    }
 }
 
+function_hook_state_t function_hook_state_PoshDrawLine = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(PoshDrawLine, function_hook_state_PoshDrawLine)
 static void(__cdecl*original_PoshDrawLine)(float, br_pixelmap *, int, int, int, int, int) = (void(__cdecl*)(float, br_pixelmap *, int, int, int, int, int))0x004c70fd;
 CARM95_HOOK_FUNCTION(original_PoshDrawLine, PoshDrawLine)
 void __cdecl PoshDrawLine(float pAngle, br_pixelmap *pDestn, int pX1, int pY1, int pX2, int pY2, int pColour) {
@@ -555,9 +784,16 @@ void __cdecl PoshDrawLine(float pAngle, br_pixelmap *pDestn, int pX1, int pY1, i
     (void)pY2;
     (void)pColour;
 
-    original_PoshDrawLine(pAngle, pDestn, pX1, pY1, pX2, pY2, pColour);
+    if (function_hook_state_PoshDrawLine == HOOK_ENABLED) {
+        assert(0 && "PoshDrawLine not implemented.");
+        abort();
+    } else {
+        original_PoshDrawLine(pAngle, pDestn, pX1, pY1, pX2, pY2, pColour);
+    }
 }
 
+function_hook_state_t function_hook_state_DoInstruments = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(DoInstruments, function_hook_state_DoInstruments)
 static void(__cdecl*original_DoInstruments)(tU32) = (void(__cdecl*)(tU32))0x004c6474;
 CARM95_HOOK_FUNCTION(original_DoInstruments, DoInstruments)
 void __cdecl DoInstruments(tU32 pThe_time) {
@@ -585,9 +821,16 @@ void __cdecl DoInstruments(tU32 pThe_time) {
     (void)cos_angle;
     (void)speed_mph;
 
-    original_DoInstruments(pThe_time);
+    if (function_hook_state_DoInstruments == HOOK_ENABLED) {
+        assert(0 && "DoInstruments not implemented.");
+        abort();
+    } else {
+        original_DoInstruments(pThe_time);
+    }
 }
 
+function_hook_state_t function_hook_state_DoSteeringWheel = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(DoSteeringWheel, function_hook_state_DoSteeringWheel)
 static void(__cdecl*original_DoSteeringWheel)(tU32) = (void(__cdecl*)(tU32))0x004c72e1;
 CARM95_HOOK_FUNCTION(original_DoSteeringWheel, DoSteeringWheel)
 void __cdecl DoSteeringWheel(tU32 pThe_time) {
@@ -599,9 +842,16 @@ void __cdecl DoSteeringWheel(tU32 pThe_time) {
     (void)hands_image;
     (void)hands_index;
 
-    original_DoSteeringWheel(pThe_time);
+    if (function_hook_state_DoSteeringWheel == HOOK_ENABLED) {
+        assert(0 && "DoSteeringWheel not implemented.");
+        abort();
+    } else {
+        original_DoSteeringWheel(pThe_time);
+    }
 }
 
+function_hook_state_t function_hook_state_ChangingView = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(ChangingView, function_hook_state_ChangingView)
 static void(__cdecl*original_ChangingView)() = (void(__cdecl*)())0x004c7455;
 CARM95_HOOK_FUNCTION(original_ChangingView, ChangingView)
 void __cdecl ChangingView() {
@@ -610,9 +860,16 @@ void __cdecl ChangingView() {
 
     (void)the_time;
 
-    original_ChangingView();
+    if (function_hook_state_ChangingView == HOOK_ENABLED) {
+        assert(0 && "ChangingView not implemented.");
+        abort();
+    } else {
+        original_ChangingView();
+    }
 }
 
+function_hook_state_t function_hook_state_EarnCredits2 = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(EarnCredits2, function_hook_state_EarnCredits2)
 static void(__cdecl*original_EarnCredits2)(int, char *) = (void(__cdecl*)(int, char *))0x004c76d8;
 CARM95_HOOK_FUNCTION(original_EarnCredits2, EarnCredits2)
 void __cdecl EarnCredits2(int pAmount, char *pPrefix_text) {
@@ -627,9 +884,16 @@ void __cdecl EarnCredits2(int pAmount, char *pPrefix_text) {
     (void)original_amount;
     (void)the_time;
 
-    original_EarnCredits2(pAmount, pPrefix_text);
+    if (function_hook_state_EarnCredits2 == HOOK_ENABLED) {
+        assert(0 && "EarnCredits2 not implemented.");
+        abort();
+    } else {
+        original_EarnCredits2(pAmount, pPrefix_text);
+    }
 }
 
+function_hook_state_t function_hook_state_EarnCredits = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(EarnCredits, function_hook_state_EarnCredits)
 static void(__cdecl*original_EarnCredits)(int) = (void(__cdecl*)(int))0x004c78a8;
 CARM95_HOOK_FUNCTION(original_EarnCredits, EarnCredits)
 void __cdecl EarnCredits(int pAmount) {
@@ -637,9 +901,16 @@ void __cdecl EarnCredits(int pAmount) {
 
     (void)pAmount;
 
-    original_EarnCredits(pAmount);
+    if (function_hook_state_EarnCredits == HOOK_ENABLED) {
+        assert(0 && "EarnCredits not implemented.");
+        abort();
+    } else {
+        original_EarnCredits(pAmount);
+    }
 }
 
+function_hook_state_t function_hook_state_SpendCredits = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(SpendCredits, function_hook_state_SpendCredits)
 static int(__cdecl*original_SpendCredits)(int) = (int(__cdecl*)(int))0x004c78c4;
 CARM95_HOOK_FUNCTION(original_SpendCredits, SpendCredits)
 int __cdecl SpendCredits(int pAmount) {
@@ -649,9 +920,16 @@ int __cdecl SpendCredits(int pAmount) {
     (void)pAmount;
     (void)amount;
 
-    return original_SpendCredits(pAmount);
+    if (function_hook_state_SpendCredits == HOOK_ENABLED) {
+        assert(0 && "SpendCredits not implemented.");
+        abort();
+    } else {
+        return original_SpendCredits(pAmount);
+    }
 }
 
+function_hook_state_t function_hook_state_AwardTime = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(AwardTime, function_hook_state_AwardTime)
 static void(__cdecl*original_AwardTime)(tU32) = (void(__cdecl*)(tU32))0x004c791e;
 CARM95_HOOK_FUNCTION(original_AwardTime, AwardTime)
 void __cdecl AwardTime(tU32 pTime) {
@@ -667,9 +945,16 @@ void __cdecl AwardTime(tU32 pTime) {
     (void)the_time;
     (void)i;
 
-    original_AwardTime(pTime);
+    if (function_hook_state_AwardTime == HOOK_ENABLED) {
+        assert(0 && "AwardTime not implemented.");
+        abort();
+    } else {
+        original_AwardTime(pTime);
+    }
 }
 
+function_hook_state_t function_hook_state_DrawRectangle = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(DrawRectangle, function_hook_state_DrawRectangle)
 static void(__cdecl*original_DrawRectangle)(br_pixelmap *, int, int, int, int, int) = (void(__cdecl*)(br_pixelmap *, int, int, int, int, int))0x004c7a61;
 CARM95_HOOK_FUNCTION(original_DrawRectangle, DrawRectangle)
 void __cdecl DrawRectangle(br_pixelmap *pPixelmap, int pLeft, int pTop, int pRight, int pBottom, int pColour) {
@@ -682,9 +967,16 @@ void __cdecl DrawRectangle(br_pixelmap *pPixelmap, int pLeft, int pTop, int pRig
     (void)pBottom;
     (void)pColour;
 
-    original_DrawRectangle(pPixelmap, pLeft, pTop, pRight, pBottom, pColour);
+    if (function_hook_state_DrawRectangle == HOOK_ENABLED) {
+        assert(0 && "DrawRectangle not implemented.");
+        abort();
+    } else {
+        original_DrawRectangle(pPixelmap, pLeft, pTop, pRight, pBottom, pColour);
+    }
 }
 
+function_hook_state_t function_hook_state_DrawRRectangle = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(DrawRRectangle, function_hook_state_DrawRRectangle)
 static void(__cdecl*original_DrawRRectangle)(br_pixelmap *, int, int, int, int, int) = (void(__cdecl*)(br_pixelmap *, int, int, int, int, int))0x004c7aec;
 CARM95_HOOK_FUNCTION(original_DrawRRectangle, DrawRRectangle)
 void __cdecl DrawRRectangle(br_pixelmap *pPixelmap, int pLeft, int pTop, int pRight, int pBottom, int pColour) {
@@ -697,9 +989,16 @@ void __cdecl DrawRRectangle(br_pixelmap *pPixelmap, int pLeft, int pTop, int pRi
     (void)pBottom;
     (void)pColour;
 
-    original_DrawRRectangle(pPixelmap, pLeft, pTop, pRight, pBottom, pColour);
+    if (function_hook_state_DrawRRectangle == HOOK_ENABLED) {
+        assert(0 && "DrawRRectangle not implemented.");
+        abort();
+    } else {
+        original_DrawRRectangle(pPixelmap, pLeft, pTop, pRight, pBottom, pColour);
+    }
 }
 
+function_hook_state_t function_hook_state_OoerrIveGotTextInMeBoxMissus = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(OoerrIveGotTextInMeBoxMissus, function_hook_state_OoerrIveGotTextInMeBoxMissus)
 static void(__cdecl*original_OoerrIveGotTextInMeBoxMissus)(int, char *, br_pixelmap *, int, int, int, int, int) = (void(__cdecl*)(int, char *, br_pixelmap *, int, int, int, int, int))0x004c7b7f;
 CARM95_HOOK_FUNCTION(original_OoerrIveGotTextInMeBoxMissus, OoerrIveGotTextInMeBoxMissus)
 void __cdecl OoerrIveGotTextInMeBoxMissus(int pFont_index, char *pText, br_pixelmap *pPixelmap, int pLeft, int pTop, int pRight, int pBottom, int pCentred) {
@@ -736,9 +1035,16 @@ void __cdecl OoerrIveGotTextInMeBoxMissus(int pFont_index, char *pText, br_pixel
     (void)font_needed_loading;
     (void)line;
 
-    original_OoerrIveGotTextInMeBoxMissus(pFont_index, pText, pPixelmap, pLeft, pTop, pRight, pBottom, pCentred);
+    if (function_hook_state_OoerrIveGotTextInMeBoxMissus == HOOK_ENABLED) {
+        assert(0 && "OoerrIveGotTextInMeBoxMissus not implemented.");
+        abort();
+    } else {
+        original_OoerrIveGotTextInMeBoxMissus(pFont_index, pText, pPixelmap, pLeft, pTop, pRight, pBottom, pCentred);
+    }
 }
 
+function_hook_state_t function_hook_state_TransBrPixelmapText = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(TransBrPixelmapText, function_hook_state_TransBrPixelmapText)
 static void(__cdecl*original_TransBrPixelmapText)(br_pixelmap *, int, int, br_uint_32, br_font *, signed char *) = (void(__cdecl*)(br_pixelmap *, int, int, br_uint_32, br_font *, signed char *))0x004c7ec5;
 CARM95_HOOK_FUNCTION(original_TransBrPixelmapText, TransBrPixelmapText)
 void __cdecl TransBrPixelmapText(br_pixelmap *pPixelmap, int pX, int pY, br_uint_32 pColour, br_font *pFont, signed char *pText) {
@@ -755,9 +1061,16 @@ void __cdecl TransBrPixelmapText(br_pixelmap *pPixelmap, int pX, int pY, br_uint
     (void)i;
     (void)len;
 
-    original_TransBrPixelmapText(pPixelmap, pX, pY, pColour, pFont, pText);
+    if (function_hook_state_TransBrPixelmapText == HOOK_ENABLED) {
+        assert(0 && "TransBrPixelmapText not implemented.");
+        abort();
+    } else {
+        original_TransBrPixelmapText(pPixelmap, pX, pY, pColour, pFont, pText);
+    }
 }
 
+function_hook_state_t function_hook_state_TransDRPixelmapText = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(TransDRPixelmapText, function_hook_state_TransDRPixelmapText)
 static void(__cdecl*original_TransDRPixelmapText)(br_pixelmap *, int, int, tDR_font *, char *, int) = (void(__cdecl*)(br_pixelmap *, int, int, tDR_font *, char *, int))0x004c7f08;
 CARM95_HOOK_FUNCTION(original_TransDRPixelmapText, TransDRPixelmapText)
 void __cdecl TransDRPixelmapText(br_pixelmap *pPixelmap, int pX, int pY, tDR_font *pFont, char *pText, int pRight_edge) {
@@ -770,9 +1083,16 @@ void __cdecl TransDRPixelmapText(br_pixelmap *pPixelmap, int pX, int pY, tDR_fon
     (void)pText;
     (void)pRight_edge;
 
-    original_TransDRPixelmapText(pPixelmap, pX, pY, pFont, pText, pRight_edge);
+    if (function_hook_state_TransDRPixelmapText == HOOK_ENABLED) {
+        assert(0 && "TransDRPixelmapText not implemented.");
+        abort();
+    } else {
+        original_TransDRPixelmapText(pPixelmap, pX, pY, pFont, pText, pRight_edge);
+    }
 }
 
+function_hook_state_t function_hook_state_TransDRPixelmapCleverText = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(TransDRPixelmapCleverText, function_hook_state_TransDRPixelmapCleverText)
 static void(__cdecl*original_TransDRPixelmapCleverText)(br_pixelmap *, int, int, tDR_font *, char *, int) = (void(__cdecl*)(br_pixelmap *, int, int, tDR_font *, char *, int))0x004c7fd5;
 CARM95_HOOK_FUNCTION(original_TransDRPixelmapCleverText, TransDRPixelmapCleverText)
 void __cdecl TransDRPixelmapCleverText(br_pixelmap *pPixelmap, int pX, int pY, tDR_font *pFont, char *pText, int pRight_edge) {
@@ -785,6 +1105,11 @@ void __cdecl TransDRPixelmapCleverText(br_pixelmap *pPixelmap, int pX, int pY, t
     (void)pText;
     (void)pRight_edge;
 
-    original_TransDRPixelmapCleverText(pPixelmap, pX, pY, pFont, pText, pRight_edge);
+    if (function_hook_state_TransDRPixelmapCleverText == HOOK_ENABLED) {
+        assert(0 && "TransDRPixelmapCleverText not implemented.");
+        abort();
+    } else {
+        original_TransDRPixelmapCleverText(pPixelmap, pX, pY, pFont, pText, pRight_edge);
+    }
 }
 

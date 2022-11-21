@@ -4,94 +4,103 @@
 
 #include "carm95_hooks.h"
 
+#include "carm95_webserver.h"
+
+#include <assert.h>
 char *(* hookvar_gReplay_pixie_names )[10] = (void*)0x0050a1b0;
-#if 0
-int * hookvar_gSingle_frame_mode ;
-#endif
-#if 0
-tU32 * hookvar_gCam_change_time ;
-#endif
-#if 0
-int * hookvar_gSave_file ;
-#endif
-#if 0
-int(* hookvar_gProgress_line_left )[2];
-#endif
-#if 0
-int(* hookvar_gProgress_line_right )[2];
-#endif
-#if 0
-int(* hookvar_gProgress_line_top )[2];
-#endif
+int * hookvar_gSingle_frame_mode  = (void*)0x0050a1d8;
+tU32 * hookvar_gCam_change_time  = (void*)0x0050a1dc;
+int * hookvar_gSave_file  = (void*)0x0050a1e0;
+int(* hookvar_gProgress_line_left )[2] = (void*)0x0050a1e8;
+int(* hookvar_gProgress_line_right )[2] = (void*)0x0050a1f0;
+int(* hookvar_gProgress_line_top )[2] = (void*)0x0050a1f8;
 br_pixelmap *(* hookvar_gReplay_pixies )[10] = (void*)0x00531dd0;
 int * hookvar_gKey_down  = (void*)0x00531db8;
 #if 0
 int * hookvar_gNo_cursor ;
 #endif
-#if 0
-int * hookvar_gSave_frame_number ;
-#endif
-#if 0
-int * hookvar_gCam_change_button_down ;
-#endif
-#if 0
-tU32 * hookvar_gAction_replay_start_time ;
-#endif
-#if 0
-tU32 * hookvar_gLast_replay_zappy_screen ;
-#endif
-#if 0
-tS32 * hookvar_gStopped_time ;
-#endif
+int * hookvar_gSave_frame_number  = (void*)0x00531db4;
+int * hookvar_gCam_change_button_down  = (void*)0x00531da8;
+tU32 * hookvar_gAction_replay_start_time  = (void*)0x00531da0;
+tU32 * hookvar_gLast_replay_zappy_screen  = (void*)0x00531dc4;
+tS32 * hookvar_gStopped_time  = (void*)0x00531dc0;
 float * hookvar_gPending_replay_rate  = (void*)0x00531dbc;
-#if 0
-tU32 * hookvar_gAction_replay_end_time ;
-#endif
+tU32 * hookvar_gAction_replay_end_time  = (void*)0x00531da4;
 float * hookvar_gReplay_rate  = (void*)0x00531dcc;
-#if 0
-int * hookvar_gSave_bunch_ID ;
-#endif
-#if 0
-int * hookvar_gPlay_direction ;
-#endif
-#if 0
-int * hookvar_gPaused ;
-#endif
+int * hookvar_gSave_bunch_ID  = (void*)0x00531db0;
+int * hookvar_gPlay_direction  = (void*)0x00531dac;
+int * hookvar_gPaused  = (void*)0x00531dc8;
 tAction_replay_camera_type * hookvar_gAction_replay_camera_mode  = (void*)0x00551db4;
 
+function_hook_state_t function_hook_state_ReplayIsPaused = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(ReplayIsPaused, function_hook_state_ReplayIsPaused)
 static int(__cdecl*original_ReplayIsPaused)() = (int(__cdecl*)())0x0041adc0;
 CARM95_HOOK_FUNCTION(original_ReplayIsPaused, ReplayIsPaused)
 int __cdecl ReplayIsPaused() {
     LOG_TRACE("()");
 
 
-    return original_ReplayIsPaused();
+    if (function_hook_state_ReplayIsPaused == HOOK_ENABLED) {
+        assert(0 && "ReplayIsPaused not implemented.");
+        abort();
+    } else {
+        return original_ReplayIsPaused();
+    }
 }
 
+function_hook_state_t function_hook_state_GetReplayRate = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(GetReplayRate, function_hook_state_GetReplayRate)
 static float(__cdecl*original_GetReplayRate)() = (float(__cdecl*)())0x0041adf3;
 CARM95_HOOK_FUNCTION(original_GetReplayRate, GetReplayRate)
 float __cdecl GetReplayRate() {
     LOG_TRACE("()");
 
 
-    return original_GetReplayRate();
+    if (function_hook_state_GetReplayRate == HOOK_ENABLED) {
+        assert(0 && "GetReplayRate not implemented.");
+        abort();
+    } else {
+        return original_GetReplayRate();
+    }
 }
 
-int GetReplayDirection() {
+function_hook_state_t function_hook_state_GetReplayDirection = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(GetReplayDirection, function_hook_state_GetReplayDirection)
+static int(__stdcall*original_GetReplayDirection)() = (int(__stdcall*)())0x0041ae09;
+CARM95_HOOK_FUNCTION(original_GetReplayDirection, GetReplayDirection)
+int __stdcall GetReplayDirection() {
     LOG_TRACE("()");
 
 
-    NOT_IMPLEMENTED();
+    if (function_hook_state_GetReplayDirection == HOOK_ENABLED) {
+        assert(0 && "GetReplayDirection not implemented.");
+        abort();
+    } else {
+        return original_GetReplayDirection();
+    }
 }
 
-void StopSaving() {
+function_hook_state_t function_hook_state_StopSaving = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(StopSaving, function_hook_state_StopSaving)
+static void(__cdecl*original_StopSaving)() = (void(__cdecl*)())0x0041b5a0;
+CARM95_HOOK_FUNCTION(original_StopSaving, StopSaving)
+void __cdecl StopSaving() {
     LOG_TRACE("()");
 
 
-    NOT_IMPLEMENTED();
+    if (function_hook_state_StopSaving == HOOK_ENABLED) {
+        assert(0 && "StopSaving not implemented.");
+        abort();
+    } else {
+        original_StopSaving();
+    }
 }
 
-void ActualActionReplayHeadups(int pSpecial_zappy_bastard) {
+function_hook_state_t function_hook_state_ActualActionReplayHeadups = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(ActualActionReplayHeadups, function_hook_state_ActualActionReplayHeadups)
+static void(__cdecl*original_ActualActionReplayHeadups)(int) = (void(__cdecl*)(int))0x0041ae48;
+CARM95_HOOK_FUNCTION(original_ActualActionReplayHeadups, ActualActionReplayHeadups)
+void __cdecl ActualActionReplayHeadups(int pSpecial_zappy_bastard) {
     tU32 the_time;
     int x;
     tU16 played_col1;
@@ -108,19 +117,33 @@ void ActualActionReplayHeadups(int pSpecial_zappy_bastard) {
     (void)to_play_col1;
     (void)to_play_col2;
 
-    NOT_IMPLEMENTED();
+    if (function_hook_state_ActualActionReplayHeadups == HOOK_ENABLED) {
+        assert(0 && "ActualActionReplayHeadups not implemented.");
+        abort();
+    } else {
+        original_ActualActionReplayHeadups(pSpecial_zappy_bastard);
+    }
 }
 
+function_hook_state_t function_hook_state_DoActionReplayPostSwap = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(DoActionReplayPostSwap, function_hook_state_DoActionReplayPostSwap)
 static void(__cdecl*original_DoActionReplayPostSwap)() = (void(__cdecl*)())0x0041ae1e;
 CARM95_HOOK_FUNCTION(original_DoActionReplayPostSwap, DoActionReplayPostSwap)
 void __cdecl DoActionReplayPostSwap() {
     LOG_TRACE("()");
 
 
-    original_DoActionReplayPostSwap();
+    if (function_hook_state_DoActionReplayPostSwap == HOOK_ENABLED) {
+        assert(0 && "DoActionReplayPostSwap not implemented.");
+        abort();
+    } else {
+        original_DoActionReplayPostSwap();
+    }
 }
 
-static void(__cdecl*original_DoZappyActionReplayHeadups)(int) = (void(__cdecl*)(int))0x0041ae48;
+function_hook_state_t function_hook_state_DoZappyActionReplayHeadups = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(DoZappyActionReplayHeadups, function_hook_state_DoZappyActionReplayHeadups)
+static void(__cdecl*original_DoZappyActionReplayHeadups)(int) = (void(__cdecl*)(int))0x0041b5bf;
 CARM95_HOOK_FUNCTION(original_DoZappyActionReplayHeadups, DoZappyActionReplayHeadups)
 void __cdecl DoZappyActionReplayHeadups(int pSpecial_zappy_bastard) {
     tU32 the_time;
@@ -129,19 +152,35 @@ void __cdecl DoZappyActionReplayHeadups(int pSpecial_zappy_bastard) {
     (void)pSpecial_zappy_bastard;
     (void)the_time;
 
-    original_DoZappyActionReplayHeadups(pSpecial_zappy_bastard);
+    if (function_hook_state_DoZappyActionReplayHeadups == HOOK_ENABLED) {
+        assert(0 && "DoZappyActionReplayHeadups not implemented.");
+        abort();
+    } else {
+        original_DoZappyActionReplayHeadups(pSpecial_zappy_bastard);
+    }
 }
 
+function_hook_state_t function_hook_state_DoActionReplayHeadups = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(DoActionReplayHeadups, function_hook_state_DoActionReplayHeadups)
 static void(__cdecl*original_DoActionReplayHeadups)() = (void(__cdecl*)())0x0041ae33;
 CARM95_HOOK_FUNCTION(original_DoActionReplayHeadups, DoActionReplayHeadups)
 void __cdecl DoActionReplayHeadups() {
     LOG_TRACE("()");
 
 
-    original_DoActionReplayHeadups();
+    if (function_hook_state_DoActionReplayHeadups == HOOK_ENABLED) {
+        assert(0 && "DoActionReplayHeadups not implemented.");
+        abort();
+    } else {
+        original_DoActionReplayHeadups();
+    }
 }
 
-void MoveReplayBuffer(tS32 pMove_amount) {
+function_hook_state_t function_hook_state_MoveReplayBuffer = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(MoveReplayBuffer, function_hook_state_MoveReplayBuffer)
+static void(__cdecl*original_MoveReplayBuffer)(tS32) = (void(__cdecl*)(tS32))0x0041b41e;
+CARM95_HOOK_FUNCTION(original_MoveReplayBuffer, MoveReplayBuffer)
+void __cdecl MoveReplayBuffer(tS32 pMove_amount) {
     tU8 *play_ptr;
     tU8 *old_play_ptr;
     tU8 *old_play_ptr2;
@@ -158,36 +197,68 @@ void MoveReplayBuffer(tS32 pMove_amount) {
     (void)a;
     (void)old_time;
 
-    NOT_IMPLEMENTED();
+    if (function_hook_state_MoveReplayBuffer == HOOK_ENABLED) {
+        assert(0 && "MoveReplayBuffer not implemented.");
+        abort();
+    } else {
+        original_MoveReplayBuffer(pMove_amount);
+    }
 }
 
-void MoveToEndOfReplay() {
+function_hook_state_t function_hook_state_MoveToEndOfReplay = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(MoveToEndOfReplay, function_hook_state_MoveToEndOfReplay)
+static void(__cdecl*original_MoveToEndOfReplay)() = (void(__cdecl*)())0x0041b3df;
+CARM95_HOOK_FUNCTION(original_MoveToEndOfReplay, MoveToEndOfReplay)
+void __cdecl MoveToEndOfReplay() {
     float old_replay_rate;
     LOG_TRACE("()");
 
     (void)old_replay_rate;
 
-    NOT_IMPLEMENTED();
+    if (function_hook_state_MoveToEndOfReplay == HOOK_ENABLED) {
+        assert(0 && "MoveToEndOfReplay not implemented.");
+        abort();
+    } else {
+        original_MoveToEndOfReplay();
+    }
 }
 
-void MoveToStartOfReplay() {
+function_hook_state_t function_hook_state_MoveToStartOfReplay = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(MoveToStartOfReplay, function_hook_state_MoveToStartOfReplay)
+static void(__cdecl*original_MoveToStartOfReplay)() = (void(__cdecl*)())0x0041b622;
+CARM95_HOOK_FUNCTION(original_MoveToStartOfReplay, MoveToStartOfReplay)
+void __cdecl MoveToStartOfReplay() {
     float old_replay_rate;
     LOG_TRACE("()");
 
     (void)old_replay_rate;
 
-    NOT_IMPLEMENTED();
+    if (function_hook_state_MoveToStartOfReplay == HOOK_ENABLED) {
+        assert(0 && "MoveToStartOfReplay not implemented.");
+        abort();
+    } else {
+        original_MoveToStartOfReplay();
+    }
 }
 
+function_hook_state_t function_hook_state_ToggleReplay = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(ToggleReplay, function_hook_state_ToggleReplay)
 static void(__cdecl*original_ToggleReplay)() = (void(__cdecl*)())0x0041b661;
 CARM95_HOOK_FUNCTION(original_ToggleReplay, ToggleReplay)
 void __cdecl ToggleReplay() {
     LOG_TRACE("()");
 
 
-    original_ToggleReplay();
+    if (function_hook_state_ToggleReplay == HOOK_ENABLED) {
+        assert(0 && "ToggleReplay not implemented.");
+        abort();
+    } else {
+        original_ToggleReplay();
+    }
 }
 
+function_hook_state_t function_hook_state_ReverseSound = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(ReverseSound, function_hook_state_ReverseSound)
 static void(__cdecl*original_ReverseSound)(tS3_effect_tag, tS3_sound_tag) = (void(__cdecl*)(tS3_effect_tag, tS3_sound_tag))0x0041b7fe;
 CARM95_HOOK_FUNCTION(original_ReverseSound, ReverseSound)
 void __cdecl ReverseSound(tS3_effect_tag pEffect_index, tS3_sound_tag pSound_tag) {
@@ -196,9 +267,16 @@ void __cdecl ReverseSound(tS3_effect_tag pEffect_index, tS3_sound_tag pSound_tag
     (void)pEffect_index;
     (void)pSound_tag;
 
-    original_ReverseSound(pEffect_index, pSound_tag);
+    if (function_hook_state_ReverseSound == HOOK_ENABLED) {
+        assert(0 && "ReverseSound not implemented.");
+        abort();
+    } else {
+        original_ReverseSound(pEffect_index, pSound_tag);
+    }
 }
 
+function_hook_state_t function_hook_state_FindUniqueFile = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(FindUniqueFile, function_hook_state_FindUniqueFile)
 static int(__cdecl*original_FindUniqueFile)() = (int(__cdecl*)())0x0041b819;
 CARM95_HOOK_FUNCTION(original_FindUniqueFile, FindUniqueFile)
 int __cdecl FindUniqueFile() {
@@ -211,9 +289,16 @@ int __cdecl FindUniqueFile() {
     (void)f;
     (void)the_path;
 
-    return original_FindUniqueFile();
+    if (function_hook_state_FindUniqueFile == HOOK_ENABLED) {
+        assert(0 && "FindUniqueFile not implemented.");
+        abort();
+    } else {
+        return original_FindUniqueFile();
+    }
 }
 
+function_hook_state_t function_hook_state_PollActionReplayControls = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(PollActionReplayControls, function_hook_state_PollActionReplayControls)
 static void(__cdecl*original_PollActionReplayControls)(tU32) = (void(__cdecl*)(tU32))0x0041b925;
 CARM95_HOOK_FUNCTION(original_PollActionReplayControls, PollActionReplayControls)
 void __cdecl PollActionReplayControls(tU32 pFrame_period) {
@@ -239,18 +324,32 @@ void __cdecl PollActionReplayControls(tU32 pFrame_period) {
     (void)psuedo_mouse_keys;
     (void)mouse_areas;
 
-    original_PollActionReplayControls(pFrame_period);
+    if (function_hook_state_PollActionReplayControls == HOOK_ENABLED) {
+        assert(0 && "PollActionReplayControls not implemented.");
+        abort();
+    } else {
+        original_PollActionReplayControls(pFrame_period);
+    }
 }
 
+function_hook_state_t function_hook_state_CheckReplayTurnOn = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(CheckReplayTurnOn, function_hook_state_CheckReplayTurnOn)
 static void(__cdecl*original_CheckReplayTurnOn)() = (void(__cdecl*)())0x0041c03b;
 CARM95_HOOK_FUNCTION(original_CheckReplayTurnOn, CheckReplayTurnOn)
 void __cdecl CheckReplayTurnOn() {
     LOG_TRACE("()");
 
 
-    original_CheckReplayTurnOn();
+    if (function_hook_state_CheckReplayTurnOn == HOOK_ENABLED) {
+        assert(0 && "CheckReplayTurnOn not implemented.");
+        abort();
+    } else {
+        original_CheckReplayTurnOn();
+    }
 }
 
+function_hook_state_t function_hook_state_InitializeActionReplay = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(InitializeActionReplay, function_hook_state_InitializeActionReplay)
 static void(__cdecl*original_InitializeActionReplay)() = (void(__cdecl*)())0x0041c093;
 CARM95_HOOK_FUNCTION(original_InitializeActionReplay, InitializeActionReplay)
 void __cdecl InitializeActionReplay() {
@@ -259,9 +358,16 @@ void __cdecl InitializeActionReplay() {
 
     (void)i;
 
-    original_InitializeActionReplay();
+    if (function_hook_state_InitializeActionReplay == HOOK_ENABLED) {
+        assert(0 && "InitializeActionReplay not implemented.");
+        abort();
+    } else {
+        original_InitializeActionReplay();
+    }
 }
 
+function_hook_state_t function_hook_state_DoActionReplay = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(DoActionReplay, function_hook_state_DoActionReplay)
 static void(__cdecl*original_DoActionReplay)(tU32) = (void(__cdecl*)(tU32))0x0041c0e6;
 CARM95_HOOK_FUNCTION(original_DoActionReplay, DoActionReplay)
 void __cdecl DoActionReplay(tU32 pFrame_period) {
@@ -269,9 +375,16 @@ void __cdecl DoActionReplay(tU32 pFrame_period) {
 
     (void)pFrame_period;
 
-    original_DoActionReplay(pFrame_period);
+    if (function_hook_state_DoActionReplay == HOOK_ENABLED) {
+        assert(0 && "DoActionReplay not implemented.");
+        abort();
+    } else {
+        original_DoActionReplay(pFrame_period);
+    }
 }
 
+function_hook_state_t function_hook_state_SynchronizeActionReplay = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(SynchronizeActionReplay, function_hook_state_SynchronizeActionReplay)
 static void(__cdecl*original_SynchronizeActionReplay)() = (void(__cdecl*)())0x0041c11c;
 CARM95_HOOK_FUNCTION(original_SynchronizeActionReplay, SynchronizeActionReplay)
 void __cdecl SynchronizeActionReplay() {
@@ -284,6 +397,11 @@ void __cdecl SynchronizeActionReplay() {
     (void)the_path;
     (void)gLast_synch_time;
 
-    original_SynchronizeActionReplay();
+    if (function_hook_state_SynchronizeActionReplay == HOOK_ENABLED) {
+        assert(0 && "SynchronizeActionReplay not implemented.");
+        abort();
+    } else {
+        original_SynchronizeActionReplay();
+    }
 }
 

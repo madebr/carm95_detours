@@ -4,7 +4,12 @@
 
 #include "carm95_hooks.h"
 
+#include "carm95_webserver.h"
 
+#include <assert.h>
+
+function_hook_state_t function_hook_state_ResToUser = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(ResToUser, function_hook_state_ResToUser)
 void* ResToUser(struct resource_header *r) {
     br_int_32 align;
     LOG_TRACE("(%p)", r);
@@ -12,9 +17,16 @@ void* ResToUser(struct resource_header *r) {
     (void)r;
     (void)align;
 
-    NOT_IMPLEMENTED();
+    if (function_hook_state_ResToUser == HOOK_ENABLED) {
+        assert(0 && "ResToUser not implemented.");
+        abort();
+    } else {
+        NOT_IMPLEMENTED();
+    }
 }
 
+function_hook_state_t function_hook_state_UserToRes = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(UserToRes, function_hook_state_UserToRes)
 struct resource_header* UserToRes(void *r) {
     br_uint_8 *p;
     LOG_TRACE("(%p)", r);
@@ -22,9 +34,16 @@ struct resource_header* UserToRes(void *r) {
     (void)r;
     (void)p;
 
-    NOT_IMPLEMENTED();
+    if (function_hook_state_UserToRes == HOOK_ENABLED) {
+        assert(0 && "UserToRes not implemented.");
+        abort();
+    } else {
+        NOT_IMPLEMENTED();
+    }
 }
 
+function_hook_state_t function_hook_state_BrResAllocate = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(BrResAllocate, function_hook_state_BrResAllocate)
 static void *(__cdecl*original_BrResAllocate)(void *, br_size_t, br_uint_8) = (void *(__cdecl*)(void *, br_size_t, br_uint_8))0x004df370;
 CARM95_HOOK_FUNCTION(original_BrResAllocate, BrResAllocate)
 void* __cdecl BrResAllocate(void *vparent, br_size_t size, br_uint_8 res_class) {
@@ -46,9 +65,16 @@ void* __cdecl BrResAllocate(void *vparent, br_size_t size, br_uint_8 res_class) 
     (void)pad;
     (void)actual_pad;
 
-    return original_BrResAllocate(vparent, size, res_class);
+    if (function_hook_state_BrResAllocate == HOOK_ENABLED) {
+        assert(0 && "BrResAllocate not implemented.");
+        abort();
+    } else {
+        return original_BrResAllocate(vparent, size, res_class);
+    }
 }
 
+function_hook_state_t function_hook_state_BrResInternalFree = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(BrResInternalFree, function_hook_state_BrResInternalFree)
 static void(__stdcall*original_BrResInternalFree)(struct resource_header *, br_boolean) = (void(__stdcall*)(struct resource_header *, br_boolean))0x004df490;
 CARM95_HOOK_FUNCTION(original_BrResInternalFree, BrResInternalFree)
 void __stdcall BrResInternalFree(struct resource_header *res, br_boolean callback) {
@@ -61,9 +87,16 @@ void __stdcall BrResInternalFree(struct resource_header *res, br_boolean callbac
     (void)c;
     (void)r;
 
-    original_BrResInternalFree(res, callback);
+    if (function_hook_state_BrResInternalFree == HOOK_ENABLED) {
+        assert(0 && "BrResInternalFree not implemented.");
+        abort();
+    } else {
+        original_BrResInternalFree(res, callback);
+    }
 }
 
+function_hook_state_t function_hook_state_BrResFree = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(BrResFree, function_hook_state_BrResFree)
 static void(__cdecl*original_BrResFree)(void *) = (void(__cdecl*)(void *))0x004df460;
 CARM95_HOOK_FUNCTION(original_BrResFree, BrResFree)
 void __cdecl BrResFree(void *vres) {
@@ -71,9 +104,16 @@ void __cdecl BrResFree(void *vres) {
 
     (void)vres;
 
-    original_BrResFree(vres);
+    if (function_hook_state_BrResFree == HOOK_ENABLED) {
+        assert(0 && "BrResFree not implemented.");
+        abort();
+    } else {
+        original_BrResFree(vres);
+    }
 }
 
+function_hook_state_t function_hook_state_BrResFreeNoCallback = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(BrResFreeNoCallback, function_hook_state_BrResFreeNoCallback)
 static void(__cdecl*original_BrResFreeNoCallback)(void *) = (void(__cdecl*)(void *))0x004df560;
 CARM95_HOOK_FUNCTION(original_BrResFreeNoCallback, BrResFreeNoCallback)
 void __cdecl BrResFreeNoCallback(void *vres) {
@@ -81,9 +121,16 @@ void __cdecl BrResFreeNoCallback(void *vres) {
 
     (void)vres;
 
-    original_BrResFreeNoCallback(vres);
+    if (function_hook_state_BrResFreeNoCallback == HOOK_ENABLED) {
+        assert(0 && "BrResFreeNoCallback not implemented.");
+        abort();
+    } else {
+        original_BrResFreeNoCallback(vres);
+    }
 }
 
+function_hook_state_t function_hook_state_BrResAdd = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(BrResAdd, function_hook_state_BrResAdd)
 static void *(__cdecl*original_BrResAdd)(void *, void *) = (void *(__cdecl*)(void *, void *))0x004df590;
 CARM95_HOOK_FUNCTION(original_BrResAdd, BrResAdd)
 void* __cdecl BrResAdd(void *vparent, void *vres) {
@@ -96,9 +143,16 @@ void* __cdecl BrResAdd(void *vparent, void *vres) {
     (void)res;
     (void)parent;
 
-    return original_BrResAdd(vparent, vres);
+    if (function_hook_state_BrResAdd == HOOK_ENABLED) {
+        assert(0 && "BrResAdd not implemented.");
+        abort();
+    } else {
+        return original_BrResAdd(vparent, vres);
+    }
 }
 
+function_hook_state_t function_hook_state_BrResRemove = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(BrResRemove, function_hook_state_BrResRemove)
 static void *(__cdecl*original_BrResRemove)(void *) = (void *(__cdecl*)(void *))0x004df5f0;
 CARM95_HOOK_FUNCTION(original_BrResRemove, BrResRemove)
 void* __cdecl BrResRemove(void *vres) {
@@ -108,9 +162,16 @@ void* __cdecl BrResRemove(void *vres) {
     (void)vres;
     (void)res;
 
-    return original_BrResRemove(vres);
+    if (function_hook_state_BrResRemove == HOOK_ENABLED) {
+        assert(0 && "BrResRemove not implemented.");
+        abort();
+    } else {
+        return original_BrResRemove(vres);
+    }
 }
 
+function_hook_state_t function_hook_state_BrResClass = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(BrResClass, function_hook_state_BrResClass)
 static br_uint_8(__cdecl*original_BrResClass)(void *) = (br_uint_8(__cdecl*)(void *))0x004df620;
 CARM95_HOOK_FUNCTION(original_BrResClass, BrResClass)
 br_uint_8 __cdecl BrResClass(void *vres) {
@@ -120,9 +181,16 @@ br_uint_8 __cdecl BrResClass(void *vres) {
     (void)vres;
     (void)res;
 
-    return original_BrResClass(vres);
+    if (function_hook_state_BrResClass == HOOK_ENABLED) {
+        assert(0 && "BrResClass not implemented.");
+        abort();
+    } else {
+        return original_BrResClass(vres);
+    }
 }
 
+function_hook_state_t function_hook_state_BrResIsChild = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(BrResIsChild, function_hook_state_BrResIsChild)
 static br_boolean(__cdecl*original_BrResIsChild)(void *, void *) = (br_boolean(__cdecl*)(void *, void *))0x004df640;
 CARM95_HOOK_FUNCTION(original_BrResIsChild, BrResIsChild)
 br_boolean __cdecl BrResIsChild(void *vparent, void *vchild) {
@@ -137,9 +205,16 @@ br_boolean __cdecl BrResIsChild(void *vparent, void *vchild) {
     (void)child;
     (void)cp;
 
-    return original_BrResIsChild(vparent, vchild);
+    if (function_hook_state_BrResIsChild == HOOK_ENABLED) {
+        assert(0 && "BrResIsChild not implemented.");
+        abort();
+    } else {
+        return original_BrResIsChild(vparent, vchild);
+    }
 }
 
+function_hook_state_t function_hook_state_BrResSize = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(BrResSize, function_hook_state_BrResSize)
 static br_uint_32(__cdecl*original_BrResSize)(void *) = (br_uint_32(__cdecl*)(void *))0x004df690;
 CARM95_HOOK_FUNCTION(original_BrResSize, BrResSize)
 br_uint_32 __cdecl BrResSize(void *vres) {
@@ -149,9 +224,16 @@ br_uint_32 __cdecl BrResSize(void *vres) {
     (void)vres;
     (void)res;
 
-    return original_BrResSize(vres);
+    if (function_hook_state_BrResSize == HOOK_ENABLED) {
+        assert(0 && "BrResSize not implemented.");
+        abort();
+    } else {
+        return original_BrResSize(vres);
+    }
 }
 
+function_hook_state_t function_hook_state_ResSizeTotal = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(ResSizeTotal, function_hook_state_ResSizeTotal)
 static br_uint_32(__cdecl*original_ResSizeTotal)(void *, br_uint_32 *) = (br_uint_32(__cdecl*)(void *, br_uint_32 *))0x004df770;
 CARM95_HOOK_FUNCTION(original_ResSizeTotal, ResSizeTotal)
 br_uint_32 __cdecl ResSizeTotal(void *vres, br_uint_32 *ptotal) {
@@ -160,9 +242,16 @@ br_uint_32 __cdecl ResSizeTotal(void *vres, br_uint_32 *ptotal) {
     (void)vres;
     (void)ptotal;
 
-    return original_ResSizeTotal(vres, ptotal);
+    if (function_hook_state_ResSizeTotal == HOOK_ENABLED) {
+        assert(0 && "ResSizeTotal not implemented.");
+        abort();
+    } else {
+        return original_ResSizeTotal(vres, ptotal);
+    }
 }
 
+function_hook_state_t function_hook_state_BrResSizeTotal = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(BrResSizeTotal, function_hook_state_BrResSizeTotal)
 static br_uint_32(__cdecl*original_BrResSizeTotal)(void *) = (br_uint_32(__cdecl*)(void *))0x004df6d0;
 CARM95_HOOK_FUNCTION(original_BrResSizeTotal, BrResSizeTotal)
 br_uint_32 __cdecl BrResSizeTotal(void *vres) {
@@ -172,9 +261,16 @@ br_uint_32 __cdecl BrResSizeTotal(void *vres) {
     (void)vres;
     (void)total;
 
-    return original_BrResSizeTotal(vres);
+    if (function_hook_state_BrResSizeTotal == HOOK_ENABLED) {
+        assert(0 && "BrResSizeTotal not implemented.");
+        abort();
+    } else {
+        return original_BrResSizeTotal(vres);
+    }
 }
 
+function_hook_state_t function_hook_state_BrResChildEnum = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(BrResChildEnum, function_hook_state_BrResChildEnum)
 static br_uint_32(__cdecl*original_BrResChildEnum)(void *, br_resenum_cbfn *, void *) = (br_uint_32(__cdecl*)(void *, br_resenum_cbfn *, void *))0x004df810;
 CARM95_HOOK_FUNCTION(original_BrResChildEnum, BrResChildEnum)
 br_uint_32 __cdecl BrResChildEnum(void *vres, br_resenum_cbfn *callback, void *arg) {
@@ -190,9 +286,16 @@ br_uint_32 __cdecl BrResChildEnum(void *vres, br_resenum_cbfn *callback, void *a
     (void)rp;
     (void)r;
 
-    return original_BrResChildEnum(vres, callback, arg);
+    if (function_hook_state_BrResChildEnum == HOOK_ENABLED) {
+        assert(0 && "BrResChildEnum not implemented.");
+        abort();
+    } else {
+        return original_BrResChildEnum(vres, callback, arg);
+    }
 }
 
+function_hook_state_t function_hook_state_BrResCheck = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(BrResCheck, function_hook_state_BrResCheck)
 static br_uint_32(__cdecl*original_BrResCheck)(void *, int) = (br_uint_32(__cdecl*)(void *, int))0x004df870;
 CARM95_HOOK_FUNCTION(original_BrResCheck, BrResCheck)
 br_uint_32 __cdecl BrResCheck(void *vres, int no_tag) {
@@ -203,9 +306,16 @@ br_uint_32 __cdecl BrResCheck(void *vres, int no_tag) {
     (void)no_tag;
     (void)res;
 
-    return original_BrResCheck(vres, no_tag);
+    if (function_hook_state_BrResCheck == HOOK_ENABLED) {
+        assert(0 && "BrResCheck not implemented.");
+        abort();
+    } else {
+        return original_BrResCheck(vres, no_tag);
+    }
 }
 
+function_hook_state_t function_hook_state_BrResStrDup = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(BrResStrDup, function_hook_state_BrResStrDup)
 static char *(__cdecl*original_BrResStrDup)(void *, char *) = (char *(__cdecl*)(void *, char *))0x004df8b0;
 CARM95_HOOK_FUNCTION(original_BrResStrDup, BrResStrDup)
 char* __cdecl BrResStrDup(void *vparent, char *str) {
@@ -218,9 +328,16 @@ char* __cdecl BrResStrDup(void *vparent, char *str) {
     (void)l;
     (void)nstr;
 
-    return original_BrResStrDup(vparent, str);
+    if (function_hook_state_BrResStrDup == HOOK_ENABLED) {
+        assert(0 && "BrResStrDup not implemented.");
+        abort();
+    } else {
+        return original_BrResStrDup(vparent, str);
+    }
 }
 
+function_hook_state_t function_hook_state_InternalResourceDump = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(InternalResourceDump, function_hook_state_InternalResourceDump)
 void InternalResourceDump(struct resource_header *res, br_putline_cbfn *putline, void *arg, int level) {
     int i;
     char *cp;
@@ -237,10 +354,17 @@ void InternalResourceDump(struct resource_header *res, br_putline_cbfn *putline,
     (void)child;
     (void)rclass;
 
-    NOT_IMPLEMENTED();
+    if (function_hook_state_InternalResourceDump == HOOK_ENABLED) {
+        assert(0 && "InternalResourceDump not implemented.");
+        abort();
+    } else {
+        NOT_IMPLEMENTED();
+    }
 }
 
-void(__stdcall*BrResDump)(void *, br_putline_cbfn *, void *) = (void(__stdcall*)(void *, br_putline_cbfn *, void *))0x004df8f0;
+function_hook_state_t function_hook_state_BrResDump = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(BrResDump, function_hook_state_BrResDump)
+void(__cdecl*BrResDump)(void *, br_putline_cbfn *, void *) = (void(__cdecl*)(void *, br_putline_cbfn *, void *))0x004df8f0;
 void BrResDump_do_not_use(void *vres, br_putline_cbfn *putline, void *arg) {
     struct resource_header *res;
     LOG_TRACE("(%p, %p, %p)", vres, putline, arg);
@@ -250,9 +374,16 @@ void BrResDump_do_not_use(void *vres, br_putline_cbfn *putline, void *arg) {
     (void)arg;
     (void)res;
 
-    NOT_IMPLEMENTED();
+    if (function_hook_state_BrResDump == HOOK_ENABLED) {
+        assert(0 && "BrResDump_do_not_use not implemented.");
+        abort();
+    } else {
+        NOT_IMPLEMENTED();
+    }
 }
 
+function_hook_state_t function_hook_state_BrResClassIdentifier = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(BrResClassIdentifier, function_hook_state_BrResClassIdentifier)
 char* BrResClassIdentifier(br_uint_8 res_class) {
     br_resource_class *rclass;
     LOG_TRACE("(%u)", res_class);
@@ -260,6 +391,11 @@ char* BrResClassIdentifier(br_uint_8 res_class) {
     (void)res_class;
     (void)rclass;
 
-    NOT_IMPLEMENTED();
+    if (function_hook_state_BrResClassIdentifier == HOOK_ENABLED) {
+        assert(0 && "BrResClassIdentifier not implemented.");
+        abort();
+    } else {
+        NOT_IMPLEMENTED();
+    }
 }
 

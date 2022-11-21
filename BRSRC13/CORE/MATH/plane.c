@@ -4,7 +4,12 @@
 
 #include "carm95_hooks.h"
 
+#include "carm95_webserver.h"
 
+#include <assert.h>
+
+function_hook_state_t function_hook_state_BrPlaneEquation = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(BrPlaneEquation, function_hook_state_BrPlaneEquation)
 static br_int_32(__cdecl*original_BrPlaneEquation)(br_vector4 *, br_vector3 *, br_vector3 *, br_vector3 *) = (br_int_32(__cdecl*)(br_vector4 *, br_vector3 *, br_vector3 *, br_vector3 *))0x00501d90;
 CARM95_HOOK_FUNCTION(original_BrPlaneEquation, BrPlaneEquation)
 br_int_32 __cdecl BrPlaneEquation(br_vector4 *eqn, br_vector3 *v0, br_vector3 *v1, br_vector3 *v2) {
@@ -41,6 +46,11 @@ br_int_32 __cdecl BrPlaneEquation(br_vector4 *eqn, br_vector3 *v0, br_vector3 *v
     (void)d;
     (void)l;
 
-    return original_BrPlaneEquation(eqn, v0, v1, v2);
+    if (function_hook_state_BrPlaneEquation == HOOK_ENABLED) {
+        assert(0 && "BrPlaneEquation not implemented.");
+        abort();
+    } else {
+        return original_BrPlaneEquation(eqn, v0, v1, v2);
+    }
 }
 

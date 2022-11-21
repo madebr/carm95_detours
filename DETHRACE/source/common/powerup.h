@@ -136,7 +136,7 @@ void __cdecl ResetUnderwater(tPowerup *pPowerup, tCar_spec *pCar);
 
 void __cdecl PukeDrugsBackUp(tPowerup *pPowerup, tCar_spec *pCar);
 
-void __fastcall ResetOpponentsSpeed(tPowerup *pPowerup, tCar_spec *pCar);
+void __cdecl ResetOpponentsSpeed(tPowerup *pPowerup, tCar_spec *pCar);
 
 void __cdecl ResetCopsSpeed(tPowerup *pPowerup, tCar_spec *pCar);
 

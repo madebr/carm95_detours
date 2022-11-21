@@ -4,7 +4,12 @@
 
 #include "carm95_hooks.h"
 
+#include "carm95_webserver.h"
 
+#include <assert.h>
+
+function_hook_state_t function_hook_state_StraightestArcForCorner2D = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(StraightestArcForCorner2D, function_hook_state_StraightestArcForCorner2D)
 int StraightestArcForCorner2D(br_vector2 *pCent, br_scalar *pRadius, br_scalar *pEntry_length, int *pLeft_not_right, br_vector2 *p1, br_vector2 *p2, br_vector2 *p3, br_scalar pWidth12, br_scalar pWidth23) {
     br_vector2 rel1;
     br_vector2 rel3;
@@ -38,9 +43,16 @@ int StraightestArcForCorner2D(br_vector2 *pCent, br_scalar *pRadius, br_scalar *
     (void)x;
     (void)__block0___scale;
 
-    NOT_IMPLEMENTED();
+    if (function_hook_state_StraightestArcForCorner2D == HOOK_ENABLED) {
+        assert(0 && "StraightestArcForCorner2D not implemented.");
+        abort();
+    } else {
+        NOT_IMPLEMENTED();
+    }
 }
 
+function_hook_state_t function_hook_state_CornerFudge = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(CornerFudge, function_hook_state_CornerFudge)
 static br_scalar(__cdecl*original_CornerFudge)(tCar_spec *) = (br_scalar(__cdecl*)(tCar_spec *))0x004a003e;
 CARM95_HOOK_FUNCTION(original_CornerFudge, CornerFudge)
 br_scalar __cdecl CornerFudge(tCar_spec *pCar_spec) {
@@ -48,9 +60,16 @@ br_scalar __cdecl CornerFudge(tCar_spec *pCar_spec) {
 
     (void)pCar_spec;
 
-    return original_CornerFudge(pCar_spec);
+    if (function_hook_state_CornerFudge == HOOK_ENABLED) {
+        assert(0 && "CornerFudge not implemented.");
+        abort();
+    } else {
+        return original_CornerFudge(pCar_spec);
+    }
 }
 
+function_hook_state_t function_hook_state_MaxCurvatureForCarSpeed = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(MaxCurvatureForCarSpeed, function_hook_state_MaxCurvatureForCarSpeed)
 static br_scalar(__cdecl*original_MaxCurvatureForCarSpeed)(tCar_spec *, br_scalar) = (br_scalar(__cdecl*)(tCar_spec *, br_scalar))0x004a0054;
 CARM95_HOOK_FUNCTION(original_MaxCurvatureForCarSpeed, MaxCurvatureForCarSpeed)
 br_scalar __cdecl MaxCurvatureForCarSpeed(tCar_spec *pCar, br_scalar pSpeed) {
@@ -61,18 +80,32 @@ br_scalar __cdecl MaxCurvatureForCarSpeed(tCar_spec *pCar, br_scalar pSpeed) {
     (void)pSpeed;
     (void)curv;
 
-    return original_MaxCurvatureForCarSpeed(pCar, pSpeed);
+    if (function_hook_state_MaxCurvatureForCarSpeed == HOOK_ENABLED) {
+        assert(0 && "MaxCurvatureForCarSpeed not implemented.");
+        abort();
+    } else {
+        return original_MaxCurvatureForCarSpeed(pCar, pSpeed);
+    }
 }
 
+function_hook_state_t function_hook_state_Vector2Cross = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(Vector2Cross, function_hook_state_Vector2Cross)
 br_scalar Vector2Cross(br_vector2 *pA, br_vector2 *pB) {
     LOG_TRACE("(%p, %p)", pA, pB);
 
     (void)pA;
     (void)pB;
 
-    NOT_IMPLEMENTED();
+    if (function_hook_state_Vector2Cross == HOOK_ENABLED) {
+        assert(0 && "Vector2Cross not implemented.");
+        abort();
+    } else {
+        NOT_IMPLEMENTED();
+    }
 }
 
+function_hook_state_t function_hook_state_EndOfPath = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(EndOfPath, function_hook_state_EndOfPath)
 tFollow_path_result EndOfPath(tOpponent_spec *pOpponent_spec) {
     tCar_spec *car_spec;
     LOG_TRACE("(%p)", pOpponent_spec);
@@ -80,9 +113,16 @@ tFollow_path_result EndOfPath(tOpponent_spec *pOpponent_spec) {
     (void)pOpponent_spec;
     (void)car_spec;
 
-    NOT_IMPLEMENTED();
+    if (function_hook_state_EndOfPath == HOOK_ENABLED) {
+        assert(0 && "EndOfPath not implemented.");
+        abort();
+    } else {
+        NOT_IMPLEMENTED();
+    }
 }
 
+function_hook_state_t function_hook_state_RoughlyColinear = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(RoughlyColinear, function_hook_state_RoughlyColinear)
 int RoughlyColinear(br_vector2 *p1, br_vector2 *p2, br_vector2 *p3) {
     br_vector2 rel1;
     br_vector2 rel2;
@@ -102,9 +142,16 @@ int RoughlyColinear(br_vector2 *p1, br_vector2 *p2, br_vector2 *p3) {
     (void)dot;
     (void)wibble;
 
-    NOT_IMPLEMENTED();
+    if (function_hook_state_RoughlyColinear == HOOK_ENABLED) {
+        assert(0 && "RoughlyColinear not implemented.");
+        abort();
+    } else {
+        NOT_IMPLEMENTED();
+    }
 }
 
+function_hook_state_t function_hook_state_GetStraight = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(GetStraight, function_hook_state_GetStraight)
 int GetStraight(br_vector2 *pStart, br_vector2 *pFinish, br_scalar *pWidth, int section1, tOpponent_spec *pOpponent_spec, tFollow_path_data *data) {
     int section;
     br_vector2 next;
@@ -121,9 +168,16 @@ int GetStraight(br_vector2 *pStart, br_vector2 *pFinish, br_scalar *pWidth, int 
     (void)next;
     (void)next_width;
 
-    NOT_IMPLEMENTED();
+    if (function_hook_state_GetStraight == HOOK_ENABLED) {
+        assert(0 && "GetStraight not implemented.");
+        abort();
+    } else {
+        NOT_IMPLEMENTED();
+    }
 }
 
+function_hook_state_t function_hook_state_ProcessFollowPath = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(ProcessFollowPath, function_hook_state_ProcessFollowPath)
 static tFollow_path_result(__cdecl*original_ProcessFollowPath)(tOpponent_spec *, tProcess_objective_command, int, int, int) = (tFollow_path_result(__cdecl*)(tOpponent_spec *, tProcess_objective_command, int, int, int))0x0049e3a0;
 CARM95_HOOK_FUNCTION(original_ProcessFollowPath, ProcessFollowPath)
 tFollow_path_result __cdecl ProcessFollowPath(tOpponent_spec *pOpponent_spec, tProcess_objective_command pCommand, int pPursuit_mode, int pIgnore_end, int pNever_struggle) {
@@ -295,9 +349,16 @@ tFollow_path_result __cdecl ProcessFollowPath(tOpponent_spec *pOpponent_spec, tP
     (void)later_straight;
     (void)next_left_not_right;
 
-    return original_ProcessFollowPath(pOpponent_spec, pCommand, pPursuit_mode, pIgnore_end, pNever_struggle);
+    if (function_hook_state_ProcessFollowPath == HOOK_ENABLED) {
+        assert(0 && "ProcessFollowPath not implemented.");
+        abort();
+    } else {
+        return original_ProcessFollowPath(pOpponent_spec, pCommand, pPursuit_mode, pIgnore_end, pNever_struggle);
+    }
 }
 
+function_hook_state_t function_hook_state_FollowCheatyPath = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(FollowCheatyPath, function_hook_state_FollowCheatyPath)
 static tFollow_path_result(__cdecl*original_FollowCheatyPath)(tOpponent_spec *) = (tFollow_path_result(__cdecl*)(tOpponent_spec *))0x004a00a4;
 CARM95_HOOK_FUNCTION(original_FollowCheatyPath, FollowCheatyPath)
 tFollow_path_result __cdecl FollowCheatyPath(tOpponent_spec *pOpponent_spec) {
@@ -345,6 +406,11 @@ tFollow_path_result __cdecl FollowCheatyPath(tOpponent_spec *pOpponent_spec) {
     (void)__block2___scale;
     (void)__block3___scale;
 
-    return original_FollowCheatyPath(pOpponent_spec);
+    if (function_hook_state_FollowCheatyPath == HOOK_ENABLED) {
+        assert(0 && "FollowCheatyPath not implemented.");
+        abort();
+    } else {
+        return original_FollowCheatyPath(pOpponent_spec);
+    }
 }
 

@@ -5,7 +5,7 @@
 
 extern br_pixelmap ** hookvar_last_begin_screen ; // addr: 00541B08
 
-br_pixelmap* __stdcall BrDevLastBeginQuery();
+br_pixelmap* __cdecl BrDevLastBeginQuery();
 
 void __stdcall BrDevLastBeginSet(br_pixelmap *pm);
 
@@ -20,7 +20,7 @@ br_error BrDevBeginTV(br_pixelmap **ppm, char *setup_string, br_token_value *set
 
 br_pixelmap* BrDevBeginOld(char *setup_string);
 
-void __stdcall BrDevEndOld();
+void __cdecl BrDevEndOld();
 
 void __cdecl BrDevPaletteSetOld(br_pixelmap *pm);
 

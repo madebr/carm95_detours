@@ -4,6 +4,9 @@
 
 #include "carm95_hooks.h"
 
+#include "carm95_webserver.h"
+
+#include <assert.h>
 br_file_enum_member(* hookvar_pixelmap_type_FM )[15] = (void*)0x005216c8;
 br_file_enum * hookvar_pixelmap_type_F  = (void*)0x00521740;
 br_file_struct_member(* hookvar_br_old_pixelmap_FM )[7] = (void*)0x00521748;
@@ -13,6 +16,8 @@ br_file_struct * hookvar_br_old_pixelmap_F  = (void*)0x00521848;
 br_chunks_table_entry(* hookvar_PixelmapLoadEntries )[5] = (void*)0x00521858;
 br_chunks_table * hookvar_PixelmapLoadTable  = (void*)0x00521898;
 
+function_hook_state_t function_hook_state_FopWrite_PIXELMAP = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(FopWrite_PIXELMAP, function_hook_state_FopWrite_PIXELMAP)
 int FopWrite_PIXELMAP(br_datafile *df, br_pixelmap *pixelmap) {
     br_pixelmap pmap;
     LOG_TRACE("(%p, %p)", df, pixelmap);
@@ -21,9 +26,16 @@ int FopWrite_PIXELMAP(br_datafile *df, br_pixelmap *pixelmap) {
     (void)pixelmap;
     (void)pmap;
 
-    NOT_IMPLEMENTED();
+    if (function_hook_state_FopWrite_PIXELMAP == HOOK_ENABLED) {
+        assert(0 && "FopWrite_PIXELMAP not implemented.");
+        abort();
+    } else {
+        NOT_IMPLEMENTED();
+    }
 }
 
+function_hook_state_t function_hook_state_FopRead_OLD_PIXELMAP = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(FopRead_OLD_PIXELMAP, function_hook_state_FopRead_OLD_PIXELMAP)
 static int(__stdcall*original_FopRead_OLD_PIXELMAP)(br_datafile *, br_uint_32, br_uint_32, br_uint_32) = (int(__stdcall*)(br_datafile *, br_uint_32, br_uint_32, br_uint_32))0x004ca6a0;
 CARM95_HOOK_FUNCTION(original_FopRead_OLD_PIXELMAP, FopRead_OLD_PIXELMAP)
 int __stdcall FopRead_OLD_PIXELMAP(br_datafile *df, br_uint_32 id, br_uint_32 length, br_uint_32 count) {
@@ -36,9 +48,16 @@ int __stdcall FopRead_OLD_PIXELMAP(br_datafile *df, br_uint_32 id, br_uint_32 le
     (void)count;
     (void)pp;
 
-    return original_FopRead_OLD_PIXELMAP(df, id, length, count);
+    if (function_hook_state_FopRead_OLD_PIXELMAP == HOOK_ENABLED) {
+        assert(0 && "FopRead_OLD_PIXELMAP not implemented.");
+        abort();
+    } else {
+        return original_FopRead_OLD_PIXELMAP(df, id, length, count);
+    }
 }
 
+function_hook_state_t function_hook_state_FopRead_PIXELMAP = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(FopRead_PIXELMAP, function_hook_state_FopRead_PIXELMAP)
 static int(__stdcall*original_FopRead_PIXELMAP)(br_datafile *, br_uint_32, br_uint_32, br_uint_32) = (int(__stdcall*)(br_datafile *, br_uint_32, br_uint_32, br_uint_32))0x004ca700;
 CARM95_HOOK_FUNCTION(original_FopRead_PIXELMAP, FopRead_PIXELMAP)
 int __stdcall FopRead_PIXELMAP(br_datafile *df, br_uint_32 id, br_uint_32 length, br_uint_32 count) {
@@ -51,9 +70,16 @@ int __stdcall FopRead_PIXELMAP(br_datafile *df, br_uint_32 id, br_uint_32 length
     (void)count;
     (void)pp;
 
-    return original_FopRead_PIXELMAP(df, id, length, count);
+    if (function_hook_state_FopRead_PIXELMAP == HOOK_ENABLED) {
+        assert(0 && "FopRead_PIXELMAP not implemented.");
+        abort();
+    } else {
+        return original_FopRead_PIXELMAP(df, id, length, count);
+    }
 }
 
+function_hook_state_t function_hook_state_FopWrite_PIXELS = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(FopWrite_PIXELS, function_hook_state_FopWrite_PIXELS)
 int FopWrite_PIXELS(br_datafile *df, br_pixelmap *pixelmap) {
     int size;
     int bytes;
@@ -72,9 +98,16 @@ int FopWrite_PIXELS(br_datafile *df, br_pixelmap *pixelmap) {
     (void)__block0__mipSize;
     (void)__block0__currentMipSize;
 
-    NOT_IMPLEMENTED();
+    if (function_hook_state_FopWrite_PIXELS == HOOK_ENABLED) {
+        assert(0 && "FopWrite_PIXELS not implemented.");
+        abort();
+    } else {
+        NOT_IMPLEMENTED();
+    }
 }
 
+function_hook_state_t function_hook_state_FopRead_PIXELS = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(FopRead_PIXELS, function_hook_state_FopRead_PIXELS)
 static int(__stdcall*original_FopRead_PIXELS)(br_datafile *, br_uint_32, br_uint_32, br_uint_32) = (int(__stdcall*)(br_datafile *, br_uint_32, br_uint_32, br_uint_32))0x004ca760;
 CARM95_HOOK_FUNCTION(original_FopRead_PIXELS, FopRead_PIXELS)
 int __stdcall FopRead_PIXELS(br_datafile *df, br_uint_32 id, br_uint_32 length, br_uint_32 count) {
@@ -91,17 +124,31 @@ int __stdcall FopRead_PIXELS(br_datafile *df, br_uint_32 id, br_uint_32 length, 
     (void)pp;
     (void)size;
 
-    return original_FopRead_PIXELS(df, id, length, count);
+    if (function_hook_state_FopRead_PIXELS == HOOK_ENABLED) {
+        assert(0 && "FopRead_PIXELS not implemented.");
+        abort();
+    } else {
+        return original_FopRead_PIXELS(df, id, length, count);
+    }
 }
 
+function_hook_state_t function_hook_state_FopWrite_ADD_MAP = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(FopWrite_ADD_MAP, function_hook_state_FopWrite_ADD_MAP)
 int FopWrite_ADD_MAP(br_datafile *df) {
     LOG_TRACE("(%p)", df);
 
     (void)df;
 
-    NOT_IMPLEMENTED();
+    if (function_hook_state_FopWrite_ADD_MAP == HOOK_ENABLED) {
+        assert(0 && "FopWrite_ADD_MAP not implemented.");
+        abort();
+    } else {
+        NOT_IMPLEMENTED();
+    }
 }
 
+function_hook_state_t function_hook_state_FopRead_ADD_MAP = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(FopRead_ADD_MAP, function_hook_state_FopRead_ADD_MAP)
 static int(__stdcall*original_FopRead_ADD_MAP)(br_datafile *, br_uint_32, br_uint_32, br_uint_32) = (int(__stdcall*)(br_datafile *, br_uint_32, br_uint_32, br_uint_32))0x004ca7c0;
 CARM95_HOOK_FUNCTION(original_FopRead_ADD_MAP, FopRead_ADD_MAP)
 int __stdcall FopRead_ADD_MAP(br_datafile *df, br_uint_32 id, br_uint_32 length, br_uint_32 count) {
@@ -116,9 +163,16 @@ int __stdcall FopRead_ADD_MAP(br_datafile *df, br_uint_32 id, br_uint_32 length,
     (void)pp;
     (void)map;
 
-    return original_FopRead_ADD_MAP(df, id, length, count);
+    if (function_hook_state_FopRead_ADD_MAP == HOOK_ENABLED) {
+        assert(0 && "FopRead_ADD_MAP not implemented.");
+        abort();
+    } else {
+        return original_FopRead_ADD_MAP(df, id, length, count);
+    }
 }
 
+function_hook_state_t function_hook_state_BrPixelmapLoadMany = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(BrPixelmapLoadMany, function_hook_state_BrPixelmapLoadMany)
 static br_uint_32(__cdecl*original_BrPixelmapLoadMany)(char *, br_pixelmap **, br_uint_16) = (br_uint_32(__cdecl*)(char *, br_pixelmap **, br_uint_16))0x004ca7f0;
 CARM95_HOOK_FUNCTION(original_BrPixelmapLoadMany, BrPixelmapLoadMany)
 br_uint_32 __cdecl BrPixelmapLoadMany(char *filename, br_pixelmap **pixelmaps, br_uint_16 num) {
@@ -134,9 +188,16 @@ br_uint_32 __cdecl BrPixelmapLoadMany(char *filename, br_pixelmap **pixelmaps, b
     (void)count;
     (void)r;
 
-    return original_BrPixelmapLoadMany(filename, pixelmaps, num);
+    if (function_hook_state_BrPixelmapLoadMany == HOOK_ENABLED) {
+        assert(0 && "BrPixelmapLoadMany not implemented.");
+        abort();
+    } else {
+        return original_BrPixelmapLoadMany(filename, pixelmaps, num);
+    }
 }
 
+function_hook_state_t function_hook_state_WritePixelmap = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(WritePixelmap, function_hook_state_WritePixelmap)
 static int(__stdcall*original_WritePixelmap)(br_pixelmap *, br_datafile *) = (int(__stdcall*)(br_pixelmap *, br_datafile *))0x004caac0;
 CARM95_HOOK_FUNCTION(original_WritePixelmap, WritePixelmap)
 int __stdcall WritePixelmap(br_pixelmap *pp, br_datafile *df) {
@@ -145,9 +206,16 @@ int __stdcall WritePixelmap(br_pixelmap *pp, br_datafile *df) {
     (void)pp;
     (void)df;
 
-    return original_WritePixelmap(pp, df);
+    if (function_hook_state_WritePixelmap == HOOK_ENABLED) {
+        assert(0 && "WritePixelmap not implemented.");
+        abort();
+    } else {
+        return original_WritePixelmap(pp, df);
+    }
 }
 
+function_hook_state_t function_hook_state_BrPixelmapSaveMany = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(BrPixelmapSaveMany, function_hook_state_BrPixelmapSaveMany)
 static br_uint_32(__cdecl*original_BrPixelmapSaveMany)(char *, br_pixelmap **, br_uint_16) = (br_uint_32(__cdecl*)(char *, br_pixelmap **, br_uint_16))0x004ca86b;
 CARM95_HOOK_FUNCTION(original_BrPixelmapSaveMany, BrPixelmapSaveMany)
 br_uint_32 __cdecl BrPixelmapSaveMany(char *filename, br_pixelmap **pixelmaps, br_uint_16 num) {
@@ -161,9 +229,16 @@ br_uint_32 __cdecl BrPixelmapSaveMany(char *filename, br_pixelmap **pixelmaps, b
     (void)df;
     (void)i;
 
-    return original_BrPixelmapSaveMany(filename, pixelmaps, num);
+    if (function_hook_state_BrPixelmapSaveMany == HOOK_ENABLED) {
+        assert(0 && "BrPixelmapSaveMany not implemented.");
+        abort();
+    } else {
+        return original_BrPixelmapSaveMany(filename, pixelmaps, num);
+    }
 }
 
+function_hook_state_t function_hook_state_BrPixelmapLoad = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(BrPixelmapLoad, function_hook_state_BrPixelmapLoad)
 static br_pixelmap *(__cdecl*original_BrPixelmapLoad)(char *) = (br_pixelmap *(__cdecl*)(char *))0x004cac60;
 CARM95_HOOK_FUNCTION(original_BrPixelmapLoad, BrPixelmapLoad)
 br_pixelmap* __cdecl BrPixelmapLoad(char *filename) {
@@ -173,9 +248,16 @@ br_pixelmap* __cdecl BrPixelmapLoad(char *filename) {
     (void)filename;
     (void)ptr;
 
-    return original_BrPixelmapLoad(filename);
+    if (function_hook_state_BrPixelmapLoad == HOOK_ENABLED) {
+        assert(0 && "BrPixelmapLoad not implemented.");
+        abort();
+    } else {
+        return original_BrPixelmapLoad(filename);
+    }
 }
 
+function_hook_state_t function_hook_state_BrPixelmapSave = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(BrPixelmapSave, function_hook_state_BrPixelmapSave)
 static br_uint_32(__cdecl*original_BrPixelmapSave)(char *, br_pixelmap *) = (br_uint_32(__cdecl*)(char *, br_pixelmap *))0x004cace0;
 CARM95_HOOK_FUNCTION(original_BrPixelmapSave, BrPixelmapSave)
 br_uint_32 __cdecl BrPixelmapSave(char *filename, br_pixelmap *ptr) {
@@ -184,6 +266,11 @@ br_uint_32 __cdecl BrPixelmapSave(char *filename, br_pixelmap *ptr) {
     (void)filename;
     (void)ptr;
 
-    return original_BrPixelmapSave(filename, ptr);
+    if (function_hook_state_BrPixelmapSave == HOOK_ENABLED) {
+        assert(0 && "BrPixelmapSave not implemented.");
+        abort();
+    } else {
+        return original_BrPixelmapSave(filename, ptr);
+    }
 }
 

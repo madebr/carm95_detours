@@ -55,7 +55,7 @@ void __cdecl PDNonFatalError(char *pThe_str);
 
 void __cdecl PDInitialiseSystem();
 
-void __cdecl PDShutdownSystem();
+void __stdcall PDShutdownSystem();
 
 void __cdecl PDSaveOriginalPalette();
 

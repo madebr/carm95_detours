@@ -4,6 +4,9 @@
 
 #include "carm95_hooks.h"
 
+#include "carm95_webserver.h"
+
+#include <assert.h>
 int * hookvar_gPling_materials  = (void*)0x0051e8fc;
 #if 0
 br_material ** hookvar_gSub_material ;
@@ -22,6 +25,8 @@ int * hookvar_gNearest_face  = (void*)0x0053e548;
 br_scalar * hookvar_gNearest_T  = (void*)0x0053e550;
 tFace_ref ** hookvar_gPling_face  = (void*)0x00550240;
 
+function_hook_state_t function_hook_state_BadDiv__finteray = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(BadDiv__finteray, function_hook_state_BadDiv__finteray)
 static int(__cdecl*original_BadDiv__finteray)(br_scalar, br_scalar) = (int(__cdecl*)(br_scalar, br_scalar))0x004952ca;
 CARM95_HOOK_FUNCTION(original_BadDiv__finteray, BadDiv__finteray)
 int __cdecl BadDiv__finteray(br_scalar a, br_scalar b) {
@@ -30,9 +35,16 @@ int __cdecl BadDiv__finteray(br_scalar a, br_scalar b) {
     (void)a;
     (void)b;
 
-    return original_BadDiv__finteray(a, b);
+    if (function_hook_state_BadDiv__finteray == HOOK_ENABLED) {
+        assert(0 && "BadDiv__finteray not implemented.");
+        abort();
+    } else {
+        return original_BadDiv__finteray(a, b);
+    }
 }
 
+function_hook_state_t function_hook_state_DRVector2AccumulateScale__finteray = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(DRVector2AccumulateScale__finteray, function_hook_state_DRVector2AccumulateScale__finteray)
 static void(__cdecl*original_DRVector2AccumulateScale__finteray)(br_vector2 *, br_vector2 *, br_scalar) = (void(__cdecl*)(br_vector2 *, br_vector2 *, br_scalar))0x00495319;
 CARM95_HOOK_FUNCTION(original_DRVector2AccumulateScale__finteray, DRVector2AccumulateScale__finteray)
 void __cdecl DRVector2AccumulateScale__finteray(br_vector2 *a, br_vector2 *b, br_scalar s) {
@@ -42,9 +54,16 @@ void __cdecl DRVector2AccumulateScale__finteray(br_vector2 *a, br_vector2 *b, br
     (void)b;
     (void)s;
 
-    original_DRVector2AccumulateScale__finteray(a, b, s);
+    if (function_hook_state_DRVector2AccumulateScale__finteray == HOOK_ENABLED) {
+        assert(0 && "DRVector2AccumulateScale__finteray not implemented.");
+        abort();
+    } else {
+        original_DRVector2AccumulateScale__finteray(a, b, s);
+    }
 }
 
+function_hook_state_t function_hook_state_PickBoundsTestRay__finteray = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(PickBoundsTestRay__finteray, function_hook_state_PickBoundsTestRay__finteray)
 static int(__cdecl*original_PickBoundsTestRay__finteray)(br_bounds *, br_vector3 *, br_vector3 *, br_scalar, br_scalar, br_scalar *, br_scalar *) = (int(__cdecl*)(br_bounds *, br_vector3 *, br_vector3 *, br_scalar, br_scalar, br_scalar *, br_scalar *))0x004ab244;
 CARM95_HOOK_FUNCTION(original_PickBoundsTestRay__finteray, PickBoundsTestRay__finteray)
 int __cdecl PickBoundsTestRay__finteray(br_bounds *b, br_vector3 *rp, br_vector3 *rd, br_scalar t_near, br_scalar t_far, br_scalar *new_t_near, br_scalar *new_t_far) {
@@ -64,9 +83,16 @@ int __cdecl PickBoundsTestRay__finteray(br_bounds *b, br_vector3 *rp, br_vector3
     (void)s;
     (void)t;
 
-    return original_PickBoundsTestRay__finteray(b, rp, rd, t_near, t_far, new_t_near, new_t_far);
+    if (function_hook_state_PickBoundsTestRay__finteray == HOOK_ENABLED) {
+        assert(0 && "PickBoundsTestRay__finteray not implemented.");
+        abort();
+    } else {
+        return original_PickBoundsTestRay__finteray(b, rp, rd, t_near, t_far, new_t_near, new_t_far);
+    }
 }
 
+function_hook_state_t function_hook_state_ActorRayPick2D = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(ActorRayPick2D, function_hook_state_ActorRayPick2D)
 static int(__cdecl*original_ActorRayPick2D)(br_actor *, br_vector3 *, br_vector3 *, br_model *, br_material *, dr_pick2d_cbfn *) = (int(__cdecl*)(br_actor *, br_vector3 *, br_vector3 *, br_model *, br_material *, dr_pick2d_cbfn *))0x004aaf5a;
 CARM95_HOOK_FUNCTION(original_ActorRayPick2D, ActorRayPick2D)
 int __cdecl ActorRayPick2D(br_actor *ap, br_vector3 *pPosition, br_vector3 *pDir, br_model *model, br_material *material, dr_pick2d_cbfn *callback) {
@@ -101,9 +127,16 @@ int __cdecl ActorRayPick2D(br_actor *ap, br_vector3 *pPosition, br_vector3 *pDir
     (void)dir;
     (void)arg;
 
-    return original_ActorRayPick2D(ap, pPosition, pDir, model, material, callback);
+    if (function_hook_state_ActorRayPick2D == HOOK_ENABLED) {
+        assert(0 && "ActorRayPick2D not implemented.");
+        abort();
+    } else {
+        return original_ActorRayPick2D(ap, pPosition, pDir, model, material, callback);
+    }
 }
 
+function_hook_state_t function_hook_state_DRSceneRayPick2D = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(DRSceneRayPick2D, function_hook_state_DRSceneRayPick2D)
 static int(__cdecl*original_DRSceneRayPick2D)(br_actor *, br_vector3 *, br_vector3 *, dr_pick2d_cbfn *) = (int(__cdecl*)(br_actor *, br_vector3 *, br_vector3 *, dr_pick2d_cbfn *))0x004aaf10;
 CARM95_HOOK_FUNCTION(original_DRSceneRayPick2D, DRSceneRayPick2D)
 int __cdecl DRSceneRayPick2D(br_actor *world, br_vector3 *pPosition, br_vector3 *pDir, dr_pick2d_cbfn *callback) {
@@ -114,9 +147,16 @@ int __cdecl DRSceneRayPick2D(br_actor *world, br_vector3 *pPosition, br_vector3 
     (void)pDir;
     (void)callback;
 
-    return original_DRSceneRayPick2D(world, pPosition, pDir, callback);
+    if (function_hook_state_DRSceneRayPick2D == HOOK_ENABLED) {
+        assert(0 && "DRSceneRayPick2D not implemented.");
+        abort();
+    } else {
+        return original_DRSceneRayPick2D(world, pPosition, pDir, callback);
+    }
 }
 
+function_hook_state_t function_hook_state_DRModelPick2D__finteray = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(DRModelPick2D__finteray, function_hook_state_DRModelPick2D__finteray)
 static int(__cdecl*original_DRModelPick2D__finteray)(br_model *, br_material *, br_vector3 *, br_vector3 *, br_scalar, br_scalar, dr_modelpick2d_cbfn *, void *) = (int(__cdecl*)(br_model *, br_material *, br_vector3 *, br_vector3 *, br_scalar, br_scalar, dr_modelpick2d_cbfn *, void *))0x004ab5e4;
 CARM95_HOOK_FUNCTION(original_DRModelPick2D__finteray, DRModelPick2D__finteray)
 int __cdecl DRModelPick2D__finteray(br_model *model, br_material *material, br_vector3 *ray_pos, br_vector3 *ray_dir, br_scalar t_near, br_scalar t_far, dr_modelpick2d_cbfn *callback, void *arg) {
@@ -193,9 +233,16 @@ int __cdecl DRModelPick2D__finteray(br_model *model, br_material *material, br_v
     (void)f_numerator;
     (void)group;
 
-    return original_DRModelPick2D__finteray(model, material, ray_pos, ray_dir, t_near, t_far, callback, arg);
+    if (function_hook_state_DRModelPick2D__finteray == HOOK_ENABLED) {
+        assert(0 && "DRModelPick2D__finteray not implemented.");
+        abort();
+    } else {
+        return original_DRModelPick2D__finteray(model, material, ray_pos, ray_dir, t_near, t_far, callback, arg);
+    }
 }
 
+function_hook_state_t function_hook_state_FindHighestPolyCallBack__finteray = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(FindHighestPolyCallBack__finteray, function_hook_state_FindHighestPolyCallBack__finteray)
 static int(__cdecl*original_FindHighestPolyCallBack__finteray)(br_model *, br_material *, br_vector3 *, br_vector3 *, br_scalar, int, int, int, br_vector3 *, br_vector2 *, void *) = (int(__cdecl*)(br_model *, br_material *, br_vector3 *, br_vector3 *, br_scalar, int, int, int, br_vector3 *, br_vector2 *, void *))0x004abe8d;
 CARM95_HOOK_FUNCTION(original_FindHighestPolyCallBack__finteray, FindHighestPolyCallBack__finteray)
 int __cdecl FindHighestPolyCallBack__finteray(br_model *pModel, br_material *pMaterial, br_vector3 *pRay_pos, br_vector3 *pRay_dir, br_scalar pT, int pF, int pE, int pV, br_vector3 *pPoint, br_vector2 *pMap, void *pArg) {
@@ -213,9 +260,16 @@ int __cdecl FindHighestPolyCallBack__finteray(br_model *pModel, br_material *pMa
     (void)pMap;
     (void)pArg;
 
-    return original_FindHighestPolyCallBack__finteray(pModel, pMaterial, pRay_pos, pRay_dir, pT, pF, pE, pV, pPoint, pMap, pArg);
+    if (function_hook_state_FindHighestPolyCallBack__finteray == HOOK_ENABLED) {
+        assert(0 && "FindHighestPolyCallBack__finteray not implemented.");
+        abort();
+    } else {
+        return original_FindHighestPolyCallBack__finteray(pModel, pMaterial, pRay_pos, pRay_dir, pT, pF, pE, pV, pPoint, pMap, pArg);
+    }
 }
 
+function_hook_state_t function_hook_state_FindHighestCallBack__finteray = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(FindHighestCallBack__finteray, function_hook_state_FindHighestCallBack__finteray)
 static int(__cdecl*original_FindHighestCallBack__finteray)(br_actor *, br_model *, br_material *, br_vector3 *, br_vector3 *, br_scalar, br_scalar, void *) = (int(__cdecl*)(br_actor *, br_model *, br_material *, br_vector3 *, br_vector3 *, br_scalar, br_scalar, void *))0x004ab584;
 CARM95_HOOK_FUNCTION(original_FindHighestCallBack__finteray, FindHighestCallBack__finteray)
 int __cdecl FindHighestCallBack__finteray(br_actor *pActor, br_model *pModel, br_material *pMaterial, br_vector3 *pRay_pos, br_vector3 *pRay_dir, br_scalar pT_near, br_scalar pT_far, void *pArg) {
@@ -230,9 +284,16 @@ int __cdecl FindHighestCallBack__finteray(br_actor *pActor, br_model *pModel, br
     (void)pT_far;
     (void)pArg;
 
-    return original_FindHighestCallBack__finteray(pActor, pModel, pMaterial, pRay_pos, pRay_dir, pT_near, pT_far, pArg);
+    if (function_hook_state_FindHighestCallBack__finteray == HOOK_ENABLED) {
+        assert(0 && "FindHighestCallBack__finteray not implemented.");
+        abort();
+    } else {
+        return original_FindHighestCallBack__finteray(pActor, pModel, pMaterial, pRay_pos, pRay_dir, pT_near, pT_far, pArg);
+    }
 }
 
+function_hook_state_t function_hook_state_FindFace = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(FindFace, function_hook_state_FindFace)
 static void(__cdecl*original_FindFace)(br_vector3 *, br_vector3 *, br_vector3 *, br_scalar *, br_material **) = (void(__cdecl*)(br_vector3 *, br_vector3 *, br_vector3 *, br_scalar *, br_material **))0x004ab47d;
 CARM95_HOOK_FUNCTION(original_FindFace, FindFace)
 void __cdecl FindFace(br_vector3 *pPosition, br_vector3 *pDir, br_vector3 *nor, br_scalar *t, br_material **material) {
@@ -246,27 +307,48 @@ void __cdecl FindFace(br_vector3 *pPosition, br_vector3 *pDir, br_vector3 *nor, 
     (void)material;
     (void)group;
 
-    original_FindFace(pPosition, pDir, nor, t, material);
+    if (function_hook_state_FindFace == HOOK_ENABLED) {
+        assert(0 && "FindFace not implemented.");
+        abort();
+    } else {
+        original_FindFace(pPosition, pDir, nor, t, material);
+    }
 }
 
+function_hook_state_t function_hook_state_EnablePlingMaterials = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(EnablePlingMaterials, function_hook_state_EnablePlingMaterials)
 static void(__cdecl*original_EnablePlingMaterials)() = (void(__cdecl*)())0x004abed5;
 CARM95_HOOK_FUNCTION(original_EnablePlingMaterials, EnablePlingMaterials)
 void __cdecl EnablePlingMaterials() {
     LOG_TRACE("()");
 
 
-    original_EnablePlingMaterials();
+    if (function_hook_state_EnablePlingMaterials == HOOK_ENABLED) {
+        assert(0 && "EnablePlingMaterials not implemented.");
+        abort();
+    } else {
+        original_EnablePlingMaterials();
+    }
 }
 
+function_hook_state_t function_hook_state_DisablePlingMaterials = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(DisablePlingMaterials, function_hook_state_DisablePlingMaterials)
 static void(__cdecl*original_DisablePlingMaterials)() = (void(__cdecl*)())0x004abeea;
 CARM95_HOOK_FUNCTION(original_DisablePlingMaterials, DisablePlingMaterials)
 void __cdecl DisablePlingMaterials() {
     LOG_TRACE("()");
 
 
-    original_DisablePlingMaterials();
+    if (function_hook_state_DisablePlingMaterials == HOOK_ENABLED) {
+        assert(0 && "DisablePlingMaterials not implemented.");
+        abort();
+    } else {
+        original_DisablePlingMaterials();
+    }
 }
 
+function_hook_state_t function_hook_state_CheckSingleFace = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(CheckSingleFace, function_hook_state_CheckSingleFace)
 static void(__cdecl*original_CheckSingleFace)(tFace_ref *, br_vector3 *, br_vector3 *, br_vector3 *, br_scalar *) = (void(__cdecl*)(tFace_ref *, br_vector3 *, br_vector3 *, br_vector3 *, br_scalar *))0x004abeff;
 CARM95_HOOK_FUNCTION(original_CheckSingleFace, CheckSingleFace)
 void __cdecl CheckSingleFace(tFace_ref *pFace, br_vector3 *ray_pos, br_vector3 *ray_dir, br_vector3 *normal, br_scalar *rt) {
@@ -322,9 +404,16 @@ void __cdecl CheckSingleFace(tFace_ref *pFace, br_vector3 *ray_pos, br_vector3 *
     (void)f_numerator;
     (void)this_material;
 
-    original_CheckSingleFace(pFace, ray_pos, ray_dir, normal, rt);
+    if (function_hook_state_CheckSingleFace == HOOK_ENABLED) {
+        assert(0 && "CheckSingleFace not implemented.");
+        abort();
+    } else {
+        original_CheckSingleFace(pFace, ray_pos, ray_dir, normal, rt);
+    }
 }
 
+function_hook_state_t function_hook_state_MultiRayCheckSingleFace = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(MultiRayCheckSingleFace, function_hook_state_MultiRayCheckSingleFace)
 static void(__cdecl*original_MultiRayCheckSingleFace)(int, tFace_ref *, br_vector3 *, br_vector3 *, br_vector3 *, br_scalar *) = (void(__cdecl*)(int, tFace_ref *, br_vector3 *, br_vector3 *, br_vector3 *, br_scalar *))0x004ac3b7;
 CARM95_HOOK_FUNCTION(original_MultiRayCheckSingleFace, MultiRayCheckSingleFace)
 void __cdecl MultiRayCheckSingleFace(int pNum_rays, tFace_ref *pFace, br_vector3 *ray_pos, br_vector3 *ray_dir, br_vector3 *normal, br_scalar *rt) {
@@ -383,9 +472,16 @@ void __cdecl MultiRayCheckSingleFace(int pNum_rays, tFace_ref *pFace, br_vector3
     (void)f_numerator;
     (void)this_material;
 
-    original_MultiRayCheckSingleFace(pNum_rays, pFace, ray_pos, ray_dir, normal, rt);
+    if (function_hook_state_MultiRayCheckSingleFace == HOOK_ENABLED) {
+        assert(0 && "MultiRayCheckSingleFace not implemented.");
+        abort();
+    } else {
+        original_MultiRayCheckSingleFace(pNum_rays, pFace, ray_pos, ray_dir, normal, rt);
+    }
 }
 
+function_hook_state_t function_hook_state_GetNewBoundingBox = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(GetNewBoundingBox, function_hook_state_GetNewBoundingBox)
 static void(__cdecl*original_GetNewBoundingBox)(br_bounds *, br_bounds *, br_matrix34 *) = (void(__cdecl*)(br_bounds *, br_bounds *, br_matrix34 *))0x004acaa2;
 CARM95_HOOK_FUNCTION(original_GetNewBoundingBox, GetNewBoundingBox)
 void __cdecl GetNewBoundingBox(br_bounds *b2, br_bounds *b1, br_matrix34 *m) {
@@ -401,9 +497,16 @@ void __cdecl GetNewBoundingBox(br_bounds *b2, br_bounds *b1, br_matrix34 *m) {
     (void)c;
     (void)j;
 
-    original_GetNewBoundingBox(b2, b1, m);
+    if (function_hook_state_GetNewBoundingBox == HOOK_ENABLED) {
+        assert(0 && "GetNewBoundingBox not implemented.");
+        abort();
+    } else {
+        original_GetNewBoundingBox(b2, b1, m);
+    }
 }
 
+function_hook_state_t function_hook_state_FindFacesInBox = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(FindFacesInBox, function_hook_state_FindFacesInBox)
 static int(__cdecl*original_FindFacesInBox)(tBounds *, tFace_ref *, int) = (int(__cdecl*)(tBounds *, tFace_ref *, int))0x004accae;
 CARM95_HOOK_FUNCTION(original_FindFacesInBox, FindFacesInBox)
 int __cdecl FindFacesInBox(tBounds *bnds, tFace_ref *face_list, int max_face) {
@@ -437,9 +540,16 @@ int __cdecl FindFacesInBox(tBounds *bnds, tFace_ref *face_list, int max_face) {
     (void)cz_max;
     (void)track_spec;
 
-    return original_FindFacesInBox(bnds, face_list, max_face);
+    if (function_hook_state_FindFacesInBox == HOOK_ENABLED) {
+        assert(0 && "FindFacesInBox not implemented.");
+        abort();
+    } else {
+        return original_FindFacesInBox(bnds, face_list, max_face);
+    }
 }
 
+function_hook_state_t function_hook_state_FindFacesInBox2 = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(FindFacesInBox2, function_hook_state_FindFacesInBox2)
 static int(__cdecl*original_FindFacesInBox2)(tBounds *, tFace_ref *, int) = (int(__cdecl*)(tBounds *, tFace_ref *, int))0x004ad176;
 CARM95_HOOK_FUNCTION(original_FindFacesInBox2, FindFacesInBox2)
 int __cdecl FindFacesInBox2(tBounds *bnds, tFace_ref *face_list, int max_face) {
@@ -459,9 +569,16 @@ int __cdecl FindFacesInBox2(tBounds *bnds, tFace_ref *face_list, int max_face) {
     (void)i;
     (void)j;
 
-    return original_FindFacesInBox2(bnds, face_list, max_face);
+    if (function_hook_state_FindFacesInBox2 == HOOK_ENABLED) {
+        assert(0 && "FindFacesInBox2 not implemented.");
+        abort();
+    } else {
+        return original_FindFacesInBox2(bnds, face_list, max_face);
+    }
 }
 
+function_hook_state_t function_hook_state_ActorBoxPick = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(ActorBoxPick, function_hook_state_ActorBoxPick)
 static int(__cdecl*original_ActorBoxPick)(tBounds *, br_actor *, br_model *, br_material *, tFace_ref *, int, br_matrix34 *) = (int(__cdecl*)(tBounds *, br_actor *, br_model *, br_material *, tFace_ref *, int, br_matrix34 *))0x004ad45b;
 CARM95_HOOK_FUNCTION(original_ActorBoxPick, ActorBoxPick)
 int __cdecl ActorBoxPick(tBounds *bnds, br_actor *ap, br_model *model, br_material *material, tFace_ref *face_list, int max_face, br_matrix34 *pMat) {
@@ -501,9 +618,16 @@ int __cdecl ActorBoxPick(tBounds *bnds, br_actor *ap, br_model *model, br_materi
     (void)new_bounds;
     (void)br_bnds;
 
-    return original_ActorBoxPick(bnds, ap, model, material, face_list, max_face, pMat);
+    if (function_hook_state_ActorBoxPick == HOOK_ENABLED) {
+        assert(0 && "ActorBoxPick not implemented.");
+        abort();
+    } else {
+        return original_ActorBoxPick(bnds, ap, model, material, face_list, max_face, pMat);
+    }
 }
 
+function_hook_state_t function_hook_state_ModelPickBox = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(ModelPickBox, function_hook_state_ModelPickBox)
 static int(__cdecl*original_ModelPickBox)(br_actor *, tBounds *, br_model *, br_material *, tFace_ref *, int, br_matrix34 *) = (int(__cdecl*)(br_actor *, tBounds *, br_model *, br_material *, tFace_ref *, int, br_matrix34 *))0x004ad8ce;
 CARM95_HOOK_FUNCTION(original_ModelPickBox, ModelPickBox)
 int __cdecl ModelPickBox(br_actor *actor, tBounds *bnds, br_model *model, br_material *model_material, tFace_ref *face_list, int max_face, br_matrix34 *pMat) {
@@ -543,9 +667,16 @@ int __cdecl ModelPickBox(br_actor *actor, tBounds *bnds, br_model *model, br_mat
     (void)t;
     (void)prepared;
 
-    return original_ModelPickBox(actor, bnds, model, model_material, face_list, max_face, pMat);
+    if (function_hook_state_ModelPickBox == HOOK_ENABLED) {
+        assert(0 && "ModelPickBox not implemented.");
+        abort();
+    } else {
+        return original_ModelPickBox(actor, bnds, model, model_material, face_list, max_face, pMat);
+    }
 }
 
+function_hook_state_t function_hook_state_ClipToPlaneGE = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(ClipToPlaneGE, function_hook_state_ClipToPlaneGE)
 static void(__cdecl*original_ClipToPlaneGE)(br_vector3 *, int *, int, br_scalar) = (void(__cdecl*)(br_vector3 *, int *, int, br_scalar))0x004ae5b5;
 CARM95_HOOK_FUNCTION(original_ClipToPlaneGE, ClipToPlaneGE)
 void __cdecl ClipToPlaneGE(br_vector3 *p, int *nv, int i, br_scalar limit) {
@@ -566,9 +697,16 @@ void __cdecl ClipToPlaneGE(br_vector3 *p, int *nv, int i, br_scalar limit) {
     (void)k;
     (void)p2;
 
-    original_ClipToPlaneGE(p, nv, i, limit);
+    if (function_hook_state_ClipToPlaneGE == HOOK_ENABLED) {
+        assert(0 && "ClipToPlaneGE not implemented.");
+        abort();
+    } else {
+        original_ClipToPlaneGE(p, nv, i, limit);
+    }
 }
 
+function_hook_state_t function_hook_state_ClipToPlaneLE = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(ClipToPlaneLE, function_hook_state_ClipToPlaneLE)
 static void(__cdecl*original_ClipToPlaneLE)(br_vector3 *, int *, int, br_scalar) = (void(__cdecl*)(br_vector3 *, int *, int, br_scalar))0x004ae89f;
 CARM95_HOOK_FUNCTION(original_ClipToPlaneLE, ClipToPlaneLE)
 void __cdecl ClipToPlaneLE(br_vector3 *p, int *nv, int i, br_scalar limit) {
@@ -589,9 +727,16 @@ void __cdecl ClipToPlaneLE(br_vector3 *p, int *nv, int i, br_scalar limit) {
     (void)k;
     (void)p2;
 
-    original_ClipToPlaneLE(p, nv, i, limit);
+    if (function_hook_state_ClipToPlaneLE == HOOK_ENABLED) {
+        assert(0 && "ClipToPlaneLE not implemented.");
+        abort();
+    } else {
+        original_ClipToPlaneLE(p, nv, i, limit);
+    }
 }
 
+function_hook_state_t function_hook_state_BoundsOverlapTest__finteray = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(BoundsOverlapTest__finteray, function_hook_state_BoundsOverlapTest__finteray)
 static int(__cdecl*original_BoundsOverlapTest__finteray)(br_bounds *, br_bounds *) = (int(__cdecl*)(br_bounds *, br_bounds *))0x004aeb89;
 CARM95_HOOK_FUNCTION(original_BoundsOverlapTest__finteray, BoundsOverlapTest__finteray)
 int __cdecl BoundsOverlapTest__finteray(br_bounds *b1, br_bounds *b2) {
@@ -600,9 +745,16 @@ int __cdecl BoundsOverlapTest__finteray(br_bounds *b1, br_bounds *b2) {
     (void)b1;
     (void)b2;
 
-    return original_BoundsOverlapTest__finteray(b1, b2);
+    if (function_hook_state_BoundsOverlapTest__finteray == HOOK_ENABLED) {
+        assert(0 && "BoundsOverlapTest__finteray not implemented.");
+        abort();
+    } else {
+        return original_BoundsOverlapTest__finteray(b1, b2);
+    }
 }
 
+function_hook_state_t function_hook_state_BoundsTransformTest = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(BoundsTransformTest, function_hook_state_BoundsTransformTest)
 static int(__cdecl*original_BoundsTransformTest)(br_bounds *, br_bounds *, br_matrix34 *) = (int(__cdecl*)(br_bounds *, br_bounds *, br_matrix34 *))0x004aec32;
 CARM95_HOOK_FUNCTION(original_BoundsTransformTest, BoundsTransformTest)
 int __cdecl BoundsTransformTest(br_bounds *b1, br_bounds *b2, br_matrix34 *M) {
@@ -616,9 +768,16 @@ int __cdecl BoundsTransformTest(br_bounds *b1, br_bounds *b2, br_matrix34 *M) {
     (void)val;
     (void)o;
 
-    return original_BoundsTransformTest(b1, b2, M);
+    if (function_hook_state_BoundsTransformTest == HOOK_ENABLED) {
+        assert(0 && "BoundsTransformTest not implemented.");
+        abort();
+    } else {
+        return original_BoundsTransformTest(b1, b2, M);
+    }
 }
 
+function_hook_state_t function_hook_state_LineBoxColl = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(LineBoxColl, function_hook_state_LineBoxColl)
 static int(__cdecl*original_LineBoxColl)(br_vector3 *, br_vector3 *, br_bounds *, br_vector3 *) = (int(__cdecl*)(br_vector3 *, br_vector3 *, br_bounds *, br_vector3 *))0x004af126;
 CARM95_HOOK_FUNCTION(original_LineBoxColl, LineBoxColl)
 int __cdecl LineBoxColl(br_vector3 *o, br_vector3 *p, br_bounds *pB, br_vector3 *pHit_point) {
@@ -643,9 +802,16 @@ int __cdecl LineBoxColl(br_vector3 *o, br_vector3 *p, br_bounds *pB, br_vector3 
     (void)max_t;
     (void)cp;
 
-    return original_LineBoxColl(o, p, pB, pHit_point);
+    if (function_hook_state_LineBoxColl == HOOK_ENABLED) {
+        assert(0 && "LineBoxColl not implemented.");
+        abort();
+    } else {
+        return original_LineBoxColl(o, p, pB, pHit_point);
+    }
 }
 
+function_hook_state_t function_hook_state_SphereBoxIntersection = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(SphereBoxIntersection, function_hook_state_SphereBoxIntersection)
 static int(__cdecl*original_SphereBoxIntersection)(br_bounds *, br_vector3 *, br_scalar, br_vector3 *) = (int(__cdecl*)(br_bounds *, br_vector3 *, br_scalar, br_vector3 *))0x004af3f0;
 CARM95_HOOK_FUNCTION(original_SphereBoxIntersection, SphereBoxIntersection)
 int __cdecl SphereBoxIntersection(br_bounds *pB, br_vector3 *pC, br_scalar pR_squared, br_vector3 *pHit_point) {
@@ -660,9 +826,16 @@ int __cdecl SphereBoxIntersection(br_bounds *pB, br_vector3 *pC, br_scalar pR_sq
     (void)i;
     (void)d;
 
-    return original_SphereBoxIntersection(pB, pC, pR_squared, pHit_point);
+    if (function_hook_state_SphereBoxIntersection == HOOK_ENABLED) {
+        assert(0 && "SphereBoxIntersection not implemented.");
+        abort();
+    } else {
+        return original_SphereBoxIntersection(pB, pC, pR_squared, pHit_point);
+    }
 }
 
+function_hook_state_t function_hook_state_LineBoxCollWithSphere = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(LineBoxCollWithSphere, function_hook_state_LineBoxCollWithSphere)
 static int(__cdecl*original_LineBoxCollWithSphere)(br_vector3 *, br_vector3 *, br_bounds *, br_vector3 *) = (int(__cdecl*)(br_vector3 *, br_vector3 *, br_bounds *, br_vector3 *))0x004af4d2;
 CARM95_HOOK_FUNCTION(original_LineBoxCollWithSphere, LineBoxCollWithSphere)
 int __cdecl LineBoxCollWithSphere(br_vector3 *o, br_vector3 *p, br_bounds *pB, br_vector3 *pHit_point) {
@@ -677,9 +850,16 @@ int __cdecl LineBoxCollWithSphere(br_vector3 *o, br_vector3 *p, br_bounds *pB, b
     (void)i;
     (void)plane;
 
-    return original_LineBoxCollWithSphere(o, p, pB, pHit_point);
+    if (function_hook_state_LineBoxCollWithSphere == HOOK_ENABLED) {
+        assert(0 && "LineBoxCollWithSphere not implemented.");
+        abort();
+    } else {
+        return original_LineBoxCollWithSphere(o, p, pB, pHit_point);
+    }
 }
 
+function_hook_state_t function_hook_state_CompVert = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(CompVert, function_hook_state_CompVert)
 static int(__cdecl*original_CompVert)(int, int) = (int(__cdecl*)(int, int))0x004af90e;
 CARM95_HOOK_FUNCTION(original_CompVert, CompVert)
 int __cdecl CompVert(int v1, int v2) {
@@ -694,9 +874,16 @@ int __cdecl CompVert(int v1, int v2) {
     (void)tv;
     (void)tv2;
 
-    return original_CompVert(v1, v2);
+    if (function_hook_state_CompVert == HOOK_ENABLED) {
+        assert(0 && "CompVert not implemented.");
+        abort();
+    } else {
+        return original_CompVert(v1, v2);
+    }
 }
 
+function_hook_state_t function_hook_state_SetFacesGroup = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(SetFacesGroup, function_hook_state_SetFacesGroup)
 static void(__cdecl*original_SetFacesGroup)(int) = (void(__cdecl*)(int))0x004af7d4;
 CARM95_HOOK_FUNCTION(original_SetFacesGroup, SetFacesGroup)
 void __cdecl SetFacesGroup(int pFace) {
@@ -710,9 +897,16 @@ void __cdecl SetFacesGroup(int pFace) {
     (void)v;
     (void)i;
 
-    original_SetFacesGroup(pFace);
+    if (function_hook_state_SetFacesGroup == HOOK_ENABLED) {
+        assert(0 && "SetFacesGroup not implemented.");
+        abort();
+    } else {
+        original_SetFacesGroup(pFace);
+    }
 }
 
+function_hook_state_t function_hook_state_SelectFace = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(SelectFace, function_hook_state_SelectFace)
 static void(__cdecl*original_SelectFace)(br_vector3 *) = (void(__cdecl*)(br_vector3 *))0x004af5e8;
 CARM95_HOOK_FUNCTION(original_SelectFace, SelectFace)
 void __cdecl SelectFace(br_vector3 *pDir) {
@@ -732,9 +926,16 @@ void __cdecl SelectFace(br_vector3 *pDir) {
     (void)old_model;
     (void)i;
 
-    original_SelectFace(pDir);
+    if (function_hook_state_SelectFace == HOOK_ENABLED) {
+        assert(0 && "SelectFace not implemented.");
+        abort();
+    } else {
+        original_SelectFace(pDir);
+    }
 }
 
+function_hook_state_t function_hook_state_GetTilingLimits = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(GetTilingLimits, function_hook_state_GetTilingLimits)
 static void(__cdecl*original_GetTilingLimits)(br_vector2 *, br_vector2 *) = (void(__cdecl*)(br_vector2 *, br_vector2 *))0x004afa2a;
 CARM95_HOOK_FUNCTION(original_GetTilingLimits, GetTilingLimits)
 void __cdecl GetTilingLimits(br_vector2 *min, br_vector2 *max) {
@@ -753,9 +954,16 @@ void __cdecl GetTilingLimits(br_vector2 *min, br_vector2 *max) {
     (void)verts;
     (void)faces;
 
-    original_GetTilingLimits(min, max);
+    if (function_hook_state_GetTilingLimits == HOOK_ENABLED) {
+        assert(0 && "GetTilingLimits not implemented.");
+        abort();
+    } else {
+        original_GetTilingLimits(min, max);
+    }
 }
 
+function_hook_state_t function_hook_state_Scale = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(Scale, function_hook_state_Scale)
 static void(__cdecl*original_Scale)(int, int) = (void(__cdecl*)(int, int))0x004afbf3;
 CARM95_HOOK_FUNCTION(original_Scale, Scale)
 void __cdecl Scale(int pD, int factor) {
@@ -778,45 +986,80 @@ void __cdecl Scale(int pD, int factor) {
     (void)verts;
     (void)faces;
 
-    original_Scale(pD, factor);
+    if (function_hook_state_Scale == HOOK_ENABLED) {
+        assert(0 && "Scale not implemented.");
+        abort();
+    } else {
+        original_Scale(pD, factor);
+    }
 }
 
+function_hook_state_t function_hook_state_ScaleUpX = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(ScaleUpX, function_hook_state_ScaleUpX)
 static void(__cdecl*original_ScaleUpX)() = (void(__cdecl*)())0x004afbdc;
 CARM95_HOOK_FUNCTION(original_ScaleUpX, ScaleUpX)
 void __cdecl ScaleUpX() {
     LOG_TRACE("()");
 
 
-    original_ScaleUpX();
+    if (function_hook_state_ScaleUpX == HOOK_ENABLED) {
+        assert(0 && "ScaleUpX not implemented.");
+        abort();
+    } else {
+        original_ScaleUpX();
+    }
 }
 
+function_hook_state_t function_hook_state_ScaleDnX = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(ScaleDnX, function_hook_state_ScaleDnX)
 static void(__cdecl*original_ScaleDnX)() = (void(__cdecl*)())0x004afd9a;
 CARM95_HOOK_FUNCTION(original_ScaleDnX, ScaleDnX)
 void __cdecl ScaleDnX() {
     LOG_TRACE("()");
 
 
-    original_ScaleDnX();
+    if (function_hook_state_ScaleDnX == HOOK_ENABLED) {
+        assert(0 && "ScaleDnX not implemented.");
+        abort();
+    } else {
+        original_ScaleDnX();
+    }
 }
 
+function_hook_state_t function_hook_state_ScaleUpY = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(ScaleUpY, function_hook_state_ScaleUpY)
 static void(__cdecl*original_ScaleUpY)() = (void(__cdecl*)())0x004afdb1;
 CARM95_HOOK_FUNCTION(original_ScaleUpY, ScaleUpY)
 void __cdecl ScaleUpY() {
     LOG_TRACE("()");
 
 
-    original_ScaleUpY();
+    if (function_hook_state_ScaleUpY == HOOK_ENABLED) {
+        assert(0 && "ScaleUpY not implemented.");
+        abort();
+    } else {
+        original_ScaleUpY();
+    }
 }
 
+function_hook_state_t function_hook_state_ScaleDnY = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(ScaleDnY, function_hook_state_ScaleDnY)
 static void(__cdecl*original_ScaleDnY)() = (void(__cdecl*)())0x004afdc8;
 CARM95_HOOK_FUNCTION(original_ScaleDnY, ScaleDnY)
 void __cdecl ScaleDnY() {
     LOG_TRACE("()");
 
 
-    original_ScaleDnY();
+    if (function_hook_state_ScaleDnY == HOOK_ENABLED) {
+        assert(0 && "ScaleDnY not implemented.");
+        abort();
+    } else {
+        original_ScaleDnY();
+    }
 }
 
+function_hook_state_t function_hook_state_SelectFaceForward = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(SelectFaceForward, function_hook_state_SelectFaceForward)
 static void(__cdecl*original_SelectFaceForward)() = (void(__cdecl*)())0x004afddf;
 CARM95_HOOK_FUNCTION(original_SelectFaceForward, SelectFaceForward)
 void __cdecl SelectFaceForward() {
@@ -825,9 +1068,16 @@ void __cdecl SelectFaceForward() {
 
     (void)dir;
 
-    original_SelectFaceForward();
+    if (function_hook_state_SelectFaceForward == HOOK_ENABLED) {
+        assert(0 && "SelectFaceForward not implemented.");
+        abort();
+    } else {
+        original_SelectFaceForward();
+    }
 }
 
+function_hook_state_t function_hook_state_SelectFaceDown = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(SelectFaceDown, function_hook_state_SelectFaceDown)
 static void(__cdecl*original_SelectFaceDown)() = (void(__cdecl*)())0x004afe2c;
 CARM95_HOOK_FUNCTION(original_SelectFaceDown, SelectFaceDown)
 void __cdecl SelectFaceDown() {
@@ -836,6 +1086,11 @@ void __cdecl SelectFaceDown() {
 
     (void)dir;
 
-    original_SelectFaceDown();
+    if (function_hook_state_SelectFaceDown == HOOK_ENABLED) {
+        assert(0 && "SelectFaceDown not implemented.");
+        abort();
+    } else {
+        original_SelectFaceDown();
+    }
 }
 

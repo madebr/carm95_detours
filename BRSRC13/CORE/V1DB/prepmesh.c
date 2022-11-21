@@ -4,6 +4,9 @@
 
 #include "carm95_hooks.h"
 
+#include "carm95_webserver.h"
+
+#include <assert.h>
 #if 0
 int * hookvar_num_edges ;
 #endif
@@ -18,6 +21,8 @@ struct pm_temp_edge *** hookvar_pm_edge_hash ;
 struct pm_temp_edge ** hookvar_pm_edge_table ;
 #endif
 
+function_hook_state_t function_hook_state_addEdge = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(addEdge, function_hook_state_addEdge)
 int addEdge(br_uint_16 first, br_uint_16 last) {
     struct pm_temp_edge *tep;
     LOG_TRACE("(%u, %u)", first, last);
@@ -26,9 +31,16 @@ int addEdge(br_uint_16 first, br_uint_16 last) {
     (void)last;
     (void)tep;
 
-    NOT_IMPLEMENTED();
+    if (function_hook_state_addEdge == HOOK_ENABLED) {
+        assert(0 && "addEdge not implemented.");
+        abort();
+    } else {
+        NOT_IMPLEMENTED();
+    }
 }
 
+function_hook_state_t function_hook_state_prepareEdges = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(prepareEdges, function_hook_state_prepareEdges)
 void prepareEdges(struct v11group *group, br_model *model) {
     br_size_t scratch_size;
     br_face *mfp;
@@ -43,9 +55,16 @@ void prepareEdges(struct v11group *group, br_model *model) {
     (void)fp;
     (void)f;
 
-    NOT_IMPLEMENTED();
+    if (function_hook_state_prepareEdges == HOOK_ENABLED) {
+        assert(0 && "prepareEdges not implemented.");
+        abort();
+    } else {
+        NOT_IMPLEMENTED();
+    }
 }
 
+function_hook_state_t function_hook_state_BrPrepareEdges = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(BrPrepareEdges, function_hook_state_BrPrepareEdges)
 void BrPrepareEdges(br_model *model) {
     int g;
     struct v11model *v11m;
@@ -55,9 +74,16 @@ void BrPrepareEdges(br_model *model) {
     (void)g;
     (void)v11m;
 
-    NOT_IMPLEMENTED();
+    if (function_hook_state_BrPrepareEdges == HOOK_ENABLED) {
+        assert(0 && "BrPrepareEdges not implemented.");
+        abort();
+    } else {
+        NOT_IMPLEMENTED();
+    }
 }
 
+function_hook_state_t function_hook_state_FacesCompare = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(FacesCompare, function_hook_state_FacesCompare)
 static int(__cdecl*original_FacesCompare)(void *, void *) = (int(__cdecl*)(void *, void *))0x004d8a40;
 CARM95_HOOK_FUNCTION(original_FacesCompare, FacesCompare)
 int __cdecl FacesCompare(void *p1, void *p2) {
@@ -70,9 +96,16 @@ int __cdecl FacesCompare(void *p1, void *p2) {
     (void)f1;
     (void)f2;
 
-    return original_FacesCompare(p1, p2);
+    if (function_hook_state_FacesCompare == HOOK_ENABLED) {
+        assert(0 && "FacesCompare not implemented.");
+        abort();
+    } else {
+        return original_FacesCompare(p1, p2);
+    }
 }
 
+function_hook_state_t function_hook_state_TVCompare_XYZ = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(TVCompare_XYZ, function_hook_state_TVCompare_XYZ)
 static int(__cdecl*original_TVCompare_XYZ)(void *, void *) = (int(__cdecl*)(void *, void *))0x004d8a70;
 CARM95_HOOK_FUNCTION(original_TVCompare_XYZ, TVCompare_XYZ)
 int __cdecl TVCompare_XYZ(void *p1, void *p2) {
@@ -91,9 +124,16 @@ int __cdecl TVCompare_XYZ(void *p1, void *p2) {
     (void)v2;
     (void)i;
 
-    return original_TVCompare_XYZ(p1, p2);
+    if (function_hook_state_TVCompare_XYZ == HOOK_ENABLED) {
+        assert(0 && "TVCompare_XYZ not implemented.");
+        abort();
+    } else {
+        return original_TVCompare_XYZ(p1, p2);
+    }
 }
 
+function_hook_state_t function_hook_state_TVCompare_MXYZUVN = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(TVCompare_MXYZUVN, function_hook_state_TVCompare_MXYZUVN)
 static int(__cdecl*original_TVCompare_MXYZUVN)(void *, void *) = (int(__cdecl*)(void *, void *))0x004d8af0;
 CARM95_HOOK_FUNCTION(original_TVCompare_MXYZUVN, TVCompare_MXYZUVN)
 int __cdecl TVCompare_MXYZUVN(void *p1, void *p2) {
@@ -112,9 +152,16 @@ int __cdecl TVCompare_MXYZUVN(void *p1, void *p2) {
     (void)v2;
     (void)i;
 
-    return original_TVCompare_MXYZUVN(p1, p2);
+    if (function_hook_state_TVCompare_MXYZUVN == HOOK_ENABLED) {
+        assert(0 && "TVCompare_MXYZUVN not implemented.");
+        abort();
+    } else {
+        return original_TVCompare_MXYZUVN(p1, p2);
+    }
 }
 
+function_hook_state_t function_hook_state_TVCompare_MVN = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(TVCompare_MVN, function_hook_state_TVCompare_MVN)
 static int(__cdecl*original_TVCompare_MVN)(void *, void *) = (int(__cdecl*)(void *, void *))0x004d8c50;
 CARM95_HOOK_FUNCTION(original_TVCompare_MVN, TVCompare_MVN)
 int __cdecl TVCompare_MVN(void *p1, void *p2) {
@@ -129,9 +176,16 @@ int __cdecl TVCompare_MVN(void *p1, void *p2) {
     (void)tv2;
     (void)i;
 
-    return original_TVCompare_MVN(p1, p2);
+    if (function_hook_state_TVCompare_MVN == HOOK_ENABLED) {
+        assert(0 && "TVCompare_MVN not implemented.");
+        abort();
+    } else {
+        return original_TVCompare_MVN(p1, p2);
+    }
 }
 
+function_hook_state_t function_hook_state_BrScalarToFractionClamp = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(BrScalarToFractionClamp, function_hook_state_BrScalarToFractionClamp)
 static br_fraction(__stdcall*original_BrScalarToFractionClamp)(br_scalar) = (br_fraction(__stdcall*)(br_scalar))0x004d7807;
 CARM95_HOOK_FUNCTION(original_BrScalarToFractionClamp, BrScalarToFractionClamp)
 br_fraction __stdcall BrScalarToFractionClamp(br_scalar s) {
@@ -139,9 +193,16 @@ br_fraction __stdcall BrScalarToFractionClamp(br_scalar s) {
 
     (void)s;
 
-    return original_BrScalarToFractionClamp(s);
+    if (function_hook_state_BrScalarToFractionClamp == HOOK_ENABLED) {
+        assert(0 && "BrScalarToFractionClamp not implemented.");
+        abort();
+    } else {
+        return original_BrScalarToFractionClamp(s);
+    }
 }
 
+function_hook_state_t function_hook_state_PrepareFaceNormals = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(PrepareFaceNormals, function_hook_state_PrepareFaceNormals)
 void PrepareFaceNormals(br_model *model) {
     br_vertex *vertices;
     br_vector4 v4;
@@ -155,9 +216,16 @@ void PrepareFaceNormals(br_model *model) {
     (void)fp;
     (void)f;
 
-    NOT_IMPLEMENTED();
+    if (function_hook_state_PrepareFaceNormals == HOOK_ENABLED) {
+        assert(0 && "PrepareFaceNormals not implemented.");
+        abort();
+    } else {
+        NOT_IMPLEMENTED();
+    }
 }
 
+function_hook_state_t function_hook_state_Smoothing = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(Smoothing, function_hook_state_Smoothing)
 static void(__stdcall*original_Smoothing)(br_model *, br_scalar, struct prep_vertex **, struct prep_vertex **) = (void(__stdcall*)(br_model *, br_scalar, struct prep_vertex **, struct prep_vertex **))0x004d8d00;
 CARM95_HOOK_FUNCTION(original_Smoothing, Smoothing)
 void __stdcall Smoothing(br_model *model, br_scalar crease_limit, struct prep_vertex **start, struct prep_vertex **end) {
@@ -172,9 +240,16 @@ void __stdcall Smoothing(br_model *model, br_scalar crease_limit, struct prep_ve
     (void)outer;
     (void)inner;
 
-    original_Smoothing(model, crease_limit, start, end);
+    if (function_hook_state_Smoothing == HOOK_ENABLED) {
+        assert(0 && "Smoothing not implemented.");
+        abort();
+    } else {
+        original_Smoothing(model, crease_limit, start, end);
+    }
 }
 
+function_hook_state_t function_hook_state_SmoothingCreased = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(SmoothingCreased, function_hook_state_SmoothingCreased)
 static void(__stdcall*original_SmoothingCreased)(br_model *, br_scalar, struct prep_vertex **, struct prep_vertex **) = (void(__stdcall*)(br_model *, br_scalar, struct prep_vertex **, struct prep_vertex **))0x004d8db0;
 CARM95_HOOK_FUNCTION(original_SmoothingCreased, SmoothingCreased)
 void __stdcall SmoothingCreased(br_model *model, br_scalar crease_limit, struct prep_vertex **start, struct prep_vertex **end) {
@@ -191,9 +266,16 @@ void __stdcall SmoothingCreased(br_model *model, br_scalar crease_limit, struct 
     (void)outer;
     (void)inner;
 
-    original_SmoothingCreased(model, crease_limit, start, end);
+    if (function_hook_state_SmoothingCreased == HOOK_ENABLED) {
+        assert(0 && "SmoothingCreased not implemented.");
+        abort();
+    } else {
+        original_SmoothingCreased(model, crease_limit, start, end);
+    }
 }
 
+function_hook_state_t function_hook_state_CopyVertex__prepmesh = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(CopyVertex__prepmesh, function_hook_state_CopyVertex__prepmesh)
 void CopyVertex__prepmesh(struct v11group *group, int v, struct prep_vertex *src, br_model *model) {
     br_vertex *srcv;
     br_vector3 n;
@@ -208,9 +290,16 @@ void CopyVertex__prepmesh(struct v11group *group, int v, struct prep_vertex *src
     (void)n;
     (void)__block0___scale;
 
-    NOT_IMPLEMENTED();
+    if (function_hook_state_CopyVertex__prepmesh == HOOK_ENABLED) {
+        assert(0 && "CopyVertex__prepmesh not implemented.");
+        abort();
+    } else {
+        NOT_IMPLEMENTED();
+    }
 }
 
+function_hook_state_t function_hook_state_CopyFace__prepmesh = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(CopyFace__prepmesh, function_hook_state_CopyFace__prepmesh)
 void CopyFace__prepmesh(struct v11group *group, int f, br_face *src, br_model *model) {
     LOG_TRACE("(%p, %d, %p, %p)", group, f, src, model);
 
@@ -219,9 +308,16 @@ void CopyFace__prepmesh(struct v11group *group, int f, br_face *src, br_model *m
     (void)src;
     (void)model;
 
-    NOT_IMPLEMENTED();
+    if (function_hook_state_CopyFace__prepmesh == HOOK_ENABLED) {
+        assert(0 && "CopyFace__prepmesh not implemented.");
+        abort();
+    } else {
+        NOT_IMPLEMENTED();
+    }
 }
 
+function_hook_state_t function_hook_state_PrepareGroups = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(PrepareGroups, function_hook_state_PrepareGroups)
 static void(__stdcall*original_PrepareGroups)(br_model *) = (void(__stdcall*)(br_model *))0x004d83c0;
 CARM95_HOOK_FUNCTION(original_PrepareGroups, PrepareGroups)
 void __stdcall PrepareGroups(br_model *model) {
@@ -289,9 +385,16 @@ void __stdcall PrepareGroups(br_model *model) {
     (void)sorted_faces;
     (void)cp;
 
-    original_PrepareGroups(model);
+    if (function_hook_state_PrepareGroups == HOOK_ENABLED) {
+        assert(0 && "PrepareGroups not implemented.");
+        abort();
+    } else {
+        original_PrepareGroups(model);
+    }
 }
 
+function_hook_state_t function_hook_state_PrepareBoundingRadius__prepmesh = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(PrepareBoundingRadius__prepmesh, function_hook_state_PrepareBoundingRadius__prepmesh)
 void PrepareBoundingRadius__prepmesh(br_model *model) {
     float d;
     float max;
@@ -305,9 +408,16 @@ void PrepareBoundingRadius__prepmesh(br_model *model) {
     (void)v;
     (void)vp;
 
-    NOT_IMPLEMENTED();
+    if (function_hook_state_PrepareBoundingRadius__prepmesh == HOOK_ENABLED) {
+        assert(0 && "PrepareBoundingRadius__prepmesh not implemented.");
+        abort();
+    } else {
+        NOT_IMPLEMENTED();
+    }
 }
 
+function_hook_state_t function_hook_state_PrepareBoundingBox = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(PrepareBoundingBox, function_hook_state_PrepareBoundingBox)
 void PrepareBoundingBox(br_model *model) {
     int axis;
     int v;
@@ -321,9 +431,16 @@ void PrepareBoundingBox(br_model *model) {
     (void)vp;
     (void)x;
 
-    NOT_IMPLEMENTED();
+    if (function_hook_state_PrepareBoundingBox == HOOK_ENABLED) {
+        assert(0 && "PrepareBoundingBox not implemented.");
+        abort();
+    } else {
+        NOT_IMPLEMENTED();
+    }
 }
 
+function_hook_state_t function_hook_state_RegenerateFaceNormals = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(RegenerateFaceNormals, function_hook_state_RegenerateFaceNormals)
 static void(__stdcall*original_RegenerateFaceNormals)(struct v11model *) = (void(__stdcall*)(struct v11model *))0x004d7840;
 CARM95_HOOK_FUNCTION(original_RegenerateFaceNormals, RegenerateFaceNormals)
 void __stdcall RegenerateFaceNormals(struct v11model *v11m) {
@@ -337,9 +454,16 @@ void __stdcall RegenerateFaceNormals(struct v11model *v11m) {
     (void)f;
     (void)fp;
 
-    original_RegenerateFaceNormals(v11m);
+    if (function_hook_state_RegenerateFaceNormals == HOOK_ENABLED) {
+        assert(0 && "RegenerateFaceNormals not implemented.");
+        abort();
+    } else {
+        original_RegenerateFaceNormals(v11m);
+    }
 }
 
+function_hook_state_t function_hook_state_RegenerateVertexNormals = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(RegenerateVertexNormals, function_hook_state_RegenerateVertexNormals)
 static void(__stdcall*original_RegenerateVertexNormals)(struct v11model *) = (void(__stdcall*)(struct v11model *))0x004d78e0;
 CARM95_HOOK_FUNCTION(original_RegenerateVertexNormals, RegenerateVertexNormals)
 void __stdcall RegenerateVertexNormals(struct v11model *v11m) {
@@ -361,9 +485,16 @@ void __stdcall RegenerateVertexNormals(struct v11model *v11m) {
     (void)normals;
     (void)__block0___scale;
 
-    original_RegenerateVertexNormals(v11m);
+    if (function_hook_state_RegenerateVertexNormals == HOOK_ENABLED) {
+        assert(0 && "RegenerateVertexNormals not implemented.");
+        abort();
+    } else {
+        original_RegenerateVertexNormals(v11m);
+    }
 }
 
+function_hook_state_t function_hook_state_BrModelUpdate = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(BrModelUpdate, function_hook_state_BrModelUpdate)
 static void(__cdecl*original_BrModelUpdate)(br_model *, br_uint_16) = (void(__cdecl*)(br_model *, br_uint_16))0x004d7af0;
 CARM95_HOOK_FUNCTION(original_BrModelUpdate, BrModelUpdate)
 void __cdecl BrModelUpdate(br_model *model, br_uint_16 flags) {
@@ -396,9 +527,16 @@ void __cdecl BrModelUpdate(br_model *model, br_uint_16 flags) {
     (void)__block0__b;
     (void)__block0__tv;
 
-    original_BrModelUpdate(model, flags);
+    if (function_hook_state_BrModelUpdate == HOOK_ENABLED) {
+        assert(0 && "BrModelUpdate not implemented.");
+        abort();
+    } else {
+        original_BrModelUpdate(model, flags);
+    }
 }
 
+function_hook_state_t function_hook_state_BrModelClear = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(BrModelClear, function_hook_state_BrModelClear)
 static void(__stdcall*original_BrModelClear)(struct br_model *) = (void(__stdcall*)(struct br_model *))0x004d90a0;
 CARM95_HOOK_FUNCTION(original_BrModelClear, BrModelClear)
 void __stdcall BrModelClear(struct br_model *model) {
@@ -406,6 +544,11 @@ void __stdcall BrModelClear(struct br_model *model) {
 
     (void)model;
 
-    original_BrModelClear(model);
+    if (function_hook_state_BrModelClear == HOOK_ENABLED) {
+        assert(0 && "BrModelClear not implemented.");
+        abort();
+    } else {
+        original_BrModelClear(model);
+    }
 }
 

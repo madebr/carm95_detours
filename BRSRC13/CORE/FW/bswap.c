@@ -4,7 +4,12 @@
 
 #include "carm95_hooks.h"
 
+#include "carm95_webserver.h"
 
+#include <assert.h>
+
+function_hook_state_t function_hook_state_BrSwap32 = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(BrSwap32, function_hook_state_BrSwap32)
 static br_uint_32(__cdecl*original_BrSwap32)(br_uint_32) = (br_uint_32(__cdecl*)(br_uint_32))0x004df980;
 CARM95_HOOK_FUNCTION(original_BrSwap32, BrSwap32)
 br_uint_32 __cdecl BrSwap32(br_uint_32 l) {
@@ -17,9 +22,16 @@ br_uint_32 __cdecl BrSwap32(br_uint_32 l) {
     (void)l;
     (void)u;
 
-    return original_BrSwap32(l);
+    if (function_hook_state_BrSwap32 == HOOK_ENABLED) {
+        assert(0 && "BrSwap32 not implemented.");
+        abort();
+    } else {
+        return original_BrSwap32(l);
+    }
 }
 
+function_hook_state_t function_hook_state_BrSwap16 = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(BrSwap16, function_hook_state_BrSwap16)
 static br_uint_16(__cdecl*original_BrSwap16)(br_uint_16) = (br_uint_16(__cdecl*)(br_uint_16))0x004df9d0;
 CARM95_HOOK_FUNCTION(original_BrSwap16, BrSwap16)
 br_uint_16 __cdecl BrSwap16(br_uint_16 s) {
@@ -32,9 +44,16 @@ br_uint_16 __cdecl BrSwap16(br_uint_16 s) {
     (void)s;
     (void)u;
 
-    return original_BrSwap16(s);
+    if (function_hook_state_BrSwap16 == HOOK_ENABLED) {
+        assert(0 && "BrSwap16 not implemented.");
+        abort();
+    } else {
+        return original_BrSwap16(s);
+    }
 }
 
+function_hook_state_t function_hook_state_BrSwapFloat = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(BrSwapFloat, function_hook_state_BrSwapFloat)
 static br_float(__cdecl*original_BrSwapFloat)(br_float) = (br_float(__cdecl*)(br_float))0x004dfa00;
 CARM95_HOOK_FUNCTION(original_BrSwapFloat, BrSwapFloat)
 br_float __cdecl BrSwapFloat(br_float f) {
@@ -47,9 +66,16 @@ br_float __cdecl BrSwapFloat(br_float f) {
     (void)f;
     (void)u;
 
-    return original_BrSwapFloat(f);
+    if (function_hook_state_BrSwapFloat == HOOK_ENABLED) {
+        assert(0 && "BrSwapFloat not implemented.");
+        abort();
+    } else {
+        return original_BrSwapFloat(f);
+    }
 }
 
+function_hook_state_t function_hook_state_BrSwapBlock = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(BrSwapBlock, function_hook_state_BrSwapBlock)
 static void *(__cdecl*original_BrSwapBlock)(void *, int, int) = (void *(__cdecl*)(void *, int, int))0x004dfa50;
 CARM95_HOOK_FUNCTION(original_BrSwapBlock, BrSwapBlock)
 void* __cdecl BrSwapBlock(void *block, int count, int size) {
@@ -65,6 +91,11 @@ void* __cdecl BrSwapBlock(void *block, int count, int size) {
     (void)i;
     (void)k;
 
-    return original_BrSwapBlock(block, count, size);
+    if (function_hook_state_BrSwapBlock == HOOK_ENABLED) {
+        assert(0 && "BrSwapBlock not implemented.");
+        abort();
+    } else {
+        return original_BrSwapBlock(block, count, size);
+    }
 }
 

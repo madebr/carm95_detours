@@ -4,6 +4,9 @@
 
 #include "carm95_hooks.h"
 
+#include "carm95_webserver.h"
+
+#include <assert.h>
 int * hookvar_DatafileStackTop  = (void*)0x00527c80;
 char *(* hookvar_member_type_names )[32] = (void*)0x00527c88;
 char *(* hookvar_ChunkNames )[61] = (void*)0x00527d08;
@@ -20,6 +23,8 @@ struct {		// size: 0xc
 }(* hookvar_DatafileStack )[1024];
 #endif
 
+function_hook_state_t function_hook_state_DfPush = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(DfPush, function_hook_state_DfPush)
 static void(__stdcall*original_DfPush)(int, void *, int) = (void(__stdcall*)(int, void *, int))0x004e0aa0;
 CARM95_HOOK_FUNCTION(original_DfPush, DfPush)
 void __stdcall DfPush(int type, void *value, int count) {
@@ -29,9 +34,16 @@ void __stdcall DfPush(int type, void *value, int count) {
     (void)value;
     (void)count;
 
-    original_DfPush(type, value, count);
+    if (function_hook_state_DfPush == HOOK_ENABLED) {
+        assert(0 && "DfPush not implemented.");
+        abort();
+    } else {
+        original_DfPush(type, value, count);
+    }
 }
 
+function_hook_state_t function_hook_state_DfPop = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(DfPop, function_hook_state_DfPop)
 static void *(__stdcall*original_DfPop)(int, int *) = (void *(__stdcall*)(int, int *))0x004e0b00;
 CARM95_HOOK_FUNCTION(original_DfPop, DfPop)
 void* __stdcall DfPop(int type, int *countp) {
@@ -40,9 +52,16 @@ void* __stdcall DfPop(int type, int *countp) {
     (void)type;
     (void)countp;
 
-    return original_DfPop(type, countp);
+    if (function_hook_state_DfPop == HOOK_ENABLED) {
+        assert(0 && "DfPop not implemented.");
+        abort();
+    } else {
+        return original_DfPop(type, countp);
+    }
 }
 
+function_hook_state_t function_hook_state_DfTop = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(DfTop, function_hook_state_DfTop)
 static void *(__stdcall*original_DfTop)(int, int *) = (void *(__stdcall*)(int, int *))0x004e0b70;
 CARM95_HOOK_FUNCTION(original_DfTop, DfTop)
 void* __stdcall DfTop(int type, int *countp) {
@@ -51,18 +70,32 @@ void* __stdcall DfTop(int type, int *countp) {
     (void)type;
     (void)countp;
 
-    return original_DfTop(type, countp);
+    if (function_hook_state_DfTop == HOOK_ENABLED) {
+        assert(0 && "DfTop not implemented.");
+        abort();
+    } else {
+        return original_DfTop(type, countp);
+    }
 }
 
-static int(__stdcall*original_DfTopType)() = (int(__stdcall*)())0x004e0be0;
+function_hook_state_t function_hook_state_DfTopType = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(DfTopType, function_hook_state_DfTopType)
+static int(__cdecl*original_DfTopType)() = (int(__cdecl*)())0x004e0be0;
 CARM95_HOOK_FUNCTION(original_DfTopType, DfTopType)
-int __stdcall DfTopType() {
+int __cdecl DfTopType() {
     LOG_TRACE("()");
 
 
-    return original_DfTopType();
+    if (function_hook_state_DfTopType == HOOK_ENABLED) {
+        assert(0 && "DfTopType not implemented.");
+        abort();
+    } else {
+        return original_DfTopType();
+    }
 }
 
+function_hook_state_t function_hook_state_TextReadLine = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(TextReadLine, function_hook_state_TextReadLine)
 static int(__stdcall*original_TextReadLine)(br_datafile *, char **, char **) = (int(__stdcall*)(br_datafile *, char **, char **))0x004e1f80;
 CARM95_HOOK_FUNCTION(original_TextReadLine, TextReadLine)
 int __stdcall TextReadLine(br_datafile *df, char **ident, char **data) {
@@ -74,18 +107,32 @@ int __stdcall TextReadLine(br_datafile *df, char **ident, char **data) {
     (void)data;
     (void)cp;
 
-    return original_TextReadLine(df, ident, data);
+    if (function_hook_state_TextReadLine == HOOK_ENABLED) {
+        assert(0 && "TextReadLine not implemented.");
+        abort();
+    } else {
+        return original_TextReadLine(df, ident, data);
+    }
 }
 
+function_hook_state_t function_hook_state_scalarTypeConvert = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(scalarTypeConvert, function_hook_state_scalarTypeConvert)
 br_uint_16 scalarTypeConvert(br_datafile *df, br_uint_16 t) {
     LOG_TRACE("(%p, %u)", df, t);
 
     (void)df;
     (void)t;
 
-    NOT_IMPLEMENTED();
+    if (function_hook_state_scalarTypeConvert == HOOK_ENABLED) {
+        assert(0 && "scalarTypeConvert not implemented.");
+        abort();
+    } else {
+        NOT_IMPLEMENTED();
+    }
 }
 
+function_hook_state_t function_hook_state_DfStructWriteBinary = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(DfStructWriteBinary, function_hook_state_DfStructWriteBinary)
 static br_uint_32(__stdcall*original_DfStructWriteBinary)(br_datafile *, br_file_struct *, void *) = (br_uint_32(__stdcall*)(br_datafile *, br_file_struct *, void *))0x004e0c00;
 CARM95_HOOK_FUNCTION(original_DfStructWriteBinary, DfStructWriteBinary)
 br_uint_32 __stdcall DfStructWriteBinary(br_datafile *df, br_file_struct *str, void *base) {
@@ -110,9 +157,16 @@ br_uint_32 __stdcall DfStructWriteBinary(br_datafile *df, br_file_struct *str, v
     (void)sm;
     (void)conv;
 
-    return original_DfStructWriteBinary(df, str, base);
+    if (function_hook_state_DfStructWriteBinary == HOOK_ENABLED) {
+        assert(0 && "DfStructWriteBinary not implemented.");
+        abort();
+    } else {
+        return original_DfStructWriteBinary(df, str, base);
+    }
 }
 
+function_hook_state_t function_hook_state_DfStructReadBinary = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(DfStructReadBinary, function_hook_state_DfStructReadBinary)
 static br_uint_32(__stdcall*original_DfStructReadBinary)(br_datafile *, br_file_struct *, void *) = (br_uint_32(__stdcall*)(br_datafile *, br_file_struct *, void *))0x004e1050;
 CARM95_HOOK_FUNCTION(original_DfStructReadBinary, DfStructReadBinary)
 br_uint_32 __stdcall DfStructReadBinary(br_datafile *df, br_file_struct *str, void *base) {
@@ -141,9 +195,16 @@ br_uint_32 __stdcall DfStructReadBinary(br_datafile *df, br_file_struct *str, vo
     (void)sm;
     (void)conv;
 
-    return original_DfStructReadBinary(df, str, base);
+    if (function_hook_state_DfStructReadBinary == HOOK_ENABLED) {
+        assert(0 && "DfStructReadBinary not implemented.");
+        abort();
+    } else {
+        return original_DfStructReadBinary(df, str, base);
+    }
 }
 
+function_hook_state_t function_hook_state_DfStructSizeBinary = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(DfStructSizeBinary, function_hook_state_DfStructSizeBinary)
 static int(__stdcall*original_DfStructSizeBinary)(br_datafile *, br_file_struct *, void *) = (int(__stdcall*)(br_datafile *, br_file_struct *, void *))0x004e1500;
 CARM95_HOOK_FUNCTION(original_DfStructSizeBinary, DfStructSizeBinary)
 int __stdcall DfStructSizeBinary(br_datafile *df, br_file_struct *str, void *base) {
@@ -161,9 +222,16 @@ int __stdcall DfStructSizeBinary(br_datafile *df, br_file_struct *str, void *bas
     (void)sm;
     (void)bytes;
 
-    return original_DfStructSizeBinary(df, str, base);
+    if (function_hook_state_DfStructSizeBinary == HOOK_ENABLED) {
+        assert(0 && "DfStructSizeBinary not implemented.");
+        abort();
+    } else {
+        return original_DfStructSizeBinary(df, str, base);
+    }
 }
 
+function_hook_state_t function_hook_state_EnumFromString = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(EnumFromString, function_hook_state_EnumFromString)
 int EnumFromString(br_file_enum *e, char *str) {
     unsigned int m;
     LOG_TRACE("(%p, \"%s\")", e, str);
@@ -172,9 +240,16 @@ int EnumFromString(br_file_enum *e, char *str) {
     (void)str;
     (void)m;
 
-    NOT_IMPLEMENTED();
+    if (function_hook_state_EnumFromString == HOOK_ENABLED) {
+        assert(0 && "EnumFromString not implemented.");
+        abort();
+    } else {
+        NOT_IMPLEMENTED();
+    }
 }
 
+function_hook_state_t function_hook_state_EnumToString = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(EnumToString, function_hook_state_EnumToString)
 char* EnumToString(br_file_enum *e, int num) {
     unsigned int m;
     LOG_TRACE("(%p, %d)", e, num);
@@ -183,9 +258,16 @@ char* EnumToString(br_file_enum *e, int num) {
     (void)num;
     (void)m;
 
-    NOT_IMPLEMENTED();
+    if (function_hook_state_EnumToString == HOOK_ENABLED) {
+        assert(0 && "EnumToString not implemented.");
+        abort();
+    } else {
+        NOT_IMPLEMENTED();
+    }
 }
 
+function_hook_state_t function_hook_state_DfStructWriteText = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(DfStructWriteText, function_hook_state_DfStructWriteText)
 br_uint_32 DfStructWriteText(br_datafile *df, br_file_struct *str, void *base) {
     LOG_TRACE("(%p, %p, %p)", df, str, base);
 
@@ -193,9 +275,16 @@ br_uint_32 DfStructWriteText(br_datafile *df, br_file_struct *str, void *base) {
     (void)str;
     (void)base;
 
-    NOT_IMPLEMENTED();
+    if (function_hook_state_DfStructWriteText == HOOK_ENABLED) {
+        assert(0 && "DfStructWriteText not implemented.");
+        abort();
+    } else {
+        NOT_IMPLEMENTED();
+    }
 }
 
+function_hook_state_t function_hook_state_StructWriteTextSub = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(StructWriteTextSub, function_hook_state_StructWriteTextSub)
 static br_uint_32(__stdcall*original_StructWriteTextSub)(br_datafile *, br_file_struct *, void *, int) = (br_uint_32(__stdcall*)(br_datafile *, br_file_struct *, void *, int))0x004e1790;
 CARM95_HOOK_FUNCTION(original_StructWriteTextSub, StructWriteTextSub)
 br_uint_32 __stdcall StructWriteTextSub(br_datafile *df, br_file_struct *str, void *base, int indent) {
@@ -218,9 +307,16 @@ br_uint_32 __stdcall StructWriteTextSub(br_datafile *df, br_file_struct *str, vo
     (void)mp;
     (void)sm;
 
-    return original_StructWriteTextSub(df, str, base, indent);
+    if (function_hook_state_StructWriteTextSub == HOOK_ENABLED) {
+        assert(0 && "StructWriteTextSub not implemented.");
+        abort();
+    } else {
+        return original_StructWriteTextSub(df, str, base, indent);
+    }
 }
 
+function_hook_state_t function_hook_state_DfStructReadText = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(DfStructReadText, function_hook_state_DfStructReadText)
 br_uint_32 DfStructReadText(br_datafile *df, br_file_struct *str, void *base) {
     char *id;
     char *data;
@@ -232,9 +328,16 @@ br_uint_32 DfStructReadText(br_datafile *df, br_file_struct *str, void *base) {
     (void)id;
     (void)data;
 
-    NOT_IMPLEMENTED();
+    if (function_hook_state_DfStructReadText == HOOK_ENABLED) {
+        assert(0 && "DfStructReadText not implemented.");
+        abort();
+    } else {
+        NOT_IMPLEMENTED();
+    }
 }
 
+function_hook_state_t function_hook_state_StructReadTextSub = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(StructReadTextSub, function_hook_state_StructReadTextSub)
 static br_uint_32(__stdcall*original_StructReadTextSub)(br_datafile *, br_file_struct *, void *) = (br_uint_32(__stdcall*)(br_datafile *, br_file_struct *, void *))0x004e2050;
 CARM95_HOOK_FUNCTION(original_StructReadTextSub, StructReadTextSub)
 br_uint_32 __stdcall StructReadTextSub(br_datafile *df, br_file_struct *str, void *base) {
@@ -266,9 +369,16 @@ br_uint_32 __stdcall StructReadTextSub(br_datafile *df, br_file_struct *str, voi
     (void)data;
     (void)ep;
 
-    return original_StructReadTextSub(df, str, base);
+    if (function_hook_state_StructReadTextSub == HOOK_ENABLED) {
+        assert(0 && "StructReadTextSub not implemented.");
+        abort();
+    } else {
+        return original_StructReadTextSub(df, str, base);
+    }
 }
 
+function_hook_state_t function_hook_state_DfStructSizeText = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(DfStructSizeText, function_hook_state_DfStructSizeText)
 static int(__stdcall*original_DfStructSizeText)(br_datafile *, br_file_struct *, void *) = (int(__stdcall*)(br_datafile *, br_file_struct *, void *))0x004e27a0;
 CARM95_HOOK_FUNCTION(original_DfStructSizeText, DfStructSizeText)
 int __stdcall DfStructSizeText(br_datafile *df, br_file_struct *str, void *base) {
@@ -284,9 +394,16 @@ int __stdcall DfStructSizeText(br_datafile *df, br_file_struct *str, void *base)
     (void)sm;
     (void)lines;
 
-    return original_DfStructSizeText(df, str, base);
+    if (function_hook_state_DfStructSizeText == HOOK_ENABLED) {
+        assert(0 && "DfStructSizeText not implemented.");
+        abort();
+    } else {
+        return original_DfStructSizeText(df, str, base);
+    }
 }
 
+function_hook_state_t function_hook_state_DfStructWriteArray = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(DfStructWriteArray, function_hook_state_DfStructWriteArray)
 static br_uint_32(__stdcall*original_DfStructWriteArray)(br_datafile *, br_file_struct *, void *, int) = (br_uint_32(__stdcall*)(br_datafile *, br_file_struct *, void *, int))0x004e27f0;
 CARM95_HOOK_FUNCTION(original_DfStructWriteArray, DfStructWriteArray)
 br_uint_32 __stdcall DfStructWriteArray(br_datafile *df, br_file_struct *str, void *base, int n) {
@@ -301,9 +418,16 @@ br_uint_32 __stdcall DfStructWriteArray(br_datafile *df, br_file_struct *str, vo
     (void)cp;
     (void)i;
 
-    return original_DfStructWriteArray(df, str, base, n);
+    if (function_hook_state_DfStructWriteArray == HOOK_ENABLED) {
+        assert(0 && "DfStructWriteArray not implemented.");
+        abort();
+    } else {
+        return original_DfStructWriteArray(df, str, base, n);
+    }
 }
 
+function_hook_state_t function_hook_state_DfStructReadArray = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(DfStructReadArray, function_hook_state_DfStructReadArray)
 static br_uint_32(__stdcall*original_DfStructReadArray)(br_datafile *, br_file_struct *, void *, int) = (br_uint_32(__stdcall*)(br_datafile *, br_file_struct *, void *, int))0x004e2840;
 CARM95_HOOK_FUNCTION(original_DfStructReadArray, DfStructReadArray)
 br_uint_32 __stdcall DfStructReadArray(br_datafile *df, br_file_struct *str, void *base, int n) {
@@ -318,9 +442,16 @@ br_uint_32 __stdcall DfStructReadArray(br_datafile *df, br_file_struct *str, voi
     (void)cp;
     (void)i;
 
-    return original_DfStructReadArray(df, str, base, n);
+    if (function_hook_state_DfStructReadArray == HOOK_ENABLED) {
+        assert(0 && "DfStructReadArray not implemented.");
+        abort();
+    } else {
+        return original_DfStructReadArray(df, str, base, n);
+    }
 }
 
+function_hook_state_t function_hook_state_DfChunkWriteText = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(DfChunkWriteText, function_hook_state_DfChunkWriteText)
 static int(__stdcall*original_DfChunkWriteText)(br_datafile *, br_uint_32, br_uint_32) = (int(__stdcall*)(br_datafile *, br_uint_32, br_uint_32))0x004e2890;
 CARM95_HOOK_FUNCTION(original_DfChunkWriteText, DfChunkWriteText)
 int __stdcall DfChunkWriteText(br_datafile *df, br_uint_32 id, br_uint_32 length) {
@@ -330,9 +461,16 @@ int __stdcall DfChunkWriteText(br_datafile *df, br_uint_32 id, br_uint_32 length
     (void)id;
     (void)length;
 
-    return original_DfChunkWriteText(df, id, length);
+    if (function_hook_state_DfChunkWriteText == HOOK_ENABLED) {
+        assert(0 && "DfChunkWriteText not implemented.");
+        abort();
+    } else {
+        return original_DfChunkWriteText(df, id, length);
+    }
 }
 
+function_hook_state_t function_hook_state_DfChunkReadText = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(DfChunkReadText, function_hook_state_DfChunkReadText)
 static int(__stdcall*original_DfChunkReadText)(br_datafile *, br_uint_32 *) = (int(__stdcall*)(br_datafile *, br_uint_32 *))0x004e28e0;
 CARM95_HOOK_FUNCTION(original_DfChunkReadText, DfChunkReadText)
 int __stdcall DfChunkReadText(br_datafile *df, br_uint_32 *plength) {
@@ -347,9 +485,16 @@ int __stdcall DfChunkReadText(br_datafile *df, br_uint_32 *plength) {
     (void)id;
     (void)data;
 
-    return original_DfChunkReadText(df, plength);
+    if (function_hook_state_DfChunkReadText == HOOK_ENABLED) {
+        assert(0 && "DfChunkReadText not implemented.");
+        abort();
+    } else {
+        return original_DfChunkReadText(df, plength);
+    }
 }
 
+function_hook_state_t function_hook_state_DfChunkWriteBinary = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(DfChunkWriteBinary, function_hook_state_DfChunkWriteBinary)
 static int(__stdcall*original_DfChunkWriteBinary)(br_datafile *, br_uint_32, br_uint_32) = (int(__stdcall*)(br_datafile *, br_uint_32, br_uint_32))0x004e29b0;
 CARM95_HOOK_FUNCTION(original_DfChunkWriteBinary, DfChunkWriteBinary)
 int __stdcall DfChunkWriteBinary(br_datafile *df, br_uint_32 id, br_uint_32 length) {
@@ -361,9 +506,16 @@ int __stdcall DfChunkWriteBinary(br_datafile *df, br_uint_32 id, br_uint_32 leng
     (void)length;
     (void)l;
 
-    return original_DfChunkWriteBinary(df, id, length);
+    if (function_hook_state_DfChunkWriteBinary == HOOK_ENABLED) {
+        assert(0 && "DfChunkWriteBinary not implemented.");
+        abort();
+    } else {
+        return original_DfChunkWriteBinary(df, id, length);
+    }
 }
 
+function_hook_state_t function_hook_state_DfChunkReadBinary = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(DfChunkReadBinary, function_hook_state_DfChunkReadBinary)
 static int(__stdcall*original_DfChunkReadBinary)(br_datafile *, br_uint_32 *) = (int(__stdcall*)(br_datafile *, br_uint_32 *))0x004e2a10;
 CARM95_HOOK_FUNCTION(original_DfChunkReadBinary, DfChunkReadBinary)
 int __stdcall DfChunkReadBinary(br_datafile *df, br_uint_32 *plength) {
@@ -376,9 +528,16 @@ int __stdcall DfChunkReadBinary(br_datafile *df, br_uint_32 *plength) {
     (void)id;
     (void)l;
 
-    return original_DfChunkReadBinary(df, plength);
+    if (function_hook_state_DfChunkReadBinary == HOOK_ENABLED) {
+        assert(0 && "DfChunkReadBinary not implemented.");
+        abort();
+    } else {
+        return original_DfChunkReadBinary(df, plength);
+    }
 }
 
+function_hook_state_t function_hook_state_DfCountWriteText = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(DfCountWriteText, function_hook_state_DfCountWriteText)
 static void(__stdcall*original_DfCountWriteText)(br_datafile *, br_uint_32) = (void(__stdcall*)(br_datafile *, br_uint_32))0x004e2ad0;
 CARM95_HOOK_FUNCTION(original_DfCountWriteText, DfCountWriteText)
 void __stdcall DfCountWriteText(br_datafile *df, br_uint_32 count) {
@@ -387,9 +546,16 @@ void __stdcall DfCountWriteText(br_datafile *df, br_uint_32 count) {
     (void)df;
     (void)count;
 
-    original_DfCountWriteText(df, count);
+    if (function_hook_state_DfCountWriteText == HOOK_ENABLED) {
+        assert(0 && "DfCountWriteText not implemented.");
+        abort();
+    } else {
+        original_DfCountWriteText(df, count);
+    }
 }
 
+function_hook_state_t function_hook_state_DfCountReadText = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(DfCountReadText, function_hook_state_DfCountReadText)
 static br_uint_32(__stdcall*original_DfCountReadText)(br_datafile *) = (br_uint_32(__stdcall*)(br_datafile *))0x004e2af0;
 CARM95_HOOK_FUNCTION(original_DfCountReadText, DfCountReadText)
 br_uint_32 __stdcall DfCountReadText(br_datafile *df) {
@@ -401,9 +567,16 @@ br_uint_32 __stdcall DfCountReadText(br_datafile *df) {
     (void)id;
     (void)data;
 
-    return original_DfCountReadText(df);
+    if (function_hook_state_DfCountReadText == HOOK_ENABLED) {
+        assert(0 && "DfCountReadText not implemented.");
+        abort();
+    } else {
+        return original_DfCountReadText(df);
+    }
 }
 
+function_hook_state_t function_hook_state_DfCountWriteBinary = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(DfCountWriteBinary, function_hook_state_DfCountWriteBinary)
 static void(__stdcall*original_DfCountWriteBinary)(br_datafile *, br_uint_32) = (void(__stdcall*)(br_datafile *, br_uint_32))0x004e2b40;
 CARM95_HOOK_FUNCTION(original_DfCountWriteBinary, DfCountWriteBinary)
 void __stdcall DfCountWriteBinary(br_datafile *df, br_uint_32 count) {
@@ -414,9 +587,16 @@ void __stdcall DfCountWriteBinary(br_datafile *df, br_uint_32 count) {
     (void)count;
     (void)l;
 
-    original_DfCountWriteBinary(df, count);
+    if (function_hook_state_DfCountWriteBinary == HOOK_ENABLED) {
+        assert(0 && "DfCountWriteBinary not implemented.");
+        abort();
+    } else {
+        original_DfCountWriteBinary(df, count);
+    }
 }
 
+function_hook_state_t function_hook_state_DfCountReadBinary = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(DfCountReadBinary, function_hook_state_DfCountReadBinary)
 static br_uint_32(__stdcall*original_DfCountReadBinary)(br_datafile *) = (br_uint_32(__stdcall*)(br_datafile *))0x004e2b70;
 CARM95_HOOK_FUNCTION(original_DfCountReadBinary, DfCountReadBinary)
 br_uint_32 __stdcall DfCountReadBinary(br_datafile *df) {
@@ -426,9 +606,16 @@ br_uint_32 __stdcall DfCountReadBinary(br_datafile *df) {
     (void)df;
     (void)l;
 
-    return original_DfCountReadBinary(df);
+    if (function_hook_state_DfCountReadBinary == HOOK_ENABLED) {
+        assert(0 && "DfCountReadBinary not implemented.");
+        abort();
+    } else {
+        return original_DfCountReadBinary(df);
+    }
 }
 
+function_hook_state_t function_hook_state_DfCountSizeText = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(DfCountSizeText, function_hook_state_DfCountSizeText)
 static int(__stdcall*original_DfCountSizeText)(br_datafile *) = (int(__stdcall*)(br_datafile *))0x004e2ba0;
 CARM95_HOOK_FUNCTION(original_DfCountSizeText, DfCountSizeText)
 int __stdcall DfCountSizeText(br_datafile *df) {
@@ -436,9 +623,16 @@ int __stdcall DfCountSizeText(br_datafile *df) {
 
     (void)df;
 
-    return original_DfCountSizeText(df);
+    if (function_hook_state_DfCountSizeText == HOOK_ENABLED) {
+        assert(0 && "DfCountSizeText not implemented.");
+        abort();
+    } else {
+        return original_DfCountSizeText(df);
+    }
 }
 
+function_hook_state_t function_hook_state_DfCountSizeBinary = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(DfCountSizeBinary, function_hook_state_DfCountSizeBinary)
 static int(__stdcall*original_DfCountSizeBinary)(br_datafile *) = (int(__stdcall*)(br_datafile *))0x004e2bb0;
 CARM95_HOOK_FUNCTION(original_DfCountSizeBinary, DfCountSizeBinary)
 int __stdcall DfCountSizeBinary(br_datafile *df) {
@@ -446,9 +640,16 @@ int __stdcall DfCountSizeBinary(br_datafile *df) {
 
     (void)df;
 
-    return original_DfCountSizeBinary(df);
+    if (function_hook_state_DfCountSizeBinary == HOOK_ENABLED) {
+        assert(0 && "DfCountSizeBinary not implemented.");
+        abort();
+    } else {
+        return original_DfCountSizeBinary(df);
+    }
 }
 
+function_hook_state_t function_hook_state_BlockWriteSetup = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(BlockWriteSetup, function_hook_state_BlockWriteSetup)
 br_uint_8* BlockWriteSetup(void *base, int block_size, int block_stride, int block_count, int size) {
     int b;
     br_uint_8 *block;
@@ -466,9 +667,16 @@ br_uint_8* BlockWriteSetup(void *base, int block_size, int block_stride, int blo
     (void)sp;
     (void)dp;
 
-    NOT_IMPLEMENTED();
+    if (function_hook_state_BlockWriteSetup == HOOK_ENABLED) {
+        assert(0 && "BlockWriteSetup not implemented.");
+        abort();
+    } else {
+        NOT_IMPLEMENTED();
+    }
 }
 
+function_hook_state_t function_hook_state_DfBlockWriteText = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(DfBlockWriteText, function_hook_state_DfBlockWriteText)
 static int(__stdcall*original_DfBlockWriteText)(br_datafile *, void *, int, int, int, int) = (int(__stdcall*)(br_datafile *, void *, int, int, int, int))0x004e2bc0;
 CARM95_HOOK_FUNCTION(original_DfBlockWriteText, DfBlockWriteText)
 int __stdcall DfBlockWriteText(br_datafile *df, void *base, int block_size, int block_stride, int block_count, int size) {
@@ -489,9 +697,16 @@ int __stdcall DfBlockWriteText(br_datafile *df, void *base, int block_size, int 
     (void)block;
     (void)count;
 
-    return original_DfBlockWriteText(df, base, block_size, block_stride, block_count, size);
+    if (function_hook_state_DfBlockWriteText == HOOK_ENABLED) {
+        assert(0 && "DfBlockWriteText not implemented.");
+        abort();
+    } else {
+        return original_DfBlockWriteText(df, base, block_size, block_stride, block_count, size);
+    }
 }
 
+function_hook_state_t function_hook_state_DfBlockReadText = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(DfBlockReadText, function_hook_state_DfBlockReadText)
 static void *(__stdcall*original_DfBlockReadText)(br_datafile *, void *, int *, int, int) = (void *(__stdcall*)(br_datafile *, void *, int *, int, int))0x004e2d50;
 CARM95_HOOK_FUNCTION(original_DfBlockReadText, DfBlockReadText)
 void* __stdcall DfBlockReadText(br_datafile *df, void *base, int *count, int size, int mtype) {
@@ -515,9 +730,16 @@ void* __stdcall DfBlockReadText(br_datafile *df, void *base, int *count, int siz
     (void)a;
     (void)b;
 
-    return original_DfBlockReadText(df, base, count, size, mtype);
+    if (function_hook_state_DfBlockReadText == HOOK_ENABLED) {
+        assert(0 && "DfBlockReadText not implemented.");
+        abort();
+    } else {
+        return original_DfBlockReadText(df, base, count, size, mtype);
+    }
 }
 
+function_hook_state_t function_hook_state_DfBlockWriteBinary = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(DfBlockWriteBinary, function_hook_state_DfBlockWriteBinary)
 static int(__stdcall*original_DfBlockWriteBinary)(br_datafile *, void *, int, int, int, int) = (int(__stdcall*)(br_datafile *, void *, int, int, int, int))0x004e2f10;
 CARM95_HOOK_FUNCTION(original_DfBlockWriteBinary, DfBlockWriteBinary)
 int __stdcall DfBlockWriteBinary(br_datafile *df, void *base, int block_size, int block_stride, int block_count, int size) {
@@ -538,9 +760,16 @@ int __stdcall DfBlockWriteBinary(br_datafile *df, void *base, int block_size, in
     (void)s;
     (void)block;
 
-    return original_DfBlockWriteBinary(df, base, block_size, block_stride, block_count, size);
+    if (function_hook_state_DfBlockWriteBinary == HOOK_ENABLED) {
+        assert(0 && "DfBlockWriteBinary not implemented.");
+        abort();
+    } else {
+        return original_DfBlockWriteBinary(df, base, block_size, block_stride, block_count, size);
+    }
 }
 
+function_hook_state_t function_hook_state_DfBlockReadBinary = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(DfBlockReadBinary, function_hook_state_DfBlockReadBinary)
 static void *(__stdcall*original_DfBlockReadBinary)(br_datafile *, void *, int *, int, int) = (void *(__stdcall*)(br_datafile *, void *, int *, int, int))0x004e3040;
 CARM95_HOOK_FUNCTION(original_DfBlockReadBinary, DfBlockReadBinary)
 void* __stdcall DfBlockReadBinary(br_datafile *df, void *base, int *count, int size, int mtype) {
@@ -556,9 +785,16 @@ void* __stdcall DfBlockReadBinary(br_datafile *df, void *base, int *count, int s
     (void)l;
     (void)s;
 
-    return original_DfBlockReadBinary(df, base, count, size, mtype);
+    if (function_hook_state_DfBlockReadBinary == HOOK_ENABLED) {
+        assert(0 && "DfBlockReadBinary not implemented.");
+        abort();
+    } else {
+        return original_DfBlockReadBinary(df, base, count, size, mtype);
+    }
 }
 
+function_hook_state_t function_hook_state_DfBlockSizeText = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(DfBlockSizeText, function_hook_state_DfBlockSizeText)
 static int(__stdcall*original_DfBlockSizeText)(br_datafile *, void *, int, int, int, int) = (int(__stdcall*)(br_datafile *, void *, int, int, int, int))0x004e3130;
 CARM95_HOOK_FUNCTION(original_DfBlockSizeText, DfBlockSizeText)
 int __stdcall DfBlockSizeText(br_datafile *df, void *base, int block_size, int block_stride, int block_count, int size) {
@@ -571,9 +807,16 @@ int __stdcall DfBlockSizeText(br_datafile *df, void *base, int block_size, int b
     (void)block_count;
     (void)size;
 
-    return original_DfBlockSizeText(df, base, block_size, block_stride, block_count, size);
+    if (function_hook_state_DfBlockSizeText == HOOK_ENABLED) {
+        assert(0 && "DfBlockSizeText not implemented.");
+        abort();
+    } else {
+        return original_DfBlockSizeText(df, base, block_size, block_stride, block_count, size);
+    }
 }
 
+function_hook_state_t function_hook_state_DfBlockSizeBinary = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(DfBlockSizeBinary, function_hook_state_DfBlockSizeBinary)
 int DfBlockSizeBinary(br_datafile *df, void *base, int block_size, int block_stride, int block_count, int size) {
     LOG_TRACE("(%p, %p, %d, %d, %d, %d)", df, base, block_size, block_stride, block_count, size);
 
@@ -584,9 +827,16 @@ int DfBlockSizeBinary(br_datafile *df, void *base, int block_size, int block_str
     (void)block_count;
     (void)size;
 
-    NOT_IMPLEMENTED();
+    if (function_hook_state_DfBlockSizeBinary == HOOK_ENABLED) {
+        assert(0 && "DfBlockSizeBinary not implemented.");
+        abort();
+    } else {
+        NOT_IMPLEMENTED();
+    }
 }
 
+function_hook_state_t function_hook_state_DfNameReadText = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(DfNameReadText, function_hook_state_DfNameReadText)
 static char *(__stdcall*original_DfNameReadText)(br_datafile *, char *) = (char *(__stdcall*)(br_datafile *, char *))0x004e3170;
 CARM95_HOOK_FUNCTION(original_DfNameReadText, DfNameReadText)
 char* __stdcall DfNameReadText(br_datafile *df, char *name) {
@@ -599,9 +849,16 @@ char* __stdcall DfNameReadText(br_datafile *df, char *name) {
     (void)id;
     (void)data;
 
-    return original_DfNameReadText(df, name);
+    if (function_hook_state_DfNameReadText == HOOK_ENABLED) {
+        assert(0 && "DfNameReadText not implemented.");
+        abort();
+    } else {
+        return original_DfNameReadText(df, name);
+    }
 }
 
+function_hook_state_t function_hook_state_DfNameWriteText = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(DfNameWriteText, function_hook_state_DfNameWriteText)
 static int(__stdcall*original_DfNameWriteText)(br_datafile *, char *) = (int(__stdcall*)(br_datafile *, char *))0x004e31f0;
 CARM95_HOOK_FUNCTION(original_DfNameWriteText, DfNameWriteText)
 int __stdcall DfNameWriteText(br_datafile *df, char *name) {
@@ -610,9 +867,16 @@ int __stdcall DfNameWriteText(br_datafile *df, char *name) {
     (void)df;
     (void)name;
 
-    return original_DfNameWriteText(df, name);
+    if (function_hook_state_DfNameWriteText == HOOK_ENABLED) {
+        assert(0 && "DfNameWriteText not implemented.");
+        abort();
+    } else {
+        return original_DfNameWriteText(df, name);
+    }
 }
 
+function_hook_state_t function_hook_state_DfNameSizeText = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(DfNameSizeText, function_hook_state_DfNameSizeText)
 static int(__stdcall*original_DfNameSizeText)(br_datafile *, char *) = (int(__stdcall*)(br_datafile *, char *))0x004e3220;
 CARM95_HOOK_FUNCTION(original_DfNameSizeText, DfNameSizeText)
 int __stdcall DfNameSizeText(br_datafile *df, char *name) {
@@ -621,9 +885,16 @@ int __stdcall DfNameSizeText(br_datafile *df, char *name) {
     (void)df;
     (void)name;
 
-    return original_DfNameSizeText(df, name);
+    if (function_hook_state_DfNameSizeText == HOOK_ENABLED) {
+        assert(0 && "DfNameSizeText not implemented.");
+        abort();
+    } else {
+        return original_DfNameSizeText(df, name);
+    }
 }
 
+function_hook_state_t function_hook_state_DfNameReadBinary = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(DfNameReadBinary, function_hook_state_DfNameReadBinary)
 static char *(__stdcall*original_DfNameReadBinary)(br_datafile *, char *) = (char *(__stdcall*)(br_datafile *, char *))0x004e3230;
 CARM95_HOOK_FUNCTION(original_DfNameReadBinary, DfNameReadBinary)
 char* __stdcall DfNameReadBinary(br_datafile *df, char *name) {
@@ -636,9 +907,16 @@ char* __stdcall DfNameReadBinary(br_datafile *df, char *name) {
     (void)c;
     (void)i;
 
-    return original_DfNameReadBinary(df, name);
+    if (function_hook_state_DfNameReadBinary == HOOK_ENABLED) {
+        assert(0 && "DfNameReadBinary not implemented.");
+        abort();
+    } else {
+        return original_DfNameReadBinary(df, name);
+    }
 }
 
+function_hook_state_t function_hook_state_DfNameWriteBinary = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(DfNameWriteBinary, function_hook_state_DfNameWriteBinary)
 static int(__stdcall*original_DfNameWriteBinary)(br_datafile *, char *) = (int(__stdcall*)(br_datafile *, char *))0x004e3270;
 CARM95_HOOK_FUNCTION(original_DfNameWriteBinary, DfNameWriteBinary)
 int __stdcall DfNameWriteBinary(br_datafile *df, char *name) {
@@ -647,9 +925,16 @@ int __stdcall DfNameWriteBinary(br_datafile *df, char *name) {
     (void)df;
     (void)name;
 
-    return original_DfNameWriteBinary(df, name);
+    if (function_hook_state_DfNameWriteBinary == HOOK_ENABLED) {
+        assert(0 && "DfNameWriteBinary not implemented.");
+        abort();
+    } else {
+        return original_DfNameWriteBinary(df, name);
+    }
 }
 
+function_hook_state_t function_hook_state_DfNameSizeBinary = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(DfNameSizeBinary, function_hook_state_DfNameSizeBinary)
 static int(__stdcall*original_DfNameSizeBinary)(br_datafile *, char *) = (int(__stdcall*)(br_datafile *, char *))0x004e32b0;
 CARM95_HOOK_FUNCTION(original_DfNameSizeBinary, DfNameSizeBinary)
 int __stdcall DfNameSizeBinary(br_datafile *df, char *name) {
@@ -658,9 +943,16 @@ int __stdcall DfNameSizeBinary(br_datafile *df, char *name) {
     (void)df;
     (void)name;
 
-    return original_DfNameSizeBinary(df, name);
+    if (function_hook_state_DfNameSizeBinary == HOOK_ENABLED) {
+        assert(0 && "DfNameSizeBinary not implemented.");
+        abort();
+    } else {
+        return original_DfNameSizeBinary(df, name);
+    }
 }
 
+function_hook_state_t function_hook_state_DfSkipText = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(DfSkipText, function_hook_state_DfSkipText)
 static int(__stdcall*original_DfSkipText)(br_datafile *, br_uint_32) = (int(__stdcall*)(br_datafile *, br_uint_32))0x004e32d0;
 CARM95_HOOK_FUNCTION(original_DfSkipText, DfSkipText)
 int __stdcall DfSkipText(br_datafile *df, br_uint_32 length) {
@@ -673,9 +965,16 @@ int __stdcall DfSkipText(br_datafile *df, br_uint_32 length) {
     (void)id;
     (void)data;
 
-    return original_DfSkipText(df, length);
+    if (function_hook_state_DfSkipText == HOOK_ENABLED) {
+        assert(0 && "DfSkipText not implemented.");
+        abort();
+    } else {
+        return original_DfSkipText(df, length);
+    }
 }
 
+function_hook_state_t function_hook_state_DfSkipBinary = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(DfSkipBinary, function_hook_state_DfSkipBinary)
 static int(__stdcall*original_DfSkipBinary)(br_datafile *, br_uint_32) = (int(__stdcall*)(br_datafile *, br_uint_32))0x004e3320;
 CARM95_HOOK_FUNCTION(original_DfSkipBinary, DfSkipBinary)
 int __stdcall DfSkipBinary(br_datafile *df, br_uint_32 length) {
@@ -684,9 +983,16 @@ int __stdcall DfSkipBinary(br_datafile *df, br_uint_32 length) {
     (void)df;
     (void)length;
 
-    return original_DfSkipBinary(df, length);
+    if (function_hook_state_DfSkipBinary == HOOK_ENABLED) {
+        assert(0 && "DfSkipBinary not implemented.");
+        abort();
+    } else {
+        return original_DfSkipBinary(df, length);
+    }
 }
 
+function_hook_state_t function_hook_state_DfChunksInterpret = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(DfChunksInterpret, function_hook_state_DfChunksInterpret)
 static int(__stdcall*original_DfChunksInterpret)(br_datafile *, br_chunks_table *) = (int(__stdcall*)(br_datafile *, br_chunks_table *))0x004e3340;
 CARM95_HOOK_FUNCTION(original_DfChunksInterpret, DfChunksInterpret)
 int __stdcall DfChunksInterpret(br_datafile *df, br_chunks_table *table) {
@@ -705,18 +1011,32 @@ int __stdcall DfChunksInterpret(br_datafile *df, br_chunks_table *table) {
     (void)r;
     (void)i;
 
-    return original_DfChunksInterpret(df, table);
+    if (function_hook_state_DfChunksInterpret == HOOK_ENABLED) {
+        assert(0 && "DfChunksInterpret not implemented.");
+        abort();
+    } else {
+        return original_DfChunksInterpret(df, table);
+    }
 }
 
-static void(__stdcall*original_BrNullOther)() = (void(__stdcall*)())0x004e33e0;
+function_hook_state_t function_hook_state_BrNullOther = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(BrNullOther, function_hook_state_BrNullOther)
+static void(__cdecl*original_BrNullOther)() = (void(__cdecl*)())0x004e33e0;
 CARM95_HOOK_FUNCTION(original_BrNullOther, BrNullOther)
-void __stdcall BrNullOther() {
+void __cdecl BrNullOther() {
     LOG_TRACE("()");
 
 
-    original_BrNullOther();
+    if (function_hook_state_BrNullOther == HOOK_ENABLED) {
+        assert(0 && "BrNullOther not implemented.");
+        abort();
+    } else {
+        original_BrNullOther();
+    }
 }
 
+function_hook_state_t function_hook_state_DfFileIdentify = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(DfFileIdentify, function_hook_state_DfFileIdentify)
 static int(__cdecl*original_DfFileIdentify)(br_uint_8 *, br_size_t) = (int(__cdecl*)(br_uint_8 *, br_size_t))0x004e3500;
 CARM95_HOOK_FUNCTION(original_DfFileIdentify, DfFileIdentify)
 int __cdecl DfFileIdentify(br_uint_8 *magics, br_size_t n_magics) {
@@ -729,9 +1049,16 @@ int __cdecl DfFileIdentify(br_uint_8 *magics, br_size_t n_magics) {
     (void)text_magics;
     (void)binary_magics;
 
-    return original_DfFileIdentify(magics, n_magics);
+    if (function_hook_state_DfFileIdentify == HOOK_ENABLED) {
+        assert(0 && "DfFileIdentify not implemented.");
+        abort();
+    } else {
+        return original_DfFileIdentify(magics, n_magics);
+    }
 }
 
+function_hook_state_t function_hook_state_DfOpen = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(DfOpen, function_hook_state_DfOpen)
 static br_datafile *(__stdcall*original_DfOpen)(char *, int, br_token) = (br_datafile *(__stdcall*)(char *, int, br_token))0x004e3400;
 CARM95_HOOK_FUNCTION(original_DfOpen, DfOpen)
 br_datafile* __stdcall DfOpen(char *name, int write, br_token scalar_type) {
@@ -747,9 +1074,16 @@ br_datafile* __stdcall DfOpen(char *name, int write, br_token scalar_type) {
     (void)df;
     (void)h;
 
-    return original_DfOpen(name, write, scalar_type);
+    if (function_hook_state_DfOpen == HOOK_ENABLED) {
+        assert(0 && "DfOpen not implemented.");
+        abort();
+    } else {
+        return original_DfOpen(name, write, scalar_type);
+    }
 }
 
+function_hook_state_t function_hook_state_DfClose = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(DfClose, function_hook_state_DfClose)
 static void(__stdcall*original_DfClose)(br_datafile *) = (void(__stdcall*)(br_datafile *))0x004e3540;
 CARM95_HOOK_FUNCTION(original_DfClose, DfClose)
 void __stdcall DfClose(br_datafile *df) {
@@ -759,9 +1093,16 @@ void __stdcall DfClose(br_datafile *df) {
     (void)df;
     (void)dfp;
 
-    original_DfClose(df);
+    if (function_hook_state_DfClose == HOOK_ENABLED) {
+        assert(0 && "DfClose not implemented.");
+        abort();
+    } else {
+        original_DfClose(df);
+    }
 }
 
+function_hook_state_t function_hook_state_BrWriteModeSet = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(BrWriteModeSet, function_hook_state_BrWriteModeSet)
 int BrWriteModeSet(int mode) {
     int old;
     LOG_TRACE("(%d)", mode);
@@ -769,6 +1110,11 @@ int BrWriteModeSet(int mode) {
     (void)mode;
     (void)old;
 
-    NOT_IMPLEMENTED();
+    if (function_hook_state_BrWriteModeSet == HOOK_ENABLED) {
+        assert(0 && "BrWriteModeSet not implemented.");
+        abort();
+    } else {
+        NOT_IMPLEMENTED();
+    }
 }
 

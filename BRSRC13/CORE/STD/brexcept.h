@@ -6,14 +6,14 @@
 extern br_exception_handler ** hookvar__BrExceptionHandler ; // addr: 0053005C
 extern void ** hookvar_exceptionValue ; // addr: 00544D84
 
-br_exception_handler* __stdcall _BrExceptionBegin();
+br_exception_handler* __cdecl _BrExceptionBegin();
 
-void __stdcall _BrExceptionEnd();
+void __cdecl _BrExceptionEnd();
 
 void __cdecl _BrExceptionThrow(br_int_32 type, void *value);
 
 br_exception __cdecl _BrExceptionValueFetch(br_exception type, void **evp);
 
-void* __stdcall _BrExceptionResource();
+void* __cdecl _BrExceptionResource();
 
 #endif

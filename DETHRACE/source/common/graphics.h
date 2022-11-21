@@ -125,9 +125,9 @@ void __cdecl SetIntegerMapRenders();
 
 void __cdecl AdjustRenderScreenSize();
 
-void __fastcall ScreenSmaller();
+void __cdecl ScreenSmaller();
 
-void __fastcall ScreenLarger();
+void __cdecl ScreenLarger();
 
 void __cdecl DRSetPaletteEntries(br_pixelmap *pPalette, int pFirst_colour, int pCount);
 
@@ -199,7 +199,7 @@ void __cdecl Darken(tU8 *pPtr, unsigned int pDarken_amount);
 
 void __cdecl SetFadedPalette(int pDegree);
 
-void __fastcall FadePaletteDown();
+void __cdecl FadePaletteDown();
 
 void __cdecl FadePaletteUp();
 

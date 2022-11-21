@@ -171,6 +171,6 @@ void __cdecl InitNetStorageSpace();
 
 void __cdecl DisposeNetStorageSpace();
 
-int __fastcall DoMultiPlayerStart();
+int __cdecl DoMultiPlayerStart();
 
 #endif

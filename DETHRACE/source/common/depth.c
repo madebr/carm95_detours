@@ -4,6 +4,9 @@
 
 #include "carm95_hooks.h"
 
+#include "carm95_webserver.h"
+
+#include <assert.h>
 #if 0
 tDepth_effect(* hookvar_gDistance_depth_effects )[4];
 #endif
@@ -40,6 +43,8 @@ br_angle * hookvar_gSky_image_width  = (void*)0x00550a6e;
 br_angle * hookvar_gSky_image_height  = (void*)0x00550a6c;
 br_angle * hookvar_gSky_image_underground  = (void*)0x00550a70;
 
+function_hook_state_t function_hook_state_Log2 = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(Log2, function_hook_state_Log2)
 static int(__cdecl*original_Log2)(int) = (int(__cdecl*)(int))0x00461e02;
 CARM95_HOOK_FUNCTION(original_Log2, Log2)
 int __cdecl Log2(int pNumber) {
@@ -51,9 +56,16 @@ int __cdecl Log2(int pNumber) {
     (void)i;
     (void)bits;
 
-    return original_Log2(pNumber);
+    if (function_hook_state_Log2 == HOOK_ENABLED) {
+        assert(0 && "Log2 not implemented.");
+        abort();
+    } else {
+        return original_Log2(pNumber);
+    }
 }
 
+function_hook_state_t function_hook_state_CalculateWrappingMultiplier = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(CalculateWrappingMultiplier, function_hook_state_CalculateWrappingMultiplier)
 static br_scalar(__cdecl*original_CalculateWrappingMultiplier)(br_scalar, br_scalar) = (br_scalar(__cdecl*)(br_scalar, br_scalar))0x00462ebc;
 CARM95_HOOK_FUNCTION(original_CalculateWrappingMultiplier, CalculateWrappingMultiplier)
 br_scalar __cdecl CalculateWrappingMultiplier(br_scalar pValue, br_scalar pYon) {
@@ -68,17 +80,31 @@ br_scalar __cdecl CalculateWrappingMultiplier(br_scalar pValue, br_scalar pYon) 
     (void)trunc_k;
     (void)int_k;
 
-    return original_CalculateWrappingMultiplier(pValue, pYon);
+    if (function_hook_state_CalculateWrappingMultiplier == HOOK_ENABLED) {
+        assert(0 && "CalculateWrappingMultiplier not implemented.");
+        abort();
+    } else {
+        return original_CalculateWrappingMultiplier(pValue, pYon);
+    }
 }
 
+function_hook_state_t function_hook_state_DepthCueingShiftToDistance = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(DepthCueingShiftToDistance, function_hook_state_DepthCueingShiftToDistance)
 br_scalar DepthCueingShiftToDistance(int pShift) {
     LOG_TRACE("(%d)", pShift);
 
     (void)pShift;
 
-    NOT_IMPLEMENTED();
+    if (function_hook_state_DepthCueingShiftToDistance == HOOK_ENABLED) {
+        assert(0 && "DepthCueingShiftToDistance not implemented.");
+        abort();
+    } else {
+        NOT_IMPLEMENTED();
+    }
 }
 
+function_hook_state_t function_hook_state_FogAccordingToGPSCDE = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(FogAccordingToGPSCDE, function_hook_state_FogAccordingToGPSCDE)
 void FogAccordingToGPSCDE(br_material *pMaterial) {
     int start;
     int end;
@@ -88,9 +114,16 @@ void FogAccordingToGPSCDE(br_material *pMaterial) {
     (void)start;
     (void)end;
 
-    NOT_IMPLEMENTED();
+    if (function_hook_state_FogAccordingToGPSCDE == HOOK_ENABLED) {
+        assert(0 && "FogAccordingToGPSCDE not implemented.");
+        abort();
+    } else {
+        NOT_IMPLEMENTED();
+    }
 }
 
+function_hook_state_t function_hook_state_FrobFog = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(FrobFog, function_hook_state_FrobFog)
 void FrobFog() {
     int i;
     br_material *mat;
@@ -99,9 +132,16 @@ void FrobFog() {
     (void)i;
     (void)mat;
 
-    NOT_IMPLEMENTED();
+    if (function_hook_state_FrobFog == HOOK_ENABLED) {
+        assert(0 && "FrobFog not implemented.");
+        abort();
+    } else {
+        NOT_IMPLEMENTED();
+    }
 }
 
+function_hook_state_t function_hook_state_InstantDepthChange = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(InstantDepthChange, function_hook_state_InstantDepthChange)
 static void(__cdecl*original_InstantDepthChange)(tDepth_effect_type, br_pixelmap *, int, int) = (void(__cdecl*)(tDepth_effect_type, br_pixelmap *, int, int))0x00461670;
 CARM95_HOOK_FUNCTION(original_InstantDepthChange, InstantDepthChange)
 void __cdecl InstantDepthChange(tDepth_effect_type pType, br_pixelmap *pSky_texture, int pStart, int pEnd) {
@@ -112,9 +152,16 @@ void __cdecl InstantDepthChange(tDepth_effect_type pType, br_pixelmap *pSky_text
     (void)pStart;
     (void)pEnd;
 
-    original_InstantDepthChange(pType, pSky_texture, pStart, pEnd);
+    if (function_hook_state_InstantDepthChange == HOOK_ENABLED) {
+        assert(0 && "InstantDepthChange not implemented.");
+        abort();
+    } else {
+        original_InstantDepthChange(pType, pSky_texture, pStart, pEnd);
+    }
 }
 
+function_hook_state_t function_hook_state_Tan = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(Tan, function_hook_state_Tan)
 static br_scalar(__cdecl*original_Tan)(br_scalar) = (br_scalar(__cdecl*)(br_scalar))0x00462226;
 CARM95_HOOK_FUNCTION(original_Tan, Tan)
 br_scalar __cdecl Tan(br_scalar pAngle) {
@@ -122,9 +169,16 @@ br_scalar __cdecl Tan(br_scalar pAngle) {
 
     (void)pAngle;
 
-    return original_Tan(pAngle);
+    if (function_hook_state_Tan == HOOK_ENABLED) {
+        assert(0 && "Tan not implemented.");
+        abort();
+    } else {
+        return original_Tan(pAngle);
+    }
 }
 
+function_hook_state_t function_hook_state_EdgeU = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(EdgeU, function_hook_state_EdgeU)
 static br_scalar(__cdecl*original_EdgeU)(br_angle, br_angle, br_angle) = (br_scalar(__cdecl*)(br_angle, br_angle, br_angle))0x00462f34;
 CARM95_HOOK_FUNCTION(original_EdgeU, EdgeU)
 br_scalar __cdecl EdgeU(br_angle pSky, br_angle pView, br_angle pPerfect) {
@@ -140,9 +194,16 @@ br_scalar __cdecl EdgeU(br_angle pSky, br_angle pView, br_angle pPerfect) {
     (void)b;
     (void)c;
 
-    return original_EdgeU(pSky, pView, pPerfect);
+    if (function_hook_state_EdgeU == HOOK_ENABLED) {
+        assert(0 && "EdgeU not implemented.");
+        abort();
+    } else {
+        return original_EdgeU(pSky, pView, pPerfect);
+    }
 }
 
+function_hook_state_t function_hook_state_MungeSkyModel = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(MungeSkyModel, function_hook_state_MungeSkyModel)
 static void(__cdecl*original_MungeSkyModel)(br_actor *, br_model *) = (void(__cdecl*)(br_actor *, br_model *))0x0046280d;
 CARM95_HOOK_FUNCTION(original_MungeSkyModel, MungeSkyModel)
 void __cdecl MungeSkyModel(br_actor *pCamera, br_model *pModel) {
@@ -185,9 +246,16 @@ void __cdecl MungeSkyModel(br_actor *pCamera, br_model *pModel) {
     (void)angle_range;
     (void)angle;
 
-    original_MungeSkyModel(pCamera, pModel);
+    if (function_hook_state_MungeSkyModel == HOOK_ENABLED) {
+        assert(0 && "MungeSkyModel not implemented.");
+        abort();
+    } else {
+        original_MungeSkyModel(pCamera, pModel);
+    }
 }
 
+function_hook_state_t function_hook_state_CreateHorizonModel = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(CreateHorizonModel, function_hook_state_CreateHorizonModel)
 static br_model *(__cdecl*original_CreateHorizonModel)(br_actor *) = (br_model *(__cdecl*)(br_actor *))0x0046194b;
 CARM95_HOOK_FUNCTION(original_CreateHorizonModel, CreateHorizonModel)
 br_model* __cdecl CreateHorizonModel(br_actor *pCamera) {
@@ -205,9 +273,16 @@ br_model* __cdecl CreateHorizonModel(br_actor *pCamera) {
     (void)stripe;
     (void)model;
 
-    return original_CreateHorizonModel(pCamera);
+    if (function_hook_state_CreateHorizonModel == HOOK_ENABLED) {
+        assert(0 && "CreateHorizonModel not implemented.");
+        abort();
+    } else {
+        return original_CreateHorizonModel(pCamera);
+    }
 }
 
+function_hook_state_t function_hook_state_LoadDepthTable = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(LoadDepthTable, function_hook_state_LoadDepthTable)
 static void(__cdecl*original_LoadDepthTable)(char *, br_pixelmap **, int *) = (void(__cdecl*)(char *, br_pixelmap **, int *))0x00461c9b;
 CARM95_HOOK_FUNCTION(original_LoadDepthTable, LoadDepthTable)
 void __cdecl LoadDepthTable(char *pName, br_pixelmap **pTable, int *pPower) {
@@ -225,9 +300,16 @@ void __cdecl LoadDepthTable(char *pName, br_pixelmap **pTable, int *pPower) {
     (void)j;
     (void)temp;
 
-    original_LoadDepthTable(pName, pTable, pPower);
+    if (function_hook_state_LoadDepthTable == HOOK_ENABLED) {
+        assert(0 && "LoadDepthTable not implemented.");
+        abort();
+    } else {
+        original_LoadDepthTable(pName, pTable, pPower);
+    }
 }
 
+function_hook_state_t function_hook_state_InitDepthEffects = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(InitDepthEffects, function_hook_state_InitDepthEffects)
 static void(__cdecl*original_InitDepthEffects)() = (void(__cdecl*)())0x004616f2;
 CARM95_HOOK_FUNCTION(original_InitDepthEffects, InitDepthEffects)
 void __cdecl InitDepthEffects() {
@@ -240,9 +322,16 @@ void __cdecl InitDepthEffects() {
     (void)i;
     (void)j;
 
-    original_InitDepthEffects();
+    if (function_hook_state_InitDepthEffects == HOOK_ENABLED) {
+        assert(0 && "InitDepthEffects not implemented.");
+        abort();
+    } else {
+        original_InitDepthEffects();
+    }
 }
 
+function_hook_state_t function_hook_state_DoDepthByShadeTable = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(DoDepthByShadeTable, function_hook_state_DoDepthByShadeTable)
 static void(__cdecl*original_DoDepthByShadeTable)(br_pixelmap *, br_pixelmap *, br_pixelmap *, int, int, int) = (void(__cdecl*)(br_pixelmap *, br_pixelmap *, br_pixelmap *, int, int, int))0x004622cc;
 CARM95_HOOK_FUNCTION(original_DoDepthByShadeTable, DoDepthByShadeTable)
 void __cdecl DoDepthByShadeTable(br_pixelmap *pRender_buffer, br_pixelmap *pDepth_buffer, br_pixelmap *pShade_table, int pShade_table_power, int pStart, int pEnd) {
@@ -277,9 +366,16 @@ void __cdecl DoDepthByShadeTable(br_pixelmap *pRender_buffer, br_pixelmap *pDept
     (void)depth_line_skip;
     (void)render_line_skip;
 
-    original_DoDepthByShadeTable(pRender_buffer, pDepth_buffer, pShade_table, pShade_table_power, pStart, pEnd);
+    if (function_hook_state_DoDepthByShadeTable == HOOK_ENABLED) {
+        assert(0 && "DoDepthByShadeTable not implemented.");
+        abort();
+    } else {
+        original_DoDepthByShadeTable(pRender_buffer, pDepth_buffer, pShade_table, pShade_table_power, pStart, pEnd);
+    }
 }
 
+function_hook_state_t function_hook_state_ExternalSky = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(ExternalSky, function_hook_state_ExternalSky)
 static void(__cdecl*original_ExternalSky)(br_pixelmap *, br_pixelmap *, br_actor *, br_matrix34 *) = (void(__cdecl*)(br_pixelmap *, br_pixelmap *, br_actor *, br_matrix34 *))0x00461ebd;
 CARM95_HOOK_FUNCTION(original_ExternalSky, ExternalSky)
 void __cdecl ExternalSky(br_pixelmap *pRender_buffer, br_pixelmap *pDepth_buffer, br_actor *pCamera, br_matrix34 *pCamera_to_world) {
@@ -332,9 +428,16 @@ void __cdecl ExternalSky(br_pixelmap *pRender_buffer, br_pixelmap *pDepth_buffer
     (void)repetitions;
     (void)col_map;
 
-    original_ExternalSky(pRender_buffer, pDepth_buffer, pCamera, pCamera_to_world);
+    if (function_hook_state_ExternalSky == HOOK_ENABLED) {
+        assert(0 && "ExternalSky not implemented.");
+        abort();
+    } else {
+        original_ExternalSky(pRender_buffer, pDepth_buffer, pCamera, pCamera_to_world);
+    }
 }
 
+function_hook_state_t function_hook_state_DoHorizon = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(DoHorizon, function_hook_state_DoHorizon)
 static void(__cdecl*original_DoHorizon)(br_pixelmap *, br_pixelmap *, br_actor *, br_matrix34 *) = (void(__cdecl*)(br_pixelmap *, br_pixelmap *, br_actor *, br_matrix34 *))0x00462658;
 CARM95_HOOK_FUNCTION(original_DoHorizon, DoHorizon)
 void __cdecl DoHorizon(br_pixelmap *pRender_buffer, br_pixelmap *pDepth_buffer, br_actor *pCamera, br_matrix34 *pCamera_to_world) {
@@ -349,9 +452,16 @@ void __cdecl DoHorizon(br_pixelmap *pRender_buffer, br_pixelmap *pDepth_buffer, 
     (void)yaw;
     (void)actor;
 
-    original_DoHorizon(pRender_buffer, pDepth_buffer, pCamera, pCamera_to_world);
+    if (function_hook_state_DoHorizon == HOOK_ENABLED) {
+        assert(0 && "DoHorizon not implemented.");
+        abort();
+    } else {
+        original_DoHorizon(pRender_buffer, pDepth_buffer, pCamera, pCamera_to_world);
+    }
 }
 
+function_hook_state_t function_hook_state_DoDepthCue = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(DoDepthCue, function_hook_state_DoDepthCue)
 static void(__cdecl*original_DoDepthCue)(br_pixelmap *, br_pixelmap *) = (void(__cdecl*)(br_pixelmap *, br_pixelmap *))0x00462299;
 CARM95_HOOK_FUNCTION(original_DoDepthCue, DoDepthCue)
 void __cdecl DoDepthCue(br_pixelmap *pRender_buffer, br_pixelmap *pDepth_buffer) {
@@ -360,9 +470,16 @@ void __cdecl DoDepthCue(br_pixelmap *pRender_buffer, br_pixelmap *pDepth_buffer)
     (void)pRender_buffer;
     (void)pDepth_buffer;
 
-    original_DoDepthCue(pRender_buffer, pDepth_buffer);
+    if (function_hook_state_DoDepthCue == HOOK_ENABLED) {
+        assert(0 && "DoDepthCue not implemented.");
+        abort();
+    } else {
+        original_DoDepthCue(pRender_buffer, pDepth_buffer);
+    }
 }
 
+function_hook_state_t function_hook_state_DoFog = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(DoFog, function_hook_state_DoFog)
 static void(__cdecl*original_DoFog)(br_pixelmap *, br_pixelmap *) = (void(__cdecl*)(br_pixelmap *, br_pixelmap *))0x004625d6;
 CARM95_HOOK_FUNCTION(original_DoFog, DoFog)
 void __cdecl DoFog(br_pixelmap *pRender_buffer, br_pixelmap *pDepth_buffer) {
@@ -371,9 +488,16 @@ void __cdecl DoFog(br_pixelmap *pRender_buffer, br_pixelmap *pDepth_buffer) {
     (void)pRender_buffer;
     (void)pDepth_buffer;
 
-    original_DoFog(pRender_buffer, pDepth_buffer);
+    if (function_hook_state_DoFog == HOOK_ENABLED) {
+        assert(0 && "DoFog not implemented.");
+        abort();
+    } else {
+        original_DoFog(pRender_buffer, pDepth_buffer);
+    }
 }
 
+function_hook_state_t function_hook_state_DepthEffect = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(DepthEffect, function_hook_state_DepthEffect)
 static void(__cdecl*original_DepthEffect)(br_pixelmap *, br_pixelmap *, br_actor *, br_matrix34 *) = (void(__cdecl*)(br_pixelmap *, br_pixelmap *, br_actor *, br_matrix34 *))0x00462254;
 CARM95_HOOK_FUNCTION(original_DepthEffect, DepthEffect)
 void __cdecl DepthEffect(br_pixelmap *pRender_buffer, br_pixelmap *pDepth_buffer, br_actor *pCamera, br_matrix34 *pCamera_to_world) {
@@ -384,9 +508,16 @@ void __cdecl DepthEffect(br_pixelmap *pRender_buffer, br_pixelmap *pDepth_buffer
     (void)pCamera;
     (void)pCamera_to_world;
 
-    original_DepthEffect(pRender_buffer, pDepth_buffer, pCamera, pCamera_to_world);
+    if (function_hook_state_DepthEffect == HOOK_ENABLED) {
+        assert(0 && "DepthEffect not implemented.");
+        abort();
+    } else {
+        original_DepthEffect(pRender_buffer, pDepth_buffer, pCamera, pCamera_to_world);
+    }
 }
 
+function_hook_state_t function_hook_state_DepthEffectSky = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(DepthEffectSky, function_hook_state_DepthEffectSky)
 static void(__cdecl*original_DepthEffectSky)(br_pixelmap *, br_pixelmap *, br_actor *, br_matrix34 *) = (void(__cdecl*)(br_pixelmap *, br_pixelmap *, br_actor *, br_matrix34 *))0x00462609;
 CARM95_HOOK_FUNCTION(original_DepthEffectSky, DepthEffectSky)
 void __cdecl DepthEffectSky(br_pixelmap *pRender_buffer, br_pixelmap *pDepth_buffer, br_actor *pCamera, br_matrix34 *pCamera_to_world) {
@@ -397,9 +528,16 @@ void __cdecl DepthEffectSky(br_pixelmap *pRender_buffer, br_pixelmap *pDepth_buf
     (void)pCamera;
     (void)pCamera_to_world;
 
-    original_DepthEffectSky(pRender_buffer, pDepth_buffer, pCamera, pCamera_to_world);
+    if (function_hook_state_DepthEffectSky == HOOK_ENABLED) {
+        assert(0 && "DepthEffectSky not implemented.");
+        abort();
+    } else {
+        original_DepthEffectSky(pRender_buffer, pDepth_buffer, pCamera, pCamera_to_world);
+    }
 }
 
+function_hook_state_t function_hook_state_DoWobbleCamera = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(DoWobbleCamera, function_hook_state_DoWobbleCamera)
 static void(__cdecl*original_DoWobbleCamera)(br_actor *) = (void(__cdecl*)(br_actor *))0x00463066;
 CARM95_HOOK_FUNCTION(original_DoWobbleCamera, DoWobbleCamera)
 void __cdecl DoWobbleCamera(br_actor *pCamera) {
@@ -445,9 +583,16 @@ void __cdecl DoWobbleCamera(br_actor *pCamera) {
     (void)period21;
     (void)period22;
 
-    original_DoWobbleCamera(pCamera);
+    if (function_hook_state_DoWobbleCamera == HOOK_ENABLED) {
+        assert(0 && "DoWobbleCamera not implemented.");
+        abort();
+    } else {
+        original_DoWobbleCamera(pCamera);
+    }
 }
 
+function_hook_state_t function_hook_state_DoDrugWobbleCamera = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(DoDrugWobbleCamera, function_hook_state_DoDrugWobbleCamera)
 static void(__cdecl*original_DoDrugWobbleCamera)(br_actor *) = (void(__cdecl*)(br_actor *))0x00463289;
 CARM95_HOOK_FUNCTION(original_DoDrugWobbleCamera, DoDrugWobbleCamera)
 void __cdecl DoDrugWobbleCamera(br_actor *pCamera) {
@@ -493,9 +638,16 @@ void __cdecl DoDrugWobbleCamera(br_actor *pCamera) {
     (void)period21;
     (void)period22;
 
-    original_DoDrugWobbleCamera(pCamera);
+    if (function_hook_state_DoDrugWobbleCamera == HOOK_ENABLED) {
+        assert(0 && "DoDrugWobbleCamera not implemented.");
+        abort();
+    } else {
+        original_DoDrugWobbleCamera(pCamera);
+    }
 }
 
+function_hook_state_t function_hook_state_DoSpecialCameraEffect = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(DoSpecialCameraEffect, function_hook_state_DoSpecialCameraEffect)
 static void(__cdecl*original_DoSpecialCameraEffect)(br_actor *, br_matrix34 *) = (void(__cdecl*)(br_actor *, br_matrix34 *))0x00462fdb;
 CARM95_HOOK_FUNCTION(original_DoSpecialCameraEffect, DoSpecialCameraEffect)
 void __cdecl DoSpecialCameraEffect(br_actor *pCamera, br_matrix34 *pCamera_to_world) {
@@ -504,9 +656,16 @@ void __cdecl DoSpecialCameraEffect(br_actor *pCamera, br_matrix34 *pCamera_to_wo
     (void)pCamera;
     (void)pCamera_to_world;
 
-    original_DoSpecialCameraEffect(pCamera, pCamera_to_world);
+    if (function_hook_state_DoSpecialCameraEffect == HOOK_ENABLED) {
+        assert(0 && "DoSpecialCameraEffect not implemented.");
+        abort();
+    } else {
+        original_DoSpecialCameraEffect(pCamera, pCamera_to_world);
+    }
 }
 
+function_hook_state_t function_hook_state_LessDepthFactor = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(LessDepthFactor, function_hook_state_LessDepthFactor)
 static void(__cdecl*original_LessDepthFactor)() = (void(__cdecl*)())0x004634ac;
 CARM95_HOOK_FUNCTION(original_LessDepthFactor, LessDepthFactor)
 void __cdecl LessDepthFactor() {
@@ -515,9 +674,16 @@ void __cdecl LessDepthFactor() {
 
     (void)s;
 
-    original_LessDepthFactor();
+    if (function_hook_state_LessDepthFactor == HOOK_ENABLED) {
+        assert(0 && "LessDepthFactor not implemented.");
+        abort();
+    } else {
+        original_LessDepthFactor();
+    }
 }
 
+function_hook_state_t function_hook_state_MoreDepthFactor = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(MoreDepthFactor, function_hook_state_MoreDepthFactor)
 static void(__cdecl*original_MoreDepthFactor)() = (void(__cdecl*)())0x0046350e;
 CARM95_HOOK_FUNCTION(original_MoreDepthFactor, MoreDepthFactor)
 void __cdecl MoreDepthFactor() {
@@ -526,9 +692,16 @@ void __cdecl MoreDepthFactor() {
 
     (void)s;
 
-    original_MoreDepthFactor();
+    if (function_hook_state_MoreDepthFactor == HOOK_ENABLED) {
+        assert(0 && "MoreDepthFactor not implemented.");
+        abort();
+    } else {
+        original_MoreDepthFactor();
+    }
 }
 
+function_hook_state_t function_hook_state_LessDepthFactor2 = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(LessDepthFactor2, function_hook_state_LessDepthFactor2)
 static void(__cdecl*original_LessDepthFactor2)() = (void(__cdecl*)())0x00463570;
 CARM95_HOOK_FUNCTION(original_LessDepthFactor2, LessDepthFactor2)
 void __cdecl LessDepthFactor2() {
@@ -537,9 +710,16 @@ void __cdecl LessDepthFactor2() {
 
     (void)s;
 
-    original_LessDepthFactor2();
+    if (function_hook_state_LessDepthFactor2 == HOOK_ENABLED) {
+        assert(0 && "LessDepthFactor2 not implemented.");
+        abort();
+    } else {
+        original_LessDepthFactor2();
+    }
 }
 
+function_hook_state_t function_hook_state_MoreDepthFactor2 = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(MoreDepthFactor2, function_hook_state_MoreDepthFactor2)
 static void(__cdecl*original_MoreDepthFactor2)() = (void(__cdecl*)())0x004635d2;
 CARM95_HOOK_FUNCTION(original_MoreDepthFactor2, MoreDepthFactor2)
 void __cdecl MoreDepthFactor2() {
@@ -548,9 +728,16 @@ void __cdecl MoreDepthFactor2() {
 
     (void)s;
 
-    original_MoreDepthFactor2();
+    if (function_hook_state_MoreDepthFactor2 == HOOK_ENABLED) {
+        assert(0 && "MoreDepthFactor2 not implemented.");
+        abort();
+    } else {
+        original_MoreDepthFactor2();
+    }
 }
 
+function_hook_state_t function_hook_state_AssertYons = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(AssertYons, function_hook_state_AssertYons)
 static void(__cdecl*original_AssertYons)() = (void(__cdecl*)())0x00463634;
 CARM95_HOOK_FUNCTION(original_AssertYons, AssertYons)
 void __cdecl AssertYons() {
@@ -561,9 +748,16 @@ void __cdecl AssertYons() {
     (void)camera_ptr;
     (void)i;
 
-    original_AssertYons();
+    if (function_hook_state_AssertYons == HOOK_ENABLED) {
+        assert(0 && "AssertYons not implemented.");
+        abort();
+    } else {
+        original_AssertYons();
+    }
 }
 
+function_hook_state_t function_hook_state_IncreaseYon = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(IncreaseYon, function_hook_state_IncreaseYon)
 static void(__cdecl*original_IncreaseYon)() = (void(__cdecl*)())0x00463682;
 CARM95_HOOK_FUNCTION(original_IncreaseYon, IncreaseYon)
 void __cdecl IncreaseYon() {
@@ -576,9 +770,16 @@ void __cdecl IncreaseYon() {
     (void)i;
     (void)s;
 
-    original_IncreaseYon();
+    if (function_hook_state_IncreaseYon == HOOK_ENABLED) {
+        assert(0 && "IncreaseYon not implemented.");
+        abort();
+    } else {
+        original_IncreaseYon();
+    }
 }
 
+function_hook_state_t function_hook_state_DecreaseYon = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(DecreaseYon, function_hook_state_DecreaseYon)
 static void(__cdecl*original_DecreaseYon)() = (void(__cdecl*)())0x004636ef;
 CARM95_HOOK_FUNCTION(original_DecreaseYon, DecreaseYon)
 void __cdecl DecreaseYon() {
@@ -591,9 +792,16 @@ void __cdecl DecreaseYon() {
     (void)i;
     (void)s;
 
-    original_DecreaseYon();
+    if (function_hook_state_DecreaseYon == HOOK_ENABLED) {
+        assert(0 && "DecreaseYon not implemented.");
+        abort();
+    } else {
+        original_DecreaseYon();
+    }
 }
 
+function_hook_state_t function_hook_state_SetYon = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(SetYon, function_hook_state_SetYon)
 static void(__cdecl*original_SetYon)(br_scalar) = (void(__cdecl*)(br_scalar))0x00463777;
 CARM95_HOOK_FUNCTION(original_SetYon, SetYon)
 void __cdecl SetYon(br_scalar pYon) {
@@ -605,18 +813,32 @@ void __cdecl SetYon(br_scalar pYon) {
     (void)i;
     (void)camera_ptr;
 
-    original_SetYon(pYon);
+    if (function_hook_state_SetYon == HOOK_ENABLED) {
+        assert(0 && "SetYon not implemented.");
+        abort();
+    } else {
+        original_SetYon(pYon);
+    }
 }
 
+function_hook_state_t function_hook_state_GetYon = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(GetYon, function_hook_state_GetYon)
 static br_scalar(__cdecl*original_GetYon)() = (br_scalar(__cdecl*)())0x004637f0;
 CARM95_HOOK_FUNCTION(original_GetYon, GetYon)
 br_scalar __cdecl GetYon() {
     LOG_TRACE("()");
 
 
-    return original_GetYon();
+    if (function_hook_state_GetYon == HOOK_ENABLED) {
+        assert(0 && "GetYon not implemented.");
+        abort();
+    } else {
+        return original_GetYon();
+    }
 }
 
+function_hook_state_t function_hook_state_IncreaseAngle = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(IncreaseAngle, function_hook_state_IncreaseAngle)
 static void(__cdecl*original_IncreaseAngle)() = (void(__cdecl*)())0x00463806;
 CARM95_HOOK_FUNCTION(original_IncreaseAngle, IncreaseAngle)
 void __cdecl IncreaseAngle() {
@@ -629,9 +851,16 @@ void __cdecl IncreaseAngle() {
     (void)i;
     (void)s;
 
-    original_IncreaseAngle();
+    if (function_hook_state_IncreaseAngle == HOOK_ENABLED) {
+        assert(0 && "IncreaseAngle not implemented.");
+        abort();
+    } else {
+        original_IncreaseAngle();
+    }
 }
 
+function_hook_state_t function_hook_state_DecreaseAngle = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(DecreaseAngle, function_hook_state_DecreaseAngle)
 static void(__cdecl*original_DecreaseAngle)() = (void(__cdecl*)())0x004638c8;
 CARM95_HOOK_FUNCTION(original_DecreaseAngle, DecreaseAngle)
 void __cdecl DecreaseAngle() {
@@ -644,27 +873,48 @@ void __cdecl DecreaseAngle() {
     (void)i;
     (void)s;
 
-    original_DecreaseAngle();
+    if (function_hook_state_DecreaseAngle == HOOK_ENABLED) {
+        assert(0 && "DecreaseAngle not implemented.");
+        abort();
+    } else {
+        original_DecreaseAngle();
+    }
 }
 
+function_hook_state_t function_hook_state_ToggleDepthMode = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(ToggleDepthMode, function_hook_state_ToggleDepthMode)
 static void(__cdecl*original_ToggleDepthMode)() = (void(__cdecl*)())0x0046398a;
 CARM95_HOOK_FUNCTION(original_ToggleDepthMode, ToggleDepthMode)
 void __cdecl ToggleDepthMode() {
     LOG_TRACE("()");
 
 
-    original_ToggleDepthMode();
+    if (function_hook_state_ToggleDepthMode == HOOK_ENABLED) {
+        assert(0 && "ToggleDepthMode not implemented.");
+        abort();
+    } else {
+        original_ToggleDepthMode();
+    }
 }
 
+function_hook_state_t function_hook_state_GetSkyTextureOn = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(GetSkyTextureOn, function_hook_state_GetSkyTextureOn)
 static int(__cdecl*original_GetSkyTextureOn)() = (int(__cdecl*)())0x00463a7e;
 CARM95_HOOK_FUNCTION(original_GetSkyTextureOn, GetSkyTextureOn)
 int __cdecl GetSkyTextureOn() {
     LOG_TRACE("()");
 
 
-    return original_GetSkyTextureOn();
+    if (function_hook_state_GetSkyTextureOn == HOOK_ENABLED) {
+        assert(0 && "GetSkyTextureOn not implemented.");
+        abort();
+    } else {
+        return original_GetSkyTextureOn();
+    }
 }
 
+function_hook_state_t function_hook_state_SetSkyTextureOn = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(SetSkyTextureOn, function_hook_state_SetSkyTextureOn)
 static void(__cdecl*original_SetSkyTextureOn)(int) = (void(__cdecl*)(int))0x00463a93;
 CARM95_HOOK_FUNCTION(original_SetSkyTextureOn, SetSkyTextureOn)
 void __cdecl SetSkyTextureOn(int pOn) {
@@ -672,9 +922,16 @@ void __cdecl SetSkyTextureOn(int pOn) {
 
     (void)pOn;
 
-    original_SetSkyTextureOn(pOn);
+    if (function_hook_state_SetSkyTextureOn == HOOK_ENABLED) {
+        assert(0 && "SetSkyTextureOn not implemented.");
+        abort();
+    } else {
+        original_SetSkyTextureOn(pOn);
+    }
 }
 
+function_hook_state_t function_hook_state_ToggleSkyQuietly = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(ToggleSkyQuietly, function_hook_state_ToggleSkyQuietly)
 static void(__cdecl*original_ToggleSkyQuietly)() = (void(__cdecl*)())0x00463aba;
 CARM95_HOOK_FUNCTION(original_ToggleSkyQuietly, ToggleSkyQuietly)
 void __cdecl ToggleSkyQuietly() {
@@ -683,27 +940,48 @@ void __cdecl ToggleSkyQuietly() {
 
     (void)temp;
 
-    original_ToggleSkyQuietly();
+    if (function_hook_state_ToggleSkyQuietly == HOOK_ENABLED) {
+        assert(0 && "ToggleSkyQuietly not implemented.");
+        abort();
+    } else {
+        original_ToggleSkyQuietly();
+    }
 }
 
+function_hook_state_t function_hook_state_ToggleSky = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(ToggleSky, function_hook_state_ToggleSky)
 static void(__cdecl*original_ToggleSky)() = (void(__cdecl*)())0x00463b27;
 CARM95_HOOK_FUNCTION(original_ToggleSky, ToggleSky)
 void __cdecl ToggleSky() {
     LOG_TRACE("()");
 
 
-    original_ToggleSky();
+    if (function_hook_state_ToggleSky == HOOK_ENABLED) {
+        assert(0 && "ToggleSky not implemented.");
+        abort();
+    } else {
+        original_ToggleSky();
+    }
 }
 
+function_hook_state_t function_hook_state_GetDepthCueingOn = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(GetDepthCueingOn, function_hook_state_GetDepthCueingOn)
 static int(__cdecl*original_GetDepthCueingOn)() = (int(__cdecl*)())0x00463bc5;
 CARM95_HOOK_FUNCTION(original_GetDepthCueingOn, GetDepthCueingOn)
 int __cdecl GetDepthCueingOn() {
     LOG_TRACE("()");
 
 
-    return original_GetDepthCueingOn();
+    if (function_hook_state_GetDepthCueingOn == HOOK_ENABLED) {
+        assert(0 && "GetDepthCueingOn not implemented.");
+        abort();
+    } else {
+        return original_GetDepthCueingOn();
+    }
 }
 
+function_hook_state_t function_hook_state_SetDepthCueingOn = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(SetDepthCueingOn, function_hook_state_SetDepthCueingOn)
 static void(__cdecl*original_SetDepthCueingOn)(int) = (void(__cdecl*)(int))0x00463bda;
 CARM95_HOOK_FUNCTION(original_SetDepthCueingOn, SetDepthCueingOn)
 void __cdecl SetDepthCueingOn(int pOn) {
@@ -711,9 +989,16 @@ void __cdecl SetDepthCueingOn(int pOn) {
 
     (void)pOn;
 
-    original_SetDepthCueingOn(pOn);
+    if (function_hook_state_SetDepthCueingOn == HOOK_ENABLED) {
+        assert(0 && "SetDepthCueingOn not implemented.");
+        abort();
+    } else {
+        original_SetDepthCueingOn(pOn);
+    }
 }
 
+function_hook_state_t function_hook_state_ToggleDepthCueingQuietly = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(ToggleDepthCueingQuietly, function_hook_state_ToggleDepthCueingQuietly)
 static void(__cdecl*original_ToggleDepthCueingQuietly)() = (void(__cdecl*)())0x00463c0d;
 CARM95_HOOK_FUNCTION(original_ToggleDepthCueingQuietly, ToggleDepthCueingQuietly)
 void __cdecl ToggleDepthCueingQuietly() {
@@ -726,18 +1011,32 @@ void __cdecl ToggleDepthCueingQuietly() {
     (void)temp_start;
     (void)temp_end;
 
-    original_ToggleDepthCueingQuietly();
+    if (function_hook_state_ToggleDepthCueingQuietly == HOOK_ENABLED) {
+        assert(0 && "ToggleDepthCueingQuietly not implemented.");
+        abort();
+    } else {
+        original_ToggleDepthCueingQuietly();
+    }
 }
 
+function_hook_state_t function_hook_state_ToggleDepthCueing = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(ToggleDepthCueing, function_hook_state_ToggleDepthCueing)
 static void(__cdecl*original_ToggleDepthCueing)() = (void(__cdecl*)())0x00463c6b;
 CARM95_HOOK_FUNCTION(original_ToggleDepthCueing, ToggleDepthCueing)
 void __cdecl ToggleDepthCueing() {
     LOG_TRACE("()");
 
 
-    original_ToggleDepthCueing();
+    if (function_hook_state_ToggleDepthCueing == HOOK_ENABLED) {
+        assert(0 && "ToggleDepthCueing not implemented.");
+        abort();
+    } else {
+        original_ToggleDepthCueing();
+    }
 }
 
+function_hook_state_t function_hook_state_ChangeDepthEffect = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(ChangeDepthEffect, function_hook_state_ChangeDepthEffect)
 static void(__cdecl*original_ChangeDepthEffect)() = (void(__cdecl*)())0x00463d09;
 CARM95_HOOK_FUNCTION(original_ChangeDepthEffect, ChangeDepthEffect)
 void __cdecl ChangeDepthEffect() {
@@ -760,24 +1059,43 @@ void __cdecl ChangeDepthEffect() {
     (void)distance;
     (void)special_volume;
 
-    original_ChangeDepthEffect();
+    if (function_hook_state_ChangeDepthEffect == HOOK_ENABLED) {
+        assert(0 && "ChangeDepthEffect not implemented.");
+        abort();
+    } else {
+        original_ChangeDepthEffect();
+    }
 }
 
+function_hook_state_t function_hook_state_MungeForwardSky = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(MungeForwardSky, function_hook_state_MungeForwardSky)
 static void(__cdecl*original_MungeForwardSky)() = (void(__cdecl*)())0x00463d3f;
 CARM95_HOOK_FUNCTION(original_MungeForwardSky, MungeForwardSky)
 void __cdecl MungeForwardSky() {
     LOG_TRACE("()");
 
 
-    original_MungeForwardSky();
+    if (function_hook_state_MungeForwardSky == HOOK_ENABLED) {
+        assert(0 && "MungeForwardSky not implemented.");
+        abort();
+    } else {
+        original_MungeForwardSky();
+    }
 }
 
+function_hook_state_t function_hook_state_MungeRearviewSky = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(MungeRearviewSky, function_hook_state_MungeRearviewSky)
 static void(__cdecl*original_MungeRearviewSky)() = (void(__cdecl*)())0x00463d4a;
 CARM95_HOOK_FUNCTION(original_MungeRearviewSky, MungeRearviewSky)
 void __cdecl MungeRearviewSky() {
     LOG_TRACE("()");
 
 
-    original_MungeRearviewSky();
+    if (function_hook_state_MungeRearviewSky == HOOK_ENABLED) {
+        assert(0 && "MungeRearviewSky not implemented.");
+        abort();
+    } else {
+        original_MungeRearviewSky();
+    }
 }
 

@@ -34,7 +34,7 @@ br_uint_32 __cdecl BrMaterialAddMany(br_material **items, int n);
 
 br_uint_32 __cdecl BrMaterialRemoveMany(br_material **items, int n);
 
-br_uint_32 __fastcall BrMaterialFindMany(char *pattern, br_material **items, int max);
+br_uint_32 __cdecl BrMaterialFindMany(char *pattern, br_material **items, int max);
 
 br_uint_32 __cdecl BrMaterialCount(char *pattern);
 
@@ -52,9 +52,9 @@ br_uint_32 __cdecl BrMapAddMany(br_pixelmap **items, int n);
 
 br_uint_32 __cdecl BrMapRemoveMany(br_pixelmap **items, int n);
 
-br_uint_32 __fastcall BrMapFindMany(char *pattern, br_pixelmap **items, int max);
+br_uint_32 __cdecl BrMapFindMany(char *pattern, br_pixelmap **items, int max);
 
-br_uint_32 __stdcall BrMapCount(char *pattern);
+br_uint_32 __cdecl BrMapCount(char *pattern);
 
 br_uint_32 __cdecl BrMapEnum(char *pattern, br_map_enum_cbfn *callback, void *arg);
 

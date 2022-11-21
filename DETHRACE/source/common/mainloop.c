@@ -4,6 +4,9 @@
 
 #include "carm95_hooks.h"
 
+#include "carm95_webserver.h"
+
+#include <assert.h>
 int * hookvar_gNasty_kludgey_cockpit_variable  = (void*)0x00514afc;
 tInfo_mode * hookvar_gInfo_mode  = (void*)0x00514b00;
 tU32 * hookvar_gLast_tick_count  = (void*)0x00514b04;
@@ -27,15 +30,24 @@ tU32 * hookvar_gTime_bonus_start  = (void*)0x0053a124;
  // Suffix added to avoid duplicate symbol
 int * hookvar_gLast_credit_headup__mainloop  = (void*)0x0053a108;
 
+function_hook_state_t function_hook_state_ToggleInfo = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(ToggleInfo, function_hook_state_ToggleInfo)
 static void(__cdecl*original_ToggleInfo)() = (void(__cdecl*)())0x0046fd00;
 CARM95_HOOK_FUNCTION(original_ToggleInfo, ToggleInfo)
 void __cdecl ToggleInfo() {
     LOG_TRACE("()");
 
 
-    original_ToggleInfo();
+    if (function_hook_state_ToggleInfo == HOOK_ENABLED) {
+        assert(0 && "ToggleInfo not implemented.");
+        abort();
+    } else {
+        original_ToggleInfo();
+    }
 }
 
+function_hook_state_t function_hook_state_CalculateFrameRate = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(CalculateFrameRate, function_hook_state_CalculateFrameRate)
 static void(__cdecl*original_CalculateFrameRate)() = (void(__cdecl*)())0x004706fa;
 CARM95_HOOK_FUNCTION(original_CalculateFrameRate, CalculateFrameRate)
 void __cdecl CalculateFrameRate() {
@@ -52,9 +64,16 @@ void __cdecl CalculateFrameRate() {
     (void)new_rate;
     (void)i;
 
-    original_CalculateFrameRate();
+    if (function_hook_state_CalculateFrameRate == HOOK_ENABLED) {
+        assert(0 && "CalculateFrameRate not implemented.");
+        abort();
+    } else {
+        original_CalculateFrameRate();
+    }
 }
 
+function_hook_state_t function_hook_state_LoseOldestWastedMassage = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(LoseOldestWastedMassage, function_hook_state_LoseOldestWastedMassage)
 static void(__cdecl*original_LoseOldestWastedMassage)() = (void(__cdecl*)())0x0046fde6;
 CARM95_HOOK_FUNCTION(original_LoseOldestWastedMassage, LoseOldestWastedMassage)
 void __cdecl LoseOldestWastedMassage() {
@@ -63,9 +82,16 @@ void __cdecl LoseOldestWastedMassage() {
 
     (void)i;
 
-    original_LoseOldestWastedMassage();
+    if (function_hook_state_LoseOldestWastedMassage == HOOK_ENABLED) {
+        assert(0 && "LoseOldestWastedMassage not implemented.");
+        abort();
+    } else {
+        original_LoseOldestWastedMassage();
+    }
 }
 
+function_hook_state_t function_hook_state_QueueWastedMassage = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(QueueWastedMassage, function_hook_state_QueueWastedMassage)
 static void(__cdecl*original_QueueWastedMassage)(int) = (void(__cdecl*)(int))0x0046fd9c;
 CARM95_HOOK_FUNCTION(original_QueueWastedMassage, QueueWastedMassage)
 void __cdecl QueueWastedMassage(int pIndex) {
@@ -73,9 +99,16 @@ void __cdecl QueueWastedMassage(int pIndex) {
 
     (void)pIndex;
 
-    original_QueueWastedMassage(pIndex);
+    if (function_hook_state_QueueWastedMassage == HOOK_ENABLED) {
+        assert(0 && "QueueWastedMassage not implemented.");
+        abort();
+    } else {
+        original_QueueWastedMassage(pIndex);
+    }
 }
 
+function_hook_state_t function_hook_state_MungeHeadups = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(MungeHeadups, function_hook_state_MungeHeadups)
 static void(__cdecl*original_MungeHeadups)() = (void(__cdecl*)())0x004707bd;
 CARM95_HOOK_FUNCTION(original_MungeHeadups, MungeHeadups)
 void __cdecl MungeHeadups() {
@@ -110,9 +143,16 @@ void __cdecl MungeHeadups() {
     (void)user;
     (void)last_rattle_time;
 
-    original_MungeHeadups();
+    if (function_hook_state_MungeHeadups == HOOK_ENABLED) {
+        assert(0 && "MungeHeadups not implemented.");
+        abort();
+    } else {
+        original_MungeHeadups();
+    }
 }
 
+function_hook_state_t function_hook_state_UpdateFramePeriod = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(UpdateFramePeriod, function_hook_state_UpdateFramePeriod)
 static void(__cdecl*original_UpdateFramePeriod)(tU32 *) = (void(__cdecl*)(tU32 *))0x004712bd;
 CARM95_HOOK_FUNCTION(original_UpdateFramePeriod, UpdateFramePeriod)
 void __cdecl UpdateFramePeriod(tU32 *pCamera_period) {
@@ -128,18 +168,32 @@ void __cdecl UpdateFramePeriod(tU32 *pCamera_period) {
     (void)error;
     (void)last_AR_mode;
 
-    original_UpdateFramePeriod(pCamera_period);
+    if (function_hook_state_UpdateFramePeriod == HOOK_ENABLED) {
+        assert(0 && "UpdateFramePeriod not implemented.");
+        abort();
+    } else {
+        original_UpdateFramePeriod(pCamera_period);
+    }
 }
 
+function_hook_state_t function_hook_state_GetLastTickCount = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(GetLastTickCount, function_hook_state_GetLastTickCount)
 static tU32(__cdecl*original_GetLastTickCount)() = (tU32(__cdecl*)())0x0046fe3a;
 CARM95_HOOK_FUNCTION(original_GetLastTickCount, GetLastTickCount)
 tU32 __cdecl GetLastTickCount() {
     LOG_TRACE("()");
 
 
-    return original_GetLastTickCount();
+    if (function_hook_state_GetLastTickCount == HOOK_ENABLED) {
+        assert(0 && "GetLastTickCount not implemented.");
+        abort();
+    } else {
+        return original_GetLastTickCount();
+    }
 }
 
+function_hook_state_t function_hook_state_CheckTimer = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(CheckTimer, function_hook_state_CheckTimer)
 static void(__cdecl*original_CheckTimer)() = (void(__cdecl*)())0x00471543;
 CARM95_HOOK_FUNCTION(original_CheckTimer, CheckTimer)
 void __cdecl CheckTimer() {
@@ -154,18 +208,32 @@ void __cdecl CheckTimer() {
     (void)last_time_in_seconds;
     (void)last_demo_time_in_seconds;
 
-    original_CheckTimer();
+    if (function_hook_state_CheckTimer == HOOK_ENABLED) {
+        assert(0 && "CheckTimer not implemented.");
+        abort();
+    } else {
+        original_CheckTimer();
+    }
 }
 
+function_hook_state_t function_hook_state_MungeRaceFinished = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(MungeRaceFinished, function_hook_state_MungeRaceFinished)
 static int(__cdecl*original_MungeRaceFinished)() = (int(__cdecl*)())0x00471607;
 CARM95_HOOK_FUNCTION(original_MungeRaceFinished, MungeRaceFinished)
 int __cdecl MungeRaceFinished() {
     LOG_TRACE("()");
 
 
-    return original_MungeRaceFinished();
+    if (function_hook_state_MungeRaceFinished == HOOK_ENABLED) {
+        assert(0 && "MungeRaceFinished not implemented.");
+        abort();
+    } else {
+        return original_MungeRaceFinished();
+    }
 }
 
+function_hook_state_t function_hook_state_MainGameLoop = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(MainGameLoop, function_hook_state_MainGameLoop)
 static tRace_result(__cdecl*original_MainGameLoop)() = (tRace_result(__cdecl*)())0x0046fe77;
 CARM95_HOOK_FUNCTION(original_MainGameLoop, MainGameLoop)
 tRace_result __cdecl MainGameLoop() {
@@ -186,9 +254,16 @@ tRace_result __cdecl MainGameLoop() {
     (void)i;
     (void)bonus;
 
-    return original_MainGameLoop();
+    if (function_hook_state_MainGameLoop == HOOK_ENABLED) {
+        assert(0 && "MainGameLoop not implemented.");
+        abort();
+    } else {
+        return original_MainGameLoop();
+    }
 }
 
+function_hook_state_t function_hook_state_DoRace = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(DoRace, function_hook_state_DoRace)
 static tRace_result(__cdecl*original_DoRace)() = (tRace_result(__cdecl*)())0x0046fe4f;
 CARM95_HOOK_FUNCTION(original_DoRace, DoRace)
 tRace_result __cdecl DoRace() {
@@ -197,6 +272,11 @@ tRace_result __cdecl DoRace() {
 
     (void)result;
 
-    return original_DoRace();
+    if (function_hook_state_DoRace == HOOK_ENABLED) {
+        assert(0 && "DoRace not implemented.");
+        abort();
+    } else {
+        return original_DoRace();
+    }
 }
 

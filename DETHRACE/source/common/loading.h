@@ -143,7 +143,7 @@ void __cdecl GetDamageProgram(FILE *pF, tCar_spec *pCar_spec, tImpact_location p
 
 br_uint_32 __cdecl LinkModel(br_actor *pActor, tModel_pool *pModel_pool);
 
-void FreeUpBonnetModels(br_model **pModel_array, int pModel_count);
+void __cdecl FreeUpBonnetModels(br_model **pModel_array, int pModel_count);
 
 void __cdecl LinkModelsToActor(br_actor *pActor, br_model **pModel_array, int pModel_count);
 

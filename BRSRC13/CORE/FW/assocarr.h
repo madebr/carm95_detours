@@ -4,7 +4,7 @@
 #include "br_types.h"
 
 
-br_associative_array* __stdcall BrAssociativeArrayAllocate();
+br_associative_array* __cdecl BrAssociativeArrayAllocate();
 
 br_error Set_Associative_Array_Value(br_associative_array *pArray, int index, br_value v);
 

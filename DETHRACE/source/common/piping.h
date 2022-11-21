@@ -6,36 +6,36 @@
 
 extern tU8 ** hookvar_gPipe_buffer_start ; // addr: 0050BA00
 extern int * hookvar_gDisable_sound ; // addr: 0050BA04
-// extern int * hookvar_gDisable_advance ;
-// extern int * hookvar_gMax_rewind_chunks ;
+extern int * hookvar_gDisable_advance ; // addr: 0050BA08
+extern int * hookvar_gMax_rewind_chunks ; // addr: 0050BA0C
 extern float * hookvar_gWall_severity ; // addr: 0050BA10
 extern tPipe_reset_proc*(* hookvar_gReset_procs )[32]; // addr: 0050BA18
 // extern tPiped_registration_snapshot(* hookvar_gRegistration_snapshots )[5];
 extern tPipe_smudge_data ** hookvar_gSmudge_space ; // addr: 00531FFC
-// extern tU32 * hookvar_gOldest_time ;
+extern tU32 * hookvar_gOldest_time ; // addr: 00531FF8
 // extern int * hookvar_gCurrent_snapshot_registration_index ;
 extern tPipe_chunk ** hookvar_gMr_chunky ; // addr: 00531FA0
-// extern tCar_spec ** hookvar_gCar_ptr ;
+extern tCar_spec ** hookvar_gCar_ptr ; // addr: 00532040
 extern br_vector3 * hookvar_gZero_vector ; // addr: 00532068
 extern tPipe_chunk_type(* hookvar_gReentrancy_array )[5]; // addr: 00532050
 // extern tU32 * hookvar_gLast_time ;
 extern tPipe_model_geometry_data ** hookvar_gModel_geometry_space ; // addr: 0053204C
 // extern tU32 * hookvar_gEnd_time ;
-// extern tU32 * hookvar_gTrigger_time ;
+extern tU32 * hookvar_gTrigger_time ; // addr: 00532094
 extern int * hookvar_gReentrancy_count ; // addr: 00532074
-// extern br_vector3 * hookvar_gCar_pos ;
-// extern br_vector3 * hookvar_gReference_pos ;
-// extern br_scalar * hookvar_gMax_distance ;
+extern br_vector3 * hookvar_gCar_pos ; // addr: 00532030
+extern br_vector3 * hookvar_gReference_pos ; // addr: 00532020
+extern br_scalar * hookvar_gMax_distance ; // addr: 00532004
 // extern tU32 * hookvar_gLoop_abort_time ;
 extern br_vector3 * hookvar_gWall_impact_point ; // addr: 00532078
-// extern tU8 ** hookvar_gPipe_buffer_working_end ;
-// extern tU32 * hookvar_gYoungest_time ;
+extern tU8 ** hookvar_gPipe_buffer_working_end ; // addr: 00532044
+extern tU32 * hookvar_gYoungest_time ; // addr: 00532084
 extern tU8 ** hookvar_gPipe_buffer_phys_end ; // addr: 0053208C
 // extern tU8 ** hookvar_gLocal_buffer_record_ptr ;
 extern tU8 ** hookvar_gPipe_play_ptr ; // addr: 00532018
-// extern tU8 ** hookvar_gEnd_of_session ;
-// extern tU8 ** hookvar_gPipe_record_ptr ;
-// extern tU8 ** hookvar_gPipe_buffer_oldest ;
+extern tU8 ** hookvar_gEnd_of_session ; // addr: 00532048
+extern tU8 ** hookvar_gPipe_record_ptr ; // addr: 0053201C
+extern tU8 ** hookvar_gPipe_buffer_oldest ; // addr: 0053200C
 extern tU32 * hookvar_gPipe_buffer_size ; // addr: 00532088
 extern tU8 ** hookvar_gLocal_buffer ; // addr: 00532014
 extern tU32 * hookvar_gLocal_buffer_size ; // addr: 00532090
@@ -170,7 +170,7 @@ void __cdecl AdvanceChunkPtr(tPipe_chunk **pChunk, tChunk_subject_index pType);
 
 void __cdecl ApplyModelGeometry(tPipe_chunk **pChunk);
 
-void DoSmudge(tPipe_chunk **pChunk, int pDir);
+void __cdecl DoSmudge(tPipe_chunk **pChunk, int pDir);
 
 void __cdecl ApplySmudge(tPipe_chunk **pChunk);
 
@@ -216,23 +216,23 @@ int __cdecl ApplyPipedSession(tU8 **pPtr);
 
 int __cdecl MoveSessionPointerBackOne(tU8 **pPtr);
 
-int MoveSessionPointerForwardOne(tU8 **pPtr);
+int __cdecl MoveSessionPointerForwardOne(tU8 **pPtr);
 
 tPipe_chunk* __cdecl FindPreviousChunk(tU8 *pPtr, tPipe_chunk_type pType, tChunk_subject_index pIndex);
 
-void UndoModelGeometry(tPipe_chunk **pChunk);
+void __cdecl UndoModelGeometry(tPipe_chunk **pChunk);
 
-void UndoSmudge(tPipe_chunk **pChunk);
+void __cdecl UndoSmudge(tPipe_chunk **pChunk);
 
-void UndoPedestrian(tPipe_chunk **pChunk, tPipe_chunk *pPrev_chunk);
+void __cdecl UndoPedestrian(tPipe_chunk **pChunk, tPipe_chunk *pPrev_chunk);
 
-void UndoFrameBoundary(tPipe_chunk **pChunk, tPipe_chunk *pPrev_chunk);
+void __cdecl UndoFrameBoundary(tPipe_chunk **pChunk, tPipe_chunk *pPrev_chunk);
 
-void UndoCar(tPipe_chunk **pChunk, tPipe_chunk *pPrev_chunk);
+void __cdecl UndoCar(tPipe_chunk **pChunk, tPipe_chunk *pPrev_chunk);
 
-void UndoSound(tPipe_chunk **pChunk);
+void __cdecl UndoSound(tPipe_chunk **pChunk);
 
-void UndoDamage(tPipe_chunk **pChunk);
+void __cdecl UndoDamage(tPipe_chunk **pChunk);
 
 void __cdecl UndoSpecial(tPipe_chunk **pChunk);
 
@@ -252,7 +252,7 @@ void __cdecl UndoSmoke(tPipe_chunk **pChunk, tPipe_chunk *pPrev_chunk);
 
 void __cdecl UndoSmokeColumn(tPipe_chunk **pChunk, tPipe_chunk *pPrev_chunk);
 
-void UndoFlame(tPipe_chunk **pChunk, tPipe_chunk *pPrev_chunk);
+void __cdecl UndoFlame(tPipe_chunk **pChunk, tPipe_chunk *pPrev_chunk);
 
 void __cdecl UndoSplash(tPipe_chunk **pChunk, tPipe_chunk *pPrev_chunk);
 
@@ -262,28 +262,28 @@ void __cdecl UndoProxRay(tPipe_chunk **pChunk);
 
 void __cdecl UndoSkidAdjustment(tPipe_chunk **pChunk, tPipe_chunk *pPrev_chunk);
 
-int UndoPipedSession(tU8 **pPtr);
+int __cdecl UndoPipedSession(tU8 **pPtr);
 
-tU32 FindPrevFrameTime(tU8 *pPtr);
+tU32 __cdecl FindPrevFrameTime(tU8 *pPtr);
 
 void __cdecl ScanBuffer(tU8 **pPtr, tPipe_chunk_type pType, tU32 pDefault_time, int(**pCall_back)(tPipe_chunk *, int, tU32), int(**pTime_check)(tU32));
 
 int __cdecl CheckSound(tPipe_chunk *pChunk_ptr, int pChunk_count, tU32 pTime);
 
-int SoundTimeout(tU32 pTime);
+int __cdecl SoundTimeout(tU32 pTime);
 
 void __cdecl ScanAndPlaySoundsToBe(tU8 *pPtr, tU32 pOldest_time, tU32 pYoungest_time);
 
-int CheckCar(tPipe_chunk *pChunk_ptr, int pChunk_count, tU32 pTime);
+int __cdecl CheckCar(tPipe_chunk *pChunk_ptr, int pChunk_count, tU32 pTime);
 
-int CarTimeout(tU32 pTime);
+int __cdecl CarTimeout(tU32 pTime);
 
-void ScanCarsPositions(tCar_spec *pCar, br_vector3 *pSource_pos, br_scalar pMax_distance_sqr, tU32 pOffset_time, tU32 pTime_period, br_vector3 *pCar_pos, tU32 *pTime_returned);
+void __cdecl ScanCarsPositions(tCar_spec *pCar, br_vector3 *pSource_pos, br_scalar pMax_distance_sqr, tU32 pOffset_time, tU32 pTime_period, br_vector3 *pCar_pos, tU32 *pTime_returned);
 
 int __cdecl CheckIncident(tPipe_chunk *pChunk_ptr, int pChunk_count, tU32 pTime);
 
 int __cdecl GetNextIncident(tU32 pOffset_time, tIncident_type *pIncident_type, float *pSeverity, tIncident_info *pInfo, tU32 *pTime_away);
 
-tU32 GetARStartTime();
+tU32 __cdecl GetARStartTime();
 
 #endif

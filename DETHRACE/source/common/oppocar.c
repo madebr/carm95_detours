@@ -4,6 +4,9 @@
 
 #include "carm95_hooks.h"
 
+#include "carm95_webserver.h"
+
+#include <assert.h>
  // Suffix added to avoid duplicate symbol
 #if 0
 int * hookvar_gCollision_detection_on__oppocar ;
@@ -53,14 +56,23 @@ br_scalar * hookvar_gGravity__oppocar ;
 br_vector3 * hookvar_gNew_ground_normal__oppocar ;
 #endif
 
+function_hook_state_t function_hook_state_MakeCarStationary = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(MakeCarStationary, function_hook_state_MakeCarStationary)
 void MakeCarStationary(tCar_spec *pCar_spec) {
     LOG_TRACE("(%p)", pCar_spec);
 
     (void)pCar_spec;
 
-    NOT_IMPLEMENTED();
+    if (function_hook_state_MakeCarStationary == HOOK_ENABLED) {
+        assert(0 && "MakeCarStationary not implemented.");
+        abort();
+    } else {
+        NOT_IMPLEMENTED();
+    }
 }
 
+function_hook_state_t function_hook_state_MoveThisCar = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(MoveThisCar, function_hook_state_MoveThisCar)
 void MoveThisCar(tU32 pTime_difference, tCar_spec *car) {
     br_scalar dt;
     br_scalar ts;
@@ -83,6 +95,11 @@ void MoveThisCar(tU32 pTime_difference, tCar_spec *car) {
     (void)phi;
     (void)__block0___scale;
 
-    NOT_IMPLEMENTED();
+    if (function_hook_state_MoveThisCar == HOOK_ENABLED) {
+        assert(0 && "MoveThisCar not implemented.");
+        abort();
+    } else {
+        NOT_IMPLEMENTED();
+    }
 }
 

@@ -4,7 +4,12 @@
 
 #include "carm95_hooks.h"
 
+#include "carm95_webserver.h"
 
+#include <assert.h>
+
+function_hook_state_t function_hook_state_ImageLoad = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(ImageLoad, function_hook_state_ImageLoad)
 static br_image *(__stdcall*original_ImageLoad)(char *) = (br_image *(__stdcall*)(char *))0x004e8bb0;
 CARM95_HOOK_FUNCTION(original_ImageLoad, ImageLoad)
 br_image* __stdcall ImageLoad(char *name) {
@@ -62,6 +67,11 @@ br_image* __stdcall ImageLoad(char *name) {
     (void)__block2__delta_h;
     (void)__block2__delta_l;
 
-    return original_ImageLoad(name);
+    if (function_hook_state_ImageLoad == HOOK_ENABLED) {
+        assert(0 && "ImageLoad not implemented.");
+        abort();
+    } else {
+        return original_ImageLoad(name);
+    }
 }
 

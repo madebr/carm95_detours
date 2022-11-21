@@ -4,17 +4,29 @@
 
 #include "carm95_hooks.h"
 
+#include "carm95_webserver.h"
 
-static br_error(__stdcall*original_BrLastErrorGet)(void **) = (br_error(__stdcall*)(void **))0x004e7850;
+#include <assert.h>
+
+function_hook_state_t function_hook_state_BrLastErrorGet = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(BrLastErrorGet, function_hook_state_BrLastErrorGet)
+static br_error(__cdecl*original_BrLastErrorGet)(void **) = (br_error(__cdecl*)(void **))0x004e7850;
 CARM95_HOOK_FUNCTION(original_BrLastErrorGet, BrLastErrorGet)
-br_error __stdcall BrLastErrorGet(void **valuep) {
+br_error __cdecl BrLastErrorGet(void **valuep) {
     LOG_TRACE("(%p)", valuep);
 
     (void)valuep;
 
-    return original_BrLastErrorGet(valuep);
+    if (function_hook_state_BrLastErrorGet == HOOK_ENABLED) {
+        assert(0 && "BrLastErrorGet not implemented.");
+        abort();
+    } else {
+        return original_BrLastErrorGet(valuep);
+    }
 }
 
+function_hook_state_t function_hook_state_BrLastErrorSet = HOOK_UNAVAILABLE;
+CARM95_WEBSERVER_STATE(BrLastErrorSet, function_hook_state_BrLastErrorSet)
 static void(__cdecl*original_BrLastErrorSet)(br_error, void *) = (void(__cdecl*)(br_error, void *))0x004e7860;
 CARM95_HOOK_FUNCTION(original_BrLastErrorSet, BrLastErrorSet)
 void __cdecl BrLastErrorSet(br_error type, void *value) {
@@ -23,6 +35,11 @@ void __cdecl BrLastErrorSet(br_error type, void *value) {
     (void)type;
     (void)value;
 
-    original_BrLastErrorSet(type, value);
+    if (function_hook_state_BrLastErrorSet == HOOK_ENABLED) {
+        assert(0 && "BrLastErrorSet not implemented.");
+        abort();
+    } else {
+        original_BrLastErrorSet(type, value);
+    }
 }
 

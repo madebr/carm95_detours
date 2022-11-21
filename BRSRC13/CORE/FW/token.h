@@ -19,6 +19,6 @@ br_token __cdecl BrTokenFind(char *pattern);
 
 br_int_32 __cdecl BrTokenFindMany(char *pattern, br_token *tokens, br_int_32 max_tokens);
 
-br_token __cdecl BrTokenFindType(br_token *ptype, char *base, br_token *types, br_int_32 ntypes);
+br_token __stdcall BrTokenFindType(br_token *ptype, char *base, br_token *types, br_int_32 ntypes);
 
 #endif

@@ -20,7 +20,7 @@ br_uint_16 __cdecl BrZsPrimitiveBucketSelect(br_scalar *z, br_uint_16 type, br_s
 
 void __cdecl BrZsOrderTablePrimaryEnable(br_order_table *order_table);
 
-void __stdcall BrZsOrderTablePrimaryDisable();
+void __cdecl BrZsOrderTablePrimaryDisable();
 
 void __stdcall InsertOrderTableList(br_order_table *order_table);
 
@@ -28,8 +28,8 @@ void __stdcall SetOrderTableBounds(br_bounds *bounds, br_order_table *order_tabl
 
 void __stdcall SetOrderTableRange(br_order_table *order_table);
 
-void __stdcall RenderOrderTableList();
+void __cdecl RenderOrderTableList();
 
-void __stdcall RenderPrimaryOrderTable();
+void __cdecl RenderPrimaryOrderTable();
 
 #endif
