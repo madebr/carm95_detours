@@ -5,6 +5,8 @@ import cmd
 import json
 import requests
 import shlex
+import socket
+import urllib.parse
 
 
 def fetch_data_from_hook_server(response):
@@ -179,6 +181,8 @@ class HookClientCmd(cmd.Cmd):
     def do_disable(self, arg):
         "Disable hooking of multiple hooks (arguments: 'hook [hook [hook ...]]')"
         args = shlex.split(arg)
+        if args == ["*"]:
+            args = [h["name"] for h in self.client.hooks]
 
         new_state = self._str_to_state("0")
 
@@ -186,12 +190,24 @@ class HookClientCmd(cmd.Cmd):
         return False
 
 
+def resolve_url(url: str) -> str:
+    splitted_url = urllib.parse.urlsplit(url)
+    netloc_splitted = splitted_url.netloc.split(":", 1)
+    netloc_splitted[0] = socket.gethostbyname(splitted_url.netloc.split(":")[0])
+    new_splitted_url = splitted_url._replace(netloc=":".join(netloc_splitted))
+    new_url = urllib.parse.urlunsplit(new_splitted_url)
+    return new_url
+
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(allow_abbrev=False)
-    parser.add_argument("url", default="http://localhost:8888", nargs="?", help="url of the REST hook server")
+    parser.add_argument("url", default="http://localhost:8080", nargs="?", help="url of the REST hook server")
     args = parser.parse_args()
 
-    client = HookClient(url=args.url)
+    url = resolve_url(args.url)
+
+    client = HookClient(url=url)
 
     client_cmd = HookClientCmd(client)
     client_cmd.cmdloop()
