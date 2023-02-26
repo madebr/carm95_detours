@@ -262,7 +262,7 @@ int __cdecl GotPowerup(tCar_spec *pCar, int pIndex) {
     }
 }
 
-function_hook_state_t function_hook_state_LoadPowerups = HOOK_ENABLED;
+function_hook_state_t function_hook_state_LoadPowerups = HOOK_DISABLED;
 CARM95_WEBSERVER_STATE(LoadPowerups, function_hook_state_LoadPowerups)
 static void(__cdecl*original_LoadPowerups)() = (void(__cdecl*)())0x0042d147;
 CARM95_HOOK_FUNCTION(original_LoadPowerups, LoadPowerups)
