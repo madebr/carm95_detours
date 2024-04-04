@@ -246,6 +246,8 @@ void webserver_register_variable(const char *name, function_hook_state_t *state,
     hook_elements.push_back({name, state, file, line});
 }
 
+}
+
 #else
 
 int start_hook_webserver(int port) {
