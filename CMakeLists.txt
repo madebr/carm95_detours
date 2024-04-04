@@ -120,3 +120,16 @@ if(CARM95_LOCATION)
         COMMAND "${CMAKE_COMMAND}" -E copy "$<TARGET_FILE:carm95_injector>" "${CARM95_LOCATION}/$<TARGET_FILE_NAME:carm95_injector>"
     )
 endif()
+
+install(TARGETS carm95_injector
+    RUNTIME DESTINATION "."
+)
+install(TARGETS carm95hooks
+    RUNTIME DESTINATION "plugins"
+)
+install(FILES "hookclient.py"
+    DESTINATION "."
+)
+
+set(CPACK_PACKAGE_FILE_NAME "${PROJECT_NAME}")
+include(CPack)
