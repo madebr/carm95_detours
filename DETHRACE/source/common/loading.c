@@ -2808,7 +2808,7 @@ int TestForOriginalCarmaCDinDrive() {
     }
 }
 
-function_hook_state_t function_hook_state_OriginalCarmaCDinDrive = HOOK_UNAVAILABLE;
+function_hook_state_t function_hook_state_OriginalCarmaCDinDrive = HOOK_ENABLED;
 CARM95_WEBSERVER_STATE(OriginalCarmaCDinDrive, function_hook_state_OriginalCarmaCDinDrive)
 static int(__cdecl*original_OriginalCarmaCDinDrive)() = (int(__cdecl*)())0x00427158;
 CARM95_HOOK_FUNCTION(original_OriginalCarmaCDinDrive, OriginalCarmaCDinDrive)
